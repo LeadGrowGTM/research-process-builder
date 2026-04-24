@@ -30,12 +30,14 @@ from pathlib import Path
 from datetime import datetime
 from typing import Optional
 
-WORKSPACE_ROOT = Path(__file__).resolve().parent.parent.parent
-sys.path.insert(0, str(WORKSPACE_ROOT / "leadgrow-hq" / "tools" / "shared-scripts"))
+SCRIPT_DIR_EARLY = Path(__file__).resolve().parent
 
 from dotenv import load_dotenv
-load_dotenv(WORKSPACE_ROOT / ".env")
+load_dotenv(SCRIPT_DIR_EARLY.parent / ".env")
 load_dotenv(Path.home() / ".env", override=False)
+
+_shared = os.environ.get("SHARED_SCRIPTS_PATH", str(SCRIPT_DIR_EARLY))
+sys.path.insert(0, _shared)
 
 import serper_search
 import requests

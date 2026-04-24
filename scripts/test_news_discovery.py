@@ -22,11 +22,13 @@ import argparse
 from pathlib import Path
 from datetime import datetime
 
-WORKSPACE_ROOT = Path(__file__).resolve().parent.parent.parent
-sys.path.insert(0, str(WORKSPACE_ROOT / "leadgrow-hq" / "tools" / "shared-scripts"))
+_script_dir = Path(__file__).resolve().parent
 
 from dotenv import load_dotenv
-load_dotenv(WORKSPACE_ROOT / ".env")
+load_dotenv(_script_dir.parent / ".env")
+load_dotenv(Path.home() / ".env", override=False)
+
+sys.path.insert(0, os.environ.get("SHARED_SCRIPTS_PATH", str(_script_dir)))
 
 import serper_search
 

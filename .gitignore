@@ -1,1 +1,15 @@
 __pycache__/
+*.pyc
+*.pyo
+
+# Secrets
+.env
+.env.*
+
+# Pipeline output
+output/
+*.json.out
+
+# OS
+.DS_Store
+Thumbs.db

@@ -24,7 +24,8 @@ PROJECT_DIR = SCRIPT_DIR.parent
 # autocontext imports (direct file load, bypasses broken __init__.py)
 # ---------------------------------------------------------------------------
 
-AC_SRC = Path("C:/Users/mitch/Everything_CC/autocontext/autocontext/src/autocontext")
+_ac_src_env = os.environ.get("AUTOCONTEXT_SRC_PATH")
+AC_SRC = Path(_ac_src_env) if _ac_src_env else None
 
 
 def _load_ac_module(name: str, file_path: Path):

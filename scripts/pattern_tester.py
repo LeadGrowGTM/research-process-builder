@@ -30,18 +30,20 @@ from pathlib import Path
 from datetime import datetime
 
 # Add shared scripts to path for serper import
-WORKSPACE_ROOT = Path(__file__).resolve().parent.parent.parent
-sys.path.insert(0, str(WORKSPACE_ROOT / "leadgrow-hq" / "tools" / "shared-scripts"))
+_script_dir = Path(__file__).resolve().parent
 
 from dotenv import load_dotenv
-load_dotenv(WORKSPACE_ROOT / ".env")
+load_dotenv(_script_dir.parent / ".env")
+load_dotenv(Path.home() / ".env", override=False)
 
-# Try importing serper_search directly
+_shared = os.environ.get("SHARED_SCRIPTS_PATH", str(_script_dir))
+sys.path.insert(0, _shared)
+
 try:
     import serper_search
 except ImportError:
-    print("ERROR: Could not import serper_search from leadgrow-hq/tools/shared-scripts/")
-    print(f"Looked in: {WORKSPACE_ROOT / 'leadgrow-hq' / 'tools' / 'shared-scripts'}")
+    print("ERROR: Could not import serper_search.")
+    print("Set SHARED_SCRIPTS_PATH env var to the directory containing serper_search.py")
     sys.exit(1)
 
 # Paths

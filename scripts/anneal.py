@@ -33,11 +33,12 @@ from pattern_tester import (
     RESULTS_FILE, SCRIPT_DIR as PT_SCRIPT_DIR,
 )
 
-WORKSPACE_ROOT = SCRIPT_DIR.parent.parent
-sys.path.insert(0, str(WORKSPACE_ROOT / "leadgrow-hq" / "tools" / "shared-scripts"))
-
 from dotenv import load_dotenv
-load_dotenv(WORKSPACE_ROOT / ".env")
+load_dotenv(SCRIPT_DIR.parent / ".env")
+load_dotenv(Path.home() / ".env", override=False)
+
+_shared = os.environ.get("SHARED_SCRIPTS_PATH", str(SCRIPT_DIR))
+sys.path.insert(0, _shared)
 
 import serper_search
 
