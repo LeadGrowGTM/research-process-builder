@@ -67,15 +67,20 @@ Current pipeline returns `not_found` when all 3 tiers fail. The agent fallback (
 
 **Budget:** ~$0.50 (analysis only, no API calls needed for most fixes)
 
-### 4. Cross-day dedup (Supabase level)
-Same company can appear on multiple days. Current dedup is within-day only.
+### 4. Cross-day dedup (Supabase level) — DONE 2026-04-26
 
-**Anneal approach:**
-- Before Stage 4 Supabase push, query last 30 days for matching company_name or domain
-- If exists: update score/source_count, don't insert duplicate
-- Test: run pipeline on 3 consecutive days, verify no duplicates in DB
+**Shipped:**
+- `match_existing_company()` in `domain_resolver.py` — domain-exact + fuzzy-name match (with www-prefix normalization)
+- `fetch_recent_companies(days=30)` in `pipeline_base.py` — single GET to load recent rows once per push
+- `push_to_supabase()` rewritten — PATCHes existing row (bumps source_count, max score, fills missing domain) instead of duplicate insert
+- Within-batch + cross-day dedup combined in one Stage 4 pass
+- 8 new unit tests in `test_resolver_unit.py` (all pass)
+- Bonus: `names_are_similar` extended with prefix-token match — "Strider Tech" ↔ "Strider Technologies" now merges (min-len-4 guard prevents `ai`/`io` false positives)
 
-**Budget:** ~$0.50 (Supabase queries are free, cost is search/GPT for test runs)
+**Verify on next live run:**
+- Run pipeline on 3 consecutive days, confirm no duplicate company rows in DB
+- Watch for `Cross-day merged: N` log line — proof it's firing
+- Spot-check a merged row: source_count should reflect cumulative cross-day appearances
 
 ### 5. Block list expansion from production data
 Run backfill audit weekly. Any new BAD_BLOCKED or BAD_SOURCE domains → add to domain_resolver.py BLOCKED_DOMAINS.
@@ -147,7 +152,7 @@ py backfill_domains.py --fix --commit
 | Expand ground truth | $0.50 |
 | Reduce not_found (agent comparison) | $3.00 |
 | Name extraction tightening | $0.50 |
-| Cross-day dedup testing | $0.50 |
+| ~~Cross-day dedup testing~~ DONE | $0 (offline) |
 | Block list expansion | $0.50 |
 | Prompt annealing | $2.50 |
 | **Total** | **$7.50** |

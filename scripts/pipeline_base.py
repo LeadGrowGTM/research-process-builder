@@ -27,7 +27,7 @@ import time
 import argparse
 import concurrent.futures
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Optional
 
 from domain_resolver import (
@@ -36,6 +36,8 @@ from domain_resolver import (
     normalize_domain as _normalize_domain_resolver,
     detect_industry,
     fuzzy_dedup_companies,
+    names_are_similar,
+    match_existing_company,
 )
 
 SCRIPT_DIR_EARLY = Path(__file__).resolve().parent
@@ -580,22 +582,84 @@ class ResearchPipeline:
             "pipeline_version": self.get_pipeline_version(),
         }
 
+    def fetch_recent_companies(self, days: int = 30) -> list[dict]:
+        """Fetch existing companies from last N days for cross-day dedup."""
+        if not (SUPABASE_URL and SUPABASE_KEY):
+            return []
+        cutoff = (datetime.utcnow() - timedelta(days=days)).strftime("%Y-%m-%d")
+        try:
+            resp = requests.get(
+                f"{SUPABASE_URL}/rest/v1/{self.SUPABASE_TABLE}"
+                f"?select=id,company_name,company_domain,source_count,score,source_url,discovered_date"
+                f"&discovered_date=gte.{cutoff}",
+                headers=self.supabase_headers(),
+                timeout=30,
+            )
+            if resp.status_code == 200:
+                return resp.json()
+            print(f"    Cross-day dedup fetch failed {resp.status_code}: {resp.text[:200]}")
+            return []
+        except Exception as e:
+            print(f"    Cross-day dedup fetch error: {e}")
+            return []
+
     def push_to_supabase(self, enriched: list[dict], date_str: str) -> int:
-        """Upsert enriched companies to Supabase. Returns count of successful upserts."""
+        """Upsert enriched companies to Supabase. Returns count of successful writes (insert + merge).
+
+        Cross-day dedup: before inserting, scans last 30 days for matching company by domain
+        or fuzzy name. If matched, PATCHes existing row (bumps source_count, max score) instead
+        of inserting a duplicate.
+        """
         rows = [self.get_supabase_row(r, date_str) for r in enriched]
 
-        # Dedup rows by source_url — keep first occurrence
+        # Within-batch dedup by source_url — keep first occurrence
         seen = set()
         deduped = []
         for row in rows:
             url = row.get("source_url", "")
-            if url not in seen:
+            if url and url in seen:
+                continue
+            if url:
                 seen.add(url)
-                deduped.append(row)
+            deduped.append(row)
         rows = deduped
 
-        upserted = 0
+        # Cross-day dedup: load recent rows once
+        recent = self.fetch_recent_companies(days=30)
+        if recent:
+            print(f"    Cross-day dedup: scanning {len(recent)} rows from last 30 days")
+
+        inserted = 0
+        merged = 0
         for row in rows:
+            existing = match_existing_company(row, recent)
+            if existing and existing.get("id"):
+                ex_count = existing.get("source_count") or 1
+                row_count = row.get("source_count") or 1
+                ex_score = existing.get("score") or 0
+                row_score = row.get("score") or 0
+                patch = {
+                    "source_count": max(ex_count, ex_count + row_count - 1),
+                    "score": max(ex_score, row_score),
+                }
+                if row.get("company_domain") and not existing.get("company_domain"):
+                    patch["company_domain"] = row["company_domain"]
+                try:
+                    resp = requests.patch(
+                        f"{SUPABASE_URL}/rest/v1/{self.SUPABASE_TABLE}?id=eq.{existing['id']}",
+                        headers=self.supabase_headers(prefer="return=minimal"),
+                        json=patch,
+                        timeout=15,
+                    )
+                    if resp.status_code in (200, 204):
+                        merged += 1
+                        existing.update(patch)
+                    else:
+                        print(f"    Supabase merge error {resp.status_code}: {resp.text[:200]}")
+                except Exception as e:
+                    print(f"    Supabase merge error: {e}")
+                continue
+
             try:
                 resp = requests.post(
                     f"{SUPABASE_URL}/rest/v1/{self.SUPABASE_TABLE}?on_conflict=source_url",
@@ -604,12 +668,23 @@ class ResearchPipeline:
                     timeout=15,
                 )
                 if resp.status_code in (200, 201):
-                    upserted += 1
+                    inserted += 1
+                    recent.append({
+                        "id": None,
+                        "company_name": row.get("company_name"),
+                        "company_domain": row.get("company_domain"),
+                        "source_count": row.get("source_count", 1),
+                        "score": row.get("score", 0),
+                        "source_url": row.get("source_url"),
+                        "discovered_date": date_str,
+                    })
                 else:
                     print(f"    Supabase error {resp.status_code}: {resp.text[:200]}")
             except Exception as e:
                 print(f"    Supabase error: {e}")
-        return upserted
+        if merged:
+            print(f"    Cross-day merged: {merged} (bumped source_count instead of duplicate insert)")
+        return inserted + merged
 
     # -----------------------------------------------------------------------
     # Webhook push (Clay, Zapier, etc.)

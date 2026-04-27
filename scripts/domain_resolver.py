@@ -632,6 +632,15 @@ def names_are_similar(name_a: str, name_b: str) -> bool:
     if tokens_a.issubset(tokens_b) or tokens_b.issubset(tokens_a):
         return True
 
+    # Prefix-token match: "Strider Tech" matches "Strider Technologies"
+    # — every token in shorter set has a prefix-of match (>=4 chars) in longer set
+    short, long = (tokens_a, tokens_b) if len(tokens_a) <= len(tokens_b) else (tokens_b, tokens_a)
+    if short and all(
+        any(len(s) >= 4 and (l.startswith(s) or s.startswith(l)) for l in long)
+        for s in short
+    ):
+        return True
+
     # Levenshtein on normalized full name
     norm_a = re.sub(r"[^a-z0-9]", "", name_a.lower())
     norm_b = re.sub(r"[^a-z0-9]", "", name_b.lower())
@@ -645,6 +654,34 @@ def names_are_similar(name_a: str, name_b: str) -> bool:
             return True
 
     return False
+
+
+def match_existing_company(new_row: dict, recent: list[dict]) -> dict | None:
+    """Find a matching existing company in `recent` for cross-day dedup.
+
+    Match priority:
+      1. Exact normalized domain (strongest signal)
+      2. Fuzzy name match via names_are_similar
+
+    Inputs use keys: company_name, company_domain.
+    Returns the matching dict from `recent` or None.
+    """
+    new_domain = (new_row.get("company_domain") or "").lower().strip()
+    if new_domain.startswith("www."):
+        new_domain = new_domain[4:]
+    new_name = new_row.get("company_name") or ""
+    if not new_name and not new_domain:
+        return None
+    for ex in recent:
+        ex_domain = (ex.get("company_domain") or "").lower().strip()
+        if ex_domain.startswith("www."):
+            ex_domain = ex_domain[4:]
+        ex_name = ex.get("company_name") or ""
+        if new_domain and ex_domain and new_domain == ex_domain:
+            return ex
+        if new_name and ex_name and names_are_similar(new_name, ex_name):
+            return ex
+    return None
 
 
 def fuzzy_dedup_companies(companies: list[dict], name_key: str = "company_name", domain_key: str = "company_domain", score_key: str = "best_score") -> list[dict]:
