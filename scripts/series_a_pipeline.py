@@ -23,6 +23,7 @@ Usage:
 import re
 
 from pipeline_base import ResearchPipeline
+from domain_resolver import fuzzy_dedup_companies, names_are_similar
 
 # ---------------------------------------------------------------------------
 # Query Definitions (validated 2026-04-20, 88% GT hit rate)
@@ -247,6 +248,12 @@ class SeriesAPipeline(ResearchPipeline):
         # Sort by score descending
         companies = sorted(candidates.values(), key=lambda x: x["best_score"], reverse=True)
 
+        # Fuzzy dedup: merge "Strider" + "Strider Technologies", etc.
+        pre_fuzzy = len(companies)
+        companies = fuzzy_dedup_companies(companies, name_key="company_name", score_key="best_score")
+        if len(companies) < pre_fuzzy:
+            print(f"\n  Fuzzy dedup: {pre_fuzzy} -> {len(companies)} companies")
+
         print(f"\n  Stage 2: {len(raw_results)} raw -> {len(companies)} companies (filtered {len(filtered_out)})")
         for c in companies:
             flag = " [VC?]" if c["needs_disambiguation"] else ""
@@ -282,11 +289,20 @@ Return exactly this JSON:
 
 Rules:
 - company_name = the company that RAISED money (NOT the investor/VC)
-- company_domain = their website domain (e.g. zenskar.com). "not_stated" if not in article
+- company_domain = their ACTUAL official website domain (e.g. zenskar.com). "not_stated" if not clearly in article
 - amount_raised = exact amount with currency symbol (e.g. "$15M", "EUR10M", "KRW 90B")
 - lead_investors = who led the round, comma-separated. "not_stated" if unknown
 - round_reasoning = why they raised / what funds are for, 1-2 sentences. "not_stated" if unknown
-- If this is NOT actually a Series A funding announcement, set company_name to "NOT_SERIES_A" """},
+- If this is NOT actually a Series A funding announcement, set company_name to "NOT_SERIES_A"
+
+CRITICAL — company_domain must be the company's OWN website. NEVER return:
+- The article source domain (e.g. infomoney.com, thesaasnews.com, finsmes.com)
+- CDN domains (cdninstagram.com, amazonaws.com, cloudfront.net, filerobot.com)
+- Data platforms (dealroom.co, crunchbase.com, pitchbook.com, tracxn.com)
+- News/media sites (economictimes.com, statnews.com, technews180.com, investing.com)
+- Social media (linkedin.com, twitter.com, instagram.com)
+- Short URLs (t.co, bit.ly)
+If you cannot find the company's actual website in the article, return "not_stated" — do NOT guess"""},
         ]
 
     def post_extract_filter(self, extracted: dict) -> bool:
@@ -344,6 +360,7 @@ Rules:
             "lead_investors": record.get("lead_investors", "not_stated"),
             "round_reasoning": record.get("round_reasoning", "not_stated"),
             "discovered_by": record.get("discovered_by", ""),
+            "discovered_by_pipeline": self.PIPELINE_NAME,
             "source_count": record.get("source_count", 1),
             "score": record.get("score", 0),
             "pipeline_version": "1.0",

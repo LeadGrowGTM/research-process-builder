@@ -30,6 +30,14 @@ from pathlib import Path
 from datetime import datetime
 from typing import Optional
 
+from domain_resolver import (
+    resolve_domain as _resolve_domain_waterfall,
+    validate_domain,
+    normalize_domain as _normalize_domain_resolver,
+    detect_industry,
+    fuzzy_dedup_companies,
+)
+
 SCRIPT_DIR_EARLY = Path(__file__).resolve().parent
 
 from dotenv import load_dotenv
@@ -246,28 +254,16 @@ class ResearchPipeline:
 
         return None
 
-    def lookup_domain(self, company_name: str) -> str:
-        """Search for company's official website domain."""
-        original_num = serper_search.DEFAULT_NUM_RESULTS
-        serper_search.DEFAULT_NUM_RESULTS = 5
-        try:
-            results = serper_search.search(f"{company_name} official website")
-            items = results.get("organic", [])
-            for item in items:
-                link = item.get("link", "")
-                domain = link.split("/")[2] if "://" in link else ""
-                if any(skip in domain for skip in [
-                    "linkedin.com", "crunchbase.com", "wikipedia.org", "twitter.com",
-                    "facebook.com", "bloomberg.com", "pitchbook.com", "glassdoor.com",
-                    "indeed.com", "ycombinator.com", "github.com"
-                ]):
-                    continue
-                return domain
-        except Exception:
-            pass
-        finally:
-            serper_search.DEFAULT_NUM_RESULTS = original_num
-        return "not_found"
+    def lookup_domain(self, company_name: str, source_url: str = "", article_text: str = None, industry: str = "") -> str:
+        """Resolve company domain via unified 3-tier waterfall + optional agent fallback."""
+        result = _resolve_domain_waterfall(
+            company_name=company_name,
+            source_url=source_url,
+            article_text=article_text,
+            industry=industry,
+            use_agent_fallback=getattr(self, '_use_domain_agent', False),
+        )
+        return result["domain"]
 
     def post_extract_filter(self, extracted: dict) -> bool:
         """Return True to KEEP the record, False to filter it out. Override in subclass."""
@@ -395,13 +391,23 @@ class ResearchPipeline:
                     print(f"    FILTERED: post-extraction filter")
                     continue
 
-            # Domain lookup if needed
+            # Domain resolution with validation gate
             domain = "not_found"
-            if extracted and extracted.get("company_domain") and extracted["company_domain"] != "not_stated":
-                domain = extracted["company_domain"]
-            else:
-                print(f"    Looking up domain...")
-                domain = self.lookup_domain(name)
+            source_domain = source_url.split("/")[2] if "://" in source_url else ""
+            industry = detect_industry(article_text or "")
+
+            if extracted and extracted.get("company_domain") and extracted["company_domain"] not in ("not_stated", "not_found", ""):
+                candidate = extracted["company_domain"]
+                v = validate_domain(candidate, name, source_domain)
+                if v["valid"]:
+                    domain = candidate
+                    print(f"    GPT domain accepted: {candidate} ({v['confidence']} confidence)")
+                else:
+                    print(f"    GPT domain REJECTED: {candidate} ({v['reason']})")
+
+            if domain == "not_found":
+                print(f"    Running domain resolver...")
+                domain = self.lookup_domain(name, source_url, article_text, industry)
 
             record = self.build_enriched_record(company, extracted, domain, source_url)
             enriched.append(record)
@@ -423,6 +429,16 @@ class ResearchPipeline:
 
     def write_output(self, enriched: list[dict], date_str: str):
         """Stage 4: Write CSV and JSON output, push to Supabase."""
+        pre_dedup = len(enriched)
+        enriched = fuzzy_dedup_companies(
+            enriched,
+            name_key="company_name",
+            domain_key="company_domain",
+            score_key="score",
+        )
+        if len(enriched) < pre_dedup:
+            print(f"\n  Post-enrichment dedup: {pre_dedup} -> {len(enriched)} companies")
+
         OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
         fieldnames = self.OUTPUT_FIELDNAMES
 
@@ -641,6 +657,7 @@ class ResearchPipeline:
         parser.add_argument("--dry-run", action="store_true", help="Preview queries without running")
         parser.add_argument("--max-enrich", type=int, default=20, help="Max companies to enrich in stage 3")
         parser.add_argument("--date", type=str, default=None, help="Run date as YYYY-MM-DD (default: today)")
+        parser.add_argument("--domain-agent", action="store_true", help="Use GPT agent fallback for not_found domains (~$0.02/company)")
         self.add_arguments(parser)
         return parser
 
@@ -658,6 +675,8 @@ class ResearchPipeline:
 
         if date_str is None:
             date_str = args.date if hasattr(args, 'date') and args.date else datetime.now().strftime("%Y-%m-%d")
+
+        self._use_domain_agent = getattr(args, 'domain_agent', False)
 
         STAGE_DIR.mkdir(parents=True, exist_ok=True)
 
