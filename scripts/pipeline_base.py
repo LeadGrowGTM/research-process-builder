@@ -48,7 +48,11 @@ load_dotenv(SCRIPT_DIR_EARLY.parent / ".env")
 load_dotenv(SCRIPT_DIR_EARLY.parent.parent / ".env", override=False)
 load_dotenv(Path.home() / ".env", override=False)
 
-_shared = os.environ.get("SHARED_SCRIPTS_PATH", str(SCRIPT_DIR_EARLY))
+_shared = os.environ.get("SHARED_SCRIPTS_PATH")
+if not _shared:
+    # Auto-discover: workspace-root/leadgrow-hq/tools/shared-scripts is canonical
+    _candidate = SCRIPT_DIR_EARLY.parent.parent / "leadgrow-hq" / "tools" / "shared-scripts"
+    _shared = str(_candidate) if _candidate.exists() else str(SCRIPT_DIR_EARLY)
 sys.path.insert(0, _shared)
 
 import serper_search

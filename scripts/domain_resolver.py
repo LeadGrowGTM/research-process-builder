@@ -26,6 +26,8 @@ from dotenv import load_dotenv
 
 _script_dir = Path(__file__).resolve().parent
 load_dotenv(_script_dir.parent / ".env")
+# Workspace-root dotenv (Everything_CC/.env) — primary key store
+load_dotenv(_script_dir.parent.parent / ".env", override=False)
 load_dotenv(Path.home() / ".env", override=False)
 
 _shared = os.environ.get("SHARED_SCRIPTS_PATH", str(_script_dir))
@@ -469,7 +471,9 @@ def resolve_domain_agent(
     Returns: {"domain": str, "confidence": str, "evidence": str, "searches": int, "gpt_calls": int}
     """
     if not OPENAI_API_KEY:
+        print(f"      agent skipped: OPENAI_API_KEY not loaded in domain_resolver scope")
         return {"domain": "not_found", "confidence": "low", "evidence": "no API key", "searches": 0, "gpt_calls": 0}
+    print(f"      agent fallback firing for: {company_name}")
 
     context_parts = [f"Company: {company_name}"]
     if industry:
@@ -502,6 +506,7 @@ def resolve_domain_agent(
                 timeout=30,
             )
             if not resp.ok:
+                print(f"      agent OpenAI error {resp.status_code}: {resp.text[:200]}")
                 break
 
             msg = resp.json()["choices"][0]["message"]
@@ -534,8 +539,10 @@ def resolve_domain_agent(
                 domain = "not_found"
                 confidence = "low"
 
+            print(f"      agent result: {domain or 'not_found'} (searches={search_count}, gpt_calls={gpt_calls})")
             return {"domain": domain, "confidence": confidence, "evidence": evidence, "searches": search_count, "gpt_calls": gpt_calls}
-        except Exception:
+        except Exception as e:
+            print(f"      agent exception: {e}")
             break
 
     return {"domain": "not_found", "confidence": "low", "evidence": "agent failed", "searches": search_count, "gpt_calls": gpt_calls}

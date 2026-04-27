@@ -14,11 +14,17 @@ Exit code 0 = pass (>= 90% accuracy), 1 = fail
 """
 
 import json
+import os
 import sys
 import argparse
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
+
+from dotenv import load_dotenv
+load_dotenv(SCRIPT_DIR.parent / ".env")
+load_dotenv(SCRIPT_DIR.parent.parent / ".env", override=False)
+load_dotenv(Path.home() / ".env", override=False)
 
 from domain_resolver import (
     validate_domain,
