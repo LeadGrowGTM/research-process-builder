@@ -169,6 +169,10 @@ def validate_domain(
     """
     Validate a candidate domain. Returns:
         {"valid": True/False, "reason": str, "confidence": "high"|"medium"|"low"}
+
+    LOW-confidence branch (name doesn't match domain) consults the runtime
+    domain_classifier — replaces the band-aid pattern of growing BLOCKED_DOMAINS
+    every time a new news/legal/aggregator slips through.
     """
     d = normalize_domain(domain)
 
@@ -183,6 +187,26 @@ def validate_domain(
 
     if domain_matches_company(d, company_name):
         return {"valid": True, "reason": "name matches domain", "confidence": "high"}
+
+    # LOW-confidence path: name mismatch. Ask classifier before accepting.
+    try:
+        from domain_classifier import classify_domain
+        verdict = classify_domain(d)
+        if verdict.get("blocked"):
+            return {
+                "valid": False,
+                "reason": f"classifier rejected: {verdict.get('category')} ({verdict.get('source')})",
+                "confidence": "high",
+            }
+        if verdict.get("category") == "real_company":
+            return {
+                "valid": True,
+                "reason": f"classifier accepted as real_company ({verdict.get('confidence')})",
+                "confidence": "medium",
+            }
+    except Exception as e:
+        # Classifier failure is non-fatal — fall through to legacy LOW accept
+        pass
 
     return {"valid": True, "reason": "accepted (name mismatch — low confidence)", "confidence": "low"}
 

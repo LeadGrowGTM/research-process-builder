@@ -1,0 +1,752 @@
+{
+  "aandkrobotics.com": {
+    "category": "real_company",
+    "confidence": "high",
+    "source": "gpt-4o-mini",
+    "ts": "2026-04-27T02:55:57.561472Z"
+  },
+  "adobedtm.com": {
+    "category": "tracker",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "ai-market-watch.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "akamaized.net": {
+    "category": "cdn",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "alleywatch.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "amazonaws.com": {
+    "category": "cdn",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "angel.co": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "apollo.io": {
+    "category": "data_platform",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "auth0.com": {
+    "category": "real_company",
+    "confidence": "high",
+    "source": "gpt-4o-mini",
+    "ts": "2026-04-27T02:56:35.848451Z"
+  },
+  "bandt.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "bandt.com.au": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "biospace.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "bit.ly": {
+    "category": "short_url",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "bloomberg.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "businesswire.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "capterra.com": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "cbinsights.com": {
+    "category": "data_platform",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "cdn.jsdelivr.net": {
+    "category": "cdn",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "cdninstagram.com": {
+    "category": "cdn",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "channele2e.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "cincinnati.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "cision.com": {
+    "category": "tracker",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "cloudflare.com": {
+    "category": "cdn",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "cloudfront.net": {
+    "category": "tracker",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "cnbc.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "cooley.com": {
+    "category": "legal",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "craft.co": {
+    "category": "data_platform",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "crunchbase.com": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "dealroom.co": {
+    "category": "data_platform",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "dealroom.com": {
+    "category": "data_platform",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "digitaltoday.co.kr": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "dlapiper.com": {
+    "category": "legal",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "economictimes.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "einpresswire.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "eu-startups.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "facebook.com": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "fastly.net": {
+    "category": "cdn",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "fbcdn.net": {
+    "category": "tracker",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "fenwick.com": {
+    "category": "legal",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "fiercebiotech.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "filerobot.com": {
+    "category": "cdn",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "finance.biggo.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "finance.yahoo.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "finanzwire.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "finsmes.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "forbes.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "fortune.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "g2.com": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "giotto.ai": {
+    "category": "cdn",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "github.com": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "glassdoor.com": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "globenewswire.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "gobiernu.cw": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "goo.gl": {
+    "category": "short_url",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "googleapis.com": {
+    "category": "tracker",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "googletagmanager.com": {
+    "category": "tracker",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "gunder.com": {
+    "category": "legal",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "harmonic.ai": {
+    "category": "data_platform",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "humblerobotics.com": {
+    "category": "real_company",
+    "confidence": "high",
+    "source": "gpt-4o-mini",
+    "ts": "2026-04-27T02:56:37.406785Z"
+  },
+  "infomoney.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "infotechlead.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "instagram.com": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "investing.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "kirkland.com": {
+    "category": "legal",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "kitsapsun.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "licdn.com": {
+    "category": "tracker",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "linkedin.com": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "livemint.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "lw.com": {
+    "category": "legal",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "medium.com": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "mofo.com": {
+    "category": "legal",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "moneycontrol.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "morganlewis.com": {
+    "category": "legal",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "morrisonforester.com": {
+    "category": "legal",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "netinfluencer.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "oled-info.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "orrick.com": {
+    "category": "legal",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "ow.ly": {
+    "category": "short_url",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "owler.com": {
+    "category": "data_platform",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "pitchbook.com": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "prnewswire.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "pulse2.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "reddit.com": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "reuters.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "sdxcentral.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "securitybrief.co": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "securitybrief.co.nz": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "sidley.com": {
+    "category": "legal",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "siliconangle.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "similar.ai": {
+    "category": "data_platform",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "skadden.com": {
+    "category": "legal",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "snopes.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "gpt-4o-mini",
+    "ts": "2026-04-27T02:56:36.686672Z"
+  },
+  "startupnews.fyi": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "statnews.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "substack.com": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "t.co": {
+    "category": "short_url",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "tech.eu": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "techcrunch.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "techfundingnews.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "technews180.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "techround.co.uk": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "thequantuminsider.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "therecursive.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "thesaasnews.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "tiktok.com": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "tinyurl.com": {
+    "category": "short_url",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "tracxn.com": {
+    "category": "data_platform",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "trustpilot.com": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "twitter.com": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "uktech.news": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "unpkg.com": {
+    "category": "cdn",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "vcnewsdaily.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "venturebeat.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "ventureburn.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "wellfound.com": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "wikipedia.org": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "wistia.com": {
+    "category": "tracker",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "wsgr.com": {
+    "category": "legal",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "wsj.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "x.com": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "yahoo.com": {
+    "category": "news",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "ycombinator.com": {
+    "category": "data_platform",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "yimg.com": {
+    "category": "tracker",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "youtube.com": {
+    "category": "social",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  },
+  "zoominfo.com": {
+    "category": "data_platform",
+    "confidence": "high",
+    "source": "seed",
+    "ts": "2026-04-27T02:55:30.795916Z"
+  }
+}
