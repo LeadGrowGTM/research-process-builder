@@ -1,0 +1,53 @@
+{
+  "company": "The Dead Rabbit",
+  "domain": "deadrabbitnyc.com",
+  "category": "Bar / Cocktail Lounge",
+  "type": "independent",
+  "verified_date": "2026-05-13",
+  "categories": {
+    "company_profile": {
+      "description": "Award-winning Irish pub and cocktail bar in Lower Manhattan, named World's Best Bar multiple times.",
+      "founded_year": "2013",
+      "confidence": "verified",
+      "sources": [
+        "deadrabbitnyc.com",
+        "worlds50bestbars.com"
+      ]
+    },
+    "location_info": {
+      "address": "30 Water St",
+      "city": "New York",
+      "state": "NY",
+      "zip": "10004",
+      "neighborhood": "Financial District",
+      "confidence": "verified",
+      "sources": [
+        "deadrabbitnyc.com"
+      ]
+    },
+    "ownership": {
+      "owner_names": [
+        "Jack McGarry",
+        "Sean Muldoon"
+      ],
+      "owner_titles": [
+        "Co-Founder & Managing Partner",
+        "Co-Founder"
+      ],
+      "confidence": "verified",
+      "sources": [
+        "deadrabbitnyc.com",
+        "wikipedia.org"
+      ]
+    },
+    "services": {
+      "bar_service": true,
+      "food_service": true,
+      "private_events": true,
+      "confidence": "verified",
+      "sources": [
+        "deadrabbitnyc.com"
+      ]
+    }
+  }
+}

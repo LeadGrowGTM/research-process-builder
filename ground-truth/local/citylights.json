@@ -1,0 +1,53 @@
+{
+  "company": "City Lights Booksellers & Publishers",
+  "domain": "citylights.com",
+  "category": "Independent Bookstore",
+  "type": "independent",
+  "verified_date": "2026-05-13",
+  "categories": {
+    "company_profile": {
+      "description": "Historic independent bookstore and publisher in San Francisco's North Beach, founded by poet Lawrence Ferlinghetti, home of the Beat generation.",
+      "founded_year": "1953",
+      "confidence": "verified",
+      "sources": [
+        "citylights.com",
+        "wikipedia.org"
+      ]
+    },
+    "location_info": {
+      "address": "261 Columbus Ave",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94133",
+      "neighborhood": "North Beach",
+      "confidence": "verified",
+      "sources": [
+        "citylights.com"
+      ]
+    },
+    "ownership": {
+      "owner_names": [
+        "Elaine Katzenberger"
+      ],
+      "owner_titles": [
+        "CEO & Publisher"
+      ],
+      "founder": "Lawrence Ferlinghetti (1919-2021)",
+      "confidence": "verified",
+      "sources": [
+        "citylights.com",
+        "wikipedia.org"
+      ]
+    },
+    "services": {
+      "in_store_shopping": true,
+      "online_ordering": true,
+      "book_publishing": true,
+      "events": true,
+      "confidence": "verified",
+      "sources": [
+        "citylights.com"
+      ]
+    }
+  }
+}

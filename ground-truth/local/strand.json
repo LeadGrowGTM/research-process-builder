@@ -1,0 +1,55 @@
+{
+  "company": "Strand Book Store",
+  "domain": "strandbooks.com",
+  "category": "Independent Bookstore",
+  "type": "independent",
+  "verified_date": "2026-05-13",
+  "categories": {
+    "company_profile": {
+      "description": "Legendary New York City independent bookstore with 18 miles of new, used, and rare books across four floors.",
+      "founded_year": "1927",
+      "employee_count": "100-200",
+      "confidence": "verified",
+      "sources": [
+        "strandbooks.com",
+        "wikipedia.org"
+      ]
+    },
+    "location_info": {
+      "address": "828 Broadway",
+      "city": "New York",
+      "state": "NY",
+      "zip": "10003",
+      "neighborhood": "Union Square / East Village",
+      "confidence": "verified",
+      "sources": [
+        "strandbooks.com"
+      ]
+    },
+    "ownership": {
+      "owner_names": [
+        "Nancy Bass Wyden"
+      ],
+      "owner_titles": [
+        "Owner (third generation)"
+      ],
+      "founder": "Benjamin Bass",
+      "confidence": "verified",
+      "sources": [
+        "strandbooks.com",
+        "wikipedia.org"
+      ]
+    },
+    "services": {
+      "in_store_shopping": true,
+      "online_ordering": true,
+      "rare_book_room": true,
+      "events": true,
+      "book_buying": true,
+      "confidence": "verified",
+      "sources": [
+        "strandbooks.com"
+      ]
+    }
+  }
+}

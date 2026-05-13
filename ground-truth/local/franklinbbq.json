@@ -1,0 +1,58 @@
+{
+  "company": "Franklin Barbecue",
+  "domain": "franklinbbq.com",
+  "category": "Restaurant (BBQ)",
+  "type": "independent",
+  "verified_date": "2026-05-13",
+  "categories": {
+    "company_profile": {
+      "description": "World-famous Austin barbecue joint known for its legendary brisket, with lines forming hours before opening. James Beard Award winner.",
+      "cuisine_type": "Central Texas Barbecue",
+      "price_range": "\\$\\$",
+      "founded_year": "2009",
+      "confidence": "verified",
+      "sources": [
+        "franklinbbq.com",
+        "wikipedia.org",
+        "jamesbeard.org"
+      ]
+    },
+    "location_info": {
+      "address": "900 E 11th St",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78702",
+      "note": "Open until sold out (usually by 1-2pm)",
+      "confidence": "verified",
+      "sources": [
+        "franklinbbq.com",
+        "google.com/maps"
+      ]
+    },
+    "ownership": {
+      "owner_names": [
+        "Aaron Franklin",
+        "Stacy Franklin"
+      ],
+      "owner_titles": [
+        "Founder & Pitmaster",
+        "Co-Owner"
+      ],
+      "confidence": "verified",
+      "sources": [
+        "franklinbbq.com",
+        "wikipedia.org"
+      ]
+    },
+    "services": {
+      "dine_in": true,
+      "takeout": true,
+      "preorder_online": true,
+      "catering": true,
+      "confidence": "verified",
+      "sources": [
+        "franklinbbq.com"
+      ]
+    }
+  }
+}

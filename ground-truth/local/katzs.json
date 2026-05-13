@@ -1,0 +1,59 @@
+{
+  "company": "Katz's Delicatessen",
+  "domain": "katzsdelicatessen.com",
+  "category": "Restaurant (Deli)",
+  "type": "independent",
+  "verified_date": "2026-05-13",
+  "categories": {
+    "company_profile": {
+      "description": "Iconic New York City delicatessen famous for hot pastrami sandwiches, corned beef, and matzo ball soup since 1888.",
+      "cuisine_type": "Jewish Deli",
+      "price_range": "\\$\\$",
+      "founded_year": "1888",
+      "confidence": "verified",
+      "sources": [
+        "katzsdelicatessen.com",
+        "wikipedia.org"
+      ]
+    },
+    "location_info": {
+      "address": "205 E Houston St",
+      "city": "New York",
+      "state": "NY",
+      "zip": "10002",
+      "phone": "(212) 254-2246",
+      "neighborhood": "Lower East Side",
+      "open_24_hours_weekend": true,
+      "confidence": "verified",
+      "sources": [
+        "katzsdelicatessen.com",
+        "google.com/maps"
+      ]
+    },
+    "ownership": {
+      "owner_names": [
+        "Jake Dell"
+      ],
+      "owner_titles": [
+        "Owner (fifth generation)"
+      ],
+      "note": "Founded by the Iceland brothers in 1888; purchased by the Katz family in 1903; Dell family since 1988",
+      "confidence": "verified",
+      "sources": [
+        "katzsdelicatessen.com",
+        "wikipedia.org"
+      ]
+    },
+    "services": {
+      "dine_in": true,
+      "takeout": true,
+      "nationwide_shipping": true,
+      "catering": true,
+      "private_events": true,
+      "confidence": "verified",
+      "sources": [
+        "katzsdelicatessen.com"
+      ]
+    }
+  }
+}

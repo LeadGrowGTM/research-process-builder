@@ -1,0 +1,57 @@
+{
+  "company": "Powell's City of Books",
+  "domain": "powells.com",
+  "category": "Independent Bookstore",
+  "type": "independent",
+  "verified_date": "2026-05-13",
+  "categories": {
+    "company_profile": {
+      "description": "The world's largest independent bookstore, occupying an entire city block with over one million new and used books across nine color-coded rooms.",
+      "founded_year": "1971",
+      "employee_count": "400-500",
+      "confidence": "verified",
+      "sources": [
+        "powells.com",
+        "wikipedia.org"
+      ]
+    },
+    "location_info": {
+      "address": "1005 W Burnside St",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97209",
+      "phone": "(503) 228-4651",
+      "sq_footage": "68000",
+      "confidence": "verified",
+      "sources": [
+        "powells.com",
+        "wikipedia.org"
+      ]
+    },
+    "ownership": {
+      "owner_names": [
+        "Emily Powell"
+      ],
+      "owner_titles": [
+        "Owner & CEO (third generation)"
+      ],
+      "founder": "Michael Powell",
+      "confidence": "verified",
+      "sources": [
+        "powells.com",
+        "wikipedia.org"
+      ]
+    },
+    "services": {
+      "in_store_shopping": true,
+      "online_ordering": true,
+      "events": true,
+      "rare_book_room": true,
+      "coffee_shop": true,
+      "confidence": "verified",
+      "sources": [
+        "powells.com"
+      ]
+    }
+  }
+}

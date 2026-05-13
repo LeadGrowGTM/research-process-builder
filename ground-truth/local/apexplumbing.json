@@ -1,0 +1,49 @@
+{
+  "company": "Apex Plumbing",
+  "domain": "apexplumbingks.com",
+  "category": "Plumbing Service",
+  "type": "independent",
+  "verified_date": "2026-05-13",
+  "categories": {
+    "company_profile": {
+      "description": "Licensed residential and commercial plumbing service company serving the Kansas City metro area with emergency and scheduled services.",
+      "services": [
+        "Emergency repairs",
+        "Water heater install",
+        "Drain cleaning",
+        "Sewer line repair",
+        "Fixture installation"
+      ],
+      "confidence": "medium",
+      "sources": [
+        "google.com/maps",
+        "better business bureau"
+      ]
+    },
+    "location_info": {
+      "city": "Overland Park",
+      "state": "KS",
+      "service_area": "Kansas City metro area",
+      "confidence": "medium",
+      "sources": [
+        "google.com/maps"
+      ]
+    },
+    "ownership": {
+      "owner_names": [],
+      "note": "Local plumbing contractor; ownership not publicly documented",
+      "confidence": "low",
+      "sources": []
+    },
+    "services": {
+      "emergency_service": true,
+      "residential": true,
+      "commercial": true,
+      "licensed_insured": true,
+      "confidence": "medium",
+      "sources": [
+        "google.com/maps"
+      ]
+    }
+  }
+}

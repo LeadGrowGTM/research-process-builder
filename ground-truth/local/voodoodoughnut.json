@@ -1,0 +1,54 @@
+{
+  "company": "Voodoo Doughnut",
+  "domain": "voodoodoughnut.com",
+  "category": "Bakery (Donuts)",
+  "type": "independent",
+  "verified_date": "2026-05-13",
+  "categories": {
+    "company_profile": {
+      "description": "Eccentric donut shop known for creative flavors, pink boxes, and quirky branding with locations across multiple states.",
+      "founded_year": "2003",
+      "confidence": "verified",
+      "sources": [
+        "voodoodoughnut.com",
+        "wikipedia.org"
+      ]
+    },
+    "location_info": {
+      "address": "22 SW 3rd Ave",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97204",
+      "original_location": "Portland Old Town",
+      "locations": "10+ nationwide",
+      "confidence": "verified",
+      "sources": [
+        "voodoodoughnut.com"
+      ]
+    },
+    "ownership": {
+      "owner_names": [
+        "Kenneth Pogson",
+        "Tres Shannon"
+      ],
+      "owner_titles": [
+        "Co-Founder",
+        "Co-Founder"
+      ],
+      "confidence": "verified",
+      "sources": [
+        "wikipedia.org"
+      ]
+    },
+    "services": {
+      "dine_in": true,
+      "takeout": true,
+      "wedding_cakes": true,
+      "vegan_options": true,
+      "confidence": "verified",
+      "sources": [
+        "voodoodoughnut.com"
+      ]
+    }
+  }
+}

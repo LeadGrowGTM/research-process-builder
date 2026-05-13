@@ -1,0 +1,55 @@
+{
+  "company": "Tartine Bakery",
+  "domain": "tartinebakery.com",
+  "category": "Bakery",
+  "type": "independent",
+  "verified_date": "2026-05-13",
+  "categories": {
+    "company_profile": {
+      "description": "Award-winning San Francisco bakery known for artisanal bread, morning buns, and pastries; expanded to multiple locations and a manufacturing facility.",
+      "founded_year": "2002",
+      "confidence": "verified",
+      "sources": [
+        "tartinebakery.com",
+        "wikipedia.org"
+      ]
+    },
+    "location_info": {
+      "address": "600 Guerrero St",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94110",
+      "neighborhood": "Mission District",
+      "locations": "5+ in California + manufacturing",
+      "confidence": "verified",
+      "sources": [
+        "tartinebakery.com"
+      ]
+    },
+    "ownership": {
+      "owner_names": [
+        "Chad Robertson",
+        "Elisabeth Prueitt"
+      ],
+      "owner_titles": [
+        "Co-Founder & Baker",
+        "Co-Founder & Pastry Chef"
+      ],
+      "confidence": "verified",
+      "sources": [
+        "tartinebakery.com",
+        "wikipedia.org"
+      ]
+    },
+    "services": {
+      "dine_in": true,
+      "takeout": true,
+      "wholesale_bread": true,
+      "cookbooks": true,
+      "confidence": "verified",
+      "sources": [
+        "tartinebakery.com"
+      ]
+    }
+  }
+}

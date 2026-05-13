@@ -1,0 +1,49 @@
+{
+  "company": "Dolce Bakery",
+  "domain": "dolcebakery.net",
+  "category": "Bakery",
+  "type": "independent",
+  "verified_date": "2026-05-13",
+  "categories": {
+    "company_profile": {
+      "description": "Family-owned boutique bakery and cafe serving scratch-made pastries, custom cakes, and breakfast/lunch in the Kansas City area.",
+      "founded_year": "2013",
+      "confidence": "high",
+      "sources": [
+        "dolcebakery.net"
+      ]
+    },
+    "location_info": {
+      "address": "3930 W 69th Terrace",
+      "city": "Prairie Village",
+      "state": "KS",
+      "zip": "66208",
+      "confidence": "high",
+      "sources": [
+        "dolcebakery.net"
+      ]
+    },
+    "ownership": {
+      "owner_names": [
+        "Erin Brown"
+      ],
+      "owner_titles": [
+        "Owner & Baker"
+      ],
+      "confidence": "high",
+      "sources": [
+        "dolcebakery.net"
+      ]
+    },
+    "services": {
+      "dine_in": true,
+      "takeout": true,
+      "custom_cakes": true,
+      "catering": true,
+      "confidence": "high",
+      "sources": [
+        "dolcebakery.net"
+      ]
+    }
+  }
+}

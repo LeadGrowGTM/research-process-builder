@@ -1,0 +1,53 @@
+{
+  "company": "Pizzeria Bianco",
+  "domain": "pizzeriabianco.com",
+  "category": "Restaurant (Pizza)",
+  "type": "independent",
+  "verified_date": "2026-05-13",
+  "categories": {
+    "company_profile": {
+      "description": "Acclaimed artisan pizzeria in Phoenix, known for wood-fired Neapolitan-style pizzas using locally sourced ingredients. James Beard Award winner.",
+      "cuisine_type": "Artisan Pizza",
+      "price_range": "\\$\\$",
+      "founded_year": "1988",
+      "confidence": "verified",
+      "sources": [
+        "pizzeriabianco.com",
+        "wikipedia.org"
+      ]
+    },
+    "location_info": {
+      "address": "623 E Adams St",
+      "city": "Phoenix",
+      "state": "AZ",
+      "zip": "85004",
+      "neighborhood": "Heritage Square",
+      "locations": "2 (Phoenix + Los Angeles)",
+      "confidence": "verified",
+      "sources": [
+        "pizzeriabianco.com"
+      ]
+    },
+    "ownership": {
+      "owner_names": [
+        "Chris Bianco"
+      ],
+      "owner_titles": [
+        "Founder & Chef"
+      ],
+      "confidence": "verified",
+      "sources": [
+        "pizzeriabianco.com",
+        "wikipedia.org"
+      ]
+    },
+    "services": {
+      "dine_in": true,
+      "takeout": true,
+      "confidence": "verified",
+      "sources": [
+        "pizzeriabianco.com"
+      ]
+    }
+  }
+}

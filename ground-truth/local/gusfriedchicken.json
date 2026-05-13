@@ -1,0 +1,51 @@
+{
+  "company": "Gus's World Famous Fried Chicken",
+  "domain": "gusfriedchicken.com",
+  "category": "Restaurant (Fried Chicken)",
+  "type": "independent",
+  "verified_date": "2026-05-13",
+  "categories": {
+    "company_profile": {
+      "description": "Legendary fried chicken restaurant founded in Mason, Tennessee, known for spicy, crispy fried chicken. Now with 30+ locations nationwide.",
+      "cuisine_type": "Southern / Fried Chicken",
+      "price_range": "\\$",
+      "founded_year": "1953",
+      "confidence": "verified",
+      "sources": [
+        "gusfriedchicken.com",
+        "wikipedia.org"
+      ]
+    },
+    "location_info": {
+      "address": "Original: Mason, TN",
+      "locations": "30+ across US",
+      "confidence": "verified",
+      "sources": [
+        "gusfriedchicken.com"
+      ]
+    },
+    "ownership": {
+      "owner_names": [
+        "Wendy McCrary"
+      ],
+      "owner_titles": [
+        "Owner (descendant of founders)"
+      ],
+      "founders": "Vanderbilt \"Gus\" Bonner and wife",
+      "confidence": "verified",
+      "sources": [
+        "gusfriedchicken.com",
+        "wikipedia.org"
+      ]
+    },
+    "services": {
+      "dine_in": true,
+      "takeout": true,
+      "catering": true,
+      "confidence": "verified",
+      "sources": [
+        "gusfriedchicken.com"
+      ]
+    }
+  }
+}

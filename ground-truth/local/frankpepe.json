@@ -1,0 +1,58 @@
+{
+  "company": "Frank Pepe Pizzeria Napoletana",
+  "domain": "pepespizzeria.com",
+  "category": "Restaurant (Pizza)",
+  "type": "independent",
+  "verified_date": "2026-05-13",
+  "categories": {
+    "company_profile": {
+      "description": "Legendary New Haven-style coal-fired pizzeria known for its white clam pizza, consistently ranked among the best pizza in America.",
+      "cuisine_type": "Pizza (New Haven style)",
+      "price_range": "\\$\\$",
+      "founded_year": "1925",
+      "confidence": "verified",
+      "sources": [
+        "pepespizzeria.com",
+        "wikipedia.org"
+      ]
+    },
+    "location_info": {
+      "address": "157 Wooster St",
+      "city": "New Haven",
+      "state": "CT",
+      "zip": "06511",
+      "locations": "15+ across Northeast",
+      "confidence": "verified",
+      "sources": [
+        "pepespizzeria.com"
+      ]
+    },
+    "ownership": {
+      "owner_names": [
+        "Gary Bimonte",
+        "Francis Rosselli",
+        "Jennifer Kelly",
+        "Lisa Mennetti"
+      ],
+      "owner_titles": [
+        "Grandson of Founder",
+        "Great-Grandson",
+        "Great-Granddaughters"
+      ],
+      "founder": "Frank Pepe",
+      "confidence": "verified",
+      "sources": [
+        "pepespizzeria.com",
+        "wikipedia.org"
+      ]
+    },
+    "services": {
+      "dine_in": true,
+      "takeout": true,
+      "confidence": "verified",
+      "sources": [
+        "pepespizzeria.com"
+      ]
+    }
+  }
+}

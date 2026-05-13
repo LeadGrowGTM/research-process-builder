@@ -1,0 +1,57 @@
+{
+  "company": "Zingerman's Delicatessen",
+  "domain": "zingermansdeli.com",
+  "category": "Restaurant (Deli)",
+  "type": "independent",
+  "verified_date": "2026-05-13",
+  "categories": {
+    "company_profile": {
+      "description": "Famous Ann Arbor delicatessen known for oversized sandwiches, artisan breads, and specialty foods. Flagship of the Zingerman's Community of Businesses.",
+      "cuisine_type": "Jewish Deli / Artisan Foods",
+      "price_range": "\\$\\$",
+      "founded_year": "1982",
+      "confidence": "verified",
+      "sources": [
+        "zingermansdeli.com",
+        "wikipedia.org"
+      ]
+    },
+    "location_info": {
+      "address": "422 Detroit St",
+      "city": "Ann Arbor",
+      "state": "MI",
+      "zip": "48104",
+      "confidence": "verified",
+      "sources": [
+        "zingermansdeli.com"
+      ]
+    },
+    "ownership": {
+      "owner_names": [
+        "Ari Weinzweig",
+        "Paul Saginaw"
+      ],
+      "owner_titles": [
+        "Co-Founder & CEO",
+        "Co-Founder"
+      ],
+      "note": "Zingerman's Community of Businesses includes 10+ local food businesses",
+      "confidence": "verified",
+      "sources": [
+        "zingermansdeli.com",
+        "wikipedia.org"
+      ]
+    },
+    "services": {
+      "dine_in": true,
+      "takeout": true,
+      "nationwide_shipping": true,
+      "catering": true,
+      "mail_order_catalog": true,
+      "confidence": "verified",
+      "sources": [
+        "zingermansdeli.com"
+      ]
+    }
+  }
+}

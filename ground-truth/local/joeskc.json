@@ -1,0 +1,59 @@
+{
+  "company": "Joe's Kansas City Bar-B-Que",
+  "domain": "joeskc.com",
+  "category": "Restaurant (BBQ)",
+  "type": "independent",
+  "verified_date": "2026-05-13",
+  "categories": {
+    "company_profile": {
+      "description": "Award-winning Kansas City barbecue restaurant known for brisket, ribs, pulled pork, and its signature Z-Man sandwich.",
+      "cuisine_type": "Barbecue",
+      "price_range": "\\$\\$",
+      "founded_year": "1996",
+      "confidence": "verified",
+      "sources": [
+        "joeskc.com",
+        "wikipedia.org",
+        "foodnetwork.com"
+      ]
+    },
+    "location_info": {
+      "address": "3002 W 47th Ave",
+      "city": "Kansas City",
+      "state": "KS",
+      "zip": "66103",
+      "phone": "(913) 722-3366",
+      "locations": 3,
+      "confidence": "verified",
+      "sources": [
+        "joeskc.com",
+        "google.com/maps"
+      ]
+    },
+    "ownership": {
+      "owner_names": [
+        "Jeff Stehney",
+        "Joy Stehney"
+      ],
+      "owner_titles": [
+        "Founder & Pitmaster",
+        "Co-Owner"
+      ],
+      "confidence": "verified",
+      "sources": [
+        "joeskc.com",
+        "wikipedia.org"
+      ]
+    },
+    "services": {
+      "dine_in": true,
+      "takeout": true,
+      "catering": true,
+      "online_ordering": true,
+      "confidence": "verified",
+      "sources": [
+        "joeskc.com"
+      ]
+    }
+  }
+}
