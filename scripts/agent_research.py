@@ -135,7 +135,47 @@ If not found, use empty arrays and null for missing fields.""",
   "other_leaders": ["name 1", "name 2"],
   "confidence": "high|medium|low"
 }
-Include C-suite and VP-level executives. If not found, use null and empty arrays."""
+Include C-suite and VP-level executives. If not found, use null and empty arrays.""",
+
+    "location_info": """Extract location and contact information for this local business. Return ONLY valid JSON:
+{
+  "address": "full street address",
+  "city": "city name",
+  "state": "state abbreviation (e.g. KS, TX, NY)",
+  "zip": "zip code",
+  "phone": "phone number",
+  "locations": "number of physical locations (number or 'single')",
+  "service_area": "neighborhood, metro area, or city served",
+  "confidence": "high|medium|low"
+}
+If a field is not found, use null. Do not invent information.""",
+
+    "ownership": """Extract ownership and founder information for this local business. Return ONLY valid JSON:
+{
+  "owner_names": ["full name 1", "full name 2"],
+  "owner_titles": ["title 1", "title 2"],
+  "founder": "name of original founder if different from current owners",
+  "family_owned": "true if explicitly a family business, else null",
+  "confidence": "high|medium|low"
+}
+Include only people explicitly mentioned as owners, founders, or operators. Many small businesses do not publicly list owners - use empty arrays and 'low' confidence if not found.""",
+
+    "services": """Extract services and offerings information for this local business. Return ONLY valid JSON:
+{
+  "dine_in": "true/false/null (restaurants only)",
+  "takeout": "true/false/null",
+  "delivery": "true/false/null",
+  "catering": "true/false/null",
+  "online_ordering": "true/false/null",
+  "reservations": "true/false/null",
+  "emergency_service": "true/false/null (trades/plumbing only)",
+  "residential": "true/false/null",
+  "commercial": "true/false/null",
+  "licensed_insured": "true/false/null",
+  "specialties": ["specialty area 1", "specialty area 2"],
+  "confidence": "high|medium|low"
+}
+Only include fields where you found explicit evidence. Use null for fields that don't apply to this business type. Do not invent services."""
 }
 
 
@@ -277,23 +317,42 @@ def _build_queries(name: str, domain: str, category: str) -> list[str]:
             f"{name} CEO CTO CFO management",
             f"{name} executive leadership bios",
         ],
+        "location_info": [
+            f"{name} location address contact phone",
+            f"{name} hours directions",
+            f"{name} {domain} where is located",
+        ],
+        "ownership": [
+            f"{name} owner founder who started",
+            f"{name} ownership family business history",
+            f"who owns {name} {domain}",
+        ],
+        "services": [
+            f"{name} menu services offerings",
+            f"{name} what does {name} offer",
+            f"{name} {domain} services specialties",
+        ],
     }
     return templates.get(category, templates["company_profile"])
 
 
 # ── GT scoring ────────────────────────────────────────────────────────────────
 def _load_gt(company: str) -> dict | None:
-    """Load ground truth for a company if it exists."""
-    gt_path = GT_DIR / f"{company.lower().replace(' ', '_')}.json"
-    if not gt_path.exists():
-        for f in GT_DIR.glob("*.json"):
-            if f.stem.lower() == company.lower().replace(" ", "_"):
-                gt_path = f
-                break
-    if not gt_path.exists():
-        return None
-    with open(gt_path, "r", encoding="utf-8") as f:
-        return json.load(f)
+    """Load ground truth for a company if it exists. Checks GT_DIR and GT_DIR/local/."""
+    search_dirs = [GT_DIR, GT_DIR / "local"]
+    for search_dir in search_dirs:
+        if not search_dir.exists():
+            continue
+        gt_path = search_dir / f"{company.lower().replace(' ', '_')}.json"
+        if not gt_path.exists():
+            for f in search_dir.glob("*.json"):
+                if f.stem.lower() == company.lower().replace(" ", "_"):
+                    gt_path = f
+                    break
+        if gt_path.exists():
+            with open(gt_path, "r", encoding="utf-8") as f:
+                return json.load(f)
+    return None
 
 
 def _score_against_gt(extracted: dict | None, gt: dict, category: str) -> float:
@@ -311,6 +370,8 @@ def _score_against_gt(extracted: dict | None, gt: dict, category: str) -> float:
         "company_profile": ["description", "headquarters", "founded_year"],
         "leadership_people": ["ceo_name"],
         "funding_financial": ["total_raised", "last_round_type"],
+        "location_info": ["address", "city", "state", "zip", "phone"],
+        "ownership": ["founder"],
     }
 
     for field in text_fields.get(category, []):
@@ -331,7 +392,26 @@ def _score_against_gt(extracted: dict | None, gt: dict, category: str) -> float:
         "founders_ceo": ("names", gt_cat.get("names", [])),
         "leadership_people": ("other_leaders", gt_cat.get("other_leaders", [])),
         "competitor_identification": ("competitors", gt_cat.get("competitors", [])),
+        "ownership": ("owner_names", gt_cat.get("owner_names", [])),
     }
+
+    # Boolean field scoring for services
+    bool_fields = {
+        "services": ["dine_in", "takeout", "delivery", "catering", "online_ordering",
+                      "reservations", "emergency_service", "residential", "commercial",
+                      "licensed_insured"],
+    }
+    for field in bool_fields.get(category, []):
+        expected = gt_cat.get(field)
+        found = extracted.get(field)
+        if expected is None:
+            continue
+        if found == expected:
+            scores.append(1.0)
+        elif found is not None and expected is not None:
+            scores.append(0.5)
+        else:
+            scores.append(0.0)
 
     for cat_key, (field, expected_list) in name_fields.items():
         if cat_key != category:
@@ -353,14 +433,18 @@ def _score_against_gt(extracted: dict | None, gt: dict, category: str) -> float:
 
 
 # ── Batch / annealing ─────────────────────────────────────────────────────────
-def run_all_gt(category: str, anneal: bool = False, rounds: int = 1) -> dict:
+def run_all_gt(category: str, anneal: bool = False, rounds: int = 1, local_only: bool = False) -> dict:
     """Run agent against all ground truth companies."""
     gt_companies = []
-    for fpath in sorted(GT_DIR.glob("*.json")):
-        if fpath.name == "schema.json":
+    search_dirs = [GT_DIR / "local"] if local_only else [GT_DIR, GT_DIR / "local"]
+    for search_dir in search_dirs:
+        if not search_dir.exists():
             continue
-        with open(fpath, "r", encoding="utf-8") as f:
-            gt_companies.append(json.load(f))
+        for fpath in sorted(search_dir.glob("*.json")):
+            if fpath.name in ("schema.json",):
+                continue
+            with open(fpath, "r", encoding="utf-8") as f:
+                gt_companies.append(json.load(f))
 
     print(f"\nRunning against {len(gt_companies)} GT companies")
 
@@ -503,6 +587,7 @@ def main():
                         help="Research category")
     parser.add_argument("--gt", action="store_true", help="Always validate against ground truth")
     parser.add_argument("--all-gt", action="store_true", help="Run against all GT companies")
+    parser.add_argument("--local", action="store_true", help="With --all-gt: use local business GT only")
     parser.add_argument("--domains-file", help="Run against a file of domains (one per line)")
     parser.add_argument("--categories", default="company_profile,founders_ceo,funding_financial",
                         help="Comma-separated categories for batch mode")
@@ -522,7 +607,7 @@ def main():
         return
 
     if args.all_gt:
-        result = run_all_gt(args.category, args.anneal, args.rounds)
+        result = run_all_gt(args.category, args.anneal, args.rounds, args.local)
         if args.json:
             print(json.dumps(result, indent=2))
         return
