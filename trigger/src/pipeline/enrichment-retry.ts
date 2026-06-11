@@ -1,5 +1,5 @@
 import { logger } from "@trigger.dev/sdk";
-import { discolikeConfigured, discolikeProfile, discolikeUsageOk } from "./discolike.js";
+import { discolikeConfigured, discolikeProfile, discolikeUsageOk, type DiscoProfile } from "./discolike.js";
 import { blitzEnrichLinkedin, blitzHqString } from "./blitz.js";
 import { isDomainBlocked } from "./domain-lookup.js";
 import { normalizeDomain, enrichDomainWaterfall } from "./enrich-company.js";
@@ -15,7 +15,8 @@ const SUPABASE_KEY =
   process.env.SUPABASE_ANON_KEY ??
   "";
 
-// DiscoLike is ~$0.18/query — hard cap per run keeps worst case ~$9.
+// DiscoLike is ~$0.18/query — 50 rows/table = ~$9 worst case per table.
+// Usage gate re-checked before each table, so total run overshoot is bounded.
 const MAX_ROWS_PER_TABLE = 50;
 
 interface RetryRow {
@@ -80,17 +81,18 @@ export async function runEnrichmentRetryPass(): Promise<{
     logger.warn("DiscoLike not configured — skipping retry pass");
     return result;
   }
-  if (!(await discolikeUsageOk())) {
-    logger.warn("DiscoLike spend near max — skipping retry pass");
-    return result;
-  }
-
   const tables = [
     { key: "funding" as const, table: "funding_discoveries" as const, domainCol: "company_domain", minAge: 7, maxAge: 60 },
     { key: "ph" as const, table: "product_launches" as const, domainCol: "maker_website", minAge: 25, maxAge: 90 },
   ];
 
   for (const t of tables) {
+    // Re-check spend before every table — one table can burn ~$9 on its own
+    if (!(await discolikeUsageOk())) {
+      logger.warn(`DiscoLike spend near max — skipping ${t.table} retry pass`);
+      continue;
+    }
+
     const rows = await fetchRetryRows(t.table, t.domainCol, t.minAge, t.maxAge);
     result[t.key].scanned = rows.length;
     logger.info(`Retry pass: ${t.table}`, { rows: rows.length });
@@ -113,7 +115,15 @@ export async function runEnrichmentRetryPass(): Promise<{
         continue;
       }
 
-      const profile = await discolikeProfile(row.domain);
+      let profile: DiscoProfile | null;
+      try {
+        profile = await discolikeProfile(row.domain);
+      } catch (e) {
+        // Transient network/timeout error — NOT a DiscoLike miss. Leave the row
+        // unstamped so next week retries it, and don't kill the rest of the run.
+        logger.warn(`DiscoLike error for ${row.domain}: ${e instanceof Error ? e.message : String(e)}`);
+        continue;
+      }
 
       if (!profile) {
         // Stamp the miss so this row is never re-queried (cost control)
