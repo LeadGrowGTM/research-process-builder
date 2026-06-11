@@ -34,7 +34,7 @@ async function fetchRetryRows(
   domainCol: string,
   minAgeDays: number,
   maxAgeDays: number
-): Promise<RetryRow[]> {
+): Promise<{ rows: RetryRow[]; junk: RetryRow[] }> {
   const params =
     `select=company_name,source_url,${domainCol}` +
     `&${domainCol}=not.is.null` +
@@ -51,16 +51,16 @@ async function fetchRetryRows(
     logger.error(`Retry-pass fetch failed: ${table} → ${res.status}`, {
       body: (await res.text()).slice(0, 200),
     });
-    return [];
+    return { rows: [], junk: [] };
   }
-  const rows = (await res.json()) as Record<string, string>[];
-  return rows
-    .map((r) => ({
-      company_name: r.company_name,
-      source_url: r.source_url,
-      domain: normalizeDomain(r[domainCol] ?? ""),
-    }))
-    .filter((r) => r.domain && r.domain.includes(".") && !isDomainBlocked(r.domain));
+  const raw = (await res.json()) as Record<string, string>[];
+  const mapped = raw.map((r) => ({
+    company_name: r.company_name,
+    source_url: r.source_url,
+    domain: normalizeDomain(r[domainCol] ?? ""),
+  }));
+  const usable = (r: RetryRow) => Boolean(r.domain && r.domain.includes(".") && !isDomainBlocked(r.domain));
+  return { rows: mapped.filter(usable), junk: mapped.filter((r) => !usable(r)) };
 }
 
 /**
@@ -93,9 +93,17 @@ export async function runEnrichmentRetryPass(): Promise<{
       continue;
     }
 
-    const rows = await fetchRetryRows(t.table, t.domainCol, t.minAge, t.maxAge);
+    const { rows, junk } = await fetchRetryRows(t.table, t.domainCol, t.minAge, t.maxAge);
     result[t.key].scanned = rows.length;
-    logger.info(`Retry pass: ${t.table}`, { rows: rows.length });
+    logger.info(`Retry pass: ${t.table}`, { rows: rows.length, junk: junk.length });
+
+    // Stamp unusable-domain rows so they stop clogging the 50-row fetch window
+    for (const j of junk) {
+      await patchRowBySourceUrl(t.table, j.source_url, {
+        enriched_by: "miss:bad_domain",
+        enriched_at: new Date().toISOString(),
+      });
+    }
 
     for (const row of rows) {
       // Free waterfall first (lg-free + Blitz) — day-0 may have missed on a
