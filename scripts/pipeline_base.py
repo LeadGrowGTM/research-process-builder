@@ -62,8 +62,17 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 OUTPUT_DIR = SCRIPT_DIR.parent / "output"
 STAGE_DIR = SCRIPT_DIR.parent / "output" / "stages"
 
+_FC_DIR = SCRIPT_DIR_EARLY.parent.parent / "leadgrow-hq" / "tools" / "firecrawl"
+if str(_FC_DIR) not in sys.path:
+    sys.path.insert(0, str(_FC_DIR))
+try:
+    from fc_client import scrape as _fc_scrape
+    _FC_AVAILABLE = True
+except ImportError:
+    _FC_AVAILABLE = False
+
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-SPIDER_API_KEY = os.getenv("SPIDER_API_KEY")
+FIRECRAWL_API_KEY = os.getenv("FIRECRAWL_API_KEY")
 SUPABASE_URL = os.getenv("SUPABASE_PROJECT_URL") or os.getenv("SUPABASE_URL")
 if SUPABASE_URL and not SUPABASE_URL.startswith("http"):
     SUPABASE_URL = None
@@ -129,6 +138,191 @@ Items:
 {items}"""
 
 
+# ---------------------------------------------------------------------------
+# SupabaseClient — storage layer, extracted from ResearchPipeline
+# ---------------------------------------------------------------------------
+
+class SupabaseClient:
+    """
+    Encapsulates all Supabase HTTP I/O.
+
+    ResearchPipeline delegates storage to this class via self._supabase.
+    Injectable for testing: pass url=None/key=None for a no-op client.
+
+    Methods:
+        headers(prefer=None) -> dict
+        table_exists(table) -> bool
+        fetch_recent(table, days) -> list[dict]
+        push_rows(table, rows, date_str, recent) -> int
+        create_table(table, schema_sql) -> bool
+    """
+
+    def __init__(self, url: str | None = None, key: str | None = None):
+        self._url = url
+        self._key = key
+
+    def _ready(self) -> bool:
+        return bool(self._url and self._key)
+
+    def headers(self, prefer: str | None = None) -> dict:
+        h = {
+            "apikey": self._key or "",
+            "Authorization": f"Bearer {self._key or ''}",
+            "Content-Type": "application/json",
+        }
+        if prefer:
+            h["Prefer"] = prefer
+        return h
+
+    def table_exists(self, table: str) -> bool:
+        if not self._ready():
+            return False
+        try:
+            resp = requests.get(
+                f"{self._url}/rest/v1/{table}?limit=1",
+                headers=self.headers(),
+                timeout=10,
+            )
+            return resp.status_code == 200
+        except Exception:
+            return False
+
+    def fetch_recent(self, table: str, days: int = 30) -> list[dict]:
+        if not self._ready():
+            return []
+        cutoff = (datetime.utcnow() - timedelta(days=days)).strftime("%Y-%m-%d")
+        try:
+            resp = requests.get(
+                f"{self._url}/rest/v1/{table}"
+                f"?select=id,company_name,company_domain,source_count,score,source_url,discovered_date"
+                f"&discovered_date=gte.{cutoff}",
+                headers=self.headers(),
+                timeout=30,
+            )
+            if resp.status_code == 200:
+                return resp.json()
+            print(f"    Cross-day dedup fetch failed {resp.status_code}: {resp.text[:200]}")
+            return []
+        except Exception as e:
+            print(f"    Cross-day dedup fetch error: {e}")
+            return []
+
+    def push_rows(
+        self,
+        table: str,
+        rows: list[dict],
+        date_str: str,
+        recent: list[dict] | None = None,
+    ) -> int:
+        """Upsert rows to Supabase with cross-day dedup. Returns count written."""
+        if not self._ready():
+            return 0
+        if recent is None:
+            recent = []
+
+        # Within-batch dedup by source_url — keep first occurrence
+        seen: set[str] = set()
+        deduped = []
+        for row in rows:
+            url = row.get("source_url", "")
+            if url and url in seen:
+                continue
+            if url:
+                seen.add(url)
+            deduped.append(row)
+        rows = deduped
+
+        inserted = 0
+        merged = 0
+        for row in rows:
+            existing = match_existing_company(row, recent)
+            if existing and existing.get("id"):
+                ex_count = existing.get("source_count") or 1
+                row_count = row.get("source_count") or 1
+                ex_score = existing.get("score") or 0
+                row_score = row.get("score") or 0
+                patch = {
+                    "source_count": max(ex_count, ex_count + row_count - 1),
+                    "score": max(ex_score, row_score),
+                }
+                if row.get("company_domain") and not existing.get("company_domain"):
+                    patch["company_domain"] = row["company_domain"]
+                try:
+                    resp = requests.patch(
+                        f"{self._url}/rest/v1/{table}?id=eq.{existing['id']}",
+                        headers=self.headers(prefer="return=minimal"),
+                        json=patch,
+                        timeout=15,
+                    )
+                    if resp.status_code in (200, 204):
+                        merged += 1
+                        existing.update(patch)
+                    else:
+                        print(f"    Supabase merge error {resp.status_code}: {resp.text[:200]}")
+                except Exception as e:
+                    print(f"    Supabase merge error: {e}")
+                continue
+
+            try:
+                resp = requests.post(
+                    f"{self._url}/rest/v1/{table}?on_conflict=source_url",
+                    headers=self.headers(prefer="resolution=merge-duplicates"),
+                    json=[row],
+                    timeout=15,
+                )
+                if resp.status_code in (200, 201):
+                    inserted += 1
+                    recent.append({
+                        "id": None,
+                        "company_name": row.get("company_name"),
+                        "company_domain": row.get("company_domain"),
+                        "source_count": row.get("source_count", 1),
+                        "score": row.get("score", 0),
+                        "source_url": row.get("source_url"),
+                        "discovered_date": date_str,
+                    })
+                else:
+                    print(f"    Supabase error {resp.status_code}: {resp.text[:200]}")
+            except Exception as e:
+                print(f"    Supabase error: {e}")
+
+        if merged:
+            print(f"    Cross-day merged: {merged} (bumped source_count instead of duplicate insert)")
+        return inserted + merged
+
+    def create_table(self, table: str, schema_sql: str) -> bool:
+        """Create table via Management API. Returns True on success."""
+        if not schema_sql:
+            print(f"    No schema SQL defined for {table}")
+            return False
+        mcp_token = os.getenv("SUPABASE_MCP_TOKEN")
+        if mcp_token and self._url:
+            ref = self._url.replace("https://", "").split(".")[0]
+            try:
+                resp = requests.post(
+                    f"https://api.supabase.com/v1/projects/{ref}/database/query",
+                    headers={
+                        "Authorization": f"Bearer {mcp_token}",
+                        "Content-Type": "application/json",
+                    },
+                    json={"query": schema_sql},
+                    timeout=15,
+                )
+                if resp.status_code in (200, 201):
+                    print("    Table created via Management API")
+                    return True
+                else:
+                    print(f"    Management API: {resp.status_code} {resp.text[:150]}")
+            except Exception as e:
+                print(f"    Management API error: {e}")
+        print(f"    Run the schema SQL in Supabase SQL Editor to create the table.")
+        return False
+
+
+# Build module-level default client from env vars (mirrors old global SUPABASE_URL / SUPABASE_KEY)
+_default_supabase = SupabaseClient(url=SUPABASE_URL, key=SUPABASE_KEY)
+
+
 class ResearchPipeline:
     """
     Base class for 4-stage research pipelines.
@@ -160,6 +354,11 @@ class ResearchPipeline:
     OUTPUT_FIELDNAMES: list[str] = []
     WEBHOOK_URL: str = ""
     WEBHOOK_AUTH_TOKEN: str = ""
+
+    def __init__(self, supabase: SupabaseClient | None = None):
+        # Allow injection of a mock/custom SupabaseClient for tests.
+        # Defaults to the module-level client built from env vars.
+        self._supabase = supabase if supabase is not None else _default_supabase
 
     # -----------------------------------------------------------------------
     # STAGE 1: Discovery (generic)
@@ -324,27 +523,16 @@ class ResearchPipeline:
     # -----------------------------------------------------------------------
 
     def fetch_url(self, url: str) -> Optional[str]:
-        """Fetch URL content. Spider Cloud primary, requests fallback."""
-        if SPIDER_API_KEY:
+        """Fetch URL content. Firecrawl primary, requests fallback."""
+        if _FC_AVAILABLE:
             try:
-                resp = requests.post(
-                    "https://api.spider.cloud/crawl",
-                    headers={
-                        "Authorization": f"Bearer {SPIDER_API_KEY}",
-                        "Content-Type": "application/json",
-                    },
-                    json={"url": url, "limit": 1, "return_format": "markdown"},
-                    timeout=20,
-                )
-                if resp.status_code == 200:
-                    data = resp.json()
-                    content = ""
-                    if isinstance(data, list) and data:
-                        content = data[0].get("content", "")
-                    elif isinstance(data, dict):
-                        content = data.get("content", "")
-                    if content and len(content) > 200:
-                        return content[:15000]
+                result = _fc_scrape(url, main_only=True)
+                if isinstance(result, dict):
+                    content = result.get("markdown") or result.get("content") or ""
+                else:
+                    content = getattr(result, "markdown", "") or ""
+                if content and len(content) > 200:
+                    return content[:15000]
             except Exception:
                 pass
 
@@ -780,15 +968,19 @@ class ResearchPipeline:
             review_path.write_text(json.dumps(review_records, indent=2, ensure_ascii=False), encoding="utf-8")
             print(f"  Review queue: {len(review_records)} MEDIUM-confidence records -> {review_path}")
 
-        # Supabase upsert (high + medium only)
-        if SUPABASE_URL and SUPABASE_KEY:
-            if self.check_supabase_table():
+        # Supabase upsert (high + medium only) — delegated to SupabaseClient
+        if self._supabase._ready():
+            if self._supabase.table_exists(self.SUPABASE_TABLE):
                 print(f"\n  Pushing to Supabase...")
-                upserted = self.push_to_supabase(high_medium, date_str)
+                rows = [self.get_supabase_row(r, date_str) for r in high_medium]
+                recent = self._supabase.fetch_recent(self.SUPABASE_TABLE, days=30)
+                if recent:
+                    print(f"    Cross-day dedup: scanning {len(recent)} rows from last 30 days")
+                upserted = self._supabase.push_rows(self.SUPABASE_TABLE, rows, date_str, recent)
                 print(f"  Supabase: {upserted}/{len(high_medium)} rows upserted")
             else:
                 print(f"\n  Supabase: table '{self.SUPABASE_TABLE}' not found")
-                self.create_supabase_table()
+                self._supabase.create_table(self.SUPABASE_TABLE, self.get_supabase_schema_sql())
         else:
             print(f"\n  Supabase: SKIPPED (no SUPABASE_URL/SUPABASE_KEY)")
 
@@ -800,66 +992,9 @@ class ResearchPipeline:
 
         return csv_path, json_path
 
-    # -----------------------------------------------------------------------
-    # Supabase helpers
-    # -----------------------------------------------------------------------
-
-    def supabase_headers(self, prefer: str = None) -> dict:
-        h = {
-            "apikey": SUPABASE_KEY,
-            "Authorization": f"Bearer {SUPABASE_KEY}",
-            "Content-Type": "application/json",
-        }
-        if prefer:
-            h["Prefer"] = prefer
-        return h
-
-    def check_supabase_table(self) -> bool:
-        """Check if the target Supabase table exists."""
-        try:
-            resp = requests.get(
-                f"{SUPABASE_URL}/rest/v1/{self.SUPABASE_TABLE}?limit=1",
-                headers=self.supabase_headers(),
-                timeout=10,
-            )
-            return resp.status_code == 200
-        except Exception:
-            return False
-
     def get_supabase_schema_sql(self) -> str:
         """Return SQL to create the target table. Override in subclass."""
         return ""
-
-    def create_supabase_table(self) -> bool:
-        """Create the Supabase table via Management API."""
-        schema_sql = self.get_supabase_schema_sql()
-        if not schema_sql:
-            print(f"    No schema SQL defined for {self.SUPABASE_TABLE}")
-            return False
-
-        mcp_token = os.getenv("SUPABASE_MCP_TOKEN")
-        if mcp_token and SUPABASE_URL:
-            ref = SUPABASE_URL.replace("https://", "").split(".")[0]
-            try:
-                resp = requests.post(
-                    f"https://api.supabase.com/v1/projects/{ref}/database/query",
-                    headers={
-                        "Authorization": f"Bearer {mcp_token}",
-                        "Content-Type": "application/json",
-                    },
-                    json={"query": schema_sql},
-                    timeout=15,
-                )
-                if resp.status_code == 200 or resp.status_code == 201:
-                    print("    Table created via Management API")
-                    return True
-                else:
-                    print(f"    Management API: {resp.status_code} {resp.text[:150]}")
-            except Exception as e:
-                print(f"    Management API error: {e}")
-
-        print(f"    Run the schema SQL in Supabase SQL Editor to create the table.")
-        return False
 
     def get_supabase_row(self, record: dict, date_str: str) -> dict:
         """Transform an enriched record into a Supabase row. Override for custom mapping."""
@@ -878,110 +1013,6 @@ class ResearchPipeline:
             "score": record.get("score", 0),
             "pipeline_version": self.get_pipeline_version(),
         }
-
-    def fetch_recent_companies(self, days: int = 30) -> list[dict]:
-        """Fetch existing companies from last N days for cross-day dedup."""
-        if not (SUPABASE_URL and SUPABASE_KEY):
-            return []
-        cutoff = (datetime.utcnow() - timedelta(days=days)).strftime("%Y-%m-%d")
-        try:
-            resp = requests.get(
-                f"{SUPABASE_URL}/rest/v1/{self.SUPABASE_TABLE}"
-                f"?select=id,company_name,company_domain,source_count,score,source_url,discovered_date"
-                f"&discovered_date=gte.{cutoff}",
-                headers=self.supabase_headers(),
-                timeout=30,
-            )
-            if resp.status_code == 200:
-                return resp.json()
-            print(f"    Cross-day dedup fetch failed {resp.status_code}: {resp.text[:200]}")
-            return []
-        except Exception as e:
-            print(f"    Cross-day dedup fetch error: {e}")
-            return []
-
-    def push_to_supabase(self, enriched: list[dict], date_str: str) -> int:
-        """Upsert enriched companies to Supabase. Returns count of successful writes (insert + merge).
-
-        Cross-day dedup: before inserting, scans last 30 days for matching company by domain
-        or fuzzy name. If matched, PATCHes existing row (bumps source_count, max score) instead
-        of inserting a duplicate.
-        """
-        rows = [self.get_supabase_row(r, date_str) for r in enriched]
-
-        # Within-batch dedup by source_url — keep first occurrence
-        seen = set()
-        deduped = []
-        for row in rows:
-            url = row.get("source_url", "")
-            if url and url in seen:
-                continue
-            if url:
-                seen.add(url)
-            deduped.append(row)
-        rows = deduped
-
-        # Cross-day dedup: load recent rows once
-        recent = self.fetch_recent_companies(days=30)
-        if recent:
-            print(f"    Cross-day dedup: scanning {len(recent)} rows from last 30 days")
-
-        inserted = 0
-        merged = 0
-        for row in rows:
-            existing = match_existing_company(row, recent)
-            if existing and existing.get("id"):
-                ex_count = existing.get("source_count") or 1
-                row_count = row.get("source_count") or 1
-                ex_score = existing.get("score") or 0
-                row_score = row.get("score") or 0
-                patch = {
-                    "source_count": max(ex_count, ex_count + row_count - 1),
-                    "score": max(ex_score, row_score),
-                }
-                if row.get("company_domain") and not existing.get("company_domain"):
-                    patch["company_domain"] = row["company_domain"]
-                try:
-                    resp = requests.patch(
-                        f"{SUPABASE_URL}/rest/v1/{self.SUPABASE_TABLE}?id=eq.{existing['id']}",
-                        headers=self.supabase_headers(prefer="return=minimal"),
-                        json=patch,
-                        timeout=15,
-                    )
-                    if resp.status_code in (200, 204):
-                        merged += 1
-                        existing.update(patch)
-                    else:
-                        print(f"    Supabase merge error {resp.status_code}: {resp.text[:200]}")
-                except Exception as e:
-                    print(f"    Supabase merge error: {e}")
-                continue
-
-            try:
-                resp = requests.post(
-                    f"{SUPABASE_URL}/rest/v1/{self.SUPABASE_TABLE}?on_conflict=source_url",
-                    headers=self.supabase_headers(prefer="resolution=merge-duplicates"),
-                    json=[row],
-                    timeout=15,
-                )
-                if resp.status_code in (200, 201):
-                    inserted += 1
-                    recent.append({
-                        "id": None,
-                        "company_name": row.get("company_name"),
-                        "company_domain": row.get("company_domain"),
-                        "source_count": row.get("source_count", 1),
-                        "score": row.get("score", 0),
-                        "source_url": row.get("source_url"),
-                        "discovered_date": date_str,
-                    })
-                else:
-                    print(f"    Supabase error {resp.status_code}: {resp.text[:200]}")
-            except Exception as e:
-                print(f"    Supabase error: {e}")
-        if merged:
-            print(f"    Cross-day merged: {merged} (bumped source_count instead of duplicate insert)")
-        return inserted + merged
 
     # -----------------------------------------------------------------------
     # Webhook push (Clay, Zapier, etc.)
@@ -1056,7 +1087,7 @@ class ResearchPipeline:
         print(f"\n{'='*60}")
         print(f"  {self.PIPELINE_NAME.upper()} -- {date_str}")
         print(f"  TBS: {args.tbs} | Skip enrich: {args.skip_enrich}")
-        print(f"  API keys: OpenAI={'YES' if OPENAI_API_KEY else 'NO'} | Spider={'YES' if SPIDER_API_KEY else 'NO'} | Supabase={'YES' if (SUPABASE_URL and SUPABASE_KEY) else 'NO'}")
+        print(f"  API keys: OpenAI={'YES' if OPENAI_API_KEY else 'NO'} | Firecrawl={'YES' if FIRECRAWL_API_KEY else 'NO'} | Supabase={'YES' if (SUPABASE_URL and SUPABASE_KEY) else 'NO'}")
         print(f"{'='*60}")
 
         # --- STAGE 1: Discovery ---

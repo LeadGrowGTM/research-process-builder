@@ -35,7 +35,15 @@ sys.path.insert(0, _shared)
 
 import requests
 
-SPIDER_API_KEY = os.getenv("SPIDER_API_KEY")
+_FC_DIR = _script_dir.parent.parent / "leadgrow-hq" / "tools" / "firecrawl"
+if str(_FC_DIR) not in sys.path:
+    sys.path.insert(0, str(_FC_DIR))
+try:
+    from fc_client import scrape as _fc_scrape
+    _FC_AVAILABLE = True
+except ImportError:
+    _FC_AVAILABLE = False
+
 SERPER_API_KEY = os.getenv("SERPER_API_KEY")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
@@ -244,24 +252,13 @@ URL_ANY = re.compile(
 
 
 def _fetch_article_spider(url: str) -> str | None:
-    if not SPIDER_API_KEY:
+    if not _FC_AVAILABLE:
         return None
     try:
-        resp = requests.post(
-            "https://api.spider.cloud/crawl",
-            headers={"Authorization": f"Bearer {SPIDER_API_KEY}", "Content-Type": "application/json"},
-            json={"url": url, "limit": 1, "return_format": "markdown"},
-            timeout=25,
-        )
-        if resp.status_code == 200:
-            data = resp.json()
-            content = ""
-            if isinstance(data, list) and data:
-                content = data[0].get("content", "")
-            elif isinstance(data, dict):
-                content = data.get("content", "")
-            if content and len(content) > 200:
-                return content[:15000]
+        result = _fc_scrape(url, main_only=True)
+        content = result.get("markdown", "") if isinstance(result, dict) else getattr(result, "markdown", "") or ""
+        if content and len(content) > 200:
+            return content[:15000]
     except Exception:
         pass
     return None
@@ -656,6 +653,71 @@ def resolve_domain(
 
     return {"domain": "not_found", "tier": 0, "tier_name": "not_found",
             "evidence": "all tiers failed", "confidence": "low", "article_fetched": fetched}
+
+
+# ---------------------------------------------------------------------------
+# DomainResolver class — public façade over the free functions above
+# ---------------------------------------------------------------------------
+
+class DomainResolver:
+    """
+    Public interface for domain resolution, validation, and deduplication.
+
+    Wraps the module-level free functions so callers import one name
+    instead of 3-8 scattered symbols. Free functions remain for backwards
+    compatibility with existing callers (eval_pipeline.py, series_a_pipeline.py).
+
+    Methods:
+        resolve(company_name, source_url, **kwargs) -> dict
+        validate(domain, company_name, source_domain="") -> dict
+        dedup(companies, name_key="company_name", domain_key="company_domain",
+              score_key="best_score") -> list[dict]
+    """
+
+    def resolve(
+        self,
+        company_name: str,
+        source_url: str,
+        article_text: str | None = None,
+        industry: str = "",
+        use_agent_fallback: bool = False,
+    ) -> dict:
+        """Run 3-tier domain resolution waterfall. Delegates to resolve_domain()."""
+        return resolve_domain(
+            company_name=company_name,
+            source_url=source_url,
+            article_text=article_text,
+            industry=industry,
+            use_agent_fallback=use_agent_fallback,
+        )
+
+    def validate(
+        self,
+        domain: str,
+        company_name: str,
+        source_domain: str = "",
+    ) -> dict:
+        """Validate a candidate domain. Delegates to validate_domain()."""
+        return validate_domain(
+            domain=domain,
+            company_name=company_name,
+            source_domain=source_domain,
+        )
+
+    def dedup(
+        self,
+        companies: list[dict],
+        name_key: str = "company_name",
+        domain_key: str = "company_domain",
+        score_key: str = "best_score",
+    ) -> list[dict]:
+        """Fuzzy dedup a list of company dicts. Delegates to fuzzy_dedup_companies()."""
+        return fuzzy_dedup_companies(
+            companies=companies,
+            name_key=name_key,
+            domain_key=domain_key,
+            score_key=score_key,
+        )
 
 
 # ---------------------------------------------------------------------------
