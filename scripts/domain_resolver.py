@@ -35,15 +35,7 @@ sys.path.insert(0, _shared)
 
 import requests
 
-_FC_DIR = _script_dir.parent.parent / "leadgrow-hq" / "tools" / "firecrawl"
-if str(_FC_DIR) not in sys.path:
-    sys.path.insert(0, str(_FC_DIR))
-try:
-    from fc_client import scrape as _fc_scrape
-    _FC_AVAILABLE = True
-except ImportError:
-    _FC_AVAILABLE = False
-
+SPIDER_API_KEY = os.getenv("SPIDER_API_KEY")
 SERPER_API_KEY = os.getenv("SERPER_API_KEY")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
@@ -252,13 +244,20 @@ URL_ANY = re.compile(
 
 
 def _fetch_article_spider(url: str) -> str | None:
-    if not _FC_AVAILABLE:
+    if not SPIDER_API_KEY:
         return None
     try:
-        result = _fc_scrape(url, main_only=True)
-        content = result.get("markdown", "") if isinstance(result, dict) else getattr(result, "markdown", "") or ""
-        if content and len(content) > 200:
-            return content[:15000]
+        resp = requests.post(
+            "https://api.spider.cloud/crawl",
+            headers={"Authorization": f"Bearer {SPIDER_API_KEY}", "Content-Type": "application/json"},
+            json={"url": url, "limit": 1, "return_format": "markdown"},
+            timeout=25,
+        )
+        if resp.status_code == 200:
+            data = resp.json()
+            content = data[0].get("content", "") if isinstance(data, list) and data else ""
+            if content and len(content) > 200:
+                return content[:15000]
     except Exception:
         pass
     return None
