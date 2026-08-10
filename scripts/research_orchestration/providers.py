@@ -345,7 +345,7 @@ class DeterministicSourceAdapter:
                 if runner is None or self._reserve_budget is None:
                     raise SchemaError("optional LLM requires a runner and budget reservation")
                 reservation = self._reserve_budget(stage)
-                if reservation is not None and not reservation:
+                if reservation is not True:
                     raise SchemaError("LLM budget reservation was denied")
             additions = () if runner is None else tuple(runner(request, prior))
             if not all(isinstance(item, ExtractionEvidence) for item in additions):

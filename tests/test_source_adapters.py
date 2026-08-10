@@ -265,8 +265,16 @@ def test_llm_without_a_reservation_capability_is_recorded_but_never_invoked():
 @pytest.mark.parametrize(
     ("reservation", "outcome"),
     [
+        (lambda _stage: None, AdapterFailure.CONTRACT_INVALID),
         (lambda _stage: False, AdapterFailure.CONTRACT_INVALID),
         (lambda _stage: 0, AdapterFailure.CONTRACT_INVALID),
+        (lambda _stage: "", AdapterFailure.CONTRACT_INVALID),
+        (lambda _stage: [], AdapterFailure.CONTRACT_INVALID),
+        (lambda _stage: (), AdapterFailure.CONTRACT_INVALID),
+        (lambda _stage: {}, AdapterFailure.CONTRACT_INVALID),
+        (lambda _stage: 1, AdapterFailure.CONTRACT_INVALID),
+        (lambda _stage: "approved", AdapterFailure.CONTRACT_INVALID),
+        (lambda _stage: object(), AdapterFailure.CONTRACT_INVALID),
         (lambda _stage: (_ for _ in ()).throw(ValueError("invalid")), AdapterFailure.CONTRACT_INVALID),
         (lambda _stage: (_ for _ in ()).throw(BudgetExceeded("denied")), AdapterFailure.BUDGET_EXHAUSTED),
     ],
