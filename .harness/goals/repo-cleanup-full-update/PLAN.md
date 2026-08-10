@@ -63,7 +63,7 @@ Add `tests/test_domain_contract_docs.py` first to fail on missing/conflicting te
 
 ### Phase 3 — Cleanup policy and verified repository guidance
 
-**Status:** pending
+**Status:** complete ? reviewed; commits `0a2d9f7`, `fe07f64`, `7cd455f`, `d7e5222`
 **Routing:** direct implementation, with deterministic repository-policy tests
 **Durable slice:** `issues/03-cleanup-documentation.md`
 
