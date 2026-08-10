@@ -47,7 +47,7 @@ Build an object-tree inventory from `refs/recovery/repo-cleanup-full-update/init
 
 Count acceptance is exact and non-destructive: tests and manifest must show 42 tracked entries + 3,519 untracked blobs = 3,561 unique object-tree paths, alongside the recorded 3,558 status-era baseline and an evidence-backed explanation of the +3 difference. Never omit three paths to force equality. Verify refs remain at `e3932d...` and `7bca503...` and the named stashes still exist.
 
-Red/green: first add fixtures proving tracked deletion/modification and untracked enumeration, classification completeness, recovery commands, unique-path checks, and count-reconciliation failure; run `py -m pytest tests/test_recovery_inventory.py -q` and observe failure; implement the smallest inventory module; rerun to green. Then generate and validate the real manifest with `py scripts/recovery_inventory.py verify --manifest docs/recovery/repo-cleanup-full-update/inventory.csv --expected-recorded-count 3558`.
+Red/green: first add fixtures proving tracked deletion/modification and untracked enumeration, classification completeness, recovery commands, unique-path checks, and count-reconciliation failure; run `py -m pytest tests/test_recovery_inventory.py -q` and observe failure; implement the smallest inventory module; rerun to green. Then generate and validate the real manifest with `py scripts/recovery_inventory.py verify --manifest docs/recovery/repo-cleanup-full-update/inventory.csv --expected-recorded-count 3558`. --expected-ref refs/recovery/repo-cleanup-full-update/initial-dirty --quarantine-map docs/recovery/repo-cleanup-full-update/quarantine-map.csv --quarantine-root .quarantine/repo-cleanup-full-update
 
 Phase commit: `chore: preserve preflight repository inventory`.
 

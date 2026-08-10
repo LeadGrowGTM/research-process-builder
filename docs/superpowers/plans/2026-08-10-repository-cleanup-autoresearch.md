@@ -97,7 +97,7 @@ Use `git diff --name-status --no-renames <ref>^1 <ref>` for tracked records and 
 ```powershell
 py -m pytest tests/test_recovery_inventory.py -q
 py scripts/recovery_inventory.py generate --ref refs/recovery/repo-cleanup-full-update/initial-dirty --recorded-count 3558 --output docs/recovery/repo-cleanup-full-update/inventory.csv --summary docs/recovery/repo-cleanup-full-update/manifest.md --quarantine-map docs/recovery/repo-cleanup-full-update/quarantine-map.csv
-py scripts/recovery_inventory.py verify --manifest docs/recovery/repo-cleanup-full-update/inventory.csv --expected-recorded-count 3558
+py scripts/recovery_inventory.py verify --manifest docs/recovery/repo-cleanup-full-update/inventory.csv --expected-recorded-count 3558 --expected-ref refs/recovery/repo-cleanup-full-update/initial-dirty --quarantine-map docs/recovery/repo-cleanup-full-update/quarantine-map.csv --quarantine-root .quarantine/repo-cleanup-full-update
 ```
 
 Expected reconciliation: `42 tracked + 3519 untracked = 3561 unique`; recorded `3558`; difference `+3`; `unexplained=0`. The manifest must state that 3,558 is the earlier status-era observation and 3,561 is authoritative for preserved object-tree coverage; it must not claim a specific cause unsupported by evidence.
@@ -238,7 +238,7 @@ Create the repository-scoped entry exactly as current docs specify. Enumerate th
 ```powershell
 py -m pytest tests/test_mcp_configuration.py -q
 py -c "import json, pathlib; json.loads(pathlib.Path('.mcp.json').read_text(encoding='utf-8')); print('mcp json ok')"
-git grep -nEI '(api[_-]?key|token|secret|password)[[:space:]]*[:=][[:space:]]*["'"'][^${][^"'"']+'
+py scripts/credential_scan.py
 git add .mcp.json docs/providers tests/test_mcp_configuration.py
 git commit -m "feat: configure repository search providers"
 ```
@@ -426,9 +426,9 @@ git rev-parse --show-toplevel
 git branch --show-current
 git show-ref refs/recovery/repo-cleanup-full-update/initial-dirty refs/recovery/repo-cleanup-full-update/dashboard-metadata
 git stash list --format='%gd %H %gs'
-py scripts/recovery_inventory.py verify --manifest docs/recovery/repo-cleanup-full-update/inventory.csv --expected-recorded-count 3558
+py scripts/recovery_inventory.py verify --manifest docs/recovery/repo-cleanup-full-update/inventory.csv --expected-recorded-count 3558 --expected-ref refs/recovery/repo-cleanup-full-update/initial-dirty --quarantine-map docs/recovery/repo-cleanup-full-update/quarantine-map.csv --quarantine-root .quarantine/repo-cleanup-full-update
 py -c "import json, pathlib; json.loads(pathlib.Path('.mcp.json').read_text(encoding='utf-8')); print('mcp json ok')"
-git grep -nEI '(api[_-]?key|token|secret|password)[[:space:]]*[:=][[:space:]]*["'"'][^${][^"'"']+' -- ':!docs/recovery/repo-cleanup-full-update/inventory.csv'
+py scripts/credential_scan.py
 ```
 
 Expected: exact worktree/branch, refs and named stashes unchanged, 3,561 enumerated/zero unexplained, MCP parses, no literal secret result.
