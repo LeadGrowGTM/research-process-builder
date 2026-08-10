@@ -1,6 +1,6 @@
 # Phase 02 — Domain model and deep-module architecture
 
-**Status:** pending
+**Status:** complete ? reviewed; commits `def8588`, `c1f60a7`, `2787235`
 **Canonical source:** `.harness/goals/repo-cleanup-full-update/PLAN.md` → `## Phases` → Phase 2
 **Routing:** `codebase-design` → `domain-modeling`
 **Commit:** `docs: define resumable autoresearch domain`

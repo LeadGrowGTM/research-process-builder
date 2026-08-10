@@ -53,7 +53,7 @@ Phase commit: `chore: preserve preflight repository inventory`.
 
 ### Phase 2 — Domain model and deep-module architecture
 
-**Status:** pending
+**Status:** complete ? reviewed; commits `def8588`, `c1f60a7`, `2787235`
 **Routing:** `codebase-design` → `domain-modeling`
 **Durable slice:** `issues/02-domain-architecture.md`
 
