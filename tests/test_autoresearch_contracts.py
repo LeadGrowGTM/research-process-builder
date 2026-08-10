@@ -60,7 +60,7 @@ def test_contracts_are_frozen_and_serialize_canonically():
         '{"approval_threshold":0.9,"baseline":{"precision":0.88,"recall":0.84},'
         '"brief":"Find accurate source candidates.","budget_limits":{"max_calls":2,'
         '"max_cost":0.0,"max_llm_calls":0,"max_queries":0,"max_retries":0,'
-        '"max_scrapes":0,"max_stages":3},"constraints":["read_only","no_secrets"],'
+        '"max_scrapes":0,"max_stages":3,"schema_version":"1.0"},"constraints":["read_only","no_secrets"],'
         '"run_id":"run-001","schema_version":"1.0"}'
     )
 

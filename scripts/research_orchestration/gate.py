@@ -9,6 +9,9 @@ import math
 from .contracts import CanonicalContract, SCHEMA_VERSION, SchemaError
 
 
+APPROVAL_THRESHOLD = 0.90
+
+
 class GateAction(StrEnum):
     ADVANCE = "advance"
     RETRY = "retry"
@@ -24,7 +27,7 @@ class GateInput(CanonicalContract):
     evaluation_passed: bool = False
     candidate_score: float | None = None
     baseline_score: float | None = None
-    approval_threshold: float = 0.9
+    approval_threshold: float = APPROVAL_THRESHOLD
     retryable_failure: bool = False
     retries_remaining: int = 0
     rollback_available: bool = False
@@ -58,8 +61,8 @@ class GateInput(CanonicalContract):
                     raise SchemaError(f"{field_name} must be between zero and one")
         if isinstance(self.approval_threshold, bool) or not isinstance(self.approval_threshold, (int, float)) or not math.isfinite(self.approval_threshold):
             raise SchemaError("approval_threshold must be finite")
-        if not 0 < self.approval_threshold <= 1:
-            raise SchemaError("approval_threshold must be between zero and one")
+        if self.approval_threshold != APPROVAL_THRESHOLD:
+            raise SchemaError("approval_threshold is fixed at 0.90")
 
 
 @dataclass(frozen=True, slots=True)
@@ -100,8 +103,8 @@ def decide_gate(gate_input: GateInput) -> GateDecision:
         return GateDecision(GateAction.HALT_FOR_REVIEW, "unsafe_ambiguity")
     if gate_input.candidate_score is None:
         return GateDecision(GateAction.HALT_FOR_REVIEW, "unsafe_ambiguity")
-    if gate_input.candidate_score >= gate_input.approval_threshold:
-        return GateDecision(GateAction.HALT_FOR_REVIEW, "threshold_requires_human_review")
+    if gate_input.candidate_score >= APPROVAL_THRESHOLD:
+        return GateDecision(GateAction.HALT_FOR_REVIEW, "human_review_required")
     if gate_input.baseline_score is not None and gate_input.candidate_score < gate_input.baseline_score:
         if gate_input.rollback_available:
             return GateDecision(GateAction.ROLLBACK, "regression_with_baseline")

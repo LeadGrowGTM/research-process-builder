@@ -42,7 +42,7 @@ from research_orchestration.gate import GateAction, GateInput, decide_gate
             "threshold requires human review",
             GateInput(checks_accepted=True, evaluation_passed=True, candidate_score=0.9, baseline_score=0.8),
             GateAction.HALT_FOR_REVIEW,
-            "threshold_requires_human_review",
+            "human_review_required",
         ),
         (
             "budget exhausted",
@@ -111,6 +111,7 @@ def test_ledger_reserves_every_external_work_counter_before_a_call():
         "queries": 1,
         "retries": 1,
         "scrapes": 1,
+        "schema_version": "1.0",
         "stages": 1,
     }
 
@@ -130,6 +131,7 @@ def test_ledger_fails_closed_without_partially_reserving_any_counter():
         "queries": 0,
         "retries": 0,
         "scrapes": 0,
+        "schema_version": "1.0",
         "stages": 1,
     }
 

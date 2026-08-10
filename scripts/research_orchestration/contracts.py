@@ -2,20 +2,21 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping as MappingABC, Sequence
 from dataclasses import dataclass, fields
 from enum import StrEnum
 from hashlib import sha256
 import json
 import math
 from types import MappingProxyType
-from typing import Any, ClassVar, Mapping
-from uuid import uuid4
+from typing import Any, Mapping
+from uuid import UUID, uuid4
 
 
 SCHEMA_VERSION = "1.0"
 MAX_TEXT_CHARS = 4_000
 MAX_LIST_ITEMS = 100
-_FORBIDDEN_FIELD_PARTS = ("secret", "token", "password", "authorization", "transcript")
+_FORBIDDEN_FIELD_PARTS = ("secret", "token", "password", "authorization", "transcript", "api_key", "credential")
 
 
 class SchemaError(ValueError):
@@ -108,27 +109,32 @@ class RunRequest(CanonicalContract):
     brief: str
     constraints: tuple[str, ...]
     baseline: Mapping[str, float]
-    budget_limits: Any
+    budget_limits: "BudgetLimits"
     approval_threshold: float
 
     def __post_init__(self) -> None:
+        from .budgets import BudgetLimits
+
         _require_schema_version(self.schema_version)
         _require_text(self.run_id, "run_id")
         _require_text(self.brief, "brief")
-        frozen_constraints = _freeze(self.constraints, field_name="constraints")
+        if isinstance(self.constraints, (str, bytes)) or not isinstance(self.constraints, Sequence):
+            raise SchemaError("constraints must be a non-string sequence")
+        frozen_constraints = _freeze(tuple(self.constraints), field_name="constraints")
         if not all(isinstance(item, str) for item in frozen_constraints):
             raise SchemaError("constraints must contain text")
+        if not isinstance(self.baseline, MappingABC):
+            raise SchemaError("baseline must be a mapping")
         frozen_baseline = _freeze(self.baseline, field_name="baseline")
         if not all(isinstance(item, (int, float)) and not isinstance(item, bool) for item in frozen_baseline.values()):
             raise SchemaError("baseline values must be finite numbers")
-        if not hasattr(self.budget_limits, "to_canonical_dict"):
-            raise SchemaError("budget_limits must be a canonical contract")
+        if not isinstance(self.budget_limits, BudgetLimits):
+            raise SchemaError("budget_limits must be BudgetLimits")
         _require_finite(self.approval_threshold, "approval_threshold")
         if not 0 < self.approval_threshold <= 1:
             raise SchemaError("approval_threshold must be between zero and one")
         object.__setattr__(self, "constraints", frozen_constraints)
         object.__setattr__(self, "baseline", frozen_baseline)
-
 
 @dataclass(frozen=True, slots=True)
 class RunSummary(CanonicalContract):
@@ -244,7 +250,7 @@ ROLE_FIELD_ALLOWLISTS: Mapping[Role, frozenset[str]] = MappingProxyType(
 )
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True, slots=True, init=False)
 class RoleEnvelope(CanonicalContract):
     schema_version: str
     role: Role
@@ -252,11 +258,44 @@ class RoleEnvelope(CanonicalContract):
     payload: Mapping[str, Any]
 
     @classmethod
+    def _build(
+        cls,
+        *,
+        schema_version: str,
+        role: Role,
+        invocation_id: str,
+        payload: Mapping[str, Any],
+    ) -> "RoleEnvelope":
+        envelope = object.__new__(cls)
+        object.__setattr__(envelope, "schema_version", schema_version)
+        object.__setattr__(envelope, "role", role)
+        object.__setattr__(envelope, "invocation_id", invocation_id)
+        object.__setattr__(envelope, "payload", payload)
+        envelope.__post_init__()
+        return envelope
+
+    @classmethod
     def create(cls, role: Role, payload: Mapping[str, Any]) -> "RoleEnvelope":
-        return cls(
+        return cls._build(
             schema_version=SCHEMA_VERSION,
             role=role,
             invocation_id=str(uuid4()),
+            payload=payload,
+        )
+
+    @classmethod
+    def rehydrate(
+        cls,
+        *,
+        schema_version: str,
+        role: Role,
+        invocation_id: str,
+        payload: Mapping[str, Any],
+    ) -> "RoleEnvelope":
+        return cls._build(
+            schema_version=schema_version,
+            role=role,
+            invocation_id=invocation_id,
             payload=payload,
         )
 
@@ -265,7 +304,13 @@ class RoleEnvelope(CanonicalContract):
         if not isinstance(self.role, Role):
             raise SchemaError("role must be a declared role")
         _require_text(self.invocation_id, "invocation_id")
-        if not isinstance(self.payload, Mapping):
+        try:
+            parsed_invocation_id = UUID(self.invocation_id)
+        except (AttributeError, ValueError) as error:
+            raise SchemaError("invocation_id must be a valid UUID") from error
+        if str(parsed_invocation_id) != self.invocation_id:
+            raise SchemaError("invocation_id must be a canonical UUID")
+        if not isinstance(self.payload, MappingABC):
             raise SchemaError("payload must be a mapping")
         allowed = ROLE_FIELD_ALLOWLISTS[self.role]
         payload_keys = frozenset(self.payload)
