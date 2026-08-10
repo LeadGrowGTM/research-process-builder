@@ -27,6 +27,16 @@ class AdapterFailure(StrEnum):
     CONTRACT_INVALID = "contract_invalid"
 
 
+_PUBLIC_ERROR_MESSAGES: Mapping[AdapterFailure, str] = MappingProxyType(
+    {
+        AdapterFailure.RETRYABLE: "source operation may be retried",
+        AdapterFailure.TERMINAL: "source operation cannot continue",
+        AdapterFailure.BUDGET_EXHAUSTED: "source budget is exhausted",
+        AdapterFailure.CONTRACT_INVALID: "source contract is invalid",
+    }
+)
+
+
 def _require_schema_version(schema_version: str) -> None:
     if schema_version != SCHEMA_VERSION:
         raise SchemaError(f"unsupported schema version: {schema_version!r}")
@@ -92,10 +102,10 @@ class AdapterError(CanonicalContract, RuntimeError):
 
 
 def normalize_adapter_error(error: Exception) -> AdapterError:
-    """Map provider exceptions to the only retry-policy categories the seam exposes."""
+    """Rebuild a fixed public error without retaining provider text, payload, or cause."""
     if isinstance(error, AdapterError):
-        return error
-    if isinstance(error, BudgetExceeded):
+        category = error.category
+    elif isinstance(error, BudgetExceeded):
         category = AdapterFailure.BUDGET_EXHAUSTED
     elif isinstance(error, (SchemaError, TypeError, ValueError)):
         category = AdapterFailure.CONTRACT_INVALID
@@ -103,8 +113,7 @@ def normalize_adapter_error(error: Exception) -> AdapterError:
         category = AdapterFailure.RETRYABLE
     else:
         category = AdapterFailure.TERMINAL
-    # Provider messages can contain remote payload text.  Keep only a bounded type name.
-    return AdapterError(category=category, message=type(error).__name__)
+    return AdapterError(category=category, message=_PUBLIC_ERROR_MESSAGES[category])
 
 
 @dataclass(frozen=True, slots=True)
@@ -304,7 +313,7 @@ class DeterministicSourceAdapter:
                 source_adapter=self._source_adapter,
             )
         except Exception as error:
-            raise normalize_adapter_error(error) from error
+            raise normalize_adapter_error(error) from None
 
     def extract(self, request: ExtractionRequest) -> ExtractionResult:
         if not isinstance(request, ExtractionRequest):
@@ -332,8 +341,12 @@ class DeterministicSourceAdapter:
         runner: StageRunner | None,
     ) -> tuple[tuple[ExtractionEvidence, ...], ExtractionStageRecord]:
         try:
-            if stage is ExtractionStage.LLM and self._reserve_budget is not None:
-                self._reserve_budget(stage)
+            if stage is ExtractionStage.LLM:
+                if runner is None or self._reserve_budget is None:
+                    raise SchemaError("optional LLM requires a runner and budget reservation")
+                reservation = self._reserve_budget(stage)
+                if reservation is not None and not reservation:
+                    raise SchemaError("LLM budget reservation was denied")
             additions = () if runner is None else tuple(runner(request, prior))
             if not all(isinstance(item, ExtractionEvidence) for item in additions):
                 raise SchemaError("stage runner must return ExtractionEvidence values")

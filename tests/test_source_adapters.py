@@ -135,7 +135,7 @@ def test_llm_is_attempted_only_when_explicitly_enabled_after_insufficient_determ
         return (_evidence("LLM-supported evidence."),)
 
     runners = {stage: empty_runner(stage) for stage in ExtractionStage.deterministic()}
-    adapter = DeterministicSourceAdapter(stage_runners=runners, llm_runner=llm_runner)
+    adapter = DeterministicSourceAdapter(stage_runners=runners, llm_runner=llm_runner, reserve_budget=lambda _stage: True)
     request = ExtractionRequest(
         schema_version=SCHEMA_VERSION,
         urls=("https://example.test/report",),
@@ -206,3 +206,133 @@ def test_source_adapter_exposes_read_only_search_and_extraction_operations_only(
     assert callable(adapter.search)
     assert callable(adapter.extract)
     assert not any(hasattr(adapter, name) for name in ("create", "update", "delete", "mutate", "write"))
+
+
+def test_successful_llm_reservation_happens_before_exactly_one_invocation():
+    """Would fail if LLM work happened before or without a successful reservation."""
+    events = []
+
+    def reserve(_stage):
+        events.append("reserve")
+        return True
+
+    def run_llm(_request, _prior):
+        events.append("llm")
+        return (_evidence("LLM evidence."),)
+
+    adapter = DeterministicSourceAdapter(
+        stage_runners={stage: lambda _request, _prior: () for stage in ExtractionStage.deterministic()},
+        llm_runner=run_llm,
+        reserve_budget=reserve,
+    )
+
+    result = adapter.extract(
+        ExtractionRequest(
+            schema_version=SCHEMA_VERSION,
+            urls=("https://example.test/report",),
+            min_evidence_items=1,
+            allow_llm=True,
+        )
+    )
+
+    assert events == ["reserve", "llm"]
+    assert result.stages[-1].outcome == "sufficient"
+
+
+def test_llm_without_a_reservation_capability_is_recorded_but_never_invoked():
+    """Would fail if optional LLM work ran without a successful pre-reservation."""
+    invocations = []
+    adapter = DeterministicSourceAdapter(
+        stage_runners={stage: lambda _request, _prior: () for stage in ExtractionStage.deterministic()},
+        llm_runner=lambda _request, _prior: (invocations.append("llm"), (_evidence("LLM evidence."),))[1],
+    )
+
+    result = adapter.extract(
+        ExtractionRequest(
+            schema_version=SCHEMA_VERSION,
+            urls=("https://example.test/report",),
+            min_evidence_items=1,
+            allow_llm=True,
+        )
+    )
+
+    assert invocations == []
+    assert result.stages[-1].stage is ExtractionStage.LLM
+    assert result.stages[-1].outcome == AdapterFailure.CONTRACT_INVALID.value
+    assert result.sufficient is False
+
+
+@pytest.mark.parametrize(
+    ("reservation", "outcome"),
+    [
+        (lambda _stage: False, AdapterFailure.CONTRACT_INVALID),
+        (lambda _stage: 0, AdapterFailure.CONTRACT_INVALID),
+        (lambda _stage: (_ for _ in ()).throw(ValueError("invalid")), AdapterFailure.CONTRACT_INVALID),
+        (lambda _stage: (_ for _ in ()).throw(BudgetExceeded("denied")), AdapterFailure.BUDGET_EXHAUSTED),
+    ],
+)
+def test_denied_or_failed_llm_reservation_prevents_invocation(reservation, outcome):
+    """Would fail if a denied reservation still permitted the LLM runner to execute."""
+    invocations = []
+    adapter = DeterministicSourceAdapter(
+        stage_runners={stage: lambda _request, _prior: () for stage in ExtractionStage.deterministic()},
+        llm_runner=lambda _request, _prior: (invocations.append("llm"), (_evidence("LLM evidence."),))[1],
+        reserve_budget=reservation,
+    )
+
+    result = adapter.extract(
+        ExtractionRequest(
+            schema_version=SCHEMA_VERSION,
+            urls=("https://example.test/report",),
+            min_evidence_items=1,
+            allow_llm=True,
+        )
+    )
+
+    assert invocations == []
+    assert result.stages[-1].outcome == outcome.value
+
+
+@pytest.mark.parametrize(
+    ("category", "public_message"),
+    [
+        (AdapterFailure.RETRYABLE, "source operation may be retried"),
+        (AdapterFailure.TERMINAL, "source operation cannot continue"),
+        (AdapterFailure.BUDGET_EXHAUSTED, "source budget is exhausted"),
+        (AdapterFailure.CONTRACT_INVALID, "source contract is invalid"),
+    ],
+)
+def test_prebuilt_adapter_errors_are_reconstructed_without_provider_text(category, public_message):
+    """Would fail if a provider-supplied AdapterError could serialize secret or transcript text."""
+    raw_text = "provider_token=abc raw_secret raw_transcript"
+    raw_error = AdapterError(category=category, message=raw_text)
+
+    normalized = normalize_adapter_error(raw_error)
+    canonical = normalized.to_canonical_json()
+
+    assert normalized is not raw_error
+    assert normalized.category is category
+    assert normalized.message == public_message
+    assert all(fragment not in canonical for fragment in ("provider_token", "raw_secret", "raw_transcript"))
+
+
+def test_llm_without_a_runner_does_not_consume_a_reservation():
+    """Would fail if an unavailable LLM provider consumed budget before capability validation."""
+    reservations = []
+    adapter = DeterministicSourceAdapter(
+        stage_runners={stage: lambda _request, _prior: () for stage in ExtractionStage.deterministic()},
+        reserve_budget=lambda stage: (reservations.append(stage), True)[1],
+    )
+
+    result = adapter.extract(
+        ExtractionRequest(
+            schema_version=SCHEMA_VERSION,
+            urls=("https://example.test/report",),
+            min_evidence_items=1,
+            allow_llm=True,
+        )
+    )
+
+    assert reservations == []
+    assert result.stages[-1].stage is ExtractionStage.LLM
+    assert result.stages[-1].outcome == AdapterFailure.CONTRACT_INVALID.value
