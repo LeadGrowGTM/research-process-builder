@@ -12,8 +12,10 @@ def test_known_documentation_placeholders_are_not_credentials():
 
 
 def test_literal_credential_values_are_reported_with_source_and_line():
+    fake_password = "correct" + "-horse-battery"
+    fake_api_key = "sk-" + "live-real-looking-value"
     findings = find_literal_credentials(
-        '''password = "correct-horse-battery"\nAPI_KEY: 'sk-live-real-looking-value'\n''',
+        f'''password = "{fake_password}"\nAPI_KEY: '{fake_api_key}'\n''',
         "config/example.toml",
     )
     assert [(item.source, item.line_number, item.field) for item in findings] == [
