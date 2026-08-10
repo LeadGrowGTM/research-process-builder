@@ -1,6 +1,8 @@
 """Local, canonical, fail-closed persistence for autoresearch run artifacts."""
 
 from __future__ import annotations
+from contextlib import contextmanager
+from threading import Lock, RLock
 
 from dataclasses import dataclass
 from hashlib import sha256
@@ -18,6 +20,11 @@ _FORBIDDEN_FIELD_PARTS = (
     "secret", "token", "password", "authorization", "transcript", "api_key", "credential",
 )
 _STAGES = tuple(role.value for role in Role)
+_GATE_STAGE = "gate"
+_NEXT_STAGE = dict(zip(("start",) + _STAGES, _STAGES + (_GATE_STAGE,)))
+_LOCKS_GUARD = Lock()
+_RUN_LOCKS: dict[str, RLock] = {}
+
 
 
 class ArtifactHaltForReview(RuntimeError):
@@ -62,11 +69,52 @@ def _require_safe_value(value: Any) -> None:
         raise ArtifactHaltForReview("invalid_artifact")
 
 
+
+def _locked_method(method):
+    def wrapped(self, *args, **kwargs):
+        with self._locked():
+            return method(self, *args, **kwargs)
+
+    return wrapped
+
 class ArtifactStore:
     """A deliberately small filesystem seam; it has no remote or execution behavior."""
 
     def __init__(self, root: str | Path):
         self._root = Path(root)
+
+    @contextmanager
+    def _locked(self):
+        """Serialize local writers in-process and across processes for this run root."""
+        key = str(self._root.absolute())
+        with _LOCKS_GUARD:
+            lock = _RUN_LOCKS.setdefault(key, RLock())
+        with lock:
+            self._root.mkdir(parents=True, exist_ok=True)
+            lock_path = self._root / "run.lock"
+            with lock_path.open("a+b") as handle:
+                handle.seek(0)
+                if not handle.read(1):
+                    handle.seek(0)
+                    handle.write(b"0")
+                    handle.flush()
+                try:
+                    if os.name == "nt":
+                        import msvcrt
+
+                        handle.seek(0)
+                        msvcrt.locking(handle.fileno(), msvcrt.LK_LOCK, 1)
+                    else:
+                        import fcntl
+
+                        fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
+                    yield
+                finally:
+                    if os.name == "nt":
+                        handle.seek(0)
+                        msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
+                    else:
+                        fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
 
     @property
     def _run_path(self) -> Path:
@@ -77,6 +125,10 @@ class ArtifactStore:
         return self._root / "journal.jsonl"
 
     def create_run(self, request: RunRequest) -> Path:
+        with self._locked():
+            return self._create_run(request)
+
+    def _create_run(self, request: RunRequest) -> Path:
         if not isinstance(request, RunRequest):
             raise ArtifactHaltForReview("invalid_run_request")
         self._root.mkdir(parents=True, exist_ok=True)
@@ -86,6 +138,7 @@ class ArtifactStore:
         self._write_immutable(self._run_path, _canonical_bytes(payload), "run_collision")
         return self._root
 
+    @_locked_method
     def put_role_artifact(
         self,
         cycle: int,
@@ -117,7 +170,7 @@ class ArtifactStore:
                 raise ArtifactHaltForReview("invalid_cycle_reference")
             self._validate_object(existing_hash)
             return existing_hash
-        for existing in self._cycle_references(cycle):
+        for existing in self._all_references():
             if existing["idempotency_key"] == idempotency_key:
                 raise ArtifactHaltForReview("idempotency_collision")
         self._write_immutable(self._object_path(artifact_hash), object_bytes, "artifact_collision")
@@ -131,6 +184,7 @@ class ArtifactStore:
         self._write_immutable(reference_path, _canonical_bytes(reference), "artifact_reference_collision")
         return artifact_hash
 
+    @_locked_method
     def append_transition(
         self,
         cycle: int,
@@ -144,6 +198,17 @@ class ArtifactStore:
         self._require_stage(from_stage, allow_start=True)
         self._require_stage(to_stage)
         self._require_idempotency_key(idempotency_key)
+        if _NEXT_STAGE.get(from_stage) != to_stage:
+            raise ArtifactHaltForReview("invalid_transition")
+        matches = [
+            reference for reference in self._all_references()
+            if reference.get("cycle") == cycle and reference.get("stage") == to_stage
+            and reference.get("artifact_hash") == artifact_hash and reference.get("idempotency_key") == idempotency_key
+        ]
+        if len(matches) != 1:
+            raise ArtifactHaltForReview("journal_reference_mismatch")
+        if any(row["idempotency_key"] == idempotency_key for row in self._journal_rows()):
+            raise ArtifactHaltForReview("idempotency_collision")
         self._validate_object(artifact_hash)
         rows = self._journal_rows()
         row = {
@@ -164,6 +229,7 @@ class ArtifactStore:
 
     def load_and_validate(self) -> Mapping[str, Any]:
         self._require_initialized()
+        self._validate_run_tree()
         run = self._read_json(self._run_path, "invalid_run")
         self._validate_schema(run)
         _require_safe_value(run)
@@ -173,7 +239,8 @@ class ArtifactStore:
         for reference in references:
             self._validate_reference(reference)
             self._validate_object(reference["artifact_hash"])
-        self._journal_rows()
+        rows = self._journal_rows()
+        self._validate_relationships(references, rows)
         return run
 
     def resume_cursor(self) -> ResumeCursor:
@@ -212,6 +279,17 @@ class ArtifactStore:
         }
         self._atomic_replace(self._root / "summary.json", _canonical_bytes(summary))
         return summary
+
+    def _validate_run_tree(self) -> None:
+        allowed = {"run.json", "journal.jsonl", "summary.json", "objects", "cycles", "run.lock"}
+        for item in self._root.iterdir():
+            normalized = item.name.casefold().replace("-", "_")
+            if any(part in normalized for part in _FORBIDDEN_FIELD_PARTS):
+                raise ArtifactHaltForReview("sensitive_content")
+            if item.name not in allowed:
+                raise ArtifactHaltForReview("unexpected_artifact_file")
+        if not (self._root / "objects").is_dir() or not (self._root / "cycles").is_dir():
+            raise ArtifactHaltForReview("invalid_run_tree")
 
     def _require_initialized(self) -> None:
         if not self._run_path.is_file():
@@ -342,8 +420,15 @@ class ArtifactStore:
         if not path.is_dir():
             raise ArtifactHaltForReview("invalid_cycle_reference")
         references: list[dict[str, Any]] = []
-        for item in sorted(path.glob("*.json")):
+        for item in sorted(path.iterdir(), key=lambda entry: entry.name):
+            normalized = item.name.casefold().replace("-", "_")
+            if any(part in normalized for part in _FORBIDDEN_FIELD_PARTS):
+                raise ArtifactHaltForReview("sensitive_content")
+            if not item.is_file() or item.suffix != ".json" or item.stem not in _STAGES:
+                raise ArtifactHaltForReview("unexpected_artifact_file")
             reference = self._read_json(item, "invalid_cycle_reference")
+            if reference.get("cycle") != cycle or reference.get("stage") != item.stem:
+                raise ArtifactHaltForReview("invalid_cycle_reference")
             references.append(reference)
         return references
 
@@ -353,7 +438,7 @@ class ArtifactStore:
             raise ArtifactHaltForReview("missing_cycles")
         references: list[dict[str, Any]] = []
         for directory in sorted(cycles_root.iterdir(), key=lambda item: item.name):
-            if not directory.is_dir() or not directory.name.isdecimal():
+            if not directory.is_dir() or not directory.name.isdecimal() or directory.name != str(int(directory.name)):
                 raise ArtifactHaltForReview("invalid_cycle_reference")
             references.extend(self._cycle_references(int(directory.name)))
         return references
@@ -367,6 +452,32 @@ class ArtifactStore:
         self._require_stage(reference["stage"])
         self._require_idempotency_key(reference["idempotency_key"])
         self._object_path(reference["artifact_hash"])
+
+    def _validate_relationships(self, references: list[dict[str, Any]], rows: list[dict[str, Any]]) -> None:
+        by_key: dict[str, dict[str, Any]] = {}
+        for reference in references:
+            key = reference["idempotency_key"]
+            if key in by_key:
+                raise ArtifactHaltForReview("idempotency_collision")
+            value = self._read_json(self._object_path(reference["artifact_hash"]), "missing_or_invalid_object")
+            if value.get("role") != reference["stage"]:
+                raise ArtifactHaltForReview("role_artifact_mismatch")
+            by_key[key] = reference
+        seen_rows: set[str] = set()
+        for row in rows:
+            key = row["idempotency_key"]
+            if key in seen_rows:
+                raise ArtifactHaltForReview("idempotency_collision")
+            seen_rows.add(key)
+            if _NEXT_STAGE.get(row["from_stage"]) != row["to_stage"]:
+                raise ArtifactHaltForReview("invalid_transition")
+            reference = by_key.get(key)
+            if reference is None:
+                raise ArtifactHaltForReview("journal_reference_mismatch")
+            if any(reference[field] != row[field] for field in ("cycle", "stage", "artifact_hash") if field != "stage") or reference["stage"] != row["to_stage"]:
+                raise ArtifactHaltForReview("journal_reference_mismatch")
+        if set(by_key) != seen_rows:
+            raise ArtifactHaltForReview("unlinked_artifact_reference")
 
     def _journal_rows(self) -> list[dict[str, Any]]:
         if not self._journal_path.exists():

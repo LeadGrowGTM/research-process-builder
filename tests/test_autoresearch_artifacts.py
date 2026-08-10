@@ -1,9 +1,11 @@
 """Behavior contracts for local, tamper-evident autoresearch artifacts."""
 
+from concurrent.futures import ThreadPoolExecutor
 import hashlib
 import json
 from pathlib import Path
 import sys
+from threading import Barrier
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
@@ -38,6 +40,13 @@ def _inventor_envelope() -> RoleEnvelope:
     )
 
 
+def _bounds_envelope() -> RoleEnvelope:
+    return RoleEnvelope.create(
+        Role.IN_BOUNDS_CHECKER,
+        {"constraints": ("read_only",), "experiment": "experiment-0"},
+    )
+
+
 def test_put_role_artifact_hashes_canonical_bytes_and_uses_atomic_replace(tmp_path, monkeypatch):
     """Would fail if key order changed a stored object or a write exposed a partial target."""
     store = ArtifactStore(tmp_path)
@@ -68,9 +77,10 @@ def test_journal_sequences_and_references_persisted_artifact_and_idempotency_key
     store = ArtifactStore(tmp_path)
     store.create_run(_request())
     artifact_hash = store.put_role_artifact(0, Role.INVENTOR, _inventor_envelope(), "invent-0")
+    bounds_hash = store.put_role_artifact(0, Role.IN_BOUNDS_CHECKER, _bounds_envelope(), "check-0")
 
     first = store.append_transition(0, "start", Role.INVENTOR.value, artifact_hash, "invent-0")
-    second = store.append_transition(0, Role.INVENTOR.value, Role.IN_BOUNDS_CHECKER.value, artifact_hash, "check-0")
+    second = store.append_transition(0, Role.INVENTOR.value, Role.IN_BOUNDS_CHECKER.value, bounds_hash, "check-0")
     rows = [json.loads(line) for line in (tmp_path / "journal.jsonl").read_text(encoding="utf-8").splitlines()]
 
     assert (first["sequence"], second["sequence"]) == (1, 2)
@@ -101,14 +111,15 @@ def test_resume_cursor_reports_first_missing_stage_and_completed_keys_without_wo
     """Would fail if resume replayed completed work or skipped the first unrecorded role."""
     store = ArtifactStore(tmp_path)
     store.create_run(_request())
-    store.put_role_artifact(0, Role.INVENTOR, _inventor_envelope(), "invent-0")
+    artifact_hash = store.put_role_artifact(0, Role.INVENTOR, _inventor_envelope(), "invent-0")
+    store.append_transition(0, "start", Role.INVENTOR.value, artifact_hash, "invent-0")
 
     cursor = store.resume_cursor()
 
     assert cursor.cycle == 0
     assert cursor.stage == Role.IN_BOUNDS_CHECKER.value
     assert cursor.completed_idempotency_keys == frozenset({"invent-0"})
-    assert not (tmp_path / "journal.jsonl").exists()
+    assert (tmp_path / "journal.jsonl").is_file()
 
 
 def test_repeated_idempotency_key_returns_existing_artifact_without_overwrite(tmp_path):
@@ -177,3 +188,75 @@ def test_load_halts_when_run_shape_or_unreferenced_object_is_invalid(tmp_path):
     store.create_run(_request())
     orphan = {"schema_version": "1.0"}
     orphan_bytes = json.dumps(orphan, sort_keys=True, separators=(",", ":")).encode("utf-8")
+
+
+def test_load_rejects_unlinked_role_artifacts_and_mismatched_transition_links(tmp_path):
+    """Would fail if a role object could be resumed without its matching legal journal transition."""
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    inventor_hash = store.put_role_artifact(0, Role.INVENTOR, _inventor_envelope(), "invent-0")
+    bounds_hash = store.put_role_artifact(0, Role.IN_BOUNDS_CHECKER, _bounds_envelope(), "check-0")
+
+    with pytest.raises(ArtifactHaltForReview, match="unlinked_artifact_reference"):
+        store.load_and_validate()
+
+    with pytest.raises(ArtifactHaltForReview, match="invalid_transition"):
+        store.append_transition(0, "start", Role.IN_BOUNDS_CHECKER.value, bounds_hash, "check-0")
+
+    with pytest.raises(ArtifactHaltForReview, match="journal_reference_mismatch"):
+        store.append_transition(0, "start", Role.INVENTOR.value, inventor_hash, "check-0")
+
+
+def test_idempotency_keys_are_unique_across_the_entire_run(tmp_path):
+    """Would fail if the same completed-work identity could name different cycle artifacts."""
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    store.put_role_artifact(0, Role.INVENTOR, _inventor_envelope(), "invent-0")
+
+    with pytest.raises(ArtifactHaltForReview, match="idempotency_collision"):
+        store.put_role_artifact(1, Role.INVENTOR, _inventor_envelope(), "invent-0")
+
+
+def test_load_rejects_noncanonical_cycle_directories_and_unexpected_or_sensitive_files(tmp_path):
+    """Would fail if ignored filesystem state could alter or conceal a resumable run."""
+    store = ArtifactStore(tmp_path / "leading-zero")
+    store.create_run(_request())
+    (tmp_path / "leading-zero" / "cycles" / "00").mkdir()
+
+    with pytest.raises(ArtifactHaltForReview, match="invalid_cycle_reference"):
+        store.load_and_validate()
+
+    store = ArtifactStore(tmp_path / "unexpected")
+    store.create_run(_request())
+    (tmp_path / "unexpected" / "notes.txt").write_text("ignored", encoding="utf-8")
+
+    with pytest.raises(ArtifactHaltForReview, match="unexpected_artifact_file"):
+        store.load_and_validate()
+
+    store = ArtifactStore(tmp_path / "sensitive-file")
+    store.create_run(_request())
+    (tmp_path / "sensitive-file" / "raw_transcript.txt").write_text("forbidden", encoding="utf-8")
+
+    with pytest.raises(ArtifactHaltForReview, match="sensitive_content"):
+        store.load_and_validate()
+
+
+def test_concurrent_transitions_receive_unique_monotonic_sequences(tmp_path):
+    """Would fail if simultaneous local writers could reuse a journal sequence number."""
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    artifacts = [
+        store.put_role_artifact(cycle, Role.INVENTOR, _inventor_envelope(), f"invent-{cycle}")
+        for cycle in range(4)
+    ]
+    barrier = Barrier(4)
+
+    def append(cycle):
+        barrier.wait()
+        return store.append_transition(cycle, "start", Role.INVENTOR.value, artifacts[cycle], f"invent-{cycle}")
+
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        rows = list(pool.map(append, range(4)))
+
+    assert sorted(row["sequence"] for row in rows) == [1, 2, 3, 4]
+    store.load_and_validate()
