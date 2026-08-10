@@ -86,7 +86,7 @@ LOOP_TRACKER
 ### Final
 - [x] Shipping: `N/A - shipping not approved`
 - [x] HANDOFF.md, HANDOFF.html, and HANDOFF.excalidraw written
-- [ ] Report published or export fallback recorded — pending
+- [x] Report export fallback recorded — `HANDOFF.export.html` (public upload requires explicit destination approval)
 
 EXECUTION_PROTOCOL
 Five-stage execution. Before stage 1, the goal parent runs the [ROUTING_GUARD] snippet from the

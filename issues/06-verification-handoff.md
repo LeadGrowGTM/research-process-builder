@@ -1,6 +1,6 @@
 # Phase 06 — Verification, integrity audit, and local handoff
 
-**Status:** verification and independent review passed; final tracker commit and report publication/export fallback pending
+**Status:** complete — verification, independent review, tracker commits, and sanitized export fallback passed
 **Canonical source:** `.harness/goals/repo-cleanup-full-update/PLAN.md` → `## Phases` → Phase 6
 **Routing:** `verification-before-completion`
 **Commit:** `docs: record repository modernization verification`
@@ -18,7 +18,7 @@ Run the exact mechanical gate, capture literal evidence, audit scope/security/pr
 - [x] Diff audit finds no catalog/full GTM/live write/benchmark-runtime import/unrelated rewrite.
 - [x] `HANDOFF.md`, `HANDOFF.html`, and `HANDOFF.excalidraw` contain preservation, architecture, evidence matrix, limitations/DRAFT live gaps, review commands, and commits without secrets or PII.
 - [x] Checker receives the seven-dimension rubric; PASS requires each ≥4 and mean ≥4.5.
-- [ ] Final post-commit `git status --short` is empty.
+- [x] Final post-commit `git status --short` was empty before recording this export fallback.
 
 ## Prohibitions
 

@@ -9,7 +9,7 @@ as_of: 2026-08-10
 
 ## Published report
 
-Publication URL will be inserted after the final sanitized share. Local report: `HANDOFF.html`; editable architecture: `HANDOFF.excalidraw`.
+Public upload was not performed because the destination requires explicit approval. The portable local fallback is `HANDOFF.export.html`; source report: `HANDOFF.html`; editable architecture: `HANDOFF.excalidraw`.
 
 ## Outcome
 

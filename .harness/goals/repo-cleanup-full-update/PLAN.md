@@ -102,7 +102,7 @@ Use focused commands after each failing test and implementation, then run `py -m
 
 ### Phase 6 — Verification, integrity audit, and local handoff
 
-**Status:** verification and independent review passed; final tracker commit and report publication/export fallback pending
+**Status:** complete — verification, independent review, tracker commits, and sanitized export fallback passed
 **Routing:** `verification-before-completion`
 **Durable slice:** `issues/06-verification-handoff.md`
 
