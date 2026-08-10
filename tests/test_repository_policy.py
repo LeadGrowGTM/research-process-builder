@@ -8,6 +8,8 @@ import re
 import subprocess
 import sys
 
+import scripts.recovery_inventory as recovery_inventory
+
 
 ROOT = Path(__file__).resolve().parents[1]
 INVENTORY = ROOT / "docs" / "recovery" / "repo-cleanup-full-update" / "inventory.csv"
@@ -75,27 +77,13 @@ def test_local_secrets_run_artifacts_caches_and_worktrees_are_ignored() -> None:
 
 def test_recovery_action_decisions_are_evidence_backed_and_currently_empty() -> None:
     assert ACTION_DECISIONS.is_file(), "every cleanup phase must record its action decisions"
-    decisions = _csv_rows(ACTION_DECISIONS)
-    inventory = {row["path"]: row for row in _inventory_rows()}
-    quarantine = {
-        (row["path"], row["object_id"]): row
-        for row in _csv_rows(QUARANTINE_MAP)
-    }
+    validator = getattr(recovery_inventory, "validate_action_decisions", None)
+    assert callable(validator), "action decisions must use the recovery inventory validator"
 
-    assert decisions == [], "the Phase 3 decision record proves no restoration or removal occurred"
-    for decision in decisions:
-        assert decision["action"] in {"removal", "restoration"}
-        inventory_row = inventory[decision["inventory_path"]]
-        assert decision["object_id"] == inventory_row["object_id"]
-        assert decision["recovery_command"] == inventory_row["recovery_command"]
-
-        has_quarantine_evidence = decision["quarantine_path"] or decision["quarantine_sha256"]
-        if has_quarantine_evidence:
-            assert inventory_row["disposition"] == "quarantine"
-            evidence = quarantine[(decision["inventory_path"], decision["object_id"])]
-            assert decision["quarantine_path"] == evidence["local_path"]
-            assert decision["quarantine_sha256"] == evidence["sha256"]
-
+    decisions = recovery_inventory.read_action_decisions(ACTION_DECISIONS)
+    quarantine_rows = recovery_inventory.read_quarantine_map(QUARANTINE_MAP)
+    validator(recovery_inventory.read_inventory(INVENTORY), decisions, quarantine_rows)
+    assert not decisions, "the Phase 3 action record proves no restoration or removal occurred"
 
 def test_documented_python_entry_points_exist_and_offer_help() -> None:
     for relative_path in DOCUMENTED_ENTRY_POINTS:

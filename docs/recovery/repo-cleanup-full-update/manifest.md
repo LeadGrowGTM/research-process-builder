@@ -25,3 +25,9 @@ only its schema header and zero action rows, which is the authoritative proof
 that this phase made no restoration or removal. Any future row must match the
 inventory path, object ID, recovery command, and, when quarantine-backed, the
 quarantine-map local path and SHA-256.
+## 2026-08-10 Phase 3 fix round 2 action schema
+
+The zero-row `action-decisions.csv` record now includes `recovery_commit` and is
+validated by `scripts/recovery_inventory.py`. Empty remains valid; any future
+action must be disposition-authorized and match inventory plus quarantine-map
+evidence before it can be recorded.

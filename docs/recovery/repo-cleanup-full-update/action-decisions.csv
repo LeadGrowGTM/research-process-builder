@@ -1,1 +1,1 @@
-action,inventory_path,destination_path,object_id,recovery_command,quarantine_path,quarantine_sha256
+action,inventory_path,destination_path,object_id,recovery_commit,recovery_command,quarantine_path,quarantine_sha256

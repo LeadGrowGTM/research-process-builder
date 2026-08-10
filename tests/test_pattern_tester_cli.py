@@ -83,6 +83,6 @@ def test_live_query_without_adapter_has_concise_nonzero_diagnostic(tmp_path: Pat
         check=False,
     )
 
-    assert result.returncode != 0
+    assert result.returncode == 1
     assert "Could not import serper_search" in result.stderr
     assert "Traceback" not in result.stderr

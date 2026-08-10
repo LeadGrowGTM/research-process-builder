@@ -24,6 +24,14 @@ CLASSIFICATIONS = {
 DISPOSITIONS = {"restore-reviewed", "retain-tracked", "quarantine", "document-only"}
 CSV_FIELDS = ["status", "path", "object_id", "recovery_commit", "classification", "disposition", "recovery_command"]
 QUARANTINE_FIELDS = ["path", "object_id", "sha256", "local_path"]
+ACTION_DECISION_FIELDS = [
+    "action", "inventory_path", "destination_path", "object_id", "recovery_commit",
+    "recovery_command", "quarantine_path", "quarantine_sha256",
+]
+AUTHORIZED_ACTIONS = {
+    "restoration": {"restore-reviewed"},
+    "removal": {"document-only", "quarantine"},
+}
 DEFAULT_QUARANTINE_ROOT = Path(".quarantine/repo-cleanup-full-update")
 
 
@@ -178,6 +186,85 @@ def read_inventory(manifest: Path) -> list[InventoryEntry]:
             raise ValueError(f"unexpected inventory columns: {reader.fieldnames}")
         return [InventoryEntry(**row) for row in reader]
 
+
+def read_action_decisions(record: Path) -> list[dict[str, str]]:
+    with record.open(newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        if reader.fieldnames != ACTION_DECISION_FIELDS:
+            raise ValueError(f"unexpected action decision columns: {reader.fieldnames}")
+        return list(reader)
+
+
+def read_quarantine_map(map_path: Path) -> list[dict[str, str]]:
+    with map_path.open(newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        if reader.fieldnames != QUARANTINE_FIELDS:
+            raise ValueError(f"unexpected quarantine columns: {reader.fieldnames}")
+        return list(reader)
+
+
+def validate_action_decisions(
+    entries: Iterable[InventoryEntry],
+    decisions: Iterable[dict[str, str]],
+    quarantine_rows: Iterable[dict[str, str]],
+) -> None:
+    """Validate every recorded cleanup action against immutable recovery evidence."""
+    inventory = list(entries)
+    validate_inventory(inventory, recorded_count=len(inventory))
+    by_path = {entry.path: entry for entry in inventory}
+
+    quarantine_by_path: dict[str, dict[str, str]] = {}
+    for row in quarantine_rows:
+        path = row.get("path", "")
+        if path in quarantine_by_path:
+            raise ValueError(f"duplicate quarantine map evidence: {path}")
+        if set(row) != set(QUARANTINE_FIELDS):
+            raise ValueError("unexpected quarantine map evidence columns")
+        quarantine_by_path[path] = row
+
+    seen_actions: set[tuple[str, str]] = set()
+    seen_quarantine_evidence: set[tuple[str, str]] = set()
+    for decision in decisions:
+        if set(decision) != set(ACTION_DECISION_FIELDS):
+            raise ValueError("unexpected action decision columns")
+        action = decision["action"]
+        inventory_path = decision["inventory_path"]
+        if (action, inventory_path) in seen_actions:
+            raise ValueError(f"duplicate action decision: {action} {inventory_path}")
+        seen_actions.add((action, inventory_path))
+        if inventory_path not in by_path:
+            raise ValueError(f"action inventory path is not recorded: {inventory_path}")
+        entry = by_path[inventory_path]
+        if action not in AUTHORIZED_ACTIONS or entry.disposition not in AUTHORIZED_ACTIONS[action]:
+            raise ValueError(f"unauthorized action for disposition: {action} {entry.disposition}")
+        if decision["object_id"] != entry.object_id:
+            raise ValueError(f"action object ID does not match inventory: {inventory_path}")
+        if decision["recovery_commit"] != entry.recovery_commit:
+            raise ValueError(f"action recovery commit does not match inventory: {inventory_path}")
+        if decision["recovery_command"] != entry.recovery_command:
+            raise ValueError(f"action recovery command does not match inventory: {inventory_path}")
+
+        has_quarantine_fields = bool(decision["quarantine_path"] or decision["quarantine_sha256"])
+        if entry.disposition != "quarantine":
+            if has_quarantine_fields:
+                raise ValueError(f"unexpected quarantine evidence: {inventory_path}")
+            continue
+        if not decision["quarantine_path"] or not decision["quarantine_sha256"]:
+            raise ValueError(f"missing quarantine evidence: {inventory_path}")
+        evidence_key = (decision["quarantine_path"], decision["quarantine_sha256"])
+        if evidence_key in seen_quarantine_evidence:
+            raise ValueError(f"duplicate quarantine evidence: {inventory_path}")
+        seen_quarantine_evidence.add(evidence_key)
+        evidence = quarantine_by_path.get(inventory_path)
+        if evidence is None:
+            raise ValueError(f"missing quarantine map evidence: {inventory_path}")
+        if evidence["object_id"] != entry.object_id:
+            raise ValueError(f"quarantine evidence object ID mismatch: {inventory_path}")
+        if (
+            decision["quarantine_path"] != evidence["local_path"]
+            or decision["quarantine_sha256"] != evidence["sha256"]
+        ):
+            raise ValueError(f"quarantine evidence mismatch: {inventory_path}")
 
 def verify_inventory_against_recovery(
     manifest: Path, expected_ref: str, cwd: Path | None = None

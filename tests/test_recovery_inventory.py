@@ -176,3 +176,89 @@ def test_verify_rejects_duplicate_quarantine_map_rows(tmp_path: Path) -> None:
 
     with pytest.raises(ValueError, match="duplicate"):
         verify_quarantine_map([entry], root=root, map_path=map_path, object_reader=lambda _: b"original")
+
+
+def _action_entry(
+    *,
+    classification: str = "generated-output",
+    disposition: str = "quarantine",
+) -> InventoryEntry:
+    object_id = "a" * 40
+    return InventoryEntry(
+        status="?",
+        path="output/run.json",
+        object_id=object_id,
+        classification=classification,
+        disposition=disposition,
+        recovery_command=f"git show {object_id} > output/run.json",
+        recovery_commit="b" * 40,
+    )
+
+
+def _action_row(entry: InventoryEntry, *, action: str = "removal") -> dict[str, str]:
+    return {
+        "action": action,
+        "inventory_path": entry.path,
+        "destination_path": "",
+        "object_id": entry.object_id,
+        "recovery_commit": entry.recovery_commit,
+        "recovery_command": entry.recovery_command,
+        "quarantine_path": entry.path,
+        "quarantine_sha256": "c" * 64,
+    }
+
+
+def _quarantine_row(entry: InventoryEntry) -> dict[str, str]:
+    return {
+        "path": entry.path,
+        "object_id": entry.object_id,
+        "sha256": "c" * 64,
+        "local_path": entry.path,
+    }
+
+
+def _action_validator():
+    from scripts import recovery_inventory
+
+    validator = getattr(recovery_inventory, "validate_action_decisions", None)
+    assert callable(validator), "action decision validator must exist"
+    return validator
+
+
+def test_action_decision_validation_accepts_empty_and_fully_evidenced_actions() -> None:
+    entry = _action_entry()
+    validator = _action_validator()
+
+    validator([entry], [], [_quarantine_row(entry)])
+    validator([entry], [_action_row(entry)], [_quarantine_row(entry)])
+
+
+@pytest.mark.parametrize("field", ["quarantine_path", "quarantine_sha256"])
+def test_action_decision_validation_rejects_missing_quarantine_evidence(field: str) -> None:
+    entry = _action_entry()
+    decision = _action_row(entry)
+    decision[field] = ""
+
+    with pytest.raises(ValueError, match="quarantine evidence"):
+        _action_validator()([entry], [decision], [_quarantine_row(entry)])
+
+
+def test_action_decision_validation_rejects_mismatched_or_duplicate_quarantine_evidence() -> None:
+    entry = _action_entry()
+    mismatched = _action_row(entry)
+    mismatched["quarantine_sha256"] = "d" * 64
+
+    with pytest.raises(ValueError, match="quarantine evidence"):
+        _action_validator()([entry], [mismatched], [_quarantine_row(entry)])
+    with pytest.raises(ValueError, match="duplicate quarantine map"):
+        _action_validator()([entry], [_action_row(entry)], [_quarantine_row(entry), _quarantine_row(entry)])
+
+
+def test_action_decision_validation_rejects_unclassified_or_unauthorized_actions() -> None:
+    unclassified = _action_entry(classification="")
+    with pytest.raises(ValueError, match="classification"):
+        _action_validator()([unclassified], [_action_row(unclassified)], [_quarantine_row(unclassified)])
+
+    quarantined = _action_entry()
+    with pytest.raises(ValueError, match="unauthorized action"):
+        _action_validator()([quarantined], [_action_row(quarantined, action="restoration")], [_quarantine_row(quarantined)])

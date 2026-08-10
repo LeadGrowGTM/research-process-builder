@@ -731,7 +731,7 @@ def run(args) -> int:
                         serper_search = load_serper_search()
                     except RuntimeError as error:
                         print(f"ERROR: {error}", file=sys.stderr)
-                        return 2
+                        return 1
                 try:
                     search_mode = variant.get("search_mode", "web")
                     is_news = search_mode == "news"
