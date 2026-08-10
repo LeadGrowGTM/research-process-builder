@@ -1,6 +1,7 @@
 """Provider-neutral, read-only search and extraction seam contracts."""
 
 from pathlib import Path
+from typing import get_args
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
@@ -12,6 +13,7 @@ from research_orchestration.contracts import SCHEMA_VERSION, SchemaError
 from research_orchestration.providers import (
     AdapterError,
     AdapterFailure,
+    BudgetReservation,
     DeterministicSourceAdapter,
     ExtractionEvidence,
     ExtractionRequest,
@@ -344,3 +346,12 @@ def test_llm_without_a_runner_does_not_consume_a_reservation():
     assert reservations == []
     assert result.stages[-1].stage is ExtractionStage.LLM
     assert result.stages[-1].outcome == AdapterFailure.CONTRACT_INVALID.value
+
+
+def test_budget_reservation_public_contract_requires_literal_true():
+    """Would fail if the exported callback type or API docs contradicted the runtime gate."""
+    parameters, return_type = get_args(BudgetReservation)
+
+    assert parameters == [ExtractionStage]
+    assert return_type is bool
+    assert "literal True" in DeterministicSourceAdapter.__init__.__doc__

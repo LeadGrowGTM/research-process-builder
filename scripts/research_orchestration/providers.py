@@ -256,7 +256,7 @@ class ExtractionResult(CanonicalContract):
 
 SearchRunner = Callable[[SearchRequest], Sequence[SearchHit]]
 StageRunner = Callable[[ExtractionRequest, tuple[ExtractionEvidence, ...]], Sequence[ExtractionEvidence]]
-BudgetReservation = Callable[[ExtractionStage], None]
+BudgetReservation = Callable[[ExtractionStage], bool]
 
 
 @runtime_checkable
@@ -280,6 +280,7 @@ class DeterministicSourceAdapter:
         reserve_budget: BudgetReservation | None = None,
         source_adapter: str = "deterministic",
     ) -> None:
+        """Create a deterministic adapter; reserve_budget must return literal True to authorize LLM work."""
         self._search_runner = search_runner
         supplied_runners = {} if stage_runners is None else dict(stage_runners)
         if any(not isinstance(stage, ExtractionStage) for stage in supplied_runners):
