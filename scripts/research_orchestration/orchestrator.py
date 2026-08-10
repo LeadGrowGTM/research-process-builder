@@ -49,7 +49,7 @@ class AutoresearchOrchestrator:
     def run(self, request: RunRequest) -> RunSummary:
         if not isinstance(request, RunRequest):
             raise SchemaError("request must be RunRequest")
-        if self._store._run_path.exists():
+        if self._store.run_exists():
             persisted = self._store.load_and_validate()
             if persisted != request.to_canonical_dict():
                 raise ArtifactHaltForReview("run_request_mismatch")

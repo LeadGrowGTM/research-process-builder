@@ -4,8 +4,6 @@ __pycache__/
 
 # Secrets
 .env*
-.env
-.env.*
 
 # Pipeline output
 output/

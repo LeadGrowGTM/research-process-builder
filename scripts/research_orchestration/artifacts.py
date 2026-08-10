@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from contextlib import contextmanager
+import functools
 from threading import Lock, RLock
 
 from dataclasses import dataclass
@@ -83,6 +84,7 @@ def _require_safe_value(value: Any) -> None:
 
 
 def _locked_method(method):
+    @functools.wraps(method)
     def wrapped(self, *args, **kwargs):
         with self._locked():
             return method(self, *args, **kwargs)
@@ -177,6 +179,9 @@ class ArtifactStore:
     @property
     def _state_path(self) -> Path:
         return self._root / "state.jsonl"
+
+    def run_exists(self) -> bool:
+        return self._run_path.is_file()
 
     def create_run(self, request: RunRequest) -> Path:
         with self._locked():
@@ -883,15 +888,6 @@ class ArtifactStore:
             )
         except (TypeError, SchemaError) as error:
             raise ArtifactHaltForReview("invalid_state_event") from error
-        if existing:
-            prior = existing[0]
-            same = all(
-                getattr(prior, field) == getattr(candidate, field)
-                for field in ("cycle", "stage", "event", "reason_code", "action", "budget_usage", "retry_count", "invocation_id", "idempotency_key")
-            )
-            if same:
-                return prior
-            raise ArtifactHaltForReview("state_event_collision")
         if event in {"role_completed", "role_failed"}:
             reserved = any(
                 row.event == "role_reserved" and row.cycle == cycle and row.stage == stage
