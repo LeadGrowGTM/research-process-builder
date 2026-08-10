@@ -22,7 +22,7 @@ CLASSIFICATIONS = {
     "obsolete-duplicate",
 }
 DISPOSITIONS = {"restore-reviewed", "retain-tracked", "quarantine", "document-only"}
-CSV_FIELDS = ["status", "path", "object_id", "classification", "disposition", "recovery_command"]
+CSV_FIELDS = ["status", "path", "object_id", "recovery_commit", "classification", "disposition", "recovery_command"]
 QUARANTINE_FIELDS = ["path", "object_id", "sha256", "local_path"]
 DEFAULT_QUARANTINE_ROOT = Path(".quarantine/repo-cleanup-full-update")
 
@@ -35,6 +35,7 @@ class InventoryEntry:
     classification: str
     disposition: str
     recovery_command: str
+    recovery_commit: str = ""
 
 
 @dataclass(frozen=True)
@@ -59,6 +60,11 @@ def _assert_immutable_ref(ref: str) -> None:
     is_object_id = len(ref) == 40 and all(character in "0123456789abcdef" for character in ref)
     if not (is_object_id or ref.startswith("refs/recovery/")):
         raise ValueError("recovery ref must be immutable: use a full object ID or refs/recovery/*")
+
+
+def _resolve_recovery_commit(ref: str, cwd: Path | None = None) -> str:
+    _assert_immutable_ref(ref)
+    return _run_git(["rev-parse", f"{ref}^{{commit}}"], cwd).strip()
 
 
 def _canonical_path(path: str) -> str:
@@ -91,7 +97,7 @@ def _classification_and_disposition(path: str, status: str) -> tuple[str, str]:
     return "source", "restore-reviewed"
 
 
-def _entry(status: str, path: str, object_id: str) -> InventoryEntry:
+def _entry(status: str, path: str, object_id: str, recovery_commit: str) -> InventoryEntry:
     canonical_path = _canonical_path(path)
     classification, disposition = _classification_and_disposition(canonical_path, status)
     return InventoryEntry(
@@ -101,21 +107,22 @@ def _entry(status: str, path: str, object_id: str) -> InventoryEntry:
         classification=classification,
         disposition=disposition,
         recovery_command=f"git show {object_id} > {canonical_path}",
+        recovery_commit=recovery_commit,
     )
 
 
 def enumerate_recovery(ref: str, cwd: Path | None = None) -> list[InventoryEntry]:
     """Enumerate the tracked diff and untracked-tree blobs in a recovery stash commit."""
-    _assert_immutable_ref(ref)
+    recovery_commit = _resolve_recovery_commit(ref, cwd)
     entries: list[InventoryEntry] = []
-    tracked = _run_git(["diff", "--name-status", "--no-renames", f"{ref}^1", ref], cwd)
+    tracked = _run_git(["diff", "--name-status", "--no-renames", f"{recovery_commit}^1", recovery_commit], cwd)
     for line in tracked.splitlines():
         status, path = line.split("\t", maxsplit=1)
-        object_ref = f"{ref}^1:{path}" if status == "D" else f"{ref}:{path}"
+        object_ref = f"{recovery_commit}^1:{path}" if status == "D" else f"{recovery_commit}:{path}"
         object_id = _run_git(["rev-parse", object_ref], cwd).strip()
-        entries.append(_entry(status, path, object_id))
+        entries.append(_entry(status, path, object_id, recovery_commit))
 
-    tree = _run_git_bytes(["ls-tree", "-r", "-z", "--full-tree", f"{ref}^3"], cwd)
+    tree = _run_git_bytes(["ls-tree", "-r", "-z", "--full-tree", f"{recovery_commit}^3"], cwd)
     for record in tree.split(b"\0"):
         if not record:
             continue
@@ -123,7 +130,7 @@ def enumerate_recovery(ref: str, cwd: Path | None = None) -> list[InventoryEntry
         _mode, object_type, object_id = metadata.decode("ascii").split()
         if object_type != "blob":
             continue
-        entries.append(_entry("?", raw_path.decode("utf-8", "surrogateescape"), object_id))
+        entries.append(_entry("?", raw_path.decode("utf-8", "surrogateescape"), object_id, recovery_commit))
     return sorted(entries, key=lambda entry: (entry.path, entry.status))
 
 
@@ -139,6 +146,8 @@ def validate_inventory(entries: Iterable[InventoryEntry], recorded_count: int) -
         paths.add(entry.path)
         if not entry.object_id:
             raise ValueError(f"missing object ID: {entry.path}")
+        if len(entry.recovery_commit) != 40 or any(character not in "0123456789abcdef" for character in entry.recovery_commit):
+            raise ValueError(f"missing or invalid recovery commit: {entry.path}")
         if entry.classification not in CLASSIFICATIONS:
             raise ValueError(f"missing or invalid classification: {entry.path}")
         if entry.disposition not in DISPOSITIONS:
@@ -170,6 +179,21 @@ def read_inventory(manifest: Path) -> list[InventoryEntry]:
         return [InventoryEntry(**row) for row in reader]
 
 
+def verify_inventory_against_recovery(
+    manifest: Path, expected_ref: str, cwd: Path | None = None
+) -> list[InventoryEntry]:
+    """Fail closed unless the CSV exactly matches the expected recovery commit."""
+    expected_commit = _resolve_recovery_commit(expected_ref, cwd)
+    recorded = read_inventory(manifest)
+    recorded_commits = {entry.recovery_commit for entry in recorded}
+    if recorded_commits != {expected_commit}:
+        raise ValueError("recovery commit does not match the expected immutable recovery ref")
+    authoritative = enumerate_recovery(expected_commit, cwd)
+    if recorded != authoritative:
+        raise ValueError("inventory does not match the authoritative recovery object tree")
+    return recorded
+
+
 def export_quarantine(
     entries: Iterable[InventoryEntry],
     root: Path,
@@ -197,22 +221,37 @@ def export_quarantine(
             )
 
 
-def verify_quarantine_map(entries: Iterable[InventoryEntry], root: Path, map_path: Path) -> None:
+def verify_quarantine_map(
+    entries: Iterable[InventoryEntry],
+    root: Path,
+    map_path: Path,
+    object_reader: Callable[[str], bytes] | None = None,
+) -> None:
     expected = {entry.path: entry for entry in entries if entry.disposition == "quarantine"}
     with map_path.open(newline="", encoding="utf-8") as handle:
         reader = csv.DictReader(handle)
         if reader.fieldnames != QUARANTINE_FIELDS:
             raise ValueError(f"unexpected quarantine columns: {reader.fieldnames}")
-        mapped = {row["path"]: row for row in reader}
+        rows = list(reader)
+    mapped: dict[str, dict[str, str]] = {}
+    for row in rows:
+        path = row["path"]
+        if path in mapped:
+            raise ValueError(f"duplicate quarantine map row: {path}")
+        mapped[path] = row
     if set(mapped) != set(expected):
         raise ValueError("quarantine map does not match quarantine inventory entries")
+    authoritative_reader = object_reader or (lambda object_id: _run_git_bytes(["cat-file", "-p", object_id]))
     for path, entry in expected.items():
         row = mapped[path]
         if row["object_id"] != entry.object_id or row["local_path"] != entry.path:
             raise ValueError(f"quarantine map metadata mismatch: {path}")
+        authoritative_digest = hashlib.sha256(authoritative_reader(entry.object_id)).hexdigest()
+        if row["sha256"] != authoritative_digest:
+            raise ValueError(f"quarantine SHA-256 does not match authoritative object: {path}")
         contents = (root / Path(path)).read_bytes()
-        if hashlib.sha256(contents).hexdigest() != row["sha256"]:
-            raise ValueError(f"quarantine SHA-256 mismatch: {path}")
+        if hashlib.sha256(contents).hexdigest() != authoritative_digest:
+            raise ValueError(f"quarantine SHA-256 does not match authoritative object: {path}")
 
 
 def write_summary(reconciliation: Reconciliation, summary: Path) -> None:
@@ -243,6 +282,7 @@ def _parser() -> argparse.ArgumentParser:
     verify = subcommands.add_parser("verify")
     verify.add_argument("--manifest", type=Path, required=True)
     verify.add_argument("--expected-recorded-count", type=int, required=True)
+    verify.add_argument("--expected-ref", required=True)
     verify.add_argument("--quarantine-map", type=Path)
     verify.add_argument("--quarantine-root", type=Path, default=DEFAULT_QUARANTINE_ROOT)
     return parser
@@ -258,7 +298,7 @@ def main() -> int:
         verify_quarantine_map(entries, root=args.quarantine_root, map_path=args.quarantine_map)
         write_summary(reconciliation, args.summary)
     else:
-        entries = read_inventory(args.manifest)
+        entries = verify_inventory_against_recovery(args.manifest, args.expected_ref)
         reconciliation = validate_inventory(entries, args.expected_recorded_count)
         quarantine_map = args.quarantine_map or args.manifest.with_name("quarantine-map.csv")
         verify_quarantine_map(entries, root=args.quarantine_root, map_path=quarantine_map)

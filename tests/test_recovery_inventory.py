@@ -95,8 +95,84 @@ def test_quarantine_hash_mismatch_fails_closed(tmp_path: Path) -> None:
     root = tmp_path / ".quarantine"
 
     export_quarantine([entry], root=root, map_path=map_path, object_reader=lambda _: source.read_bytes())
-    verify_quarantine_map([entry], root=root, map_path=map_path)
+    verify_quarantine_map([entry], root=root, map_path=map_path, object_reader=lambda _: source.read_bytes())
     root.joinpath(".cache", "output.bin").write_bytes(b"tampered")
 
     with pytest.raises(ValueError, match="SHA-256"):
-        verify_quarantine_map([entry], root=root, map_path=map_path)
+        verify_quarantine_map([entry], root=root, map_path=map_path, object_reader=lambda _: source.read_bytes())
+
+
+def test_verify_rejects_coordinated_inventory_tampering(recovery_fixture: Path, tmp_path: Path) -> None:
+    from scripts.recovery_inventory import verify_inventory_against_recovery, write_inventory
+
+    entries = enumerate_recovery(fixture_ref(recovery_fixture), cwd=recovery_fixture)
+    tampered = [
+        replace(
+            entry,
+            object_id="0123456789012345678901234567890123456789",
+            recovery_command="git show 0123456789012345678901234567890123456789 > tracked.py",
+        )
+        if entry.path == "tracked.py"
+        else entry
+        for entry in entries
+    ]
+    manifest = tmp_path / "inventory.csv"
+    write_inventory(tampered, manifest)
+
+    with pytest.raises(ValueError, match="authoritative recovery"):
+        verify_inventory_against_recovery(manifest, fixture_ref(recovery_fixture), cwd=recovery_fixture)
+
+
+def test_verify_rejects_a_moved_recovery_ref(recovery_fixture: Path, tmp_path: Path) -> None:
+    from scripts.recovery_inventory import verify_inventory_against_recovery, write_inventory
+
+    first_ref = fixture_ref(recovery_fixture)
+    entries = enumerate_recovery(first_ref, cwd=recovery_fixture)
+    manifest = tmp_path / "inventory.csv"
+    write_inventory(entries, manifest)
+    (recovery_fixture / "tracked.py").write_text("later\n", encoding="utf-8")
+    git(recovery_fixture, "stash", "push", "-m", "later fixture")
+    git(recovery_fixture, "update-ref", "refs/recovery/fixture", fixture_ref(recovery_fixture))
+
+    with pytest.raises(ValueError, match="recovery commit"):
+        verify_inventory_against_recovery(manifest, "refs/recovery/fixture", cwd=recovery_fixture)
+
+
+def test_verify_rejects_coordinated_quarantine_payload_and_map_tampering(tmp_path: Path) -> None:
+    entry = InventoryEntry(
+        status="?",
+        path=".cache/output.bin",
+        object_id="0123456789012345678901234567890123456789",
+        classification="cache",
+        disposition="quarantine",
+        recovery_command="git show 0123456789012345678901234567890123456789 > .cache/output.bin",
+    )
+    map_path = tmp_path / "quarantine-map.csv"
+    root = tmp_path / ".quarantine"
+    export_quarantine([entry], root=root, map_path=map_path, object_reader=lambda _: b"tampered")
+
+    with pytest.raises(ValueError, match="authoritative object"):
+        verify_quarantine_map(
+            [entry], root=root, map_path=map_path, object_reader=lambda _: b"original"
+        )
+
+
+def test_verify_rejects_duplicate_quarantine_map_rows(tmp_path: Path) -> None:
+    entry = InventoryEntry(
+        status="?",
+        path=".cache/output.bin",
+        object_id="0123456789012345678901234567890123456789",
+        classification="cache",
+        disposition="quarantine",
+        recovery_command="git show 0123456789012345678901234567890123456789 > .cache/output.bin",
+    )
+    map_path = tmp_path / "quarantine-map.csv"
+    root = tmp_path / ".quarantine"
+    export_quarantine([entry], root=root, map_path=map_path, object_reader=lambda _: b"original")
+    with map_path.open("a", encoding="utf-8") as handle:
+        handle.write(".cache/output.bin,0123456789012345678901234567890123456789,"
+                     "0682c5f2076f099c34a608463c1847d58c13c5b51b11a3fa8f6e2d8c0e8a7d2c,"
+                     ".cache/output.bin\n")
+
+    with pytest.raises(ValueError, match="duplicate"):
+        verify_quarantine_map([entry], root=root, map_path=map_path, object_reader=lambda _: b"original")
