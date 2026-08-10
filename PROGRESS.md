@@ -40,3 +40,9 @@ Proof: normal pre-commit hook `pytest tests/ -x -q` → `240 passed in 99.31s`.
 Proof: primary and compatibility `--stub-run` then `--resume` returned identical `halt_for_review` / `human_review_required` summaries; each `state.jsonl` remained 12 rows with 5 unique reservations, 5 completions, `stages=5`, and calls/queries/scrapes/LLM/cost all zero.
 Proof artifacts: ignored `.artifacts/autoresearch/phase5-proof-c6a6528-agent/` and `.artifacts/autoresearch/phase5-proof-c6a6528-compat/`.
 Commit: `c6a6528ff2b32063586825631ce2a28676b980ee` (`feat: add resumable autoresearch orchestration`).
+## 2026-08-10 — Phase 6 mechanical gate and Prover
+
+- Mechanical gate core: `MECHANICAL_GATE_CORE=PASS`; inventory `enumerated=3561 recorded=3558 difference=+3 unexplained=0`; completed-phase tests `39 passed`; orchestration tests `163 passed`; full tests `240 passed`; both CLI stub/resume summaries identical; validation/diff/final status clean.
+- Credential gate fix round: `py scripts/credential_scan.py` → `CREDENTIAL_SCAN=PASS violations=0 allowed_placeholders=2`; full tests `242 passed`.
+- MCP parse: `MCP_TOML_PARSE=PASS`; OAuth URL `https://search.parallel.ai/mcp-oauth`; enabled tools `web_search,web_fetch`; no live auth/network/write call.
+- Prover: `.harness/goals/repo-cleanup-full-update/PROVER.md` → `PROOF VERDICT: PASS` after commit `5f63102` resolved the synthetic-fixture false positive without weakening detection.

@@ -65,8 +65,8 @@ LOOP_TRACKER
 - [x] Maker: inventory/preservation — artifacts `docs/recovery/repo-cleanup-full-update/`; commits `88be158`, `307d34c`, `6853794`
 - [x] Maker: cleanup/docs/MCP — artifacts `CONTEXT.md`, `docs/domain/adr/0003-resumable-autoresearch-orchestration.md`, `CLAUDE.md`, `.codex/config.toml`, `docs/providers/`; commits `def8588`, `0a2d9f7`, `d03da55` (review closures `3374909`, `9b96e38`, `3d02ca8`)
 - [x] Maker: orchestration/provider seams — commits `00d20e0`..`c6a6528`; focused `163 passed`; stub/resume proofs retained under ignored `.artifacts/autoresearch/`
-- [ ] Mechanical gate passed
-- [ ] Prover verdict received
+- [x] Mechanical gate passed — inventory `3561/3558/+3/0`; focused `39 + 163`; full `240`; credential fix-round full `242`
+- [x] Prover verdict received — `PROOF VERDICT: PASS`; `.harness/goals/repo-cleanup-full-update/PROVER.md`
 - [ ] Checker wrote CYCLE_LOG.md
 - [ ] Reward signal: __/5.0 (threshold: every dimension >=4; mean >=4.5)
 - [ ] Verdict: PASS / ITERATE / PLATEAU
