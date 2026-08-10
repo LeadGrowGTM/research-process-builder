@@ -105,18 +105,30 @@ class ArtifactStore:
                         import msvcrt
 
                         handle.seek(0)
-                        msvcrt.locking(handle.fileno(), msvcrt.LK_LOCK, 1)
+                        try:
+                            msvcrt.locking(handle.fileno(), msvcrt.LK_LOCK, 1)
+                        except OSError as error:
+                            raise ArtifactHaltForReview("lock_io_failed") from error
                     else:
                         import fcntl
 
-                        fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
+                        try:
+                            fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
+                        except OSError as error:
+                            raise ArtifactHaltForReview("lock_io_failed") from error
                     yield
                 finally:
                     if os.name == "nt":
                         handle.seek(0)
-                        msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
+                        try:
+                            msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
+                        except OSError as error:
+                            raise ArtifactHaltForReview("lock_io_failed") from error
                     else:
-                        fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+                        try:
+                            fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+                        except OSError as error:
+                            raise ArtifactHaltForReview("lock_io_failed") from error
 
     @property
     def _run_path(self) -> Path:
@@ -477,11 +489,15 @@ class ArtifactStore:
                 raise ArtifactHaltForReview("role_artifact_mismatch")
             by_key[key] = reference
         seen_rows: set[str] = set()
+        expected_from: dict[int, str] = {}
         for row in rows:
             key = row["idempotency_key"]
             if key in seen_rows:
                 raise ArtifactHaltForReview("idempotency_collision")
             seen_rows.add(key)
+            if row["from_stage"] != expected_from.get(row["cycle"], "start"):
+                raise ArtifactHaltForReview("invalid_transition")
+            expected_from[row["cycle"]] = row["to_stage"]
             if _NEXT_STAGE.get(row["from_stage"]) != row["to_stage"]:
                 raise ArtifactHaltForReview("invalid_transition")
             reference = by_key.get(key)

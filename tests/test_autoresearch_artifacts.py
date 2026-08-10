@@ -304,3 +304,50 @@ def test_load_and_lock_acquisition_reject_unsafe_lock_paths(tmp_path):
     (tmp_path / "acquire" / "run.lock").mkdir()
     with pytest.raises(ArtifactHaltForReview, match="lock_io_failed"):
         other.create_run(_request())
+
+
+def test_load_rejects_globally_reordered_per_cycle_journal_chain(tmp_path):
+    """Would fail if individually legal rows were accepted after sequence-order tampering."""
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    inventor_hash = store.put_role_artifact(0, Role.INVENTOR, _inventor_envelope(), "invent-0")
+    bounds_hash = store.put_role_artifact(0, Role.IN_BOUNDS_CHECKER, _bounds_envelope(), "check-0")
+    store.append_transition(0, "start", Role.INVENTOR.value, inventor_hash, "invent-0")
+    store.append_transition(0, Role.INVENTOR.value, Role.IN_BOUNDS_CHECKER.value, bounds_hash, "check-0")
+    rows = [json.loads(line) for line in (tmp_path / "journal.jsonl").read_text(encoding="utf-8").splitlines()]
+    rows.reverse()
+    for sequence, row in enumerate(rows, start=1):
+        row["sequence"] = sequence
+    (tmp_path / "journal.jsonl").write_text(
+        "".join(json.dumps(row, sort_keys=True, separators=(",", ":")) + "\n" for row in rows),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ArtifactHaltForReview, match="invalid_transition"):
+        store.load_and_validate()
+
+
+def test_lock_acquire_and_release_oserrors_halt_for_review(tmp_path, monkeypatch):
+    """Would fail if lock I/O leaked raw OSErrors at either acquisition or release."""
+    class FailingLock:
+        LK_LOCK = 1
+        LK_UNLCK = 2
+
+        @staticmethod
+        def locking(_fd, operation, _length):
+            if operation == FailingLock.LK_LOCK:
+                raise OSError("acquire")
+
+    monkeypatch.setitem(sys.modules, "msvcrt", FailingLock)
+    with pytest.raises(ArtifactHaltForReview, match="lock_io_failed"):
+        ArtifactStore(tmp_path / "acquire").create_run(_request())
+
+    class ReleaseFailingLock(FailingLock):
+        @staticmethod
+        def locking(_fd, operation, _length):
+            if operation == ReleaseFailingLock.LK_UNLCK:
+                raise OSError("release")
+
+    monkeypatch.setitem(sys.modules, "msvcrt", ReleaseFailingLock)
+    with pytest.raises(ArtifactHaltForReview, match="lock_io_failed"):
+        ArtifactStore(tmp_path / "release").create_run(_request())
