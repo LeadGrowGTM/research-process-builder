@@ -9,6 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'scripts'))
 import pytest
 
 from research_orchestration.contracts import (
+    BudgetCharge,
     CheckerResult,
     EvaluationResult,
     Evidence,
@@ -21,6 +22,29 @@ from research_orchestration.contracts import (
 )
 from research_orchestration.budgets import BudgetLimits
 
+
+def test_budget_charge_is_frozen_schema_versioned_nonnegative_and_bounded():
+    charge = BudgetCharge(calls=1, queries=2, cost=0.25, stages=1)
+    assert charge.to_canonical_dict() == {
+        "calls": 1, "cost": 0.25, "llm_calls": 0, "queries": 2,
+        "schema_version": "1.0", "scrapes": 0, "stages": 1,
+    }
+    with pytest.raises((AttributeError, TypeError)):
+        charge.calls = 2
+    with pytest.raises(TypeError):
+        BudgetCharge(retries=1)
+    with pytest.raises(SchemaError, match="non-negative"):
+        BudgetCharge(calls=-1)
+    with pytest.raises(SchemaError, match="bounded"):
+        BudgetCharge(queries=1_000_001)
+    with pytest.raises(SchemaError, match="unsupported schema"):
+        BudgetCharge(schema_version="2.0")
+
+
+@pytest.mark.parametrize("action", ("accept", "stop", "", "ADVANCE"))
+def test_run_summary_rejects_actions_outside_gate_vocabulary(action):
+    with pytest.raises(SchemaError, match="invalid final_action"):
+        RunSummary("1.0", "run-001", action, "reason", 0)
 
 def test_experiment_key_is_stable_for_equivalent_content():
     """Would fail if a key incorporated invocation order or random state."""
@@ -64,6 +88,14 @@ def test_contracts_are_frozen_and_serialize_canonically():
         '"run_id":"run-001","schema_version":"1.0"}'
     )
 
+
+@pytest.mark.parametrize("threshold", (0.89, 0.9000001, 1.0))
+def test_run_request_requires_the_gate_threshold_exactly(threshold):
+    with pytest.raises(SchemaError, match="approval_threshold must be exactly 0.90"):
+        RunRequest(
+            schema_version="1.0", run_id="run-001", brief="brief", constraints=(),
+            baseline={}, budget_limits=BudgetLimits(), approval_threshold=threshold,
+        )
 
 @pytest.mark.parametrize(
     ("factory", "expected"),

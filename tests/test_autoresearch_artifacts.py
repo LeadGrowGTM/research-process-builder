@@ -11,8 +11,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
 import pytest
 
-from research_orchestration.budgets import BudgetLimits
-from research_orchestration.contracts import Role, RoleEnvelope, RunRequest
+from research_orchestration.budgets import BudgetLimits, BudgetUsage
+from research_orchestration.contracts import (
+    CheckerResult, CompletedRoleRecord, EvaluationResult, Evidence, Experiment,
+    Role, RoleEnvelope, RunRequest, RunSummary, SchemaError,
+)
 from research_orchestration.artifacts import ArtifactHaltForReview, ArtifactStore
 
 
@@ -45,6 +48,315 @@ def _bounds_envelope() -> RoleEnvelope:
         Role.IN_BOUNDS_CHECKER,
         {"constraints": ("read_only",), "experiment": "experiment-0"},
     )
+
+
+def _experiment() -> Experiment:
+    return Experiment("1.0", "search-flow", "Narrow improves.", "Add domain term.")
+
+
+def _evidence() -> tuple[Evidence, ...]:
+    return (Evidence("1.0", "https://example.test/a", "fact", "2026-08-10T00:00:00Z"),)
+
+
+@pytest.mark.parametrize(
+    ("role", "envelope", "result", "result_type"),
+    (
+        (Role.INVENTOR, _inventor_envelope, _experiment, "experiment"),
+        (Role.IN_BOUNDS_CHECKER, _bounds_envelope, lambda: CheckerResult("1.0", "in_bounds", True, "accepted"), "checker_result"),
+        (Role.NOVELTY_CHECKER, lambda: RoleEnvelope.create(Role.NOVELTY_CHECKER, {"experiment": "experiment-0", "prior_fingerprints": ()}), lambda: CheckerResult("1.0", "novelty", True, "novel"), "checker_result"),
+        (Role.EXECUTOR, lambda: RoleEnvelope.create(Role.EXECUTOR, {"experiment": "experiment-0", "execution_inputs": {}}), _evidence, "evidence"),
+        (Role.EVALUATOR, lambda: RoleEnvelope.create(Role.EVALUATOR, {"rubric": "accuracy", "experiment": "experiment-0", "evidence": ("fact",)}), lambda: EvaluationResult("1.0", True, 0.9, "validated"), "evaluation_result"),
+    ),
+)
+def test_completed_role_artifact_round_trips_typed_result(tmp_path, role, envelope, result, result_type):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    expected = result()
+    artifact_hash = store.put_completed_role_artifact(0, role, envelope(), expected, f"{role.value}-0")
+    assert store.load_role_result(0, role) == expected
+    stored = json.loads((tmp_path / "objects" / f"{artifact_hash}.json").read_text(encoding="utf-8"))
+    assert stored["result_type"] == result_type
+    assert set(stored) == {"envelope", "result", "result_type", "schema_version"}
+
+
+def test_completed_role_record_rejects_role_result_mismatch_and_empty_evidence():
+    with pytest.raises(SchemaError, match="role result mismatch"):
+        CompletedRoleRecord.create(_inventor_envelope(), EvaluationResult("1.0", True, 0.9, "validated"))
+    executor = RoleEnvelope.create(Role.EXECUTOR, {"experiment": "experiment-0", "execution_inputs": {}})
+    with pytest.raises(SchemaError, match="evidence must not be empty"):
+        CompletedRoleRecord.create(executor, ())
+
+
+def test_completed_role_record_rejects_checker_identity_and_schema_version_mismatch():
+    with pytest.raises(SchemaError, match="checker must match role"):
+        CompletedRoleRecord.create(_bounds_envelope(), CheckerResult("1.0", "novelty", True, "novel"))
+    with pytest.raises(SchemaError, match="schema version"):
+        CompletedRoleRecord.rehydrate(schema_version="2.0", envelope=_inventor_envelope().to_canonical_dict(), result_type="experiment", result=_experiment().to_canonical_dict())
+
+
+def test_public_history_reads_prior_inventor_results_and_gate_decisions(tmp_path):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    for cycle in (0, 1):
+        envelope = _inventor_envelope()
+        artifact_hash = store.put_completed_role_artifact(
+            cycle, Role.INVENTOR, envelope, _experiment(), f"invent-{cycle}"
+        )
+        store.append_transition(cycle, "start", Role.INVENTOR.value, artifact_hash, f"invent-{cycle}")
+        store.append_state_event(cycle, "gate", "gate_decided", f"decision_{cycle}", BudgetUsage(stages=cycle + 1), 0,
+                                 action="retry" if cycle == 0 else "advance")
+
+    assert store.load_prior_inventor_results(1) == ((0, _experiment()),)
+    decisions = store.load_prior_gate_decisions(1)
+    assert len(decisions) == 1
+    assert (decisions[0].cycle, decisions[0].action, decisions[0].reason_code) == (0, "retry", "decision_0")
+
+
+def test_public_history_reads_validate_cycle_and_tamper(tmp_path):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    with pytest.raises(ArtifactHaltForReview, match="invalid_cycle"):
+        store.load_prior_inventor_results(-1)
+    store.append_state_event(0, "gate", "gate_decided", "accepted", BudgetUsage(), 0, action="advance")
+    path = tmp_path / "state.jsonl"
+    path.write_text(path.read_text(encoding="utf-8").replace("accepted", "tampered"), encoding="utf-8")
+    with pytest.raises(ArtifactHaltForReview, match="state_hash_mismatch"):
+        store.load_prior_gate_decisions(1)
+
+def test_load_role_result_halts_for_tampered_completed_record(tmp_path):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    artifact_hash = store.put_completed_role_artifact(0, Role.INVENTOR, _inventor_envelope(), _experiment(), "invent-0")
+    object_path = tmp_path / "objects" / f"{artifact_hash}.json"
+    value = json.loads(object_path.read_text(encoding="utf-8"))
+    value["result"]["hypothesis"] = "tampered"
+    object_path.write_text(json.dumps(value, sort_keys=True, separators=(",", ":")), encoding="utf-8")
+    with pytest.raises(ArtifactHaltForReview, match="artifact_hash_mismatch"):
+        store.load_role_result(0, Role.INVENTOR)
+
+
+def test_load_role_result_reports_typed_missing_result_for_legacy_artifact(tmp_path):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    store.put_role_artifact(0, Role.INVENTOR, _inventor_envelope(), "invent-0")
+    with pytest.raises(ArtifactHaltForReview, match="missing_role_result") as error:
+        store.load_role_result(0, Role.INVENTOR)
+    assert error.value.reason_code == "missing_role_result"
+
+
+def test_completed_role_idempotency_rejects_different_result_for_existing_key(tmp_path):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    envelope = _inventor_envelope()
+    store.put_completed_role_artifact(0, Role.INVENTOR, envelope, _experiment(), "invent-0")
+    changed = Experiment("1.0", "search-flow", "Different hypothesis.", "Add domain term.")
+
+    with pytest.raises(ArtifactHaltForReview, match="idempotency_collision"):
+        store.put_completed_role_artifact(0, Role.INVENTOR, envelope, changed, "invent-0")
+
+
+def test_state_events_form_hash_chain_and_load_immutable_projection(tmp_path):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    first_usage = BudgetUsage(calls=1, stages=1)
+    final_usage = BudgetUsage(calls=2, retries=1, stages=2)
+
+    envelope = _inventor_envelope()
+    first = store.reserve_role_attempt(0, Role.INVENTOR, envelope, "invent-0", first_usage, 0)
+    second = store.append_state_event(
+        0, Role.INVENTOR.value, "role_failed", "provider_error", final_usage, 1,
+        invocation_id=envelope.invocation_id, idempotency_key="invent-0",
+    )
+    projection = store.load_state()
+
+    assert (first.sequence, second.sequence) == (1, 2)
+    assert second.previous_hash == first.row_hash
+    assert projection.budget_usage == final_usage
+    assert projection.retry_count == 1
+    assert projection.last_event == second
+    assert projection.rows == (first, second)
+    with pytest.raises(AttributeError):
+        projection.rows = ()
+
+
+@pytest.mark.parametrize("event", ("role_failed", "gate_decided", "run_completed"))
+def test_terminal_and_failure_state_events_append_idempotently_once(tmp_path, event):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    stage = Role.EXECUTOR.value if event == "role_failed" else "gate" if event == "gate_decided" else "run"
+    usage = BudgetUsage(calls=1, stages=1)
+
+    identity = {}
+    expected_rows = 1
+    if event == "role_failed":
+        envelope = RoleEnvelope.create(Role.EXECUTOR, {"experiment": "experiment-0", "execution_inputs": {}})
+        store.reserve_role_attempt(0, Role.EXECUTOR, envelope, "execute-0", usage, 0)
+        identity = {"invocation_id": envelope.invocation_id, "idempotency_key": "execute-0"}
+        expected_rows = 2
+    first = store.append_state_event(0, stage, event, "halt_for_review", usage, 0, **identity)
+    repeated = store.append_state_event(0, stage, event, "halt_for_review", usage, 0, **identity)
+
+    assert repeated == first
+    assert len(store.load_state().rows) == expected_rows
+    with pytest.raises(ArtifactHaltForReview, match="state_event_collision"):
+        store.append_state_event(0, stage, event, "different_reason", usage, 0, **identity)
+
+
+def test_state_event_rejects_sensitive_or_unbounded_reason_codes(tmp_path):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    usage = BudgetUsage()
+
+    with pytest.raises(ArtifactHaltForReview, match="invalid_state_event"):
+        store.append_state_event(0, Role.INVENTOR.value, "provider transcript", "accepted", usage, 0)
+    with pytest.raises(ArtifactHaltForReview, match="sensitive_content"):
+        store.append_state_event(0, Role.INVENTOR.value, "role_failed", "api_token_leaked", usage, 0)
+
+
+def test_load_state_halts_for_row_hash_tampering(tmp_path):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    store.append_state_event(0, "gate", "gate_decided", "accepted", BudgetUsage(), 0)
+    path = tmp_path / "state.jsonl"
+    row = json.loads(path.read_text(encoding="utf-8"))
+    row["reason_code"] = "tampered"
+    path.write_text(json.dumps(row, sort_keys=True, separators=(",", ":")) + "\n", encoding="utf-8")
+
+    with pytest.raises(ArtifactHaltForReview, match="state_hash_mismatch"):
+        store.load_state()
+
+
+@pytest.mark.parametrize(
+    ("field", "value", "reason"),
+    (("sequence", 1, "invalid_state_sequence"),
+     ("previous_hash", "f" * 64, "invalid_state_chain"),
+     ("schema_version", "2.0", "unsupported_state_version")),
+)
+def test_load_state_halts_for_duplicate_sequence_broken_chain_or_version(tmp_path, field, value, reason):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    store.append_state_event(0, "gate", "gate_decided", "accepted", BudgetUsage(), 0)
+    store.append_state_event(0, "run", "run_completed", "accepted", BudgetUsage(stages=1), 0)
+    path = tmp_path / "state.jsonl"
+    rows = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
+    rows[1][field] = value
+    unhashed = {key: val for key, val in rows[1].items() if key != "row_hash"}
+    rows[1]["row_hash"] = hashlib.sha256(json.dumps(unhashed, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    path.write_text("".join(json.dumps(row, sort_keys=True, separators=(",", ":")) + "\n" for row in rows), encoding="utf-8")
+
+    with pytest.raises(ArtifactHaltForReview, match=reason):
+        store.load_state()
+
+
+def test_write_summary_persists_reconstructible_run_summary(tmp_path):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    summary = RunSummary("1.0", "run-001", "halt_for_review", "human_review_required", 1)
+
+    path = store.write_summary(summary)
+
+    assert json.loads(path.read_text(encoding="utf-8")) == summary.to_canonical_dict()
+
+
+def test_completed_summary_round_trips_or_reconstructs_from_terminal_state(tmp_path):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    usage = BudgetUsage(stages=5)
+    store.append_state_event(0, "gate", "gate_decided", "quality_improved", usage, 0, action="advance")
+    store.append_state_event(0, "run", "run_completed", "quality_improved", usage, 0, action="advance")
+    expected = RunSummary("1.0", "run-001", "advance", "quality_improved", 1)
+    assert store.load_summary() == expected
+    store.write_summary(expected)
+    assert store.load_summary() == expected
+
+
+def test_tampered_terminal_summary_halts_typed(tmp_path):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    usage = BudgetUsage(stages=5)
+    store.append_state_event(0, "gate", "gate_decided", "quality_improved", usage, 0, action="advance")
+    store.append_state_event(0, "run", "run_completed", "quality_improved", usage, 0, action="advance")
+    store.write_summary(RunSummary("1.0", "run-001", "advance", "quality_improved", 1))
+    path = tmp_path / "summary.json"
+    value = json.loads(path.read_text(encoding="utf-8"))
+    value["reason_code"] = "tampered"
+    path.write_text(json.dumps(value, sort_keys=True, separators=(",", ":")), encoding="utf-8")
+    with pytest.raises(ArtifactHaltForReview, match="summary_state_mismatch"):
+        store.load_summary()
+
+
+def test_project_summary_cannot_overwrite_terminal_summary(tmp_path):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    store.write_summary(RunSummary("1.0", "run-001", "halt_for_review", "human_review_required", 1))
+    with pytest.raises(ArtifactHaltForReview, match="summary_conflict"):
+        store.project_summary()
+
+
+def test_state_journal_enforces_reservation_and_terminal_order(tmp_path):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    envelope = _inventor_envelope()
+    usage = BudgetUsage(stages=1)
+    store.reserve_role_attempt(0, Role.INVENTOR, envelope, "invent-0", usage, 0)
+    with pytest.raises(ArtifactHaltForReview, match="active_role_attempt"):
+        store.reserve_role_attempt(0, Role.INVENTOR, envelope, "invent-0b", usage, 0)
+    with pytest.raises(ArtifactHaltForReview, match="indeterminate_role_attempt"):
+        store.append_state_event(0, "gate", "gate_decided", "rejected", usage, 0, action="halt_for_review")
+
+
+def test_state_journal_requires_gate_before_matching_run_completion(tmp_path):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    usage = BudgetUsage()
+    with pytest.raises(ArtifactHaltForReview, match="missing_gate_decision"):
+        store.append_state_event(0, "run", "run_completed", "accepted", usage, 0, action="advance")
+    store.append_state_event(0, "gate", "gate_decided", "accepted", usage, 0, action="advance")
+    with pytest.raises(ArtifactHaltForReview, match="terminal_decision_mismatch"):
+        store.append_state_event(0, "run", "run_completed", "different", usage, 0, action="advance")
+
+def test_reserved_role_attempt_without_outcome_halts_as_indeterminate(tmp_path):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    envelope = _inventor_envelope()
+
+    reserved = store.reserve_role_attempt(
+        0, Role.INVENTOR, envelope, "invent-0", BudgetUsage(calls=1, stages=1), 0
+    )
+
+    assert reserved.event == "role_reserved"
+    assert reserved.invocation_id == envelope.invocation_id
+    assert reserved.idempotency_key == "invent-0"
+    with pytest.raises(ArtifactHaltForReview, match="indeterminate_role_attempt"):
+        store.load_state()
+
+
+def test_complete_role_attempt_atomically_persists_result_transition_and_outcome(tmp_path):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    envelope = _inventor_envelope()
+    usage = BudgetUsage(calls=1, stages=1)
+    store.reserve_role_attempt(0, Role.INVENTOR, envelope, "invent-0", usage, 0)
+
+    artifact_hash = store.complete_role_attempt(
+        0, Role.INVENTOR, envelope, _experiment(), "invent-0", usage, 0
+    )
+
+    assert store.load_role_result(0, Role.INVENTOR) == _experiment()
+    assert store.load_state().last_event.event == "role_completed"
+    journal = json.loads((tmp_path / "journal.jsonl").read_text(encoding="utf-8"))
+    assert journal["artifact_hash"] == artifact_hash
+    assert journal["idempotency_key"] == "invent-0"
+
+
+def test_completion_requires_matching_persisted_reservation(tmp_path):
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+
+    with pytest.raises(ArtifactHaltForReview, match="missing_role_reservation"):
+        store.complete_role_attempt(
+            0, Role.INVENTOR, _inventor_envelope(), _experiment(), "invent-0", BudgetUsage(), 0
+        )
 
 
 def test_put_role_artifact_hashes_canonical_bytes_and_uses_atomic_replace(tmp_path, monkeypatch):

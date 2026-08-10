@@ -65,6 +65,7 @@ def test_local_secrets_run_artifacts_caches_and_worktrees_are_ignored() -> None:
         ".env.local",
         ".envlocal",
         "output/run.json",
+        ".artifacts/autoresearch/run.json",
         "run.json.out",
         "__pycache__/module.pyc",
         ".pytest_cache/v/cache/nodeids",

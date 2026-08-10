@@ -47,3 +47,4 @@ Thumbs.db
 .coverage
 htmlcov/
 runs/
+.artifacts/

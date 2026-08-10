@@ -8,6 +8,7 @@ from enum import StrEnum
 from hashlib import sha256
 import json
 import math
+import re
 from types import MappingProxyType
 from typing import Any, Mapping
 from uuid import UUID, uuid4
@@ -103,6 +104,32 @@ class CanonicalContract:
 
 
 @dataclass(frozen=True, slots=True)
+class BudgetCharge(CanonicalContract):
+    """Complete bounded charge declared before one external execution."""
+
+    schema_version: str = SCHEMA_VERSION
+    calls: int = 0
+    queries: int = 0
+    scrapes: int = 0
+    llm_calls: int = 0
+    cost: float = 0.0
+    stages: int = 0
+
+    def __post_init__(self) -> None:
+        _require_schema_version(self.schema_version)
+        for name in ("calls", "queries", "scrapes", "llm_calls", "stages"):
+            value = getattr(self, name)
+            if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+                raise SchemaError(f"{name} must be a non-negative integer")
+            if value > 1_000_000:
+                raise SchemaError(f"{name} must be bounded at 1000000")
+        _require_finite(self.cost, "cost")
+        if self.cost < 0:
+            raise SchemaError("cost must be a non-negative finite number")
+        if self.cost > 1_000_000_000:
+            raise SchemaError("cost must be bounded at 1000000000")
+
+@dataclass(frozen=True, slots=True)
 class RunRequest(CanonicalContract):
     schema_version: str
     run_id: str
@@ -131,8 +158,8 @@ class RunRequest(CanonicalContract):
         if not isinstance(self.budget_limits, BudgetLimits):
             raise SchemaError("budget_limits must be BudgetLimits")
         _require_finite(self.approval_threshold, "approval_threshold")
-        if not 0 < self.approval_threshold <= 1:
-            raise SchemaError("approval_threshold must be between zero and one")
+        if self.approval_threshold != 0.90:
+            raise SchemaError("approval_threshold must be exactly 0.90")
         object.__setattr__(self, "constraints", frozen_constraints)
         object.__setattr__(self, "baseline", frozen_baseline)
 
@@ -147,7 +174,10 @@ class RunSummary(CanonicalContract):
     def __post_init__(self) -> None:
         _require_schema_version(self.schema_version)
         _require_text(self.run_id, "run_id")
-        _require_text(self.final_action, "final_action")
+        if not isinstance(self.final_action, str) or self.final_action not in {
+            "advance", "retry", "rollback", "halt_for_review",
+        }:
+            raise SchemaError("invalid final_action")
         _require_text(self.reason_code, "reason_code")
         if isinstance(self.cycles_completed, bool) or not isinstance(self.cycles_completed, int) or self.cycles_completed < 0:
             raise SchemaError("cycles_completed must be a non-negative integer")
@@ -321,3 +351,181 @@ class RoleEnvelope(CanonicalContract):
                 raise SchemaError(f"payload fields not allowed for {self.role.value}: {sorted(disallowed)}")
             raise SchemaError(f"payload fields missing for {self.role.value}: {sorted(missing)}")
         object.__setattr__(self, "payload", _freeze(self.payload, field_name="payload"))
+
+
+CompletedRoleResult = Experiment | CheckerResult | tuple[Evidence, ...] | EvaluationResult
+
+
+@dataclass(frozen=True, slots=True, init=False)
+class CompletedRoleRecord(CanonicalContract):
+    """A validated role invocation and its complete reconstructable result."""
+
+    schema_version: str
+    envelope: RoleEnvelope
+    result_type: str
+    result: CompletedRoleResult
+
+    @classmethod
+    def create(cls, envelope: RoleEnvelope, result: CompletedRoleResult) -> "CompletedRoleRecord":
+        if not isinstance(envelope, RoleEnvelope):
+            raise SchemaError("envelope must be a RoleEnvelope")
+        result_type = cls._result_type(envelope.role, result)
+        return cls._build(SCHEMA_VERSION, envelope, result_type, result)
+
+    @classmethod
+    def rehydrate(
+        cls,
+        *,
+        schema_version: str,
+        envelope: Mapping[str, Any],
+        result_type: str,
+        result: Any,
+    ) -> "CompletedRoleRecord":
+        _require_schema_version(schema_version)
+        try:
+            role_envelope = RoleEnvelope.rehydrate(
+                schema_version=envelope["schema_version"],
+                role=Role(envelope["role"]),
+                invocation_id=envelope["invocation_id"],
+                payload=envelope["payload"],
+            )
+            reconstructed = cls._rehydrate_result(result_type, result)
+        except (KeyError, TypeError, ValueError) as error:
+            raise SchemaError("invalid completed role record") from error
+        return cls._build(schema_version, role_envelope, result_type, reconstructed)
+
+    @classmethod
+    def _build(
+        cls,
+        schema_version: str,
+        envelope: RoleEnvelope,
+        result_type: str,
+        result: CompletedRoleResult,
+    ) -> "CompletedRoleRecord":
+        _require_schema_version(schema_version)
+        expected_type = cls._result_type(envelope.role, result)
+        if result_type != expected_type:
+            raise SchemaError("role result mismatch")
+        record = object.__new__(cls)
+        object.__setattr__(record, "schema_version", schema_version)
+        object.__setattr__(record, "envelope", envelope)
+        object.__setattr__(record, "result_type", result_type)
+        object.__setattr__(record, "result", result)
+        return record
+
+    @staticmethod
+    def _result_type(role: Role, result: CompletedRoleResult) -> str:
+        if role is Role.INVENTOR and isinstance(result, Experiment):
+            return "experiment"
+        if role in (Role.IN_BOUNDS_CHECKER, Role.NOVELTY_CHECKER) and isinstance(result, CheckerResult):
+            expected_checker = "in_bounds" if role is Role.IN_BOUNDS_CHECKER else "novelty"
+            if result.checker != expected_checker:
+                raise SchemaError("checker must match role")
+            return "checker_result"
+        if role is Role.EXECUTOR and isinstance(result, tuple) and all(isinstance(item, Evidence) for item in result):
+            if not result:
+                raise SchemaError("evidence must not be empty")
+            if len(result) > MAX_LIST_ITEMS:
+                raise SchemaError(f"list exceeds {MAX_LIST_ITEMS} items: result")
+            return "evidence"
+        if role is Role.EVALUATOR and isinstance(result, EvaluationResult):
+            return "evaluation_result"
+        raise SchemaError("role result mismatch")
+
+    @staticmethod
+    def _rehydrate_result(result_type: str, value: Any) -> CompletedRoleResult:
+        if result_type == "experiment":
+            return Experiment(**value)
+        if result_type == "checker_result":
+            return CheckerResult(**value)
+        if result_type == "evidence":
+            if isinstance(value, (str, bytes)) or not isinstance(value, Sequence):
+                raise SchemaError("evidence must be a sequence")
+            return tuple(Evidence(**item) for item in value)
+        if result_type == "evaluation_result":
+            return EvaluationResult(**value)
+        raise SchemaError("unsupported role result type")
+
+
+STATE_EVENTS = frozenset({"role_reserved", "role_completed", "role_failed", "gate_decided", "run_completed"})
+_STATE_STAGES = frozenset(role.value for role in Role) | {"gate", "run"}
+_STATE_SLUG = re.compile(r"^[a-z0-9_]+$")
+_ZERO_HASH = "0" * 64
+
+
+@dataclass(frozen=True, slots=True)
+class StateEventRecord(CanonicalContract):
+    schema_version: str
+    sequence: int
+    cycle: int
+    stage: str
+    event: str
+    reason_code: str
+    action: str | None
+    budget_usage: Any
+    retry_count: int
+    invocation_id: str | None
+    idempotency_key: str | None
+    previous_hash: str
+    row_hash: str
+
+    def __post_init__(self) -> None:
+        from .budgets import BudgetUsage
+
+        _require_schema_version(self.schema_version)
+        for name, value in (("sequence", self.sequence), ("cycle", self.cycle), ("retry_count", self.retry_count)):
+            if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+                raise SchemaError(f"{name} must be a non-negative integer")
+        if self.sequence < 1:
+            raise SchemaError("sequence must be positive")
+        if self.stage not in _STATE_STAGES or self.event not in STATE_EVENTS:
+            raise SchemaError("invalid state event")
+        if not isinstance(self.reason_code, str) or not _STATE_SLUG.fullmatch(self.reason_code):
+            raise SchemaError("invalid state event")
+        _check_safe_key(self.reason_code)
+        if self.event in {"gate_decided", "run_completed"}:
+            if self.action not in {"advance", "rollback", "retry", "halt_for_review"}:
+                raise SchemaError("terminal state requires gate action")
+        elif self.action is not None:
+            raise SchemaError("role state cannot contain gate action")
+        if not isinstance(self.budget_usage, BudgetUsage):
+            raise SchemaError("budget_usage must be BudgetUsage")
+        if self.invocation_id is not None:
+            _require_text(self.invocation_id, "invocation_id")
+            try:
+                if str(UUID(self.invocation_id)) != self.invocation_id:
+                    raise ValueError
+            except (AttributeError, ValueError) as error:
+                raise SchemaError("invocation_id must be a canonical UUID") from error
+        if self.idempotency_key is not None:
+            _require_text(self.idempotency_key, "idempotency_key")
+        for name, value in (("previous_hash", self.previous_hash), ("row_hash", self.row_hash)):
+            if not isinstance(value, str) or len(value) != 64 or any(char not in "0123456789abcdef" for char in value):
+                raise SchemaError(f"invalid {name}")
+        is_role_event = self.event.startswith("role_")
+        if is_role_event != (self.stage in {role.value for role in Role}):
+            raise SchemaError("invalid state event")
+        if is_role_event and (self.invocation_id is None or self.idempotency_key is None):
+            raise SchemaError("role state requires invocation identity")
+        if not is_role_event and (self.invocation_id is not None or self.idempotency_key is not None):
+            raise SchemaError("terminal state cannot contain invocation identity")
+
+
+@dataclass(frozen=True, slots=True)
+class StateProjection:
+    budget_usage: Any
+    retry_count: int
+    last_event: StateEventRecord | None
+    rows: tuple[StateEventRecord, ...]
+
+    def __post_init__(self) -> None:
+        from .budgets import BudgetUsage
+
+        if not isinstance(self.budget_usage, BudgetUsage):
+            raise SchemaError("budget_usage must be BudgetUsage")
+        if isinstance(self.retry_count, bool) or not isinstance(self.retry_count, int) or self.retry_count < 0:
+            raise SchemaError("retry_count must be a non-negative integer")
+        if not isinstance(self.rows, tuple) or not all(isinstance(row, StateEventRecord) for row in self.rows):
+            raise SchemaError("rows must contain state records")
+        if self.last_event != (self.rows[-1] if self.rows else None):
+            raise SchemaError("last_event must match rows")
