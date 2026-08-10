@@ -16,6 +16,12 @@ monitors/
 # Node
 node_modules/
 
+# Agent-created task worktrees
+.worktrees/
+
+# Hosted report update/delete key (local secret)
+HANDOFF.secret.local
+
 # Trigger.dev local cache
 .trigger/
 
