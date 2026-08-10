@@ -130,7 +130,7 @@ py scripts/autocontext_runner.py --help
 py scripts/autocontext_runner.py --stub-run --run-dir .artifacts/autoresearch/compat-proof
 py scripts/autocontext_runner.py --resume .artifacts/autoresearch/compat-proof
 py scripts/validate.py --summary
-git grep -nEI '(api[_-]?key|token|secret|password)[[:space:]]*[:=][[:space:]]*["'"'][^${][^"'"']+' -- ':!docs/recovery/repo-cleanup-full-update/inventory.csv'
+py scripts/credential_scan.py
 git diff --check
 git status --short
 ```
