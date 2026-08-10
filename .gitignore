@@ -3,6 +3,7 @@ __pycache__/
 *.pyo
 
 # Secrets
+.env*
 .env
 .env.*
 

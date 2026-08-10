@@ -11,6 +11,8 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 INVENTORY = ROOT / "docs" / "recovery" / "repo-cleanup-full-update" / "inventory.csv"
+QUARANTINE_MAP = ROOT / "docs" / "recovery" / "repo-cleanup-full-update" / "quarantine-map.csv"
+ACTION_DECISIONS = ROOT / "docs" / "recovery" / "repo-cleanup-full-update" / "action-decisions.csv"
 DOCUMENTED_ENTRY_POINTS = (
     "scripts/pattern_tester.py",
     "scripts/gt_evaluator.py",
@@ -21,6 +23,11 @@ DOCUMENTED_ENTRY_POINTS = (
 
 def _inventory_rows() -> list[dict[str, str]]:
     with INVENTORY.open(encoding="utf-8", newline="") as handle:
+        return list(csv.DictReader(handle))
+
+
+def _csv_rows(path: Path) -> list[dict[str, str]]:
+    with path.open(encoding="utf-8", newline="") as handle:
         return list(csv.DictReader(handle))
 
 
@@ -54,6 +61,7 @@ def test_local_secrets_run_artifacts_caches_and_worktrees_are_ignored() -> None:
     for path in (
         ".env",
         ".env.local",
+        ".envlocal",
         "output/run.json",
         "run.json.out",
         "__pycache__/module.pyc",
@@ -63,6 +71,30 @@ def test_local_secrets_run_artifacts_caches_and_worktrees_are_ignored() -> None:
         ".worktrees/task/file.txt",
     ):
         assert _is_ignored(path), path
+
+
+def test_recovery_action_decisions_are_evidence_backed_and_currently_empty() -> None:
+    assert ACTION_DECISIONS.is_file(), "every cleanup phase must record its action decisions"
+    decisions = _csv_rows(ACTION_DECISIONS)
+    inventory = {row["path"]: row for row in _inventory_rows()}
+    quarantine = {
+        (row["path"], row["object_id"]): row
+        for row in _csv_rows(QUARANTINE_MAP)
+    }
+
+    assert decisions == [], "the Phase 3 decision record proves no restoration or removal occurred"
+    for decision in decisions:
+        assert decision["action"] in {"removal", "restoration"}
+        inventory_row = inventory[decision["inventory_path"]]
+        assert decision["object_id"] == inventory_row["object_id"]
+        assert decision["recovery_command"] == inventory_row["recovery_command"]
+
+        has_quarantine_evidence = decision["quarantine_path"] or decision["quarantine_sha256"]
+        if has_quarantine_evidence:
+            assert inventory_row["disposition"] == "quarantine"
+            evidence = quarantine[(decision["inventory_path"], decision["object_id"])]
+            assert decision["quarantine_path"] == evidence["local_path"]
+            assert decision["quarantine_sha256"] == evidence["sha256"]
 
 
 def test_documented_python_entry_points_exist_and_offer_help() -> None:

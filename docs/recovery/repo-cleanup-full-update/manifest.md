@@ -18,3 +18,10 @@ The earlier status-era observation was 3,558. The preserved object-tree coverage
 - Removals: none. No current-tree candidate had an explicit removal disposition;
   campaign/generated bulk remains outside the tracked tree in the ignored local
   quarantine.
+## 2026-08-10 Phase 3 fix round 1 action record
+
+`action-decisions.csv` is the machine-readable Phase 3 action record. It has
+only its schema header and zero action rows, which is the authoritative proof
+that this phase made no restoration or removal. Any future row must match the
+inventory path, object ID, recovery command, and, when quarantine-backed, the
+quarantine-map local path and SHA-256.
