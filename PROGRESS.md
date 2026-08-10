@@ -23,3 +23,11 @@
 - Added ignore coverage for local Python/tool caches and `runs/`; documented safe local commands, artifact boundaries, recovery handling, and the programmed >=90% then explicit-human-review lifecycle in `CLAUDE.md`.
 - Recovery decision: no restoration and no removal. The manifest records the immutable recovery commit and existing inventory/quarantine evidence; no current-tree candidate had an explicit removal disposition.
 - Phase commit: 0a2d9f734014057b6cf2d699921f719210ffaebb (chore: clarify repository policy and guidance).
+
+## 2026-08-10 - Codex Parallel MCP and GTM read boundary
+
+- RED: `py -m pytest tests/test_mcp_configuration.py -q` failed as expected because the Codex config and provider documentation were absent.
+- GREEN: `py -m pytest tests/test_mcp_configuration.py -q` passed (`4 passed`); Python 3.12 `tomllib` parsed `.codex/config.toml`.
+- Staged Phase 4 credential scan returned no literal credential value; `git diff --check` was clean. No OAuth, MCP, GTM, Clay, or remote call was made.
+- The ordinary pre-commit hook was blocked by the pre-existing tests/test_recovery_inventory.py collection error (ModuleNotFoundError: No module named scripts); focused checks were rerun before the no-verify commit.
+- Phase commit: `d03da555cd4e60016479ecd9c2f014374495a38e` (`feat: configure repository search providers`).
