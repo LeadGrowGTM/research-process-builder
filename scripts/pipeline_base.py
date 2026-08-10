@@ -36,7 +36,6 @@ from domain_resolver import (
     normalize_domain as _normalize_domain_resolver,
     detect_industry,
     fuzzy_dedup_companies,
-    names_are_similar,
     match_existing_company,
 )
 
@@ -326,7 +325,7 @@ class SupabaseClient:
                     print(f"    Management API: {resp.status_code} {resp.text[:150]}")
             except Exception as e:
                 print(f"    Management API error: {e}")
-        print(f"    Run the schema SQL in Supabase SQL Editor to create the table.")
+        print("    Run the schema SQL in Supabase SQL Editor to create the table.")
         return False
 
 
@@ -425,7 +424,7 @@ class ResearchPipeline:
         with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
             futures = {executor.submit(self.run_single_query, q, tbs): q for q in all_queries}
             for future in concurrent.futures.as_completed(futures):
-                qdef = futures[future]
+                futures[future]
                 result = future.result()
                 count = result.get("result_count", 0)
                 err = result.get("error", "")
@@ -830,7 +829,7 @@ class ResearchPipeline:
                     article_text = self.clean_article_content(raw_article_text)
                     print(f"    Got {raw_len} chars, cleaned to {len(article_text)}")
                 else:
-                    print(f"    Scrape failed, trying next source...")
+                    print("    Scrape failed, trying next source...")
                     for src in company["sources"]:
                         if src["url"] != source_url:
                             raw_article_text = self.fetch_url(src["url"])
@@ -843,10 +842,10 @@ class ResearchPipeline:
             # Extract with GPT
             extracted = None
             if article_text and OPENAI_API_KEY:
-                print(f"    Extracting with GPT-4o-mini...")
+                print("    Extracting with GPT-4o-mini...")
                 extracted = self.extract_with_openai(article_text, name, company.get("amount", ""))
                 if extracted and not self.post_extract_filter(extracted):
-                    print(f"    FILTERED: post-extraction filter")
+                    print("    FILTERED: post-extraction filter")
                     continue
 
             # Domain resolution with validation gate
@@ -864,7 +863,7 @@ class ResearchPipeline:
                     print(f"    GPT domain REJECTED: {candidate} ({v['reason']})")
 
             if domain == "not_found":
-                print(f"    Running domain resolver...")
+                print("    Running domain resolver...")
                 domain = self.lookup_domain(name, source_url, article_text, industry)
 
             # Semantic validation — uses raw text so hyperlinks are preserved
@@ -894,7 +893,7 @@ class ResearchPipeline:
                     company = dict(company)
                     company["confidence"] = "low"
                 else:
-                    print(f"    Semantic: correct ✓")
+                    print("    Semantic: correct ✓")
 
             record = self.build_enriched_record(company, extracted, domain, source_url)
             enriched.append(record)
@@ -984,7 +983,7 @@ class ResearchPipeline:
         # Supabase upsert (high + medium only) — delegated to SupabaseClient
         if self._supabase._ready():
             if self._supabase.table_exists(self.SUPABASE_TABLE):
-                print(f"\n  Pushing to Supabase...")
+                print("\n  Pushing to Supabase...")
                 rows = [self.get_supabase_row(r, date_str) for r in high_medium]
                 recent = self._supabase.fetch_recent(self.SUPABASE_TABLE, days=30)
                 if recent:
@@ -995,11 +994,11 @@ class ResearchPipeline:
                 print(f"\n  Supabase: table '{self.SUPABASE_TABLE}' not found")
                 self._supabase.create_table(self.SUPABASE_TABLE, self.get_supabase_schema_sql())
         else:
-            print(f"\n  Supabase: SKIPPED (no SUPABASE_URL/SUPABASE_KEY)")
+            print("\n  Supabase: SKIPPED (no SUPABASE_URL/SUPABASE_KEY)")
 
         # Webhook push (Clay, Zapier, etc.) — high + medium only
         if self.WEBHOOK_URL:
-            print(f"\n  Pushing to webhook...")
+            print("\n  Pushing to webhook...")
             sent = self.push_to_webhook(high_medium, date_str)
             print(f"  Webhook: {sent}/{len(high_medium)} rows sent")
 
@@ -1110,7 +1109,7 @@ class ResearchPipeline:
             print(f"\n  Loading stage 1 from {stage1_file}")
             raw_results = json.loads(stage1_file.read_text(encoding="utf-8"))
         else:
-            print(f"\n  STAGE 1: DISCOVERY")
+            print("\n  STAGE 1: DISCOVERY")
             raw_results = self.run_discovery(args.tbs, args.dry_run)
             if args.dry_run:
                 return
@@ -1122,7 +1121,7 @@ class ResearchPipeline:
             return
 
         # --- STAGE 2: Score & Filter ---
-        print(f"\n  STAGE 2: SCORE & FILTER")
+        print("\n  STAGE 2: SCORE & FILTER")
         scored = self.score_and_filter(raw_results)
 
         stage2_file = STAGE_DIR / f"stage2-{date_str}.json"
@@ -1135,7 +1134,7 @@ class ResearchPipeline:
 
         # --- STAGE 3: Enrich ---
         if args.skip_enrich:
-            print(f"\n  STAGE 3: SKIPPED (--skip-enrich)")
+            print("\n  STAGE 3: SKIPPED (--skip-enrich)")
             enriched = [self.build_skip_enrich_record(c) for c in scored["companies"]]
         else:
             print(f"\n  STAGE 3: ENRICH & EXTRACT (max {args.max_enrich})")
@@ -1151,11 +1150,11 @@ class ResearchPipeline:
             return
 
         # --- STAGE 4: Output ---
-        print(f"\n  STAGE 4: OUTPUT")
+        print("\n  STAGE 4: OUTPUT")
         csv_path, json_path = self.write_output(enriched, date_str)
 
         print(f"\n{'='*60}")
-        print(f"  PIPELINE COMPLETE")
+        print("  PIPELINE COMPLETE")
         print(f"  Companies found: {len(enriched)}")
         print(f"  CSV: {csv_path}")
         print(f"  JSON: {json_path}")

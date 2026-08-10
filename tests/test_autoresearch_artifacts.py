@@ -499,7 +499,7 @@ def test_load_halts_when_run_shape_or_unreferenced_object_is_invalid(tmp_path):
     store = ArtifactStore(tmp_path / "orphan")
     store.create_run(_request())
     orphan = {"schema_version": "1.0"}
-    orphan_bytes = json.dumps(orphan, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    json.dumps(orphan, sort_keys=True, separators=(",", ":")).encode("utf-8")
 
 
 def test_load_rejects_unlinked_role_artifacts_and_mismatched_transition_links(tmp_path):

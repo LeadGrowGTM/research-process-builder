@@ -506,7 +506,7 @@ def resolve_domain_agent(
     Returns: {"domain": str, "confidence": str, "evidence": str, "searches": int, "gpt_calls": int}
     """
     if not OPENAI_API_KEY:
-        print(f"      agent skipped: OPENAI_API_KEY not loaded in domain_resolver scope")
+        print("      agent skipped: OPENAI_API_KEY not loaded in domain_resolver scope")
         return {"domain": "not_found", "confidence": "low", "evidence": "no API key", "searches": 0, "gpt_calls": 0}
     print(f"      agent fallback firing for: {company_name}")
 

@@ -4,7 +4,6 @@ from dataclasses import replace
 import os
 from pathlib import Path
 import subprocess
-import sys
 
 import pytest
 

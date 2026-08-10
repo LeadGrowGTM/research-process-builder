@@ -145,7 +145,7 @@ class TestPipelineDelegatesToSupabaseClient:
         We inject a mock client and verify it receives the push call.
         """
         from pipeline_base import ResearchPipeline
-        import tempfile, os
+        import tempfile
 
         pipeline = ResearchPipeline()
         pipeline.OUTPUT_PREFIX = "test"

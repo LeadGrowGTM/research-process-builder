@@ -29,7 +29,9 @@ def results():
 
 class RecordingRoles:
     def __init__(self, fail_after=None):
-        self.values = results(); self.calls=[]; self.fail_after=fail_after
+        self.values = results()
+        self.calls = []
+        self.fail_after = fail_after
     def runner(self, index):
         def run(envelope):
             self.calls.append(envelope)
