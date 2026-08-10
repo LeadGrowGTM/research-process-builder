@@ -83,7 +83,7 @@ Write `tests/test_mcp_configuration.py` before configuration. Tests reject liter
 
 ### Phase 5 — Test-first resumable orchestration and provider seams
 
-**Status:** pending
+**Status:** complete — reviewed; commits `00d20e0`, `3e49eb8`, `5059ac7`, `8f66377`, `93caa2b`, `f9228ea`, `f0abf2d`, `40ebd64`, `07cf233`, `251ca7d`, `695b037`, `c6a6528`
 **Routing:** `test-driven-development`
 **Durable slice:** `issues/05-resumable-orchestration.md`
 

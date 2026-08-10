@@ -31,3 +31,12 @@
 - Staged Phase 4 credential scan returned no literal credential value; `git diff --check` was clean. No OAuth, MCP, GTM, Clay, or remote call was made.
 - The ordinary pre-commit hook was blocked by the pre-existing tests/test_recovery_inventory.py collection error (ModuleNotFoundError: No module named scripts); focused checks were rerun before the no-verify commit.
 - Phase commit: `d03da555cd4e60016479ecd9c2f014374495a38e` (`feat: configure repository search providers`).
+## 2026-08-10 — Resumable autoresearch orchestration
+
+Phase 5: Test-first resumable orchestration and provider seams — COMPLETE
+Artifact: C:/Users/mitch/Everything_CC/tools/data/research-process-builder/.worktrees/repo-cleanup-full-update/scripts/research_orchestration/
+Proof: `py -m pytest tests/test_autoresearch_contracts.py tests/test_autoresearch_gate.py tests/test_autoresearch_artifacts.py tests/test_source_adapters.py tests/test_autoresearch_orchestrator.py tests/test_autoresearch_clis.py scripts/test_autoresearch_agent.py -q` → `163 passed in 30.97s`.
+Proof: normal pre-commit hook `pytest tests/ -x -q` → `240 passed in 99.31s`.
+Proof: primary and compatibility `--stub-run` then `--resume` returned identical `halt_for_review` / `human_review_required` summaries; each `state.jsonl` remained 12 rows with 5 unique reservations, 5 completions, `stages=5`, and calls/queries/scrapes/LLM/cost all zero.
+Proof artifacts: ignored `.artifacts/autoresearch/phase5-proof-c6a6528-agent/` and `.artifacts/autoresearch/phase5-proof-c6a6528-compat/`.
+Commit: `c6a6528ff2b32063586825631ce2a28676b980ee` (`feat: add resumable autoresearch orchestration`).
