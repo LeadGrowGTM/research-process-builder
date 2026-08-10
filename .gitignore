@@ -19,6 +19,9 @@ node_modules/
 # Agent-created task worktrees
 .worktrees/
 
+# Local recovery payloads generated from immutable Git objects
+.quarantine/
+
 # Hosted report update/delete key (local secret)
 HANDOFF.secret.local
 
