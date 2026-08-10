@@ -1,8 +1,8 @@
 # Phase 03 — Cleanup policy and verified repository guidance
 
-**Status:** pending  
-**Canonical source:** `.harness/goals/repo-cleanup-full-update/PLAN.md` → `## Phases` → Phase 3  
-**Routing:** direct with repository-policy tests  
+**Status:** pending
+**Canonical source:** `.harness/goals/repo-cleanup-full-update/PLAN.md` → `## Phases` → Phase 3
+**Routing:** direct with repository-policy tests
 **Commit:** `chore: clarify repository policy and guidance`
 
 ## Deliverable

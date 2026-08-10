@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Safely modernize the repository, add secret-free repository-scoped Parallel Search MCP configuration, and prove a provider-neutral autoresearch state machine with fresh role context, deterministic gates, and idempotent resume while preserving â‰¥90% ground-truth validation followed by human review.
+**Goal:** Safely modernize the repository, add secret-free repository-scoped Parallel Search MCP configuration, and prove a provider-neutral autoresearch state machine with fresh role context, deterministic gates, and idempotent resume while preserving ≥90% ground-truth validation followed by human review.
 
 **Architecture:** A recovery inventory generated directly from immutable stash commit trees governs reversible cleanup. A deep `research_orchestration` module owns strict contracts, budgets, artifact persistence, role sequencing, and a pure gate; the two existing scripts become thin CLIs. Provider-neutral read adapters isolate Parallel, GTM discovery, search, and deterministic-first known-URL extraction.
 
@@ -85,7 +85,7 @@ Also assert duplicate paths, missing classifications/dispositions/objects, mutab
 
 - [ ] **Step 3: Run red**
 
-Run: `py -m pytest tests/test_recovery_inventory.py -q`  
+Run: `py -m pytest tests/test_recovery_inventory.py -q`
 Expected: FAIL because `scripts.recovery_inventory` does not exist.
 
 - [ ] **Step 4: Implement the minimal Git-object inventory**
@@ -137,12 +137,12 @@ Assert root `CONTEXT.md` defines exactly Research Flow, Search Flow, Site Extrac
 
 - [ ] **Step 2: Run red**
 
-Run: `py -m pytest tests/test_domain_contract_docs.py -q`  
+Run: `py -m pytest tests/test_domain_contract_docs.py -q`
 Expected: FAIL because root context and ADR are absent.
 
 - [ ] **Step 3: Apply codebase-design and domain-modeling**
 
-Document three considered shapesâ€”persisted state machine, event-sourced reducer, and directory-per-cycle pipelineâ€”and choose the persisted state machine with an append-only journal. Describe why CLIs compose rather than coordinate, why the Gate is pure, and why providers sit behind read-only adapter seams. Keep domain definitions in `CONTEXT.md` and link rather than duplicate them elsewhere.
+Document three considered shapes—persisted state machine, event-sourced reducer, and directory-per-cycle pipeline—and choose the persisted state machine with an append-only journal. Describe why CLIs compose rather than coordinate, why the Gate is pure, and why providers sit behind read-only adapter seams. Keep domain definitions in `CONTEXT.md` and link rather than duplicate them elsewhere.
 
 - [ ] **Step 4: Run green and commit**
 
@@ -176,7 +176,7 @@ Assert every removed recovered path has a manifest disposition and recovery obje
 
 - [ ] **Step 2: Run red**
 
-Run: `py -m pytest tests/test_repository_policy.py -q`  
+Run: `py -m pytest tests/test_repository_policy.py -q`
 Expected: FAIL on stale or missing policy/documentation.
 
 - [ ] **Step 3: Perform disposition-driven cleanup**
@@ -185,7 +185,7 @@ For each candidate removal, look up the exact inventory row, verify its quaranti
 
 - [ ] **Step 4: Rewrite operator guidance from evidence**
 
-Document purpose, canonical domain link, actual directory/module layout, install/import dependencies observed in code, local safe commands, artifact locations, no-secret/no-remote-write rules, and the â‰¥90% + explicit-review approval lifecycle. Correct README/SKILL only where their commands contradict `--help` or files.
+Document purpose, canonical domain link, actual directory/module layout, install/import dependencies observed in code, local safe commands, artifact locations, no-secret/no-remote-write rules, and the ≥90% + explicit-review approval lifecycle. Correct README/SKILL only where their commands contradict `--help` or files.
 
 - [ ] **Step 5: Run green and commit**
 
@@ -226,7 +226,7 @@ Tests load configuration as JSON, assert the official server name/transport/endp
 
 - [ ] **Step 3: Run red**
 
-Run: `py -m pytest tests/test_mcp_configuration.py -q`  
+Run: `py -m pytest tests/test_mcp_configuration.py -q`
 Expected: FAIL because repository config/docs are absent.
 
 - [ ] **Step 4: Add configuration and read-only docs**
@@ -270,7 +270,7 @@ Canonical serialization must sort keys, exclude secrets/transcripts, and reject 
 
 - [ ] **Step 3: Write gate/budget table tests and run red**
 
-Parameterize all actions and reason codes: accepted improvement, bounded retryable failure, regression with baseline, â‰¥90% threshold, budget exhausted, retry exhausted without rollback, corrupt/version-invalid artifact, and unsafe ambiguity. Assert reservation happens before calls for query/scrape/LLM/retry/cost/stage counters.
+Parameterize all actions and reason codes: accepted improvement, bounded retryable failure, regression with baseline, ≥90% threshold, budget exhausted, retry exhausted without rollback, corrupt/version-invalid artifact, and unsafe ambiguity. Assert reservation happens before calls for query/scrape/LLM/retry/cost/stage counters.
 
 - [ ] **Step 4: Implement pure gate and budget ledger and run green**
 
@@ -303,7 +303,7 @@ Test canonical object hashes, temp-file + atomic replace, monotonic journal sequ
 
 - [ ] **Step 2: Run red**
 
-Run: `py -m pytest tests/test_autoresearch_artifacts.py -q`  
+Run: `py -m pytest tests/test_autoresearch_artifacts.py -q`
 Expected: FAIL because artifact store is absent.
 
 - [ ] **Step 3: Implement the artifact store**
@@ -335,7 +335,7 @@ Assert Search requires a bounded query; Extraction rejects empty known URLs; res
 
 - [ ] **Step 2: Run red**
 
-Run: `py -m pytest tests/test_source_adapters.py -q`  
+Run: `py -m pytest tests/test_source_adapters.py -q`
 Expected: FAIL because provider contracts are absent.
 
 - [ ] **Step 3: Implement protocols and deterministic pipeline**
@@ -363,7 +363,7 @@ git commit -m "feat: add provider-neutral source contracts"
 - Modify: `scripts/test_autoresearch_agent.py`
 
 **Interfaces:**
-- Consumes: contracts, budgets, gate, artifact store, and adapters from Tasks 5â€“7.
+- Consumes: contracts, budgets, gate, artifact store, and adapters from Tasks 5–7.
 - Produces: `AutoresearchOrchestrator.run(request: RunRequest) -> RunSummary`; CLIs with `--help`, `--dry-run`, `--stub-run`, `--run-dir`, and `--resume`.
 
 - [ ] **Step 1: Write failing role-isolation and state-machine tests**
@@ -376,7 +376,7 @@ Interrupt after each stage, resume, and assert completed invocation/idempotency 
 
 - [ ] **Step 3: Run red**
 
-Run: `py -m pytest tests/test_autoresearch_orchestrator.py -q`  
+Run: `py -m pytest tests/test_autoresearch_orchestrator.py -q`
 Expected: FAIL because orchestrator is absent.
 
 - [ ] **Step 4: Implement the deep orchestrator and run green**
@@ -475,7 +475,7 @@ Expected: empty final status. Then hand artifacts to Prover and a fresh Checker.
 
 ## Self-review checklist
 
-- Spec coverage: all recovery, docs/domain, MCP/GTM read-only, orchestration, provider, CLI, testing, security, and handoff requirements map to Tasks 1â€“9.
+- Spec coverage: all recovery, docs/domain, MCP/GTM read-only, orchestration, provider, CLI, testing, security, and handoff requirements map to Tasks 1–9.
 - Count integrity: plan preserves all 3,561 Git-enumerated paths and labels 3,558 as recorded baseline; it does not invent or hide the three-entry discrepancy.
 - TDD: every implementation/config task has an explicit failing command, minimal implementation step, and green command; no new skip/xfail is permitted.
 - Type consistency: `AutoresearchOrchestrator.run(request: RunRequest) -> RunSummary`, `SourceAdapter.search/extract`, `GateInput`, and `GateDecision` names are stable across tasks.

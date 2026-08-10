@@ -1,8 +1,8 @@
 # Phase 02 — Domain model and deep-module architecture
 
-**Status:** pending  
-**Canonical source:** `.harness/goals/repo-cleanup-full-update/PLAN.md` → `## Phases` → Phase 2  
-**Routing:** `codebase-design` → `domain-modeling`  
+**Status:** pending
+**Canonical source:** `.harness/goals/repo-cleanup-full-update/PLAN.md` → `## Phases` → Phase 2
+**Routing:** `codebase-design` → `domain-modeling`
 **Commit:** `docs: define resumable autoresearch domain`
 
 ## Deliverable

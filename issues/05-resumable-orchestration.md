@@ -1,8 +1,8 @@
 # Phase 05 — Test-first resumable orchestration and provider seams
 
-**Status:** pending  
-**Canonical source:** `.harness/goals/repo-cleanup-full-update/PLAN.md` → `## Phases` → Phase 5  
-**Routing:** `test-driven-development`  
+**Status:** pending
+**Canonical source:** `.harness/goals/repo-cleanup-full-update/PLAN.md` → `## Phases` → Phase 5
+**Routing:** `test-driven-development`
 **Phase commit:** `feat: add resumable autoresearch orchestration`
 
 ## Deliverable

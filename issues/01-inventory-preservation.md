@@ -1,8 +1,8 @@
 # Phase 01 — Inventory, preservation, and reversible quarantine
 
-**Status:** pending  
-**Canonical source:** `.harness/goals/repo-cleanup-full-update/PLAN.md` → `## Phases` → Phase 1  
-**Routing:** direct, with TDD for inventory verification  
+**Status:** pending
+**Canonical source:** `.harness/goals/repo-cleanup-full-update/PLAN.md` → `## Phases` → Phase 1
+**Routing:** direct, with TDD for inventory verification
 **Commit:** `chore: preserve preflight repository inventory`
 
 ## Deliverable
