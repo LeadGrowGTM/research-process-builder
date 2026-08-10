@@ -55,7 +55,18 @@ if not _shared:
     _shared = str(_candidate) if _candidate.exists() else str(SCRIPT_DIR_EARLY)
 sys.path.insert(0, _shared)
 
-import serper_search
+def _load_serper_search():
+    """Load the optional search adapter only when discovery runs."""
+    try:
+        import serper_search
+    except ImportError as error:
+        raise RuntimeError(
+            "Could not import serper_search. Set SHARED_SCRIPTS_PATH to the "
+            "directory containing serper_search.py before running discovery."
+        ) from error
+    return serper_search
+
+
 import requests
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -366,16 +377,18 @@ class ResearchPipeline:
 
     def run_single_query(self, qdef: dict, tbs: str) -> dict:
         """Run one SerperDev query and return structured results."""
-        original_num = serper_search.DEFAULT_NUM_RESULTS
-        serper_search.DEFAULT_NUM_RESULTS = qdef["num"]
-
+        search_adapter = None
+        original_num = None
         try:
-            raw = serper_search.search(query=qdef["query"], news=False, tbs=tbs)
+            search_adapter = _load_serper_search()
+            original_num = search_adapter.DEFAULT_NUM_RESULTS
+            search_adapter.DEFAULT_NUM_RESULTS = qdef["num"]
+            raw = search_adapter.search(query=qdef["query"], news=False, tbs=tbs)
         except Exception as e:
-            serper_search.DEFAULT_NUM_RESULTS = original_num
             return {"query_id": qdef["id"], "desc": qdef["desc"], "error": str(e), "results": []}
         finally:
-            serper_search.DEFAULT_NUM_RESULTS = original_num
+            if search_adapter is not None and original_num is not None:
+                search_adapter.DEFAULT_NUM_RESULTS = original_num
 
         items = raw.get("organic", [])
         results = []

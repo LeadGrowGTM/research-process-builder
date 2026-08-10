@@ -87,6 +87,31 @@ class TestPipelineDelegatesToSupabaseClient:
             "it belongs on SupabaseClient.headers()"
         )
 
+    def test_discovery_reports_missing_optional_search_adapter(self):
+        """Importing storage stays offline; discovery reports its missing adapter."""
+        from pipeline_base import ResearchPipeline
+
+        pipeline = ResearchPipeline()
+        missing_adapter = (
+            "Could not import serper_search. Set SHARED_SCRIPTS_PATH to the "
+            "directory containing serper_search.py before running discovery."
+        )
+        with patch(
+            "pipeline_base._load_serper_search",
+            side_effect=RuntimeError(missing_adapter),
+        ):
+            result = pipeline.run_single_query(
+                {"id": "q1", "desc": "offline test", "query": "example", "num": 1},
+                "qdr:d",
+            )
+
+        assert result == {
+            "query_id": "q1",
+            "desc": "offline test",
+            "error": missing_adapter,
+            "results": [],
+        }
+
     def test_pipeline_has_no_check_supabase_table_method(self):
         """check_supabase_table() should be removed from ResearchPipeline."""
         from pipeline_base import ResearchPipeline
