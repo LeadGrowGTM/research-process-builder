@@ -39,12 +39,19 @@ load_dotenv(Path.home() / ".env", override=False)
 _shared = os.environ.get("SHARED_SCRIPTS_PATH", str(_script_dir))
 sys.path.insert(0, _shared)
 
-try:
-    import serper_search
-except ImportError:
-    print("ERROR: Could not import serper_search.")
-    print("Set SHARED_SCRIPTS_PATH env var to the directory containing serper_search.py")
-    sys.exit(1)
+serper_search = None
+
+
+def load_serper_search():
+    """Load the optional network adapter only for an execution run."""
+    try:
+        import serper_search as adapter
+    except ImportError as error:
+        raise RuntimeError(
+            "Could not import serper_search. Set SHARED_SCRIPTS_PATH to the "
+            "directory containing serper_search.py before running queries."
+        ) from error
+    return adapter
 
 # Paths
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -658,7 +665,8 @@ def get_dominant_sources(min_quality: int = 3) -> dict:
 # Main Runner
 # ---------------------------------------------------------------------------
 
-def run(args):
+def run(args) -> int:
+    global serper_search
     config_path = SCRIPT_DIR / (args.config if args.config else "patterns_config.json")
     results_path = Path(args.output).resolve() if args.output else RESULTS_FILE
 
@@ -674,18 +682,18 @@ def run(args):
         results = store.get_all()
         if not results:
             print(f"No results found in {results_path}. Run tests first.")
-            return
+            return 0
         generate_report(results)
-        return
+        return 0
 
     if args.generate_doc:
         store = ResultStore(results_path)
         results = store.get_all()
         if not results:
             print(f"No results found in {results_path}. Run tests first.")
-            return
+            return 0
         generate_doc(results, config)
-        return
+        return 0
 
     # Test run
     expander = PatternExpander()
@@ -718,6 +726,12 @@ def run(args):
                     continue
 
                 # Execute search
+                if serper_search is None:
+                    try:
+                        serper_search = load_serper_search()
+                    except RuntimeError as error:
+                        print(f"ERROR: {error}", file=sys.stderr)
+                        return 1
                 try:
                     search_mode = variant.get("search_mode", "web")
                     is_news = search_mode == "news"
@@ -753,6 +767,8 @@ def run(args):
         print(f"Total cost: ~${run_count * 0.0001:.4f}")
         print(f"Results saved to: {RESULTS_FILE}")
 
+    return 0
+
 
 def main():
     parser = argparse.ArgumentParser(description="Serper Pattern Tester")
@@ -769,14 +785,14 @@ def main():
 
     if args.migrate:
         migrate_all_domains()
-        return
+        return 0
 
     if args.sources:
         generate_source_analysis()
-        return
+        return 0
 
-    run(args)
+    return run(args)
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

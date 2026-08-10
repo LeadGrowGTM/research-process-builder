@@ -2,6 +2,8 @@
 
 Concrete improvements to reduce leaked abstractions, improve encapsulation, and simplify caller code.
 
+Canonical resumable-autoresearch language is defined in [CONTEXT.md](../../CONTEXT.md); this document links to those terms rather than redefining them.
+
 ---
 
 ## 1. domain_resolver.py — Too Many Exports Leak Internals
@@ -66,3 +68,13 @@ Callers stop importing 8 functions and import 1 class.
 **Proposed Solution:** Read the threshold from a config file (e.g., `data/eval_config.json`) or an environment variable (`EVAL_ACCURACY_THRESHOLD`). Default to 90% if not set. Allows different thresholds for CI vs. manual runs.
 
 **Impact:** LOW — pure config externalization, no logic change. Useful primarily when adding new pipeline types with different maturity levels.
+
+---
+
+## 7. Resumable Autoresearch - Keep Lifecycle Coordination Behind One Interface
+
+**Problem:** A directory-per-cycle approach would make each CLI infer the next role, reconstruct partial progress, and apply its own budget and retry rules. That would leak orchestration behavior across callers and make resume behavior difficult to verify consistently.
+
+**Proposed Solution:** Add `AutoresearchOrchestrator.run(request: RunRequest) -> RunSummary` as the single external interface. Keep the Gate pure and deterministic; inject provider-specific behavior through read-only Source Adapter seams, using local adapters in tests. CLIs should compose the orchestrator and render its summary only.
+
+**Impact:** HIGH - concentrates lifecycle, idempotency, and safe-halt behavior in a deep Module. The decision and its alternatives are recorded in [ADR 0003](../domain/adr/0003-resumable-autoresearch-orchestration.md).

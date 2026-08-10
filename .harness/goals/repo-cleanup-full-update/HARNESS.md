@@ -55,21 +55,21 @@ LOOP_TRACKER
 > Update this file as you complete each step. Check off items in order.
 
 ### Planner
-- [ ] HARNESS.md read
-- [ ] routing resolution consumed
-- [ ] selected routing file read: `C:/Users/mitch/Everything_CC/tools/agent/agent-harness/skills/write-goal-prompt/references/skill-routing.md`
-- [ ] BRIEF.md and PLAN.md written
-- [ ] PLAN phases mirrored to `issues/NN-<slug>.md`
+- [x] HARNESS.md read
+- [x] routing resolution consumed
+- [x] selected routing file read: `C:/Users/mitch/Everything_CC/tools/agent/agent-harness/skills/write-goal-prompt/references/skill-routing.md`
+- [x] BRIEF.md and PLAN.md written
+- [x] PLAN phases mirrored to `issues/NN-<slug>.md`
 
 ### Cycle 1
-- [ ] Maker: inventory/preservation — artifact + commit recorded
-- [ ] Maker: cleanup/docs/MCP — artifact + commit recorded
-- [ ] Maker: orchestration/provider seams — artifact + commit recorded
-- [ ] Mechanical gate passed
-- [ ] Prover verdict received
-- [ ] Checker wrote CYCLE_LOG.md
-- [ ] Reward signal: __/5.0 (threshold: every dimension >=4; mean >=4.5)
-- [ ] Verdict: PASS / ITERATE / PLATEAU
+- [x] Maker: inventory/preservation — artifacts `docs/recovery/repo-cleanup-full-update/`; commits `88be158`, `307d34c`, `6853794`
+- [x] Maker: cleanup/docs/MCP — artifacts `CONTEXT.md`, `docs/domain/adr/0003-resumable-autoresearch-orchestration.md`, `CLAUDE.md`, `.codex/config.toml`, `docs/providers/`; commits `def8588`, `0a2d9f7`, `d03da55` (review closures `3374909`, `9b96e38`, `3d02ca8`)
+- [x] Maker: orchestration/provider seams — commits `00d20e0`..`c6a6528`; focused `163 passed`; stub/resume proofs retained under ignored `.artifacts/autoresearch/`
+- [x] Mechanical gate passed — inventory `3561/3558/+3/0`; focused `39 + 163`; full `240`; credential fix-round full `242`
+- [x] Prover verdict received — `PROOF VERDICT: PASS`; `.harness/goals/repo-cleanup-full-update/PROVER.md`
+- [x] Checker wrote CYCLE_LOG.md
+- [x] Reward signal: 4.71/5.0 (threshold met: every dimension >=4; mean >=4.5)
+- [x] Verdict: PASS
 
 ### Cycle 2 (if ITERATE)
 - [ ] Lowest-scoring dimension fixed
@@ -84,9 +84,9 @@ LOOP_TRACKER
 - [ ] Verdict: PASS / PLATEAU
 
 ### Final
-- [ ] Shipping: `N/A - shipping not approved`
-- [ ] HANDOFF.md, HANDOFF.html, and HANDOFF.excalidraw written
-- [ ] Report published or export fallback recorded
+- [x] Shipping: `N/A - shipping not approved`
+- [x] HANDOFF.md, HANDOFF.html, and HANDOFF.excalidraw written
+- [x] Report export fallback recorded — `HANDOFF.export.html` (public upload requires explicit destination approval)
 
 EXECUTION_PROTOCOL
 Five-stage execution. Before stage 1, the goal parent runs the [ROUTING_GUARD] snippet from the

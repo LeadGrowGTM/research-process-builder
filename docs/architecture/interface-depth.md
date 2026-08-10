@@ -4,6 +4,8 @@ Analysis of public surface area vs. implementation depth for major modules.
 
 A high depth ratio (implementation / interface) indicates good encapsulation: callers see a clean surface while complexity is hidden internally.
 
+Canonical resumable-autoresearch language is defined in [CONTEXT.md](../../CONTEXT.md).
+
 ## Summary Table
 
 | Module | Public Interface | Internal Impl | Depth Ratio | Verdict |
@@ -124,3 +126,9 @@ A high depth ratio (implementation / interface) indicates good encapsulation: ca
 **Depth ratio:** 3/1 = **3.0** — ADEQUATE
 
 **Verdict:** Clean structure for an eval harness. Exit code convention (0=pass at >=90%, 1=fail) is a good scriptable contract. The three eval functions are internal implementation details correctly kept private.
+
+---
+
+## Planned Autoresearch Orchestration
+
+The planned `AutoresearchOrchestrator` is a deep Module: callers cross one Interface, `run(request: RunRequest) -> RunSummary`, while role order, resume, budgets, idempotency, and transition handling remain local to its implementation. CLI entry points are composition roots, not coordinators. Provider seams are read-only Source Adapters with local test adapters, so provider details do not leak through the orchestration Interface. The rationale and tradeoffs are recorded in [ADR 0003](../domain/adr/0003-resumable-autoresearch-orchestration.md).
