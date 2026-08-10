@@ -11,7 +11,7 @@ operational behavior.
 | Tool | Locally verified input fields |
 | --- | --- |
 | `campaign_ideas` | optional: `persona`, `signal`, `vertical` |
-| `config` | no defined input fields; its local description says it lists knowledge-category status and counts |
+| `config` | no defined input fields |
 | `connections` | required: `entity`; optional: `depth` |
 | `diagnose` | required: `symptom`; optional: `context` |
 | `digest` | optional: `edition`, `topic` |

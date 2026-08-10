@@ -4,7 +4,10 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from pathlib import Path
+import re
 import tomllib
+
+import pytest
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,8 +28,14 @@ def _literal_credential_fields(value: object, path: tuple[str, ...] = ()) -> lis
     findings: list[str] = []
     for key, nested_value in value.items():
         nested_path = (*path, str(key))
-        normalized_key = str(key).lower().replace("-", "_")
-        if normalized_key in {"api_key", "access_token", "bearer_token", "secret", "password"}:
+        normalized_key = re.sub(r"[^a-z0-9]+", "_", str(key).lower()).strip("_")
+        is_environment_reference = normalized_key.endswith(
+            ("_env", "_env_var", "_environment_variable")
+        )
+        has_credential_marker = any(
+            marker in normalized_key for marker in ("token", "key", "secret", "password")
+        )
+        if has_credential_marker and not is_environment_reference:
             if isinstance(nested_value, str) and nested_value:
                 findings.append(".".join(nested_path))
         findings.extend(_literal_credential_fields(nested_value, nested_path))
@@ -80,3 +89,33 @@ def test_provider_docs_record_evidence_and_read_only_boundaries() -> None:
     assert "Do not authenticate, connect, or query" in " ".join(parallel.split())
     assert "UNVERIFIED" in gtm
     assert "No Clay or full GTM provider is implemented" in gtm
+    assert "lists knowledge-category status and counts" not in gtm
+
+
+@pytest.mark.parametrize(
+    ("fixture", "expected_path"),
+    [
+        ({"token": "value"}, "token"),
+        ({"client_secret": "value"}, "client_secret"),
+        ({"parallel_key": "value"}, "parallel_key"),
+        ({"api-key-backup": "value"}, "api-key-backup"),
+        ({"MiXeD__PaSsWoRd": "value"}, "MiXeD__PaSsWoRd"),
+    ],
+)
+def test_literal_credential_key_variants_are_rejected(
+    fixture: dict[str, str], expected_path: str
+) -> None:
+    """Any literal under a representative credential-bearing key must be found."""
+    assert _literal_credential_fields(fixture) == [expected_path]
+
+
+def test_safe_config_values_and_environment_references_are_not_rejected() -> None:
+    """Auth modes, URLs, tool names, and env-reference fields are not credentials."""
+    fixture = {
+        "auth": "oauth",
+        "url": "https://search.parallel.ai/mcp-oauth",
+        "enabled_tools": ["web_search", "web_fetch"],
+        "parallel_token_env_var": "PARALLEL_SEARCH_AUTH",
+    }
+
+    assert _literal_credential_fields(fixture) == []
