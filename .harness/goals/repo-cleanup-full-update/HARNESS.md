@@ -55,11 +55,11 @@ LOOP_TRACKER
 > Update this file as you complete each step. Check off items in order.
 
 ### Planner
-- [ ] HARNESS.md read
-- [ ] routing resolution consumed
-- [ ] selected routing file read: `C:/Users/mitch/Everything_CC/tools/agent/agent-harness/skills/write-goal-prompt/references/skill-routing.md`
-- [ ] BRIEF.md and PLAN.md written
-- [ ] PLAN phases mirrored to `issues/NN-<slug>.md`
+- [x] HARNESS.md read
+- [x] routing resolution consumed
+- [x] selected routing file read: `C:/Users/mitch/Everything_CC/tools/agent/agent-harness/skills/write-goal-prompt/references/skill-routing.md`
+- [x] BRIEF.md and PLAN.md written
+- [x] PLAN phases mirrored to `issues/NN-<slug>.md`
 
 ### Cycle 1
 - [ ] Maker: inventory/preservation — artifact + commit recorded
