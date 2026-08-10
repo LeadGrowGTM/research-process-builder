@@ -92,6 +92,8 @@ class ArtifactStore:
         with lock:
             self._root.mkdir(parents=True, exist_ok=True)
             lock_path = self._root / "run.lock"
+            if lock_path.exists() and (not lock_path.is_file() or lock_path.is_symlink()):
+                raise ArtifactHaltForReview("lock_io_failed")
             with lock_path.open("a+b") as handle:
                 handle.seek(0)
                 if not handle.read(1):
@@ -198,6 +200,10 @@ class ArtifactStore:
         self._require_stage(from_stage, allow_start=True)
         self._require_stage(to_stage)
         self._require_idempotency_key(idempotency_key)
+        rows = self._journal_rows()
+        cycle_rows = [row for row in rows if row["cycle"] == cycle]
+        if from_stage != (cycle_rows[-1]["to_stage"] if cycle_rows else "start"):
+            raise ArtifactHaltForReview("invalid_transition")
         if _NEXT_STAGE.get(from_stage) != to_stage:
             raise ArtifactHaltForReview("invalid_transition")
         matches = [
@@ -210,7 +216,6 @@ class ArtifactStore:
         if any(row["idempotency_key"] == idempotency_key for row in self._journal_rows()):
             raise ArtifactHaltForReview("idempotency_collision")
         self._validate_object(artifact_hash)
-        rows = self._journal_rows()
         row = {
             "artifact_hash": artifact_hash,
             "cycle": cycle,
@@ -235,7 +240,9 @@ class ArtifactStore:
         _require_safe_value(run)
         self._validate_run(run)
         references = self._all_references()
-        self._validate_all_objects()
+        object_hashes = self._validate_all_objects()
+        if object_hashes != {reference["artifact_hash"] for reference in references}:
+            raise ArtifactHaltForReview("unreferenced_object")
         for reference in references:
             self._validate_reference(reference)
             self._validate_object(reference["artifact_hash"])
@@ -290,6 +297,9 @@ class ArtifactStore:
                 raise ArtifactHaltForReview("unexpected_artifact_file")
         if not (self._root / "objects").is_dir() or not (self._root / "cycles").is_dir():
             raise ArtifactHaltForReview("invalid_run_tree")
+        lock_path = self._root / "run.lock"
+        if lock_path.exists() and (not lock_path.is_file() or lock_path.is_symlink()):
+            raise ArtifactHaltForReview("unsafe_lock_path")
 
     def _require_initialized(self) -> None:
         if not self._run_path.is_file():
@@ -381,14 +391,17 @@ class ArtifactStore:
         if run.to_canonical_dict() != value:
             raise ArtifactHaltForReview("invalid_run")
 
-    def _validate_all_objects(self) -> None:
+    def _validate_all_objects(self) -> set[str]:
         object_root = self._root / "objects"
+        object_hashes: set[str] = set()
         if not object_root.is_dir():
             raise ArtifactHaltForReview("missing_objects")
         for item in object_root.iterdir():
             if not item.is_file() or item.suffix != ".json":
                 raise ArtifactHaltForReview("invalid_object_path")
             self._validate_object(item.stem)
+            object_hashes.add(item.stem)
+        return object_hashes
 
     def _validate_object(self, artifact_hash: str) -> None:
         path = self._object_path(artifact_hash)

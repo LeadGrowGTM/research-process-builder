@@ -260,3 +260,47 @@ def test_concurrent_transitions_receive_unique_monotonic_sequences(tmp_path):
 
     assert sorted(row["sequence"] for row in rows) == [1, 2, 3, 4]
     store.load_and_validate()
+
+
+def test_journal_requires_each_cycle_to_begin_with_inventor_and_chain_contiguously(tmp_path):
+    """Would fail if an otherwise legal edge could be appended before its predecessor."""
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    store.put_role_artifact(0, Role.INVENTOR, _inventor_envelope(), "invent-0")
+    bounds_hash = store.put_role_artifact(0, Role.IN_BOUNDS_CHECKER, _bounds_envelope(), "check-0")
+
+    with pytest.raises(ArtifactHaltForReview, match="invalid_transition"):
+        store.append_transition(
+            0, Role.INVENTOR.value, Role.IN_BOUNDS_CHECKER.value, bounds_hash, "check-0"
+        )
+
+
+def test_load_rejects_valid_but_unreferenced_object_envelopes(tmp_path):
+    """Would fail if a valid object could disappear from the cycle projection without review."""
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    inventor_hash = store.put_role_artifact(0, Role.INVENTOR, _inventor_envelope(), "invent-0")
+    store.append_transition(0, "start", Role.INVENTOR.value, inventor_hash, "invent-0")
+    orphan = _bounds_envelope().to_canonical_dict()
+    orphan_bytes = json.dumps(orphan, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    (tmp_path / "objects" / f"{hashlib.sha256(orphan_bytes).hexdigest()}.json").write_bytes(orphan_bytes)
+
+    with pytest.raises(ArtifactHaltForReview, match="unreferenced_object"):
+        store.load_and_validate()
+
+
+def test_load_and_lock_acquisition_reject_unsafe_lock_paths(tmp_path):
+    """Would fail if a lock directory surfaced raw filesystem errors or bypassed run safety checks."""
+    store = ArtifactStore(tmp_path)
+    store.create_run(_request())
+    (tmp_path / "run.lock").unlink()
+    (tmp_path / "run.lock").mkdir()
+
+    with pytest.raises(ArtifactHaltForReview, match="unsafe_lock_path"):
+        store.load_and_validate()
+
+    other = ArtifactStore(tmp_path / "acquire")
+    (tmp_path / "acquire").mkdir()
+    (tmp_path / "acquire" / "run.lock").mkdir()
+    with pytest.raises(ArtifactHaltForReview, match="lock_io_failed"):
+        other.create_run(_request())
