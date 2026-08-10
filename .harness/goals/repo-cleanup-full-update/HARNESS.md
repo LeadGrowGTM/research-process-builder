@@ -62,7 +62,7 @@ LOOP_TRACKER
 - [x] PLAN phases mirrored to `issues/NN-<slug>.md`
 
 ### Cycle 1
-- [ ] Maker: inventory/preservation — artifact + commit recorded
+- [x] Maker: inventory/preservation — artifacts `docs/recovery/repo-cleanup-full-update/`; commits `88be158`, `307d34c`, `6853794`
 - [ ] Maker: cleanup/docs/MCP — artifact + commit recorded
 - [ ] Maker: orchestration/provider seams — artifact + commit recorded
 - [ ] Mechanical gate passed

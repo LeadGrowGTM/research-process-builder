@@ -39,7 +39,7 @@ Routing consumed: direct work for preservation and repository policy; `codebase-
 
 ### Phase 1 — Inventory, preservation, and reversible quarantine
 
-**Status:** pending
+**Status:** complete ? reviewed; commits `88be158`, `307d34c`, `6853794`
 **Routing:** direct implementation with TDD for the inventory verifier
 **Durable slice:** `issues/01-inventory-preservation.md`
 
