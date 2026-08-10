@@ -29,5 +29,5 @@ Bounded, source-attributed observations used to evaluate an Experiment.
 _Avoid_: Results, findings
 
 **Approval**:
-The lifecycle state reached only after at least 90% ground-truth validation and explicit human review.
+The lifecycle state reached only after programmed ground-truth validation at >= 90%, followed by explicit human review.
 _Avoid_: Auto-approval, promotion

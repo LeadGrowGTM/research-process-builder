@@ -38,12 +38,36 @@ def test_context_defines_only_the_canonical_resumable_autoresearch_terms():
     assert _context_terms(text) == CANONICAL_TERMS
 
 
-def test_approval_requires_validation_threshold_and_explicit_human_review():
+def test_approval_requires_programmed_validation_before_explicit_human_review():
     text = (ROOT / "CONTEXT.md").read_text(encoding="utf-8")
     approval = _definition(text, "Approval")
 
-    assert re.search(r">=\s*90%|at least\s+90%", approval, flags=re.IGNORECASE)
-    assert re.search(r"explicit\s+human\s+review", approval, flags=re.IGNORECASE)
+    assert re.search(r"programmed\s+ground-truth\s+validation", approval, flags=re.IGNORECASE)
+    assert re.search(r">=\s*90%", approval)
+    assert re.search(
+        r"programmed\s+ground-truth\s+validation.*followed\s+by\s+explicit\s+human\s+review",
+        approval,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+
+
+def test_adr_requires_fresh_bounded_request_envelopes_without_raw_role_context():
+    text = (ROOT / "docs" / "domain" / "adr" / "0003-resumable-autoresearch-orchestration.md").read_text(
+        encoding="utf-8"
+    )
+
+    assert re.search(r"fresh,?\s+(?:compact|bounded)\s+request envelope.*each role", text, flags=re.IGNORECASE)
+    assert re.search(r"no inherited or raw role context", text, flags=re.IGNORECASE)
+
+
+def test_adr_requires_named_clis_to_be_thin_compatibility_shims():
+    text = (ROOT / "docs" / "domain" / "adr" / "0003-resumable-autoresearch-orchestration.md").read_text(
+        encoding="utf-8"
+    )
+
+    assert "autoresearch_agent.py" in text
+    assert "autocontext_runner.py" in text
+    assert re.search(r"thin compatibility CLI(?:s)?/shims?", text, flags=re.IGNORECASE)
 
 
 def test_orchestration_adr_records_the_interface_and_decision_tradeoffs():

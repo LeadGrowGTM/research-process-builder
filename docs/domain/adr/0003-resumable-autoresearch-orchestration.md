@@ -22,7 +22,7 @@ Choose the persisted state machine with an append-only journal. Its external Int
 AutoresearchOrchestrator.run(request: RunRequest) -> RunSummary
 ```
 
-`AutoresearchOrchestrator` owns role ordering, schema validation, idempotency, persistence, budgets, failures, and transition selection behind that Interface. CLIs compose it: they construct the request and adapters, call `run`, and render the summary; they do not coordinate roles or infer lifecycle state.
+`AutoresearchOrchestrator` owns role ordering, schema validation, idempotency, persistence, budgets, failures, and transition selection behind that Interface. A fresh, compact request envelope is constructed for each role from only its permitted inputs; no inherited or raw role context crosses a seam. `autoresearch_agent.py` and `autocontext_runner.py` must remain thin compatibility CLIs/shims over this orchestration Interface: they construct the request and adapters, call `run`, and render the summary; they do not coordinate roles or infer lifecycle state.
 
 The Gate is pure: validated inputs and prior transition state produce one decision and reason code, without writing artifacts, invoking a provider, or granting Approval. Provider variation stays at read-only Source Adapter seams, so the orchestration Module consumes provider-neutral Evidence and tests can substitute local adapters without changing its Interface.
 
