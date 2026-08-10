@@ -63,7 +63,7 @@ LOOP_TRACKER
 
 ### Cycle 1
 - [x] Maker: inventory/preservation — artifacts `docs/recovery/repo-cleanup-full-update/`; commits `88be158`, `307d34c`, `6853794`
-- [ ] Maker: cleanup/docs/MCP — artifact + commit recorded
+- [x] Maker: cleanup/docs/MCP — artifacts `CONTEXT.md`, `docs/domain/adr/0003-resumable-autoresearch-orchestration.md`, `CLAUDE.md`, `.codex/config.toml`, `docs/providers/`; commits `def8588`, `0a2d9f7`, `d03da55` (review closures `3374909`, `9b96e38`, `3d02ca8`)
 - [ ] Maker: orchestration/provider seams — artifact + commit recorded
 - [ ] Mechanical gate passed
 - [ ] Prover verdict received

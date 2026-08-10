@@ -119,7 +119,7 @@ git rev-parse --show-toplevel
 git branch --show-current
 git status --short
 git show-ref refs/recovery/repo-cleanup-full-update/initial-dirty refs/recovery/repo-cleanup-full-update/dashboard-metadata
-py scripts/recovery_inventory.py verify --manifest docs/recovery/repo-cleanup-full-update/inventory.csv --expected-recorded-count 3558
+py scripts/recovery_inventory.py verify --manifest docs/recovery/repo-cleanup-full-update/inventory.csv --expected-recorded-count 3558 --expected-ref refs/recovery/repo-cleanup-full-update/initial-dirty --quarantine-map docs/recovery/repo-cleanup-full-update/quarantine-map.csv --quarantine-root .quarantine/repo-cleanup-full-update
 py -m pytest tests/test_recovery_inventory.py tests/test_domain_contract_docs.py tests/test_repository_policy.py tests/test_mcp_configuration.py -q
 py -m pytest tests/test_autoresearch_contracts.py tests/test_autoresearch_gate.py tests/test_autoresearch_artifacts.py tests/test_source_adapters.py tests/test_autoresearch_orchestrator.py tests/test_autoresearch_clis.py scripts/test_autoresearch_agent.py -q
 py -m pytest -q

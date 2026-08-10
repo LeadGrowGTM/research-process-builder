@@ -11,13 +11,13 @@ Add current-official, repository-scoped Parallel Search MCP configuration withou
 
 ## Acceptance
 
-- [ ] Parallel/host primary-doc URLs, access date, endpoint, transport, auth, and repository scope are recorded.
-- [ ] Repository MCP JSON parses and uses OAuth or environment references only.
-- [ ] Missing auth fails clearly; no paid/live query is required.
-- [ ] GTM document lists confirmed read tools/contracts and explicitly marks unverified gaps.
-- [ ] No remote mutation is invoked or exposed as part of this goal.
-- [ ] `py -m pytest tests/test_mcp_configuration.py -q` passes after a recorded red run; literal-secret scan is empty.
-- [ ] Proof and phase commit SHA are appended to `PROGRESS.md`.
+- [x] Parallel/host primary-doc URLs, access date, endpoint, transport, auth, and repository scope are recorded.
+- [x] Repository MCP TOML parses and uses environment references only.
+- [x] Missing auth fails clearly; no paid/live query is required.
+- [x] GTM document lists confirmed read tools/contracts and explicitly marks unverified gaps.
+- [x] No remote mutation is invoked or exposed as part of this goal.
+- [x] `py -m pytest tests/test_mcp_configuration.py -q` passes after a recorded red run; literal-secret scan is empty.
+- [x] Proof and phase commit SHA are appended to `PROGRESS.md`.
 
 ## Prohibitions
 

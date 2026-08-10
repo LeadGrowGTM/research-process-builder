@@ -11,13 +11,13 @@ Perform only manifest-authorized cleanup and make root guidance accurately descr
 
 ## Acceptance
 
-- [ ] Every removal/restoration maps to a reviewed Phase 1 disposition and recovery object.
-- [ ] Quarantine hashes are verified before removal; generated/cache/secret/run paths and `.worktrees/` are ignored.
-- [ ] Root `CLAUDE.md` links canonical `CONTEXT.md` and matches observed CLI/file behavior.
-- [ ] README/SKILL changes are limited to verified corrections.
-- [ ] Documented CLIs return `--help` successfully.
-- [ ] `py -m pytest tests/test_repository_policy.py -q` and `git diff --check` pass after a recorded red run.
-- [ ] Proof and phase commit SHA are appended to `PROGRESS.md`.
+- [x] Every removal/restoration maps to a reviewed Phase 1 disposition and recovery object.
+- [x] Quarantine hashes are verified before removal; generated/cache/secret/run paths and `.worktrees/` are ignored.
+- [x] Root `CLAUDE.md` links canonical `CONTEXT.md` and matches observed CLI/file behavior.
+- [x] README/SKILL changes are limited to verified corrections.
+- [x] Documented CLIs return `--help` successfully.
+- [x] `py -m pytest tests/test_repository_policy.py -q` and `git diff --check` pass after a recorded red run.
+- [x] Proof and phase commit SHA are appended to `PROGRESS.md`.
 
 ## Prohibitions
 
