@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import replace
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -17,9 +18,46 @@ from scripts.recovery_inventory import (
 
 
 def git(repo: Path, *args: str) -> str:
+    env = os.environ.copy()
+    for name in (
+        "GIT_DIR",
+        "GIT_WORK_TREE",
+        "GIT_INDEX_FILE",
+        "GIT_COMMON_DIR",
+        "GIT_OBJECT_DIRECTORY",
+        "GIT_ALTERNATE_OBJECT_DIRECTORIES",
+    ):
+        env.pop(name, None)
     return subprocess.run(
-        ["git", *args], cwd=repo, check=True, text=True, capture_output=True
+        ["git", *args], cwd=repo, env=env, check=True, text=True, capture_output=True
     ).stdout.strip()
+
+
+def test_git_fixture_ignores_inherited_git_routing_variables(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    poison_git_dir = tmp_path / "poison.git"
+    subprocess.run(["git", "init", "--bare", "-q", str(poison_git_dir)], check=True)
+    poison_config_before = (poison_git_dir / "config").read_bytes()
+    poison_index = poison_git_dir / "index"
+    poison_index_before = poison_index.read_bytes() if poison_index.exists() else None
+    for name, value in {
+        "GIT_DIR": str(poison_git_dir),
+        "GIT_WORK_TREE": str(tmp_path / "poison-work-tree"),
+        "GIT_INDEX_FILE": str(poison_index),
+        "GIT_COMMON_DIR": str(poison_git_dir),
+        "GIT_OBJECT_DIRECTORY": str(poison_git_dir / "objects"),
+        "GIT_ALTERNATE_OBJECT_DIRECTORIES": str(poison_git_dir / "alternate-objects"),
+    }.items():
+        monkeypatch.setenv(name, value)
+    fixture_repo = tmp_path / "fixture"
+    fixture_repo.mkdir()
+
+    git(fixture_repo, "init", "-q")
+
+    assert (fixture_repo / ".git").is_dir()
+    assert (poison_git_dir / "config").read_bytes() == poison_config_before
+    assert (poison_index.read_bytes() if poison_index.exists() else None) == poison_index_before
 
 
 @pytest.fixture
