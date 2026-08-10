@@ -1,6 +1,6 @@
 # Phase 04 — Parallel Search MCP and GTM read-interface documentation
 
-**Status:** pending
+**Status:** complete ? reviewed; commits `d03da55`, `f87b7a3`, `27e13a3`
 **Canonical source:** `.harness/goals/repo-cleanup-full-update/PLAN.md` → `## Phases` → Phase 4
 **Routing:** direct configuration/documentation plus TDD contract checks
 **Commit:** `feat: configure repository search providers`

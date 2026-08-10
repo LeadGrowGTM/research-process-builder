@@ -73,7 +73,7 @@ Add `tests/test_repository_policy.py` first; it fails on unclassified removals, 
 
 ### Phase 4 — Parallel Search MCP and GTM read-interface documentation
 
-**Status:** pending
+**Status:** complete ? reviewed; commits `d03da55`, `f87b7a3`, `27e13a3`
 **Routing:** direct documentation/configuration plus TDD contract checks
 **Durable slice:** `issues/04-provider-configuration.md`
 
