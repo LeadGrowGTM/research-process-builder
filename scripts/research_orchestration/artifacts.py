@@ -86,49 +86,73 @@ class ArtifactStore:
     @contextmanager
     def _locked(self):
         """Serialize local writers in-process and across processes for this run root."""
-        key = str(self._root.absolute())
+        try:
+            key = str(self._root.absolute())
+        except OSError as error:
+            raise ArtifactHaltForReview("lock_io_failed") from error
         with _LOCKS_GUARD:
             lock = _RUN_LOCKS.setdefault(key, RLock())
         with lock:
-            self._root.mkdir(parents=True, exist_ok=True)
-            lock_path = self._root / "run.lock"
-            if lock_path.exists() and (not lock_path.is_file() or lock_path.is_symlink()):
-                raise ArtifactHaltForReview("lock_io_failed")
-            with lock_path.open("a+b") as handle:
-                handle.seek(0)
-                if not handle.read(1):
-                    handle.seek(0)
-                    handle.write(b"0")
-                    handle.flush()
+            handle = None
+            acquired = False
+            active_error = None
+            try:
                 try:
+                    self._root.mkdir(parents=True, exist_ok=True)
+                    lock_path = self._root / "run.lock"
+                    if lock_path.exists() and (not lock_path.is_file() or lock_path.is_symlink()):
+                        raise ArtifactHaltForReview("lock_io_failed")
+                    handle = lock_path.open("a+b")
+                    handle.seek(0)
+                    if not handle.read(1):
+                        handle.seek(0)
+                        handle.write(b"0")
+                        handle.flush()
                     if os.name == "nt":
                         import msvcrt
 
                         handle.seek(0)
-                        try:
-                            msvcrt.locking(handle.fileno(), msvcrt.LK_LOCK, 1)
-                        except OSError as error:
-                            raise ArtifactHaltForReview("lock_io_failed") from error
+                        msvcrt.locking(handle.fileno(), msvcrt.LK_LOCK, 1)
                     else:
                         import fcntl
 
-                        try:
-                            fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
-                        except OSError as error:
-                            raise ArtifactHaltForReview("lock_io_failed") from error
-                    yield
-                finally:
-                    if os.name == "nt":
-                        handle.seek(0)
-                        try:
+                        fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
+                    acquired = True
+                except ArtifactHaltForReview:
+                    raise
+                except OSError as error:
+                    raise ArtifactHaltForReview("lock_io_failed") from error
+                yield
+            except BaseException as error:
+                active_error = error
+                raise
+            finally:
+                teardown_error = None
+                if acquired:
+                    try:
+                        if os.name == "nt":
+                            handle.seek(0)
                             msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
-                        except OSError as error:
-                            raise ArtifactHaltForReview("lock_io_failed") from error
-                    else:
-                        try:
+                        else:
                             fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
-                        except OSError as error:
-                            raise ArtifactHaltForReview("lock_io_failed") from error
+                    except ArtifactHaltForReview as error:
+                        teardown_error = (error, None)
+                    except OSError as error:
+                        teardown_error = (ArtifactHaltForReview("lock_io_failed"), error)
+                if handle is not None:
+                    try:
+                        handle.close()
+                    except ArtifactHaltForReview as error:
+                        if teardown_error is None:
+                            teardown_error = (error, None)
+                    except OSError as error:
+                        if teardown_error is None:
+                            teardown_error = (ArtifactHaltForReview("lock_io_failed"), error)
+                if active_error is None and teardown_error is not None:
+                    halt, cause = teardown_error
+                    if cause is None:
+                        raise halt
+                    raise halt from cause
 
     @property
     def _run_path(self) -> Path:

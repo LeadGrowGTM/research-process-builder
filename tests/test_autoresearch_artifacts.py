@@ -327,8 +327,94 @@ def test_load_rejects_globally_reordered_per_cycle_journal_chain(tmp_path):
         store.load_and_validate()
 
 
-def test_lock_acquire_and_release_oserrors_halt_for_review(tmp_path, monkeypatch):
-    """Would fail if lock I/O leaked raw OSErrors at either acquisition or release."""
+@pytest.mark.parametrize("failure_phase", ("read", "write", "flush", "close"))
+def test_lock_file_seed_and_close_failures_halt_for_review(tmp_path, monkeypatch, failure_phase):
+    """Would fail if lock-file seeding or close leaked raw filesystem errors."""
+    class LockHandle:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, _exc_type, _exc_value, _traceback):
+            self.close()
+
+        @staticmethod
+        def seek(_offset):
+            return None
+
+        def read(self, _length):
+            if failure_phase == "read":
+                raise PermissionError("seed read")
+            return b""
+
+        def write(self, _content):
+            if failure_phase == "write":
+                raise OSError("seed write")
+            return 1
+
+        def flush(self):
+            if failure_phase == "flush":
+                raise PermissionError("seed flush")
+
+        @staticmethod
+        def fileno():
+            return 1
+
+        def close(self):
+            if failure_phase == "close":
+                raise OSError("close")
+
+    class SuccessfulLock:
+        LK_LOCK = 1
+        LK_UNLCK = 2
+
+        @staticmethod
+        def locking(_fd, _operation, _length):
+            return None
+
+    root = tmp_path / failure_phase
+    root.mkdir()
+    monkeypatch.setattr(Path, "open", lambda self, *_args, **_kwargs: LockHandle())
+    monkeypatch.setitem(sys.modules, "msvcrt", SuccessfulLock)
+
+    with pytest.raises(ArtifactHaltForReview, match="lock_io_failed"):
+        ArtifactStore(root).create_run(_request())
+
+
+def test_lock_root_mkdir_failure_halts_for_review(tmp_path, monkeypatch):
+    """Would fail if lock setup leaked a root-creation filesystem error."""
+    root = tmp_path / "mkdir"
+    real_mkdir = Path.mkdir
+
+    def fail_root_mkdir(path, *args, **kwargs):
+        if path == root:
+            raise PermissionError("mkdir")
+        return real_mkdir(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "mkdir", fail_root_mkdir)
+
+    with pytest.raises(ArtifactHaltForReview, match="lock_io_failed"):
+        ArtifactStore(root).create_run(_request())
+
+
+def test_lock_file_open_failure_halts_for_review(tmp_path, monkeypatch):
+    """Would fail if lock setup leaked a lock-file open error."""
+    root = tmp_path / "open"
+    root.mkdir()
+    real_open = Path.open
+
+    def fail_lock_open(path, *args, **kwargs):
+        if path == root / "run.lock":
+            raise OSError("open")
+        return real_open(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "open", fail_lock_open)
+
+    with pytest.raises(ArtifactHaltForReview, match="lock_io_failed"):
+        ArtifactStore(root).create_run(_request())
+
+
+def test_failed_lock_acquisition_is_not_followed_by_release(tmp_path, monkeypatch):
+    """Would fail if a failed acquisition entered teardown as though the lock were held."""
     class FailingLock:
         LK_LOCK = 1
         LK_UNLCK = 2
@@ -336,13 +422,20 @@ def test_lock_acquire_and_release_oserrors_halt_for_review(tmp_path, monkeypatch
         @staticmethod
         def locking(_fd, operation, _length):
             if operation == FailingLock.LK_LOCK:
-                raise OSError("acquire")
+                raise PermissionError("acquire")
+            raise AssertionError("released without acquisition")
 
     monkeypatch.setitem(sys.modules, "msvcrt", FailingLock)
     with pytest.raises(ArtifactHaltForReview, match="lock_io_failed"):
         ArtifactStore(tmp_path / "acquire").create_run(_request())
 
-    class ReleaseFailingLock(FailingLock):
+
+def test_lock_release_failure_halts_when_body_succeeds(tmp_path, monkeypatch):
+    """Would fail if lock release errors escaped without a typed halt."""
+    class ReleaseFailingLock:
+        LK_LOCK = 1
+        LK_UNLCK = 2
+
         @staticmethod
         def locking(_fd, operation, _length):
             if operation == ReleaseFailingLock.LK_UNLCK:
@@ -351,3 +444,24 @@ def test_lock_acquire_and_release_oserrors_halt_for_review(tmp_path, monkeypatch
     monkeypatch.setitem(sys.modules, "msvcrt", ReleaseFailingLock)
     with pytest.raises(ArtifactHaltForReview, match="lock_io_failed"):
         ArtifactStore(tmp_path / "release").create_run(_request())
+
+
+def test_lock_release_failure_preserves_active_body_exception(tmp_path, monkeypatch):
+    """Would fail if unlock failure replaced the exception escaping the protected body."""
+    class BodyFailure(RuntimeError):
+        pass
+
+    class ReleaseFailingLock:
+        LK_LOCK = 1
+        LK_UNLCK = 2
+
+        @staticmethod
+        def locking(_fd, operation, _length):
+            if operation == ReleaseFailingLock.LK_UNLCK:
+                raise PermissionError("release")
+
+    monkeypatch.setitem(sys.modules, "msvcrt", ReleaseFailingLock)
+
+    with pytest.raises(BodyFailure, match="body failure"):
+        with ArtifactStore(tmp_path / "release-with-body")._locked():
+            raise BodyFailure("body failure")
