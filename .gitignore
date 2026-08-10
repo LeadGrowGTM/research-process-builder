@@ -38,3 +38,11 @@ trigger/supabase/.temp/
 # OS
 .DS_Store
 Thumbs.db
+
+# Local Python/tool caches and coverage output
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+runs/

@@ -1,54 +1,61 @@
-# research-process-builder
+# research-process-builder operator guide
 
-Factory that produces validated web research processes via self-annealing loops. Takes a research goal, generates search patterns, tests against real companies, scores accuracy, and iterates until 90%+ reliability. Output: portable `.md` process files any agent (Claude, Clay/Claygent, GPT) can follow.
+This repository develops and evaluates repeatable web-research workflows. Its
+canonical domain language is [CONTEXT.md](CONTEXT.md): use **Research Flow**,
+**Search Flow**, **Site Extraction Flow**, **Source Adapter**, **Experiment**,
+**Evidence**, and **Approval** as defined there.
 
-## What It Produces
+## Layout and boundaries
 
-Two things:
+- `scripts/` contains local CLIs. `pattern_tester.py` expands and scores search
+  patterns; `gt_evaluator.py` deterministically evaluates stored results against
+  `ground-truth/`; `validate.py` compares automated scores with ground truth;
+  `autoresearch.py` records and compares baseline snapshots.
+- `processes/` and `prompts/` hold reusable research instructions. `searches/`,
+  `ground-truth/`, and `baselines/` contain the checked-in evidence and baseline
+  inputs used by the local evaluators.
+- `docs/domain/adr/0003-resumable-autoresearch-orchestration.md` records the
+  planned orchestration seam. `trigger/` is the separately documented scheduled
+  pipeline; see [trigger/README.md](trigger/README.md).
 
-1. **Research process files** (`processes/find-*/process.md`) — step-by-step search instructions with exact queries, extract specs, stop-if conditions, and kill lists. 20+ processes built (find-profiles, find-competitors, find-funding, find-series-a-daily, etc.).
+## Verified local commands
 
-2. **Scheduled monitors** (`monitors/`) — validated processes promoted to daily pipeline runs. Currently: `series-a-daily` (88% GT hit rate, $0.01/run via SerperDev).
+Run these from the repository root on Windows. They parse arguments and do not
+run a research job or write a remote service:
 
-## Install
-
-No package manager file exists. Deps are Python stdlib + external APIs. Install manually:
-
-```bash
-pip install openai supabase requests
+```powershell
+py scripts/pattern_tester.py --help
+py scripts/gt_evaluator.py --help
+py scripts/validate.py --help
+py scripts/autoresearch.py --help
+py -m pytest tests/test_repository_policy.py -q
 ```
 
-Required env vars (in `.env` at repo root):
+The repository has no package manifest. These four help commands require Python;
+`pattern_tester.py` imports `python-dotenv` and only loads the optional
+`serper_search` adapter when it actually runs queries. Configure that adapter
+through `SHARED_SCRIPTS_PATH` only when executing a query run. Other scripts may
+have their own API dependencies; inspect their imports and `--help` before use.
 
-```
-OPENAI_API_KEY=
-SERPER_API_KEY=
-SUPABASE_URL=
-SUPABASE_KEY=
-```
+## Safety and artifacts
 
-Domain classifier also reads `DOMAIN_CLASSIFIER_KEY` if present (optional, falls back to conservative rejection).
+Never commit `.env*`, API keys, or other secrets. Do not run a networked CLI,
+write Supabase, or promote an artifact without an explicit approved task. The
+default pattern-tester output is the tracked historical fixture
+`searches/raw-results.json`; use `--output output/<name>.json` for a new local
+run. `output/`, `runs/`, caches, `.worktrees/`, and `.quarantine/` are ignored.
 
-**Env loading:** Global hook blocks direct `.env` reads. Scripts load via `dotenv` internally.
+Recovery evidence is retained in
+`docs/recovery/repo-cleanup-full-update/inventory.csv` and
+`docs/recovery/repo-cleanup-full-update/quarantine-map.csv`. Do not bulk-restore
+the quarantined campaign or generated payloads, and never apply, pop, or drop a
+recovery stash or ref. Restore a reusable item only after review and record its
+object ID, hash evidence, destination, and decision in the recovery manifest.
 
-## Pipelines & Monitors
+## Validation and approval
 
-- **Series A pipeline:** `py scripts/series_a_pipeline.py` (supports `--dry-run`, `--stage N`, `--tbs qdr:w`, `--skip-enrich`, `--date`)
-- **GT validation:** `py scripts/gt_validation.py --sample 10 --days 14` (add `--apply` to promote)
-- **Domain classifier:** `py scripts/domain_classifier.py --domain example.com`
-- **Prompt scoring:** `py prompts/[name]/score.py --prompt prompts/[name]/candidates/vNNN.json`
-- **Monitors:** Orphan git branches mounted as worktrees. See `MONITORS.md` for setup.
-
-## Building a New Research Process
-
-Invoke the SKILL.md methodology (6 phases: define goal → generate 15-20 patterns → test across 3 company size tiers → score quality×consistency → iterate to 90%+ → assemble process file). Output goes to `processes/[name]/process.md`. Update `processes/[name]/STATUS.md` when done.
-
-To graduate a validated process to a scheduled monitor, follow `MONITORS.md`.
-
-## Key Conventions
-
-- **`py` not `python`** throughout all scripts and docs (Windows default).
-- **Single braces in GPT templates** — extraction prompt uses `.replace("{items}", payload)`, not f-strings. JSON examples inside the template need literal braces. Do not convert to f-string or `.format()`.
-- **1-based local batch idx** in `extract_companies_batch` — model returns local idx, code maps `batch[local_idx-1]["idx"]` back to global. Keep this contract if re-annealing.
-- **Supabase workspace 3 = production.** Always verify you're hitting the right table before any write.
-- Ground truth files: `ground-truth/[company].json` — schema in `ground-truth/schema.json`. Baselines in `baselines/`.
+An Experiment becomes an Approval only after programmed ground-truth validation
+at **>= 90%**, followed by explicit human review. Treat the programmed result as
+evidence, not automatic promotion: a reviewer must check source attribution,
+scope, safety, and intended destination before approving a reusable Research
+Flow or scheduled change.

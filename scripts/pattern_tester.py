@@ -39,12 +39,19 @@ load_dotenv(Path.home() / ".env", override=False)
 _shared = os.environ.get("SHARED_SCRIPTS_PATH", str(_script_dir))
 sys.path.insert(0, _shared)
 
-try:
-    import serper_search
-except ImportError:
-    print("ERROR: Could not import serper_search.")
-    print("Set SHARED_SCRIPTS_PATH env var to the directory containing serper_search.py")
-    sys.exit(1)
+serper_search = None
+
+
+def load_serper_search():
+    """Load the optional network adapter only for an execution run."""
+    try:
+        import serper_search as adapter
+    except ImportError as error:
+        raise RuntimeError(
+            "Could not import serper_search. Set SHARED_SCRIPTS_PATH to the "
+            "directory containing serper_search.py before running queries."
+        ) from error
+    return adapter
 
 # Paths
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -659,6 +666,8 @@ def get_dominant_sources(min_quality: int = 3) -> dict:
 # ---------------------------------------------------------------------------
 
 def run(args):
+    global serper_search
+    serper_search = load_serper_search()
     config_path = SCRIPT_DIR / (args.config if args.config else "patterns_config.json")
     results_path = Path(args.output).resolve() if args.output else RESULTS_FILE
 
