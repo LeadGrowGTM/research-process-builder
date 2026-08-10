@@ -22,3 +22,4 @@
 - Verified help exits zero: `py scripts/pattern_tester.py --help`, `py scripts/gt_evaluator.py --help`, `py scripts/validate.py --help`, and `py scripts/autoresearch.py --help`.
 - Added ignore coverage for local Python/tool caches and `runs/`; documented safe local commands, artifact boundaries, recovery handling, and the programmed >=90% then explicit-human-review lifecycle in `CLAUDE.md`.
 - Recovery decision: no restoration and no removal. The manifest records the immutable recovery commit and existing inventory/quarantine evidence; no current-tree candidate had an explicit removal disposition.
+- Phase commit: 0a2d9f734014057b6cf2d699921f719210ffaebb (chore: clarify repository policy and guidance).
