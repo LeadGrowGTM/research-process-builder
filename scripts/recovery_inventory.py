@@ -6,6 +6,7 @@ import argparse
 import csv
 from dataclasses import dataclass
 import hashlib
+import os
 from pathlib import Path, PurePosixPath
 import subprocess
 from typing import Callable, Iterable, Sequence
@@ -54,14 +55,35 @@ class Reconciliation:
     unexplained_paths: tuple[str, ...]
 
 
+_GIT_ROUTING_VARIABLES = (
+    "GIT_DIR",
+    "GIT_WORK_TREE",
+    "GIT_INDEX_FILE",
+    "GIT_COMMON_DIR",
+    "GIT_OBJECT_DIRECTORY",
+    "GIT_ALTERNATE_OBJECT_DIRECTORIES",
+)
+
+
+def _clean_git_environment() -> dict[str, str]:
+    environment = os.environ.copy()
+    for name in _GIT_ROUTING_VARIABLES:
+        environment.pop(name, None)
+    return environment
+
+
 def _run_git(args: Sequence[str], cwd: Path | None = None) -> str:
     return subprocess.run(
-        ["git", *args], cwd=cwd, check=True, text=True, capture_output=True
+        ["git", *args], cwd=cwd, env=_clean_git_environment(),
+        check=True, text=True, capture_output=True,
     ).stdout
 
 
 def _run_git_bytes(args: Sequence[str], cwd: Path | None = None) -> bytes:
-    return subprocess.run(["git", *args], cwd=cwd, check=True, capture_output=True).stdout
+    return subprocess.run(
+        ["git", *args], cwd=cwd, env=_clean_git_environment(),
+        check=True, capture_output=True,
+    ).stdout
 
 
 def _assert_immutable_ref(ref: str) -> None:

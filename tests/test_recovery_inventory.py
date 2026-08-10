@@ -81,6 +81,26 @@ def fixture_ref(repo: Path) -> str:
     return git(repo, "rev-parse", "stash@{0}")
 
 
+def test_inventory_git_calls_ignore_inherited_git_routing_variables(
+    recovery_fixture: Path, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    recovery_ref = fixture_ref(recovery_fixture)
+    poison_git_dir = tmp_path / "poison.git"
+    subprocess.run(["git", "init", "--bare", "-q", str(poison_git_dir)], check=True)
+    for name, value in {
+        "GIT_DIR": str(poison_git_dir),
+        "GIT_WORK_TREE": str(tmp_path / "poison-work-tree"),
+        "GIT_INDEX_FILE": str(poison_git_dir / "index"),
+        "GIT_COMMON_DIR": str(poison_git_dir),
+        "GIT_OBJECT_DIRECTORY": str(poison_git_dir / "objects"),
+        "GIT_ALTERNATE_OBJECT_DIRECTORIES": str(poison_git_dir / "alternate-objects"),
+    }.items():
+        monkeypatch.setenv(name, value)
+
+    entries = enumerate_recovery(recovery_ref, cwd=recovery_fixture)
+
+    assert {entry.path for entry in entries} == {"tracked.py", "deleted.md", "new/data.json"}
+
 def test_enumerates_tracked_and_untracked_recovery_objects(recovery_fixture: Path) -> None:
     entries = enumerate_recovery(fixture_ref(recovery_fixture), cwd=recovery_fixture)
 
