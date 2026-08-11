@@ -1,0 +1,44 @@
+/goal [GOAL] Clean and modernize research-process-builder, add repo-scoped Parallel Search MCP, and prove fresh-context autoresearch orchestration.
+
+[DATE] 2026-08-10
+
+[TASK]
+Update `C:/Users/mitch/Everything_CC/tools/data/research-process-builder`. Preserve its approval method: >=90% ground-truth validation, then human review.
+
+Must include:
+- Account for all initial dirty paths in the named preflight stash through an inventory/recovery map. Preserve reusable knowledge; quarantine generated material recoverably before removal. Never lose unique user work.
+- Refresh root `CLAUDE.md` with verified purpose, domain terms, architecture, commands, dependencies, safety, artifact policy, and approval lifecycle.
+- Add project-scoped Parallel Search MCP config from current official docs using OAuth/env references only. Document the GTM MCP read interface; make no remote writes.
+- Redesign `autoresearch_agent.py` and `autocontext_runner.py` from agent-harness `benchmark-climb.js`: fresh compact-context Inventor -> independent In-bounds and Novelty Checkers -> Executor -> independent Evaluator -> deterministic `advance|retry|rollback|halt_for_review` Gate. Persist validated artifacts and resume without repeating paid work.
+- Add provider-neutral contracts for Search Flows, Site Extraction Flows, and Source Adapters. Site extraction starts from known URLs and prefers scrape/selectors/regex/patterns before optional LLM use. Do not build the future flow catalog or full GTM provider.
+- Test isolation, schemas, transitions, pre-execution rejection, budgets, failure/rollback/resume, and affected CLIs with deterministic doubles.
+
+Treat the named preflight stash as read-only source material. Create/reuse only `.worktrees/repo-cleanup-full-update` on `wt/repo-cleanup-full-update`; ignore and record it in tasks-axi. No external worktree. Preserve unrelated work. Commit each phase separately.
+
+Quality bar: production-grade, provider-neutral, resumable; no hidden context coupling, secrets, data loss, or unrelated rewrites.
+
+Done means:
+- Inventory covers every stashed path; task-worktree `git status --porcelain` is empty.
+- Authoritative/focused tests pass with no new skips; a stubbed run proves all roles, gates, and resume.
+- CLAUDE.md is verified; MCP config parses with no credential value.
+- Checker dimensions >=4 and mean >=4.5; HANDOFF records DRAFT/live-verification gaps.
+
+[TOOLS]
+Skills: research-process-builder, codebase-design, domain-modeling, test-driven-development, verification-before-completion. Agents: harness roles, in-bounds/novelty checkers, smart-searcher, task-orchestrator. Scripts: pattern_tester.py, gt_evaluator.py, validate.py, autoresearch.py, benchmark-climb.js.
+
+[PARAMS]
+Reward signal: evidenced acceptance-criterion pass percentage
+Done: 100% criteria pass; checker dimensions >=4 and mean >=4.5/5
+Max cycles: 3
+Turn limit: 100
+Cost ceiling: $0 paid API spend; use doubles/free Parallel checks
+Do NOT touch: production Supabase, Clay/GTM records, monitors, shared sheets, live jobs, credentials, remotes, PRs, or the named preflight stash
+
+[HARNESS]
+Read C:/Users/mitch/Everything_CC/tools/data/research-process-builder/.harness/goals/repo-cleanup-full-update/HARNESS.md first and follow it end to end. Shipping is not approved.
+[ROUTING_GUARD]
+ROUTING_EXIT=0
+ROUTING_EVIDENCE=$(bun 'C:\Users\mitch\Everything_CC\tools\agent\agent-harness\skills\write-goal-prompt\scripts\resolve-skill-routing.ts' --project-root 'C:\Users\mitch\Everything_CC\tools\data\research-process-builder' --canonical-path 'C:\Users\mitch\Everything_CC\tools\agent\agent-harness\skills\write-goal-prompt\references\skill-routing.md') || ROUTING_EXIT=$?
+printf '%s\n' "$ROUTING_EVIDENCE"
+if [ "$ROUTING_EXIT" -ne 0 ]; then exit "$ROUTING_EXIT"; fi
+A nonzero result stops before Planner.

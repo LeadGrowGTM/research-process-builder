@@ -3,8 +3,7 @@ __pycache__/
 *.pyo
 
 # Secrets
-.env
-.env.*
+.env*
 
 # Pipeline output
 output/
@@ -15,6 +14,15 @@ monitors/
 
 # Node
 node_modules/
+
+# Agent-created task worktrees
+.worktrees/
+
+# Local recovery payloads generated from immutable Git objects
+.quarantine/
+
+# Hosted report update/delete key (local secret)
+HANDOFF.secret.local
 
 # Trigger.dev local cache
 .trigger/
@@ -29,3 +37,12 @@ trigger/supabase/.temp/
 # OS
 .DS_Store
 Thumbs.db
+
+# Local Python/tool caches and coverage output
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+runs/
+.artifacts/

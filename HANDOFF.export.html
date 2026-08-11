@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DRAFT Handoff — Resumable Autoresearch</title>
+  <style>
+    :root{--ink:#16231f;--muted:#52635c;--paper:#f4f2ea;--panel:#fffdf7;--line:#c8cec5;--green:#0e6655;--amber:#a85d00;--red:#9f2d24;--blue:#245c7a;--radius:14px}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+    body:before{content:"";display:block;height:8px;background:linear-gradient(90deg,var(--amber) 0 25%,var(--green) 25% 70%,var(--blue) 70%)}
+    main{width:min(1160px,calc(100% - 32px));margin:0 auto;padding:48px 0 72px}.hero{display:grid;grid-template-columns:1.4fr .8fr;gap:40px;align-items:end;padding-bottom:36px;border-bottom:1px solid var(--line)}
+    h1{font:800 clamp(2.7rem,7vw,5.7rem)/.96 Georgia,serif;letter-spacing:-.035em;margin:0;max-width:12ch}h2{font:750 clamp(1.45rem,3vw,2.25rem)/1.1 Georgia,serif;margin:0 0 18px}h3{margin:0 0 8px;font-size:1rem}p{max-width:72ch}.lede{font-size:1.15rem;color:var(--muted);margin:18px 0 0}.stamp{border:2px solid var(--amber);padding:22px;border-radius:var(--radius);background:#fff4df;transform:rotate(-1deg)}.stamp strong{display:block;color:var(--amber);font-size:1.5rem;letter-spacing:.08em}.stamp p{margin:.5rem 0 0}
+    nav{display:flex;gap:8px;flex-wrap:wrap;padding:22px 0}nav a{color:var(--green);text-decoration:none;border:1px solid var(--line);background:var(--panel);padding:7px 12px;border-radius:999px;font-size:.9rem}nav a:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+    section{padding:36px 0;border-top:1px solid var(--line)}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}.card{grid-column:span 4;background:var(--panel);padding:22px;border-radius:var(--radius);box-shadow:0 10px 24px rgba(22,35,31,.08)}.card.wide{grid-column:span 6}.card p{margin:.4rem 0;color:var(--muted)}.status{display:inline-flex;align-items:center;gap:8px;font-weight:750}.dot{width:10px;height:10px;border-radius:50%;background:var(--amber)}.recorded .dot{background:var(--green)}
+    .metric{grid-column:span 3;border-top:3px solid var(--green);padding:16px 0}.metric b{font:800 2.5rem/1 Georgia,serif;display:block}.metric span{color:var(--muted)}
+    .flow{overflow:auto;background:#10211c;color:#e8f2ed;border-radius:var(--radius);padding:26px;box-shadow:0 12px 28px rgba(16,33,28,.18)}pre{margin:0;font:14px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;min-width:720px}.pending{color:#ffd28d}.ok{color:#8be0c3}
+    table{width:100%;border-collapse:collapse;background:var(--panel);border-radius:var(--radius);overflow:hidden}th,td{text-align:left;vertical-align:top;padding:14px;border-bottom:1px solid var(--line)}th{background:#e5e8df;font-size:.82rem;text-transform:uppercase;letter-spacing:.05em}td:last-child{color:var(--muted)}
+    code{background:#e5e8df;padding:.1em .35em;border-radius:5px}.constraints{columns:2;column-gap:36px}.constraints li{break-inside:avoid;margin:0 0 10px}.warning{background:#fff4df;border:1px solid #e2bd7f;padding:20px;border-radius:var(--radius)}footer{padding-top:28px;color:var(--muted);font-size:.9rem}
+    @media(max-width:760px){main{width:min(100% - 24px,1160px);padding-top:30px}.hero{grid-template-columns:1fr;gap:26px}.card,.card.wide,.metric{grid-column:1/-1}.constraints{columns:1}th:nth-child(2),td:nth-child(2){display:none}h1{font-size:clamp(2.6rem,15vw,4.4rem)}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+<!-- THESIS: A morning report is an evidence control surface, not a victory page; it refuses celebratory dashboards. OWN-WORLD: archival paper, ledger lines, verification green, pending amber, and dense readable evidence. STORY: the reviewer sees what exists, what is preserved, and exactly which gates remain. FIRST VIEWPORT: oversized DRAFT title at left and tilted pending stamp at right. FORM: responsive single-page evidence ledger, manual Tier-1 fallback because the referenced spec is missing. FINISH: intentionally draft; mechanical gate, Prover, Checker, and publication remain pending. -->
+<main>
+  <header class="hero"><div><h1>Repository modernization, independently verified.</h1><p class="lede">Sanitized handoff for <code>wt/repo-cleanup-full-update</code>. Preservation, orchestration, mechanical proof, and independent review are recorded.</p></div><aside class="stamp" aria-label="Draft status"><strong>CHECKER PASS · 4.71/5</strong><p>Mechanical gate and Prover passed. Shipping remains <b>NOT APPROVED</b>.</p></aside></header>
+  <nav aria-label="Report sections"><a href="#gates">Gates</a><a href="#preservation">Preservation</a><a href="#architecture">Architecture</a><a href="#verification">Verification</a><a href="#constraints">Constraints</a><a href="#gaps">Gaps</a></nav>
+  <section id="gates"><h2>Assurance gates</h2><div class="grid"><article class="card recorded"><div class="status"><i class="dot"></i>Maker history recorded</div><p>Local commits through <code>c6a6528</code>.</p></article><article class="card"><div class="status"><i class="dot"></i>Mechanical gate passed</div><p>Inventory 3,561/3,558/+3/0; focused 39 + 163; full 242; credential scan clean.</p></article><article class="card"><div class="status"><i class="dot"></i>Independent review passed</div><p>Prover PASS; Checker scores 5,4,5,5,4,5,5 (mean 4.71).</p></article></div></section>
+  <section id="preservation"><h2>Preservation ledger</h2><div class="grid"><div class="metric"><b>3,561</b><span>preserved paths</span></div><div class="metric"><b>3,558</b><span>status-era observation</span></div><div class="metric"><b>+3</b><span>documented discrepancy</span></div><div class="metric"><b>0</b><span>unexplained paths</span></div></div><p>Inventory: 3,561 rows. Quarantine map: 2,883 rows. Initial recovery ref resolves to <code>e3932d5…3337</code>. The zero-row action ledger records that no restoration or removal was authorized in the reviewed policy phase.</p></section>
+  <section id="architecture"><h2>Architecture at a glance</h2><div class="flow"><pre><span class="ok">OUTER ASSURANCE</span>
+Planner → Maker → <span class="ok">Mechanical gate ✓</span> → <span class="ok">Prover PASS</span> → <span class="ok">Checker PASS</span> → Local handoff
+
+<span class="ok">INNER AUTORESEARCH</span>
+compact artifacts → fresh Inventor → In-bounds Checker → Novelty Checker
+                  → Executor → independent Evaluator → deterministic Gate
+                                                         ├─ advance
+                                                         ├─ retry
+                                                         ├─ rollback
+                                                         └─ halt
+
+<span class="ok">SOURCE BOUNDARY</span>
+query → Search Flow → provider-neutral Source Adapter
+known URL → fetch/scrape → selector → regex → deterministic patterns
+                                    → optional, approved-budget LLM fallback</pre></div><p>Only compact, versioned, schema-validated artifacts cross seams. Resume begins at the first missing stage and must not duplicate a completed idempotency key or paid operation.</p></section>
+  <section id="verification"><h2>Verification matrix</h2><table><thead><tr><th>Area</th><th>Recorded</th><th>Still required</th></tr></thead><tbody><tr><td>Recovery</td><td>3,561 covered; 0 unexplained</td><td>Re-run verifier and recovery hash checks</td></tr><tr><td>Policy</td><td>Focused tests and CLI help previously recorded</td><td>Authoritative suite, invalid inputs, no new skips</td></tr><tr><td>Providers</td><td>TOML parsed; deterministic tests recorded</td><td>Secret scan and auth-unavailable check</td></tr><tr><td>Orchestration</td><td>Implementation through c6a6528</td><td>All transitions, exhaustion, rollback, corruption, resume</td></tr><tr><td>Independent review</td><td>Seven-dimension rubric defined</td><td>Prover PASS; Checker 4.71/5</td></tr></tbody></table></section>
+  <section id="constraints"><h2>Hard boundaries</h2><ul class="constraints"><li><b>$0 paid API spend.</b></li><li>No production or remote writes.</li><li>No push, PR, merge, deploy, or publication.</li><li>No credentials, tokens, update keys, or client PII.</li><li>No future flow catalog or full GTM provider.</li><li>Do not mutate recovery refs, stash, original checkout, or worktree.</li><li>Deterministic extraction precedes optional LLM extraction.</li><li>Human review remains mandatory after ≥90% validation.</li></ul></section>
+  <section id="gaps"><h2>DRAFT / live gaps</h2><div class="warning"><p><b>The referenced <code>references/morning-report-specs.md</code> does not exist.</b> This report therefore applies the harness’s embedded <code>MORNING_REPORT</code> as a Tier‑1 manual fallback. Nothing has been published.</p></div><p>Local proof is complete. Live Parallel OAuth/GTM runtime remains intentionally unverified under the no-network/no-write constraint. Shipping is N/A because it was not approved.</p></section>
+  <footer>Generated as a sanitized local DRAFT on 2026-08-10. This page is evidence navigation, not a PASS certificate.</footer>
+</main>
+</body>
+</html>

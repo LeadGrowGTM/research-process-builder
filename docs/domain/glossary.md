@@ -1,10 +1,9 @@
 # Ubiquitous Language Glossary
 
-Terms extracted from the codebase, process files, and SKILL.md. Use these exact terms when discussing this system.
+Terms extracted from the codebase, process files, and SKILL.md. The canonical language for resumable autoresearch lives in [CONTEXT.md](../../CONTEXT.md); this glossary records only supporting and historical terms.
 
 | Term | Definition | Key Files |
 |------|-----------|-----------|
-| **Research Process** | A validated, portable `.md` file with step-by-step search instructions, extract specs, stop-if conditions, and a kill list. Output of the 6-phase build methodology. | `processes/find-*/process.md`, `SKILL.md` |
 | **Search Pattern** | A parameterized Google query template (e.g., `[name] alternatives OR competitors OR "vs"`). Patterns are the atomic unit tested in the anneal loop. | `SKILL.md Phase 2`, `scripts/patterns_config.json` |
 | **Anneal Loop** | The iterative test-score-fix-retest cycle that drives accuracy from a starting point to the 90%+ target. Inspired by simulated annealing — systematic elimination of weak patterns. | `scripts/anneal.py`, `scripts/eval_iter.py` |
 | **Ground Truth (GT)** | Known-correct company/domain pairs used to measure accuracy objectively. GT misses drive targeted fix patterns in Phase 5. | `ground-truth/[company].json`, `ground-truth/schema.json`, `scripts/eval_pipeline.py` |
