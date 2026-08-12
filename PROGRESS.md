@@ -1,5 +1,16 @@
 # Progress
 
+## 2026-08-12 — Company enrichment Phase 1
+
+- User correction: the benchmark and all tested offers must be B2B-only.
+- Branch: `wt/company-enrichment-b2b`.
+- Baseline: `py -m pytest -q` → `242 passed in 20.07s`.
+- RED: focused tests failed during collection because `scripts.company_enrichment` did not exist.
+- GREEN: `py -m pytest tests/company_enrichment/test_contracts.py tests/company_enrichment/test_definitions.py -q` → `15 passed`.
+- Regression: `py -m pytest -q` → `257 passed in 17.76s`; `git diff --check` clean; credential scan passed with zero violations.
+- Added immutable contracts, canonical secret-safe serialization, strict manifest loading, and eight B2B P0 manifests.
+- Human Gate 2 is pending before live provider integration. No network or paid provider call was made.
+
 ## 2026-08-10 — Recovery inventory preservation
 
 - RED: `py -m pytest tests/test_recovery_inventory.py -q` failed because `scripts.recovery_inventory` did not exist.

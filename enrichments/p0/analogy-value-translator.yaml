@@ -1,0 +1,24 @@
+id: analogy-value-translator
+name: B2B analogy and value translator
+owner: research-process-builder
+version: "1.0.0"
+status: proposed
+family: sales-reasoning
+priority: P0
+entity_scopes: [company]
+input_schema_version: "1.0"
+output_schema_version: "1.0"
+required_inputs: [company_name, domain, seller_context]
+optional_inputs: [company_dossier]
+execution_mode: llm-only
+provider_candidates: [model-router]
+fallback_order: [model-router]
+freshness_days: 30
+source_requirements: [cited_dossier, seller_context]
+caps: {queries: 0, scrapes: 0, retries: 2, paid_cost_usd: 1.0}
+early_stop: valid_grounded_output
+failure_rule: explicit_unknown
+output_visibility: message_safe
+benchmark_dataset_version: b2b-companies-1.0
+automated_gate: candidate_only
+human_gate: blind_verdict_required

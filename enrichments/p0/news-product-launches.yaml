@@ -1,0 +1,24 @@
+id: news-product-launches
+name: Recent news and product launches
+owner: research-process-builder
+version: "1.0.0"
+status: proposed
+family: company-signals
+priority: P0
+entity_scopes: [company]
+input_schema_version: "1.0"
+output_schema_version: "1.0"
+required_inputs: [company_name, domain]
+optional_inputs: [as_of]
+execution_mode: parallel-search
+provider_candidates: [parallel-search, gtm-waterfall]
+fallback_order: [parallel-search, gtm-waterfall]
+freshness_days: 30
+source_requirements: [first_party, two_independent]
+caps: {queries: 10, scrapes: 10, retries: 2, paid_cost_usd: 1.0}
+early_stop: source_saturation
+failure_rule: explicit_unknown
+output_visibility: message_safe
+benchmark_dataset_version: b2b-companies-1.0
+automated_gate: candidate_only
+human_gate: blind_verdict_required
