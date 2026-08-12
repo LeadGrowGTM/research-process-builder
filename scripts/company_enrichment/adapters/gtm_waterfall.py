@@ -2,11 +2,14 @@ from __future__ import annotations
 
 from collections.abc import Callable, Iterable
 
+from ..budgets import Reservation
 from ..providers import (
+    ContractFailure,
     InsufficientEvidence,
     KnownUrlRequest,
     ScrapeResult,
     SourceObservation,
+    RetryableFailure,
 )
 
 
@@ -18,7 +21,7 @@ class GtmWaterfallAdapter:
         self,
         *,
         execute: Callable[[int, KnownUrlRequest], Iterable[SourceObservation]],
-        reserve: Callable[[str, str], object],
+        reserve: Callable[[str, str], Reservation],
     ) -> None:
         self._execute = execute
         self._reserve = reserve
@@ -26,10 +29,14 @@ class GtmWaterfallAdapter:
     def scrape(self, request: KnownUrlRequest) -> ScrapeResult:
         for level in range(1, 5):
             if level in self._PAID_LEVEL_COSTS:
-                self._reserve(
+                reservation = self._reserve(
                     f"gtm-waterfall:{level}:{request.url}",
                     self._PAID_LEVEL_COSTS[level],
                 )
+                if not isinstance(reservation, Reservation):
+                    raise ContractFailure("paid level requires a typed reservation")
+                if not reservation.should_execute:
+                    raise RetryableFailure("paid reservation is already owned by another call")
             observations = tuple(self._execute(level, request))
             if observations:
                 return ScrapeResult(observations, level)

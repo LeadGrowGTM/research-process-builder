@@ -204,32 +204,47 @@ class EvidenceStore:
                 for event in self._read_cache_events()
                 if event["cache_key"] == identity
             ]
-            if not matches:
-                source_matches = [
-                    event
-                    for event in source_events
-                    if cache_key(
-                        event["url"], event["provider"], event["freshness_days"]
-                    )
-                    == identity
-                ]
-                if not source_matches:
-                    return None
-                source_event = max(
-                    source_matches, key=lambda item: item["retrieved_at"]
+            source_matches = [
+                event
+                for event in source_events
+                if cache_key(
+                    event["url"], event["provider"], event["freshness_days"]
                 )
+                == identity
+            ]
+            if not source_matches:
+                return None
+            latest_source = max(
+                source_matches,
+                key=lambda item: datetime.fromisoformat(item["retrieved_at"]),
+            )
+            latest_cache = (
+                max(
+                    matches,
+                    key=lambda item: datetime.fromisoformat(item["retrieved_at"]),
+                )
+                if matches
+                else None
+            )
+            projection_lags = (
+                latest_cache is None
+                or datetime.fromisoformat(latest_cache["retrieved_at"])
+                < datetime.fromisoformat(latest_source["retrieved_at"])
+                or latest_cache["content_hash"] != latest_source["content_hash"]
+            )
+            if projection_lags:
                 cache_body = {
                     "cache_key": identity,
-                    "content_hash": source_event["content_hash"],
-                    "freshness_days": source_event["freshness_days"],
-                    "provider": source_event["provider"],
-                    "retrieved_at": source_event["retrieved_at"],
-                    "url": source_event["url"],
+                    "content_hash": latest_source["content_hash"],
+                    "freshness_days": latest_source["freshness_days"],
+                    "provider": latest_source["provider"],
+                    "retrieved_at": latest_source["retrieved_at"],
+                    "url": latest_source["url"],
                 }
                 repaired = {**cache_body, "event_id": _event_id(cache_body)}
                 self._append(self.cache_journal, repaired)
-                matches = [repaired]
-            latest = max(matches, key=lambda item: item["retrieved_at"])
+                latest_cache = repaired
+            latest = latest_cache
             retrieved_at = datetime.fromisoformat(latest["retrieved_at"])
             if retrieved_at + timedelta(days=freshness_days) < as_of:
                 return None

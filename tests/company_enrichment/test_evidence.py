@@ -232,6 +232,48 @@ def test_missing_cache_projection_repairs_from_authoritative_source_journal(tmp_
     assert store.cache_journal.exists()
 
 
+def test_lagging_cache_projection_repairs_to_latest_source_event(tmp_path) -> None:
+    store = EvidenceStore(tmp_path)
+    old = SourceRecord(
+        "https://acme.example",
+        datetime(2026, 8, 1, tzinfo=timezone.utc),
+        "first_party",
+        "homepage-scrape",
+        "Old material",
+        "Old material",
+        30,
+        "0",
+    )
+    fresh = SourceRecord(
+        old.url,
+        datetime(2026, 8, 12, tzinfo=timezone.utc),
+        old.source_type,
+        old.provider,
+        "Fresh authoritative material",
+        "Fresh authoritative material",
+        30,
+        "0",
+    )
+    store.put(old)
+    stale_projection = store.cache_journal.read_text(encoding="utf-8")
+    store.put(fresh)
+    store.cache_journal.write_text(stale_projection, encoding="utf-8")
+    calls = []
+
+    reference, cache_hit = store.resolve(
+        url=old.url,
+        provider=old.provider,
+        freshness_days=30,
+        as_of=fresh.retrieved_at,
+        collect=lambda: calls.append("recollect") or fresh,
+    )
+
+    assert cache_hit is True
+    assert store.get(reference.content_hash).content == "Fresh authoritative material"
+    assert calls == []
+    assert len(store.cache_journal.read_text(encoding="utf-8").splitlines()) == 2
+
+
 def test_saturation_requires_cited_fields_distinct_sources_and_two_dry_angles() -> None:
     tracker = SaturationTracker(required_fields=("description", "target_customer"))
     tracker.observe(

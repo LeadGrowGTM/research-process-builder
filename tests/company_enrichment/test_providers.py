@@ -1,9 +1,11 @@
 from datetime import date
+from decimal import Decimal
 from types import SimpleNamespace
 
 import pytest
 
 from scripts.company_enrichment.contracts import FailureKind
+from scripts.company_enrichment.budgets import Reservation
 from scripts.company_enrichment.providers import (
     AdFinding,
     AdStatus,
@@ -55,7 +57,10 @@ def test_gtm_waterfall_reserves_only_before_paid_levels() -> None:
 
     adapter = GtmWaterfallAdapter(
         execute=execute,
-        reserve=lambda key, amount: events.append(("reserve", key, amount)),
+        reserve=lambda key, amount: (
+            events.append(("reserve", key, amount)),
+            Reservation("r-1", "scope", key, Decimal(amount)),
+        )[1],
     )
 
     result = adapter.scrape(KnownUrlRequest("https://acme.example"))
@@ -68,6 +73,30 @@ def test_gtm_waterfall_reserves_only_before_paid_levels() -> None:
         ("execute", 3, "https://acme.example"),
     ]
     assert adapter.executor_name == "firecrawl_waterfall.py"
+
+
+def test_gtm_paid_level_executes_only_for_reservation_creator() -> None:
+    executed = []
+
+    def execute(level, _request):
+        executed.append(level)
+        return ()
+
+    adapter = GtmWaterfallAdapter(
+        execute=execute,
+        reserve=lambda key, amount: Reservation(
+            "r-existing",
+            "scope",
+            key,
+            Decimal(amount),
+            created=False,
+        ),
+    )
+
+    with pytest.raises(RetryableFailure, match="already owned"):
+        adapter.scrape(KnownUrlRequest("https://acme.example"))
+
+    assert executed == [1, 2]
 
 
 @pytest.mark.parametrize(
