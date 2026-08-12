@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, fields, is_dataclass
-from datetime import datetime
+from datetime import date, datetime
 from enum import Enum
 import json
 import math
@@ -59,6 +59,45 @@ def _freeze_value(value: Any) -> Any:
     if isinstance(value, (list, tuple)):
         return tuple(_freeze_value(item) for item in value)
     return value
+
+
+@dataclass(frozen=True, slots=True)
+class CompanyFixture:
+    id: str
+    company_name: str
+    domain: str
+    linkedin_company_url: str | None
+    primary_cohort: str
+    shared_core: bool
+    difficulty: str
+    seed_status: str
+    seed: Mapping[str, Any]
+    gaps: tuple[str, ...]
+    b2b_buyer: str | None = None
+    business_offer: str | None = None
+    selection_reason: str | None = None
+    cohort_evidence_url: str | None = None
+    secondary_tags: tuple[str, ...] = ()
+    expected_ad_channels: tuple[str, ...] = ()
+    primary_funding_url: str | None = None
+    primary_funding_date: date | None = None
+    local_listing_url: str | None = None
+
+    def __post_init__(self) -> None:
+        for name in ('id', 'company_name', 'domain', 'primary_cohort',
+                     'difficulty', 'seed_status'):
+            _require_text(name, getattr(self, name))
+        if not isinstance(self.shared_core, bool):
+            raise ValueError('shared_core must be boolean')
+        if not isinstance(self.seed, Mapping):
+            raise ValueError('seed must be a mapping')
+        object.__setattr__(self, 'seed', _freeze_value(self.seed))
+        for name in ('gaps', 'secondary_tags', 'expected_ad_channels'):
+            values = tuple(getattr(self, name))
+            if any(not isinstance(value, str) or not value.strip() for value in values):
+                raise ValueError(f'{name} must contain non-empty text')
+            _bounded(name, values)
+            object.__setattr__(self, name, values)
 
 
 @dataclass(frozen=True, slots=True)

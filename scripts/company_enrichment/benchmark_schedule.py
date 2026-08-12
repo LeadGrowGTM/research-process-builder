@@ -34,7 +34,7 @@ def ordered_company_ids(companies: Sequence[Mapping[str, Any]]) -> tuple[str, ..
 
 ROLLOUT_STAGES = (
     "saas_shared_core",
-    "all_saas",
+    "remaining_saas",
     "recently_funded_b2b",
     "b2b_agencies",
     "well_known_b2b",
@@ -103,7 +103,7 @@ class BenchmarkRollout:
             "saas_shared_core": tuple(
                 str(item["id"]) for item in saas if item["shared_core"]
             ),
-            "all_saas": tuple(str(item["id"]) for item in saas),
+            "remaining_saas": tuple(str(item["id"]) for item in saas if not item["shared_core"]),
             **{
                 cohort: tuple(
                     str(item["id"])
