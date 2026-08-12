@@ -191,15 +191,9 @@ def validate_research_complete(
 ) -> None:
     if dossier.company_id != fixture.id:
         raise ValueError('dossier company_id does not match fixture')
-    qualification_date = as_of
-    if qualification_date is None:
-        evidence_dates = tuple(item.retrieved_at.date() for item in dossier.evidence)
-        if evidence_dates:
-            qualification_date = max(evidence_dates)
-        elif fixture.primary_cohort == 'recently_funded_b2b':
-            raise ValueError('as_of is required to qualify a funded fixture')
-        else:
-            qualification_date = date.min
+    if as_of is None and fixture.primary_cohort == 'recently_funded_b2b':
+        raise ValueError('as_of is required to qualify a funded fixture')
+    qualification_date = as_of if as_of is not None else date.min
     Corpus._validate_fixture(fixture, qualification_date)
     cited = {assertion.field for assertion in dossier.assertions
              if assertion.evidence_ids}

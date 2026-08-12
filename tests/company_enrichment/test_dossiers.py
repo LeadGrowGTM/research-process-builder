@@ -107,6 +107,32 @@ def test_complete_dossier_cannot_rescue_unqualified_fixture(
         )
 
 
+def test_funded_fixture_requires_explicit_as_of_despite_matching_old_evidence() -> None:
+    fixture = _fixture()
+    values = {
+        field: getattr(fixture, field)
+        for field in fixture.__dataclass_fields__
+    }
+    values.update({
+        'id': 'funded-01',
+        'primary_cohort': 'recently_funded_b2b',
+        'primary_funding_url': 'https://acme.example/funding',
+        'primary_funding_date': date(2025, 8, 11),
+    })
+    old_evidence = EvidenceRef(
+        'ev-1', 'https://acme.example/research',
+        datetime(2025, 8, 11, tzinfo=timezone.utc), 'a' * 64, 'Old evidence',
+    )
+    dossier = CompanyDossier(
+        'funded-01', '1.0',
+        tuple(_assertion(field) for field in REQUIRED_DOSSIER_FIELDS),
+        (old_evidence,),
+    )
+
+    with pytest.raises(ValueError, match='as_of is required'):
+        validate_research_complete(CompanyFixture(**values), dossier)
+
+
 def test_human_corrections_append_and_retain_superseded_history() -> None:
     first = HumanCorrection(
         'correction-1', 'pricing', '$10', 'reviewer-1',
