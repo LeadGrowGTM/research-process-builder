@@ -11,7 +11,8 @@
 | 1A — Product scope | Eight P0 enrichments; no contacts or standalone P1 work | Approved |
 | 1B — Benchmark market | Every test company and tested offer must be B2B | Approved |
 | 1C — Exact corpus | Approve 60 companies and 15 shared-core members | Pending; revised list not yet proposed |
-| 2 — Architecture | Approve contracts, manifests, SellerContext, and visibility boundary | Pending now |
+| 2A — Foundation | Approve implemented contracts, manifests, SellerContext, and visibility boundary | Pending now; see `GATE_2_REVIEW.md` |
+| 2B — Prompts and outputs | Approve actual prompts and output field schemas before executors | Pending; not built yet |
 | 3 — Live providers and spend | Approve each provider, payload, fixtures, and maximum cost | Pending; no live/paid call authorized |
 | 4 — Core dossiers | Approve the first 15 researched dossiers before the remaining 45 | Pending |
 | 5 — Enrichment candidates | Human blind verdict for each enrichment | Pending |
@@ -42,7 +43,9 @@ The exact revised 60-company list and 15 shared-core members must be presented h
 
 Approval wording: **“Approve Gate 1C corpus”**, optionally followed by substitutions.
 
-## Gate 2 — Architecture (decision needed now)
+## Gate 2A — Implemented foundation (decision needed now)
+
+The complete plain-language artifact being reviewed is `GATE_2_REVIEW.md`. Approval may be given directly in chat; file access is not required because the agent must paste the material decision summary into the approval request.
 
 ### What has been implemented
 
@@ -73,9 +76,9 @@ Approval wording: **“Approve Gate 1C corpus”**, optionally followed by subst
 
 Approve this architecture as version 1. Changes can still be made through tested schema-version updates; approval does not freeze implementation details forever.
 
-Approval wording: **“Approve Gate 2”** or **“Revise Gate 2: …”**
+Approval wording: **“Approve Gate 2A”** or **“Revise Gate 2A: …”**
 
-### What Gate 2 does not authorize
+### What Gate 2A does not authorize
 
 - Network calls
 - Credential access
@@ -83,6 +86,12 @@ Approval wording: **“Approve Gate 2”** or **“Revise Gate 2: …”**
 - Researching the 60-company corpus
 - Human approval of generated enrichment output
 - Push, merge, deploy, or external sharing
+
+## Gate 2B — Prompts and output schemas
+
+Before P0 executors are implemented, present the actual prompt text and exact output fields for all eight enrichments in one review packet. Include one representative B2B input and expected structured output per enrichment. Do not ask for approval until these artifacts exist.
+
+Approval wording: **“Approve Gate 2B”** or **“Revise Gate 2B: …”**
 
 ## Gate 3 — Live providers, payloads, and spend
 

@@ -22,7 +22,8 @@
 - [x] Implement strict YAML/version validation.
 - [x] Create eight B2B P0 manifests.
 - [x] Add contract and manifest tests (15 passing).
-- [ ] Human Gate 2: approve contract, manifest, SellerContext, and visibility design.
+- [ ] Human Gate 2A: review `GATE_2_REVIEW.md` and approve contract, manifest, SellerContext, and visibility design.
+- [ ] Human Gate 2B: approve actual prompts and exact output schemas before P0 executors.
 
 ## Phase 2 — Capability discovery
 - [ ] Implement mandatory GTM Orchestrator preflight.
