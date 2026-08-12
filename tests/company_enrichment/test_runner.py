@@ -1,0 +1,289 @@
+from datetime import datetime, timezone
+from decimal import Decimal
+from pathlib import Path
+from types import SimpleNamespace
+
+import pytest
+
+from scripts.company_enrichment.budgets import BudgetLedger, Reservation
+from scripts.company_enrichment.contracts import (
+    EnrichmentRequest, FailureKind, ResultStatus, SellerContext,
+)
+from scripts.company_enrichment.discovery import DiscoveryRecord, ProbeResult, ProbeStatus
+from scripts.company_enrichment.evidence import EvidenceStore, SourceRecord
+from scripts.company_enrichment.executors import ExecutionOutput
+from scripts.company_enrichment.providers import RetryableFailure
+from scripts.company_enrichment.providers import ProviderRouter
+from scripts.company_enrichment.runner import AdapterResponse, EnrichmentRunner
+
+
+NOW = datetime(2026, 8, 12, tzinfo=timezone.utc)
+
+
+def _context() -> SellerContext:
+    return SellerContext(
+        'B2B SaaS', ('VP Sales',), ('research',), 'Pipeline Sprint', '30 days',
+        'more pipeline', ('case study',), 'pilot', ('consumer',), 'invest in growth',
+    )
+
+
+def _definition(**overrides):
+    values = dict(
+        id='company-description', output_schema_version='1.0',
+        required_inputs=('company_name', 'domain'),
+        fallback_order=('homepage-scrape',), freshness_days=30,
+        caps={'retries': 2}, output_visibility='message_safe',
+    )
+    values.update(overrides)
+    return SimpleNamespace(**values)
+
+
+class FakeDiscovery:
+    def __init__(self, events, *, fail=False):
+        self.events = events
+        self.fail = fail
+
+    def discover(self, enrichment_id, fallback_order, *, operation=None):
+        self.events.append('discover')
+        if self.fail:
+            raise RuntimeError('verified capability gap')
+        probe = ProbeResult('probe', ProbeStatus.AVAILABLE)
+        return DiscoveryRecord(
+            enrichment_id, ('gtm', 'nexus', 'select'), probe, probe,
+            'homepage-scrape', ('homepage-scrape',), 'selected',
+            'C:/gtm', '2.1.0', enrichment_id, 'available',
+        )
+
+
+class FakeRouter:
+    def __init__(self, events):
+        self.events = events
+
+    def route(self, definition, discovery, *, known_urls=()):
+        self.events.append('route')
+        return SimpleNamespace(provider_ids=('homepage-scrape',))
+
+
+class FakeAdapter:
+    estimated_cost_usd = '0'
+
+    def __init__(self, events, *, failures=0, resolved_model='openai/gpt-5-mini'):
+        self.events = events
+        self.failures = failures
+        self.calls = 0
+        self.resolved_model = resolved_model
+
+    def collect(self, request, url):
+        self.calls += 1
+        self.events.append('collect')
+        if self.calls <= self.failures:
+            raise RetryableFailure('try again')
+        return AdapterResponse(
+            SourceRecord(url, NOW, 'first_party', 'homepage-scrape',
+                         'Acme builds workflow software.', 'Workflow software', 30, '0'),
+            actual_cost_usd='0', dry_angles=('angle-a', 'angle-b'),
+            unavailable_source_types=('independent',),
+            resolved_model=self.resolved_model,
+        )
+
+
+def _runner(tmp_path: Path, events: list[str], adapter=None, discovery=None):
+    return EnrichmentRunner(
+        definitions={'company-description': _definition()},
+        discovery=discovery or FakeDiscovery(events), router=FakeRouter(events),
+        evidence_store=EvidenceStore(tmp_path / 'evidence'),
+        budget_ledger=BudgetLedger(tmp_path / 'budget.jsonl', {'corpus-build': '2'}),
+        adapters={'homepage-scrape': adapter or FakeAdapter(events)},
+        outcome_journal=tmp_path / 'outcomes.jsonl', as_of=NOW,
+        record_step=events.append,
+    )
+
+
+def _request(**inputs):
+    values = {'company_name': 'Acme', 'domain': 'acme.example',
+              'seller_context': _context(), 'requested_model': 'openai/gpt-5-mini'}
+    values.update(inputs)
+    return EnrichmentRequest('company-description', 'saas-01', '1.0', values)
+
+
+def test_runner_uses_exact_order_and_records_append_only_outcome(tmp_path: Path) -> None:
+    events = []
+    result = _runner(tmp_path, events).run(_request())
+    assert events == ['validate', 'discover', 'route', 'resolve', 'collect',
+                      'execute', 'validate_output', 'record']
+    assert result.status is ResultStatus.COMPLETE
+    assert len((tmp_path / 'outcomes.jsonl').read_text().splitlines()) == 1
+
+
+def test_discovery_occurs_on_cache_hits_and_resume_skips_collection(tmp_path: Path) -> None:
+    events = []
+    adapter = FakeAdapter(events)
+    runner = _runner(tmp_path, events, adapter)
+    first = runner.run(_request())
+    events.clear()
+    second = runner.run(_request())
+    assert adapter.calls == 1
+    assert events == ['validate', 'discover', 'route', 'resolve',
+                      'execute', 'validate_output', 'record']
+    assert second.output['evidence'] == first.output['evidence']
+    assert second.output['cache_hits'] == 1
+    assert len((tmp_path / 'outcomes.jsonl').read_text().splitlines()) == 2
+
+
+def test_fresh_runner_resumes_saturated_cached_result_without_collection(
+    tmp_path: Path,
+) -> None:
+    events = []
+    adapter = FakeAdapter(events)
+    first = _runner(tmp_path, events, adapter).run(_request())
+    events.clear()
+    resumed = _runner(tmp_path, events, adapter).run(_request())
+    assert adapter.calls == 1
+    assert first.status is ResultStatus.COMPLETE
+    assert resumed.status is ResultStatus.COMPLETE
+    assert resumed.output['cache_hits'] == 1
+
+
+def test_discovery_failure_is_recorded_as_failed_outcome(tmp_path: Path) -> None:
+    events = []
+    result = _runner(tmp_path, events, discovery=FakeDiscovery(events, fail=True)).run(
+        _request()
+    )
+    assert result.status is ResultStatus.FAILED
+    assert result.failure is FailureKind.TERMINAL
+    assert events == ['validate', 'discover', 'record']
+
+
+def test_runner_retries_only_to_definition_cap(tmp_path: Path) -> None:
+    events = []
+    adapter = FakeAdapter(events, failures=3)
+    result = _runner(tmp_path, events, adapter).run(_request())
+    assert adapter.calls == 3
+    assert result.status is ResultStatus.FAILED
+    assert result.failure is FailureKind.RETRYABLE
+
+
+def test_runner_reports_partial_when_source_saturation_is_not_met(tmp_path: Path) -> None:
+    events = []
+    adapter = FakeAdapter(events)
+    adapter.collect = lambda request, url: AdapterResponse(
+        SourceRecord(url, NOW, 'first_party', 'homepage-scrape', 'content', 'excerpt', 30, '0')
+    )
+    result = _runner(tmp_path, events, adapter).run(_request())
+    assert result.status is ResultStatus.PARTIAL
+    assert result.failure is FailureKind.INSUFFICIENT_EVIDENCE
+
+
+def test_runner_preserves_exact_requested_and_resolved_model_ids(tmp_path: Path) -> None:
+    result = _runner(tmp_path, [], FakeAdapter([], resolved_model='openai/gpt-5.1-mini')).run(
+        _request(requested_model='openai/gpt-5-mini')
+    )
+    assert result.output['requested_model'] == 'openai/gpt-5-mini'
+    assert result.output['resolved_model'] == 'openai/gpt-5.1-mini'
+
+
+def test_paid_collection_executes_only_for_owned_reservation(tmp_path: Path) -> None:
+    events = []
+    adapter = FakeAdapter(events)
+    adapter.estimated_cost_usd = '0.25'
+    ledger = BudgetLedger(tmp_path / 'budget.jsonl', {'corpus-build': '2'})
+    runner = EnrichmentRunner(
+        definitions={'company-description': _definition()}, discovery=FakeDiscovery(events),
+        router=FakeRouter(events), evidence_store=EvidenceStore(tmp_path / 'evidence'),
+        budget_ledger=ledger, adapters={'homepage-scrape': adapter},
+        outcome_journal=tmp_path / 'outcomes.jsonl', as_of=NOW,
+    )
+    result = runner.run(_request())
+    assert result.status is ResultStatus.COMPLETE
+    assert ledger.spent('corpus-build') == Decimal('0')
+    assert adapter.calls == 1
+
+
+def test_runner_rejects_adapter_result_with_wrong_provider(tmp_path: Path) -> None:
+    events = []
+    adapter = FakeAdapter(events)
+    adapter.collect = lambda request, url: AdapterResponse(
+        SourceRecord(url, NOW, 'first_party', 'other', 'content', 'excerpt', 30, '0')
+    )
+    result = _runner(tmp_path, events, adapter).run(_request())
+    assert result.status is ResultStatus.FAILED
+    assert result.failure is FailureKind.CONTRACT_INVALID
+
+
+def test_runner_rejects_empty_typed_executor_output(tmp_path: Path) -> None:
+    events = []
+    runner = EnrichmentRunner(
+        definitions={'company-description': _definition()},
+        discovery=FakeDiscovery(events), router=FakeRouter(events),
+        evidence_store=EvidenceStore(tmp_path / 'evidence'),
+        budget_ledger=BudgetLedger(tmp_path / 'budget.jsonl', {'corpus-build': '2'}),
+        adapters={'homepage-scrape': FakeAdapter(events)},
+        outcome_journal=tmp_path / 'outcomes.jsonl', as_of=NOW,
+        executor=lambda *args, **kwargs: ExecutionOutput(()),
+    )
+    result = runner.run(_request())
+    assert result.status is ResultStatus.FAILED
+    assert result.failure is FailureKind.CONTRACT_INVALID
+
+
+def test_runner_never_executes_paid_work_owned_by_another_run(tmp_path: Path) -> None:
+    events = []
+    adapter = FakeAdapter(events)
+    adapter.estimated_cost_usd = '0.25'
+    ledger = BudgetLedger(tmp_path / 'budget.jsonl', {'corpus-build': '2'})
+    ledger.reserve(
+        'corpus-build',
+        'saas-01:company-description:homepage-scrape:https://acme.example:attempt-0',
+        '0.25',
+    )
+    runner = EnrichmentRunner(
+        definitions={'company-description': _definition()},
+        discovery=FakeDiscovery(events), router=FakeRouter(events),
+        evidence_store=EvidenceStore(tmp_path / 'evidence'), budget_ledger=ledger,
+        adapters={'homepage-scrape': adapter},
+        outcome_journal=tmp_path / 'outcomes.jsonl', as_of=NOW,
+    )
+    result = runner.run(_request())
+    assert adapter.calls == 0
+    assert result.status is ResultStatus.FAILED
+
+
+def test_model_only_enrichment_does_not_force_a_known_url_route(tmp_path: Path) -> None:
+    events = []
+    definition = _definition(
+        id='analogy-value-translator',
+        required_inputs=('company_name', 'domain', 'seller_context'),
+        fallback_order=('model-router',),
+    )
+
+    class ModelDiscovery:
+        def discover(self, enrichment_id, fallback_order, *, operation=None):
+            return SimpleNamespace(
+                selected_capability='model-router',
+                eligible_capabilities=('model-router',),
+            )
+
+    class ModelAdapter(FakeAdapter):
+        def collect(self, request, url):
+            self.calls += 1
+            return AdapterResponse(
+                SourceRecord(url, NOW, 'first_party', 'model-router',
+                             'Cited dossier', 'Cited dossier', 30, '0'),
+                dry_angles=('angle-a', 'angle-b'),
+                unavailable_source_types=('independent',),
+                resolved_model=self.resolved_model,
+            )
+
+    result = EnrichmentRunner(
+        definitions={'analogy-value-translator': definition},
+        discovery=ModelDiscovery(), router=ProviderRouter(),
+        evidence_store=EvidenceStore(tmp_path / 'evidence'),
+        budget_ledger=BudgetLedger(tmp_path / 'budget.jsonl', {'corpus-build': '2'}),
+        adapters={'model-router': ModelAdapter(events)},
+        outcome_journal=tmp_path / 'outcomes.jsonl', as_of=NOW,
+    ).run(EnrichmentRequest(
+        'analogy-value-translator', 'saas-01', '1.0',
+        {'company_name': 'Acme', 'domain': 'acme.example',
+         'seller_context': _context(), 'requested_model': 'openai/gpt-5-mini'},
+    ))
+    assert result.status is ResultStatus.COMPLETE
