@@ -686,6 +686,8 @@ class ArtifactStore:
                 constraints=tuple(value["constraints"]),
                 baseline=value["baseline"],
                 budget_limits=budget_limits,
+                execution_inputs=value.get('execution_inputs', {}),
+                rubric=value.get('rubric', 'ground_truth_accuracy'),
                 approval_threshold=value["approval_threshold"],
             )
         except (KeyError, TypeError, SchemaError) as error:

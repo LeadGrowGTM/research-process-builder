@@ -146,6 +146,21 @@ def test_evaluator_receives_the_exact_executor_evidence(tmp_path):
     AutoresearchOrchestrator(ArtifactStore(tmp_path), recording.bundle()).run(request())
     assert recording.calls[-1].payload["evidence"] == recording.values[3]
 
+
+def test_executor_and_evaluator_receive_injected_execution_context(tmp_path):
+    recording = RecordingRoles()
+    req = RunRequest(
+        "1.0", "run", "Improve read-only research.", ("read_only",),
+        {"accuracy": .88}, BudgetLimits(max_stages=5), .90,
+        execution_inputs={"stage": "saas_shared_core", "company_ids": ["saas-01"]},
+        rubric="research_complete_company_dossier",
+    )
+    AutoresearchOrchestrator(ArtifactStore(tmp_path), recording.bundle()).run(req)
+    assert recording.calls[3].payload["execution_inputs"] == {
+        "stage": "saas_shared_core", "company_ids": ("saas-01",),
+    }
+    assert recording.calls[4].payload["rubric"] == "research_complete_company_dossier"
+
 @pytest.mark.parametrize("score,expected_action,reason", [
     (.89, "advance", "accepted_improvement"),
     (.80, "rollback", "regression_with_baseline"),
