@@ -1,6 +1,7 @@
 # Company enrichment capability registry
 
-**Recorded:** 2026-08-12  
+**Recorded:** 2026-08-12
+
 **Boundary:** Local capability metadata only; this record does not prove a live provider call.
 
 Every enrichment run performs GTM discovery, records a Nexus result or explicit
@@ -19,7 +20,7 @@ seed provenance and is intentionally absent from runtime routing.
 | `meta-ads` | Applicable ads | Historical actor `ZQyDz7154hrOfrDMK` | Requires a 1–3 URL schema/cost validation before batch use |
 | `tiktok-ads` | Commerce ads | Runtime discovery | Ineligible until a current capability is proven |
 | `techsight` | Technology detection | Local launcher | Authentication required unless preflight proves availability |
-| `model-router` | Model comparison | Injected model clients | Exact requested and resolved IDs are recorded |
+| `model-router` | Model comparison | Injected model clients | Available for the later benchmark-runner task; exact model audit records are not implemented yet |
 
 Nexus authentication failure is nonfatal but visible. It cannot be converted to
 success or silently skipped. Parallel remains configured with only `web_search`.

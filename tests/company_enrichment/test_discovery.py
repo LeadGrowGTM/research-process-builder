@@ -1,6 +1,9 @@
+import pytest
+
 from scripts.company_enrichment.discovery import (
     AuthenticationRequired,
     CapabilityDiscovery,
+    CapabilityRequirement,
     CapabilityRegistry,
     ProbeResult,
     ProbeStatus,
@@ -18,6 +21,7 @@ class RecordingGtmProbe:
             status=ProbeStatus.AVAILABLE,
             details={
                 "adapter": "homepage-scrape",
+                "path": "C:/gtm/web-scraping",
                 "version": "2.1.0",
                 "free_levels": [1, 2],
                 "paid_levels": [3, 4],
@@ -36,10 +40,12 @@ class MissingNexusProbe:
 
 def test_discovery_runs_gtm_then_nexus_then_selects_homepage_first() -> None:
     calls: list[str] = []
+    recorded = []
     discovery = CapabilityDiscovery(
         gtm_probe=RecordingGtmProbe(calls),
         nexus_probe=MissingNexusProbe(calls),
         registry=CapabilityRegistry.default(),
+        record_discovery=recorded.append,
     )
 
     record = discovery.discover(
@@ -52,6 +58,11 @@ def test_discovery_runs_gtm_then_nexus_then_selects_homepage_first() -> None:
     assert record.selected_capability == "homepage-scrape"
     assert record.nexus.status is ProbeStatus.AUTHENTICATION_REQUIRED
     assert "NEXUS_BOUNDARY_TOKEN" in record.nexus.message
+    assert record.gtm_path == "C:/gtm/web-scraping"
+    assert record.gtm_version == "2.1.0"
+    assert record.nexus_query == "company-description"
+    assert record.nexus_outcome == "authentication_required"
+    assert recorded == [record]
 
 
 def test_default_registry_keeps_seed_data_out_of_runtime_routing() -> None:
@@ -97,6 +108,7 @@ def test_discovery_fails_closed_when_required_probe_was_not_checked() -> None:
         gtm_probe=SkippedGtm(),
         nexus_probe=MissingNexusProbe(calls),
         registry=CapabilityRegistry.default(),
+        record_discovery=lambda _record: None,
     )
 
     try:
@@ -105,3 +117,62 @@ def test_discovery_fails_closed_when_required_probe_was_not_checked() -> None:
         assert "GTM probe was not checked" in str(error)
     else:
         raise AssertionError("skipped GTM discovery must fail closed")
+
+
+def test_registry_skips_unvalidated_or_ineligible_capabilities() -> None:
+    registry = CapabilityRegistry.default()
+
+    selected = registry.select(
+        CapabilityRequirement(
+            enrichment_id="running-ads-offer-intelligence",
+            operation="ads",
+            fallback_order=("meta-ads", "tiktok-ads", "linkedin-ads"),
+        )
+    )
+
+    assert selected.id == "linkedin-ads"
+
+    with pytest.raises(RuntimeError, match="verified capability gap"):
+        registry.select(
+            CapabilityRequirement(
+                enrichment_id="technology-detection",
+                operation="detect",
+                fallback_order=("techsight",),
+            )
+        )
+
+    with pytest.raises(RuntimeError, match="verified capability gap"):
+        registry.select(
+            CapabilityRequirement(
+                enrichment_id="job-opportunity-mining",
+                operation="jobs",
+                fallback_order=("free-job-enrichment",),
+            )
+        )
+
+
+def test_unavailable_gtm_probe_cannot_select_homepage_scraper() -> None:
+    class UnavailableGtm:
+        def probe(self) -> ProbeResult:
+            return ProbeResult(
+                "gtm-orchestrator",
+                ProbeStatus.UNAVAILABLE,
+                {"path": "C:/gtm/web-scraping", "version": "2.1.0"},
+            )
+
+    class AvailableNexus:
+        def probe(self, enrichment_id: str) -> ProbeResult:
+            return ProbeResult("nexus", ProbeStatus.AVAILABLE)
+
+    record = CapabilityDiscovery(
+        gtm_probe=UnavailableGtm(),
+        nexus_probe=AvailableNexus(),
+        registry=CapabilityRegistry.default(),
+        record_discovery=lambda _record: None,
+    ).discover(
+        "company-description",
+        ("homepage-scrape", "parallel-search"),
+        operation="search",
+    )
+
+    assert record.selected_capability == "parallel-search"

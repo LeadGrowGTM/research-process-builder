@@ -139,7 +139,9 @@ def test_meta_requires_small_validation_before_batch_eligibility() -> None:
         inspect_one=lambda request: (
             inspected.append(request.url),
             AdFinding.unknown("meta"),
-        )[1]
+        )[1],
+        measure_cost=lambda _request, _finding: "0.02",
+        max_sample_cost_usd="0.10",
     )
 
     assert adapter.batch_eligible is False
@@ -153,8 +155,28 @@ def test_meta_requires_small_validation_before_batch_eligibility() -> None:
     assert validation.sample_size == 2
     assert validation.schema_valid is True
     assert validation.cost_valid is True
+    assert str(validation.measured_cost_usd) == "0.04"
     assert adapter.batch_eligible is True
     assert inspected == ["https://acme.example", "https://beta.example"]
 
     with pytest.raises(ValueError, match="1 to 3"):
         adapter.validate(())
+
+
+def test_meta_batch_stays_blocked_when_schema_or_cost_validation_fails() -> None:
+    wrong_schema = MetaAdsAdapter(
+        inspect_one=lambda _request: AdFinding.unknown("linkedin"),
+        measure_cost=lambda _request, _finding: "0.01",
+        max_sample_cost_usd="0.10",
+    )
+    excessive_cost = MetaAdsAdapter(
+        inspect_one=lambda _request: AdFinding.unknown("meta"),
+        measure_cost=lambda _request, _finding: "0.20",
+        max_sample_cost_usd="0.10",
+    )
+    request = (AdsRequest("Acme", "https://acme.example"),)
+
+    assert wrong_schema.validate(request).schema_valid is False
+    assert wrong_schema.batch_eligible is False
+    assert excessive_cost.validate(request).cost_valid is False
+    assert excessive_cost.batch_eligible is False

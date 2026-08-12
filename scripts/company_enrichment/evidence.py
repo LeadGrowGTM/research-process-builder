@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from collections import Counter
 from dataclasses import dataclass
 from datetime import datetime
 from decimal import Decimal, InvalidOperation
@@ -8,9 +7,11 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import tempfile
 from typing import Any
 from urllib.parse import urlparse
 
+from ._locking import file_lock
 from .contracts import EvidenceRef, MAX_EXCERPT_CHARS, canonical_json
 
 
@@ -42,6 +43,32 @@ class SourceRecord:
         _decimal_amount(self.paid_cost_usd, "paid_cost_usd")
 
 
+@dataclass(frozen=True, slots=True)
+class SearchAngleResult:
+    material_facts_added: bool
+    angle_id: str | None = None
+    source_id: str | None = None
+    source_type: str | None = None
+    field_citations: tuple[tuple[str, str], ...] = ()
+    unavailable_source_types: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.material_facts_added, bool):
+            raise ValueError("material_facts_added must be boolean")
+        if (self.source_id is None) != (self.source_type is None):
+            raise ValueError("source_id and source_type must be recorded together")
+        if self.source_type not in {None, "first_party", "independent"}:
+            raise ValueError("source_type must be first_party or independent")
+        if not self.material_facts_added and not self.angle_id:
+            raise ValueError("dry search results require an angle_id")
+        object.__setattr__(self, "field_citations", tuple(self.field_citations))
+        object.__setattr__(self, "unavailable_source_types", tuple(self.unavailable_source_types))
+        if any(not field or not evidence_id for field, evidence_id in self.field_citations):
+            raise ValueError("field citations require field and evidence IDs")
+        if any(item not in {"first_party", "independent"} for item in self.unavailable_source_types):
+            raise ValueError("unknown unavailable source type")
+
+
 def _decimal_amount(value: str, name: str) -> Decimal:
     try:
         amount = Decimal(value)
@@ -52,9 +79,13 @@ def _decimal_amount(value: str, name: str) -> Decimal:
     return amount
 
 
-def _source_payload(source: SourceRecord) -> dict[str, Any]:
+def _content_hash(content: str) -> str:
+    return hashlib.sha256(content.encode("utf-8")).hexdigest()
+
+
+def _event_body(source: SourceRecord, content_hash: str) -> dict[str, Any]:
     return {
-        "content": source.content,
+        "content_hash": content_hash,
         "excerpt": source.excerpt,
         "freshness_days": source.freshness_days,
         "paid_cost_usd": source.paid_cost_usd,
@@ -65,24 +96,8 @@ def _source_payload(source: SourceRecord) -> dict[str, Any]:
     }
 
 
-def _source_from_payload(payload: dict[str, Any]) -> SourceRecord:
-    try:
-        return SourceRecord(
-            url=payload["url"],
-            retrieved_at=datetime.fromisoformat(payload["retrieved_at"]),
-            source_type=payload["source_type"],
-            provider=payload["provider"],
-            content=payload["content"],
-            excerpt=payload["excerpt"],
-            freshness_days=payload["freshness_days"],
-            paid_cost_usd=payload["paid_cost_usd"],
-        )
-    except (KeyError, TypeError, ValueError) as error:
-        raise ValueError("evidence object failed tampering validation") from error
-
-
-def _payload_hash(payload: dict[str, Any]) -> str:
-    return hashlib.sha256(canonical_json(payload).encode("utf-8")).hexdigest()
+def _event_id(body: dict[str, Any]) -> str:
+    return hashlib.sha256(canonical_json(body).encode("utf-8")).hexdigest()
 
 
 def cache_key(url: str, provider: str, freshness_days: int) -> str:
@@ -103,57 +118,114 @@ class EvidenceStore:
         self.root = Path(root)
         self.objects = self.root / "objects"
         self.journal = self.root / "sources.jsonl"
+        self._lock_path = self.root / ".evidence.lock"
 
     def put(self, source: SourceRecord) -> EvidenceRef:
-        payload = _source_payload(source)
-        content_hash = _payload_hash(payload)
-        object_path = self.objects / f"{content_hash}.json"
-        if object_path.exists():
-            stored = self.get(content_hash)
-            return self._reference(stored, content_hash)
+        content_hash = _content_hash(source.content)
+        with file_lock(self._lock_path):
+            self.objects.mkdir(parents=True, exist_ok=True)
+            object_path = self.objects / f"{content_hash}.json"
+            if object_path.exists():
+                self._read_content(content_hash)
+            else:
+                self._write_object(object_path, {"content": source.content})
 
-        self.objects.mkdir(parents=True, exist_ok=True)
-        serialized = canonical_json(payload) + "\n"
-        temporary = object_path.with_suffix(f".{os.getpid()}.tmp")
-        try:
-            temporary.write_text(serialized, encoding="utf-8")
-            os.replace(temporary, object_path)
-        finally:
-            temporary.unlink(missing_ok=True)
-
-        self.root.mkdir(parents=True, exist_ok=True)
-        event = canonical_json(
-            {
-                "content_hash": content_hash,
-                "evidence_id": self._evidence_id(content_hash),
-                "provider": source.provider,
-                "retrieved_at": source.retrieved_at,
-                "url": source.url,
-            }
-        )
-        with self.journal.open("a", encoding="utf-8", newline="\n") as stream:
-            stream.write(event + "\n")
-            stream.flush()
-            os.fsync(stream.fileno())
+            body = _event_body(source, content_hash)
+            event_id = _event_id(body)
+            existing_ids = {event["event_id"] for event in self._read_events()}
+            if event_id not in existing_ids:
+                event = {**body, "event_id": event_id}
+                self.root.mkdir(parents=True, exist_ok=True)
+                with self.journal.open("a", encoding="utf-8", newline="\n") as stream:
+                    stream.write(canonical_json(event) + "\n")
+                    stream.flush()
+                    os.fsync(stream.fileno())
         return self._reference(source, content_hash)
 
     def get(self, content_hash: str) -> SourceRecord:
+        self._validate_hash(content_hash)
+        with file_lock(self._lock_path):
+            content = self._read_content(content_hash)
+            event = next(
+                (item for item in self._read_events() if item["content_hash"] == content_hash),
+                None,
+            )
+            if event is None:
+                raise ValueError("evidence object has no source observation")
+            try:
+                return SourceRecord(
+                    url=event["url"],
+                    retrieved_at=datetime.fromisoformat(event["retrieved_at"]),
+                    source_type=event["source_type"],
+                    provider=event["provider"],
+                    content=content,
+                    excerpt=event["excerpt"],
+                    freshness_days=event["freshness_days"],
+                    paid_cost_usd=event["paid_cost_usd"],
+                )
+            except (KeyError, TypeError, ValueError) as error:
+                raise ValueError("evidence source failed tampering validation") from error
+
+    def _read_content(self, content_hash: str) -> str:
+        self._validate_hash(content_hash)
+        object_path = self.objects / f"{content_hash}.json"
+        try:
+            payload = json.loads(object_path.read_text(encoding="utf-8"))
+            if not isinstance(payload, dict) or set(payload) != {"content"}:
+                raise ValueError("invalid content object")
+            content = payload["content"]
+            if not isinstance(content, str) or _content_hash(content) != content_hash:
+                raise ValueError("content hash mismatch")
+            return content
+        except FileNotFoundError:
+            raise
+        except (OSError, json.JSONDecodeError, ValueError) as error:
+            raise ValueError("evidence object failed tampering validation") from error
+
+    def _read_events(self) -> tuple[dict[str, Any], ...]:
+        if not self.journal.exists():
+            return ()
+        events = []
+        for line_number, line in enumerate(self.journal.read_text(encoding="utf-8").splitlines(), 1):
+            try:
+                event = json.loads(line)
+                event_id = event.pop("event_id")
+                if not isinstance(event, dict) or event_id != _event_id(event):
+                    raise ValueError("source event hash mismatch")
+                events.append({**event, "event_id": event_id})
+            except (KeyError, TypeError, json.JSONDecodeError, ValueError) as error:
+                raise ValueError(f"invalid evidence journal event on line {line_number}") from error
+        return tuple(events)
+
+    @staticmethod
+    def _write_object(path: Path, payload: dict[str, Any]) -> None:
+        temporary_name = None
+        try:
+            with tempfile.NamedTemporaryFile(
+                mode="w",
+                encoding="utf-8",
+                dir=path.parent,
+                prefix=f".{path.stem}.",
+                suffix=".tmp",
+                delete=False,
+            ) as stream:
+                temporary_name = stream.name
+                stream.write(canonical_json(payload) + "\n")
+                stream.flush()
+                os.fsync(stream.fileno())
+            os.replace(temporary_name, path)
+        finally:
+            if temporary_name:
+                Path(temporary_name).unlink(missing_ok=True)
+
+    @staticmethod
+    def _validate_hash(content_hash: str) -> None:
         if (
             not isinstance(content_hash, str)
             or len(content_hash) != 64
             or any(character not in "0123456789abcdef" for character in content_hash)
         ):
             raise ValueError("content_hash must be a lowercase SHA-256 digest")
-        object_path = self.objects / f"{content_hash}.json"
-        try:
-            payload = json.loads(object_path.read_text(encoding="utf-8"))
-        except FileNotFoundError:
-            raise
-        except (OSError, json.JSONDecodeError) as error:
-            raise ValueError("evidence object failed tampering validation") from error
-        if not isinstance(payload, dict) or _payload_hash(payload) != content_hash:
-            raise ValueError("evidence object failed tampering validation")
-        return _source_from_payload(payload)
 
     @staticmethod
     def _evidence_id(content_hash: str) -> str:
@@ -177,32 +249,36 @@ class SaturationTracker:
         ):
             raise ValueError("required_fields must contain non-empty field names")
         self._required_fields = frozenset(required_fields)
-        self._observed_fields: set[str] = set()
-        self._source_counts: Counter[str] = Counter()
-        self._consecutive_dry_angles = 0
+        self._field_evidence: dict[str, set[str]] = {}
+        self._sources: dict[str, set[str]] = {"first_party": set(), "independent": set()}
+        self._unavailable_source_types: set[str] = set()
+        self._consecutive_dry_angles: list[str] = []
 
-    def observe_source(self, source_type: str) -> None:
-        if source_type not in {"first_party", "independent"}:
-            raise ValueError("source_type must be first_party or independent")
-        self._source_counts[source_type] += 1
-
-    def observe_field(self, field: str) -> None:
-        if not isinstance(field, str) or not field:
-            raise ValueError("field must be non-empty text")
-        self._observed_fields.add(field)
-
-    def observe_search_angle(self, *, material_facts_added: bool) -> None:
-        if not isinstance(material_facts_added, bool):
-            raise ValueError("material_facts_added must be boolean")
-        self._consecutive_dry_angles = (
-            0 if material_facts_added else self._consecutive_dry_angles + 1
-        )
+    def observe(self, result: SearchAngleResult) -> None:
+        if result.source_id and result.source_type:
+            self._sources[result.source_type].add(result.source_id)
+        for field, evidence_id in result.field_citations:
+            self._field_evidence.setdefault(field, set()).add(evidence_id)
+        self._unavailable_source_types.update(result.unavailable_source_types)
+        if result.material_facts_added:
+            self._consecutive_dry_angles.clear()
+        elif result.angle_id not in self._consecutive_dry_angles:
+            self._consecutive_dry_angles.append(result.angle_id)
 
     @property
     def is_saturated(self) -> bool:
+        fields_cited = all(self._field_evidence.get(field) for field in self._required_fields)
+        first_party_complete = (
+            bool(self._sources["first_party"])
+            or "first_party" in self._unavailable_source_types
+        )
+        independent_complete = (
+            len(self._sources["independent"]) >= 2
+            or "independent" in self._unavailable_source_types
+        )
         return (
-            self._required_fields <= self._observed_fields
-            and self._source_counts["first_party"] >= 1
-            and self._source_counts["independent"] >= 2
-            and self._consecutive_dry_angles >= 2
+            fields_cited
+            and first_party_complete
+            and independent_complete
+            and len(self._consecutive_dry_angles) >= 2
         )

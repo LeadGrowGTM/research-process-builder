@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from enum import Enum
 from types import MappingProxyType
-from typing import Any, Mapping, Protocol
+from typing import Any, Callable, Mapping, Protocol
 
 
 class ProbeStatus(str, Enum):
@@ -44,6 +44,14 @@ class Capability:
         object.__setattr__(self, "operations", tuple(self.operations))
         object.__setattr__(self, "metadata", MappingProxyType(dict(self.metadata)))
         object.__setattr__(self, "eligible_enrichments", tuple(self.eligible_enrichments))
+
+
+@dataclass(frozen=True, slots=True)
+class CapabilityRequirement:
+    enrichment_id: str
+    fallback_order: tuple[str, ...]
+    operation: str | None = None
+    unavailable_capabilities: frozenset[str] = frozenset()
 
 
 class CapabilityRegistry(Mapping[str, Capability]):
@@ -123,15 +131,34 @@ class CapabilityRegistry(Mapping[str, Capability]):
                     provenance="local-techsight-launcher",
                     validation_state="authentication_required",
                 ),
-                Capability("model-router", "model-comparison", ("generate",), 1),
+                Capability(
+                    "model-router", "model-comparison", ("generate",), 1,
+                    validation_state="available",
+                ),
             )
         )
 
-    def select(self, fallback_order: tuple[str, ...]) -> Capability:
-        for capability_id in fallback_order:
-            if capability_id in self:
-                return self[capability_id]
-        raise RuntimeError("no registered capability matches the fallback order")
+    def select(
+        self, requirement: CapabilityRequirement | tuple[str, ...]
+    ) -> Capability:
+        if isinstance(requirement, tuple):
+            requirement = CapabilityRequirement("", requirement)
+        selectable_states = {"approved", "available", "observed", "preferred", "search_only"}
+        for capability_id in requirement.fallback_order:
+            if capability_id not in self or capability_id in requirement.unavailable_capabilities:
+                continue
+            capability = self[capability_id]
+            if capability.validation_state not in selectable_states:
+                continue
+            if requirement.operation and requirement.operation not in capability.operations:
+                continue
+            if (
+                capability.eligible_enrichments
+                and requirement.enrichment_id not in capability.eligible_enrichments
+            ):
+                continue
+            return capability
+        raise RuntimeError("verified capability gap: no eligible registered capability")
 
 
 class GtmProbe(Protocol):
@@ -149,6 +176,10 @@ class DiscoveryRecord:
     gtm: ProbeResult
     nexus: ProbeResult
     selected_capability: str
+    gtm_path: str
+    gtm_version: str
+    nexus_query: str
+    nexus_outcome: str
 
 
 class CapabilityDiscovery:
@@ -158,15 +189,19 @@ class CapabilityDiscovery:
         gtm_probe: GtmProbe,
         nexus_probe: NexusProbe,
         registry: CapabilityRegistry,
+        record_discovery: Callable[[DiscoveryRecord], None],
     ) -> None:
         self._gtm_probe = gtm_probe
         self._nexus_probe = nexus_probe
         self._registry = registry
+        self._record_discovery = record_discovery
 
     def discover(
         self,
         enrichment_id: str,
         fallback_order: tuple[str, ...],
+        *,
+        operation: str | None = None,
     ) -> DiscoveryRecord:
         gtm = self._gtm_probe.probe()
         if gtm.status is ProbeStatus.NOT_CHECKED:
@@ -181,11 +216,34 @@ class CapabilityDiscovery:
             )
         if nexus.status is ProbeStatus.NOT_CHECKED:
             raise RuntimeError("Nexus probe was not checked")
-        selected = self._registry.select(tuple(fallback_order))
-        return DiscoveryRecord(
+        try:
+            gtm_path = str(gtm.details["path"])
+            gtm_version = str(gtm.details["version"])
+        except KeyError as error:
+            raise RuntimeError("GTM probe must record path and version") from error
+        unavailable = (
+            frozenset({"homepage-scrape", "company-careers-scrape"})
+            if gtm.status is not ProbeStatus.AVAILABLE
+            else frozenset()
+        )
+        selected = self._registry.select(
+            CapabilityRequirement(
+                enrichment_id=enrichment_id,
+                fallback_order=tuple(fallback_order),
+                operation=operation,
+                unavailable_capabilities=unavailable,
+            )
+        )
+        record = DiscoveryRecord(
             enrichment_id=enrichment_id,
             steps=("gtm", "nexus", "select"),
             gtm=gtm,
             nexus=nexus,
             selected_capability=selected.id,
+            gtm_path=gtm_path,
+            gtm_version=gtm_version,
+            nexus_query=enrichment_id,
+            nexus_outcome=nexus.status.value,
         )
+        self._record_discovery(record)
+        return record

@@ -51,3 +51,24 @@ def test_parallel_reservations_never_cross_cap(tmp_path) -> None:
     assert sum(accepted) == 6
     assert ledger.reserved("corpus-build") == Decimal("1.80")
     assert ledger.reserved("corpus-build") <= Decimal("2.00")
+
+
+def test_release_is_idempotent_and_frees_an_unspent_reservation(tmp_path) -> None:
+    ledger = BudgetLedger(tmp_path / "costs.jsonl", {"corpus-build": "2.00"})
+    reservation = ledger.reserve("corpus-build", "failed-before-charge", "0.50")
+
+    ledger.release(reservation)
+    ledger.release(reservation)
+
+    assert ledger.reserved("corpus-build") == Decimal("0")
+    assert ledger.spent("corpus-build") == Decimal("0")
+
+
+def test_stale_lock_file_content_does_not_block_after_process_exit(tmp_path) -> None:
+    path = tmp_path / "costs.jsonl"
+    path.with_suffix(".jsonl.lock").write_text("dead-process", encoding="utf-8")
+    ledger = BudgetLedger(path, {"corpus-build": "2.00"})
+
+    ledger.reserve("corpus-build", "next", "0.25")
+
+    assert ledger.reserved("corpus-build") == Decimal("0.25")

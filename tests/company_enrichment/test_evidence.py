@@ -1,9 +1,11 @@
-from datetime import datetime, timezone
+from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime, timedelta, timezone
 
 import pytest
 
 from scripts.company_enrichment.evidence import (
     EvidenceStore,
+    SearchAngleResult,
     SaturationTracker,
     SourceRecord,
     cache_key,
@@ -43,16 +45,93 @@ def test_cache_key_includes_url_provider_and_freshness() -> None:
     assert baseline != cache_key("https://acme.example/about", "homepage-scrape", 30)
 
 
-def test_saturation_requires_fields_sources_and_two_dry_angles() -> None:
+def test_material_content_deduplicates_across_retrieval_metadata(tmp_path) -> None:
+    store = EvidenceStore(tmp_path)
+    first = SourceRecord(
+        "https://acme.example/about",
+        datetime(2026, 8, 12, tzinfo=timezone.utc),
+        "first_party",
+        "homepage-scrape",
+        "Same material",
+        "Same material",
+        30,
+        "0",
+    )
+    second = SourceRecord(
+        "https://mirror.example/acme",
+        first.retrieved_at + timedelta(days=1),
+        "independent",
+        "parallel-search",
+        "Same material",
+        "Same material",
+        7,
+        "0.01",
+    )
+
+    assert store.put(first).content_hash == store.put(second).content_hash
+    assert len(list((tmp_path / "objects").glob("*.json"))) == 1
+    assert len((tmp_path / "sources.jsonl").read_text(encoding="utf-8").splitlines()) == 2
+
+
+def test_concurrent_identical_puts_are_idempotent(tmp_path) -> None:
+    store = EvidenceStore(tmp_path)
+    source = SourceRecord(
+        "https://acme.example",
+        datetime(2026, 8, 12, tzinfo=timezone.utc),
+        "first_party",
+        "homepage-scrape",
+        "Concurrent material",
+        "Concurrent material",
+        30,
+        "0",
+    )
+
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        refs = list(executor.map(lambda _index: store.put(source), range(20)))
+
+    assert len({ref.content_hash for ref in refs}) == 1
+    assert len(list((tmp_path / "objects").glob("*.json"))) == 1
+    assert len((tmp_path / "sources.jsonl").read_text(encoding="utf-8").splitlines()) == 1
+
+
+def test_saturation_requires_cited_fields_distinct_sources_and_two_dry_angles() -> None:
     tracker = SaturationTracker(required_fields=("description", "target_customer"))
-    tracker.observe_source("first_party")
-    tracker.observe_source("independent")
-    tracker.observe_source("independent")
-    tracker.observe_field("description")
-    tracker.observe_field("target_customer")
-    tracker.observe_search_angle(material_facts_added=False)
+    tracker.observe(
+        SearchAngleResult(
+            source_id="homepage",
+            source_type="first_party",
+            field_citations=(("description", "ev-home"),),
+            material_facts_added=True,
+        )
+    )
+    tracker.observe(
+        SearchAngleResult(
+            source_id="news-1",
+            source_type="independent",
+            field_citations=(("target_customer", "ev-news-1"),),
+            material_facts_added=False,
+            angle_id="customer-search",
+        )
+    )
+    tracker.observe(
+        SearchAngleResult(
+            source_id="news-1",
+            source_type="independent",
+            field_citations=(),
+            material_facts_added=False,
+            angle_id="customer-search",
+        )
+    )
     assert tracker.is_saturated is False
-    tracker.observe_search_angle(material_facts_added=False)
+    tracker.observe(
+        SearchAngleResult(
+            source_id="news-2",
+            source_type="independent",
+            field_citations=(),
+            material_facts_added=False,
+            angle_id="category-search",
+        )
+    )
     assert tracker.is_saturated is True
-    tracker.observe_search_angle(material_facts_added=True)
+    tracker.observe(SearchAngleResult(material_facts_added=True))
     assert tracker.is_saturated is False

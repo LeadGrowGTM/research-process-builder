@@ -7,10 +7,9 @@ import hashlib
 import json
 import os
 from pathlib import Path
-import threading
-import time
 from typing import Iterator
 
+from ._locking import file_lock
 from .contracts import canonical_json
 
 
@@ -24,16 +23,6 @@ class Reservation:
     scope_id: str
     idempotency_key: str
     amount: Decimal
-
-
-_LOCKS_GUARD = threading.Lock()
-_PATH_LOCKS: dict[Path, threading.RLock] = {}
-
-
-def _path_lock(path: Path) -> threading.RLock:
-    resolved = path.resolve()
-    with _LOCKS_GUARD:
-        return _PATH_LOCKS.setdefault(resolved, threading.RLock())
 
 
 def _amount(value: str | Decimal, name: str) -> Decimal:
@@ -51,13 +40,12 @@ class BudgetLedger:
         self.path = Path(path)
         if not caps:
             raise ValueError("at least one budget cap is required")
+        if any(not isinstance(scope_id, str) or not scope_id for scope_id in caps):
+            raise ValueError("scope IDs must be non-empty text")
         self._caps = {
             scope_id: _amount(cap, f"cap for {scope_id}")
             for scope_id, cap in caps.items()
         }
-        if any(not isinstance(scope_id, str) or not scope_id for scope_id in caps):
-            raise ValueError("scope IDs must be non-empty text")
-        self._thread_lock = _path_lock(self.path)
         self._lock_path = self.path.with_suffix(self.path.suffix + ".lock")
 
     def reserve(
@@ -69,7 +57,7 @@ class BudgetLedger:
         estimate = _amount(estimated_cost, "estimated_cost")
         self._validate_scope_and_key(scope_id, idempotency_key)
         with self._locked():
-            reservations, actuals = self._replay()
+            reservations, actuals, released = self._replay()
             identity = (scope_id, idempotency_key)
             existing = reservations.get(identity)
             if existing is not None:
@@ -83,6 +71,7 @@ class BudgetLedger:
                     for item in reservations.values()
                     if item.scope_id == scope_id
                     and item.reservation_id not in actuals
+                    and item.reservation_id not in released
                 ),
                 Decimal("0"),
             )
@@ -122,10 +111,10 @@ class BudgetLedger:
     ) -> None:
         actual = _amount(actual_cost, "actual_cost")
         with self._locked():
-            reservations, actuals = self._replay()
-            stored = reservations.get((reservation.scope_id, reservation.idempotency_key))
-            if stored != reservation:
-                raise ValueError("reservation is not present in this ledger")
+            reservations, actuals, released = self._replay()
+            stored = self._stored_reservation(reservations, reservation)
+            if stored.reservation_id in released:
+                raise ValueError("released reservation cannot be reconciled")
             if actual > stored.amount:
                 raise ValueError("actual cost cannot exceed the reserved maximum")
             prior = actuals.get(stored.reservation_id)
@@ -142,16 +131,33 @@ class BudgetLedger:
                 }
             )
 
+    def release(self, reservation: Reservation) -> None:
+        with self._locked():
+            reservations, actuals, released = self._replay()
+            stored = self._stored_reservation(reservations, reservation)
+            if stored.reservation_id in released:
+                return
+            if stored.reservation_id in actuals:
+                raise ValueError("reconciled reservation cannot be released")
+            self._append(
+                {
+                    "kind": "release",
+                    "reservation_id": stored.reservation_id,
+                    "scope_id": stored.scope_id,
+                }
+            )
+
     def reserved(self, scope_id: str) -> Decimal:
         self._validate_scope(scope_id)
         with self._locked():
-            reservations, actuals = self._replay()
+            reservations, actuals, released = self._replay()
             return sum(
                 (
                     item.amount
                     for item in reservations.values()
                     if item.scope_id == scope_id
                     and item.reservation_id not in actuals
+                    and item.reservation_id not in released
                 ),
                 Decimal("0"),
             )
@@ -159,7 +165,7 @@ class BudgetLedger:
     def spent(self, scope_id: str) -> Decimal:
         self._validate_scope(scope_id)
         with self._locked():
-            reservations, actuals = self._replay()
+            reservations, actuals, _released = self._replay()
             ids = {
                 item.reservation_id
                 for item in reservations.values()
@@ -193,15 +199,29 @@ class BudgetLedger:
         for reservation in reservations.values():
             if reservation.reservation_id == reservation_id:
                 return reservation
-        raise ValueError("budget ledger contains an orphan reconciliation")
+        raise ValueError("budget ledger contains an orphan settlement")
+
+    @staticmethod
+    def _stored_reservation(
+        reservations: dict[tuple[str, str], Reservation], reservation: Reservation
+    ) -> Reservation:
+        stored = reservations.get((reservation.scope_id, reservation.idempotency_key))
+        if stored != reservation:
+            raise ValueError("reservation is not present in this ledger")
+        return stored
 
     def _replay(
         self,
-    ) -> tuple[dict[tuple[str, str], Reservation], dict[str, Decimal]]:
+    ) -> tuple[
+        dict[tuple[str, str], Reservation],
+        dict[str, Decimal],
+        set[str],
+    ]:
         reservations: dict[tuple[str, str], Reservation] = {}
         actuals: dict[str, Decimal] = {}
+        released: set[str] = set()
         if not self.path.exists():
-            return reservations, actuals
+            return reservations, actuals, released
         for line_number, line in enumerate(
             self.path.read_text(encoding="utf-8").splitlines(), start=1
         ):
@@ -215,6 +235,8 @@ class BudgetLedger:
                         idempotency_key=event["idempotency_key"],
                         amount=_amount(event["amount"], "stored reservation"),
                     )
+                    if reservation.scope_id not in self._caps:
+                        raise ValueError("reservation has an unknown scope")
                     expected_id = self._reservation_id(
                         reservation.scope_id, reservation.idempotency_key
                     )
@@ -226,11 +248,16 @@ class BudgetLedger:
                     reservations[key] = reservation
                 elif kind == "reconcile":
                     reservation_id = event["reservation_id"]
-                    if reservation_id in actuals:
-                        raise ValueError("duplicate reconciliation")
+                    if reservation_id in actuals or reservation_id in released:
+                        raise ValueError("duplicate or conflicting settlement")
                     actuals[reservation_id] = _amount(
                         event["actual_cost"], "stored actual cost"
                     )
+                elif kind == "release":
+                    reservation_id = event["reservation_id"]
+                    if reservation_id in actuals or reservation_id in released:
+                        raise ValueError("duplicate or conflicting settlement")
+                    released.add(reservation_id)
                 else:
                     raise ValueError(f"unknown event kind: {kind}")
             except (KeyError, TypeError, json.JSONDecodeError, ValueError) as error:
@@ -241,7 +268,9 @@ class BudgetLedger:
             reservation = self._reservation_by_id(reservations, reservation_id)
             if actual > reservation.amount:
                 raise ValueError("actual cost exceeds its reservation")
-        return reservations, actuals
+        for reservation_id in released:
+            self._reservation_by_id(reservations, reservation_id)
+        return reservations, actuals, released
 
     def _append(self, event: dict[str, str]) -> None:
         self.path.parent.mkdir(parents=True, exist_ok=True)
@@ -252,23 +281,5 @@ class BudgetLedger:
 
     @contextmanager
     def _locked(self) -> Iterator[None]:
-        with self._thread_lock:
-            self.path.parent.mkdir(parents=True, exist_ok=True)
-            deadline = time.monotonic() + 10
-            descriptor: int | None = None
-            while descriptor is None:
-                try:
-                    descriptor = os.open(
-                        self._lock_path,
-                        os.O_CREAT | os.O_EXCL | os.O_WRONLY,
-                    )
-                except FileExistsError:
-                    if time.monotonic() >= deadline:
-                        raise TimeoutError("timed out waiting for budget ledger lock")
-                    time.sleep(0.01)
-            try:
-                os.write(descriptor, str(os.getpid()).encode("ascii"))
-                yield
-            finally:
-                os.close(descriptor)
-                self._lock_path.unlink(missing_ok=True)
+        with file_lock(self._lock_path):
+            yield
