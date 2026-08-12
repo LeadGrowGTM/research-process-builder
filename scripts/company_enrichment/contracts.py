@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, fields, is_dataclass
+from dataclasses import dataclass, fields, is_dataclass, replace
 from datetime import date, datetime
 from enum import Enum
 import json
@@ -138,6 +138,25 @@ class FieldAssertion:
 
 
 @dataclass(frozen=True, slots=True)
+class HumanCorrection:
+    correction_id: str
+    field: str
+    value: Any
+    reviewer_id: str
+    corrected_at: datetime
+    supersedes_correction_id: str | None = None
+
+    def __post_init__(self) -> None:
+        for name in ("correction_id", "field", "reviewer_id"):
+            _require_text(name, getattr(self, name))
+        if self.corrected_at.tzinfo is None:
+            raise ValueError("corrected_at must include a timezone")
+        if self.supersedes_correction_id is not None:
+            _require_text("supersedes_correction_id", self.supersedes_correction_id)
+        object.__setattr__(self, "value", _freeze_value(self.value))
+
+
+@dataclass(frozen=True, slots=True)
 class SellerContext:
     target_market: str
     personas: tuple[str, ...]
@@ -169,12 +188,13 @@ class CompanyDossier:
     assertions: tuple[FieldAssertion, ...]
     evidence: tuple[EvidenceRef, ...]
     unknowns: tuple[str, ...] = ()
+    corrections: tuple[HumanCorrection, ...] = ()
 
     def __post_init__(self) -> None:
         _require_text("company_id", self.company_id)
         if self.schema_version != SCHEMA_VERSION:
             raise ValueError(f"unsupported dossier schema version: {self.schema_version}")
-        for name in ("assertions", "evidence", "unknowns"):
+        for name in ("assertions", "evidence", "unknowns", "corrections"):
             values = tuple(getattr(self, name))
             _bounded(name, values)
             object.__setattr__(self, name, values)
@@ -182,6 +202,38 @@ class CompanyDossier:
         missing = sorted({ref for item in self.assertions for ref in item.evidence_ids} - evidence_ids)
         if missing:
             raise ValueError(f"assertions reference missing evidence: {', '.join(missing)}")
+        corrections_by_id: dict[str, HumanCorrection] = {}
+        superseded: set[str] = set()
+        active_by_field: dict[str, str] = {}
+        for correction in self.corrections:
+            if correction.correction_id in corrections_by_id:
+                raise ValueError(f"duplicate correction ID: {correction.correction_id}")
+            predecessor_id = correction.supersedes_correction_id
+            active_id = active_by_field.get(correction.field)
+            if active_id is not None and predecessor_id != active_id:
+                raise ValueError(
+                    "a correction replacement must explicitly supersede the active correction"
+                )
+            if predecessor_id is not None:
+                predecessor = corrections_by_id.get(predecessor_id)
+                if predecessor is None:
+                    raise ValueError(
+                        "superseded correction must remain in correction history"
+                    )
+                if predecessor.field != correction.field:
+                    raise ValueError("a correction can only supersede the same field")
+                if predecessor_id in superseded:
+                    raise ValueError("a correction can only be superseded once")
+                if correction.corrected_at <= predecessor.corrected_at:
+                    raise ValueError(
+                        "a superseding correction requires a later timestamp"
+                    )
+                superseded.add(predecessor_id)
+            corrections_by_id[correction.correction_id] = correction
+            active_by_field[correction.field] = correction.correction_id
+
+    def append_correction(self, correction: HumanCorrection) -> CompanyDossier:
+        return replace(self, corrections=(*self.corrections, correction))
 
 
 @dataclass(frozen=True, slots=True)

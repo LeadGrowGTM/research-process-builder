@@ -81,6 +81,30 @@ def test_local_fixture_requires_an_absolute_listing_url() -> None:
         Corpus((fixture,)).validate(AS_OF)
 
 
+@pytest.mark.parametrize(
+    ('field', 'value', 'message'),
+    (
+        ('primary_cohort', 'consumer_saas', 'primary cohort'),
+        ('domain', 'https://acme.example', 'canonical domain'),
+        ('domain', 'acme.example/pricing', 'canonical domain'),
+        ('domain', ' acme.example', 'canonical domain'),
+        ('domain', 'ACME.EXAMPLE', 'canonical domain'),
+        ('seed_status', 'unverified_seed', 'verified identity'),
+    ),
+)
+def test_selection_complete_fixture_rejects_invalid_identity_fields(
+    field: str, value: object, message: str,
+) -> None:
+    with pytest.raises(ValueError, match=message):
+        Corpus((_fixture(**{field: value}),)).validate(AS_OF)
+
+
+def test_validate_uses_recorded_as_of_as_the_authoritative_date() -> None:
+    corpus = Corpus((_fixture(),), recorded_as_of=AS_OF)
+    with pytest.raises(ValueError, match='recorded as_of'):
+        corpus.validate(date(2026, 8, 13))
+
+
 def test_load_rejects_duplicate_yaml_keys(tmp_path: Path) -> None:
     path = tmp_path / 'companies.yaml'
     path.write_text('''version: '1.0'

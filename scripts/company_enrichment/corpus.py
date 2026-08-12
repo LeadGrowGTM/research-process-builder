@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
+import re
 from types import MappingProxyType
 from typing import Any, Mapping
 from urllib.parse import urlparse
@@ -15,6 +16,15 @@ from .contracts import CompanyDossier, CompanyFixture
 REQUIRED_DOSSIER_FIELDS = (
     'identity', 'description', 'offers', 'icp', 'personas', 'news', 'launches',
     'growth', 'ads', 'hiring', 'competitors', 'technology', 'pricing',
+)
+
+ALLOWED_PRIMARY_COHORTS = frozenset({
+    'b2b_saas', 'recently_funded_b2b', 'b2b_agencies', 'well_known_b2b',
+    'b2b_commerce_suppliers', 'local_b2b_services',
+})
+_DOMAIN_PATTERN = re.compile(
+    r'(?=.{1,253}\Z)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+'
+    r'[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\Z'
 )
 
 _ROOT_FIELDS = {'version', 'as_of', 'status', 'source', 'companies'}
@@ -124,6 +134,8 @@ class Corpus:
     def validate(self, as_of: date) -> None:
         if not isinstance(as_of, date):
             raise ValueError('as_of must be a date')
+        if self.recorded_as_of is not None and as_of != self.recorded_as_of:
+            raise ValueError('as_of must match the corpus recorded as_of date')
         ids: set[str] = set()
         domains: set[str] = set()
         for fixture in self.fixtures:
@@ -135,8 +147,12 @@ class Corpus:
 
     @staticmethod
     def _validate_fixture(fixture: CompanyFixture, as_of: date) -> None:
-        if fixture.domain != fixture.domain.casefold() or '://' in fixture.domain:
+        if fixture.primary_cohort not in ALLOWED_PRIMARY_COHORTS:
+            raise ValueError(f'{fixture.id} has invalid primary cohort')
+        if not _DOMAIN_PATTERN.fullmatch(fixture.domain):
             raise ValueError(f'{fixture.id} must have a canonical domain')
+        if fixture.seed_status != 'verified':
+            raise ValueError(f'{fixture.id} requires verified identity and domain')
         for name in ('b2b_buyer', 'business_offer', 'selection_reason'):
             value = getattr(fixture, name)
             if not isinstance(value, str) or not value.strip():
@@ -171,10 +187,20 @@ def _twelve_month_cutoff(as_of: date) -> date:
 
 
 def validate_research_complete(
-    fixture: CompanyFixture, dossier: CompanyDossier,
+    fixture: CompanyFixture, dossier: CompanyDossier, *, as_of: date | None = None,
 ) -> None:
     if dossier.company_id != fixture.id:
         raise ValueError('dossier company_id does not match fixture')
+    qualification_date = as_of
+    if qualification_date is None:
+        evidence_dates = tuple(item.retrieved_at.date() for item in dossier.evidence)
+        if evidence_dates:
+            qualification_date = max(evidence_dates)
+        elif fixture.primary_cohort == 'recently_funded_b2b':
+            raise ValueError('as_of is required to qualify a funded fixture')
+        else:
+            qualification_date = date.min
+    Corpus._validate_fixture(fixture, qualification_date)
     cited = {assertion.field for assertion in dossier.assertions
              if assertion.evidence_ids}
     covered = cited | set(dossier.unknowns)
