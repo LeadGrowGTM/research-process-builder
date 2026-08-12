@@ -43,6 +43,11 @@ def test_definition_exposes_required_execution_and_gate_policy() -> None:
     assert item.human_gate == "blind_verdict_required"
 
 
+def test_p0_results_are_message_safe_while_field_assertions_control_social_visibility() -> None:
+    registry = load_registry(MANIFEST_ROOT)
+    assert {item.id for item in registry.values() if item.output_visibility != "message_safe"} == set()
+
+
 def test_manifest_rejects_unknown_keys(tmp_path: Path) -> None:
     path = tmp_path / "bad.yaml"
     path.write_text(

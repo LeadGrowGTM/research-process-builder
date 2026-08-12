@@ -18,7 +18,7 @@ source_requirements: [job_primary, company_first_party]
 caps: {queries: 8, scrapes: 8, retries: 2, paid_cost_usd: 1.0}
 early_stop: source_saturation
 failure_rule: explicit_unknown
-output_visibility: filter_only
+output_visibility: message_safe
 benchmark_dataset_version: b2b-companies-1.0
 automated_gate: candidate_only
 human_gate: blind_verdict_required
