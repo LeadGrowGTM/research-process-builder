@@ -8,6 +8,7 @@
 - [x] Confirm the eight P0 enrichments.
 - [x] Confirm six B2B-only cohorts: local services, SaaS, recently funded, well-known, agencies, and commerce/CPG.
 - [ ] Approve the proposed 60-company fixture list and 15-company shared core.
+- [x] Generate the proposed 60-company B2B seed and gap matrix from AI-Ark starting data.
 - [x] Confirm direct people/contact discovery and standalone P1 enrichments remain excluded.
 
 ## Phase 0 — Planning and repository safety

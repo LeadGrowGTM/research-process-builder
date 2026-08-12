@@ -1,17 +1,18 @@
-# AI-Ark Company Export Analysis
+# AI-Ark Corpus Seed Snapshot
 
 **Analyzed:** 2026-08-12
 **Source:** user-provided local CSV; source file is not copied into the repository.
 **SHA-256:** `8CEEA40D917C8B6674CAF40B07B8365B39722E5ED1C802FFC8E3E0EBFEB520C4`
 **Privacy:** aggregate analysis only; no row values, company emails, or phone numbers retained here.
 
-## Sample limits
+## Seed interpretation
 
 - 9,340 returned company rows and 28 columns.
 - The list contains North American companies selected through offshorable job-title criteria.
-- This is a returned-results export, not a list of attempted API lookups.
-- It measures field completeness among returned rows, not provider hit rate.
-- It is selection-biased and cannot establish general-market coverage, latency, freshness, or cost.
+- This export is starting data for selecting and pre-populating the 60-company corpus.
+- AI-Ark is not being evaluated as a provider in this work.
+- Populated values are retained as `unverified_seed`; blanks drive the next research steps.
+- No hit-rate, latency, cost, or general-market coverage analysis is required.
 
 ## Aggregate coverage
 
@@ -57,9 +58,9 @@
 - Employee-size includes a `null+` anomaly in 0.6% of rows; normalize that value to unknown.
 - The export has no field-level source URLs or observation timestamps.
 
-## Provider role decisions
+## Seed role decisions
 
-### Useful for
+### Retain as starting data
 
 - Company identity and canonical-locator candidates.
 - Company-description comparison and structured filler.
@@ -68,7 +69,7 @@
 - Revenue-band and funding hints that require corroboration.
 - Technology detection comparison in the deferred P1 technology enrichment.
 
-### Not sufficient for
+### Must be filled or corroborated by research
 
 - Cited ground truth by itself because field-level source URLs are absent.
 - Growth/change claims without historical snapshots and observation dates.
@@ -84,21 +85,15 @@
 - Company email and phone are not needed for the eight P0 research enrichments.
 - Social profile URLs may aid identity matching, but social activity remains filter-only.
 
-## Provisional routing
+## Gap-filling flow
 
-AI-Ark remains **comparator/structured-filler pending live capability validation**:
+1. Select the 60 B2B companies from the export.
+2. Copy allowed company fields into the corpus as `unverified_seed`.
+3. Exclude company email and phone.
+4. Compute explicit field gaps.
+5. Use homepage scraping first to fill and corroborate the seed.
+6. Use lg_free for supported structured blanks.
+7. Use targeted search only for remaining research fields.
+8. Promote a value to dossier evidence only after citation and identity checks.
 
-1. Scrape first-party company pages first.
-2. Compare/fill supported structured fields using lg_free and AI-Ark.
-3. Preserve conflicts rather than choosing silently.
-4. Require first-party or independent corroboration before a field becomes benchmark ground truth.
-5. Do not promote AI-Ark into a default route until input requirements, hit rate, freshness, cost, latency, and response-level provenance are measured.
-
-## Evidence still needed
-
-- Raw company-level request/response pair.
-- Miss/not-found and partial/error responses.
-- Lookup denominator to calculate hit rate.
-- Retrieval timestamp or freshness semantics.
-- Cost/credit and latency data.
-- Whether response fields expose source/provenance URLs.
+The generated corpus currently has all 60 domains, descriptions, and industries; all 60 need target-customer research, and 12 need products/services.

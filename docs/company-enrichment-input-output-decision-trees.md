@@ -9,7 +9,7 @@ Define each enrichment end-to-end without exposing provider payloads through the
 
 `goal → caller-required inputs → system-required inputs → optional inputs → evidence routes → stopping rules → exact outputs → unknown/failure states`
 
-Provider responses are evidence behind adapters. AI-Ark, DiscoLike, lg_free, Harvest, Parallel, or a scraper may fill fields, but none defines the public schema by itself.
+AI-Ark supplies the starting corpus snapshot. Runtime provider responses are evidence behind adapters. DiscoLike, lg_free, Harvest, Parallel, or a scraper may fill fields, but none defines the public schema by itself.
 
 ## Input classifications
 
@@ -158,16 +158,16 @@ Goal: translate cited prospect evidence into a seller-relevant value frame
 - Decision: paid delayed fallback/comparator for suitable established or funded companies, not a universal first-line provider.
 - Gaps: weak new-launch coverage; employee/follower gaps; identity requires validation.
 
-### AI-Ark — aggregate export analyzed
+### AI-Ark — corpus seed snapshot
 
 - Analyzed 9,340 returned company records with 28 fields; see `docs/providers/ai-ark-sample-analysis-2026-08-12.md`.
 - Strong returned-row completeness for identity, descriptions, industry, firmographics, location, and technologies.
 - Products/services are present on 71.3%; funding fields on only 12.2–17.5%.
-- This export does not establish hit rate, freshness, latency, cost, or response-level provenance.
-- Decision: comparator/structured filler pending live capability validation, not yet a default route.
+- Decision: use populated fields as `unverified_seed`, calculate blanks, then fill/corroborate them.
+- AI-Ark is not a benchmark target in this work.
 - AI-Ark fields never replace first-party or independent citation requirements.
 - Company email/phone are excluded from these eight P0 interfaces.
-- Still required: raw request/response, miss/error shapes, lookup denominator, cost/latency, and provenance semantics.
+- Generated corpus result: 60 domains/descriptions/industries present; 60 target-customer gaps; 12 products/services gaps.
 
 ## Decision protocol
 

@@ -1,0 +1,64 @@
+version: "1.0"
+as_of: "2026-08-12"
+status: proposed
+companies:
+  - {id: local-01, name: "A+P CPAs", cohort: local_b2b_services, core: false, difficulty: easy}
+  - {id: local-02, name: "Advanced Control Corporation", cohort: local_b2b_services, core: true, difficulty: easy}
+  - {id: local-03, name: "American Kitchen Machinery & Repair", cohort: local_b2b_services, core: false, difficulty: ambiguous}
+  - {id: local-04, name: "Amplify Advisors", cohort: local_b2b_services, core: true, difficulty: easy}
+  - {id: local-05, name: "Anatek Labs, Inc.", cohort: local_b2b_services, core: false, difficulty: hard}
+  - {id: local-06, name: "Anderson Commercial Flooring", cohort: local_b2b_services, core: false, difficulty: easy}
+  - {id: local-07, name: "Apollo Mission Critical Engineering", cohort: local_b2b_services, core: false, difficulty: ambiguous}
+  - {id: local-08, name: "Applied Resource Group", cohort: local_b2b_services, core: false, difficulty: hard}
+  - {id: local-09, name: "ArchPoint Group", cohort: local_b2b_services, core: false, difficulty: ambiguous}
+  - {id: local-10, name: "Atlas Mechanical Inc.", cohort: local_b2b_services, core: false, difficulty: hard}
+  - {id: saas-01, name: "AgencyAnalytics", cohort: b2b_saas, core: true, difficulty: easy}
+  - {id: saas-02, name: "AgilePoint", cohort: b2b_saas, core: false, difficulty: ambiguous}
+  - {id: saas-03, name: "Aligned", cohort: b2b_saas, core: false, difficulty: hard}
+  - {id: saas-04, name: "aPriori Technologies", cohort: b2b_saas, core: true, difficulty: easy}
+  - {id: saas-05, name: "Archive360", cohort: b2b_saas, core: false, difficulty: ambiguous}
+  - {id: saas-06, name: "Arkestro", cohort: b2b_saas, core: false, difficulty: hard}
+  - {id: saas-07, name: "Betterworks", cohort: b2b_saas, core: true, difficulty: easy}
+  - {id: saas-08, name: "BigPanda", cohort: b2b_saas, core: false, difficulty: ambiguous}
+  - {id: saas-09, name: "Bitly", cohort: b2b_saas, core: false, difficulty: easy}
+  - {id: saas-10, name: "Built", cohort: b2b_saas, core: false, difficulty: hard}
+  - {id: funded-01, name: "Quantifind", cohort: recently_funded_b2b, core: true, difficulty: easy}
+  - {id: funded-02, name: "Assort Health", cohort: recently_funded_b2b, core: false, difficulty: ambiguous}
+  - {id: funded-03, name: "Float", cohort: recently_funded_b2b, core: false, difficulty: easy}
+  - {id: funded-04, name: "Redo", cohort: recently_funded_b2b, core: false, difficulty: hard}
+  - {id: funded-05, name: "Baseten", cohort: recently_funded_b2b, core: true, difficulty: easy}
+  - {id: funded-06, name: "Parafin", cohort: recently_funded_b2b, core: false, difficulty: ambiguous}
+  - {id: funded-07, name: "Supabase", cohort: recently_funded_b2b, core: true, difficulty: easy}
+  - {id: funded-08, name: "Plurilock", cohort: recently_funded_b2b, core: false, difficulty: hard}
+  - {id: funded-09, name: "Virtual Peaker", cohort: recently_funded_b2b, core: false, difficulty: ambiguous}
+  - {id: funded-10, name: "ThoroughCare", cohort: recently_funded_b2b, core: false, difficulty: hard}
+  - {id: known-01, name: "Advantech USA", cohort: well_known_b2b, core: true, difficulty: easy}
+  - {id: known-02, name: "Avery Dennison Graphics Solutions", cohort: well_known_b2b, core: true, difficulty: ambiguous}
+  - {id: known-03, name: "Bosch Home Comfort USA", cohort: well_known_b2b, core: false, difficulty: easy}
+  - {id: known-04, name: "Huhtamaki North America", cohort: well_known_b2b, core: false, difficulty: ambiguous}
+  - {id: known-05, name: "Intuit Accountants", cohort: well_known_b2b, core: true, difficulty: easy}
+  - {id: known-06, name: "Manulife Canada", cohort: well_known_b2b, core: false, difficulty: hard}
+  - {id: known-07, name: "Moog Industrial", cohort: well_known_b2b, core: false, difficulty: ambiguous}
+  - {id: known-08, name: "Nordson Adhesive Dispensing Systems", cohort: well_known_b2b, core: false, difficulty: hard}
+  - {id: known-09, name: "Optum Bank", cohort: well_known_b2b, core: false, difficulty: easy}
+  - {id: known-10, name: "TD SYNNEX Multi-Country Area (English)", cohort: well_known_b2b, core: false, difficulty: hard}
+  - {id: agency-01, name: "10Fold Communications", cohort: b2b_agencies, core: true, difficulty: easy}
+  - {id: agency-02, name: "AbelsonTaylor Group", cohort: b2b_agencies, core: false, difficulty: ambiguous}
+  - {id: agency-03, name: "Adtaxi", cohort: b2b_agencies, core: false, difficulty: easy}
+  - {id: agency-04, name: "Audiense", cohort: b2b_agencies, core: false, difficulty: hard}
+  - {id: agency-05, name: "Avōq", cohort: b2b_agencies, core: false, difficulty: ambiguous}
+  - {id: agency-06, name: "Bold Orange", cohort: b2b_agencies, core: false, difficulty: easy}
+  - {id: agency-07, name: "C-4 Analytics", cohort: b2b_agencies, core: true, difficulty: ambiguous}
+  - {id: agency-08, name: "Capacity Interactive", cohort: b2b_agencies, core: false, difficulty: easy}
+  - {id: agency-09, name: "Carney", cohort: b2b_agencies, core: false, difficulty: hard}
+  - {id: agency-10, name: "Chartis.io", cohort: b2b_agencies, core: false, difficulty: hard}
+  - {id: supplier-01, name: "ABATIX", cohort: b2b_commerce_suppliers, core: true, difficulty: easy}
+  - {id: supplier-02, name: "Accord Carton", cohort: b2b_commerce_suppliers, core: false, difficulty: ambiguous}
+  - {id: supplier-03, name: "Actylis", cohort: b2b_commerce_suppliers, core: false, difficulty: hard}
+  - {id: supplier-04, name: "Advanced Biotech", cohort: b2b_commerce_suppliers, core: false, difficulty: ambiguous}
+  - {id: supplier-05, name: "Advantage Industrial Automation", cohort: b2b_commerce_suppliers, core: true, difficulty: easy}
+  - {id: supplier-06, name: "AeroGo, Inc.", cohort: b2b_commerce_suppliers, core: false, difficulty: hard}
+  - {id: supplier-07, name: "All Weather Insulated Panels", cohort: b2b_commerce_suppliers, core: false, difficulty: easy}
+  - {id: supplier-08, name: "Alps Controls", cohort: b2b_commerce_suppliers, core: false, difficulty: ambiguous}
+  - {id: supplier-09, name: "Anderson International Corp", cohort: b2b_commerce_suppliers, core: false, difficulty: hard}
+  - {id: supplier-10, name: "B2B Industrial Packaging", cohort: b2b_commerce_suppliers, core: false, difficulty: easy}

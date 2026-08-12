@@ -23,8 +23,8 @@ FOUNDATION
     │
     ├── INPUT/OUTPUT DESIGN — iterate with real provider samples
     │   ├── classify caller-required, system-required, and optional inputs
-    │   ├── DONE: analyze AI-Ark aggregate company export
-    │   ├── obtain AI-Ark raw request/response, miss, cost, latency, provenance
+    │   ├── DONE: ingest AI-Ark as the starting corpus snapshot
+    │   ├── DONE: generate 60-company seed and explicit gap matrix
     │   ├── retain DiscoLike averages and failure behavior
     │   ├── define outputs independently of provider schemas
     │   └── save every decision in the living logic-tree register
@@ -96,11 +96,11 @@ FOUNDATION
 ## Immediate execution order
 
 1. Receive Gate 2A decision on the corrected foundation.
-2. Obtain raw AI-Ark request/response and miss/error examples to complement the analyzed export.
-3. Implement Phase 2 capability discovery test-first.
-4. Produce the revised 60-company B2B proposal for Gate 1C.
-5. Build evidence/cache/budget modules.
-6. Present exact Firecrawl smoke fixtures and expected maximum cost before executing it.
+2. Confirm or swap companies in the generated 60-company B2B starting list.
+3. Fill the 15 shared-core gaps first: homepage scrape → lg_free → targeted search.
+4. Implement Phase 2 capability discovery and evidence/budget modules test-first around that flow.
+5. Review the 15 core dossiers, then fill the remaining 45.
+6. Continue into the eight enrichment outputs and comparative experiments.
 
 ## Firecrawl approval interpretation
 

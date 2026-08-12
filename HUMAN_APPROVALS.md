@@ -10,7 +10,7 @@
 |---|---|---|
 | 1A — Product scope | Eight P0 enrichments; no contacts or standalone P1 work | Approved |
 | 1B — Benchmark market | Every test company and tested offer must be B2B | Approved |
-| 1C — Exact corpus | Approve 60 companies and 15 shared-core members | Pending; revised list not yet proposed |
+| 1C — Exact corpus | Approve 60 companies and 15 shared-core members | Proposed from AI-Ark seed; pending swaps/confirmation |
 | 2A — Foundation | Approve implemented contracts, manifests, SellerContext, and visibility boundary | Pending now; see `GATE_2_REVIEW.md` |
 | 2B — Prompts and outputs | Approve actual prompts and output field schemas before executors | Pending; not built yet |
 | 3 — Live providers and spend | Approve each provider, payload, fixtures, and maximum cost | Firecrawl approved for public B2B company URLs within existing caps; other providers pending |
@@ -39,7 +39,7 @@
 
 ### Still pending
 
-The exact revised 60-company list and 15 shared-core members must be presented here before corpus research begins.
+The exact revised 60-company list and 15 shared-core members now exist in `benchmarks/company-selection.yaml`; the pre-populated gap matrix is `benchmarks/companies.yaml`.
 
 Approval wording: **“Approve Gate 1C corpus”**, optionally followed by substitutions.
 
