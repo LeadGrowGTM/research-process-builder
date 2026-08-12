@@ -31,6 +31,18 @@ def test_each_p0_executor_returns_meaningful_cited_message_safe_output(
 
 
 @pytest.mark.parametrize('enrichment_id', sorted(P0_ENRICHMENTS))
+def test_each_p0_executor_accepts_all_required_fields_as_explicit_unknowns(
+    enrichment_id: str,
+) -> None:
+    output = execute_p0(
+        enrichment_id, (_evidence(),), seller_context=_context(),
+        findings=(), unknowns=P0_ENRICHMENTS[enrichment_id],
+    )
+    assert output.assertions == ()
+    assert output.unknowns == P0_ENRICHMENTS[enrichment_id]
+
+
+@pytest.mark.parametrize('enrichment_id', sorted(P0_ENRICHMENTS))
 def test_every_executor_requires_cited_evidence_and_supplied_seller_context(
     enrichment_id: str,
 ) -> None:

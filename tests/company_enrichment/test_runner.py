@@ -316,6 +316,51 @@ def test_explicit_unknowns_cover_allowed_fields_without_fabricated_citations(
     assert [item.field for item in result.output['assertions']] == ['identity']
 
 
+@pytest.mark.parametrize('enrichment_id', sorted(__import__(
+    'scripts.company_enrichment.executors', fromlist=['P0_ENRICHMENTS']
+).P0_ENRICHMENTS))
+def test_runner_accepts_all_unknown_typed_output_without_fabricated_assertions(
+    tmp_path: Path, enrichment_id: str,
+) -> None:
+    from scripts.company_enrichment.executors import P0_ENRICHMENTS
+
+    definition = _definition(id=enrichment_id)
+    if enrichment_id == 'analogy-value-translator':
+        definition = _definition(id=enrichment_id, fallback_order=('homepage-scrape',))
+    runner = EnrichmentRunner(
+        definitions={enrichment_id: definition},
+        discovery=FakeDiscovery([]), router=FakeRouter([]),
+        evidence_store=EvidenceStore(tmp_path / 'evidence'),
+        budget_ledger=BudgetLedger(tmp_path / 'budget.jsonl', {'corpus-build': '2'}),
+        adapters={'homepage-scrape': FakeAdapter([])},
+        outcome_journal=tmp_path / 'outcomes.jsonl', as_of=NOW,
+        executor=lambda *args, **kwargs: ExecutionOutput(
+            (), P0_ENRICHMENTS[enrichment_id],
+        ),
+    )
+    result = runner.run(EnrichmentRequest(
+        enrichment_id, 'saas-01', '1.0',
+        {'company_name': 'Acme', 'domain': 'acme.example',
+         'seller_context': _context()},
+    ))
+    assert result.status is ResultStatus.COMPLETE
+    assert result.output['assertions'] == ()
+    assert result.output['unknowns'] == P0_ENRICHMENTS[enrichment_id]
+
+
+def test_request_validation_failure_is_not_labeled_discovery_failure(
+    tmp_path: Path,
+) -> None:
+    result = _runner(tmp_path, []).run(EnrichmentRequest(
+        'company-description', 'saas-01', '1.0',
+        {'company_name': 'Acme', 'seller_context': _context()},
+    ))
+    assert result.status is ResultStatus.FAILED
+    payload = json.loads((tmp_path / 'outcomes.jsonl').read_text())
+    assert payload['output']['discovery']['selection_outcome'] == 'validation_failed'
+    assert payload['output']['route']['provider_ids'] == []
+
+
 def test_runner_never_executes_paid_work_owned_by_another_run(tmp_path: Path) -> None:
     events = []
     adapter = FakeAdapter(events)

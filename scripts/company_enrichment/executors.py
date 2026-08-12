@@ -51,6 +51,7 @@ def execute_p0(
     *,
     seller_context: SellerContext | None,
     findings: Sequence[Finding] = (),
+    unknowns: Sequence[str] = (),
     output_visibility: str = 'message_safe',
 ) -> ExecutionOutput:
     fields = P0_ENRICHMENTS.get(enrichment_id)
@@ -65,11 +66,16 @@ def execute_p0(
         raise ValueError(f'{enrichment_id} requires seller_context')
     if not all(isinstance(item, Finding) for item in findings):
         raise ValueError('findings must contain Finding values')
+    unknowns = tuple(unknowns)
+    if any(not isinstance(item, str) or not item for item in unknowns):
+        raise ValueError('unknowns must contain non-empty field names')
+    if set(unknowns) - set(fields):
+        raise ValueError('unknowns contain fields outside enrichment scope')
     if output_visibility not in {'message_safe', 'filter_only'}:
         raise ValueError('invalid output visibility')
 
     evidence_ids = tuple(item.evidence_id for item in evidence)
-    if findings:
+    if findings or unknowns:
         selected = tuple(
             item for item in findings
             if output_visibility == 'filter_only'
@@ -85,6 +91,6 @@ def execute_p0(
         FieldAssertion(item.field, item.value, evidence_ids, 0.8, item.visibility)
         for item in selected
     )
-    if not assertions:
-        raise ValueError('typed output contains no eligible assertions')
-    return ExecutionOutput(assertions)
+    if not assertions and not unknowns:
+        raise ValueError('typed output contains no covered fields')
+    return ExecutionOutput(assertions, unknowns)

@@ -115,9 +115,11 @@ class EnrichmentRunner:
             'selection_outcome': 'not_run',
         }
         route_output: dict[str, Any] = {'provider_ids': ()}
+        validation_complete = False
         try:
             self._record_step('validate')
             definition = self._validate_request(request)
+            validation_complete = True
             discovery = self._discovery.discover(
                 request.enrichment_id, tuple(definition.fallback_order),
             )
@@ -252,7 +254,9 @@ class EnrichmentRunner:
             )
         except Exception as error:
             if discovery_output['selection_outcome'] == 'not_run':
-                discovery_output['selection_outcome'] = 'discovery_failed'
+                discovery_output['selection_outcome'] = (
+                    'discovery_failed' if validation_complete else 'validation_failed'
+                )
             result = self._failure_result(
                 request, error, discovery_output, route_output,
                 requested_model, resolved_model,
@@ -314,8 +318,8 @@ class EnrichmentRunner:
     ) -> None:
         if not isinstance(execution, ExecutionOutput):
             raise ValueError('executor returned an invalid typed output')
-        if not execution.assertions:
-            raise ValueError('executor returned no typed assertions')
+        if not execution.assertions and not execution.unknowns:
+            raise ValueError('executor returned no covered fields')
         evidence_ids = {item.evidence_id for item in evidence}
         if any(not item.evidence_ids for item in execution.assertions):
             raise ValueError('output assertions require citations')
