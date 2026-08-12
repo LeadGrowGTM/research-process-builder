@@ -30,11 +30,14 @@ def test_each_p0_executor_returns_meaningful_cited_message_safe_output(
     assert any('Pipeline Sprint' in str(item.value) for item in output.assertions)
 
 
-def test_executor_requires_cited_evidence_and_supplied_seller_context() -> None:
+@pytest.mark.parametrize('enrichment_id', sorted(P0_ENRICHMENTS))
+def test_every_executor_requires_cited_evidence_and_supplied_seller_context(
+    enrichment_id: str,
+) -> None:
     with pytest.raises(ValueError, match='cited evidence'):
-        execute_p0('company-description', (), seller_context=_context())
+        execute_p0(enrichment_id, (), seller_context=_context())
     with pytest.raises(ValueError, match='seller_context'):
-        execute_p0('analogy-value-translator', (_evidence(),), seller_context=None)
+        execute_p0(enrichment_id, (_evidence(),), seller_context=None)
 
 
 def test_message_safe_output_excludes_filter_only_findings() -> None:

@@ -31,7 +31,7 @@ def _result(enrichment_id, assertions=(), unknowns=(), evidence=None):
     return EnrichmentResult(
         enrichment_id, 'saas-01', '1.0', ResultStatus.COMPLETE,
         {'assertions': tuple(assertions), 'evidence': (evidence,),
-         'unknowns': tuple(unknowns)},
+         'unknowns': tuple(unknowns), 'saturated': True},
     )
 
 
@@ -84,5 +84,31 @@ def test_builder_rejects_failed_result_without_persisting(tmp_path: Path) -> Non
         as_of=date(2026, 8, 12),
     )
     with pytest.raises(ValueError, match='failed enrichment'):
+        builder.build(_fixture(), 'corpus-build')
+    assert not (tmp_path / 'saas-01.yaml').exists()
+
+
+def test_builder_rejects_partial_results_even_when_fields_look_complete(
+    tmp_path: Path,
+) -> None:
+    evidence = EvidenceRef(
+        'ev-all', 'https://acme.example/all', NOW, 'c' * 64, 'all fields',
+    )
+    assertions = tuple(
+        FieldAssertion(field, f'value-{field}', ('ev-all',), .8,
+                       Visibility.MESSAGE_SAFE)
+        for field in REQUIRED_DOSSIER_FIELDS
+    )
+    partial = EnrichmentResult(
+        'all', 'saas-01', '1.0', ResultStatus.PARTIAL,
+        {'assertions': assertions, 'evidence': (evidence,), 'unknowns': (),
+         'saturated': False},
+        FailureKind.INSUFFICIENT_EVIDENCE,
+    )
+    builder = DossierBuilder(
+        load_results=lambda fixture, scope: (partial,), output_dir=tmp_path,
+        as_of=date(2026, 8, 12),
+    )
+    with pytest.raises(ValueError, match='complete and saturated'):
         builder.build(_fixture(), 'corpus-build')
     assert not (tmp_path / 'saas-01.yaml').exists()

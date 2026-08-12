@@ -61,11 +61,8 @@ def execute_p0(
         raise ValueError('P0 execution requires cited evidence')
     if not all(isinstance(item, EvidenceRef) for item in evidence):
         raise ValueError('evidence must contain EvidenceRef values')
-    if enrichment_id in {'analogy-value-translator', 'job-opportunity-mining'}:
-        if not isinstance(seller_context, SellerContext):
-            raise ValueError(f'{enrichment_id} requires seller_context')
-    if seller_context is not None and not isinstance(seller_context, SellerContext):
-        raise ValueError('seller_context must be a SellerContext')
+    if not isinstance(seller_context, SellerContext):
+        raise ValueError(f'{enrichment_id} requires seller_context')
     if not all(isinstance(item, Finding) for item in findings):
         raise ValueError('findings must contain Finding values')
     if output_visibility not in {'message_safe', 'filter_only'}:
@@ -80,7 +77,7 @@ def execute_p0(
         )
     else:
         excerpt = evidence[0].excerpt.strip()
-        offer = seller_context.named_offer if seller_context else 'the supplied offer'
+        offer = seller_context.named_offer
         selected = tuple(
             Finding(field, f'{excerpt} Relevant to {offer}.') for field in fields
         )

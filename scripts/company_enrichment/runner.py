@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from decimal import Decimal
 import os
+import json
 from pathlib import Path
 from types import MappingProxyType
 from typing import Any, Callable, Mapping, Protocol
@@ -106,12 +107,21 @@ class EnrichmentRunner:
         self._response_metadata: dict[tuple[str, str], AdapterResponse] = {}
 
     def run(self, request: EnrichmentRequest) -> EnrichmentResult:
+        requested_model = request.inputs.get('requested_model')
+        resolved_model = None
+        discovery_output: dict[str, Any] = {
+            'selected_capability': None,
+            'eligible_capabilities': (),
+            'selection_outcome': 'not_run',
+        }
+        route_output: dict[str, Any] = {'provider_ids': ()}
         try:
             self._record_step('validate')
             definition = self._validate_request(request)
             discovery = self._discovery.discover(
                 request.enrichment_id, tuple(definition.fallback_order),
             )
+            discovery_output = self._discovery_output(discovery)
             known_url = f"https://{request.inputs['domain']}"
             route = self._router.route(
                 definition, discovery,
@@ -119,6 +129,7 @@ class EnrichmentRunner:
                 if 'homepage-scrape' in definition.fallback_order
                 else (),
             )
+            route_output = {'provider_ids': tuple(route.provider_ids)}
             evidence = []
             cache_hits = 0
             tracker = SaturationTracker(P0_ENRICHMENTS[request.enrichment_id])
@@ -158,29 +169,23 @@ class EnrichmentRunner:
                 tracker.observe(SearchAngleResult(
                     True, source_id=reference.evidence_id,
                     source_type=source.source_type,
-                    field_citations=tuple(
-                        (field, reference.evidence_id)
-                        for field in P0_ENRICHMENTS[request.enrichment_id]
-                    ),
                     unavailable_source_types=(
                         metadata.unavailable_source_types if metadata else ()
                     ),
                 ))
                 if metadata is None and cache_hit and prior is not None:
                     prior_output = prior.get('output', {})
-                    if prior_output.get('saturated') is True:
+                    for angle in prior_output.get('dry_angles', ()):
                         tracker.observe(SearchAngleResult(
-                            False, angle_id='cached-saturation-angle-a',
-                            unavailable_source_types=('independent',),
-                        ))
-                        tracker.observe(SearchAngleResult(
-                            False, angle_id='cached-saturation-angle-b',
+                            False, angle_id=angle,
+                            unavailable_source_types=tuple(
+                                prior_output.get('unavailable_source_types', ())
+                            ),
                         ))
                 if metadata:
                     resolved_model = metadata.resolved_model or resolved_model
                     for angle in metadata.dry_angles:
                         tracker.observe(SearchAngleResult(False, angle_id=angle))
-                resolved_model = resolved_model or getattr(adapter, 'resolved_model', None)
 
             if not evidence:
                 raise ValueError('eligible route produced no evidence')
@@ -191,7 +196,40 @@ class EnrichmentRunner:
                 output_visibility=definition.output_visibility,
             )
             self._record_step('validate_output')
-            self._validate_output(execution, evidence)
+            self._validate_output(
+                request.enrichment_id, execution, evidence,
+                definition.output_visibility,
+            )
+            for assertion in execution.assertions:
+                tracker.observe(SearchAngleResult(
+                    True,
+                    field_citations=tuple(
+                        (assertion.field, evidence_id)
+                        for evidence_id in assertion.evidence_ids
+                    ),
+                ))
+            for field in execution.unknowns:
+                tracker.observe(SearchAngleResult(
+                    True, field_citations=((field, f'unknown:{field}'),),
+                ))
+            dry_angles = (
+                metadata.dry_angles if 'metadata' in locals() and metadata
+                else tuple(prior.get('output', {}).get('dry_angles', ())) if prior
+                else ()
+            )
+            unavailable_source_types = (
+                metadata.unavailable_source_types
+                if 'metadata' in locals() and metadata
+                else tuple(prior.get('output', {}).get('unavailable_source_types', ()))
+                if prior else ()
+            )
+            for index, angle in enumerate(dry_angles):
+                tracker.observe(SearchAngleResult(
+                    False, angle_id=angle,
+                    unavailable_source_types=(
+                        unavailable_source_types if index == 0 else ()
+                    ),
+                ))
             saturated = tracker.is_saturated
             result = EnrichmentResult(
                 request.enrichment_id, request.company_id,
@@ -203,13 +241,22 @@ class EnrichmentRunner:
                     'unknowns': execution.unknowns,
                     'cache_hits': cache_hits,
                     'saturated': saturated,
-                    'requested_model': request.inputs.get('requested_model'),
+                    'discovery': discovery_output,
+                    'route': route_output,
+                    'dry_angles': dry_angles,
+                    'unavailable_source_types': unavailable_source_types,
+                    'requested_model': requested_model,
                     'resolved_model': resolved_model,
                 },
                 None if saturated else FailureKind.INSUFFICIENT_EVIDENCE,
             )
         except Exception as error:
-            result = self._failure_result(request, error)
+            if discovery_output['selection_outcome'] == 'not_run':
+                discovery_output['selection_outcome'] = 'discovery_failed'
+            result = self._failure_result(
+                request, error, discovery_output, route_output,
+                requested_model, resolved_model,
+            )
         self._record(result)
         return result
 
@@ -261,7 +308,10 @@ class EnrichmentRunner:
         raise last_error
 
     @staticmethod
-    def _validate_output(execution: ExecutionOutput, evidence: list[Any]) -> None:
+    def _validate_output(
+        enrichment_id: str, execution: ExecutionOutput, evidence: list[Any],
+        output_visibility: str,
+    ) -> None:
         if not isinstance(execution, ExecutionOutput):
             raise ValueError('executor returned an invalid typed output')
         if not execution.assertions:
@@ -271,9 +321,26 @@ class EnrichmentRunner:
             raise ValueError('output assertions require citations')
         if any(set(item.evidence_ids) - evidence_ids for item in execution.assertions):
             raise ValueError('output assertion cites unknown evidence')
+        allowed = frozenset(P0_ENRICHMENTS[enrichment_id])
+        asserted = {item.field for item in execution.assertions}
+        unknowns = set(execution.unknowns)
+        outside = (asserted | unknowns) - allowed
+        if outside:
+            raise ValueError(f'output contains fields outside enrichment scope: {sorted(outside)}')
+        if asserted & unknowns:
+            raise ValueError('a field cannot be asserted and unknown')
+        missing = allowed - asserted - unknowns
+        if missing:
+            raise ValueError(f'output omits required enrichment fields: {sorted(missing)}')
+        if output_visibility == 'message_safe' and any(
+            item.visibility.value != 'message_safe' for item in execution.assertions
+        ):
+            raise ValueError('message-safe output cannot contain filter-only assertions')
 
     def _failure_result(
         self, request: EnrichmentRequest, error: Exception,
+        discovery_output: Mapping[str, Any], route_output: Mapping[str, Any],
+        requested_model: Any, resolved_model: Any,
     ) -> EnrichmentResult:
         if isinstance(error, (ValueError, TypeError)):
             kind = FailureKind.CONTRACT_INVALID
@@ -283,8 +350,25 @@ class EnrichmentRunner:
             kind = normalize_failure(error).kind
         return EnrichmentResult(
             request.enrichment_id, request.company_id, '1.0', ResultStatus.FAILED,
-            {'error': str(error)}, kind,
+            {
+                'error': str(error), 'discovery': discovery_output,
+                'route': route_output, 'requested_model': requested_model,
+                'resolved_model': resolved_model,
+            }, kind,
         )
+
+    @staticmethod
+    def _discovery_output(discovery: Any) -> dict[str, Any]:
+        try:
+            normalized = json.loads(canonical_json(discovery))
+        except (TypeError, ValueError):
+            normalized = {}
+        normalized.update({
+            'selected_capability': discovery.selected_capability,
+            'eligible_capabilities': tuple(discovery.eligible_capabilities),
+            'selection_outcome': getattr(discovery, 'selection_outcome', 'selected'),
+        })
+        return normalized
 
     def _record(self, result: EnrichmentResult) -> None:
         self._record_step('record')

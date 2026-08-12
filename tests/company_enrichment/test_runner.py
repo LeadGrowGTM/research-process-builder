@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 from decimal import Decimal
+import json
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -7,7 +8,8 @@ import pytest
 
 from scripts.company_enrichment.budgets import BudgetLedger, Reservation
 from scripts.company_enrichment.contracts import (
-    EnrichmentRequest, FailureKind, ResultStatus, SellerContext,
+    EnrichmentRequest, FailureKind, FieldAssertion, ResultStatus, SellerContext,
+    Visibility,
 )
 from scripts.company_enrichment.discovery import DiscoveryRecord, ProbeResult, ProbeStatus
 from scripts.company_enrichment.evidence import EvidenceStore, SourceRecord
@@ -112,7 +114,13 @@ def test_runner_uses_exact_order_and_records_append_only_outcome(tmp_path: Path)
     assert events == ['validate', 'discover', 'route', 'resolve', 'collect',
                       'execute', 'validate_output', 'record']
     assert result.status is ResultStatus.COMPLETE
-    assert len((tmp_path / 'outcomes.jsonl').read_text().splitlines()) == 1
+    events_json = [json.loads(line) for line in
+                   (tmp_path / 'outcomes.jsonl').read_text().splitlines()]
+    assert len(events_json) == 1
+    assert events_json[0]['output']['discovery']['selected_capability'] == 'homepage-scrape'
+    assert events_json[0]['output']['route']['provider_ids'] == ['homepage-scrape']
+    assert events_json[0]['output']['requested_model'] == 'openai/gpt-5-mini'
+    assert events_json[0]['output']['resolved_model'] == 'openai/gpt-5-mini'
 
 
 def test_discovery_occurs_on_cache_hits_and_resume_skips_collection(tmp_path: Path) -> None:
@@ -152,6 +160,27 @@ def test_discovery_failure_is_recorded_as_failed_outcome(tmp_path: Path) -> None
     assert result.status is ResultStatus.FAILED
     assert result.failure is FailureKind.TERMINAL
     assert events == ['validate', 'discover', 'record']
+    payload = json.loads((tmp_path / 'outcomes.jsonl').read_text())
+    assert payload['output']['discovery']['selection_outcome'] == 'discovery_failed'
+    assert payload['output']['requested_model'] == 'openai/gpt-5-mini'
+    assert payload['output']['resolved_model'] is None
+
+
+def test_partial_and_cache_hit_journals_preserve_discovery_and_route(tmp_path: Path) -> None:
+    events = []
+    adapter = FakeAdapter(events)
+    adapter.collect = lambda request, url: AdapterResponse(
+        SourceRecord(url, NOW, 'first_party', 'homepage-scrape', 'content', 'excerpt', 30, '0')
+    )
+    runner = _runner(tmp_path, events, adapter)
+    assert runner.run(_request()).status is ResultStatus.PARTIAL
+    assert runner.run(_request()).status is ResultStatus.PARTIAL
+    payloads = [json.loads(line) for line in
+                (tmp_path / 'outcomes.jsonl').read_text().splitlines()]
+    assert payloads[0]['output']['discovery']['selection_outcome'] == 'selected'
+    assert payloads[1]['output']['cache_hits'] == 1
+    assert payloads[1]['output']['route']['provider_ids'] == ['homepage-scrape']
+    assert payloads[1]['output']['resolved_model'] is None
 
 
 def test_runner_retries_only_to_definition_cap(tmp_path: Path) -> None:
@@ -224,6 +253,67 @@ def test_runner_rejects_empty_typed_executor_output(tmp_path: Path) -> None:
     result = runner.run(_request())
     assert result.status is ResultStatus.FAILED
     assert result.failure is FailureKind.CONTRACT_INVALID
+
+
+@pytest.mark.parametrize(
+    'execution',
+    (
+        ExecutionOutput((FieldAssertion(
+            'competitors', 'Wrong field', ('ev-placeholder',), .8,
+            Visibility.MESSAGE_SAFE,
+        ),)),
+        ExecutionOutput((FieldAssertion(
+            'identity', 'Filter value', ('ev-placeholder',), .8,
+            Visibility.FILTER_ONLY,
+        ),)),
+        ExecutionOutput((FieldAssertion(
+            'identity', 'Only identity', ('ev-placeholder',), .8,
+            Visibility.MESSAGE_SAFE,
+        ),)),
+    ),
+)
+def test_runner_rejects_wrong_visibility_or_incomplete_field_coverage(
+    tmp_path: Path, execution: ExecutionOutput,
+) -> None:
+    def executor(_enrichment_id, evidence, **_kwargs):
+        return ExecutionOutput(tuple(
+            FieldAssertion(item.field, item.value, (evidence[0].evidence_id,),
+                           item.confidence, item.visibility)
+            for item in execution.assertions
+        ))
+    runner = EnrichmentRunner(
+        definitions={'company-description': _definition()},
+        discovery=FakeDiscovery([]), router=FakeRouter([]),
+        evidence_store=EvidenceStore(tmp_path / 'evidence'),
+        budget_ledger=BudgetLedger(tmp_path / 'budget.jsonl', {'corpus-build': '2'}),
+        adapters={'homepage-scrape': FakeAdapter([])},
+        outcome_journal=tmp_path / 'outcomes.jsonl', as_of=NOW,
+        executor=executor,
+    )
+    result = runner.run(_request())
+    assert result.status is ResultStatus.FAILED
+    assert result.failure is FailureKind.CONTRACT_INVALID
+
+
+def test_explicit_unknowns_cover_allowed_fields_without_fabricated_citations(
+    tmp_path: Path,
+) -> None:
+    def executor(_enrichment_id, evidence, **_kwargs):
+        return ExecutionOutput((FieldAssertion(
+            'identity', 'Acme', (evidence[0].evidence_id,), .8,
+            Visibility.MESSAGE_SAFE,
+        ),), ('description', 'offers'))
+    result = EnrichmentRunner(
+        definitions={'company-description': _definition()},
+        discovery=FakeDiscovery([]), router=FakeRouter([]),
+        evidence_store=EvidenceStore(tmp_path / 'evidence'),
+        budget_ledger=BudgetLedger(tmp_path / 'budget.jsonl', {'corpus-build': '2'}),
+        adapters={'homepage-scrape': FakeAdapter([])},
+        outcome_journal=tmp_path / 'outcomes.jsonl', as_of=NOW,
+        executor=executor,
+    ).run(_request())
+    assert result.status is ResultStatus.COMPLETE
+    assert [item.field for item in result.output['assertions']] == ['identity']
 
 
 def test_runner_never_executes_paid_work_owned_by_another_run(tmp_path: Path) -> None:

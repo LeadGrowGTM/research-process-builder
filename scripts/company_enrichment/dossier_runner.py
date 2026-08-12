@@ -37,6 +37,14 @@ class DossierBuilder:
                 raise ValueError('enrichment result belongs to another fixture')
             if result.status is ResultStatus.FAILED:
                 raise ValueError(f'failed enrichment cannot enter dossier: {result.enrichment_id}')
+            if (
+                result.status is not ResultStatus.COMPLETE
+                or result.output.get('saturated') is not True
+            ):
+                raise ValueError(
+                    'dossier inputs must be complete and saturated: '
+                    f'{result.enrichment_id}'
+                )
             output = result.output
             result_assertions = tuple(output.get('assertions', ()))
             result_evidence = tuple(output.get('evidence', ()))
