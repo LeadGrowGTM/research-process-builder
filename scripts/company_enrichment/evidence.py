@@ -1,7 +1,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime
+from collections.abc import Callable
+from datetime import datetime, timedelta
 from decimal import Decimal, InvalidOperation
 import hashlib
 import json
@@ -118,6 +119,7 @@ class EvidenceStore:
         self.root = Path(root)
         self.objects = self.root / "objects"
         self.journal = self.root / "sources.jsonl"
+        self.cache_journal = self.root / "cache.jsonl"
         self._lock_path = self.root / ".evidence.lock"
 
     def put(self, source: SourceRecord) -> EvidenceRef:
@@ -135,12 +137,90 @@ class EvidenceStore:
             existing_ids = {event["event_id"] for event in self._read_events()}
             if event_id not in existing_ids:
                 event = {**body, "event_id": event_id}
-                self.root.mkdir(parents=True, exist_ok=True)
-                with self.journal.open("a", encoding="utf-8", newline="\n") as stream:
-                    stream.write(canonical_json(event) + "\n")
-                    stream.flush()
-                    os.fsync(stream.fileno())
+                self._append(self.journal, event)
+            cache_body = {
+                "cache_key": cache_key(source.url, source.provider, source.freshness_days),
+                "content_hash": content_hash,
+                "freshness_days": source.freshness_days,
+                "provider": source.provider,
+                "retrieved_at": source.retrieved_at.isoformat(),
+                "url": source.url,
+            }
+            cache_event_id = _event_id(cache_body)
+            existing_cache_ids = {
+                event["event_id"] for event in self._read_cache_events()
+            }
+            if cache_event_id not in existing_cache_ids:
+                self._append(
+                    self.cache_journal,
+                    {**cache_body, "event_id": cache_event_id},
+                )
         return self._reference(source, content_hash)
+
+    def resolve(
+        self,
+        *,
+        url: str,
+        provider: str,
+        freshness_days: int,
+        as_of: datetime,
+        collect: Callable[[], SourceRecord],
+    ) -> tuple[EvidenceRef, bool]:
+        cached = self.lookup(
+            url=url,
+            provider=provider,
+            freshness_days=freshness_days,
+            as_of=as_of,
+        )
+        if cached is not None:
+            return self._reference(cached, _content_hash(cached.content)), True
+        source = collect()
+        if (
+            source.url != url
+            or source.provider != provider
+            or source.freshness_days != freshness_days
+        ):
+            raise ValueError("collected source does not match the requested cache identity")
+        return self.put(source), False
+
+    def lookup(
+        self,
+        *,
+        url: str,
+        provider: str,
+        freshness_days: int,
+        as_of: datetime,
+    ) -> SourceRecord | None:
+        if as_of.tzinfo is None:
+            raise ValueError("as_of must include a timezone")
+        identity = cache_key(url, provider, freshness_days)
+        with file_lock(self._lock_path):
+            matches = [
+                event
+                for event in self._read_cache_events()
+                if event["cache_key"] == identity
+            ]
+            if not matches:
+                return None
+            latest = max(matches, key=lambda item: item["retrieved_at"])
+            retrieved_at = datetime.fromisoformat(latest["retrieved_at"])
+            if retrieved_at + timedelta(days=freshness_days) < as_of:
+                return None
+            content = self._read_content(latest["content_hash"])
+            source_event = next(
+                (
+                    event
+                    for event in reversed(self._read_events())
+                    if event["content_hash"] == latest["content_hash"]
+                    and event["url"] == url
+                    and event["provider"] == provider
+                    and event["retrieved_at"] == latest["retrieved_at"]
+                ),
+                None,
+            )
+            if source_event is None:
+                raise ValueError("cache entry has no matching source observation")
+            return self._record_from_event(source_event, content)
 
     def get(self, content_hash: str) -> SourceRecord:
         self._validate_hash(content_hash)
@@ -152,19 +232,7 @@ class EvidenceStore:
             )
             if event is None:
                 raise ValueError("evidence object has no source observation")
-            try:
-                return SourceRecord(
-                    url=event["url"],
-                    retrieved_at=datetime.fromisoformat(event["retrieved_at"]),
-                    source_type=event["source_type"],
-                    provider=event["provider"],
-                    content=content,
-                    excerpt=event["excerpt"],
-                    freshness_days=event["freshness_days"],
-                    paid_cost_usd=event["paid_cost_usd"],
-                )
-            except (KeyError, TypeError, ValueError) as error:
-                raise ValueError("evidence source failed tampering validation") from error
+            return self._record_from_event(event, content)
 
     def _read_content(self, content_hash: str) -> str:
         self._validate_hash(content_hash)
@@ -196,6 +264,52 @@ class EvidenceStore:
             except (KeyError, TypeError, json.JSONDecodeError, ValueError) as error:
                 raise ValueError(f"invalid evidence journal event on line {line_number}") from error
         return tuple(events)
+
+    def _read_cache_events(self) -> tuple[dict[str, Any], ...]:
+        if not self.cache_journal.exists():
+            return ()
+        events = []
+        for line_number, line in enumerate(
+            self.cache_journal.read_text(encoding="utf-8").splitlines(), 1
+        ):
+            try:
+                event = json.loads(line)
+                event_id = event.pop("event_id")
+                if not isinstance(event, dict) or event_id != _event_id(event):
+                    raise ValueError("cache event hash mismatch")
+                if event["cache_key"] != cache_key(
+                    event["url"], event["provider"], event["freshness_days"]
+                ):
+                    raise ValueError("cache identity mismatch")
+                self._validate_hash(event["content_hash"])
+                events.append({**event, "event_id": event_id})
+            except (KeyError, TypeError, json.JSONDecodeError, ValueError) as error:
+                raise ValueError(f"invalid cache journal event on line {line_number}") from error
+        return tuple(events)
+
+    @staticmethod
+    def _record_from_event(event: dict[str, Any], content: str) -> SourceRecord:
+        try:
+            return SourceRecord(
+                url=event["url"],
+                retrieved_at=datetime.fromisoformat(event["retrieved_at"]),
+                source_type=event["source_type"],
+                provider=event["provider"],
+                content=content,
+                excerpt=event["excerpt"],
+                freshness_days=event["freshness_days"],
+                paid_cost_usd=event["paid_cost_usd"],
+            )
+        except (KeyError, TypeError, ValueError) as error:
+            raise ValueError("evidence source failed tampering validation") from error
+
+    @staticmethod
+    def _append(path: Path, event: dict[str, Any]) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with path.open("a", encoding="utf-8", newline="\n") as stream:
+            stream.write(canonical_json(event) + "\n")
+            stream.flush()
+            os.fsync(stream.fileno())
 
     @staticmethod
     def _write_object(path: Path, payload: dict[str, Any]) -> None:

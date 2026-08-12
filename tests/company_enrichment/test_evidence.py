@@ -94,6 +94,73 @@ def test_concurrent_identical_puts_are_idempotent(tmp_path) -> None:
     assert len((tmp_path / "sources.jsonl").read_text(encoding="utf-8").splitlines()) == 1
 
 
+def test_fresh_cache_hit_skips_reservation_and_provider_collection(tmp_path) -> None:
+    store = EvidenceStore(tmp_path)
+    retrieved = datetime(2026, 8, 12, tzinfo=timezone.utc)
+    source = SourceRecord(
+        "https://acme.example",
+        retrieved,
+        "first_party",
+        "homepage-scrape",
+        "Cached material",
+        "Cached material",
+        30,
+        "0",
+    )
+    store.put(source)
+    calls = []
+
+    reference, cache_hit = store.resolve(
+        url=source.url,
+        provider=source.provider,
+        freshness_days=30,
+        as_of=retrieved + timedelta(days=29),
+        collect=lambda: calls.append("reserve/provider") or source,
+    )
+
+    assert cache_hit is True
+    assert reference.content_hash == store.put(source).content_hash
+    assert calls == []
+
+
+def test_stale_cache_collects_and_refreshes(tmp_path) -> None:
+    store = EvidenceStore(tmp_path)
+    old = SourceRecord(
+        "https://acme.example",
+        datetime(2026, 7, 1, tzinfo=timezone.utc),
+        "first_party",
+        "homepage-scrape",
+        "Old material",
+        "Old material",
+        30,
+        "0",
+    )
+    fresh = SourceRecord(
+        old.url,
+        datetime(2026, 8, 12, tzinfo=timezone.utc),
+        old.source_type,
+        old.provider,
+        "Fresh material",
+        "Fresh material",
+        30,
+        "0",
+    )
+    store.put(old)
+    calls = []
+
+    reference, cache_hit = store.resolve(
+        url=old.url,
+        provider=old.provider,
+        freshness_days=30,
+        as_of=fresh.retrieved_at,
+        collect=lambda: calls.append("collect") or fresh,
+    )
+
+    assert cache_hit is False
+    assert store.get(reference.content_hash).content == "Fresh material"
+    assert calls == ["collect"]
+
+
 def test_saturation_requires_cited_fields_distinct_sources_and_two_dry_angles() -> None:
     tracker = SaturationTracker(required_fields=("description", "target_customer"))
     tracker.observe(

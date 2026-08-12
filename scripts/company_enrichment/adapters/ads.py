@@ -26,6 +26,8 @@ class AdsAdapter:
 
     def inspect(self, request: AdsRequest) -> AdFinding:
         finding = self._inspect_one(request)
+        if not isinstance(finding, AdFinding):
+            raise ValueError("ads provider returned an invalid result")
         if finding.channel != self.channel:
             raise ValueError("ads provider returned the wrong channel")
         return finding

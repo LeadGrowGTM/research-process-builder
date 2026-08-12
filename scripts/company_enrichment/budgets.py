@@ -8,6 +8,7 @@ import json
 import os
 from pathlib import Path
 from typing import Iterator
+from enum import Enum
 
 from ._locking import file_lock
 from .contracts import canonical_json
@@ -15,6 +16,20 @@ from .contracts import canonical_json
 
 class BudgetExhausted(RuntimeError):
     pass
+
+
+class ReservationState(str, Enum):
+    RECONCILED = "reconciled"
+    RELEASED = "released"
+
+
+class ReservationSettled(RuntimeError):
+    def __init__(self, reservation: "Reservation", state: ReservationState) -> None:
+        super().__init__(
+            f"idempotency key is already {state.value}: {reservation.idempotency_key}"
+        )
+        self.reservation = reservation
+        self.state = state
 
 
 @dataclass(frozen=True, slots=True)
@@ -63,6 +78,10 @@ class BudgetLedger:
             if existing is not None:
                 if existing.amount != estimate:
                     raise ValueError("idempotency key was already used with a different amount")
+                if existing.reservation_id in actuals:
+                    raise ReservationSettled(existing, ReservationState.RECONCILED)
+                if existing.reservation_id in released:
+                    raise ReservationSettled(existing, ReservationState.RELEASED)
                 return existing
 
             outstanding = sum(

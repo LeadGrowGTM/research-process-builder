@@ -3,7 +3,12 @@ from decimal import Decimal
 
 import pytest
 
-from scripts.company_enrichment.budgets import BudgetExhausted, BudgetLedger
+from scripts.company_enrichment.budgets import (
+    BudgetExhausted,
+    BudgetLedger,
+    ReservationSettled,
+    ReservationState,
+)
 
 
 def test_budget_reserves_before_spend_and_reconciles_actual_cost(tmp_path) -> None:
@@ -72,3 +77,21 @@ def test_stale_lock_file_content_does_not_block_after_process_exit(tmp_path) -> 
     ledger.reserve("corpus-build", "next", "0.25")
 
     assert ledger.reserved("corpus-build") == Decimal("0.25")
+
+
+@pytest.mark.parametrize(
+    ("settle", "state"),
+    [
+        (lambda ledger, reservation: ledger.reconcile(reservation, "0.10"), ReservationState.RECONCILED),
+        (lambda ledger, reservation: ledger.release(reservation), ReservationState.RELEASED),
+    ],
+)
+def test_settled_idempotency_key_cannot_authorize_repurchase(tmp_path, settle, state) -> None:
+    ledger = BudgetLedger(tmp_path / "costs.jsonl", {"corpus-build": "2.00"})
+    reservation = ledger.reserve("corpus-build", "same-paid-call", "0.50")
+    settle(ledger, reservation)
+
+    with pytest.raises(ReservationSettled) as caught:
+        ledger.reserve("corpus-build", "same-paid-call", "0.50")
+
+    assert caught.value.state is state

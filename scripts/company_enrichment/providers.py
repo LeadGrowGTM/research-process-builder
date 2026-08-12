@@ -143,7 +143,12 @@ class ProviderRouter:
         *,
         known_urls: Sequence[str] = (),
     ) -> RoutePlan:
-        ordered = list(dict.fromkeys(definition.fallback_order))
+        eligible = frozenset(discovery.eligible_capabilities)
+        ordered = [
+            capability_id
+            for capability_id in dict.fromkeys(definition.fallback_order)
+            if capability_id in eligible
+        ]
         selected = discovery.selected_capability
         if selected in ordered:
             ordered.remove(selected)
@@ -151,9 +156,13 @@ class ProviderRouter:
         known_url_provider = None
         if known_urls:
             known_url_provider = "homepage-scrape"
+            if known_url_provider not in eligible:
+                raise ProviderFailure("known-URL capability gap: homepage scraper unavailable")
             if known_url_provider in ordered:
                 ordered.remove(known_url_provider)
             ordered.insert(0, known_url_provider)
+        if not ordered:
+            raise ProviderFailure("verified capability gap: no eligible provider route")
         return RoutePlan(tuple(ordered), known_url_provider)
 
 

@@ -143,7 +143,16 @@ class CapabilityRegistry(Mapping[str, Capability]):
     ) -> Capability:
         if isinstance(requirement, tuple):
             requirement = CapabilityRequirement("", requirement)
+        eligible = self.eligible(requirement)
+        if eligible:
+            return eligible[0]
+        raise RuntimeError("verified capability gap: no eligible registered capability")
+
+    def eligible(
+        self, requirement: CapabilityRequirement
+    ) -> tuple[Capability, ...]:
         selectable_states = {"approved", "available", "observed", "preferred", "search_only"}
+        eligible: list[Capability] = []
         for capability_id in requirement.fallback_order:
             if capability_id not in self or capability_id in requirement.unavailable_capabilities:
                 continue
@@ -157,8 +166,8 @@ class CapabilityRegistry(Mapping[str, Capability]):
                 and requirement.enrichment_id not in capability.eligible_enrichments
             ):
                 continue
-            return capability
-        raise RuntimeError("verified capability gap: no eligible registered capability")
+            eligible.append(capability)
+        return tuple(eligible)
 
 
 class GtmProbe(Protocol):
@@ -175,7 +184,9 @@ class DiscoveryRecord:
     steps: tuple[str, ...]
     gtm: ProbeResult
     nexus: ProbeResult
-    selected_capability: str
+    selected_capability: str | None
+    eligible_capabilities: tuple[str, ...]
+    selection_outcome: str
     gtm_path: str
     gtm_version: str
     nexus_query: str
@@ -226,24 +237,28 @@ class CapabilityDiscovery:
             if gtm.status is not ProbeStatus.AVAILABLE
             else frozenset()
         )
-        selected = self._registry.select(
-            CapabilityRequirement(
-                enrichment_id=enrichment_id,
-                fallback_order=tuple(fallback_order),
-                operation=operation,
-                unavailable_capabilities=unavailable,
-            )
+        requirement = CapabilityRequirement(
+            enrichment_id=enrichment_id,
+            fallback_order=tuple(fallback_order),
+            operation=operation,
+            unavailable_capabilities=unavailable,
         )
+        eligible = self._registry.eligible(requirement)
+        selected = eligible[0] if eligible else None
         record = DiscoveryRecord(
             enrichment_id=enrichment_id,
             steps=("gtm", "nexus", "select"),
             gtm=gtm,
             nexus=nexus,
-            selected_capability=selected.id,
+            selected_capability=selected.id if selected else None,
+            eligible_capabilities=tuple(item.id for item in eligible),
+            selection_outcome="selected" if selected else "verified_gap",
             gtm_path=gtm_path,
             gtm_version=gtm_version,
             nexus_query=enrichment_id,
             nexus_outcome=nexus.status.value,
         )
         self._record_discovery(record)
+        if selected is None:
+            raise RuntimeError("verified capability gap: no eligible registered capability")
         return record

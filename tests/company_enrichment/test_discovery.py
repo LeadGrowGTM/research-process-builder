@@ -151,6 +151,27 @@ def test_registry_skips_unvalidated_or_ineligible_capabilities() -> None:
         )
 
 
+def test_verified_capability_gap_is_recorded_before_failure() -> None:
+    recorded = []
+
+    with pytest.raises(RuntimeError, match="verified capability gap"):
+        CapabilityDiscovery(
+            gtm_probe=RecordingGtmProbe([]),
+            nexus_probe=MissingNexusProbe([]),
+            registry=CapabilityRegistry.default(),
+            record_discovery=recorded.append,
+        ).discover(
+            "technology-detection",
+            ("techsight",),
+            operation="detect",
+        )
+
+    assert len(recorded) == 1
+    assert recorded[0].selected_capability is None
+    assert recorded[0].selection_outcome == "verified_gap"
+    assert recorded[0].eligible_capabilities == ()
+
+
 def test_unavailable_gtm_probe_cannot_select_homepage_scraper() -> None:
     class UnavailableGtm:
         def probe(self) -> ProbeResult:

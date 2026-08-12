@@ -90,12 +90,38 @@ def test_provider_failures_normalize_without_payload_leakage(error, expected) ->
 def test_router_keeps_known_urls_off_parallel() -> None:
     router = ProviderRouter()
     definition = SimpleNamespace(fallback_order=("parallel-search", "homepage-scrape"))
-    discovery = SimpleNamespace(selected_capability="parallel-search")
+    discovery = SimpleNamespace(
+        selected_capability="parallel-search",
+        eligible_capabilities=("homepage-scrape", "parallel-search"),
+    )
 
     plan = router.route(definition, discovery, known_urls=("https://acme.example",))
 
     assert plan.provider_ids == ("homepage-scrape", "parallel-search")
     assert plan.known_url_provider == "homepage-scrape"
+
+
+def test_router_cannot_reintroduce_unverified_or_unavailable_providers() -> None:
+    router = ProviderRouter()
+    ads_definition = SimpleNamespace(
+        fallback_order=("meta-ads", "tiktok-ads", "linkedin-ads")
+    )
+    ads_discovery = SimpleNamespace(
+        selected_capability="linkedin-ads",
+        eligible_capabilities=("linkedin-ads",),
+    )
+
+    assert router.route(ads_definition, ads_discovery).provider_ids == ("linkedin-ads",)
+
+    with pytest.raises(ProviderFailure, match="known-URL capability gap"):
+        router.route(
+            SimpleNamespace(fallback_order=("homepage-scrape", "parallel-search")),
+            SimpleNamespace(
+                selected_capability="parallel-search",
+                eligible_capabilities=("parallel-search",),
+            ),
+            known_urls=("https://acme.example",),
+        )
 
 
 @pytest.mark.parametrize(
@@ -180,3 +206,18 @@ def test_meta_batch_stays_blocked_when_schema_or_cost_validation_fails() -> None
     assert wrong_schema.batch_eligible is False
     assert excessive_cost.validate(request).cost_valid is False
     assert excessive_cost.batch_eligible is False
+
+
+def test_meta_rejects_non_ad_finding_payload_even_with_meta_channel() -> None:
+    adapter = MetaAdsAdapter(
+        inspect_one=lambda _request: SimpleNamespace(channel="meta"),
+        measure_cost=lambda _request, _finding: "0.01",
+        max_sample_cost_usd="0.10",
+    )
+
+    validation = adapter.validate(
+        (AdsRequest("Acme", "https://acme.example"),)
+    )
+
+    assert validation.schema_valid is False
+    assert adapter.batch_eligible is False
