@@ -12,7 +12,7 @@
   - Level 2: Crawl4AI browser rendering, free
   - Level 3: Firecrawl, paid
   - Level 4: Firecrawl JS rendering, paid
-- Default company research uses Levels 1–2 only. Levels 3–4 require explicit paid authorization.
+- Default company research uses Levels 1–2 first. Firecrawl Levels 3–4 were approved on 2026-08-12 for public B2B company URLs when free levels are insufficient, subject to ledger reservation and the existing aggregate caps.
 - **lg_free** is a structured company-enrichment source used to fill supported firmographic and signal fields.
 - **Parallel** is a novel web-search vehicle. It is especially useful for people search, but people discovery is outside this company library. For company enrichments it is a comparison route and late gap-filling fallback, not the default source.
 - **Harvest** is the preferred job-data route. Its current job schema, authentication, price, and terms must be verified during capability discovery before live use.
@@ -80,6 +80,7 @@ Every channel records active, inactive, or unknown independently.
 
 - No people/contact discovery in this library.
 - Parallel remains search-only; it never fetches known URLs.
-- No paid escalation without explicit provider/fixture/payload/cost approval.
+- Firecrawl paid escalation is approved for public B2B company URLs within the existing aggregate caps; every call still records fixture, reason, level, reservation, and actual cost.
+- Other paid providers require explicit provider/fixture/payload/cost approval.
 - No social/filter-only fact enters outbound copy.
 - No provider failure is converted into a success.

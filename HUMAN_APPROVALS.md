@@ -13,7 +13,7 @@
 | 1C — Exact corpus | Approve 60 companies and 15 shared-core members | Pending; revised list not yet proposed |
 | 2A — Foundation | Approve implemented contracts, manifests, SellerContext, and visibility boundary | Pending now; see `GATE_2_REVIEW.md` |
 | 2B — Prompts and outputs | Approve actual prompts and output field schemas before executors | Pending; not built yet |
-| 3 — Live providers and spend | Approve each provider, payload, fixtures, and maximum cost | Pending; no live/paid call authorized |
+| 3 — Live providers and spend | Approve each provider, payload, fixtures, and maximum cost | Firecrawl approved for public B2B company URLs within existing caps; other providers pending |
 | 4 — Core dossiers | Approve the first 15 researched dossiers before the remaining 45 | Pending |
 | 5 — Enrichment candidates | Human blind verdict for each enrichment | Pending |
 | 6 — Release | Accept, revise, narrow, or reject final library | Pending |
@@ -125,7 +125,18 @@ Approval is provider-specific. Example:
 
 > Approve Gate 3 for Meta actor `ZQyDz7154hrOfrDMK`, using the three listed public company URLs, maximum $0.20 aggregate, for schema/cost validation only.
 
-No provider or spend is currently approved.
+### Firecrawl approval — recorded 2026-08-12
+
+Firecrawl is approved for public B2B company-site extraction when free homepage scraping is insufficient:
+
+- L1 HTTP/html2text and L2 Crawl4AI run first.
+- L3 Firecrawl standard may run when L1/L2 are insufficient.
+- L4 Firecrawl JS may run when L3 is insufficient.
+- Start with 1–3 public company URLs.
+- Reserve cost before execution and retain level, reason, schema, and actual-cost proof.
+- The existing $2 corpus-wide and $1 experiment-wide aggregate ceilings remain binding.
+
+This approval does not cover sensitive data, contact data, unrelated URLs, cap bypass, deployment, or external sharing. Other live providers remain pending.
 
 ## Gate 4 — Fifteen-company core dossiers
 

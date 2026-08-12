@@ -12,6 +12,7 @@
 - Human Gate 2 is pending before live provider integration. No network or paid provider call was made.
 - Routing revision: separated production waterfalls from comparative providers; homepage scrape is first for known domains, lg_free fills supported fields, Parallel is a late search fallback/comparator, and jobs route Harvest → free job enrichment → company careers scrape → Parallel.
 - Workspace instruction compatibility: Windows blocked a symbolic link without Administrator/Developer Mode, so local `AGENTS.md` was created as a verified hard link to `CLAUDE.md`.
+- Human approval recorded: Firecrawl L3/L4 may be used for public B2B company URLs after free L1/L2 are insufficient, starting with 1–3 fixtures and remaining within the $2 corpus/$1 experiment aggregate caps.
 
 ## 2026-08-10 — Recovery inventory preservation
 

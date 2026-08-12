@@ -47,6 +47,7 @@
 - [ ] Smoke-test TechSight import.
 - [ ] Validate Meta adapter schema/cost with 1–3 fixtures before use.
 - [ ] Keep TikTok explicitly unknown unless verified.
+- [x] Record Firecrawl approval for public B2B company URLs after free L1/L2 fail, within aggregate caps.
 - [ ] Human Gate 3: approve provider choices, fixtures, data scope, and spend ceilings before paid calls.
 
 ## Phase 5 — Runner and P0 executors
