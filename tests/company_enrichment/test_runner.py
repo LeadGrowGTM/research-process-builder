@@ -123,6 +123,15 @@ def test_runner_uses_exact_order_and_records_append_only_outcome(tmp_path: Path)
     assert events_json[0]['output']['resolved_model'] == 'openai/gpt-5-mini'
 
 
+def test_runner_uses_adapter_owned_source_url_for_cache_identity(tmp_path: Path) -> None:
+    events = []
+    adapter = FakeAdapter(events)
+    adapter.source_url = lambda request, default: 'https://independent.example/profile'
+    runner = _runner(tmp_path, events, adapter)
+    result = runner.run(_request())
+    assert result.output['evidence'][0].url == 'https://independent.example/profile'
+
+
 def test_discovery_occurs_on_cache_hits_and_resume_skips_collection(tmp_path: Path) -> None:
     events = []
     adapter = FakeAdapter(events)

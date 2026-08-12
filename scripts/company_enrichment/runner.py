@@ -145,25 +145,30 @@ class EnrichmentRunner:
                 adapter = self._adapters.get(provider_id)
                 if adapter is None:
                     continue
+                source_url = (
+                    adapter.source_url(request, known_url)
+                    if callable(getattr(adapter, 'source_url', None))
+                    else known_url
+                )
                 self._record_step('resolve')
                 response_box: list[AdapterResponse] = []
 
                 def collect() -> SourceRecord:
                     response = self._collect_with_retries(
-                        adapter, request, known_url, provider_id,
+                        adapter, request, source_url, provider_id,
                         int(definition.caps['retries']),
                     )
                     response_box.append(response)
                     return response.source
 
                 reference, cache_hit = self._evidence_store.resolve(
-                    url=known_url, provider=provider_id,
+                    url=source_url, provider=provider_id,
                     freshness_days=int(definition.freshness_days), as_of=self._as_of,
                     collect=collect,
                 )
                 cache_hits += int(cache_hit)
                 evidence.append(reference)
-                key = (known_url, provider_id)
+                key = (source_url, provider_id)
                 if response_box:
                     self._response_metadata[key] = response_box[0]
                 metadata = self._response_metadata.get(key)
