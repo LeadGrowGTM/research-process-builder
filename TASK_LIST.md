@@ -2,6 +2,8 @@
 
 **Source of truth:** `docs/superpowers/specs/2026-08-11-company-enrichment-library-design.md`, `docs/superpowers/plans/2026-08-11-company-enrichment-library.md`, and `HARNESS.md`.
 
+**All human decisions:** `HUMAN_APPROVALS.md`
+
 ## Human Gate 1 — Scope and corpus
 - [x] Confirm the eight P0 enrichments.
 - [x] Confirm six B2B-only cohorts: local services, SaaS, recently funded, well-known, agencies, and commerce/CPG.
