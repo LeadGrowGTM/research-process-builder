@@ -23,7 +23,8 @@ FOUNDATION
     │
     ├── INPUT/OUTPUT DESIGN — iterate with real provider samples
     │   ├── classify caller-required, system-required, and optional inputs
-    │   ├── inspect AI-Ark representative payloads
+    │   ├── DONE: analyze AI-Ark aggregate company export
+    │   ├── obtain AI-Ark raw request/response, miss, cost, latency, provenance
     │   ├── retain DiscoLike averages and failure behavior
     │   ├── define outputs independently of provider schemas
     │   └── save every decision in the living logic-tree register
@@ -95,7 +96,7 @@ FOUNDATION
 ## Immediate execution order
 
 1. Receive Gate 2A decision on the corrected foundation.
-2. Receive representative AI-Ark company-level samples and update the input/output register.
+2. Obtain raw AI-Ark request/response and miss/error examples to complement the analyzed export.
 3. Implement Phase 2 capability discovery test-first.
 4. Produce the revised 60-company B2B proposal for Gate 1C.
 5. Build evidence/cache/budget modules.

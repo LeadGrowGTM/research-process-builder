@@ -158,19 +158,16 @@ Goal: translate cited prospect evidence into a seller-relevant value frame
 - Decision: paid delayed fallback/comparator for suitable established or funded companies, not a universal first-line provider.
 - Gaps: weak new-launch coverage; employee/follower gaps; identity requires validation.
 
-### AI-Ark — sample required
+### AI-Ark — aggregate export analyzed
 
-No current AI-Ark implementation or response sample was found in this workspace. Do not infer its schema.
-
-Requested company-level samples:
-
-1. Typical established B2B company success.
-2. Recently funded/new B2B company.
-3. Sparse or ambiguous company.
-4. Miss/not-found response.
-5. Error or partial response if available.
-
-For each include the exact input, raw company response, result status, retrieval date, latency, and cost/credit metadata. Remove credentials and person/contact records.
+- Analyzed 9,340 returned company records with 28 fields; see `docs/providers/ai-ark-sample-analysis-2026-08-12.md`.
+- Strong returned-row completeness for identity, descriptions, industry, firmographics, location, and technologies.
+- Products/services are present on 71.3%; funding fields on only 12.2–17.5%.
+- This export does not establish hit rate, freshness, latency, cost, or response-level provenance.
+- Decision: comparator/structured filler pending live capability validation, not yet a default route.
+- AI-Ark fields never replace first-party or independent citation requirements.
+- Company email/phone are excluded from these eight P0 interfaces.
+- Still required: raw request/response, miss/error shapes, lookup denominator, cost/latency, and provenance semantics.
 
 ## Decision protocol
 
