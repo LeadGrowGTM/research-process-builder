@@ -29,6 +29,8 @@ def test_budget_reuses_idempotency_key_without_double_reserving(tmp_path) -> Non
     second = ledger.reserve("experiment:description", "same-run", "0.40")
 
     assert first == second
+    assert first.should_execute is True
+    assert second.should_execute is False
     assert ledger.reserved("experiment:description") == Decimal("0.40")
 
 

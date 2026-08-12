@@ -1,5 +1,7 @@
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
+import threading
+import time
 
 import pytest
 
@@ -159,6 +161,75 @@ def test_stale_cache_collects_and_refreshes(tmp_path) -> None:
     assert cache_hit is False
     assert store.get(reference.content_hash).content == "Fresh material"
     assert calls == ["collect"]
+
+
+def test_concurrent_cache_misses_collect_only_once(tmp_path) -> None:
+    store = EvidenceStore(tmp_path)
+    retrieved = datetime(2026, 8, 12, tzinfo=timezone.utc)
+    source = SourceRecord(
+        "https://acme.example",
+        retrieved,
+        "first_party",
+        "homepage-scrape",
+        "Single-flight material",
+        "Single-flight material",
+        30,
+        "0.01",
+    )
+    calls = 0
+    calls_lock = threading.Lock()
+
+    def collect() -> SourceRecord:
+        nonlocal calls
+        with calls_lock:
+            calls += 1
+        time.sleep(0.02)
+        return source
+
+    def resolve(_index):
+        return store.resolve(
+            url=source.url,
+            provider=source.provider,
+            freshness_days=30,
+            as_of=retrieved,
+            collect=collect,
+        )
+
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        results = list(executor.map(resolve, range(16)))
+
+    assert calls == 1
+    assert sum(not cache_hit for _reference, cache_hit in results) == 1
+
+
+def test_missing_cache_projection_repairs_from_authoritative_source_journal(tmp_path) -> None:
+    store = EvidenceStore(tmp_path)
+    retrieved = datetime(2026, 8, 12, tzinfo=timezone.utc)
+    source = SourceRecord(
+        "https://acme.example",
+        retrieved,
+        "first_party",
+        "homepage-scrape",
+        "Recoverable material",
+        "Recoverable material",
+        30,
+        "0",
+    )
+    store.put(source)
+    store.cache_journal.unlink()
+    calls = []
+
+    _reference, cache_hit = store.resolve(
+        url=source.url,
+        provider=source.provider,
+        freshness_days=30,
+        as_of=retrieved,
+        collect=lambda: calls.append("recollect") or source,
+    )
+
+    assert cache_hit is True
+    assert calls == []
+    assert store.cache_journal.exists()
 
 
 def test_saturation_requires_cited_fields_distinct_sources_and_two_dry_angles() -> None:

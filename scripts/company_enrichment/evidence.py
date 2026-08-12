@@ -166,22 +166,25 @@ class EvidenceStore:
         as_of: datetime,
         collect: Callable[[], SourceRecord],
     ) -> tuple[EvidenceRef, bool]:
-        cached = self.lookup(
-            url=url,
-            provider=provider,
-            freshness_days=freshness_days,
-            as_of=as_of,
-        )
-        if cached is not None:
-            return self._reference(cached, _content_hash(cached.content)), True
-        source = collect()
-        if (
-            source.url != url
-            or source.provider != provider
-            or source.freshness_days != freshness_days
-        ):
-            raise ValueError("collected source does not match the requested cache identity")
-        return self.put(source), False
+        identity = cache_key(url, provider, freshness_days)
+        key_lock = self.root / "cache-locks" / f"{identity}.lock"
+        with file_lock(key_lock):
+            cached = self.lookup(
+                url=url,
+                provider=provider,
+                freshness_days=freshness_days,
+                as_of=as_of,
+            )
+            if cached is not None:
+                return self._reference(cached, _content_hash(cached.content)), True
+            source = collect()
+            if (
+                source.url != url
+                or source.provider != provider
+                or source.freshness_days != freshness_days
+            ):
+                raise ValueError("collected source does not match the requested cache identity")
+            return self.put(source), False
 
     def lookup(
         self,
@@ -195,13 +198,37 @@ class EvidenceStore:
             raise ValueError("as_of must include a timezone")
         identity = cache_key(url, provider, freshness_days)
         with file_lock(self._lock_path):
+            source_events = self._read_events()
             matches = [
                 event
                 for event in self._read_cache_events()
                 if event["cache_key"] == identity
             ]
             if not matches:
-                return None
+                source_matches = [
+                    event
+                    for event in source_events
+                    if cache_key(
+                        event["url"], event["provider"], event["freshness_days"]
+                    )
+                    == identity
+                ]
+                if not source_matches:
+                    return None
+                source_event = max(
+                    source_matches, key=lambda item: item["retrieved_at"]
+                )
+                cache_body = {
+                    "cache_key": identity,
+                    "content_hash": source_event["content_hash"],
+                    "freshness_days": source_event["freshness_days"],
+                    "provider": source_event["provider"],
+                    "retrieved_at": source_event["retrieved_at"],
+                    "url": source_event["url"],
+                }
+                repaired = {**cache_body, "event_id": _event_id(cache_body)}
+                self._append(self.cache_journal, repaired)
+                matches = [repaired]
             latest = max(matches, key=lambda item: item["retrieved_at"])
             retrieved_at = datetime.fromisoformat(latest["retrieved_at"])
             if retrieved_at + timedelta(days=freshness_days) < as_of:
@@ -210,7 +237,7 @@ class EvidenceStore:
             source_event = next(
                 (
                     event
-                    for event in reversed(self._read_events())
+                    for event in reversed(source_events)
                     if event["content_hash"] == latest["content_hash"]
                     and event["url"] == url
                     and event["provider"] == provider

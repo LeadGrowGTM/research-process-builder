@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from contextlib import contextmanager
-from dataclasses import dataclass
+from dataclasses import dataclass, field, replace
 from decimal import Decimal, InvalidOperation
 import hashlib
 import json
@@ -38,6 +38,11 @@ class Reservation:
     scope_id: str
     idempotency_key: str
     amount: Decimal
+    created: bool = field(default=True, compare=False)
+
+    @property
+    def should_execute(self) -> bool:
+        return self.created
 
 
 def _amount(value: str | Decimal, name: str) -> Decimal:
@@ -82,7 +87,7 @@ class BudgetLedger:
                     raise ReservationSettled(existing, ReservationState.RECONCILED)
                 if existing.reservation_id in released:
                     raise ReservationSettled(existing, ReservationState.RELEASED)
-                return existing
+                return replace(existing, created=False)
 
             outstanding = sum(
                 (
