@@ -13,6 +13,7 @@ optional_inputs: [company_dossier]
 execution_mode: llm-only
 provider_candidates: [model-router]
 fallback_order: [model-router]
+benchmark_providers: [model-router]
 freshness_days: 30
 source_requirements: [cited_dossier, seller_context]
 caps: {queries: 0, scrapes: 0, retries: 2, paid_cost_usd: 1.0}

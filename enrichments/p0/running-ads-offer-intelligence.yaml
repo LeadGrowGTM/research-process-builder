@@ -13,6 +13,7 @@ optional_inputs: [b2b_segment, geography]
 execution_mode: search-and-scrape
 provider_candidates: [lg-free, linkedin-ads, meta-ads]
 fallback_order: [lg-free, linkedin-ads, meta-ads]
+benchmark_providers: [lg-free, linkedin-ads, meta-ads]
 freshness_days: 7
 source_requirements: [channel_primary, landing_page]
 caps: {queries: 6, scrapes: 6, retries: 2, paid_cost_usd: 1.0}

@@ -11,8 +11,9 @@ output_schema_version: "1.0"
 required_inputs: [company_name, domain, seller_context]
 optional_inputs: [geography]
 execution_mode: search-and-scrape
-provider_candidates: [linkedin-jobs, parallel-search, gtm-waterfall]
-fallback_order: [linkedin-jobs, parallel-search, gtm-waterfall]
+provider_candidates: [harvest-jobs, free-job-enrichment, company-careers-scrape, parallel-search]
+fallback_order: [harvest-jobs, free-job-enrichment, company-careers-scrape, parallel-search]
+benchmark_providers: [harvest-jobs, free-job-enrichment, company-careers-scrape, parallel-search]
 freshness_days: 14
 source_requirements: [job_primary, company_first_party]
 caps: {queries: 8, scrapes: 8, retries: 2, paid_cost_usd: 1.0}

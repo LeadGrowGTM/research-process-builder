@@ -43,13 +43,13 @@ A complete result cannot carry a failure. A failed result must carry a normalize
 
 | Enrichment | Required inputs | Mode | Provider order | Freshness | Query/scrape cap | Source rule |
 |---|---|---|---|---:|---:|---|
-| Company description | company, domain | Search + scrape | Parallel → GTM waterfall | 30 days | 8 / 8 | First party + two independent |
-| ICP/persona analysis | company, domain | Parallel search | Parallel → GTM waterfall | 90 days | 10 / 8 | First party + two independent |
-| News/product launches | company, domain | Parallel search | Parallel → GTM waterfall | 30 days | 10 / 10 | First party + two independent |
-| Growth signals | company, domain | Parallel search | LG Free → Parallel → GTM | 30 days | 12 / 10 | First party + two independent |
+| Company description | company, domain | Search + scrape | Homepage scrape → LG Free → Parallel | 30 days | 8 / 8 | First party + two independent |
+| ICP/persona analysis | company, domain | Search + scrape | Homepage scrape → LG Free → Parallel | 90 days | 10 / 8 | First party + two independent |
+| News/product launches | company, domain | Search + scrape | Homepage scrape → Parallel | 30 days | 10 / 10 | First party + two independent |
+| Growth signals | company, domain | Search + scrape | Homepage scrape → LG Free → Parallel | 30 days | 12 / 10 | First party + two independent |
 | Ads/offer intelligence | company, domain | Search + scrape | LG Free → LinkedIn → Meta | 7 days | 6 / 6 | Channel primary + landing page |
-| Job opportunity mining | company, domain, SellerContext | Search + scrape | LinkedIn Jobs → Parallel → GTM | 14 days | 8 / 8 | Job primary + company first party |
-| Competitor intelligence | company, domain | Parallel search | Parallel → GTM waterfall | 30 days | 12 / 10 | First party + two independent |
+| Job opportunity mining | company, domain, SellerContext | Search + scrape | Harvest → free job source → careers scrape → Parallel | 14 days | 8 / 8 | Job primary + company first party |
+| Competitor intelligence | company, domain | Search + scrape | Homepage scrape → Parallel | 30 days | 12 / 10 | First party + two independent |
 | Analogy/value translator | company, domain, SellerContext | LLM-only over cited inputs | Model router | 30 days | 0 / 0 | Cited dossier + SellerContext |
 
 Every manifest:
@@ -60,6 +60,8 @@ Every manifest:
 - Has a $1 maximum experiment budget
 - Allows automation to create a candidate only
 - Requires a blind human verdict for approval
+
+Production fallback order is separate from the comparative benchmark provider set. See `docs/providers/company-enrichment-routing-decision-trees.md`.
 
 ## Visibility rule being proposed
 

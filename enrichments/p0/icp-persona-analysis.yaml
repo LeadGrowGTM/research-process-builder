@@ -10,9 +10,10 @@ input_schema_version: "1.0"
 output_schema_version: "1.0"
 required_inputs: [company_name, domain]
 optional_inputs: [seller_context]
-execution_mode: parallel-search
-provider_candidates: [parallel-search, gtm-waterfall]
-fallback_order: [parallel-search, gtm-waterfall]
+execution_mode: search-and-scrape
+provider_candidates: [homepage-scrape, lg-free, parallel-search]
+fallback_order: [homepage-scrape, lg-free, parallel-search]
+benchmark_providers: [homepage-scrape, lg-free, parallel-search]
 freshness_days: 90
 source_requirements: [first_party, two_independent]
 caps: {queries: 10, scrapes: 8, retries: 2, paid_cost_usd: 1.0}

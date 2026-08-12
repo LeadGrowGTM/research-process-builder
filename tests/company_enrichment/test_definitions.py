@@ -34,8 +34,9 @@ def test_definition_exposes_required_execution_and_gate_policy() -> None:
     assert item.version == "1.0.0"
     assert item.required_inputs == ("company_name", "domain")
     assert item.execution_mode == "search-and-scrape"
-    assert item.provider_candidates == ("parallel-search", "gtm-waterfall")
-    assert item.fallback_order == ("parallel-search", "gtm-waterfall")
+    assert item.provider_candidates == ("homepage-scrape", "lg-free", "parallel-search")
+    assert item.fallback_order == ("homepage-scrape", "lg-free", "parallel-search")
+    assert item.benchmark_providers == ("homepage-scrape", "lg-free", "parallel-search")
     assert item.caps == {"queries": 8, "scrapes": 8, "retries": 2, "paid_cost_usd": 1.0}
     assert item.output_visibility == "message_safe"
     assert item.benchmark_dataset_version == "b2b-companies-1.0"
@@ -46,6 +47,27 @@ def test_definition_exposes_required_execution_and_gate_policy() -> None:
 def test_p0_results_are_message_safe_while_field_assertions_control_social_visibility() -> None:
     registry = load_registry(MANIFEST_ROOT)
     assert {item.id for item in registry.values() if item.output_visibility != "message_safe"} == set()
+
+
+def test_parallel_is_never_the_first_production_route() -> None:
+    registry = load_registry(MANIFEST_ROOT)
+    assert all(item.fallback_order[0] != "parallel-search" for item in registry.values())
+
+
+def test_job_mining_compares_harvest_free_sources_and_parallel() -> None:
+    item = load_definition(MANIFEST_ROOT / "job-opportunity-mining.yaml")
+    assert item.fallback_order == (
+        "harvest-jobs",
+        "free-job-enrichment",
+        "company-careers-scrape",
+        "parallel-search",
+    )
+    assert item.benchmark_providers == (
+        "harvest-jobs",
+        "free-job-enrichment",
+        "company-careers-scrape",
+        "parallel-search",
+    )
 
 
 def test_manifest_rejects_unknown_keys(tmp_path: Path) -> None:

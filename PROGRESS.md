@@ -10,6 +10,8 @@
 - Regression: `py -m pytest -q` → `257 passed in 17.76s`; `git diff --check` clean; credential scan passed with zero violations.
 - Added immutable contracts, canonical secret-safe serialization, strict manifest loading, and eight B2B P0 manifests.
 - Human Gate 2 is pending before live provider integration. No network or paid provider call was made.
+- Routing revision: separated production waterfalls from comparative providers; homepage scrape is first for known domains, lg_free fills supported fields, Parallel is a late search fallback/comparator, and jobs route Harvest → free job enrichment → company careers scrape → Parallel.
+- Workspace instruction compatibility: Windows blocked a symbolic link without Administrator/Developer Mode, so local `AGENTS.md` was created as a verified hard link to `CLAUDE.md`.
 
 ## 2026-08-10 — Recovery inventory preservation
 

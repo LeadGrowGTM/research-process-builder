@@ -28,6 +28,7 @@
 ## Safety boundaries
 
 - No direct contact discovery, P1 enrichments, push, merge, deploy, or automated approval.
-- Parallel is search-only; known URLs use the GTM waterfall.
+- Production company research is homepage-first: the `homepage-scrape` interface uses the GTM Orchestrator free waterfall for known URLs, lg_free fills supported structured gaps, and Parallel is a late search fallback/comparator.
+- Production routing and comparative benchmark providers are declared separately.
 - Corpus paid spend is capped at $2 aggregate; each experiment at $1 aggregate.
 - Credentials and raw provider payloads never enter committed artifacts.

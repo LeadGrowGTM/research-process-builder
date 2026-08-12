@@ -47,6 +47,15 @@ Approval wording: **“Approve Gate 1C corpus”**, optionally followed by subst
 
 The complete plain-language artifact being reviewed is `GATE_2_REVIEW.md`. Approval may be given directly in chat; file access is not required because the agent must paste the material decision summary into the approval request.
 
+Routing correction recorded 2026-08-12:
+
+- Free homepage/site scraping is the default first source for known company domains.
+- lg_free fills supported structured gaps.
+- Parallel is a novel search comparator and late fallback, not the default company-enrichment route.
+- Harvest is the preferred job-data route, followed by verified free job sources and company careers pages; Parallel is the later fallback.
+- Production fallback order and comparative benchmark providers are separate manifest fields.
+- The durable decision tree is `docs/providers/company-enrichment-routing-decision-trees.md`.
+
 ### What has been implemented
 
 - Frozen, immutable Python contracts for requests, results, evidence, field assertions, dossiers, and SellerContext.

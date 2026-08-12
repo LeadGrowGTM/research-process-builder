@@ -27,6 +27,7 @@ ALLOWED_KEYS = {
     "entity_scopes", "input_schema_version", "output_schema_version",
     "required_inputs", "optional_inputs", "execution_mode",
     "provider_candidates", "fallback_order", "freshness_days",
+    "benchmark_providers",
     "source_requirements", "caps", "early_stop", "failure_rule",
     "output_visibility", "benchmark_dataset_version", "automated_gate",
     "human_gate",
@@ -54,6 +55,7 @@ class EnrichmentDefinition:
     execution_mode: str
     provider_candidates: tuple[str, ...]
     fallback_order: tuple[str, ...]
+    benchmark_providers: tuple[str, ...]
     freshness_days: int
     source_requirements: tuple[str, ...]
     caps: Mapping[str, int | float]
@@ -128,7 +130,7 @@ def load_definition(path: Path) -> EnrichmentDefinition:
         raise DefinitionError("paid_cost_usd cannot exceed the aggregate experiment cap")
     values = {
         key: _tuple_of_text(data, key)
-        for key in ("entity_scopes", "required_inputs", "optional_inputs", "provider_candidates", "fallback_order", "source_requirements")
+        for key in ("entity_scopes", "required_inputs", "optional_inputs", "provider_candidates", "fallback_order", "benchmark_providers", "source_requirements")
     }
     return EnrichmentDefinition(
         **{key: data[key] for key in ALLOWED_KEYS - set(values) - {"caps"}},
