@@ -21,6 +21,13 @@ FOUNDATION
     │   ├── Verify Firecrawl auth, schema, pricing, and level metadata
     │   └── Save capability registry with explicit gaps
     │
+    ├── INPUT/OUTPUT DESIGN — iterate with real provider samples
+    │   ├── classify caller-required, system-required, and optional inputs
+    │   ├── inspect AI-Ark representative payloads
+    │   ├── retain DiscoLike averages and failure behavior
+    │   ├── define outputs independently of provider schemas
+    │   └── save every decision in the living logic-tree register
+    │
     ├── HUMAN GATE 1C: approve exact B2B benchmark
     │   ├── 60 unique B2B companies
     │   ├── 10 per primary cohort
@@ -88,10 +95,11 @@ FOUNDATION
 ## Immediate execution order
 
 1. Receive Gate 2A decision on the corrected foundation.
-2. Implement Phase 2 capability discovery test-first.
-3. Produce the revised 60-company B2B proposal for Gate 1C.
-4. Build evidence/cache/budget modules.
-5. Present exact Firecrawl smoke fixtures and expected maximum cost before executing the approved provider.
+2. Receive representative AI-Ark company-level samples and update the input/output register.
+3. Implement Phase 2 capability discovery test-first.
+4. Produce the revised 60-company B2B proposal for Gate 1C.
+5. Build evidence/cache/budget modules.
+6. Present exact Firecrawl smoke fixtures and expected maximum cost before executing it.
 
 ## Firecrawl approval interpretation
 

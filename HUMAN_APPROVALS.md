@@ -100,6 +100,8 @@ Approval wording: **“Approve Gate 2A”** or **“Revise Gate 2A: …”**
 
 Before P0 executors are implemented, present the actual prompt text and exact output fields for all eight enrichments in one review packet. Include one representative B2B input and expected structured output per enrichment. Do not ask for approval until these artifacts exist.
 
+Required/optional input and output decisions are maintained incrementally in `docs/company-enrichment-input-output-decision-trees.md`. Provider samples inform availability and routing, but do not define the public enrichment interface.
+
 Approval wording: **“Approve Gate 2B”** or **“Revise Gate 2B: …”**
 
 ## Gate 3 — Live providers, payloads, and spend
