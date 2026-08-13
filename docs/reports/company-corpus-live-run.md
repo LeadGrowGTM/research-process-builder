@@ -79,3 +79,51 @@ is interrupted.
 This corpus is validation evidence, not an Approval. Promotion still requires
 programmed ground-truth validation at 90 percent or higher and explicit human
 review of attribution, scope, safety, and destination.
+
+## Initial enrichment experiments
+
+Task 5 added deterministic benchmark scoring, separate synchronous and Batch
+tracks, exact requested/resolved model identity, cached-source accounting, and
+hash-chained review transitions. Automation is limited to `experiment` and
+`candidate`; only an attributed blind human verdict can create Approval.
+
+A mechanical validation used the published cached Evidence for `saas-01`,
+`saas-04`, and `saas-07`. Company description and ICP/persona each scored 1.0
+for correctness, citation validity, citation completeness, and freshness.
+Growth signals scored 0.0 because all three fixed dossiers explicitly retain
+growth as unknown; no growth output was invented. Cache reuse was 1.0, model
+and source cost were USD 0, source purchases were zero, and the mechanical
+validation was neither Candidate nor Approval. Its artifacts are under
+`runs/company-enrichment/mechanical-v2`.
+
+The live comparison matrix planned 72 cases: three enrichments, three fixed
+companies, four exact requested model IDs (`gpt-5-nano`, `gpt-4o-mini`,
+`gpt-4.1-mini`, and `gpt-5.6-luna`), and separate synchronous and Batch tracks.
+Neither the development nor production secret registry contained an
+`OPENAI_API_KEY`, so all 72 cases are durably recorded as
+`not_executed/authentication_required` with a null resolved model. No live
+model output was fabricated. Completed live cases are zero, paid cost is USD
+0, source purchases are zero, and each enrichment remains `experiment` rather
+than Candidate or Approval. The append-only artifacts are under
+`runs/company-enrichment/experiments-v2`; a resume retained exactly 72 rows
+before and after with zero execution.
+
+Candidate promotion now fails closed unless every planned case completes and
+the programmed ground-truth score is at least 0.90 across all eight model/track
+reports. A case-weighted aggregate manifest binds every report path and byte
+hash; restart revalidates the full set. Growth therefore remains `experiment`
+at its current 0.0 mechanical score. A Candidate record must also carry a
+content-hashed blind review pack built only from all 24 actual experiment
+outputs. Partial runs create no reviewer artifact. Pack content uses persisted
+random output IDs and randomized presentation order, recursively rejects
+model/provider identity, and fixes the reviewer dimensions to readability,
+specificity, usefulness, casualness, and non-creepiness.
+Approval additionally requires an attributed, timezone-aware human verdict,
+the matching pack ID, and a complete five-dimension scorecard.
+
+Paid model groups use durable collected/reconciled/completed transaction
+records. Crash tests cover interruption after reconciliation, after one
+outcome row, and after every outcome row but before the benchmark report.
+Resume reuses the paid result without repurchase, deduplicates outcomes, and
+regenerates missing reports. Invalid model output is retained as
+`contract_invalid`; client exceptions are retained as `retryable` failures.
