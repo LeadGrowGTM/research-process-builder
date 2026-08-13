@@ -1,0 +1,186 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-e10a65551fd2bc31
+  - ev-9f9ae19fcb26091a
+  - ev-5271cf7a5f99bcad
+  - ev-2f3501b388fa106f
+  field: identity
+  value: Plurilock
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-e10a65551fd2bc31
+  - ev-9f9ae19fcb26091a
+  - ev-5271cf7a5f99bcad
+  - ev-2f3501b388fa106f
+  field: description
+  value: '1 © 2026 Plurilock Security Inc. Securing the systems that power modern
+    life. Plurilock is a Cyber Systems Integrator and Trusted Advisor to Global 2000
+    Enterprises and Government Agencies in NATO aligned countries. Corporate Presentation
+    –April 2026TSXV: PLUR | OTCQB: PLCKF 2 © 2026 Plurilock Security Inc. PLURILOCK
+    DisclaimerThis presentation is not to be construed as a public offering or offering
+    memorandum of the Company’s securities in any jurisdiction. The information in
+    this presentation '
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-e10a65551fd2bc31
+  - ev-9f9ae19fcb26091a
+  - ev-5271cf7a5f99bcad
+  - ev-2f3501b388fa106f
+  field: offers
+  value: cybersecurity services
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-2f3501b388fa106f
+  field: growth
+  value: Primary funding event dated 2025-10-31
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-e10a65551fd2bc31
+  - ev-9f9ae19fcb26091a
+  - ev-5271cf7a5f99bcad
+  - ev-2f3501b388fa106f
+  field: icp
+  value: government agencies
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-e10a65551fd2bc31
+  - ev-9f9ae19fcb26091a
+  - ev-5271cf7a5f99bcad
+  - ev-2f3501b388fa106f
+  field: personas
+  value: government agencies
+  visibility: message_safe
+company_id: funded-08
+corrections: []
+evidence:
+- content_hash: e10a65551fd2bc31e8ab8053f59b54e24e46f6dc830155663cc7dd824c4621fc
+  evidence_id: ev-e10a65551fd2bc31
+  excerpt: '1 © 2026 Plurilock Security Inc. Securing the systems that power modern
+    life. Plurilock is a Cyber Systems Integrator and Trusted Advisor to Global 2000
+    Enterprises and Government Agencies in NATO aligned countries. Corporate Presentation
+    –April 2026TSXV: PLUR | OTCQB: PLCKF 2 © 2026 Plurilock Security Inc. PLURILOCK
+    DisclaimerThis presentation is not to be construed as a public offering or offering
+    memorandum of the Company’s securities in any jurisdiction. The information in
+    this presentation is for information purposes only. It is not intended as investment,
+    financial or other advice. Unless noted otherwise, all financial information contained
+    herein should be considered unaudited. There is a risk that audited information
+    will differ significantly from the financial information presented herein and
+    that technical and financial assumptions, objectives and projections may fail
+    to materialize. The information provided herein is management’s best understanding
+    as of this date of the potential of the Company and the related financial benefits,
+    but it is the responsibility of the potential investor to form its own opinion
+    contrasting the information provided with other sources of information for completeness
+    and reasonableness.Forward-Looking StatementsCertain information set forth in
+    this presentation contains “forward-looking information”, including “future-oriented
+    financial information” and “financial outlook”, under applicable securities laws
+    (collectively referred to herein as forward-looking statements). Except for statements
+    of historical fact, the information contained herein constitutes forward-looking
+    statements and includes, but is not limited to, the (i) projected financial performance
+    of the Company; (ii) completion of, and the use of proceeds from, the sale of
+    any shares being offered hereunder; (iii) the expected development of the Company’s
+    business, projects, and joint ventures; (iv) execution of the Company’s vision
+    and growth strategy, including wit'
+  retrieved_at: '2026-08-12T21:42:49.274484+00:00'
+  url: https://plurilock.com/wp-content/uploads/2026/04/2026-04-PLUR-IR.pdf
+- content_hash: 9f9ae19fcb26091ae4f1ebf32b07e490cf4b7a8d714a25b0cd98a9dbf270eb2e
+  evidence_id: ev-9f9ae19fcb26091a
+  excerpt: 'Plurilock | LinkedIn Skip to main content LinkedIn Top Content People
+    Learning Jobs Games Sign in Join now Plurilock Computer and Network Security Victoria,
+    BC 6,775 followers Services led. Product enabled. AI native. Plurilock secures
+    the systems that power modern life. See jobs Follow Discover all 54 employees
+    Report this company Overview Jobs About us Plurilock is a world-class consultancy,
+    systems integrator, full-stack technology reseller, and ecosystem of experts.
+    Powered by proprietary IP, AI playbooks, and senior leaders from cyber and defense,
+    Plurilock solves the cyber challenges faced by allied governments and society''s
+    most important enterprises. Website https://plurilock.com/ External link for Plurilock
+    Industry Computer and Network Security Company size 51-200 employees Headquarters
+    Victoria, BC Type Public Company Founded 2016 Specialties Network Security, IT
+    Security, Continuous Authentication, Multi-factor Authentication, Biometric security
+    solutions, Critical Infrastructure Network Protection, Mouse/Keyboard Biometric
+    Authentication, Behavioral Biometrics, Endpoint Security, Critical Services, Resilience
+    Engineering, IT Solutions, and Cybersecurity Locations Primary 702 Fort St. 330
+    Victoria, BC V8W 1H2, CA Get directions Employees at Plurilock Dave Glenn Joshua
+    Block Frank W. Boyle Mike Benna See all employees Updates Plurilock 6,775 followers
+    2mo Report this post Plurilock Announces New 10% Shareholder #PLUR #PLCKF 3 1
+    Comment Like Comment Share Plurilock 6,775 followers 2mo Report this post 9 1
+    Comment Like Comment Share Plurilock 6,775 followers 6mo Report this post AI agents
+    are now socializing with each other on their own platform. What could go wrong?
+    This Q&A with Plurilock CEO Ian L. Paterson is a sharp breakdown of where agentic
+    AI is headed — and why the security implications of tools like OpenClaw and communities
+    like Moltbook deserve way more attention than they''re getting. The convenience
+    is incredible. The risk? People are handing ov'
+  retrieved_at: '2026-08-12T21:42:49.986667+00:00'
+  url: https://www.linkedin.com/company/plurilock-security-solutions-inc
+- content_hash: 5271cf7a5f99bcadca735cd413661a8a92e581c71c26d327588f297a2bf1c107
+  evidence_id: ev-5271cf7a5f99bcad
+  excerpt: 'Plurilock Security (TSXV:PLUR) Company Profile & Description Skip to main
+    content Help Log In Sign Up Home Watchlist Stocks Stock Screener Stock Exchanges
+    Comparison Tool Earnings Calendar By Industry Stock Lists Top Analysts Top Stocks
+    Corporate Actions IPOs Recent IPOs IPO Calendar IPO Statistics IPO News IPO Screener
+    ETFs ETF Screener Comparison Tool New Launches ETF Providers News Trending Private
+    Companies Technical Chart Fundamental Chart Market Movers Top Gainers Top Losers
+    Most Active Premarket After Hours Market Heatmap Market Newsletter Stock Analysis
+    Pro Tools Collapse Plurilock Security Inc. (TSXV:PLUR) Canada · Delayed Price
+    · Currency is CAD Full Chart Watchlist Alerts Compare 0.1050 +0.0100 (10.53%)
+    Aug 12, 2026, 3:57 PM EST Overview Financials Statistics History Profile Chart
+    Profile Transcripts Filings Employees Plurilock Security Company Description p]:mb-5">
+    Plurilock Security Inc., an identity-centric cybersecurity company, offers IT
+    and cybersecurity solutions. It offers cloud security services, cyber adversary
+    simulation, data protection services, governance, risk and compliance services;
+    data protection services; cloud security; and professional services. The company
+    is also involved in sales of software, license and maintenance, and hardware and
+    maintenance services. Plurilock Security Inc. is headquartered in Vancouver, Canada.
+    Plurilock Security Inc. Country Canada Founded 2016 Industry Software - Infrastructure
+    Sector Technology Employees 40 CEO Ian Paterson Contact Details Address: MNP Tower
+    Vancouver, BC V6E 0C3 Canada Phone 613 526 4945 Website plurilock.com Stock Details
+    Ticker Symbol PLUR Exchange TSX Venture Exchange Fiscal Year January - December
+    Reporting Currency CAD ISIN Number CA72942L1031 SIC Code 7372 Key Executives Name
+    Position Ian L. Paterson Chief Executive Officer and Director Ali Hakimzadeh Executive
+    Chairman Veera Singh Chief Financial Officer and Corporate Secretary Joel Eng
+    Vice President of Information Security-US Su'
+  retrieved_at: '2026-08-12T21:42:50.292778+00:00'
+  url: https://stockanalysis.com/quote/tsxv/PLUR/company/
+- content_hash: 2f3501b388fa106f045d46306c00ae183785b400cc70481b02dd1c1b948053fe
+  evidence_id: ev-2f3501b388fa106f
+  excerpt: 'Plurilock Announces Closing of $3 Million Strategic Investment Cookie
+    Settings We use cookies to analyze user behavior in order to constantly improve
+    the website for you. View our Privacy Policy and Terms of Use . Necessary Analytics
+    Accept All Accept Selection Reject All × Skip to main content Newsfile Search
+    English Français Deutsch Español Search × Login Username Password Login Newsfile
+    Login Search Français Home About About Company Overview Who We Serve Upcoming
+    Events Careers Services Services Press Release Distribution News Service Overview
+    Global Distribution Additional News Services AI Disclosure Intelligence SEDAR+
+    About SEDAR+ SEDAR+ Resources EDGAR EDGAR Service Overview EDGAR Resources Webcasting
+    and Conference Calling Newsroom Newsroom Newsroom Newswire Guidelines Sign Up
+    for News Integrate Blog Contact Plurilock Announces Closing of $3 Million Strategic
+    Investment October 31, 2025 7:00 AM EDT | Source: Plurilock Security Inc. Vancouver,
+    British Columbia--(Newsfile Corp. - October 31, 2025) - Plurilock Security Inc.
+    (TSXV: PLUR) (OTCQB: PLCKF) ("Plurilock" or the "Company"), a global cybersecurity
+    systems integrator, is pleased to announce that, further to its news release of
+    October 17, 2025, the Company has closed its non-brokered private placement (the
+    " Offering ") of $3,000,000 through the issuance of 3,000 debenture units (the
+    " Units ") at $1,000 per Unit with a strategic investor. Each Debenture Unit comprised
+    of (i) $1,000 principal amount of 10% unsecured convertible debentures of the
+    Company, convertible at the option of the holder at a price of $0.23 until October
+    30, 2028 (the " Debentures "), and (ii) 4,000 common share purchase warrants (the
+    " Warrants ") exercisable at a price of $0.25 until October 30, 2028, provided
+    that if, any time following the date of issuance, the common shares of the Company
+    (the " Shares ") are listed on the New York Stock Exchange or NASDAQ (each, a
+    " US Stock Exchange "), or the Company completes an indirect l'
+  retrieved_at: '2026-08-12T21:42:51.094487+00:00'
+  url: https://www.newsfilecorp.com/release/272654/Plurilock-Announces-Closing-of-3-Million-Strategic-Investment
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- hiring
+- news
+- launches
+- ads

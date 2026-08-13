@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-e2fb26f5ef6e4e66
+  - ev-e75cfc14464aa57e
+  - ev-a9834e1131fe2f95
+  field: identity
+  value: Avōq
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-e2fb26f5ef6e4e66
+  - ev-e75cfc14464aa57e
+  - ev-a9834e1131fe2f95
+  field: description
+  value: '2025-05-21 May 21, 2025 Avoq Announces Whit Askew and Cedric Grant Will
+    Oversee Firm’s Government Relations Operations - Avoq --> Skip to content Careers
+    Contact Main Navigation --> About People Work Expertise All Expertise Reputation
+    & Senior Advisory Policy & Public Affairs Creative, Content & Media Data Intelligence
+    Views & News All Views & News Media Habits --> Search for: Menu All Views & News
+    Avoq May 21, 2025 Avoq Announces Whit Askew and Cedric Grant Will Oversee Firm’s
+    Government Relati'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-e2fb26f5ef6e4e66
+  - ev-e75cfc14464aa57e
+  - ev-a9834e1131fe2f95
+  field: offers
+  value: government relations
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-e2fb26f5ef6e4e66
+  - ev-e75cfc14464aa57e
+  - ev-a9834e1131fe2f95
+  field: icp
+  value: government agencies
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-e2fb26f5ef6e4e66
+  - ev-e75cfc14464aa57e
+  - ev-a9834e1131fe2f95
+  field: personas
+  value: government agencies
+  visibility: message_safe
+company_id: agency-05
+corrections: []
+evidence:
+- content_hash: e2fb26f5ef6e4e6612f4a831a05dbaccfdba2c6cbf1cbc8943d4a44fc62d4673
+  evidence_id: ev-e2fb26f5ef6e4e66
+  excerpt: '2025-05-21 May 21, 2025 Avoq Announces Whit Askew and Cedric Grant Will
+    Oversee Firm’s Government Relations Operations - Avoq --> Skip to content Careers
+    Contact Main Navigation --> About People Work Expertise All Expertise Reputation
+    & Senior Advisory Policy & Public Affairs Creative, Content & Media Data Intelligence
+    Views & News All Views & News Media Habits --> Search for: Menu All Views & News
+    Avoq May 21, 2025 Avoq Announces Whit Askew and Cedric Grant Will Oversee Firm’s
+    Government Relations Operations Washington D.C. — Avoq today announced that partners
+    Whit Askew and Cedric Grant will manage the firm’s government relations (GR) operations.
+    Askew and Grant will serve as co-heads of the GR team, overseeing day-to-day functions
+    and business operations. “Cedric and Whit are the ideal team to oversee our government
+    relations operations. Their bipartisan work across a multitude of sectors and
+    industries exemplifies the strategic value we provide clients. They understand
+    the issues and complexities of the Washington market and they know how to provide
+    results,” said CEO Nicole Cornish. Avoq’s GR operations play a critical role in
+    the firm’s overall client services, covering a wide range of issues for corporate,
+    nonprofit, and trade association clients. These include healthcare, financial
+    services, manufacturing, commerce, appropriations, energy, technology, travel,
+    sports and entertainment. When matched with the firm’s strategic communications
+    operations, Avoq’s mix of government relations services and communications capabilities
+    is something few other firms in the country can offer. Askew and Grant will lead
+    the GR team that features more than a dozen bipartisan government relations and
+    research professionals. The team also includes fellow partners Stacey Alexander
+    and Barry LaSala. Alexander, a former House chief of staff, works with multiple
+    corporate and trade association clients to design strategic public affairs efforts
+    that cross over multiple disciplines a'
+  retrieved_at: '2026-08-12T21:57:57.864875+00:00'
+  url: https://teamavoq.com/news/askew-and-grant-government-relations-announcement/
+- content_hash: e75cfc14464aa57e5d06b2c111f74e42362d6eaf57ee24624f1a4cdaffb55676
+  evidence_id: ev-e75cfc14464aa57e
+  excerpt: 'Avōq | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now Avōq Public Relations and Communications Services
+    Washington, District of Columbia 14,367 followers A strategic communications,
+    government relations and advertising firm distinguished by intelligence and creativity.
+    See jobs Follow View all 195 employees Report this company Overview Jobs Life
+    About us Excellence isn’t enough. You’re after more. At Avoq, we aim to be your
+    most trusted strategic and creative partner, helping you shape narratives, protect
+    and build reputation, influence policy and bring ideas to life. We go beyond what
+    works to reach what wins — that moment of clarity that makes everyone say, exactly.
+    We go beyond what works to reach what wins — that moment of clarity that makes
+    everyone say, exactly. Website https://teamavoq.com External link for Avōq Industry
+    Public Relations and Communications Services Company size 201-500 employees Headquarters
+    Washington, District of Columbia Type Privately Held Founded 2024 Locations Primary
+    1201 New York Ave NW Washington, District of Columbia 20005, US Get directions
+    Chicago, Illinois 60654, US Get directions Asbury Park, New Jersey 07712, US Get
+    directions New York , New York 10017, US Get directions Miami, Florida 33137,
+    US Get directions Show more locations Show fewer locations Employees at Avōq Kent
+    Holland Katie Coleman Patrick Kerley Steve Aaron See all employees Updates Avōq
+    14,367 followers 2w Edited Report this post Exceptional work starts with exceptional
+    people. We''re honored to be named one of New York''s Top Workplaces for 2026
+    by City & State . This recognition reflects what makes Avoq special: our talented
+    team that cares deeply about the work we do together every day. Thank you to our
+    colleagues for making Avoq a great workplace through your passion, collaboration
+    and commitment. 38 Like Comment Share Avōq 14,367 followers 1mo Report this post
+    We''re excited to welcome Jillian Goger as Senior Vice'
+  retrieved_at: '2026-08-12T21:57:58.736126+00:00'
+  url: https://www.linkedin.com/company/teamavoq
+- content_hash: a9834e1131fe2f955d0c8d112abe7db8af712c5910cd8c78fd38a1ecd4b09d68
+  evidence_id: ev-a9834e1131fe2f95
+  excerpt: Jul. 21, 2026 Jul. 13, 2026 Jul. 9, 2026 Jul. 1, 2026 Jun. 18, 2026 Jun.
+    17, 2026 Jun. 10, 2026 Jan. 16, 2026 Jan. 13, 2026 July 1, 2024 Dec. 12, 2025
+    Oct. 23, 2025 Oct. 14, 2025 Oct. 6, 2025 Sep. 23, 2025 Sep. 4, 2025 Aug. 28, 2025
+    Aug. 18, 2025 Jul. 8, 2025 Jul. 1, 2025 May 22, 2025 May 1, 2025 Apr. 29, 2025
+    Apr. 10, 2025 Dec. 27, 2024 Dec. 10, 2024 Nov. 29, 2024 Nov. 25, 2024 Nov. 20,
+    2024 Nov. 19, 2024 Oct. 10, 2024 Oct. 3, 2024 Sep. 4, 2024 Jun. 19, 2024 Jun.
+    6, 2024 May 22, 2024 May 9, 2024 May 8, 2024 May 3, 2024 Apr. 12, 2024 Apr. 9,
+    2024 Apr. 3, 2024 Apr. 1, 2024 Jan. 29, 2024 Jan. 10, 2024 Avoq | O'Dwyer's PR
+    Firms Directory You are using an outdated browser. Please upgrade your browser
+    to improve your experience. Subscribe List Your PR Firm Sign In Toggle navigation
+    Find a PR Firm Overall Alphabetically Geographically By PR Specialty Get Listed
+    PR Firm Rankings Overall By Specialty By City/Region Get Ranked Find a PR Service
+    Overall Alphabetical Index Add Your Service PR Experts Most Recent Topics Experts
+    A - Z Add Your Bio PR Magazine Travel PR Editorial Calendar Submit Profile Subscribe
+    to Mag. Advertise PR RFPs By Due Date By Type By Region Subscribe Daily PR News
+    Blast Contact Us Sign In Find a PR Firm Overall Alphabetically Geographically
+    By PR Specialty Get Listed Order '25 Dir. PR Firm Rankings Overall By Specialty
+    By City/Region Get Ranked Find a PR Service Overall Alphabetical Index Add Your
+    Service PR Experts Most Recent Topics Experts A - Z Add Your Bio PR Magazine Travel
+    PR Editorial Calendar Submit Profile Subscribe to Mag. Advertise PR RFPs By Due
+    Date By Type By Region Alphabetical 0-9 | A | B | C D | E | F | G H | I | J |
+    K L | M | N | O P | Q | R | S T | U | V | W X | Y | Z Specialties Adult Bev./Spirits
+    Agriculture Architecture AI Auto./Trans. Beauty/Fash. Books & Pubs. Creative/Mktg.
+    Crisis Comms. Education Energy Entertainment Env./Green./PA Finc'l PR/IR Food
+    & Bev. Foreign Mkts. Healthcare Home Furn. Industrial Mobile/Wireless Multicu
+  retrieved_at: '2026-08-12T22:01:40.915554+00:00'
+  url: https://www.odwyerpr.com/pr_firms_database/4496/avoq.html
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

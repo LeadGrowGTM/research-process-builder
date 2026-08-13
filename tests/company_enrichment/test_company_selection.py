@@ -31,19 +31,24 @@ def test_every_cohort_has_easy_ambiguous_and_hard_cases() -> None:
     assert all(levels == {"easy", "ambiguous", "hard"} for levels in by_cohort.values())
 
 
-def test_generated_seed_corpus_preserves_seed_provenance_and_explicit_gaps() -> None:
+def test_published_corpus_preserves_raw_seed_provenance_without_promoting_it() -> None:
     data = yaml.safe_load(Path("benchmarks/companies.yaml").read_text(encoding="utf-8"))
     companies = data["companies"]
 
-    assert data["status"] == "proposed_seed"
+    assert data["status"] == "research_complete"
     assert data["source"]["kind"] == "ai_ark_export"
     assert data["source"]["provenance"] == "unverified_seed"
     assert len(companies) == 60
     assert sum(item["shared_core"] for item in companies) == 15
-    assert all(item["seed_status"] == "unverified_seed" for item in companies)
+    assert all(item["seed_status"] == "verified" for item in companies)
     assert all(item["domain"] and item["seed"]["description"] and item["seed"]["industry"] for item in companies)
-    assert all("target_customer" in item["gaps"] for item in companies)
-    assert sum("products_services" in item["gaps"] for item in companies) == 12
+    assert all(item["gaps"] == [] for item in companies)
+    assert all(item["b2b_buyer"] and item["business_offer"] for item in companies)
+    assert all(item["cohort_evidence_url"] for item in companies)
+    assert all(item["selection_reason"] for item in companies)
+    assert all(item["secondary_tags"] for item in companies)
+    assert all(item["expected_ad_channels"] for item in companies)
+    assert len(list(Path("benchmarks/dossiers").glob("*.yaml"))) == 60
 
     serialized = str(data).casefold()
     assert "company_email" not in serialized

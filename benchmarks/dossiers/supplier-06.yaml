@@ -1,0 +1,148 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-ac085f6b018e2139
+  - ev-b1fe52191e31ee64
+  - ev-125586b3e091cfa9
+  field: identity
+  value: AeroGo, Inc.
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ac085f6b018e2139
+  - ev-b1fe52191e31ee64
+  - ev-125586b3e091cfa9
+  field: description
+  value: 'Selecting the Right Load Handling Equipment and Move Systems A start-to-finish
+    guide for understanding and evaluating material handling systems © 2019 AeroGo,
+    Inc. Selecting the right load handling system | 1 Table of Contents INTRODUCTION
+    3 QUICK OVERVIEW OF THE MOST COMMON LOAD HANDLING SYSTEMS 4 QUESTION #1: WHAT
+    DOES THE LOAD WEIGH? 5 Air Casters 5 Cranes 5 Forklifts 6 Human Power 6 Rails,
+    Drag Chains, and Conveyor Systems 6 Wheel Casters (Push by Hand) 6 QUESTION #2:
+    HOW MUCH FLEXIBILITY OR'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ac085f6b018e2139
+  - ev-b1fe52191e31ee64
+  - ev-125586b3e091cfa9
+  field: offers
+  value: load moving equipment
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ac085f6b018e2139
+  - ev-b1fe52191e31ee64
+  - ev-125586b3e091cfa9
+  field: icp
+  value: manufacturers
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ac085f6b018e2139
+  - ev-b1fe52191e31ee64
+  - ev-125586b3e091cfa9
+  field: personas
+  value: manufacturers
+  visibility: message_safe
+company_id: supplier-06
+corrections: []
+evidence:
+- content_hash: ac085f6b018e213978674a5f8f5f5e54fe5e75bdf512424881b44707653bdb9f
+  evidence_id: ev-ac085f6b018e2139
+  excerpt: 'Selecting the Right Load Handling Equipment and Move Systems A start-to-finish
+    guide for understanding and evaluating material handling systems © 2019 AeroGo,
+    Inc. Selecting the right load handling system | 1 Table of Contents INTRODUCTION
+    3 QUICK OVERVIEW OF THE MOST COMMON LOAD HANDLING SYSTEMS 4 QUESTION #1: WHAT
+    DOES THE LOAD WEIGH? 5 Air Casters 5 Cranes 5 Forklifts 6 Human Power 6 Rails,
+    Drag Chains, and Conveyor Systems 6 Wheel Casters (Push by Hand) 6 QUESTION #2:
+    HOW MUCH FLEXIBILITY OR MANEUVERABILITY IS REQUIRED? 7 Question #2a: What path
+    will the load follow? 7 Does it need to follow a fixed path? 7 Does it need to
+    follow a variable path? 8 Does it need to follow a curved path? 8 Does the load
+    need to be able to rotate or otherwise move in multiple directions? 8 Does it
+    need to be able to rotate in-place, within its own footprint? 8 Does it need to
+    be able to reach corners or other hard-to-reach spots? 9 Does the load need to
+    be able to rise or fall along a vertical path? 9 What will the path be tomorrow?
+    9 Question #2b: What restrictions will the operating area impose on the move?
+    10 Question #2c: What movement methods will the condition of the facility support?
+    10 QUESTION #3: HOW OFTEN AND FAR DOES THE LOAD HAVE TO BE MOVED? 11 Question
+    #3a: How often does the load have to be moved? 11 Good move systems for frequent
+    moves 12 Less effective systems for frequent moves 12 Question #3b: How far does
+    the load have to be moved? 12 QUESTION #4: WHAT’S THE COST? 13 Question #4a: What
+    is the cost of the equipment? 13 Question #4b: What is the cost of installation?
+    13 Question #4c: What is the cost of operating the equipment, including time to
+    operate? 14 Question #4d: What is the cost of training and certifications? 14
+    © 2019 AeroGo, Inc. Selecting the right load handling system | 2 Question #4e:
+    What is the cost of maintenance and upkeep? 14 Question #4f: What is the cost
+    of scaling the load? 14 QUESTION #5: HOW ARE YOU GOING TO MAKE THE LOAD “LOADABLE”?
+    15 Q'
+  retrieved_at: '2026-08-12T22:28:21.170221+00:00'
+  url: https://www.aerogo.com/wp-content/uploads/2020/02/Selecting-the-Right-Load-Handling-Equipment-WP-AeroGo.pdf
+- content_hash: b1fe52191e31ee64ccf4479d86873bacbf1c3d9ff93877ed0fda913af31c7fe5
+  evidence_id: ev-b1fe52191e31ee64
+  excerpt: 'October 1, 2026 AeroGo, Inc. | LinkedIn Agree & Join LinkedIn By clicking
+    Continue to join or sign in, you agree to LinkedIn’s User Agreement , Privacy
+    Policy , and Cookie Policy . Skip to main content LinkedIn Top Content People
+    Learning Jobs Games Sign in Join now AeroGo, Inc. Machinery Manufacturing Tukwila,
+    WA 1,992 followers Innovative Load Moving Solutions See jobs Follow View all 59
+    employees Report this company About us How heavy is the load you need to move
+    today? Whatever you are moving, AeroGo can help! AeroGo manufactures innovative
+    load moving systems, utilizing wheels and hovercraft technology, that move heavy,
+    awkward, or delicate loads in facilities. Companies large and small find benefit
+    from our worldwide dealer network, experienced product specialists, and skilled
+    engineering team. We work with you to find a load moving solution that is safe,
+    efficient and cost-effective, as your valuable loads are carried through the manufacturing
+    process. Website http://www.aerogo.com External link for AeroGo, Inc. Industry
+    Machinery Manufacturing Company size 51-200 employees Headquarters Tukwila, WA
+    Type Privately Held Specialties Heavy load handling systems, air casters, machine
+    skates, transporter, air bearings, heavy load transporters, air cushion vehicles,
+    transfer carts, air skates, rigging systems, Wheeled Vehicles, Silverback transfer
+    carts, industrial transfer carts, industrial vehicle, entertainment, aerospace,
+    aircraft manufacturing, machinery manufacturing, hovercraft, pharmaceutical, biotech,
+    cleanroom, transformers, power generation, shipyard, vehicle manufacturing, modular,
+    mod homes, and air skates Employees at AeroGo, Inc. Donna Pendergraft LinkedIn
+    Member LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn Member View 59
+    employees at AeroGo, Inc. Sign in Welcome back Email or phone Password Show Forgot
+    password? Sign in or By clicking Continue to join or sign in, you agree to LinkedIn’s
+    User Agreement , Privacy Policy , and Cookie Policy '
+  retrieved_at: '2026-08-12T22:28:22.098686+00:00'
+  url: https://www.linkedin.com/company/aerogo
+- content_hash: 125586b3e091cfa93ce7d3b92a5b5a05cf5ee63a1dffcc64afbc27e733ff1a49
+  evidence_id: ev-125586b3e091cfa9
+  excerpt: 'March 25, 2025 Nov. 7, 2001 Feb. 6, 2026 Feb. 3, 2026 Jan. 26, 2027 Aerogo
+    Profile --> --> Sign In Tools to Win. Insights to Lead. Powerful Market Intelligence
+    Leading Business Development Tools Authoritative Capital Markets Let''s keep this
+    going You''ve used all of your free views Free Trial Schedule Demo Free Trial
+    Schedule Demo Description Search HigherGov Federal State | Local EXPLORE Search
+    All BUSINESS DEVELOPMENT Opportunities Contracts Grants Pursuit Management Pipelines
+      +   Pursuits   +   Activities   +   Partner Finder Government Buyers Labor Pricing
+    MARKET INTELLIGENCE Analysis Awards Vehicles Contracts Grants Awardees Government
+    Agencies People Documents Reference Programs Defense IT Grant SEWP Classifications
+    NAICS NIA NSN PSC DoD Budget Protests Capital Markets M&A Transactions Investors
+    Advisors TOOLS Downloads Favorites Saved Searches FOIA News+ Help Docs   More
+    SOLUTIONS FOR Contractors Grant Recipients Consultants Investors and Banks Government
+    Agencies FEATURES Market Intelligence CRM Capital Markets Big Data & AI LEARN
+    MORE Pricing Plans Demo Sign In Free Trial Notify New Contract Awards New Grant
+    Awards Favorite Export Toggle Dropdown CSV Excel Claim Share Toggle Dropdown Copy
+    URL Email Tweet Search Awardees Aerogo UEI: GMHRX5DU4LS5 • CAGE: 52853 Overview
+    Analysis Registration People - Schedules 0 Vehicles - IDVs - Contracts - Subcontracts
+    Subs - Grants 0 Subgrants 0 NSNs Partners - Mentors - JVs - Additional - ''Game
+    Changing Market Intel'' HigherGov subscribers won more than $120 Billion in government
+    awards in the last year Free Trial Schedule Demo --> List Text Overview Awardee
+    Type Parent Federal Capability Statement Fluid Film (Air Caster, Air Bearing)
+    Mtl Hndlng Equip For Moving/Locating/Aligning/Rotating Any Structure, Machine,
+    Fixture, Pallet Or Component. Automated Guided Vehicles Systems 10,000 Lbs To
+    Unlimited Weights. Die/Mold Handling Carts. Keywords Aero-Caster, air caster,
+    air bearing, plank, pallet, turntable, material handling, '
+  retrieved_at: '2026-08-12T22:28:22.839969+00:00'
+  url: https://www.highergov.com/awardee/aerogo-inc-10432132/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

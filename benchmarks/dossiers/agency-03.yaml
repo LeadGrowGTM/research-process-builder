@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-7be194cbcf8ed4ed
+  - ev-474f5774de25548a
+  - ev-775681c8c2d28c43
+  field: identity
+  value: Adtaxi
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-7be194cbcf8ed4ed
+  - ev-474f5774de25548a
+  - ev-775681c8c2d28c43
+  field: description
+  value: '2026-06-25 Digital ‎Marketing Agency: Across Programmatic, Social, Search
+    | Adtaxi Close Modern Political Marketing- Explore how CTV, audience data, and
+    omnichannel messaging can help your campaign break through a crowded media landscape.
+    Read more here ! Services Digital Strategy Marketing Research Media Services Partnerships
+    Solutions Programmatic Connected TV Search Marketing Social Media Offline Attribution
+    Adtaxi Analytics Resources Blog Case Studies Guides Webinars Research Reports
+    Podcast'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-7be194cbcf8ed4ed
+  - ev-474f5774de25548a
+  - ev-775681c8c2d28c43
+  field: offers
+  value: digital marketing
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-7be194cbcf8ed4ed
+  - ev-474f5774de25548a
+  - ev-775681c8c2d28c43
+  field: icp
+  value: marketing teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-7be194cbcf8ed4ed
+  - ev-474f5774de25548a
+  - ev-775681c8c2d28c43
+  field: personas
+  value: marketing teams
+  visibility: message_safe
+company_id: agency-03
+corrections: []
+evidence:
+- content_hash: 7be194cbcf8ed4ed054a210ce5e0b3c0fb07fc2f6d4c6197ff1bc104d35987cb
+  evidence_id: ev-7be194cbcf8ed4ed
+  excerpt: '2026-06-25 Digital ‎Marketing Agency: Across Programmatic, Social, Search
+    | Adtaxi Close Modern Political Marketing- Explore how CTV, audience data, and
+    omnichannel messaging can help your campaign break through a crowded media landscape.
+    Read more here ! Services Digital Strategy Marketing Research Media Services Partnerships
+    Solutions Programmatic Connected TV Search Marketing Social Media Offline Attribution
+    Adtaxi Analytics Resources Blog Case Studies Guides Webinars Research Reports
+    Podcasts Industries Multifamily Automotive Retail Higher Education Legal Agency
+    Company Careers Contact Us 877.856.4668 Services Digital Strategy Marketing Research
+    Media Services Partnerships Solutions Programmatic Connected TV Search Marketing
+    Social Media Offline Attribution Adtaxi Analytics Resources Blog Case Studies
+    Guides Webinars Research Reports Podcasts Industries Multifamily Automotive Retail
+    Higher Education Legal Agency Company Careers Contact Call Us Most Agencies Deliver
+    Campaigns. We Deliver Business Outcomes. Talk to an Expert See How We Drive Results
+    A Smarter Approach to Digital Marketing We don’t just run campaigns. We build
+    and manage full-funnel strategies that connect audience, media, and measurement—so
+    you can see what’s working and scale it. Strategy & Audience Development Define
+    who matters, where to reach them, and how to influence action Media Activation
+    Execute across programmatic, CTV, search, social, and digital audio Measurement
+    & Attribution Understand performance across channels—including offline impact
+    Ongoing Optimization Continuously improve performance based on real data—not platform
+    defaults Recognized by Google, AdExchanger, Digiday, and more for excellence in
+    data-driven marketing. Built for Outcomes – Not Just Activity We measure what
+    matters by connecting media performance to real business outcomes – not just platform
+    metrics. We lead with programmatic & CTV Access premium inventory with better
+    targeting, frequency control, and efficiency W'
+  retrieved_at: '2026-08-12T21:52:37.651895+00:00'
+  url: https://www.adtaxi.com/
+- content_hash: 474f5774de25548af8d7de54a5e66a320baa88cc9fa9fa21698fb677240c76fb
+  evidence_id: ev-474f5774de25548a
+  excerpt: 'Jun 24, 2025 Adtaxi | LinkedIn Skip to main content LinkedIn Top Content
+    People Learning Jobs Games Sign in Join now Adtaxi Advertising Services Denver,
+    Colorado 7,176 followers Follow Discover all 161 employees Report this company
+    About us Adtaxi is a client-centric digital organization that brings scale, precision,
+    and sophistication to digital marketing. Leveraging the belief that people matter
+    as much as technology, we help advertisers solve complex marketing challenges
+    with custom, performance-driven solutions. Adtaxi just recently won Digiday''s
+    Worklife Award for Most Passionate Employees at an agency! Website http://www.adtaxi.com
+    External link for Adtaxi Industry Advertising Services Company size 51-200 employees
+    Headquarters Denver, Colorado Type Privately Held Founded 2010 Specialties Marketing,
+    Digital Display, Advertising, Mobile Advertising, Social Media, Email Marketing,
+    and Search Locations Primary 5990 Washington St Denver, Colorado 80216, US Get
+    directions Employees at Adtaxi Bob Batchelor Jennifer Flanagan Jill Hanley Jon
+    Kenney See all employees Updates Adtaxi reposted this Digital Summit Series 12,074
+    followers 8h Report this post Doors are open at Digital Summit Minneapolis 2026!
+    Shoutout to our partners for helping us make it happen! 🎉 17 3 Comments Like Comment
+    Share Adtaxi 7,176 followers 6h Report this post We’re so happy to be back at
+    Digital Summit Series Minneapolis this year! We hope to see you at our session
+    ‘Your Best Marketing Doesn’t Show Up in Your Reports: Using Offline Data to Reveal
+    Real Impact’ with Ryan Huschka at 2:15 today! 18 Like Comment Share Adtaxi 7,176
+    followers 1w Report this post We''re looking forward to being back at Digital
+    Summit again this year! We hope to see you at Ryan ''s session on Wednesday August
+    12 at 2:15pm! https://lnkd.in/dvcDvqBk Digital Summit Series 12,074 followers
+    1w TWIN CITIES MARKETERS - 12 days until Digital Summit Minneapolis kicks off
+    at the Minneapolis Convention Center! Prices go up at midni'
+  retrieved_at: '2026-08-12T21:52:38.395237+00:00'
+  url: https://www.linkedin.com/company/adtaxi
+- content_hash: 775681c8c2d28c43297ebc0cb0c339df6ca9c41560711e33112dda86342ddbb9
+  evidence_id: ev-775681c8c2d28c43
+  excerpt: '2025-04-30 Awards 2025 | AdExchanger Awards 2025 | AdExchanger Congratulations
+    to the 2025 AdExchanger Awards winners. © 2026 Access Intelligence, LLC. | Privacy
+    Policy | Cookie Settings | Accessibility Statement | Diversity, Equity, Inclusion
+    & Belonging 🏆 The Winners Are Here — Celebrate the Best in Digital Advertising!
+    The wait is over — the 2025 AdExchanger Awards winners have been revealed!  2026
+    ENTRIES NOW OPEN! ENTER NOW Winners JUDGES Contact Winners Agency, Consulting,
+    & Publisher Best Programmatic Consulting Or Advisory Firm Winner DSPolitical:
+    Strategic Programmatic Leadership Powering Electoral Victories DSPolitical Honorable
+    Mention Programmatic Intelligence Sparks Record Growth for TruStone Financial
+    Vision Media Best Use Of Data By An Agency Winner Solving Adland''s Waste Crisis
+    with Deeper AI Canvas Worldwide Honorable Mention Spanish Language Preference
+    Model: Data-Driven, Culturally Competent Voter Engagement DSPolitical Honorable
+    Mention Adtaxi''s Data Mastery: Transforming Attribution Into Tangible Success
+    for Furniture Retailer Adtaxi Honorable Mention Adswerve Builds Custom Meridian
+    MMM to Deliver $100M in Revenue Potential for Alaska Airlines Adswerve Honorable
+    Mention Good Apple''s Proprietary Data Ecosystem: Media, Methodically Good Apple
+    Best Use Of Technology By an Agency Winner Captiv8: The OS Unifying the Entire
+    Creator Ecosystem CAPTIV8 Honorable Mention Butler/Till is Rewriting the Rules
+    of Brand Safety & Suitability with Scope3 Scope3 Honorable Mention Connecting
+    Clicks to Cabins: How Windstar, MMGY, and Experian Delivered $20M in Attributed
+    Cruise Bookings Experian Honorable Mention Deploy: Continuing the Revolution in
+    Programmatic Planning and Buying for Electoral and Public Affairs Campaigns DSPolitical
+    Honorable Mention Middlesex County NJ''s Audio Campaign Uses AdsWizz Technology
+    to Target and Engage Innovation Sector Leaders AdsWizz + Marketing Doctor Best
+    Use Of Technology By A Publisher or Media Seller Winner New GenAI ad targeti'
+  retrieved_at: '2026-08-12T21:57:53.725103+00:00'
+  url: https://www.adexchanger.com/go/awards-2025/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

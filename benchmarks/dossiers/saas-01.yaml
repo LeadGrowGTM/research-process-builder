@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-b852e22ac88f1aad
+  - ev-f4256ff7de9e092b
+  - ev-b5979e5e51835014
+  field: identity
+  value: AgencyAnalytics
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b852e22ac88f1aad
+  - ev-f4256ff7de9e092b
+  - ev-b5979e5e51835014
+  field: description
+  value: About AgencyAnalytics - We Help Marketing Agencies Scale The 2026 Agency
+    Benchmarks Report is here! Read it free The 2026 Agency Benchmarks Report is here!
+    Read it free The 2026 Agency Benchmarks Report is here! Read it free The 2026
+    Agency Benchmarks Report is here! Read it free Getting Started See how it works
+    for you The whole platform, explained in a four-minute guided tour. Watch the
+    Platform Tour Templates for your clients Pre-built report templates for every
+    channel, ready to customize. S
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b852e22ac88f1aad
+  - ev-f4256ff7de9e092b
+  - ev-b5979e5e51835014
+  field: offers
+  value: reporting software
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b852e22ac88f1aad
+  - ev-f4256ff7de9e092b
+  - ev-b5979e5e51835014
+  field: icp
+  value: marketing agencies
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b852e22ac88f1aad
+  - ev-f4256ff7de9e092b
+  - ev-b5979e5e51835014
+  field: personas
+  value: marketing agencies
+  visibility: message_safe
+company_id: saas-01
+corrections: []
+evidence:
+- content_hash: b852e22ac88f1aadc330d7780b2e78a78408a05b2693ca344b8d11eec240f5a6
+  evidence_id: ev-b852e22ac88f1aad
+  excerpt: 'About AgencyAnalytics - We Help Marketing Agencies Scale The 2026 Agency
+    Benchmarks Report is here! Read it free The 2026 Agency Benchmarks Report is here!
+    Read it free The 2026 Agency Benchmarks Report is here! Read it free The 2026
+    Agency Benchmarks Report is here! Read it free Getting Started See how it works
+    for you The whole platform, explained in a four-minute guided tour. Watch the
+    Platform Tour Templates for your clients Pre-built report templates for every
+    channel, ready to customize. Start With a Template Connect your data 85+ data
+    sources your clients care about, in one platform. Find Your Integrations Get a
+    guided walkthrough A real human walks you through the platform, tailored to your
+    agency. Book a Demo Or skip straight to your own data — set up your first client
+    in minutes. Start Free Platform Reporting Save time on reporting. Automated Reports
+    Custom Dashboards Report Templates Drag & Drop Editor White Label Branding Custom
+    Metrics Insights Analyze results across clients. AI Analysis Metric Alerts Anomaly
+    Detection Trend Forecasting Benchmark Comparisons Clients and Team Retain more
+    clients. Client Portal Client Communication Task Management Access Control Goal
+    & Budget Tracking Trusted Data Centralize client data. 85+ Integrations Unified
+    Client Data Predictable Performance Catch Bad Data Early Deeper Campaign Analysis
+    Report on any channel SEO Social Paid eCommerce Multi-Channel See All Features
+    Resources Learn Blog KPI definitions Customer stories Videos Support Help center
+    Client reporting guide Platform tour Featured Read the 2026 Agency Benchmarks
+    Report Ahead of Next: The 2026 AgencyAnalytics Product Roadmap Pricing Login Login
+    Start Free My Account We Help Marketing Agencies Scale. Since 2010, we’ve been
+    improving our client reporting solutions based on feedback from growth-oriented
+    marketing agencies. With fully automated reports and custom dashboards, AgencyAnalytics
+    provides everything a marketing agency needs to save time, impress client'
+  retrieved_at: '2026-08-12T21:00:18.846689+00:00'
+  url: https://agencyanalytics.com/company/about
+- content_hash: f4256ff7de9e092b2030b13ddb895aba89ccada48f28d1e3fbe7e1fd7f52eb2e
+  evidence_id: ev-f4256ff7de9e092b
+  excerpt: AgencyAnalytics | LinkedIn Agree & Join LinkedIn By clicking Continue to
+    join or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and
+    Cookie Policy . Skip to main content LinkedIn Top Content People Learning Jobs
+    Games Sign in Join now AgencyAnalytics Software Development Toronto, Ontario 14,083
+    followers The only all-in-one automated reporting solution for marketing agencies.
+    See jobs Follow View all 123 employees Report this company About us AgencyAnalytics
+    is the only reporting and insights platform built for marketing agencies. Prove
+    your value to clients, win back the hours you lose to manual reporting, and keep
+    more of the clients you've worked hard to earn. Connect all your marketing channels
+    in one place and report on SEO, PPC, social media, email, call tracking, and more,
+    with 85+ integrations pulling live data into your dashboards and reports. Automate
+    report creation and scheduling so polished, accurate updates go out on time without
+    manual effort. Benchmark performance, spot trends early, and walk into client
+    calls already knowing what's working and what to fix with AI-powered insights.
+    Everything is fully white-labeled for your agency. Give clients their own login
+    to the web or mobile app, branded to look like you built the platform in-house.
+    Trusted by 7,000+ marketing agencies. Start a free trial at agencyanalytics.com.
+    Website https://agencyanalytics.com/ External link for AgencyAnalytics Industry
+    Software Development Company size 51-200 employees Headquarters Toronto, Ontario
+    Type Privately Held Founded 2010 Specialties Digital Marketing, SAAS, Link Building,
+    Facebook Marketing, Digital Marketing, Marketing Agencies, Marketing Performance,
+    Social Media Marketing, Client Marketing Reports, Marketing Analytics, Marketing
+    Agency, Digital Agency, Marketing Reporting, Client Reporting, Marketing Dashboards,
+    While Label Reporting, Marketing Analytics, AI Marketing Insights, Agency Reporting
+    Software, Marketing Performance, Client Marketi
+  retrieved_at: '2026-08-12T21:00:19.746428+00:00'
+  url: https://ca.linkedin.com/company/agencyanalytics
+- content_hash: b5979e5e51835014af2d9010867b877c6592c9f14cc21259777f01934a6d4a20
+  evidence_id: ev-b5979e5e51835014
+  excerpt: AgencyAnalytics Reviews in 2026 Join/Login Business Software Open Source
+    Software For Vendors Blog About More Articles SourceForge Podcast Support / Documentation
+    Subscribe to our Newsletter Support Request For Vendors Add a Product Join Login
+    Business Software Open Source Software SourceForge Podcast Resources Articles
+    Case Studies Blog Menu Help Create Join Login Home Compare Business Software Dashboard
+    Software AgencyAnalytics AgencyAnalytics 5.0 out of 5 stars. (1 Review and Rating
+    ) Write a Review Alternatives to AgencyAnalytics Popular Alternatives & Related
+    Software Adzooma (254 Ratings) Adzooma’s an award-winning digital marketing platform
+    that helps businesses of any size grow by making online marketing easy. Our all-in-one
+    platform helps you set up, manage, and optimize your Google, Facebook, and Microsoft
+    advertising campaigns all in one place. By leveraging innovative machine learning
+    and data science, our platform pinpoints what drives online business success to
+    make sure you get the most out of your advertising campaigns. Track PPC performance
+    and highlight over/under spend to improve your quality score, conversions, and
+    ROI. Packed with all the tools you need to grow your business, Adzooma gives you
+    a crystal clear view of where your online marketing is right now, then provides
+    personalized checklists to help you drive business growth. Join thousands of business
+    owners like you and see how we make growing your business online simple. Learn
+    more PBRS Power BI Reports Distribution (12 Ratings) PBRS is a powerful and versatile
+    tool that enhances the scheduling, automation, and distribution capabilities of
+    Power BI reports. It allows you to schedule Power BI reports to run at specific
+    dates and times, or set up recurring schedules based on your business needs. You
+    can also configure event-based triggers that run reports based on specific events
+    or conditions, such as database changes, file updates, email notifications, or
+    port activity. You can also custo
+  retrieved_at: '2026-08-12T21:00:20.602081+00:00'
+  url: https://sourceforge.net/software/product/AgencyAnalytics/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

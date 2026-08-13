@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-e817f4d75938a184
+  - ev-2d942e7b3b299ea4
+  - ev-1b9096d02e5d79f3
+  field: identity
+  value: Avery Dennison Graphics Solutions
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-e817f4d75938a184
+  - ev-2d942e7b3b299ea4
+  - ev-1b9096d02e5d79f3
+  field: description
+  value: --> Graphics and Vehicle Wrapping Products | Avery Dennison | Graphics About
+    Us Subscribe Partner Portal Worldwide Sites English [ Change] Contact Us Customer
+    Portal --> Graphics Solutions North America English Europe English Deutsch Français
+    Español Italiano Latin America Português Español Asia Pacific English 简体中文 日本語
+    한국어 Thai Avery Dennison Corporation North America English Asia Pacific 简体中文 中文
+    Europe Nederlands Deutsch Français South America Português Español Environmental,
+    Social, Governanc
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-e817f4d75938a184
+  - ev-2d942e7b3b299ea4
+  - ev-1b9096d02e5d79f3
+  field: offers
+  value: graphics products
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-e817f4d75938a184
+  - ev-2d942e7b3b299ea4
+  - ev-1b9096d02e5d79f3
+  field: icp
+  value: wrap professionals
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-e817f4d75938a184
+  - ev-2d942e7b3b299ea4
+  - ev-1b9096d02e5d79f3
+  field: personas
+  value: wrap professionals
+  visibility: message_safe
+company_id: known-02
+corrections: []
+evidence:
+- content_hash: e817f4d75938a184995771d4555f3f29544d6f21ae77b488494aa6f229e5a629
+  evidence_id: ev-e817f4d75938a184
+  excerpt: --> Graphics and Vehicle Wrapping Products | Avery Dennison | Graphics
+    About Us Subscribe Partner Portal Worldwide Sites English [ Change] Contact Us
+    Customer Portal --> Graphics Solutions North America English Europe English Deutsch
+    Français Español Italiano Latin America Português Español Asia Pacific English
+    简体中文 日本語 한국어 Thai Avery Dennison Corporation North America English Asia Pacific
+    简体中文 中文 Europe Nederlands Deutsch Français South America Português Español Environmental,
+    Social, Governance (ESG) Global English Automotive Solutions Global English Avery
+    Dennison Medical Global English Fastener Solutions Global English Asia Pacific
+    Chinese Hanita Coatings Global English Español 中文 中文 Inks North America English
+    Label & Packaging Materials Europe English Polski Español Deutsch Italiano Français
+    North America English Latin America Brasil e Paraguai — Brasil e Paraguai (Português)
+    Argentina y Uruguay Chile (Español) Colombia (Español) México Asia Pacific 日本
+    English 简体中文 한국어 Muse Global English Personal Care Asia Pacific 中文 Global English
+    Performance Polymers Global English Europe Deutsch Italiano Français Performance
+    Tapes Global English Europe English Apparel Solutions North America English Asia
+    Pacific 中文 newness Newness RFID Global English Europe Français Asia Pacific Japanese
+    Chinese Korean Reflective Solutions Global English Yongle Global English Asia
+    Pacific 简体中文 Identification Solutions North America English Europe Germany Français
+    Mactac EMENA EU-English EU - Español EU - Français EU - Deutsch EU - Italiano
+    Asia Pacific English Electrified North America English Digital Ink Solutions North
+    America English Go Products Products Application Tools Crafting Vinyl Cut Vinyl
+    Films Digitally Printable Films Paint Protection Films Vehicle Wrapping Films
+    Window Films   Services Services Color Matching ICC Profiles Certified Wholesale
+    Printer Warranty   Applications Applications Architecture Automotive Restyling
+    Corporate Branding Fleet Vehicles General Signage Short-Te
+  retrieved_at: '2026-08-12T22:06:14.809967+00:00'
+  url: https://graphics.averydennison.com/en/home/products.html
+- content_hash: 2d942e7b3b299ea4fb30b645faf05d3bff1941cd60d8e84ea1a918c5d8ba1633
+  evidence_id: ev-2d942e7b3b299ea4
+  excerpt: Avery Dennison Graphics Solutions | LinkedIn Agree & Join LinkedIn By clicking
+    Continue to join or sign in, you agree to LinkedIn’s User Agreement , Privacy
+    Policy , and Cookie Policy . Skip to main content LinkedIn Top Content People
+    Learning Jobs Games Sign in Join now Avery Dennison Graphics Solutions Advertising
+    Services Mentor, OH 23,766 followers Follow Discover all 370 employees Report
+    this company About us We are a global materials science and digital identification
+    solutions company with locations in over 50 countries, and we employ approximately
+    35,000 employees worldwide. We provide a wide range of branding and information
+    solutions that optimize labor and supply chain efficiency, reduce waste, advance
+    sustainability, circularity and transparency, and better connect brands and consumers.
+    Our products and solutions include labeling and functional materials, radio frequency
+    identification (RFID) inlays and tags, software applications that connect the
+    physical and digital, and a variety of products and solutions that enhance branded
+    packaging and carry or display information that improves the customer experience.
+    We lead in serving an array of industries worldwide — including home and personal
+    care, apparel, general retail, e-commerce, logistics, food and grocery, pharmaceuticals
+    and automotive. Website http://graphics.averydennison.com External link for Avery
+    Dennison Graphics Solutions Industry Advertising Services Company size 10,001+
+    employees Headquarters Mentor, OH Type Public Company Founded 1935 Specialties
+    Digital Imaging Media, Screen and Cut Materials, Custom Color Matching, and Technical
+    Service Employees at Avery Dennison Graphics Solutions Hélène Gobry LinkedIn Member
+    LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn Member View 370 employees
+    at Avery Dennison Graphics Solutions Sign in Welcome back Email or phone Password
+    Show Forgot password? Sign in or By clicking Continue to join or sign in, you
+    agree to LinkedIn’s User Agreement , P
+  retrieved_at: '2026-08-12T22:06:15.655716+00:00'
+  url: https://www.linkedin.com/company/avery-dennison-graphics-solutions
+- content_hash: 1b9096d02e5d79f316b22e23f4c966eb795a1655450e1ecc8dfa5e036c10b5fe
+  evidence_id: ev-1b9096d02e5d79f3
+  excerpt: '2024-02-27 ISA & TWI Team Up for Inaugural The Wrap Experience Summit
+    - International Sign Association Skip to content Industry Job Opportunities About
+    News Join Industry Job Opportunities About News Join Search Events ISA Sign Expo
+    Straight Talk Series Sign MFG Day ISA Converge Converge Schedule Events Calendar
+    Resources & Training Webinars Online Learning Industry Insights Manufacturing
+    Skills Administrative Skills All Topics Hiring Post or Find a Job Business Management
+    Resources & Training Signs 101 Codes & Regulations 1-on-1 Expert Assistance Technical
+    Codes & Standards Sign Code Development Federal Regulations Legal Issues About
+    ISA Member Hub Industry News Image Source: Tim Evans/Wrapper Mapper About ISA
+    Staff Affiliated Associations Leadership & Volunteers Board of Directors Steering
+    Committees Program Committees ISA Leadership Recommendation ISA Elite 2025 Class
+    of ISA Elite ISA Elite Alumni The Wrap Institute Partnership News Press Releases
+    Industry News Weekly E-Newsletter Media Partners Subscribe Contact Contact Us
+    " * " indicates required fields First Name * Last Name * Company Name * Email
+    * Phone * Message * ISA & TWI Team Up for Inaugural The Wrap Experience Summit
+    Posted: 02/27/2024 Image Source: Tim Evans/Wrapper Mapper The wrap community came
+    together for the inaugural The Wrap Experience Summit, a three-day intimate setting
+    for networking and learning. The event was an extension of a partnership between
+    ISA and TWI, to develop programming for the wrap segment of the sign, graphics
+    and visual communications industry. The event included panel discussions by industry
+    peers, roundtables that tackled pressing issues, and networking appointments to
+    create and build relationships. “This beta event was designed to help ISA and
+    TWI better understand what this segment needs to grow professionally and sustainably,”
+    said Craig Campbell, ISA’s vice president of business development. “Based on what
+    we learned at the inaugural The Wrap Experience Summit, we wil'
+  retrieved_at: '2026-08-12T22:12:58.755618+00:00'
+  url: https://signs.org/industry-news/isa-twi-team-up-for-inaugural-the-wrap-experience-summit/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-f743ef1c776478a9
+  - ev-76d79602564b86e8
+  - ev-db5331ab67fc5b48
+  field: identity
+  value: American Kitchen Machinery & Repair
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-f743ef1c776478a9
+  - ev-76d79602564b86e8
+  - ev-db5331ab67fc5b48
+  field: description
+  value: 'Home - American Kitchen Machinery and Repair American Kitchen Machinery
+    and Repair Always Keep My Customer Operating A Certified CFESA Company Commercial
+    Food Equipment Parts & Service Toll Free: 800-848-7760 • Local: 215-627-7760 24-Hour
+    Service • Serving the Tri-State Area REQUEST SERVICE CALL Home About Us Careers
+    Our Services Disinfection Service Service Area Quality Parts Contact Service Request
+    New Customer Application Credit Application Warranty Application Commercial Food
+    Equipment Parts'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-f743ef1c776478a9
+  - ev-76d79602564b86e8
+  - ev-db5331ab67fc5b48
+  field: offers
+  value: equipment service
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-f743ef1c776478a9
+  - ev-76d79602564b86e8
+  - ev-db5331ab67fc5b48
+  field: icp
+  value: commercial kitchen
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-f743ef1c776478a9
+  - ev-76d79602564b86e8
+  - ev-db5331ab67fc5b48
+  field: personas
+  value: commercial kitchen
+  visibility: message_safe
+company_id: local-03
+corrections: []
+evidence:
+- content_hash: f743ef1c776478a90b1dbd0ba942162249b39b44b06a03404627a60088e83e21
+  evidence_id: ev-f743ef1c776478a9
+  excerpt: 'Home - American Kitchen Machinery and Repair American Kitchen Machinery
+    and Repair Always Keep My Customer Operating A Certified CFESA Company Commercial
+    Food Equipment Parts & Service Toll Free: 800-848-7760 • Local: 215-627-7760 24-Hour
+    Service • Serving the Tri-State Area REQUEST SERVICE CALL Home About Us Careers
+    Our Services Disinfection Service Service Area Quality Parts Contact Service Request
+    New Customer Application Credit Application Warranty Application Commercial Food
+    Equipment Parts & Service A certified CFESA company, American Kitchen Machinery
+    is the premier service provider and parts distributor for commercial kitchens.
+    We serve customers in the Tri-State area: Pennsylvania, New Jersey, and Delaware
+    from our head office in Philadelphia. Read more Service & Maintenance We service
+    commercial electric, gas and steam food service equipment, delivering quick diagnostics,
+    professional repairs and quality installations performed by CFESA certified technicians.
+    Learn More » Quality Brand Name Parts We provide 24-hour services, 7 days a week,
+    52 weeks a year. We have same day shipping on in-stock parts, with installation
+    services across the Tri-State area of PA, DE, and NJ. Review Parts Stock » Request
+    Service Our experienced, trained, and certified technicians are ready, willing,
+    and able to get your kitchen equipment back online as quickly as possible. We''re
+    on call 24 hours a day. Request Service » American Kitchen is more than a service
+    company to our district. They are like one of our team. With one phone call, I
+    can count 100% on the office staff and top notch technicians to process my service
+    request and make the repairs quickly and accurately. I never have to double check
+    to make sure the repair was made. I am assured of a call if something needs to
+    be discussed and a call every now and then to make sure everything is running
+    smoothly. I can''t tell you how much time they save me. More importantly, they
+    keep our kitchens running so we can feed our stud'
+  retrieved_at: '2026-08-12T22:40:48.612316+00:00'
+  url: https://akmco.com/
+- content_hash: 76d79602564b86e8e4deeb763375849d5a36fa1b9c714c415573369c8e20a251
+  evidence_id: ev-76d79602564b86e8
+  excerpt: 'American Kitchen Machinery & Repair | LinkedIn Agree & Join LinkedIn By
+    clicking Continue to join or sign in, you agree to LinkedIn’s User Agreement ,
+    Privacy Policy , and Cookie Policy . Skip to main content LinkedIn Top Content
+    People Learning Jobs Games Sign in Join now American Kitchen Machinery & Repair
+    Facilities Services Philadelphia, PA 116 followers Follow View all 24 employees
+    Report this company About us American Kitchen Machinery is the tri-state area''s
+    premier service provider and parts distributor. We at AKM take professionalism
+    and customer satisfaction to the top of the field. We are dedicated to providing
+    you with all your commercial kitchen equipment needs, 24 hours a week and 7 days
+    a week. Over 60 years ago, AKM was started by the Elliott family in Philadelphia.
+    Being a family business has offered our customers the loyalty and quality only
+    AKM could provide. Still today, you could step into our offices any day of the
+    week and find at least a half dozen "Elliotts" working to serve you. American
+    Kitchen is currently staffed by factory trained CFESA certified technicians. Our
+    offices are home to friendly and hardworking customer service representatives
+    that are waiting to help you with ALL your service needs. Website http://www.akmco.com
+    External link for American Kitchen Machinery & Repair Industry Facilities Services
+    Company size 11-50 employees Headquarters Philadelphia, PA Type Privately Held
+    Founded 1953 Specialties Service to Commercial Kitchen Equipment, Authorized Parts
+    Distributor for Commercial Kitchen Equipment, CFESA Certified Company, and Women
+    Owned Company Employees at American Kitchen Machinery & Repair Louis Pike LinkedIn
+    Member LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn Member View 24
+    employees at American Kitchen Machinery & Repair Sign in Welcome back Email or
+    phone Password Show Forgot password? Sign in or By clicking Continue to join or
+    sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie '
+  retrieved_at: '2026-08-12T22:40:49.108006+00:00'
+  url: https://www.linkedin.com/company/american-kitchen-machinery-&-repair
+- content_hash: db5331ab67fc5b48a15be316fd2939fcaac655ea6780a8ba4079b1aa44da7ab0
+  evidence_id: ev-db5331ab67fc5b48
+  excerpt: 'December 10, 2025 American Kitchen Machinery & Repair Company – CFESA
+    Skip to content Search for: Search for: SERVICE LOCATOR MEMBER LOGIN ABOUT US
+    CONTACT US MEMBERSHIP Join CFESA Certification Committees TRANING CENTER CFESA
+    University Courses Technician Certification Training Facility EVENTS Annual Conference
+    Regional Meetings Young Professional Symposium Top Tech Throwdown GIVING BACK
+    CFESA Cares Scholarships SPONSORSHIPS Sponsorship Overview Regional Sponsorships
+    Conference Sponsorships Scholarship Sponsorships YP Sponsorships Newsletter Advertisement
+    Top Tech Sponsorships RESOURCES Asset Library Allied Organizations Search for:
+    Toggle Navigation Search for: SERVICE LOCATOR MEMBER LOGIN ABOUT US CONTACT US
+    MEMBERSHIP Join CFESA Certification Committees TRANING CENTER CFESA University
+    Courses Technician Certification Training Facility EVENTS Annual Conference Regional
+    Meetings Young Professional Symposium Top Tech Throwdown GIVING BACK CFESA Cares
+    Scholarships SPONSORSHIPS Sponsorship Overview Regional Sponsorships Conference
+    Sponsorships Scholarship Sponsorships YP Sponsorships Newsletter Advertisement
+    Top Tech Sponsorships RESOURCES Asset Library Allied Organizations Go Back Bookmark
+    Share Facebook X LinkedIn Report Report Abuse × Your Complaint * Submit American
+    Kitchen Machinery & Repair Company CFESA Certified Company Information Address
+    204 Quarry St, Philadelphia, PA 19106, USA Website http://www.akmco.com Email
+    cookie@akmco.com Phone 215-627-7760 Features Services Offered Install III CFESA
+    Certified Company Yes Parts Counter No Search for: Categories No categories CFESA
+    is the only trade association dedicated to the training, growth and advocacy of
+    food equipment service professionals. Quick Links Join CFESA Courses Annual Conference
+    Member Login About Us Connect With Us Contact Us Headquarters 3605 Centre Circle
+    Fort Mill, SC 29715 (336) 346-4700 CFESA News in Your Inbox Subscribe * indicates
+    required Email Address * CFESA is the only trade association '
+  retrieved_at: '2026-08-12T22:40:49.733721+00:00'
+  url: https://cfesa.com/directory/american-kitchen-machinery-repair-company/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

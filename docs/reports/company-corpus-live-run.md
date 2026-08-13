@@ -1,49 +1,81 @@
 # Company corpus live run
 
-Recorded 2026-08-12 for rollout stage saas_shared_core.
+Authoritative research date: 2026-08-12. V9 is the publication proof. Earlier
+v1-v8 source attempts and reconstruction runs remain append-only audit history;
+v6/v7 were rejected because generic dry searches did not establish
+category-specific saturation.
 
-## Authoritative v6 execution
+## Result
 
-- Exact IDs: saas-01, saas-04, saas-07; duplicates: 0.
-- Existing outer AutoresearchOrchestrator invoked once with immutable stage
-  inputs and the research_complete_company_dossier rubric.
-- Existing Task 2 EnrichmentRunner invoked for all eight P0 enrichments for
-  each company: 24 append-only outcomes and 24 discovery records.
-- Source route per company: one official and two distinct-domain independent
-  public sources. Nine content-addressed Evidence objects were retained.
-- The injected search client executed two distinct no-material-fact queries per
-  company. The redacted call ledger contains 15 rows: nine source calls and six
-  search calls, each with URL or query and status.
-- Three dossiers passed typed CompanyDossier reconstruction and the strict
-  research-complete validator at the authoritative corpus date.
-- No authentication, source, artifact, or duplicate-ID gaps.
-- No paid route was enabled. Actual paid cost: USD 0.
-- Resume rehydrated the YAML dossiers and evidence-derived qualifications,
-  validated company IDs and every referenced Evidence object, checked the
-  complete object set for orphans, and resumed all three with zero source calls
-  or repurchases. Retained dry outcomes are projected from calls.jsonl without
-  rerunning searches.
+- 60 published research-complete dossiers across six cohorts of ten; shared
+  core: 15.
+- Seven rollout stages retained SaaS-first order with no repeated company ID.
+- 201 immutable Evidence objects, 963 redacted source/search calls, 60
+  qualification records, and 60 dossiers citing 197 distinct content objects.
+- No final source, authentication, duplicate-ID, or artifact gaps.
+- Paid routes disabled; aggregate cost USD 0 of the immutable USD 2 cap.
+- No v9 source repurchases. All seven completed resumes and publication performed no
+  research execution or repurchase.
 
-Authoritative ignored artifacts are under runs/company-corpus-live-v6. Earlier
-v1-v5 directories remain audit history and are not the authoritative proof.
+Every dossier cites identity, description, offer, ICP, and personas. All ten
+funded dossiers cite growth from an exact dated primary source in the
+2025-08-12 through 2026-08-12 window. V9 also resolved four material searches
+into three cited assertions using exact retained first-party Evidence:
 
-## Qualification and saturation
+- Baseten publishes model API and dedicated-deployment pricing;
+- Supabase publishes a direct Firebase competitor comparison; and
+- Carney announced its redesigned site and new Daily Carnage hub on
+  2025-12-22.
 
-Canonical identity and domain, B2B buyer, business offer, and cohort evidence
-are derived from retained source bodies. The seed industry and
-products_services fields are never promoted to verified qualification.
+Those fields are assertions, not unknowns. All other unresolved categories are
+explicit, category-specific unknowns after their two exact research angles
+were closed. A material angle closes only when its typed field assertion cites
+the exact retained planned source; it is never relabeled as an empty result.
 
-Saturation is calculated by Task 2 from typed executor coverage, a first-party
-source, two distinct independent sources, and two executed consecutive
-no-material-fact search outcomes. The CLI does not construct EnrichmentResult
-or set saturated itself.
+## Execution, validation, and resume
 
-The cited dossier outputs remain intentionally conservative: identity,
-description, and offer are asserted; unsupported categories are explicit
-unknowns with a recorded reason. The AgencyAnalytics SourceForge profile is
-independent and substantial but lower-confidence and potentially stale, so it
-provides diversity rather than broad claim corroboration.
+The run composed the existing outer AutoresearchOrchestrator and Task 2
+EnrichmentRunner for all eight P0 enrichments. Discovery, eligible routes,
+requested/resolved models, saturation state, typed output, budget state, and
+append-only outcomes are retained. Free source/search clients were injected;
+paid provider construction and spending were not enabled.
 
-This is corpus-construction evidence, not an Approval. Promotion still
-requires programmed ground-truth validation at at least 90 percent and
-explicit human review.
+The corpus validator reported companies=60, cohorts=6, ten in every cohort,
+core=15, dossiers=60, and paid cost USD 0. Completed-stage resumes rehydrated
+3, 7, 10, 10, 10, 10, and 10 dossiers with zero execution, Evidence
+persistence, repurchase, or cost. Resume validation checks typed YAML, company identity, authoritative
+date, exact Evidence observation/hash, and research completeness. It rejects
+truncated, malformed, unrelated-provider, and true-orphan artifacts.
+
+Publication is recoverably transactional: all 60 dossier files and the updated
+corpus are staged before replacement, a durable marker records swap phase, and
+the next start restores backups after process interruption. Ordinary failure
+also rolls back. The checked-in benchmarks/companies.yaml is
+`research_complete`; `benchmarks/dossiers/` contains exactly 60 files.
+Prepared and dossiers-swapped interruptions restore the old paired generation;
+a durable committed state preserves the new paired generation even if cleanup
+is interrupted.
+
+## Qualification corrections and caveats
+
+- `funded-09` replaces ineligible Virtual Peaker with DualEntry. Virtual
+  Peaker's supported event fell outside the window; DualEntry retains a dated
+  2025-10-02 primary announcement.
+- `agency-04` replaces software-led Audiense with service-led Walker Sands.
+- `agency-02`, `agency-08`, and `agency-10` are normalized to AbelsonTaylor,
+  Capacity, and Chartis Interactive respectively.
+- `local-07` uses an explicitly reviewed exact-name plus Atlanta-locality
+  exception between LinkedIn and Cobb County because the official service page
+  publishes no street address. No professional-engineer license is inferred.
+- `local-08` uses a lower-authority B2BHint registry mirror because the Georgia
+  registry endpoint was inaccessible; retained first-party Evidence
+  corroborates its address.
+- `local-10` is bound to the hyphenated Woodland, Washington domain and OSHA
+  record, excluding the unrelated San Diego entity.
+- The AgencyAnalytics SourceForge profile is substantive but lower-confidence
+  and potentially stale; it provides source diversity, not broad
+  corroboration.
+
+This corpus is validation evidence, not an Approval. Promotion still requires
+programmed ground-truth validation at 90 percent or higher and explicit human
+review of attribution, scope, safety, and destination.

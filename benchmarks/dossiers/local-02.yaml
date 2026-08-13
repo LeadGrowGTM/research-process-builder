@@ -1,0 +1,143 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-0ae4855c68efc79b
+  - ev-d1a7e3ca60be1aff
+  - ev-a6e4556bc1ec00c5
+  field: identity
+  value: Advanced Control Corporation
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0ae4855c68efc79b
+  - ev-d1a7e3ca60be1aff
+  - ev-a6e4556bc1ec00c5
+  field: description
+  value: Building Technology & Automation Solutions in FL - Advanced Control Skip
+    to content fort lauderdale. 954.491.6660 | tampa. 727.241.6000 Search Search Company
+    Profile Solutions Services Insight Contact Us Company Profile Solutions Services
+    Insight Contact Us Search Company Profile Solutions Services Insight Contact Us
+    Company Profile Solutions Services Insight Contact Us Discover all we do Welcome
+    to Advanced Control Corporation, an industry leader in building technology and
+    automation since 1987
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0ae4855c68efc79b
+  - ev-d1a7e3ca60be1aff
+  - ev-a6e4556bc1ec00c5
+  field: offers
+  value: building automation
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0ae4855c68efc79b
+  - ev-d1a7e3ca60be1aff
+  - ev-a6e4556bc1ec00c5
+  field: icp
+  value: commercial facilities
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0ae4855c68efc79b
+  - ev-d1a7e3ca60be1aff
+  - ev-a6e4556bc1ec00c5
+  field: personas
+  value: commercial facilities
+  visibility: message_safe
+company_id: local-02
+corrections: []
+evidence:
+- content_hash: 0ae4855c68efc79bc9b94a233df23e450e0161b5f0ed5dc0d5ee8514308cf836
+  evidence_id: ev-0ae4855c68efc79b
+  excerpt: 'Building Technology & Automation Solutions in FL - Advanced Control Skip
+    to content fort lauderdale. 954.491.6660 | tampa. 727.241.6000 Search Search Company
+    Profile Solutions Services Insight Contact Us Company Profile Solutions Services
+    Insight Contact Us Search Company Profile Solutions Services Insight Contact Us
+    Company Profile Solutions Services Insight Contact Us Discover all we do Welcome
+    to Advanced Control Corporation, an industry leader in building technology and
+    automation since 1987. Building automation Enhanced, advanced control of a building’s
+    overall systems. Read More > Energy Monitoring Solutions Experience and expertise
+    to help you monitor and control your energy usage. Read More > Security Solutions
+    Be in control of your business. Read More > Advanced Analytics Portal Be in control
+    of your business. Read More > DOWNLOAD FORMS HEADLINE Advanced Control Corporation
+    Fort Lauderdale office: 6001 NE 14th Ave. Fort Lauderdale, FL 33334 T: 954.491.6660
+    Advanced Control Corporation Tampa office: 15201 Roosevelt Blvd, Suite 112 Clearwater,
+    FL 33760 T: 727.241.6000 We can help your facility be more: Resilient Sustainable
+    Efficient Secure Comfortable We can help your facility be more: Resilient Sustainable
+    Efficient Secure Comfortable Contact Us Your facility, budget, and design goals
+    are unique. Reach out and let us create the perfect control system for you. SUBMIT
+    FORM Long-standing partner for your business. Facebook-f Twitter Instagram Youtube
+    Company Profile Solutions Services INSIGHT CONTACT US LOCATIONS Facebook-f Linkedin-in
+    Youtube Get A Free Consultation And Estimate Full Name Phone Email Please Describe
+    The Job In Detail Request an Estimate'
+  retrieved_at: '2026-08-12T22:40:46.572759+00:00'
+  url: https://www.advancedcontrolcorp.com/
+- content_hash: d1a7e3ca60be1aff1bdcccb0277e4f018de44896e6df2615eb2df1500142cb01
+  evidence_id: ev-d1a7e3ca60be1aff
+  excerpt: 'Advanced Control Corporation | LinkedIn Skip to main content LinkedIn
+    Top Content People Learning Jobs Games Sign in Join now Advanced Control Corporation
+    Facilities Services Fort Lauderdale, FL 556 followers Implementing the Digital
+    Transformation of Energy Management and Building Technology Follow View all 44
+    employees Report this company About us Our mission at Advanced Control Corporation
+    is to be the leading provider of building automation, access control, system integration
+    and Video surveillance systems and services for all Commercial Building Technology
+    in South Florida. We measure our success by the amount of residual and referral
+    business we receive, a strong indicator of our customer service standards. The
+    experience of our principals, who have participated in several of the pioneering
+    advances of our industry combined with experience providing systems and services
+    effectively to hundreds of facilities spanning three continents, makes Advanced
+    Control Corporation the most trusted provider of building automation, access control
+    and video surveillance solutions in our market. This depth of experience and daily
+    involvement by Advanced Control Corporations principals is a large reason for
+    our success over the past thirty plus years. Website http://www.advancedcontrolcorp.com
+    External link for Advanced Control Corporation Industry Facilities Services Company
+    size 51-200 employees Headquarters Fort Lauderdale, FL Type Public Company Founded
+    1987 Specialties building automation, security automation, green construction,
+    lighting control, access control, CCTV solutions, LEED certification, and systems
+    integration Locations Primary 6001 Northeast Fourteenth Avenue Fort Lauderdale,
+    FL 33334, US Get directions 15201 Roosevelt Boulevard Suite 112 Clearwater, Florida
+    33760, US Get directions Employees at Advanced Control Corporation Jorge Gordon
+    Scott Beacham Stuart Fox Mitzy Molina See all employees Similar pages Liable Controls
+    Facilities Services Weston, Florida AC '
+  retrieved_at: '2026-08-12T22:40:47.054944+00:00'
+  url: https://www.linkedin.com/company/advanced-control-corporation
+- content_hash: a6e4556bc1ec00c5267afa47cc4499b541d0f21a720cd5d8866faf95ec09e1b7
+  evidence_id: ev-a6e4556bc1ec00c5
+  excerpt: 'October 1, 2012 Loading... FLORIDA DEPARTMENT OF BUSINESS & PROFESSIONAL
+    REGULATION ONLINE SERVICES ONLINE SERVICES Apply for a License Verify a Licensee
+    View Food & Lodging Inspections File a Complaint Continuing Education Course Search
+    View Application Status Find Exam Information Unlicensed Activity Search AB&T
+    Delinquent Invoice & Activity List Search ONLINE SERVICES Home Contact us My account
+    LICENSEE DETAILS 18:40:45 PM 8/12/2026 EST License Information Name JONES, CHARLES
+    DAVID (Primary Name) DBA Name ADVANCED CONTROL CORPORATION, INC. Main Address
+    6001 NE 14TH AVENUE FORT LAUDERDALE Florida 33334 County Broward License Information
+    License Type Certified Alarm System Contractor II Rank Cert Alarm II License Number
+    EG13000451 Status Current,Active Licensure Date 11/19/2012 Expires 08/31/2028
+    Special Qualifications Qualification Effective Alternate Names View Related License
+    Information View License Complaint 2601 Blair Stone Road, Tallahassee FL 32399
+    | Email: Customer Contact Center | Customer Contact Center: (850) 487.1395 The
+    State of Florida is an AA/EEO employer. Copyright ©2025 Department of Business
+    and Professional Regulation - State of Florida. Privacy Statement Under Florida
+    law, email addresses are public records. If you do not want your email address
+    released in response to a public-records request, do not send electronic mail
+    to this entity. Instead, contact the office by phone or by traditional mail. If
+    you have any questions, please contact 850.487.1395. *Pursuant to Section 455.275(1),
+    Florida Statutes, effective October 1, 2012, licensees licensed under Chapter
+    455, F.S. must provide the Department with an email address if they have one.
+    The emails provided may be used for official communication with the licensee.
+    However email addresses are public record. If you do not wish to supply a personal
+    address, please provide the Department with an email address which can be made
+    available to the public. Please see our Chapter 455 page to determine i'
+  retrieved_at: '2026-08-12T22:40:47.918080+00:00'
+  url: https://www.myfloridalicense.com/portalsearches/VerifyLicensee/LicenseDetail?ID=E052FE1172B458A6A0392C1C02AA40E0
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

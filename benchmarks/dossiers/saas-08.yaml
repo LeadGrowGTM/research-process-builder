@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: identity
+  value: BigPanda
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: description
+  value: Our Story - About BigPanda | BigPanda --> en --> en --> de Service + Support
+    Service Community Documentation Customer Support Platform Status Support Education
+    & Certification Professional Services Login Platform Agentic ITOps Platform The
+    BigPanda agentic ITOps platform uses AI to automate IT detection, triage, and
+    resolution, improving operational efficiency and reducing downtime and costs.
+    Explore the Platform Platform Overview AI Incident Prevention AI Detection & Response
+    L1 Agent AI Incide
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: offers
+  value: incident intelligence
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: icp
+  value: it teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: personas
+  value: it teams
+  visibility: message_safe
+company_id: saas-08
+corrections: []
+evidence:
+- content_hash: 8d10c83bbc00a2c9b190962859a301302faeb34990f83a1ceedfd0bdbb22bbf5
+  evidence_id: ev-8d10c83bbc00a2c9
+  excerpt: Our Story - About BigPanda | BigPanda --> en --> en --> de Service + Support
+    Service Community Documentation Customer Support Platform Status Support Education
+    & Certification Professional Services Login Platform Agentic ITOps Platform The
+    BigPanda agentic ITOps platform uses AI to automate IT detection, triage, and
+    resolution, improving operational efficiency and reducing downtime and costs.
+    Explore the Platform Platform Overview AI Incident Prevention AI Detection & Response
+    L1 Agent AI Incident Assistant IT Knowledge Graph Integrations Jira ServiceNow
+    All Integrations Solutions Transform ITSM with Agentic ITOps Learn how enterprises
+    can empower incident management teams with AI assistance by integrating agentic
+    AI into their incident management strategy. Get the e-book Solutions for Automating
+    L1 Detection & Response Empowering L2, L3, and SRE with AI Assistance Predicting
+    & Preventing Incidents & Outages Industries Financial Services Insurance Managed
+    Service Providers Manufacturing Retail Airlines All Industries My role is IT Operations
+    Incident Management IT Service Management Site Reliability Engineering Pricing
+    Customers Resources Derisking IT Change Management with Agentic AI Discover how
+    agentic AI transforms the IT change management process to predict high-risk changes,
+    prevent incidents, and protect engineering time. Read the White Paper Resource
+    Type AIOps Blog Case Studies E-books Webinars & Events All Resources Resource
+    Topic Agentic ITOps AIOps Alert Intelligence Analytics Automation Incident Management
+    Incident Prevention Integration ITOps Monitoring Customer Resources Customer Support
+    Professional Services BigPanda Education Company Careers We’re looking for talented,
+    passionate, creative, and fun people to join our embarrassment of Pandas. (Yes,
+    that’s really what a group of pandas is called!) Learn More About Us Our Story
+    Leadership Investors Partners Values and Culture Careers Media and Recognition
+    Awards Analysts Reports Newsroom Get a demo Con
+  retrieved_at: '2026-08-12T21:00:55.661668+00:00'
+  url: https://www.bigpanda.io/company/
+- content_hash: 09e959f239942a367999bcbf1f8343b79d2a993615867b04576b49ba7ee95647
+  evidence_id: ev-09e959f239942a36
+  excerpt: 'BigPanda | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now BigPanda Software Development Redwood City, California
+    53,705 followers Automate L1 operations. Augment incident response teams. Stop
+    IT incidents before they happen. See jobs Follow Discover all 332 employees Report
+    this company About us BigPanda keeps the digital world running with Agentic AI,
+    artificial intelligence that enables autonomous systems to make decisions and
+    perform tasks without constant human intervention. Beyond other AIOps solutions,
+    the BigPanda platform responds to and prevents IT incidents at machine speed,
+    improving operational efficiency and delivering exceptional service reliability.
+    Website http://bigpanda.io External link for BigPanda Industry Software Development
+    Company size 201-500 employees Headquarters Redwood City, California Type Privately
+    Held Founded 2012 Specialties IT Operations, IT Alert Management, DevOps, Data
+    Science, ITOM, IT Incident Management, AIOps, Machine Learning, ITOA, IT Event
+    Management, Service Operations, IT Monitoring, IT Automation, and ITOps Products
+    BigPanda BigPanda AIOps Platforms BigPanda keeps the digital world running by
+    transforming reactive, manual IT processes into proactive, intelligent automation.
+    The agentic IT operations platform uses AI to detect, respond to, and prevent
+    IT incidents at machine speed, improving operational efficiency and delivering
+    exceptional service reliability. AI Detection and Response: Automate L1 operations
+    and stop incidents before they escalate. Utilize real-time signals and intelligent
+    automation to minimize downtime, eliminate noise, and resolve incidents more efficiently
+    with AI that adapts to your specific environment. AI Incident Assistant: Give
+    incident escalation teams an always-on AI partner to improve collaboration, accelerate
+    investigation, and automate resolution. AI Incident Prevention: Automated change
+    analysis enables proactive and scalable change govern'
+  retrieved_at: '2026-08-12T21:00:56.445305+00:00'
+  url: https://www.linkedin.com/company/bigpanda
+- content_hash: 73b6e24a7ac9c3a5cc85eae81b5d52db1e7d0e5b4d8863ad3066f0a204c975c1
+  evidence_id: ev-73b6e24a7ac9c3a5
+  excerpt: 'AIOps startup BigPanda raises Series E extension, bringing its total capital
+    to $340M TechCrunch Desktop Logo TechCrunch Mobile Logo Latest Startups Venture
+    Apple Security AI Apps Disrupt 2026 Events Podcasts Newsletters Search Submit
+    Site Search Toggle Mega Menu Toggle Topics Latest AI Amazon Apps Biotech & Health
+    Climate Cloud Computing Commerce Crypto Enterprise EVs Fintech Fundraising Gadgets
+    Gaming Google Government & Policy Hardware Instagram Layoffs Media & Entertainment
+    Meta Microsoft Privacy Robotics Security Social Space Startups TikTok Transportation
+    Venture More from TechCrunch Staff Events Startup Battlefield StrictlyVC Newsletters
+    Podcasts Videos Partner Content TechCrunch Brand Studio Contact Us Image Credits:
+    Ralwel / Getty Images AIOps startup BigPanda raises Series E extension, bringing
+    its total capital to $340M Kyle Wiggers 4:00 AM PDT · August 17, 2022 BigPanda
+    , a startup developing AI to audit changes in IT environments and recommend how
+    to fix them, has raised $20 million in an extension of its Series E round. UBS
+    Next and Wells Fargo Strategic Capital contributed to the tranche, bringing BigPanda’s
+    total raised to $340 million. The company’s valuation remains unchanged at $1.2
+    billion. As my colleague Christine Hall recently reported, BigPanda works to prevent
+    corporate network outages by analyzing data from observability and monitoring
+    services. The platform can automate aspects of incident response, like ticketing,
+    and optionally connect to third-party runbook automation tools to run automated
+    workflows. BigPanda also provides analytics to track incident trends and metrics
+    and to enable teams to measure progress toward company goals. BigPanda was founded
+    in 2012 by Assaf Resnick and Elik Eizenberg. Resnick was an analyst at Moody’s
+    before becoming a principal at Sequoia Capital and a member at Jibe Ventures.
+    Eizenberg, formerly head of IT operations at IDF, worked on algorithms and software
+    at stock-trading startup MarketWindows prior to j'
+  retrieved_at: '2026-08-12T21:00:56.976508+00:00'
+  url: https://techcrunch.com/2022/08/17/aiops-startup-bigpanda-raises-series-e-extension-bringing-its-total-capital-to-340m/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

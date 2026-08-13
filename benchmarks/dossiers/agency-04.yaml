@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-3a4ce03361669816
+  - ev-790941333f79b154
+  - ev-66a389d11bd16953
+  field: identity
+  value: Walker Sands
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3a4ce03361669816
+  - ev-790941333f79b154
+  - ev-66a389d11bd16953
+  field: description
+  value: 'Walker Sands | B2B Integrated Marketing and PR Agency Skip to content Approach
+    Outcome-based Marketing OBM is your B2B secret sauce — a marketing philosophy
+    and approach that leads with your desired business outcome. Explore Outcomes by
+    Category: Position Growth Reputation Engagement Work Explore Our Case Studies:
+    By Outcome By Capability By Industry Capabilities Strategy Research + Insights
+    Qualitative + quantitative data analysis Audience Personas + Messaging Identify
+    and understand your audie'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3a4ce03361669816
+  - ev-790941333f79b154
+  - ev-66a389d11bd16953
+  field: offers
+  value: marketing services
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3a4ce03361669816
+  - ev-790941333f79b154
+  - ev-66a389d11bd16953
+  field: icp
+  value: marketing teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3a4ce03361669816
+  - ev-790941333f79b154
+  - ev-66a389d11bd16953
+  field: personas
+  value: marketing teams
+  visibility: message_safe
+company_id: agency-04
+corrections: []
+evidence:
+- content_hash: 3a4ce033616698164610ee32d4a133643abf90a3a27ec443171d2aeac5a89fc8
+  evidence_id: ev-3a4ce03361669816
+  excerpt: 'Walker Sands | B2B Integrated Marketing and PR Agency Skip to content
+    Approach Outcome-based Marketing OBM is your B2B secret sauce — a marketing philosophy
+    and approach that leads with your desired business outcome. Explore Outcomes by
+    Category: Position Growth Reputation Engagement Work Explore Our Case Studies:
+    By Outcome By Capability By Industry Capabilities Strategy Research + Insights
+    Qualitative + quantitative data analysis Audience Personas + Messaging Identify
+    and understand your audience Go-To-Market Strategy Identify goals, key messages
+    and channel activation Brand Strategy Strategic foundation to drive differentiation
+    Strategic Communications Public Relations Relationship-driven earned media services
+    Social Media Influencer, executive and brand social media Creative Graphic Design
+    + Illustration Digestible static design Campaigns Strategic omnichannel campaigns
+    Video + Animation Motion-driven storytelling Copywriting Engaging and conversational
+    B2B copy Creative Brand Identity Ownable visual and verbal brand identity Content
+    Content Strategy Actionable B2B content planning Original Research Data-driven
+    market insights Editorial Content Diversified thought leadership Sales Enablement
+    Full-funnel sales collateral Digital Marketing Paid Digital Media Full-funnel
+    digital media services Marketing Automation + Email Connected nurture, sales sequences
+    and campaign operations SEO Optimized website visibility in search GEO Optimized
+    brand visibility in GenAI Revenue Operations RevOps Performance Optimization Revenue
+    lifecycle management and GTM engineering CRM Implementation + Integration Revenue-ready
+    systems operations Clay-powered GTM Orchestration Predictable pipeline growth
+    Industries Technology Build your credibility as a leader in tech by leveraging
+    our deep expertise across subindustries. More Technology Expertise: Artificial
+    Intelligence Cloud + IT Services Cybersecurity Fintech + Financial Services HR
+    Tech Martech Retail + E-commerce Healthcare Tell th'
+  retrieved_at: '2026-08-12T21:57:54.946171+00:00'
+  url: https://www.walkersands.com/
+- content_hash: 790941333f79b1541e928cbc3fd56b028540de9cd4ffefe1bb3b2da1f5629a1a
+  evidence_id: ev-790941333f79b154
+  excerpt: Walker Sands | LinkedIn Skip to main content LinkedIn Top Content People
+    Learning Jobs Games Sign in Join now Walker Sands Marketing Services Chicago,
+    Illinois 23,290 followers See jobs Follow Discover all 232 employees Report this
+    company About us Walker Sands is an integrated B2B growth services agency with
+    expertise in strategy, data, content, creative, strategic communications, digital
+    marketing and RevOps. The agency’s Outcome-based Marketing approach helps B2B
+    brands grow, build reputation, generate demand, drive engagement and strengthen
+    market position. A 10-time Inc. 5000 honoree, Walker Sands is one of the fastest-growing
+    B2B agencies in the world, proudly serving 100+ clients from offices in Chicago,
+    Seattle and Boston. Website http://www.walkersands.com External link for Walker
+    Sands Industry Marketing Services Company size 201-500 employees Headquarters
+    Chicago, Illinois Type Privately Held Specialties Public Relations, SEO, SEM,
+    Design, Marketing, Social Media, Web Design, Content, Demand Generation, Creative,
+    Marketing Strategy, Branding, Account-Based Marketing, Marketing Automation, Motion
+    Design, Conversion Rate Optimization, Media Relations, Data-Driven PR, Product
+    Launches, Marketing Research, Media Planning, Sales Enablement, Campaigns, Copywriting,
+    Video + Animation, Graphic Design + Illustration, Martech Stack + Integration,
+    Paid Digital Media, Crisis Communications, Executive Profiling, Launches + Events,
+    Media Training, Thought Leadership, Influencer Marketing, and RevOps Locations
+    Primary 55 W Monroe St Suite 3925 Chicago, Illinois 60603, US Get directions 2101
+    4th Avenue Suite 2250 Seattle, Washington 98121, US Get directions 560 Harrison
+    Avenue Suite 408 Boston, Massachusetts 02118, US Get directions Employees at Walker
+    Sands John Fairley Ken Gaebler Tim Lindstedt Daniela Prado See all employees Updates
+    Walker Sands 23,290 followers 5h Report this post Roughly 45% of total U.S. influencer
+    marketing spending will go toward those with a fol
+  retrieved_at: '2026-08-12T21:57:55.779412+00:00'
+  url: https://www.linkedin.com/company/walker-sands
+- content_hash: 66a389d11bd169535468bca1cf7e3eef2d1e1152a4f06a6c540fd22746439f97
+  evidence_id: ev-66a389d11bd16953
+  excerpt: Oct 22, 2020 Sep 1, 2020 May 7, 2020 Mar 17, 2019 Mar 22, 2016 Mar 21,
+    2016 May 20, 2014 May 19, 2014 Nov 13, 2019 Aug 12, 2026 Jul. 13, 2026 Walker
+    Sands Reviews (9), Pricing, Services & Verified Ratings Search Leave a Review
+    For Providers 0 0 Sign In Join Development IT Services Marketing Design Business
+    Services Pricing & Packages Resources Post a Project You’re signed out Sign in
+    to get introduced to companies, access recommendations, and request quotes. Sign
+    in Walker Sands 9 reviews 1 connection Join their Network Visit Website Contact
+    Get a custom proposal Ask a question Visit Website Contact Get a custom proposal
+    Ask a question Contact Walker Sands Get a custom proposal Ask a question Highlights
+    Reviews Portfolio Location Contact Connections Highlights Reviews Portfolio Location
+    Contact Connections Visit Website Contact Get a custom proposal Ask a question
+    Digital B2B strategies that drive outcomes Walker Sands is an outcome-based B2B
+    marketing agency with capabilities spanning insights, strategy, branding, creative
+    and media, including public relations, demand generation and social. The firm’s
+    outcome-based approach delivers on business objectives related to position, growth,
+    reputation and engagement for 100+ clients around the world. A 10-time Inc. 5000
+    honoree, Walker Sands is one of the fastest-growing B2B marketing agencies in
+    the world, with offices in Chicago, Seattle and Boston. Learn more at walkersands.com.
+    Read more Min project size Undisclosed Hourly rate Undisclosed Employees 50 -
+    249 Locations Chicago, IL +1 Year founded Founded 2001 2 Locations Chicago , IL
+    Boston , MA Service Lines & Focus Service Lines Focus Industries Clients Services
+    Focus Industries Clients Service Lines Search Engine Optimization 25% Public Relations
+    20% Pay Per Click 15% Content Marketing 10% Digital Strategy 10% Graphic Design
+    10% Web Design 10% Select Focus Area CMS Focus CMS Focus Frameworks and CMS CMS
+    Focus WordPress CMS 100% Frameworks and CMS Other frameworks an
+  retrieved_at: '2026-08-12T21:57:56.707036+00:00'
+  url: https://clutch.co/profile/walker-sands-0
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

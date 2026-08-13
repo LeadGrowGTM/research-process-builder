@@ -25,6 +25,7 @@ class AdapterResponse:
     source: SourceRecord
     actual_cost_usd: str = '0'
     dry_angles: tuple[str, ...] = ()
+    resolved_material_angles: tuple[tuple[str, str, str], ...] = ()
     unavailable_source_types: tuple[str, ...] = ()
     resolved_model: str | None = None
 
@@ -33,6 +34,14 @@ class AdapterResponse:
             raise ValueError('adapter response requires a SourceRecord')
         Decimal(self.actual_cost_usd)
         object.__setattr__(self, 'dry_angles', tuple(self.dry_angles))
+        resolutions = tuple(tuple(item) for item in self.resolved_material_angles)
+        if any(
+            len(item) != 3 or any(not isinstance(value, str) or not value.strip()
+                                  for value in item)
+            for item in resolutions
+        ):
+            raise ValueError('resolved material angles require query, field, and URL')
+        object.__setattr__(self, 'resolved_material_angles', resolutions)
         object.__setattr__(
             self, 'unavailable_source_types', tuple(self.unavailable_source_types),
         )
@@ -104,7 +113,7 @@ class EnrichmentRunner:
         self._scope_id = scope_id
         self._executor = executor
         self._record_step = record_step or (lambda _step: None)
-        self._response_metadata: dict[tuple[str, str], AdapterResponse] = {}
+        self._response_metadata: dict[tuple[str, str, str, str], AdapterResponse] = {}
 
     def run(self, request: EnrichmentRequest) -> EnrichmentResult:
         requested_model = request.inputs.get('requested_model')
@@ -168,10 +177,21 @@ class EnrichmentRunner:
                 )
                 cache_hits += int(cache_hit)
                 evidence.append(reference)
-                key = (source_url, provider_id)
+                key = (
+                    request.company_id, request.enrichment_id,
+                    source_url, provider_id,
+                )
                 if response_box:
                     self._response_metadata[key] = response_box[0]
                 metadata = self._response_metadata.get(key)
+                if metadata is None and cache_hit and callable(
+                    getattr(adapter, 'cached_metadata', None)
+                ):
+                    metadata = adapter.cached_metadata()
+                if metadata is None and cache_hit and callable(
+                    getattr(adapter, 'research_metadata', None)
+                ):
+                    metadata = adapter.research_metadata(request)
                 source = self._evidence_store.get(reference.content_hash)
                 tracker.observe(SearchAngleResult(
                     True, source_id=reference.evidence_id,
@@ -219,6 +239,23 @@ class EnrichmentRunner:
                 tracker.observe(SearchAngleResult(
                     True, field_citations=((field, f'unknown:{field}'),),
                 ))
+            resolved_material_angles = (
+                metadata.resolved_material_angles
+                if 'metadata' in locals() and metadata else ()
+            )
+            evidence_by_url = {item.url: item.evidence_id for item in evidence}
+            for angle, field, source_url in resolved_material_angles:
+                evidence_id = evidence_by_url.get(source_url)
+                if evidence_id is None or not any(
+                    assertion.field == field
+                    and evidence_id in assertion.evidence_ids
+                    for assertion in execution.assertions
+                ):
+                    raise ValueError(
+                        'material search resolution requires a matching '
+                        'retained cited assertion'
+                    )
+                tracker.observe(SearchAngleResult(False, angle_id=angle))
             dry_angles = (
                 metadata.dry_angles if 'metadata' in locals() and metadata
                 else tuple(prior.get('output', {}).get('dry_angles', ())) if prior
@@ -251,6 +288,9 @@ class EnrichmentRunner:
                     'discovery': discovery_output,
                     'route': route_output,
                     'dry_angles': dry_angles,
+                    'resolved_material_angles': tuple(
+                        item[0] for item in resolved_material_angles
+                    ),
                     'unavailable_source_types': unavailable_source_types,
                     'requested_model': requested_model,
                     'resolved_model': resolved_model,

@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-d12583f9233457d4
+  - ev-61f36a3e1caf6bb9
+  - ev-36e7a3c6935a00cd
+  field: identity
+  value: Apollo Mission Critical Engineering
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-d12583f9233457d4
+  - ev-61f36a3e1caf6bb9
+  - ev-36e7a3c6935a00cd
+  field: description
+  value: 'Our Services | Apollo MCE Our Company Our Services Our Operations Careers
+    Contact Us Our Company Our Services Our Operations Careers Contact Us Contact
+    Us Apollo’s Mission From design to operations, we relentlessly help clients launch
+    and operate their mission-critical infrastructure across:  Data Centers  Power
+    Plants & Utility Substations  Industrial Manufacturing  Fulfillment Centers
+    & Warehouses  Pharmaceutical Facilities  Oil & Gas Refineries Experience Apollo…Relentless
+    Client Obsess'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-d12583f9233457d4
+  - ev-61f36a3e1caf6bb9
+  - ev-36e7a3c6935a00cd
+  field: offers
+  value: engineering services
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-d12583f9233457d4
+  - ev-61f36a3e1caf6bb9
+  - ev-36e7a3c6935a00cd
+  field: icp
+  value: facilities
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-d12583f9233457d4
+  - ev-61f36a3e1caf6bb9
+  - ev-36e7a3c6935a00cd
+  field: personas
+  value: facilities
+  visibility: message_safe
+company_id: local-07
+corrections: []
+evidence:
+- content_hash: d12583f9233457d4300afa36ef6e0e2fdfd05c83e23895e957be414c3f30a0cf
+  evidence_id: ev-d12583f9233457d4
+  excerpt: 'Our Services | Apollo MCE Our Company Our Services Our Operations Careers
+    Contact Us Our Company Our Services Our Operations Careers Contact Us Contact
+    Us Apollo’s Mission From design to operations, we relentlessly help clients launch
+    and operate their mission-critical infrastructure across:  Data Centers  Power
+    Plants & Utility Substations  Industrial Manufacturing  Fulfillment Centers
+    & Warehouses  Pharmaceutical Facilities  Oil & Gas Refineries Experience Apollo…Relentless
+    Client Obsessions, Extraordinary Results No matter your need, we can help Every
+    day, we bring together the best people to deliver Apollo’s full potential. Our
+    primary focus is serving clients by leveraging our resources, expertise, relationships,
+    and competitive strengths to tackle complex challenges and achieve exceptional
+    results for our clients. ApolloCx – Supporting Reliable Operations Commissioning
+    Commissioning is about quality: verifying and documenting that your project has
+    been completed to meet your requirements and standards—that you can count on what
+    you’ve built 99.99999% of the time. At Apollo, we ground our process in partnership.
+    We work with everyone on the project to ensure we collectively deliver the most
+    reliable and efficient mission-critical infrastructure to our clients so they
+    can launch with confidence. ApolloQA/QC – Safeguarding Budget and Timeline Supply
+    Chain Management & Construction QA/QC In mission-critical construction projects,
+    the complexity of equipment often leads to roadblocks originating in the supply
+    chain. ApolloQA/QC embeds quality control early in the process to ensure that
+    the correct electrical and mechanical equipment meets all required specifications
+    and is received, inspected and installed correctly prior to commissioning. By
+    integrating equipment inspection and quality assurance into the supply chain and
+    early in the construction phase, we proactively prevent potential downstream commissioning
+    issues when corrections are costlier and more ti'
+  retrieved_at: '2026-08-12T22:41:02.711977+00:00'
+  url: https://apollomce.com/our-services/
+- content_hash: 61f36a3e1caf6bb9c3c70a54da83a90b2536cccabf4fa2b41b7f8110ceba579f
+  evidence_id: ev-61f36a3e1caf6bb9
+  excerpt: 'Apollo Mission Critical Engineering | LinkedIn Skip to main content LinkedIn
+    Top Content People Learning Jobs Games Sign in Join now Apollo Mission Critical
+    Engineering Construction Atlanta, GA 1,546 followers A Mission Critical Infrastructure
+    Engineering, Construction, Commissioning & Operations Support Services Company.
+    See jobs Follow Discover all 96 employees Report this company About us At Apollo,
+    we help our clients commission mission-critical assets that power tomorrow’s economy.
+    We are disciplined professionals with a focused will to make commissioning enjoyable
+    while delivering competitively priced, high-quality results and testing services
+    for our clients, safely and on time. The Apollo Difference We started with a clear
+    aspiration: to build a company that is client-obsessed, people-powered, and purpose-driven.
+    From the beginning, we have focused on earning and maintaining trust, one client
+    at a time. This has required hiring the best people, investing in their training
+    and treating them well. It has taken unwavering focus on developing our people,
+    understanding each client’s unique needs, and a relentless commitment to delivering
+    results that exceed expectations. At our core, we are dedicated to delivering
+    extraordinary results through quality people, systems, and processes. Website
+    www.apollomce.com External link for Apollo Mission Critical Engineering Industry
+    Construction Company size 51-200 employees Headquarters Atlanta, GA Type Privately
+    Held Founded 2020 Specialties Commissioning, Emergency Response, Owner''s Representative,
+    Operations Support, Advisory, and Supply Chain Management Locations Primary Atlanta,
+    GA, US Get directions Employees at Apollo Mission Critical Engineering Edwardo
+    Sackey Carlo Andrade Pierre Sackey Trishia Firth See all employees Affiliated
+    pages ApolloCares Non-profit Organizations Similar pages MagellanCx Construction
+    EEI Engineering Services Lakewood, Colorado Osceola County School District Primary
+    and Secondary Education Ki'
+  retrieved_at: '2026-08-12T22:41:03.286625+00:00'
+  url: https://www.linkedin.com/company/apollomce
+- content_hash: 36e7a3c6935a00cd419f2a04944334834fcb2612e49fc399096b2d5a80c372de
+  evidence_id: ev-36e7a3c6935a00cd
+  excerpt: 'Between: 2/8/2026 and 2/15/2026 Sorted by Doing Business As NEW BUSINESS
+    LISTING BY ISSUE DATE License # D.B.A / Business Name Mailing Address Issue Date
+    / SIC Description SIC No. NAICS No. Status Parcel # Block Lot OCC043151 1115 INNOVATIVE
+    STUDIOS LLC 1115 INNOVATIVE STUDIOS LLC KHADEEJAH JOHNSON D/B/A 1115 INNOVATIVE
+    STUDIOS LLC ATTN: KHADEEJAH JOHNSON 1115 INNOVATIVE STUDIOS LLC 1000 MONTAGE WAY,
+    1208 ATLANTA, GA 30341 02/10/2026 HAIR BRAIDING 723106 541411 Active 16050700220
+    16 0507 OCC043160 4 HORSEMEN INVESTIGATIONS & CONSULTING 4 HORSEMEN INVESTIGATIONS
+    & SECURITY LLC MARK HADAWAY D/B/A 4 HORSEMEN INVESTIGATIONS & CONSULTING ATTN:
+    MARK HADAWAY 4 HORSEMEN INVESTIGATIONS & SECURITY LLC 1672 TAPPAHANNOCK TRL MARIETTA,
+    GA 30062 02/10/2026 SECURITY GUARD AND PROTECTIVE SERVICE 738103 561612 Active
+    17092202450 17 0922 OCC043145 5008 IVEY LN BLDG OWNER MACHO INC ANNA MACKEY D/B/A
+    5008 IVEY LN BLDG OWNER ATTN: ANNA MACKEY MACHO INC 3153 SHANTY CT NW KENNESAW,
+    GA 30144 02/09/2026 OFFICE SPACE RENTAL 651304 531211 Active 20011000020 20 0110
+    ALC003608 ANCHOR BAR AK WINGS IN KENNESAW LLC SAMBAIAH LAVU D/B/A ANCHOR BAR ATTN:
+    SAMBAIAH LAVU AK WINGS IN KENNESAW LLC 2708 TOWN CENTER DR NW KENNESAW, GA 30144
+    02/11/2026 RESTAURANT 581202 722110 Active 16058000130 16 0580 OCC043177 APOLLO
+    MISSION CRITICAL ENGINEERING LLC APOLLO MISSION CRITICAL ENGINEERING LLC PIERRE
+    SACKEY D/B/A APOLLO MISSION CRITICAL ENGINEERING LLC APOLLO MISSION CRITICAL ENGINEERING
+    LLC 3350 RIVERWOOD PKWY, STE 1900 ATLANTA, GA 30339 02/12/2026 ENGINEERING SERVICES
+    - NOT A CERTIFIED ENGINEER 871103 541332 Active 17097800340 17 0978 Print Date:
+    2/14/2026 Page 1 BL_New_Business_Listing_090818 Between: 2/8/2026 and 2/15/2026
+    Sorted by Doing Business As NEW BUSINESS LISTING BY ISSUE DATE License # D.B.A
+    / Business Name Mailing Address Issue Date / SIC Description SIC No. NAICS No.
+    Status Parcel # Block Lot OCC043137 AUTOMAGIC PAINT & BODY LLC AUTOMAGIC PAINT
+    & BODY LLC COREY BANKS D/B/A AUTOMAGIC PAINT & BODY'
+  retrieved_at: '2026-08-12T22:41:04.229609+00:00'
+  url: https://comdev.cobbcountyga.gov/new-business/download/bl-2026-02-13.pdf
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

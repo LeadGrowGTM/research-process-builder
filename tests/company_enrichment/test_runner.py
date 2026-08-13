@@ -123,6 +123,109 @@ def test_runner_uses_exact_order_and_records_append_only_outcome(tmp_path: Path)
     assert events_json[0]['output']['resolved_model'] == 'openai/gpt-5-mini'
 
 
+def test_material_resolution_requires_matching_retained_cited_assertion(
+    tmp_path: Path,
+) -> None:
+    class MaterialAdapter(FakeAdapter):
+        def collect(self, request, url):
+            return AdapterResponse(
+                SourceRecord(
+                    url, NOW, 'first_party', 'homepage-scrape',
+                    'Acme publishes pricing.', 'Acme pricing', 30, '0',
+                ),
+                dry_angles=('technology query',),
+                resolved_material_angles=(('pricing query', 'pricing', url),),
+                unavailable_source_types=('independent',),
+            )
+
+    def execute(field):
+        def executor(_enrichment_id, evidence, **_kwargs):
+            other = 'technology' if field == 'pricing' else 'pricing'
+            return ExecutionOutput((FieldAssertion(
+                field, 'supported value', (evidence[0].evidence_id,),
+                0.9, Visibility.MESSAGE_SAFE,
+            ),), (other,))
+        return executor
+
+    def build(path, field):
+        events = []
+        return EnrichmentRunner(
+            definitions={'analogy-value-translator': _definition(
+                id='analogy-value-translator',
+            )},
+            discovery=FakeDiscovery(events), router=FakeRouter(events),
+            evidence_store=EvidenceStore(path / 'evidence'),
+            budget_ledger=BudgetLedger(
+                path / 'budget.jsonl', {'corpus-build': '2'},
+            ),
+            adapters={'homepage-scrape': MaterialAdapter(events)},
+            outcome_journal=path / 'outcomes.jsonl', as_of=NOW,
+            executor=execute(field),
+        )
+
+    request = EnrichmentRequest(
+        'analogy-value-translator', 'acme', '1.0',
+        {'company_name': 'Acme', 'domain': 'acme.example',
+         'seller_context': _context()},
+    )
+    complete = build(tmp_path / 'matched', 'pricing').run(request)
+    assert complete.status is ResultStatus.COMPLETE
+    assert complete.output['resolved_material_angles'] == ('pricing query',)
+
+    mismatched = build(tmp_path / 'mismatched', 'technology').run(request)
+    assert mismatched.status is ResultStatus.FAILED
+    assert 'matching retained cited assertion' in mismatched.output['error']
+
+
+def test_collected_metadata_is_scoped_to_company_and_enrichment_on_cache_hit(
+    tmp_path: Path,
+) -> None:
+    events = []
+    class ScopedAdapter(FakeAdapter):
+        def collect(self, request, url):
+            self.calls += 1
+            return AdapterResponse(
+                SourceRecord(
+                    url, NOW, 'first_party', 'homepage-scrape',
+                    'Acme publishes workflow software for businesses.',
+                    'Acme workflow software', 30, '0',
+                ),
+                dry_angles=('description-a', 'description-b'),
+                unavailable_source_types=('independent',),
+            )
+        def research_metadata(self, request):
+            return AdapterResponse(
+                SourceRecord(
+                    'https://acme.example', NOW, 'first_party',
+                    'homepage-scrape', 'metadata', 'metadata', 30, '0',
+                ),
+                dry_angles=('pricing-a', 'pricing-b'),
+                unavailable_source_types=('independent',),
+            )
+    adapter = ScopedAdapter(events)
+    definitions = {
+        enrichment_id: _definition(id=enrichment_id)
+        for enrichment_id in ('company-description', 'analogy-value-translator')
+    }
+    runner = EnrichmentRunner(
+        definitions=definitions, discovery=FakeDiscovery(events),
+        router=FakeRouter(events),
+        evidence_store=EvidenceStore(tmp_path / 'evidence'),
+        budget_ledger=BudgetLedger(tmp_path / 'budget.jsonl', {'corpus-build': '2'}),
+        adapters={'homepage-scrape': adapter},
+        outcome_journal=tmp_path / 'outcomes.jsonl', as_of=NOW,
+    )
+    assert runner.run(_request()).status is ResultStatus.COMPLETE
+    second = runner.run(EnrichmentRequest(
+        'analogy-value-translator', 'saas-01', '1.0',
+        {'company_name': 'Acme', 'domain': 'acme.example',
+         'seller_context': _context()},
+    ))
+    assert second.status is ResultStatus.COMPLETE
+    assert second.output['dry_angles'] == ('pricing-a', 'pricing-b')
+    assert adapter.calls == 1
+
+
 def test_runner_uses_adapter_owned_source_url_for_cache_identity(tmp_path: Path) -> None:
     events = []
     adapter = FakeAdapter(events)

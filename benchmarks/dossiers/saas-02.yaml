@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-a955bcab27663ac9
+  - ev-e4360a941a821eeb
+  - ev-a5a50f0d0b7f2637
+  field: identity
+  value: AgilePoint
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-a955bcab27663ac9
+  - ev-e4360a941a821eeb
+  - ev-a5a50f0d0b7f2637
+  field: description
+  value: Our Story Platform Vendor-Neutral Composable Architecture Real-Time Agentic
+    Governance Composable AppGen AI Control Tower Business-Enabled Agentic AI Sovereign
+    Enterprise AI Dynamic Process Layer Dynamic Process Patterns Tour AI-Powered Showcase​
+    Legal Agreement Reconciliation​ AI-Powered Email Triage​ AI-Powered Case Studies​
+    Warranty Claim Fraud Detection​ AI Lead Triage & Sales Enablement​ Agentic Maturity
+    Model​ Task-Centric Agentic AI​ Process-Centric Agentic AI​ Multi-Agent Real-Time
+    Agent
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-a955bcab27663ac9
+  - ev-e4360a941a821eeb
+  - ev-a5a50f0d0b7f2637
+  field: offers
+  value: business process automation
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-a955bcab27663ac9
+  - ev-e4360a941a821eeb
+  - ev-a5a50f0d0b7f2637
+  field: icp
+  value: enterprises
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-a955bcab27663ac9
+  - ev-e4360a941a821eeb
+  - ev-a5a50f0d0b7f2637
+  field: personas
+  value: enterprises
+  visibility: message_safe
+company_id: saas-02
+corrections: []
+evidence:
+- content_hash: a955bcab27663ac913982da24a234b95e727eacc2d7647744e95086225a35cd9
+  evidence_id: ev-a955bcab27663ac9
+  excerpt: 'Our Story Platform Vendor-Neutral Composable Architecture Real-Time Agentic
+    Governance Composable AppGen AI Control Tower Business-Enabled Agentic AI Sovereign
+    Enterprise AI Dynamic Process Layer Dynamic Process Patterns Tour AI-Powered Showcase​
+    Legal Agreement Reconciliation​ AI-Powered Email Triage​ AI-Powered Case Studies​
+    Warranty Claim Fraud Detection​ AI Lead Triage & Sales Enablement​ Agentic Maturity
+    Model​ Task-Centric Agentic AI​ Process-Centric Agentic AI​ Multi-Agent Real-Time
+    Agentic AI​ Multi-Vendor Agentic AI Mesh​ Composable App Creation and GenAI AppGen​
+    QuickStart Guide Videos ​ GenAI AppGen Solution By INDUSTRY Manufacturing Banking
+    Healthcare Government Energy & Utilities By buyer role For executives CIO, CDO,
+    COO perspectives For EA & developers Architecture teams & technical buyers Agentic
+    Maturity Model Pricing Our Story Resources Webinars & Events Live Training Schedule
+    Documentation AgilePoint Partners Customers & Case Studies Whitepapers & Brochures
+    Company About Us Why Partner with AgilePoint Trust center Contact us Request Demo
+    Start Free Trial → 22 YEARS Against the norm · since 2003 We didn''t set out to
+    build workflow. We set out to anticipate AI. When we started AgilePoint in 2003,
+    we made an unfashionable bet: that the world would eventually need an execution
+    architecture that could change in real time, driven by intelligence. Twenty-two
+    years later , the rest of the market is calling that bet "agentic AI." We''ve
+    been calling it composable architecture since day one. See the Journey → 2003
+    + Founded · zero VC funding raised 2007 Gartner BPM Cool Vendor validation 120
+    + Enterprise systems harmonized 1200 + Pre-built composable activities shipped
+    01 — The bet A workflow company that never wanted to be one. In 2003, our founders
+    made a choice that didn''t make business sense at the time. At UMass Amherst,
+    with a PhD path and offers from Intel, HP, and Sun on the table, the founder picked
+    something stranger: design a systems execution arc'
+  retrieved_at: '2026-08-12T21:00:48.382215+00:00'
+  url: https://www.agilepoint.com/our-story
+- content_hash: e4360a941a821eebf65e97103040dee38bf09c6722ce3a407b5f449fc84c4910
+  evidence_id: ev-e4360a941a821eeb
+  excerpt: AgilePoint | LinkedIn Skip to main content LinkedIn Top Content People
+    Learning Jobs Games Sign in Join now AgilePoint Software Development Mountain
+    View, California 5,176 followers Operationalize, Democratize, and Govern Enterprise
+    Agentic AI Orchestration with AgilePoint. Follow View all 180 employees Report
+    this company About us Founded in 2003 and headquartered in Mountain View, California,
+    AgilePoint enables Fortune 5000 companies and governments worldwide to operationalize,
+    democratize, and govern enterprise Agentic AI at run time with resilience and
+    integrity. Renowned for its Agentic AI Capability Maturity Model, AgilePoint has
+    defined the future-path architecture for AI-enabled organizations moving forward.
+    At the heart of AgilePoint’s platform is its platform-agnostic, composable architecture—a
+    centralized, exception-resistant hub built by reusing and harmonizing existing
+    tech stacks for Agentic AI. By leveraging exception resistance, AgilePoint captures
+    embedded decision intelligence to train its AI Control Tower Agentic Framework,
+    empowering organizations to operationalize AI with democratization and governance.
+    The AgilePoint AI Control Tower also serves as a universal governance container
+    for AI agents created with third-party frameworks such as LangChain, CrewAI, n8n,
+    Autogen, and more, enabling seamless support for multi-vendor and multi-agent
+    applications. Integrating over 1,200 business activities with 120+ systems, AgilePoint
+    delivers resilient, exception-resistant operations and dynamic adaptability unmatched
+    by conventional automation tools. Operationalize, Democratize, and Govern Enterprise
+    Agentic AI Orchestration with AgilePoint. Website https://agilepoint.com External
+    link for AgilePoint Industry Software Development Company size 51-200 employees
+    Headquarters Mountain View, California Type Privately Held Founded 2003 Specialties
+    BPMS, Workflow, Business Process Management, SharePoint, Low-Code, Forms, eForm,
+    Office 365, Digital Process Autom
+  retrieved_at: '2026-08-12T21:00:49.112683+00:00'
+  url: https://www.linkedin.com/company/agilepoint
+- content_hash: a5a50f0d0b7f2637a3b796fa0f9516af1dc70e45d9d65d67eb31cd1dd937eaec
+  evidence_id: ev-a5a50f0d0b7f2637
+  excerpt: 'AgilePoint Partnerships · Partnerbase My Lists Browse Partner Tech Stack
+    About Log In Sign Up My Lists Browse Partner Tech Stack About Log In Sign Up Home
+    / AgilePoint AgilePoint 129 Partners agilepoint.com Flag incorrect data Need to
+    track AgilePoint or find similar companies at scale? Use Trace for saved lists,
+    company monitoring, and richer firmographic and technographic filters. Join Trace
+    for Free Partner List Company Type Employees Industry Details Google Technology
+    51–200 Software & Tech Details Source Link MySQL AB Technology 201–500 Software
+    & Tech Details Source Link Microsoft Technology 10,001+ Software & Tech Details
+    Source Link Amazon Web Services Technology 5001–10000 Software & Tech Details
+    Source Link Salesforce Technology 10,001+ Software & Tech Details Source Link
+    Oracle Technology 5001–10000 Software & Tech Details Source Link HubSpot Technology
+    5001–10000 Software & Tech Details Source Link Atlassian Technology 10,001+ Software
+    & Tech Details Source Link Adobe Technology 10,001+ Software & Tech Details Source
+    Link Slack Technology 1001–5000 Software & Tech Details Source Link LinkedIn Technology
+    10,001+ Software & Tech Details Source Link SAP Technology 10,001+ Software &
+    Tech Details Source Link Snowflake Technology 5001–10000 Software & Tech Details
+    Source Link Mailchimp Technology 10,001+ Software & Tech Details Source Link Okta
+    Technology 5001–10000 Software & Tech Details Source Link Zendesk Technology 2–10
+    Software & Tech Details Source Link ServiceNow Technology 1001–5000 Software &
+    Tech Details Source Link Twitter Technology 5001–10000 Software & Tech Details
+    Source Link PayPal Technology 501–1000 Financial Services Details Source Link
+    Zoho Technology 10,001+ Software & Tech Details Source Link Zoom Technology 5001–10000
+    Software & Tech Details Source Link Oracle NetSuite Technology 1001–5000 Software
+    & Tech Details Source Link WordPress Technology 1001–5000 Software & Tech Details
+    Source Link Dropbox, Inc Technology 1001–5000 Software & '
+  retrieved_at: '2026-08-12T21:00:49.742124+00:00'
+  url: https://www.partnerbase.com/agilepoint
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

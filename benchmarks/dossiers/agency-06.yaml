@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-4f0db8bdb5febcdd
+  - ev-dfc8da3ce08d4fcc
+  - ev-54a235f5d20f06b7
+  field: identity
+  value: Bold Orange
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-4f0db8bdb5febcdd
+  - ev-dfc8da3ce08d4fcc
+  - ev-54a235f5d20f06b7
+  field: description
+  value: 'Bold Orange | Transforming customer experiences to drive stronger acquisition,
+    growth, and retention. 5.12.26 Event starts in 1 Days 8 Hours 3 Minutes 47 Seconds
+    See Details X --> Purpose Services Experience Insights CX Midwest CONNECT Transforming
+    Customer Experiences to create stronger acquisition, growth, and retention. NEWS
+    & INSIGHTS SEE ALL → News Bold Orange Earns Fifth National Recognition on Inc.
+    5000 Fastest-Growing Private Companies List → Insights Closing the Personalization
+    Gap: Key'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-4f0db8bdb5febcdd
+  - ev-dfc8da3ce08d4fcc
+  - ev-54a235f5d20f06b7
+  field: offers
+  value: creative services
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-4f0db8bdb5febcdd
+  - ev-dfc8da3ce08d4fcc
+  - ev-54a235f5d20f06b7
+  field: icp
+  value: marketing teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-4f0db8bdb5febcdd
+  - ev-dfc8da3ce08d4fcc
+  - ev-54a235f5d20f06b7
+  field: personas
+  value: marketing teams
+  visibility: message_safe
+company_id: agency-06
+corrections: []
+evidence:
+- content_hash: 4f0db8bdb5febcdd49e9568800894486b3adc8f2eb69f73fcd3728034152231f
+  evidence_id: ev-4f0db8bdb5febcdd
+  excerpt: 'Bold Orange | Transforming customer experiences to drive stronger acquisition,
+    growth, and retention. 5.12.26 Event starts in 1 Days 8 Hours 3 Minutes 47 Seconds
+    See Details X --> Purpose Services Experience Insights CX Midwest CONNECT Transforming
+    Customer Experiences to create stronger acquisition, growth, and retention. NEWS
+    & INSIGHTS SEE ALL → News Bold Orange Earns Fifth National Recognition on Inc.
+    5000 Fastest-Growing Private Companies List → Insights Closing the Personalization
+    Gap: Key Learnings from Think Summit 2026 → Insights Salesforce Connections 2026
+    Takeaways: The Rise of the Marketing Maker → SERVICES Strategic thinking is everything.
+    And we’ve got a lot of it. Curious innovators. Fearless navigators. We dig deeper
+    and think bigger to create more purposeful connections between you and your customers.
+    Our solutions are informed by all disciplines nimbly working together to help
+    you outperform in the marketplace. EXPLORE SERVICES → OVERHEARD AT BOCO “Good
+    UX saves lives.” -Tanner Quie, Director of Experience Design “There’s camo for
+    every occasion.” -Jim Specht, Chief Experience Officer “Let’s have a glass of
+    wine and debate the Oxford Comma.” -Chloe Wasserburger, Copywriter OUR EXPERIENCE
+    Proud to collaborate with industry-leading B2B and B2C brands. Content Add Content
+    Here Add Content Here “Bold Orange has been a key strategic partner in building
+    our member experience strategies, and leading the creative articulation and identity
+    of our personas. They have been a critical asset when it comes to reaching our
+    engagement goals.” — Director of Marketing SEE BOLD EXPERIENCES → Make a bold
+    career move. Come experience a culture energized by passionate people and the
+    occasional meat raffle. OPEN POSITIONS → Together, the bold can do anything .
+    LET’S CONNECT Contact us --> Careers News Contact Join the growing community of
+    industry leaders who subscribe to our insights. " * " indicates required fields
+    Instagram This field is for validation purposes and sh'
+  retrieved_at: '2026-08-12T21:57:59.227736+00:00'
+  url: https://boldorange.com/
+- content_hash: dfc8da3ce08d4fcc5389d379acc4833251f94771dc233a8a8daacfbb7cbf0b7a
+  evidence_id: ev-dfc8da3ce08d4fcc
+  excerpt: Bold Orange | LinkedIn Agree & Join LinkedIn By clicking Continue to join
+    or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie
+    Policy . Skip to main content LinkedIn Top Content People Learning Jobs Games
+    Sign in Join now Bold Orange Marketing Services Minneapolis, Minnesota 13,169
+    followers Stay Bold. See jobs Follow Discover all 184 employees Report this company
+    About us Bold Orange is a leading customer experience agency supporting brands
+    with end-to-end CX needs, inclusive of experience strategy and design, performance
+    marketing and digital media, marketing automation and technology, and analytics
+    and insights. Website https://boldorange.com External link for Bold Orange Industry
+    Marketing Services Company size 51-200 employees Headquarters Minneapolis, Minnesota
+    Type Privately Held Founded 2018 Specialties CRM, Loyalty, Digital Experiences,
+    Marketing Services, Personalized Marketing, Technology Platforms, Analytics, Targeted
+    Communications, Websites, Strategy, Consulting, Creative Services, Customer Experiences,
+    CX, Digital Transformation, salesforce, Braze, Snowflake, and Databricks Employees
+    at Bold Orange Jim Mattson LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn
+    Member LinkedIn Member View 184 employees at Bold Orange Sign in Welcome back
+    Email or phone Password Show Forgot password? Sign in or By clicking Continue
+    to join or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy ,
+    and Cookie Policy . New to LinkedIn? Join now or By clicking Continue to join
+    or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie
+    Policy . See all employees Locations Primary 100 Washington Ave S Suite 750 Minneapolis,
+    Minnesota 55401, US Get directions Updates Bold Orange 13,169 followers 1d Report
+    this post Five years on the Inc. Magazine 5000 Fastest-Growing Companies list!
+    Every one of them earned. This year's list recognizes the nation's most successful
+    independent businesses — the ones driving inno
+  retrieved_at: '2026-08-12T21:58:00.175399+00:00'
+  url: https://www.linkedin.com/company/boldorange
+- content_hash: 54a235f5d20f06b7d2cc92a0aa60419f0e84bb8c29909593d07d5e536524f894
+  evidence_id: ev-54a235f5d20f06b7
+  excerpt: '12 Aug 2026 Bold Orange Reviews & Profile | Transforming Customer Experiences
+    View all results No results For Buyers arrow_drop_down   All Agency Categories
+      Choose The Best Agency For Agencies arrow_drop_down   Why Agency Source   Get
+    Listed For Free   Agency Sponsorship   Lead Generation   Lead Discovery   Reputation
+    Management   Marketing Opportunities Resources arrow_drop_down   Agency Blog  
+    Agency Toolkit   Knowledge Base Community Get Listed Sign in or Register Get Listed
+    opening tag is omitted --> tag --> Bold Orange Transforming Customer Experiences
+    Avg. Hourly Rate $100 - $149 / hr Min. Project Size $10,000+ Leave review Agency
+    Profile Agency Portfolio Reviews 0 prev next Call now Website Claim Agency Profile
+    Save Agency Share Leave Review prev next Agency Summary Min. Project Size $10,000+
+    Avg. Hourly Rate $100 - $149 / hr Company Size 50 - 249 Year Founded 2018 HQ Location
+    Minneapolis, MN Service Categories Advertising & Marketing Content Marketing Digital
+    Marketing Design & Production Design Digital Design Full Service Digital Marketing
+    Automation Digital Strategy Web Design Inbound Marketing Description CRM, loyalty
+    and digital services: Strategic Consulting / Technology Services / Creative Services
+    / Analytics & Insight / Program Management / Fundraising Services Connect on Social
+    Facebook Twitter Instagram LinkedIn mood_bad No comments yet. Add a review Leave
+    a Reply · Cancel reply Your email address will not be published. Required fields
+    are marked * Overall Rating Pricing Quality of Work Project Success Upload images
+    file_upload Name Email Your Message Save my name, email, and website in this browser
+    for the next time I comment. Submit review Agency Source was started to help business
+    owners sort and search through our database of thousands of agencies to find the
+    most qualified professionals that can help them accomplish their next project
+    successfully & allow agencies to learn & grow with each other as a community.
+    Linkedin Facebook-f Twitter Fo'
+  retrieved_at: '2026-08-12T22:01:41.659667+00:00'
+  url: https://agencysource.com/agency/bold-orange/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

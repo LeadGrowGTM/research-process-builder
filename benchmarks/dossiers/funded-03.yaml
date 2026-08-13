@@ -1,0 +1,186 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-f66eda31977f0809
+  - ev-f905d2c69394da05
+  - ev-281cf92917b0def6
+  - ev-944d713a87c8b219
+  field: identity
+  value: Float
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-f66eda31977f0809
+  - ev-f905d2c69394da05
+  - ev-281cf92917b0def6
+  - ev-944d713a87c8b219
+  field: description
+  value: About Float Company | Our Story, Mission & Team Skip to main content Limited
+    time Earn 3% cashback on eligible AI spend Earn 3% cashback on eligible AI spend
+    Close Announcement Banner Products Products Corporate Cards Unlimited CAD & USD
+    cards with built-in controls. Corporate Cards Business Accounts CDIC-insured.
+    High-yield. Zero fees. Business Accounts FX Up to 90% lower markups than your
+    bank. FX Expense Management The end of manual expense work. Expense Management
+    Reimbursements Fast, automa
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-f66eda31977f0809
+  - ev-f905d2c69394da05
+  - ev-281cf92917b0def6
+  - ev-944d713a87c8b219
+  field: offers
+  value: corporate cards
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-944d713a87c8b219
+  field: growth
+  value: Primary funding event dated 2026-01-26
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-f66eda31977f0809
+  - ev-f905d2c69394da05
+  - ev-281cf92917b0def6
+  - ev-944d713a87c8b219
+  field: icp
+  value: finance teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-f66eda31977f0809
+  - ev-f905d2c69394da05
+  - ev-281cf92917b0def6
+  - ev-944d713a87c8b219
+  field: personas
+  value: finance teams
+  visibility: message_safe
+company_id: funded-03
+corrections: []
+evidence:
+- content_hash: f66eda31977f0809b847324c63136c3c82ef70c72b87ec11d29dbbf713fac623
+  evidence_id: ev-f66eda31977f0809
+  excerpt: About Float Company | Our Story, Mission & Team Skip to main content Limited
+    time Earn 3% cashback on eligible AI spend Earn 3% cashback on eligible AI spend
+    Close Announcement Banner Products Products Corporate Cards Unlimited CAD & USD
+    cards with built-in controls. Corporate Cards Business Accounts CDIC-insured.
+    High-yield. Zero fees. Business Accounts FX Up to 90% lower markups than your
+    bank. FX Expense Management The end of manual expense work. Expense Management
+    Reimbursements Fast, automated employee reimbursements. Reimbursements Bill Pay
+    Pay faster. Approve smarter. Bill Pay Platform Intelligence Intelligence that
+    closes your books up to 8x faster. Intelligence Reporting & Insights Real-time
+    visibility into every dollar spent. Reporting & Insights Trust & Security Built
+    on a foundation you can trust. Trust & Security Integrations Syncs with QuickBooks,
+    Xero, NetSuite and more. Integrations Float raises $85M Series C Float raises
+    $85M Series C Solutions By size Startup Move fast without losing control of spend.
+    Startup Small Business Ditch the bank. Keep the cash working. Small Business Mid-Market
+    Enterprise-grade controls, without the hurdles. Mid-Market Solopreneur One account.
+    Every financial tool you need. Solopreneur I‍ndustries Non-Profits Do more good
+    with less overhead. Non-Profits Agencies Client budgets, ad spend, reimbursements.
+    All in one place. Agencies Ecommerce & Retail Capital that moves as fast as your
+    inventory. Ecommerce & Retail Hospitality, Food & Beverage Fast service up front.
+    Clean books in the back. Hospitality, Food & Beverage Float Intelligence is here
+    Float Intelligence is here Customer Stories Resources Content Blog Finance insights
+    built for Canadian operators. Blog Tools Free calculators and templates to sharpen
+    your strategy. Tools Partnerships Grow together with Float's partner network.
+    Partnerships Company info About us Built in Canada, for Canada. Here's our story.
+    About us Built for Canada Why Float works where US tools fa
+  retrieved_at: '2026-08-12T21:34:24.593873+00:00'
+  url: https://floatfinancial.com/about-us
+- content_hash: f905d2c69394da05d40d7248cc821177013a080619761b6ff353c3826475bee7
+  evidence_id: ev-f905d2c69394da05
+  excerpt: Float | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now Float Financial Services Toronto, Ontario 59,484 followers
+    Banking, payments and spend management in one intelligent platform purpose-built
+    for Canadian businesses. See jobs Follow Discover all 197 employees Report this
+    company About us Float is on a mission to simplify business finance in Canada.
+    Trusted by 7,000+ companies, we help finance teams save time, improve compliance,
+    and scale with confidence with corporate cards, bill pay, reimbursements, FX,
+    and more. Float Financial Solutions Inc. is a financial technology company and
+    not a bank. The Float Visa* Prepaid Card is issued by Peoples Trust Company pursuant
+    to a licence from Visa International. Funds associated with the Float Visa Prepaid
+    Card, including funds held in business accounts, are held at one or more Canadian
+    financial institutions that are members of the Canada Deposit Insurance Corporation
+    (“CDIC”) and are eligible for CDIC deposit insurance, subject to applicable coverage
+    limits. For more information, visit cdic.ca. The Float Mastercard® USD Card is
+    issued by Thread Bank, Member FDIC, pursuant to a licence from Mastercard International.
+    Banking services are provided by Thread Bank, Member FDIC. FDIC insurance is available
+    for funds on deposit with Thread Bank, subject to applicable limits and conditions.
+    Website https://floatfinancial.com External link for Float Industry Financial
+    Services Company size 51-200 employees Headquarters Toronto, Ontario Type Privately
+    Held Founded 2019 Products Float Corporate Cards and Spend Management Software
+    Float Corporate Cards and Spend Management Software Spend Management Software
+    Float is the only all-in-one platform for Canadian business spending, bringing
+    together a smart corporate card, bill payments and employee reimbursements with
+    intuitive spend management software. Locations Primary 119 Spadina Ave Toronto,
+    Ontario M5V 2L1, CA Get directions Employee
+  retrieved_at: '2026-08-12T21:34:25.346099+00:00'
+  url: https://www.linkedin.com/company/floatfinancial
+- content_hash: 281cf92917b0def628fb0445738deb41b6aa83965f9264d5958ccf11bb0c4f56
+  evidence_id: ev-281cf92917b0def6
+  excerpt: 'Float Financial Review: Pros, Cons & Features | Finder Canada Home Home
+    Rewards Finder Rewards Compare Loans Loans Personal loans Best personal loans
+    Best bad credit loans Best debt consolidation loans Low-interest loans Emergency
+    loans Cash advance apps Repayment calculator Car loans Best car loans Bad credit
+    car loans Repayment calculator Business loans Best business loans Business loan
+    brokers Startup loans Banking Banking Chequing accounts Best chequing accounts
+    Best fee-free accounts Best new account offers Savings accounts Best high-interest
+    accounts Best kids'' accounts Best teen accounts Best mobile banking apps Business
+    banking Best business bank accounts Business money transfers Money transfers Best
+    money transfer apps Best exchange rates Cards Credit cards Best credit cards Balance
+    transfer cards Cashback cards Instant approval cards No annual fee cards Rewards
+    cards Business cards Investing Investing Stock trading Best stock trading apps
+    Best ETFs TSX stocks US stocks Best brokerage bonuses Cryptocurrency Best crypto
+    exchanges Best crypto wallets Crypto Treasuries Make money online Freelance writing
+    YouTube Join Available rewards: Log in Join Home Home Rewards Finder Rewards Compare
+    Loans Loans Personal loans Best personal loans Best bad credit loans Best debt
+    consolidation loans Low-interest loans Emergency loans Cash advance apps Repayment
+    calculator Car loans Best car loans Bad credit car loans Repayment calculator
+    Business loans Best business loans Business loan brokers Startup loans Banking
+    Banking Chequing accounts Best chequing accounts Best fee-free accounts Best new
+    account offers Savings accounts Best high-interest accounts Best kids'' accounts
+    Best teen accounts Best mobile banking apps Business banking Best business bank
+    accounts Business money transfers Money transfers Best money transfer apps Best
+    exchange rates Cards Credit cards Best credit cards Balance transfer cards Cashback
+    cards Instant approval cards No annual fee cards Rewards cards '
+  retrieved_at: '2026-08-12T21:34:30.344679+00:00'
+  url: https://www.finder.com/ca/banking/business-banking/float-financial-review
+- content_hash: 944d713a87c8b2192bce3a12653879b73ea9970601414b181d01f3c6d4adbf22
+  evidence_id: ev-944d713a87c8b219
+  excerpt: Skip to main content Limited time Earn 3% cashback on eligible AI spend
+    Earn 3% cashback on eligible AI spend Close Announcement Banner Products Products
+    Corporate Cards Unlimited CAD & USD cards with built-in controls. Corporate Cards
+    Business Accounts CDIC-insured. High-yield. Zero fees. Business Accounts FX Up
+    to 90% lower markups than your bank. FX Expense Management The end of manual expense
+    work. Expense Management Reimbursements Fast, automated employee reimbursements.
+    Reimbursements Bill Pay Pay faster. Approve smarter. Bill Pay Platform Intelligence
+    Intelligence that closes your books up to 8x faster. Intelligence Reporting &
+    Insights Real-time visibility into every dollar spent. Reporting & Insights Trust
+    & Security Built on a foundation you can trust. Trust & Security Integrations
+    Syncs with QuickBooks, Xero, NetSuite and more. Integrations Float raises $85M
+    Series C Float raises $85M Series C Solutions By size Startup Move fast without
+    losing control of spend. Startup Small Business Ditch the bank. Keep the cash
+    working. Small Business Mid-Market Enterprise-grade controls, without the hurdles.
+    Mid-Market Solopreneur One account. Every financial tool you need. Solopreneur
+    I‍ndustries Non-Profits Do more good with less overhead. Non-Profits Agencies
+    Client budgets, ad spend, reimbursements. All in one place. Agencies Ecommerce
+    & Retail Capital that moves as fast as your inventory. Ecommerce & Retail Hospitality,
+    Food & Beverage Fast service up front. Clean books in the back. Hospitality, Food
+    & Beverage Float Intelligence is here Float Intelligence is here Customer Stories
+    Resources Content Blog Finance insights built for Canadian operators. Blog Tools
+    Free calculators and templates to sharpen your strategy. Tools Partnerships Grow
+    together with Float's partner network. Partnerships Company info About us Built
+    in Canada, for Canada. Here's our story. About us Built for Canada Why Float works
+    where US tools fall short. Built for Canada Careers We're growing
+  retrieved_at: '2026-08-12T21:34:30.796784+00:00'
+  url: https://floatfinancial.com/press/float-secures-close-to-100m-in-funding
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- hiring
+- news
+- launches
+- ads

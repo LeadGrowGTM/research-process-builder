@@ -1,0 +1,146 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-ae3a0f9c098694fa
+  - ev-fa308dd2e61300d6
+  - ev-94423d73830e5f43
+  field: identity
+  value: Nordson Adhesive Dispensing Systems
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ae3a0f9c098694fa
+  - ev-fa308dd2e61300d6
+  - ev-94423d73830e5f43
+  field: description
+  value: 'Investor Presentation NBS NEXT OWNER MINDSET WINNING TEAMS February 22,
+    2024 Nasdaq: NDSN Click to edit title Certain statements contained in this release
+    are forward-looking statements within the meaning of the Private Securities Litigation
+    Reform Act of 1995. Forward-looking statements may be identified by terminology
+    such as “may,” “will,” “should,” “could,” “expects,” “anticipates,” “believes,”
+    “projects,” “forecasts,” “outlook,” “guidance,” “continue,” “target,” or the negative
+    of these ter'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ae3a0f9c098694fa
+  - ev-fa308dd2e61300d6
+  - ev-94423d73830e5f43
+  field: offers
+  value: adhesive dispensing
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ae3a0f9c098694fa
+  - ev-fa308dd2e61300d6
+  - ev-94423d73830e5f43
+  field: icp
+  value: manufacturers
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ae3a0f9c098694fa
+  - ev-fa308dd2e61300d6
+  - ev-94423d73830e5f43
+  field: personas
+  value: manufacturers
+  visibility: message_safe
+company_id: known-08
+corrections: []
+evidence:
+- content_hash: ae3a0f9c098694fa7c8308696dba0ddc6878d7e732f6a62015fe2c2e369540f0
+  evidence_id: ev-ae3a0f9c098694fa
+  excerpt: 'Investor Presentation NBS NEXT OWNER MINDSET WINNING TEAMS February 22,
+    2024 Nasdaq: NDSN Click to edit title Certain statements contained in this release
+    are forward-looking statements within the meaning of the Private Securities Litigation
+    Reform Act of 1995. Forward-looking statements may be identified by terminology
+    such as “may,” “will,” “should,” “could,” “expects,” “anticipates,” “believes,”
+    “projects,” “forecasts,” “outlook,” “guidance,” “continue,” “target,” or the negative
+    of these terms or comparable terminology. These statements reflect management’s
+    current expectations and involve a number of risks and uncertainties. These risks
+    and uncertainties include, but are not limited to, U.S. and international economic
+    conditions; financial and market conditions; currency exchange rates and devaluations;
+    possible acquisitions, including the Company’s ability to successfully integrate
+    acquisitions; the Company’s ability to successfully divest or dispose of businesses
+    that are deemed not to fit with its strategic plan; the effects of changes in
+    U.S. trade policy and trade agreements; the effects of changes in tax law; and
+    the possible effects of events beyond our control, such as political unrest, including
+    the conflict between Russia and Ukraine, acts of terror, natural disasters and
+    pandemics, including the recent coronavirus (COVID-19) pandemic and the other
+    factors discussed in Item 1A (Risk Factors) in the Company’s most recently filed
+    Annual Report on Form 10-K and in its Forms 10-Q filed with the Securities and
+    Exchange Commission, which should be reviewed carefully. The Company undertakes
+    no obligation to update or revise any forward-looking statement in this press
+    release. 2 Safe Harbor Statement Under the Private Securities Litigation Reform
+    Act of 1995 1954 3 Company Founded $2.6B *Sales $819M *EBITDA 7,900 Employees
+    35+ Countries with Direct Presence Nordson is an innovative precision technology
+    company that leverages a scalable growth framework to del'
+  retrieved_at: '2026-08-12T22:16:40.859008+00:00'
+  url: https://investors.nordson.com/files/doc_financials/2024/q1/FY24-Nordson-Investor-Presentation-2-22-24-V2.pdf
+- content_hash: fa308dd2e61300d6bd2c1fb8cfda2148aba311777282f41200893268107cf7bd
+  evidence_id: ev-fa308dd2e61300d6
+  excerpt: 'Nordson Adhesive Dispensing Systems | LinkedIn Skip to main content LinkedIn
+    Top Content People Learning Jobs Games Sign in Join now Nordson Adhesive Dispensing
+    Systems Machinery Manufacturing Duluth, GA 14,627 followers Follow View all 264
+    employees Report this company About us Nordson Adhesive Dispensing Systems is
+    a leading global manufacturer of precision dispensing equipment. From hot melt
+    adhesives and sealants to liquid adhesives, Nordson systems help manufacturers
+    of consumer and industrial products operate more efficiently and improve product
+    quality. Applications including packaging, nonwovens and product assembly benefit
+    from Nordson systems designed for precision, reliability and repeatability. Equipment
+    includes: hot melt and cold adhesive applicators; nozzles; tank and bulk melters;
+    pumps; hoses; and, verification & detection systems. Genuine Nordson replacement
+    parts and maintenance programs help extend the life of Nordson systems and keep
+    production lines running at their best. Website http://www.nordsonadhesive.com
+    External link for Nordson Adhesive Dispensing Systems Industry Machinery Manufacturing
+    Company size 5,001-10,000 employees Headquarters Duluth, GA Type Public Company
+    Specialties hot melt applicators, hot melt equipment, adhesive applicators, adhesive
+    equipment, adhesive pattern control, adhesive filling systems, foamed dispense
+    systems, hot melt hoses, hot melt systems, adhesive systems, hot melt nozzles,
+    bulk delivery systems, Dispense Robots, Meters & Metering Systems, adhesive melters,
+    Extruders, Jet Dispensers, nonwoven product production, packaging applications,
+    and Furniture & Woodworking Locations Primary 11475 Lakefield Drive Duluth, GA
+    30097, US Get directions Employees at Nordson Adhesive Dispensing Systems Chris
+    Berger Kevin Kotkiewicz Fredrik Juhlin Jeff Cowart See all employees Updates Nordson
+    Adhesive Dispensing Systems 14,627 followers 9h Report this post A kitchen colander
+    may look a little like an umbrella. Until it star'
+  retrieved_at: '2026-08-12T22:16:41.701785+00:00'
+  url: https://www.linkedin.com/company/nordson-adhesive
+- content_hash: 94423d73830e5f43eb969c5d56e210a2fa7625860bc98358715f3611cd573241
+  evidence_id: ev-94423d73830e5f43
+  excerpt: April 30, 2025 July 1, 2021 November 1, 2004 November 1, 2025 August 1,
+    2019 May 20, 2024 November 1, 2023 November 1, 2021 February 20, 2023 August 1,
+    2022 April 28, 2025 April 27, 2025 November 1, 2015 August 1, 2025 August 31,
+    2025 September 1, 2025 September 30, 2025 October 1, 2025 October 31, 2025 August
+    20 2025 Oct 31, 2025 Oct 31, 2024 Oct 31, 2023 October 31, 2024 October 31, 2023
+    October 31, 2022 ndsn-20251031 false 2025 FY 0000072331 http://www.nordson.com/20251031#PensionSettlementChargeForUSPlans
+    P1Y iso4217:USD xbrli:shares iso4217:USD xbrli:shares xbrli:pure iso4217:EUR ndsn:leases
+    ndsn:segment 0000072331 2024-11-01 2025-10-31 0000072331 2025-04-30 0000072331
+    2025-11-30 0000072331 2023-11-01 2024-10-31 0000072331 2022-11-01 2023-10-31 0000072331
+    2025-10-31 0000072331 2024-10-31 0000072331 us-gaap:CommonStockMember 2022-10-31
+    0000072331 us-gaap:AdditionalPaidInCapitalMember 2022-10-31 0000072331 us-gaap:RetainedEarningsMember
+    2022-10-31 0000072331 us-gaap:AccumulatedOtherComprehensiveIncomeMember 2022-10-31
+    0000072331 us-gaap:TreasuryStockCommonMember 2022-10-31 0000072331 2022-10-31
+    0000072331 us-gaap:AdditionalPaidInCapitalMember 2022-11-01 2023-10-31 0000072331
+    us-gaap:TreasuryStockCommonMember 2022-11-01 2023-10-31 0000072331 us-gaap:RetainedEarningsMember
+    2022-11-01 2023-10-31 0000072331 us-gaap:AccumulatedOtherComprehensiveIncomeMember
+    2022-11-01 2023-10-31 0000072331 us-gaap:CommonStockMember 2023-10-31 0000072331
+    us-gaap:AdditionalPaidInCapitalMember 2023-10-31 0000072331 us-gaap:RetainedEarningsMember
+    2023-10-31 0000072331 us-gaap:AccumulatedOtherComprehensiveIncomeMember 2023-10-31
+    0000072331 us-gaap:TreasuryStockCommonMember 2023-10-31 0000072331 2023-10-31
+    0000072331 us-gaap:AdditionalPaidInCapitalMember 2023-11-01 2024-10-31 0000072331
+    us-gaap:TreasuryStockCommonMember 2023-11-01 2024-10-31 0000072331 us-gaap:RetainedEarningsMember
+    2023-11-01 2024-10-31 0000072331 us-gaap:AccumulatedOtherComprehensiveIncomeMember
+    2023-11-01 2024-10-31 0000
+  retrieved_at: '2026-08-12T22:16:42.579767+00:00'
+  url: https://www.sec.gov/Archives/edgar/data/72331/000007233125000144/ndsn-20251031.htm
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

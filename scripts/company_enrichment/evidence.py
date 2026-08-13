@@ -276,6 +276,22 @@ class EvidenceStore:
                 raise ValueError("evidence object has no source observation")
             return self._record_from_event(event, content)
 
+    def verify_reference(self, reference: EvidenceRef) -> SourceRecord:
+        if not isinstance(reference, EvidenceRef):
+            raise ValueError('reference must be an EvidenceRef')
+        self._validate_hash(reference.content_hash)
+        if reference.evidence_id != self._evidence_id(reference.content_hash):
+            raise ValueError('evidence ID does not match content hash')
+        with file_lock(self._lock_path):
+            content = self._read_content(reference.content_hash)
+            events = self._read_events()
+            event = next((item for item in events if self._matches_reference(
+                item, reference,
+            )), None)
+            if event is None:
+                raise ValueError('evidence reference has no exact source observation')
+            return self._record_from_event(event, content)
+
     def _read_content(self, content_hash: str) -> str:
         self._validate_hash(content_hash)
         object_path = self.objects / f"{content_hash}.json"
@@ -344,6 +360,16 @@ class EvidenceStore:
             )
         except (KeyError, TypeError, ValueError) as error:
             raise ValueError("evidence source failed tampering validation") from error
+
+    @staticmethod
+    def _matches_reference(event, reference: EvidenceRef) -> bool:
+        same_time = datetime.fromisoformat(event['retrieved_at']) == reference.retrieved_at
+        return (
+            event['content_hash'] == reference.content_hash
+            and event['url'] == reference.url
+            and same_time
+            and event['excerpt'] == reference.excerpt
+        )
 
     @staticmethod
     def _append(path: Path, event: dict[str, Any]) -> None:

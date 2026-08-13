@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-e637f7a38c67bee4
+  - ev-d9b37a382ef4b045
+  - ev-b1325818ec9fcbd6
+  field: identity
+  value: Applied Resource Group
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-e637f7a38c67bee4
+  - ev-d9b37a382ef4b045
+  - ev-b1325818ec9fcbd6
+  field: description
+  value: 31 Dec 2099 Services - Recruiting and Staffing Agency in Atlanta About Approach
+    ARG Cares Culture Testimonials Values Practice Areas Accounting and Finance Executive
+    Search Engineering and Manufacturing Human Resources Information Technology Sales
+    and Marketing Services Contingent Workforce Contract to Hire Direct Hire Employer
+    of Record Executive Search Recruitment Process Outsourcing Search Jobs Insights
+    Blog Events Candidate Resources Contact Us About Approach ARG Cares Culture Testimonials
+    V
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-e637f7a38c67bee4
+  - ev-d9b37a382ef4b045
+  - ev-b1325818ec9fcbd6
+  field: offers
+  value: staffing solutions
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-e637f7a38c67bee4
+  - ev-d9b37a382ef4b045
+  - ev-b1325818ec9fcbd6
+  field: icp
+  value: human resources
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-e637f7a38c67bee4
+  - ev-d9b37a382ef4b045
+  - ev-b1325818ec9fcbd6
+  field: personas
+  value: human resources
+  visibility: message_safe
+company_id: local-08
+corrections: []
+evidence:
+- content_hash: e637f7a38c67bee4985a7e50d9475e703d08f10e220fa7a1ecb32d5160b8d3cb
+  evidence_id: ev-e637f7a38c67bee4
+  excerpt: 31 Dec 2099 Services - Recruiting and Staffing Agency in Atlanta About
+    Approach ARG Cares Culture Testimonials Values Practice Areas Accounting and Finance
+    Executive Search Engineering and Manufacturing Human Resources Information Technology
+    Sales and Marketing Services Contingent Workforce Contract to Hire Direct Hire
+    Employer of Record Executive Search Recruitment Process Outsourcing Search Jobs
+    Insights Blog Events Candidate Resources Contact Us About Approach ARG Cares Culture
+    Testimonials Values Practice Areas Accounting and Finance Executive Search Engineering
+    and Manufacturing Human Resources Information Technology Sales and Marketing Services
+    Contingent Workforce Contract to Hire Direct Hire Employer of Record Executive
+    Search Recruitment Process Outsourcing Search Jobs Insights Blog Events Candidate
+    Resources Contact Us Connecting Talent with Opportunity Unparalelled Services
+    Trust Applied Resource Group to ensure your candidates are not only talented but
+    are a great match for your culture. Hiring is more than a process it’s a partnership
+    We build lasting relationships between candidates & businesses We work with high-performance
+    candidates and align them with careers that allow for advancement, innovation,
+    engagement and professional development. We work with organizations who value
+    top performance and the efforts of the professionals who comprise them. Discover
+    how we build extraordinary teams The most valuable asset at any organization is
+    it’s people. It is the people that create culture, innovation, community, and
+    customer service. Invest in the right people with an extraordinary talent partner
+    like Applied Resource Group. Executive Search Connecting, engaging, and qualifying
+    top candidates for executive positions takes a lot of time and money. We are here
+    to deliver the best candidates that fit your bill. Our extensive screening process
+    filters out unmatched candidates and finds the most perfect matches. From years
+    of recruiting, we have a large pool o
+  retrieved_at: '2026-08-12T22:41:04.838455+00:00'
+  url: https://appliedrg.com/services-applied-resource-group/
+- content_hash: d9b37a382ef4b0458a2bc51dff3f243dba0de0fdf49bc26a8e9eb105e70158ee
+  evidence_id: ev-d9b37a382ef4b045
+  excerpt: 'Applied Resource Group | LinkedIn Skip to main content LinkedIn Top Content
+    People Learning Jobs Games Sign in Join now Applied Resource Group Staffing and
+    Recruiting Alpharetta, GA 154,274 followers Our mission is Building Lasting Relationships:
+    One Company, One Candidate, and One Career at a time. See jobs Follow Discover
+    all 37 employees Report this company About us We connect talent with opportunity.
+    Applied Resource Group is a leading provider of on demand staffing and recruiting
+    services. The company delivers high-end professionals for clients ranging from
+    small businesses to Fortune 50. ARG specializes in all areas of business including
+    Accounting, Finance, Engineering, and Information Technology. Our mission is to
+    build lasting relationships: one company, one candidate, and one career at a time.
+    Applied Resource Group understands culture beats strategy every time. Our passion
+    for connecting talent with opportunities extends beyond finding a candidate or
+    filling a position… it’s about helping others, paying it forward and building
+    relationships. We only work with people who rise above the role and responsibilities
+    and take the initiative to deliver the highest caliber results. Applied Resource
+    Group creates better hiring funnels by taking a systematic approach to sourcing
+    and screening candidates. ARG starts our hiring process with higher quality candidates
+    creating better outcomes and gaining a competitive edge when recruiting top talent.
+    ARG’s devotion to quality and excellence has fueled our rapid growth over the
+    past years. 2020- Inc. 5000 List of America’s Fastest Growing Companies 2020-
+    Bulldog 100: Fastest Growing Bulldog Business 2019- Inc. 5000 List of America’s
+    Fastest Growing Companies 2019- Atlanta Business Chronicle’s Pacesetter Award
+    2019- Bulldog 100: Fastest Growing Bulldog Business 2018- Inc. 5000 List of America’s
+    Fastest Growing Companies 2018 - Atlanta Business Chronicle''s Best Places to
+    Work 2018 - Atlanta Business Chronicle’s Pacesetter '
+  retrieved_at: '2026-08-12T22:41:05.678497+00:00'
+  url: https://www.linkedin.com/company/applied-resource-group
+- content_hash: b1325818ec9fcbd68d8da66bc47ff16a72cbc4d0ac1f574459dd7d9a9e7442d7
+  evidence_id: ev-b1325818ec9fcbd6
+  excerpt: Applied Resource Group LLC - Colorado company - 20201183347 | B2BHint Search
+    companies... ⌘K Pricing Data & Coverage Export data Contact us API Login Sign
+    up United States › Colorado › All companies in Colorado › 2020 › Applied Resource
+    Group LLC AR Applied Resource Group LLC Branch Applied Resource Group LLC is not
+    in process of liquidation . 20201183347 · Foreign Limited Liability Company ·
+    2020-02-25 · 6 years ago · Colorado · Last updated 10 days ago Watchlist Share
+    Compare Download PDF Report Is this your business? Claim this company to manage
+    its profile, respond to reviews, and access analytics. Verify ownership → Summary
+    Contact details Officers 1 Links between entities 2 Reviews Related companies
+    1 Registered in the same year 6 Summary Contact details Officers 1 Links between
+    entities 2 Reviews Related companies 1 Registered in the same year 6 AD Summary
+    Company number 20201183347 Status Good Standing Jurisdiction Colorado Place of
+    formation Georgia Branch Branch of APPLIED RESOURCE GROUP LLC (Georgia) Name Applied
+    Resource Group LLC Country United States Incorporation Date 2020-02-25 · 445 companies
+    with the same date Legal form Foreign Limited Liability Company Contact details
+    Legal address 4555 Mansell Rd Ste 230, Alpharetta, GA, 30022, US Officers 1 Leadership
+    concentration 1 active officer Registry filings only — a single-officer structure
+    is common and lawful. LC Legalinc Corporate Services Inc Agent Beneficial owners
+    (UBO) No shareholder or ownership data is on file for this company. AD Links between
+    entities 2 Registry-recorded relations · directional This company → Branch of
+    → APPLIED RESOURCE GROUP LLC Georgia APPLIED RESOURCE GROUP LLC → Headquarter
+    of → This company Georgia See everything on file for Applied Resource Group LLC
+    1 Officers — Cancel anytime Join the 50,000+ businesses already using B2BHint.
+    Unlock now Create a free account AD AD AD Reviews No reviews yet. Write a review
+    → Related companies 1 BC BERINGER CIACCIO DENNELL MABREY, INC.
+  retrieved_at: '2026-08-12T22:41:06.385262+00:00'
+  url: https://b2bhint.com/en/company/us-co/applied-resource-group-llc--20201183347
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

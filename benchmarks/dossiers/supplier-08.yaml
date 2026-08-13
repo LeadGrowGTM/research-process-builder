@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-5dd6b558db32789a
+  - ev-c9b011abcfe07fae
+  - ev-717dbcc09a0d385a
+  field: identity
+  value: Alps Controls
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-5dd6b558db32789a
+  - ev-c9b011abcfe07fae
+  - ev-717dbcc09a0d385a
+  field: description
+  value: Help Center - alpscontrols.com Contact Us | Log in | Register Now Home Shop
+    Manufacturers Markets ▼ Agriculture Data Centers Education Electrical Healthcare
+    Home Automation Hospitality Mechanical Property Management Refrigeration About
+    ▼ About Us Blog Careers Contact Us Download Our Line Card Help Manufacturer Price
+    Changes Solution Pathways Solutions Series Live Events Stories of Service Terms
+    & Conditions V&A advantage VFD simplicity Log in to Your Account Alps Controls
+    Help Center - Everythin
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-5dd6b558db32789a
+  - ev-c9b011abcfe07fae
+  - ev-717dbcc09a0d385a
+  field: offers
+  value: hvac controls
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-5dd6b558db32789a
+  - ev-c9b011abcfe07fae
+  - ev-717dbcc09a0d385a
+  field: icp
+  value: hvac contractors
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-5dd6b558db32789a
+  - ev-c9b011abcfe07fae
+  - ev-717dbcc09a0d385a
+  field: personas
+  value: hvac contractors
+  visibility: message_safe
+company_id: supplier-08
+corrections: []
+evidence:
+- content_hash: 5dd6b558db32789a13bf52acf0630dca46872a99ca2e7ff716633107272f9337
+  evidence_id: ev-5dd6b558db32789a
+  excerpt: 'Help Center - alpscontrols.com Contact Us | Log in | Register Now Home
+    Shop Manufacturers Markets ▼ Agriculture Data Centers Education Electrical Healthcare
+    Home Automation Hospitality Mechanical Property Management Refrigeration About
+    ▼ About Us Blog Careers Contact Us Download Our Line Card Help Manufacturer Price
+    Changes Solution Pathways Solutions Series Live Events Stories of Service Terms
+    & Conditions V&A advantage VFD simplicity Log in to Your Account Alps Controls
+    Help Center - Everything you need to get up and running Alps Controls Help Center
+    Are you new to Alps Controls — or just need some quick help? Find answers, how-to
+    guides, videos, and product support for ordering HVAC controls and building automation
+    products through Alps Controls. New customer? Create an account and get set up
+    → Looking for a part? Search or browse hundreds of product categories → Ready
+    to order? Learn how to build and place your order → Already ordered? Track shipments
+    and check order status → Want to get going without help? Jump in here: Shop by
+    Category From valves and actuators to flow, pressure, power supplies, and more,
+    we''ve got hundreds of HVAC and building automation product categories grouped
+    for quick and easy browsing. Start shopping by categories → Shop by Manufacturers
+    Looking for a specific brand? That''s good news, because we''ve got nearly 200
+    of the HVAC industry''s best and brightest to choose from. If you know "who",
+    but not the "what" yet, start browsing here. Start shopping by manufacturers →
+    Download the Alps Controls Line Card In one easy reference, you can see all of
+    our manufacturer-partners and a peek at our most popular building automation part
+    categories. Download our line card here → Visit your Account Dashboard At-a-glance
+    you''ll find your orders, quotes, lists, projects, and returns. And your Sales
+    Rep contact info, all on one page. Poke around in your account dashboard here
+    → Getting Started How do I register and log in? Creating an Alps Controls acco'
+  retrieved_at: '2026-08-12T22:33:47.895674+00:00'
+  url: https://alpscontrols.com/Help
+- content_hash: c9b011abcfe07fae2e8fa82dc7e4a0f36e5ae544e3d97cd07a916793ef1b92f1
+  evidence_id: ev-c9b011abcfe07fae
+  excerpt: 'Alps Controls | LinkedIn Skip to main content LinkedIn Top Content People
+    Learning Jobs Games Sign in Join now Alps Controls Wholesale Pittsburgh, PA 3,635
+    followers The leading online marketplace for HVAC and building automation control
+    and peripherals. Follow View all 56 employees Report this company About us Alps
+    Controls is North America’s first digitally-native distributor built to simplify
+    sourcing, pricing, and delivery of HVAC and building automation control parts.
+    Created by a building controls contractor - for the way automation professionals
+    actually work. Self-service when it’s simple. Human expertise when it’s not. Today,
+    we operate as a nationally focused platform - unconstrained by regional branch
+    territories - providing consistent access to over 200M products from 180+ manufacturers.
+    Still family-owned. Now second-generation led. Built for the long term. Website
+    http://www.alpscontrols.com External link for Alps Controls Industry Wholesale
+    Company size 51-200 employees Headquarters Pittsburgh, PA Type Privately Held
+    Founded 1993 Specialties Valves, Dampers, and Actuators, Temperature, Humidity,
+    & Pressure Sensors, Building Automation, BAS, Controls, Relays, Contactors, &
+    Transformers, BTU Meters & Flow Metering, Gases: CO2, CO, Freon, & many more,
+    Leak Detection, Automation Control Peripherals, eCommerce Solutions, Lighting
+    Systems & Controls, Power Metering & Current Solutions, Enclosures , Variable
+    Speed Drives & Motor Control, Level Switches & Control, Surge Protection & UPS,
+    Emergency Operator Stations, Networking Switches, Routers, & Devices, Purchasing
+    Program Solutions, BACnet Solutions, and Wireless Systems & Controls Locations
+    Primary 217 West 8th Avenue Pittsburgh, PA 15120, US Get directions Employees
+    at Alps Controls Alan Lopuszynski David Meyers Eric Dunn Andrew Koleck See all
+    employees Updates Alps Controls 3,635 followers 7h Report this post Small mechanical
+    issues can become large - and costly - concerns if they aren’t addressed early'
+  retrieved_at: '2026-08-12T22:33:48.862247+00:00'
+  url: https://www.linkedin.com/company/alpscontrols-com
+- content_hash: 717dbcc09a0d385a5b55fa1735bdc832843b05a27ccd4aae1489ae1cef54fe7d
+  evidence_id: ev-717dbcc09a0d385a
+  excerpt: 'July 2, 2021 July 02, 2021 Feb 12, 2026 Universal PropTech Signs Distribution
+    Agreement with Alps Controls Inc. To Sell Air Sniper Indoor Air Quality Equipment
+    Across United States Cookie Settings We use cookies to analyze user behavior in
+    order to constantly improve the website for you. View our Privacy Policy and Terms
+    of Use . Necessary Analytics Accept All Accept Selection Reject All × Skip to
+    main content Newsfile Search English Français Deutsch Español Search × Login Username
+    Password Login Newsfile Login Search Français Home About About Company Overview
+    Who We Serve Upcoming Events Careers Services Services Press Release Distribution
+    News Service Overview Global Distribution Additional News Services AI Disclosure
+    Intelligence SEDAR+ About SEDAR+ SEDAR+ Resources EDGAR EDGAR Service Overview
+    EDGAR Resources Webcasting and Conference Calling Newsroom Newsroom Newsroom Newswire
+    Guidelines Sign Up for News Integrate Blog Contact Universal PropTech Signs Distribution
+    Agreement with Alps Controls Inc. To Sell Air Sniper Indoor Air Quality Equipment
+    Across United States July 02, 2021 8:30 AM EDT | Source: BrandPilot AI Inc. Toronto,
+    Ontario--(Newsfile Corp. - July 2, 2021) - Universal PropTech Inc. (TSXV: UPI)
+    (OTCQB: UPIPF) (FSE: 8LH) (" UPI " or the " Company ") is pleased to announce
+    that on July 2nd, 2021, the Company executed an agreement with a new distribution
+    partner, Alps Controls Inc. ("Alps Controls"), to distribute Air Sniper indoor
+    air quality (" IAQ ") products on its leading online marketplace, alpscontrols.com,
+    for HVAC and building automation controls to its over 3,000 HVAC contractors,
+    control system integrators and higher education customers across the United States.
+    The Company expects to launch the products on their site in the coming weeks.
+    Chris Hazelton, President & CEO of Universal PropTech Inc., commented, "Just in
+    time for July 4 th celebrations, Universal PropTech is proud to announce our ability
+    to sell Air Sniper indoor air quality prod'
+  retrieved_at: '2026-08-12T22:33:49.533186+00:00'
+  url: https://www.newsfilecorp.com/release/89280
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

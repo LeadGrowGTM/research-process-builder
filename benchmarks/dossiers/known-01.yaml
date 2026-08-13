@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-c1830066b96da421
+  - ev-7bbe0315765cfeda
+  - ev-ae1caf2cc0f43d78
+  field: identity
+  value: Advantech USA
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-c1830066b96da421
+  - ev-7bbe0315765cfeda
+  - ev-ae1caf2cc0f43d78
+  field: description
+  value: 13 Aug 2026 Advantech Industrial I/O and Automation Solutions - Advantech
+    Visit the European website To get information relevant for your region, we recommend
+    visiting our European website instead. Go to European website Advantech Homepage
+    Register / Log In My Account Log Out MyAdvantech Search Live Chat MyAdvantech
+    Registration MyAdvantech is a personalized portal for Advantech customers. By
+    becoming an Advantech member, you can receive latest product news, webinar invitations
+    and special eStor
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-c1830066b96da421
+  - ev-7bbe0315765cfeda
+  - ev-ae1caf2cc0f43d78
+  field: offers
+  value: industrial automation
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-c1830066b96da421
+  - ev-7bbe0315765cfeda
+  - ev-ae1caf2cc0f43d78
+  field: icp
+  value: manufacturers
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-c1830066b96da421
+  - ev-7bbe0315765cfeda
+  - ev-ae1caf2cc0f43d78
+  field: personas
+  value: manufacturers
+  visibility: message_safe
+company_id: known-01
+corrections: []
+evidence:
+- content_hash: c1830066b96da4212eb6e7e971034fab2599c84c43c7f1cf3b42ecd2019c18c0
+  evidence_id: ev-c1830066b96da421
+  excerpt: 13 Aug 2026 Advantech Industrial I/O and Automation Solutions - Advantech
+    Visit the European website To get information relevant for your region, we recommend
+    visiting our European website instead. Go to European website Advantech Homepage
+    Register / Log In My Account Log Out MyAdvantech Search Live Chat MyAdvantech
+    Registration MyAdvantech is a personalized portal for Advantech customers. By
+    becoming an Advantech member, you can receive latest product news, webinar invitations
+    and special eStore offers. Sign up today to get 24/7 quick access to your account
+    information. Register Log In Panel Button Search Thousands of Available Products
+    Do you mean Register / Log In MyAdvantech Registration MyAdvantech is a personalized
+    portal for Advantech customers. By becoming an Advantech member, you can receive
+    latest product news, webinar invitations and special eStore offers. Sign up today
+    to get 24/7 quick access to your account information. Register Log In MyAdvantech
+    Products Embedded Computing AIoT Software, Distribution & Services Application
+    Focus Embedded Solutions Arm-Based Computing Platforms Computer On Modules Digital
+    Signage Players Edge AI & Intelligence Solutions Embedded PCs Embedded Single
+    Board Computers Fanless Embedded Computers Gaming Platform Solutions Industrial
+    Display Systems Industrial Flash & Memory Solutions Industrial Motherboards Industrial
+    Wireless Solutions Wireless ePaper Display Solutions Design & Manufacturing Services
+    Custom Design Capabilities Industrial Automation & I/O Automation Controllers
+    & I/O Certified Solutions Class I, Division 2 Solution Data Acquisition (DAQ)
+    Embedded Automation Computers Gateways & Remote Terminal Units (RTUs) Human Machine
+    Interfaces Panel PC Power & Energy Remote I/O WebAccess Software & Edge SRP Wireless
+    I/O & Sensors Intelligent Connectivity Cellular Routers and Gateways Ethernet
+    / Serial Device Servers Industrial Ethernet Switches Industrial Media Converters
+    Industrial Protocol Gateways Industrial Wireless
+  retrieved_at: '2026-08-12T22:06:12.617191+00:00'
+  url: https://www.advantech.com/en-us/industrial-automation/industrial-io
+- content_hash: 7bbe0315765cfedad1b7e762656673d4d11916342e72253578977df1be7e2ffb
+  evidence_id: ev-7bbe0315765cfeda
+  excerpt: October 21, 2026 Advantech USA | LinkedIn Agree & Join LinkedIn By clicking
+    Continue to join or sign in, you agree to LinkedIn’s User Agreement , Privacy
+    Policy , and Cookie Policy . Skip to main content LinkedIn Top Content People
+    Learning Jobs Games Sign in Join now Advantech USA Computer Hardware Irvine, California
+    13,654 followers See jobs Follow View all 225 employees Report this company About
+    us Advantech is the global leader of embedded, industrial, IoT and automation
+    solution platforms. The 35-year-old, billion-dollar business is ranked a top 100
+    Industrial Internet of Things (IIoT) company, with over 1,000 products and more
+    than 8,000 employees working in 92 major cities worldwide. Advantech is renowned
+    for developing and manufacturing high-quality, high-performance hardware and software
+    computing components as well as complete platforms—focused on its vision of enabling
+    an intelligent planet. Advantech is a subsidiary of Advantech Co., Ltd. Website
+    http://www.advantech.com External link for Advantech USA Industry Computer Hardware
+    Company size 5,001-10,000 employees Headquarters Irvine, California Type Public
+    Company Specialties Intelligent Automation, Internet of Things (IoT), Machine
+    Automation, Power and Energy, Intelligent Transportation, Intelligent Building,
+    Military, Aerospace, Casino Gaming, Logistics, Cloud IoT, Embedded IoT, Design
+    Manufacturing Services , Retail, and Medical Employees at Advantech USA Jeff Ward
+    LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn Member
+    View 225 employees at Advantech USA Sign in Welcome back Email or phone Password
+    Show Forgot password? Sign in or By clicking Continue to join or sign in, you
+    agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie Policy . New
+    to LinkedIn? Join now or By clicking Continue to join or sign in, you agree to
+    LinkedIn’s User Agreement , Privacy Policy , and Cookie Policy . See all employees
+    Locations Primary 13 Whatney Irvine, California 92618, US Get dir
+  retrieved_at: '2026-08-12T22:06:13.444803+00:00'
+  url: https://www.linkedin.com/company/advantechusa
+- content_hash: ae1caf2cc0f43d781d7726a81e729b2a87417fcf03d2c1a0eb9ef0aaf73f5b60
+  evidence_id: ev-ae1caf2cc0f43d78
+  excerpt: 'Remote Condition Monitoring Products - Hughes-Peters Products Line Card
+    Services Contact ECIA ERA LinkedIn Our Company Products Line Card Services Contact
+    Call us today! 800-590-4055 Remote Condition Monitoring Products Hughes-Peters
+    is an authorized distributor for Advantech’s industrial automation and I/O solution
+    products. Contact us for product information. For a Selection Guide, click here
+    . Remote Facility Management Solutions for Facilities Operations and Maintenance
+    Industries of all kinds are often facing challenges to accurately collect data
+    from geographically distributed equipment to conduct remote monitoring in real
+    time for their data analysis, facility management, and preventative maintenance.
+    In Advantech, you can find our remote facility management solutions tailored for
+    your needs on Data acquisition Condition monitoring Device management Equipment
+    inspections Facilities operations and maintenance These comprehensive solutions
+    from field to cloud will assist your organization to enhance efficiency, improve
+    productivity and management capabilities. Contact Us for Free Consultancy! Call:
+    800-590-4055 Find a Branch Hughes-Peters service! We are an EMPLOYEE-OWNED distributor
+    of interconnect, passive, and electromechanical products with value-added services
+    and inventory management programs for our partnered customers. We understand the
+    importance of inventory and having it available – when you need it. 10 office
+    locations in the USA 3 Distribution centers (Ohio, Florida & Iowa) 26 Field Sales
+    Reps & 22 Inside Sales Reps QUICK CONTACT Your name * Your e-mail * State * Choose
+    your state Alabama Alaska Arizona Arkansas California Colorado Connecticut Delaware
+    District of Columbia Florida Georgia Hawaii Idaho Illinois Indiana Iowa Kansas
+    Kentucky Louisiana Maine Maryland Massachusetts Michigan Minnesota Mississippi
+    Missouri Montana Nebraska Nevada New Hampshire New Jersey New Mexico New York
+    North Carolina North Dakota Ohio Oklahoma Oregon Pennsylvania Rho'
+  retrieved_at: '2026-08-12T22:06:14.407750+00:00'
+  url: https://hughespeters.com/remote-condition-monitoring-products/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

@@ -1,6 +1,6 @@
 version: '1.0'
 as_of: '2026-08-12'
-status: proposed_seed
+status: research_complete
 source:
   kind: ai_ark_export
   sha256: 8ceea40d917c8b6674caf40b07b8365b39722e5ed1c802ffc8e3e0ebfeb520c4
@@ -13,21 +13,24 @@ companies:
   primary_cohort: local_b2b_services
   shared_core: false
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 29
     employee_size: 11-50
     industry: accounting
     industry_tags:
     - accounting
-    products_services: tax, tax planning, real estate, construction, government contracting, auditing, financial statements,
-      cost segregation, accounting, quickbooks, like-kind exchanges, consulting, business advisors
-    description: Welcome to A+P CPAs (formerly Adams & Petersen, CPAs) where expertise meets excellence in tax and advisory
-      services. We believe in building strong, long-lasting, trusted relationships with our clients. Our approach goes beyond
-      mere transactions; it’s about understanding your unique circumstances, goals, and aspirations. By taking the time to
-      listen and learn about your needs, we can provide customized solutions that align with your vision for success. As a
-      premier CPA firm, we specialize in providing tailored solutions to meet the diverse needs of businesses, individuals,
-      and organizations.
+    products_services: tax, tax planning, real estate, construction, government contracting,
+      auditing, financial statements, cost segregation, accounting, quickbooks, like-kind
+      exchanges, consulting, business advisors
+    description: Welcome to A+P CPAs (formerly Adams & Petersen, CPAs) where expertise
+      meets excellence in tax and advisory services. We believe in building strong,
+      long-lasting, trusted relationships with our clients. Our approach goes beyond
+      mere transactions; it’s about understanding your unique circumstances, goals,
+      and aspirations. By taking the time to listen and learn about your needs, we
+      can provide customized solutions that align with your vision for success. As
+      a premier CPA firm, we specialize in providing tailored solutions to meet the
+      diverse needs of businesses, individuals, and organizations.
     seo_description: null
     company_type: PRIVATELY_HELD
     location:
@@ -42,8 +45,17 @@ companies:
       last_amount: null
       last_date: null
     deferred_technologies: []
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: small businesses
+  business_offer: accounting services
+  cohort_evidence_url: https://www.linkedin.com/company/a-p-cpas
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  local_listing_url: https://members.ogdenweberchamber.com/list/member/a-p-cpas-llc-94123
 - id: local-02
   company_name: Advanced Control Corporation
   domain: advancedcontrolcorp.com
@@ -51,7 +63,7 @@ companies:
   primary_cohort: local_b2b_services
   shared_core: true
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 44
     employee_size: 51-200
@@ -61,21 +73,26 @@ companies:
     - energy management
     - clean energy
     - green building
-    products_services: building automation, security automation, green construction, lighting control, access control, cctv
-      solutions, leed certification, systems integration
-    description: 'Our mission at Advanced Control Corporation is to be the leading provider of building automation, access
-      control, system integration and Video surveillance systems and services for all Commercial Building Technology in South
-      Florida. We measure our success by the amount of residual and referral business we receive, a strong indicator of our
-      customer service standards.
+    products_services: building automation, security automation, green construction,
+      lighting control, access control, cctv solutions, leed certification, systems
+      integration
+    description: 'Our mission at Advanced Control Corporation is to be the leading
+      provider of building automation, access control, system integration and Video
+      surveillance systems and services for all Commercial Building Technology in
+      South Florida. We measure our success by the amount of residual and referral
+      business we receive, a strong indicator of our customer service standards.
 
 
-      The experience of our principals, who have participated in several of the pioneering advances of our industry combined
-      with experience providing systems and services effectively to hundreds of facilities spanning three continents, makes
-      Advanced Control Corporation the most trusted provider of building automation, access control and video surveillance
-      solutions in our market. This depth of experience and daily involvement by Advanced Control Corporations principals
-      is a large reason for our success over the past thirty plus years.'
-    seo_description: Welcome to Advanced Control Corporation, an industry leader in building technology and automation since
-      1987. Long-standing partner for your business.
+      The experience of our principals, who have participated in several of the pioneering
+      advances of our industry combined with experience providing systems and services
+      effectively to hundreds of facilities spanning three continents, makes Advanced
+      Control Corporation the most trusted provider of building automation, access
+      control and video surveillance solutions in our market. This depth of experience
+      and daily involvement by Advanced Control Corporations principals is a large
+      reason for our success over the past thirty plus years.'
+    seo_description: Welcome to Advanced Control Corporation, an industry leader in
+      building technology and automation since 1987. Long-standing partner for your
+      business.
     company_type: PUBLIC_COMPANY
     location:
       country: United States
@@ -119,8 +136,17 @@ companies:
     - Route 53
     - WordPress.org
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: commercial facilities
+  business_offer: building automation
+  cohort_evidence_url: https://www.linkedin.com/company/advanced-control-corporation
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  local_listing_url: https://www.myfloridalicense.com/portalsearches/VerifyLicensee/LicenseDetail?ID=E052FE1172B458A6A0392C1C02AA40E0
 - id: local-03
   company_name: American Kitchen Machinery & Repair
   domain: akmco.com
@@ -128,7 +154,7 @@ companies:
   primary_cohort: local_b2b_services
   shared_core: false
   difficulty: ambiguous
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 23
     employee_size: 11-50
@@ -141,16 +167,20 @@ companies:
     - customer service
     - manufacturing
     - transportation
-    products_services: service to commercial kitchen equipment, authorized parts distributor for commercial kitchen equipment,
-      cfesa certified company, women owned company
-    description: "American Kitchen Machinery is the tri-state area's premier service provider and parts distributor. We at\
-      \ AKM take professionalism and customer satisfaction to the top of the field. We are dedicated to providing you with\
-      \ all your commercial kitchen equipment needs, 24 hours a week and 7 days a week. \r\n\r\nOver 60 years ago, AKM was\
-      \ started by the Elliott family in Philadelphia. Being a family business has offered our customers the loyalty and quality\
-      \ only AKM could provide. Still today, you could step into our offices any day of the week and find at least a half\
-      \ dozen \"Elliotts\" working to serve you. \r\n\r\nAmerican Kitchen is currently staffed by factory trained CFESA certified\
-      \ technicians. Our offices are home to friendly and hardworking customer service representatives that are waiting to\
-      \ help you with ALL your service needs."
+    products_services: service to commercial kitchen equipment, authorized parts distributor
+      for commercial kitchen equipment, cfesa certified company, women owned company
+    description: "American Kitchen Machinery is the tri-state area's premier service\
+      \ provider and parts distributor. We at AKM take professionalism and customer\
+      \ satisfaction to the top of the field. We are dedicated to providing you with\
+      \ all your commercial kitchen equipment needs, 24 hours a week and 7 days a\
+      \ week. \r\n\r\nOver 60 years ago, AKM was started by the Elliott family in\
+      \ Philadelphia. Being a family business has offered our customers the loyalty\
+      \ and quality only AKM could provide. Still today, you could step into our offices\
+      \ any day of the week and find at least a half dozen \"Elliotts\" working to\
+      \ serve you. \r\n\r\nAmerican Kitchen is currently staffed by factory trained\
+      \ CFESA certified technicians. Our offices are home to friendly and hardworking\
+      \ customer service representatives that are waiting to help you with ALL your\
+      \ service needs."
     seo_description: null
     company_type: PRIVATELY_HELD
     location:
@@ -184,8 +214,17 @@ companies:
     - Outlook
     - Remote
     - WordPress.org
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: commercial kitchen
+  business_offer: equipment service
+  cohort_evidence_url: https://akmco.com/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  local_listing_url: https://cfesa.com/directory/american-kitchen-machinery-repair-company/
 - id: local-04
   company_name: Amplify Advisors
   domain: amplifyadvisors.ca
@@ -193,19 +232,21 @@ companies:
   primary_cohort: local_b2b_services
   shared_core: true
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 33
     employee_size: 11-50
     industry: accounting
     industry_tags:
     - accounting
-    products_services: cfo services, finance leaders, business advisors, connectors, consultants, chartered professional accountants,
-      accounting, book-keeping, recruiting, project management, change management, business process, finance effectiveness,
-      workshops, speaking & facilitating, automation, finance automation, cloud accounting, small business, start-up, sme,
-      corporate reporting
-    description: 'Many business leaders feel out of control because they don''t have the systems, processes, and people in
-      place to grow. At Amplify, we bring global best practices in finance and accounting to all sizes of business -- affordably
+    products_services: cfo services, finance leaders, business advisors, connectors,
+      consultants, chartered professional accountants, accounting, book-keeping, recruiting,
+      project management, change management, business process, finance effectiveness,
+      workshops, speaking & facilitating, automation, finance automation, cloud accounting,
+      small business, start-up, sme, corporate reporting
+    description: 'Many business leaders feel out of control because they don''t have
+      the systems, processes, and people in place to grow. At Amplify, we bring global
+      best practices in finance and accounting to all sizes of business -- affordably
       and without judgment -- to eliminate chaos and restore leadership
 
 
@@ -234,7 +275,8 @@ companies:
       - Curiosity
 
       - Courage'
-    seo_description: Scale Your Business through Sound Financial Strategy | Amplify Advisors
+    seo_description: Scale Your Business through Sound Financial Strategy | Amplify
+      Advisors
     company_type: PRIVATELY_HELD
     location:
       country: Canada
@@ -263,8 +305,17 @@ companies:
     - Outlook
     - Remote
     - WordPress.org
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: business leaders
+  business_offer: accounting services
+  cohort_evidence_url: https://amplifyadvisors.ca/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  local_listing_url: https://www.appsruntheworld.com/customers-database/customers/view/amplify-advisors-canada
 - id: local-05
   company_name: Anatek Labs, Inc.
   domain: anateklabs.com
@@ -272,7 +323,7 @@ companies:
   primary_cohort: local_b2b_services
   shared_core: false
   difficulty: hard
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 39
     employee_size: 51-200
@@ -280,23 +331,32 @@ companies:
     industry_tags:
     - environmental services
     products_services: null
-    description: "Anatek Labs, Inc. is a full service environmental analytical testing laboratory, established in 1992, with\
-      \ offices in Moscow, ID, Spokane, Wenatchee and Yakima, WA. Our mission is to provide precise and accurate analytical\
-      \ data and technical assistance to our clients in a timely and cost-effective manner. We test drinking water samples\
-      \ for community water services and private well customers, as well as water and environmental samples for environmental,\
-      \ industrial, and agricultural clients. \n\nOur Spokane office offers food safety testing and critical water testing,\
-      \ in addition to a wide variety of drinking water, waste water and soil testing. At our Spokane and Yakima locations,\
-      \ we provide testing for the Global G.A.P Program for safe farming practices. Anatek Labs in Wenatchee is currently\
-      \ a drop-off location.\n\nAt Anatek Labs, we are proud of our reputation for analytical excellence, outstanding customer\
-      \ service, timely turn-around, and reasonable pricing. In addition to utilizing a wide range of established analytical\
-      \ methods, we have also developed many in-house methods for the analyses of unregulated chemical contaminants. Using\
-      \ powerful tools such as ICP-MS, GC/MS, HPLC and HPLC/MS/MS, we are able to screen for a wide range of unknown samples.\
-      \ Our experience and expertise have built our reputation as quality problem solvers.\n\nAnatek Labs’ Moscow and Spokane\
-      \ facilities are certified by The NELAC Institute (TNI) as part of the National Environmental Laboratory Accreditation\
-      \ Program (NELAP) through the Florida Department of Health.  Anatek Labs’ Moscow laboratory is also certified by the\
-      \ EPA to perform testing for the UCMR3 Program (Unregulated Contaminant Monitoring Rule, Phase 3).\n\nBoth labs maintain\
-      \ accreditation in numerous states, including Idaho, Washington, Oregon, Montana, Nevada, New Mexico, Arizona, Colorado,\
-      \ Florida, and EPA Region 8 (Wyoming).\n\n\nPlease visit our website for a full list of our analytical services"
+    description: "Anatek Labs, Inc. is a full service environmental analytical testing\
+      \ laboratory, established in 1992, with offices in Moscow, ID, Spokane, Wenatchee\
+      \ and Yakima, WA. Our mission is to provide precise and accurate analytical\
+      \ data and technical assistance to our clients in a timely and cost-effective\
+      \ manner. We test drinking water samples for community water services and private\
+      \ well customers, as well as water and environmental samples for environmental,\
+      \ industrial, and agricultural clients. \n\nOur Spokane office offers food safety\
+      \ testing and critical water testing, in addition to a wide variety of drinking\
+      \ water, waste water and soil testing. At our Spokane and Yakima locations,\
+      \ we provide testing for the Global G.A.P Program for safe farming practices.\
+      \ Anatek Labs in Wenatchee is currently a drop-off location.\n\nAt Anatek Labs,\
+      \ we are proud of our reputation for analytical excellence, outstanding customer\
+      \ service, timely turn-around, and reasonable pricing. In addition to utilizing\
+      \ a wide range of established analytical methods, we have also developed many\
+      \ in-house methods for the analyses of unregulated chemical contaminants. Using\
+      \ powerful tools such as ICP-MS, GC/MS, HPLC and HPLC/MS/MS, we are able to\
+      \ screen for a wide range of unknown samples. Our experience and expertise have\
+      \ built our reputation as quality problem solvers.\n\nAnatek Labs’ Moscow and\
+      \ Spokane facilities are certified by The NELAC Institute (TNI) as part of the\
+      \ National Environmental Laboratory Accreditation Program (NELAP) through the\
+      \ Florida Department of Health.  Anatek Labs’ Moscow laboratory is also certified\
+      \ by the EPA to perform testing for the UCMR3 Program (Unregulated Contaminant\
+      \ Monitoring Rule, Phase 3).\n\nBoth labs maintain accreditation in numerous\
+      \ states, including Idaho, Washington, Oregon, Montana, Nevada, New Mexico,\
+      \ Arizona, Colorado, Florida, and EPA Region 8 (Wyoming).\n\n\nPlease visit\
+      \ our website for a full list of our analytical services"
     seo_description: null
     company_type: PRIVATELY_HELD
     location:
@@ -324,9 +384,17 @@ companies:
     - Remote
     - WordPress.org
     - reCAPTCHA
-  gaps:
-  - products_services
-  - target_customer
+  gaps: []
+  b2b_buyer: laboratories
+  business_offer: laboratory testing
+  cohort_evidence_url: https://www.anateklabs.com/about-us/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  local_listing_url: https://healthandwelfare.idaho.gov/health-wellness/environmental-health/drinking-water-and-private-wells
 - id: local-06
   company_name: Anderson Commercial Flooring
   domain: andersoncf.com
@@ -334,7 +402,7 @@ companies:
   primary_cohort: local_b2b_services
   shared_core: false
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 50
     employee_size: 51-200
@@ -343,13 +411,17 @@ companies:
     - interior design
     - consulting
     - construction
-    products_services: flooring, polished concrete, moisture mitigation, epoxy coatings, walk off mats and entry systems
-    description: Anderson Commercial Flooring is one of the largest family owned carpet and linoleum companies in the Bay
-      Area and has been in business since 1954. One of our greatest accomplishments is staff recruitment and retention. There
-      are many individuals that began 30 year careers with us through the Union, remaining valued Anderson Commercial Flooring
-      employees beyond their retirement dates. We are dedicated to providing the very highest standards of customer service
-      and professional installation. Our specialty is working directly for facilities and collaborating on large commercial
-      construction projects. Our values and commitment level are clearly stated by our corporate motto, “A REPUTATION YOU
+    products_services: flooring, polished concrete, moisture mitigation, epoxy coatings,
+      walk off mats and entry systems
+    description: Anderson Commercial Flooring is one of the largest family owned carpet
+      and linoleum companies in the Bay Area and has been in business since 1954.
+      One of our greatest accomplishments is staff recruitment and retention. There
+      are many individuals that began 30 year careers with us through the Union, remaining
+      valued Anderson Commercial Flooring employees beyond their retirement dates.
+      We are dedicated to providing the very highest standards of customer service
+      and professional installation. Our specialty is working directly for facilities
+      and collaborating on large commercial construction projects. Our values and
+      commitment level are clearly stated by our corporate motto, “A REPUTATION YOU
       CAN STAND ON”.
     seo_description: null
     company_type: PRIVATELY_HELD
@@ -385,8 +457,17 @@ companies:
     - Remote
     - WordPress.org
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: manufacturers
+  business_offer: commercial flooring
+  cohort_evidence_url: https://www.andersoncf.com/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  local_listing_url: https://resources.finalsite.net/images/v1713544569/smfcsdnet/lauevfkzrsuh0h5fz53e/PrequalReport041924-NewFlooring.pdf
 - id: local-07
   company_name: Apollo Mission Critical Engineering
   domain: apollomce.com
@@ -394,23 +475,27 @@ companies:
   primary_cohort: local_b2b_services
   shared_core: false
   difficulty: ambiguous
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 73
     employee_size: 51-200
     industry: construction
     industry_tags:
     - construction
-    products_services: commissioning, emergency response, owner's representative, operations support, advisory, supply chain
-      management
-    description: "At Apollo, we help our clients commission mission-critical assets that power tomorrow’s economy. \n\nWe\
-      \ are disciplined professionals with a focused will to make commissioning enjoyable while delivering competitively priced,\
-      \ high-quality results and testing services for our clients, safely and on time. \n\nThe Apollo Difference\n\nWe started\
-      \ with a clear aspiration: to build a company that is client-obsessed, people-powered, and purpose-driven.\n\nFrom the\
-      \ beginning, we have focused on earning and maintaining trust, one client at a time. This has required hiring the best\
-      \ people, investing in their training and treating them well. It has taken unwavering focus on developing our people,\
-      \ understanding each client’s unique needs, and a relentless commitment to delivering results that exceed expectations.\n\
-      \nAt our core, we are dedicated to delivering extraordinary results through quality people, systems, and processes."
+    products_services: commissioning, emergency response, owner's representative,
+      operations support, advisory, supply chain management
+    description: "At Apollo, we help our clients commission mission-critical assets\
+      \ that power tomorrow’s economy. \n\nWe are disciplined professionals with a\
+      \ focused will to make commissioning enjoyable while delivering competitively\
+      \ priced, high-quality results and testing services for our clients, safely\
+      \ and on time. \n\nThe Apollo Difference\n\nWe started with a clear aspiration:\
+      \ to build a company that is client-obsessed, people-powered, and purpose-driven.\n\
+      \nFrom the beginning, we have focused on earning and maintaining trust, one\
+      \ client at a time. This has required hiring the best people, investing in their\
+      \ training and treating them well. It has taken unwavering focus on developing\
+      \ our people, understanding each client’s unique needs, and a relentless commitment\
+      \ to delivering results that exceed expectations.\n\nAt our core, we are dedicated\
+      \ to delivering extraordinary results through quality people, systems, and processes."
     seo_description: null
     company_type: PRIVATELY_HELD
     location:
@@ -425,8 +510,17 @@ companies:
       last_amount: null
       last_date: null
     deferred_technologies: []
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: facilities
+  business_offer: engineering services
+  cohort_evidence_url: https://apollomce.com/our-services/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  local_listing_url: https://comdev.cobbcountyga.gov/new-business/download/bl-2026-02-13.pdf
 - id: local-08
   company_name: Applied Resource Group
   domain: appliedrg.com
@@ -434,7 +528,7 @@ companies:
   primary_cohort: local_b2b_services
   shared_core: false
   difficulty: hard
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 36
     employee_size: 11-50
@@ -450,28 +544,38 @@ companies:
     - web development
     - it infrastructure
     - apps
-    products_services: enterprise resource planning, microsoft dynamics gp, microsoft dynamics ax, microsoft dynamics crm,
-      microsoft dynamics nav, oracle, sap, siebel, pmp, sharepoint, application development, c# .net, java, php, it infrastructure,
+    products_services: enterprise resource planning, microsoft dynamics gp, microsoft
+      dynamics ax, microsoft dynamics crm, microsoft dynamics nav, oracle, sap, siebel,
+      pmp, sharepoint, application development, c# .net, java, php, it infrastructure,
       ccna, ccie, cissp, it recruiting, it staffing
-    description: "We connect talent with opportunity. \n\nApplied Resource Group is a leading provider of on demand staffing\
-      \ and recruiting services. The company delivers high-end professionals for clients ranging from small businesses to\
-      \ Fortune 50. ARG specializes in all areas of business including Accounting, Finance, Engineering, and Information Technology.\
-      \ \n\nOur mission is to build lasting relationships: one company, one candidate, and one career at a time. Applied Resource\
-      \ Group understands culture beats strategy every time. Our passion for connecting talent with opportunities extends\
-      \ beyond finding a candidate or filling a position… it’s about helping others, paying it forward and building relationships.\
-      \ We only work with people who rise above the role and responsibilities and take the initiative to deliver the highest\
-      \ caliber results. \n\nApplied Resource Group creates better hiring funnels by taking a systematic approach to sourcing\
-      \ and screening candidates. ARG starts our hiring process with higher quality candidates creating better outcomes and\
-      \ gaining a competitive edge when recruiting top talent. ARG’s devotion to quality and excellence has fueled our rapid\
-      \ growth over the past years. \n\n\n2020- Inc. 5000 List of America’s Fastest Growing Companies\n2020- Bulldog 100:\
-      \ Fastest Growing Bulldog Business\n2019- Inc. 5000 List of America’s Fastest Growing Companies\n2019- Atlanta Business\
-      \ Chronicle’s Pacesetter Award\n2019- Bulldog 100: Fastest Growing Bulldog Business\n2018- Inc. 5000 List of America’s\
-      \ Fastest Growing Companies\n2018 - Atlanta Business Chronicle's Best Places to Work\n2018 - Atlanta Business Chronicle’s\
-      \ Pacesetter Award \n2018- Bulldog 100: Fastest Growing Bulldog Business \n2017 - Atlanta Business Chronicle's Best\
-      \ Places to Work \n2017 - Inc. 5000 List of America's Fastest Growing Companies\n2017 - Bulldog 100: Fastest Growing\
-      \ Bulldog Business \n2017 - Staffing Industry Analyst's 40 Under 40"
-    seo_description: Atlantas premier staffing and recruiting firm since 2010, we deliver top talent while providing on-demand
-      consulting and recruiting services.
+    description: "We connect talent with opportunity. \n\nApplied Resource Group is\
+      \ a leading provider of on demand staffing and recruiting services. The company\
+      \ delivers high-end professionals for clients ranging from small businesses\
+      \ to Fortune 50. ARG specializes in all areas of business including Accounting,\
+      \ Finance, Engineering, and Information Technology. \n\nOur mission is to build\
+      \ lasting relationships: one company, one candidate, and one career at a time.\
+      \ Applied Resource Group understands culture beats strategy every time. Our\
+      \ passion for connecting talent with opportunities extends beyond finding a\
+      \ candidate or filling a position… it’s about helping others, paying it forward\
+      \ and building relationships. We only work with people who rise above the role\
+      \ and responsibilities and take the initiative to deliver the highest caliber\
+      \ results. \n\nApplied Resource Group creates better hiring funnels by taking\
+      \ a systematic approach to sourcing and screening candidates. ARG starts our\
+      \ hiring process with higher quality candidates creating better outcomes and\
+      \ gaining a competitive edge when recruiting top talent. ARG’s devotion to quality\
+      \ and excellence has fueled our rapid growth over the past years. \n\n\n2020-\
+      \ Inc. 5000 List of America’s Fastest Growing Companies\n2020- Bulldog 100:\
+      \ Fastest Growing Bulldog Business\n2019- Inc. 5000 List of America’s Fastest\
+      \ Growing Companies\n2019- Atlanta Business Chronicle’s Pacesetter Award\n2019-\
+      \ Bulldog 100: Fastest Growing Bulldog Business\n2018- Inc. 5000 List of America’s\
+      \ Fastest Growing Companies\n2018 - Atlanta Business Chronicle's Best Places\
+      \ to Work\n2018 - Atlanta Business Chronicle’s Pacesetter Award \n2018- Bulldog\
+      \ 100: Fastest Growing Bulldog Business \n2017 - Atlanta Business Chronicle's\
+      \ Best Places to Work \n2017 - Inc. 5000 List of America's Fastest Growing Companies\n\
+      2017 - Bulldog 100: Fastest Growing Bulldog Business \n2017 - Staffing Industry\
+      \ Analyst's 40 Under 40"
+    seo_description: Atlantas premier staffing and recruiting firm since 2010, we
+      deliver top talent while providing on-demand consulting and recruiting services.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -525,8 +629,17 @@ companies:
     - Varnish
     - WordPress.org
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: human resources
+  business_offer: staffing solutions
+  cohort_evidence_url: https://appliedrg.com/services-applied-resource-group/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  local_listing_url: https://b2bhint.com/en/company/us-co/applied-resource-group-llc--20201183347
 - id: local-09
   company_name: ArchPoint Group
   domain: archpointgroup.com
@@ -534,7 +647,7 @@ companies:
   primary_cohort: local_b2b_services
   shared_core: false
   difficulty: ambiguous
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 179
     employee_size: 51-200
@@ -545,16 +658,22 @@ companies:
     - consulting
     - advertising
     - business consulting and services
-    products_services: management consulting, sourcing & supply chain, branding & marketing, market execution
-    description: "ArchPoint is a global and boutique professional services company dedicated to solving business leaders’\
-      \ most complex challenges in order to fuel the performance and growth of people, brands and businesses. We do this by\
-      \ applying our cross-discipline experience to deliver interconnected solutions that create The Connected Company™.\r\
-      \n\r\nWe unite world-class capabilities – management consulting, integrated marketing, strategic sourcing, supply chain\
-      \ and market execution. Our seasoned team of experts proudly serves clients across the globe, through hubs in North\
-      \ America, Europe and East Asia. With a focus on results –and measuring our own success by the achievements of those\
-      \ we serve, ArchPoint has a 97 percent client retention rate.\r\n\r\nLearn more at www.archpointgroup.com"
-    seo_description: NetworkSolutions.com - Original domain name registration and reservation services with variety of internet-related
-      business offerings. Quick, dependable and reliable.
+    products_services: management consulting, sourcing & supply chain, branding &
+      marketing, market execution
+    description: "ArchPoint is a global and boutique professional services company\
+      \ dedicated to solving business leaders’ most complex challenges in order to\
+      \ fuel the performance and growth of people, brands and businesses. We do this\
+      \ by applying our cross-discipline experience to deliver interconnected solutions\
+      \ that create The Connected Company™.\r\n\r\nWe unite world-class capabilities\
+      \ – management consulting, integrated marketing, strategic sourcing, supply\
+      \ chain and market execution. Our seasoned team of experts proudly serves clients\
+      \ across the globe, through hubs in North America, Europe and East Asia. With\
+      \ a focus on results –and measuring our own success by the achievements of those\
+      \ we serve, ArchPoint has a 97 percent client retention rate.\r\n\r\nLearn more\
+      \ at www.archpointgroup.com"
+    seo_description: NetworkSolutions.com - Original domain name registration and
+      reservation services with variety of internet-related business offerings. Quick,
+      dependable and reliable.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -591,8 +710,17 @@ companies:
     - Remote
     - Typekit
     - WordPress.org
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: sales teams
+  business_offer: sales consulting
+  cohort_evidence_url: https://archpointgroup.com/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  local_listing_url: https://www.texasbar.com/AM/Template.cfm?ContactID=204054&template=%2FCustomsource%2FMemberDirectory%2FMemberDirectoryDetail.cfm
 - id: local-10
   company_name: Atlas Mechanical Inc.
   domain: atlas-mechanical.com
@@ -600,16 +728,17 @@ companies:
   primary_cohort: local_b2b_services
   shared_core: false
   difficulty: hard
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 36
     employee_size: 51-200
     industry: construction
     industry_tags:
     - construction
-    products_services: commercial plumbing, commercial hvac, industrial plumbing, industrial hvac
-    description: Atlas Mechanical Inc. is a Mechanical Contractor, based out of Woodland, Washington. Our services include
-      Commercial/Industrial Plumbing and HVAC.
+    products_services: commercial plumbing, commercial hvac, industrial plumbing,
+      industrial hvac
+    description: Atlas Mechanical Inc. is a Mechanical Contractor, based out of Woodland,
+      Washington. Our services include Commercial/Industrial Plumbing and HVAC.
     seo_description: null
     company_type: SELF_OWNED
     location:
@@ -631,8 +760,17 @@ companies:
     - Nginx
     - Reviews
     - WordPress.org
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: contractors
+  business_offer: mechanical services
+  cohort_evidence_url: https://www.osha.gov/ords/imis/establishment.inspection_detail?id=1856968.015
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  local_listing_url: https://www.osha.gov/ords/imis/establishment.inspection_detail?id=1856968.015
 - id: saas-01
   company_name: AgencyAnalytics
   domain: agencyanalytics.com
@@ -640,7 +778,7 @@ companies:
   primary_cohort: b2b_saas
   shared_core: true
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 145
     employee_size: 51-200
@@ -652,21 +790,26 @@ companies:
     - software
     - saas
     - seo
-    products_services: seo, social media reporting, sem, adwords, digital marketing, saas, internet marketing, link building,
-      facebook marketing, digital marketing, marketing agencies, marketing performance, social media marketing, client marketing
-      reports, marketing analytics, marketing agency, digital agency, google ads, ppc
-    description: 'AgencyAnalytics is the no-code reporting software for marketing agencies. Save time, boost revenue and impress
-      your clients with insightful reports and live marketing dashboards that show your full marketing impact.
+    products_services: seo, social media reporting, sem, adwords, digital marketing,
+      saas, internet marketing, link building, facebook marketing, digital marketing,
+      marketing agencies, marketing performance, social media marketing, client marketing
+      reports, marketing analytics, marketing agency, digital agency, google ads,
+      ppc
+    description: 'AgencyAnalytics is the no-code reporting software for marketing
+      agencies. Save time, boost revenue and impress your clients with insightful
+      reports and live marketing dashboards that show your full marketing impact.
 
 
-      The easy-to-use platform allows you to monitor and report on all of your marketing channels in one place. AgencyAnalytics
-      integrates with more than 70 data sources to report on SEO, PPC, call tracking, social media, email marketing, and more.
-      All fully branded for your agency so you can give clients their own login to the interface or app as if you built the
-      platform in-house.
+      The easy-to-use platform allows you to monitor and report on all of your marketing
+      channels in one place. AgencyAnalytics integrates with more than 70 data sources
+      to report on SEO, PPC, call tracking, social media, email marketing, and more.
+      All fully branded for your agency so you can give clients their own login to
+      the interface or app as if you built the platform in-house.
 
 
-      AgencyAnalytics includes a full suite of SEO tools designed to streamline your agency. Track rankings, monitor backlinks,
-      perform technical SEO audits and track the competition with built-in SEO tools.'
+      AgencyAnalytics includes a full suite of SEO tools designed to streamline your
+      agency. Track rankings, monitor backlinks, perform technical SEO audits and
+      track the competition with built-in SEO tools.'
     seo_description: Homepage
     company_type: PRIVATELY_HELD
     location:
@@ -762,8 +905,16 @@ companies:
     - YouTube
     - iTunes
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: marketing agencies
+  business_offer: reporting software
+  cohort_evidence_url: https://agencyanalytics.com/company/about
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: saas-02
   company_name: AgilePoint
   domain: agilepoint.com
@@ -771,7 +922,7 @@ companies:
   primary_cohort: b2b_saas
   shared_core: false
   difficulty: ambiguous
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 185
     employee_size: 51-200
@@ -780,39 +931,47 @@ companies:
     - data management
     - software development
     - software
-    products_services: bpms, workflow, business process management, sharepoint, low-code, forms, eform, office 365, digital
-      process automation, citizen development, digital transformation, bpm, business process orchestration, rpa, operationalize
-      ai, cross-functional automation, end-to-end orchestration, low-code application platform , ai operationalization, operationalizing
-      ai, agentic ai
-    description: 'Founded in 2003 and headquartered in Mountain View, California, AgilePoint enables Fortune 5000 companies
-      and governments worldwide to operationalize, democratize, and govern enterprise Agentic AI at run time with resilience
-      and integrity.
+    products_services: bpms, workflow, business process management, sharepoint, low-code,
+      forms, eform, office 365, digital process automation, citizen development, digital
+      transformation, bpm, business process orchestration, rpa, operationalize ai,
+      cross-functional automation, end-to-end orchestration, low-code application
+      platform , ai operationalization, operationalizing ai, agentic ai
+    description: 'Founded in 2003 and headquartered in Mountain View, California,
+      AgilePoint enables Fortune 5000 companies and governments worldwide to operationalize,
+      democratize, and govern enterprise Agentic AI at run time with resilience and
+      integrity.
 
 
-      Renowned for its Agentic AI Capability Maturity Model, AgilePoint has defined the future-path architecture for AI-enabled
-      organizations moving forward.
+      Renowned for its Agentic AI Capability Maturity Model, AgilePoint has defined
+      the future-path architecture for AI-enabled organizations moving forward.
 
 
-      At the heart of AgilePoint’s platform is its platform-agnostic, composable architecture—a centralized, exception-resistant
-      hub built by reusing and harmonizing existing tech stacks for Agentic AI.
+      At the heart of AgilePoint’s platform is its platform-agnostic, composable architecture—a
+      centralized, exception-resistant hub built by reusing and harmonizing existing
+      tech stacks for Agentic AI.
 
 
-      By leveraging exception resistance, AgilePoint captures embedded decision intelligence to train its AI Control Tower
-      Agentic Framework, empowering organizations to operationalize AI with democratization and governance.
+      By leveraging exception resistance, AgilePoint captures embedded decision intelligence
+      to train its AI Control Tower Agentic Framework, empowering organizations to
+      operationalize AI with democratization and governance.
 
 
-      The AgilePoint AI Control Tower also serves as a universal governance container for AI agents created with third-party
-      frameworks such as LangChain, CrewAI, n8n, Autogen, and more, enabling seamless support for multi-vendor and multi-agent
+      The AgilePoint AI Control Tower also serves as a universal governance container
+      for AI agents created with third-party frameworks such as LangChain, CrewAI,
+      n8n, Autogen, and more, enabling seamless support for multi-vendor and multi-agent
       applications.
 
 
-      Integrating over 1,200 business activities with 120+ systems, AgilePoint delivers resilient, exception-resistant operations
-      and dynamic adaptability unmatched by conventional automation tools.
+      Integrating over 1,200 business activities with 120+ systems, AgilePoint delivers
+      resilient, exception-resistant operations and dynamic adaptability unmatched
+      by conventional automation tools.
 
 
-      Operationalize, Democratize, and Govern Enterprise Agentic AI Orchestration with AgilePoint.'
-    seo_description: At AgilePoint, we believe that automating processes across departments is the way to unlock your organizations
-      true potential. Connect those data silos and seamlessly integrate disparate tools to create unrivalled agility and transparency.
+      Operationalize, Democratize, and Govern Enterprise Agentic AI Orchestration
+      with AgilePoint.'
+    seo_description: At AgilePoint, we believe that automating processes across departments
+      is the way to unlock your organizations true potential. Connect those data silos
+      and seamlessly integrate disparate tools to create unrivalled agility and transparency.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -876,8 +1035,16 @@ companies:
     - WordPress.org
     - YouTube
     - Zendesk
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: enterprises
+  business_offer: business process automation
+  cohort_evidence_url: https://www.agilepoint.com/our-story
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: saas-03
   company_name: Aligned
   domain: alignedup.com
@@ -885,30 +1052,33 @@ companies:
   primary_cohort: b2b_saas
   shared_core: false
   difficulty: hard
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 64
     employee_size: 51-200
     industry: software development
     industry_tags:
     - software development
-    products_services: saas, sales collaboration, buyer collaboration, project management, crm, sales enablement, sales
-    description: 'Aligned is pioneering the new way that B2B revenue teams interact with customers in today''s remote, digital
-      era.
+    products_services: saas, sales collaboration, buyer collaboration, project management,
+      crm, sales enablement, sales
+    description: 'Aligned is pioneering the new way that B2B revenue teams interact
+      with customers in today''s remote, digital era.
 
 
-      Instead of customers juggling multiple email threads, attachments & tools, they have all resources in front of them
-      in a single shared workspace for easy decisions. Nothing gets buried and forgotten in threads. All stakeholders join
-      and collaborate, instead of staying behind the scenes. Both sides manage mutual action plans to keep things on track,
-      and reps can analyze buyer risks and intent.
+      Instead of customers juggling multiple email threads, attachments & tools, they
+      have all resources in front of them in a single shared workspace for easy decisions.
+      Nothing gets buried and forgotten in threads. All stakeholders join and collaborate,
+      instead of staying behind the scenes. Both sides manage mutual action plans
+      to keep things on track, and reps can analyze buyer risks and intent.
 
 
-      Companies like Deel, Productboard, and SimilarWeb use it to win more deals and close 45% faster.
+      Companies like Deel, Productboard, and SimilarWeb use it to win more deals and
+      close 45% faster.
 
 
       We are growing at a fast pace and looking for top talents to join our core team.'
-    seo_description: Aligned creates digital sales rooms for sales and customer success teams. Collaborate with your buyers
-      and customers. Start for free.
+    seo_description: Aligned creates digital sales rooms for sales and customer success
+      teams. Collaborate with your buyers and customers. Start for free.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -966,8 +1136,16 @@ companies:
     - Vimeo
     - WordPress.org
     - YouTube
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: sales teams
+  business_offer: digital sales room
+  cohort_evidence_url: https://www.alignedup.com/digital-sales-room/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: saas-04
   company_name: aPriori Technologies
   domain: apriori.com
@@ -975,7 +1153,7 @@ companies:
   primary_cohort: b2b_saas
   shared_core: true
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 277
     employee_size: 201-500
@@ -987,19 +1165,26 @@ companies:
     - enterprise
     - simulation
     - manufacturing
-    products_services: digital manufacturing simulation, manufacturing cost models, digital factories, design for manufacturability,
-      design to margin, source to margin, supply chain management, manufacturing automation, design to cost, make vs. buy
-      analysis, capital asset justification, post-launch product costs reduction (va/ve), npi lifecycle reduction,  cost estimation
-      , spend analytics, concept costing, digital manufacturing, manufacturing intelligence, discrete manufacturing, digital
-      transformation, sustainability
-    description: Why aPriori? aPriori provides unique AI-Powered Design & Sourcing Insights that unlock and identify new opportunities
-      rapidly for reducing product cost & carbon footprint, optimizing manufacturing & supply chain risk, and improving design
-      engineering & sourcing teams’ productivity. According to Forrester, aPriori customers achieve a ~600% ROI within three
-      years and payback within six months of adopting our Enterprise AI software. Leading manufacturers use our automated
-      Insights Platform to reduce time to market, meet sustainability targets, accelerate revenue growth, and increase profitability,
-      all contributing to creating cash faster. To learn more about aPriori’s cloud and on-premise solutions, visit www.apriori.com.
-    seo_description: Digital manufacturing insights platform that combines product cost management, design for manufacturability
-      and sustainability, and supplier collaboration.
+    products_services: digital manufacturing simulation, manufacturing cost models,
+      digital factories, design for manufacturability, design to margin, source to
+      margin, supply chain management, manufacturing automation, design to cost, make
+      vs. buy analysis, capital asset justification, post-launch product costs reduction
+      (va/ve), npi lifecycle reduction,  cost estimation , spend analytics, concept
+      costing, digital manufacturing, manufacturing intelligence, discrete manufacturing,
+      digital transformation, sustainability
+    description: Why aPriori? aPriori provides unique AI-Powered Design & Sourcing
+      Insights that unlock and identify new opportunities rapidly for reducing product
+      cost & carbon footprint, optimizing manufacturing & supply chain risk, and improving
+      design engineering & sourcing teams’ productivity. According to Forrester, aPriori
+      customers achieve a ~600% ROI within three years and payback within six months
+      of adopting our Enterprise AI software. Leading manufacturers use our automated
+      Insights Platform to reduce time to market, meet sustainability targets, accelerate
+      revenue growth, and increase profitability, all contributing to creating cash
+      faster. To learn more about aPriori’s cloud and on-premise solutions, visit
+      www.apriori.com.
+    seo_description: Digital manufacturing insights platform that combines product
+      cost management, design for manufacturability and sustainability, and supplier
+      collaboration.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -1066,8 +1251,16 @@ companies:
     - WordPress.org
     - YouTube
     - Zendesk
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: manufacturers
+  business_offer: product cost software
+  cohort_evidence_url: https://www.apriori.com/about/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: saas-05
   company_name: Archive360
   domain: archive360.com
@@ -1075,7 +1268,7 @@ companies:
   primary_cohort: b2b_saas
   shared_core: false
   difficulty: ambiguous
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 137
     employee_size: 51-200
@@ -1087,23 +1280,30 @@ companies:
     - archiving service
     - robotics
     - internet
-    products_services: archive migration , azure, cloud archiving, ediscovery, regulatory compliance, sec 17 a-4, information
-      management, gdpr, legal defensibility, application retirement, data archiving, legacy archives, data governance, records
-      management, legacy application retirement, ai, analytics, digital communications, modern archiving, file archiving,
-      data retirement, sap archiving, erp modernization, ai data readiness, ai governance, enterprise data, ai ready data
-      control plane
-    description: "Archive360 is the AI-ready data control plane and governed AI execution layer for regulated enterprises.\
-      \ We help organizations unify, govern, and activate complex enterprise data so it can safely power AI, analytics, and\
-      \ digital transformation initiatives without compromising compliance, security, or auditability. Our platform transforms\
-      \ regulated communications, records, legacy systems, and AI interactions into trusted, policy-controlled assets, ensuring\
-      \ that every dataset is classified, access-controlled, and fully traceable. By capturing AI prompts, outputs, and decision\
-      \ context, Archive360 enables defensible AI usage with audit-ready evidence across the data lifecycle. Built for highly\
-      \ regulated, Microsoft-centric organizations, our dedicated tenant architecture allows customers to retain full control\
-      \ of their data, encryption keys, policies, and governance controls. The result is a unified foundation that reduces\
-      \ risk, strengthens compliance posture, and accelerates responsible AI adoption at enterprise scale. \n\nTrusted data.\
-      \ Governed AI. Defensible outcomes."
-    seo_description: Trusted by organizations around the world to securely migrate their digital data to the cloud and manage
-      for regulatory, legal and business intelligence needs.
+    products_services: archive migration , azure, cloud archiving, ediscovery, regulatory
+      compliance, sec 17 a-4, information management, gdpr, legal defensibility, application
+      retirement, data archiving, legacy archives, data governance, records management,
+      legacy application retirement, ai, analytics, digital communications, modern
+      archiving, file archiving, data retirement, sap archiving, erp modernization,
+      ai data readiness, ai governance, enterprise data, ai ready data control plane
+    description: "Archive360 is the AI-ready data control plane and governed AI execution\
+      \ layer for regulated enterprises. We help organizations unify, govern, and\
+      \ activate complex enterprise data so it can safely power AI, analytics, and\
+      \ digital transformation initiatives without compromising compliance, security,\
+      \ or auditability. Our platform transforms regulated communications, records,\
+      \ legacy systems, and AI interactions into trusted, policy-controlled assets,\
+      \ ensuring that every dataset is classified, access-controlled, and fully traceable.\
+      \ By capturing AI prompts, outputs, and decision context, Archive360 enables\
+      \ defensible AI usage with audit-ready evidence across the data lifecycle. Built\
+      \ for highly regulated, Microsoft-centric organizations, our dedicated tenant\
+      \ architecture allows customers to retain full control of their data, encryption\
+      \ keys, policies, and governance controls. The result is a unified foundation\
+      \ that reduces risk, strengthens compliance posture, and accelerates responsible\
+      \ AI adoption at enterprise scale. \n\nTrusted data. Governed AI. Defensible\
+      \ outcomes."
+    seo_description: Trusted by organizations around the world to securely migrate
+      their digital data to the cloud and manage for regulatory, legal and business
+      intelligence needs.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -1167,8 +1367,16 @@ companies:
     - Vidyard
     - WordPress.org
     - Zendesk
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: government agencies
+  business_offer: data management platform
+  cohort_evidence_url: https://www.archive360.com/about-archive360/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: saas-06
   company_name: Arkestro
   domain: arkestro.com
@@ -1176,7 +1384,7 @@ companies:
   primary_cohort: b2b_saas
   shared_core: false
   difficulty: hard
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 116
     employee_size: 51-200
@@ -1188,17 +1396,21 @@ companies:
     - procurement
     - artificial intelligence (ai)
     - predictive analytics
-    products_services: strategic sourcing, procurement, contract management, software, procurement operations, supply chain,
-      supplier management, saas, b2b, cpg, consumer packaged goods, chemical manufacturing, biotechnology, heath services,
-      pharmaceutical, food & beverage, supplier diversity, construction, interiors & furnishings, consumer packaged goods,
-      predictive procurement, predictive sourcing, predictive allocation, predictive supplier management, direct materials,
-      indirect materials, capex, mro, indirect services, it projects, capital expenditure, logistics, maintenance, repair,
-      and operations, buyer, purchasing, category manager, supplier
-    description: Arkestro’s Predictive Procurement platform accelerates enterprise spend transformation, using AI and game
-      theory to unlock trapped savings and reduce risk, enabling teams to influence significantly more spend. Learn more at
-      https://www.arkestro.com
-    seo_description: Arkestro allows you to scale your best supplier decisions across more spend with Predictive Procurement
-      Orchestration. Amplify procurements impact with Arkestro.
+    products_services: strategic sourcing, procurement, contract management, software,
+      procurement operations, supply chain, supplier management, saas, b2b, cpg, consumer
+      packaged goods, chemical manufacturing, biotechnology, heath services, pharmaceutical,
+      food & beverage, supplier diversity, construction, interiors & furnishings,
+      consumer packaged goods, predictive procurement, predictive sourcing, predictive
+      allocation, predictive supplier management, direct materials, indirect materials,
+      capex, mro, indirect services, it projects, capital expenditure, logistics,
+      maintenance, repair, and operations, buyer, purchasing, category manager, supplier
+    description: Arkestro’s Predictive Procurement platform accelerates enterprise
+      spend transformation, using AI and game theory to unlock trapped savings and
+      reduce risk, enabling teams to influence significantly more spend. Learn more
+      at https://www.arkestro.com
+    seo_description: Arkestro allows you to scale your best supplier decisions across
+      more spend with Predictive Procurement Orchestration. Amplify procurements impact
+      with Arkestro.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -1264,8 +1476,16 @@ companies:
     - WordPress.org
     - YouTube
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: procurement teams
+  business_offer: predictive procurement platform
+  cohort_evidence_url: https://arkestro.com/predictive-procurement/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: saas-07
   company_name: Betterworks
   domain: betterworks.com
@@ -1273,7 +1493,7 @@ companies:
   primary_cohort: b2b_saas
   shared_core: true
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 217
     employee_size: 51-200
@@ -1286,13 +1506,14 @@ companies:
     - saas
     - artificial intelligence (ai)
     - human resources
-    products_services: technology, future of work, performance and productivity, saas and cloud computing, continuous performance
-      management, performance management, hr, goals/okrs, employee engagement, employee development, leadership development,
+    products_services: technology, future of work, performance and productivity, saas
+      and cloud computing, continuous performance management, performance management,
+      hr, goals/okrs, employee engagement, employee development, leadership development,
       recognition, conversations, peer feedback, objective and key results
-    description: Betterworks is the continuous performance management solution that empowers your people to reach their highest
-      potential.
-    seo_description: Betterworks Intelligent Performance Management simplifies performance management, enabling organizations
-      to make smart, data-based decisions.
+    description: Betterworks is the continuous performance management solution that
+      empowers your people to reach their highest potential.
+    seo_description: Betterworks Intelligent Performance Management simplifies performance
+      management, enabling organizations to make smart, data-based decisions.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -1391,8 +1612,16 @@ companies:
     - YouTube
     - Zendesk
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: hr leaders
+  business_offer: performance management
+  cohort_evidence_url: https://www.betterworks.com/about
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: saas-08
   company_name: BigPanda
   domain: bigpanda.io
@@ -1400,7 +1629,7 @@ companies:
   primary_cohort: b2b_saas
   shared_core: false
   difficulty: ambiguous
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 336
     employee_size: 201-500
@@ -1416,14 +1645,17 @@ companies:
     - developer platform
     - cloud infrastructure
     - data integration
-    products_services: it operations, it alert management, devops, data science, itom, it incident management, aiops, machine
-      learning, itoa, it event management, service operations, it monitoring, it automation, itops
-    description: BigPanda keeps the digital world running with Agentic AI, artificial intelligence that enables autonomous
-      systems to make decisions and perform tasks without constant human intervention. Beyond other AIOps solutions, the BigPanda
-      platform responds to and prevents IT incidents at machine speed, improving operational efficiency and delivering exceptional
-      service reliability.
-    seo_description: BigPanda’s AI powered platform helps ITOps teams prevent, manage, and resolve IT incidents with intelligent
-      automation. See how Fortune 500 companies are reducing IT costs.
+    products_services: it operations, it alert management, devops, data science, itom,
+      it incident management, aiops, machine learning, itoa, it event management,
+      service operations, it monitoring, it automation, itops
+    description: BigPanda keeps the digital world running with Agentic AI, artificial
+      intelligence that enables autonomous systems to make decisions and perform tasks
+      without constant human intervention. Beyond other AIOps solutions, the BigPanda
+      platform responds to and prevents IT incidents at machine speed, improving operational
+      efficiency and delivering exceptional service reliability.
+    seo_description: BigPanda’s AI powered platform helps ITOps teams prevent, manage,
+      and resolve IT incidents with intelligent automation. See how Fortune 500 companies
+      are reducing IT costs.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -1494,8 +1726,16 @@ companies:
     - WordPress.org
     - YouTube
     - Zendesk
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: it teams
+  business_offer: incident intelligence
+  cohort_evidence_url: https://www.bigpanda.io/company/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: saas-09
   company_name: Bitly
   domain: bitly.com
@@ -1503,7 +1743,7 @@ companies:
   primary_cohort: b2b_saas
   shared_core: false
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 340
     employee_size: 201-500
@@ -1516,13 +1756,15 @@ companies:
     - advertising
     - publishing
     - social media
-    products_services: internet, urls, data, links, social publishing, social media, twitter, facebook, tracking links, analytics,
-      social media monitoring, social media analytics, analytics, qr codes, link-in-bio, digital marketing, instagram, tik
-      tok, landing pages, sms, 2d barcodes, connected packaging
-    description: "Bitly is your all-in-one Connections Platform for Short Links, QR Codes, and Landing Pages, all backed by\
-      \ powerful Analytics. We bring brands, businesses, digital marketers, creators, educators and non-profits a BIT closer\
-      \ to their audiences. Insights and analytics behind every connection you create with Bitly and pricing packages for\
-      \ users of any type! \n\nNeed support? bitly.is/heretohelp"
+    products_services: internet, urls, data, links, social publishing, social media,
+      twitter, facebook, tracking links, analytics, social media monitoring, social
+      media analytics, analytics, qr codes, link-in-bio, digital marketing, instagram,
+      tik tok, landing pages, sms, 2d barcodes, connected packaging
+    description: "Bitly is your all-in-one Connections Platform for Short Links, QR\
+      \ Codes, and Landing Pages, all backed by powerful Analytics. We bring brands,\
+      \ businesses, digital marketers, creators, educators and non-profits a BIT closer\
+      \ to their audiences. Insights and analytics behind every connection you create\
+      \ with Bitly and pricing packages for users of any type! \n\nNeed support? bitly.is/heretohelp"
     seo_description: null
     company_type: PRIVATELY_HELD
     location:
@@ -1584,8 +1826,16 @@ companies:
     - WordPress.org
     - Zendesk
     - Zuora
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: marketing teams
+  business_offer: link management
+  cohort_evidence_url: https://www.linkedin.com/company/bitly
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: saas-10
   company_name: Built
   domain: getbuilt.com
@@ -1593,7 +1843,7 @@ companies:
   primary_cohort: b2b_saas
   shared_core: false
   difficulty: hard
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 330
     employee_size: 201-500
@@ -1607,14 +1857,17 @@ companies:
     - financial services
     - fintech
     - commercial lending
-    products_services: financial services technology, construction lending, cre lending, bank compliance, risk mitigation,
-      saas- based company, renovation lending, builder finance, fintech, homebuilder finance, residential construction lending,
-      commercial construction lending, digital lending, construction finance, saas
-    description: Built is an AI-powered financial operations platform for the real estate and construction industries. By
-      connecting capital providers, owners & developers, and builders, Built automates workflows, accelerates the flow of
-      money and information, and unlocks insights for smarter decisions. Hundreds of top financial institutions and thousands
-      of owners and builders trust Built to manage hundreds of billions in real estate and construction activity—so you spend
-      less time on process and more time on progress. Learn more at getbuilt.com.
+    products_services: financial services technology, construction lending, cre lending,
+      bank compliance, risk mitigation, saas- based company, renovation lending, builder
+      finance, fintech, homebuilder finance, residential construction lending, commercial
+      construction lending, digital lending, construction finance, saas
+    description: Built is an AI-powered financial operations platform for the real
+      estate and construction industries. By connecting capital providers, owners
+      & developers, and builders, Built automates workflows, accelerates the flow
+      of money and information, and unlocks insights for smarter decisions. Hundreds
+      of top financial institutions and thousands of owners and builders trust Built
+      to manage hundreds of billions in real estate and construction activity—so you
+      spend less time on process and more time on progress. Learn more at getbuilt.com.
     seo_description: null
     company_type: PRIVATELY_HELD
     location:
@@ -1703,8 +1956,16 @@ companies:
     - UberFlip
     - Wistia
     - WordPress.org
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: lenders
+  business_offer: construction finance platform
+  cohort_evidence_url: https://getbuilt.com/solutions/lenders/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: funded-01
   company_name: Quantifind
   domain: quantifind.com
@@ -1712,7 +1973,7 @@ companies:
   primary_cohort: recently_funded_b2b
   shared_core: true
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 112
     employee_size: 51-200
@@ -1724,21 +1985,28 @@ companies:
     - artificial intelligence (ai)
     - big data
     - fintech
-    products_services: big data, predictive analytics, unstructured data, text analytics, fraud analytics, media data, anti-money
-      laundering, fintech, regtech, machine learning, data science, law enforcement, anti-money laundering, kyc, compliance,
+    products_services: big data, predictive analytics, unstructured data, text analytics,
+      fraud analytics, media data, anti-money laundering, fintech, regtech, machine
+      learning, data science, law enforcement, anti-money laundering, kyc, compliance,
       financial crimes investigation, aml, financial crimes, fincrime
-    description: "Quantifind helps some of the world’s biggest banks catch money laundering and fraud. Quantifind also works\
-      \ with government agencies to use the same platform to uncover criminal networks and combat election tampering. Unlike\
-      \ other players in this space, Quantifind delivers results as software-as-a-service (SaaS) with consumer-grade user\
-      \ experiences. \n\nQuantifind is a data science technology company whose AI platform uncovers signals of risk across\
-      \ disparate and unstructured text sources. In financial crimes risk management, Quantifind’s solution uniquely combines\
-      \ internal financial institution data with public domain data to assess risk in the context of Know Your Customer (KYC),\
-      \ Customer Due Diligence (CDD), Fraud Risk Management, and Anti-Money Laundering (AML) processes. Today these compliance\
-      \ processes are burdened by ever-increasing regulatory responsibilities and an expectation of frictionless transactions.\
-      \ Legacy technologies demand increasingly more human resources as the operations expand; Quantifind’s solution offers\
-      \ a way to cut through the inefficiency and enhance effectiveness simultaneously."
-    seo_description: Quantifind’s risk screening and investigations platform harnesses the full potential of AI and external
-      data to streamline AML-KYC from end to end.
+    description: "Quantifind helps some of the world’s biggest banks catch money laundering\
+      \ and fraud. Quantifind also works with government agencies to use the same\
+      \ platform to uncover criminal networks and combat election tampering. Unlike\
+      \ other players in this space, Quantifind delivers results as software-as-a-service\
+      \ (SaaS) with consumer-grade user experiences. \n\nQuantifind is a data science\
+      \ technology company whose AI platform uncovers signals of risk across disparate\
+      \ and unstructured text sources. In financial crimes risk management, Quantifind’s\
+      \ solution uniquely combines internal financial institution data with public\
+      \ domain data to assess risk in the context of Know Your Customer (KYC), Customer\
+      \ Due Diligence (CDD), Fraud Risk Management, and Anti-Money Laundering (AML)\
+      \ processes. Today these compliance processes are burdened by ever-increasing\
+      \ regulatory responsibilities and an expectation of frictionless transactions.\
+      \ Legacy technologies demand increasingly more human resources as the operations\
+      \ expand; Quantifind’s solution offers a way to cut through the inefficiency\
+      \ and enhance effectiveness simultaneously."
+    seo_description: Quantifind’s risk screening and investigations platform harnesses
+      the full potential of AI and external data to streamline AML-KYC from end to
+      end.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -1791,8 +2059,18 @@ companies:
     - Vimeo
     - WordPress.org
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: financial institutions
+  business_offer: fraud intelligence
+  cohort_evidence_url: https://www.linkedin.com/company/quantifind
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  primary_funding_url: https://www.prnewswire.com/news-releases/quantifind-announces-200-million-growth-investment-led-by-summit-partners-to-advance-ai-native-risk-intelligence-and-governed-agentic-middleware-for-modern-risk-operations-302811746.html
+  primary_funding_date: '2026-06-26'
 - id: funded-02
   company_name: Assort Health
   domain: assorthealth.com
@@ -1800,7 +2078,7 @@ companies:
   primary_cohort: recently_funded_b2b
   shared_core: false
   difficulty: ambiguous
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 140
     employee_size: 201-500
@@ -1813,14 +2091,16 @@ companies:
     - artificial intelligence (ai)
     - scheduling
     products_services: null
-    description: "Specialty-specific generative voice AI that answers patient calls. Free your patients from waiting on hold.\
-      \ \n\n42M+ patient interactions served with Voice AI. -63% operational costs. +3% net new patients. 5 weeks to go live.\n\
-      \nTrusted by thousands of providers across leading healthcare organizations: Palm Beach Orthopedics Institute, SharedPractices,\
-      \ Peninsula Orthopedics Associates, MDCS Dermatology, Cleaver Medical Group, Northern California Retina Vitreous Associates,\
-      \ Catalyst Medical Group, Chesapeake Healthcare OrthoIndy, Pediatric Associates of Southwest Missouri, and many more.\
-      \ \n\nLearn more: https://assorthealth.com"
-    seo_description: Our call center generative AI reduces hold time, decreases dropped calls, and contains costs while driving
-      appointment revenue.
+    description: "Specialty-specific generative voice AI that answers patient calls.\
+      \ Free your patients from waiting on hold. \n\n42M+ patient interactions served\
+      \ with Voice AI. -63% operational costs. +3% net new patients. 5 weeks to go\
+      \ live.\n\nTrusted by thousands of providers across leading healthcare organizations:\
+      \ Palm Beach Orthopedics Institute, SharedPractices, Peninsula Orthopedics Associates,\
+      \ MDCS Dermatology, Cleaver Medical Group, Northern California Retina Vitreous\
+      \ Associates, Catalyst Medical Group, Chesapeake Healthcare OrthoIndy, Pediatric\
+      \ Associates of Southwest Missouri, and many more. \n\nLearn more: https://assorthealth.com"
+    seo_description: Our call center generative AI reduces hold time, decreases dropped
+      calls, and contains costs while driving appointment revenue.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -1856,17 +2136,26 @@ companies:
     - Remote
     - Twilio
     - Ubuntu
-  gaps:
-  - products_services
-  - target_customer
+  gaps: []
+  b2b_buyer: healthcare providers
+  business_offer: patient scheduling
+  cohort_evidence_url: https://www.assorthealth.com/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  primary_funding_url: https://www.assorthealth.com/blog/assort-health-raises-120-million-series-c-to-scale-largest-deployment-of-ai-agents-for-the-patient-journey
+  primary_funding_date: '2026-06-24'
 - id: funded-03
   company_name: Float
-  domain: floatcard.com
+  domain: floatfinancial.com
   linkedin_company_url: https://www.linkedin.com/company/floatfinancial
   primary_cohort: recently_funded_b2b
   shared_core: false
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 191
     employee_size: 51-200
@@ -1879,17 +2168,22 @@ companies:
     - fintech
     - finance
     products_services: null
-    description: "Float is on a mission to simplify business finance in Canada. \n\nTrusted by 6,000+ companies, we help finance\
-      \ teams save time, improve compliance, and scale with confidence with corporate cards, bill pay, reimbursements, FX,\
-      \ and more.\n\nFloat Financial Solutions Inc. is a financial technology company and not a bank. The Float Visa* Prepaid\
-      \ Card is issued by Peoples Trust Company pursuant to license by Visa International. Deposits associated with the Float\
-      \ Visa Prepaid Card, including deposits placed in business accounts, are held at The Bank of Nova Scotia (“Scotiabank”),\
-      \ a CDIC member institution, and are eligible for CDIC insurance up to applicable limits. For more information, visit\
-      \ cdic.ca. The Float Mastercard® USD Card is issued by Thread Bank, Member FDIC, pursuant to license by Mastercard International.\
-      \ Banking services are provided by Thread Bank, Member FDIC. FDIC deposit insurance covers the failure of an insured\
-      \ bank. Certain conditions must be satisfied for pass-through deposit insurance coverage to apply."
-    seo_description: Spend, track, approve, and reconcile all your CAD and USD expenses in one platform. Corporate cards tied
-      with intelligent spend management software.
+    description: "Float is on a mission to simplify business finance in Canada. \n\
+      \nTrusted by 6,000+ companies, we help finance teams save time, improve compliance,\
+      \ and scale with confidence with corporate cards, bill pay, reimbursements,\
+      \ FX, and more.\n\nFloat Financial Solutions Inc. is a financial technology\
+      \ company and not a bank. The Float Visa* Prepaid Card is issued by Peoples\
+      \ Trust Company pursuant to license by Visa International. Deposits associated\
+      \ with the Float Visa Prepaid Card, including deposits placed in business accounts,\
+      \ are held at The Bank of Nova Scotia (“Scotiabank”), a CDIC member institution,\
+      \ and are eligible for CDIC insurance up to applicable limits. For more information,\
+      \ visit cdic.ca. The Float Mastercard® USD Card is issued by Thread Bank, Member\
+      \ FDIC, pursuant to license by Mastercard International. Banking services are\
+      \ provided by Thread Bank, Member FDIC. FDIC deposit insurance covers the failure\
+      \ of an insured bank. Certain conditions must be satisfied for pass-through\
+      \ deposit insurance coverage to apply."
+    seo_description: Spend, track, approve, and reconcile all your CAD and USD expenses
+      in one platform. Corporate cards tied with intelligent spend management software.
     company_type: PRIVATELY_HELD
     location:
       country: Canada
@@ -1913,17 +2207,26 @@ companies:
     - person schema
     - hsts includesubdomains preload
     - cloudflare hosting
-  gaps:
-  - products_services
-  - target_customer
+  gaps: []
+  b2b_buyer: finance teams
+  business_offer: corporate cards
+  cohort_evidence_url: https://floatfinancial.com/about-us
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  primary_funding_url: https://floatfinancial.com/press/float-secures-close-to-100m-in-funding
+  primary_funding_date: '2026-01-26'
 - id: funded-04
   company_name: Redo
-  domain: getredo.com
+  domain: redo.com
   linkedin_company_url: https://www.linkedin.com/company/redo-tech
   primary_cohort: recently_funded_b2b
   shared_core: false
   difficulty: hard
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 301
     employee_size: 51-200
@@ -1934,15 +2237,18 @@ companies:
     - business information systems
     - sales automation
     products_services: null
-    description: 'Crush cart abandonment & watch loyalty soar through elevated purchase & post purchase experience - completely
-      free.
+    description: 'Crush cart abandonment & watch loyalty soar through elevated purchase
+      & post purchase experience - completely free.
 
 
-      We help you consolidate your post-purchase tech stack saving you money and time while also providing a premium experience
-      for your customers. Our goals are to help you retain profit through minimizing returns, enhancing your order tracking
-      experience, optimizing your customer service and ultimately increasing LTV through a better post-purchase experience.'
-    seo_description: Boost conversions & customer lifetime value through our innovative free return coverage model. Simplify
-      options like exchanges or store credit to reduce return rates. Boost customer loyalty by providing premier post purchase
+      We help you consolidate your post-purchase tech stack saving you money and time
+      while also providing a premium experience for your customers. Our goals are
+      to help you retain profit through minimizing returns, enhancing your order tracking
+      experience, optimizing your customer service and ultimately increasing LTV through
+      a better post-purchase experience.'
+    seo_description: Boost conversions & customer lifetime value through our innovative
+      free return coverage model. Simplify options like exchanges or store credit
+      to reduce return rates. Boost customer loyalty by providing premier post purchase
       experience.
     company_type: PRIVATELY_HELD
     location:
@@ -1987,9 +2293,18 @@ companies:
     - Remote
     - Route 53
     - Webflow
-  gaps:
-  - products_services
-  - target_customer
+  gaps: []
+  b2b_buyer: finance teams
+  business_offer: returns management
+  cohort_evidence_url: https://redo.com/products/returns
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  primary_funding_url: https://www.globenewswire.com/news-release/2026/06/23/3316439/0/en/redo-announces-81-million-series-b-to-support-commerce-technology-expansion.html
+  primary_funding_date: '2026-06-23'
 - id: funded-05
   company_name: Baseten
   domain: baseten.co
@@ -1997,7 +2312,7 @@ companies:
   primary_cohort: recently_funded_b2b
   shared_core: true
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 243
     employee_size: 201-500
@@ -2010,15 +2325,18 @@ companies:
     - ai infrastructure
     - software engineering
     - machine learning
-    products_services: developer tools, software engineering, artificial intelligence, machine learning
-    description: 'Inference is everything. Baseten is an AI infrastructure platform giving you the tooling, expertise, and
-      hardware needed to bring great AI products to market - fast.
+    products_services: developer tools, software engineering, artificial intelligence,
+      machine learning
+    description: 'Inference is everything. Baseten is an AI infrastructure platform
+      giving you the tooling, expertise, and hardware needed to bring great AI products
+      to market - fast.
 
 
-      Our proprietary Inference Stack utilizes the cutting-edge of performance research combined with highly performant and
-      reliable infrastructure to give you out-of-the-box global availability with 99.99% of uptime.'
-    seo_description: Effortlessly serve optimized open source & custom models on the fastest, most reliable model delivery
-      network
+      Our proprietary Inference Stack utilizes the cutting-edge of performance research
+      combined with highly performant and reliable infrastructure to give you out-of-the-box
+      global availability with 99.99% of uptime.'
+    seo_description: Effortlessly serve optimized open source & custom models on the
+      fastest, most reliable model delivery network
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -2091,8 +2409,18 @@ companies:
     - Vercel
     - Vimeo
     - YouTube
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: engineers
+  business_offer: inference platform
+  cohort_evidence_url: https://www.baseten.co/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  primary_funding_url: https://www.baseten.co/blog/announcing-our-series-f/
+  primary_funding_date: '2026-06-22'
 - id: funded-06
   company_name: Parafin
   domain: parafin.com
@@ -2100,7 +2428,7 @@ companies:
   primary_cohort: recently_funded_b2b
   shared_core: false
   difficulty: ambiguous
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 145
     employee_size: 51-200
@@ -2113,12 +2441,14 @@ companies:
     - commercial lending
     - finance
     products_services: embedded lending, embedded capital
-    description: Parafin’s infrastructure powers financial services for marketplaces, vertical SaaS, payment platforms, and
-      more. With a single integration, platforms can launch a full suite of financial products for their small business sellers,
-      including capital, spend management, and savings tools. These services provide access to financing and help businesses
-      thrive by leveraging real-time performance data to offer customized financial solutions.
-    seo_description: Parafin provides a low-lift, end-to-end, embedded financing infrastructure with your branding to merchants
-      on your platform. We grow small businesses.
+    description: Parafin’s infrastructure powers financial services for marketplaces,
+      vertical SaaS, payment platforms, and more. With a single integration, platforms
+      can launch a full suite of financial products for their small business sellers,
+      including capital, spend management, and savings tools. These services provide
+      access to financing and help businesses thrive by leveraging real-time performance
+      data to offer customized financial solutions.
+    seo_description: Parafin provides a low-lift, end-to-end, embedded financing infrastructure
+      with your branding to merchants on your platform. We grow small businesses.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -2156,8 +2486,18 @@ companies:
     - StatusPage IO
     - Webflow
     - Zendesk
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: small businesses
+  business_offer: embedded finance
+  cohort_evidence_url: https://www.parafin.com/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  primary_funding_url: https://www.parafin.com/blog/parafin-announces-new-credit-facility-with-goldman-sachs-and-one-william-street
+  primary_funding_date: '2026-06-17'
 - id: funded-07
   company_name: Supabase
   domain: supabase.com
@@ -2165,7 +2505,7 @@ companies:
   primary_cohort: recently_funded_b2b
   shared_core: true
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 323
     employee_size: 201-500
@@ -2179,10 +2519,12 @@ companies:
     - cloud storage
     - developer platform
     products_services: null
-    description: "Build in a weekend. Scale to millions. \n\nSupabase is the Postgres development platform. Start your project\
-      \ with a Postgres Database, Authentication, instant APIs, and realtime subscriptions."
-    seo_description: Build production-grade applications with a Postgres database, Authentication, instant APIs, Realtime,
-      Functions, Storage and Vector embeddings. Start for free.
+    description: "Build in a weekend. Scale to millions. \n\nSupabase is the Postgres\
+      \ development platform. Start your project with a Postgres Database, Authentication,\
+      \ instant APIs, and realtime subscriptions."
+    seo_description: Build production-grade applications with a Postgres database,
+      Authentication, instant APIs, Realtime, Functions, Storage and Vector embeddings.
+      Start for free.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -2259,9 +2601,18 @@ companies:
     - YouTube
     - iCIMS
     - iTunes
-  gaps:
-  - products_services
-  - target_customer
+  gaps: []
+  b2b_buyer: developers
+  business_offer: database platform
+  cohort_evidence_url: https://supabase.com/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  primary_funding_url: https://supabase.com/blog/series-f
+  primary_funding_date: '2026-06-04'
 - id: funded-08
   company_name: Plurilock
   domain: plurilock.com
@@ -2269,7 +2620,7 @@ companies:
   primary_cohort: recently_funded_b2b
   shared_core: false
   difficulty: hard
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 56
     employee_size: 51-200
@@ -2281,17 +2632,20 @@ companies:
     - information technology
     - network security
     - computer and network security
-    products_services: network security, it security, continuous authentication, multi-factor authentication, biometric security
-      solutions, critical infrastructure network protection, mouse/keyboard biometric authentication, behavioral biometrics,
-      endpoint security, critical services, resilience engineering, it solutions, cybersecurity
-    description: 'Plurilock is a world-class consultancy, systems integrator, full-stack technology reseller, and ecosystem
-      of experts​.
+    products_services: network security, it security, continuous authentication, multi-factor
+      authentication, biometric security solutions, critical infrastructure network
+      protection, mouse/keyboard biometric authentication, behavioral biometrics,
+      endpoint security, critical services, resilience engineering, it solutions,
+      cybersecurity
+    description: 'Plurilock is a world-class consultancy, systems integrator, full-stack
+      technology reseller, and ecosystem of experts​.
 
 
-      Powered by proprietary IP, AI playbooks, and senior leaders from cyber and defense, Plurilock solves the cyber challenges
-      faced by allied governments and society''s most important enterprises.​'
-    seo_description: Plurilock is the leading provider of tools for AI safety, single sign-on, cloud access security (CASB)
-      and data loss prevention (DLP).
+      Powered by proprietary IP, AI playbooks, and senior leaders from cyber and defense,
+      Plurilock solves the cyber challenges faced by allied governments and society''s
+      most important enterprises.​'
+    seo_description: Plurilock is the leading provider of tools for AI safety, single
+      sign-on, cloud access security (CASB) and data loss prevention (DLP).
     company_type: PUBLIC_COMPANY
     location:
       country: Canada
@@ -2358,16 +2712,26 @@ companies:
     - YouTube
     - Zendesk
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: government agencies
+  business_offer: cybersecurity services
+  cohort_evidence_url: https://plurilock.com/wp-content/uploads/2026/04/2026-04-PLUR-IR.pdf
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  primary_funding_url: https://www.newsfilecorp.com/release/272654/Plurilock-Announces-Closing-of-3-Million-Strategic-Investment
+  primary_funding_date: '2025-10-31'
 - id: funded-09
-  company_name: Virtual Peaker
-  domain: virtual-peaker.com
-  linkedin_company_url: https://www.linkedin.com/company/virtual-peaker
+  company_name: DualEntry
+  domain: dualentry.com
+  linkedin_company_url: https://www.linkedin.com/company/dualentry
   primary_cohort: recently_funded_b2b
   shared_core: false
   difficulty: ambiguous
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 71
     employee_size: 51-200
@@ -2379,15 +2743,18 @@ companies:
     - saas
     - energy management
     - energy
-    products_services: demand management, software as a service, electric utilities, ders, distributed energy resources, demand
-      response, load shaping
-    description: Virtual Peaker is a cloud-based distributed energy company that empowers modern utilities to build the future
-      grid and meet global decarbonization goals. The SaaS company’s platform suites unify all aspects of DER management,
-      from DERMS to customer engagement and load forecasting. Virtual Peaker is a remote-first company that employs more than
-      50 people in various locations across the United States. For more information, visit www.virtual-peaker.com and follow
-      the company on LinkedIn and Twitter (@VirtualPeaker).
-    seo_description: Virtual Peaker is building the friendliest distributed energy platform on the planet. Modern utilities
-      rely on our solutions to build the grid of the future.
+    products_services: demand management, software as a service, electric utilities,
+      ders, distributed energy resources, demand response, load shaping
+    description: Virtual Peaker is a cloud-based distributed energy company that empowers
+      modern utilities to build the future grid and meet global decarbonization goals.
+      The SaaS company’s platform suites unify all aspects of DER management, from
+      DERMS to customer engagement and load forecasting. Virtual Peaker is a remote-first
+      company that employs more than 50 people in various locations across the United
+      States. For more information, visit www.virtual-peaker.com and follow the company
+      on LinkedIn and Twitter (@VirtualPeaker).
+    seo_description: Virtual Peaker is building the friendliest distributed energy
+      platform on the planet. Modern utilities rely on our solutions to build the
+      grid of the future.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -2445,8 +2812,18 @@ companies:
     - Shutterstock
     - Visual Website Optimizer
     - WordPress.org
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: finance teams
+  business_offer: accounting software
+  cohort_evidence_url: https://www.dualentry.com/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  primary_funding_url: https://www.dualentry.com/funding-announcement
+  primary_funding_date: '2025-10-02'
 - id: funded-10
   company_name: ThoroughCare
   domain: thoroughcare.net
@@ -2454,7 +2831,7 @@ companies:
   primary_cohort: recently_funded_b2b
   shared_core: false
   difficulty: hard
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 56
     employee_size: 11-50
@@ -2465,12 +2842,15 @@ companies:
     - software
     - wellness
     - health care
-    products_services: health care assessment software, health care questionnaire software, case and disease managment assessemnts,
-      hospital discharge planning assessments, chronic care management software, ccm software
-    description: ThoroughCare’s portfolio of integrated care coordination software solutions enable healthcare practices to
-      seamlessly deliver value-based care management programs that enhance patient engagement and health outcomes.
-    seo_description: Embrace value-based care with comprehensive care coordination software. Engage patients and achieve value-based
-      care goals with an integrated solution.
+    products_services: health care assessment software, health care questionnaire
+      software, case and disease managment assessemnts, hospital discharge planning
+      assessments, chronic care management software, ccm software
+    description: ThoroughCare’s portfolio of integrated care coordination software
+      solutions enable healthcare practices to seamlessly deliver value-based care
+      management programs that enhance patient engagement and health outcomes.
+    seo_description: Embrace value-based care with comprehensive care coordination
+      software. Engage patients and achieve value-based care goals with an integrated
+      solution.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -2537,8 +2917,18 @@ companies:
     - Shutterstock
     - Vimeo
     - YouTube
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: healthcare practices
+  business_offer: care coordination software
+  cohort_evidence_url: https://www.thoroughcare.net/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
+  primary_funding_url: https://www.sec.gov/Archives/edgar/data/1745729/000174572925000003/primary_doc.xml
+  primary_funding_date: '2025-10-15'
 - id: known-01
   company_name: Advantech USA
   domain: advantech.com
@@ -2546,21 +2936,25 @@ companies:
   primary_cohort: well_known_b2b
   shared_core: true
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 215
     employee_size: 5001-10000
     industry: computer hardware manufacturing
     industry_tags:
     - computer hardware manufacturing
-    products_services: intelligent automation, internet of things (iot), machine automation, power and energy, intelligent
-      transportation, intelligent building, military, aerospace, casino gaming, logistics, cloud iot, embedded iot, design
-      manufacturing services , retail, medical
-    description: Advantech is the global leader of embedded, industrial, IoT and automation solution platforms. The 35-year-old,
-      billion-dollar business is ranked a top 100 Industrial Internet of Things (IIoT) company, with over 1,000 products and
-      more than 8,000 employees working in 92 major cities worldwide. Advantech is renowned for developing and manufacturing
-      high-quality, high-performance hardware and software computing components as well as complete platforms—focused on its
-      vision of enabling an intelligent planet. Advantech is a subsidiary of Advantech Co., Ltd.
+    products_services: intelligent automation, internet of things (iot), machine automation,
+      power and energy, intelligent transportation, intelligent building, military,
+      aerospace, casino gaming, logistics, cloud iot, embedded iot, design manufacturing
+      services , retail, medical
+    description: Advantech is the global leader of embedded, industrial, IoT and automation
+      solution platforms. The 35-year-old, billion-dollar business is ranked a top
+      100 Industrial Internet of Things (IIoT) company, with over 1,000 products and
+      more than 8,000 employees working in 92 major cities worldwide. Advantech is
+      renowned for developing and manufacturing high-quality, high-performance hardware
+      and software computing components as well as complete platforms—focused on its
+      vision of enabling an intelligent planet. Advantech is a subsidiary of Advantech
+      Co., Ltd.
     seo_description: Cellular Routers Engineering Portal
     company_type: PUBLIC_COMPANY
     location:
@@ -2575,8 +2969,16 @@ companies:
       last_amount: null
       last_date: null
     deferred_technologies: []
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: manufacturers
+  business_offer: industrial automation
+  cohort_evidence_url: https://www.advantech.com/en-us/industrial-automation/industrial-io
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: known-02
   company_name: Avery Dennison Graphics Solutions
   domain: averydennison.com
@@ -2584,7 +2986,7 @@ companies:
   primary_cohort: well_known_b2b
   shared_core: true
   difficulty: ambiguous
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 367
     employee_size: 10001+
@@ -2594,20 +2996,25 @@ companies:
     - graphic design
     - training
     - advertising
-    products_services: digital imaging media, screen and cut materials, custom color matching, technical service
-    description: 'We are a global materials science and digital identification solutions company with locations in over 50
-      countries, and we employ approximately 35,000 employees worldwide.
+    products_services: digital imaging media, screen and cut materials, custom color
+      matching, technical service
+    description: 'We are a global materials science and digital identification solutions
+      company with locations in over 50 countries, and we employ approximately 35,000
+      employees worldwide.
 
 
-      We provide a wide range of branding and information solutions that optimize labor and supply chain efficiency, reduce
-      waste, advance sustainability, circularity and transparency, and better connect brands and consumers. Our products and
-      solutions include labeling and functional materials, radio frequency identification (RFID) inlays and tags, software
-      applications that connect the physical and digital, and a variety of products and solutions that enhance branded packaging
+      We provide a wide range of branding and information solutions that optimize
+      labor and supply chain efficiency, reduce waste, advance sustainability, circularity
+      and transparency, and better connect brands and consumers. Our products and
+      solutions include labeling and functional materials, radio frequency identification
+      (RFID) inlays and tags, software applications that connect the physical and
+      digital, and a variety of products and solutions that enhance branded packaging
       and carry or display information that improves the customer experience.
 
 
-      We lead in serving an array of industries worldwide — including home and personal care, apparel, general retail, e-commerce,
-      logistics, food and grocery, pharmaceuticals and automotive.'
+      We lead in serving an array of industries worldwide — including home and personal
+      care, apparel, general retail, e-commerce, logistics, food and grocery, pharmaceuticals
+      and automotive.'
     seo_description: null
     company_type: PUBLIC_COMPANY
     location:
@@ -2691,8 +3098,16 @@ companies:
     - YouTube
     - iPerceptions
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: wrap professionals
+  business_offer: graphics products
+  cohort_evidence_url: https://www.linkedin.com/company/avery-dennison-graphics-solutions
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: known-03
   company_name: Bosch Home Comfort USA
   domain: bosch-homecomfort.com
@@ -2700,24 +3115,27 @@ companies:
   primary_cohort: well_known_b2b
   shared_core: false
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 443
     employee_size: 10001+
     industry: industrial machinery manufacturing
     industry_tags:
     - industrial machinery manufacturing
-    products_services: commercial hvac, residential hvac, tankless gas water heaters, electric water heaters, heat pump systems,
-      gas and oil residential/commercial boilers, water source heat pumps, radiant heat products, geothermal systems, hvac,
-      heating and cooling
-    description: 'Bosch Home Comfort is a leading source of high-quality heating, cooling and hot water systems. The company
-      offers Bosch tankless, point-of-use and electric water heaters, Bosch and Buderus floor-standing and wall-hung boilers,
-      Bosch and FHP water-source, geothermal and air-source heat pump systems, as well as controls and accessories for every
-      product line.
+    products_services: commercial hvac, residential hvac, tankless gas water heaters,
+      electric water heaters, heat pump systems, gas and oil residential/commercial
+      boilers, water source heat pumps, radiant heat products, geothermal systems,
+      hvac, heating and cooling
+    description: 'Bosch Home Comfort is a leading source of high-quality heating,
+      cooling and hot water systems. The company offers Bosch tankless, point-of-use
+      and electric water heaters, Bosch and Buderus floor-standing and wall-hung boilers,
+      Bosch and FHP water-source, geothermal and air-source heat pump systems, as
+      well as controls and accessories for every product line.
 
 
-      Bosch Home Comfort is committed to reinventing energy efficiency by offering smart products that work together as integrated
-      systems and enhance quality of life in an ultra-efficient and environmentally friendly manner.
+      Bosch Home Comfort is committed to reinventing energy efficiency by offering
+      smart products that work together as integrated systems and enhance quality
+      of life in an ultra-efficient and environmentally friendly manner.
 
 
       Privacy Policy: https://www.bosch-homecomfort.com/us/en/residential/corporate-information/'
@@ -2755,8 +3173,16 @@ companies:
     - Mobile Friendly
     - Remote
     - Vimeo
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: hvac contractors
+  business_offer: heating and cooling
+  cohort_evidence_url: https://www.bosch-homecomfort.com/us/en/residential/professionals/bosch-home-comfort-pro/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: known-04
   company_name: Huhtamaki North America
   domain: huhtamaki.com
@@ -2764,7 +3190,7 @@ companies:
   primary_cohort: well_known_b2b
   shared_core: false
   difficulty: ambiguous
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 298
     employee_size: 10001+
@@ -2772,20 +3198,27 @@ companies:
     industry_tags:
     - packaging and containers manufacturing
     products_services: null
-    description: "Huhtamaki is a leading provider of sustainable packaging solutions for consumers around the world. \n\n\
-      At Huhtamaki North America, we create opportunities for our customers in markets ranging from consumer goods and foodservice\
-      \ packaging to our retail business with customized store brand disposable tableware solutions and the Chinet® brand,\
-      \ one of the most recognized disposable tableware brands in North America. \n\nWith expertise in paperboard, molded\
-      \ fiber and plastic, we are leading the food packaging industry. Thanks to the passion and hard work of nearly 4,000\
-      \ team members in 18 manufacturing facilities across the U.S. and Mexico, the future has never looked brighter for Huhtamaki\
-      \ North America. \n\nOur ambition is to become the first choice in sustainable packaging solutions globally, and it\
-      \ starts right here in North America. Our global 2030 Transformation Strategy sets the goal to achieve carbon neutral\
-      \ production and designing all our products to be recyclable, compostable, or reusable. It’s more than a simple promise.\
-      \ It drives our work everyday.  \n\nIt is a bold strategy, and we are fully committed to making a difference where it\
-      \ matters. By working as one, we can fulfill the needs of our customers, while protecting food, people, and the planet."
-    seo_description: We serve quick service and fast casual restaurants, coffee shops, cafeterias, distributors, retailers
-      and vending operators across the world and offer high quality single and double wall paper cups, plates, wraps, bowls
-      and a wide range of food-to-go packaging and accessories.
+    description: "Huhtamaki is a leading provider of sustainable packaging solutions\
+      \ for consumers around the world. \n\nAt Huhtamaki North America, we create\
+      \ opportunities for our customers in markets ranging from consumer goods and\
+      \ foodservice packaging to our retail business with customized store brand disposable\
+      \ tableware solutions and the Chinet® brand, one of the most recognized disposable\
+      \ tableware brands in North America. \n\nWith expertise in paperboard, molded\
+      \ fiber and plastic, we are leading the food packaging industry. Thanks to the\
+      \ passion and hard work of nearly 4,000 team members in 18 manufacturing facilities\
+      \ across the U.S. and Mexico, the future has never looked brighter for Huhtamaki\
+      \ North America. \n\nOur ambition is to become the first choice in sustainable\
+      \ packaging solutions globally, and it starts right here in North America. Our\
+      \ global 2030 Transformation Strategy sets the goal to achieve carbon neutral\
+      \ production and designing all our products to be recyclable, compostable, or\
+      \ reusable. It’s more than a simple promise. It drives our work everyday.  \n\
+      \nIt is a bold strategy, and we are fully committed to making a difference where\
+      \ it matters. By working as one, we can fulfill the needs of our customers,\
+      \ while protecting food, people, and the planet."
+    seo_description: We serve quick service and fast casual restaurants, coffee shops,
+      cafeterias, distributors, retailers and vending operators across the world and
+      offer high quality single and double wall paper cups, plates, wraps, bowls and
+      a wide range of food-to-go packaging and accessories.
     company_type: PUBLIC_COMPANY
     location:
       country: United States
@@ -2799,9 +3232,16 @@ companies:
       last_amount: null
       last_date: null
     deferred_technologies: []
-  gaps:
-  - products_services
-  - target_customer
+  gaps: []
+  b2b_buyer: foodservice operators
+  business_offer: foodservice packaging
+  cohort_evidence_url: https://www.huhtamaki.com/en-us/north-america/foodservice/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: known-05
   company_name: Intuit Accountants
   domain: quickbooks.intuit.com
@@ -2809,25 +3249,29 @@ companies:
   primary_cohort: well_known_b2b
   shared_core: true
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 207
     employee_size: 10001+
     industry: software development
     industry_tags:
     - software development
-    products_services: accounting software, professional tax software, saas software, payroll, tax, tax reform, tax planning,
-      compliance
-    description: "This page serves the accounting, bookkeeping, and tax professional community who are at the heart of everything\
-      \ we do at Intuit. \n\nOur range of smart business tools and powerful AI automation can help you take your firm and\
-      \ clients to the next level. Products you might know us for include QuickBooks Online, QuickBooks Online Advanced, Intuit\
-      \ Enterprise Suite, QuickBooks Online Accountant, Intuit Lacerte Tax, Intuit ProConnect Tax, Intuit ProSeries Tax, and\
-      \ Intuit ProFile Tax. \n\nLearn more at:\n\nUS\nWebsites: https://quickbooks.intuit.com/accountants/; https://accountants.intuit.com/\
-      \ \nFirm of the Future: https://www.firmofthefuture.com/ \nTax Pro Center: https://accountants.intuit.com/taxprocenter/\
-      \ \nProConnect Community: http://accountants-community.intuit.com \n\nCA\nWebsites: https://quickbooks.intuit.com/ca/accountants/\
+    products_services: accounting software, professional tax software, saas software,
+      payroll, tax, tax reform, tax planning, compliance
+    description: "This page serves the accounting, bookkeeping, and tax professional\
+      \ community who are at the heart of everything we do at Intuit. \n\nOur range\
+      \ of smart business tools and powerful AI automation can help you take your\
+      \ firm and clients to the next level. Products you might know us for include\
+      \ QuickBooks Online, QuickBooks Online Advanced, Intuit Enterprise Suite, QuickBooks\
+      \ Online Accountant, Intuit Lacerte Tax, Intuit ProConnect Tax, Intuit ProSeries\
+      \ Tax, and Intuit ProFile Tax. \n\nLearn more at:\n\nUS\nWebsites: https://quickbooks.intuit.com/accountants/;\
+      \ https://accountants.intuit.com/ \nFirm of the Future: https://www.firmofthefuture.com/\
+      \ \nTax Pro Center: https://accountants.intuit.com/taxprocenter/ \nProConnect\
+      \ Community: http://accountants-community.intuit.com \n\nCA\nWebsites: https://quickbooks.intuit.com/ca/accountants/\
       \ ; \nPro File: https://profile.intuit.ca/ \n\nUK\nWebsite: https://quickbooks.intuit.com/uk/accountants/online/"
-    seo_description: 'Pay your team and access powerful tools, employee benefits, and experts with the #1 payroll service
-      provider. Learn about QuickBooks online payroll services.'
+    seo_description: 'Pay your team and access powerful tools, employee benefits,
+      and experts with the #1 payroll service provider. Learn about QuickBooks online
+      payroll services.'
     company_type: PUBLIC_COMPANY
     location:
       country: United States
@@ -2895,8 +3339,16 @@ companies:
     - YouTube
     - iTunes
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: accountants
+  business_offer: accounting software
+  cohort_evidence_url: https://quickbooks.intuit.com/accountants/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: known-06
   company_name: Manulife Canada
   domain: manulife.ca
@@ -2904,7 +3356,7 @@ companies:
   primary_cohort: well_known_b2b
   shared_core: false
   difficulty: hard
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 258
     employee_size: 10001+
@@ -2912,10 +3364,13 @@ companies:
     industry_tags:
     - financial services
     products_services: null
-    description: "At Manulife, we want to empower Canadians to live better. Better means building strong foundations for individuals,\
-      \ families and businesses that can weather life’s unexpected challenges. It means being more confident navigating health\
-      \ and wealth decisions, so you can plan for the day-to-day and the long-term. And it means doing our part to ensure\
-      \ a more sustainable and economically inclusive future for all.  \n \nManulife. Where will better take you™"
+    description: "At Manulife, we want to empower Canadians to live better. Better\
+      \ means building strong foundations for individuals, families and businesses\
+      \ that can weather life’s unexpected challenges. It means being more confident\
+      \ navigating health and wealth decisions, so you can plan for the day-to-day\
+      \ and the long-term. And it means doing our part to ensure a more sustainable\
+      \ and economically inclusive future for all.  \n \nManulife. Where will better\
+      \ take you™"
     seo_description: null
     company_type: PUBLIC_COMPANY
     location:
@@ -2930,9 +3385,16 @@ companies:
       last_amount: null
       last_date: null
     deferred_technologies: []
-  gaps:
-  - products_services
-  - target_customer
+  gaps: []
+  b2b_buyer: employers
+  business_offer: group benefits
+  cohort_evidence_url: https://www.insurancebusinessmag.com/ca/news/group-benefits/manulife-osara-health-launch-cancer-coaching-pilot-for-group-benefits-members-569889.aspx
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: known-07
   company_name: Moog Industrial
   domain: moog.com
@@ -2940,7 +3402,7 @@ companies:
   primary_cohort: well_known_b2b
   shared_core: false
   difficulty: ambiguous
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 496
     employee_size: 10001+
@@ -2951,15 +3413,18 @@ companies:
     description: 'Welcome to the official Moog Industrial Linkedin page!
 
 
-      Moog Inc. is a worldwide designer, manufacturer, and integrator of precision motion control products and systems. Moog’s
-      high-performance systems control military and commercial aircraft, satellites and space vehicles, launch vehicles, missiles,
-      industrial machinery, wind energy, marine applications, medical equipment, and data centers.
+      Moog Inc. is a worldwide designer, manufacturer, and integrator of precision
+      motion control products and systems. Moog’s high-performance systems control
+      military and commercial aircraft, satellites and space vehicles, launch vehicles,
+      missiles, industrial machinery, wind energy, marine applications, medical equipment,
+      and data centers.
 
 
-      Moog Industrial provides high performance motion control solutions combining electric, hydraulic, and hybrid technologies
-      to help performance-driven companies develop their next-generation machines. From designing and manufacturing products
-      and solutions to providing expert consultative support, Moog collaborates with customers in many of the world''s most
-      challenging industrial applications.'
+      Moog Industrial provides high performance motion control solutions combining
+      electric, hydraulic, and hybrid technologies to help performance-driven companies
+      develop their next-generation machines. From designing and manufacturing products
+      and solutions to providing expert consultative support, Moog collaborates with
+      customers in many of the world''s most challenging industrial applications.'
     seo_description: null
     company_type: PUBLIC_COMPANY
     location:
@@ -2974,9 +3439,16 @@ companies:
       last_amount: null
       last_date: null
     deferred_technologies: []
-  gaps:
-  - products_services
-  - target_customer
+  gaps: []
+  b2b_buyer: industrial customers
+  business_offer: motion control
+  cohort_evidence_url: https://www.moog.com/markets/industrial-automation.html
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: known-08
   company_name: Nordson Adhesive Dispensing Systems
   domain: nordson.com
@@ -2984,7 +3456,7 @@ companies:
   primary_cohort: well_known_b2b
   shared_core: false
   difficulty: hard
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 262
     employee_size: 5001-10000
@@ -2992,17 +3464,22 @@ companies:
     industry_tags:
     - machinery manufacturing
     - manufacturing
-    products_services: hot melt applicators, hot melt equipment, adhesive applicators, adhesive equipment, adhesive pattern
-      control, adhesive filling systems, foamed dispense systems, hot melt hoses, hot melt systems, adhesive systems, hot
-      melt nozzles, bulk delivery systems, dispense robots, meters & metering systems, adhesive melters, extruders, jet dispensers,
-      nonwoven product production, packaging applications, furniture & woodworking
-    description: "Nordson Adhesive Dispensing Systems is a leading global manufacturer of precision dispensing equipment.\
-      \ From hot melt adhesives and sealants to liquid adhesives, Nordson systems help manufacturers of consumer and industrial\
-      \ products operate more efficiently and improve product quality. Applications including packaging, nonwovens and product\
-      \ assembly benefit from Nordson systems designed for precision, reliability and repeatability. \r\n\r\nEquipment includes:\
-      \ hot melt and cold adhesive applicators; nozzles; tank and bulk melters; pumps; hoses; and, verification & detection\
-      \ systems. Genuine Nordson replacement parts and maintenance programs help extend the life of Nordson systems and keep\
-      \ production lines running at their best."
+    products_services: hot melt applicators, hot melt equipment, adhesive applicators,
+      adhesive equipment, adhesive pattern control, adhesive filling systems, foamed
+      dispense systems, hot melt hoses, hot melt systems, adhesive systems, hot melt
+      nozzles, bulk delivery systems, dispense robots, meters & metering systems,
+      adhesive melters, extruders, jet dispensers, nonwoven product production, packaging
+      applications, furniture & woodworking
+    description: "Nordson Adhesive Dispensing Systems is a leading global manufacturer\
+      \ of precision dispensing equipment. From hot melt adhesives and sealants to\
+      \ liquid adhesives, Nordson systems help manufacturers of consumer and industrial\
+      \ products operate more efficiently and improve product quality. Applications\
+      \ including packaging, nonwovens and product assembly benefit from Nordson systems\
+      \ designed for precision, reliability and repeatability. \r\n\r\nEquipment includes:\
+      \ hot melt and cold adhesive applicators; nozzles; tank and bulk melters; pumps;\
+      \ hoses; and, verification & detection systems. Genuine Nordson replacement\
+      \ parts and maintenance programs help extend the life of Nordson systems and\
+      \ keep production lines running at their best."
     seo_description: null
     company_type: PUBLIC_COMPANY
     location:
@@ -3018,8 +3495,16 @@ companies:
       last_date: null
     deferred_technologies:
     - commoncrawl top 50m
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: manufacturers
+  business_offer: adhesive dispensing
+  cohort_evidence_url: https://www.linkedin.com/company/nordson-adhesive
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: known-09
   company_name: Optum Bank
   domain: optumbank.com
@@ -3027,7 +3512,7 @@ companies:
   primary_cohort: well_known_b2b
   shared_core: false
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 240
     employee_size: 10001+
@@ -3039,8 +3524,9 @@ companies:
     - banking
     products_services: null
     description: Leader in health accounts banking
-    seo_description: Welcome to Optum Bank.  Learn more about our healthcare financial products, including health savings
-      accounts, flexible spending accounts, stop loss services, and electronic payment/processing services.
+    seo_description: Welcome to Optum Bank.  Learn more about our healthcare financial
+      products, including health savings accounts, flexible spending accounts, stop
+      loss services, and electronic payment/processing services.
     company_type: PUBLIC_COMPANY
     location:
       country: United States
@@ -3093,9 +3579,16 @@ companies:
     - Taboola Newsroom
     - The Trade Desk
     - reCAPTCHA
-  gaps:
-  - products_services
-  - target_customer
+  gaps: []
+  b2b_buyer: employers
+  business_offer: health savings accounts
+  cohort_evidence_url: https://www.optumbank.com/customer-support/contact.html
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: known-10
   company_name: TD SYNNEX Multi-Country Area (English)
   domain: lac.tdsynnex.com
@@ -3103,7 +3596,7 @@ companies:
   primary_cohort: well_known_b2b
   shared_core: false
   difficulty: hard
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 89
     employee_size: 10001+
@@ -3111,16 +3604,20 @@ companies:
     industry_tags:
     - it services and it consulting
     products_services: null
-    description: 'We’re TD SYNNEX (NYSE: SNX), a leading distributor and solutions aggregator for the IT ecosystem.
+    description: 'We’re TD SYNNEX (NYSE: SNX), a leading distributor and solutions
+      aggregator for the IT ecosystem.
 
 
-      We’re 22,000 of the IT industry’s best and brightest, who share an unwavering passion for bringing compelling technology
-      products, services and solutions to the world. We’re an innovative partner that helps our customers maximize the value
-      of IT investments, demonstrate business outcomes and unlock growth opportunities.
+      We’re 22,000 of the IT industry’s best and brightest, who share an unwavering
+      passion for bringing compelling technology products, services and solutions
+      to the world. We’re an innovative partner that helps our customers maximize
+      the value of IT investments, demonstrate business outcomes and unlock growth
+      opportunities.
 
 
-      At our core, we’re a company that cares. We care about our partners, our co-workers, our investors and the world around
-      us. And we’re committed to being a diverse, inclusive employer of choice and a good corporate citizen.'
+      At our core, we’re a company that cares. We care about our partners, our co-workers,
+      our investors and the world around us. And we’re committed to being a diverse,
+      inclusive employer of choice and a good corporate citizen.'
     seo_description: null
     company_type: PUBLIC_COMPANY
     location:
@@ -3135,9 +3632,16 @@ companies:
       last_amount: null
       last_date: null
     deferred_technologies: []
-  gaps:
-  - products_services
-  - target_customer
+  gaps: []
+  b2b_buyer: manufacturers
+  business_offer: technology distribution
+  cohort_evidence_url: https://lac.tdsynnex.com/mca/en/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: agency-01
   company_name: 10Fold Communications
   domain: 10fold.com
@@ -3145,25 +3649,30 @@ companies:
   primary_cohort: b2b_agencies
   shared_core: true
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 42
     employee_size: 11-50
     industry: public relations and communications services
     industry_tags:
     - public relations and communications services
-    products_services: digital marketing, social media advertising, social media marketing, linkedin advertising
-    description: '10Fold  is a PR and integrated marketing agency with offices in San Diego, Austin TX, and Boston. Considered
-      as part of the top eight percent of agencies in the U.S. (based on size), 10Fold offers strategic communications and
-      content services to deep-tech B2B companies.  10Fold specializes in networking, IT security, AI, cloud, storage, Big
-      Data, enterprise software, DevOps, wireless and telecom.  The award-winning, highly-specialized account teams consist
-      of multi-year public relations veterans, broadcasters and former journalists. 10Fold is a full-service firm that is
-      widely known for its media and analyst relations, original content development, corporate messaging, and social media
-      (paid and organic). For more information, please visit www.10fold.com or follow us on Twitter (@10foldComms) and Facebook
-      (10Fold).
+    products_services: digital marketing, social media advertising, social media marketing,
+      linkedin advertising
+    description: '10Fold  is a PR and integrated marketing agency with offices in
+      San Diego, Austin TX, and Boston. Considered as part of the top eight percent
+      of agencies in the U.S. (based on size), 10Fold offers strategic communications
+      and content services to deep-tech B2B companies.  10Fold specializes in networking,
+      IT security, AI, cloud, storage, Big Data, enterprise software, DevOps, wireless
+      and telecom.  The award-winning, highly-specialized account teams consist of
+      multi-year public relations veterans, broadcasters and former journalists. 10Fold
+      is a full-service firm that is widely known for its media and analyst relations,
+      original content development, corporate messaging, and social media (paid and
+      organic). For more information, please visit www.10fold.com or follow us on
+      Twitter (@10foldComms) and Facebook (10Fold).
 
 
-      Interested in joining us? Check out this presentation to learn more about what we do and what we have to offer!'
+      Interested in joining us? Check out this presentation to learn more about what
+      we do and what we have to offer!'
     seo_description: null
     company_type: PRIVATELY_HELD
     location:
@@ -3178,28 +3687,38 @@ companies:
       last_amount: null
       last_date: null
     deferred_technologies: []
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: technology companies
+  business_offer: public relations
+  cohort_evidence_url: https://10fold.com/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: agency-02
-  company_name: AbelsonTaylor Group
+  company_name: AbelsonTaylor
   domain: abelsontaylor.com
   linkedin_company_url: https://www.linkedin.com/company/abelson-taylor-group
   primary_cohort: b2b_agencies
   shared_core: false
   difficulty: ambiguous
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 287
     employee_size: 201-500
     industry: advertising services
     industry_tags:
     - advertising services
-    products_services: advertising, broadcast, healthcare, marketing, digital media, digital advertising
-    description: With AbelsonTaylor Group, ROI is what you’ll get. A Return On Imagination—through our expertise, insights,
-      creativity, and strategy. Every discipline within our agency dreams up imaginative ways to transform brands and drive
-      measurable market results.
-    seo_description: Full-service, Chicago agency delivering award-winning design, creative, and marketing strategies for
-      pharmaceutical and consumer health brands.
+    products_services: advertising, broadcast, healthcare, marketing, digital media,
+      digital advertising
+    description: With AbelsonTaylor Group, ROI is what you’ll get. A Return On Imagination—through
+      our expertise, insights, creativity, and strategy. Every discipline within our
+      agency dreams up imaginative ways to transform brands and drive measurable market
+      results.
+    seo_description: Full-service, Chicago agency delivering award-winning design,
+      creative, and marketing strategies for pharmaceutical and consumer health brands.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -3228,8 +3747,16 @@ companies:
     - YouTube
     - Zendesk
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: brands
+  business_offer: advertising services
+  cohort_evidence_url: https://www.linkedin.com/company/abelson-taylor-group
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: agency-03
   company_name: Adtaxi
   domain: adtaxi.com
@@ -3237,20 +3764,22 @@ companies:
   primary_cohort: b2b_agencies
   shared_core: false
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 160
     employee_size: 51-200
     industry: advertising services
     industry_tags:
     - advertising services
-    products_services: marketing, digital display, advertising, mobile advertising, social media, email marketing, search
-    description: Adtaxi is a client-centric digital organization that brings scale, precision, and sophistication to digital
-      marketing. Leveraging the belief that people matter as much as technology, we help advertisers solve complex marketing
-      challenges with custom, performance-driven solutions. Adtaxi just recently won Digiday's Worklife Award for Most Passionate
-      Employees at an agency!
-    seo_description: Adtaxi is a client-centric digital marketing agency that provides advertisers with custom, performance-driven
-      solutions. Talk with an expert today.
+    products_services: marketing, digital display, advertising, mobile advertising,
+      social media, email marketing, search
+    description: Adtaxi is a client-centric digital organization that brings scale,
+      precision, and sophistication to digital marketing. Leveraging the belief that
+      people matter as much as technology, we help advertisers solve complex marketing
+      challenges with custom, performance-driven solutions. Adtaxi just recently won
+      Digiday's Worklife Award for Most Passionate Employees at an agency!
+    seo_description: Adtaxi is a client-centric digital marketing agency that provides
+      advertisers with custom, performance-driven solutions. Talk with an expert today.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -3302,16 +3831,24 @@ companies:
     - WordPress.org
     - Workday Recruit
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: marketing teams
+  business_offer: digital marketing
+  cohort_evidence_url: https://www.linkedin.com/company/adtaxi
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: agency-04
-  company_name: Audiense
-  domain: audiense.com
-  linkedin_company_url: https://www.linkedin.com/company/audienseoriginal
+  company_name: Walker Sands
+  domain: walkersands.com
+  linkedin_company_url: https://www.linkedin.com/company/walker-sands
   primary_cohort: b2b_agencies
   shared_core: false
   difficulty: hard
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 96
     employee_size: 201-500
@@ -3327,25 +3864,31 @@ companies:
     - apps
     - social crm
     products_services: null
-    description: 'Audiense is the AI-powered, analytics-to-action suite of solutions for strategy, marketing, and growth teams
-      who want to deeply understand their audience and meaningfully engage them.
+    description: 'Audiense is the AI-powered, analytics-to-action suite of solutions
+      for strategy, marketing, and growth teams who want to deeply understand their
+      audience and meaningfully engage them.
 
 
-      We combine decades of expertise in location intelligence, online performance signals, and social + cultural insights—giving
-      brands a real-time view of who their customers are, what drives them, and ways to connect in every moment that matters.
+      We combine decades of expertise in location intelligence, online performance
+      signals, and social + cultural insights—giving brands a real-time view of who
+      their customers are, what drives them, and ways to connect in every moment that
+      matters.
 
 
-      We help brands reach the right people—online and in person—and enable fast, personalized engagement powered by deep
-      audience intelligence. Seamlessly integrating with your existing workflows, Audiense uncovers high-impact opportunities
-      and turns complex data into measurable growth.
+      We help brands reach the right people—online and in person—and enable fast,
+      personalized engagement powered by deep audience intelligence. Seamlessly integrating
+      with your existing workflows, Audiense uncovers high-impact opportunities and
+      turns complex data into measurable growth.
 
 
-      Whether you''re choosing the right store location, optimizing digital journeys, or tracking cultural signals, Audiense
-      transforms consumer insight into action—at scale.
+      Whether you''re choosing the right store location, optimizing digital journeys,
+      or tracking cultural signals, Audiense transforms consumer insight into action—at
+      scale.
 
 
       To see the full suite of solutions visit www.audiense.com.'
-    seo_description: Put consumer segmentation and cultural insights at the centre of your strategy
+    seo_description: Put consumer segmentation and cultural insights at the centre
+      of your strategy
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -3443,9 +3986,16 @@ companies:
     - YouTube
     - Zendesk
     - reCAPTCHA
-  gaps:
-  - products_services
-  - target_customer
+  gaps: []
+  b2b_buyer: marketing teams
+  business_offer: marketing services
+  cohort_evidence_url: https://www.walkersands.com/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: agency-05
   company_name: Avōq
   domain: teamavoq.com
@@ -3453,7 +4003,7 @@ companies:
   primary_cohort: b2b_agencies
   shared_core: false
   difficulty: ambiguous
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 200
     employee_size: 201-500
@@ -3467,16 +4017,20 @@ companies:
     - web design
     - content
     products_services: null
-    description: "Avoq is an advocacy firm that helps companies, organizations and industries elevate ideas, build brands,\
-      \ and tackle reputation or policy challenges. We combine communications and advocacy to creatively shape narratives,\
-      \ manage brand reputation, influence national debates, and engage the audiences you need to reach. \n\nWe embrace an\
-      \ ethos of creative advocacy — informed thinking, fresh perspectives, and unique solutions — to drive outcomes with\
-      \ the right audiences at the right time. We don’t start with an idea; we start with a hypothesis. But instead of relying\
-      \ on intuition, our network of more than 200 professionals expertly meets today’s complex communications and policy\
-      \ challenges with a thoughtful, evidence-based approach that blends data, insights, and creativity. \n\nWe think unconventionally\
-      \ and examine problems from all sides to find the right solution for you."
-    seo_description: We combine communications and advocacy to creatively shape narratives, manage reputation, influence national
-      debates and engage your audiences.
+    description: "Avoq is an advocacy firm that helps companies, organizations and\
+      \ industries elevate ideas, build brands, and tackle reputation or policy challenges.\
+      \ We combine communications and advocacy to creatively shape narratives, manage\
+      \ brand reputation, influence national debates, and engage the audiences you\
+      \ need to reach. \n\nWe embrace an ethos of creative advocacy — informed thinking,\
+      \ fresh perspectives, and unique solutions — to drive outcomes with the right\
+      \ audiences at the right time. We don’t start with an idea; we start with a\
+      \ hypothesis. But instead of relying on intuition, our network of more than\
+      \ 200 professionals expertly meets today’s complex communications and policy\
+      \ challenges with a thoughtful, evidence-based approach that blends data, insights,\
+      \ and creativity. \n\nWe think unconventionally and examine problems from all\
+      \ sides to find the right solution for you."
+    seo_description: We combine communications and advocacy to creatively shape narratives,
+      manage reputation, influence national debates and engage your audiences.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -3518,9 +4072,16 @@ companies:
     - WordPress.org
     - Workable
     - reCAPTCHA
-  gaps:
-  - products_services
-  - target_customer
+  gaps: []
+  b2b_buyer: government agencies
+  business_offer: government relations
+  cohort_evidence_url: https://www.odwyerpr.com/pr_firms_database/4496/avoq.html
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: agency-06
   company_name: Bold Orange
   domain: boldorange.com
@@ -3528,7 +4089,7 @@ companies:
   primary_cohort: b2b_agencies
   shared_core: false
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 184
     employee_size: 51-200
@@ -3545,14 +4106,18 @@ companies:
     - crm
     - marketing automation
     - ux design
-    products_services: crm, loyalty, digital experiences, marketing services, personalized marketing, technology platforms,
-      analytics, targeted communications, websites, strategy, consulting, creative services, customer experiences, cx, digital
-      transformation, salesforce, braze, snowflake, databricks
-    description: Bold Orange is a leading customer experience agency supporting brands with end-to-end CX needs, inclusive
-      of experience strategy and design, performance marketing and digital media, marketing automation and technology, and
-      analytics and insights.
-    seo_description: Bold Orange is a customer experience agency helping brands with end-to-end CX needs inclusive of go-to-market
-      experiences, content, UX/UI, loyalty and CRM, performance marketing, digital media and Salesforce Marketing Cloud implementation.
+    products_services: crm, loyalty, digital experiences, marketing services, personalized
+      marketing, technology platforms, analytics, targeted communications, websites,
+      strategy, consulting, creative services, customer experiences, cx, digital transformation,
+      salesforce, braze, snowflake, databricks
+    description: Bold Orange is a leading customer experience agency supporting brands
+      with end-to-end CX needs, inclusive of experience strategy and design, performance
+      marketing and digital media, marketing automation and technology, and analytics
+      and insights.
+    seo_description: Bold Orange is a customer experience agency helping brands with
+      end-to-end CX needs inclusive of go-to-market experiences, content, UX/UI, loyalty
+      and CRM, performance marketing, digital media and Salesforce Marketing Cloud
+      implementation.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -3611,8 +4176,16 @@ companies:
     - WordPress.org
     - YouTube
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: marketing teams
+  business_offer: creative services
+  cohort_evidence_url: https://www.linkedin.com/company/boldorange
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: agency-07
   company_name: C-4 Analytics
   domain: c-4analytics.com
@@ -3620,7 +4193,7 @@ companies:
   primary_cohort: b2b_agencies
   shared_core: true
   difficulty: ambiguous
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 300
     employee_size: 201-500
@@ -3631,21 +4204,27 @@ companies:
     - advertising
     - social media
     - internet
-    products_services: paid search advertising, social media marketing, seo, online reputation management, search engine marketing,
-      paid social advertising, brand management & pr, automotive marketing, local search, conquest marketing, video advertising
-    description: 'C-4 Analytics is a cutting-edge automotive digital marketing solution dedicated to helping dealerships thrive
-      in a digital-first world. With over 15 years of experience, we empower our partners to own their markets and dominate
-      their competition. Our comprehensive suite of services, including paid media, SEO, social media, and video advertising,
-      ensures that every campaign is customized to meet the unique goals and challenges of each dealer.
+    products_services: paid search advertising, social media marketing, seo, online
+      reputation management, search engine marketing, paid social advertising, brand
+      management & pr, automotive marketing, local search, conquest marketing, video
+      advertising
+    description: 'C-4 Analytics is a cutting-edge automotive digital marketing solution
+      dedicated to helping dealerships thrive in a digital-first world. With over
+      15 years of experience, we empower our partners to own their markets and dominate
+      their competition. Our comprehensive suite of services, including paid media,
+      SEO, social media, and video advertising, ensures that every campaign is customized
+      to meet the unique goals and challenges of each dealer.
 
 
-      We leverage our proprietary framework, the 4Cs of Success: Command, Captivate, Close, and Cultivate, to drive measurable
-      results. Our strategic alignment and product-proof solutions help dealers fill their sales pipelines and streamline
-      operations, while our unparalleled service and exclusive partnerships with industry leaders ensure that every marketing
-      dollar is maximized.
+      We leverage our proprietary framework, the 4Cs of Success: Command, Captivate,
+      Close, and Cultivate, to drive measurable results. Our strategic alignment and
+      product-proof solutions help dealers fill their sales pipelines and streamline
+      operations, while our unparalleled service and exclusive partnerships with industry
+      leaders ensure that every marketing dollar is maximized.
 
 
-      Our mission is clear: to help dealers sell more vehicles, gain market share, and maximize marketing efficiency.'
+      Our mission is clear: to help dealers sell more vehicles, gain market share,
+      and maximize marketing efficiency.'
     seo_description: null
     company_type: PRIVATELY_HELD
     location:
@@ -3713,16 +4292,24 @@ companies:
     - TikTok
     - WP Engine
     - WordPress.org
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: car dealers
+  business_offer: digital marketing
+  cohort_evidence_url: https://c-4analytics.com/solutions/automotive-digital-marketing
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: agency-08
-  company_name: Capacity Interactive
+  company_name: Capacity
   domain: capacityinteractive.com
   linkedin_company_url: https://www.linkedin.com/company/capacity-interactive
   primary_cohort: b2b_agencies
   shared_core: false
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 81
     employee_size: 51-200
@@ -3733,26 +4320,31 @@ companies:
     - project management
     - advertising services
     - advertising
-    products_services: digital marketing for the arts, social media strategy, adwords advertising, banner advertising, email
-      advertising, digital audit & tune-up, website analytics, ai consulting, search engine optimization, ai search, search
-      engine marketing, content strategy, content creation, social media marketing, ai training, ai policy, workshops and
-      training
-    description: 'Capacity Interactive is the premier digital marketing consulting firm for arts and culture, with over 15
-      years spent working with ambitious arts and cultural organizations to engage audiences, build community, and market
+    products_services: digital marketing for the arts, social media strategy, adwords
+      advertising, banner advertising, email advertising, digital audit & tune-up,
+      website analytics, ai consulting, search engine optimization, ai search, search
+      engine marketing, content strategy, content creation, social media marketing,
+      ai training, ai policy, workshops and training
+    description: 'Capacity Interactive is the premier digital marketing consulting
+      firm for arts and culture, with over 15 years spent working with ambitious arts
+      and cultural organizations to engage audiences, build community, and market
       smarter. Today, our team has over 65 people working virtually around the U.S.
 
 
-      Practice areas include digital advertising, web analytics, search engine optimization (including AI search), email strategy,
-      online fundraising, content strategy and content creation. Additionally, our practical, impact-focused, mission-aligned
-      AI consulting can help your organization use AI to save time and spark creativity—all while staying grounded in your
-      values
+      Practice areas include digital advertising, web analytics, search engine optimization
+      (including AI search), email strategy, online fundraising, content strategy
+      and content creation. Additionally, our practical, impact-focused, mission-aligned
+      AI consulting can help your organization use AI to save time and spark creativity—all
+      while staying grounded in your values
 
 
-      Capacity also has a strong focus on education for our clients and in the arts and cultural sector. Capacity hosts Boot
-      Camp (an annual arts marketing conference in New York City), CI to Eye with Monica Holt (a podcast released weekly on
+      Capacity also has a strong focus on education for our clients and in the arts
+      and cultural sector. Capacity hosts Boot Camp (an annual arts marketing conference
+      in New York City), CI to Eye with Monica Holt (a podcast released weekly on
       Thursdays), and numerous free webinars across areas of marketing expertise.'
-    seo_description: Capacity Interactive is the premier digital marketing consulting firm for the arts. We help clients engage
-      audiences, build community, and market smarter.
+    seo_description: Capacity Interactive is the premier digital marketing consulting
+      firm for the arts. We help clients engage audiences, build community, and market
+      smarter.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -3814,8 +4406,16 @@ companies:
     - WP Engine
     - WordPress.org
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: arts organizations
+  business_offer: arts marketing
+  cohort_evidence_url: https://capacityinteractive.com/clients/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: agency-09
   company_name: Carney
   domain: carney.co
@@ -3823,7 +4423,7 @@ companies:
   primary_cohort: b2b_agencies
   shared_core: false
   difficulty: hard
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 37
     employee_size: 11-50
@@ -3836,22 +4436,29 @@ companies:
     - web development
     - advertising
     - web design
-    products_services: strategy, content, design, development, marketing, analytics, marketing agency, digital marketing,
-      website design, website development, full stack development, branding, advertising, integrated marketing communications,
-      paid media, social media management, seo, sem, display advertising, content marketing, email marketing, public relations,
-      media, influencer marketing
-    description: "A Team as Dynamic as the Digital Landscape\nWe’re more than designers, developers, and marketers. We’re\
-      \ a nimble team of data-obsessed strategists, deep thinkers, believers, over-achievers, artists, curators, and dedicated\
-      \ guides.\n\nWe’re Crafters & Builders\nAnd giant killers. Well, we’re still working on that last one. But you could\
-      \ call us slayers of all sorts. When we create, when we strategize, when we collaborate, we always go in for the kill.\
-      \ Because we live for the thrill of seeing you win.\n\nWe’re Founded by a Guy Named Rob\nCarney is a full-service digital\
-      \ agency focused on building brands that break through the noise. Rob Carney founded our agency based on three rules\
-      \ and we still live by them today: \n\n1. QUALITY\nProduce great work quickly and efficiently. You won’t have to wait\
-      \ months for your project to be delivered.\n\n2. TEAMWORK\nTreat clients like coworkers. You’ll feel like we’re sitting\
-      \ just a few desks away from you. We’ll even invite you to happy hour every Thursday.\n\n3. RESULTS\nBuild an agency\
-      \ that gets results for clients. You won’t just get deliverables from us. You’ll get results."
-    seo_description: Carney is a full-service, digital marketing agency. We focus on delivering quality experiences for our
-      clients by looking at the bigger picture. That allows Carney to get results for its clients. Not just deliverables.
+    products_services: strategy, content, design, development, marketing, analytics,
+      marketing agency, digital marketing, website design, website development, full
+      stack development, branding, advertising, integrated marketing communications,
+      paid media, social media management, seo, sem, display advertising, content
+      marketing, email marketing, public relations, media, influencer marketing
+    description: "A Team as Dynamic as the Digital Landscape\nWe’re more than designers,\
+      \ developers, and marketers. We’re a nimble team of data-obsessed strategists,\
+      \ deep thinkers, believers, over-achievers, artists, curators, and dedicated\
+      \ guides.\n\nWe’re Crafters & Builders\nAnd giant killers. Well, we’re still\
+      \ working on that last one. But you could call us slayers of all sorts. When\
+      \ we create, when we strategize, when we collaborate, we always go in for the\
+      \ kill. Because we live for the thrill of seeing you win.\n\nWe’re Founded by\
+      \ a Guy Named Rob\nCarney is a full-service digital agency focused on building\
+      \ brands that break through the noise. Rob Carney founded our agency based on\
+      \ three rules and we still live by them today: \n\n1. QUALITY\nProduce great\
+      \ work quickly and efficiently. You won’t have to wait months for your project\
+      \ to be delivered.\n\n2. TEAMWORK\nTreat clients like coworkers. You’ll feel\
+      \ like we’re sitting just a few desks away from you. We’ll even invite you to\
+      \ happy hour every Thursday.\n\n3. RESULTS\nBuild an agency that gets results\
+      \ for clients. You won’t just get deliverables from us. You’ll get results."
+    seo_description: Carney is a full-service, digital marketing agency. We focus
+      on delivering quality experiences for our clients by looking at the bigger picture.
+      That allows Carney to get results for its clients. Not just deliverables.
     company_type: PARTNERSHIP
     location:
       country: United States
@@ -3912,16 +4519,24 @@ companies:
     - Vimeo
     - WordPress.org
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: brands
+  business_offer: digital marketing
+  cohort_evidence_url: https://carney.co/about-us/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: agency-10
-  company_name: Chartis.io
+  company_name: Chartis Interactive
   domain: chartis.io
   linkedin_company_url: https://www.linkedin.com/company/chartis-io
   primary_cohort: b2b_agencies
   shared_core: false
   difficulty: hard
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 44
     employee_size: 51-200
@@ -3931,19 +4546,23 @@ companies:
     - marketing
     - advertising services
     - consulting
-    products_services: digital marketing, reporting, consulting, private equity, optimization, measurement, data strategy,
-      marketing tefchnology, digital strategy, commerce strategy
-    description: 'At Chartis.io, we understand the world doesn''t need another marketing agency. That is why we go beyond
-      traditional marketing and technology consulting—we are a value creation partner for our clients. We help brands leverage
-      data, AI, and digital innovation to build and optimize solutions that drive customer & client acquisition, engagement,
-      and long-term business growth.
+    products_services: digital marketing, reporting, consulting, private equity, optimization,
+      measurement, data strategy, marketing tefchnology, digital strategy, commerce
+      strategy
+    description: 'At Chartis.io, we understand the world doesn''t need another marketing
+      agency. That is why we go beyond traditional marketing and technology consulting—we
+      are a value creation partner for our clients. We help brands leverage data,
+      AI, and digital innovation to build and optimize solutions that drive customer
+      & client acquisition, engagement, and long-term business growth.
 
 
-      We partner closely with our clients to align on business and marketing objectives, ensuring every digital initiative
-      delivers measurable impact. From strategy to execution, we focus on creating scalable, high-performance digital experiences
+      We partner closely with our clients to align on business and marketing objectives,
+      ensuring every digital initiative delivers measurable impact. From strategy
+      to execution, we focus on creating scalable, high-performance digital experiences
       that drive revenue, improve efficiency, and maximize ROI.'
-    seo_description: Chartis Interactive a marketing & technology agency focused on helping brands activate data to create
-      and optimize digital solutions that drive customer acquisition.
+    seo_description: Chartis Interactive a marketing & technology agency focused on
+      helping brands activate data to create and optimize digital solutions that drive
+      customer acquisition.
     company_type: PARTNERSHIP
     location:
       country: United States
@@ -3986,8 +4605,16 @@ companies:
     - Render
     - WordPress.org
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: brands
+  business_offer: marketing services
+  cohort_evidence_url: https://chartis.io/
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: supplier-01
   company_name: ABATIX
   domain: abatix.com
@@ -3995,20 +4622,22 @@ companies:
   primary_cohort: b2b_commerce_suppliers
   shared_core: true
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 213
     employee_size: 201-500
     industry: wholesale
     industry_tags:
     - wholesale
-    products_services: safety supplies, fire and water restoration supplies, environmental supplies, general construction
-      supplies
-    description: Established in 1983, ABATIX has grown into a nationally recognized supplier of safety, environmental, construction,
-      and industrial products. In addition to products, we provide multiple service solutions to make our customers' jobs
-      easier including eProcurement, customized online accounts, site evaluations and product consultations, and much more.
-    seo_description: ABATIX is your one-stop shop for construction supply, safety supplies, industrial supply, and restoration
-      supply.
+    products_services: safety supplies, fire and water restoration supplies, environmental
+      supplies, general construction supplies
+    description: Established in 1983, ABATIX has grown into a nationally recognized
+      supplier of safety, environmental, construction, and industrial products. In
+      addition to products, we provide multiple service solutions to make our customers'
+      jobs easier including eProcurement, customized online accounts, site evaluations
+      and product consultations, and much more.
+    seo_description: ABATIX is your one-stop shop for construction supply, safety
+      supplies, industrial supply, and restoration supply.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -4057,8 +4686,16 @@ companies:
     - Vimeo
     - Wistia
     - Zendesk
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: contractors
+  business_offer: safety supplies
+  cohort_evidence_url: https://www.linkedin.com/company/abatix
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: supplier-02
   company_name: Accord Carton
   domain: accordcarton.com
@@ -4066,7 +4703,7 @@ companies:
   primary_cohort: b2b_commerce_suppliers
   shared_core: false
   difficulty: ambiguous
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 92
     employee_size: 201-500
@@ -4075,29 +4712,32 @@ companies:
     - packaging and containers manufacturing
     - manufacturing
     - packaging services
-    products_services: 'packaging, sustainablepackaging, foldingcartons, beverage, beveragecarriers, #hiring, carriers, g7,
-      iso, sqf, certified, honoring, celebrating, observing, printing, converting, gluing, diecutting'
+    products_services: 'packaging, sustainablepackaging, foldingcartons, beverage,
+      beveragecarriers, #hiring, carriers, g7, iso, sqf, certified, honoring, celebrating,
+      observing, printing, converting, gluing, diecutting'
     description: 'Welcome to Accord Carton
 
-      Folding cartons aren’t just containers. Your product’s presentation on the shelf gives consumers a glimpse of who you
-      are and the story you want to tell. And to create great packaging you need more than a supplier; you need a partner.
+      Folding cartons aren’t just containers. Your product’s presentation on the shelf
+      gives consumers a glimpse of who you are and the story you want to tell. And
+      to create great packaging you need more than a supplier; you need a partner.
       Accord Carton has the tools to help you bring your vision to life.
 
 
-      Since 1940 our goal has been to produce the best packaging possible. Using state-of-the-art technology combined with
-      a passion for our work, we partner with customers in a range of industries, creating packaging that truly showcases
-      their products.
+      Since 1940 our goal has been to produce the best packaging possible. Using state-of-the-art
+      technology combined with a passion for our work, we partner with customers in
+      a range of industries, creating packaging that truly showcases their products.
 
 
-      What really sets us apart is something no one else has: our people, our process and our passion. As you browse through
-      our site, you can learn more about each of these unique aspects of Accord Carton, and how they will shape our relationship.
+      What really sets us apart is something no one else has: our people, our process
+      and our passion. As you browse through our site, you can learn more about each
+      of these unique aspects of Accord Carton, and how they will shape our relationship.
 
 
-      Accord Carton offers customers a true partnership for every aspect of the manufacturing process, from design to production
-      to delivering quality finished cartons. Whatever your folding carton needs are, we’re here to help you every step of
-      the way.'
-    seo_description: Accord Carton is a third-generation, family-owned company. Since 1940 our goal has been to produce the
-      best packaging possible.
+      Accord Carton offers customers a true partnership for every aspect of the manufacturing
+      process, from design to production to delivering quality finished cartons. Whatever
+      your folding carton needs are, we’re here to help you every step of the way.'
+    seo_description: Accord Carton is a third-generation, family-owned company. Since
+      1940 our goal has been to produce the best packaging possible.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -4128,8 +4768,16 @@ companies:
     - Outlook
     - Route 53
     - WordPress.org
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: food manufacturers
+  business_offer: folding cartons
+  cohort_evidence_url: https://www.linkedin.com/company/accord-carton
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: supplier-03
   company_name: Actylis
   domain: actylis.com
@@ -4137,7 +4785,7 @@ companies:
   primary_cohort: b2b_commerce_suppliers
   shared_core: false
   difficulty: hard
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 441
     employee_size: 501-1000
@@ -4149,15 +4797,19 @@ companies:
     - manufacturing
     - life science
     - chemical manufacturing
-    products_services: chemicals, agricultural protection products, api and pharma intermediates, manufacturing, analytical
-      services, contract r&d, contract gmp manufacturing, biopharmaceutical, pharmaceutical, sourcing
-    description: 'Actylis is a global solutions provider with over 75 years of experience specializing in streamlining the
-      management of critical ingredients and raw materials for our business partners.
+    products_services: chemicals, agricultural protection products, api and pharma
+      intermediates, manufacturing, analytical services, contract r&d, contract gmp
+      manufacturing, biopharmaceutical, pharmaceutical, sourcing
+    description: 'Actylis is a global solutions provider with over 75 years of experience
+      specializing in streamlining the management of critical ingredients and raw
+      materials for our business partners.
 
 
-      We offer standard and custom ingredients through our rapidly growing portfolio of GMP and non-GMP facilities worldwide,
-      and further choice through our strong sourcing hub network. This unique hybrid option blending manufacturing and global
-      sourcing, combined with more than 75 years of sourcing and distribution experience makes Actylis the Partner of Choice.'
+      We offer standard and custom ingredients through our rapidly growing portfolio
+      of GMP and non-GMP facilities worldwide, and further choice through our strong
+      sourcing hub network. This unique hybrid option blending manufacturing and global
+      sourcing, combined with more than 75 years of sourcing and distribution experience
+      makes Actylis the Partner of Choice.'
     seo_description: null
     company_type: PRIVATELY_HELD
     location:
@@ -4214,8 +4866,16 @@ companies:
     - SuccessFactors (SAP)
     - YouTube
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: manufacturers
+  business_offer: chemical manufacturing
+  cohort_evidence_url: https://www.linkedin.com/company/actylis
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: supplier-04
   company_name: Advanced Biotech
   domain: adv-bio.com
@@ -4223,7 +4883,7 @@ companies:
   primary_cohort: b2b_commerce_suppliers
   shared_core: false
   difficulty: ambiguous
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 95
     employee_size: 51-200
@@ -4234,18 +4894,22 @@ companies:
     - wholesale
     - manufacturing
     - chemical manufacturing
-    products_services: natural ingredients, extracts, essential oils & isolates, oleoesins, natural aromatics, natural pyrazines,
-      synthetic aromatics, thiazoles, heterocyclics, pyrazines, & sulfur, absolutes, ditstillates, vanilla extracts, koolada
-      cooling agents, eu natural products, food flavoring, flavor extracts, oil flavoring, essential oil flavors, fragrance
-      oils, biotechnology, fermentation-derived molecules
-    description: 'Advanced Biotech is dedicated to producing the highest quality flavor and fragrance ingredients that inspire
-      and captivate the senses. Our extensive portfolio, comprising of natural, synthetic, and fermentation-derived molecules,
-      is constantly evolving to meet the changing demands of our valued clients. Utilizing proprietary production methods
-      and a customer-centric approach, we are committed to delivering exceptional ingredients that elevate formulations.
+    products_services: natural ingredients, extracts, essential oils & isolates, oleoesins,
+      natural aromatics, natural pyrazines, synthetic aromatics, thiazoles, heterocyclics,
+      pyrazines, & sulfur, absolutes, ditstillates, vanilla extracts, koolada cooling
+      agents, eu natural products, food flavoring, flavor extracts, oil flavoring,
+      essential oil flavors, fragrance oils, biotechnology, fermentation-derived molecules
+    description: 'Advanced Biotech is dedicated to producing the highest quality flavor
+      and fragrance ingredients that inspire and captivate the senses. Our extensive
+      portfolio, comprising of natural, synthetic, and fermentation-derived molecules,
+      is constantly evolving to meet the changing demands of our valued clients. Utilizing
+      proprietary production methods and a customer-centric approach, we are committed
+      to delivering exceptional ingredients that elevate formulations.
 
 
-      We invite you to explore our product categories to discover why we offer some of the best ingredients available today.
-      For more information about our offerings or any questions you may have, please don''t hesitate to contact us.'
+      We invite you to explore our product categories to discover why we offer some
+      of the best ingredients available today. For more information about our offerings
+      or any questions you may have, please don''t hesitate to contact us.'
     seo_description: null
     company_type: PRIVATELY_HELD
     location:
@@ -4295,8 +4959,16 @@ companies:
     - Vimeo
     - WordPress.org
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: facilities
+  business_offer: natural flavors
+  cohort_evidence_url: https://www.business.us.hsbc.com/en/insights/sustainability/advanced-biotech
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: supplier-05
   company_name: Advantage Industrial Automation
   domain: advantageind.com
@@ -4304,7 +4976,7 @@ companies:
   primary_cohort: b2b_commerce_suppliers
   shared_core: true
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 73
     employee_size: 51-200
@@ -4313,17 +4985,21 @@ companies:
     - software
     - automation machinery manufacturing
     products_services: industrial automation
-    description: 'Advantage Industrial Automation provides control and automation solutions to our OEM''s, industrial end-users
-      and system integrators.  By partnering with the best manufacturers in the industry, we are able to enhance businesses
-      by  increasing productivity, reducing downtime and improving the quality of products.
+    description: 'Advantage Industrial Automation provides control and automation
+      solutions to our OEM''s, industrial end-users and system integrators.  By partnering
+      with the best manufacturers in the industry, we are able to enhance businesses
+      by  increasing productivity, reducing downtime and improving the quality of
+      products.
 
 
-      To learn more about Advantage Industrial Automation, or to sign up for one of our events, please visit www.advantageind.com.
+      To learn more about Advantage Industrial Automation, or to sign up for one of
+      our events, please visit www.advantageind.com.
 
 
       #advantageindustrialautomation #advantageind #industrialautomation'
-    seo_description: Providing OEMs, industrial end-users and system integrators intelligent manufacturing solutions by adding
-      value to the leading products in factory automation and controls.
+    seo_description: Providing OEMs, industrial end-users and system integrators intelligent
+      manufacturing solutions by adding value to the leading products in factory automation
+      and controls.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -4371,8 +5047,16 @@ companies:
     - WordPress.org
     - YouTube
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: manufacturers
+  business_offer: industrial automation
+  cohort_evidence_url: https://www.advantageind.com/wp-content/uploads/2014/02/Solutions-Brochure-Nov25-Final-Copy.pdf
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: supplier-06
   company_name: AeroGo, Inc.
   domain: aerogo.com
@@ -4380,25 +5064,28 @@ companies:
   primary_cohort: b2b_commerce_suppliers
   shared_core: false
   difficulty: hard
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 58
     employee_size: 51-200
     industry: machinery manufacturing
     industry_tags:
     - machinery manufacturing
-    products_services: heavy load handling systems, air casters, machine skates, transporter, air bearings, heavy load transporters,
-      air cushion vehicles, transfer carts, air skates, rigging systems, wheeled vehicles, silverback transfer carts, industrial
-      transfer carts, industrial vehicle, entertainment, aerospace, aircraft manufacturing, machinery manufacturing, hovercraft,
-      pharmaceutical, biotech, cleanroom, transformers, power generation, shipyard, vehicle manufacturing, modular, mod homes,
-      air skates
-    description: How heavy is the load you need to move today?  Whatever you are moving, AeroGo can help!  AeroGo manufactures
-      innovative load moving systems, utilizing wheels and hovercraft technology, that move heavy, awkward, or delicate loads
-      in facilities. Companies large and small find benefit from our worldwide dealer network, experienced product specialists,
-      and skilled engineering team.  We work with you to find a load moving solution that is safe, efficient and cost-effective,
+    products_services: heavy load handling systems, air casters, machine skates, transporter,
+      air bearings, heavy load transporters, air cushion vehicles, transfer carts,
+      air skates, rigging systems, wheeled vehicles, silverback transfer carts, industrial
+      transfer carts, industrial vehicle, entertainment, aerospace, aircraft manufacturing,
+      machinery manufacturing, hovercraft, pharmaceutical, biotech, cleanroom, transformers,
+      power generation, shipyard, vehicle manufacturing, modular, mod homes, air skates
+    description: How heavy is the load you need to move today?  Whatever you are moving,
+      AeroGo can help!  AeroGo manufactures innovative load moving systems, utilizing
+      wheels and hovercraft technology, that move heavy, awkward, or delicate loads
+      in facilities. Companies large and small find benefit from our worldwide dealer
+      network, experienced product specialists, and skilled engineering team.  We
+      work with you to find a load moving solution that is safe, efficient and cost-effective,
       as your valuable loads are carried through the manufacturing process.
-    seo_description: We are the leading provider of air bearing and caster solutions. As well as heavy load movement systems.
-      Were here for you. Give us a call today!
+    seo_description: We are the leading provider of air bearing and caster solutions.
+      As well as heavy load movement systems. Were here for you. Give us a call today!
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -4436,8 +5123,16 @@ companies:
     - WordPress.org
     - YouTube
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: manufacturers
+  business_offer: load moving equipment
+  cohort_evidence_url: https://www.linkedin.com/company/aerogo
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: supplier-07
   company_name: All Weather Insulated Panels
   domain: awipanels.com
@@ -4445,7 +5140,7 @@ companies:
   primary_cohort: b2b_commerce_suppliers
   shared_core: false
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 193
     employee_size: 201-500
@@ -4455,15 +5150,19 @@ companies:
     - real estate
     - manufacturing
     - building material
-    products_services: roof panels, wall panels, construction, manufacturing, roofing, insulated metal panels
-    description: "All Weather Insulated Panels\nHeadquartered in Vacaville, CA, All Weather Insulated Panels (AWIP) has three\
-      \ state-of-the-art continuous line manufacturing facilities in Vacaville, CA, Little Rock, AR, and East Stroudsburg,\
-      \ PA .   \n\nAWIP is an innovator in the design, construction and advancement of insulated metal panels and is strategically\
-      \ positioned to meet the growing energy, environmental and economic challenges facing the North American building industry.\
-      \  AWIP provides its customers with a broad line of insulated wall and roof panels and a full range of complementary\
-      \ trims, accessories, and engineering services."
-    seo_description: All Weather Insulated Panels is an innovator in the design, construction, and advancement of insulated
-      metal panel and roof deck systems.
+    products_services: roof panels, wall panels, construction, manufacturing, roofing,
+      insulated metal panels
+    description: "All Weather Insulated Panels\nHeadquartered in Vacaville, CA, All\
+      \ Weather Insulated Panels (AWIP) has three state-of-the-art continuous line\
+      \ manufacturing facilities in Vacaville, CA, Little Rock, AR, and East Stroudsburg,\
+      \ PA .   \n\nAWIP is an innovator in the design, construction and advancement\
+      \ of insulated metal panels and is strategically positioned to meet the growing\
+      \ energy, environmental and economic challenges facing the North American building\
+      \ industry.  AWIP provides its customers with a broad line of insulated wall\
+      \ and roof panels and a full range of complementary trims, accessories, and\
+      \ engineering services."
+    seo_description: All Weather Insulated Panels is an innovator in the design, construction,
+      and advancement of insulated metal panel and roof deck systems.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -4514,8 +5213,16 @@ companies:
     - Remote
     - WordPress.org
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: building owners
+  business_offer: insulated metal panels
+  cohort_evidence_url: https://www.awipanels.com/wp-content/uploads/2025/12/awip-technical-services-brochure-en.pdf
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: supplier-08
   company_name: Alps Controls
   domain: alpscontrols.com
@@ -4523,7 +5230,7 @@ companies:
   primary_cohort: b2b_commerce_suppliers
   shared_core: false
   difficulty: ambiguous
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 54
     employee_size: 51-200
@@ -4534,23 +5241,28 @@ companies:
     - marketplace
     - industrial automation
     - e-commerce
-    products_services: 'valves, dampers, and actuators, temperature, humidity,  & pressure sensors, building automation, bas,
-      controls, relays, contactors, & transformers, btu meters & flow metering, gases: co2, co, freon, & many more, leak detection,
-      automation control peripherals, ecommerce solutions, lighting systems & controls, power metering & current solutions,
-      enclosures , variable speed drives & motor control, level switches & control, surge protection & ups, emergency operator
-      stations, networking switches, routers, & devices, purchasing program solutions, bacnet solutions, wireless systems
-      & controls'
-    description: 'Alps Controls is a specialized distributor and digital marketplace built on a manufacturer-direct fulfillment
-      model and designed to simplify how professionals source HVAC and building automation parts through a modern, intuitive
+    products_services: 'valves, dampers, and actuators, temperature, humidity,  &
+      pressure sensors, building automation, bas, controls, relays, contactors, &
+      transformers, btu meters & flow metering, gases: co2, co, freon, & many more,
+      leak detection, automation control peripherals, ecommerce solutions, lighting
+      systems & controls, power metering & current solutions, enclosures , variable
+      speed drives & motor control, level switches & control, surge protection & ups,
+      emergency operator stations, networking switches, routers, & devices, purchasing
+      program solutions, bacnet solutions, wireless systems & controls'
+    description: 'Alps Controls is a specialized distributor and digital marketplace
+      built on a manufacturer-direct fulfillment model and designed to simplify how
+      professionals source HVAC and building automation parts through a modern, intuitive
       purchasing experience.
 
 
-      Founded by a building controls contractor in 1993 to remove friction from how controls professionals buy.
+      Founded by a building controls contractor in 1993 to remove friction from how
+      controls professionals buy.
 
 
-      Today, we operate as a nationally focused platform - unconstrained by regional branch territories - providing consistent
-      access to over 200M products from 170+ manufacturers, transparent pricing, product intelligence, and responsive human
-      support across North America and beyond.
+      Today, we operate as a nationally focused platform - unconstrained by regional
+      branch territories - providing consistent access to over 200M products from
+      170+ manufacturers, transparent pricing, product intelligence, and responsive
+      human support across North America and beyond.
 
 
       Still family-owned. Now second-generation led. Built for the long term.'
@@ -4602,8 +5314,16 @@ companies:
     - VueJS
     - YouTube
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: hvac contractors
+  business_offer: hvac controls
+  cohort_evidence_url: https://www.newsfilecorp.com/release/89280
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: supplier-09
   company_name: Anderson International Corp
   domain: andersonintl.com
@@ -4611,7 +5331,7 @@ companies:
   primary_cohort: b2b_commerce_suppliers
   shared_core: false
   difficulty: hard
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 65
     employee_size: 51-200
@@ -4622,16 +5342,20 @@ companies:
     - plastics and rubber manufacturing
     - food processing
     - sales
-    products_services: engineering, cnc, rubber processing, polymer processing, aqua feed, animal feed, pet food/feed, oilseed
-      processing, equipment, manufacturing, expeller equipment, expander equipment, ecomeal, biofuel, mechanical oilseed extraction,
-      solvent oilseed extraction, service, replacement parts, assembly, oem parts
-    description: "With 135+ years of process experience, Anderson International Corp is an industry leader and a trusted partner\
-      \ in the various markets we service: Mechanical Oilseed Processing, Solvent Oilseed Processing, Biofuels, Aqua Feed,\
-      \ Animal Feed, Pet Feed, Feed Mill and Polymer Applications around the world. \n\nAnderson supplies a broad range of\
-      \ process solutions, equipment, OEM parts and services to assure safety, productivity, quality and sustainability for\
-      \ our Customers and the Industry."
-    seo_description: A global leader in manufacturing, installing, and supporting processing systems for oilseed production,
-      animal feed, and synthetic rubber.
+    products_services: engineering, cnc, rubber processing, polymer processing, aqua
+      feed, animal feed, pet food/feed, oilseed processing, equipment, manufacturing,
+      expeller equipment, expander equipment, ecomeal, biofuel, mechanical oilseed
+      extraction, solvent oilseed extraction, service, replacement parts, assembly,
+      oem parts
+    description: "With 135+ years of process experience, Anderson International Corp\
+      \ is an industry leader and a trusted partner in the various markets we service:\
+      \ Mechanical Oilseed Processing, Solvent Oilseed Processing, Biofuels, Aqua\
+      \ Feed, Animal Feed, Pet Feed, Feed Mill and Polymer Applications around the\
+      \ world. \n\nAnderson supplies a broad range of process solutions, equipment,\
+      \ OEM parts and services to assure safety, productivity, quality and sustainability\
+      \ for our Customers and the Industry."
+    seo_description: A global leader in manufacturing, installing, and supporting
+      processing systems for oilseed production, animal feed, and synthetic rubber.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -4678,8 +5402,16 @@ companies:
     - Remote
     - WordPress.org
     - YouTube
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: oilseed processors
+  business_offer: oilseed processing equipment
+  cohort_evidence_url: https://www.linkedin.com/company/anderson-international-corp
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin
 - id: supplier-10
   company_name: B2B Industrial Packaging
   domain: b2bind.com
@@ -4687,7 +5419,7 @@ companies:
   primary_cohort: b2b_commerce_suppliers
   shared_core: false
   difficulty: easy
-  seed_status: unverified_seed
+  seed_status: verified
   seed:
     headcount: 126
     employee_size: 501-1000
@@ -4698,17 +5430,23 @@ companies:
     - wholesale
     - packaging services
     - retail
-    products_services: packaging supplies, carton sealing tape, polyester strapping, steel strapping, stretch wrap, edge board,
-      strapping tools, strapping tool repair, fasteners, corrugated boxes, tape, tool parts, stretch wrap machines
-    description: "We are America’s largest strapping distributor and Your National Neighbor for packaging equipment and supplies.\
-      \ We supply a full range of products\nincluding corrugated boxes, strapping, tape, stretch film, protective packaging,\
-      \ and fasteners to clients throughout the U.S. and Mexico. \n\nWith 24 distribution centers nationwide, our local packaging\
-      \ specialists can help you save money and improve your current packaging process with local knowledge, inventory, and\
-      \ attention to detail. Matched with our national buying power, this is a consistently winning combination for our thousands\
-      \ of clients.\n\nTo contact B2B Industrial Packaging, call 1-877-222-5747 or visit www.B2BInd.com."
-    seo_description: B2B Industrial Packaging is a nationwide business to business (B2B) provider of industrial packaging
-      supplies including steel strapping, poly stapping, clips, buckles, seals, tools plus much more. Our dedicated account
-      managers closely match products, service, and expertise to the individual need of each customer.
+    products_services: packaging supplies, carton sealing tape, polyester strapping,
+      steel strapping, stretch wrap, edge board, strapping tools, strapping tool repair,
+      fasteners, corrugated boxes, tape, tool parts, stretch wrap machines
+    description: "We are America’s largest strapping distributor and Your National\
+      \ Neighbor for packaging equipment and supplies. We supply a full range of products\n\
+      including corrugated boxes, strapping, tape, stretch film, protective packaging,\
+      \ and fasteners to clients throughout the U.S. and Mexico. \n\nWith 24 distribution\
+      \ centers nationwide, our local packaging specialists can help you save money\
+      \ and improve your current packaging process with local knowledge, inventory,\
+      \ and attention to detail. Matched with our national buying power, this is a\
+      \ consistently winning combination for our thousands of clients.\n\nTo contact\
+      \ B2B Industrial Packaging, call 1-877-222-5747 or visit www.B2BInd.com."
+    seo_description: B2B Industrial Packaging is a nationwide business to business
+      (B2B) provider of industrial packaging supplies including steel strapping, poly
+      stapping, clips, buckles, seals, tools plus much more. Our dedicated account
+      managers closely match products, service, and expertise to the individual need
+      of each customer.
     company_type: PRIVATELY_HELD
     location:
       country: United States
@@ -4748,5 +5486,13 @@ companies:
     - UPS
     - YouTube
     - reCAPTCHA
-  gaps:
-  - target_customer
+  gaps: []
+  b2b_buyer: manufacturers
+  business_offer: industrial packaging
+  cohort_evidence_url: https://www.b2bind.com/about-b2b
+  selection_reason: Retained sources establish a B2B buyer, offer, and cohort fit
+  secondary_tags:
+  - b2b
+  - live-researched
+  expected_ad_channels:
+  - linkedin

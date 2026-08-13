@@ -1,0 +1,143 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-c899171bae55e4ca
+  - ev-668f092e23d385da
+  - ev-523c0ca4b54ab055
+  field: identity
+  value: Optum Bank
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-c899171bae55e4ca
+  - ev-668f092e23d385da
+  - ev-523c0ca4b54ab055
+  field: description
+  value: 'Contact Customer Services | Optum Bank Skip to Data Use Notice Skip to main
+    content Optum Bank mobile app Connecting health & finance Download the app × Site
+    Logo Sign in Account holder Provider Employer Optum Client Link Portal Search
+    HSA FSA More accounts Resource center Customer support Main menu HSA sign in Check
+    your balance Manage your contribution Reimburse yourself Pay a bill Sign in Grow
+    your HSA Health savings account (HSA) overview Invest your HSA HSA mutual fund
+    lineup HSA resources '
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-c899171bae55e4ca
+  - ev-668f092e23d385da
+  - ev-523c0ca4b54ab055
+  field: offers
+  value: health savings accounts
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-c899171bae55e4ca
+  - ev-668f092e23d385da
+  - ev-523c0ca4b54ab055
+  field: icp
+  value: employers
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-c899171bae55e4ca
+  - ev-668f092e23d385da
+  - ev-523c0ca4b54ab055
+  field: personas
+  value: employers
+  visibility: message_safe
+company_id: known-09
+corrections: []
+evidence:
+- content_hash: c899171bae55e4ca4f67d59e7d4bf20c6ae6474792acd51ccec49bc4a9ce2ebd
+  evidence_id: ev-c899171bae55e4ca
+  excerpt: Contact Customer Services | Optum Bank Skip to Data Use Notice Skip to
+    main content Optum Bank mobile app Connecting health & finance Download the app
+    × Site Logo Sign in Account holder Provider Employer Optum Client Link Portal
+    Search HSA FSA More accounts Resource center Customer support Main menu HSA sign
+    in Check your balance Manage your contribution Reimburse yourself Pay a bill Sign
+    in Grow your HSA Health savings account (HSA) overview Invest your HSA HSA mutual
+    fund lineup HSA resources Open an HSA Account basics Use and manage your account
+    Calculators and tools Planning and investing See more How to transfer your HSA
+    Multiple HSAs? Consolidating your funds into one account with Optum Bank is easy.
+    Learn more FSA sign in Check your balance Upload receipts Track your claims status
+    Sign in Save with an FSA Flexible spending accounts (FSAs) overview Using your
+    payment card Find qualified medical expenses FSA resources Account basics Use
+    and manage your account Optum Bank Academy See more Shop and save Your payment
+    card is the fast, easy way to save on all kinds of everyday eligible health items.
+    Shop now Health reimbursement arrangement (HRA) Commuter benefits Medicare advantage
+    medical savings account (MSA) Dependent care flexible spending account (DCFSA)
+    Related resources Manage your HRA claims Manage your DCFSA claims What is a dependent
+    care FSA Health account comparison HSAs, FSAs and HRAs all offer ways to pay for
+    health care costs and save on taxes. See how they compare Home Section Contact
+    us Find phone numbers, email addresses or other contact information for Optum
+    Bank products and services. Account holder contact information Optum Bank Use
+    this info if the back of your payment card says optumbank.com. For questions about
+    Contact information Optum Bank Health savings account (HSA) Call Our customer
+    support center is available 24/7 at 1-866-234-8913 Account sign in Sign in for
+    self-help tools and assistance UHC HSA Call Our customer support center is a
+  retrieved_at: '2026-08-12T22:06:33.783735+00:00'
+  url: https://www.optumbank.com/customer-support/contact.html
+- content_hash: 668f092e23d385da40686fb75e581442e3721fab6fbced587b060120e5d3bd1e
+  evidence_id: ev-668f092e23d385da
+  excerpt: Optum Bank | LinkedIn Skip to main content LinkedIn Top Content People
+    Learning Jobs Games Sign in Join now Optum Bank Banking West Valley City, Utah
+    2,027 followers Follow Discover all 242 employees Report this company About us
+    Leader in health accounts banking Website http://optumbank.com External link for
+    Optum Bank Industry Banking Company size 10,001+ employees Headquarters West Valley
+    City, Utah Type Public Company Locations Primary 2525 S Lake Park Blvd West Valley
+    City, Utah 84120, US Get directions Employees at Optum Bank Jagdeep Dayal Nicki
+    Fabozzi Mike Blake Anjali Pai See all employees Similar pages Optum Hospitals
+    and Health Care Eden Prairie , MN UnitedHealth Group Hospitals and Health Care
+    Eden Prairie , Minnesota HealthEquity Financial Services Draper, UT HSA Bank,
+    a division of Webster Bank, N.A. Banking Milwaukee, WI Optum India IT Services
+    and IT Consulting Fidelity Investments Financial Services Boston, MA Lively, Inc.
+    Financial Services San Francisco, California Wells Fargo Financial Services San
+    Francisco, California Medallion Bank Banking Salt Lake City, UT Merrick Bank Banking
+    South Jordan, Utah Show more similar pages Show fewer similar pages Browse jobs
+    Fraud Investigator jobs 2,534 open jobs Investigator jobs 19,811 open jobs Customer
+    Service Representative jobs 185,647 open jobs Analyst jobs 694,057 open jobs Clinical
+    Specialist jobs 30,175 open jobs Risk Manager jobs 52,269 open jobs Associate
+    jobs 1,091,945 open jobs Support Analyst jobs 78,440 open jobs Director jobs 1,220,357
+    open jobs Developer jobs 258,935 open jobs Team Lead jobs 1,056,618 open jobs
+    Supervisor jobs 1,264,191 open jobs Chief Officer jobs 82,500 open jobs Investment
+    Banking Analyst jobs 22,137 open jobs Risk Analyst jobs 60,451 open jobs Executive
+    jobs 690,514 open jobs Project Management Specialist jobs 100,068 open jobs Scrum
+    Master jobs 128,485 open jobs Project Manager jobs 253,048 open jobs System Assistant
+    jobs 67,617 open jobs Show more jobs like this Show few
+  retrieved_at: '2026-08-12T22:06:34.243043+00:00'
+  url: https://www.linkedin.com/company/optumhealth-bank
+- content_hash: 523c0ca4b54ab055ac23a97f9f11d87550088f4b09858bb150afc027b14a364d
+  evidence_id: ev-523c0ca4b54ab055
+  excerpt: 'PUBLIC DISCLOSURE May 1, 2023 COMMUNITY REINVESTMENT ACT PERFORMANCE EVALUATION
+    Optum Bank, Inc. Certificate Number: 57408 12921 S. Vista Station Blvd Draper,
+    Utah 84020 Federal Deposit Insurance Corporation Division of Depositor and Consumer
+    Protection San Francisco Regional Office 25 Jessie Street at Ecker Square, Suite
+    2300 San Francisco, California 94105 This document is an evaluation of this institution’s
+    record of meeting the credit needs of its entire community, including low- and
+    moderate-income neighborhoods, consistent with safe and sound operation of the
+    institution. This evaluation is not, nor should it be construed as, an assessment
+    of the financial condition of this institution. The rating assigned to this institution
+    does not represent an analysis, conclusion, or opinion of the federal financial
+    supervisory agency concerning the safety and soundness of this financial institution.
+    TABLE OF CONTENTS INSTITUTION RATING ................................................................................................................1
+    DESCRIPTION OF INSTITUTION ...............................................................................................2
+    DESCRIPTION OF ASSESSMENT AREA ...................................................................................2
+    SCOPE OF EVALUATION ............................................................................................................5
+    CONCLUSIONS ON PERFORMANCE CRITERIA .....................................................................5
+    DISCRIMINATORY OR OTHER ILLEGAL CREDIT PRACTICES REVIEW .........................8
+    GLOSSARY ....................................................................................................................................9
+    1 INSTITUTION RATING INSTITUTION’S CRA RATING: This institution is rated Outstanding.
+    An institution in this group has an outstanding record of helping to meet the
+    credit needs of its assessment area (AA), including low- and moderate-inco'
+  retrieved_at: '2026-08-12T22:20:26.529070+00:00'
+  url: https://crapes.fdic.gov/publish/2023/57408_230501.PDF
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

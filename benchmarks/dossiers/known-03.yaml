@@ -1,0 +1,148 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-1c4d38ee9d03fb20
+  - ev-10f83615a2b7f94c
+  - ev-769fe3c19558fb41
+  field: identity
+  value: Bosch Home Comfort USA
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-1c4d38ee9d03fb20
+  - ev-10f83615a2b7f94c
+  - ev-769fe3c19558fb41
+  field: description
+  value: Bosch Home Comfort PRO | Bosch HVAC Dealer Program Skip to main content Home
+    Comfort Home Appliances Products View Products Overview Heating and Cooling Systems
+    Heating and Cooling Systems Overview Inverter Ducted Split (IDS) Heat Pump Inverter
+    Ductless Mini-Split Heat Pump Geothermal/Water Sourced Heat Pump Rooftop Units
+    - Packaged & Split Systems Air Handling Units Gas & Oil Boilers and Furnaces Gas
+    & Oil Boilers and Furnaces Overview Condensing Boilers Non-Condensing Boilers
+    Condensing Gas Fu
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-1c4d38ee9d03fb20
+  - ev-10f83615a2b7f94c
+  - ev-769fe3c19558fb41
+  field: offers
+  value: heating and cooling
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-1c4d38ee9d03fb20
+  - ev-10f83615a2b7f94c
+  - ev-769fe3c19558fb41
+  field: icp
+  value: hvac contractors
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-1c4d38ee9d03fb20
+  - ev-10f83615a2b7f94c
+  - ev-769fe3c19558fb41
+  field: personas
+  value: hvac contractors
+  visibility: message_safe
+company_id: known-03
+corrections: []
+evidence:
+- content_hash: 1c4d38ee9d03fb2045b1318e7d55854dab05499fd8bca82b3dcec273a2baff26
+  evidence_id: ev-1c4d38ee9d03fb20
+  excerpt: Bosch Home Comfort PRO | Bosch HVAC Dealer Program Skip to main content
+    Home Comfort Home Appliances Products View Products Overview Heating and Cooling
+    Systems Heating and Cooling Systems Overview Inverter Ducted Split (IDS) Heat
+    Pump Inverter Ductless Mini-Split Heat Pump Geothermal/Water Sourced Heat Pump
+    Rooftop Units - Packaged & Split Systems Air Handling Units Gas & Oil Boilers
+    and Furnaces Gas & Oil Boilers and Furnaces Overview Condensing Boilers Non-Condensing
+    Boilers Condensing Gas Furnaces Radiators Protection Pack Water Heating Systems
+    Water Heating Systems Overview Hybrid Electric Water Heaters Electric Storage
+    Water Heaters Electric Tankless Water Heaters Indirect Hot Water Tanks Controls
+    Controls Overview Wi-Fi Thermostats Apps DDC Programmable Controllers DDC Connected
+    HMI Managers Zone Sensor Heating/Boiler Controls Well-Being Well-Being Bosch Air
+    Series Purifiers Bosch Dry Series Dehumidifiers Bosch Tower Fan Series Bosch Water
+    Filtration Series Service & Support View Service & Support Help Resources Contact
+    Customer Service Contact Customer Service Overview General Product Info Inquiries
+    Technical Support Technical Support Overview Product Maintenance Information Frequently
+    Asked Questions Troubleshooting Troubleshooting Videos Service Bulletins Overview
+    Serial Number Locator Product Warranty Library Homeowner Product Registration
+    Get a Quote Residential Installer Locator Residential Installer Locator US Installer
+    Locator Canada Installer Locator Commercial Rep Locator Aftermarket Resource Center
+    (Spare Parts Finder) Discontinued Products Discontinued Products Air-to-Air Heat
+    Pumps Air-to-Air Heat Pumps IDS Light (R-410A Version) IDS Plus - Inverter Ducted
+    Split Heat Pump (R-410A Version) IDS Premium - Inverter Ducted Split Heat Pump
+    (R-410A Version) IDS Premium Connected (R-410A) BVA Air Handler (R-410A) BWA16
+    Compact Wall Air Handler (R-410A Version) BCA16 Compact Ceiling Air Handler (R-410A
+    Version) Climate 5000 Ductless Mini-Split Heat Pump (
+  retrieved_at: '2026-08-12T22:06:17.068145+00:00'
+  url: https://www.bosch-homecomfort.com/us/en/residential/professionals/bosch-home-comfort-pro/
+- content_hash: 10f83615a2b7f94c6e022a7eec3798f26647f77a65feed8299386d16d12c687b
+  evidence_id: ev-10f83615a2b7f94c
+  excerpt: 'Bosch Home Comfort USA | LinkedIn Agree & Join LinkedIn By clicking Continue
+    to join or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy ,
+    and Cookie Policy . Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now Bosch Home Comfort USA HVAC and Refrigeration Equipment
+    Manufacturing Watertown, MA 18,650 followers Providing comfort with high-quality,
+    efficient heating and cooling systems for residential and commercial applications.
+    Follow Discover all 444 employees Report this company About us Bosch Home Comfort
+    is a leading source of high-quality heating, cooling and hot water systems. The
+    company offers Bosch tankless, point-of-use and electric water heaters, Bosch
+    and Buderus floor-standing and wall-hung boilers, Bosch and FHP water-source,
+    geothermal and air-source heat pump systems, as well as controls and accessories
+    for every product line. Bosch Home Comfort is committed to reinventing energy
+    efficiency by offering smart products that work together as integrated systems
+    and enhance quality of life in an ultra-efficient and environmentally friendly
+    manner. Privacy Policy: https://www.bosch-homecomfort.com/us/en/residential/corporate-information/
+    Website https://www.bosch-homecomfort.com/us/en/residential/home/ External link
+    for Bosch Home Comfort USA Industry HVAC and Refrigeration Equipment Manufacturing
+    Company size 10,001+ employees Headquarters Watertown, MA Type Privately Held
+    Founded 1886 Specialties Commercial HVAC, Residential HVAC, Tankless Gas Water
+    Heaters, Electric Water Heaters, Heat Pump Systems, Gas and Oil Residential/Commercial
+    Boilers, Water Source Heat Pumps, Radiant Heat Products, Geothermal Systems, HVAC,
+    and Heating and Cooling Employees at Bosch Home Comfort USA Jeff Dombach LinkedIn
+    Member LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn Member View 444
+    employees at Bosch Home Comfort USA Sign in Welcome back Email or phone Password
+    Show Forgot password? Sign in or By clicking Contin'
+  retrieved_at: '2026-08-12T22:06:17.794857+00:00'
+  url: https://www.linkedin.com/company/boschhomecomfort-us
+- content_hash: 769fe3c19558fb41297f57394bc3bfa95243048394063ce6531f664e5d2cc27e
+  evidence_id: ev-769fe3c19558fb41
+  excerpt: "April 11, 2023 November 6, 2025 July 28, 2026 Bosch Thermotechnology Rebrands\
+    \ as Bosch Home Comfort Group | ACHR News ACHR News search Search search close\
+    \ search Ask ACHR NEWS AI cart facebook twitter instagram linkedin youtube Sign\
+    \ In Subscribe Sign Out My Account ACHR News NEWS Breaking News New HVAC Products\
+    \ Featured Products Manufacturer Reports HVAC Data Legislation ACHR NEWS Centennial\
+    \ RESIDENTIAL Air Conditioners Furnaces Residential Heat Pumps Ductless Residential\
+    \ IAQ Testing, Monitoring, Tools Components & Accessories COMMERCIAL Air Handlers\
+    \ Rooftop Units Chillers and Cooling Towers Commercial Heat Pumps Boilers and\
+    \ Hydronics VRF/Ductless Commercial IAQ REFRIGERATION Refrigerants Refrigerant\
+    \ Regulations Leak Management CONTRACTOR PRO Geothermal Homeowner Study VRF and\
+    \ VRV Ductless Unitary Trends EDUCATION Training and Education Business Management\
+    \ Service and Maintenance Continuing Education Market Research > HVAC Brand Awareness\
+    \ Report VRV, VRF, VRVZ Report Unitary Trends Report Water Heat Professionals\
+    \ Report Webinars Sponsor Insights eProducts Info White Papers EVENTS HVAC Contractor\
+    \ Forum Industry Events and Webinars MEDIA Videos AHR Expo 2025 Videos Podcasts\
+    \ > ACHR News Podcast HARDI Podcasts AHR Expo Podcasts ACCA Podcasts Interactive\
+    \ Spotlights Quizzes eBooks HVAC Talkback HVAC GROUP ACHR NEWS > Current Issue\
+    \ Digital Edition Subscribe Distribution Trends SNIPS NEWS > Join SNIPS NEWS Engineered\
+    \ Systems News > Join ES News HVACR Directory Contests Newsletters Contact Advertise\
+    \ My Account News Boilers and Hydronics HVAC Breaking News Bosch Thermotechnology\
+    \ Rebrands as Bosch Home Comfort Group Bosch Thermotechnology, a global source\
+    \ of high-quality heating, cooling, and hot water systems, has been renamed to\
+    \ Bosch Home Comfort Group . Image courtesy of Bosch Home Comfort Group April\
+    \ 11, 2023 \uFEFFWATERTOWN, Mass. — Bosch Thermotechnology, a global source of\
+    \ high-quality heating, cooling, and hot water systems, has been renamed to Bosch\
+    \ Home Comfort Group . E"
+  retrieved_at: '2026-08-12T22:06:19.113455+00:00'
+  url: https://www.achrnews.com/articles/152872-bosch-thermotechnology-rebrands-as-bosch-home-comfort-group
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

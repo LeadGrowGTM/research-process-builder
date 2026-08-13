@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-0c8cabd1fc6337a7
+  - ev-026452c8b94e5acd
+  - ev-67663586c7a2110a
+  field: identity
+  value: Archive360
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0c8cabd1fc6337a7
+  - ev-026452c8b94e5acd
+  - ev-67663586c7a2110a
+  field: description
+  value: About Us | Archive360 | Modern Data Archiving. Skip to content Archive360®
+    named to Inc. 5000 list of fastest-growing companies for the 2nd consecutive year. 
+    Read More Here Platform Archive360 Platform Platform Overview AI-ready data management,
+    compliance, & discovery Governance Unified governance for all data types across
+    multiple systems Compliance Consistent legal, regulatory & operational data compliance
+    Security Zero-trust, least privilege security by design Process Platform Process
+    Archi
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0c8cabd1fc6337a7
+  - ev-026452c8b94e5acd
+  - ev-67663586c7a2110a
+  field: offers
+  value: data management platform
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0c8cabd1fc6337a7
+  - ev-026452c8b94e5acd
+  - ev-67663586c7a2110a
+  field: icp
+  value: government agencies
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0c8cabd1fc6337a7
+  - ev-026452c8b94e5acd
+  - ev-67663586c7a2110a
+  field: personas
+  value: government agencies
+  visibility: message_safe
+company_id: saas-05
+corrections: []
+evidence:
+- content_hash: 0c8cabd1fc6337a7e51bc418ede6d8693c4e2bb6fb5d371ffcc6e45d3d4280d1
+  evidence_id: ev-0c8cabd1fc6337a7
+  excerpt: 'About Us | Archive360 | Modern Data Archiving. Skip to content Archive360®
+    named to Inc. 5000 list of fastest-growing companies for the 2nd consecutive year. 
+    Read More Here Platform Archive360 Platform Platform Overview AI-ready data management,
+    compliance, & discovery Governance Unified governance for all data types across
+    multiple systems Compliance Consistent legal, regulatory & operational data compliance
+    Security Zero-trust, least privilege security by design Process Platform Process
+    Archive and govern critical data at petabyte scale 1. Collect Compliantly capture
+    all data types from wide range of sources 2. Manage Class-based, policy-driven
+    management of data lifecycle risk & value 3. Access Policy-driven access controls
+    at the file and field-level Solutions Industry Energy Federal Government Finance
+    Healthcare Life Sciences Legal Use Case AI & Analytics Compliance & Audit Data
+    Discovery Digital Communications Governance & Archiving Application & Data Retirement
+    File Archiving Mobile Communications Data Migration Supervision & Surveillance
+    ERP Modernization SAP Archiving Application Legacy Email Archives EMC SourceOne
+    Enterprise Vault / EV.Cloud More... Legacy Applications Data Sources / Connectors
+    Microsoft 365 Slack Zoom More... Customers Support Support Portal Knowledge Base
+    Services Advisory & Implementation Platform & Infrastructure Monitoring Customer
+    Success Migration Resources Type All Resources Analyst Reports Blog Case Studies
+    Datasheet eBook Interview Podcast Survey Technical Guide Video Whitepaper Webinar
+    Partners Partner Partner Program Overview Our Partnership with Microsoft Become
+    a Partner Find a Partner Partner Portal Company Contact Us About Us Leadership
+    Events News In the Media Careers Get a Demo Contact Sales Get to know Archive360®
+    Govern what matters - and prove it. Archive360 is the Enterprise Data and AI Governance
+    Platform for regulated organizations.   Dedicated tenant. Customer-managed keys.
+    Audit-ready evidence - so your security '
+  retrieved_at: '2026-08-12T21:00:50.696368+00:00'
+  url: https://www.archive360.com/about-archive360/
+- content_hash: 026452c8b94e5acd92b49814e68e027235264dc14c683ee629ffd880c1c7a152
+  evidence_id: ev-026452c8b94e5acd
+  excerpt: 'Archive360 | LinkedIn Agree & Join LinkedIn By clicking Continue to join
+    or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie
+    Policy . Skip to main content LinkedIn Top Content People Learning Jobs Games
+    Sign in Join now Archive360 Software Development New York, NY 5,110 followers
+    Govern what matters - and prove it. Follow View all 135 employees Report this
+    company About us Archive360 helps regulated enterprises govern complex data across
+    communications, records, legacy systems, and AI data. With policy-based retention,
+    access controls, encryption, search, and audit-ready traceability, Archive360
+    keeps critical data secure, compliant, defensible, and available when needed.
+    As AI adoption grows, Archive360 helps organizations govern prompts, outputs,
+    metadata, logs, and decision context, creating a trusted foundation for compliance,
+    risk reduction, and defensible AI use. Trusted data. Governed AI. Defensible outcomes.
+    Website http://www.archive360.com External link for Archive360 Industry Software
+    Development Company size 51-200 employees Headquarters New York, NY Type Privately
+    Held Founded 2011 Specialties Archive Migration , Azure, Cloud Archiving, eDiscovery,
+    Regulatory Compliance, SEC 17 a-4, Information Management, GDPR, Legal Defensibility,
+    Application retirement, data archiving, legacy archives, Data Governance, Records
+    Management, Legacy Application Retirement, AI, Analytics, Digital Communications,
+    Modern Archiving, File Archiving, Data retirement, SAP Archiving, ERP Modernization,
+    AI Data Readiness, AI Governance, Enterprise Data, and AI Ready data control plane
+    Employees at Archive360 Michael Coffield LinkedIn Member LinkedIn Member LinkedIn
+    Member LinkedIn Member LinkedIn Member View 135 employees at Archive360 Sign in
+    Welcome back Email or phone Password Show Forgot password? Sign in or By clicking
+    Continue to join or sign in, you agree to LinkedIn’s User Agreement , Privacy
+    Policy , and Cookie Policy . New to LinkedIn? Join '
+  retrieved_at: '2026-08-12T21:00:51.334967+00:00'
+  url: https://www.linkedin.com/company/archive360
+- content_hash: 67663586c7a2110af3e1bf055752bc8845409596684fcdac7f525a6be13d5d48
+  evidence_id: ev-67663586c7a2110a
+  excerpt: Archive360 | Carahsoft AVAILABLE 24x7 888.662.2724 AVAILABLE 24x7 (888)
+    66CARAH Fast & Accurate Request A Quote menu home SOLVE close back to main menu
+    Markets We Serve back to main menu View Public Sector Markets Federal Government
+    DoD/DoW Intelligence & National Defense State & Local Government Higher Ed K-12
+    Healthcare Tribal Nations Canadian Government View Commercial Markets Defense
+    Industrial Base Regulated Industries Critical Infrastructure Energy & Utilities
+    Financial Services Manufacturing Enterprise Technology Solutions Nonprofits Technology
+    Manufacturers back to main menu View All Vendors Adobe Atlassian AWS Broadcom
+    Cohesity CrowdStrike Databricks Dell Technologies Docusign ElasticSearch Equifax
+    F5 Forescout Gigamon GitLab Google Cloud Granicus HPE OpenText Microsoft Nutanix
+    NVIDIA Okta Oracle Palo Alto Networks Proofpoint Red Hat SAP Salesforce SentinelOne
+    ServiceNow Snowflake Solarwinds Splunk Tableau Trellix VMware Zscaler Zoom Solutions
+    Portfolio back to main menu View All Solutions 5G Aerospace & Maritime Artificial
+    Intelligence Autonomy & Robotic Technology CMMC Customer Experience & Engagement
+    Cyber Workforce Development Cybersecurity DevSecOps DoD IL Education Technology
+    Emerging Technologies Executive Protection FedRAMP Technologies Financial IT Geospatial
+    GovCon GovRAMP Hardware Healthcare Technology Human Capital Technology IoT & OT
+    Law Enforcement Technology Legal & Courtroom Technology MultiCloud Open Source
+    OSINT Physical Security Quantum Records & Information Management Smart Cities
+    Space Tech Supply Chain Management Zero Trust View All Vendors View all Markets
+    View all Solutions Request a Quote sales@carahsoft.com 888.662.2724 Solutions
+    for Public Sector and Solutions for Commercial and Enterprise Carahsoft is the
+    largest partner, distributor, and Master Aggregator™ for the industry's leading
+    software manufacturers. See all of our Technology Solutions See all of our Vendors
+    LEARN close back to main menu Events back to main menu All Events
+  retrieved_at: '2026-08-12T21:00:52.529274+00:00'
+  url: https://www.carahsoft.com/archive360
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

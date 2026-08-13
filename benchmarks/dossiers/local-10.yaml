@@ -1,0 +1,168 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-f3f35c2cbd593932
+  - ev-ccc1b596bd32ac81
+  - ev-ea32e32ba77d0ec1
+  - ev-e539511e191a9f2f
+  field: identity
+  value: Atlas Mechanical Inc.
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-f3f35c2cbd593932
+  - ev-ccc1b596bd32ac81
+  - ev-ea32e32ba77d0ec1
+  - ev-e539511e191a9f2f
+  field: description
+  value: '[{"id":22,"date":"2023-12-09T13:41:08","date_gmt":"2023-12-09T13:41:08","guid":{"rendered":"https:\/\/atlas-mechanical.com\/?page_id=22"},"modified":"2024-12-10T09:42:03","modified_gmt":"2024-12-10T17:42:03","slug":"services","status":"publish","type":"page","link":"https:\/\/atlas-mechanical.com\/services\/","title":{"rendered":"Services"},"content":{"rendered":"\t\t
+    \n\t\t\t\t\t\t \n\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t \n\t\t\t\t\t \n\t\t\t \n\t\t\t\t\t\t
+    \n\t\t\t\t \n\t\t\t\t\t SERVICES \t\t\t\t \'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-f3f35c2cbd593932
+  - ev-ccc1b596bd32ac81
+  - ev-ea32e32ba77d0ec1
+  - ev-e539511e191a9f2f
+  field: offers
+  value: mechanical services
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-f3f35c2cbd593932
+  - ev-ccc1b596bd32ac81
+  - ev-ea32e32ba77d0ec1
+  - ev-e539511e191a9f2f
+  field: icp
+  value: contractors
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-f3f35c2cbd593932
+  - ev-ccc1b596bd32ac81
+  - ev-ea32e32ba77d0ec1
+  - ev-e539511e191a9f2f
+  field: personas
+  value: contractors
+  visibility: message_safe
+company_id: local-10
+corrections: []
+evidence:
+- content_hash: f3f35c2cbd59393297c95d1de63a51ef76d37821128840c7fa326a342e2e8613
+  evidence_id: ev-f3f35c2cbd593932
+  excerpt: '[{"id":22,"date":"2023-12-09T13:41:08","date_gmt":"2023-12-09T13:41:08","guid":{"rendered":"https:\/\/atlas-mechanical.com\/?page_id=22"},"modified":"2024-12-10T09:42:03","modified_gmt":"2024-12-10T17:42:03","slug":"services","status":"publish","type":"page","link":"https:\/\/atlas-mechanical.com\/services\/","title":{"rendered":"Services"},"content":{"rendered":"\t\t
+    \n\t\t\t\t\t\t \n\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t \n\t\t\t\t\t \n\t\t\t \n\t\t\t\t\t\t
+    \n\t\t\t\t \n\t\t\t\t\t SERVICES \t\t\t\t \n\t\t\t\t \n\t\t\t\t\t \n\t\t \n\t\t\t\t\t
+    \n\t\t \n\t\t\t\t \n\t\t\t\t\t\t \n\t\t\t\t\t \n\t\t\t \n\t\t\t\t\t\t \n\t\t\t\t\t\t
+    \n\t\t\t\t\t \n\t\t\t \n\t\t\t\t\t\t \n\t\t\t\t \n\t\t\t\t\t COMMERCIAL PLUMBING
+    \t\t\t\t \n\t\t\t\t \n\t\t\t\t \n\t\t\t\t \n\t\t\t\t\t\t\t\t\t Atlas Mechanical’s
+    Plumbing Division, offers Commercial Plumbing Systems, for the Portland and Seattle
+    markets. We specialize in servicing Commercial Projects, including but not limited
+    to: Multi-Family Residences, Mixed-Use Developments, Apartments, Hotels, and Assisted
+    Living Facilities. We also offer services, when it comes to the Industrial Sector
+    of the trades. Atlas Mechanical offers a complete professional process including
+    Design and Engineering. We are versed in using 3D modeling in Revit, Pre-Fabrication,
+    and Layout with Robotic Total Stations. We employ experienced topnotch Field Installers
+    and Foremen, to work on projects. We are heavily focused on Quality Control and
+    we employ two full-time quality control personnel to deliver the most professional
+    experience for our clients. \t\t\t\t\t\t\t\t \n\t\t\t\t \n\t\t\t\t\t \n\t\t \n\t\t\t\t
+    \n\t\t\t \n\t\t\t\t\t\t \n\t\t\t\t \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t
+    \n\t\t\t\t \n\t\t\t\t\t \n\t\t \n\t\t\t\t\t \n\t\t \n\t\t\t\t \n\t\t\t\t\t\t \n\t\t\t\t\t
+    \n\t\t\t \n\t\t\t\t\t\t \n\t\t\t\t \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t
+    \n\t\t\t\t \n\t\t\t\t\t \n\t\t \n\t\t\t\t \n\t\t\t \n\t\t\t\t\t\t \n\t\t\t\t \n\t'
+  retrieved_at: '2026-08-12T22:41:11.535766+00:00'
+  url: https://atlas-mechanical.com/wp-json/wp/v2/pages?slug=services
+- content_hash: ccc1b596bd32ac8124223f1d623f8e3f13b9ae95319475940638ff1f2e911fa6
+  evidence_id: ev-ccc1b596bd32ac81
+  excerpt: '[{"id":30,"date":"2023-12-09T13:42:34","date_gmt":"2023-12-09T13:42:34","guid":{"rendered":"https:\/\/atlas-mechanical.com\/?page_id=30"},"modified":"2026-05-08T14:25:30","modified_gmt":"2026-05-08T21:25:30","slug":"contact","status":"publish","type":"page","link":"https:\/\/atlas-mechanical.com\/contact\/","title":{"rendered":"Contact"},"content":{"rendered":"\t\t
+    \n\t\t\t\t\t\t \n\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t \n\t\t\t\t\t \n\t\t\t \n\t\t\t\t\t\t
+    \n\t\t\t\t \n\t\t\t\t\t CONTACT \t\t\t\t \n\t\t\t\t \n\t\t\t\t\t \n\t\t \n\t\t\t\t\t
+    \n\t\t \n\t\t\t\t \n\t\t\t\t\t\t \n\t\t\t\t\t \n\t\t\t \n\t\t\t\t\t\t \n\t\t\t\t
+    \n\t\t\t\t\t LET''S TALK! \t\t\t\t \n\t\t\t\t \n\t\t\t\t \n\t\t\t\t \n\t\t\t\t\t\t\t\t\t
+    Phone: 360-887-805 4 Email: \u00a0 info@atlas-mechanical.com Atlas Mechanical
+    Inc. 430 North Pekin Road Woodland, WA 98674 \t\t\t\t\t\t\t\t \n\t\t\t\t \n\t\t\t\t
+    \n\t\t\t\t \n\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t \n\t\t\t\t\t \n\t\t\t\t\t\t Facebook
+    \n\t\t\t\t\t\t \t\t\t\t\t \n\t\t\t\t \n\t\t\t\t\t\t\t \n\t\t\t\t\t \n\t\t\t\t\t\t
+    Instagram \n\t\t\t\t\t\t \t\t\t\t\t \n\t\t\t\t \n\t\t\t\t\t\t\t \n\t\t\t\t\t \n\t\t\t\t\t\t
+    Envelope \n\t\t\t\t\t\t \t\t\t\t\t \n\t\t\t\t \n\t\t\t\t\t\t\t \n\t\t\t\t\t \n\t\t\t\t\t\t
+    Linkedin \n\t\t\t\t\t\t \t\t\t\t\t \n\t\t\t\t \n\t\t\t\t\t \n\t\t\t\t\t\t \n\t\t\t\t
+    \n\t\t\t\t\t \n\t\t \n\t\t\t\t \n\t\t\t \n\t\t\t\t\t\t \n\t\t\t\t \n\t\t\t\t\t
+    Contact US \t\t\t\t \n\t\t\t\t \n\t\t\t\t \n\t\t\t\t \n\t\t\t\t\t\t\t \n\t\t\t
+    \n\t\t\t \n\t\t\t \n\n\t\t\t\n\t\t\t \n\t\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t\t\t\t\t\t
+    \n\t\t\t\t\t\t\t\tNAME\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t\t\t\t\t
+    \n\t\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t\tEMAIL\t\t\t\t\t\t\t
+    \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t\t\t\t\t\t
+    \n\t\t\t\t\t\t\t\tPHONE\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t\t \n\n\t\t\t\t\t\t \n\t\t\t\t\t\t\t\t
+    \n\t\t\t\t\t\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t\tMESSAGE\t\t\t\t\t\t\t \n\t\t\t\t\t\t
+    \t\'
+  retrieved_at: '2026-08-12T22:47:24.341605+00:00'
+  url: https://atlas-mechanical.com/wp-json/wp/v2/pages?slug=contact
+- content_hash: ea32e32ba77d0ec1f2aef46ce58514a0e95ab19b777450f0a499430d11d2ff89
+  evidence_id: ev-ea32e32ba77d0ec1
+  excerpt: Atlas Mechanical Inc. | LinkedIn Skip to main content LinkedIn Top Content
+    People Learning Jobs Games Sign in Join now Atlas Mechanical Inc. Construction
+    Follow Discover all 37 employees Report this company About us Atlas Mechanical
+    Inc. is a Mechanical Contractor, based out of Woodland, Washington. Our services
+    include Commercial/Industrial Plumbing and HVAC. Website www.atlas-mechanical.com
+    External link for Atlas Mechanical Inc. Industry Construction Company size 51-200
+    employees Type Self-Owned Specialties Commercial Plumbing, Commercial HVAC, Industrial
+    Plumbing, and Industrial HVAC Locations Primary Get directions 430 N. Pekin Rd
+    Woodland, Washington 98674, US Get directions Woodland, us Get directions Employees
+    at Atlas Mechanical Inc. Fred Nichols Sil Mallocci Trevor Goertz Derek Ritch See
+    all employees Updates Atlas Mechanical Inc. 473 followers 1mo Report this post
+    Visit our website today to apply! atlas-mechanical.com 1 Like Comment Share Join
+    now to see what you are missing Find people you know at Atlas Mechanical Inc.
+    Browse recommended jobs for you View all updates, news, and articles Join now
+    Similar pages Trademark Plumbing Construction Ridgefield, WA Atlas Mechanical
+    Inc Construction San Diego, CA Stewart Mechanical, Inc. Construction Battle Ground,
+    WA Piper Mechanical Construction Vancouver , WA Atlas Mechanical Services Maritime
+    Transportation Piraeus, Attiki JRT Mechanical Inc. Construction Battle Ground,
+    WA Tapani Inc. Construction Battle Ground, Washington FASTRACK MECHANICAL, INC
+    Construction Indianapolis, Indiana HEAD MECHANICAL, INC Individual and Family
+    Services Cle Elum, Washington Atlas Mechanical Construction Delray Beach, Florida
+    Show more similar pages Show fewer similar pages LinkedIn © 2026 About Accessibility
+    User Agreement Privacy Policy Cookie Policy Copyright Policy Brand Policy Guest
+    Controls Community Guidelines العربية (Arabic) বাংলা (Bangla) Čeština (Czech)
+    Dansk (Danish) Deutsch (German) Ελληνικά (Greek) English (English) Es
+  retrieved_at: '2026-08-12T22:41:12.077802+00:00'
+  url: https://www.linkedin.com/company/atlasmechanicalinc
+- content_hash: e539511e191a9f2f0ddc431a714c392166a8e6e992f47580af52cd7bf975fd75
+  evidence_id: ev-e539511e191a9f2f
+  excerpt: Inspection Detail | Occupational Safety and Health Administration osha.gov
+    "> Powered by Translate An official website of the United States government. Here's
+    how you know The .gov means it's official. Federal government websites often end
+    in .gov or .mil. Before sharing sensitive information, make sure you're on a federal
+    government site. The site is secure. The https:// ensures that you are connecting
+    to the official website and that any information you provide is encrypted and
+    transmitted securely. U.S. Department of Labor Occupational Safety and Health
+    Administration Contact Us FAQ A to Z Index Languages اَلْعَرَبِيَّةُ (Arabic)
+    Sinugbuanong Binisayâ (Cebuano) 官话 (Chinese-Simplified) 廣東話 (Chinese-Traditional)
+    English Français (French) Kreyòl ayisyen (Haitian Creole) 한국어 (Korean) नेपाली
+    (Nepali) Polski (Polish) Português (Portuguese (Brazilian)) Русский (Russian)
+    Af-Soomaali (Somali) Español (Spanish) Українська (Ukrainian) Tiếng Việt (Vietnamese)
+    Search Menu OSHA OSHA About OSHA Find an OSHA Office State Plans Job Safety and
+    Health Poster Careers Freedom of Information Act Speaker Requests STANDARDS Standards
+    Law and Regulations Federal Registers Open for Comment Regulatory Agenda Letters
+    of Interpretation Training Requirements by Standard ENFORCEMENT Enforcement OSHA
+    Enforcement Whistleblower Protection Program Annual Inspection Data TOPICS Topics
+    For Employers Worker Rights Workers Memorial Fall Prevention Hazard Communication
+    Heat Personal Protective Equipment Suicide Prevention Trenching and Excavation
+    By Sector Agriculture Construction Federal Agencies Healthcare Maritime Oil and
+    Gas Warehousing Key Topics Recordkeeping Requirements and Forms Safety and Health
+    Programs Support After a Loss Whistleblower Protections HELP AND RESOURCES Help
+    and Resources Data Establishment Search Fatality Reports File a Complaint Freedom
+    of Information Act (FOIA) Publications Safety and Health Topics Pages Videos Compliance
+    Assistance Compliance Assistance Specialists Consult
+  retrieved_at: '2026-08-12T22:41:12.659487+00:00'
+  url: https://www.osha.gov/ords/imis/establishment.inspection_detail?id=1856968.015
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

@@ -1,0 +1,186 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-b37856055a50b24a
+  - ev-4683a4db475c5803
+  - ev-799d575cdccb2850
+  - ev-84b48fa50d68c4f0
+  field: identity
+  value: DualEntry
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b37856055a50b24a
+  - ev-4683a4db475c5803
+  - ev-799d575cdccb2850
+  - ev-84b48fa50d68c4f0
+  field: description
+  value: AI ERP Software | DualEntry DualEntry raises $90M from Learn more about our
+    Series A DualEntry raises $90M from Learn more about our Series A DualEntry raises
+    $90M from Learn more about our Series A Products Core Financials General Ledger
+    Secure, automate, and customize your full GL Accounts Receivable Manage incoming
+    payments effortlessly Accounts Payable Automate vendor payments smoothly Cash
+    Management Get global cash visibility faster Tax Management Take the pain out
+    of global tax compliance
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b37856055a50b24a
+  - ev-4683a4db475c5803
+  - ev-799d575cdccb2850
+  - ev-84b48fa50d68c4f0
+  field: offers
+  value: accounting software
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-84b48fa50d68c4f0
+  field: growth
+  value: Primary funding event dated 2025-10-02
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b37856055a50b24a
+  - ev-4683a4db475c5803
+  - ev-799d575cdccb2850
+  - ev-84b48fa50d68c4f0
+  field: icp
+  value: finance teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b37856055a50b24a
+  - ev-4683a4db475c5803
+  - ev-799d575cdccb2850
+  - ev-84b48fa50d68c4f0
+  field: personas
+  value: finance teams
+  visibility: message_safe
+company_id: funded-09
+corrections: []
+evidence:
+- content_hash: b37856055a50b24aa1bf8782fb70277b0b650f3e509caa713268e272e2dae271
+  evidence_id: ev-b37856055a50b24a
+  excerpt: AI ERP Software | DualEntry DualEntry raises $90M from Learn more about
+    our Series A DualEntry raises $90M from Learn more about our Series A DualEntry
+    raises $90M from Learn more about our Series A Products Core Financials General
+    Ledger Secure, automate, and customize your full GL Accounts Receivable Manage
+    incoming payments effortlessly Accounts Payable Automate vendor payments smoothly
+    Cash Management Get global cash visibility faster Tax Management Take the pain
+    out of global tax compliance Purchase Order Management Streamline purchasing and
+    approvals Account Reconciliation Speedup end-to-end reconciliation Close Management
+    Close faster and with more accuracy Order Management Simplify order-to-cash processes
+    Account Allocation Automation Speed up end-to-end reconciliation Approval Workflows
+    Close faster and with more accuracy Advanced Accounting Revenue Recognition Accelerate
+    revenue recognition with AI Prepaid Amortization Save time on amortization and
+    avoid errors Subscription Billing Automate recurring billing processes Fixed Assets
+    Management Control the entire asset lifecycle What’s new on DualEntry See DualEntry
+    in action and discover how automations and AI insights can elevate your team's
+    work. Schedule demo Platform scale Multi-Entity Consolidation Manage unlimited
+    subsidiaries Multiple Currencies Connect to 13,000+ banks Audit & Compliance Safeguard
+    with Al-driven, always-on auditing Integrations Access 13.000+ native integrations
+    Financial Workflow Build GL that fits your business Reporting & Analytics Get
+    AI insights and generate custom reports Planning & Budgeting Flexible, real-time
+    financial planning Multi-Book Parallel ledgers across GAAP, IFRS, and tax reporting
+    Treasury Management Streamline cash flow and liquidity control automation AI Accounting
+    Software Put your close on autopilot General Ledger Secure, automate, and customize
+    your full GL Automation Speed up your monthly close Implementation & Migration
+    Go live in 24 hours DualEntry API Bui
+  retrieved_at: '2026-08-12T21:35:27.215150+00:00'
+  url: https://www.dualentry.com/
+- content_hash: 4683a4db475c58037c564aa2b780b145812a002594f64af64d9e86cf9ebe3c80
+  evidence_id: ev-4683a4db475c5803
+  excerpt: DualEntry | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now DualEntry Software Development New York, NY 30,557
+    followers AI-Native ERP See jobs Follow Discover all 75 employees Report this
+    company Overview Jobs Life About us DualEntry is the first ERP built AI-native
+    from the ground up. You can close the books faster by automating most of your
+    manual tasks with DualEntry AI, freeing up time to focus on strategy and helping
+    your business scale without adding to headcount. A one-person finance team? It's
+    possible with DualEntry. Mid-market enterprises that have outgrown starter cloud
+    and on-premise finance systems choose DualEntry to scale to IPO. You can handle
+    multiple entities, multiple currencies, real-time reporting, and high transaction
+    volumes on one customizable platform. Our customers range from enterprises with
+    $5M in annual revenue to NYSE-listed businesses. DualEntry is based in New York
+    City and was founded by two experienced entrepreneurs who previously built a $100M-revenue
+    business. In October 2025 we announced a $90M Series A from Lightspeed Venture
+    Partners, Khosla Ventures, and GV (Google Ventures). Website https://www.dualentry.com/
+    External link for DualEntry Industry Software Development Company size 51-200
+    employees Headquarters New York, NY Type Privately Held Founded 2024 Products
+    DualEntry DualEntry Enterprise Resource Planning (ERP) Software DualEntry is an
+    AI-native ERP that automates accounting so finance teams can spend less time closing
+    the books and more time guiding the business. Automate core financial workflows,
+    including journal entries, reconciliation, and financial reporting, in a single
+    platform built for modern companies. DualEntry uses AI to streamline accounting
+    operations and provide real-time visibility across entities, currencies, and accounts.
+    By reducing manual work and simplifying month-end processes, finance teams gain
+    clearer insight into performance and can focus on plann
+  retrieved_at: '2026-08-12T21:35:27.940841+00:00'
+  url: https://www.linkedin.com/company/dualentry
+- content_hash: 799d575cdccb285051baf626bdb74a932c5316df69916a35b6bd15c62cc038f0
+  evidence_id: ev-799d575cdccb2850
+  excerpt: 'DualEntry Launches From Stealth With $90M Series A Round | Built In NYC
+    NYC Global Tech Hub BuiltIn.com is the global destination for tech professionals.
+    builtin.com Popular Tech Hubs United States Austin Boston Chicago Colorado Los
+    Angeles New York City Seattle San Francisco Australia Sydney Melbourne Canada
+    Calgary Montreal Ottawa Quebec Toronto Vancouver India Bengaluru Chennai Delhi
+    Hyderabad Kolkata Mumbai Pune Ireland Dublin Singapore Singapore United Kingdom
+    London Cambridge Manchester Birmingham Bristol Companies Jobs Articles Can''t
+    find your company? Create a company profile. View All Jobs Join Log In For Employers
+    Hire on Built In Post a Job DualEntry Launches From Stealth With $90M Series A
+    Round The company emerged from stealth with an AI-native platform to modernize
+    legacy ERP software. Written by Built In Staff, With AI Published on Oct. 06,
+    2025 Photo: Shutterstock REVIEWED BY Ashley Bowden | Oct 06, 2025 DualEntry ,
+    an enterprise resource planning, or ERP, platform, has emerged from stealth and
+    announced a $90 million Series A funding round. The New York-based company works
+    to modernize legacy ERP software with a platform built using artificial intelligence. 
+    DualEntry’s ERP accounting suite includes general ledger, accounts payable, accounts
+    receivable and financial planning and analysis capabilities. It is built to handle
+    accounting across multiple books, currencies and entities and is designed for
+    scale. DualEntry reports that it has already processed $100 billion worth of journal
+    entries using its AI and serves thousands of global users. Lightspeed Venture
+    Partners and Khosla Ventures co-led the Series A , bringing DualEntry’s total
+    funding secured over the past 15 months to more than $100 million. The raise will
+    go toward fueling the continued growth of DualEntry’s platform. Related Resources
+    Tech & Startup Jobs in NYC This article was drafted by a generative AI tool, using
+    information from press releases and company blogs provided by our staff.'
+  retrieved_at: '2026-08-12T21:35:28.252446+00:00'
+  url: https://www.builtinnyc.com/articles/dualentry-90m-series-a-20251006
+- content_hash: 84b48fa50d68c4f0342576468f74f91cc9db37ea2567cdd238b6ac48ea3be5a0
+  evidence_id: ev-84b48fa50d68c4f0
+  excerpt: Aug 12 2026 Oct. 2, 2025 DualEntry Raises $90M Series A to Redefine ERP
+    as AI-Native | DualEntry Products Core Financials General Ledger Secure, automate,
+    and customize your full GL Accounts Receivable Manage incoming payments effortlessly
+    Accounts Payable Automate vendor payments Cash Management Get global cash visibility
+    faster Tax Management Take the pain out of global tax compliance Purchase Order
+    Management Streamline purchasing and approvals Account Reconciliation Speed up
+    end-to-end reconciliation Close Management Close faster and with more accuracy
+    Order Management Simplify order-to-cash processes Account Allocation Automation
+    Allocate faster, without manual effort Approval Workflows Tailor approvals to
+    your needs Advanced Accounting Revenue Recognition Accelerate revenue recognition
+    with AI Prepaid Amortization Save time on amortization and avoid errors Subscription
+    Billing Automate recurring billing processes Fixed Assets Management Control the
+    entire asset lifecycle Take a tour of DualEntry See DualEntry in action and discover
+    how automations and AI insights can elevate your team's work. Schedule demo Accounting
+    Intelligence See how DualEntry AI can help you uncover fresh insights, put your
+    close on autopilot, and handle 10x more transactions with the same headcount.
+    Implementation Trust & Safety Platform scale Multi-Entity Accounting Manage unlimited
+    subsidiaries Multi-Currency Accounting Connect to 13,000+ banks Audit & Compliance
+    Safeguard with AI-driven, always-on auditing Accounting Integrations Access 13,000+
+    native integrations Financial Workflows Build the GL that fits your business Reporting
+    Analytics Get AI insights and generate custom reports Planning & Budgeting Have
+    real-time visibility Multi-Book (coming soon) Parallel ledgers across GAAP, IFRS,
+    and tax reporting Treasury Management Streamline cash flow and liquidity control
+    automation General Ledger Secure, automate, and customize your full GL Automated
+    Accounting Speed up your monthly clos
+  retrieved_at: '2026-08-12T21:50:36.575271+00:00'
+  url: https://www.dualentry.com/funding-announcement
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- hiring
+- news
+- launches
+- ads

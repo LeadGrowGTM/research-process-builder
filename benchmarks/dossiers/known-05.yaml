@@ -1,0 +1,146 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-eedec42fa9b6b187
+  - ev-70fcef94efc5bae5
+  - ev-a268ded45a41b108
+  field: identity
+  value: Intuit Accountants
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-eedec42fa9b6b187
+  - ev-70fcef94efc5bae5
+  - ev-a268ded45a41b108
+  field: description
+  value: 'December 31, 2026 Accounting Software for Accountants | QuickBooks Products
+    & Solutions Training & Resources Support Sign up Talk to Sales: 800-458-3175 SALES
+    HOURS Mon - Fri, 6:00am - 6:00pm PST SUPPORT Visit support page Get help signing
+    in Sign in QuickBooks Online QuickBooks Self-Employed QuickBooks ProAdvisor Program
+    Intuit Accountant Suite QuickBooks Desktop account QuickBooks Online Workforce
+    QuickBooks Payments QuickBooks Time Other Intuit services Need help signing in?
+    The platform that'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-eedec42fa9b6b187
+  - ev-70fcef94efc5bae5
+  - ev-a268ded45a41b108
+  field: offers
+  value: accounting software
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-eedec42fa9b6b187
+  - ev-70fcef94efc5bae5
+  - ev-a268ded45a41b108
+  field: icp
+  value: accountants
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-eedec42fa9b6b187
+  - ev-70fcef94efc5bae5
+  - ev-a268ded45a41b108
+  field: personas
+  value: accountants
+  visibility: message_safe
+company_id: known-05
+corrections: []
+evidence:
+- content_hash: eedec42fa9b6b18720d6cefe4d511718937763af735578f5745805bbbe389061
+  evidence_id: ev-eedec42fa9b6b187
+  excerpt: 'December 31, 2026 Accounting Software for Accountants | QuickBooks Products
+    & Solutions Training & Resources Support Sign up Talk to Sales: 800-458-3175 SALES
+    HOURS Mon - Fri, 6:00am - 6:00pm PST SUPPORT Visit support page Get help signing
+    in Sign in QuickBooks Online QuickBooks Self-Employed QuickBooks ProAdvisor Program
+    Intuit Accountant Suite QuickBooks Desktop account QuickBooks Online Workforce
+    QuickBooks Payments QuickBooks Time Other Intuit services Need help signing in?
+    The platform that helps your firm and clients to grow Run your firm, serve your
+    clients, and grow your business on one platform and partnership built on accountant
+    feedback. Download our release guide to see the new innovations informed by real
+    accountant feedback, and how it helps you serve your clients better. Your Firm
+    Your Clients The tools trusted advisors rely on INTUIT ACCOUNTANT SUITE Built
+    for firms, by firms Intuit Accountant Suite is shaped by feedback from firms like
+    yours, so the AI-driven workflows fit how you actually operate. Sign up “Accountants
+    love helping people and Intuit Accountant Suite is going to make it easier for
+    us to provide the service that we are so good at doing." K.C. Eames, Director
+    of CAS at Dark Horse CPAs Watch K.C. Eames video ( 47s ) 76% of firms say Intuit
+    Accountant Suite has freed up time previously spent on manual tasks. SWITCH TO
+    INTUIT ACCOUNTANT SUITE Move your whole firm in a few clicks Get ahead of the
+    QuickBooks Online Accountant retirement on December 31, 2026. Move your whole
+    firm to Intuit Accountant Suite—no data migration, no switching costs, no starting
+    over. See how to switch COMING SOON Rewards that grow along with your firm Intuit
+    ProPartner Accountants is built into Intuit Accountant Suite, so as you grow,
+    you unlock real rewards: dedicated support, an exclusive peer network, and training
+    built for the future of client advisory and AI. Learn more "Whether you''re a
+    huge firm or you''re a solopreneur or anywhere in between, there’s benef'
+  retrieved_at: '2026-08-12T22:06:21.981039+00:00'
+  url: https://quickbooks.intuit.com/accountants/
+- content_hash: 70fcef94efc5bae506b9e5ea2f2a39927847a0dab4e9b4efb10cbac925e8b6f2
+  evidence_id: ev-70fcef94efc5bae5
+  excerpt: 'Intuit Accountants | LinkedIn Agree & Join LinkedIn By clicking Continue
+    to join or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy ,
+    and Cookie Policy . Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now Intuit Accountants Software Development Mountain View,
+    CA 68,711 followers Helping accounting and tax pros save time, grow their practice
+    and serve their clients as trusted advisors. Follow Discover all 207 employees
+    Report this company About us This page serves the accounting, bookkeeping, and
+    tax professional community who are at the heart of everything we do at Intuit.
+    Our range of smart business tools and powerful AI automation can help you take
+    your firm and clients to the next level. Products you might know us for include
+    QuickBooks Online, QuickBooks Online Advanced, Intuit Enterprise Suite, QuickBooks
+    Online Accountant, Intuit Lacerte Tax, Intuit ProConnect Tax, Intuit ProSeries
+    Tax, and Intuit ProFile Tax. Learn more at: US Websites: https://quickbooks.intuit.com/accountants/;
+    https://accountants.intuit.com/ Firm of the Future: https://www.firmofthefuture.com/
+    Tax Pro Center: https://accountants.intuit.com/taxprocenter/ ProConnect Community:
+    http://accountants-community.intuit.com CA Websites: https://quickbooks.intuit.com/ca/accountants/
+    ; Pro File: https://profile.intuit.ca/ UK Website: https://quickbooks.intuit.com/uk/accountants/online/
+    Website https://quickbooks.intuit.com/accountants/ External link for Intuit Accountants
+    Industry Software Development Company size 10,001+ employees Headquarters Mountain
+    View, CA Type Public Company Founded 1983 Specialties Accounting software, Professional
+    tax software, SaaS software, Payroll, Tax, Tax Reform, Tax Planning, and Compliance
+    Products No more previous content Lacerte, Corporate Tax Software Lacerte Corporate
+    Tax Software ProConnect, Corporate Tax Software ProConnect Corporate Tax Software
+    No more next content Employees at Intuit Accountants Denise Nieves'
+  retrieved_at: '2026-08-12T22:06:22.987209+00:00'
+  url: https://www.linkedin.com/company/intuit-accountants
+- content_hash: a268ded45a41b1081879cc94edb9012045a5127d55fa1a2acc16589cd84029b3
+  evidence_id: ev-a268ded45a41b108
+  excerpt: '2026-02-09 February 9, 2026 November 20, 2025 May 1, 2026 August 12, 2026
+    September 22, 2026 June 2 2026 Intuit is Discontinuing QuickBooks Online Accountant
+    and Replacing It with Intuit Accountant Suite - CPA Practice Advisor Search for:
+    --> Home About Us Log In Subscribe for Free My Account Log Out Accounting & Auditing
+    Accounting ESG Financial Reporting Nonprofit Small Business Auditing Audit Standards
+    PCAOB SEC Tax Taxes Income Tax IRS Legislation Sales Tax State Local Taxes Tax
+    Planning Payroll Payroll Benefits Human Resources Payroll Software Payroll Taxes
+    Tech Technology Artificial Intelligence Automation Cloud Technology Digital Currency
+    Hardware Security Software Advisory Advisory CAS Financial Planning Risk Management
+    Firm Management Firm Management AICPA Marketing Mergers and Acquisitions Staffing
+    The Profession AICPA Marketing Awards and Rankings Resources Webinars and CPE
+    Events Reports and Whitepapers Podcasts Sponsored Content Contributors Conference
+    Ensuring Success Registration Speakers Sponsorships Skip to Intro Search for:
+    --> About Us Log In Subscribe for Free My Account Log Out Accounting & Auditing
+    Accounting & Auditing Accounting ESG Financial Reporting Nonprofit Small Business
+    Auditing Audit Standards PCAOB SEC Tax Tax Taxes Income Tax IRS Legislation Sales
+    Tax State Local Taxes Tax Planning Payroll Payroll Payroll Benefits Human Resources
+    Payroll Software Payroll Taxes Tech Tech Technology Artificial Intelligence Automation
+    Cloud Technology Digital Currency Hardware Security Software Advisory Advisory
+    Advisory CAS Financial Planning Risk Management Firm Management Firm Management
+    Firm Management AICPA Marketing Mergers and Acquisitions Staffing The Profession
+    The Profession AICPA Marketing Awards and Rankings Resources Resources Webinars
+    and CPE Events Reports and Whitepapers Podcasts Sponsored Content Contributors
+    Conference Conference Ensuring Success Registration Speakers Sponsorships Home
+    > Technology Technology  | February 9, 2026 Intui'
+  retrieved_at: '2026-08-12T22:06:24.245614+00:00'
+  url: https://www.cpapracticeadvisor.com/2026/02/09/intuit-is-discontinuing-quickbooks-online-accountant-and-replacing-it-with-intuit-accountant-suite/177698/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

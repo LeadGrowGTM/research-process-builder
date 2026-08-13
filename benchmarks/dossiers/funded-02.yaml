@@ -1,0 +1,187 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-063fecf370c02582
+  - ev-af4f6b87a78be806
+  - ev-7bb56d314cdaab7b
+  - ev-beaae0a0c9401511
+  field: identity
+  value: Assort Health
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-063fecf370c02582
+  - ev-af4f6b87a78be806
+  - ev-7bb56d314cdaab7b
+  - ev-beaae0a0c9401511
+  field: description
+  value: AI Voice Agent for Healthcare | 200M+ Patient Interactions | Assort Health
+    --> Introducing Referrals → Platform ← Back Platform Platform Overview Concierge
+    Activate Solutions ← Back Solutions By Use Cases Appointment Scheduling Intelligent
+    Triage & Routing Patient Intake After-Hours Coverage Proactive Patient Outreach
+    Medication Refill Referral Automation Payment Resolution Task Management By Specialties
+    Orthopedics Dermatology Ophthalmology Women's Health Pediatrics Primary Care ENT
+    & Allergy P
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-063fecf370c02582
+  - ev-af4f6b87a78be806
+  - ev-7bb56d314cdaab7b
+  - ev-beaae0a0c9401511
+  field: offers
+  value: patient scheduling
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-beaae0a0c9401511
+  field: growth
+  value: Primary funding event dated 2026-06-24
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-063fecf370c02582
+  - ev-af4f6b87a78be806
+  - ev-7bb56d314cdaab7b
+  - ev-beaae0a0c9401511
+  field: icp
+  value: healthcare providers
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-063fecf370c02582
+  - ev-af4f6b87a78be806
+  - ev-7bb56d314cdaab7b
+  - ev-beaae0a0c9401511
+  field: personas
+  value: healthcare providers
+  visibility: message_safe
+company_id: funded-02
+corrections: []
+evidence:
+- content_hash: 063fecf370c02582a8cafbed021ffbe872fb7ab688eaaa6cf51eaee77bcdd32b
+  evidence_id: ev-063fecf370c02582
+  excerpt: AI Voice Agent for Healthcare | 200M+ Patient Interactions | Assort Health
+    --> Introducing Referrals → Platform ← Back Platform Platform Overview Concierge
+    Activate Solutions ← Back Solutions By Use Cases Appointment Scheduling Intelligent
+    Triage & Routing Patient Intake After-Hours Coverage Proactive Patient Outreach
+    Medication Refill Referral Automation Payment Resolution Task Management By Specialties
+    Orthopedics Dermatology Ophthalmology Women's Health Pediatrics Primary Care ENT
+    & Allergy Pain Management Cardiology By Specialties Urology Neurology Gastroenterology
+    Podiatry Behavioral Health Radiology Oncology Emergency Medicine By Organization
+    Types FQHC Health Systems Multi-Specialty Resources ← Back Resources Customer
+    Success Stories Patient Feedback Blog SENTA captures $1.3M in new revenue and
+    cuts hold times by 97%. Read story → Company ← Back Company Press Get a Demo Careers
+    Contact Us Traditional IVR routes calls. AI voice agents resolve them. Read story
+    → Get a demo 4.3/5 · 344K Patient Ratings Every Patient, Precisely Guided Assort’s
+    AI voice agent for healthcare runs on a platform trained on 200M+ interactions
+    to handle the entire patient journey, from referrals and scheduling to intake
+    and follow-up. See it in action Assort Agent Assort Agent Mrs. Garcia, your injection
+    protocol requires visits every 4 weeks. You're at day 26. Can I confirm you for
+    Thursday at 9:30 a.m.? Trusted by Thousands of Providers Across 23+ Specialties
+    See all customer stories $ 2.3M new revenue captured Read story → We've seen a
+    significant lift in patient conversions and appointment bookings. Just as importantly,
+    our patients no longer wait on hold — calls are answered instantly, and our staff
+    can focus on delivering a great experience rather than managing phone queues.
+    Dr. Emily Carter Director of Business Development $ 2.3M new revenue captured
+    Read story → Read story 89% reduction in hold times Read story → Assort Health
+    has completely transformed how we manage patient ac
+  retrieved_at: '2026-08-12T21:34:21.435810+00:00'
+  url: https://www.assorthealth.com/
+- content_hash: af4f6b87a78be8061c17cc0a76646b43051d3092ac81778d210068bd775220d7
+  evidence_id: ev-af4f6b87a78be806
+  excerpt: Assort Health | LinkedIn Agree & Join LinkedIn By clicking Continue to
+    join or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and
+    Cookie Policy . Skip to main content LinkedIn Top Content People Learning Jobs
+    Games Sign in Join now Assort Health Technology, Information and Internet San
+    Francisco, CA 15,955 followers The most widely-used AI agents platform for the
+    patient journey See jobs Follow Discover all 234 employees Report this company
+    Overview Jobs Life About us Assort Health is building healthcare that remembers.
+    From call center automation and form intake to referrals, document processing,
+    outreach, and payments, we manage the entire patient journey for providers. Our
+    platform is the most widely used AI agents platform for the patient journey, built
+    on 190 million specialty patient interactions and a model that handles the complexity
+    general-purpose AI can’t. Healthcare organizations see a 5% lift in appointment
+    volume, a 115% increase in labor capacity, and a 4.3 out of 5 patient satisfaction
+    score. With over $222M raised from Menlo Ventures, Lightspeed, First Round Capital,
+    Felicis Ventures, Chemistry Ventures, Apolo Ohno, and Joe Montana, Assort is becoming
+    the standard for how providers use AI to transform the patient journey. Website
+    assorthealth.com External link for Assort Health Industry Technology, Information
+    and Internet Company size 201-500 employees Headquarters San Francisco, CA Type
+    Privately Held Founded 2023 Employees at Assort Health Dany Kurian LinkedIn Member
+    LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn Member View 234 employees
+    at Assort Health Sign in Welcome back Email or phone Password Show Forgot password?
+    Sign in or By clicking Continue to join or sign in, you agree to LinkedIn’s User
+    Agreement , Privacy Policy , and Cookie Policy . New to LinkedIn? Join now or
+    By clicking Continue to join or sign in, you agree to LinkedIn’s User Agreement
+    , Privacy Policy , and Cookie Policy . See all employees Locat
+  retrieved_at: '2026-08-12T21:34:22.333442+00:00'
+  url: https://www.linkedin.com/company/assorthealth
+- content_hash: 7bb56d314cdaab7baf4d6542192a4c4dd4188d035d8dee0e6b93a127b3641e1b
+  evidence_id: ev-7bb56d314cdaab7b
+  excerpt: 'These 29-Year-Olds’ AI Agent For Scheduling Doctor Visits Is Now Worth
+    $1.2 Billion Sign Up For Newsletters Games Share a News Tip Featured Featured
+    Breaking News White House Watch Daily Cover Stories 2026 Best in State Next Gen
+    Wealth Advisors List 7 New Rules For Success In The First Year Of Your Career
+    2026 Best Brands For Value 2026 Forbes World''s Most Influential CMOs List Humanity
+    At The Heart Of Work: How AI Can Unleash The Power Of People | Paid Program How
+    Midsize Companies Get Trapped Between AI Promise And AI Reality | Paid Program
+    The AI Risks CEOs Didn’t Budget For | Paid Program The Resilient Enterprise: How
+    A Strategic Insurance Partner Helps Large Firms Navigate Evolving Threats | Paid
+    Program The Hidden Tax On Enterprise AI: 1 In 5 Workers Lose A Full Day Every
+    Week | Paid Program Scaling AI Editorial Video Series The Enterprise AI Shortcut:
+    Why Co-Innovation Is Setting A New Speed For Adopting and Operationalizing AI
+    | Paid Program The Toughest Problems Are Never Solved Alone | Paid Program How
+    Chief Marketing Officers Are Scaling AI At Speed — While Preserving Brand Trust
+    AI’s Nuanced Impact And A Quest To Quantify It Embracing And Bracing For AI Facing
+    A Volatile Market, C-Suites Look To The CFO For Strategic Guidance America''s
+    Most Powerful Women In Sports CMO Unscripted: Vulnerability Is The New Superpower
+    For Leaders In The AI Era The Next AI Frontier: Inside LG Electronics’ Strategic
+    Investment In Arizona’s Tech Transformation | Paid Program The Numbers Behind
+    The 2026 World Cup Top Creators Show: How Katie Fang Turned Her Viral Tears Into
+    A Social Media Empire | Paid Program Meeting The Moment In Enterprise: AI As AI
+    Spending Surged 110%, Underlying Systems Didn’t Keep Up | Paid Program 2026 50
+    Over 50 List | Paid Program Inside Smooth Technology: A Cash Back Content Series
+    | Paid Program C-Suite Unscripted: CIO Edition | Paid Program Forbes Travel Guide’s
+    2026 Edge List Billionaires Billionaires See All World''s Billionaires Forbes
+    400 Ameri'
+  retrieved_at: '2026-08-12T21:34:23.289523+00:00'
+  url: https://www.forbes.com/sites/amyfeldman/2026/06/24/these-29-year-olds-ai-chatbot-for-scheduling-doctor-visits-is-now-worth-12-billion/
+- content_hash: beaae0a0c9401511e552534fb71f6778db04e00b7b3ca369754e8b7d27ef7486
+  evidence_id: ev-beaae0a0c9401511
+  excerpt: 'Assort Health Raises $120 Million Series C to Scale Largest Deployment
+    of AI Agents for the Patient Journey | Assort Health Introducing Referrals → Platform
+    ← Back Platform Platform Overview Concierge Activate Solutions ← Back Solutions
+    By Use Cases Appointment Scheduling Intelligent Triage & Routing Patient Intake
+    After-Hours Coverage Proactive Patient Outreach Medication Refill Referral Automation
+    Payment Resolution Task Management By Specialties Orthopedics Dermatology Ophthalmology
+    Women''s Health Pediatrics Primary Care ENT & Allergy Pain Management Cardiology
+    By Specialties Urology Neurology Gastroenterology Podiatry Behavioral Health Radiology
+    Oncology Emergency Medicine By Organization Types FQHC Health Systems Multi-Specialty
+    Resources ← Back Resources Customer Success Stories Patient Feedback Blog SENTA
+    captures $1.3M in new revenue and cuts hold times by 97%. Read story → Company
+    ← Back Company Press Get a Demo Careers Contact Us Traditional IVR routes calls.
+    AI voice agents resolve them. Read story → Get a demo Back to Press Assort Health
+    Raises $120 Million Series C to Scale Largest Deployment of AI Agents for the
+    Patient Journey Assort Health • June 24, 2026 share SAN FRANCISCO, June 24, 2026
+    – Assort Health , the most widely-used AI agents platform for the patient journey,
+    today announced a $120 million Series C led by Menlo Ventures at a valuation of
+    $1.2 billion. Assort has now raised more than $222 million to become the standard
+    for healthcare organizations wanting to transform the patient journey with AI.
+    Healthcare providers now spend nearly twice as much on administration as on direct
+    patient care. That $1.1 trillion in annual administrative burden, from scheduling
+    calls to intake forms to referral loops, is one of the most consequential and
+    correctable failures in modern healthcare. Assort was founded on a simple, uncomfortable
+    conviction: the industry would never fix this problem from the middle. You had
+    to start at the front door. What began a'
+  retrieved_at: '2026-08-12T21:34:23.768475+00:00'
+  url: https://www.assorthealth.com/blog/assort-health-raises-120-million-series-c-to-scale-largest-deployment-of-ai-agents-for-the-patient-journey
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- hiring
+- news
+- launches
+- ads

@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-9f9cd0ac2a36d2e6
+  - ev-38d07a6bd9aec56d
+  - ev-f58a0b7eb1646769
+  field: identity
+  value: Accord Carton
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-9f9cd0ac2a36d2e6
+  - ev-38d07a6bd9aec56d
+  - ev-f58a0b7eb1646769
+  field: description
+  value: 'About Accord » Accord Carton Search for: The Accord Process The Accord Process
+    Our Skills Our Equipment Our Certifications Our Quality About Accord About Accord
+    Partnership Case Studies Our People Culture Accord Location Why Accord Why Accord
+    CAD Our Passion Sustainability News Contact Us Careers Customer Tools Customer
+    Tools Customer Inventory FTP Instructions Credit Application Carton Styles Terms
+    and Conditions of Purchase Terms and Conditions of Sales The Accord Process Our
+    Skills Our Equipm'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-9f9cd0ac2a36d2e6
+  - ev-38d07a6bd9aec56d
+  - ev-f58a0b7eb1646769
+  field: offers
+  value: folding cartons
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-9f9cd0ac2a36d2e6
+  - ev-38d07a6bd9aec56d
+  - ev-f58a0b7eb1646769
+  field: icp
+  value: food manufacturers
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-9f9cd0ac2a36d2e6
+  - ev-38d07a6bd9aec56d
+  - ev-f58a0b7eb1646769
+  field: personas
+  value: food manufacturers
+  visibility: message_safe
+company_id: supplier-02
+corrections: []
+evidence:
+- content_hash: 9f9cd0ac2a36d2e6b3d9fbab186f311553d4171ae7d21abbfe073a5828b52c07
+  evidence_id: ev-9f9cd0ac2a36d2e6
+  excerpt: 'About Accord » Accord Carton Search for: The Accord Process The Accord
+    Process Our Skills Our Equipment Our Certifications Our Quality About Accord About
+    Accord Partnership Case Studies Our People Culture Accord Location Why Accord
+    Why Accord CAD Our Passion Sustainability News Contact Us Careers Customer Tools
+    Customer Tools Customer Inventory FTP Instructions Credit Application Carton Styles
+    Terms and Conditions of Purchase Terms and Conditions of Sales The Accord Process
+    Our Skills Our Equipment Our Certifications Our Quality About Accord Partnership
+    Case Studies Our People Culture Accord Location Why Accord Sustainability Our
+    Passion CAD News Contact Us Careers Customer Tools Customer Inventory FTP Instructions
+    Credit Application Carton Styles Terms and Conditions of Purchase Terms and Conditions
+    of Sales Search Search for: Home > About Accord The Accord Story Accord is a leading
+    folding carton converter primarily serving food and beverage end markets. The
+    Company is owned by Mason Wells, a Milwaukee-based firm, other board members and
+    co-investors. Accord was founded in 1940 by Abraham Codo and remained a family
+    operated business until May 2023. Accord designs and manufactures custom folding
+    cartons for private label and branded consumer goods, primarily focused on food
+    and beverage end markets. Food and beverage applications include packaging for
+    dry foods, frozen foods, and can and bottle wraps and baskets for beer, seltzer,
+    cocktail, energy drink, and other specialty beverage items. Accord has a unique
+    position within the folding carton industry offering large format production capabilities
+    coupled with industry-leading responsiveness, speed, and flexibility. Accord serves
+    global and regional consumer packaged goods companies throughout North America.
+    The Company’s headquarters and operations are in Alsip, IL. “We are excited about
+    the opportunity to partner with Mason Wells and continue the Company’s growth,”
+    said Robert Codo. “Their experience successfully'
+  retrieved_at: '2026-08-12T22:28:04.152392+00:00'
+  url: https://accordcarton.com/about-accord/
+- content_hash: 38d07a6bd9aec56da238d6ff83dff4ae520b589424cf22025cf5bdcef139fa35
+  evidence_id: ev-38d07a6bd9aec56d
+  excerpt: 'Accord Carton | LinkedIn Skip to main content LinkedIn Top Content People
+    Learning Jobs Games Sign in Join now Accord Carton Packaging and Containers Manufacturing
+    Alsip, Illinois 3,850 followers Folding Carton & Beverage Packaging Manufacturer
+    since 1940. See jobs Follow Discover all 95 employees Report this company About
+    us Welcome to Accord Carton Folding cartons aren’t just containers. Your product’s
+    presentation on the shelf gives consumers a glimpse of who you are and the story
+    you want to tell. And to create great packaging you need more than a supplier;
+    you need a partner. Accord Carton has the tools to help you bring your vision
+    to life. Since 1940 our goal has been to produce the best packaging possible.
+    Using state-of-the-art technology combined with a passion for our work, we partner
+    with customers in a range of industries, creating packaging that truly showcases
+    their products. What really sets us apart is something no one else has: our people,
+    our process and our passion. As you browse through our site, you can learn more
+    about each of these unique aspects of Accord Carton, and how they will shape our
+    relationship. Accord Carton offers customers a true partnership for every aspect
+    of the manufacturing process, from design to production to delivering quality
+    finished cartons. Whatever your folding carton needs are, we’re here to help you
+    every step of the way. Website http://www.accordcarton.com External link for Accord
+    Carton Industry Packaging and Containers Manufacturing Company size 201-500 employees
+    Headquarters Alsip, Illinois Type Privately Held Founded 1940 Specialties Packaging,
+    SustainablePackaging, FoldingCartons, Beverage, BeverageCarriers, #Hiring, Carriers,
+    G7, ISO, SQF, Certified, Honoring, Celebrating, Observing, Printing, Converting,
+    Gluing, and DieCutting Locations Primary 6155 W 115th St Alsip, Illinois 60803-5153,
+    US Get directions Employees at Accord Carton Jason Moses, CPA Thomas Groot Daniel
+    Astudillo Todd Ford See all employees U'
+  retrieved_at: '2026-08-12T22:28:04.948641+00:00'
+  url: https://www.linkedin.com/company/accord-carton
+- content_hash: f58a0b7eb1646769a3d16bd2e3a560c77981a2adb065c912f66e038f29402cd2
+  evidence_id: ev-f58a0b7eb1646769
+  excerpt: 'Q1 2024 Packaging Quarterly Update Packaging Quarterly Update 2Copyright
+    © 2024 Deloitte Development LLC. All rights reserved. Deloitte Corporate Finance
+    LLC (DCF) is a leading global middle-market M&A adviser. Our professionals have
+    extensive knowledge in the packaging space and use their experience to help clients
+    enhance value. DCF’s Packaging Practice Industrials Leadership Will Frame CEO
+    Chicago, IL wframe@deloitte.com Firm Overview Sector Focus Paper and Paperboard
+    Plastic Diversified Packaging Metal and Glass #2 2023 Global M&A Advisor by deals
+    completed (1). 542 Completed deals in 2023 (1).  Deep relationships in place
+    to gain critical strategic intelligence and effectively market businesses.  Worldwide,
+    DCF has access to 2,400 Corporate Finance professionals across 60 countries that
+    complement the North American team.  Combined with member firms of Deloitte Touche
+    Tohmatsu Limited, serves 80 percent of the Fortune Global 500® (2). Bill Kerkam
+    Managing Director Co-lead of paper, plastics and packaging Charlotte, NC wkerkam@deloitte.com
+    Ali Bandeali Senior Vice President New York, NY albandeali@deloitte.com Footnote(s):
+    Refer to slide 12 for sources. Packaging Quarterly Update 3Copyright © 2024 Deloitte
+    Development LLC. All rights reserved. Table of contents Case study 4 Deloitte
+    thought leadership 6 Notable recent M&A transactions 7 Plastics, paper and packaging
+    trends 8 Comparable public companies 9 Appendix – sources cited 11 Packaging Quarterly
+    Update 4Copyright © 2024 Deloitte Development LLC. All rights reserved. JohnsByrne
+    Company Case study • Founded in 1959, JohnsByrne Company, a third generation,
+    family-owned business based in Niles, Illinois, specializes in premium custom
+    packaging and print solutions for a wide range of end markets and applications.
+    • The company provides a full service, end-to-end offering to customers in the
+    Health & Beauty, Entertainment, and other end markets, manufacturing folding cartons
+    and other specialty print and pack'
+  retrieved_at: '2026-08-12T22:28:06.681587+00:00'
+  url: https://www.investmentbanking.deloitte.com/content/dam/assets-zone6/xa/en/docs/industries/consumer-products/us-dcf-packaging-report-q1-2024.pdf?icid=learn_more_content_click
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

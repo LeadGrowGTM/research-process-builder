@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-0de933cd25ba23a8
+  - ev-3dffd40ba9b24059
+  - ev-ee7296f445017884
+  field: identity
+  value: Advantage Industrial Automation
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0de933cd25ba23a8
+  - ev-3dffd40ba9b24059
+  - ev-ee7296f445017884
+  field: description
+  value: 'Solutions We help our customers improve productivity & quality, reduce downtime
+    & waste, and increase efficiency & safety. Staying on the cutting edge of the
+    latest advances in automation and control products is our mission at Advantage,
+    and your advantage in enterprise automation. Increase productivity in your manufacturing
+    operations with manageable activities and easily accessible plant floor data to
+    respond to changing conditions, improve efficiency, and reduce costs. Historically,
+    the data '
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0de933cd25ba23a8
+  - ev-3dffd40ba9b24059
+  - ev-ee7296f445017884
+  field: offers
+  value: industrial automation
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0de933cd25ba23a8
+  - ev-3dffd40ba9b24059
+  - ev-ee7296f445017884
+  field: icp
+  value: manufacturers
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0de933cd25ba23a8
+  - ev-3dffd40ba9b24059
+  - ev-ee7296f445017884
+  field: personas
+  value: manufacturers
+  visibility: message_safe
+company_id: supplier-05
+corrections: []
+evidence:
+- content_hash: 0de933cd25ba23a852df077c98ac30604b807c6375892333a8ccb3b20909f24c
+  evidence_id: ev-0de933cd25ba23a8
+  excerpt: 'Solutions We help our customers improve productivity & quality, reduce
+    downtime & waste, and increase efficiency & safety. Staying on the cutting edge
+    of the latest advances in automation and control products is our mission at Advantage,
+    and your advantage in enterprise automation. Increase productivity in your manufacturing
+    operations with manageable activities and easily accessible plant floor data to
+    respond to changing conditions, improve efficiency, and reduce costs. Historically,
+    the data used in operating manufacturing equipment has been within the domain
+    of the PLC and Controls Engineer, and not readily accessible to Management. Access
+    to the data has required special proprietary knowledge about where and how that
+    data was stored and knowledge of the methods required to import or export the
+    data. Now, plant floor data is easily accessible and can be used to increase productivity
+    and efficiency in your manufacturing operations. Advantage Industrial Automation
+    brings the technologies of the Internet to the factory floor and into your view
+    to give you: • Improved access to real-time plant information and Key Performance
+    Indicators • Protection of existing investment in capital equipment • Lower life
+    cycle costs of automation investments • Lower implementation costs and operating
+    expense • Improved productivity and efficiency Remain safe with ergonomic and
+    effective guarding systems that don’t interfere with the work process. The fast
+    moving demands of automation have changed the requirements of machinery guarding.
+    In the past the guarding systems that were available were more often than not
+    a hindrance to the production process and were removed. Today increasing numbers
+    of accidents are statistics of the past due to reliable ergonomic safe guarding
+    systems. Consequently, Advantage offers guarding systems that are ergonomic and
+    effective— and unobtrusive to the work process. Advantage can help you: • Identify
+    zones to be guarded • Define safety functions to be p'
+  retrieved_at: '2026-08-12T22:28:15.969634+00:00'
+  url: https://www.advantageind.com/wp-content/uploads/2014/02/Solutions-Brochure-Nov25-Final-Copy.pdf
+- content_hash: 3dffd40ba9b24059b0ac95643d014a93c8762204a61131cd704641ac017ff833
+  evidence_id: ev-3dffd40ba9b24059
+  excerpt: 'Advantage Industrial Automation | LinkedIn Skip to main content LinkedIn
+    Top Content People Learning Jobs Games Sign in Join now Advantage Industrial Automation
+    Automation Machinery Manufacturing Duluth, Georgia 4,729 followers We make things
+    work! Follow View all 74 employees Report this company About us Advantage Industrial
+    Automation provides control and automation solutions to our OEM''s, industrial
+    end-users and system integrators. By partnering with the best manufacturers in
+    the industry, we are able to enhance businesses by increasing productivity, reducing
+    downtime and improving the quality of products. To learn more about Advantage
+    Industrial Automation, or to sign up for one of our events, please visit www.advantageind.com.
+    #advantageindustrialautomation #advantageind #industrialautomation Website https://www.advantageind.com
+    External link for Advantage Industrial Automation Industry Automation Machinery
+    Manufacturing Company size 51-200 employees Headquarters Duluth, Georgia Type
+    Privately Held Founded 1989 Specialties Industrial Automation Locations Primary
+    4775 River Green Pkwy Duluth, Georgia 30096, US Get directions 2307 River Road
+    Louisville Louisville, Kentucky 40206, US Get directions 1907 N US Highway 301
+    Suite 140 Tampa, Florida 33619, US Get directions Employees at Advantage Industrial
+    Automation Tom Antonino Chip Smith A.B. Senn Burt Deardorff See all employees
+    Updates Advantage Industrial Automation 4,729 followers 1w Edited Report this
+    post With STOBER Drives, Inc. (USA) ’s expertise, that means you can count on
+    their equipment to deliver the performance and dependability you need for whatever
+    application you have. The leak-proof design of their gearboxes makes them perfect
+    for use in food processing and manufacturing. STOBER Drives, Inc. (USA) 6,165
+    followers 1w Food manufacturers face enough challenges. The motion solution shouldn''t
+    be one of them. Discover why leading food processors choose STOBER for hygienic
+    design, washdown durability, e'
+  retrieved_at: '2026-08-12T22:28:16.844768+00:00'
+  url: https://www.linkedin.com/company/advantage-industrial-automation
+- content_hash: ee7296f445017884dc465f5aeb06c0d3e3a8f3af0444e3f2f55b65728ab86634
+  evidence_id: ev-ee7296f445017884
+  excerpt: '2015-03-24 March 24, 2015 April 1, 2015 Graybar to Acquire Advantage Industrial
+    Automation --> Accessibility: Skip TopNav Consumer Products and Services News
+    Automobiles and Parts News Food & Beverage News Home Goods & Construction News
+    Leisure Goods News Media & Entertainment News Personal Care News Retail News Travel
+    and Leisure News Energy News Alternative Energy News Oil Gas and Coal News Chemicals
+    News Banks & Financial Services News Banking News Closed-End Investments News
+    Finance and Credit Services News Investment Banking and Brokerage Services News
+    Insurance News Real Estate & REITs News Healthcare News Healthcare Providers News
+    Medical Equipment News Medical Supplies and Services News Biotechnology News Pharmaceuticals
+    News Cannabis Producers News Industrials and Utilities News Aerospace and Defense
+    News Construction and Materials News Utilities News Industrials News Metals &
+    Mining News Technology and Telecom News Software News IT Services News Semiconductors
+    News Electronic Components & Equipment News Computer Hardware News Telecom Equipment
+    News Telecom Services News More Browse the Latest News Graybar to Acquire Advantage
+    Industrial Automation Expands reach in industrial control and automation March
+    24, 2015 09:03 ET   | Source: Graybar Electric Graybar Electric ST. LOUIS, March
+    24, 2015 (GLOBE NEWSWIRE) -- Graybar, a leading distributor of electrical, communications
+    and data networking products and provider of related supply chain management and
+    logistics services, today announced that it has entered into an agreement to acquire
+    Advantage Industrial Automation. The transaction is scheduled to close on April
+    1, 2015. Headquartered in Duluth, Georgia, Advantage provides control and automation
+    solutions to industrial users, original equipment manufacturers (OEMs) and system
+    integrators. Advantage was founded in 1989 and has six locations in the southeastern
+    United States. As a subsidiary of Graybar, the company will continue to operate
+    under the Advantag'
+  retrieved_at: '2026-08-12T22:28:18.751189+00:00'
+  url: https://www.globenewswire.com/news-release/2015/03/24/718195/30433/en/Graybar-to-Acquire-Advantage-Industrial-Automation.html
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

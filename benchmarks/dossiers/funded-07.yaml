@@ -1,0 +1,225 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-7516273c552297cb
+  - ev-603d306feec362c5
+  - ev-b844602ad3b3f00e
+  - ev-e485a41a65e99bb3
+  - ev-2c9ec4279c327614
+  field: identity
+  value: Supabase
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-7516273c552297cb
+  - ev-603d306feec362c5
+  - ev-b844602ad3b3f00e
+  - ev-e485a41a65e99bb3
+  - ev-2c9ec4279c327614
+  field: description
+  value: Supabase | The Postgres Development Platform Skip to content Product Developers
+    Solutions Pricing Docs Blog 107.9K Sign in Start your project Open main menu Build
+    in a weekend Scale to millions Start your project with a Postgres database. Add
+    Authentication, Data APIs, Edge Functions, Realtime Data, Storage, and Vector
+    embeddings. Start your project Request a demo Postgres Database Every project
+    is a full Postgres database , the world's most trusted relational database. 100%
+    portable Built-in Au
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-7516273c552297cb
+  - ev-603d306feec362c5
+  - ev-b844602ad3b3f00e
+  - ev-e485a41a65e99bb3
+  - ev-2c9ec4279c327614
+  field: offers
+  value: database platform
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-2c9ec4279c327614
+  field: competitors
+  value: Supabase publishes a direct comparison with Firebase.
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-e485a41a65e99bb3
+  field: growth
+  value: Primary funding event dated 2026-06-04
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-7516273c552297cb
+  - ev-603d306feec362c5
+  - ev-b844602ad3b3f00e
+  - ev-e485a41a65e99bb3
+  - ev-2c9ec4279c327614
+  field: icp
+  value: developers
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-7516273c552297cb
+  - ev-603d306feec362c5
+  - ev-b844602ad3b3f00e
+  - ev-e485a41a65e99bb3
+  - ev-2c9ec4279c327614
+  field: personas
+  value: developers
+  visibility: message_safe
+company_id: funded-07
+corrections: []
+evidence:
+- content_hash: 7516273c552297cb1fa180ea73e10640590504b75f175333169b3f1c99072f86
+  evidence_id: ev-7516273c552297cb
+  excerpt: Supabase | The Postgres Development Platform Skip to content Product Developers
+    Solutions Pricing Docs Blog 107.9K Sign in Start your project Open main menu Build
+    in a weekend Scale to millions Start your project with a Postgres database. Add
+    Authentication, Data APIs, Edge Functions, Realtime Data, Storage, and Vector
+    embeddings. Start your project Request a demo Postgres Database Every project
+    is a full Postgres database , the world's most trusted relational database. 100%
+    portable Built-in Auth with RLS Easy to extend Authentication Add user sign ups
+    and logins , securing your data with Row Level Security. Edge Functions Easily
+    write custom code without deploying or scaling servers. $ supabase functions deploy
+    Storage Store, organize, and serve large files, from videos to images. Realtime
+    Build multiplayer experiences with real-time data synchronization. Vector Integrate
+    your favorite ML-models to store, index and search vector embeddings . OpenAI
+    logo OpenAI Hugging Face logo Hugging Face Data APIs Instant ready-to-use REST
+    APIs . Use one or all. Best of breed products. Integrated as a platform. Trusted
+    by fast-growing companies worldwide Stay productive and manage your app without
+    leaving the dashboard Table Editor SQL Editor RLS Policies Use Supabase with React
+    import { createClient } from ' @supabase/supabase-js ' const supabase = createClient
+    ( process.env. SUPABASE_URL , process.env. SUPABASE_ANON_KEY ) export default
+    function App () { const [ todos , setTodos ] = useState ([]) useEffect (() =>
+    { supabase. from ( ' todos ' ). select ( ' * ' ) . then (({ data }) => setTodos
+    (data)) }, []) return < TodoList items = {todos} /> } import { createClient }
+    from ' @supabase/supabase-js ' const supabase = createClient ( process . env .
+    SUPABASE_URL , process . env . SUPABASE_ANON_KEY ) export default function App
+    () { const [ todos , setTodos ] = useState ([]) useEffect ( () => { supabase .
+    from ( ' todos ' ) . select ( ' * ' ) . then ( ({ data }) => setTodos (data)
+  retrieved_at: '2026-08-12T21:35:24.898516+00:00'
+  url: https://supabase.com/
+- content_hash: 603d306feec362c536a21c7d9dca958dec07cba72c64dfbaea4ad5938c7e6d6a
+  evidence_id: ev-603d306feec362c5
+  excerpt: Supabase | LinkedIn Agree & Join LinkedIn By clicking Continue to join
+    or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie
+    Policy . Skip to main content LinkedIn Top Content People Learning Jobs Games
+    Sign in Join now Supabase IT Services and IT Consulting Build in a weekend. Scale
+    to millions. See jobs Follow Discover all 413 employees Report this company Overview
+    Jobs Life About us Build in a weekend. Scale to millions. Supabase is the Postgres
+    development platform. Start your project with a Postgres Database, Authentication,
+    instant APIs, and realtime subscriptions. Website https://supabase.com External
+    link for Supabase Industry IT Services and IT Consulting Company size 201-500
+    employees Headquarters Global Type Privately Held Founded 2020 Employees at Supabase
+    Cuong Do LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn
+    Member View 413 employees at Supabase Sign in Welcome back Email or phone Password
+    Show Forgot password? Sign in or By clicking Continue to join or sign in, you
+    agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie Policy . New
+    to LinkedIn? Join now or By clicking Continue to join or sign in, you agree to
+    LinkedIn’s User Agreement , Privacy Policy , and Cookie Policy . See all employees
+    Locations Primary Global, US Get directions Updates Supabase 112,609 followers
+    1d Report this post Sugu, the lead of Multigres, will be talking at Supabase Select
+    26! Multigres is Vitess for Postgres, and it's all open source, so you might be
+    able to take a peek and guess what the talk will be about 👀 https://lnkd.in/dzZiN2Bf
+    …more 67 1 Comment Like Comment Share Supabase 112,609 followers 5d Report this
+    post Supabase is now a connector on Perplexity Computer. 🔌 Query your production
+    data, look up users, and invoke Edge Functions from a Perplexity chat, or drop
+    Supabase into workflows that span GitHub, Stripe, and Slack and more. Learn more
+    ↓ https://lnkd.in/gEFjaWR9 …more 225 8 Comments Like Comment S
+  retrieved_at: '2026-08-12T21:35:25.617329+00:00'
+  url: https://www.linkedin.com/company/supabase
+- content_hash: b844602ad3b3f00e5ea011c10929d6eb6eeba4091abd38b37d6449470fd5dc99
+  evidence_id: ev-b844602ad3b3f00e
+  excerpt: 'Supabase doubles valuation to $10B in 8 months | TechCrunch TechCrunch
+    Desktop Logo TechCrunch Mobile Logo Latest Startups Venture Apple Security AI
+    Apps Disrupt 2026 Events Podcasts Newsletters Search Submit Site Search Toggle
+    Mega Menu Toggle Topics Latest AI Amazon Apps Biotech & Health Climate Cloud Computing
+    Commerce Crypto Enterprise EVs Fintech Fundraising Gadgets Gaming Google Government
+    & Policy Hardware Instagram Layoffs Media & Entertainment Meta Microsoft Privacy
+    Robotics Security Social Space Startups TikTok Transportation Venture More from
+    TechCrunch Staff Events Startup Battlefield StrictlyVC Newsletters Podcasts Videos
+    Partner Content TechCrunch Brand Studio Contact Us Image Credits: Supabase Fundraising
+    Supabase doubles valuation to $10B in 8 months Julie Bort 9:32 AM PDT · June 5,
+    2026 Supabase, the open source database of choice for the vibe-coding world, has
+    raised a $500 million Series F at a $10 billion pre-money valuation, the company
+    announced Friday. That’s about $10.5 billion after the investment. The newly minted
+    decacorn has been doubling its valuation every few months for a couple of years
+    now, as vibe-coding tools have driven its usage to astounding growth. Database
+    launches on Supabase have grown over 600% in the past year, with over 60% of them
+    launched “by some sort of AI tool,” CEO and co-founder Paul Copplestone wrote
+    in a blog post announcing the raise . The startup also now claims nearly 10 million
+    developers as users, which has doubled in eight months. Copplestone particularly
+    credits Claude Code and Codex for this growth because the popular AI models “expand
+    the number of people who can build.” Supabase is also a database of choice for
+    Bolt, Figma, Lovable, Replit, and others. This new influx of cash follows a $100
+    million round at a $5 billion valuation in October. And that raise came just months
+    after closing $200 million at $2 billion. Supabase uses popular open source database
+    Postgres as its engine, which launched long bef'
+  retrieved_at: '2026-08-12T21:35:25.821880+00:00'
+  url: https://techcrunch.com/2026/06/05/supabase-doubles-valuation-to-10b-in-8-months/
+- content_hash: e485a41a65e99bb3e427d3a2439e1dc33d7d535d6d5ea6154617c0d4829243c0
+  evidence_id: ev-e485a41a65e99bb3
+  excerpt: '4 Jun 2026 7 August 2026 5 August 2026 31 July 2026 Supabase Series F
+    Skip to content Product Developers Solutions Pricing Docs Blog 107.9K Sign in
+    Start your project Open main menu Blog / company Supabase Series F 4 Jun 2026
+    · 3 minute read Paul Copplestone CEO and Co-Founder Supabase has raised a $500M
+    Series F at a $10B pre-money valuation. It’s led by GIC. All existing investors
+    joined the round, Stripe made a second investment. Georgian and Salesforce Ventures
+    joined as new investors. The round is for three things: Accelerate development
+    of open source / Postgres tools. To support our growth. Liquidity for the employees.
+    Open source development # Today we''re releasing Multigres v0.1 alpha . It’s open
+    source and self-hostable. Postgres is hard to run at scale. Multigres is a scalable
+    operating system for Postgres that provides high availability and operational
+    simplicity. In a future release it will provide Vitess-grade horizontal scaling.
+    The alpha status is to signal that it’s ready to try, but not yet production-ready.
+    We’ll get there in a few months. If you’re running a large Postgres workload you
+    can apply to be a Multigres partner and help shape the direction of Multigres.
+    Multigres will be available on the platform when it moves out of alpha. Together
+    with our work on OrioleDB (targeting production-readiness this year), we believe
+    that we will have a complete Postgres solution that solves many hairy Postgres
+    problems, including bloat, connection pooling, and Jepsen-level high availability.
+    Sharding is also on the menu - we''ll share more details later. Supabase growth
+    # In the past year, database launches on Supabase have grown 600%. More than 60%
+    of new databases are launched by some sort of AI tool. Nearly 10 million developers
+    build on Supabase today, more than doubling since our last fundraising announcement
+    eight months ago. Growth is accelerating since January as Claude Code and Codex
+    expand the number of people who can build. A lot of our growth is '
+  retrieved_at: '2026-08-12T21:50:35.150831+00:00'
+  url: https://supabase.com/blog/series-f
+- content_hash: 2c9ec4279c327614818cac94f9b4ee55c321afde05855a0d7e79c821d469c669
+  evidence_id: ev-2c9ec4279c327614
+  excerpt: '2025-08-20 24 November 2023 20 August 2025 26 May 2022 Supabase vs Firebase
+    Skip to content Product Developers Solutions Pricing Docs Blog 107.9K Sign in
+    Start your project Open main menu Alternative Supabase vs Firebase 2025-08-20
+    • 36 minute read Prashant Sridharan Product Marketing Firebase and Supabase both
+    promise to give teams a full‑featured backend without managing servers. Firebase,
+    owned by Google, combines a NoSQL database with authentication, file storage and
+    serverless functions. Supabase is an open‑source alternative built on Postgres
+    that offers similar services— auth , storage , real‑time , and functions , but
+    with the predictability of SQL and the freedom to self‑host. Choosing between
+    them depends on how your application models data, how you plan to scale, and your
+    tolerance for vendor lock‑in. What is Supabase? # Supabase is an open‑source backend
+    platform that runs on Postgres . Each project comes with a dedicated Postgres
+    database, an auto‑generated REST and GraphQL API, real‑time subscriptions, and
+    storage, all tied together with Row‑Level Security (RLS) . RLS policies are written
+    in SQL and allow you to define granular access rules using the same language you
+    use for your data. Because Supabase’s core services are built on open technologies
+    like Postgres and GoTrue, you can run Supabase locally or host it yourself using
+    Docker or community tools such as Kubernetes or Terraform. What is Firebase? #
+    Firebase is a managed platform owned by Google. It includes Cloud Firestore (a
+    document‑oriented NoSQL database), authentication, Cloud Storage for files and
+    Cloud Functions for backend logic. Firestore stores data as JSON‑like documents
+    grouped in collections. The SDKs automatically cache documents on the device so
+    apps can read, write and listen to data while offline; changes are synchronized
+    when the device reconnects . Firestore supports collection group queries , which
+    let you query across collections with the same name. To handle relational dat'
+  retrieved_at: '2026-08-13T14:15:17.316406+00:00'
+  url: https://supabase.com/alternatives/supabase-vs-firebase
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- hiring
+- news
+- launches
+- ads

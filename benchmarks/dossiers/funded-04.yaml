@@ -1,0 +1,185 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-da4468fe5dabfd37
+  - ev-be6f538f0bd29c05
+  - ev-5d33b081d3d58177
+  - ev-b007c5019329c47d
+  field: identity
+  value: Redo
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-da4468fe5dabfd37
+  - ev-be6f538f0bd29c05
+  - ev-5d33b081d3d58177
+  - ev-b007c5019329c47d
+  field: description
+  value: 'Redo Returns & Claims Products Acquire Email & SMS 1:1 personalization that
+    actually converts Recover Real conversations that win back carts Agentic Catalog
+    Grow your brand through AI channels. Convert AI Sales & Support Every conversation,
+    one AI-powered inbox Conversion Optimization Turn checkout into your biggest growth
+    lever Fulfill Order Editing Let shoppers fix orders before you do Shipping & Fulfillment
+    Ship faster. Ship smarter. Ship cheaper. Order Tracking Boost sales on every shipment '
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-da4468fe5dabfd37
+  - ev-be6f538f0bd29c05
+  - ev-5d33b081d3d58177
+  - ev-b007c5019329c47d
+  field: offers
+  value: returns management
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b007c5019329c47d
+  field: growth
+  value: Primary funding event dated 2026-06-23
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-da4468fe5dabfd37
+  - ev-be6f538f0bd29c05
+  - ev-5d33b081d3d58177
+  - ev-b007c5019329c47d
+  field: icp
+  value: finance teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-da4468fe5dabfd37
+  - ev-be6f538f0bd29c05
+  - ev-5d33b081d3d58177
+  - ev-b007c5019329c47d
+  field: personas
+  value: finance teams
+  visibility: message_safe
+company_id: funded-04
+corrections: []
+evidence:
+- content_hash: da4468fe5dabfd3714a00827df9612a9d9bd1e4559180e9afe2f1396d886790c
+  evidence_id: ev-da4468fe5dabfd37
+  excerpt: Redo Returns & Claims Products Acquire Email & SMS 1:1 personalization
+    that actually converts Recover Real conversations that win back carts Agentic
+    Catalog Grow your brand through AI channels. Convert AI Sales & Support Every
+    conversation, one AI-powered inbox Conversion Optimization Turn checkout into
+    your biggest growth lever Fulfill Order Editing Let shoppers fix orders before
+    you do Shipping & Fulfillment Ship faster. Ship smarter. Ship cheaper. Order Tracking
+    Boost sales on every shipment Inventory Management Let AI see your inventory future
+    Retain Returns & Claims Retain revenue before refunds happen Warranties Warranties
+    to build lifelong customers Chargebacks Win disputes you should never lose Managed
+    Returns Never touch a return again Resources The Redo Blog Latest posts and updates
+    Integrations Connect with your current tech Partners Partner with Redo Tools See
+    what you can save Engineering Blog Dive into the backend Pricing Login Get Started
+    Intelligent returns & claims processes built to retain revenue Create an AI-driven,
+    automated Returns and Claims Portal that personalizes every experience, turning
+    refunds into exchanges and claims into opportunities to build trust. Simplify
+    resolution, boost satisfaction, and transform post-purchase operations from a
+    cost center into a profit driver. Get A Demo See Pricing Info Learn more about
+    Returns & Claims AI agents turn returns into revenue and enhance claims insights
+    1:1 exchange recommendations Let an AI exchange agent analyze the customer, return
+    reasons, and product offerings to deliver the right exchange at the right moment.
+    As a customer goes through the return flow, the AI will immediately analyze the
+    reasons and recommend a new product, increasing exchange rate and retaining more
+    revenue. Automate return and claim reviews AI reviews images, customer history,
+    and policy rules to recommend, approve, or deny returns and claims. Reduce manual
+    effort, increase accuracy, and ensure every decision aligns with
+  retrieved_at: '2026-08-12T21:34:31.726006+00:00'
+  url: https://redo.com/products/returns
+- content_hash: be6f538f0bd29c05946507d3fcabe7ab8afca7206b0c07807f931c04795446d1
+  evidence_id: ev-be6f538f0bd29c05
+  excerpt: 'Redo | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now Redo Software Development Draper, UT 12,527 followers
+    Everything your ecom business needs, in one platform. See jobs Follow View all
+    359 employees Report this company About us Crush cart abandonment & watch loyalty
+    soar through elevated purchase & post purchase experience - completely free. We
+    help you consolidate your post-purchase tech stack saving you money and time while
+    also providing a premium experience for your customers. Our goals are to help
+    you retain profit through minimizing returns, enhancing your order tracking experience,
+    optimizing your customer service and ultimately increasing LTV through a better
+    post-purchase experience. Website https://redo.com External link for Redo Industry
+    Software Development Company size 51-200 employees Headquarters Draper, UT Type
+    Privately Held Locations Primary Draper, UT 84020, US Get directions Employees
+    at Redo Mckay Dunn, CFA Keith Maynard Oliver Kilroy, Jr Kris Moser See all employees
+    Updates Redo 12,527 followers 1mo Report this post When we say we will do anything
+    for our brands … we mean it! …more 41 3 Comments Like Comment Share Redo 12,527
+    followers 1mo Edited Report this post ReturnLogic is joining Redo. For nearly
+    a decade, ReturnLogic helped brands build returns workflows that fit how they
+    actually operate. That flexibility isn''t going anywhere. What changes is the
+    engine behind it. In the first 30 days after migrating, merchants more than doubled
+    exchange rates and grew store credit adoption 4x, turning refunds into retained
+    revenue. Same workflows. Bigger platform. Full details here: https://lnkd.in/ezj2E74d
+    122 3 Comments Like Comment Share Redo 12,527 followers 1mo Report this post Have
+    you ever been offered a free return at Disneyland? …more 26 2 Comments Like Comment
+    Share Redo 12,527 followers 1mo Report this post We''re #hiring a new Sales Engineer
+    in Australia. Apply today or share this post with y'
+  retrieved_at: '2026-08-12T21:34:32.440735+00:00'
+  url: https://www.linkedin.com/company/redo-tech
+- content_hash: 5d33b081d3d58177d79b5dbf4502aa6dbbb0ee46297cb1845d39141bef030fc7
+  evidence_id: ev-5d33b081d3d58177
+  excerpt: Redo Closes $81 Million Series B at $1.25 Billion Valuation, Eyes Global
+    Commerce Platform - TechBuzz News --> Search Home About -Article Categories -Article
+    Categories--All Categories -Article Categories--Tech News -Article Categories--Ecosystem
+    -Article Categories--People & Culture -Article Categories--Startup 101 -Article
+    Categories--Money -Article Categories--HR & Management Series Authors -Data -Data--Wave
+    Charts -Data--K2 Utah Tech Almanac Subscribe & Advertise Support Announcement
+    Money Redo Closes $81 Million Series B at $1.25 Billion Valuation, Eyes Global
+    Commerce Platform Redo (Draper, UT) raises $81 million in Series B funding at
+    a $1.25 billion valuation, led by Los Smash Capital and joined by Pelion and Cervin,
+    to expand its AI-powered commerce platform internationally and deepen its post-purchase
+    technology suite for direct-to-consumer brands. Mark Tullis Jun 25, 2026  -  6
+    min read Redo team at a company lunch Redo team at a company lunch Draper, Utah
+    — June 25, 2025 Draper-based commerce technology company Redo has raised $81 million
+    in a Series B funding round at a $1.25 billion valuation, the company announced
+    this week. The round was led by Smash Capital (Los Angeles) with existing investors
+    Pelion Venture Partners (Draper) and Cervin Ventures (Palo Alto) participating.
+    The capital will fund product development, AI initiatives, international expansion.
+    It has already been partly deployed through an acquisition. Co-founder and CEO
+    Sterling Snow sat down with TechBuzz to discuss the investment. He said the round
+    had closed some months earlier. The team simply chose when to go public with it
+    (June 23). Snow first discussed the $1.25 billion valuation number. Sterling Snow,
+    Co-founder and CEO, Redo "Valuation's a really interesting thing," Snow said.
+    "I don't think you should try and maximize it in the days of company building.
+    I think you can get ahead of your skis. These are check-ins and milestones, not
+    destinations." Investors They Already Knew S
+  retrieved_at: '2026-08-12T21:34:32.981877+00:00'
+  url: https://www.techbuzznews.com/redo-closes-81-m-series-b/
+- content_hash: b007c5019329c47dbf8168f1ac1806dc42e95584a57197fa92df3ab2c8ffb840
+  evidence_id: ev-b007c5019329c47d
+  excerpt: 'Redo Announces $81 Million Series B to Support Commerce --> Accessibility:
+    Skip TopNav Consumer Products and Services News Automobiles and Parts News Food
+    & Beverage News Home Goods & Construction News Leisure Goods News Media & Entertainment
+    News Personal Care News Retail News Travel and Leisure News Energy News Alternative
+    Energy News Oil Gas and Coal News Chemicals News Banks & Financial Services News
+    Banking News Closed-End Investments News Finance and Credit Services News Investment
+    Banking and Brokerage Services News Insurance News Real Estate & REITs News Healthcare
+    News Healthcare Providers News Medical Equipment News Medical Supplies and Services
+    News Biotechnology News Pharmaceuticals News Cannabis Producers News Industrials
+    and Utilities News Aerospace and Defense News Construction and Materials News
+    Utilities News Industrials News Metals & Mining News Technology and Telecom News
+    Software News IT Services News Semiconductors News Electronic Components & Equipment
+    News Computer Hardware News Telecom Equipment News Telecom Services News More
+    Browse the Latest News Redo Announces $81 Million Series B to Support Commerce
+    Technology Expansion June 23, 2026 16:20 ET   | Source: Redo Redo Draper, UTAH,
+    June 23, 2026 (GLOBE NEWSWIRE) -- Redo, a commerce technology company that helps
+    brands manage customer interactions across the post-purchase journey, announced
+    today it has raised $81 million in Series B funding at a reported valuation of
+    $1.25 billion. The round was led by Smash Capital, with participation from existing
+    investors Pelion Venture Partners and Cervin Ventures. The funding will support
+    product development, artificial intelligence initiatives, and international expansion
+    as Redo continues to build technology designed to help brands manage customer
+    relationships across multiple commerce touchpoints. Founded as a post-purchase
+    platform focused on returns and exchanges, Redo has expanded its offerings to
+    include order tracking, package protection, fulfi'
+  retrieved_at: '2026-08-12T21:35:19.256189+00:00'
+  url: https://www.globenewswire.com/news-release/2026/06/23/3316439/0/en/redo-announces-81-million-series-b-to-support-commerce-technology-expansion.html
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- hiring
+- news
+- launches
+- ads

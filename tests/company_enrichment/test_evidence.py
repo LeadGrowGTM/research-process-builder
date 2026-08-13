@@ -70,7 +70,11 @@ def test_material_content_deduplicates_across_retrieval_metadata(tmp_path) -> No
         "0.01",
     )
 
-    assert store.put(first).content_hash == store.put(second).content_hash
+    first_ref = store.put(first)
+    second_ref = store.put(second)
+    assert first_ref.content_hash == second_ref.content_hash
+    assert store.verify_reference(first_ref) == first
+    assert store.verify_reference(second_ref) == second
     assert len(list((tmp_path / "objects").glob("*.json"))) == 1
     assert len((tmp_path / "sources.jsonl").read_text(encoding="utf-8").splitlines()) == 2
 

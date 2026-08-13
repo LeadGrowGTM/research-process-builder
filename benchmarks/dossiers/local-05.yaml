@@ -1,0 +1,181 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-069f7cc0ff77bd1f
+  - ev-5ba9afbf5544d293
+  - ev-bc3edeeddbc6dee0
+  - ev-95feabb5e0f16866
+  field: identity
+  value: Anatek Labs, Inc.
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-069f7cc0ff77bd1f
+  - ev-5ba9afbf5544d293
+  - ev-bc3edeeddbc6dee0
+  - ev-95feabb5e0f16866
+  field: description
+  value: '31 Dec 2099 About Us - Anatek Labs, Inc. - Moscow, ID & Spokane, WA ANATEK
+    LABS Services & Pricing Drinking Water Private Well Water Testing Public Drinking
+    Water Testing Lead & Copper Testing Wastewater, Soil & Compost Wastewater & Soil
+    Testing Compost Testing Hazardous Waste Testing Pesticide & Herbicide Testing
+    ST108 PFAS Testing Food, Beverage & Microbiology Microbiology Testing Food Microbiology
+    Testing Beer & Seltzer Testing Global G.A.P. Testing Other Contaminants UCMR5
+    Testing Low Level '
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-069f7cc0ff77bd1f
+  - ev-5ba9afbf5544d293
+  - ev-bc3edeeddbc6dee0
+  - ev-95feabb5e0f16866
+  field: offers
+  value: laboratory testing
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-069f7cc0ff77bd1f
+  - ev-5ba9afbf5544d293
+  - ev-bc3edeeddbc6dee0
+  - ev-95feabb5e0f16866
+  field: icp
+  value: laboratories
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-069f7cc0ff77bd1f
+  - ev-5ba9afbf5544d293
+  - ev-bc3edeeddbc6dee0
+  - ev-95feabb5e0f16866
+  field: personas
+  value: laboratories
+  visibility: message_safe
+company_id: local-05
+corrections: []
+evidence:
+- content_hash: 069f7cc0ff77bd1f6924906ebf0636096066ded43e12c37828d75fae52a8e14f
+  evidence_id: ev-069f7cc0ff77bd1f
+  excerpt: 31 Dec 2099 About Us - Anatek Labs, Inc. - Moscow, ID & Spokane, WA ANATEK
+    LABS Services & Pricing Drinking Water Private Well Water Testing Public Drinking
+    Water Testing Lead & Copper Testing Wastewater, Soil & Compost Wastewater & Soil
+    Testing Compost Testing Hazardous Waste Testing Pesticide & Herbicide Testing
+    ST108 PFAS Testing Food, Beverage & Microbiology Microbiology Testing Food Microbiology
+    Testing Beer & Seltzer Testing Global G.A.P. Testing Other Contaminants UCMR5
+    Testing Low Level Mercury Testing Meth Testing All Pricing Information Resources
+    State Certifications Quality Assurance Sampling Instructions Preservation and
+    Holding Times Courier Routes Sample Chain of Custody Forms General Chain of Custody
+    Documents General Drinking Water Private Well Clopyralid Methamphetamine UCMR5
+    Washington Drinking Water Bacteria Lead & Copper Fluoride Idaho Drinking Water
+    Bacteria Long Term 2 Montana Drinking Water Lead & Copper Oregon Drinking Water
+    About Who We Are Who We Serve Careers Holiday Closures Services & Pricing Chain
+    of Custody Forms Quality Assurance Courier Routes Sampling Instructions About
+    Contact Contact Our History & Mission Anatek Labs, Inc. is a full service environmental
+    analytical testing laboratory, established in 1992, with offices in Moscow, ID
+    and Spokane, WA, and branch offices in Yakima and Wenatchee, WA. Our mission is
+    to provide precise and accurate analytical data and technical assistance to our
+    clients in a timely and cost-effective manner. We test drinking water samples
+    for community water services and private well customers, as well as water and
+    environmental samples for environmental, industrial, and agricultural clients.
+    At Anatek Labs, we are proud of our reputation for analytical excellence, outstanding
+    customer service, timely turn-around, and reasonable pricing. In addition to utilizing
+    a wide range of established analytical methods, we have also developed many in-house
+    methods for the analyses of unregulated chemical contaminan
+  retrieved_at: '2026-08-12T22:40:55.838397+00:00'
+  url: https://www.anateklabs.com/about-us/
+- content_hash: 5ba9afbf5544d29324efa50b50e8ab3433d8d787cca11688b37496226a382beb
+  evidence_id: ev-5ba9afbf5544d293
+  excerpt: '31 Dec 2099 Contact Us - Anatek Labs, Inc. - Moscow, ID & Spokane, WA
+    ANATEK LABS Services & Pricing Drinking Water Private Well Water Testing Public
+    Drinking Water Testing Lead & Copper Testing Wastewater, Soil & Compost Wastewater
+    & Soil Testing Compost Testing Hazardous Waste Testing Pesticide & Herbicide Testing
+    ST108 PFAS Testing Food, Beverage & Microbiology Microbiology Testing Food Microbiology
+    Testing Beer & Seltzer Testing Global G.A.P. Testing Other Contaminants UCMR5
+    Testing Low Level Mercury Testing Meth Testing All Pricing Information Resources
+    State Certifications Quality Assurance Sampling Instructions Preservation and
+    Holding Times Courier Routes Sample Chain of Custody Forms General Chain of Custody
+    Documents General Drinking Water Private Well Clopyralid Methamphetamine UCMR5
+    Washington Drinking Water Bacteria Lead & Copper Fluoride Idaho Drinking Water
+    Bacteria Long Term 2 Montana Drinking Water Lead & Copper Oregon Drinking Water
+    About Who We Are Who We Serve Careers Holiday Closures Services & Pricing Chain
+    of Custody Forms Quality Assurance Courier Routes Sampling Instructions About
+    Contact Contact Contact Us All locations are open Monday - Friday, 8am - 5pm.
+    Anatek Labs, Inc. – Moscow 1282 Alturas Drive Moscow, ID 83843 208-883-2839 800-943-2839
+    General: moscow@anateklabs.com Sampling: kit@anateklabs.com Technical: info@anateklabs.com
+    Billing: ARMoscow@anateklabs.com Website: websupport@anateklabs.com Directions
+    to Moscow Lab Anatek Labs, Inc. – Yakima 4802 Tieton Drive Yakima, WA 98908 509-225-9404
+    888-534-3999 General: yakima@anateklabs.com Sampling: kityakima@anateklabs.com
+    Billing: ARSpokane@anateklabs.com Directions to Yakima Lab " * " indicates required
+    fields Facebook This field is for validation purposes and should be left unchanged.
+    Name: * First Last Email: * Phone: * What are you requesting: * Select One Quote
+    Sampling Kit - Moscow/General Sampling Kit - Spokane Area Sampling Kit - Yakima/Wenatchee
+    Information Other Description: CA'
+  retrieved_at: '2026-08-12T22:47:17.820977+00:00'
+  url: https://www.anateklabs.com/about-us/contact-us/
+- content_hash: bc3edeeddbc6dee0038a7ee68fad38784a9fc262cf6448d9caddf6e81758abec
+  evidence_id: ev-bc3edeeddbc6dee0
+  excerpt: Anatek Labs, Inc. | LinkedIn Agree & Join LinkedIn By clicking Continue
+    to join or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy ,
+    and Cookie Policy . Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now Anatek Labs, Inc. Environmental Services Moscow, ID
+    413 followers Anatek Labs, Inc. is a multi-state NELAP certified full service
+    environmental analytical testing laboratory. Follow Discover all 40 employees
+    Report this company About us Anatek Labs, Inc. is a full service environmental
+    analytical testing laboratory, established in 1992, with offices in Moscow, ID,
+    Spokane, Wenatchee and Yakima, WA. Our mission is to provide precise and accurate
+    analytical data and technical assistance to our clients in a timely and cost-effective
+    manner. We test drinking water samples for community water services and private
+    well customers, as well as water and environmental samples for environmental,
+    industrial, and agricultural clients. Our Spokane office offers food safety testing
+    and critical water testing, in addition to a wide variety of drinking water, waste
+    water and soil testing. At our Spokane and Yakima locations, we provide testing
+    for the Global G.A.P Program for safe farming practices. Anatek Labs in Wenatchee
+    is currently a drop-off location. At Anatek Labs, we are proud of our reputation
+    for analytical excellence, outstanding customer service, timely turn-around, and
+    reasonable pricing. In addition to utilizing a wide range of established analytical
+    methods, we have also developed many in-house methods for the analyses of unregulated
+    chemical contaminants. Using powerful tools such as ICP-MS, GC/MS, HPLC and HPLC/MS/MS,
+    we are able to screen for a wide range of unknown samples. Our experience and
+    expertise have built our reputation as quality problem solvers. Anatek Labs’ Moscow
+    and Spokane facilities are certified by The NELAC Institute (TNI) as part of the
+    National Environmental Laboratory Accreditation Program (N
+  retrieved_at: '2026-08-12T22:40:56.478254+00:00'
+  url: https://www.linkedin.com/company/anatek-labs-inc.
+- content_hash: 95feabb5e0f16866281881024c8007536fa715fe9bd6afda14f13273ea1871e9
+  evidence_id: ev-95feabb5e0f16866
+  excerpt: 'August 4, 2026 Drinking Water and Private Wells | Idaho Department of
+    Health and Welfare Skip to main content Header Utility Navigation For Providers
+    About DHW Contact Us Forms Idaho 211 User account menu Main navigation triggers
+    Services & Programs Health & Wellness News & Notices Main navigation disclosures
+    Services & Programs Behavioral Health Adult Behavioral Health Behavioral Health
+    Crisis Resources Children''s Behavioral Health Opioids Substance Use Disorders
+    Suicide Prevention Birth, Marriage and Death Records Advance Directives & Registry
+    Birth Records Death, Stillbirth, and Miscarriage Records Marriage and Divorce
+    Records Registries Children, Families, & Older Adults Assisted Care and Facilities
+    Child Care Child and Family Services and Foster Care Child Support Community Builders
+    Disability Services Faith-Based Initiatives Family Planning Home Visiting Program
+    Immunizations Newborn Screening Older Adults Financial Assistance Aid to the Aged,
+    Blind, and Disabled Cash Assistance (AABD) Community Services Block Grants Home
+    Heating and Utility Assistance Temporary Assistance for Families in Idaho (TAFI)
+    Food Assistance Community Food Resources Supplemental Nutrition Assistance Program
+    (SNAP) Women, Infants, & Children (WIC) Medicaid & Health Assisted Care and Facilities
+    Katie Beckett Medicaid for Adults Medicaid for Children Medicaid for Children
+    with Disabilities Medicaid for Elderly or Disabled Adults Women''s Health, Fit
+    & Fall, Quit Smoking Medicaid Expansion Health & Wellness Community Health Brain
+    Health Excessive Alcohol Use Food Safety Physical Activity and Nutrition Public
+    Health Districts Sexual Violence Prevention Environmental Health Carbon Monoxide
+    Clandestine Labs Drinking Water and Private Wells Fish Advisories Lead Mold Per
+    and Polyfluoroalkyl Substances (PFAS) Pesticides Radon Safe Water Wildfire Smoke
+    Diseases & Conditions Alzheimer’s Disease and Related Dementias Asthma Cancer
+    COVID-19 Cytomegalovirus Diabetes Flu (Seasonal and Pandemic) Heart '
+  retrieved_at: '2026-08-12T22:40:57.502148+00:00'
+  url: https://healthandwelfare.idaho.gov/health-wellness/environmental-health/drinking-water-and-private-wells
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

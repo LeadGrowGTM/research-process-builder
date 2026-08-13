@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-5e5effba5b91764b
+  - ev-63b4182cb8f5f852
+  - ev-70697187d906af22
+  field: identity
+  value: ArchPoint Group
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-5e5effba5b91764b
+  - ev-63b4182cb8f5f852
+  - ev-70697187d906af22
+  field: description
+  value: Home - ArchPoint Group Get In Touch Careers Select Page Creating a clear
+    path forward. ArchPoint Group has assembled expertise in management consulting,
+    branding and marketing, sourcing and supply chain, and sales excellence all under
+    one roof to provide comprehensive, cross-functional strategies to get you from
+    here to there. Our Divisions Sure, we’re a consulting firm. But we aren’t consultants.
+    We are executives who consult. Our team specializes in strategy & OGSM, people
+    & change, and custom
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-5e5effba5b91764b
+  - ev-63b4182cb8f5f852
+  - ev-70697187d906af22
+  field: offers
+  value: sales consulting
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-5e5effba5b91764b
+  - ev-63b4182cb8f5f852
+  - ev-70697187d906af22
+  field: icp
+  value: sales teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-5e5effba5b91764b
+  - ev-63b4182cb8f5f852
+  - ev-70697187d906af22
+  field: personas
+  value: sales teams
+  visibility: message_safe
+company_id: local-09
+corrections: []
+evidence:
+- content_hash: 5e5effba5b91764b911cf2ddb1fd9dfe31139c1cdf077172c0929384779ee480
+  evidence_id: ev-5e5effba5b91764b
+  excerpt: 'Home - ArchPoint Group Get In Touch Careers Select Page Creating a clear
+    path forward. ArchPoint Group has assembled expertise in management consulting,
+    branding and marketing, sourcing and supply chain, and sales excellence all under
+    one roof to provide comprehensive, cross-functional strategies to get you from
+    here to there. Our Divisions Sure, we’re a consulting firm. But we aren’t consultants.
+    We are executives who consult. Our team specializes in strategy & OGSM, people
+    & change, and customers & sales serving clients in the USA and Europe. Learn More
+    ArchPoint Creative is a full-service marketing agency serving clients in the USA
+    and Europe. We focus on brand strategy, creative campaigns, and packaging design
+    as well as social/digital & omnichannel execution. Learn More We bring private
+    label product solutions to market. Whether it’s an existing category, product
+    desperate for innovation, or developing a product from scratch, we attack these
+    opportunities with a cross-functional approach unmatched in the industry. We leverage
+    state-of-the-art contract manufacturing facilities all over the globe in line
+    with the world’s leading product safety, quality, and social accountability certification
+    programs. We source, ship, store, consolidate and distribute all our inventoried
+    products through our own warehousing infrastructure ensuring a safe, efficient,
+    and reliable supply chain, and are committed to delivering products on-time and
+    in-full. Learn More We’re not your average food broker. We are a fiercely independent,
+    Texas-based and regionally-focused sales agency. We bring together cross-functional
+    capabilities to deliver long-term sustainable results for the brands we represent
+    across the Lone Star state. Learn More We are a full-service sales agency/food
+    broker focused on the produce category. We offer full HQ sales support, retail
+    coverage, category analytics and in-store demos. Learn More ArchPoint by the Numbers
+    35% 3-year CAGR 185+ TOTAL EMPLOYEES 45+ CLIENT '
+  retrieved_at: '2026-08-12T22:41:07.153588+00:00'
+  url: https://archpointgroup.com/
+- content_hash: 63b4182cb8f5f85280cb07e2d72bab10ddf77c3d7beb85f8d32b6f2dc498aa71
+  evidence_id: ev-63b4182cb8f5f852
+  excerpt: ArchPoint Group | LinkedIn Agree & Join LinkedIn By clicking Continue to
+    join or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and
+    Cookie Policy . Skip to main content LinkedIn Top Content People Learning Jobs
+    Games Sign in Join now ArchPoint Group Business Consulting and Services San Antonio,
+    Texas 2,419 followers See jobs Follow View all 186 employees Report this company
+    About us ArchPoint is a global and boutique professional services company dedicated
+    to solving business leaders’ most complex challenges in order to fuel the performance
+    and growth of people, brands and businesses. We do this by applying our cross-discipline
+    experience to deliver interconnected solutions that create The Connected Company™.
+    We unite world-class capabilities – management consulting, integrated marketing,
+    strategic sourcing, supply chain and market execution. Our seasoned team of experts
+    proudly serves clients across the globe, through hubs in North America, Europe
+    and East Asia. With a focus on results –and measuring our own success by the achievements
+    of those we serve, ArchPoint has a 97 percent client retention rate. Learn more
+    at www.archpointgroup.com Website http://www.archpointgroup.com External link
+    for ArchPoint Group Industry Business Consulting and Services Company size 51-200
+    employees Headquarters San Antonio, Texas Type Privately Held Founded 2007 Specialties
+    Management Consulting, Sourcing & Supply Chain, Branding & Marketing, and Market
+    Execution Employees at ArchPoint Group Brian Feld LinkedIn Member LinkedIn Member
+    LinkedIn Member LinkedIn Member LinkedIn Member View 186 employees at ArchPoint
+    Group Sign in Welcome back Email or phone Password Show Forgot password? Sign
+    in or By clicking Continue to join or sign in, you agree to LinkedIn’s User Agreement
+    , Privacy Policy , and Cookie Policy . New to LinkedIn? Join now or By clicking
+    Continue to join or sign in, you agree to LinkedIn’s User Agreement , Privacy
+    Policy , and Cookie Policy . See al
+  retrieved_at: '2026-08-12T22:41:07.998315+00:00'
+  url: https://www.linkedin.com/company/archpoint-group
+- content_hash: 70697187d906af228aed91d3520a25de53f341c89405250af556e0a0cb798997
+  evidence_id: ev-70697187d906af22
+  excerpt: 'State Bar of Texas | Home  | Brian Franklin Feld --> TexasBar.com | Home
+    Please visit your browser''s web site and upgrade to the most current browser
+    version to address compatibility and security issues. State Bar of Texas Menu
+    LOGIN Login Forgot your password? First time logging in? For The Public Public
+    Home Do You Need a Lawyer? Find a Lawyer How to Select a Lawyer Lawyer Referral
+    & Information Service LRIS Online Attorney Referral Can''t Afford a Lawyer? Problems
+    with an Attorney Grievance & Ethics Information Resolve a Dispute File a Grievance
+    Get Help When You Can’t Locate Your Lawyer Client Security Fund Committee on Disciplinary
+    Rules and Referenda Información en Español ¿Necesita un Abogado? Resolver una
+    Disputa Información Sobre Quejas y Etica ¿No Puede Pagar un Abogado? Affordable
+    Legal Services Free Legal Resources Pamphlets Immigration Videos TexasLawHelp
+    Texas Court Rules Libraries Open Records Requests Juror Resources Law-Related
+    Education Law-Related Education Civics Resources: Oyez, Oyez, Oh Yay! Civics Resources:
+    I was the the first. Vote for Me! Texas Young Lawyers Association Curricula American
+    Bar Association Law-Related Education Projects Do You Want to Be a Lawyer? What
+    Do Lawyers Do? Frequently Asked Questions Texas Law School Information Loan Calculator
+    Texas Board of Law Examiners Law School Admissions Council Financial Resources
+    Guide for a Public Interest Legal Career Texas Young Lawyers Association Disaster
+    Relief Resources Jobs in the Legal Profession FAQs for the Public For Lawyers
+    Lawyers Home Find a Colleague Membership My Bar Page Your Profile & Contact Information
+    Your Login & Password Common Requests & Membership Forms Dues & Other Fees New
+    Lawyer Oath & Fees Texas Board of Law Examiners Paralegal Division Law Student
+    Information Supervised Practice Cards Foreign Legal Consultants Military Spouse
+    Attorney Military Attorney Registration Ineligible Attorney List Member Benefits
+    Member Benefits and Services Free Trust & Billing Softwa'
+  retrieved_at: '2026-08-12T22:41:08.878653+00:00'
+  url: https://www.texasbar.com/AM/Template.cfm?ContactID=204054&template=%2FCustomsource%2FMemberDirectory%2FMemberDirectoryDetail.cfm
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

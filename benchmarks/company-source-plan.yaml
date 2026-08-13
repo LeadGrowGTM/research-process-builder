@@ -1,0 +1,644 @@
+version: '1.0'
+qualification_phrases:
+  saas-01: {buyer: marketing agencies, offer: reporting software}
+  saas-02: {buyer: enterprises, offer: business process automation}
+  saas-03: {buyer: sales teams, offer: digital sales room}
+  saas-04: {buyer: manufacturers, offer: product cost software}
+  saas-05: {buyer: government agencies, offer: data management platform}
+  saas-06: {buyer: procurement teams, offer: predictive procurement platform}
+  saas-07: {buyer: hr leaders, offer: performance management}
+  saas-08: {buyer: it teams, offer: incident intelligence}
+  saas-09: {buyer: marketing teams, offer: link management}
+  saas-10: {buyer: lenders, offer: construction finance platform}
+  funded-01: {buyer: financial institutions, offer: fraud intelligence}
+  funded-02: {buyer: healthcare providers, offer: patient scheduling}
+  funded-03: {buyer: finance teams, offer: corporate cards}
+  funded-04: {buyer: finance teams, offer: returns management}
+  funded-05: {buyer: engineers, offer: inference platform}
+  funded-06: {buyer: small businesses, offer: embedded finance}
+  funded-07: {buyer: developers, offer: database platform}
+  funded-08: {buyer: government agencies, offer: cybersecurity services}
+  funded-09: {buyer: finance teams, offer: accounting software}
+  funded-10: {buyer: healthcare practices, offer: care coordination software}
+  agency-01: {buyer: technology companies, offer: public relations}
+  agency-02: {buyer: brands, offer: advertising services}
+  agency-03: {buyer: marketing teams, offer: digital marketing}
+  agency-04: {buyer: marketing teams, offer: marketing services}
+  agency-05: {buyer: government agencies, offer: government relations}
+  agency-06: {buyer: marketing teams, offer: creative services}
+  agency-07: {buyer: car dealers, offer: digital marketing}
+  agency-08: {buyer: arts organizations, offer: arts marketing}
+  agency-09: {buyer: brands, offer: digital marketing}
+  agency-10: {buyer: brands, offer: marketing services}
+  known-01: {buyer: manufacturers, offer: industrial automation}
+  known-02: {buyer: wrap professionals, offer: graphics products}
+  known-03: {buyer: hvac contractors, offer: heating and cooling}
+  known-04: {buyer: foodservice operators, offer: foodservice packaging}
+  known-05: {buyer: accountants, offer: accounting software}
+  known-06: {buyer: employers, offer: group benefits}
+  known-07: {buyer: industrial customers, offer: motion control}
+  known-08: {buyer: manufacturers, offer: adhesive dispensing}
+  known-09: {buyer: employers, offer: health savings accounts}
+  known-10: {buyer: manufacturers, offer: technology distribution}
+  supplier-01: {buyer: contractors, offer: safety supplies}
+  supplier-02: {buyer: food manufacturers, offer: folding cartons}
+  supplier-03: {buyer: manufacturers, offer: chemical manufacturing}
+  supplier-04: {buyer: facilities, offer: natural flavors}
+  supplier-05: {buyer: manufacturers, offer: industrial automation}
+  supplier-06: {buyer: manufacturers, offer: load moving equipment}
+  supplier-07: {buyer: building owners, offer: insulated metal panels}
+  supplier-08: {buyer: hvac contractors, offer: hvac controls}
+  supplier-09: {buyer: oilseed processors, offer: oilseed processing equipment}
+  supplier-10: {buyer: manufacturers, offer: industrial packaging}
+  local-01: {buyer: small businesses, offer: accounting services}
+  local-02: {buyer: commercial facilities, offer: building automation}
+  local-03: {buyer: commercial kitchen, offer: equipment service}
+  local-04: {buyer: business leaders, offer: accounting services}
+  local-05: {buyer: laboratories, offer: laboratory testing}
+  local-06: {buyer: manufacturers, offer: commercial flooring}
+  local-07: {buyer: facilities, offer: engineering services}
+  local-08: {buyer: human resources, offer: staffing solutions}
+  local-09: {buyer: sales teams, offer: sales consulting}
+  local-10: {buyer: contractors, offer: mechanical services}
+companies:
+  saas-01:
+    sources:
+    - url: https://agencyanalytics.com/company/about
+      source_type: first_party
+      provider: official-source
+    - url: https://ca.linkedin.com/company/agencyanalytics
+      source_type: independent
+      provider: linkedin-source
+    - url: https://sourceforge.net/software/product/AgencyAnalytics/
+      source_type: independent
+      provider: independent-source
+  saas-04:
+    sources:
+    - url: https://www.apriori.com/about/
+      source_type: first_party
+      provider: official-source
+    - url: https://www.linkedin.com/company/apriori
+      source_type: independent
+      provider: linkedin-source
+    - url: https://www.vistaequitypartners.com/news/apriori-receives-growth-investment-from-vista-credit-partners-for-its-manufacturing-insights-platform/
+      source_type: independent
+      provider: independent-source
+  saas-02:
+    sources:
+    - url: https://www.agilepoint.com/our-story
+      source_type: first_party
+      provider: official-source
+    - url: https://www.linkedin.com/company/agilepoint
+      source_type: independent
+      provider: linkedin-source
+    - url: https://www.partnerbase.com/agilepoint
+      source_type: independent
+      provider: independent-source
+  saas-03:
+    sources:
+    - url: https://www.alignedup.com/digital-sales-room/
+      source_type: first_party
+      provider: official-source
+    - url: https://www.linkedin.com/company/alignedup
+      source_type: independent
+      provider: linkedin-source
+    - url: https://www.nfx.com/post/why-nfx-invested-in-aligned
+      source_type: independent
+      provider: independent-source
+  saas-05:
+    sources:
+    - url: https://www.archive360.com/about-archive360/
+      source_type: first_party
+      provider: official-source
+    - url: https://www.linkedin.com/company/archive360
+      source_type: independent
+      provider: linkedin-source
+    - url: https://www.carahsoft.com/archive360
+      source_type: independent
+      provider: independent-source
+  saas-06:
+    sources:
+    - url: https://arkestro.com/predictive-procurement/
+      source_type: first_party
+      provider: official-source
+    - url: https://www.linkedin.com/company/arkestro
+      source_type: independent
+      provider: linkedin-source
+    - url: https://www.cbinsights.com/company/arkestro
+      source_type: independent
+      provider: independent-source
+  saas-07:
+    sources:
+    - url: https://www.betterworks.com/about
+      source_type: first_party
+      provider: official-source
+    - url: https://www.linkedin.com/company/betterworks
+      source_type: independent
+      provider: linkedin-source
+    - url: https://www.hr.software/reviews/betterworks
+      source_type: independent
+      provider: independent-source
+  saas-08:
+    sources:
+    - url: https://www.bigpanda.io/company/
+      source_type: first_party
+      provider: official-source
+    - url: https://www.linkedin.com/company/bigpanda
+      source_type: independent
+      provider: linkedin-source
+    - url: https://techcrunch.com/2022/08/17/aiops-startup-bigpanda-raises-series-e-extension-bringing-its-total-capital-to-340m/
+      source_type: independent
+      provider: independent-source
+  saas-09:
+    sources:
+    - url: https://bitly.com/pages/solutions/digital-marketing
+      source_type: first_party
+      provider: official-source
+    - url: https://www.linkedin.com/company/bitly
+      source_type: independent
+      provider: linkedin-source
+    - url: https://www.spectrumequity.com/portfolio/bitly/
+      source_type: independent
+      provider: independent-source
+  saas-10:
+    sources:
+    - url: https://getbuilt.com/solutions/lenders/
+      source_type: first_party
+      provider: official-source
+    - url: https://builtin.com/company/built-technologies
+      source_type: independent
+      provider: linkedin-source
+    - url: https://www.canapi.com/investment/built
+      source_type: independent
+      provider: independent-source
+  funded-03:
+    canonical_domain: floatfinancial.com
+    primary_funding_url: https://floatfinancial.com/press/float-secures-close-to-100m-in-funding
+    primary_funding_date: '2026-01-26'
+    sources:
+    - url: https://floatfinancial.com/about-us
+      source_type: first_party
+      provider: official-source
+    - url: https://www.linkedin.com/company/floatfinancial
+      source_type: independent
+      provider: linkedin-source
+    - url: https://www.finder.com/ca/banking/business-banking/float-financial-review
+      source_type: independent
+      provider: independent-source
+    - url: https://floatfinancial.com/press/float-secures-close-to-100m-in-funding
+      source_type: first_party
+      provider: funding-primary
+  funded-04:
+    canonical_domain: redo.com
+    primary_funding_url: https://www.globenewswire.com/news-release/2026/06/23/3316439/0/en/redo-announces-81-million-series-b-to-support-commerce-technology-expansion.html
+    primary_funding_date: '2026-06-23'
+    sources:
+    - url: https://redo.com/products/returns
+      source_type: first_party
+      provider: official-source
+    - url: https://www.linkedin.com/company/redo-tech
+      source_type: independent
+      provider: linkedin-source
+    - url: https://www.techbuzznews.com/redo-closes-81-m-series-b/
+      source_type: independent
+      provider: independent-source
+    - url: https://www.globenewswire.com/news-release/2026/06/23/3316439/0/en/redo-announces-81-million-series-b-to-support-commerce-technology-expansion.html
+      source_type: independent
+      provider: funding-primary
+  funded-01:
+    primary_funding_url: https://www.prnewswire.com/news-releases/quantifind-announces-200-million-growth-investment-led-by-summit-partners-to-advance-ai-native-risk-intelligence-and-governed-agentic-middleware-for-modern-risk-operations-302811746.html
+    primary_funding_date: '2026-06-26'
+    sources:
+    - url: https://www.quantifind.com/
+      source_type: first_party
+      provider: official-source
+    - url: https://www.linkedin.com/company/quantifind
+      source_type: independent
+      provider: linkedin-source
+    - url: https://www.marketscreener.com/news/quantifind-inc-announced-that-it-has-received-200-million-in-funding-from-summit-partners-l-p-c-ce7f5fd9de8cf42d
+      source_type: independent
+      provider: independent-source
+    - url: https://www.prnewswire.com/news-releases/quantifind-announces-200-million-growth-investment-led-by-summit-partners-to-advance-ai-native-risk-intelligence-and-governed-agentic-middleware-for-modern-risk-operations-302811746.html
+      source_type: independent
+      provider: funding-primary
+  funded-02:
+    primary_funding_url: https://www.assorthealth.com/blog/assort-health-raises-120-million-series-c-to-scale-largest-deployment-of-ai-agents-for-the-patient-journey
+    primary_funding_date: '2026-06-24'
+    sources:
+    - url: https://www.assorthealth.com/
+      source_type: first_party
+      provider: official-source
+    - url: https://www.linkedin.com/company/assorthealth
+      source_type: independent
+      provider: linkedin-source
+    - url: https://www.forbes.com/sites/amyfeldman/2026/06/24/these-29-year-olds-ai-chatbot-for-scheduling-doctor-visits-is-now-worth-12-billion/
+      source_type: independent
+      provider: independent-source
+    - url: https://www.assorthealth.com/blog/assort-health-raises-120-million-series-c-to-scale-largest-deployment-of-ai-agents-for-the-patient-journey
+      source_type: first_party
+      provider: funding-primary
+  funded-05:
+    primary_funding_url: https://www.baseten.co/blog/announcing-our-series-f/
+    primary_funding_date: '2026-06-22'
+    sources:
+    - url: https://www.baseten.co/
+      source_type: first_party
+      provider: official-source
+    - url: https://www.linkedin.com/company/baseten
+      source_type: independent
+      provider: linkedin-source
+    - url: https://www.cbinsights.com/company/baseten/financials
+      source_type: independent
+      provider: independent-source
+    - url: https://www.baseten.co/blog/announcing-our-series-f/
+      source_type: first_party
+      provider: funding-primary-v3
+    - url: https://www.baseten.co/pricing/
+      source_type: first_party
+      provider: official-pricing-source-v2
+    enrichment_assertions:
+      analogy-value-translator:
+      - field: pricing
+        value: Baseten publishes model API pricing and dedicated deployment pricing.
+        evidence_phrase: pricing model dedicated deployment
+        source_url: https://www.baseten.co/pricing/
+        material_queries:
+        - Baseten public pricing exact dollar amount
+  funded-06:
+    primary_funding_url: https://www.parafin.com/blog/parafin-announces-new-credit-facility-with-goldman-sachs-and-one-william-street
+    primary_funding_date: '2026-06-17'
+    sources:
+    - url: https://www.parafin.com/
+      source_type: first_party
+      provider: official-source
+    - url: https://www.linkedin.com/company/buildparafin
+      source_type: independent
+      provider: linkedin-source
+    - url: https://www.forbes.com/companies/parafin/
+      source_type: independent
+      provider: independent-source
+    - url: https://www.parafin.com/blog/parafin-announces-new-credit-facility-with-goldman-sachs-and-one-william-street
+      source_type: first_party
+      provider: funding-primary
+  funded-07:
+    primary_funding_url: https://supabase.com/blog/series-f
+    primary_funding_date: '2026-06-04'
+    sources:
+    - url: https://supabase.com/
+      source_type: first_party
+      provider: official-source
+    - url: https://www.linkedin.com/company/supabase
+      source_type: independent
+      provider: linkedin-source
+    - url: https://techcrunch.com/2026/06/05/supabase-doubles-valuation-to-10b-in-8-months/
+      source_type: independent
+      provider: independent-source
+    - url: https://supabase.com/blog/series-f
+      source_type: first_party
+      provider: funding-primary-v3
+    - url: https://supabase.com/alternatives/supabase-vs-firebase
+      source_type: first_party
+      provider: official-comparison-source-v2
+    enrichment_assertions:
+      competitor-intelligence:
+      - field: competitors
+        value: Supabase publishes a direct comparison with Firebase.
+        evidence_phrase: Supabase Firebase
+        source_url: https://supabase.com/alternatives/supabase-vs-firebase
+        material_queries:
+        - Supabase named competitors alternatives comparison
+        - Supabase competitive landscape market alternatives
+  funded-08:
+    primary_funding_url: https://www.newsfilecorp.com/release/272654/Plurilock-Announces-Closing-of-3-Million-Strategic-Investment
+    primary_funding_date: '2025-10-31'
+    sources:
+    - url: https://plurilock.com/wp-content/uploads/2026/04/2026-04-PLUR-IR.pdf
+      source_type: first_party
+      provider: official-source
+    - url: https://www.linkedin.com/company/plurilock-security-solutions-inc
+      source_type: independent
+      provider: linkedin-source
+    - url: https://stockanalysis.com/quote/tsxv/PLUR/company/
+      source_type: independent
+      provider: independent-source
+    - url: https://www.newsfilecorp.com/release/272654/Plurilock-Announces-Closing-of-3-Million-Strategic-Investment
+      source_type: independent
+      provider: funding-primary-v2
+  funded-09:
+    primary_funding_url: https://www.dualentry.com/funding-announcement
+    primary_funding_date: '2025-10-02'
+    sources:
+    - url: https://www.dualentry.com/
+      source_type: first_party
+      provider: official-source
+    - url: https://www.linkedin.com/company/dualentry
+      source_type: independent
+      provider: linkedin-source
+    - url: https://www.builtinnyc.com/articles/dualentry-90m-series-a-20251006
+      source_type: independent
+      provider: independent-source
+    - url: https://www.dualentry.com/funding-announcement
+      source_type: first_party
+      provider: funding-primary-v3
+  funded-10:
+    primary_funding_url: https://www.sec.gov/Archives/edgar/data/1745729/000174572925000003/primary_doc.xml
+    primary_funding_date: '2025-10-15'
+    sources:
+    - url: https://www.thoroughcare.net/
+      source_type: first_party
+      provider: official-source
+    - url: https://www.linkedin.com/company/thoroughcare-inc-
+      source_type: independent
+      provider: linkedin-source
+    - url: https://www.cbinsights.com/company/thoroughcare/financials
+      source_type: independent
+      provider: independent-source
+    - url: https://www.sec.gov/Archives/edgar/data/1745729/000174572925000003/primary_doc.xml
+      source_type: independent
+      provider: funding-primary-v3
+  agency-01:
+    sources:
+    - {url: https://10fold.com/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/10foldcomms, source_type: independent, provider: linkedin-source}
+    - {url: https://online.pr/agency/10fold-communications-united-states, source_type: independent, provider: independent-source-v2}
+  agency-02:
+    sources:
+    - {url: https://www.abelsontaylor.com/about-at/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/abelson-taylor-group, source_type: independent, provider: linkedin-source}
+    - {url: https://www.aaaa.org/blog/abelsontaylor-group-established-as-parent-company-of-abelsontaylor-at-nutrient-dose-and-at-activate/, source_type: independent, provider: independent-source}
+  agency-03:
+    sources:
+    - {url: https://www.adtaxi.com/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/adtaxi, source_type: independent, provider: linkedin-source}
+    - {url: https://www.adexchanger.com/go/awards-2025/, source_type: independent, provider: independent-source-v2}
+  agency-04:
+    sources:
+    - {url: https://www.walkersands.com/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/walker-sands, source_type: independent, provider: linkedin-source}
+    - {url: https://clutch.co/profile/walker-sands-0, source_type: independent, provider: independent-source}
+  agency-05:
+    sources:
+    - {url: https://teamavoq.com/news/askew-and-grant-government-relations-announcement/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/teamavoq, source_type: independent, provider: linkedin-source}
+    - {url: https://www.odwyerpr.com/pr_firms_database/4496/avoq.html, source_type: independent, provider: independent-source-v2}
+  agency-06:
+    sources:
+    - {url: https://boldorange.com/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/boldorange, source_type: independent, provider: linkedin-source}
+    - {url: https://agencysource.com/agency/bold-orange/, source_type: independent, provider: independent-source-v2}
+  agency-07:
+    sources:
+    - {url: https://c-4analytics.com/solutions/automotive-digital-marketing, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/c4-analytics-llc, source_type: independent, provider: linkedin-source}
+    - {url: https://www.prnewswire.com/news-releases/c-4-analytics-lands-silver-stevie-award-for-automotive-marketing-campaign-of-the-year-300130131.html, source_type: independent, provider: independent-source-v2}
+  agency-08:
+    sources:
+    - {url: https://capacityinteractive.com/clients/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/capacity-interactive, source_type: independent, provider: linkedin-source}
+    - {url: https://www.culturesuite.co/resources/articles/culturesuite-partners-with-capacity, source_type: independent, provider: independent-source}
+  agency-09:
+    sources:
+    - {url: https://carney.co/about-us/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/carney-co., source_type: independent, provider: linkedin-source}
+    - {url: https://www.pghtech.org/news-and-publications/carney-gets-results-exclusive-focus-new-media, source_type: independent, provider: independent-source}
+    - {url: https://carney.co/daily-carnage/choose-your-adventure/, source_type: first_party, provider: official-news-source-v2}
+    enrichment_assertions:
+      news-product-launches:
+      - field: launches
+        value: Carney announced a redesigned Carney.co website and a new Daily Carnage hub on December 22, 2025.
+        evidence_phrase: redesigned Carney Daily Carnage
+        source_url: https://carney.co/daily-carnage/choose-your-adventure/
+        material_queries:
+        - Carney official latest news announcement dated
+  agency-10:
+    sources:
+    - {url: https://chartis.io/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/chartis-io, source_type: independent, provider: linkedin-source}
+    - {url: https://www.greatplacetowork.com/certified-company/7041229, source_type: independent, provider: independent-source-v3}
+  known-01:
+    entity_aliases: [Advantech USA, Advantech]
+    sources:
+    - {url: https://www.advantech.com/en-us/industrial-automation/industrial-io, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/advantechusa, source_type: independent, provider: linkedin-source}
+    - {url: https://hughespeters.com/remote-condition-monitoring-products/, source_type: independent, provider: independent-source}
+  known-02:
+    entity_aliases: [Avery Dennison Graphics Solutions, Avery Dennison]
+    sources:
+    - {url: https://graphics.averydennison.com/en/home/products.html, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/avery-dennison-graphics-solutions, source_type: independent, provider: linkedin-source}
+    - {url: https://signs.org/industry-news/isa-twi-team-up-for-inaugural-the-wrap-experience-summit/, source_type: independent, provider: independent-source-v2}
+  known-03:
+    entity_aliases: [Bosch Home Comfort USA, Bosch Home Comfort]
+    sources:
+    - {url: https://www.bosch-homecomfort.com/us/en/residential/professionals/bosch-home-comfort-pro/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/boschhomecomfort-us, source_type: independent, provider: linkedin-source}
+    - {url: https://www.achrnews.com/articles/152872-bosch-thermotechnology-rebrands-as-bosch-home-comfort-group, source_type: independent, provider: independent-source}
+  known-04:
+    entity_aliases: [Huhtamaki North America, Huhtamaki]
+    sources:
+    - {url: https://www.huhtamaki.com/en-us/north-america/foodservice/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/huhtamaki-north-america, source_type: independent, provider: linkedin-source}
+    - {url: https://www.packagingdive.com/news/starbucks-huhtamaki-compostable-molded-fiber-cups-lids-cold-beverages/723168/, source_type: independent, provider: independent-source}
+  known-05:
+    sources:
+    - {url: https://quickbooks.intuit.com/accountants/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/intuit-accountants, source_type: independent, provider: linkedin-source}
+    - {url: https://www.cpapracticeadvisor.com/2026/02/09/intuit-is-discontinuing-quickbooks-online-accountant-and-replacing-it-with-intuit-accountant-suite/177698/, source_type: independent, provider: independent-source}
+  known-06:
+    entity_aliases: [Manulife Canada, Manulife]
+    sources:
+    - {url: https://www.manulife.ca/business/group-benefits/plans-and-coverage.html, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/manulife-canada, source_type: independent, provider: linkedin-source}
+    - {url: https://www.insurancebusinessmag.com/ca/news/group-benefits/manulife-osara-health-launch-cancer-coaching-pilot-for-group-benefits-members-569889.aspx, source_type: independent, provider: independent-source}
+  known-07:
+    entity_aliases: [Moog Industrial, Moog]
+    sources:
+    - {url: https://www.moog.com/markets/industrial-automation.html, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/moog-industrial, source_type: independent, provider: linkedin-source}
+    - {url: https://www.sec.gov/Archives/edgar/data/0000067887/000162828025058116/a2025moogannualreport.pdf, source_type: independent, provider: independent-source}
+  known-08:
+    entity_aliases: [Nordson Adhesive Dispensing Systems, Nordson]
+    sources:
+    - {url: https://investors.nordson.com/files/doc_financials/2024/q1/FY24-Nordson-Investor-Presentation-2-22-24-V2.pdf, source_type: first_party, provider: official-source-v3}
+    - {url: https://www.linkedin.com/company/nordson-adhesive, source_type: independent, provider: linkedin-source}
+    - {url: https://www.sec.gov/Archives/edgar/data/72331/000007233125000144/ndsn-20251031.htm, source_type: independent, provider: independent-source}
+  known-09:
+    entity_aliases: [Optum Bank, Optum Bank Inc]
+    sources:
+    - {url: https://www.optumbank.com/customer-support/contact.html, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/optumhealth-bank, source_type: independent, provider: linkedin-source}
+    - {url: https://crapes.fdic.gov/publish/2023/57408_230501.PDF, source_type: independent, provider: independent-source-v3}
+  known-10:
+    entity_aliases: [TD SYNNEX Multi-Country Area, TD SYNNEX]
+    sources:
+    - {url: https://lac.tdsynnex.com/mca/en/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/tdsynnexmcaenglish, source_type: independent, provider: linkedin-source}
+    - {url: https://itseller.us/2026/05/td-synnex-endpoint-infrastructure/, source_type: independent, provider: independent-source}
+  supplier-01:
+    sources:
+    - {url: https://offer.abatix.com/osha-safety-health-programs-in-construction, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/abatix, source_type: independent, provider: linkedin-source}
+    - {url: https://www.thebluebook.com/iProView/1258517, source_type: independent, provider: independent-source}
+  supplier-02:
+    sources:
+    - {url: https://accordcarton.com/about-accord/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/accord-carton, source_type: independent, provider: linkedin-source}
+    - {url: 'https://www.investmentbanking.deloitte.com/content/dam/assets-zone6/xa/en/docs/industries/consumer-products/us-dcf-packaging-report-q1-2024.pdf?icid=learn_more_content_click', source_type: independent, provider: independent-source}
+  supplier-03:
+    sources:
+    - {url: https://www.actylis.com/manufacturing, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/actylis, source_type: independent, provider: linkedin-source}
+    - {url: https://www.newmountaincapital.com/portfolio/actylis/, source_type: independent, provider: independent-source}
+  supplier-04:
+    sources:
+    - {url: https://adv-bio.com/natural-aromatics/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/advanced-biotech, source_type: independent, provider: linkedin-source}
+    - {url: https://www.business.us.hsbc.com/en/insights/sustainability/advanced-biotech, source_type: independent, provider: independent-source}
+  supplier-05:
+    sources:
+    - {url: https://www.advantageind.com/wp-content/uploads/2014/02/Solutions-Brochure-Nov25-Final-Copy.pdf, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/advantage-industrial-automation, source_type: independent, provider: linkedin-source}
+    - {url: https://www.globenewswire.com/news-release/2015/03/24/718195/30433/en/Graybar-to-Acquire-Advantage-Industrial-Automation.html, source_type: independent, provider: independent-source}
+  supplier-06:
+    sources:
+    - {url: https://www.aerogo.com/wp-content/uploads/2020/02/Selecting-the-Right-Load-Handling-Equipment-WP-AeroGo.pdf, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/aerogo, source_type: independent, provider: linkedin-source}
+    - {url: https://www.highergov.com/awardee/aerogo-inc-10432132/, source_type: independent, provider: independent-source}
+  supplier-07:
+    sources:
+    - {url: https://www.awipanels.com/wp-content/uploads/2025/12/awip-technical-services-brochure-en.pdf, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/all-weather-insulated-panels, source_type: independent, provider: linkedin-source}
+    - {url: https://cdn.scscertified.com/products/cert_pdfs/SCS_EPD_10552_AWIP%20Roof%20InnovaCELL-Avg%20Steel_122325.pdf, source_type: independent, provider: independent-source}
+  supplier-08:
+    sources:
+    - {url: https://alpscontrols.com/Help, source_type: first_party, provider: official-curl-source}
+    - {url: https://www.linkedin.com/company/alpscontrols-com, source_type: independent, provider: linkedin-source}
+    - {url: https://www.newsfilecorp.com/release/89280, source_type: independent, provider: independent-source}
+  supplier-09:
+    sources:
+    - {url: https://www.andersonintl.com/about-us/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/anderson-international-corp, source_type: independent, provider: linkedin-source}
+    - {url: https://ussec.org/about-ussec/ussec-members/anderson-international-corp/, source_type: independent, provider: independent-source}
+  supplier-10:
+    sources:
+    - {url: https://www.b2bind.com/about-b2b, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/b2b-industrial-packaging, source_type: independent, provider: linkedin-source}
+    - {url: 'https://www.investmentbanking.deloitte.com/content/dam/assets-zone6/xa/en/docs/industries/consumer-products/us-dcf-2023-q2-packaging-report.pdf?icid=learn_more_content_click', source_type: independent, provider: independent-source}
+  local-01:
+    entity_aliases: [A+P CPAs, A+P CPAs LLC]
+    local_listing_url: https://members.ogdenweberchamber.com/list/member/a-p-cpas-llc-94123
+    local_location_url: https://apcpas.com/contact-us/
+    local_name: A+P CPAs
+    local_street_postal: 1689 East 1400 South Suite 100 Clearfield UT 84015
+    local_phone: 801-776-5241
+    listing_match_basis: name_address_phone
+    sources:
+    - {url: https://apcpas.com/services/, source_type: first_party, provider: official-source}
+    - {url: https://apcpas.com/contact-us/, source_type: first_party, provider: official-location-source-v2}
+    - {url: https://www.linkedin.com/company/a-p-cpas, source_type: independent, provider: linkedin-source}
+    - {url: https://members.ogdenweberchamber.com/list/member/a-p-cpas-llc-94123, source_type: independent, provider: independent-source}
+  local-02:
+    entity_aliases: [Advanced Control Corporation, Advanced Control Corporation Inc]
+    local_listing_url: 'https://www.myfloridalicense.com/portalsearches/VerifyLicensee/LicenseDetail?ID=E052FE1172B458A6A0392C1C02AA40E0'
+    local_location_url: https://www.advancedcontrolcorp.com/
+    local_name: Advanced Control Corporation
+    local_street_postal: 6001 NE 14th Avenue Fort Lauderdale 33334
+    listing_match_basis: name_address
+    sources:
+    - {url: https://www.advancedcontrolcorp.com/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/advanced-control-corporation, source_type: independent, provider: linkedin-source}
+    - {url: 'https://www.myfloridalicense.com/portalsearches/VerifyLicensee/LicenseDetail?ID=E052FE1172B458A6A0392C1C02AA40E0', source_type: independent, provider: independent-source}
+  local-03:
+    entity_aliases: [American Kitchen Machinery & Repair, American Kitchen Machinery and Repair, American Kitchen Machinery & Repair Company]
+    local_listing_url: https://cfesa.com/directory/american-kitchen-machinery-repair-company/
+    local_location_url: https://akmco.com/
+    local_name: American Kitchen Machinery
+    local_street_postal: 204 Quarry Street Philadelphia PA 19106
+    local_phone: 215-627-7760
+    listing_match_basis: name_address_phone
+    sources:
+    - {url: https://akmco.com/, source_type: first_party, provider: official-source}
+    - {url: 'https://www.linkedin.com/company/american-kitchen-machinery-&-repair', source_type: independent, provider: linkedin-source}
+    - {url: https://cfesa.com/directory/american-kitchen-machinery-repair-company/, source_type: independent, provider: independent-source}
+  local-04:
+    entity_aliases: [Amplify Advisors, Amplify Advisors Inc]
+    local_listing_url: https://www.appsruntheworld.com/customers-database/customers/view/amplify-advisors-canada
+    local_location_url: https://amplifyadvisors.ca/
+    local_name: Amplify Advisors
+    local_street_postal: 700 2 Street SW Calgary T2P2W2
+    listing_match_basis: name_address
+    sources:
+    - {url: https://amplifyadvisors.ca/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/amplifyadvisors, source_type: independent, provider: linkedin-source}
+    - {url: https://www.cpaalberta.ca/Members/Sponsors, source_type: independent, provider: independent-source}
+    - {url: https://www.appsruntheworld.com/customers-database/customers/view/amplify-advisors-canada, source_type: independent, provider: local-listing-source}
+  local-05:
+    entity_aliases: [Anatek Labs, Anatek Labs Inc]
+    local_listing_url: https://healthandwelfare.idaho.gov/health-wellness/environmental-health/drinking-water-and-private-wells
+    local_location_url: https://www.anateklabs.com/about-us/contact-us/
+    local_name: Anatek Labs
+    local_phone: 208-883-2839
+    listing_match_basis: name_phone
+    sources:
+    - {url: https://www.anateklabs.com/about-us/, source_type: first_party, provider: official-source}
+    - {url: https://www.anateklabs.com/about-us/contact-us/, source_type: first_party, provider: official-location-source-v2}
+    - {url: https://www.linkedin.com/company/anatek-labs-inc., source_type: independent, provider: linkedin-source}
+    - {url: https://healthandwelfare.idaho.gov/health-wellness/environmental-health/drinking-water-and-private-wells, source_type: independent, provider: independent-source}
+  local-06:
+    entity_aliases: [Anderson Commercial Flooring, Linoleum Sales Co Inc dba Anderson Commercial Flooring]
+    local_listing_url: https://resources.finalsite.net/images/v1713544569/smfcsdnet/lauevfkzrsuh0h5fz53e/PrequalReport041924-NewFlooring.pdf
+    local_location_url: https://www.andersoncf.com/
+    local_name: Anderson Commercial Flooring
+    local_street_postal: 1000 W Grand Ave Oakland CA 94607
+    listing_match_basis: name_address
+    sources:
+    - {url: https://www.andersoncf.com/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/anderson-commercial-flooring, source_type: independent, provider: linkedin-source}
+    - {url: https://resources.finalsite.net/images/v1713544569/smfcsdnet/lauevfkzrsuh0h5fz53e/PrequalReport041924-NewFlooring.pdf, source_type: independent, provider: independent-source}
+  local-07:
+    entity_aliases: [Apollo Mission Critical Engineering, Apollo Mission Critical Engineering LLC]
+    local_listing_url: https://comdev.cobbcountyga.gov/new-business/download/bl-2026-02-13.pdf
+    local_location_url: https://www.linkedin.com/company/apollomce
+    local_name: Apollo Mission Critical Engineering
+    local_locality: Atlanta GA
+    listing_match_basis: name_locality
+    sources:
+    - {url: https://apollomce.com/our-services/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/apollomce, source_type: independent, provider: linkedin-source}
+    - {url: https://comdev.cobbcountyga.gov/new-business/download/bl-2026-02-13.pdf, source_type: independent, provider: independent-source}
+  local-08:
+    entity_aliases: [Applied Resource Group, Applied Resource Group LLC]
+    local_listing_url: https://b2bhint.com/en/company/us-co/applied-resource-group-llc--20201183347
+    local_location_url: https://appliedrg.com/services-applied-resource-group/
+    local_name: Applied Resource Group
+    local_street_postal: 4555 Mansell Road Suite 230 Alpharetta GA 30022
+    listing_match_basis: name_address
+    b2b_buyer_phrase: organizations
+    business_offer_phrase: staffing solutions
+    sources:
+    - {url: https://appliedrg.com/services-applied-resource-group/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/applied-resource-group, source_type: independent, provider: linkedin-source}
+    - {url: https://b2bhint.com/en/company/us-co/applied-resource-group-llc--20201183347, source_type: independent, provider: independent-source}
+  local-09:
+    entity_aliases: [ArchPoint Group, ArchPoint Group Inc]
+    local_listing_url: 'https://www.texasbar.com/AM/Template.cfm?ContactID=204054&template=%2FCustomsource%2FMemberDirectory%2FMemberDirectoryDetail.cfm'
+    local_location_url: https://archpointgroup.com/
+    local_name: ArchPoint Group
+    local_street_postal: 14410 Wurzbach Parkway Suite 150 San Antonio TX 78216
+    listing_match_basis: name_address
+    sources:
+    - {url: https://archpointgroup.com/, source_type: first_party, provider: official-source}
+    - {url: https://www.linkedin.com/company/archpoint-group, source_type: independent, provider: linkedin-source}
+    - {url: 'https://www.texasbar.com/AM/Template.cfm?ContactID=204054&template=%2FCustomsource%2FMemberDirectory%2FMemberDirectoryDetail.cfm', source_type: independent, provider: independent-source}
+  local-10:
+    entity_aliases: [Atlas Mechanical Inc, Atlas Mechanical Inc a Corporation of Washington]
+    local_listing_url: 'https://www.osha.gov/ords/imis/establishment.inspection_detail?id=1856968.015'
+    local_location_url: 'https://atlas-mechanical.com/wp-json/wp/v2/pages?slug=contact'
+    local_name: Atlas Mechanical Inc
+    local_street_postal: 430 N Pekin Road Woodland WA 98674
+    listing_match_basis: name_address
+    sources:
+    - {url: 'https://atlas-mechanical.com/wp-json/wp/v2/pages?slug=services', source_type: first_party, provider: official-source}
+    - {url: 'https://atlas-mechanical.com/wp-json/wp/v2/pages?slug=contact', source_type: first_party, provider: official-location-source-v2}
+    - {url: https://www.linkedin.com/company/atlasmechanicalinc, source_type: independent, provider: linkedin-source}
+    - {url: 'https://www.osha.gov/ords/imis/establishment.inspection_detail?id=1856968.015', source_type: independent, provider: independent-source}
