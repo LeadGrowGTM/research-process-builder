@@ -251,6 +251,8 @@ Before creating a prompt or search pattern, define and obtain acceptance for the
 
 Renumber later phases. State that programmed validation creates only a Candidate; explicit human review is required for Approval.
 
+Normalize SKILL.md frontmatter to the validator's allowed top-level keys: name and description. Move version, maturity, and trigger details into a metadata mapping or the document body so quick_validate.py passes without losing operator guidance.
+
 - [ ] **Step 2: Add complete examples and commands to REFERENCE.md**
 
 ~~~yaml
@@ -273,8 +275,8 @@ Document observed versus inferred personas, supported omission, frozen developme
 - [ ] **Step 3: Validate and forward-test**
 
 ~~~powershell
-uv run pytest .claude/skills/research-builder/tests/test_goal_output_contract.py -q
-uv run pytest .claude/skills/prompt-creator/tests/test_goal_output_contract.py -q
+py -m pytest .claude/skills/research-builder/tests/test_goal_output_contract.py -q
+py -m pytest .claude/skills/prompt-creator/tests/test_goal_output_contract.py -q
 py C:\Users\mitch\.codex\skills\.system\skill-creator\scripts\quick_validate.py .claude/skills/research-builder
 git diff --check
 git status --short
