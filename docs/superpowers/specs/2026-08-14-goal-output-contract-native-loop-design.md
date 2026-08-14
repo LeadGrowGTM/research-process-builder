@@ -1,6 +1,6 @@
 # Goal-output contracts for research prompts
 
-**Status:** proposed for human review  
+**Status:** approved by user on 2026-08-14
 **Date:** 2026-08-14  
 **Scope:** the canonical `research-builder` skill and the first ICP/persona prompt loop
 
