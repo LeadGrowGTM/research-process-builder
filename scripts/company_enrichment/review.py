@@ -212,7 +212,15 @@ class ReviewRecord:
             raise ValueError("sequence must be a positive integer")
         _require_aware("occurred_at", self.occurred_at)
         if self.record_hash:
-            if self.record_hash != _record_hash(self):
+            valid_hashes = {_record_hash(self)}
+            if (
+                self.gate_evidence is None
+                and self.blind_review_pack is None
+                and self.blind_review_pack_id is None
+                and self.scorecard is None
+            ):
+                valid_hashes.add(_legacy_record_hash(self))
+            if self.record_hash not in valid_hashes:
                 raise ValueError("record_hash does not match the review record")
         else:
             object.__setattr__(self, "record_hash", _record_hash(self))
@@ -223,6 +231,14 @@ def _record_hash(record: ReviewRecord) -> str:
         "sequence", "experiment_id", "from_status", "to_status", "actor",
 "occurred_at", "prior_record_hash", "verdict", "reviewer_id", "blind",
         "gate_evidence", "blind_review_pack", "blind_review_pack_id", "scorecard",
+    )}
+    return sha256(canonical_json(values).encode("utf-8")).hexdigest()
+
+
+def _legacy_record_hash(record: ReviewRecord) -> str:
+    values = {name: getattr(record, name) for name in (
+        "sequence", "experiment_id", "from_status", "to_status", "actor",
+        "occurred_at", "prior_record_hash", "verdict", "reviewer_id", "blind",
     )}
     return sha256(canonical_json(values).encode("utf-8")).hexdigest()
 

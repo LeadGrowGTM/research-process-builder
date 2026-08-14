@@ -22,6 +22,7 @@ from .experiment_runner import (
     ExperimentSummary,
     ModelClient,
 )
+from .openai_model_client import build_openai_model_client
 from .review import (
     BlindReviewOutput, BlindReviewPack, BlindReviewScorecard,
     ProgrammedGateEvidence,
@@ -231,7 +232,10 @@ def _json_default(value):
     raise TypeError(f"cannot serialize {type(value).__name__}")
 
 
-def main(argv: Sequence[str] | None = None) -> int:
+def main(
+    argv: Sequence[str] | None = None, *,
+    model_client_factory=build_openai_model_client,
+) -> int:
     parser = argparse.ArgumentParser(
         description="Run the fixed three-company enrichment experiment matrix.",
     )
@@ -247,22 +251,42 @@ def main(argv: Sequence[str] | None = None) -> int:
         "--dossier-root", type=Path, default=Path("benchmarks/dossiers"),
     )
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument(
+        "--allow-paid", action="store_true",
+        help="Allow model API spend within the immutable USD 1 cap per enrichment.",
+    )
     args = parser.parse_args(argv)
     enrichments = (
         EXPERIMENT_ENRICHMENTS if args.enrichment == "all"
         else (args.enrichment,)
     )
+    key_available = bool(os.environ.get("OPENAI_API_KEY", "").strip())
+    if key_available and not args.allow_paid:
+        parser.error(
+            "OPENAI_API_KEY is available; live execution requires --allow-paid"
+        )
+    model_client = (
+        model_client_factory(artifact_root=args.artifact_root)
+        if key_available else None
+    )
     program = ExperimentProgram(
         artifact_root=args.artifact_root,
         dossier_root=args.dossier_root,
-        model_client=None,
+        model_client=model_client,
         as_of=datetime(2026, 8, 12, 23, 59, 59, tzinfo=timezone.utc),
     )
     results = tuple(
-        program.run(item, resume=args.resume) for item in enrichments
+        program.run(
+            item, allow_paid=args.allow_paid, resume=args.resume,
+        ) for item in enrichments
     )
     print(json.dumps(results, default=_json_default, sort_keys=True))
-    return 2 if any(item.summary.authentication_gap for item in results) else 0
+    incomplete = any(
+        item.summary.authentication_gap
+        or item.summary.completed_cases != item.summary.planned_cases
+        for item in results
+    )
+    return 2 if incomplete else 0
 
 
 if __name__ == "__main__":

@@ -83,6 +83,14 @@ class ModelClient(Protocol):
     ) -> tuple[ModelExecution, ...]: ...
 
 
+class PendingModelClient(ModelClient, Protocol):
+    """Optional capability for resuming a durably recorded provider job."""
+
+    def has_pending(
+        self, requests: Sequence[ExperimentInput], track: ExecutionTrack,
+    ) -> bool: ...
+
+
 @dataclass(frozen=True, slots=True)
 class ExperimentSummary:
     enrichment_id: str
@@ -229,27 +237,30 @@ class ExperimentRunner:
             transaction = self._read_transaction(transaction_path)
             reservation = None
             if transaction is None:
-                failed_attempts = sum(
-                    1 for event in prior
-                    if event.get("requested_model_id") == model
-                    and event.get("execution_track") == track.value
-                    and event.get("status") == "failed"
-                ) // len(FIXED_SAAS_CORE)
+                failed_attempts = self._next_attempt_index(
+                    experiment_dir / "budget.jsonl", group_id,
+                )
                 reservation_key = f"{group_id}--attempt-{failed_attempts}"
                 reservation = ledger.reserve(scope_id, reservation_key, estimate)
-                if not reservation.should_execute:
+                has_pending = getattr(self._client, "has_pending", None)
+                can_resume_pending = (
+                    not reservation.should_execute
+                    and callable(has_pending)
+                    and bool(has_pending(requests, track))
+                )
+                if not reservation.should_execute and not can_resume_pending:
                     raise RuntimeError("owned experiment reservation is incomplete")
                 try:
                     executions = self._client.execute(requests, track)
                 except Exception as error:
-                    ledger.release(reservation)
+                    ledger.reconcile(reservation, estimate)
                     failure_cases = tuple(
                         self._failure_case(
                             request, track, "retryable", type(error).__name__,
                         ) for request in requests
                     )
                     for request, case in zip(requests, failure_cases):
-                        self._append_once(journal, {
+                        self._append(journal, {
                             "company_id": request.company_id,
                             "enrichment_id": enrichment_id,
                             "execution_track": track.value,
@@ -261,6 +272,7 @@ class ExperimentRunner:
                             "status": "failed",
                             "failure": "retryable",
                             "error_type": type(error).__name__,
+                            "reservation_key": reservation_key,
                         })
                     failure_plan = ExperimentPlan(
                         experiment_id=group_id + "--failed",
@@ -275,11 +287,11 @@ class ExperimentRunner:
                         self._benchmarks.run(failure_plan)
                     continue
                 if len(executions) != len(requests):
-                    ledger.release(reservation)
+                    ledger.reconcile(reservation, estimate)
                     raise ValueError("model client returned the wrong case count")
                 by_company = {item.company_id: item for item in executions}
                 if set(by_company) != {item.company_id for item in requests}:
-                    ledger.release(reservation)
+                    ledger.reconcile(reservation, estimate)
                     raise ValueError("model client returned the wrong company IDs")
                 transaction = {
                     "executions": [self._execution_payload(item) for item in executions],
@@ -713,6 +725,33 @@ class ExperimentRunner:
                 encoding="utf-8",
             ).splitlines()
         )
+
+    @staticmethod
+    def _next_attempt_index(path: Path, group_id: str) -> int:
+        if not path.exists():
+            return 0
+        prefix = group_id + "--attempt-"
+        attempts: dict[int, str] = {}
+        settled: set[str] = set()
+        for line in path.read_text(encoding="utf-8").splitlines():
+            event = json.loads(line)
+            key = event.get("idempotency_key")
+            if event.get("kind") == "reserve" and isinstance(key, str) and key.startswith(prefix):
+                suffix = key[len(prefix):]
+                if not suffix.isdigit():
+                    raise ValueError("invalid experiment attempt key")
+                attempts[int(suffix)] = str(event["reservation_id"])
+            elif event.get("kind") in {"release", "reconcile"}:
+                settled.add(str(event["reservation_id"]))
+        outstanding = [
+            attempt for attempt, reservation_id in attempts.items()
+            if reservation_id not in settled
+        ]
+        if len(outstanding) > 1:
+            raise ValueError("experiment group has multiple active reservations")
+        if outstanding:
+            return outstanding[0]
+        return max(attempts, default=-1) + 1
 
     @staticmethod
     def _append(path: Path, event: Mapping[str, object]) -> None:

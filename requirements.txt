@@ -1,2 +1,3 @@
 PyYAML>=6.0,<7
 pytest>=8,<9
+openai>=2.46,<3

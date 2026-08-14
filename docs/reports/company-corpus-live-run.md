@@ -96,17 +96,34 @@ and source cost were USD 0, source purchases were zero, and the mechanical
 validation was neither Candidate nor Approval. Its artifacts are under
 `runs/company-enrichment/mechanical-v2`.
 
-The live comparison matrix planned 72 cases: three enrichments, three fixed
+The live comparison matrix executed all 72 cases: three enrichments, three fixed
 companies, four exact requested model IDs (`gpt-5-nano`, `gpt-4o-mini`,
 `gpt-4.1-mini`, and `gpt-5.6-luna`), and separate synchronous and Batch tracks.
-Neither the development nor production secret registry contained an
-`OPENAI_API_KEY`, so all 72 cases are durably recorded as
-`not_executed/authentication_required` with a null resolved model. No live
-model output was fabricated. Completed live cases are zero, paid cost is USD
-0, source purchases are zero, and each enrichment remains `experiment` rather
-than Candidate or Approval. The append-only artifacts are under
-`runs/company-enrichment/experiments-v2`; a resume retained exactly 72 rows
-before and after with zero execution.
+The command used `lg run --env prod` so GTM Orchestrator injected
+`OPENAI_API_KEY` only into the CLI child process; the key was never printed or
+persisted. Cached Evidence supplied every source input and source purchases
+remained zero. Successful provider responses account for USD 0.07086025. The
+cap ledger records USD 0.143810700, conservatively charging full reservations
+for provider-started attempts that returned incomplete or invalid output.
+
+Programmed ground-truth scores were 0.7743055555555556 for company description,
+0.75 for ICP/persona analysis, and 0.71875 for growth signals. All are below the
+0.90 Candidate threshold, so each enrichment correctly remains `experiment`;
+no blind review pack, Candidate, or Approval was created. The append-only
+artifacts are under `runs/company-enrichment/experiments-v2`. A clean CLI resume
+rehydrated all 72 cases, left every outcomes journal byte-identical, made no
+model or source repurchase, and left all three ledgers unchanged with zero
+outstanding reservations.
+
+The provider cache intentionally retains superseded request-digest variants
+from the debugging passes: two synchronous files remain `received`; three Batch
+files remain `received`; and three Batch files remain `pending`. They use older
+request bodies and are not referenced by the final completed case keys. The
+current generation contains 37 completed synchronous files and 12 completed
+Batch files, every required case resolves through a completed transaction, and
+the three budget ledgers report zero outstanding reservations. The superseded
+files were not rewritten or deleted because they are immutable audit evidence,
+not active local work.
 
 Candidate promotion now fails closed unless every planned case completes and
 the programmed ground-truth score is at least 0.90 across all eight model/track
@@ -127,3 +144,7 @@ outcome row, and after every outcome row but before the benchmark report.
 Resume reuses the paid result without repurchase, deduplicates outcomes, and
 regenerates missing reports. Invalid model output is retained as
 `contract_invalid`; client exceptions are retained as `retryable` failures.
+Once provider execution begins, failure paths reconcile the full reserved
+estimate rather than releasing possibly billed work. Terminal Batch state and
+file provenance are persisted before retry, while a pending Batch retains its
+original reservation and provider job ID.

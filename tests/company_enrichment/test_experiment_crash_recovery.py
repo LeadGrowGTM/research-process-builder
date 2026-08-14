@@ -159,6 +159,18 @@ def test_client_exception_is_journaled_as_retryable_failure(tmp_path: Path) -> N
         tmp_path / "icp-persona-analysis" / "blind-output-map.json"
     ).exists()
 
+    budget_rows = tuple(
+        json.loads(line) for line in (
+            tmp_path / 'icp-persona-analysis' / 'budget.jsonl'
+        ).read_text(encoding='utf-8').splitlines()
+    )
+    assert sum(row['kind'] == 'release' for row in budget_rows) == 0
+    assert sum(row['kind'] == 'reconcile' for row in budget_rows) == 8
+    assert sum(
+        Decimal(row['actual_cost'])
+        for row in budget_rows if row['kind'] == 'reconcile'
+    ) == Decimal('0.24')
+
     resumed = _runner(tmp_path, BrokenClient(executions=1)).run(
         "icp-persona-analysis", allow_paid=True, resume=True,
     )
@@ -167,3 +179,44 @@ def test_client_exception_is_journaled_as_retryable_failure(tmp_path: Path) -> N
     assert (
         tmp_path / "icp-persona-analysis" / "blind-output-map.json"
     ).is_file()
+
+
+def test_repeated_provider_failures_use_monotonic_attempt_reservations(
+    tmp_path: Path,
+) -> None:
+    class TargetFailure(CountingClient):
+        def execute(self, requests, track):
+            if (
+                requests[0].requested_model_id == "gpt-5-nano"
+                and track is ExecutionTrack.SYNCHRONOUS
+            ):
+                raise RuntimeError("provider timeout")
+            return super().execute(requests, track)
+
+    _runner(tmp_path, TargetFailure()).run(
+        "company-description", allow_paid=True,
+    )
+    _runner(tmp_path, TargetFailure()).run(
+        "company-description", allow_paid=True, resume=True,
+    )
+
+    summary = _runner(tmp_path, CountingClient()).run(
+        "company-description", allow_paid=True, resume=True,
+    )
+    rows = tuple(
+        json.loads(line) for line in (
+            tmp_path / "company-description" / "budget.jsonl"
+        ).read_text(encoding="utf-8").splitlines()
+    )
+
+    assert summary.completed_cases == 24
+    target = [
+        row["idempotency_key"] for row in rows
+        if row["kind"] == "reserve"
+        and "gpt-5-nano--synchronous" in row["idempotency_key"]
+    ]
+    assert target == [
+        "company-description--gpt-5-nano--synchronous--attempt-0",
+        "company-description--gpt-5-nano--synchronous--attempt-1",
+        "company-description--gpt-5-nano--synchronous--attempt-2",
+    ]
