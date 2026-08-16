@@ -1,0 +1,39 @@
+company_id: saas-01
+expected:
+  primary_icp:
+    buyer: Marketing agencies
+    need: automated reporting
+    object: multi-channel client campaigns
+    evidence_ids: [ev-f4256ff7de9e092b]
+  secondary_icps:
+    - buyer: SEO agencies
+      need: organic-search performance reporting
+      object: client accounts
+      evidence_ids: [ev-f4256ff7de9e092b]
+    - buyer: Paid-media agencies
+      need: cross-channel advertising performance reporting
+      object: clients
+      evidence_ids: [ev-f4256ff7de9e092b]
+  outcomes:
+    - text: save time on reporting and retain more clients
+      evidence_ids: [ev-f4256ff7de9e092b]
+  observed_personas: []
+  inferred_personas:
+    - role: agency reporting managers
+      based_on_evidence_ids: [ev-f4256ff7de9e092b]
+acceptable_aliases:
+  primary.buyer: [Marketing agencies, Digital marketing agencies]
+  primary.need: [automated reporting, automated client reporting]
+  primary.object: [multi-channel client campaigns, cross-channel client campaigns]
+evidence_by_component:
+  primary.buyer: [ev-f4256ff7de9e092b]
+  primary.need: [ev-f4256ff7de9e092b]
+  primary.object: [ev-f4256ff7de9e092b]
+  secondary.0.buyer: [ev-f4256ff7de9e092b]
+  secondary.0.need: [ev-f4256ff7de9e092b]
+  secondary.0.object: [ev-f4256ff7de9e092b]
+  secondary.1.buyer: [ev-f4256ff7de9e092b]
+  secondary.1.need: [ev-f4256ff7de9e092b]
+  secondary.1.object: [ev-f4256ff7de9e092b]
+  outcome.0: [ev-f4256ff7de9e092b]
+  inferred_persona.0: [ev-f4256ff7de9e092b]

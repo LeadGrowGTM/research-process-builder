@@ -1,0 +1,25 @@
+company_id: saas-05
+expected:
+  primary_icp:
+    buyer: Regulated enterprises and government agencies
+    need: governed data archiving
+    object: compliance and AI readiness
+    evidence_ids: [ev-0c8cabd1fc6337a7, ev-026452c8b94e5acd]
+  secondary_icps: []
+  outcomes:
+    - text: keep critical data compliant and create a trusted foundation for AI
+      evidence_ids: [ev-026452c8b94e5acd]
+  observed_personas: []
+  inferred_personas:
+    - role: data governance leaders
+      based_on_evidence_ids: [ev-0c8cabd1fc6337a7]
+acceptable_aliases:
+  primary.buyer: [Regulated enterprises and government agencies, Regulated organizations and public-sector agencies]
+  primary.need: [governed data archiving, governed enterprise data archiving]
+  primary.object: [compliance and AI readiness, regulatory compliance and AI readiness]
+evidence_by_component:
+  primary.buyer: [ev-0c8cabd1fc6337a7, ev-026452c8b94e5acd]
+  primary.need: [ev-0c8cabd1fc6337a7, ev-026452c8b94e5acd]
+  primary.object: [ev-0c8cabd1fc6337a7, ev-026452c8b94e5acd]
+  outcome.0: [ev-026452c8b94e5acd]
+  inferred_persona.0: [ev-0c8cabd1fc6337a7]

@@ -1,0 +1,25 @@
+company_id: saas-07
+expected:
+  primary_icp:
+    buyer: HR leaders
+    need: continuous performance management
+    object: enterprise workforces
+    evidence_ids: [ev-dcc1a8c71d39505e, ev-48db0e5bbd86695c]
+  secondary_icps: []
+  outcomes:
+    - text: align teams and turn workforce performance into measurable business impact
+      evidence_ids: [ev-48db0e5bbd86695c]
+  observed_personas:
+    - role: HR leaders
+      evidence_ids: [ev-48db0e5bbd86695c]
+  inferred_personas: []
+acceptable_aliases:
+  primary.buyer: [HR leaders, Human resources leaders]
+  primary.need: [continuous performance management, continuous employee performance management]
+  primary.object: [enterprise workforces, large organizational workforces]
+evidence_by_component:
+  primary.buyer: [ev-48db0e5bbd86695c]
+  primary.need: [ev-dcc1a8c71d39505e, ev-48db0e5bbd86695c]
+  primary.object: [ev-dcc1a8c71d39505e, ev-48db0e5bbd86695c]
+  outcome.0: [ev-48db0e5bbd86695c]
+  observed_persona.0: [ev-48db0e5bbd86695c]

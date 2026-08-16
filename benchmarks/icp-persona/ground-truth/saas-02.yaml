@@ -1,0 +1,25 @@
+company_id: saas-02
+expected:
+  primary_icp:
+    buyer: Enterprises
+    need: composable workflow automation
+    object: business processes and AI orchestration
+    evidence_ids: [ev-a955bcab27663ac9, ev-e4360a941a821eeb]
+  secondary_icps: []
+  outcomes:
+    - text: resilient and governed enterprise AI operations
+      evidence_ids: [ev-e4360a941a821eeb]
+  observed_personas:
+    - role: CIO
+      evidence_ids: [ev-a955bcab27663ac9]
+  inferred_personas: []
+acceptable_aliases:
+  primary.buyer: [Enterprises, Enterprise organizations]
+  primary.need: [composable workflow automation, composable process automation]
+  primary.object: [business processes and AI orchestration, enterprise processes and agentic AI orchestration]
+evidence_by_component:
+  primary.buyer: [ev-e4360a941a821eeb]
+  primary.need: [ev-a955bcab27663ac9, ev-e4360a941a821eeb]
+  primary.object: [ev-e4360a941a821eeb]
+  outcome.0: [ev-e4360a941a821eeb]
+  observed_persona.0: [ev-a955bcab27663ac9]

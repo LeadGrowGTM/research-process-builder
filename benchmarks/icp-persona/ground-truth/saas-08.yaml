@@ -1,0 +1,25 @@
+company_id: saas-08
+expected:
+  primary_icp:
+    buyer: Enterprise IT teams
+    need: incident intelligence and automation
+    object: IT operations
+    evidence_ids: [ev-8d10c83bbc00a2c9, ev-09e959f239942a36]
+  secondary_icps: []
+  outcomes:
+    - text: reduce downtime and improve operational efficiency and service reliability
+      evidence_ids: [ev-8d10c83bbc00a2c9, ev-09e959f239942a36]
+  observed_personas:
+    - role: incident management teams
+      evidence_ids: [ev-8d10c83bbc00a2c9]
+  inferred_personas: []
+acceptable_aliases:
+  primary.buyer: [Enterprise IT teams, Enterprise IT operations teams]
+  primary.need: [incident intelligence and automation, AI-powered incident intelligence and automation]
+  primary.object: [IT operations, Enterprise IT operations]
+evidence_by_component:
+  primary.buyer: [ev-8d10c83bbc00a2c9, ev-09e959f239942a36]
+  primary.need: [ev-8d10c83bbc00a2c9, ev-09e959f239942a36]
+  primary.object: [ev-8d10c83bbc00a2c9, ev-09e959f239942a36]
+  outcome.0: [ev-8d10c83bbc00a2c9, ev-09e959f239942a36]
+  observed_persona.0: [ev-8d10c83bbc00a2c9]

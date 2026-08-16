@@ -1,0 +1,25 @@
+company_id: saas-06
+expected:
+  primary_icp:
+    buyer: Procurement teams
+    need: predictive sourcing automation
+    object: supplier negotiations
+    evidence_ids: [ev-6324c3add32674d3, ev-da4b109ddeb08af9]
+  secondary_icps: []
+  outcomes:
+    - text: shorten sourcing cycles and unlock savings while reducing risk
+      evidence_ids: [ev-6324c3add32674d3, ev-da4b109ddeb08af9]
+  observed_personas:
+    - role: category managers
+      evidence_ids: [ev-da4b109ddeb08af9]
+  inferred_personas: []
+acceptable_aliases:
+  primary.buyer: [Procurement teams, Enterprise procurement teams]
+  primary.need: [predictive sourcing automation, predictive procurement automation]
+  primary.object: [supplier negotiations, automated supplier negotiations]
+evidence_by_component:
+  primary.buyer: [ev-6324c3add32674d3, ev-da4b109ddeb08af9]
+  primary.need: [ev-6324c3add32674d3, ev-da4b109ddeb08af9]
+  primary.object: [ev-6324c3add32674d3]
+  outcome.0: [ev-6324c3add32674d3, ev-da4b109ddeb08af9]
+  observed_persona.0: [ev-da4b109ddeb08af9]

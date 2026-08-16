@@ -1,0 +1,8 @@
+weights:
+  buyer: 0.25
+  need: 0.20
+  object: 0.20
+  citation: 0.20
+  persona: 0.10
+  readability: 0.05
+threshold: 0.90

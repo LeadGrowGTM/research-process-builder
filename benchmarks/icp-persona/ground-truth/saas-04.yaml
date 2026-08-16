@@ -1,0 +1,25 @@
+company_id: saas-04
+expected:
+  primary_icp:
+    buyer: Manufacturers
+    need: product cost and manufacturability analysis
+    object: design and sourcing decisions
+    evidence_ids: [ev-fe752f58cb8e0b98, ev-3d93e43e256e02c1]
+  secondary_icps: []
+  outcomes:
+    - text: make faster and more profitable product decisions
+      evidence_ids: [ev-3d93e43e256e02c1]
+  observed_personas: []
+  inferred_personas:
+    - role: design engineering leaders
+      based_on_evidence_ids: [ev-fe752f58cb8e0b98]
+acceptable_aliases:
+  primary.buyer: [Manufacturers, Manufacturing companies]
+  primary.need: [product cost and manufacturability analysis, product cost and DFM analysis]
+  primary.object: [design and sourcing decisions, design-to-source decisions]
+evidence_by_component:
+  primary.buyer: [ev-fe752f58cb8e0b98, ev-3d93e43e256e02c1]
+  primary.need: [ev-3d93e43e256e02c1]
+  primary.object: [ev-fe752f58cb8e0b98, ev-3d93e43e256e02c1]
+  outcome.0: [ev-3d93e43e256e02c1]
+  inferred_persona.0: [ev-fe752f58cb8e0b98]
