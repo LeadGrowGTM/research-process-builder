@@ -23,7 +23,8 @@ from scripts.company_enrichment.icp_persona_contracts import (
 )
 
 
-_EXPECTED_IDS = frozenset(f"saas-{index:02d}" for index in range(1, 11))
+_ALL_IDS = tuple(f"saas-{index:02d}" for index in range(1, 11))
+_EXPECTED_IDS = frozenset(_ALL_IDS)
 _DEVELOPMENT_IDS = (
     "saas-01", "saas-02", "saas-04", "saas-05", "saas-07", "saas-09",
 )
@@ -128,13 +129,39 @@ class IcpGroundTruthRecord:
 @dataclass(frozen=True, slots=True)
 class IcpDataset:
     records: Mapping[str, IcpGroundTruthRecord]
+    all_ids: tuple[str, ...]
     development_ids: tuple[str, ...]
     holdout_ids: tuple[str, ...]
     rubric: IcpRubric
     dataset_hash: str
+    holdout_manifest: Mapping[str, str]
+    holdout_hash: str
 
     def __post_init__(self) -> None:
         object.__setattr__(self, "records", MappingProxyType(dict(self.records)))
+        object.__setattr__(self, "holdout_manifest", MappingProxyType(dict(self.holdout_manifest)))
+
+
+_EVALUATOR_TOKEN = object()
+
+
+@dataclass(frozen=True, slots=True, repr=False)
+class EvaluatorDatasetCapability:
+    _token: object
+
+
+@dataclass(frozen=True, slots=True)
+class EvaluatorIcpDataset:
+    public: IcpDataset
+    records: Mapping[str, IcpGroundTruthRecord]
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, "records", MappingProxyType(dict(self.records)))
+
+
+def issue_evaluator_dataset_capability() -> EvaluatorDatasetCapability:
+    """Issue the capability that composition must withhold from non-evaluators."""
+    return EvaluatorDatasetCapability(_EVALUATOR_TOKEN)
 
 
 def _load_yaml(path: Path, label: str) -> tuple[Mapping[str, Any], bytes]:
@@ -212,13 +239,57 @@ def _validate_component_evidence(output: IcpPersonaOutput, evidence: Mapping[str
                 raise ValueError(f"{prefix} component Evidence must match expected output")
 
 
+def _component_list(value: Any, field: str) -> tuple[Mapping[str, Any], ...]:
+    if not isinstance(value, (list, tuple)):
+        raise ValueError(f"{field} must be a list")
+    return tuple(_mapping(item, field) for item in value)
+
+
+def _strict_expected_output(value: Any) -> Mapping[str, Any]:
+    expected = _mapping(value, "expected output")
+    _exact_keys(
+        expected,
+        {
+            "primary_icp",
+            "secondary_icps",
+            "outcomes",
+            "observed_personas",
+            "inferred_personas",
+        },
+        "expected output",
+    )
+    primary = _mapping(expected["primary_icp"], "primary ICP")
+    _exact_keys(
+        primary,
+        {"buyer", "need", "object", "evidence_ids"},
+        "primary ICP",
+    )
+    for item in _component_list(expected["secondary_icps"], "secondary ICP"):
+        _exact_keys(
+            item,
+            {"buyer", "need", "object", "evidence_ids"},
+            "secondary ICP",
+        )
+    for item in _component_list(expected["outcomes"], "outcome"):
+        _exact_keys(item, {"text", "evidence_ids"}, "outcome")
+    for item in _component_list(expected["observed_personas"], "observed persona"):
+        _exact_keys(item, {"role", "evidence_ids"}, "observed persona")
+    for item in _component_list(expected["inferred_personas"], "inferred persona"):
+        _exact_keys(
+            item,
+            {"role", "based_on_evidence_ids"},
+            "inferred persona",
+        )
+    return expected
+
+
 def _load_record(path: Path, company_id: str, dossier: CompanyDossier) -> IcpGroundTruthRecord:
     value, _ = _load_yaml(path, f"ground truth {company_id}")
     _exact_keys(value, {"company_id", "expected", "acceptable_aliases", "evidence_by_component"}, f"ground truth {company_id}")
     if value["company_id"] != company_id or dossier.company_id != company_id:
         raise ValueError(f"ground truth company ID mismatch for {company_id}")
     retained = {item.evidence_id for item in dossier.evidence}
-    expected = parse_icp_output(_mapping(value["expected"], "expected output"), retained)
+    expected = parse_icp_output(_strict_expected_output(value["expected"]), retained)
 
     aliases_value = _mapping(value["acceptable_aliases"], "acceptable aliases")
     alias_keys = {"primary.buyer", "primary.need", "primary.object"}
@@ -243,45 +314,191 @@ def _load_record(path: Path, company_id: str, dossier: CompanyDossier) -> IcpGro
     return IcpGroundTruthRecord(company_id, expected, aliases, evidence)
 
 
-def dataset_hash(dataset_root: str | Path, records: Mapping[str, IcpGroundTruthRecord], dossiers: Mapping[str, CompanyDossier]) -> str:
-    """Hash exact frozen file bytes plus referenced dossier Evidence hashes."""
+def _validate_exact_files(dataset_root: Path) -> None:
+    actual_files = {
+        path.name for path in (dataset_root / "ground-truth").glob("*.yaml")
+    }
+    expected_files = {f"{company_id}.yaml" for company_id in _EXPECTED_IDS}
+    if actual_files != expected_files:
+        raise ValueError("ground truth files must be exactly saas-01 through saas-10")
+
+
+def _validate_hash_inputs(
+    dataset_root: Path,
+    records: Mapping[str, IcpGroundTruthRecord],
+    dossiers: Mapping[str, CompanyDossier],
+) -> None:
+    if set(records) != _EXPECTED_IDS:
+        raise ValueError("dataset hash requires exactly ten records")
+    _validate_exact_files(dataset_root)
+    missing_dossiers = _EXPECTED_IDS - set(dossiers)
+    if missing_dossiers:
+        raise ValueError(f"missing matching dossiers: {sorted(missing_dossiers)}")
+    for company_id in _ALL_IDS:
+        if records[company_id].company_id != company_id:
+            raise ValueError(f"record company ID mismatch for {company_id}")
+        if dossiers[company_id].company_id != company_id:
+            raise ValueError(f"dossier company ID mismatch for {company_id}")
+
+
+def _update_evidence_hashes(
+    digest: Any,
+    company_id: str,
+    record: IcpGroundTruthRecord,
+    dossier: CompanyDossier,
+) -> None:
+    evidence = {item.evidence_id: item for item in dossier.evidence}
+    missing = record.all_evidence_ids - set(evidence)
+    if missing:
+        raise ValueError("record references Evidence absent from matching dossier")
+    for evidence_id in sorted(record.all_evidence_ids):
+        digest.update(company_id.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(evidence_id.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(evidence[evidence_id].content_hash.lower().encode("ascii"))
+        digest.update(b"\0")
+
+
+def _record_hash(
+    dataset_root: Path,
+    company_id: str,
+    record: IcpGroundTruthRecord,
+    dossier: CompanyDossier,
+) -> str:
+    path = dataset_root / "ground-truth" / f"{company_id}.yaml"
+    digest = sha256()
+    digest.update(path.relative_to(dataset_root).as_posix().encode("utf-8"))
+    digest.update(b"\0")
+    digest.update(path.read_bytes())
+    digest.update(b"\0")
+    _update_evidence_hashes(digest, company_id, record, dossier)
+    return digest.hexdigest()
+
+
+def dataset_hash(
+    dataset_root: str | Path,
+    records: Mapping[str, IcpGroundTruthRecord],
+    dossiers: Mapping[str, CompanyDossier],
+) -> str:
+    """Hash the exact ten frozen files plus referenced dossier Evidence hashes."""
     root = Path(dataset_root)
+    _validate_hash_inputs(root, records, dossiers)
     digest = sha256()
     paths = [root / "split.yaml", root / "rubric.yaml"]
-    paths.extend(root / "ground-truth" / f"{company_id}.yaml" for company_id in sorted(records))
+    paths.extend(
+        root / "ground-truth" / f"{company_id}.yaml"
+        for company_id in _ALL_IDS
+    )
     for path in paths:
         digest.update(path.relative_to(root).as_posix().encode("utf-8"))
         digest.update(b"\0")
         digest.update(path.read_bytes())
         digest.update(b"\0")
-    for company_id in sorted(records):
-        evidence = {item.evidence_id: item for item in dossiers[company_id].evidence}
-        for evidence_id in sorted(records[company_id].all_evidence_ids):
-            digest.update(company_id.encode("utf-8"))
-            digest.update(b"\0")
-            digest.update(evidence_id.encode("utf-8"))
-            digest.update(b"\0")
-            digest.update(evidence[evidence_id].content_hash.lower().encode("ascii"))
-            digest.update(b"\0")
+    for company_id in _ALL_IDS:
+        _update_evidence_hashes(
+            digest,
+            company_id,
+            records[company_id],
+            dossiers[company_id],
+        )
     return digest.hexdigest()
 
 
-def load_icp_dataset(root: str | Path, dossiers: Mapping[str, CompanyDossier]) -> IcpDataset:
-    """Load the exact ten-company benchmark and reject any frozen-input drift."""
+@dataclass(frozen=True, slots=True)
+class _LoadedIcpDataset:
+    records: Mapping[str, IcpGroundTruthRecord]
+    development_ids: tuple[str, ...]
+    holdout_ids: tuple[str, ...]
+    rubric: IcpRubric
+    dataset_hash: str
+    holdout_manifest: Mapping[str, str]
+    holdout_hash: str
+
+
+def _load_all_records(
+    root: str | Path,
+    dossiers: Mapping[str, CompanyDossier],
+) -> _LoadedIcpDataset:
     dataset_root = Path(root) / "benchmarks" / "icp-persona"
-    ground_truth_root = dataset_root / "ground-truth"
-    actual_files = {path.name for path in ground_truth_root.glob("*.yaml")}
-    expected_files = {f"{company_id}.yaml" for company_id in _EXPECTED_IDS}
-    if actual_files != expected_files:
-        raise ValueError("ground truth files must be exactly saas-01 through saas-10")
+    _validate_exact_files(dataset_root)
     missing_dossiers = _EXPECTED_IDS - set(dossiers)
     if missing_dossiers:
         raise ValueError(f"missing matching dossiers: {sorted(missing_dossiers)}")
 
     development, holdout, _ = _load_split(dataset_root / "split.yaml")
     rubric, _ = _load_rubric(dataset_root / "rubric.yaml")
+    ground_truth_root = dataset_root / "ground-truth"
     records = {
-        company_id: _load_record(ground_truth_root / f"{company_id}.yaml", company_id, dossiers[company_id])
-        for company_id in sorted(_EXPECTED_IDS)
+        company_id: _load_record(
+            ground_truth_root / f"{company_id}.yaml",
+            company_id,
+            dossiers[company_id],
+        )
+        for company_id in _ALL_IDS
     }
-    return IcpDataset(records, development, holdout, rubric, dataset_hash(dataset_root, records, dossiers))
+    manifest = {
+        company_id: _record_hash(
+            dataset_root,
+            company_id,
+            records[company_id],
+            dossiers[company_id],
+        )
+        for company_id in holdout
+    }
+    holdout_digest = sha256()
+    for company_id in holdout:
+        holdout_digest.update(company_id.encode("utf-8"))
+        holdout_digest.update(b"\0")
+        holdout_digest.update(manifest[company_id].encode("ascii"))
+        holdout_digest.update(b"\0")
+    return _LoadedIcpDataset(
+        MappingProxyType(records),
+        development,
+        holdout,
+        rubric,
+        dataset_hash(dataset_root, records, dossiers),
+        MappingProxyType(manifest),
+        holdout_digest.hexdigest(),
+    )
+
+
+def _public_dataset(loaded: _LoadedIcpDataset) -> IcpDataset:
+    records = {
+        company_id: loaded.records[company_id]
+        for company_id in loaded.development_ids
+    }
+    return IcpDataset(
+        records,
+        _ALL_IDS,
+        loaded.development_ids,
+        loaded.holdout_ids,
+        loaded.rubric,
+        loaded.dataset_hash,
+        loaded.holdout_manifest,
+        loaded.holdout_hash,
+    )
+
+
+def load_icp_dataset(
+    root: str | Path,
+    dossiers: Mapping[str, CompanyDossier],
+) -> IcpDataset:
+    """Validate all ten records while returning only development answers."""
+    return _public_dataset(_load_all_records(root, dossiers))
+
+
+def load_icp_dataset_for_evaluator(
+    root: str | Path,
+    dossiers: Mapping[str, CompanyDossier],
+    *,
+    capability: object,
+) -> EvaluatorIcpDataset:
+    """Load all ten answers only for a holder of the evaluator capability."""
+    if (
+        not isinstance(capability, EvaluatorDatasetCapability)
+        or capability._token is not _EVALUATOR_TOKEN
+    ):
+        raise PermissionError("valid evaluator capability is required")
+    loaded = _load_all_records(root, dossiers)
+    return EvaluatorIcpDataset(_public_dataset(loaded), loaded.records)

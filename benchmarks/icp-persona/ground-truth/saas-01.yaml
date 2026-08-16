@@ -5,15 +5,7 @@ expected:
     need: automated reporting
     object: multi-channel client campaigns
     evidence_ids: [ev-f4256ff7de9e092b]
-  secondary_icps:
-    - buyer: SEO agencies
-      need: organic-search performance reporting
-      object: client accounts
-      evidence_ids: [ev-f4256ff7de9e092b]
-    - buyer: Paid-media agencies
-      need: cross-channel advertising performance reporting
-      object: clients
-      evidence_ids: [ev-f4256ff7de9e092b]
+  secondary_icps: []
   outcomes:
     - text: save time on reporting and retain more clients
       evidence_ids: [ev-f4256ff7de9e092b]
@@ -29,11 +21,5 @@ evidence_by_component:
   primary.buyer: [ev-f4256ff7de9e092b]
   primary.need: [ev-f4256ff7de9e092b]
   primary.object: [ev-f4256ff7de9e092b]
-  secondary.0.buyer: [ev-f4256ff7de9e092b]
-  secondary.0.need: [ev-f4256ff7de9e092b]
-  secondary.0.object: [ev-f4256ff7de9e092b]
-  secondary.1.buyer: [ev-f4256ff7de9e092b]
-  secondary.1.need: [ev-f4256ff7de9e092b]
-  secondary.1.object: [ev-f4256ff7de9e092b]
   outcome.0: [ev-f4256ff7de9e092b]
   inferred_persona.0: [ev-f4256ff7de9e092b]
