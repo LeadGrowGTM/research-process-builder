@@ -1,6 +1,7 @@
 import pytest
 
 from scripts.company_enrichment.icp_persona_contracts import (
+    IcpPersonaContract,
     InferredPersona,
     IcpPersonaOutput,
     ObservedPersona,
@@ -9,6 +10,7 @@ from scripts.company_enrichment.icp_persona_contracts import (
     SecondaryICP,
     parse_icp_output,
     render_segment,
+    load_icp_contract,
 )
 
 
@@ -67,3 +69,50 @@ def test_types_are_immutable_and_persona_evidence_is_required():
         parse_icp_output({**payload(), "observed_personas": [{"role": "", "evidence_ids": ["ev-1"]}]}, {"ev-1"})
     with pytest.raises(ValueError, match="based_on_evidence_ids"):
         parse_icp_output({**payload(), "inferred_personas": [{"role": "manager", "based_on_evidence_ids": []}]}, {"ev-1"})
+
+
+
+def test_loads_canonical_contract_as_frozen_typed_value():
+    contract = load_icp_contract("benchmarks/icp-persona/contract.yaml")
+    assert isinstance(contract, IcpPersonaContract)
+    assert contract.version == "1.0"
+    assert contract.rendering == "{buyer} that need {need} for {object}"
+    assert contract.secondary_limit == 2
+    assert contract.unsupported_claim_policy == "hard_fail"
+    assert contract.unknown_policy == "omit_optional_or_return_unknown"
+    with pytest.raises(AttributeError):
+        contract.version = "2.0"
+
+
+@pytest.mark.parametrize(
+    ("change", "message"),
+    [
+        ({"version": "2.0"}, "version"),
+        ({"rendering": "{buyer}"}, "rendering"),
+        ({"secondary_limit": 3}, "secondary_limit"),
+        ({"unsupported_claim_policy": "omit"}, "unsupported_claim_policy"),
+        ({"unknown_policy": "ignore"}, "unknown_policy"),
+        ({"extra": True}, "unknown keys"),
+    ],
+)
+def test_rejects_noncanonical_contract_values(tmp_path, change, message):
+    contract = {
+        "version": "1.0",
+        "rendering": "{buyer} that need {need} for {object}",
+        "secondary_limit": 2,
+        "unsupported_claim_policy": "hard_fail",
+        "unknown_policy": "omit_optional_or_return_unknown",
+    }
+    contract.update(change)
+    path = tmp_path / "contract.yaml"
+    path.write_text(__import__("yaml").safe_dump(contract), encoding="utf-8")
+    with pytest.raises(ValueError, match=message):
+        load_icp_contract(path)
+
+
+@pytest.mark.parametrize("yaml_text", ["[]", "version: 1.0", "secondary_limit: two", "[unclosed"])
+def test_rejects_malformed_contract_yaml_types(tmp_path, yaml_text):
+    path = tmp_path / "contract.yaml"
+    path.write_text(yaml_text, encoding="utf-8")
+    with pytest.raises(ValueError, match="contract"):
+        load_icp_contract(path)

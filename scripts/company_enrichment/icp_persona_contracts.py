@@ -127,9 +127,59 @@ def render_segment(segment: PrimaryICP | SecondaryICP) -> str:
     return f"{segment.buyer} that need {segment.need} for {segment.object}"
 
 
-def load_icp_contract(path: str | Path) -> dict[str, Any]:
-    with Path(path).open(encoding="utf-8") as handle:
-        contract = yaml.safe_load(handle)
+@dataclass(frozen=True, slots=True)
+class IcpPersonaContract:
+    version: str
+    rendering: str
+    secondary_limit: int
+    unsupported_claim_policy: str
+    unknown_policy: str
+
+
+_CANONICAL_CONTRACT = IcpPersonaContract(
+    version="1.0",
+    rendering="{buyer} that need {need} for {object}",
+    secondary_limit=2,
+    unsupported_claim_policy="hard_fail",
+    unknown_policy="omit_optional_or_return_unknown",
+)
+
+
+def load_icp_contract(path: str | Path) -> IcpPersonaContract:
+    try:
+        with Path(path).open(encoding="utf-8") as handle:
+            contract = yaml.safe_load(handle)
+    except yaml.YAMLError as exc:
+        raise ValueError("contract YAML is malformed") from exc
+    required = {
+        "version",
+        "rendering",
+        "secondary_limit",
+        "unsupported_claim_policy",
+        "unknown_policy",
+    }
     if not isinstance(contract, dict):
         raise ValueError("contract must be a mapping")
-    return contract
+    keys = set(contract)
+    if keys != required:
+        raise ValueError(f"contract keys must exactly match required keys; unknown keys: {sorted(keys - required)}")
+    if not isinstance(contract["version"], str):
+        raise ValueError("contract version must be text")
+    if not isinstance(contract["rendering"], str):
+        raise ValueError("contract rendering must be text")
+    if type(contract["secondary_limit"]) is not int:
+        raise ValueError("contract secondary_limit must be an integer")
+    for key in ("unsupported_claim_policy", "unknown_policy"):
+        if not isinstance(contract[key], str):
+            raise ValueError(f"contract {key} must be text")
+    loaded = IcpPersonaContract(**contract)
+    for key, expected in (
+        ("version", _CANONICAL_CONTRACT.version),
+        ("rendering", _CANONICAL_CONTRACT.rendering),
+        ("secondary_limit", _CANONICAL_CONTRACT.secondary_limit),
+        ("unsupported_claim_policy", _CANONICAL_CONTRACT.unsupported_claim_policy),
+        ("unknown_policy", _CANONICAL_CONTRACT.unknown_policy),
+    ):
+        if getattr(loaded, key) != expected:
+            raise ValueError(f"contract {key} does not match canonical value")
+    return loaded
