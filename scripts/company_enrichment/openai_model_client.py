@@ -15,6 +15,7 @@ from .benchmark import ExecutionTrack
 from .contracts import FieldAssertion, Visibility, canonical_json
 from .executors import P0_ENRICHMENTS
 from .experiment_runner import ExperimentInput, ModelExecution
+from .icp_persona_contracts import parse_icp_output
 
 
 _MILLION = Decimal("1000000")
@@ -249,6 +250,30 @@ class OpenAIModelClient:
         )
 
     @staticmethod
+    def _override_metadata(request: ExperimentInput) -> dict[str, str]:
+        if not (
+            request.prompt_id or request.prompt_text
+            or request.output_contract is not None
+        ):
+            return {}
+        return {
+            "prompt_id": request.prompt_id,
+            "prompt_sha256": sha256(request.prompt_text.encode("utf-8")).hexdigest(),
+            "output_contract_sha256": sha256(
+                canonical_json(request.output_contract).encode("utf-8")
+            ).hexdigest(),
+        }
+
+    @classmethod
+    def _request_metadata(cls, request: ExperimentInput) -> dict[str, str]:
+        return {
+            "company_id": request.company_id,
+            "enrichment_id": request.enrichment_id,
+            "requested_model_id": request.requested_model_id,
+            **cls._override_metadata(request),
+        }
+
+    @staticmethod
     def _prompt(request: ExperimentInput) -> str:
         evidence = [
             {
@@ -261,6 +286,14 @@ class OpenAIModelClient:
             for item in request.dossier.evidence
         ]
         fields = P0_ENRICHMENTS[request.enrichment_id]
+        if request.prompt_text:
+            return (
+                f"{request.prompt_text.rstrip()}\n\n"
+                f"Company ID: {request.company_id}\n"
+                f"Enrichment: {request.enrichment_id}\n"
+                f"Requested fields: {json.dumps(fields)}\n"
+                f"Evidence: {json.dumps(evidence, ensure_ascii=False, sort_keys=True)}"
+            )
         return (
             "Produce the requested company enrichment using only the supplied Evidence. "
             "Do not infer unsupported facts. Cite one or more supplied evidence_id values "
@@ -273,6 +306,8 @@ class OpenAIModelClient:
 
     @staticmethod
     def _schema(request: ExperimentInput) -> dict[str, Any]:
+        if request.output_contract is not None:
+            return json.loads(canonical_json(request.output_contract))
         fields = list(P0_ENRICHMENTS[request.enrichment_id])
         evidence_ids = [item.evidence_id for item in request.dossier.evidence]
         assertion = {
@@ -326,11 +361,15 @@ class OpenAIModelClient:
         return body
 
     def _request_digest(self, request: ExperimentInput) -> str:
-        return sha256(canonical_json({
+        material = {
             "company_id": request.company_id,
             "enrichment_id": request.enrichment_id,
             "provider_body": self._body(request),
-        }).encode("utf-8")).hexdigest()
+        }
+        metadata = self._override_metadata(request)
+        if metadata:
+            material["prompt_metadata"] = metadata
+        return sha256(canonical_json(material).encode("utf-8")).hexdigest()
 
     def _execute_sync(self, request: ExperimentInput) -> ModelExecution:
         digest = self._request_digest(request)
@@ -372,6 +411,7 @@ class OpenAIModelClient:
                 "provider_response": _response_payload(response),
                 "request_sha256": digest,
                 "status": "received",
+                **self._request_metadata(request),
             }
             _atomic_json(path, state)
         try:
@@ -455,6 +495,9 @@ class OpenAIModelClient:
     def _validated_output(
         request: ExperimentInput, output: Any,
     ) -> tuple[tuple[FieldAssertion, ...], tuple[str, ...]]:
+        if request.output_contract is not None:
+            return OpenAIModelClient._validated_icp_output(request, output)
+
         if not isinstance(output, Mapping):
             raise ValueError("structured output must be an object")
         assertion_values = output.get("assertions")
@@ -488,6 +531,51 @@ class OpenAIModelClient:
         if set(asserted_fields) | set(unknowns) != allowed_fields:
             raise ValueError("structured output must cover every requested field")
         return tuple(assertions), unknowns
+
+    @staticmethod
+    def _validated_icp_output(
+        request: ExperimentInput, output: Any,
+    ) -> tuple[tuple[FieldAssertion, ...], tuple[str, ...]]:
+        if request.enrichment_id != "icp-persona-analysis":
+            raise ValueError("nested output contract requires ICP/persona enrichment")
+        if not isinstance(output, dict):
+            raise ValueError("structured ICP output must be an object")
+        parsed = parse_icp_output(
+            output, {item.evidence_id for item in request.dossier.evidence},
+        )
+        icp_ids: list[str] = []
+        for component in (
+            parsed.primary_icp, *parsed.secondary_icps, *parsed.outcomes,
+        ):
+            icp_ids.extend(component.evidence_ids)
+        persona_ids: list[str] = []
+        for component in parsed.observed_personas:
+            persona_ids.extend(component.evidence_ids)
+        for component in parsed.inferred_personas:
+            persona_ids.extend(component.based_on_evidence_ids)
+        icp_value = {
+            "primary_icp": output["primary_icp"],
+            "secondary_icps": output.get("secondary_icps", []),
+            "outcomes": output.get("outcomes", []),
+        }
+        personas_value = {
+            "observed_personas": output.get("observed_personas", []),
+            "inferred_personas": output.get("inferred_personas", []),
+        }
+        return (
+            (
+                FieldAssertion(
+                    "icp", icp_value, tuple(dict.fromkeys(icp_ids)), 1.0,
+                    Visibility.MESSAGE_SAFE,
+                ),
+                FieldAssertion(
+                    "personas", personas_value,
+                    tuple(dict.fromkeys(persona_ids)), 1.0,
+                    Visibility.MESSAGE_SAFE,
+                ),
+            ),
+            (),
+        )
 
     @staticmethod
     def _execution_payload(value: ModelExecution) -> dict[str, Any]:
@@ -571,6 +659,9 @@ class OpenAIModelClient:
                 "input_file_id": input_file_id,
                 "request_sha256": digest,
                 "status": "uploaded",
+                "request_metadata": [
+                    self._request_metadata(item) for item in requests
+                ],
             }
             _atomic_json(path, state)
         if state.get("status") == "uploaded":
@@ -728,16 +819,18 @@ class OpenAIModelClient:
     def _batch_path(
         self, requests: tuple[ExperimentInput, ...],
     ) -> Path:
-        material = canonical_json({
-            "requests": [
-                {
-                    "body": self._body(request),
-                    "company_id": request.company_id,
-                    "enrichment_id": request.enrichment_id,
-                }
-                for request in requests
-            ]
-        })
+        request_values = []
+        for request in requests:
+            value = {
+                "body": self._body(request),
+                "company_id": request.company_id,
+                "enrichment_id": request.enrichment_id,
+            }
+            metadata = self._override_metadata(request)
+            if metadata:
+                value["prompt_metadata"] = metadata
+            request_values.append(value)
+        material = canonical_json({"requests": request_values})
         digest = sha256(material.encode("utf-8")).hexdigest()
         return self._root / "batch" / f"{digest}.json"
 

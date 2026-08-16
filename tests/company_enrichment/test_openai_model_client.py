@@ -551,3 +551,79 @@ def test_batch_output_is_persisted_before_decode_failure(tmp_path: Path) -> None
     assert state["status"] == "terminal"
     assert state["attempt_index"] == 1
     assert len(state["attempt_history"]) == 1
+
+def test_legacy_request_body_is_byte_for_byte_compatible(tmp_path: Path) -> None:
+    client = OpenAIModelClient(
+        artifact_root=tmp_path, sdk_client=SimpleNamespace(),
+    )
+
+    assert client._body(_request()) == {
+        "model": "gpt-4o-mini",
+        "input": (
+            "Produce the requested company enrichment using only the supplied "
+            "Evidence. Do not infer unsupported facts. Cite one or more supplied "
+            "evidence_id values for every assertion; put unsupported requested "
+            "fields in unknowns. Company ID: saas-01\n"
+            "Enrichment: company-description\n"
+            'Requested fields: ["identity", "description", "offers"]\n'
+            "Evidence: [{\"content_hash\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", \"evidence_id\": \"ev-1\", "
+            "\"excerpt\": \"Example builds reporting software for marketing "
+            "teams.\", \"retrieved_at\": \"2026-08-13T00:00:00+00:00\", "
+            "\"url\": \"https://example.test/about\"}]"
+        ),
+        "max_output_tokens": 1024,
+        "store": True,
+        "text": {"format": {
+            "type": "json_schema",
+            "name": "company_enrichment",
+            "strict": True,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "assertions": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "field": {"type": "string", "enum": [
+                                    "identity", "description", "offers",
+                                ]},
+                                "value": {"type": "string"},
+                                "evidence_ids": {
+                                    "type": "array",
+                                    "items": {"type": "string", "enum": ["ev-1"]},
+                                    "minItems": 1,
+                                },
+                                "confidence": {
+                                    "type": "number", "minimum": 0, "maximum": 1,
+                                },
+                                "visibility": {"type": "string", "enum": [
+                                    "message_safe", "filter_only",
+                                ]},
+                            },
+                            "required": [
+                                "field", "value", "evidence_ids", "confidence",
+                                "visibility",
+                            ],
+                            "additionalProperties": False,
+                        },
+                    },
+                    "unknowns": {"type": "array", "items": {
+                        "type": "string",
+                        "enum": ["identity", "description", "offers"],
+                    }},
+                },
+                "required": ["assertions", "unknowns"],
+                "additionalProperties": False,
+            },
+        }},
+    }
+
+    request = _request()
+    assert client._request_digest(request) == (
+        "2f5cb8c965f894fc3970f1bf79574a73d44bbff85f29bae5315b43b5a4932310"
+    )
+    assert client._batch_path((request,)).name == (
+        "4c2e4d45798919d1d1980555dca74e9d9cbe3ee418ceb17666773062f562017e.json"
+    )

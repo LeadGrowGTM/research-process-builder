@@ -8,6 +8,7 @@ import json
 import os
 from pathlib import Path
 import secrets
+from types import MappingProxyType
 from typing import Mapping, Protocol, Sequence
 
 from ._locking import file_lock
@@ -52,6 +53,32 @@ class ExperimentInput:
     company_id: str
     requested_model_id: str
     dossier: CompanyDossier
+    prompt_id: str = ""
+    prompt_text: str = ""
+    output_contract: Mapping[str, object] | None = None
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.prompt_id, str):
+            raise ValueError("prompt_id must be text")
+        if not isinstance(self.prompt_text, str):
+            raise ValueError("prompt_text must be text")
+        if self.output_contract is not None:
+            if not isinstance(self.output_contract, Mapping):
+                raise ValueError("output_contract must be a mapping")
+            canonical_json(self.output_contract)
+            object.__setattr__(
+                self, "output_contract", self._freeze(self.output_contract),
+            )
+
+    @classmethod
+    def _freeze(cls, value):
+        if isinstance(value, Mapping):
+            return MappingProxyType({
+                key: cls._freeze(item) for key, item in value.items()
+            })
+        if isinstance(value, (list, tuple)):
+            return tuple(cls._freeze(item) for item in value)
+        return value
 
 
 @dataclass(frozen=True, slots=True)
