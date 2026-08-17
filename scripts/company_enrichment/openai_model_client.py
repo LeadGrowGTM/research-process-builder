@@ -94,7 +94,10 @@ def _safe_provider_value(value: Any) -> Any:
         for key, item in value.items():
             normalized = str(key).lower().replace("-", "_")
             if (
-                normalized in {"api_key", "apikey", "authorization", "password", "secret", "token"}
+                normalized in {
+                    "api_key", "apikey", "authorization", "input",
+                    "instructions", "password", "secret", "token",
+                }
                 or normalized.endswith("_key")
                 or normalized.endswith("_secret")
                 or normalized.endswith("_token")

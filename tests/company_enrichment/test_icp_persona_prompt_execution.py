@@ -85,8 +85,14 @@ def _response():
         usage=SimpleNamespace(input_tokens=100, output_tokens=50),
         model_dump=lambda mode="json": {
             "id": "resp_icp", "model": "gpt-4o-mini-2024-07-18",
+            "input": SECRET_PROMPT,
+            "instructions": "Follow this instruction: " + SECRET_PROMPT,
             "output_text": json.dumps(OUTPUT),
             "usage": {"input_tokens": 100, "output_tokens": 50},
+            "diagnostics": {
+                "input": SECRET_PROMPT,
+                "instructions": SECRET_PROMPT,
+            },
         },
     )
 
@@ -151,6 +157,14 @@ def test_sync_artifact_hashes_and_structured_field_values(tmp_path: Path):
     assert {key: state[key] for key in _hashes(request)} == _hashes(request)
     assert state["requested_model_id"] == "gpt-4o-mini"
     assert state["execution"]["resolved_model_id"] == "gpt-4o-mini-2024-07-18"
+    provider = state["provider_response"]
+    assert provider["input"] == "[redacted]"
+    assert provider["instructions"] == "[redacted]"
+    assert provider["diagnostics"] == {
+        "input": "[redacted]", "instructions": "[redacted]",
+    }
+    assert provider["usage"]["input_tokens"] == 100
+    assert SECRET_PROMPT not in state_text
     assert "sk-super-secret-test-value" not in state_text
 
 
@@ -166,8 +180,14 @@ class _BatchFiles:
             "custom_id": custom_id, "error": None,
             "response": {"status_code": 200, "body": {
                 "model": "gpt-4o-mini-2024-07-18",
+                "input": SECRET_PROMPT,
+                "instructions": "Follow this instruction: " + SECRET_PROMPT,
                 "output_text": json.dumps(OUTPUT),
                 "usage": {"input_tokens": 100, "output_tokens": 50},
+                "diagnostics": {
+                    "input": SECRET_PROMPT,
+                    "instructions": SECRET_PROMPT,
+                },
             }},
         }) for custom_id in custom_ids)
         return SimpleNamespace(id="file_input")
@@ -203,4 +223,12 @@ def test_batch_artifact_records_exact_hashes_without_prompt_secret(tmp_path: Pat
         "requested_model_id": "gpt-4o-mini", **_hashes(request),
     }]
     assert state["executions"][0]["resolved_model_id"] == execution.resolved_model_id
+    body = state["provider_output"][0]["response"]["body"]
+    assert body["input"] == "[redacted]"
+    assert body["instructions"] == "[redacted]"
+    assert body["diagnostics"] == {
+        "input": "[redacted]", "instructions": "[redacted]",
+    }
+    assert body["usage"]["input_tokens"] == 100
+    assert SECRET_PROMPT not in state_text
     assert "sk-super-secret-test-value" not in state_text
