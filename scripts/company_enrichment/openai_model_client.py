@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from decimal import Decimal
 from hashlib import sha256
+from urllib.parse import urlparse
 import io
 import json
 import os
@@ -24,6 +25,10 @@ _MODEL_MAX_OUTPUT_TOKENS = {"gpt-5-nano": 4_096}
 # Field-keyed signal contracts (news events, competitor sets) legitimately run
 # to twenty-plus cited entries; 1,024 tokens truncates them into invalid JSON.
 _FIELD_KEYED_MAX_OUTPUT_TOKENS = 4_096
+# Field-keyed signal requests pin sampling so two lineages that differ only in
+# prompt text are comparable. Reasoning models reject ``temperature``.
+_FIELD_KEYED_TEMPERATURE = 0
+_REASONING_MODEL_PREFIXES = ("gpt-5", "o1", "o3", "o4")
 _SECRET_PATTERN = re.compile(
     r"(?i)(?:sk|sess|key)-[a-z0-9_-]{8,}|bearer\s+[a-z0-9._-]+"
 )
@@ -53,6 +58,10 @@ MODEL_PRICES: Mapping[str, ModelPrice] = {
     "gpt-4.1-mini": ModelPrice(
         Decimal("0.40"), Decimal("0.10"), Decimal("1.60"),
         Decimal("0.20"), Decimal("0.05"), Decimal("0.80"),
+    ),
+    "gpt-4.1": ModelPrice(
+        Decimal("2.00"), Decimal("0.50"), Decimal("8.00"),
+        Decimal("1.00"), Decimal("0.25"), Decimal("4.00"),
     ),
     "gpt-5.6-luna": ModelPrice(
         Decimal("1.00"), Decimal("0.10"), Decimal("6.00"),
@@ -250,13 +259,19 @@ class OpenAIModelClient:
         raise ValueError("unsupported execution track")
 
     @staticmethod
-    def _max_output_tokens(model: str, request: "ExperimentInput | None" = None) -> int:
-        limit = _MODEL_MAX_OUTPUT_TOKENS.get(model, _DEFAULT_MAX_OUTPUT_TOKENS)
-        if (
+    def _is_field_keyed(request: "ExperimentInput | None") -> bool:
+        """Signal enrichments (news, competitors, ads) use the field-keyed
+        contract path; ICP/persona and legacy flat requests do not."""
+        return (
             request is not None
             and request.output_contract is not None
             and request.enrichment_id != "icp-persona-analysis"
-        ):
+        )
+
+    @staticmethod
+    def _max_output_tokens(model: str, request: "ExperimentInput | None" = None) -> int:
+        limit = _MODEL_MAX_OUTPUT_TOKENS.get(model, _DEFAULT_MAX_OUTPUT_TOKENS)
+        if OpenAIModelClient._is_field_keyed(request):
             return max(limit, _FIELD_KEYED_MAX_OUTPUT_TOKENS)
         return limit
 
@@ -285,6 +300,25 @@ class OpenAIModelClient:
         }
 
     @staticmethod
+    def _subject_line(request: ExperimentInput) -> str:
+        """Field-keyed signal requests name the subject so the model does not
+        confuse it with a similarly named company in the Evidence. The subject
+        is the dossier's ``identity`` assertion plus the host of its first base
+        Evidence URL; the line is omitted for ICP and legacy requests."""
+        if not OpenAIModelClient._is_field_keyed(request):
+            return ""
+        dossier = request.dossier
+        name = next((str(item.value) for item in dossier.assertions
+                     if item.field == "identity" and item.value), None)
+        host = urlparse(dossier.evidence[0].url).netloc.lower() if dossier.evidence else ""
+        host = host.split("@")[-1].split(":")[0]
+        host = host[4:] if host.startswith("www.") else host
+        if not name and not host:
+            return ""
+        label = f"{name} ({host})" if name and host else (name or host)
+        return f"Subject company: {label}\n"
+
+    @staticmethod
     def _prompt(request: ExperimentInput) -> str:
         evidence = [
             {
@@ -301,6 +335,7 @@ class OpenAIModelClient:
             return (
                 f"{request.prompt_text.rstrip()}\n\n"
                 f"Company ID: {request.company_id}\n"
+                f"{OpenAIModelClient._subject_line(request)}"
                 f"Enrichment: {request.enrichment_id}\n"
                 f"Requested fields: {json.dumps(fields)}\n"
                 f"Evidence: {json.dumps(evidence, ensure_ascii=False, sort_keys=True)}"
@@ -369,6 +404,10 @@ class OpenAIModelClient:
         }
         if request.requested_model_id == "gpt-5-nano":
             body["reasoning"] = {"effort": "minimal"}
+        if self._is_field_keyed(request) and not request.requested_model_id.startswith(
+            _REASONING_MODEL_PREFIXES
+        ):
+            body["temperature"] = _FIELD_KEYED_TEMPERATURE
         return body
 
     def _request_digest(self, request: ExperimentInput) -> str:

@@ -169,6 +169,13 @@ def test_date_variants_and_citation_check():
     event = NewsEvent("2024-01-30", "h", "feature", "w", "https://a.example/x", ("ev-launch",))
     assert date_is_cited(event, {"ev-launch": "released on JANUARY 30, 2024"})
     assert not date_is_cited(event, {"ev-launch": "released in 2024"})
+    # A wire-service URL path states the date even when the excerpt says "1 month ago".
+    wire = {"ev-launch": "https://www.globenewswire.com/news-release/2024/01/30/123/0/en/x.html"}
+    assert date_is_cited(event, {"ev-launch": "announced 1 month ago"}, wire)
+    assert not date_is_cited(event, {"ev-launch": "announced 1 month ago"},
+                             {"ev-launch": "https://example.com/2024/02/01/x"})
+    month_only = NewsEvent("2024-01", "h", "feature", "w", "https://a.example/x", ("ev-launch",))
+    assert not date_is_cited(month_only, {"ev-launch": "announced 1 month ago"}, wire)
 
 
 def test_validate_news_record_shape():
@@ -228,3 +235,80 @@ def test_first_party_copy_of_wire_release_matches_via_shared_evidence():
     stranger = _lead(source_url="https://example.org/lead", evidence_ids=["ev-about"])
     miss = score_news(_payload([stranger], [_launch()]), RECORD, DOSSIER)
     assert miss.components["events"] == Decimal(".5")
+
+
+def test_ground_news_payload_drops_uncited_dates_and_declares_empty_collections():
+    from scripts.company_enrichment.news_evaluator import ground_news_payload
+    payload = _payload(
+        news=[_lead(), _lead(date="2024-04-12", headline="Shifted date")],
+        launches=[{
+            "date": "2026-01-30", "headline": "Year-shifted launch", "event_type": "feature",
+            "why_it_matters": "w", "source_url": "https://agencyanalytics.com/blog/smart-reports",
+            "evidence_ids": ["ev-launch"],
+        }],
+        unknowns=[],
+    )
+    grounded, report = ground_news_payload(payload, DOSSIER)
+    # "Apr 11, 2024" is stated by ev-lead; the tolerance-shifted 2024-04-12 is not.
+    assert [item["headline"] for item in grounded["news"]] == ["Expanded leadership team"]
+    assert grounded["launches"] == [] and grounded["unknowns"] == ["launches"]
+    assert report == {"dropped": [
+        {"collection": "news", "date": "2024-04-12", "headline": "Shifted date",
+         "reason": "uncited_date"},
+        {"collection": "launches", "date": "2026-01-30", "headline": "Year-shifted launch",
+         "reason": "uncited_date"},
+    ]}
+    assert score_news(grounded, RECORD, DOSSIER).hard_failures == ()
+
+
+def test_ground_news_payload_leaves_contract_violations_to_the_evaluator():
+    from scripts.company_enrichment.news_evaluator import ground_news_payload
+    broken = {"news": "nope", "launches": []}
+    grounded, report = ground_news_payload(broken, DOSSIER)
+    assert grounded == broken and "error" in report
+
+
+def test_ground_news_payload_drops_evergreen_pages_and_duplicates():
+    from scripts.company_enrichment.news_evaluator import (
+        ground_news_payload, is_evergreen_url, is_search_result_url,
+    )
+    assert is_evergreen_url("https://agencyanalytics.com/features/embeddable-content")
+    assert is_evergreen_url("https://help.agencyanalytics.com/en/articles/9672045-widgets")
+    assert is_evergreen_url("https://docs.bigpanda.io/en/2024-release-notes")
+    assert not is_evergreen_url("https://updates.agencyanalytics.com/linkedin-followers")
+    assert not is_evergreen_url("https://www.bigpanda.io/press-release/partnership/")
+    assert not is_evergreen_url("https://example.com/research/report")
+    assert is_search_result_url("https://www.google.com/search?q=x") and not is_search_result_url(
+        "https://blog.example/search-tools"
+    )
+    dossier = CompanyDossier("saas-01", "1.0", DOSSIER.assertions, (
+        *DOSSIER.evidence,
+        _ref("feature", "Detected date: Dec 14, 2025 Title: Embed Custom Content",
+             "https://agencyanalytics.com/features/embeddable-content"),
+        _ref("serp", "Date: Dec 14, 2025 Snippet: Embed Custom Content",
+             "https://www.google.com/search?q=agencyanalytics+launches"),
+    ))
+    launch = {
+        "date": "2024-01-30", "headline": "Released Smart Reports", "event_type": "feature",
+        "why_it_matters": "w", "source_url": "https://agencyanalytics.com/blog/smart-reports",
+        "evidence_ids": ["ev-launch"],
+    }
+    payload = _payload(
+        news=[_lead(), {**_lead(), "headline": "Same leadership event again",
+                        "evidence_ids": ["ev-lead"]}],
+        launches=[
+            {**launch, "date": "2025-12-14", "headline": "Embeddable content",
+             "evidence_ids": ["ev-feature", "ev-serp"]},
+            launch,
+            {**launch, "headline": "Smart Reports repeated as a launch"},
+        ],
+        unknowns=[],
+    )
+    grounded, report = ground_news_payload(payload, dossier)
+    assert [item["headline"] for item in grounded["news"]] == ["Expanded leadership team"]
+    assert [item["headline"] for item in grounded["launches"]] == ["Released Smart Reports"]
+    assert [(item["headline"], item["reason"]) for item in report["dropped"]] == [
+        ("Same leadership event again", "duplicate_event"),
+        ("Embeddable content", "evergreen_page"),
+        ("Smart Reports repeated as a launch", "duplicate_event"),
+    ]

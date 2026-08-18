@@ -191,3 +191,110 @@ def test_dataset_loader_accepts_competitor_records(tmp_path: Path):
         load_signal_dataset(other, load_dossiers(other, COMPETITOR_ENRICHMENT_ID),
                             enrichment_id=COMPETITOR_ENRICHMENT_ID, weights=COMPETITOR_WEIGHTS,
                             validate_record=validate_competitor_record)
+
+
+def test_ground_competitor_payload_repairs_citations_and_drops_ungrounded():
+    from scripts.company_enrichment.competitor_evaluator import ground_competitor_payload
+    payload = _payload(
+        [
+            # cited the wrong item; the name lives in ev-own -> citation repaired
+            # (its guessed domain is not stated there either -> nulled)
+            _competitor("DashThis", ["ev-noise"], domain="dashthis.com"),
+            # domain not stated by the cited Evidence -> nulled, entry kept
+            _competitor("Swydo", ["ev-alts"], domain="swydo.com"),
+            # domain equal to the subject's -> nulled rather than self_competitor
+            _competitor("TapClicks", ["ev-alts", "ev-noise"], domain="agencyanalytics.com"),
+            # the subject itself -> dropped
+            _competitor("AgencyAnalytics", ["ev-own"]),
+            # mentioned nowhere -> dropped as hallucinated
+            _competitor("Databox", ["ev-alts"], domain="databox.com"),
+        ],
+        [_competitor("Looker Studio", ["ev-thread"])],
+    )
+    grounded, report = ground_competitor_payload(payload, DOSSIER)
+    named = grounded["competitors"]["named"]
+    assert [item["name"] for item in named] == ["DashThis", "Swydo", "TapClicks"]
+    assert named[0]["evidence_ids"] == ["ev-own"] and named[0]["domain"] is None
+    assert named[1]["domain"] is None
+    assert named[2] == {
+        "name": "TapClicks", "domain": None, "relationship": "direct", "why": "compared",
+        "evidence_ids": ["ev-alts"],
+    }
+    assert grounded["competitors"]["inferred"][0]["evidence_ids"] == ["ev-thread"]
+    assert grounded["unknowns"] == []
+    assert report == {
+        "dropped": [
+            {"bucket": "named", "name": "AgencyAnalytics", "reason": "self_competitor"},
+            {"bucket": "named", "name": "Databox", "reason": "hallucinated_competitor"},
+        ],
+        "repaired": 1, "domains_nulled": 3, "relabeled": 0,
+    }
+    case = score_competitors(grounded, RECORD, DOSSIER)
+    assert case.hard_failures == ()
+    assert case.components["citation"] == 1
+
+
+def test_ground_competitor_payload_declares_unknown_when_everything_drops():
+    from scripts.company_enrichment.competitor_evaluator import ground_competitor_payload
+    grounded, report = ground_competitor_payload(
+        _payload([_competitor("Databox", ["ev-alts"])]), DOSSIER,
+    )
+    assert grounded == {
+        "competitors": {"named": [], "inferred": [], "conflicts": []},
+        "unknowns": ["competitors"],
+    }
+    assert report["dropped"][0]["reason"] == "hallucinated_competitor"
+
+
+def test_ground_competitor_payload_leaves_contract_violations_to_the_evaluator():
+    from scripts.company_enrichment.competitor_evaluator import ground_competitor_payload
+    broken = {"competitors": {"named": []}}
+    grounded, report = ground_competitor_payload(broken, DOSSIER)
+    assert grounded == broken and "error" in report
+
+
+def test_ground_competitor_payload_assigns_buckets_from_the_evidence():
+    from scripts.company_enrichment.competitor_evaluator import (
+        explicit_comparison, ground_competitor_payload, subject_terms,
+    )
+    subject = subject_terms("AgencyAnalytics", "agencyanalytics.com")
+    assert subject == ("agencyanalytics",)
+    assert subject_terms("aPriori Technologies", "apriori.com") == (
+        "aprioritechnologies", "apriori",
+    )
+    assert subject_terms("Team Aligned Inc.", "alignedup.com") == ("teamaligned", "alignedup")
+    assert explicit_comparison("Top AgencyAnalytics alternatives", subject)
+    assert explicit_comparison("agency analytics vs dashthis", subject)
+    assert explicit_comparison("aPriori's top competitors include Simile", subject_terms(
+        "aPriori Technologies", "apriori.com",
+    ))
+    assert not explicit_comparison("Best marketing analytics tools", subject)
+    assert not explicit_comparison("AgencyAnalytics pricing", subject)
+    # the model demoted an explicit alternative and promoted a thread mention:
+    # the Evidence, not the model, decides the bucket
+    payload = _payload(
+        [_competitor("Looker Studio", ["ev-thread"])],
+        [_competitor("Swydo", ["ev-alts"]), _competitor("DashThis", ["ev-own"])],
+    )
+    grounded, report = ground_competitor_payload(payload, DOSSIER)
+    assert [item["name"] for item in grounded["competitors"]["named"]] == ["Swydo", "DashThis"]
+    assert [item["name"] for item in grounded["competitors"]["inferred"]] == ["Looker Studio"]
+    assert report["relabeled"] == 3
+    assert score_competitors(grounded, RECORD, DOSSIER).components["labeling"] == 1
+
+
+def test_ground_truth_matches_vendor_prefixed_product_names():
+    from scripts.company_enrichment.competitor_evaluator import GroundTruthCompetitor
+    from scripts.company_enrichment.competitor_contracts import Competitor
+    informatica = GroundTruthCompetitor(
+        {"name": "Informatica", "aliases": [], "domain": None}, "named", 0,
+    )
+    zip_gt = GroundTruthCompetitor({"name": "Zip", "aliases": [], "domain": None}, "named", 1)
+
+    def comp(name):
+        return Competitor(name, None, "direct", "w", ("ev-own",))
+
+    assert informatica.matches(comp("Informatica Intelligent Data Management Cloud (IDMC)"))
+    assert not informatica.matches(comp("Info"))
+    assert not zip_gt.matches(comp("Zapier"))
+    assert not zip_gt.matches(comp("Zip Intake-to-Procure"))

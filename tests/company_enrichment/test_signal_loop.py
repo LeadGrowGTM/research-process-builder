@@ -278,3 +278,71 @@ def test_collect_without_stage_or_dropped_base_evidence_fails(repo: Path, capsys
         repo_root=repo,
     ) == 2
     assert "dropped base Evidence" in json.loads(capsys.readouterr().out)["message"]
+
+
+def test_postprocess_grounds_output_and_keeps_the_model_payload(repo: Path):
+    def ground(payload, dossier):
+        assert dossier.company_id.startswith("saas-")
+        grounded = {"ads": {"google": {**payload["ads"]["google"], "status": "grounded"}},
+                    "unknowns": []}
+        return grounded, {"dropped": [], "note": "touched"}
+
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "lineage-pp"
+    run_loop(make_spec(postprocess=ground), repo_root=repo, run_root=run_root,
+             model_client=FakeModelClient(), resume=False)
+
+    artifact = json.loads((run_root / "outputs/dev/baseline/saas-01.json").read_text(encoding="utf-8"))
+    assert artifact["model_output"]["ads"]["google"]["status"] == "active"
+    assert artifact["output"]["ads"]["google"]["status"] == "grounded"
+    assert artifact["postprocess"] == {"dropped": [], "note": "touched"}
+    # scoring sees the grounded payload, not the raw model payload
+    dev = json.loads((run_root / "scores/dev/baseline.json").read_text(encoding="utf-8"))
+    assert dev["hard_failures"] == [f"{cid}:status_mismatch" for cid in DEVELOPMENT_IDS]
+    with pytest.raises(ValueError, match="postprocess must be callable"):
+        make_spec(postprocess="nope")
+
+
+def test_extra_prompt_candidates_are_evaluated_and_the_best_wins(repo: Path):
+    prompts = repo / "prompts/company-enrichment/candidates"
+    prompts.mkdir(parents=True)
+    (prompts / "v2-tighter.md").write_text("Tighter prompt.\n", encoding="utf-8")
+
+    class ScoreByPrompt(FakeModelClient):
+        def execute(self, requests, track):
+            self.status = "active" if "Tighter" in requests[0].prompt_text else "inactive"
+            return super().execute(requests, track)
+
+    client = ScoreByPrompt()
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "lineage-cands"
+    result = run_loop(
+        make_spec(candidate_paths=(Path("prompts/company-enrichment/candidates/v2-tighter.md"),)),
+        repo_root=repo, run_root=run_root, model_client=client, resume=False,
+    )
+
+    candidates = json.loads((run_root / "candidates.json").read_text(encoding="utf-8"))
+    assert [item["candidate_id"] for item in candidates["candidates"]] == ["baseline", "v2-tighter"]
+    assert result["winner"]["candidate_id"] == "v2-tighter"
+    assert (run_root / "scores/dev/v2-tighter.json").exists()
+    assert (run_root / "scores/holdout/v2-tighter.json").exists()
+    assert not (run_root / "scores/holdout/baseline.json").exists()
+    assert set(json.loads((run_root / "cost.json").read_text(encoding="utf-8"))["reservations"]) == {
+        "dev-0-baseline", "dev-1-v2-tighter", "holdout-v2-tighter",
+    }
+
+
+def test_candidate_flag_adds_prompt_files(repo: Path, capsys):
+    prompts = repo / "prompts/company-enrichment/candidates"
+    prompts.mkdir(parents=True)
+    (prompts / "v2.md").write_text("Alt prompt.\n", encoding="utf-8")
+    code = signal_loop.main(make_spec(), [
+        "--evaluate", "--lineage", "dry-cands", "--dry-run",
+        "--candidate", "prompts/company-enrichment/candidates/v2.md",
+    ], repo_root=repo, model_client_factory=lambda **_: pytest.fail("no client"))
+    assert code == 0
+    plan = json.loads(capsys.readouterr().out)
+    assert len(plan["candidate_prompt_hashes"]) == 2
+    with pytest.raises(ValueError, match="duplicate prompt candidate id"):
+        signal_loop.prompt_candidates(make_spec(candidate_paths=(
+            Path("prompts/company-enrichment/candidates/v2.md"),
+            Path("prompts/company-enrichment/other/v2.md"),
+        )), repo)

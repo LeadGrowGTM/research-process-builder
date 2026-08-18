@@ -13,7 +13,9 @@ Scoring (weights must equal ``COMPETITOR_WEIGHTS``):
 
 - ``named_set`` 0.50: F1 of the payload's ``named`` entries against ground-truth
   ``named`` entries; two entries match when their normalized names agree
-  (case/punctuation-insensitive, aliases included) or their domains agree.
+  (case/punctuation-insensitive, aliases included), when one normalized name
+  is a prefix of the other and the shorter is at least five characters
+  ("Informatica IDMC" against "Informatica"), or their domains agree.
 - ``citation`` 0.30: fraction of payload entries (both buckets) whose cited
   excerpts contain the competitor's name or domain.
 - ``labeling`` 0.20: fraction of payload entries that match any ground-truth
@@ -26,6 +28,14 @@ fire for ``hallucinated_competitor`` (name and domain absent from every cited
 excerpt) and ``self_competitor`` (the subject company listed as its own
 competitor; the subject is the dossier's ``identity`` assertion and the
 registrable domain of its first base Evidence URL).
+
+``ground_competitor_payload`` is the deterministic output-hygiene step the loop
+runs on the model payload before scoring or shipping: each entry's citations
+are narrowed to the Evidence that actually mentions the competitor (repaired
+from the whole dossier when the model cited the wrong item), a domain the cited
+Evidence does not state is nulled, and an entry that no Evidence mentions, or
+that names the subject itself, is dropped. Grounding is code, not model
+judgment.
 """
 
 from __future__ import annotations
@@ -46,6 +56,7 @@ COMPETITOR_ENRICHMENT_ID = "competitor-intelligence"
 COMPETITOR_WEIGHTS = {
     "named_set": Decimal(".50"), "citation": Decimal(".30"), "labeling": Decimal(".20"),
 }
+_PREFIX_MATCH_MIN = 5
 
 
 class GroundTruthCompetitor:
@@ -70,6 +81,15 @@ class GroundTruthCompetitor:
 
     def matches(self, competitor: Competitor) -> bool:
         if competitor.key in self.keys:
+            return True
+        # A product name that begins with the vendor name (or the reverse),
+        # for example "Informatica IDMC" against "Informatica"; short keys are
+        # excluded so "Zip" never claims "Zapier".
+        if any(
+            len(min(key, competitor.key, key=len)) >= _PREFIX_MATCH_MIN
+            and (competitor.key.startswith(key) or key.startswith(competitor.key))
+            for key in self.keys
+        ):
             return True
         return bool(self.domain and competitor.domain and competitor.domain == self.domain)
 
@@ -106,12 +126,113 @@ def subject_identity(dossier: CompanyDossier) -> tuple[str | None, str | None]:
 
 def entry_is_cited(competitor: Competitor, excerpts: Mapping[str, str]) -> bool:
     cited = " ".join(excerpts.get(evidence_id, "") for evidence_id in competitor.evidence_ids)
-    lowered = cited.lower()
+    return _mentions(competitor, cited)
+
+
+def _mentions(competitor: Competitor, text: str) -> bool:
+    lowered = text.lower()
     if competitor.name.lower() in lowered:
         return True
-    if competitor.key and competitor.key in normalize_name(cited):
+    if competitor.key and competitor.key in normalize_name(text):
         return True
     return bool(competitor.domain and competitor.domain in lowered)
+
+
+_COMPARISON_MARKERS = ("alternative", "competitor", "compar", " vs ", " vs.", " versus ")
+
+
+def subject_terms(subject_name: str | None, subject_domain: str | None) -> tuple[str, ...]:
+    """Normalized forms that count as naming the subject: the identity
+    assertion, its suffix-free key, and the registrable domain label
+    ("aPriori Technologies" at apriori.com -> aprioritechnologies, apriori)."""
+    terms: list[str] = []
+    if subject_name:
+        terms.append(normalize_name(subject_name))
+        first = subject_name.split()[0]
+        if len(subject_name.split()) > 1 and len(first) >= 6:
+            terms.append(normalize_name(first))
+    if subject_domain:
+        terms.append(normalize_name(subject_domain.split(".")[0]))
+    return tuple(dict.fromkeys(term for term in terms if len(term) >= 4))
+
+
+def explicit_comparison(text: str, subject: tuple[str, ...]) -> bool:
+    """True when ``text`` explicitly positions companies against the subject: it
+    names the subject (any of ``subject_terms``) and talks about alternatives,
+    competitors, or comparison. This is the ground-truth authoring rule for the
+    ``named`` bucket."""
+    lowered = text.lower()
+    names_subject = bool(subject) and any(term in normalize_name(text) for term in subject)
+    return names_subject and any(marker in lowered for marker in _COMPARISON_MARKERS)
+
+
+def ground_competitor_payload(
+    payload: Mapping[str, Any], dossier: CompanyDossier,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Ground every competitor entry in the dossier's Evidence.
+
+    Each entry's bucket is decided by the Evidence, not the model: ``named``
+    when any cited excerpt that mentions the competitor also explicitly
+    compares it with the subject (``explicit_comparison``), otherwise
+    ``inferred``. Returns the grounded payload and a report (``dropped``,
+    ``repaired``, ``domains_nulled``, ``relabeled``). A payload that violates
+    the contract is returned unchanged with ``report["error"]`` so the
+    evaluator records the failure.
+    """
+    retained = {item.evidence_id for item in dossier.evidence}
+    try:
+        output = parse_competitors_output(payload, retained)
+    except ValueError as error:
+        return dict(payload), {"dropped": [], "error": str(error)[:200]}
+    excerpts = {item.evidence_id: item.excerpt for item in dossier.evidence}
+    urls = {item.evidence_id: item.url for item in dossier.evidence}
+    subject_name, subject_domain = subject_identity(dossier)
+    subject_key = normalize_name(subject_name) if subject_name else None
+    subject = subject_terms(subject_name, subject_domain)
+    buckets: dict[str, list[dict[str, Any]]] = {bucket: [] for bucket in BUCKETS}
+    dropped: list[dict[str, str]] = []
+    repaired = 0
+    domains_nulled = 0
+    relabeled = 0
+    for model_bucket in BUCKETS:
+        for competitor in getattr(output, model_bucket):
+            if subject_key and competitor.key == subject_key:
+                dropped.append({"bucket": model_bucket, "name": competitor.name,
+                                "reason": "self_competitor"})
+                continue
+            cited = [evidence_id for evidence_id in competitor.evidence_ids
+                     if _mentions(competitor, excerpts.get(evidence_id, ""))]
+            if not cited:
+                cited = [evidence_id for evidence_id, text in excerpts.items()
+                         if _mentions(competitor, text)]
+                repaired += bool(cited)
+            if not cited:
+                dropped.append({"bucket": model_bucket, "name": competitor.name,
+                                "reason": "hallucinated_competitor"})
+                continue
+            bucket = "named" if any(
+                explicit_comparison(excerpts[evidence_id], subject)
+                for evidence_id in cited
+            ) else "inferred"
+            relabeled += bucket != model_bucket
+            domain = competitor.domain
+            if domain is not None:
+                stated = " ".join(
+                    f"{excerpts[evidence_id]} {urls[evidence_id]}" for evidence_id in cited
+                ).lower()
+                if domain not in stated or domain == subject_domain:
+                    domain = None
+                    domains_nulled += 1
+            buckets[bucket].append({
+                "name": competitor.name, "domain": domain,
+                "relationship": competitor.relationship, "why": competitor.why,
+                "evidence_ids": cited,
+            })
+    conflicts = list(payload["competitors"].get("conflicts") or [])
+    grounded: dict[str, Any] = {"competitors": {**buckets, "conflicts": conflicts}}
+    grounded["unknowns"] = [] if any(buckets.values()) else list(COMPETITOR_FIELDS)
+    return grounded, {"dropped": dropped, "repaired": repaired,
+                      "domains_nulled": domains_nulled, "relabeled": relabeled}
 
 
 def _ratio(numerator: int, denominator: int) -> Decimal:

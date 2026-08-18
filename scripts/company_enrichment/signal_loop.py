@@ -18,7 +18,7 @@ with the same layout as the ICP loop: ``outputs/{split}/{candidate}/{company}.js
 from __future__ import annotations
 
 import argparse
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from decimal import Decimal
 from hashlib import sha256
 import json
@@ -82,6 +82,9 @@ class CollectRequest:
 
 ScoreFn = Callable[[Mapping[str, Any], SignalGroundTruthRecord, CompanyDossier], CaseScore]
 CollectFn = Callable[[CollectRequest], CompanyDossier]
+# Deterministic output hygiene applied to the model payload before it is
+# written, scored, or shipped: returns (grounded_payload, report).
+PostprocessFn = Callable[[Mapping[str, Any], CompanyDossier], tuple[dict[str, Any], dict[str, Any]]]
 
 
 @dataclass(frozen=True)
@@ -98,6 +101,10 @@ class SignalSpec:
     weights: Mapping[str, Decimal]
     collect: CollectFn | None = None
     candidate_id: str = field(default="baseline")
+    postprocess: PostprocessFn | None = None
+    # Extra prompt files evaluated as candidates alongside ``prompt_path``;
+    # each candidate is identified by its file stem.
+    candidate_paths: tuple[Path, ...] = ()
 
     def __post_init__(self) -> None:
         expected = P0_ENRICHMENTS.get(self.enrichment_id)
@@ -115,6 +122,12 @@ class SignalSpec:
                 raise ValueError(f"{name} must be callable")
         if self.collect is not None and not callable(self.collect):
             raise ValueError("collect must be callable or None")
+        if self.postprocess is not None and not callable(self.postprocess):
+            raise ValueError("postprocess must be callable or None")
+        candidate_paths = tuple(Path(item) for item in self.candidate_paths)
+        if any(item.is_absolute() for item in candidate_paths):
+            raise ValueError("candidate_paths must be repo-relative")
+        object.__setattr__(self, "candidate_paths", candidate_paths)
         object.__setattr__(self, "weights", validate_weights(self.weights))
         if not isinstance(self.candidate_id, str) or not self.candidate_id.strip():
             raise ValueError("candidate_id must be non-empty text")
@@ -145,10 +158,21 @@ def _primitive(value: Any) -> Any:
 
 
 def prompt_candidates(spec: SignalSpec, repo_root: Path) -> tuple[PromptCandidate, ...]:
-    text = (repo_root / spec.prompt_path).read_text(encoding="utf-8").strip()
-    return (PromptCandidate(
-        spec.candidate_id, text, sha256(text.encode("utf-8")).hexdigest(),
-    ),)
+    """The baseline prompt plus every ``candidate_paths`` file, keyed by stem."""
+    candidates: list[PromptCandidate] = []
+    seen: set[str] = set()
+    for candidate_id, path in (
+        (spec.candidate_id, spec.prompt_path),
+        *((item.stem, item) for item in spec.candidate_paths),
+    ):
+        if candidate_id in seen or not _LINEAGE.match(candidate_id):
+            raise ValueError(f"invalid or duplicate prompt candidate id: {candidate_id}")
+        seen.add(candidate_id)
+        text = (repo_root / path).read_text(encoding="utf-8").strip()
+        candidates.append(PromptCandidate(
+            candidate_id, text, sha256(text.encode("utf-8")).hexdigest(),
+        ))
+    return tuple(candidates)
 
 
 def load_signal_dossiers(spec: SignalSpec, repo_root: Path) -> dict[str, CompanyDossier]:
@@ -276,17 +300,24 @@ def _run_attempt(
                 })
                 continue
             executions.append(execution)
-            _atomic_json(output_dir / f"{execution.company_id}.json", {
+            payload = _payload_from_execution(execution)
+            artifact = {
                 "company_id": execution.company_id,
                 "input_hash": input_hash(execution.company_id),
                 "latency_ms": execution.latency_ms,
                 "model_cost_usd": execution.actual_cost_usd,
-                "output": _payload_from_execution(execution),
+                "output": payload,
                 "requested_model": MODEL_ID,
                 "resolved_model": execution.resolved_model_id,
                 "source_cache_reused": True,
                 "source_purchases": 0,
-            })
+            }
+            if spec.postprocess is not None:
+                grounded, report = spec.postprocess(payload, dossiers[execution.company_id])
+                artifact.update({
+                    "model_output": payload, "output": grounded, "postprocess": report,
+                })
+            _atomic_json(output_dir / f"{execution.company_id}.json", artifact)
         actual = sum((Decimal(item.actual_cost_usd) for item in executions), Decimal("0"))
         _reconcile_cost(cost_path, attempt_id, estimate if invalid_ids else actual)
         return tuple(Evidence(
@@ -505,11 +536,21 @@ def main(
                         help="restrict --collect to these company IDs (repeatable)")
     parser.add_argument("--overwrite", action="store_true",
                         help="let --collect replace an existing signal dossier")
+    parser.add_argument("--candidate", action="append", default=None,
+                        help="repo-relative prompt file evaluated as an extra candidate "
+                             "(repeatable; the candidate id is the file stem)")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--allow-paid", action="store_true")
     parser.add_argument("--resume", action="store_true")
     args = parser.parse_args(argv)
     root = Path(repo_root or Path(__file__).resolve().parents[2])
+    if args.candidate:
+        try:
+            spec = replace(spec, candidate_paths=(
+                *spec.candidate_paths, *(Path(item) for item in args.candidate),
+            ))
+        except ValueError as error:
+            parser.error(str(error))
 
     if args.collect:
         try:

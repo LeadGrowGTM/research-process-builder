@@ -163,3 +163,37 @@ def test_field_keyed_contract_raises_output_token_cap(tmp_path: Path):
     assert OpenAIModelClient._max_output_tokens("gpt-4.1-mini", field_keyed) == 4096
     # ICP and legacy requests keep the historical default
     assert OpenAIModelClient._max_output_tokens("gpt-4.1-mini") == 1024
+
+
+def test_field_keyed_requests_pin_temperature_on_sampling_models(tmp_path: Path):
+    from dataclasses import replace
+    from scripts.company_enrichment.openai_model_client import OpenAIModelClient
+    client = OpenAIModelClient(artifact_root=tmp_path, sdk_client=SimpleNamespace())
+    field_keyed = _request("news-product-launches")
+    assert client._body(field_keyed)["temperature"] == 0
+    # Reasoning models reject temperature; the field-keyed path leaves it out.
+    nano = replace(field_keyed, requested_model_id="gpt-5-nano")
+    assert "temperature" not in client._body(nano)
+    # ICP/persona and legacy flat requests keep their historical bodies.
+    icp = replace(field_keyed, enrichment_id="icp-persona-analysis")
+    assert "temperature" not in client._body(icp)
+    legacy = replace(field_keyed, output_contract=None)
+    assert "temperature" not in client._body(legacy)
+
+
+def test_field_keyed_prompt_names_the_subject_company(tmp_path: Path):
+    from dataclasses import replace
+    from scripts.company_enrichment.contracts import FieldAssertion
+    from scripts.company_enrichment.openai_model_client import OpenAIModelClient
+    field_keyed = _request("news-product-launches")
+    # no identity assertion in the fixture dossier: the host alone names the subject
+    assert "Company ID: saas-01" + chr(10) + "Subject company: example.test" + chr(10) in OpenAIModelClient._prompt(field_keyed)
+    dossier = _dossier()
+    named = replace(field_keyed, dossier=CompanyDossier(
+        dossier.company_id, dossier.schema_version,
+        (FieldAssertion("identity", "Example Inc", ("ev-base",), 0.9, Visibility.MESSAGE_SAFE),),
+        dossier.evidence,
+    ))
+    assert "Subject company: Example Inc (example.test)" + chr(10) in OpenAIModelClient._prompt(named)
+    icp = replace(field_keyed, enrichment_id="icp-persona-analysis")
+    assert "Subject company" not in OpenAIModelClient._prompt(icp)

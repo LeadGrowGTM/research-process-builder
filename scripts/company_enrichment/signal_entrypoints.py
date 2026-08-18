@@ -30,14 +30,14 @@ from .adapters.parallel import build_parallel_search
 from .adapters.serper import build_serper_search
 from .competitor_contracts import competitors_output_contract, normalize_name
 from .competitor_evaluator import (
-    COMPETITOR_ENRICHMENT_ID, COMPETITOR_WEIGHTS, score_competitors,
-    validate_competitor_record,
+    COMPETITOR_ENRICHMENT_ID, COMPETITOR_WEIGHTS, ground_competitor_payload,
+    score_competitors, validate_competitor_record,
 )
 from .contracts import CompanyDossier, canonical_json
 from .news_contracts import news_output_contract
 from .news_evaluator import (
-    DEFAULT_RECENT_WINDOW_DAYS, NEWS_ENRICHMENT_ID, NEWS_WEIGHTS, score_news,
-    validate_news_record,
+    DEFAULT_RECENT_WINDOW_DAYS, NEWS_ENRICHMENT_ID, NEWS_WEIGHTS, ground_news_payload,
+    score_news, validate_news_record,
 )
 from .signal_collection import (
     DATE_PATTERN, FallbackSearch, QueryTemplate, SearchPlan, bind_collect, company_facts,
@@ -115,6 +115,7 @@ def build_news_spec() -> SignalSpec:
         output_contract=news_output_contract,
         load_ground_truth=dataset_loader(NEWS_ENRICHMENT_ID, NEWS_WEIGHTS, validate_news_record),
         score=score_news,
+        postprocess=ground_news_payload,
         prompt_path=Path("prompts/company-enrichment") / f"{NEWS_ENRICHMENT_ID}.md",
         weights=NEWS_WEIGHTS,
         collect=bind_collect(
@@ -134,6 +135,7 @@ def build_competitor_spec() -> SignalSpec:
             COMPETITOR_ENRICHMENT_ID, COMPETITOR_WEIGHTS, validate_competitor_record,
         ),
         score=score_competitors,
+        postprocess=ground_competitor_payload,
         prompt_path=Path("prompts/company-enrichment") / f"{COMPETITOR_ENRICHMENT_ID}.md",
         weights=COMPETITOR_WEIGHTS,
         collect=bind_collect(

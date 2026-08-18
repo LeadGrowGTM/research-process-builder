@@ -28,8 +28,14 @@ Scoring (weights must equal ``NEWS_WEIGHTS``):
 
 When ground truth has zero events the case is all-or-nothing: 1.0 when the
 payload has zero events and declares both collections unknown, otherwise 0
-with the hard failure ``invented_event``. Any event whose date text does not
-appear in the excerpts it cites is the hard failure ``uncited_date``.
+with the hard failure ``invented_event``. Any event whose date is neither written
+in the excerpts it cites nor carried in a cited Evidence URL path
+(``/2026/07/01/``) is the hard failure ``uncited_date``.
+
+``ground_news_payload`` is the deterministic output-hygiene step the loop runs
+on the model payload before scoring or shipping: an event whose date is not
+stated by its cited Evidence is dropped (never emitted), and a collection that
+empties is declared unknown. Grounding is code, not model judgment.
 """
 
 from __future__ import annotations
@@ -164,9 +170,114 @@ def date_variants(value: str) -> tuple[str, ...]:
     return tuple(dict.fromkeys(variants))
 
 
-def date_is_cited(event: NewsEvent, excerpts: Mapping[str, str]) -> bool:
+def url_date_variants(value: str) -> tuple[str, ...]:
+    """Path forms of a date as wire services and newsrooms publish them
+    (``/2026/07/01/``, ``/2026-07-01-``); month-only dates have no path form
+    precise enough to count."""
+    if len(value) != 10:
+        return ()
+    year, month, day = value[:4], value[5:7], value[8:10]
+    return (f"/{year}/{month}/{day}/", f"/{year}-{month}-{day}")
+
+
+def date_is_cited(
+    event: NewsEvent, excerpts: Mapping[str, str], urls: Mapping[str, str] | None = None,
+) -> bool:
+    """True when the event's date is stated by the Evidence it cites: written in
+    a cited excerpt, or carried in a cited Evidence URL path."""
     cited = " ".join(excerpts.get(evidence_id, "") for evidence_id in event.evidence_ids).lower()
-    return any(variant.lower() in cited for variant in date_variants(event.date))
+    if any(variant.lower() in cited for variant in date_variants(event.date)):
+        return True
+    if not urls:
+        return False
+    cited_urls = " ".join(urls.get(evidence_id, "") for evidence_id in event.evidence_ids).lower()
+    return any(variant in cited_urls for variant in url_date_variants(event.date))
+
+
+# Pages that describe a product or help a user rather than announce an event.
+# Their crawl date is never an event date, so an event supported only by such
+# pages (search-result pages do not count either way) is dropped.
+_EVERGREEN_HOSTS = ("help.", "docs.", "support.", "documentation.", "kb.")
+_EVERGREEN_PATHS = (
+    "/features/", "/feature/", "/solutions/", "/solution/", "/product/", "/products/",
+    "/platform/", "/pricing", "/help/", "/docs/", "/documentation/", "/support/",
+    "/en/articles/", "/author/", "/authors/", "/tag/", "/tags/", "/category/", "/search",
+)
+_SEARCH_RESULT_HOSTS = ("google.com", "bing.com", "duckduckgo.com")
+
+
+def _url_parts(url: str) -> tuple[str, str]:
+    from urllib.parse import urlparse
+
+    parsed = urlparse(url.strip().lower())
+    host = parsed.netloc.split("@")[-1].split(":")[0]
+    path = parsed.path or "/"
+    return host, path if path.endswith("/") else path + "/"
+
+
+def is_evergreen_url(url: str) -> bool:
+    host, path = _url_parts(url)
+    return host.startswith(_EVERGREEN_HOSTS) or any(
+        marker in path for marker in _EVERGREEN_PATHS
+    )
+
+
+def is_search_result_url(url: str) -> bool:
+    host, _ = _url_parts(url)
+    host = host[4:] if host.startswith("www.") else host
+    return host in _SEARCH_RESULT_HOSTS
+
+
+def evergreen_only(event: NewsEvent, urls: Mapping[str, str]) -> bool:
+    """True when every cited non-search Evidence URL is an evergreen page."""
+    cited = [urls.get(evidence_id, "") for evidence_id in event.evidence_ids]
+    substantive = [url for url in cited if url and not is_search_result_url(url)]
+    return bool(substantive) and all(is_evergreen_url(url) for url in substantive)
+
+
+def ground_news_payload(
+    payload: Mapping[str, Any], dossier: CompanyDossier,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Ground the model's events in the dossier's Evidence.
+
+    Drops an event whose date is not stated by its cited Evidence
+    (``uncited_date``), an event supported only by evergreen pages
+    (``evergreen_page``), and a repeat of an event already kept (same date and
+    a shared Evidence ID; ``duplicate_event``). A collection that empties is
+    declared unknown. Returns the grounded payload and a report of what was
+    dropped. A payload that violates the contract is returned unchanged with
+    ``report["error"]`` so the evaluator records the contract failure itself.
+    """
+    retained = {item.evidence_id for item in dossier.evidence}
+    try:
+        output = parse_news_output(payload, retained)
+    except ValueError as error:
+        return dict(payload), {"dropped": [], "error": str(error)[:200]}
+    excerpts = {item.evidence_id: item.excerpt for item in dossier.evidence}
+    urls = {item.evidence_id: item.url for item in dossier.evidence}
+    grounded: dict[str, Any] = {kind: [] for kind in NEWS_FIELDS}
+    dropped: list[dict[str, str]] = []
+    kept: list[NewsEvent] = []
+    for kind in NEWS_FIELDS:
+        for item, event in zip(payload[kind], getattr(output, kind)):
+            reason = None
+            if not date_is_cited(event, excerpts, urls):
+                reason = "uncited_date"
+            elif evergreen_only(event, urls):
+                reason = "evergreen_page"
+            elif any(prior.date == event.date and set(prior.evidence_ids) & set(event.evidence_ids)
+                     for prior in kept):
+                reason = "duplicate_event"
+            if reason is None:
+                grounded[kind].append(dict(item))
+                kept.append(event)
+            else:
+                dropped.append({"collection": kind, "date": event.date,
+                                "headline": event.headline, "reason": reason})
+    grounded["unknowns"] = list(dict.fromkeys([
+        *output.unknowns, *(kind for kind in NEWS_FIELDS if not grounded[kind]),
+    ]))
+    return grounded, {"dropped": dropped}
 
 
 def _match_events(
@@ -214,10 +325,11 @@ def score_news(
         return _case(record.company_id, zero, ("contract_violation",))
     truth, _, _ = _record_events(record)
     excerpts = {item.evidence_id: item.excerpt for item in dossier.evidence}
+    urls = {item.evidence_id: item.url for item in dossier.evidence}
     events = output.events
     failures: list[str] = []
     for kind, event in events:
-        if not date_is_cited(event, excerpts):
+        if not date_is_cited(event, excerpts, urls):
             failures.append("uncited_date")
             break
 
