@@ -1,0 +1,121 @@
+{
+  "collected_at": "2026-08-18T11:45:00.046247-04:00",
+  "company_id": "saas-10",
+  "enrichment_id": "competitor-intelligence",
+  "entries": [
+    {
+      "category": "construction finance platform",
+      "company_name": "Built",
+      "domain": "getbuilt.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 1,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "Built construction finance platform alternatives OR competitors OR \"vs\" OR \"compared to\"",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 4,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Built alternatives",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 1,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "Built vs",
+      "tbs": null
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://getbuilt.com/blog/construction-finance-management-software/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://mightybot.ai/blog/mightybot-powers-builts-draw-agent-to-transform-lending-with-industrys-first-autonomous-agentic-ai/",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://sourceforge.net/software/compare/Built-vs-Construction-Lending-For-Windows/: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://sourceforge.net/software/compare/Built-vs-Construction-Lending-For-Windows/"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://bloomberry.com/blog/5-builtwith-alternatives-for-technology-intelligence/",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.g2.com/products/built-built/competitors/alternatives: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.g2.com/products/built-built/competitors/alternatives"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.reddit.com/r/webdev/comments/33e6j8/free_alternatives_to_builtwithcom/",
+      "waterfall_level": 2
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://getbuilt.com/competitors: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://getbuilt.com/competitors"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://getbuilt.com/compare: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://getbuilt.com/compare"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://getbuilt.com/alternatives: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://getbuilt.com/alternatives"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 29,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.003",
+  "signal_evidence": 32
+}

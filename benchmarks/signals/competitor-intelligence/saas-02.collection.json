@@ -1,0 +1,121 @@
+{
+  "collected_at": "2026-08-18T11:43:15.756049-04:00",
+  "company_id": "saas-02",
+  "enrichment_id": "competitor-intelligence",
+  "entries": [
+    {
+      "category": "business process automation",
+      "company_name": "AgilePoint",
+      "domain": "agilepoint.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "AgilePoint business process automation alternatives OR competitors OR \"vs\" OR \"compared to\"",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "AgilePoint alternatives",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "AgilePoint vs",
+      "tbs": null
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.agilepoint.com/",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.gartner.com/reviews/market/business-process-automation-tools/vendor/agilepoint/alternatives?companySize=1: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.gartner.com/reviews/market/business-process-automation-tools/vendor/agilepoint/alternatives?companySize=1"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://6sense.com/tech/workflow-automation/agilepoint-vs-niceroboticprocessautomation: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://6sense.com/tech/workflow-automation/agilepoint-vs-niceroboticprocessautomation"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.gartner.com/reviews/market/business-process-management-platforms/vendor/agilepoint/alternatives: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.gartner.com/reviews/market/business-process-management-platforms/vendor/agilepoint/alternatives"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.g2.com/products/agilepoint-nx/competitors/alternatives: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.g2.com/products/agilepoint-nx/competitors/alternatives"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://tallyfy.com/agilepoint-alternative/",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agilepoint.com/competitors: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agilepoint.com/competitors"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agilepoint.com/compare: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agilepoint.com/compare"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agilepoint.com/alternatives: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agilepoint.com/alternatives"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 33,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.003",
+  "signal_evidence": 36
+}

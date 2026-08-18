@@ -1,0 +1,593 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: identity
+  value: Built
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: description
+  value: 'Solutions for Lenders | Built | Powering Smarter Construction Finance The
+    Future of Real Estate Finance Starts Here: Meet the AI Draw Agent blt-logo-web
+    _:last-child]:only:tw-hidden" role="presentation"> Solutions Lenders Origination
+    Pipeline Management OM Extraction Underwriting Draw & Budget Management AI Draw
+    Agent Draw Inspections Risk Mitigation Portfolio Reporting Owners & Developers
+    Origination Pipeline Management OM Extraction Budget Management Capital Requests
+    Invoice Management Complia'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: offers
+  value: construction finance platform
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: icp
+  value: lenders
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: personas
+  value: lenders
+  visibility: message_safe
+company_id: saas-10
+corrections: []
+evidence:
+- content_hash: ce4724cc20ef689e8d15b16485840e125fb4659ed0f1ff520d95ce813ca909c9
+  evidence_id: ev-ce4724cc20ef689e
+  excerpt: 'Solutions for Lenders | Built | Powering Smarter Construction Finance
+    The Future of Real Estate Finance Starts Here: Meet the AI Draw Agent blt-logo-web
+    _:last-child]:only:tw-hidden" role="presentation"> Solutions Lenders Origination
+    Pipeline Management OM Extraction Underwriting Draw & Budget Management AI Draw
+    Agent Draw Inspections Risk Mitigation Portfolio Reporting Owners & Developers
+    Origination Pipeline Management OM Extraction Budget Management Capital Requests
+    Invoice Management Compliance Tracking Lien Waiver Management Payments Portfolio
+    Reporting Builders Budget Management Compliance Tracking Invoice Management Lien
+    Waiver Management Payments Powered by AI Trained on $3T+ in real estate finance
+    data. Built''s AI automates workflows and surfaces risk in real time. Integrations
+    Built connects to Sage, Yardi, Procore and more. Inspections & Due Diligence AI-powered
+    draw inspections that catch issues before funds move. _:last-child]:only:tw-hidden"
+    role="presentation"> Products Construction Loan Administration AI Draw Agent Draw
+    Inspections Draws & Budget Management Risk Mitigation Deal Management Origination
+    Pipeline Management OM Extraction Underwriting Portfolio Reporting Construction
+    Financials Budget Management Invoice Management Lien Waiver Management Capital
+    Requests Compliance Tracking Payments Lien Waiver Management & Payments Create
+    Lien Waivers Send Lien Waivers Track Lien Waivers Payments Integrations Meet Built''s
+    New Draw Agent Learn how the AI Draw Agent enables 2–5× capacity gains, 100% policy
+    adherence, 2× more risks flagged, and up to 95% faster draw processing. Watch
+    Here _:last-child]:only:tw-hidden" role="presentation"> Customers _:last-child]:only:tw-hidden"
+    role="presentation"> Resources Learn News Resource Center Built University Free
+    Tools & Templates Connect About Us Contact Us Integrations Help Desk Careers Learn
+    Built & Move Faster Free courses and resources to help your team get more out
+    of Built. Explore University Login Support B'
+  retrieved_at: '2026-08-12T21:00:59.875500+00:00'
+  url: https://getbuilt.com/solutions/lenders/
+- content_hash: be44ff703241ffbea1cca3c0894b3e42188b368c4a4a6237294ffb2b5682e52d
+  evidence_id: ev-be44ff703241ffbe
+  excerpt: "Built Technologies Careers, Perks + Culture | Built In Companies Jobs\
+    \ Articles Can't find your company? Create a company profile. View All Jobs Join\
+    \ Log In For Employers Companies Built Technologies Teams Built Technologies Save\
+    \ Saved HQ Nashville Total Offices: 2 260 Total Employees 125 Product + Tech Employees\
+    \ Year Founded: 2014 View Website Overview Jobs 13 Offices More Info Working at\
+    \ Built Technologies Culture & Values Career Growth & Development Compensation\
+    \ & Benefits Work-Life Balance & Wellbeing Leadership & Management Stability &\
+    \ Growth Is This Your Company? Manage Jobs Fintech Real Estate Built Technologies\
+    \ was founded in 2014 out of firsthand frustration with the challenges and pitfalls\
+    \ often associated with construction lending and the belief that technology could\
+    \ transform the loan management process. Built’s collaborative software streamlines\
+    \ the collateral monitoring and draw management process – a process widely recognized\
+    \ as highly cumbersome, costly, and fraught with risk. By bringing the draw management\
+    \ process online, Built helps lenders reduce construction loan risk, increase\
+    \ loan profitability, transform the borrower experience, simplify compliance,\
+    \ and provide unprecedented portfolio insights.\r\n Recently Posted Jobs at Built\
+    \ Technologies View All Built Technologies Senior Innovation Engineer, Marketplace\
+    \ In-Office or Remote 2 Locations Built Technologies Staff Innovation Engineer,\
+    \ Marketplace In-Office or Remote 2 Locations Built Technologies Senior Engineering\
+    \ Manager, Data In-Office or Remote 2 Locations Built Technologies Product Designer\
+    \ II Remote USA Built Technologies Staff Software Engineer, Data Platform Remote\
+    \ USA Built Technologies Account Executive - OGC (Dallas Based, Remote) Remote\
+    \ USA Built Technologies Account Executive Remote USA Built Technologies Client\
+    \ Support Representative In-Office Nashville, TN, USA Built Technologies FP&A\
+    \ Analyst In-Office 2 Locations View all jobs Built Technologies Offices Hybrid\
+    \ Workspace Employees "
+  retrieved_at: '2026-08-12T21:01:00.217137+00:00'
+  url: https://builtin.com/company/built-technologies
+- content_hash: d109a2df75fb122ea2ed95b53c219be7567f899176c51800ca7cc65ae4c4cd5b
+  evidence_id: ev-d109a2df75fb122e
+  excerpt: 'Canapi Investing in the New Financial Services Economy Team Portfolio
+    Insights Careers Investor Login Built Powering smarter construction finance Series
+    B Series C Series D About Built is the leading provider of construction finance
+    technology. The platform unites commercial and consumer construction lenders,
+    commercial real estate owners, commercial general contractors, residential homebuilders,
+    specialty contractors, title companies, and vendors to improve the flow of capital
+    through the construction ecosystem – from lender to vendor. By connecting all
+    key stakeholders involved in the construction process in real-time, the platform
+    helps mitigate risk, power faster draws and payments, ensure compliance, and inspire
+    customer loyalty. Investment Highlights Year Founded 2014 Employees 250-500 HQ
+    Location Nashville Built Technologies Announces $125M Series D Financing Round
+    September 30, 2021 Built Technologies Introduces the Future of Construction Payments:
+    Built Pay December 14, 2021 Built Technologies Reached More Than $200B in Total
+    Construction Value Managed; Achieved $1.5B Valuation and Unicorn Status in 2021
+    February 7, 2022 Built Technologies Secures Investment From Citi April 13, 2023
+    Why Canapi is Doubling Down on Built’s Series C February 3, 2021 1 / 4'
+  retrieved_at: '2026-08-12T21:01:00.797661+00:00'
+  url: https://www.canapi.com/investment/built
+- content_hash: 5ecec11f62cf7c97e81e4f10dc8d8d6a03ca602b60429b12d7484902b93221fa
+  evidence_id: ev-5ecec11f62cf7c97
+  excerpt: 'Detected date: Jul 2, 2026
+
+    Title: Construction Financial Management Software for Owners
+
+    Date: Jul 2, 2026
+
+    Snippet: Specialized Finance Layer vs. Full ERP Replacement: How to Evaluate Your
+    Options. Accounting ERPs like Yardi and Sage Intacct are good at ...'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://getbuilt.com/blog/construction-finance-management-software/
+- content_hash: f85c154d147abbec126e7dd463b2c1edbc6ff11c9341e10b7faa81a104de1e1d
+  evidence_id: ev-f85c154d147abbec
+  excerpt: 'Detected date: Nov 4, 2025
+
+    Title: Built''s Autonomous Construction Lending Agent
+
+    Date: Nov 4, 2025
+
+    Snippet: 30-60% improvement in draw turn time from borrower request to funding;
+    400% more risks detected compared to human-led reviews; 100% policy ...'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://mightybot.ai/blog/mightybot-powers-builts-draw-agent-to-transform-lending-with-industrys-first-autonomous-agentic-ai/
+- content_hash: e2e404eb9754471df00dffd198f8661641829471ca95556aa197a1e9e3ef1ebf
+  evidence_id: ev-e2e404eb9754471d
+  excerpt: 'Title: Built vs. Construction Lending For Windows Comparison
+
+    Snippet: Compare Built vs. Construction Lending For Windows using this comparison
+    chart. Compare price, features, and reviews of the software side-by-side to make
+    ...'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://sourceforge.net/software/compare/Built-vs-Construction-Lending-For-Windows/
+- content_hash: 3da503ba73604aaca53a2d2cc74dece8c4215156404cdaac6eccbf9387681be0
+  evidence_id: ev-3da503ba73604aac
+  excerpt: 'Detected date: Jun 5, 2026
+
+    Title: Construction Platforms vs Spreadsheets: Why Companies'' ...
+
+    Snippet: Construction Platforms vs Spreadsheets: Why Companies'' Switch. UPDATED
+    Jun 5, 2026. Key Insights: Built for construction: Purpose-built platforms reflect
+    ...'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://cmicglobal.com/resources/article/the-benefits-of-a-purpose-built-platform-for-construction
+- content_hash: f27faf10059648ce2e8ce6f7270ca9593e0e1fb6f1c3521930500e0b06c4fd04
+  evidence_id: ev-f27faf10059648ce
+  excerpt: 'Detected date: Nov 4, 2025
+
+    Title: Built Launches Draw Agent to Approve Construction Loan ...
+
+    Date: Nov 4, 2025
+
+    Snippet: Up to 60% acceleration in draw turn time from borrower request to funding;
+    400% increase in risks detected vs. human-led reviews; 100 ...'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://www.businesswire.com/news/home/20251104739836/en/Built-Launches-Draw-Agent-to-Approve-Construction-Loan-Draws-in-Minutes
+- content_hash: b40ead1a59979decd741981d2b0a1194bdee06fd754cc6208c2d562a6eb7d01a
+  evidence_id: ev-b40ead1a59979dec
+  excerpt: 'Detected date: May 25, 2026
+
+    Title: Built: Pricing, Free Demo & Features
+
+    Date: May 25, 2026
+
+    Snippet: Built is a construction finance platform designed to streamline compliance
+    and payment processing ... Brightspace Vs. Blackboard · Trello Vs.'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://softwarefinder.com/construction/built
+- content_hash: 3c44e5ea24a8cf7c2a60ba3ce92ccda3499ea99e1ad773c8e8b523cd85801ba5
+  evidence_id: ev-3c44e5ea24a8cf7c
+  excerpt: 'Title: Construction Financial Management Software for Builders
+
+    Snippet: Connect estimating, job costing, invoicing, payments and more in one
+    platform built for established builders ... Buildertrend vs. Buildbook · Buildertrend
+    vs.'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://buildertrend.com/financial-tools/
+- content_hash: 3a767f77aaaefdb7407da842731429251cc1800582ad9a02e3eca010c28c005e
+  evidence_id: ev-3a767f77aaaefdb7
+  excerpt: 'Title: Built Technologies - Crunchbase Company Profile & Funding
+
+    Snippet: Alternatives and possible competitors to Built Technologies may include
+    Taktile , Oscilar , and BillingPlatform .'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://www.crunchbase.com/organization/built-technologies-inc
+- content_hash: a50fac69ca424ad9da5af27289454bb6a0310084ea1eb4d431e3c41e82386045
+  evidence_id: ev-a50fac69ca424ad9
+  excerpt: 'Query: Built construction finance platform alternatives OR competitors
+    OR "vs" OR "compared to"
+
+    1. https://getbuilt.com/blog/construction-finance-management-software/
+
+    Title: Construction Financial Management Software for Owners
+
+    Date: Jul 2, 2026
+
+    Snippet: Specialized Finance Layer vs. Full ERP Replacement: How to Evaluate Your
+    Options. Accounting ERPs like Yardi and Sage Intacct are good at ...
+
+    2. https://mightybot.ai/blog/mightybot-powers-builts-draw-agent-to-transform-lending-with-industrys-first-autonomous-agentic-ai/
+
+    Title: Built''s Autonomous Construction Lending Agent
+
+    Date: Nov 4, 2025
+
+    Snippet: 30-60% improvement in draw turn time from borrower request to funding;
+    400% more risks detected compared to human-led reviews; 100% policy ...
+
+    3. https://sourceforge.net/software/compare/Built-vs-Construction-Lending-For-Windows/
+
+    Title: Built vs. Construction Lending For Windows Comparison
+
+    Snippet: Compare Built vs. Construction Lending For Windows using this comparison
+    chart. Compare price, features, and reviews of the software side-by-side to make
+    ...
+
+    4. https://cmicglobal.com/resources/article/the-benefits-of-a-purpose-built-platform-for-construction
+
+    Title: Construction Platforms vs Spreadsheets: Why Companies'' ...
+
+    Snippet: Construction Platforms vs Spreadsheets: Why Companies'' Switch. UPDATED
+    Jun 5, 2026. Key Insights: Built for construction: Purpose-built platforms reflect
+    ...
+
+    5. https://www.businesswire.com/news/home/20251104739836/en/Built-Launches-Draw-Agent-to-Approve-Cons'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://www.google.com/search?q=Built+construction+finance+platform+alternatives+OR+competitors+OR+%22vs%22+OR+%22compared+to%22
+- content_hash: cc449ee8109ce5eed1ac628d810f3a149d860380c4cbb246fed9a6ed048008e6
+  evidence_id: ev-cc449ee8109ce5ee
+  excerpt: 'Detected date: Sep 18, 2025
+
+    Title: I tried 10 BuiltWith alternatives - here are ones I actually liked - Bloomberry
+
+    Date: Sep 18, 2025
+
+    Snippet: Bloomberry is a strong BuiltWith alternative built especially for sales
+    teams that want to build targeted lead lists based on what technologies ...'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://bloomberry.com/blog/5-builtwith-alternatives-for-technology-intelligence/
+- content_hash: fd2127152e17057d57b3793a44fc9f65a5e8865d8581681e20a5c27cd2645a57
+  evidence_id: ev-fd2127152e17057d
+  excerpt: 'Title: Top 10 Built Alternatives & Competitors in 2026 - G2
+
+    Snippet: The best Built alternatives are UKG Pro, Rippling, and Dayforce. Find
+    top-ranking free & paid apps similar to Built for your Core HR Software needs.'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://www.g2.com/products/built-built/competitors/alternatives
+- content_hash: f2659d0c2345e8e49e810e54432e3c6aa3db1549c9f858b90878cb4aecef92d2
+  evidence_id: ev-f2659d0c2345e8e4
+  excerpt: 'Detected date: Apr 21, 2015
+
+    Title: Free alternatives to Builtwith.com? : r/webdev - Reddit
+
+    Date: Apr 21, 2015
+
+    Snippet: Does anyone know of any free alternatives to sites like Builtwith.com
+    where I can find websites using different frameworks?'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://www.reddit.com/r/webdev/comments/33e6j8/free_alternatives_to_builtwithcom/
+- content_hash: b44bb88303b62ece7a49b975383732f5d11260d3715c1e0d4a0f2c099a8fcc20
+  evidence_id: ev-b44bb88303b62ece
+  excerpt: 'Detected date: Oct 16, 2024
+
+    Title: Top 5 Built Competitors and Alternatives in 2024
+
+    Date: Oct 16, 2024
+
+    Snippet: Best Alternatives to Built · 1. Banner · 2. Yardi Construction Manager
+    · 3. AvidXchange · 4. Nexus Systems (Bottomline) · 5. Coupa. Coupa is an ...'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://withbanner.com/info/built-alternatives
+- content_hash: 3f6685fd1a1d9cf38bafeba567d7ccebad1df61e1c902ae80f8ac48c6da36f63
+  evidence_id: ev-3f6685fd1a1d9cf3
+  excerpt: 'Title: Top Built Alternatives, Competitors - CB Insights
+
+    Snippet: See how Built compares to similar products. Built''s top competitors
+    include Handle, TrustPoint, and Sitewire. Handle Logo. Handle. Unclaimed. Handle
+    specializes ...'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://www.cbinsights.com/company/built/alternatives-competitors
+- content_hash: f1196fd09b28b70c0c6aa4617f8f797214f6e1f537b26adfc1ca68f0a64e43d2
+  evidence_id: ev-f1196fd09b28b70c
+  excerpt: 'Title: Building Alternatives, Inc. | LinkedIn
+
+    Snippet: We are committed to building environmentally responsible homes with a
+    special emphasis on energy efficiency. All of our homes are designed to meet Built
+    Green, ...'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://www.linkedin.com/company/building-alternatives-inc.
+- content_hash: c2130e9bd4eef6a995354477119c7e942c64a584834262539b8c7a3ff2a09f19
+  evidence_id: ev-c2130e9bd4eef6a9
+  excerpt: 'Query: Built alternatives
+
+    1. https://buildalt.ca/
+
+    Title: Home - Build Alt
+
+    Snippet: Building Alternatives can provide engineering design services to create
+    structural, foundation and building envelope options for residential and commercial
+    ...
+
+    2. https://bloomberry.com/blog/5-builtwith-alternatives-for-technology-intelligence/
+
+    Title: I tried 10 BuiltWith alternatives - here are ones I actually liked - Bloomberry
+
+    Date: Sep 18, 2025
+
+    Snippet: Bloomberry is a strong BuiltWith alternative built especially for sales
+    teams that want to build targeted lead lists based on what technologies ...
+
+    3. https://www.g2.com/products/built-built/competitors/alternatives
+
+    Title: Top 10 Built Alternatives & Competitors in 2026 - G2
+
+    Snippet: The best Built alternatives are UKG Pro, Rippling, and Dayforce. Find
+    top-ranking free & paid apps similar to Built for your Core HR Software needs.
+
+    4. https://www.reddit.com/r/webdev/comments/33e6j8/free_alternatives_to_builtwithcom/
+
+    Title: Free alternatives to Builtwith.com? : r/webdev - Reddit
+
+    Date: Apr 21, 2015
+
+    Snippet: Does anyone know of any free alternatives to sites like Builtwith.com
+    where I can find websites using different frameworks?
+
+    5. https://www.facebook.com/groups/509814449963302/posts/1802248087386592/
+
+    Title: What is the least expensive alternative build option? - Facebook
+
+    Date: Jun 27, 2025
+
+    Snippet: Superadobe domes, SIPS, and rammed earth are top alternatives, with conventional
+    framing and pallets also considered.
+
+    6. https://withbanner.com/inf'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://www.google.com/search?q=Built+alternatives
+- content_hash: c8b8da896d669a9503036ee0c8b382553498dd3ed3181f0c8c99dafe119653f0
+  evidence_id: ev-c8b8da896d669a95
+  excerpt: 'Detected date: Sep 12, 2021
+
+    Title: Builded or Built
+
+    Date: Sep 12, 2021
+
+    Snippet: Both builded and built are past participles of build. They declare, Builded
+    = Built; it''s simply a poetic, and now archaic, version of built. ...'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://www.purecambridgetext.com/post/builded-or-built
+- content_hash: 1887e42bd167e7960990b8d0dedaa0012e411ba19aab60ab4fd9e6b65dad722f
+  evidence_id: ev-1887e42bd167e796
+  excerpt: 'Title: What is the difference between ''build'' and ''built'' in terms
+    ...
+
+    Date: 2 years ago
+
+    Snippet: What is the difference between "build" and "built" in terms of meaning?
+    Are there any differences between British English and American English?'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://www.quora.com/What-is-the-difference-between-build-and-built-in-terms-of-meaning-Are-there-any-differences-between-British-English-and-American-English
+- content_hash: c4503a54f0cf3906b978ed292da770cd5513715ca40c5b73283680a773052128
+  evidence_id: ev-c4503a54f0cf3906
+  excerpt: 'Title: Built VS Bought
+
+    Snippet: Learn more Built VS Bought … 27.8K subscribers•605 videos For business
+    inquiries please email info@builtvsbought.com. Made In America A Mustang'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://www.youtube.com/@BuiltVSBought
+- content_hash: 87182e93f7868d6dfce630cef8abdd0294a371c3d9c556d26c63895c9d1c554f
+  evidence_id: ev-87182e93f7868d6d
+  excerpt: 'Detected date: Mar 16, 2019
+
+    Title: tense - "is built" vs "was built"
+
+    Date: Mar 16, 2019
+
+    Snippet: There, built is the past participle, and is built up into a participle
+    phrase with the prepositional phrase "by X", and the whole phrase becomes ...'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://ell.stackexchange.com/questions/200786/is-built-vs-was-built
+- content_hash: abaa70a76b1e018986971ddbcf499540af1dadef788038c6e921c6c20af69682
+  evidence_id: ev-abaa70a76b1e0189
+  excerpt: 'Title: BUILT definition in American English
+
+    Snippet: 1. Built is the past tense and past participle of build. · 2. adjective.
+    If you say that someone is built in a particular way, you are describing the kind
+    of ...'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://www.collinsdictionary.com/us/dictionary/english/built
+- content_hash: 92ac49952103073e09a5863b331eb883c347fdbd93694576007449c77f48b346
+  evidence_id: ev-92ac49952103073e
+  excerpt: 'Title: How to Pronounce Build and Built (Using Linking ...
+
+    Date: 4 years ago
+
+    Snippet: How we pronounce T and D at the ends of words depends on what comes next.
+    Learn how to link these sounds as flaps or unreleased stops, ...'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://www.youtube.com/watch?v=oU5byOrEaOM
+- content_hash: a9638d1fd1de4d463c40ec7d789fe0454d46a3953900d9cdc101ace91900a81c
+  evidence_id: ev-a9638d1fd1de4d46
+  excerpt: 'Detected date: Dec 18, 2022
+
+    Title: How to Use Build or Built? (Irregular Verbs)
+
+    Date: Dec 18, 2022
+
+    Snippet: To build is in the present tense. Built is both the past tense and the
+    past participle of build. The simple past tense of build is built, and ...'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://www.grammarflex.com/knowledgebase/build-or-built
+- content_hash: 83aaa4cf4fbc933656466d02d245665b740862aa0d8bdac2f073dfe09bd1baa4
+  evidence_id: ev-83aaa4cf4fbc9336
+  excerpt: 'Detected date: Jun 25, 2018
+
+    Title: is built vs is build
+
+    Date: Jun 25, 2018
+
+    Snippet: The past participle is ''built'' used adjectivally, if you like, after
+    the verb (to) ''be'', while ''build'' is the infinitive form.'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://forum.wordreference.com/threads/is-built-vs-is-build.3472964/
+- content_hash: 33183c8fcbf728a257e840ce273e0f388f7c3297bb27a7e88d04b16e30a7ce33
+  evidence_id: ev-33183c8fcbf728a2
+  excerpt: 'Query: Built vs
+
+    1. https://www.purecambridgetext.com/post/builded-or-built
+
+    Title: Builded or Built
+
+    Date: Sep 12, 2021
+
+    Snippet: Both builded and built are past participles of build. They declare, Builded
+    = Built; it''s simply a poetic, and now archaic, version of built. ...
+
+    2. https://www.quora.com/What-is-the-difference-between-build-and-built-in-terms-of-meaning-Are-there-any-differences-between-British-English-and-American-English
+
+    Title: What is the difference between ''build'' and ''built'' in terms ...
+
+    Date: 2 years ago
+
+    Snippet: What is the difference between "build" and "built" in terms of meaning?
+    Are there any differences between British English and American English?
+
+    3. https://www.youtube.com/@BuiltVSBought
+
+    Title: Built VS Bought
+
+    Snippet: Learn more Built VS Bought … 27.8K subscribers•605 videos For business
+    inquiries please email info@builtvsbought.com. Made In America A Mustang
+
+    4. https://ell.stackexchange.com/questions/200786/is-built-vs-was-built
+
+    Title: tense - "is built" vs "was built"
+
+    Date: Mar 16, 2019
+
+    Snippet: There, built is the past participle, and is built up into a participle
+    phrase with the prepositional phrase "by X", and the whole phrase becomes ...
+
+    5. https://www.collinsdictionary.com/us/dictionary/english/built
+
+    Title: BUILT definition in American English
+
+    Snippet: 1. Built is the past tense and past participle of build. · 2. adjective.
+    If you say that someone is built in a particular way, you are describing the kind
+    of ...
+
+    6. https://www.youtube.com/watch?v'
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://www.google.com/search?q=Built+vs
+- content_hash: 198f6a1178337c1d1852f369ac5fa398af069b9b481b8a50ed75a1cc1a1a898d
+  evidence_id: ev-198f6a1178337c1d
+  excerpt: "Title: Construction Financial Management Software for Owners | Built\n\
+    [The Future of Real Estate Finance Starts Here: Meet the AI Draw Agent __](https://hubs.ly/Q03RxKL40)\
+    \  \n  \n[ blt-logo-web ](https://getbuilt.com)\n\n  * Solutions __\n\n    * [Lenders](https://getbuilt.com/solutions/lenders)\n\
+    \n      * [ Origination Pipeline Management  __](https://getbuilt.com/features/origination-pipeline-management/)\n\
+    \      * [ OM Extraction  __](https://getbuilt.com/ai-om-extraction/)\n      *\
+    \ [ Underwriting  __](https://getbuilt.com/features/underwriting)\n      * [ Draw\
+    \ & Budget Management  __](https://getbuilt.com/features/draw-management/)\n \
+    \     * [ AI Draw Agent  __](https://getbuilt.com/ai/draw-agent/)\n      * [ Draw\
+    \ Inspections  __](https://getbuilt.com/features/draw-inspections/)\n      * [\
+    \ Risk Mitigation  __](https://getbuilt.com/features/risk-mitigation/)\n     \
+    \ * [ Portfolio Reporting  __](https://getbuilt.com/features/portfolio-reporting/)\n\
+    \n    * [Owners & Developers](https://getbuilt.com/solutions/owners)\n\n     \
+    \ * [ Origination Pipeline Management  __](https://getbuilt.com/features/origination-pipeline-management/)\n\
+    \      * [ OM Extraction  __](https://getbuilt.com/ai-om-extraction/)\n      *\
+    \ [ Budget Management  __](https://getbuilt.com/features/budget-management/)\n\
+    \      * [ Capital Requests  __](https://getbuilt.com/features/capital-requests/)\n\
+    \      * [ Invoice Management  __](https://getbuilt.com/features/invoicing-management/)\n\
+    \      * [ Compliance Tracking  __](https://getbuilt.com/"
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://getbuilt.com/blog/construction-finance-management-software/
+- content_hash: 8c450425397cf74b5d8e54cb995ff11a0fcccea39c8900cfd134e9c052c1e0ee
+  evidence_id: ev-8c450425397cf74b
+  excerpt: "Title: Built&#39;s Autonomous Construction Lending Agent | MightyBot —\
+    \ MightyBot\n[](/)Menu __\n\n  * Platform\n\nPlatform\n\n[**Platform Overview**](/platform/)[**Calculate\
+    \ your TCO**](/tools/ai-agent-roi-calculator/)[**Policy Engine**](/platform/policy-engine/)[**Agent\
+    \ Compiler**](/platform/agent-compiler/)[**Agent Execution**](/platform/agent-execution/)[**Document\
+    \ Intelligence**](/platform/data-engine/)[**Integrations**](/platform/integrations/)[**Compliance**](/platform/compliance/)[**Security**](/platform/security/)\n\
+    \n[ Free Tool**AI Agent ROI & TCO Calculator**Calculate your TCO →](/tools/ai-agent-roi-calculator/)\n\
+    \n  * Industries\n\nIndustries\n\n[**All Industries**](/industries/)[**Financial\
+    \ Services**](/industries/financial-services/)[**Commercial Lending**](/industries/commercial-lending/)[**Insurance**](/industries/insurance/)[**Payments**](/industries/payments/)[**Real\
+    \ Estate**](/industries/real-estate/)\n\n  * Use Cases\n\nLending & Credit\n\n\
+    [**All Use Cases**](/use-cases/)[**Construction Draw Reviews**](/use-cases/construction-draw-reviews/)[**Loan\
+    \ Underwriting**](/use-cases/loan-underwriting/)[**Mortgage Underwriting**](/use-cases/mortgage-underwriting/)[**CRE\
+    \ Lending**](/use-cases/cre-lending/)[**Financial Spreading**](/use-cases/financial-spreading/)[**Credit\
+    \ & Risk Evaluation**](/use-cases/credit-risk-evaluation/)\n\nLoan Operations\n\
+    \n[**Loan Servicing**](/use-cases/loan-servicing/)[**Covenant Monitoring**](/use-cases/covenant-monitoring/)[**Compliance\
+    \ Monitoring**](/use-cases/"
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://mightybot.ai/blog/mightybot-powers-builts-draw-agent-to-transform-lending-with-industrys-first-autonomous-agentic-ai/
+- content_hash: 7fdf1ce12551e17fe7a3184a24e75e7576e0e232d063345d06a8e5f073873082
+  evidence_id: ev-7fdf1ce12551e17f
+  excerpt: "Detected date: June 2026\nTitle: I tried 10 BuiltWith alternatives - here\
+    \ are ones I actually liked\n[ Bloomberry ](https://bloomberry.com/blog/)\n\n\
+    __\n\n## Archives\n\n  * [June 2026](https://bloomberry.com/blog/2026/06/)\n \
+    \ * [May 2026](https://bloomberry.com/blog/2026/05/)\n  * [April 2026](https://bloomberry.com/blog/2026/04/)\n\
+    \  * [March 2026](https://bloomberry.com/blog/2026/03/)\n  * [February 2026](https://bloomberry.com/blog/2026/02/)\n\
+    \  * [January 2026](https://bloomberry.com/blog/2026/01/)\n  * [November 2025](https://bloomberry.com/blog/2025/11/)\n\
+    \  * [October 2025](https://bloomberry.com/blog/2025/10/)\n  * [September 2025](https://bloomberry.com/blog/2025/09/)\n\
+    \  * [August 2025](https://bloomberry.com/blog/2025/08/)\n  * [April 2024](https://bloomberry.com/blog/2024/04/)\n\
+    \  * [March 2024](https://bloomberry.com/blog/2024/03/)\n  * [February 2024](https://bloomberry.com/blog/2024/02/)\n\
+    \  * [January 2024](https://bloomberry.com/blog/2024/01/)\n  * [December 2023](https://bloomberry.com/blog/2023/12/)\n\
+    \n\n\n## Categories\n\n  * [AI](https://bloomberry.com/blog/category/ai/)\n  *\
+    \ [Compensation](https://bloomberry.com/blog/category/compensation/)\n  * [GTM](https://bloomberry.com/blog/category/gtm/)\n\
+    \  * [GTM Tech](https://bloomberry.com/blog/category/gtm-tech/)\n  * [Hiring &\
+    \ Interviewing](https://bloomberry.com/blog/category/hiring-interviewing/)\n \
+    \ * [Labor Trends](https://bloomberry.com/blog/category/labor-trends/)\n  * [Learning\
+    \ & Development](https://bloomberry.com/blog/category/learning-development/)\n\
+    \  * [Technology"
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://bloomberry.com/blog/5-builtwith-alternatives-for-technology-intelligence/
+- content_hash: 694c982f44bf67da929ebcf8e23dda009c2e8f68badb2f4037190b6343969c2a
+  evidence_id: ev-694c982f44bf67da
+  excerpt: "Title: Free alternatives to Builtwith.com? : r/webdev\n[ Skip to main\
+    \ content ](https://www.reddit.com/r/webdev/comments/33e6j8/free_alternatives_to_builtwithcom/?solution=cb951dff656fa356cb951dff656fa356&js_challenge=1&token=7afd7253fec22262ff1c52b1703fe9ec35b8e274e891d1f43a6876f9c4f0c069&jsc_orig_r=#main-content)\
+    \ Free alternatives to Builtwith.com? : r/webdev\nOpen menu Open navigation [\
+    \ ](https://www.reddit.com/)Go to Reddit Home\nr/webdev\n[ Sign Up ](https://www.reddit.com/register/)Sign\
+    \ up for Reddit [ Log In ](https://www.reddit.com/login/)Log in to Reddit\nExpand\
+    \ user menu Open settings menu\n[ ![](https://styles.redditmedia.com/t5_2qs0q/styles/communityIcon_kxcmzy9bt1381.jpg?width=96&height=96&frame=1&auto=webp&s=60c980d529e406a657f05f55b42ec8dbdd37f50f)\
+    \ Go to webdev  ](https://www.reddit.com/r/webdev/)\n[r/webdev](https://www.reddit.com/r/webdev/)\
+    \ • 11y ago\n[createmoredesigns](https://www.reddit.com/user/createmoredesigns/)\n\
+    #  Free alternatives to Builtwith.com? \nDoes anyone know of any free alternatives\
+    \ to sites like Builtwith.com where I can find websites using different frameworks?\
+    \ I know you can look up individual sites for free, but i'm researching particular\
+    \ languages and frameworks and am looking for a list of sites using each of them.\
+    \ \nJust curious if anyone knows a free way to find this info? \nRead more\nShare\
+    \ \n#  People also ask about section \nPeople also ask about \n[ Comparison of\
+    \ Builtwith and Clearbit  ](https://www.reddit.com/answers/ccf6961e-f14b-476d-9237-70"
+  retrieved_at: '2026-08-18T11:45:00.046247-04:00'
+  url: https://www.reddit.com/r/webdev/comments/33e6j8/free_alternatives_to_builtwithcom/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

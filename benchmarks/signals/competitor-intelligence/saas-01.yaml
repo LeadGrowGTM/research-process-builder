@@ -1,0 +1,670 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-b852e22ac88f1aad
+  - ev-f4256ff7de9e092b
+  - ev-b5979e5e51835014
+  field: identity
+  value: AgencyAnalytics
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b852e22ac88f1aad
+  - ev-f4256ff7de9e092b
+  - ev-b5979e5e51835014
+  field: description
+  value: About AgencyAnalytics - We Help Marketing Agencies Scale The 2026 Agency
+    Benchmarks Report is here! Read it free The 2026 Agency Benchmarks Report is here!
+    Read it free The 2026 Agency Benchmarks Report is here! Read it free The 2026
+    Agency Benchmarks Report is here! Read it free Getting Started See how it works
+    for you The whole platform, explained in a four-minute guided tour. Watch the
+    Platform Tour Templates for your clients Pre-built report templates for every
+    channel, ready to customize. S
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b852e22ac88f1aad
+  - ev-f4256ff7de9e092b
+  - ev-b5979e5e51835014
+  field: offers
+  value: reporting software
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b852e22ac88f1aad
+  - ev-f4256ff7de9e092b
+  - ev-b5979e5e51835014
+  field: icp
+  value: marketing agencies
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b852e22ac88f1aad
+  - ev-f4256ff7de9e092b
+  - ev-b5979e5e51835014
+  field: personas
+  value: marketing agencies
+  visibility: message_safe
+company_id: saas-01
+corrections: []
+evidence:
+- content_hash: b852e22ac88f1aadc330d7780b2e78a78408a05b2693ca344b8d11eec240f5a6
+  evidence_id: ev-b852e22ac88f1aad
+  excerpt: 'About AgencyAnalytics - We Help Marketing Agencies Scale The 2026 Agency
+    Benchmarks Report is here! Read it free The 2026 Agency Benchmarks Report is here!
+    Read it free The 2026 Agency Benchmarks Report is here! Read it free The 2026
+    Agency Benchmarks Report is here! Read it free Getting Started See how it works
+    for you The whole platform, explained in a four-minute guided tour. Watch the
+    Platform Tour Templates for your clients Pre-built report templates for every
+    channel, ready to customize. Start With a Template Connect your data 85+ data
+    sources your clients care about, in one platform. Find Your Integrations Get a
+    guided walkthrough A real human walks you through the platform, tailored to your
+    agency. Book a Demo Or skip straight to your own data — set up your first client
+    in minutes. Start Free Platform Reporting Save time on reporting. Automated Reports
+    Custom Dashboards Report Templates Drag & Drop Editor White Label Branding Custom
+    Metrics Insights Analyze results across clients. AI Analysis Metric Alerts Anomaly
+    Detection Trend Forecasting Benchmark Comparisons Clients and Team Retain more
+    clients. Client Portal Client Communication Task Management Access Control Goal
+    & Budget Tracking Trusted Data Centralize client data. 85+ Integrations Unified
+    Client Data Predictable Performance Catch Bad Data Early Deeper Campaign Analysis
+    Report on any channel SEO Social Paid eCommerce Multi-Channel See All Features
+    Resources Learn Blog KPI definitions Customer stories Videos Support Help center
+    Client reporting guide Platform tour Featured Read the 2026 Agency Benchmarks
+    Report Ahead of Next: The 2026 AgencyAnalytics Product Roadmap Pricing Login Login
+    Start Free My Account We Help Marketing Agencies Scale. Since 2010, we’ve been
+    improving our client reporting solutions based on feedback from growth-oriented
+    marketing agencies. With fully automated reports and custom dashboards, AgencyAnalytics
+    provides everything a marketing agency needs to save time, impress client'
+  retrieved_at: '2026-08-12T21:00:18.846689+00:00'
+  url: https://agencyanalytics.com/company/about
+- content_hash: f4256ff7de9e092b2030b13ddb895aba89ccada48f28d1e3fbe7e1fd7f52eb2e
+  evidence_id: ev-f4256ff7de9e092b
+  excerpt: AgencyAnalytics | LinkedIn Agree & Join LinkedIn By clicking Continue to
+    join or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and
+    Cookie Policy . Skip to main content LinkedIn Top Content People Learning Jobs
+    Games Sign in Join now AgencyAnalytics Software Development Toronto, Ontario 14,083
+    followers The only all-in-one automated reporting solution for marketing agencies.
+    See jobs Follow View all 123 employees Report this company About us AgencyAnalytics
+    is the only reporting and insights platform built for marketing agencies. Prove
+    your value to clients, win back the hours you lose to manual reporting, and keep
+    more of the clients you've worked hard to earn. Connect all your marketing channels
+    in one place and report on SEO, PPC, social media, email, call tracking, and more,
+    with 85+ integrations pulling live data into your dashboards and reports. Automate
+    report creation and scheduling so polished, accurate updates go out on time without
+    manual effort. Benchmark performance, spot trends early, and walk into client
+    calls already knowing what's working and what to fix with AI-powered insights.
+    Everything is fully white-labeled for your agency. Give clients their own login
+    to the web or mobile app, branded to look like you built the platform in-house.
+    Trusted by 7,000+ marketing agencies. Start a free trial at agencyanalytics.com.
+    Website https://agencyanalytics.com/ External link for AgencyAnalytics Industry
+    Software Development Company size 51-200 employees Headquarters Toronto, Ontario
+    Type Privately Held Founded 2010 Specialties Digital Marketing, SAAS, Link Building,
+    Facebook Marketing, Digital Marketing, Marketing Agencies, Marketing Performance,
+    Social Media Marketing, Client Marketing Reports, Marketing Analytics, Marketing
+    Agency, Digital Agency, Marketing Reporting, Client Reporting, Marketing Dashboards,
+    While Label Reporting, Marketing Analytics, AI Marketing Insights, Agency Reporting
+    Software, Marketing Performance, Client Marketi
+  retrieved_at: '2026-08-12T21:00:19.746428+00:00'
+  url: https://ca.linkedin.com/company/agencyanalytics
+- content_hash: b5979e5e51835014af2d9010867b877c6592c9f14cc21259777f01934a6d4a20
+  evidence_id: ev-b5979e5e51835014
+  excerpt: AgencyAnalytics Reviews in 2026 Join/Login Business Software Open Source
+    Software For Vendors Blog About More Articles SourceForge Podcast Support / Documentation
+    Subscribe to our Newsletter Support Request For Vendors Add a Product Join Login
+    Business Software Open Source Software SourceForge Podcast Resources Articles
+    Case Studies Blog Menu Help Create Join Login Home Compare Business Software Dashboard
+    Software AgencyAnalytics AgencyAnalytics 5.0 out of 5 stars. (1 Review and Rating
+    ) Write a Review Alternatives to AgencyAnalytics Popular Alternatives & Related
+    Software Adzooma (254 Ratings) Adzooma’s an award-winning digital marketing platform
+    that helps businesses of any size grow by making online marketing easy. Our all-in-one
+    platform helps you set up, manage, and optimize your Google, Facebook, and Microsoft
+    advertising campaigns all in one place. By leveraging innovative machine learning
+    and data science, our platform pinpoints what drives online business success to
+    make sure you get the most out of your advertising campaigns. Track PPC performance
+    and highlight over/under spend to improve your quality score, conversions, and
+    ROI. Packed with all the tools you need to grow your business, Adzooma gives you
+    a crystal clear view of where your online marketing is right now, then provides
+    personalized checklists to help you drive business growth. Join thousands of business
+    owners like you and see how we make growing your business online simple. Learn
+    more PBRS Power BI Reports Distribution (12 Ratings) PBRS is a powerful and versatile
+    tool that enhances the scheduling, automation, and distribution capabilities of
+    Power BI reports. It allows you to schedule Power BI reports to run at specific
+    dates and times, or set up recurring schedules based on your business needs. You
+    can also configure event-based triggers that run reports based on specific events
+    or conditions, such as database changes, file updates, email notifications, or
+    port activity. You can also custo
+  retrieved_at: '2026-08-12T21:00:20.602081+00:00'
+  url: https://sourceforge.net/software/product/AgencyAnalytics/
+- content_hash: b19784ea9f90caa6688237d2a9fd34b2897cab571d5990728e5158f1374ddd46
+  evidence_id: ev-b19784ea9f90caa6
+  excerpt: 'Detected date: Apr 8, 2026
+
+    Title: 10 Best AgencyAnalytics Alternatives for Agencies in 2026
+
+    Date: Apr 8, 2026
+
+    Snippet: For agencies managing 100+ clients with unique dashboard needs, the costs
+    can escalate quickly compared to Swydo. 4. Whatagraph — Best for ...'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://seranking.com/blog/agencyanalytics-alternatives/
+- content_hash: 0d3afd15553f0ef8e41849e0542e4b00e4fe77d0c777466445cfb02434b9220a
+  evidence_id: ev-0d3afd15553f0ef8
+  excerpt: 'Title: agency analytics alternatives'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://www.reddit.com/r/bigseo/comments/108204h/agency_analytics_alternatives/
+- content_hash: 68cd92f2aac41f8e5a0026c9c3a0fee7d12ec5064dc83ebc227d1d85dad1f363
+  evidence_id: ev-68cd92f2aac41f8e
+  excerpt: 'Title: Suggestion on Agency Analytics alternatives? Thanks'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://www.facebook.com/groups/ltdhunt/posts/1647297699249910/
+- content_hash: 28f2ce0bbebc0bfb36ddabb20d15084dc15c688cc357749ddfa39e0b43491cd1
+  evidence_id: ev-28f2ce0bbebc0bfb
+  excerpt: 'Detected date: Apr 7, 2026
+
+    Title: 11 AgencyAnalytics Alternatives in 2026: Reviews, Pricing ...
+
+    Date: Apr 7, 2026
+
+    Snippet: Higher cost compared to most alternatives. No native dashboards, requires
+    external reporting tools. Setup can require technical resources.'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://www.reportingninja.com/blog/agency-analytics-alternatives
+- content_hash: 7e6ad1d9af39f4cd93e16d6d6cce03428c17ef07b76844f59f2f069a483836da
+  evidence_id: ev-7e6ad1d9af39f4cd
+  excerpt: 'Title: Compare AgencyAnalytics vs. DashThis, Databox, ...
+
+    Snippet: Review pricing, features, add-ons and more to find your marketing agency''s
+    best-fit platform. AgencyAnalytics. VS. Report Garden logo icon ReportGarden.'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://agencyanalytics.com/competitors
+- content_hash: 00e5c1a3a7d55810ddcb3e73e9aea85153adce7461bdd0ef5205cc392369cf49
+  evidence_id: ev-00e5c1a3a7d55810
+  excerpt: 'Title: AgencyAnalytics Alternative: An In-Depth Comparison with ...
+
+    Snippet: AgencyAnalytics is a reporting and dashboard tool designed for marketing
+    agencies. ... How does TapClicks enhance SEO reporting compared to AgencyAnalytics?'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://www.tapclicks.com/blog/agency-analytics-alternative
+- content_hash: 6d0cc1284abf152761cd93cbe2b711142086c8b39fe84ba36971d741c34dce03
+  evidence_id: ev-6d0cc1284abf1527
+  excerpt: 'Detected date: Mar 2, 2026
+
+    Title: AgencyAnalytics Alternatives 2026
+
+    Date: Mar 2, 2026
+
+    Snippet: You can select custom times for sharing reports with clients or stakeholders.
+    AgencyAnalytics vs. Coupler.io vs. Whatagraph – comparison ...'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://blog.coupler.io/agencyanalytics-alternatives/
+- content_hash: 3f8fede465554abb839bffe63989081b97b72b151e71b5a35a5c417b44b71c19
+  evidence_id: ev-3f8fede465554abb
+  excerpt: 'Detected date: Oct 20, 2025
+
+    Title: The top 7 AgencyAnalytics alternatives
+
+    Date: Oct 20, 2025
+
+    Snippet: Tools like Funnel, Whatagraph, Databox and Klipfolio can replace AgencyAnalytics
+    for client reporting. Each offers features like automated ...'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://funnel.io/blog/agencyanalytics-alternatives
+- content_hash: 1ce28726ead570d6f414db147c4c471276711aad8d890d297075dd962d3a124e
+  evidence_id: ev-1ce28726ead570d6
+  excerpt: 'Title: 7 Best AgencyAnalytics Alternatives in 2026 (Tested ...
+
+    Snippet: ... tools. Supermetrics supports Data Studio, Google Sheets, BigQuery,
+    Snowflake, Power BI, and Excel. Compared to AgencyAnalytics, Supermetrics gives
+    you data ...'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://portermetrics.com/en/compare/agencyanalytics-alternatives/
+- content_hash: 5953b755b3c5659dfabfb6f6e039c533084a9ebf0c34d80bca90873ca6983980
+  evidence_id: ev-5953b755b3c5659d
+  excerpt: 'Query: AgencyAnalytics reporting software alternatives OR competitors
+    OR "vs" OR "compared to"
+
+    1. https://seranking.com/blog/agencyanalytics-alternatives/
+
+    Title: 10 Best AgencyAnalytics Alternatives for Agencies in 2026
+
+    Date: Apr 8, 2026
+
+    Snippet: For agencies managing 100+ clients with unique dashboard needs, the costs
+    can escalate quickly compared to Swydo. 4. Whatagraph — Best for ...
+
+    2. https://www.reddit.com/r/agency/comments/16p8bqg/which_tools_are_you_using_for_client_reporting/
+
+    Title: Which tools are you using for client reporting and why?
+
+    3. https://www.reddit.com/r/bigseo/comments/108204h/agency_analytics_alternatives/
+
+    Title: agency analytics alternatives
+
+    4. https://www.facebook.com/groups/ltdhunt/posts/1647297699249910/
+
+    Title: Suggestion on Agency Analytics alternatives? Thanks
+
+    5. https://www.reportingninja.com/blog/agency-analytics-alternatives
+
+    Title: 11 AgencyAnalytics Alternatives in 2026: Reviews, Pricing ...
+
+    Date: Apr 7, 2026
+
+    Snippet: Higher cost compared to most alternatives. No native dashboards, requires
+    external reporting tools. Setup can require technical resources.
+
+    6. https://agencyanalytics.com/competitors
+
+    Title: Compare AgencyAnalytics vs. DashThis, Databox, ...
+
+    Snippet: Review pricing, features, add-ons and more to find your marketing agency''s
+    best-fit platform. AgencyAnalytics. VS. Report Garden logo icon ReportGarden.
+
+    7. https://www.tapclicks.com/blog/agency-analytics-alternative
+
+    Title: AgencyAnalytics Alternative: An In-Depth Comparison with ...
+
+    Sni'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://www.google.com/search?q=AgencyAnalytics+reporting+software+alternatives+OR+competitors+OR+%22vs%22+OR+%22compared+to%22
+- content_hash: d422cdb51a6d706a7bf8a12d059925beb9820d2e75e84c97f0471fd81b10e379
+  evidence_id: ev-d422cdb51a6d706a
+  excerpt: 'Detected date: Apr 8, 2026
+
+    Title: 10 Best AgencyAnalytics Alternatives for Agencies in 2026 - SE Ranking
+
+    Date: Apr 8, 2026
+
+    Snippet: 1. Swydo — Swydo is widely considered the most direct like-for-like alternative
+    to AgencyAnalytics in 2026. 3. DashThis — Best for Quick, ...'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://seranking.com/blog/agencyanalytics-alternatives/
+- content_hash: 65e8475d8c6120fe4158cf774d85c9aab6f4164d2c9d77c7441d33a581cc1bbd
+  evidence_id: ev-65e8475d8c6120fe
+  excerpt: 'Title: 7 Best AgencyAnalytics Alternatives in 2026 (Tested & Compared)
+
+    Snippet: The top AgencyAnalytics alternatives in 2026 are Porter Metrics, Supermetrics,
+    Whatagraph, Dataslayer, DashThis, Databox, and Windsor.ai.'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://portermetrics.com/en/compare/agencyanalytics-alternatives/
+- content_hash: 572125c1a7250574faa841977a0966e407ba2d38758d3c54a285e8cbae67ba23
+  evidence_id: ev-572125c1a7250574
+  excerpt: 'Detected date: Oct 20, 2025
+
+    Title: The top 7 AgencyAnalytics alternatives - Funnel
+
+    Date: Oct 20, 2025
+
+    Snippet: Tools like Funnel, Whatagraph, Databox and Klipfolio can replace AgencyAnalytics
+    for client reporting. Each offers features like automated ...'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://funnel.io/blog/agencyanalytics-alternatives
+- content_hash: 7d4dc4374425e27b1cc441d592642a3b94012d2c0c61bace766e0cd6dcd2e122
+  evidence_id: ev-7d4dc4374425e27b
+  excerpt: 'Detected date: Feb 6, 2025
+
+    Title: Any solid alternatives to Agency Analytics with better integrations?
+
+    Date: Feb 6, 2025
+
+    Snippet: I use both ReportEI and Agency Analytics. We tried a few tools including
+    Reportei, Oviond and ZapDigits. We ended up going with ZapDigits ...'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://www.reddit.com/r/digital_marketing/comments/1ijcae2/any_solid_alternatives_to_agency_analytics_with/
+- content_hash: c21da92903aff77c3409478c37937ee33c132f9e8d0bd80fde1ba6c7f0751b4b
+  evidence_id: ev-c21da92903aff77c
+  excerpt: 'Title: Compare AgencyAnalytics to other marketing analytics platforms
+
+    Snippet: A Side-By-Side Comparison Of Your Automated Reporting Options · ReportGarden
+    · TapClicks · Databox · Klipfolio · Looker Studio · Octoboard · Supermetrics ·
+    SE Ranking ...'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://agencyanalytics.com/competitors
+- content_hash: 7549af3f362db9b5111af785e909e4149b9455d5584986030668ee44dc7595d7
+  evidence_id: ev-7549af3f362db9b5
+  excerpt: 'Title: Alternative to Agency Analytics - SegMetrics
+
+    Snippet: Looking for an Agency Analytics alternative? SegMetrics makes reporting
+    not only easy, but more accurate, Both Agency Analyics and SegMetrics track lifetime
+    ...'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://segmetrics.io/compare/alternative-to-agency-analytics/
+- content_hash: 19c120d84e54148cf3c97e89210fb4fbe32910e91e9f4a7d722c3a843834bb46
+  evidence_id: ev-19c120d84e54148c
+  excerpt: 'Detected date: Apr 7, 2026
+
+    Title: 11 AgencyAnalytics Alternatives in 2026: Reviews, Pricing & More
+
+    Date: Apr 7, 2026
+
+    Snippet: 11 AgencyAnalytics alternatives in 2026: reviews, pricing & more · 1.
+    Reporting Ninja – Best overall for agencies · 2. Whatagraph – Best for ...'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://www.reportingninja.com/blog/agency-analytics-alternatives
+- content_hash: 7b08a3dd43d826cdaeb36820c3ae8ea39bddb115f664d2c41144a76e3e863b25
+  evidence_id: ev-7b08a3dd43d826cd
+  excerpt: 'Detected date: Mar 2, 2026
+
+    Title: AgencyAnalytics Alternatives 2026 - Coupler.io Blog
+
+    Date: Mar 2, 2026
+
+    Snippet: Other AgencyAnalytics alternatives · 1. Funnel · 2. Whatagraph · 3. Geckoboard
+    · 4. Coefficient. Coefficient icon. Another AgencyAnalytics ...'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://blog.coupler.io/agencyanalytics-alternatives/
+- content_hash: 2ddd9d7f26f68a4f3de41ecc6f2e3ca45cde103a00371b17df6598d776e5e22b
+  evidence_id: ev-2ddd9d7f26f68a4f
+  excerpt: 'Title: AgencyAnalytics Alternative: An In-Depth Comparison with TapClicks
+
+    Snippet: Unlike AgencyAnalytics, which limits campaigns per pricing tier, TapClicks
+    focuses on data volume instead of campaign count. It also offers client grouping,
+    ...'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://www.tapclicks.com/blog/agency-analytics-alternative
+- content_hash: 46322a1fa9ecc6ab71f944885601bb99f709304781198d6088833f7b100f99f0
+  evidence_id: ev-46322a1fa9ecc6ab
+  excerpt: 'Query: AgencyAnalytics alternatives
+
+    1. https://seranking.com/blog/agencyanalytics-alternatives/
+
+    Title: 10 Best AgencyAnalytics Alternatives for Agencies in 2026 - SE Ranking
+
+    Date: Apr 8, 2026
+
+    Snippet: 1. Swydo — Swydo is widely considered the most direct like-for-like alternative
+    to AgencyAnalytics in 2026. 3. DashThis — Best for Quick, ...
+
+    2. https://portermetrics.com/en/compare/agencyanalytics-alternatives/
+
+    Title: 7 Best AgencyAnalytics Alternatives in 2026 (Tested & Compared)
+
+    Snippet: The top AgencyAnalytics alternatives in 2026 are Porter Metrics, Supermetrics,
+    Whatagraph, Dataslayer, DashThis, Databox, and Windsor.ai.
+
+    3. https://funnel.io/blog/agencyanalytics-alternatives
+
+    Title: The top 7 AgencyAnalytics alternatives - Funnel
+
+    Date: Oct 20, 2025
+
+    Snippet: Tools like Funnel, Whatagraph, Databox and Klipfolio can replace AgencyAnalytics
+    for client reporting. Each offers features like automated ...
+
+    4. https://www.reddit.com/r/digital_marketing/comments/1ijcae2/any_solid_alternatives_to_agency_analytics_with/
+
+    Title: Any solid alternatives to Agency Analytics with better integrations?
+
+    Date: Feb 6, 2025
+
+    Snippet: I use both ReportEI and Agency Analytics. We tried a few tools including
+    Reportei, Oviond and ZapDigits. We ended up going with ZapDigits ...
+
+    5. https://agencyanalytics.com/competitors
+
+    Title: Compare AgencyAnalytics to other marketing analytics platforms
+
+    Snippet: A Side-By-Side Comparison Of Your Automated Reporting Options · ReportGarden
+    · TapClicks · Databox · Klipfoli'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://www.google.com/search?q=AgencyAnalytics+alternatives
+- content_hash: cc01b5d070e6ffbacb50373b182c392a42804f74da1ba348928971e485dc1f3f
+  evidence_id: ev-cc01b5d070e6ffba
+  excerpt: 'Detected date: Apr 8, 2026
+
+    Title: 10 Best AgencyAnalytics Alternatives for Agencies in 2026
+
+    Date: Apr 8, 2026
+
+    Snippet: Explore the best AgencyAnalytics alternatives for marketing agencies.
+    We compare reporting tools, SEO platforms, and dashboards by features, ...'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://seranking.com/blog/agencyanalytics-alternatives/
+- content_hash: 5fafe5658b6fba06e634ce7dcb688d4ebc3df6dee13aea2c0cd330a5a891a76f
+  evidence_id: ev-5fafe5658b6fba06
+  excerpt: 'Detected date: Jun 2, 2026
+
+    Title: How to Choose Between Swydo and AgencyAnalytics in ...
+
+    Date: Jun 2, 2026
+
+    Snippet: Swydo is a reporting tool with a full monitoring layer on top; AgencyAnalytics
+    is a reporting tool with a deeper bundled-SEO toolkit. Both build ...'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://www.swydo.com/blog/swydo-vs-agencyanalytics/
+- content_hash: 0c22b842d9527006a00b4b97274dc7486df7c7a59c84b2f03e29a3600be27b3d
+  evidence_id: ev-0c22b842d9527006
+  excerpt: 'Title: Compare AgencyAnalytics vs. DashThis, Databox, ...
+
+    Snippet: A Side-By-Side Comparison Of Your Automated Reporting Options. Review
+    pricing, features, add-ons and more to find your marketing agency''s best-fit
+    platform.'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://agencyanalytics.com/competitors
+- content_hash: 8c03d1c487afd90175eedadba45fe471aa09ae3614dda992c901a5cd5292fdb4
+  evidence_id: ev-8c03d1c487afd901
+  excerpt: 'Detected date: Oct 20, 2025
+
+    Title: The top 7 AgencyAnalytics alternatives
+
+    Date: Oct 20, 2025
+
+    Snippet: Whatagraph''s edge is its faster setup and better visuals, while AgencyAnalytics
+    includes SEO tools and task tracking.'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://funnel.io/blog/agencyanalytics-alternatives
+- content_hash: 33583b333053dd30a78bf18c33f8a87f83f4aba1135c4f19b57c4cda32d0881b
+  evidence_id: ev-33583b333053dd30
+  excerpt: 'Title: Discover Top Agency Analytics Alternatives and ...
+
+    Snippet: Both platforms seem to offer quality services, as AgencyAnalytics has
+    a rating of 4.7 on G2, while Windsor.ai has a rating of 4.8 on the same platform.'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://windsor.ai/agencyanalytics-alternatives/
+- content_hash: 43054b5055305201ad8ad71da6805a9120da3f16cc8832d3f266f1cbd4015d08
+  evidence_id: ev-43054b5055305201
+  excerpt: 'Detected date: Aug 13, 2023
+
+    Title: Scale Your Agency With The Best AgencyAnalytics ...
+
+    Date: Aug 13, 2023
+
+    Snippet: Discover why Databox is the best AgencyAnalytics alternative. With powerful
+    reporting, intuitive features, and automated insights, ...'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://databox.com/agencyanalytics-alternative
+- content_hash: d929ca141aeedad1313d8e1520a3beb55a6d41a2accf15853ea036cb4c79ae13
+  evidence_id: ev-d929ca141aeedad1
+  excerpt: 'Title: AgencyAnalytics Alternative: An In-Depth Comparison with ...
+
+    Snippet: This is a significant difference between TapClicks and AgencyAnalytics.
+    AgencyAnalytics has three different pricing tiers: freelancer, agency, and enterprise.'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://www.tapclicks.com/blog/agency-analytics-alternative
+- content_hash: 30eacf8b8b4a199fb8e1ef2120024c44c61846a9385bde40febe4e921e0ba55a
+  evidence_id: ev-30eacf8b8b4a199f
+  excerpt: 'Title: Genuine thoughts on AgencyAnalytics? : r/DigitalMarketing
+
+    Date: 2 years ago
+
+    Snippet: We have a client that would like to have a custom dashboard where they
+    can log on and see very basic reporting at a glance. I’ve found Agency Analytics
+    ...'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://www.reddit.com/r/DigitalMarketing/comments/1aqqrob/genuine_thoughts_on_agencyanalytics/
+- content_hash: 6f2b602ba43905a35aa5f8c0114b28acf549e3626c7f532bad5faeb1d92ae586
+  evidence_id: ev-6f2b602ba43905a3
+  excerpt: 'Detected date: Oct 31, 2024
+
+    Title: We tested the 11 Best AgencyAnalytics Alternatives in 2026
+
+    Date: Oct 31, 2024
+
+    Snippet: Looking for AgencyAnalytics alternatives? Compare features, read real
+    reviews, and get pricing details for 11 tools.'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://whatagraph.com/blog/articles/agencyanalytics-alternatives-and-competitors
+- content_hash: ff9e2c3e814f30d93a234edf5a8e6091c5e571c0bfaa3de98ec07362edfffb5f
+  evidence_id: ev-ff9e2c3e814f30d9
+  excerpt: 'Query: AgencyAnalytics vs
+
+    1. https://seranking.com/blog/agencyanalytics-alternatives/
+
+    Title: 10 Best AgencyAnalytics Alternatives for Agencies in 2026
+
+    Date: Apr 8, 2026
+
+    Snippet: Explore the best AgencyAnalytics alternatives for marketing agencies.
+    We compare reporting tools, SEO platforms, and dashboards by features, ...
+
+    2. https://www.swydo.com/blog/swydo-vs-agencyanalytics/
+
+    Title: How to Choose Between Swydo and AgencyAnalytics in ...
+
+    Date: Jun 2, 2026
+
+    Snippet: Swydo is a reporting tool with a full monitoring layer on top; AgencyAnalytics
+    is a reporting tool with a deeper bundled-SEO toolkit. Both build ...
+
+    3. https://agencyanalytics.com/competitors
+
+    Title: Compare AgencyAnalytics vs. DashThis, Databox, ...
+
+    Snippet: A Side-By-Side Comparison Of Your Automated Reporting Options. Review
+    pricing, features, add-ons and more to find your marketing agency''s best-fit
+    platform.
+
+    4. https://funnel.io/blog/agencyanalytics-alternatives
+
+    Title: The top 7 AgencyAnalytics alternatives
+
+    Date: Oct 20, 2025
+
+    Snippet: Whatagraph''s edge is its faster setup and better visuals, while AgencyAnalytics
+    includes SEO tools and task tracking.
+
+    5. https://windsor.ai/agencyanalytics-alternatives/
+
+    Title: Discover Top Agency Analytics Alternatives and ...
+
+    Snippet: Both platforms seem to offer quality services, as AgencyAnalytics has
+    a rating of 4.7 on G2, while Windsor.ai has a rating of 4.8 on the same platform.
+
+    6. https://databox.com/agencyanalytics-alternative
+
+    Title: Scale Your Agency With The Best AgencyAn'
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://www.google.com/search?q=AgencyAnalytics+vs
+- content_hash: 3c547ac6948135f9c3566c6b6f5cc2afe19983917934b79ad72a1b7f9547fce1
+  evidence_id: ev-3c547ac6948135f9
+  excerpt: "Title: 10 Best AgencyAnalytics Alternatives for Agencies in 2026\n\uFEFF\
+    \n\n[ Free course: find out what high-margin agencies do differently. **Start\
+    \ now →** ](https://seranking.com/academy/agency-profitability-in-2026.html)\n\
+    \n[ SE Ranking Grow your visibility with AI SEO ](https://seranking.com) [ SE\
+    \ Visible Analyze AI visibility strategically ](https://visible.seranking.com)\
+    \ [ Planable Manage your socials as a team ](https://planable.io/)\n\n[ ](/ \"\
+    SE Ranking\")\n\n  * Solutions\n\nBy business type [Migrate to SE Ranking ](/migrate-to-se-ranking.html)\n\
+    \nRequest a demo\n\n    * [Agencies](/se-ranking-for-agencies.html)\n    * [Enterprises](/se-ranking-for-enterprises.html)\n\
+    \    * [Growing business](/se-ranking-for-smbs.html)\n\n  * Tools\n\nCore SEO\
+    \ tools AI Search tools Other SEO tools Agency Pack Content Marketing [Local Marketing\
+    \ Software ](/local-marketing-tool.html)[Integrations ](/integrations.html)\n\n\
+    Request a demo\n\n    * [Rank Tracker](/position-tracking.html)\n    * [Keyword\
+    \ Research](/keyword-suggestion-tool.html)\n    * [On-Page SEO Checker](/on-page-checker.html)\n\
+    \    * [Website Audit](/website-audit.html)\n    * [Competitor Analysis Tool](/competitor-traffic-research.html)\n\
+    \    * [Backlink Checker](/backlink-checker.html)\n\n    * [AI Search Toolkit](/ai-visibility-tracker.html)\n\
+    \    * [AI Overviews Tracker](/ai-overviews-tracker.html)\n    * [AI Mode Tracker](/ai-mode-tracker.html)\n\
+    \    * [ChatGPT Tracker](/chatgpt-visibility-tracker.html)\n    * [Gemini Tracker](/gemini-visibility-tracker.html)\n\
+    \ "
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://seranking.com/blog/agencyanalytics-alternatives/
+- content_hash: 1dc192d53227bc086fd339facab8e984fb3ee24f07b16c1efcca589913c68ab5
+  evidence_id: ev-1dc192d53227bc08
+  excerpt: "Title: agency analytics alternatives : r/bigseo\n[ Skip to main content\
+    \ ](https://www.reddit.com/r/bigseo/comments/108204h/agency_analytics_alternatives/?solution=e8eb45dcd62c648fe8eb45dcd62c648f&js_challenge=1&token=7afd7253fec22262ff1c52b1703fe9ec7dd5c79b1294643952ce8ed82aaa0434&jsc_orig_r=#main-content)\
+    \ agency analytics alternatives : r/bigseo\nOpen menu Open navigation [ ](https://www.reddit.com/)Go\
+    \ to Reddit Home\n[ Sign Up ](https://www.reddit.com/register/)Sign up for Reddit\
+    \ [ Log In ](https://www.reddit.com/login/)Log in to Reddit\nExpand user menu\
+    \ Open settings menu\n[ ![](https://styles.redditmedia.com/t5_2wjav/styles/communityIcon_a0kac7rnkdi71.png?width=96&height=96&frame=1&auto=webp&s=48a41ee8e88800330089573d49fc5ef964b91be4)\
+    \ Go to bigseo  ](https://www.reddit.com/r/bigseo/)\n[r/bigseo](https://www.reddit.com/r/bigseo/)\
+    \ • 4y ago\n[0ubliette](https://www.reddit.com/user/0ubliette/)\n#  agency analytics\
+    \ alternatives \nI'm in the market for an Agency Analytics alternative for our\
+    \ reporting and am currently looking at Dashthis, Whatagraph, and a couple of\
+    \ others. \nWhat does your agency use? Have you tried either of the above? \n\
+    We'll need it to have all the integrations appropriate for paid channels in addition\
+    \ to SEO. (Also, the team has already nixed Data Studio, though I know heaps of\
+    \ folks use that.) \nRead more\nArchived post. New comments cannot be posted and\
+    \ votes cannot be cast. \nShare \n#  People also ask about section \nPeople also\
+    \ ask about \n[ Comparison of agency repor"
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://www.reddit.com/r/bigseo/comments/108204h/agency_analytics_alternatives/
+- content_hash: 3d95c8959542f9a79e1d58e2b2d499e828eaa064794f0555f9bc5f47baf0f74c
+  evidence_id: ev-3d95c8959542f9a7
+  excerpt: "Title: 7 Best AgencyAnalytics Alternatives in 2026 (Tested &amp; Compared)\n\
+    Skip to content\n\n[ ](https://portermetrics.com/en/home/)\n\n\U0001F1FA\U0001F1F8\
+    \ \n\n[\U0001F1FA\U0001F1F8 English](https://portermetrics.com/en/home/) [\U0001F1EA\
+    \U0001F1F8 Español](https://portermetrics.com/) [\U0001F1E7\U0001F1F7 Português](https://portermetrics.com/pt/home-pt/)\n\
+    \n  * [Pricing](https://portermetrics.com/en/pricing/)\n  * Product \n\nConnect\n\
+    \nBlend marketing data\n\n[](https://portermetrics.com/en/connectors/bigquery/meta-ads/\
+    \ \"Meta Ads\") [](https://portermetrics.com/en/connectors/bigquery/google-ads/\
+    \ \"Google Ads\") [](https://portermetrics.com/en/connectors/bigquery/google-analytics/\
+    \ \"GA4\") [](https://portermetrics.com/en/connectors/bigquery/instagram/ \"Instagram\"\
+    ) [](https://portermetrics.com/en/connectors/bigquery/shopify/ \"Shopify\") [](https://portermetrics.com/en/connectors/bigquery/hubspot/\
+    \ \"HubSpot\")\n\n[View 20+ connectors →](https://portermetrics.com/en/connectors/)\n\
+    \nStore\n\nScale & performance\n\n[ BigQuery NEW ](https://portermetrics.com/en/connectors/bigquery/)\n\
+    \nVisualize\n\nAutomate reports\n\n[ Google Sheets ](https://portermetrics.com/en/connectors/bigquery/google-sheets/)\
+    \ [ Data Studio ](https://portermetrics.com/en/connectors/looker-studio/) [ Power\
+    \ BI ](https://portermetrics.com/en/connectors/)\n\nAnalyze ✨ AI\n\nQuery builder,\
+    \ alerts & notifications\n\nData blending Custom fields Schedules\n\n[See more\
+    \ →](https://portermetrics.com/en/connectors/)\n\n  * [Templates](https://portermetrics.com/en/report-templates/)\n\
+    \  * Learn \n\n[Tutorials](https://portermetrics.com/en/"
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://portermetrics.com/en/compare/agencyanalytics-alternatives/
+- content_hash: 4e97fc1ba62a80ac55044aaa60192ae7f5fa7d3dc1b9bc0609375381d168ad9b
+  evidence_id: ev-4e97fc1ba62a80ac
+  excerpt: "Title: The top 7 AgencyAnalytics alternatives\n[ ](https://funnel.io)\n\
+    \n  * Product \n\n    * Overview\n      * [ Product overview  Learn about Funnel’s\
+    \ features and benefits ](https://funnel.io/product-overview)\n        *     \
+    \  * [ Data Hub  Connect and model all your marketing data ](https://funnel.io/data-hub)\n\
+    \        *       * [ Connectors  Full list of available data sources ](https://funnel.io/all-data-sources)\n\
+    \        *       * [ Destinations  Send data anywhere you want ](https://funnel.io/destinations)\n\
+    \        *     * What can you do with Funnel?\n      * [ Integrate  Move data\
+    \ into your data warehouse ](https://funnel.io/data-integration)\n        *  \
+    \     * [ Measure  Go beyond last-click attribution ](https://funnel.io/measure)\n\
+    \        *       * [ Report  Powerful marketing reports ](https://funnel.io/report)\n\
+    \        *       * [ Activate  Boost your marketing effectiveness  ](https://funnel.io/data-activation)\n\
+    \        *     * Why Funnel?\n      * [ Build with Funnel  ](https://funnel.io/build-with-funnel)\n\
+    \      * [ Data security  ](https://funnel.io/funnel-data-privacy-and-security)\n\
+    \      * [ Our customers  ](https://funnel.io/customers)\n      * [ Funnel AI\
+    \  ](https://funnel.io/funnel-ai)\n      * [ Migrate to Funnel  ](https://funnel.io/migrate-to-funnel)\n\
+    \n  * Solutions \n\n    * By role\n      * [ Marketers  ](https://funnel.io/for-marketers)\n\
+    \      * [ Data teams  ](https://funnel.io/data-teams)\n      * [ IT / Engineering\
+    \  ](https://funnel.io/it-engineering)\n    * By industr"
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://funnel.io/blog/agencyanalytics-alternatives
+- content_hash: 95a7a7a89c11fb60d56eeb611a3c5fd1813d22887851daeb71d847dde991235c
+  evidence_id: ev-95a7a7a89c11fb60
+  excerpt: "Title: Any solid alternatives to Agency Analytics with better integrations?\
+    \ : r/digital_marketing\n[ Skip to main content ](https://www.reddit.com/r/digital_marketing/comments/1ijcae2/any_solid_alternatives_to_agency_analytics_with/?solution=349732c24cc38a4b349732c24cc38a4b&js_challenge=1&token=7afd7253fec22262ff1c52b1703fe9ece2acab88e201ea36e17705661006b1eb&jsc_orig_r=#main-content)\n\
+    Open menu Open navigation [ ](https://www.reddit.com/)Go to Reddit Home\n[ Sign\
+    \ Up ](https://www.reddit.com/register/)Sign up for Reddit [ Log In ](https://www.reddit.com/login/)Log\
+    \ in to Reddit\nExpand user menu Open settings menu\n[ ![](https://styles.redditmedia.com/t5_2v6yq/styles/communityIcon_zdbrii2h33yg1.jpg?width=96&height=96&frame=1&auto=webp&s=385289c91248148f8b953ae267589241f2147e5a)\
+    \ Go to digital_marketing  ](https://www.reddit.com/r/digital_marketing/)\n[r/digital_marketing](https://www.reddit.com/r/digital_marketing/)\
+    \ • 2y ago\n[CodeBradley](https://www.reddit.com/user/CodeBradley/)\n#  Any solid\
+    \ alternatives to Agency Analytics with better integrations? \n[ Question  ](https://www.reddit.com/r/digital_marketing/?f=flair_name%3A%22Question%22)\n\
+    AgencyAnalytics integrations are very limited and if you want to use their MySQL\
+    \ Integration they charge $700/mo on top of the plan you want to purchase. Wondering\
+    \ if there's alternatives that don't price gouge or any open source alternatives\
+    \ I can host myself? \nbtw, anyone using it and got this integration for a cheaper\
+    \ rate? \nRead more\nShare \n#  Pe"
+  retrieved_at: '2026-08-18T11:43:04.765558-04:00'
+  url: https://www.reddit.com/r/digital_marketing/comments/1ijcae2/any_solid_alternatives_to_agency_analytics_with/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

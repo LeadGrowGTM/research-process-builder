@@ -1,0 +1,16 @@
+as_of: '2026-08-18'
+channels:
+  google:
+    evidence_ids:
+    - ev-53d2dfbdadfe562f
+    status: active
+  meta:
+    call_to_action: Learn more
+    evidence_ids:
+    - ev-6a20365a736c144d
+    landing_page: https://agencyanalytics.com/p/enterprise
+    observed_offer: TODO_HUMAN
+    offer_aliases:
+    - TODO_HUMAN
+    status: active
+company_id: saas-01

@@ -49,7 +49,7 @@ from .signal_loop import SignalSpec, main as signal_main
 
 NEWS_PLAN = SearchPlan(
     queries=(
-        QueryTemplate("{{domain}} news", "news", "qdr:y"),
+        QueryTemplate("{{domain}} news", "news", None),
         QueryTemplate('{{company_name}} "press release" OR "announces" OR "newsroom"',
                       "web", "qdr:y"),
         QueryTemplate('{{company_name}} launches OR "new feature" OR "introducing" OR '

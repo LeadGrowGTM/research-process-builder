@@ -136,9 +136,40 @@ def parse_ads_output(
     return output
 
 
+AD_LIBRARY_HOSTS: Mapping[str, tuple[str, ...]] = {
+    "google": ("adstransparency.google.com",),
+    "meta": ("www.facebook.com", "facebook.com"),
+}
+
+
+def ad_library_channel(url: str) -> str | None:
+    """Return the ad channel whose library ``url`` belongs to, else None."""
+    lowered = url.lower()
+    if lowered.startswith("https://adstransparency.google.com/"):
+        return "google"
+    if lowered.startswith(("https://www.facebook.com/ads/library", "https://facebook.com/ads/library")):
+        return "meta"
+    return None
+
+
+def ad_library_evidence_ids(dossier: CompanyDossier) -> tuple[str, ...]:
+    """Evidence IDs captured from an ad library; only these may support a channel."""
+    return tuple(
+        item.evidence_id for item in dossier.evidence if ad_library_channel(item.url) is not None
+    )
+
+
 def ads_output_contract(dossier: CompanyDossier) -> dict[str, Any]:
-    """Strict JSON schema for the model: ``ads.channels`` plus ``unknowns``."""
-    evidence_ids = [item.evidence_id for item in dossier.evidence]
+    """Strict JSON schema for the model: ``ads.channels`` plus ``unknowns``.
+
+    The ``evidence_ids`` enum is limited to ad-library Evidence so website,
+    LinkedIn, or directory Evidence can never support a channel. When the
+    dossier holds no ad-library Evidence at all, the enum falls back to every
+    retained ID (the prompt then requires an empty channel list).
+    """
+    evidence_ids = list(ad_library_evidence_ids(dossier)) or [
+        item.evidence_id for item in dossier.evidence
+    ]
     nullable_text = {"type": ["string", "null"]}
     channel = {
         "type": "object",
@@ -151,7 +182,7 @@ def ads_output_contract(dossier: CompanyDossier) -> dict[str, Any]:
             "landing_page": nullable_text,
             "evidence_ids": {
                 "type": "array", "items": {"type": "string", "enum": evidence_ids},
-                "minItems": 1, "uniqueItems": True,
+                "minItems": 1,
             },
         },
         "required": ["channel", "status", "angle", "offer", "call_to_action",

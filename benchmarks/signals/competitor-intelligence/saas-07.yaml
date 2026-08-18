@@ -1,0 +1,759 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcc1a8c71d39505e
+  - ev-48db0e5bbd86695c
+  - ev-f2fb791a6cc68dcb
+  field: identity
+  value: Betterworks
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcc1a8c71d39505e
+  - ev-48db0e5bbd86695c
+  - ev-f2fb791a6cc68dcb
+  field: description
+  value: 'About Betterworks | Betterworks --> Limited time offer ☀️ ☀️ Summer Promotion:
+    It''s not too late. Make your end of year reviews a breeze! Learn more Solutions
+    Why Betterworks --> --> --> --> --> --> --> Resources Company Pricing Login Take
+    a tour Talk to an expert Products Performance Management Drive results through
+    aligned goals, continuous feedback, and meaningful conversations. Find your Solution
+    Talent Intelligence Identify, develop, and retain the talent your organization
+    needs to grow. Fi'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcc1a8c71d39505e
+  - ev-48db0e5bbd86695c
+  - ev-f2fb791a6cc68dcb
+  field: offers
+  value: performance management
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcc1a8c71d39505e
+  - ev-48db0e5bbd86695c
+  - ev-f2fb791a6cc68dcb
+  field: icp
+  value: hr leaders
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcc1a8c71d39505e
+  - ev-48db0e5bbd86695c
+  - ev-f2fb791a6cc68dcb
+  field: personas
+  value: hr leaders
+  visibility: message_safe
+company_id: saas-07
+corrections: []
+evidence:
+- content_hash: dcc1a8c71d39505e77857cb29116e2becab3482aae9dfb038be90fccba03f481
+  evidence_id: ev-dcc1a8c71d39505e
+  excerpt: 'About Betterworks | Betterworks --> Limited time offer ☀️ ☀️ Summer Promotion:
+    It''s not too late. Make your end of year reviews a breeze! Learn more Solutions
+    Why Betterworks --> --> --> --> --> --> --> Resources Company Pricing Login Take
+    a tour Talk to an expert Products Performance Management Drive results through
+    aligned goals, continuous feedback, and meaningful conversations. Find your Solution
+    Talent Intelligence Identify, develop, and retain the talent your organization
+    needs to grow. Find your Solution Performance Management Drive results through
+    aligned goals, continuous feedback, and meaningful conversations. Find your Solution
+    Talent Intelligence Identify, develop, and retain the talent your organization
+    needs to grow. Find your Solution Modules Performance Management Drive results
+    through aligned goals, continuous feedback, and conversations. Goals & OKRs Align
+    team and individual goals to company priorities and track progress. Engagement
+    Measure employee sentiment and turn insights into meaningful action. Feedback
+    Enable continuous feedback that helps employees improve and grow faster. Analytics
+    & Insights Turn people data into clear insights that support smarter decisions.
+    Conversations Run review cycles that support better feedback and performance decisions.
+    AI for HR Improve consistency and fairness in performance and talent decisions.
+    1:1s Support more focused check-ins with shared agendas, notes, and follow-ups.
+    Talent Intelligence Identify, develop, and retain the talent your organization
+    needs to grow. Calibration Improve consistency and fairness in performance and
+    talent decisions. Succession Planning Identify future leaders and build stronger
+    pipelines for key roles. Skills Intelligence Understand workforce skills, gaps,
+    and development opportunities at scale. Unified Talent Profiles See each employee’s
+    skills, growth, and performance in one place. MCP Bring goals, recognition, and
+    performance data into your AI tools. Turn your people into a s'
+  retrieved_at: '2026-08-12T21:00:23.729989+00:00'
+  url: https://www.betterworks.com/about
+- content_hash: 48db0e5bbd86695c61e0c99e69309b00b4b12523a6aed9d2fcda9403026ab603
+  evidence_id: ev-48db0e5bbd86695c
+  excerpt: 'Betterworks | LinkedIn Agree & Join LinkedIn By clicking Continue to join
+    or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie
+    Policy . Skip to main content LinkedIn Top Content People Learning Jobs Games
+    Sign in Join now Betterworks Software Development Menlo Park, CA 67,904 followers
+    Turning performance into a business growth engine 📈 See jobs Follow View all 224
+    employees Report this company About us Betterworks helps organizations turn performance
+    into measurable business impact. Our AI-native performance intelligence solution
+    connects goals, feedback, skills, and talent intelligence to give leaders real-time
+    visibility into workforce capability, manager effectiveness, and progress against
+    business priorities. Built for large and fast-growing organizations, Betterworks
+    helps HR and business leaders align teams, coach employees, support growth and
+    internal mobility, and make evidence-based talent decisions grounded in real work—not
+    guesswork. By embedding performance into the flow of work, Betterworks enables
+    organizations to adapt faster, strengthen execution, and drive better business
+    outcomes. Because performance isn’t just an HR process—it’s how strategy gets
+    executed. Website http://www.betterworks.com External link for Betterworks Industry
+    Software Development Company size 51-200 employees Headquarters Menlo Park, CA
+    Type Privately Held Founded 2013 Specialties Technology, Future of work, Performance
+    and productivity, SaaS and cloud computing, Continuous performance management,
+    Performance management, HR, Goals/OKRs, Employee Engagement, Employee Development,
+    Leadership Development, Recognition, Conversations, Peer Feedback, Objective and
+    Key Results, Talent Intelligence, and Skills Development Products Betterworks
+    Betterworks Employee Performance Management Software Betterworks is the pioneer
+    in intelligent performance management software solutions. Its flexible, enterprise-ready
+    SaaS platform helps workforces and organizations '
+  retrieved_at: '2026-08-12T21:00:24.460767+00:00'
+  url: https://www.linkedin.com/company/betterworks
+- content_hash: f2fb791a6cc68dcbcce02fd0f2750f0ec41aa480705618a5041630c1a62a107d
+  evidence_id: ev-f2fb791a6cc68dcb
+  excerpt: 'Betterworks Review 2026: Performance Management, OKRs, and Integrations
+    HR Software Compare HR tools for your company HR Software by Country & Region
+    HR Software in the US HR Software in the UK HR Software in Europe HR Software
+    in Canada HR Software in Australia HR Software by Feature HR Software with Payroll
+    HR Software with Onboarding HR Software with Performance Management HR Software
+    with Time and Attendance HR Software with Analytics HR Software by Company Size
+    HR Software for Small Business HR Software for SMEs HR Software for Startups HR
+    Software for Scaleups HR Software for Enterprise HR Software for Global and Remote
+    Teams HR Software for Remote Teams HR Software for Distributed Teams HR Software
+    for Global Compliance HR Software with EOR Services HR Software for Contractor
+    Management HR Software for Nonprofits HR Software Integrations HR Software That
+    Integrates with QuickBooks HR Software That Integrates with Xero HR Software That
+    Integrates with Workday HR Software That Integrates with NetSuite HR Software
+    That Integrates with Slack Compare HR Software Employer of Record Hire globally
+    without local entities EOR by Country & Region EOR in the US EOR in the UK EOR
+    in Germany EOR in Canada EOR in Europe Global and International EOR Global EOR
+    Providers International EOR Providers Multi-Country EOR Providers EOR for Global
+    Expansion EOR for Remote Teams EOR by Company Size & Growth Stage EOR for Small
+    Business EOR for Startups EOR for Mid-Sized Businesses EOR for Enterprise EOR
+    for Fast-Growing Teams EOR by Compliance and Immigration Guides EOR Providers
+    with Compliance Support EOR Providers with Visa Support EOR Providers with Tax
+    Compliance GDPR-Compliant EOR Providers SOC 2-Compliant EOR Providers EOR by Payroll,
+    Benefits, and Operations Guides EOR Providers with Payroll EOR Providers with
+    Global Payroll EOR Providers with Local Payroll EOR Providers with Global Benefits
+    EOR Providers with Onboarding EOR by Industry EOR for Tech Companies EOR for Fintech '
+  retrieved_at: '2026-08-12T21:00:24.964969+00:00'
+  url: https://www.hr.software/reviews/betterworks
+- content_hash: 3ed612d5ac1ad11af49049ef0c8840487ef6c7b26e3317fa6cd5cf18d4e1904e
+  evidence_id: ev-3ed612d5ac1ad11a
+  excerpt: 'Title: Betterworks: Real-Time Performance Management & Talent ...
+
+    Snippet: vs Culture Amp vs UKG vs Cornerstone vs Lattice. Get the latest news
+    and insights around the HR world. I confirm that I have read Betterworks'' Privacy
+    Policy ...'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.betterworks.com/
+- content_hash: 66d1bccef66290a0273aedef2c84e92c42b9b50a9182f1f71598404b74f8dae0
+  evidence_id: ev-66d1bccef66290a0
+  excerpt: 'Title: 7 Betterworks Competitors: Selecting the Best Solution
+
+    Snippet: Peoplelogic offers the best value for your money compared to other HR
+    products available on the market. Unlike many competitors, the platform doesn''t
+    bind you ...'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://peoplelogic.ai/blog/betterworks-competitors
+- content_hash: c951a9cf0bfc05798d5d2e58c1e217e57d9040c4c603d426c8013eab4c6da0c4
+  evidence_id: ev-c951a9cf0bfc0579
+  excerpt: 'Title: 10 Best Betterworks Alternatives (Tested, 2026)
+
+    Snippet: The limitation vs Betterworks: no performance review module. Tability
+    is a pure OKR and goal-tracking platform. If performance management integration
+    is a ...'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.okrstool.com/blog/betterworks-alternatives
+- content_hash: 5449b6f408d948ee6427c689149acebc5bd8ccc63d1ed715932e7b3014f77966
+  evidence_id: ev-5449b6f408d948ee
+  excerpt: 'Title: Betterworks Review 2026: Features, Pricing & Alternatives
+
+    Snippet: 15Five vs BetterworksBetterworks vs CascadeBetterworks vs Jira AlignBetterworks
+    vs JOPBetterworks vs LatticeBetterworks vs LeapsomeBetterworks vs Mooncamp ...'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.tability.io/compare/platform/betterworks
+- content_hash: 62253f975a6c2eebcb6b74c9c244336bbcd8121490b441e386407e9eea8d426c
+  evidence_id: ev-62253f975a6c2eeb
+  excerpt: 'Detected date: Oct 9, 2025
+
+    Title: Why Betterworks Is Thriving in the Performance ...
+
+    Date: Oct 9, 2025
+
+    Snippet: The AI infrastructure investment gives Betterworks an advantage over
+    competitors reliant on third-party models. As organizations mature in ...'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://brandonhall.com/why-betterworks-is-thriving-in-the-performance-management-revolution/
+- content_hash: 72569a2356fdca11c8630703c3d828b1ddecbb5be4efb10ca982abb12b269c2d
+  evidence_id: ev-72569a2356fdca11
+  excerpt: 'Title: BetterWorks vs QPR Performance Management
+
+    Snippet: Compare BetterWorks vs QPR Performance Management 2026. BetterWorks has
+    102 and QPR Performance Management has 2 customers in Financial Performance ...'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://6sense.com/tech/financial-performance-management/qprperformancemanagement-vs-betterworks
+- content_hash: d87019093b62664ba9266a7188ae6efdc39767679e700ad766d57c031a6c1709
+  evidence_id: ev-d87019093b62664b
+  excerpt: 'Detected date: Mar 25, 2026
+
+    Title: Performance Enablement vs. Performance Management
+
+    Date: Mar 25, 2026
+
+    Snippet: Performance Enablement vs. Performance Management: What''s at Stake ...
+    What makes Betterworks different from other performance management tools?'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.betterworks.com/magazine/performance-enablement-vs-performance-management
+- content_hash: 3b25c7965105d24ab74f43d7a12df12cea1eac23868e4fac9ac784fa3260a80a
+  evidence_id: ev-3b25c7965105d24a
+  excerpt: 'Detected date: Apr 27, 2021
+
+    Title: The Tale Of Performance Management Tools: 15Five ...
+
+    Date: Apr 27, 2021
+
+    Snippet: The Tale Of Performance Management Tools: 15Five, Lattice, BetterWorks,
+    And More… ... vs. other teams, and give managers suggestions. Reflektiv, ...'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://joshbersin.com/2021/04/the-tale-of-performance-management-tools-15five-lattice-and-many-more/
+- content_hash: 9415dc661ab009d0772d5ee472e8fec24601f9ad0cf76b011b6def037f1d2f43
+  evidence_id: ev-9415dc661ab009d0
+  excerpt: 'Title: Betterworks Alternatives
+
+    Snippet: As the leading cloud-based performance management solution, Trakstar
+    has automated goal setting/tracking, unlimited performance reviews, & 360 feedback.'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.trakstar.com/comparisons/performance-management-software-comparison/betterworks-alternatives/
+- content_hash: dc8fa9764b7e4fd30a62fd9919cc0bba47c294e99cbf5ba0e269a812945afa87
+  evidence_id: ev-dc8fa9764b7e4fd3
+  excerpt: 'Query: Betterworks performance management alternatives OR competitors
+    OR "vs" OR "compared to"
+
+    1. https://www.betterworks.com/
+
+    Title: Betterworks: Real-Time Performance Management & Talent ...
+
+    Snippet: vs Culture Amp vs UKG vs Cornerstone vs Lattice. Get the latest news
+    and insights around the HR world. I confirm that I have read Betterworks'' Privacy
+    Policy ...
+
+    2. https://peoplelogic.ai/blog/betterworks-competitors
+
+    Title: 7 Betterworks Competitors: Selecting the Best Solution
+
+    Snippet: Peoplelogic offers the best value for your money compared to other HR
+    products available on the market. Unlike many competitors, the platform doesn''t
+    bind you ...
+
+    3. https://www.okrstool.com/blog/betterworks-alternatives
+
+    Title: 10 Best Betterworks Alternatives (Tested, 2026)
+
+    Snippet: The limitation vs Betterworks: no performance review module. Tability
+    is a pure OKR and goal-tracking platform. If performance management integration
+    is a ...
+
+    4. https://www.tability.io/compare/platform/betterworks
+
+    Title: Betterworks Review 2026: Features, Pricing & Alternatives
+
+    Snippet: 15Five vs BetterworksBetterworks vs CascadeBetterworks vs Jira AlignBetterworks
+    vs JOPBetterworks vs LatticeBetterworks vs LeapsomeBetterworks vs Mooncamp ...
+
+    5. https://brandonhall.com/why-betterworks-is-thriving-in-the-performance-management-revolution/
+
+    Title: Why Betterworks Is Thriving in the Performance ...
+
+    Date: Oct 9, 2025
+
+    Snippet: The AI infrastructure investment gives Betterworks an advantage over
+    competitors reliant on thi'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.google.com/search?q=Betterworks+performance+management+alternatives+OR+competitors+OR+%22vs%22+OR+%22compared+to%22
+- content_hash: a4ac02857ceac9f54f18976b407fe74296b3e4809278a18c86a945f2967b93d5
+  evidence_id: ev-a4ac02857ceac9f5
+  excerpt: 'Title: 10 Best Betterworks Alternatives (Tested, 2026)
+
+    Snippet: The 10 Best Betterworks Alternatives · 1. OKRs Tool · 2. Lattice · 3.
+    Perdoo · 4. Tability · 5. 15Five · 6. Leapsome · 7. Mooncamp · 8. Synergita. Best
+    for: HR- ...'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.okrstool.com/blog/betterworks-alternatives
+- content_hash: 87e17951c83fe44deb0bc5974233cea6a811d92fa81b80d2a59f53cc1ea3b4ab
+  evidence_id: ev-87e17951c83fe44d
+  excerpt: 'Title: 7 Betterworks Competitors: Selecting the Best Solution - Peoplelogic
+
+    Snippet: 7 main Betterworks competitors · Core HR · Performance management · Time
+    and attendance tracking · Time off management · Onboarding tools · Payroll hub
+    · Compensation ...'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://peoplelogic.ai/blog/betterworks-competitors
+- content_hash: 7197dfc36553fb3efd85f00ba942dffb7ab8f044e6641db5088f367da318a5a3
+  evidence_id: ev-7197dfc36553fb3e
+  excerpt: 'Title: Top Betterworks Competitors & Alternatives 2026 - Gartner
+
+    Snippet: Top alternatives ranked by recent software buyers · Microsoft · Quantive
+    · Profit.co · 15Five.'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://external.pi.gpi.aws.gartner.com/reviews/market/okr-software/vendor/betterworks/alternatives
+- content_hash: 0665ba4fefafa7e9448d6e86c288342814def52580e80d3f622425e5c5de1edc
+  evidence_id: ev-0665ba4fefafa7e9
+  excerpt: 'Title: 7 Best Betterworks Alternatives for 2026: Compared - Trainery One
+
+    Snippet: What should replace Betterworks? · 1. TraineryHCM · 2. Lattice · 3. 15Five
+    · 4. Leapsome · 5. Culture Amp · 6. Rippling · 7. Workday HCM. Workday HCM ...'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.traineryhcm.com/7-best-betterworks-alternatives
+- content_hash: 9dd98742bce32e3acba0b21f8819d56ffb4c3480e870361b97d1cb4032db8edb
+  evidence_id: ev-9dd98742bce32e3a
+  excerpt: 'Title: Betterworks: Real-Time Performance Management & Talent Intelligence
+
+    Snippet: Betterworks connects goals, feedback, skills, and talent intelligence
+    in an AI-native solution — so HR leaders can turn performance into an operating
+    approach'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.betterworks.com/
+- content_hash: 479e5a366d512f2327bb66f09912567f39b91ba3a8f60ec3d93648114d95b966
+  evidence_id: ev-479e5a366d512f23
+  excerpt: 'Detected date: Sep 13, 2022
+
+    Title: Betterworks - Top Features, Pros & Cons, and Alternatives - YouTube
+
+    Date: Sep 13, 2022
+
+    Snippet: Visit our website for a list of the top Performance Management options
+    on the market today: ...'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.youtube.com/watch?v=cuGJRKll06o
+- content_hash: b5cccb2a7ed9b70876ccd3c3321053c752f997e16444e7906a29da23cfd2aac2
+  evidence_id: ev-b5cccb2a7ed9b708
+  excerpt: 'Title: Market Share of BetterWorks - Employee Recognition - 6Sense
+
+    Snippet: The top three of BetterWorks''s competitors in the Employee Recognition
+    category are MangoApps with 39.70%, Namely with 28.65%, Kudos with 7.08% market
+    share.'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://6sense.com/tech/employee-recognition/betterworks-market-share
+- content_hash: f6c6ab59ba8fc934d7c692f2cdd0983f46f6070b07af3b9ff62dbffe344c6ec5
+  evidence_id: ev-f6c6ab59ba8fc934
+  excerpt: 'Detected date: Jan 22, 2026
+
+    Title: 10 Best Betterworks Alternatives in 2026 - Mooncamp
+
+    Date: Jan 22, 2026
+
+    Snippet: 10 best Betterworks alternatives · 1. Mooncamp · 2. Lattice · 3. Leapsome
+    · 4. 15Five · 5. Profit.co · 6. Tability · 7. WorkBoard · 8. Cascade.'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://mooncamp.com/blog/betterworks-alternatives
+- content_hash: dede78c9e18347007a50e4c1e0301194a760d17fc8be1babc328f5fa4e9e3869
+  evidence_id: ev-dede78c9e1834700
+  excerpt: 'Title: 20 Best Betterworks Alternatives Reviewed in 2026
+
+    Snippet: Best Betterworks Alternatives Shortlist · 1. Profit.co — Best for AI-driven
+    decision-making · 2. Mooncamp — Best for strategic planning tools · 3. 15Five
+    — Best ...'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://peoplemanagingpeople.com/tools/best-betterworks-competitors/
+- content_hash: 56c768c650b3dd5269c1b4e9f00994ff343a726673f85a94edd08d786d4c213f
+  evidence_id: ev-56c768c650b3dd52
+  excerpt: 'Query: Betterworks alternatives
+
+    1. https://www.okrstool.com/blog/betterworks-alternatives
+
+    Title: 10 Best Betterworks Alternatives (Tested, 2026)
+
+    Snippet: The 10 Best Betterworks Alternatives · 1. OKRs Tool · 2. Lattice · 3.
+    Perdoo · 4. Tability · 5. 15Five · 6. Leapsome · 7. Mooncamp · 8. Synergita. Best
+    for: HR- ...
+
+    2. https://peoplelogic.ai/blog/betterworks-competitors
+
+    Title: 7 Betterworks Competitors: Selecting the Best Solution - Peoplelogic
+
+    Snippet: 7 main Betterworks competitors · Core HR · Performance management · Time
+    and attendance tracking · Time off management · Onboarding tools · Payroll hub
+    · Compensation ...
+
+    3. https://external.pi.gpi.aws.gartner.com/reviews/market/okr-software/vendor/betterworks/alternatives
+
+    Title: Top Betterworks Competitors & Alternatives 2026 - Gartner
+
+    Snippet: Top alternatives ranked by recent software buyers · Microsoft · Quantive
+    · Profit.co · 15Five.
+
+    4. https://www.traineryhcm.com/7-best-betterworks-alternatives
+
+    Title: 7 Best Betterworks Alternatives for 2026: Compared - Trainery One
+
+    Snippet: What should replace Betterworks? · 1. TraineryHCM · 2. Lattice · 3. 15Five
+    · 4. Leapsome · 5. Culture Amp · 6. Rippling · 7. Workday HCM. Workday HCM ...
+
+    5. https://www.betterworks.com/
+
+    Title: Betterworks: Real-Time Performance Management & Talent Intelligence
+
+    Snippet: Betterworks connects goals, feedback, skills, and talent intelligence
+    in an AI-native solution — so HR leaders can turn performance into an operating
+    approach
+
+    6. https://www.youtube.c'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.google.com/search?q=Betterworks+alternatives
+- content_hash: ffd62627bffb4b91506c75c798401f6c2bf8ca9aeac6a14455ebd9196a5f28ab
+  evidence_id: ev-ffd62627bffb4b91
+  excerpt: 'Title: 10 Best Betterworks Alternatives (Tested, 2026)
+
+    Snippet: Ten Betterworks alternatives compared on pricing, setup speed, and check-ins
+    — including which ones you can trial without a sales call.'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.okrstool.com/blog/betterworks-alternatives
+- content_hash: 5be4f97d79df26c65aa82de7dc1a07e5f467b669f064efc4ccde89b8bda8529d
+  evidence_id: ev-5be4f97d79df26c6
+  excerpt: 'Title: Betterworks: Real-Time Performance Management & Talent ...
+
+    Snippet: Betterworks connects goals, feedback, skills, and talent intelligence
+    in an AI-native solution — so HR leaders can turn performance into an operating
+    approach'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.betterworks.com/
+- content_hash: 995877fb9eded55687e33311bce2bd9501c26c01f25b3082eea3604d8ba0b5da
+  evidence_id: ev-995877fb9eded556
+  excerpt: 'Title: 7 Betterworks Competitors: Selecting the Best Solution
+
+    Snippet: 7 main Betterworks competitors · Core HR · Performance management · Time
+    and attendance tracking · Time off management · Onboarding tools · Payroll hub
+    · Compensation ...'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://peoplelogic.ai/blog/betterworks-competitors
+- content_hash: 7d255da7356f57ebd3cde2464f91eb48e6f333ff4be2a3d3126dda7db329e868
+  evidence_id: ev-7d255da7356f57eb
+  excerpt: 'Title: Betterworks
+
+    Snippet: By embedding performance into the flow of work, Betterworks enables organizations
+    to adapt faster, strengthen execution, and drive better business outcomes.'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.linkedin.com/company/betterworks
+- content_hash: e7476b82c1b005a6b7cbcbf3a213e0c9af885b17b3ca60de97d94403176e900e
+  evidence_id: ev-e7476b82c1b005a6
+  excerpt: 'Title: Top 10 Betterworks Alternatives & Competitors in 2026
+
+    Snippet: The best Betterworks alternatives are Lattice, 15Five, and Culture Amp.
+    Find top-ranking free & paid apps similar to Betterworks for your Performance
+    ...'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.g2.com/products/betterworks/competitors/alternatives
+- content_hash: 596d7bff1d51479ff628261c051d494837002fe0948fc9d09a24806bef96c14e
+  evidence_id: ev-596d7bff1d51479f
+  excerpt: 'Title: Betterworks Feedback [N/A] : r/humanresources
+
+    Date: 10 months ago
+
+    Snippet: Betterworks is one of the final products. It''s a perfectly fine tool.
+    In my experience, they all have the same key flaws: implementation, ...'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.reddit.com/r/humanresources/comments/1nq93y3/betterworks_feedback_na/
+- content_hash: 4efe06f1f394e10d620859649a8f7cb48d466edecc945838b85b35bfb0466fa0
+  evidence_id: ev-4efe06f1f394e10d
+  excerpt: 'Detected date: Oct 9, 2025
+
+    Title: Why Betterworks Is Thriving in the Performance ...
+
+    Date: Oct 9, 2025
+
+    Snippet: The organization adopted Betterworks to enable agile goal-setting, continuous
+    feedback, and equitable evaluation — building a transparent, ...'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://brandonhall.com/why-betterworks-is-thriving-in-the-performance-management-revolution/
+- content_hash: c663d9c7982e0aaa267f28fc875f63dbc3d2b679fb5c1f21e3aeab36442700b8
+  evidence_id: ev-c663d9c7982e0aaa
+  excerpt: 'Title: Evolve Beyond Annual Performance Reviews
+
+    Snippet: Performance review software to enable meaningful conversations between
+    managers and employees to promote clarity, performance, and development.'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.betterworks.com/product/performance-review-software
+- content_hash: 4a7fdebcfa49bfe323bad76cf0df5516488d93d7462f18becfb744d4f88f48ca
+  evidence_id: ev-4a7fdebcfa49bfe3
+  excerpt: 'Detected date: Jan 22, 2026
+
+    Title: 10 Best Betterworks Alternatives in 2026
+
+    Date: Jan 22, 2026
+
+    Snippet: Discover the 10 best Betterworks alternatives with in-depth feature comparisons,
+    pricing insights, and user ratings for each tool.'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://mooncamp.com/blog/betterworks-alternatives
+- content_hash: 46223a1a175373fbbeb9dd6d73a9dfc70352941f0cfbc05232392e17a99bdf7b
+  evidence_id: ev-46223a1a175373fb
+  excerpt: 'Query: Betterworks vs
+
+    1. https://www.okrstool.com/blog/betterworks-alternatives
+
+    Title: 10 Best Betterworks Alternatives (Tested, 2026)
+
+    Snippet: Ten Betterworks alternatives compared on pricing, setup speed, and check-ins
+    — including which ones you can trial without a sales call.
+
+    2. https://www.betterworks.com/
+
+    Title: Betterworks: Real-Time Performance Management & Talent ...
+
+    Snippet: Betterworks connects goals, feedback, skills, and talent intelligence
+    in an AI-native solution — so HR leaders can turn performance into an operating
+    approach
+
+    3. https://peoplelogic.ai/blog/betterworks-competitors
+
+    Title: 7 Betterworks Competitors: Selecting the Best Solution
+
+    Snippet: 7 main Betterworks competitors · Core HR · Performance management · Time
+    and attendance tracking · Time off management · Onboarding tools · Payroll hub
+    · Compensation ...
+
+    4. https://www.linkedin.com/company/betterworks
+
+    Title: Betterworks
+
+    Snippet: By embedding performance into the flow of work, Betterworks enables organizations
+    to adapt faster, strengthen execution, and drive better business outcomes.
+
+    5. https://www.g2.com/products/betterworks/competitors/alternatives
+
+    Title: Top 10 Betterworks Alternatives & Competitors in 2026
+
+    Snippet: The best Betterworks alternatives are Lattice, 15Five, and Culture Amp.
+    Find top-ranking free & paid apps similar to Betterworks for your Performance
+    ...
+
+    6. https://www.reddit.com/r/humanresources/comments/1nq93y3/betterworks_feedback_na/
+
+    Title: Betterworks Feedback [N/A] : r/humanreso'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.google.com/search?q=Betterworks+vs
+- content_hash: 58b0cea59d9679ef808a1077508f774225c45dcebbff5fa6d3c97a28394b069b
+  evidence_id: ev-58b0cea59d9679ef
+  excerpt: "Title: Real-Time Performance Management &amp; Talent Intelligence | Betterworks\n\
+    Limited time offer \n\n☀️ ☀️ Summer Promotion: It's not too late.  \nMake your\
+    \ end of year reviews a breeze! \n\n[ Learn more ](/pricing)\n\n[ ](/)\n\nSolutions\
+    \  [ Why Betterworks ](/why-betterworks) Resources  Company  [ Pricing ](/plans)\n\
+    \n[ Login ](https://app.betterworks.com)\n\n[ Take a tour  ](/tour)\n\n[ Talk\
+    \ to an expert  ](/contact-us)\n\nProducts \n\nPerformance Management \n\nDrive\
+    \ results through aligned goals, continuous feedback, and meaningful conversations.\
+    \ \n\n[ Find your Solution  ](/product/performance-management-software)\n\nTalent\
+    \ Intelligence \n\nIdentify, develop, and retain the talent your organization\
+    \ needs to grow. \n\n[ Find your Solution  ](/product/talent-intelligence)\n\n\
+    Performance Management \n\nDrive results through aligned goals, continuous feedback,\
+    \ and meaningful conversations. \n\n[ Find your Solution  ](/product/performance-management-software)\n\
+    \nTalent Intelligence \n\nIdentify, develop, and retain the talent your organization\
+    \ needs to grow. \n\n[ Find your Solution  ](/product/talent-intelligence)\n\n\
+    Modules \n\n[ Performance Management  Drive results through aligned goals, continuous\
+    \ feedback, and conversations.  ](/product/performance-management-software) [\
+    \ Goals & OKRs  Align team and individual goals to company priorities and track\
+    \ progress.  ](/product/okr-software) [ Engagement  Measure employee sentiment\
+    \ and turn insights into meaningful action.  ](/product/employee-survey-tools)\
+    \ [ Feedback  E"
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.betterworks.com/
+- content_hash: 574cf2a0a96e3437a901b585bdbf8160c94beeddd0a100fba63386996c9c2e1b
+  evidence_id: ev-574cf2a0a96e3437
+  excerpt: "Title: 7 Betterworks Competitors: Selecting the Best Solution\n\U0001F6A2\
+    \ Peoplelogic launches Nova - your AI PeopleOps Team! Starting at $5/mo - [Learn\
+    \ more](https://nova.peoplelogic.ai)  \n\n\n[](/)\n\nProduct\n\nFeatures\n\n[OKRs](/features/okrs)\n\
+    \n[One-on-ones](/features/one-on-ones)\n\n[Reviews](/features/performance-reviews)\n\
+    \n[IDPs](/features/idps)\n\n[Feedback & Praise](/features/feedback-praise)\n\n\
+    [Surveys](/features/continuous-feedback)\n\n[Slack Notifications](/features/slack)\n\
+    \n[Integrations](/integrations)\n\nSolutions\n\nNo items found.\n\n[Customers](/success-stories)[Pricing](/pricing)[Company](/about)\n\
+    \nLogin\n\n[Impact (formerly Plai)](https://app.plai.team)\n\n[Optimize](https://app.peoplelogic.ai)\n\
+    \n[What's New?](/changelog)\n\n[Get Started](/demo)\n\nAlternatives\n\n# 7 Betterworks\
+    \ Competitors: Selecting the Best Solution\n\nLooking for Betterworks competitors?\
+    \ This article explores 7 alternatives to the popular performance management solution.\n\
+    \nAndrii Bas\n\nProduct Strategist, People & Performance\n\nYou’ve probably used\
+    \ or wanted to try out Betterworks to measure your employee progress because it’s\
+    \ a widely used performance management platform with an extensive range of features\
+    \ that can keep teams on track. \n\nDespite its comprehensive service, Betterworks\
+    \ tends to have higher pricing than other options, exceeding the budget limits\
+    \ for many companies. Plus, if your company is new to the OKR goal-setting framework\
+    \ or prefers a solution with a streamlined onboarding process, Betterworks may\
+    \ not be the best"
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://peoplelogic.ai/blog/betterworks-competitors
+- content_hash: c7c2ab13a9cb4125134a7450cfa83fc16df9e087c5766be4bd19dc288b3c8e42
+  evidence_id: ev-c7c2ab13a9cb4125
+  excerpt: "Title: 10 Best Betterworks Alternatives (Tested, 2026)\nNew **Skip the\
+    \ empty dashboard** -- get pre-loaded cascading OKRs tailored to your team. [Start\
+    \ free ](https://go.okrstool.com/signup)\n\n[ ](https://www.okrstool.com)\n\n\
+    \  * Product \n  * Integrations \n  * Resources \n  * Customers \n  * [Pricing](https://www.okrstool.com/pricing)\n\
+    \n\n\n[Log in](https://app.okrstool.com/login) [Start free](https://go.okrstool.com/signup)\n\
+    \nOverview\n\n  * [PlatformEverything OKRs Tool does, in one view](https://www.okrstool.com/platform)\n\
+    \  * [How it worksSet up OKRs in an afternoon](https://www.okrstool.com/how-it-works)\n\
+    \  * [Why OKRs ToolBuilt for 50–200 person companies](https://www.okrstool.com/why-okrs-tool)\n\
+    \  * [Live previewClick around a sample workspace](https://go.okrstool.com/demo)\n\
+    \  * [Book a demo30 minutes with Steven, the founder](https://www.okrstool.com/demo)\n\
+    \n\n\nPlans\n\n  * [LaunchFree, for piloting OKRs with leadership](https://www.okrstool.com/launch)\n\
+    \  * [Scale$49/mo flat for 6–50 users](https://www.okrstool.com/scale)\n  * [Expand$129/mo\
+    \ flat for 51+ users · SSO, SCIM, API](https://www.okrstool.com/expand)\n\n\n\n\
+    Trust & updates\n\n  * [Security2FA, SSO, audit logs, RBAC](https://www.okrstool.com/security)\n\
+    \  * [Trust & complianceEU data residency, GDPR, sub-processors](https://www.okrstool.com/trust)\n\
+    \  * [RoadmapWhat we're shipping next](https://www.okrstool.com/blog/product-roadmap)\n\
+    \  * [What's newRecent releases and improvements](https://www.okrstool.com/blog/whats-new)\n\
+    \n\n\n[ See it for yo"
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.okrstool.com/blog/betterworks-alternatives
+- content_hash: 256442cec34d7110660b4f157351fe2c00395ddf6089efd9659c1c459470b6b3
+  evidence_id: ev-256442cec34d7110
+  excerpt: 'Title: 7 Best Betterworks Alternatives for 2026: Compared
+
+    [About TraineryHCM™](/about-traineryhcm)[Contact Us](/contact-us)
+
+
+    Login
+
+
+    [Trainery One](https://apps.trainery.one/)[Streamery](https://learn.streamery.co/)
+
+
+    [](/)
+
+
+    Products
+
+
+    Products
+
+
+    [Performance management](/performance)
+
+
+    [Compensation management](/compensation)
+
+
+    [Learning management](/learning)
+
+
+    [TraineryCORE](/core)
+
+
+    [Explore full product suite](/platform)
+
+
+    Platform Features
+
+
+    [Notifications](/platform/notifications)
+
+
+    [Reporting & analytics](/platform/reporting-analytics)
+
+
+    [Security](/platform/security)
+
+
+    [TrAI](/platform/trai)
+
+
+    Integration
+
+
+    [Explore Integrations](/integrations)
+
+
+    [Explore full product suite](/platform)
+
+
+    Services
+
+
+    [HR Consulting](/hr-consulting)
+
+
+    [Compensation](/compensation-consulting)
+
+
+    Use cases
+
+
+    For Industries
+
+
+    [Financial Services](/for-industries-financial-services)
+
+
+    [Healthcare Organizations](/for-industries-healthcare-services)
+
+
+    [Pricing](/pricing)
+
+
+    Knowledge Center
+
+
+    [Blog](/blog)
+
+
+    [Brochures & Use Cases](/brochure)
+
+
+    [White Paper](/white-paper)
+
+
+    [Webinars](/webinars)
+
+
+    [News](/news)
+
+
+    [Product Updates](/product-updates)
+
+
+    Login
+
+
+    [Trainery One](https://apps.trainery.one/)[Streamery](https://learn.streamery.co/)
+
+
+    [Book a Demo](/book-a-demo)
+
+
+    [Book a Demo](/book-a-demo)
+
+
+    # 7 Best Betterworks Alternatives for 2026
+
+
+    Compare Betterworks alternatives by goals, OKRs, reviews, feedback, engagement,
+    learning, compensation, HRIS scope, pricing, implementation, and company fit.
+
+
+    Updated for 2026
+
+
+    The right Be'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.traineryhcm.com/7-best-betterworks-alternatives
+- content_hash: 2324a1e05e323ba9fd40e4633eb2478f2244b0ea80e91091216c37f3078a08ac
+  evidence_id: ev-2324a1e05e323ba9
+  excerpt: 'Title: Betterworks - Top Features, Pros &amp; Cons, and Alternatives -
+    YouTube
+
+    [](/ "YouTube")[](/ "YouTube")
+
+
+    [About](https://www.youtube.com/about/)[Press](https://www.youtube.com/about/press/)[Copyright](https://www.youtube.com/about/copyright/)[Contact
+    us](/t/contact_us/)[Creators](https://www.youtube.com/creators/)[Advertise](https://www.youtube.com/ads/)[Developers](https://developers.google.com/youtube)[Terms](/t/terms)[Privacy](/t/privacy)[Policy
+    & Safety](https://www.youtube.com/about/policies/)[How YouTube works](https://www.youtube.com/howyoutubeworks?utm_campaign=ytgen&utm_source=ythp&utm_medium=LeftNav&utm_content=txt&u=https%3A%2F%2Fwww.youtube.com%2Fhowyoutubeworks%3Futm_source%3Dythp%26utm_medium%3DLeftNav%26utm_campaign%3Dytgen)[Test
+    new features](/new)[Accessibility](https://support.google.com/youtube/answer/16668503?hl=en&sjid=7783677992881552504-NC)
+
+
+    (C) 2026 Google LLC'
+  retrieved_at: '2026-08-18T11:44:10.865494-04:00'
+  url: https://www.youtube.com/watch?v=cuGJRKll06o
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

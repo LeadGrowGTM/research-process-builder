@@ -1,0 +1,19 @@
+as_of: '2026-08-18'
+channels:
+  google:
+    evidence_ids:
+    - ev-53d2dfbdadfe562f
+    status: active
+  meta:
+    call_to_action: Learn more
+    evidence_ids:
+    - ev-6a20365a736c144d
+    landing_page: https://agencyanalytics.com/p/enterprise
+    observed_offer: enterprise agency reporting plan and free trial
+    offer_aliases:
+    - automated client reporting
+    - enterprise plan
+    - free trial
+    - automate client reports
+    status: active
+company_id: saas-01

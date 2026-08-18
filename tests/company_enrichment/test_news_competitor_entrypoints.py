@@ -43,7 +43,7 @@ def test_specs_are_wired_to_the_locked_corpus_and_plans():
         '{{company_name}} launches OR "new feature" OR "introducing" OR "now available"',
     ]
     assert [(item.mode, item.tbs) for item in NEWS_PLAN.queries] == [
-        ("news", "qdr:y"), ("web", "qdr:y"), ("web", "qdr:y"),
+        ("news", None), ("web", "qdr:y"), ("web", "qdr:y"),
     ]
     assert NEWS_PLAN.first_party_paths == (
         "/blog", "/news", "/newsroom", "/press", "/changelog", "/product-updates", "/whats-new",

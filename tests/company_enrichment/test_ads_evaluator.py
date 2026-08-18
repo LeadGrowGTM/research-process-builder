@@ -154,8 +154,18 @@ def test_hard_failure_google_creative_fields():
 
 def test_hard_failure_unretained_evidence_and_invalid_output():
     case = score_ads(_payload(_google(evidence_ids=["ev-nope"]), _meta()), _record(), DOSSIER)
-    assert case.hard_failures == ("unretained_evidence:google",)
+    assert case.hard_failures == ("unretained_evidence:google", "cross_channel_citation:google")
     assert case.components["status"] == Decimal("1")
+
+
+def test_hard_failure_cross_channel_citation():
+    # a meta entry citing website Evidence, or a google entry citing the meta library
+    case = score_ads(_payload(_google(), _meta(evidence_ids=["ev-about"])), _record(), DOSSIER)
+    assert "cross_channel_citation:meta" in case.hard_failures
+    case = score_ads(_payload(_google(evidence_ids=["ev-meta"]), _meta()), _record(), DOSSIER)
+    assert "cross_channel_citation:google" in case.hard_failures
+    case = score_ads(_payload(_google(), _meta()), _record(), DOSSIER)
+    assert not any(item.startswith("cross_channel") for item in case.hard_failures)
 
     case = score_ads({"ads": {"channels": [{"channel": "tiktok"}]}}, _record(), DOSSIER)
     assert case.hard_failures == ("invalid_output",)

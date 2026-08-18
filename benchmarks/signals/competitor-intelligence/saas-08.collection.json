@@ -1,0 +1,121 @@
+{
+  "collected_at": "2026-08-18T11:44:24.606241-04:00",
+  "company_id": "saas-08",
+  "enrichment_id": "competitor-intelligence",
+  "entries": [
+    {
+      "category": "incident intelligence",
+      "company_name": "BigPanda",
+      "domain": "bigpanda.io",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "BigPanda incident intelligence alternatives OR competitors OR \"vs\" OR \"compared to\"",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "BigPanda alternatives",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "BigPanda vs",
+      "tbs": null
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.gartner.com/reviews/product/bigpanda-1658620356/alternatives: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.gartner.com/reviews/product/bigpanda-1658620356/alternatives"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.logicmonitor.com/logicmonitor-vs-bigpanda",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.softwarereviews.com/categories/215/products/7293/alternatives",
+      "waterfall_level": 2
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.g2.com/products/bigpanda/competitors/alternatives: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.g2.com/products/bigpanda/competitors/alternatives"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.reddit.com/r/sysadmin/comments/89guax/what_are_you_using_to_integrate_all_your/",
+      "waterfall_level": 2
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://docs.keephq.dev/overview/comparisons",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://bigpanda.io/competitors: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://bigpanda.io/competitors"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://bigpanda.io/compare",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://bigpanda.io/alternatives: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://bigpanda.io/alternatives"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 36,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.003",
+  "signal_evidence": 39
+}

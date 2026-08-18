@@ -27,10 +27,19 @@ NOW = datetime(2026, 8, 18, 12, 0, tzinfo=timezone.utc)
 PROMPT = "# Running ads\n\nReturn cited ads facts using only the supplied Evidence."
 
 
+_LIBRARY_URLS = {
+    "google": "https://adstransparency.google.com/advertiser/AR-{seed}?region=anywhere",
+    "meta": "https://www.facebook.com/ads/library/?view_all_page_id={seed}",
+}
+
+
 def _ref(company_id: str, name: str, excerpt: str) -> EvidenceRef:
+    """Fixture Evidence; ``google``/``meta`` names get ad-library URLs so the ads
+    contract treats them as channel evidence, everything else is a website page."""
     seed = f"{company_id}-{name}"
+    url = _LIBRARY_URLS.get(name, "https://example.test/{seed}").format(seed=seed)
     return EvidenceRef(
-        f"ev-{seed}", f"https://example.test/{seed}", NOW,
+        f"ev-{seed}", url, NOW,
         sha256(excerpt.encode("utf-8")).hexdigest(), excerpt,
     )
 

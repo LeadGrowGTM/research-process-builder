@@ -96,8 +96,17 @@ def test_output_contract_restricts_evidence_to_dossier_ids():
     channel = schema["properties"]["ads"]["properties"]["channels"]["items"]
     assert channel["properties"]["channel"]["enum"] == list(AD_CHANNELS)
     assert channel["properties"]["status"]["enum"] == list(AD_STATUSES)
-    assert channel["properties"]["evidence_ids"]["items"]["enum"] == ["ev-about", "ev-google"]
+    # only ad-library Evidence may support a channel; website Evidence is excluded
+    assert channel["properties"]["evidence_ids"]["items"]["enum"] == ["ev-google"]
     assert channel["properties"]["evidence_ids"]["minItems"] == 1
     assert channel["properties"]["angle"] == {"type": ["string", "null"]}
     assert set(channel["required"]) == set(channel["properties"])
     assert schema["properties"]["unknowns"]["items"]["enum"] == ["ads"]
+
+
+def test_output_contract_falls_back_to_all_ids_without_ad_library_evidence():
+    dossier = CompanyDossier("saas-01", "1.0", (), (
+        EvidenceRef("ev-about", "https://example.test/about", NOW, "a" * 64, "about"),
+    ))
+    channel = ads_output_contract(dossier)["properties"]["ads"]["properties"]["channels"]["items"]
+    assert channel["properties"]["evidence_ids"]["items"]["enum"] == ["ev-about"]

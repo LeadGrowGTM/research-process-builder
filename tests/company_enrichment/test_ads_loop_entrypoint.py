@@ -12,7 +12,7 @@ from scripts.company_enrichment.ads_ground_truth_draft import (
 )
 from scripts.company_enrichment.ads_loop import BENCHMARK_DIR, ENRICHMENT_ID, build_spec, main
 from scripts.company_enrichment.benchmark import ExecutionTrack
-from scripts.company_enrichment.contracts import FieldAssertion, Visibility
+from scripts.company_enrichment.contracts import EvidenceRef, FieldAssertion, Visibility
 from scripts.company_enrichment.experiment_runner import ModelExecution
 from scripts.company_enrichment.signal_evidence import (
     load_signal_dossier, save_signal_dossier, signal_dossier, signal_dossier_path,

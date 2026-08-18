@@ -14,9 +14,16 @@ Evidence item is a JSON excerpt from one channel:
   each ad has `status`, `days_running`, `headline`, `cta_text`, `link_url`, and
   a `body` excerpt.
 
+Only ad-library Evidence supports a channel: an item whose URL is on
+`adstransparency.google.com` (channel `google`) or `facebook.com/ads/library`
+(channel `meta`). Website pages, LinkedIn pages, directories, and reviews are
+context only. They never create a channel, never set a status, and are never
+cited on a channel entry, even when they mention advertising, demos, or offers.
+
 ## Channels
 
-Return one entry per channel that has Evidence. Each entry has:
+Return one entry per channel that has ad-library Evidence. Each entry cites
+only Evidence from its own channel's library. Each entry has:
 
 - `channel`: `google` or `meta`, exactly as in the Evidence provider.
 - `status`: `active` when the Evidence shows currently running ads
@@ -39,10 +46,10 @@ to describe Google.
 
 Do not fabricate ad copy, offers, or landing pages. When a channel's Evidence
 has counts but no ad list, keep `status` and set the creative fields to `null`.
-When no Evidence exists for a channel, omit that channel; do not add an
-`unknown` entry for a channel that was never observed. When no channel has
-Evidence at all, return an empty `channels` list and list `ads` in the
-top-level `unknowns` array.
+When no ad-library Evidence exists for a channel, omit that channel; do not
+add an `unknown` entry for a channel that was never observed. The top-level
+`unknowns` array is `["ads"]` only when `channels` is empty; whenever at least
+one channel is returned, `unknowns` must be `[]`.
 
 ## Complete good example
 
@@ -81,5 +88,10 @@ top-level `unknowns` array.
 - Marketing paraphrase: `offer: "a powerful all-in-one platform"` when the ads
   say "Book a demo of the Enterprise plan". Use the concrete offer.
 - Wrong status: `inactive` when `active_ads_count` is 90. Read the counts.
+- Channel from a website: adding `meta` as `active` because the company's
+  homepage says "Book a demo" or mentions social media. Only a
+  `facebook.com/ads/library` Evidence item can create a `meta` entry.
+- Redundant unknown: returning two channels and also `"unknowns": ["ads"]`.
+  When channels exist, `unknowns` is `[]`.
 
 Return only the structured output required by the supplied schema.

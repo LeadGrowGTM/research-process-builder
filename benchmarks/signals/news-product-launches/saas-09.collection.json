@@ -1,0 +1,149 @@
+{
+  "collected_at": "2026-08-18T11:42:26.525037-04:00",
+  "company_id": "saas-09",
+  "enrichment_id": "news-product-launches",
+  "entries": [
+    {
+      "category": "link management",
+      "company_name": "Bitly",
+      "domain": "bitly.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 6,
+      "fallbacks": [],
+      "mode": "news",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "bitly.com news",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 5,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Bitly \"press release\" OR \"announces\" OR \"newsroom\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Bitly launches OR \"new feature\" OR \"introducing\" OR \"now available\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.google.com/goto?url=CAESxAEB7keqTTyexnORk6F01RIox03CAmFwCQk5CSdRiEbZ09UF8uX-8aRYP-zmRI6RMXOvuda8ZMIMwJjjjy3IbFmZ3rel8Dipaq_C7wHbdE6WAePterdHTsbPhwJRtb2aGn0gOYxWLyYTKEG5B28R1hyjm8Rfjyj9rbt439o6bbL5r5iWhsTXh1-k2yokx54SSVQJfTolWc2zsIoO3jjwgvne1pgc_NFp5Jy19Mhbq8jY-IoM7Y1kJJ8rEtBUpayqfxo0wxgF",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.prnewswire.com/news-releases/bitly-enters-2026-as-the-embedded-connection-layer-powering-links-and-qr-codes-worldwide-302676857.html",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://bitly.com/pages/th/press",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.facebook.com/MyFLFamilies/posts/press-release-/1455960509909871/?locale=ja_JP: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.facebook.com/MyFLFamilies/posts/press-release-/1455960509909871/?locale=ja_JP"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://bitly.com/blog/introducing-bitly-assist-weekly-insights/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://bitly.com/pages/resources/press/bitly-connection-layer-links-qr-codes-2026/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://bitly.com/blog",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://bitly.com/news: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://bitly.com/news"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://bitly.com/newsroom: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://bitly.com/newsroom"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://bitly.com/press: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://bitly.com/press"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://bitly.com/changelog: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://bitly.com/changelog"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://bitly.com/product-updates: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://bitly.com/product-updates"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://bitly.com/whats-new: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://bitly.com/whats-new"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 28,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.003",
+  "signal_evidence": 31
+}

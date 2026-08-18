@@ -1,0 +1,579 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: identity
+  value: aPriori Technologies
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: description
+  value: 'About aPriori | Digital Transformation Manufacturing Partner Upcoming Webinar
+    Beyond a Tool: From Design for X to a New Engineering Mindset Register Now › MIC
+    Chicago From Design to Source — Measurable Impact at the Speed of AI Learn More
+    › US EN Login Why aPriori? Solutions Products Pricing About Resources Resources
+    Hub Blog Case Studies Cloud Security Documentation FAQs Glossary Guides Podcast
+    Webinars Videos Blog Articles Hot Trending Topics Artificial Intelligence Digital
+    Transformation Prod'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: offers
+  value: product cost software
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: icp
+  value: manufacturers
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: personas
+  value: manufacturers
+  visibility: message_safe
+company_id: saas-04
+corrections: []
+evidence:
+- content_hash: fe752f58cb8e0b98a01f0881279fa708d0e108813c408746804531793d415e69
+  evidence_id: ev-fe752f58cb8e0b98
+  excerpt: 'About aPriori | Digital Transformation Manufacturing Partner Upcoming
+    Webinar Beyond a Tool: From Design for X to a New Engineering Mindset Register
+    Now › MIC Chicago From Design to Source — Measurable Impact at the Speed of AI
+    Learn More › US EN Login Why aPriori? Solutions Products Pricing About Resources
+    Resources Hub Blog Case Studies Cloud Security Documentation FAQs Glossary Guides
+    Podcast Webinars Videos Blog Articles Hot Trending Topics Artificial Intelligence
+    Digital Transformation Product Lifecycle Intelligence Supply Chain Disruption
+    Business Goals Accelerate Product Development Reduce Costs & Increase Profit Win
+    More Profitable Business Product & Technology Design for Manufacturability Project
+    & Task Management Should Cost Sustainability Workflow Automation Department Cost
+    & Value Engineering Design Engineering Divisional GM & C-Suite IT Manufacturing
+    Engineering Quoting & Estimating Sourcing & Procurement Featured Resources Video:
+    aPriori & CNH Success Stories Profitability through DTC at Scale Webinar Replay: 
+    Quantified Design for Manufacture (DFM) with aPriori Request Demo aPriori Technologies
+    Transforming the Manufacturing Industry Since 2003 “aPriori is disrupting the
+    industry’s status quo” Founded in 2003, aPriori is disrupting the industry’s status
+    quo with groundbreaking work helping manufacturers digitally transform their businesses.
+    Through our unique, patented, intellectual property, we enable manufacturers to
+    accelerate product design, and bring products to markets faster while providing
+    visibility to the sustainability of their design and manufacturing choices. Our
+    impact is profound - our customers save millions of dollars each year, accelerate
+    time to market, all while creating a better world for future generations. Though
+    we are an established software firm, through our continued growth, we have maintained
+    the dynamic, collaborative nature of a start-up. With a global presence, including
+    North America, Europe, Asia, and India, we encoura'
+  retrieved_at: '2026-08-12T21:00:21.263165+00:00'
+  url: https://www.apriori.com/about/
+- content_hash: 3d93e43e256e02c1fd8b6c87897bbd2c234ef2bfc4d659b03cdbac08cfbf3203
+  evidence_id: ev-3d93e43e256e02c1
+  excerpt: aPriori Technologies | LinkedIn Skip to main content LinkedIn Top Content
+    People Learning Jobs Games Sign in Join now aPriori Technologies Software Development
+    Concord, MA 12,815 followers AI from Design to Source to Make See jobs Follow
+    View all 275 employees Report this company About us aPriori provides AI-powered
+    product intelligence that helps manufacturers make faster, more profitable decisions
+    from design through sourcing to production. Built on proprietary simulation engines
+    and deep manufacturing data, aPriori Intelligence delivers real-time insight into
+    product cost, manufacturability, and carbon footprint — enabling teams to reduce
+    time-to-market, improve margins, and meet environmental targets. According to
+    a Forrester Total Economic Impact™ study, aPriori customers achieve approximately
+    600% ROI within three years and payback in under six months. To learn more, visit
+    www.apriori.com. Website https://www.apriori.com External link for aPriori Technologies
+    Industry Software Development Company size 201-500 employees Headquarters Concord,
+    MA Type Privately Held Founded 2003 Specialties Digital Manufacturing Simulation,
+    Manufacturing Cost Models, Digital Factories, Design for Manufacturability, Design
+    to Margin, Source to Margin, Supply Chain Management, Manufacturing Automation,
+    Design to Cost, Make vs. Buy Analysis, Capital Asset Justification, Post-Launch
+    Product Costs Reduction (VA/VE), NPI Lifecycle Reduction, Cost Estimation , Spend
+    Analytics, Concept Costing, Digital Manufacturing, Manufacturing Intelligence,
+    Discrete Manufacturing, Digital Transformation, and Sustainability Products No
+    more previous content aP Analytics, Business Intelligence (BI) Software aP Analytics
+    Business Intelligence (BI) Software aP Design, Simulation Software aP Design Simulation
+    Software aP Generate, Simulation Software aP Generate Simulation Software aP Pro,
+    Computer-Aided Engineering (CAE) Software aP Pro Computer-Aided Engineering (CAE)
+    Software aP Workspace, Simulation S
+  retrieved_at: '2026-08-12T21:00:22.027996+00:00'
+  url: https://www.linkedin.com/company/apriori
+- content_hash: 1494a4907e1a3dc96e2a4a16584239cd25e34455ccfabdebd219ea1696104adb
+  evidence_id: ev-1494a4907e1a3dc9
+  excerpt: 'aPriori Receives Growth Investment From Vista Credit Partners for Its
+    Manufacturing Insights Platform - Vista Equity Partners Search Site… ✕ About About
+    25 years at the forefront of enterprise software investing. Firm About Vista Team
+    Sustainability Portfolio Value Creation Companies Opportunities Careers Strategies
+    Strategies Investing across the software lifecycle with tailored equity and credit
+    solutions. Private Equity Credit White Paper Investing in Enterprise Software
+    Learn from Robert F. Smith why enterprise software remains a compelling opportunity
+    for value creation White Paper Demystifying Generative AI Explore how Gen AI is
+    redefining industries News + Insights News + Insights Vista’s latest news and
+    insights from the forefront of enterprise software and AI investing. News Insights
+    by Vista Forefront Investing in AI Outlook Software’s Transition to Agentic Enterprise
+    AI Video Software’s Next Chapter: Robert F. Smith on The Next Era of Enterprise
+    Platforms Wealth Professionals Wealth Professionals A differentiated investment
+    partner for advisors and their clients. Overview Insights by Vista Forefront Strategies
+    Evergreen Private Equity Evergreen Credit White Paper Understanding Inference
+    and the Economics of Enterprise AI Chartbook Agentic AI Is Here - What Investors
+    Need to Know Unpacking the investor opportunity in Agentic AI Investor Login Back
+    All News and Press Releases Press Release October 19, 2023 aPriori Receives Growth
+    Investment From Vista Credit Partners for Its Manufacturing Insights Platform
+    CONCORD, Mass. — ( BUSINESS WIRE ) — aPriori today announced a growth investment
+    from Vista Credit Partners , a subsidiary of Vista Equity Partners and strategic
+    financing partner focused on the enterprise software, data, and technology markets.
+    The funding will be used to support continued innovation and meet growing demand
+    for aPriori’s cloud-based solution, which empowers manufacturers and product designers
+    to accurately estimate, manage, and optimize '
+  retrieved_at: '2026-08-12T21:00:22.524197+00:00'
+  url: https://www.vistaequitypartners.com/news/apriori-receives-growth-investment-from-vista-credit-partners-for-its-manufacturing-insights-platform/
+- content_hash: 9e17863554e3babeea11ae6a23ad96827451f37f36edd78216ced43d2b08658f
+  evidence_id: ev-9e17863554e3babe
+  excerpt: 'Detected date: May 26, 2026
+
+    Title: aPriori Launches aiSource, an AI Sourcing Solution Giving Procurement Teams
+    the Manufacturing and Cost Intelligence to Win More Supplier Negotiations
+
+    Date: May 26, 2026
+
+    Source: Business Wire
+
+    Snippet: aPriori launches aiSource, an AI-powered sourcing solution that gives
+    procurement teams manufacturing cost intelligence to win supplier...'
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.businesswire.com/news/home/20260526130779/en/aPriori-Launches-aiSource-an-AI-Sourcing-Solution-Giving-Procurement-Teams-the-Manufacturing-and-Cost-Intelligence-to-Win-More-Supplier-Negotiations
+- content_hash: d2b83714b0f103b09c6d39cb60de6dfe174cd0d62bbc8a75902e425b5e157f35
+  evidence_id: ev-d2b83714b0f103b0
+  excerpt: 'Detected date: Nov 18, 2025
+
+    Title: Apriori Bio and A*STAR Infectious Diseases Labs Announce Strategic Partnership
+    to Advance Next Generation Influenza Vaccines
+
+    Date: Nov 18, 2025
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Apriori Bio, a Flagship Pioneering company focused on
+    developing prospective, variant-resilient vaccines, and the Agency for...'
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.prnewswire.com/news-releases/apriori-bio-and-astar-infectious-diseases-labs-announce-strategic-partnership-to-advance-next-generation-influenza-vaccines-302617550.html
+- content_hash: cb84a5e5f720dfb64aebba084bce92e5d640be547ea58fafeee0efc40e6822ce
+  evidence_id: ev-cb84a5e5f720dfb6
+  excerpt: 'Detected date: Nov 13, 2024
+
+    Title: Flagship Pioneering Appoints Craig Williams as CEO-Partner and Chief Executive
+    Officer of Apriori Bio
+
+    Date: Nov 13, 2024
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Flagship Pioneering, the bioplatform innovation company,
+    and Apriori Bio, a biotechnology company aimed at providing humanity...'
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.prnewswire.com/news-releases/flagship-pioneering-appoints-craig-williams-as-ceo-partner-and-chief-executive-officer-of-apriori-bio-302303361.html
+- content_hash: 046e723024f9702240650d0d2d15873d5432bdd1848a3bb2dd9d2a6ed2a66530
+  evidence_id: ev-046e723024f97022
+  excerpt: 'Detected date: Jul 20, 2021
+
+    Title: Stephanie Feraday, President & CEO of aPriori, Accepted into Forbes Technology
+    Council
+
+    Date: Jul 20, 2021
+
+    Source: Business Wire
+
+    Snippet: Stephanie Feraday, President & CEO of aPriori, the leading provider of
+    digital manufacturing simulation software, has been accepted into...'
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.businesswire.com/news/home/20210720005324/en/Stephanie-Feraday-President-CEO-of-aPriori-Accepted-into-Forbes-Technology-Council
+- content_hash: cd5cf4531574aefad86141e46f05139bb00f053b277221b1430edcbf2f493bca
+  evidence_id: ev-cd5cf4531574aefa
+  excerpt: 'Detected date: Jul 11, 2022
+
+    Title: Flagship Pioneering Launches Apriori Bio to Provide Variant-Proof Protection
+    from the Greatest Viral Threats
+
+    Date: Jul 11, 2022
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Flagship Pioneering, the bioplatform innovation company,
+    today announced the launch of Apriori Bio, a health security company...'
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.prnewswire.com/news-releases/flagship-pioneering-launches-apriori-bio-to-provide-variant-proof-protection-from-the-greatest-viral-threats-301583415.html
+- content_hash: 748e7424cf54c3fbd5fd18dc2b728dbb0fb33f3c402a446a59424299db3d4d01
+  evidence_id: ev-748e7424cf54c3fb
+  excerpt: 'Query: apriori.com news
+
+    1. https://www.businesswire.com/news/home/20260526130779/en/aPriori-Launches-aiSource-an-AI-Sourcing-Solution-Giving-Procurement-Teams-the-Manufacturing-and-Cost-Intelligence-to-Win-More-Supplier-Negotiations
+
+    Title: aPriori Launches aiSource, an AI Sourcing Solution Giving Procurement Teams
+    the Manufacturing and Cost Intelligence to Win More Supplier Negotiations
+
+    Date: May 26, 2026
+
+    Source: Business Wire
+
+    Snippet: aPriori launches aiSource, an AI-powered sourcing solution that gives
+    procurement teams manufacturing cost intelligence to win supplier...
+
+    2. https://www.prnewswire.com/news-releases/apriori-bio-and-astar-infectious-diseases-labs-announce-strategic-partnership-to-advance-next-generation-influenza-vaccines-302617550.html
+
+    Title: Apriori Bio and A*STAR Infectious Diseases Labs Announce Strategic Partnership
+    to Advance Next Generation Influenza Vaccines
+
+    Date: Nov 18, 2025
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Apriori Bio, a Flagship Pioneering company focused on
+    developing prospective, variant-resilient vaccines, and the Agency for...
+
+    3. https://www.prnewswire.com/news-releases/flagship-pioneering-appoints-craig-williams-as-ceo-partner-and-chief-executive-officer-of-apriori-bio-302303361.html
+
+    Title: Flagship Pioneering Appoints Craig Williams as CEO-Partner and Chief Executive
+    Officer of Apriori Bio
+
+    Date: Nov 13, 2024
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Flagship Pioneering, the bioplatform innovation company,
+    and Apriori Bio, a biotec'
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.google.com/search?q=apriori.com+news&tbm=nws
+- content_hash: 54935c90ae8f2f8954cdd2ddd5c781c99260c98172d345f54e587126e513cd72
+  evidence_id: ev-54935c90ae8f2f89
+  excerpt: 'Detected date: May 26, 2026
+
+    Title: aPriori Launches aiSource, an AI Sourcing Solution Giving ...
+
+    Date: May 26, 2026
+
+    Snippet: Press Release DistributionVisibility & EngagementComplimentary FeaturesInvestor
+    CommunicationsReporting & Analytics ... Newsroom · IndustriesSubjects ...'
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.businesswire.com/news/home/20260526130779/en/aPriori-Launches-aiSource-an-AI-Sourcing-Solution-Giving-Procurement-Teams-the-Manufacturing-and-Cost-Intelligence-to-Win-More-Supplier-Negotiations
+- content_hash: cdec7a0961ff4e0de3b55ef8c90d738aacc196e5f57f65113bf6712ba588d93c
+  evidence_id: ev-cdec7a0961ff4e0d
+  excerpt: 'Detected date: Nov 18, 2025
+
+    Title: Apriori Bio and A*STAR Infectious Diseases Labs ...
+
+    Date: Nov 18, 2025
+
+    Snippet: Apriori Bio Announces Collaboration with the Francis Crick Institute.
+    Apriori Bio, a biotechnology company focused on developing variant-resilient vaccines,
+    ...'
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.prnewswire.com/news-releases/apriori-bio-and-astar-infectious-diseases-labs-announce-strategic-partnership-to-advance-next-generation-influenza-vaccines-302617550.html
+- content_hash: 493ae62a35cc5c0cfc0eaaf89baa592b0ab2604eb4c47e1752801f6469a765a4
+  evidence_id: ev-493ae62a35cc5c0c
+  excerpt: 'Title: Apriori named finalist for World Procurement Awards 2026
+
+    Snippet: aPriori Technologies | Apriori named finalist for World Procurement Awards
+    2026 ... Waterpure International announces pending water technology acquisition.'
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.facebook.com/aPrioriTechnologies/posts/apriori-earns-spot-as-world-procurement-awards-2026-finalist-were-proud-to-share/122190528932459684/
+- content_hash: 01eff1f6db2027b04152c84de9187f1eb511698ba105dd5a4838aa6a1f94c85b
+  evidence_id: ev-01eff1f6db2027b0
+  excerpt: 'Title: aPriori Launches aiSource for Expert Procurement ...
+
+    Snippet: Stephanie Feraday 4w. Report this comment; Close menu. https://www.apriori.com/press-release/apriori
+    ... Enterprise Account Executive at aPriori Technologies.'
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.linkedin.com/posts/stephanie-feraday-62b743_inside-aisource-scale-your-best-negotiators-activity-7465169879411748864-7yI_
+- content_hash: 2500bdeb1a3ce677719a2e40c99819c94812c13f07a336384aeae19a260c67a6
+  evidence_id: ev-2500bdeb1a3ce677
+  excerpt: 'Detected date: Jul 13, 2026
+
+    Title: Apriori Bio: Funding, Team & Investors
+
+    Date: Jul 13, 2026
+
+    Snippet: ... Technology Pioneer by the World Economic Forum. Apriori Bio was founded
+    ... flagshippioneering.com/news/press-release/apriori-bio-named-2023-technology
+    ...'
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://startupintros.com/orgs/apriori-bio
+- content_hash: 2b36bad3e295677e893ebfdfce144399829a3363b7ee7ea3beb9102de43758e3
+  evidence_id: ev-2b36bad3e295677e
+  excerpt: 'Detected date: Dec 22, 2025
+
+    Title: News and Press Releases
+
+    Date: Dec 22, 2025
+
+    Snippet: Quantios announces strategic growth investment from Vista Equity Partners.
+    PRESS RELEASE ... aPriori Receives Growth Investment From Vista Credit Partners
+    ...'
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.vistaequitypartners.com/news/
+- content_hash: cd5a6de821200110c9969144b32520ca07041a9a0b60a4d3455a9533ad76e6f6
+  evidence_id: ev-cd5a6de821200110
+  excerpt: 'Detected date: Jul 4, 2026
+
+    Title: APRIORI TECHNOLOGIES INDIA PRIVATE LIMITED
+
+    Date: Jul 4, 2026
+
+    Snippet: About usOur InvestorsMedia & NewsroomCareersContact Us. APRIORI TECHNOLOGIES
+    ... Matthews Announces Return of Tiffany Hsiao to Strengthen Investment ...'
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://tracxn.com/d/legal-entities/india/apriori-technologies-india-private-limited/__KUZFH86UWPutW6KDD7oM9iSHTqZcMBw1gECUjsTaDbo
+- content_hash: 84e3c8a16c510921c8f3945a729b8c9d495c0837b20339264b373c45d5fb1812
+  evidence_id: ev-84e3c8a16c510921
+  excerpt: 'Detected date: Aug 20, 2025
+
+    Title: A Priori Specialty Foods Co.
+
+    Date: Aug 20, 2025
+
+    Snippet: Newsroom · Release News · Blog · Contact Us. Get Started; What is Cloud
+    ERP? Virtual Product Tour · Acumatica Product Editions · Acumatica SaaS FAQ ·
+    Awards and ...'
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.acumatica.com/success-stories/a-priori-specialty-foods-co/
+- content_hash: 356306df3e5e2ca300c1f1c1d1caa930c4f9f8a89635a34ca9d0dd9a9d2a24d3
+  evidence_id: ev-356306df3e5e2ca3
+  excerpt: 'Query: aPriori Technologies "press release" OR "announces" OR "newsroom"
+
+    1. https://www.businesswire.com/news/home/20260526130779/en/aPriori-Launches-aiSource-an-AI-Sourcing-Solution-Giving-Procurement-Teams-the-Manufacturing-and-Cost-Intelligence-to-Win-More-Supplier-Negotiations
+
+    Title: aPriori Launches aiSource, an AI Sourcing Solution Giving ...
+
+    Date: May 26, 2026
+
+    Snippet: Press Release DistributionVisibility & EngagementComplimentary FeaturesInvestor
+    CommunicationsReporting & Analytics ... Newsroom · IndustriesSubjects ...
+
+    2. https://www.prnewswire.com/news-releases/apriori-bio-and-astar-infectious-diseases-labs-announce-strategic-partnership-to-advance-next-generation-influenza-vaccines-302617550.html
+
+    Title: Apriori Bio and A*STAR Infectious Diseases Labs ...
+
+    Date: Nov 18, 2025
+
+    Snippet: Apriori Bio Announces Collaboration with the Francis Crick Institute.
+    Apriori Bio, a biotechnology company focused on developing variant-resilient vaccines,
+    ...
+
+    3. https://www.facebook.com/aPrioriTechnologies/posts/apriori-earns-spot-as-world-procurement-awards-2026-finalist-were-proud-to-share/122190528932459684/
+
+    Title: Apriori named finalist for World Procurement Awards 2026
+
+    Snippet: aPriori Technologies | Apriori named finalist for World Procurement Awards
+    2026 ... Waterpure International announces pending water technology acquisition.
+
+    4. https://www.linkedin.com/posts/stephanie-feraday-62b743_inside-aisource-scale-your-best-negotiators-activity-7465169879411748864-7yI_
+
+    Title: aPriori '
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.google.com/search?q=aPriori+Technologies+%22press+release%22+OR+%22announces%22+OR+%22newsroom%22&tbs=qdr%3Ay
+- content_hash: c97481af4a0871fd18aeee475812b9b7b398ea907123382464c7dcc4fbc34db6
+  evidence_id: ev-c97481af4a0871fd
+  excerpt: 'Detected date: May 28, 2026
+
+    Title: New AI Sourcing Solution: Supplier Cost Data=Better ...
+
+    Date: May 28, 2026
+
+    Snippet: Introducing aPriori''s New AI Sourcing Solution. April Guenet. — May
+    28, 2026. Learn How aiSource Gives You Fact-Based Cost Intelligence To Negotiate
+    With ...'
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.apriori.com/blog/suppliers-know-what-your-parts-cost-to-make-aisource-does-too-introducing-aprioris-new-ai-sourcing-solution/
+- content_hash: ca9eae2b3680b417dd4fb319af468b8ae78247a541a453560592c9e542ada020
+  evidence_id: ev-ca9eae2b3680b417
+  excerpt: 'Title: aPriori Technologies | Concord MA
+
+    Snippet: Introducing aiSource™... It is an AI sourcing solution that extends your
+    best negotiators'' expertise across the entire team, with clear guidance at every
+    step.'
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.facebook.com/aPrioriTechnologies?locale
+- content_hash: 04d8ccf7d7dec3e39ce65abbee4805dcd42f5fa153db3f3e23317e15ef4ccbb8
+  evidence_id: ev-04d8ccf7d7dec3e3
+  excerpt: 'Query: aPriori Technologies launches OR "new feature" OR "introducing"
+    OR "now available"
+
+    1. https://www.apriori.com/blog/suppliers-know-what-your-parts-cost-to-make-aisource-does-too-introducing-aprioris-new-ai-sourcing-solution/
+
+    Title: New AI Sourcing Solution: Supplier Cost Data=Better ...
+
+    Date: May 28, 2026
+
+    Snippet: Introducing aPriori''s New AI Sourcing Solution. April Guenet. — May
+    28, 2026. Learn How aiSource Gives You Fact-Based Cost Intelligence To Negotiate
+    With ...
+
+    2. https://www.facebook.com/aPrioriTechnologies?locale
+
+    Title: aPriori Technologies | Concord MA
+
+    Snippet: Introducing aiSource™... It is an AI sourcing solution that extends your
+    best negotiators'' expertise across the entire team, with clear guidance at every
+    step.'
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.google.com/search?q=aPriori+Technologies+launches+OR+%22new+feature%22+OR+%22introducing%22+OR+%22now+available%22&tbs=qdr%3Ay
+- content_hash: ad84af38949a1a82f246cbfac9f1294f2bc42cb2225b18e76a3d5b515cc543f0
+  evidence_id: ev-ad84af38949a1a82
+  excerpt: "Title: Apriori Bio and A*STAR Infectious Diseases Labs Announce Strategic\
+    \ Partnership to Advance Next Generation Influenza Vaccines\n[Accessibility Statement](https://www.cision.com/about/accessibility/)\
+    \ Skip Navigation\n\n  * [Resources](/resources/)\n  * [Investor Relations](/investor-relations-solutions/)\n\
+    \  * [Journalists](https://prnmedia.prnewswire.com/)\n  * [Agencies](https://www.cision.com/agencies/?utm_medium=referral&utm_source=prnewswire&utm_content=product&utm_campaign=2023-prn-all-products-page)\n\
+    \n\n  * [Client Login](https://app.prnewswire.com/login/auto)\n  * [Send a Release](/account/online-account-form/)\n\
+    \n\n\n[ ](/)\n\n  * [News](/news-releases/)\n  * [Products](/amplify-platform/)\n\
+    \  * [Contact](/contact-us/)\n\n\n\nSearch\n\n__\n\nSearch\n\nWhen typing in this\
+    \ field, a list of search results will appear and be automatically updated as\
+    \ you type.\n\nSearching for your content...\n\n__\n\n**No results found. Please\
+    \ change your search terms and try again.**\n\n  * News in Focus \n    *     \
+    \  * ## [Browse News Releases](/news-releases/)\n\n      * [All News Releases\
+    \ ](/news-releases/news-releases-list/)\n      * [All Public Company ](/news-releases/all-public-company-news/)\n\
+    \      * [English-only ](/news-releases/english-releases/)\n      * ## [News Releases\
+    \ Overview](/news-releases/)\n\n      * ## [Multimedia Gallery](/news-releases/multimedia/)\n\
+    \n      * [All Multimedia ](/news-releases/multimedia/multimedia-list/)\n    \
+    \  * [All Photos ](/news-releases/photos/photos-list/)\n      * [All Videos ](/news-"
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.prnewswire.com/news-releases/apriori-bio-and-astar-infectious-diseases-labs-announce-strategic-partnership-to-advance-next-generation-influenza-vaccines-302617550.html
+- content_hash: 4010bec46552ff7c40127a39c0315dd6d0d34b532d247a98d1fdb90c1172d9af
+  evidence_id: ev-4010bec46552ff7c
+  excerpt: "Title: Flagship Pioneering Appoints Craig Williams as CEO-Partner and\
+    \ Chief Executive Officer of Apriori Bio\n[Accessibility Statement](https://www.cision.com/about/accessibility/)\
+    \ Skip Navigation\n\n  * [Resources](/resources/)\n  * [Investor Relations](/investor-relations-solutions/)\n\
+    \  * [Journalists](https://prnmedia.prnewswire.com/)\n  * [Agencies](https://www.cision.com/agencies/?utm_medium=referral&utm_source=prnewswire&utm_content=product&utm_campaign=2023-prn-all-products-page)\n\
+    \n\n  * [Client Login](https://app.prnewswire.com/login/auto)\n  * [Send a Release](/account/online-account-form/)\n\
+    \n\n\n[ ](/)\n\n  * [News](/news-releases/)\n  * [Products](/amplify-platform/)\n\
+    \  * [Contact](/contact-us/)\n\n\n\nSearch\n\n__\n\nSearch\n\nWhen typing in this\
+    \ field, a list of search results will appear and be automatically updated as\
+    \ you type.\n\nSearching for your content...\n\n__\n\n**No results found. Please\
+    \ change your search terms and try again.**\n\n  * News in Focus \n    *     \
+    \  * ## [Browse News Releases](/news-releases/)\n\n      * [All News Releases\
+    \ ](/news-releases/news-releases-list/)\n      * [All Public Company ](/news-releases/all-public-company-news/)\n\
+    \      * [English-only ](/news-releases/english-releases/)\n      * ## [News Releases\
+    \ Overview](/news-releases/)\n\n      * ## [Multimedia Gallery](/news-releases/multimedia/)\n\
+    \n      * [All Multimedia ](/news-releases/multimedia/multimedia-list/)\n    \
+    \  * [All Photos ](/news-releases/photos/photos-list/)\n      * [All Videos ](/news-releases/videos/videos-"
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.prnewswire.com/news-releases/flagship-pioneering-appoints-craig-williams-as-ceo-partner-and-chief-executive-officer-of-apriori-bio-302303361.html
+- content_hash: ca16008a734f0507d90e1542cdf594c9b3423815fc2a7391c39b10d4ed7697c0
+  evidence_id: ev-ca16008a734f0507
+  excerpt: "Title: aPriori Launches aiSource for Expert Procurement Negotiations |\
+    \ Stephanie Feraday posted on the topic | LinkedIn\nAgree & Join LinkedIn \n\n\
+    By clicking Continue to join or sign in, you agree to LinkedIn’s [User Agreement](/legal/user-agreement?trk=linkedin-tc_auth-button_user-agreement),\
+    \ [Privacy Policy](/legal/privacy-policy?trk=linkedin-tc_auth-button_privacy-policy),\
+    \ and [Cookie Policy](/legal/cookie-policy?trk=linkedin-tc_auth-button_cookie-policy).\
+    \ \n\n`` `` `` `` `` `` `` Skip to main content  [ LinkedIn ](/?trk=public_post_nav-header-logo)\n\
+    \n  * [ Top Content  ](https://www.linkedin.com/top-content?trk=public_post_guest_nav_menu_topContent)\n\
+    \  * [ People  ](https://www.linkedin.com/pub/dir/+/+?trk=public_post_guest_nav_menu_people)\n\
+    \  * [ Learning  ](https://www.linkedin.com/learning/search?trk=public_post_guest_nav_menu_learning)\n\
+    \  * [ Jobs  ](https://www.linkedin.com/jobs/search?trk=public_post_guest_nav_menu_jobs)\n\
+    \  * [ Games  ](https://www.linkedin.com/games?trk=public_post_guest_nav_menu_games)\n\
+    \  * [ Get the app  ](ms-windows-store://pdp/?ProductId=9WZDNCRFJ4Q7&mode=mini&cid=guest_nav_upsell&trk=public_post_guest_nav_menu_windows)\n\
+    \n\n\n[ Sign in ](https://www.linkedin.com/login?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Fstephanie-feraday-62b743_inside-aisource-scale-your-best-negotiators-activity-7465169879411748864-7yI_&fromSignIn=true&trk=public_post_nav-header-signin)\
+    \ [ Join now  ](https://www.linkedin.com/signup/cold-join?session_redirect=https"
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.linkedin.com/posts/stephanie-feraday-62b743_inside-aisource-scale-your-best-negotiators-activity-7465169879411748864-7yI_
+- content_hash: c8c312cfd34800ec9f119a52e11a6a91ff585d20b7e6be040a9326ce240f53d4
+  evidence_id: ev-c8c312cfd34800ec
+  excerpt: "Detected date: Jul 13, 2026\nTitle: Apriori Bio: Funding, Team &amp; Investors\
+    \ | Startup Intros\nSkip to content\n\n[](/)[How It Works](/how-it-works)[Pricing](/pricing)[Blog](/blog)[Events](/events)\n\
+    \nSearch orgs, people, news, resources...⌘K\n\n[Sign In](https://app.startupintros.com/login)[Get\
+    \ Started →](https://app.startupintros.com/signup)\n\nSearch organizations, people,\
+    \ news, resources, and content.../[How It Works](/how-it-works)[Pricing](/pricing)[Blog](/blog)[Events](/events)\n\
+    \n[Sign In](https://app.startupintros.com/login)[Get Started →](https://app.startupintros.com/signup)\n\
+    \nLoading organizations...\n\n[](/)\n\n[](mailto:hello@startupintros.com)[](https://x.com/thedevchandra)[](https://www.linkedin.com/company/startupintros/)[](https://www.instagram.com/startupintros)\n\
+    \nThe OS for early-stage founders from day zero to raise.\n\nSubscribe\n\n####\
+    \ Product\n\n[How It Works](/how-it-works)[Pricing](/pricing)\n\n#### Resources\n\
+    \n[Blog](/blog)[Events](/events)[Contact](/contact)\n\n#### Company\n\n[Privacy](/privacy)[Terms](/terms)\n\
+    \n© 2026 Startup Intros, Inc.Made for Founders\n\n  1. [Home](/)\n  2. /[Organizations](/orgs)\n\
+    \  3. /Apriori Bio\n\n\n\n§ Private Profile · Cambridge, MA, USA\n\n# Apriori\
+    \ Bio\n\nBiotechnology company develops variant-proof vaccines and antibody drugs\
+    \ for viral threats, focused on predicting viral evolution with AI.\n\nActive[BioTech](/orgs?f.tags.contains=BioTech)[Clinical\
+    \ Trials](/orgs?f.tags.contains=Clinical+Trials)[Life Science](/orgs?f.tags.contains=Life+Science)[Medical](/orgs?f.tags.contains=Medical)\n\
+    \n["
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://startupintros.com/orgs/apriori-bio
+- content_hash: 090f19b333e3abe55cacf7e64c06320864449e7944bc0cbec5a57f73de8da92c
+  evidence_id: ev-090f19b333e3abe5
+  excerpt: "Title: Digital Manufacturing Simulation | the aPriori Blog\n____\n\nUpcoming\
+    \ Webinar\n\nBeyond a Tool: From Design for X to a New Engineering Mindset\n\n\
+    [**Register Now ›**](https://www.apriori.com/resources/webinar/beyond-a-tool-from-design-for-x-to-a-new-engineering-mindset/)\n\
+    \nMIC Chicago\n\nSep 22-23 • From Design to Source — Measurable Impact at the\
+    \ Speed of AI\n\n[**Learn More ›**](/manufacturing-insights-chicago-2026/)\n\n\
+    MIC Cologne\n\n13-14 Oct • From Design to Source — Measurable Impact at the Speed\
+    \ of AI\n\n[**Learn More ›**](/manufacturing-insights-cologne-2026/)\n\n ____\n\
+    \n__\n\nUS  \nEN\n\n[ __Login](https://cloud.apriori.net/)\n\n[](/)\n\n[Why aPriori?](/why-apriori/)\n\
+    \nSolutions\n\n[Products](/solutions/products/)\n\n[Pricing](/pricing/)\n\n[About](/about/)\n\
+    \nResources \n\n[Resources Hub ](/resources/)\n\n  * [Blog __](https://www.apriori.com/blog/)\n\
+    \  * [Case Studies __](https://www.apriori.com/resources/?type=case-study)\n \
+    \ * [Cloud Security __](https://www.apriori.com/security/)\n  * [Documentation\
+    \ __](https://docs.apriori.com/)\n  * [FAQs __](https://www.apriori.com/faqs/)\n\
+    \  * [Glossary __](/glossary/)\n  * [Guides __](https://www.apriori.com/manufacturing-guides/)\n\
+    \  * [Podcast __](/podcast/)\n  * [Webinars __](/resources/?type=webinar)\n  *\
+    \ [Videos __](https://www.apriori.com/resources/?type=video)\n\n\n\n[Blog Articles\
+    \ ](/blog/)\n\nHot Trending Topics\n\n  * [ Artificial Intelligence ](https://www.apriori.com/blog/?hot_trending_topics=artificial-intelligence)\n\
+    \  * [ Digital Transformation ](https://www.apriori."
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.apriori.com/blog/
+- content_hash: ceb690ae1c940fc5783ec2158ccc7158358e57ccda7b269782e833f438a2349b
+  evidence_id: ev-ceb690ae1c940fc5
+  excerpt: "Title: aPriori | News &amp; Events\n____\n\nUpcoming Webinar\n\nBeyond\
+    \ a Tool: From Design for X to a New Engineering Mindset\n\n[**Register Now ›**](https://www.apriori.com/resources/webinar/beyond-a-tool-from-design-for-x-to-a-new-engineering-mindset/)\n\
+    \nMIC Chicago\n\nSep 22-23 • From Design to Source — Measurable Impact at the\
+    \ Speed of AI\n\n[**Learn More ›**](/manufacturing-insights-chicago-2026/)\n\n\
+    MIC Cologne\n\n13-14 Oct • From Design to Source — Measurable Impact at the Speed\
+    \ of AI\n\n[**Learn More ›**](/manufacturing-insights-cologne-2026/)\n\n ____\n\
+    \n__\n\nUS  \nEN\n\n[ __Login](https://cloud.apriori.net/)\n\n[](/)\n\n[Why aPriori?](/why-apriori/)\n\
+    \nSolutions\n\n[Products](/solutions/products/)\n\n[Pricing](/pricing/)\n\n[About](/about/)\n\
+    \nResources \n\n[Resources Hub ](/resources/)\n\n  * [Blog __](https://www.apriori.com/blog/)\n\
+    \  * [Case Studies __](https://www.apriori.com/resources/?type=case-study)\n \
+    \ * [Cloud Security __](https://www.apriori.com/security/)\n  * [Documentation\
+    \ __](https://docs.apriori.com/)\n  * [FAQs __](https://www.apriori.com/faqs/)\n\
+    \  * [Glossary __](/glossary/)\n  * [Guides __](https://www.apriori.com/manufacturing-guides/)\n\
+    \  * [Podcast __](/podcast/)\n  * [Webinars __](/resources/?type=webinar)\n  *\
+    \ [Videos __](https://www.apriori.com/resources/?type=video)\n\n\n\n[Blog Articles\
+    \ ](/blog/)\n\nHot Trending Topics\n\n  * [ Artificial Intelligence ](https://www.apriori.com/blog/?hot_trending_topics=artificial-intelligence)\n\
+    \  * [ Digital Transformation ](https://www.apriori.com/blog/?hot_trending_t"
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.apriori.com/news-events/
+- content_hash: 8edcc9a9b43e1998f8f18fc416a91cf51b8a8962e73a03ddd0c12ea98e8950dd
+  evidence_id: ev-8edcc9a9b43e1998
+  excerpt: "Detected date: December 2024\nTitle: What’s New in aP Design - December\
+    \ 2024\n____\n\nUpcoming Webinar\n\nBeyond a Tool: From Design for X to a New\
+    \ Engineering Mindset\n\n[**Register Now ›**](https://www.apriori.com/resources/webinar/beyond-a-tool-from-design-for-x-to-a-new-engineering-mindset/)\n\
+    \nMIC Chicago\n\nSep 22-23 • From Design to Source — Measurable Impact at the\
+    \ Speed of AI\n\n[**Learn More ›**](/manufacturing-insights-chicago-2026/)\n\n\
+    MIC Cologne\n\n13-14 Oct • From Design to Source — Measurable Impact at the Speed\
+    \ of AI\n\n[**Learn More ›**](/manufacturing-insights-cologne-2026/)\n\n ____\n\
+    \n__\n\nUS  \nEN\n\n[ __Login](https://cloud.apriori.net/)\n\n[](/)\n\n[Why aPriori?](/why-apriori/)\n\
+    \nSolutions\n\n[Products](/solutions/products/)\n\n[Pricing](/pricing/)\n\n[About](/about/)\n\
+    \nResources \n\n[Resources Hub ](/resources/)\n\n  * [Blog __](https://www.apriori.com/blog/)\n\
+    \  * [Case Studies __](https://www.apriori.com/resources/?type=case-study)\n \
+    \ * [Cloud Security __](https://www.apriori.com/security/)\n  * [Documentation\
+    \ __](https://docs.apriori.com/)\n  * [FAQs __](https://www.apriori.com/faqs/)\n\
+    \  * [Glossary __](/glossary/)\n  * [Guides __](https://www.apriori.com/manufacturing-guides/)\n\
+    \  * [Podcast __](/podcast/)\n  * [Webinars __](/resources/?type=webinar)\n  *\
+    \ [Videos __](https://www.apriori.com/resources/?type=video)\n\n\n\n[Blog Articles\
+    \ ](/blog/)\n\nHot Trending Topics\n\n  * [ Artificial Intelligence ](https://www.apriori.com/blog/?hot_trending_topics=artificial-intelligence)\n\
+    \  * [ Digital Transformation ](https://www.apriori.com/blog/?ho"
+  retrieved_at: '2026-08-18T11:40:39.133500-04:00'
+  url: https://www.apriori.com/blog/whats-new-in-ap-design-december-2024/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

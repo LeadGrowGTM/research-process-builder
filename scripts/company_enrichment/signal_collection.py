@@ -268,6 +268,25 @@ def url_identity(url: str) -> str:
     return f"{registrable_domain(parsed.netloc)}{path.lower()}"
 
 
+def subject_tokens(facts: Mapping[str, str]) -> tuple[str, ...]:
+    """Lower-case markers that identify the subject company in text or a URL."""
+    name = facts["company_name"].lower()
+    domain = facts["domain"].lower()
+    tokens = {domain, domain.split(".")[0], re.sub(r"[^a-z0-9]+", "", name)}
+    words = [word for word in re.findall(r"[a-z0-9]+", name) if len(word) >= 4]
+    if words:
+        tokens.add(words[0])
+    return tuple(sorted(token for token in tokens if len(token) >= 4))
+
+
+def mentions_subject(url: str, text: str, facts: Mapping[str, str]) -> bool:
+    """True when the SERP item is on the subject's domain or names the subject."""
+    if registrable_domain(urlparse(url).netloc) == facts["domain"]:
+        return True
+    haystack = re.sub(r"[^a-z0-9]+", "", (url + " " + text).lower())
+    return any(token in haystack for token in subject_tokens(facts))
+
+
 def is_own_noise_page(url: str, domain: str) -> bool:
     parsed = urlparse(url)
     if registrable_domain(parsed.netloc) != domain:
@@ -396,9 +415,13 @@ def collect_search_signals(
         provider_name = _provider_name(provider, "search")
         listing_lines = []
         kept = 0
+        dropped_off_subject = 0
         for rank, observation in enumerate(result.observations, 1):
             identity = url_identity(observation.url)
             listing_lines.append(f"{rank}. {observation.url}\n{observation.excerpt}")
+            if not mentions_subject(observation.url, observation.excerpt, facts):
+                dropped_off_subject += 1
+                continue
             sources.append(SourceRecord(
                 url=observation.url, retrieved_at=now, source_type=SERP_SOURCE_TYPE,
                 provider=provider_name,
@@ -424,7 +447,7 @@ def collect_search_signals(
         log.append({
             "step": "search", "target": rendered, "status": "ok", "mode": query.mode,
             "tbs": query.tbs, "provider": provider_name, "results": len(result.observations),
-            "paid_cost_usd": str(cost),
+            "dropped_off_subject": dropped_off_subject, "paid_cost_usd": str(cost),
             "fallbacks": list(getattr(provider, "last_failures", ())),
         })
 

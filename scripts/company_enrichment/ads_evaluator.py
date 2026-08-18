@@ -39,7 +39,7 @@ import re
 from typing import Any, Mapping
 from urllib.parse import urlparse
 
-from .ads_contracts import AD_CHANNELS, AD_STATUSES, ADS_FIELD, AdsOutput, parse_ads_output
+from .ads_contracts import AD_CHANNELS, AD_STATUSES, ADS_FIELD, AdsOutput, parse_ads_output, ad_library_channel
 from .contracts import CompanyDossier
 from .signal_ground_truth import SignalGroundTruthRecord
 from .signal_loop import CaseScore
@@ -190,9 +190,17 @@ def _offer_component(
     return Decimal(matched) / Decimal(len(applicable))
 
 
-def _hard_failures(output: AdsOutput, channels: Mapping[str, Mapping[str, Any]]) -> tuple[str, ...]:
+def _hard_failures(
+    output: AdsOutput, channels: Mapping[str, Mapping[str, Any]],
+    channel_by_evidence: Mapping[str, str | None] | None = None,
+) -> tuple[str, ...]:
     failures: list[str] = []
     for item in output.channels:
+        if channel_by_evidence is not None and any(
+            channel_by_evidence.get(evidence_id) != item.channel
+            for evidence_id in item.evidence_ids
+        ):
+            failures.append(f"cross_channel_citation:{item.channel}")
         expected_status = channels.get(item.channel, {}).get("status", "unknown")
         if item.status == "active" and expected_status in {"inactive", "unknown"}:
             failures.append(f"status_overclaim:{item.channel}")
@@ -230,9 +238,12 @@ def score_ads(
     ):
         if value is not None:
             components[key] = value
+    channel_by_evidence = {
+        item.evidence_id: ad_library_channel(item.url) for item in dossier.evidence
+    }
     return CaseScore(
         record.company_id, components, _weighted(components),
-        (*unretained, *_hard_failures(output, channels)),
+        (*unretained, *_hard_failures(output, channels, channel_by_evidence)),
     )
 
 

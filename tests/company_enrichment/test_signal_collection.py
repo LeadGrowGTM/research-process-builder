@@ -115,11 +115,16 @@ NEWS_RESULTS = {
          "Title: dup\nDate: Jan 30, 2024\nSnippet: dup"),
         ("https://agencyanalytics.com/templates/seo",  # own template page dropped
          "Title: SEO report template\nSnippet: template"),
-        ("https://techcrunch.com/agency", "Title: TC\nDate: 2024-04-11\nSnippet: funding"),
-        ("https://example.org/fourth", "Title: fourth\nSnippet: beyond top_urls_per_query"),
+        ("https://techcrunch.com/agency",
+         "Title: TC on AgencyAnalytics\nDate: 2024-04-11\nSnippet: funding"),
+        ("https://example.org/off-subject",  # never names the subject: dropped
+         "Title: KBRA credit ratings\nSnippet: press release"),
+        ("https://example.org/fourth",
+         "Title: fourth agencyanalytics\nSnippet: beyond top_urls_per_query"),
     ),
     "AgencyAnalytics agency reporting launches": (
-        ("https://techcrunch.com/agency?utm=1", "Title: TC again\nSnippet: same page"),
+        ("https://techcrunch.com/agency?utm=1",
+         "Title: TC again on AgencyAnalytics\nSnippet: same page"),
     ),
 }
 PAGES = {
@@ -158,6 +163,7 @@ def test_collect_builds_dossier_from_serp_pages_and_first_party(tmp_path: Path):
     assert "https://agencyanalytics.com/news" not in urls  # thin first-party content dropped
     assert any(url.startswith("https://www.google.com/search?q=") for url in urls)
     # SERP results are kept as small dated records even when the scrape fails
+    assert not [item for item in dossier.evidence if item.url == "https://example.org/off-subject"]
     serp = [item for item in dossier.evidence if item.url == "https://techcrunch.com/agency"]
     assert serp and serp[0].excerpt.startswith("Detected date: 2024-04-11\nTitle: TC")
     # scraped page excerpt starts with the detected date line and is bounded
