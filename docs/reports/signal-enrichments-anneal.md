@@ -4,23 +4,31 @@
 **Branch:** `wt/signal-enrichments` (worktree `.worktrees/signal-enrichments`)
 **Starting point:** `docs/reports/signal-enrichments-live-run.md` (news-v5 0.71 / 0.71,
 comp-v5 0.68 / 0.67 on gpt-4.1-mini, hard failures on both)
-**Result:** both enrichments clear the 0.90 threshold on development and holdout
-with no hard failures. Gate is `human_review_required`; nothing here is an
-Approval until Mitch reviews.
+**Result on the allowed model (gpt-4.1-mini):** hard failures eliminated on
+both, holdout clears 0.90 on both, development lands just under: news 0.887,
+competitors 0.885. Not yet at the gate on development. Gate is
+`human_review_required` on holdout only; nothing here is an Approval.
+
+**Withdrawn:** five lineages (news-v8-gpt41, news-v10-gpt41, comp-v8-gpt41,
+comp-v9-gpt41, comp-v10-gpt41) ran on the full gpt-4.1 tier. That model is
+never to be used in this workspace (Mitch, 2026-08-18); the price-table entry
+that allowed it has been removed and the client now rejects the model before
+any spend. Their artifacts stay on disk under `runs/` for the record, their
+scores are not evidence for any decision, and the USD 2.11 they cost is
+counted below as waste.
 
 | Enrichment | Lineage | Model | Prompt | Dev | Holdout | Hard failures | Cost |
 |---|---|---|---|---|---|---|---|
-| news-product-launches | news-v10-gpt41 | gpt-4.1 | baseline | **0.924** | **0.989** | none | 0.30 |
 | news-product-launches | news-v7 | gpt-4.1-mini | news-v3-kind-rules | 0.887 | 1.000 | none | 0.14 (3 candidates) |
-| competitor-intelligence | comp-v10-gpt41 | gpt-4.1 | comp-v3-category-sanity | **0.902** | **0.950** | none | 0.42 |
+| news-product-launches | news-v9 | gpt-4.1-mini | news-v3-kind-rules | 0.869 | 0.962 | none | 0.14 (3 candidates) |
 | competitor-intelligence | comp-v9 | gpt-4.1-mini | comp-v3-category-sanity | 0.885 | 0.965 | none | 0.17 (3 candidates) |
+| competitor-intelligence | comp-v7 | gpt-4.1-mini | comp-v2-enumerate-lists | 0.859 | 0.928 | none | 0.16 (3 candidates) |
 
-gpt-4.1-mini lands within noise of the line (run-to-run spread on identical
-prompts is about +-0.03 even at temperature 0: news-v3 scored 0.887 in v7 and
-0.869 in v9). gpt-4.1 clears it with margin. Recommendation: ship gpt-4.1 for
-both, or gpt-4.1-mini with an n-sample median if cost matters more than
-stability. Per-company cost on gpt-4.1 is about USD 0.03 (news) and 0.04
-(competitors); on mini about 0.008.
+gpt-4.1-mini sits within noise of the line: run-to-run spread on identical
+prompts is about +-0.03 even at temperature 0 (news-v3 0.887 in v7, 0.869 in
+v9). Per-company cost about USD 0.008. Remaining routes on allowed models:
+n-sample median on mini (3x cost, kills the variance), gpt-5-nano, or the
+flagship gpt-5.6-luna; and more prompt work on the residuals listed below.
 
 ## What changed
 
@@ -70,7 +78,9 @@ model performance.
 
 - `temperature: 0` and a `Subject company: <identity> (<host>)` line for
   field-keyed signal requests only (ICP and legacy request bodies unchanged,
-  byte-for-byte test still green). gpt-4.1 added to the price table.
+  byte-for-byte test still green). Price table holds only the allowed
+  models (gpt-4.1-mini, gpt-4o-mini, gpt-5-nano, gpt-5.6-luna); the full
+  gpt-4.1 tier was briefly added, used, and removed (see Withdrawn).
 - `--candidate <prompt.md>` (repeatable) evaluates extra prompts next to the
   baseline; `--prompt <prompt.md>` replaces the baseline. Candidate id = file
   stem. `SIGNAL_LOOP_MODEL` picks the model.
@@ -90,12 +100,12 @@ model performance.
 - comp-v2-enumerate-lists: enumerate every in-list vendor as `named`, name as
   written, domain only when shown, one bucket per company.
 - comp-v3-category-sanity: v2 plus skip off-category padding from directories
-  and company databases. Best on both models.
+  and company databases. Best on mini.
 - comp-v4-directory-guard: v3 plus category-profile pages list neighbors, not
   competitors. Not better than v3.
 
-On gpt-4.1 the news baseline prompt beat news-v3 (0.905 vs 0.883 in v8), so
-news-v10-gpt41 ran the baseline; competitors used comp-v3.
+On mini, news-v3-kind-rules and comp-v3-category-sanity are the best
+candidates.
 
 ### Ground truth
 
@@ -119,19 +129,20 @@ named") should win.
 |---|---|---|---|---|---|---|
 | news-v6 | mini | baseline, v2 | 0.842 (v2) | 0.965 | 0.104 | first grounding, hard failures gone |
 | news-v7 | mini | + v3 | 0.887 (v3) | 1.000 | 0.143 | |
-| news-v8-gpt41 | gpt-4.1 | baseline, v3 | 0.739 stored / 0.905 regrounded | 0.980 | 0.551 | saas-04 year-only date failed the case; fixed by `invalid_event` |
+| news-v8-gpt41 | gpt-4.1 (withdrawn) | baseline, v3 | 0.739 stored | 0.980 | 0.551 | disallowed model; saas-04 year-only date exposed the `invalid_event` gap |
 | news-v9 | mini | v3, v4 | 0.869 (v3) | 0.962 | 0.144 | mini variance |
-| news-v10-gpt41 | gpt-4.1 | baseline | **0.924** | **0.989** | 0.303 | final code |
+| news-v10-gpt41 | gpt-4.1 (withdrawn) | baseline | 0.924 | 0.989 | 0.303 | disallowed model |
 | comp-v6 | mini | baseline, v2 | 0.792 (v2) | 0.960 | 0.115 | before Evidence-decided buckets |
 | comp-v7 | mini | + v3 | 0.859 (v2) | 0.928 | 0.156 | |
-| comp-v8-gpt41 | gpt-4.1 | baseline, v2, v3 | 0.891 (baseline) | cap-blocked | 0.515 | gpt-4.1 estimate 3x conservative; third candidate exceeded USD 1.00 |
+| comp-v8-gpt41 | gpt-4.1 (withdrawn) | baseline, v2, v3 | 0.891 (baseline) | cap-blocked | 0.515 | disallowed model; cap halted the third candidate |
 | comp-v9 | mini | v3, v4 | 0.885 (v3) | 0.965 | 0.165 | |
-| comp-v9-gpt41 | gpt-4.1 | baseline | 0.899 | 0.967 | 0.322 | |
-| comp-v10-gpt41 | gpt-4.1 | v3 only | **0.902** | **0.950** | 0.419 | final code |
+| comp-v9-gpt41 | gpt-4.1 (withdrawn) | baseline | 0.899 | 0.967 | 0.322 | disallowed model |
+| comp-v10-gpt41 | gpt-4.1 (withdrawn) | v3 only | 0.902 | 0.950 | 0.419 | disallowed model |
 
-Total LLM spend this session USD 2.94 (11 lineages); every lineage stayed
-under the USD 1.00 cap (comp-v8 halted at it). No source purchases, no
-network collection.
+Total LLM spend this session USD 2.94 (11 lineages), of which USD 2.11 went
+to the five withdrawn gpt-4.1 lineages and USD 0.83 to the six gpt-4.1-mini
+lineages. Every lineage stayed under the USD 1.00 cap (comp-v8 halted at it).
+No source purchases, no network collection.
 
 ## Residual losses (for the reviewer)
 
@@ -149,19 +160,20 @@ network collection.
 
 ```powershell
 # from C:\Users\mitch\Everything_CC\pipelines\gtm-orchestrator (prod secrets)
-$env:SIGNAL_LOOP_MODEL='gpt-4.1'
-lg run --env prod py <worktree>\scripts\company_enrichment_news_loop.py --evaluate --lineage news-v11 --allow-paid
+# default model gpt-4.1-mini
+lg run --env prod py <worktree>\scripts\company_enrichment_news_loop.py --evaluate --lineage news-v11 --allow-paid --prompt prompts/company-enrichment/candidates/news-product-launches/news-v3-kind-rules.md
 lg run --env prod py <worktree>\scripts\company_enrichment_competitor_loop.py --evaluate --lineage comp-v11 --allow-paid --prompt prompts/company-enrichment/candidates/competitor-intelligence/comp-v3-category-sanity.md
 ```
 
 ## Next steps
 
-1. Human review of news-v10-gpt41 and comp-v10-gpt41 outputs plus the
-   `postprocess` reports (what grounding dropped), then approve / revise.
-2. Decide the model: gpt-4.1 (clears with margin) vs mini (cheaper, at the
-   line). If mini, add an n-sample median to the loop before relying on it.
+1. Close the last 0.015 on gpt-4.1-mini development: n-sample median in the
+   loop (3 samples, take the median-scoring output per case), or gpt-5-nano /
+   gpt-5.6-luna if Mitch prefers a different allowed model.
+2. Then human review of the winning mini lineage outputs plus the
+   `postprocess` reports (what grounding dropped), approve / revise.
 3. If the ads/news/competitor prompts graduate, fold the winning candidate
    into `prompts/company-enrichment/<enrichment>.md` and retire the candidate
    files (kept for now so lineage prompt hashes stay reproducible).
-4. Optional: relax the gpt-4.1 cost estimate (bytes as tokens is 3x high) so
-   two candidates plus holdout fit under the USD 1.00 cap.
+4. Optional: the cost estimate counts UTF-8 bytes as tokens (about 3x high);
+   fine for mini, worth revisiting only if a pricier allowed model is tried.

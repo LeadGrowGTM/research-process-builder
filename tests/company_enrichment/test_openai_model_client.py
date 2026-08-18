@@ -627,3 +627,17 @@ def test_legacy_request_body_is_byte_for_byte_compatible(tmp_path: Path) -> None
     assert client._batch_path((request,)).name == (
         "4c2e4d45798919d1d1980555dca74e9d9cbe3ee418ceb17666773062f562017e.json"
     )
+
+
+def test_full_gpt41_tier_is_not_a_priced_model(tmp_path: Path) -> None:
+    from scripts.company_enrichment.openai_model_client import MODEL_PRICES
+    # Workspace policy: never the full gpt-4.1 tier. Keeping it out of the price
+    # table makes estimate()/execute() reject it before any provider call.
+    assert "gpt-4.1" not in MODEL_PRICES
+    client = OpenAIModelClient(artifact_root=tmp_path, sdk_client=SimpleNamespace())
+    try:
+        client.estimate((_request("gpt-4.1"),), ExecutionTrack.SYNCHRONOUS)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("gpt-4.1 must be rejected before any provider call")

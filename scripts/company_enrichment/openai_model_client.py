@@ -46,6 +46,10 @@ class ModelPrice:
 
 # OpenAI list prices in USD per one million text tokens. Batch is 50% of the
 # standard rate. Decimal literals keep the budget ledger free of float drift.
+# Only these models may run (workspace policy, Mitch 2026-08-18): gpt-4.1-mini,
+# gpt-4o-mini, gpt-5-nano, and the flagship gpt-5.6-luna. The full gpt-4.1
+# tier is never used and is deliberately absent, so a request for it fails
+# validation before any spend. Do not add models here without that approval.
 MODEL_PRICES: Mapping[str, ModelPrice] = {
     "gpt-5-nano": ModelPrice(
         Decimal("0.05"), Decimal("0.005"), Decimal("0.40"),
@@ -58,10 +62,6 @@ MODEL_PRICES: Mapping[str, ModelPrice] = {
     "gpt-4.1-mini": ModelPrice(
         Decimal("0.40"), Decimal("0.10"), Decimal("1.60"),
         Decimal("0.20"), Decimal("0.05"), Decimal("0.80"),
-    ),
-    "gpt-4.1": ModelPrice(
-        Decimal("2.00"), Decimal("0.50"), Decimal("8.00"),
-        Decimal("1.00"), Decimal("0.25"), Decimal("4.00"),
     ),
     "gpt-5.6-luna": ModelPrice(
         Decimal("1.00"), Decimal("0.10"), Decimal("6.00"),
