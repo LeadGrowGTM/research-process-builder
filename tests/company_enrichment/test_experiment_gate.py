@@ -43,7 +43,7 @@ def test_all_completed_below_programmed_gate_stays_experiment(tmp_path: Path) ->
         "company-description", allow_paid=True,
     )
 
-    assert summary.completed_cases == 24
+    assert summary.completed_cases == 18
     assert summary.programmed_gate_score == 0.899
     assert summary.status == "experiment"
     assert summary.approved is False
@@ -54,7 +54,7 @@ def test_all_completed_at_programmed_gate_can_be_candidate(tmp_path: Path) -> No
         "icp-persona-analysis", allow_paid=True,
     )
 
-    assert summary.completed_cases == 24
+    assert summary.completed_cases == 18
     assert summary.programmed_gate_score == 0.90
     assert summary.status == "candidate"
     assert summary.approved is False
@@ -65,6 +65,6 @@ def test_growth_with_zero_programmed_score_cannot_be_candidate(tmp_path: Path) -
         "growth-signals", allow_paid=True,
     )
 
-    assert summary.completed_cases == 24
+    assert summary.completed_cases == 18
     assert summary.programmed_gate_score == 0.0
     assert summary.status == "experiment"

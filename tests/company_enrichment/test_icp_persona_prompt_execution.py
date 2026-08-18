@@ -72,7 +72,7 @@ def _request(*, prompt_id="candidate-1", prompt_text=PROMPT,
         "Marketing agencies automate reporting for multi-channel campaigns.",
     )
     return ExperimentInput(
-        "icp-persona-analysis", "saas-01", "gpt-4o-mini",
+        "icp-persona-analysis", "saas-01", "gpt-4.1-mini",
         CompanyDossier("saas-01", "1.0", (), (evidence,)),
         prompt_id, prompt_text, output_contract,
     )
@@ -80,11 +80,11 @@ def _request(*, prompt_id="candidate-1", prompt_text=PROMPT,
 
 def _response():
     return SimpleNamespace(
-        id="resp_icp", model="gpt-4o-mini-2024-07-18",
+        id="resp_icp", model="gpt-4.1-mini-2025-04-14",
         output_text=json.dumps(OUTPUT),
         usage=SimpleNamespace(input_tokens=100, output_tokens=50),
         model_dump=lambda mode="json": {
-            "id": "resp_icp", "model": "gpt-4o-mini-2024-07-18",
+            "id": "resp_icp", "model": "gpt-4.1-mini-2025-04-14",
             "input": SECRET_PROMPT,
             "instructions": "Follow this instruction: " + SECRET_PROMPT,
             "output_text": json.dumps(OUTPUT),
@@ -155,8 +155,8 @@ def test_sync_artifact_hashes_and_structured_field_values(tmp_path: Path):
     state_text = state_path.read_text(encoding="utf-8")
     state = json.loads(state_text)
     assert {key: state[key] for key in _hashes(request)} == _hashes(request)
-    assert state["requested_model_id"] == "gpt-4o-mini"
-    assert state["execution"]["resolved_model_id"] == "gpt-4o-mini-2024-07-18"
+    assert state["requested_model_id"] == "gpt-4.1-mini"
+    assert state["execution"]["resolved_model_id"] == "gpt-4.1-mini-2025-04-14"
     provider = state["provider_response"]
     assert provider["input"] == "[redacted]"
     assert provider["instructions"] == "[redacted]"
@@ -179,7 +179,7 @@ class _BatchFiles:
         self.rows = "\n".join(json.dumps({
             "custom_id": custom_id, "error": None,
             "response": {"status_code": 200, "body": {
-                "model": "gpt-4o-mini-2024-07-18",
+                "model": "gpt-4.1-mini-2025-04-14",
                 "input": SECRET_PROMPT,
                 "instructions": "Follow this instruction: " + SECRET_PROMPT,
                 "output_text": json.dumps(OUTPUT),
@@ -220,7 +220,7 @@ def test_batch_artifact_records_exact_hashes_without_prompt_secret(tmp_path: Pat
     state = json.loads(state_text)
     assert state["request_metadata"] == [{
         "company_id": "saas-01", "enrichment_id": "icp-persona-analysis",
-        "requested_model_id": "gpt-4o-mini", **_hashes(request),
+        "requested_model_id": "gpt-4.1-mini", **_hashes(request),
     }]
     assert state["executions"][0]["resolved_model_id"] == execution.resolved_model_id
     body = state["provider_output"][0]["response"]["body"]

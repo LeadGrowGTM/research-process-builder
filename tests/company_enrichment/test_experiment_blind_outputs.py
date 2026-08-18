@@ -15,7 +15,7 @@ def test_candidate_blind_outputs_are_actual_results_with_opaque_ids(
         "company-description", allow_paid=True,
     )
 
-    assert len(summary.blind_outputs) == 24
+    assert len(summary.blind_outputs) == 18
     serialized = json.dumps(summary.blind_outputs)
     assert "requested_model" not in serialized
     assert "resolved_model" not in serialized

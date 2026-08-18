@@ -4,31 +4,37 @@
 **Branch:** `wt/signal-enrichments` (worktree `.worktrees/signal-enrichments`)
 **Starting point:** `docs/reports/signal-enrichments-live-run.md` (news-v5 0.71 / 0.71,
 comp-v5 0.68 / 0.67 on gpt-4.1-mini, hard failures on both)
-**Result on the allowed model (gpt-4.1-mini):** hard failures eliminated on
-both, holdout clears 0.90 on both, development lands just under: news 0.887,
-competitors 0.885. Not yet at the gate on development. Gate is
-`human_review_required` on holdout only; nothing here is an Approval.
+**Result:** both enrichments clear the 0.90 threshold on development and holdout
+with no hard failures on **gpt-5.6-luna** (approved flagship). On gpt-4.1-mini
+hard failures are gone and holdout clears, but development lands just under
+(news 0.887, competitors 0.885). Gate is `human_review_required`; nothing here
+is an Approval until Mitch reviews.
+
+**Approved models (Mitch, 2026-08-18): gpt-4.1-mini, gpt-5-nano, gpt-5.6-luna
+only.** The full gpt-4.1 tier and the gpt-4o family are never used. Both were
+removed from `MODEL_PRICES` and `EXPERIMENT_MODELS` (the ICP experiment
+matrix is now 3 models x 2 tracks); the client rejects them before any spend.
 
 **Withdrawn:** five lineages (news-v8-gpt41, news-v10-gpt41, comp-v8-gpt41,
-comp-v9-gpt41, comp-v10-gpt41) ran on the full gpt-4.1 tier. That model is
-never to be used in this workspace (Mitch, 2026-08-18); the price-table entry
-that allowed it has been removed and the client now rejects the model before
-any spend. Their artifacts stay on disk under `runs/` for the record, their
-scores are not evidence for any decision, and the USD 2.11 they cost is
-counted below as waste.
+comp-v9-gpt41, comp-v10-gpt41) ran on gpt-4.1 before that policy was stated.
+Their artifacts stay under `runs/` for the record, their scores are not
+evidence for any decision, and their USD 2.11 is counted below as waste.
 
 | Enrichment | Lineage | Model | Prompt | Dev | Holdout | Hard failures | Cost |
 |---|---|---|---|---|---|---|---|
+| news-product-launches | news-v11-luna | gpt-5.6-luna | news-v3-kind-rules | **0.974** | **0.997** | none | 0.21 |
 | news-product-launches | news-v7 | gpt-4.1-mini | news-v3-kind-rules | 0.887 | 1.000 | none | 0.14 (3 candidates) |
-| news-product-launches | news-v9 | gpt-4.1-mini | news-v3-kind-rules | 0.869 | 0.962 | none | 0.14 (3 candidates) |
+| news-product-launches | news-v11-nano | gpt-5-nano | news-v3-kind-rules | 0.669 | 0.606 | none | 0.01 |
+| competitor-intelligence | comp-v11-luna | gpt-5.6-luna | comp-v3-category-sanity | **0.933** | **0.960** | none | 0.29 |
 | competitor-intelligence | comp-v9 | gpt-4.1-mini | comp-v3-category-sanity | 0.885 | 0.965 | none | 0.17 (3 candidates) |
-| competitor-intelligence | comp-v7 | gpt-4.1-mini | comp-v2-enumerate-lists | 0.859 | 0.928 | none | 0.16 (3 candidates) |
+| competitor-intelligence | comp-v11-nano | gpt-5-nano | comp-v3-category-sanity | 0.686 | 0.642 | hallucinated_competitor (saas-10) | 0.01 |
 
-gpt-4.1-mini sits within noise of the line: run-to-run spread on identical
-prompts is about +-0.03 even at temperature 0 (news-v3 0.887 in v7, 0.869 in
-v9). Per-company cost about USD 0.008. Remaining routes on allowed models:
-n-sample median on mini (3x cost, kills the variance), gpt-5-nano, or the
-flagship gpt-5.6-luna; and more prompt work on the residuals listed below.
+Per-company cost: luna about USD 0.02 (news) and 0.03 (competitors); mini
+about 0.008; nano about 0.001 but far below the gate. gpt-4.1-mini sits
+within noise of the line (run-to-run spread on identical prompts about +-0.03
+even at temperature 0: news-v3 0.887 in v7, 0.869 in v9). Recommendation:
+ship luna for both; if mini is preferred for cost, add an n-sample median to
+the loop first.
 
 ## What changed
 
@@ -78,9 +84,10 @@ model performance.
 
 - `temperature: 0` and a `Subject company: <identity> (<host>)` line for
   field-keyed signal requests only (ICP and legacy request bodies unchanged,
-  byte-for-byte test still green). Price table holds only the allowed
-  models (gpt-4.1-mini, gpt-4o-mini, gpt-5-nano, gpt-5.6-luna); the full
-  gpt-4.1 tier was briefly added, used, and removed (see Withdrawn).
+  byte-for-byte test still green). Price table holds only the approved
+  models (gpt-4.1-mini, gpt-5-nano, gpt-5.6-luna); the full gpt-4.1 tier was
+  briefly added, used, and removed (see Withdrawn), and gpt-4o-mini was
+  removed from the price table and the ICP experiment matrix.
 - `--candidate <prompt.md>` (repeatable) evaluates extra prompts next to the
   baseline; `--prompt <prompt.md>` replaces the baseline. Candidate id = file
   stem. `SIGNAL_LOOP_MODEL` picks the model.
@@ -104,8 +111,8 @@ model performance.
 - comp-v4-directory-guard: v3 plus category-profile pages list neighbors, not
   competitors. Not better than v3.
 
-On mini, news-v3-kind-rules and comp-v3-category-sanity are the best
-candidates.
+news-v3-kind-rules and comp-v3-category-sanity are the best candidates on
+mini and were the prompts run on nano and luna.
 
 ### Ground truth
 
@@ -138,10 +145,14 @@ named") should win.
 | comp-v9 | mini | v3, v4 | 0.885 (v3) | 0.965 | 0.165 | |
 | comp-v9-gpt41 | gpt-4.1 (withdrawn) | baseline | 0.899 | 0.967 | 0.322 | disallowed model |
 | comp-v10-gpt41 | gpt-4.1 (withdrawn) | v3 only | 0.902 | 0.950 | 0.419 | disallowed model |
+| news-v11-nano | gpt-5-nano | v3 only | 0.669 | 0.606 | 0.008 | far below gate |
+| comp-v11-nano | gpt-5-nano | v3 only | 0.686 | 0.642 | 0.010 | far below gate; one hallucinated_competitor |
+| news-v11-luna | gpt-5.6-luna | v3 only | **0.974** | **0.997** | 0.208 | final code, approved model |
+| comp-v11-luna | gpt-5.6-luna | v3 only | **0.933** | **0.960** | 0.292 | final code, approved model |
 
-Total LLM spend this session USD 2.94 (11 lineages), of which USD 2.11 went
-to the five withdrawn gpt-4.1 lineages and USD 0.83 to the six gpt-4.1-mini
-lineages. Every lineage stayed under the USD 1.00 cap (comp-v8 halted at it).
+Total LLM spend this session USD 3.46 (15 lineages): USD 2.11 on the five
+withdrawn gpt-4.1 lineages, 0.83 on six gpt-4.1-mini lineages, 0.02 on two
+gpt-5-nano lineages, 0.50 on two gpt-5.6-luna lineages. Every lineage stayed under the USD 1.00 cap (comp-v8 halted at it).
 No source purchases, no network collection.
 
 ## Residual losses (for the reviewer)
@@ -160,20 +171,18 @@ No source purchases, no network collection.
 
 ```powershell
 # from C:\Users\mitch\Everything_CC\pipelines\gtm-orchestrator (prod secrets)
-# default model gpt-4.1-mini
-lg run --env prod py <worktree>\scripts\company_enrichment_news_loop.py --evaluate --lineage news-v11 --allow-paid --prompt prompts/company-enrichment/candidates/news-product-launches/news-v3-kind-rules.md
-lg run --env prod py <worktree>\scripts\company_enrichment_competitor_loop.py --evaluate --lineage comp-v11 --allow-paid --prompt prompts/company-enrichment/candidates/competitor-intelligence/comp-v3-category-sanity.md
+$env:SIGNAL_LOOP_MODEL='gpt-5.6-luna'
+lg run --env prod py <worktree>\scripts\company_enrichment_news_loop.py --evaluate --lineage news-v12 --allow-paid --prompt prompts/company-enrichment/candidates/news-product-launches/news-v3-kind-rules.md
+lg run --env prod py <worktree>\scripts\company_enrichment_competitor_loop.py --evaluate --lineage comp-v12 --allow-paid --prompt prompts/company-enrichment/candidates/competitor-intelligence/comp-v3-category-sanity.md
 ```
 
 ## Next steps
 
-1. Close the last 0.015 on gpt-4.1-mini development: n-sample median in the
-   loop (3 samples, take the median-scoring output per case), or gpt-5-nano /
-   gpt-5.6-luna if Mitch prefers a different allowed model.
-2. Then human review of the winning mini lineage outputs plus the
-   `postprocess` reports (what grounding dropped), approve / revise.
-3. If the ads/news/competitor prompts graduate, fold the winning candidate
-   into `prompts/company-enrichment/<enrichment>.md` and retire the candidate
+1. Human review of news-v11-luna and comp-v11-luna outputs plus the
+   `postprocess` reports (what grounding dropped), then approve / revise.
+   A review sheet like the ads one can be generated on request.
+2. If mini is wanted for cost, add an n-sample median to the loop and rerun
+   news-v3 / comp-v3 on gpt-4.1-mini before relying on it.
+3. When the prompts graduate, fold the winning candidate into
+   `prompts/company-enrichment/<enrichment>.md` and retire the candidate
    files (kept for now so lineage prompt hashes stay reproducible).
-4. Optional: the cost estimate counts UTF-8 bytes as tokens (about 3x high);
-   fine for mini, worth revisiting only if a pricier allowed model is tried.

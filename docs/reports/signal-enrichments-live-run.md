@@ -108,10 +108,11 @@ reviewed any of it; treat all three as Experiments pending human review.
 1. Done 2026-08-18: ads-v3 approved by Mitch after one GT fix (saas-01 CTA);
    see `docs/reports/ads-v3-review-sheet.md`. Approval carries the caveats
    listed there (adapter-faithfulness score, Meta handle-discovery gap).
-2. In progress 2026-08-18: news and competitors annealed on gpt-4.1-mini to
-   news 0.887 / 1.00 and comp 0.885 / 0.965 (dev / holdout), hard failures
-   gone; see `docs/reports/signal-enrichments-anneal.md`. The full gpt-4.1
-   tier is never used in this workspace; lineages that ran on it are withdrawn.
+2. Done 2026-08-18: news and competitors annealed past 0.90 on gpt-5.6-luna
+   (news-v11-luna 0.974 / 0.997, comp-v11-luna 0.933 / 0.960); on gpt-4.1-mini
+   they sit at 0.887 / 1.00 and 0.885 / 0.965. See
+   `docs/reports/signal-enrichments-anneal.md`. Approved models are
+   gpt-4.1-mini, gpt-5-nano, gpt-5.6-luna only; gpt-4.1 lineages withdrawn.
 3. Add a `temperature` (or n-sample median) to the model client so lineage
    scores are comparable; the ICP loop shares this client, so change it under
    its tests.

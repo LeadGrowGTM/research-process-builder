@@ -129,14 +129,14 @@ def test_resume_reuses_pending_provider_job_and_active_budget_reservation(
         "status": "completed",
         "submissions": 1,
     }
-    assert len(provider_jobs) == 4
+    assert len(provider_jobs) == 3
     assert all(job["submissions"] == 1 for job in provider_jobs.values())
     budget_rows = tuple(
         json.loads(line)
         for line in budget_path.read_text(encoding="utf-8").splitlines()
     )
-    assert sum(row["kind"] == "reserve" for row in budget_rows) == 8
-    assert sum(row["kind"] == "reconcile" for row in budget_rows) == 8
+    assert sum(row["kind"] == "reserve" for row in budget_rows) == 6
+    assert sum(row["kind"] == "reconcile" for row in budget_rows) == 6
     assert not any(row["kind"] == "release" for row in budget_rows)
-    assert summary.completed_cases == 24
-    assert summary.model_cost_usd == Decimal("0.24")
+    assert summary.completed_cases == 18
+    assert summary.model_cost_usd == Decimal("0.18")

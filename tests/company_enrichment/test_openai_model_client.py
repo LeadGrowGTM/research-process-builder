@@ -21,7 +21,7 @@ from scripts.company_enrichment.openai_model_client import MODEL_PRICES, OpenAIM
 NOW = datetime(2026, 8, 13, tzinfo=timezone.utc)
 
 
-def _request(model: str = "gpt-4o-mini") -> ExperimentInput:
+def _request(model: str = "gpt-4.1-mini") -> ExperimentInput:
     evidence = EvidenceRef(
         "ev-1", "https://example.test/about", NOW, "a" * 64,
         "Example builds reporting software for marketing teams.",
@@ -49,7 +49,7 @@ class _SyncResponses:
         self.calls.append(kwargs)
         return SimpleNamespace(
             id="resp_123",
-            model="gpt-4o-mini-2024-07-18",
+            model="gpt-4.1-mini-2025-04-14",
             output_text=(
                 '{"assertions":[{"field":"description","value":"Reporting '
                 'software","evidence_ids":["ev-1"],"confidence":0.9,'
@@ -58,7 +58,7 @@ class _SyncResponses:
             usage=SimpleNamespace(input_tokens=1000, output_tokens=100),
             model_dump=lambda mode="json": {
                 "id": "resp_123",
-                "model": "gpt-4o-mini-2024-07-18",
+                "model": "gpt-4.1-mini-2025-04-14",
                 "output_text": "persisted raw response",
                 "usage": {"input_tokens": 1000, "output_tokens": 100},
             },
@@ -78,17 +78,17 @@ def test_sync_uses_evidence_only_structured_responses_and_is_idempotent(
     assert first == second
     assert len(responses.calls) == 1
     call = responses.calls[0]
-    assert call["model"] == "gpt-4o-mini"
+    assert call["model"] == "gpt-4.1-mini"
     assert call["store"] is True
     assert call["text"]["format"]["type"] == "json_schema"
     assert call["text"]["format"]["strict"] is True
     assert "Example builds reporting software" in call["input"]
     assert "BENCHMARK TRUTH" not in call["input"]
     assert "SECRET CORRECTED TRUTH" not in call["input"]
-    assert first[0].resolved_model_id == "gpt-4o-mini-2024-07-18"
+    assert first[0].resolved_model_id == "gpt-4.1-mini-2025-04-14"
     assert first[0].actual_cost_usd == str(
-        Decimal("1000") * Decimal("0.15") / Decimal("1000000")
-        + Decimal("100") * Decimal("0.60") / Decimal("1000000")
+        Decimal("1000") * Decimal("0.40") / Decimal("1000000")
+        + Decimal("100") * Decimal("1.60") / Decimal("1000000")
     )
     state_files = tuple((tmp_path / "openai" / "sync").glob("*.json"))
     assert len(state_files) == 1
@@ -101,7 +101,7 @@ def test_price_table_estimate_and_cached_usage_use_decimal_rates(
     tmp_path: Path,
 ) -> None:
     assert MODEL_PRICES["gpt-5-nano"].input_per_million == Decimal("0.05")
-    assert MODEL_PRICES["gpt-4o-mini"].cached_input_per_million == Decimal("0.075")
+    assert MODEL_PRICES["gpt-4.1-mini"].cached_input_per_million == Decimal("0.10")
     assert MODEL_PRICES["gpt-4.1-mini"].batch_output_per_million == Decimal("0.80")
     assert MODEL_PRICES["gpt-5.6-luna"].batch_input_per_million == Decimal("0.50")
     estimator = OpenAIModelClient(
@@ -130,9 +130,9 @@ def test_price_table_estimate_and_cached_usage_use_decimal_rates(
         sdk_client=SimpleNamespace(responses=responses),
     ).execute((_request(),), ExecutionTrack.SYNCHRONOUS)[0]
     expected = (
-        Decimal("600") * Decimal("0.15")
-        + Decimal("400") * Decimal("0.075")
-        + Decimal("100") * Decimal("0.60")
+        Decimal("600") * Decimal("0.40")
+        + Decimal("400") * Decimal("0.10")
+        + Decimal("100") * Decimal("1.60")
     ) / Decimal("1000000")
     assert execution.actual_cost_usd == str(expected)
 
@@ -298,7 +298,7 @@ def _batch_rows(custom_ids):
                 "status_code": 200,
                 "body": {
                     "id": "resp_batch",
-                    "model": "gpt-4o-mini-2024-07-18",
+                    "model": "gpt-4.1-mini-2025-04-14",
                     "output": [{
                         "type": "message",
                         "content": [{
@@ -366,11 +366,11 @@ def test_batch_uploads_responses_jsonl_and_records_actual_discounted_cost(
     assert created["extra_headers"]["Idempotency-Key"].startswith(
         "company-enrichment-batch-",
     )
-    assert result[0].resolved_model_id == "gpt-4o-mini-2024-07-18"
+    assert result[0].resolved_model_id == "gpt-4.1-mini-2025-04-14"
     expected = (
-        Decimal("800") * Decimal("0.075")
-        + Decimal("200") * Decimal("0.0375")
-        + Decimal("100") * Decimal("0.30")
+        Decimal("800") * Decimal("0.20")
+        + Decimal("200") * Decimal("0.05")
+        + Decimal("100") * Decimal("0.80")
     ) / Decimal("1000000")
     assert result[0].actual_cost_usd == str(expected)
     state = next((tmp_path / "openai" / "batch").glob("*.json"))
@@ -515,7 +515,7 @@ def test_batch_output_is_persisted_before_decode_failure(tmp_path: Path) -> None
             "response": {
                 "status_code": 200,
                 "body": {
-                    "model": "gpt-4o-mini-2024-07-18",
+                    "model": "gpt-4.1-mini-2025-04-14",
                     "output": [{"type": "message", "content": [{
                         "type": "output_text", "text": "not-json",
                     }]}],
@@ -558,7 +558,7 @@ def test_legacy_request_body_is_byte_for_byte_compatible(tmp_path: Path) -> None
     )
 
     assert client._body(_request()) == {
-        "model": "gpt-4o-mini",
+        "model": "gpt-4.1-mini",
         "input": (
             "Produce the requested company enrichment using only the supplied "
             "Evidence. Do not infer unsupported facts. Cite one or more supplied "
@@ -622,10 +622,10 @@ def test_legacy_request_body_is_byte_for_byte_compatible(tmp_path: Path) -> None
 
     request = _request()
     assert client._request_digest(request) == (
-        "2f5cb8c965f894fc3970f1bf79574a73d44bbff85f29bae5315b43b5a4932310"
+        "dce793046fd3aed2d5817a7ba80f8e08d4451f951a5e1bfc128963a6abaacad3"
     )
     assert client._batch_path((request,)).name == (
-        "4c2e4d45798919d1d1980555dca74e9d9cbe3ee418ceb17666773062f562017e.json"
+        "d54b534a1956b6d13caf325a5c0b989ab28b09be691c2747303d22c45fe95aae.json"
     )
 
 
