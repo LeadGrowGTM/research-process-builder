@@ -5,7 +5,7 @@ channels:
     - ev-53d2dfbdadfe562f
     status: active
   meta:
-    call_to_action: Learn more
+    call_to_action: Contact us
     evidence_ids:
     - ev-6a20365a736c144d
     landing_page: https://agencyanalytics.com/p/enterprise

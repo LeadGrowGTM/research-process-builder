@@ -105,8 +105,9 @@ reviewed any of it; treat all three as Experiments pending human review.
 
 ## Next steps
 
-1. Human review of ads-v3 outputs and the ads ground truth (gate is
-   `human_review_required`); decide approve / revise / reject.
+1. Done 2026-08-18: ads-v3 approved by Mitch after one GT fix (saas-01 CTA);
+   see `docs/reports/ads-v3-review-sheet.md`. Approval carries the caveats
+   listed there (adapter-faithfulness score, Meta handle-discovery gap).
 2. Anneal news and competitors: add prompt candidates (the loop already accepts
    several), and compare the model ladder (gpt-5-nano, gpt-4.1, GPT-5.6 Luna)
    because year-shifting and relative-date conversion look like a cheap-model
