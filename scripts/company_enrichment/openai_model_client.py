@@ -499,6 +499,8 @@ class OpenAIModelClient:
         request: ExperimentInput, output: Any,
     ) -> tuple[tuple[FieldAssertion, ...], tuple[str, ...]]:
         if request.output_contract is not None:
+            if request.enrichment_id != "icp-persona-analysis":
+                return OpenAIModelClient._validated_field_keyed_output(request, output)
             return OpenAIModelClient._validated_icp_output(request, output)
 
         if not isinstance(output, Mapping):
@@ -579,6 +581,64 @@ class OpenAIModelClient:
             ),
             (),
         )
+
+    @staticmethod
+    def _collect_evidence_ids(value: Any, allowed: set[str]) -> list[str]:
+        """Collect every nested ``evidence_ids`` array, each non-empty and retained."""
+        found: list[str] = []
+        if isinstance(value, Mapping):
+            for key, item in value.items():
+                if key != "evidence_ids":
+                    found.extend(OpenAIModelClient._collect_evidence_ids(item, allowed))
+                    continue
+                if not isinstance(item, list) or not item:
+                    raise ValueError("evidence_ids must be a non-empty array")
+                if any(not isinstance(evidence_id, str) for evidence_id in item):
+                    raise ValueError("evidence_ids must contain text IDs")
+                if not set(item).issubset(allowed):
+                    raise ValueError("assertion cites Evidence outside the dossier")
+                found.extend(item)
+        elif isinstance(value, list):
+            for item in value:
+                found.extend(OpenAIModelClient._collect_evidence_ids(item, allowed))
+        return found
+
+    @staticmethod
+    def _validated_field_keyed_output(
+        request: ExperimentInput, output: Any,
+    ) -> tuple[tuple[FieldAssertion, ...], tuple[str, ...]]:
+        """Validate a nested contract keyed by the enrichment's P0 fields.
+
+        Top-level keys must equal the enrichment's fields, plus an optional
+        ``unknowns`` list naming fields within scope. Every nested
+        ``evidence_ids`` array must be non-empty and cite retained Evidence.
+        Each field becomes one message-safe FieldAssertion whose evidence is
+        the union of the arrays nested under it; a field with no citation
+        must be declared unknown.
+        """
+        if not isinstance(output, dict):
+            raise ValueError("structured field-keyed output must be an object")
+        fields = P0_ENRICHMENTS[request.enrichment_id]
+        if set(output) - {"unknowns"} != set(fields):
+            raise ValueError("field-keyed output must contain exactly the requested fields")
+        unknown_values = output.get("unknowns", [])
+        if not isinstance(unknown_values, list) or any(
+            not isinstance(item, str) or item not in fields for item in unknown_values
+        ):
+            raise ValueError("unknown field is outside enrichment scope")
+        unknowns = tuple(dict.fromkeys(unknown_values))
+        allowed_evidence = {item.evidence_id for item in request.dossier.evidence}
+        assertions = []
+        for field in fields:
+            evidence_ids = tuple(dict.fromkeys(
+                OpenAIModelClient._collect_evidence_ids(output[field], allowed_evidence)
+            ))
+            if not evidence_ids and field not in unknowns:
+                raise ValueError(f"field {field} cites no Evidence and is not unknown")
+            assertions.append(FieldAssertion(
+                field, output[field], evidence_ids, 1.0, Visibility.MESSAGE_SAFE,
+            ))
+        return tuple(assertions), unknowns
 
     @staticmethod
     def _execution_payload(value: ModelExecution) -> dict[str, Any]:
