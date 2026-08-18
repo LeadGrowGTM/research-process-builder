@@ -1,0 +1,94 @@
+# DRAFT ground truth - TODO_HUMAN: review every entry, then move this file to
+# ../ground-truth/ only after a human seals it. Generated from the signal dossier;
+# nothing here is validated. Delete candidates that are not real, fix dates and
+# kinds, keep evidence_ids pointing at the Evidence that proves the entry.
+# subject: Aligned (alignedup.com); as_of 2026-08-18
+# every 'named' entry is a candidate token; strip the TODO_HUMAN prefix to keep,
+# move to 'inferred' when no Evidence compares it with the subject, or delete.
+# candidate evidence: {"rooms": ["ev-619f79fe5a1a0eca"], "highspotaligned": ["ev-619f79fe5a1a0eca"], "seismicenablement": ["ev-619f79fe5a1a0eca"], "cloudomedym": ["ev-619f79fe5a1a0eca"], "cloudaligned": ["ev-619f79fe5a1a0eca"], "mindtickle": ["ev-619f79fe5a1a0eca"], "dealworkspace": ["ev-0795d03fdff834cb", "ev-7dd045574a0e4296"], "b2b": ["ev-0795d03fdff834cb"], "room": ["ev-0795d03fdff834cb", "ev-5923049240295dc6", "ev-af7213a3e609d7dc", "ev-babb44ca23ac1949"], "portal": ["ev-0795d03fdff834cb", "ev-af7213a3e609d7dc"], "ctr": ["ev-0795d03fdff834cb"], "dec": ["ev-babb44ca23ac1949"], "startups": ["ev-babb44ca23ac1949"], "followup": ["ev-babb44ca23ac1949"], "distribute": ["ev-5923049240295dc6", "ev-babb44ca23ac1949"], "paage": ["ev-babb44ca23ac1949"], "trumpet": ["ev-babb44ca23ac1949", "ev-ddc25445340f482b"], "dock": ["ev-810fd0c3e770c63b", "ev-af7213a3e609d7dc", "ev-babb44ca23ac1949", "ev-ddc25445340f482b"], "arrows": ["ev-babb44ca23ac1949"], "reviewers": ["ev-af7213a3e609d7dc"], "enablement": ["ev-af7213a3e609d7dc"], "jun": ["ev-10c123a41cbc5a1d", "ev-5923049240295dc6"], "wins": ["ev-5923049240295dc6"], "aug": ["ev-7fe0a01f340d756c", "ev-810fd0c3e770c63b"], "dsr": ["ev-810fd0c3e770c63b"], "exploredock": ["ev-810fd0c3e770c63b"], "oct": ["ev-ddc25445340f482b"], "types": ["ev-ddc25445340f482b"], "getaccept": ["ev-ddc25445340f482b"], "accord": ["ev-ddc25445340f482b"], "allego": ["ev-ddc25445340f482b"], "dealhub": ["ev-ddc25445340f482b"], "seismic": ["ev-ddc25445340f482b"], "spekit": ["ev-ddc25445340f482
+company_id: saas-03
+evidence_ids:
+- ev-05398a2ef65666fa
+inferred: []
+named:
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Apollo Aligned
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Fund
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Funds
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Room
+- aliases: []
+  domain: null
+  name: TODO_HUMAN AAA
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Apollo
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Dock
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Distribute
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Jun
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Aug
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Jul
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Skip
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Wealth Club
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Invest
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Wealth
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Club
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Seismic Enablement
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Deal Workspace
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Portal
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Dec
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Trumpet
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Reviewers
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Wins
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Oct
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Flowla
+- aliases: []
+  domain: fidante.com
+  name: TODO_HUMAN fidante.com
+- aliases: []
+  domain: cloudfront.net
+  name: TODO_HUMAN cloudfront.net

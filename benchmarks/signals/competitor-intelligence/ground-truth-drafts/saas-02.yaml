@@ -1,0 +1,91 @@
+# DRAFT ground truth - TODO_HUMAN: review every entry, then move this file to
+# ../ground-truth/ only after a human seals it. Generated from the signal dossier;
+# nothing here is validated. Delete candidates that are not real, fix dates and
+# kinds, keep evidence_ids pointing at the Evidence that proves the entry.
+# subject: AgilePoint (agilepoint.com); as_of 2026-08-18
+# every 'named' entry is a candidate token; strip the TODO_HUMAN prefix to keep,
+# move to 'inferred' when no Evidence compares it with the subject, or delete.
+# candidate evidence: {"design": ["ev-9a9b0072e2327491"], "bpm": ["ev-74f4cd0f7ba88009", "ev-96c61226d5d8bde3", "ev-9a9b0072e2327491", "ev-a579e0cd1ef0964a"], "rpa": ["ev-0d884214f2ec4ed2", "ev-9a9b0072e2327491"], "process": ["ev-0d884214f2ec4ed2", "ev-39ea947dd84ab2f2", "ev-5b7e99806156736f", "ev-f5de681516e5c1d7"], "automation": ["ev-0d884214f2ec4ed2", "ev-39ea947dd84ab2f2", "ev-c19bd9d49c54571d", "ev-f5de681516e5c1d7"], "nicerobotic": ["ev-416d52520f5e9d78"], "processautomation": ["ev-416d52520f5e9d78", "ev-e01102e8ee163f35"], "dec": ["ev-96c61226d5d8bde3"], "pegasystems": ["ev-96c61226d5d8bde3", "ev-f5de681516e5c1d7"], "comprehensivebpm": ["ev-96c61226d5d8bde3"], "discover": ["ev-96c61226d5d8bde3"], "tablesprint": ["ev-96c61226d5d8bde3"], "automationanywhere": ["ev-2e3673eb73425827", "ev-74f4cd0f7ba88009", "ev-e6b455f7496c7705"], "additionally": ["ev-74f4cd0f7ba88009"], "ultimus": ["ev-e01102e8ee163f35"], "suite": ["ev-e01102e8ee163f35"], "bpa": ["ev-0d884214f2ec4ed2"], "complete": ["ev-0d884214f2ec4ed2"], "roboticprocess": ["ev-0d884214f2ec4ed2"], "bpmn": ["ev-b3140d9d0cd72444"], "servicenowappiannintexpegabizagicamundak2oraclebpmibm": ["ev-b3140d9d0cd72444"], "blueworksmendixtibco": ["ev-b3140d9d0cd72444"], "nintex": ["ev-4a738ea76bfedcc9", "ev-5b7e99806156736f", "ev-f5de681516e5c1d7"], "appian": ["ev-4a738ea76bfedcc9", "ev-5b7e99806156736f", "ev-f5de681516e5c1d7"], "bizagi": ["ev-5b7e99806156736f", "ev-f5de681516e5c1d7"], "opentext": ["ev-5b7e99806156736f"], "oracle": ["ev-5b7e99806156736f"
+company_id: saas-02
+evidence_ids:
+- ev-a955bcab27663ac9
+inferred: []
+named:
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Tallyfy
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Automation
+- aliases: []
+  domain: null
+  name: TODO_HUMAN BPM
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Process
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Automation Anywhere
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Process Automation
+- aliases: []
+  domain: null
+  name: TODO_HUMAN RPA
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Pegasystems
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Nintex
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Appian
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Microsoft Power
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Workflow
+- aliases: []
+  domain: null
+  name: TODO_HUMAN NICE Robotic
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Dec
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Ultimus
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Suite
+- aliases: []
+  domain: null
+  name: TODO_HUMAN BPA
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Bizagi
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Oracle
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Considering
+- aliases: []
+  domain: null
+  name: TODO_HUMAN IBM
+- aliases: []
+  domain: null
+  name: TODO_HUMAN CMW
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Market Share
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Insights
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Apache Airflow
+- aliases: []
+  domain: sternstella.com
+  name: TODO_HUMAN sternstella.com

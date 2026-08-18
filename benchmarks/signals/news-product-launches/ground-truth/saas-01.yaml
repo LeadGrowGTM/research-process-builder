@@ -1,0 +1,53 @@
+# Sealed ground truth - AgencyAnalytics (agencyanalytics.com). Human-reviewed 2026-08-18.
+# Excluded on review: how-to blog posts, template and feature pages, help-center
+# articles (Widgets Overview, Submit feature requests), partner/competitor pages that
+# only mention the subject, and social posts with relative dates only.
+company_id: saas-01
+as_of: '2026-08-18'
+recent_window_days: 180
+events:
+- date: '2026-03-09'
+  headline_aliases:
+  - Added a LinkedIn followers over time metric
+  - LinkedIn followers over time metric now available
+  - New Followers metric in the LinkedIn integration
+  source_domain: updates.agencyanalytics.com
+  kind: launch
+  event_type: feature
+  evidence_ids:
+  - ev-65c62d073e8080f5
+- date: '2024-04-11'
+  headline_aliases:
+  - Expanded its senior leadership team
+  - Senior leadership team expansion
+  - Announced new senior executive hires
+  source_domain: prnewswire.com
+  kind: news
+  event_type: leadership
+  evidence_ids:
+  - ev-18d09e11407e600a
+  - ev-280a3b1d3eab7a0f
+  - ev-e6289a3f0f05af97
+- date: '2024-01-30'
+  headline_aliases:
+  - Released 11-Second Smart Reports
+  - Unveiled Smart Reports that build a client report in seconds
+  - Launched its fastest reporting tool, 11-Second Smart Reports
+  source_domain: prnewswire.com
+  kind: launch
+  event_type: feature
+  evidence_ids:
+  - ev-4cbb38d4593fa091
+  - ev-280a3b1d3eab7a0f
+  - ev-16e0b78fdc13d4e5
+- date: '2023-12-12'
+  headline_aliases:
+  - Unveiled a raft of time-saving features for marketing agencies
+  - Released a set of new time-saving features
+  source_domain: prnewswire.com
+  kind: launch
+  event_type: feature
+  evidence_ids:
+  - ev-994ff1b9f10d5e0d
+  - ev-280a3b1d3eab7a0f
+  - ev-2478e7a60611344c

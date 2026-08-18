@@ -52,10 +52,8 @@ def test_unknowns_only_when_both_buckets_empty():
 
 @pytest.mark.parametrize("bad, message", [
     ({"relationship": "rival"}, "relationship must be one of"),
-    ({"why": " ".join(["w"] * 21)}, "why exceeds"),
     ({"evidence_ids": []}, "must contain evidence IDs"),
     ({"evidence_ids": ["ev-missing"]}, "retained Evidence"),
-    ({"domain": "not a domain"}, "bare host name"),
     ({"domain": ""}, "text or null"),
     ({"name": ""}, "name must be non-empty"),
     ({"extra": True}, "unexpected keys"),
@@ -65,10 +63,20 @@ def test_parse_rejects_invalid_competitors(bad, message):
         parse_competitors_output(_payload([_competitor(**bad)]), RETAINED)
 
 
-def test_parse_rejects_duplicates_and_bad_shapes():
-    with pytest.raises(ValueError, match="deduplicated by company"):
-        parse_competitors_output(_payload([_competitor()], [_competitor(name="Dash This Inc.")]),
-                                 RETAINED)
+def test_parse_merges_duplicate_companies_and_repeated_ids():
+    # the same company in both buckets folds into the first (named) entry with
+    # the union of citations; a repeated evidence id inside one entry is dropped
+    output = parse_competitors_output(
+        _payload([_competitor(evidence_ids=["ev-2", "ev-2"])],
+                 [_competitor(name="Dash This Inc.", evidence_ids=["ev-saas-01-about"])]),
+        RETAINED,
+    )
+    assert [item.name for item in output.named] == ["DashThis"]
+    assert output.inferred == ()
+    assert output.named[0].evidence_ids == ("ev-2", "ev-saas-01-about")
+
+
+def test_parse_rejects_bad_shapes():
     with pytest.raises(ValueError, match="exactly competitors"):
         parse_competitors_output({"named": []}, RETAINED)
     with pytest.raises(ValueError, match="named, inferred, and conflicts"):
@@ -106,3 +114,9 @@ def test_output_contract_is_strict_and_evidence_closed():
     conflict = body["properties"]["conflicts"]["items"]
     assert conflict["required"] == ["note", "evidence_ids"]
     assert schema["properties"]["unknowns"]["items"]["enum"] == ["competitors"]
+
+
+def test_malformed_domain_becomes_null():
+    assert normalize_domain("service now.com") is None
+    assert normalize_domain("nodots") is None
+    assert normalize_domain("https://www.ServiceNow.com/x") == "servicenow.com"

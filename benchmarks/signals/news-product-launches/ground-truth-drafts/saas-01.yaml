@@ -1,0 +1,139 @@
+# DRAFT ground truth - TODO_HUMAN: review every entry, then move this file to
+# ../ground-truth/ only after a human seals it. Generated from the signal dossier;
+# nothing here is validated. Delete candidates that are not real, fix dates and
+# kinds, keep evidence_ids pointing at the Evidence that proves the entry.
+# subject: AgencyAnalytics (agencyanalytics.com)
+as_of: '2026-08-18'
+company_id: saas-01
+events:
+- date: TODO_HUMAN (10 months ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-bea91eb5d0e229bd
+  headline_aliases:
+  - It's not too good to be true! With 11-second smart reports, your ...
+  kind: TODO_HUMAN
+  source_domain: instagram.com
+- date: '2026-08-04'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-f8712d9289361562
+  headline_aliases:
+  - Widgets Overview
+  kind: TODO_HUMAN
+  source_domain: help.agencyanalytics.com
+- date: '2026-06-24'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-d102abefd29e96d6
+  headline_aliases:
+  - Submit feature requests | AgencyAnalytics Knowledge Base
+  kind: TODO_HUMAN
+  source_domain: help.agencyanalytics.com
+- date: '2026-04-09'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-5db71ed9c07969d8
+  headline_aliases:
+  - 'LinkedIn Ads Report: How To Export, Analyze & Automate ...'
+  kind: TODO_HUMAN
+  source_domain: agencyanalytics.com
+- date: '2026-03-24'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-f14ea2d5fc27cc78
+  headline_aliases:
+  - 'Agency Dashboard Agency Plan: Full Features for Growing ...'
+  kind: TODO_HUMAN
+  source_domain: agencydashboard.io
+- date: '2026-03-23'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-e4bebb79a3a3e839
+  headline_aliases:
+  - How to Start a Digital Marketing Agency in 2026
+  kind: TODO_HUMAN
+  source_domain: onsurity.com
+- date: '2026-03-19'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-76152f95ffaa7f4f
+  headline_aliases:
+  - 'Agency Analytics: dashboards en rapportages voor betere ...'
+  kind: TODO_HUMAN
+  source_domain: brutael.nl
+- date: '2026-03-09'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-65c62d073e8080f5
+  headline_aliases:
+  - LinkedIn followers over time metric now available
+  kind: TODO_HUMAN
+  source_domain: updates.agencyanalytics.com
+- date: '2025-12-14'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-95b33bd0cecdc4ba
+  headline_aliases:
+  - Embed Custom Content into Marketing Dashboards & ...
+  kind: TODO_HUMAN
+  source_domain: agencyanalytics.com
+- date: '2025-12-12'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-31aa75b67114efb9
+  headline_aliases:
+  - Ecommerce Report Template - Try It Free
+  kind: TODO_HUMAN
+  source_domain: agencyanalytics.com
+- date: '2025-12-12'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-1e10b215a7f307f2
+  headline_aliases:
+  - TikTok Report Template - Try It Free
+  kind: TODO_HUMAN
+  source_domain: agencyanalytics.com
+- date: '2025-11-19'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-a5bec5a9fdace31d
+  headline_aliases:
+  - Come on in, agencies 👋 We'll take you to the first, second, and ...
+  kind: TODO_HUMAN
+  source_domain: instagram.com
+- date: '2025-11-03'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-235b22c523294888
+  headline_aliases:
+  - Switching From Agency Analytics to Search Atlas ...
+  kind: TODO_HUMAN
+  source_domain: searchatlas.com
+- date: '2024-04-11'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-18d09e11407e600a
+  headline_aliases:
+  - AgencyAnalytics Announces Senior Leadership Team Expansion Signifying Its Commitment
+    to Growth and Innovation
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2024-01-30'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-4cbb38d4593fa091
+  headline_aliases:
+  - AgencyAnalytics Unveils 11-Second Smart Reports -- Marketing Agencies Get Comprehensive
+    Client Reports Faster Than Tying a Shoelace
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2023-12-12'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-994ff1b9f10d5e0d
+  headline_aliases:
+  - AGENCYANALYTICS UNVEILS RAFT OF TIME-SAVING FEATURES FOR MARKETING AGENCIES
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+recent_window_days: 180

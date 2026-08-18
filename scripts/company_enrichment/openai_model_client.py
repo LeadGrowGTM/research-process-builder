@@ -21,6 +21,9 @@ from .icp_persona_contracts import parse_icp_output
 _MILLION = Decimal("1000000")
 _DEFAULT_MAX_OUTPUT_TOKENS = 1_024
 _MODEL_MAX_OUTPUT_TOKENS = {"gpt-5-nano": 4_096}
+# Field-keyed signal contracts (news events, competitor sets) legitimately run
+# to twenty-plus cited entries; 1,024 tokens truncates them into invalid JSON.
+_FIELD_KEYED_MAX_OUTPUT_TOKENS = 4_096
 _SECRET_PATTERN = re.compile(
     r"(?i)(?:sk|sess|key)-[a-z0-9_-]{8,}|bearer\s+[a-z0-9._-]+"
 )
@@ -178,7 +181,7 @@ class OpenAIModelClient:
             for item in requests
         )
         output_tokens = sum(
-            self._max_output_tokens(item.requested_model_id)
+            self._max_output_tokens(item.requested_model_id, item)
             for item in requests
         )
         return str(
@@ -247,10 +250,15 @@ class OpenAIModelClient:
         raise ValueError("unsupported execution track")
 
     @staticmethod
-    def _max_output_tokens(model: str) -> int:
-        return _MODEL_MAX_OUTPUT_TOKENS.get(
-            model, _DEFAULT_MAX_OUTPUT_TOKENS,
-        )
+    def _max_output_tokens(model: str, request: "ExperimentInput | None" = None) -> int:
+        limit = _MODEL_MAX_OUTPUT_TOKENS.get(model, _DEFAULT_MAX_OUTPUT_TOKENS)
+        if (
+            request is not None
+            and request.output_contract is not None
+            and request.enrichment_id != "icp-persona-analysis"
+        ):
+            return max(limit, _FIELD_KEYED_MAX_OUTPUT_TOKENS)
+        return limit
 
     @staticmethod
     def _override_metadata(request: ExperimentInput) -> dict[str, str]:
@@ -347,7 +355,7 @@ class OpenAIModelClient:
             "model": request.requested_model_id,
             "input": self._prompt(request),
             "max_output_tokens": self._max_output_tokens(
-                request.requested_model_id,
+                request.requested_model_id, request,
             ),
             "store": True,
             "text": {
@@ -583,6 +591,16 @@ class OpenAIModelClient:
         )
 
     @staticmethod
+    def _is_empty_collection(value: Any) -> bool:
+        """True for ``[]`` or an object whose list-valued members are all empty."""
+        if isinstance(value, list):
+            return not value
+        if isinstance(value, Mapping):
+            members = [item for item in value.values() if isinstance(item, list)]
+            return bool(members) and all(not item for item in members)
+        return False
+
+    @staticmethod
     def _collect_evidence_ids(value: Any, allowed: set[str]) -> list[str]:
         """Collect every nested ``evidence_ids`` array, each non-empty and retained."""
         found: list[str] = []
@@ -634,7 +652,13 @@ class OpenAIModelClient:
                 OpenAIModelClient._collect_evidence_ids(output[field], allowed_evidence)
             ))
             if not evidence_ids and field not in unknowns:
-                raise ValueError(f"field {field} cites no Evidence and is not unknown")
+                if OpenAIModelClient._is_empty_collection(output[field]):
+                    # An explicitly empty collection is the model saying "nothing
+                    # supported"; treat it as the unknown it is rather than
+                    # failing the whole case over a missing declaration.
+                    unknowns = (*unknowns, field)
+                else:
+                    raise ValueError(f"field {field} cites no Evidence and is not unknown")
             assertions.append(FieldAssertion(
                 field, output[field], evidence_ids, 1.0, Visibility.MESSAGE_SAFE,
             ))

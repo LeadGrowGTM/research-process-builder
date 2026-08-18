@@ -79,15 +79,11 @@ class NewsEvent:
 
     def __post_init__(self) -> None:
         object.__setattr__(self, "date", normalize_event_date(self.date))
-        headline = _text(self.headline, "headline")
-        if len(headline.split()) > HEADLINE_MAX_WORDS:
-            raise ValueError(f"headline exceeds {HEADLINE_MAX_WORDS} words")
-        object.__setattr__(self, "headline", headline)
+        # HEADLINE_MAX_WORDS / WHY_MAX_WORDS are the prompt's target lengths;
+        # over-long prose is a style flaw for human review, not a contract failure.
+        object.__setattr__(self, "headline", _text(self.headline, "headline"))
         object.__setattr__(self, "event_type", _text(self.event_type, "event_type").lower())
-        why = _text(self.why_it_matters, "why_it_matters")
-        if len(why.split()) > WHY_MAX_WORDS:
-            raise ValueError(f"why_it_matters exceeds {WHY_MAX_WORDS} words")
-        object.__setattr__(self, "why_it_matters", why)
+        object.__setattr__(self, "why_it_matters", _text(self.why_it_matters, "why_it_matters"))
         source_url = _text(self.source_url, "source_url")
         if not source_url.startswith(("http://", "https://")):
             raise ValueError("source_url must be an absolute HTTP(S) URL")

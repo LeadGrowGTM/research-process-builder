@@ -215,3 +215,16 @@ def test_dataset_loader_accepts_news_records(tmp_path: Path):
         load_signal_dataset(other, load_dossiers(other, NEWS_ENRICHMENT_ID),
                             enrichment_id=NEWS_ENRICHMENT_ID, weights=NEWS_WEIGHTS,
                             validate_record=validate_news_record)
+
+
+def test_first_party_copy_of_wire_release_matches_via_shared_evidence():
+    # ground truth records the wire domain; the payload cites the company's own
+    # newsroom copy of the same release but shares the Evidence ID, so it matches
+    lead_first_party = _lead(source_url="https://agencyanalytics.com/newsroom/leadership")
+    case = score_news(_payload([lead_first_party], [_launch()]), RECORD, DOSSIER)
+    assert case.components["events"] == Decimal("1")
+    assert case.components["citation"] == Decimal("1")
+    # a different domain AND no shared Evidence is still a miss
+    stranger = _lead(source_url="https://example.org/lead", evidence_ids=["ev-about"])
+    miss = score_news(_payload([stranger], [_launch()]), RECORD, DOSSIER)
+    assert miss.components["events"] == Decimal(".5")

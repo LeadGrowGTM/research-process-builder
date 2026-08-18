@@ -13,11 +13,17 @@ a competitor of the subject.
 ## Two collections
 
 - `named`: companies that an Evidence item explicitly positions against the
-  subject: a "vs" page, an "alternatives to <subject>" list, a "compared with"
-  table, or the subject's own competitor page.
+  subject: a "vs" page, an "alternatives to <subject>" or "<subject>
+  competitors" list (review sites, analyst pages, and blog roundups about the
+  subject all count), a "compared with" table, or the subject's own competitor
+  page. If the excerpt says the company is an alternative to, a competitor
+  of, or compared with the subject, it is `named`.
 - `inferred`: companies that Evidence shows solving the same buyer problem for
   the same buyer, but which no Evidence item explicitly compares with the
-  subject. Keep them here; never promote an inferred competitor to `named`.
+  subject: for example a tool mentioned in a community thread or a general
+  "best tools" article that never names the subject. Keep them here; never
+  promote an inferred competitor to `named`, and never demote an explicitly
+  compared company to `inferred`.
 
 Each competitor has:
 
@@ -45,11 +51,11 @@ the conflict silently.
 ## Missing support
 
 Return empty collections when the Evidence supports no competitors, and list
-`competitors` in the top-level `unknowns` array when both collections are
-empty. Do not fill
-`named` with keyword-sharing vendors from a generic listicle that does not
-compare them with the subject. Do not fill `inferred` with every tool that
-appears in a "best tools" roundup.
+`competitors` in the top-level `unknowns` array only when both collections
+are empty. Whenever at least one competitor is returned, `unknowns` must be
+`[]`. Do not fill `named` with keyword-sharing vendors from a generic
+listicle that does not compare them with the subject. Do not fill `inferred`
+with every tool that appears in a "best tools" roundup.
 
 ## Complete good example
 
@@ -95,5 +101,10 @@ appears in a "best tools" roundup.
   compares it with the subject.
 - Roundup padding: copying all eleven tools from an "11 alternatives" list
   without checking that the article is about alternatives to the subject.
+- Demoted comparison: placing DashThis in `inferred` even though the cited
+  excerpt is an "AgencyAnalytics alternatives" list. Explicit comparison
+  makes it `named`.
+- Redundant unknown: returning competitors and also `"unknowns":
+  ["competitors"]`. When any competitor exists, `unknowns` is `[]`.
 
 Return only the structured output required by the supplied schema.

@@ -87,6 +87,24 @@ def test_field_keyed_output_accepts_declared_unknowns_within_scope(tmp_path: Pat
     assert execution.unknowns == ("launches",)
 
 
+def test_field_keyed_output_treats_empty_collection_as_unknown(tmp_path: Path):
+    # the model returned nothing for launches but forgot to declare it unknown;
+    # an explicitly empty collection is an unknown, not a contract failure
+    output = {
+        "news": [{"headline": "Launch", "evidence_ids": ["ev-base"]}],
+        "launches": [],
+        "unknowns": [],
+    }
+    execution = _client(tmp_path, output).execute(
+        (_request("news-product-launches"),), ExecutionTrack.SYNCHRONOUS,
+    )[0]
+    assert execution.unknowns == ("launches",)
+    # an object whose list members are all empty counts too
+    output = {"ads": {"channels": []}, "unknowns": []}
+    execution = _client(tmp_path, output).execute((_request(),), ExecutionTrack.SYNCHRONOUS)[0]
+    assert execution.unknowns == ("ads",)
+
+
 @pytest.mark.parametrize("output, message", [
     ({"ads": {"google": {"evidence_ids": ["ev-foreign"]}}}, "outside the dossier"),
     ({"ads": {"google": {"evidence_ids": []}}}, "non-empty"),
@@ -137,3 +155,11 @@ def test_legacy_flat_output_without_contract_is_unchanged(tmp_path: Path):
 
     assert execution.assertions[0].value == "Runs Google ads"
     assert execution.assertions[0].confidence == 0.7
+
+
+def test_field_keyed_contract_raises_output_token_cap(tmp_path: Path):
+    from scripts.company_enrichment.openai_model_client import OpenAIModelClient
+    field_keyed = _request("news-product-launches")
+    assert OpenAIModelClient._max_output_tokens("gpt-4.1-mini", field_keyed) == 4096
+    # ICP and legacy requests keep the historical default
+    assert OpenAIModelClient._max_output_tokens("gpt-4.1-mini") == 1024

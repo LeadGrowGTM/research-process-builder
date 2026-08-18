@@ -1,0 +1,26 @@
+company_id: saas-03
+as_of: '2026-08-18'
+recent_window_days: 180
+events:
+- date: '2025-02-19'
+  headline_aliases:
+  - Named to G2's 2025 Best Software Awards for top sales software
+  - Aligned Earns Spot on G2's 2025 Best Software Awards for Top Sales Software
+  - Won a G2 Best Software 2025 award
+  source_domain: prnewswire.com
+  kind: news
+  event_type: award
+  evidence_ids:
+  - ev-a2ca3aa9f16b7bc3
+  - ev-05e4c4ad55380e84
+  - ev-fd3ab6323152f2c1
+- date: '2023-05'
+  headline_aliases:
+  - Raised a $5.8M seed round co-led by NFX and Hetz Ventures
+  - Announced $5.8M Seed round
+  - Why NFX Invested in Aligned
+  source_domain: nfx.com
+  kind: news
+  event_type: funding
+  evidence_ids:
+  - ev-01e046900b8496ac

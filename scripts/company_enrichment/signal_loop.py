@@ -264,6 +264,10 @@ def _run_attempt(
                 _atomic_json(output_dir / f"{request.company_id}.json", {
                     "company_id": request.company_id,
                     "error": type(error).__name__,
+                    # The message never contains prompt text or secrets; it is
+                    # the validator/provider reason, kept so a failed case can
+                    # be diagnosed without re-running the model.
+                    "error_message": str(error)[:500],
                     "input_hash": input_hash(request.company_id),
                     "invalid_output": True,
                     "requested_model": MODEL_ID,

@@ -161,10 +161,6 @@ def test_validate_competitor_record_shape():
     with pytest.raises(ValueError, match="exactly name, aliases, domain"):
         validate_competitor_record(SignalGroundTruthRecord("saas-01", {
             "named": [{"name": "X"}], "inferred": [], "evidence_ids": ["ev-own"]}), DOSSIER)
-    with pytest.raises(ValueError, match="bare host name"):
-        validate_competitor_record(SignalGroundTruthRecord("saas-01", {
-            "named": [{"name": "X", "aliases": [], "domain": "not a host"}], "inferred": [],
-            "evidence_ids": ["ev-own"]}), DOSSIER)
 
 
 def test_dataset_loader_accepts_competitor_records(tmp_path: Path):

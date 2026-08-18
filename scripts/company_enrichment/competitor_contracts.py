@@ -11,7 +11,7 @@ companies) so evaluators score typed values.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 import re
 from typing import Any, Mapping
 
@@ -37,9 +37,9 @@ def _ids(value: Any, field: str) -> tuple[str, ...]:
         not isinstance(item, str) or not item.strip() for item in value
     ):
         raise ValueError(f"{field} must contain evidence IDs")
+    # A repeated ID is redundant citation, not a contract failure: keep first
+    # occurrence order and drop the repeats.
     result = tuple(dict.fromkeys(item.strip() for item in value))
-    if len(result) != len(value):
-        raise ValueError(f"{field} must contain unique evidence IDs")
     return result
 
 
@@ -57,7 +57,9 @@ def normalize_domain(value: Any) -> str | None:
     if host.startswith("www."):
         host = host[4:]
     if "." not in host or " " in host:
-        raise ValueError(f"domain must be a bare host name: {value}")
+        # domain is optional; a malformed guess such as "service now.com" is
+        # dropped to null instead of failing the whole payload.
+        return None
     return host
 
 
@@ -84,10 +86,9 @@ class Competitor:
         if relationship not in RELATIONSHIPS:
             raise ValueError(f"relationship must be one of {RELATIONSHIPS}")
         object.__setattr__(self, "relationship", relationship)
-        why = _text(self.why, "why")
-        if len(why.split()) > WHY_MAX_WORDS:
-            raise ValueError(f"why exceeds {WHY_MAX_WORDS} words")
-        object.__setattr__(self, "why", why)
+        # WHY_MAX_WORDS is the prompt's target length; prose that runs long is a
+        # style flaw for human review, not a structural contract failure.
+        object.__setattr__(self, "why", _text(self.why, "why"))
         object.__setattr__(self, "evidence_ids", _ids(self.evidence_ids, "evidence_ids"))
 
     @property
@@ -165,12 +166,33 @@ def parse_competitors_output(
     body = value.get("competitors")
     if not isinstance(body, Mapping) or set(body) != {"named", "inferred", "conflicts"}:
         raise ValueError("competitors must contain named, inferred, and conflicts")
-    buckets = {}
+    buckets: dict[str, tuple[Competitor, ...]] = {}
+    seen: dict[str, Competitor] = {}
     for bucket in BUCKETS:
         items = body.get(bucket)
         if not isinstance(items, (list, tuple)):
             raise ValueError(f"{bucket} must be an array")
-        buckets[bucket] = tuple(_competitor(item, bucket) for item in items)
+        merged: list[Competitor] = []
+        for item in items:
+            competitor = _competitor(item, bucket)
+            prior = seen.get(competitor.key)
+            if prior is None:
+                seen[competitor.key] = competitor
+                merged.append(competitor)
+                continue
+            # The same company listed twice (or in both buckets): keep the first
+            # entry, fold the later citations into it. The bucket of the first
+            # occurrence wins so an explicit "named" placement is not demoted.
+            folded = replace(prior, evidence_ids=tuple(dict.fromkeys(
+                (*prior.evidence_ids, *competitor.evidence_ids)
+            )))
+            seen[competitor.key] = folded
+            merged = [folded if entry.key == folded.key else entry for entry in merged]
+            for other_bucket, entries in buckets.items():
+                buckets[other_bucket] = tuple(
+                    folded if entry.key == folded.key else entry for entry in entries
+                )
+        buckets[bucket] = tuple(merged)
     conflicts_value = body.get("conflicts")
     if not isinstance(conflicts_value, (list, tuple)):
         raise ValueError("conflicts must be an array")

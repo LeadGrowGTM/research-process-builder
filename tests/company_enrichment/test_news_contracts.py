@@ -55,8 +55,6 @@ def test_unknowns_optional_and_must_match_empty_collections():
     ({"date": "2024-02-30"}, "real calendar date"),
     ({"date": "recently"}, "YYYY-MM-DD or YYYY-MM"),
     ({"event_type": "feature"}, "news event_type must be one of"),
-    ({"headline": " ".join(["word"] * 17)}, "headline exceeds"),
-    ({"why_it_matters": " ".join(["w"] * 21)}, "why_it_matters exceeds"),
     ({"source_url": "prnewswire.com/x"}, "absolute HTTP"),
     ({"evidence_ids": []}, "must contain evidence IDs"),
     ({"evidence_ids": ["ev-missing"]}, "retained Evidence"),

@@ -1,0 +1,49 @@
+company_id: saas-04
+evidence_ids:
+- ev-facef879e8352b66
+- ev-e9d5e198565741fa
+- ev-950f15e47ba63edf
+- ev-80d7a97ac8fa10fc
+- ev-87fcac7f81ed46c7
+- ev-2817404a5cd13257
+- ev-65a67936bb0f01cf
+- ev-328dda463272857e
+- ev-e1aeba2bbe1f44e5
+- ev-97f1aebf4ef42c58
+- ev-b81e86c486e433dc
+- ev-a9b652dd9b61ed66
+named:
+- name: DFMA
+  aliases: [Boothroyd Dewhurst, DFMA Should Costing, Boothroyd Dewhurst DFMA]
+  domain: dfma.com
+- name: EasyKost
+  aliases: [Easy Kost]
+  domain: null
+- name: Costimator
+  aliases: []
+  domain: null
+- name: Unison Cost Engineering
+  aliases: [Unison]
+  domain: null
+- name: Facton
+  aliases: []
+  domain: null
+- name: Makersite
+  aliases: []
+  domain: null
+- name: Simile
+  aliases: []
+  domain: null
+- name: CostPerform
+  aliases: []
+  domain: null
+- name: CadDo Platform
+  aliases: [CadDo]
+  domain: null
+- name: Coupa
+  aliases: []
+  domain: null
+- name: Oracle Cloud EPM Profitability and Cost Management
+  aliases: [Oracle Cloud EPM, Oracle EPM Profitability and Cost Management]
+  domain: null
+inferred: []

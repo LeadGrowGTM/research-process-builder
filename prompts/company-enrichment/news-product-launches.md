@@ -20,8 +20,15 @@ event about the company; ignore those.
 Each event has:
 
 - `date`: ISO `YYYY-MM-DD` when the Evidence states a full date. Use
-  `YYYY-MM` when only month and year are stated. Never infer a date from
-  "recently" or from the retrieval date.
+  `YYYY-MM` when only month and year are stated. The date must appear in the
+  cited Evidence itself as an absolute date (`2026-03-09`, `March 9, 2026`,
+  `9 March 2026`, or `March 2026`). Relative phrases such as "3 weeks ago",
+  "recently", or "1 month ago" are not dates: an event known only from a
+  relative phrase cannot be reported unless another cited Evidence item gives
+  the absolute date. Never infer a date from the retrieval date. Copy the
+  year exactly as written in the Evidence: `Feb 19, 2025` is `2025-02-19`,
+  never `2026-02-19`. Before returning, re-read each date against its cited
+  excerpt and fix any year that does not match.
 - `headline`: one plain sentence of at most sixteen words stating what
   happened, in the buyer's language, not the press-release language.
 - `event_type`: for `news` one of `funding`, `acquisition`, `partnership`,
@@ -81,5 +88,12 @@ date.
   "alternatives" article as this company's news.
 - Invented date: writing `2026-08-01` because the article was retrieved in
   August 2026. If no date is stated, the event cannot be reported.
+- Converted relative date: an Evidence item says the funding round was
+  announced "1 month ago"; writing `2026-07-18` is a fabricated date. Skip
+  the event or find an Evidence item that states the actual date.
+- Date borrowed from another item: citing a press release dated 2024-04-11
+  for an event that only a different, undated Evidence item describes.
+- Shifted year: the excerpt says `Dec 16, 2025` and the event is reported as
+  `2026-12-16`. The year must be copied, not updated.
 
 Return only the structured output required by the supplied schema.

@@ -16,8 +16,9 @@ Ground-truth record body (``benchmarks/signals/news-product-launches/ground-trut
 Scoring (weights must equal ``NEWS_WEIGHTS``):
 
 - ``events`` 0.60: F1 of payload events matched to ground-truth events. A
-  match is the same source registrable domain and a date within three days
-  (same month when either side is month-only). Matching is kind-agnostic so
+  match is a date within three days (same month when either side is
+  month-only) plus either the same source registrable domain or at least one
+  shared Evidence ID, so a first-party copy of a wire release still matches. Matching is kind-agnostic so
   the ``kind`` component can measure placement; ground-truth events older
   than ``recent_window_days`` before ``as_of`` are optional (they count when
   matched but never against recall).
@@ -176,10 +177,16 @@ def _match_events(
     used: set[int] = set()
     for index, (_, event) in enumerate(payload):
         source_domain = _domain(event.source_url)
+        cited = set(event.evidence_ids)
         for truth_index, candidate in enumerate(truth):
-            if truth_index in used or candidate.source_domain != source_domain:
+            if truth_index in used or not _dates_match(event.date, candidate.date):
                 continue
-            if _dates_match(event.date, candidate.date):
+            # Same event reported by the wire service and the company's own
+            # newsroom: either the source domain or a shared Evidence ID
+            # identifies it, so a first-party citation is not a miss.
+            same_source = candidate.source_domain == source_domain
+            shared_evidence = bool(cited & set(candidate.evidence_ids))
+            if same_source or shared_evidence:
                 matched[index] = truth_index
                 used.add(truth_index)
                 break

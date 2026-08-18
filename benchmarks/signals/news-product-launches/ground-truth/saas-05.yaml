@@ -1,0 +1,94 @@
+company_id: saas-05
+as_of: '2026-08-18'
+recent_window_days: 180
+events:
+- date: '2026-08-11'
+  headline_aliases:
+  - Named to the Inc. 5000 list of fastest-growing private companies for the second consecutive year
+  - Archive360 named to Inc. 5000 2026
+  - Made the Inc. 5000 list again
+  source_domain: morningstar.com
+  kind: news
+  event_type: award
+  evidence_ids:
+  - ev-5ec0d093fe5a9a52
+  - ev-d884f3128495a7e8
+  - ev-28b64a2a4940b63d
+  - ev-899438c0977f81bb
+- date: '2026-06-10'
+  headline_aliases:
+  - Achieved FedRAMP authorization for federal digital communications archiving
+  - Archive360 achieves FedRAMP Authorization
+  - FedRAMP Moderate authorization
+  source_domain: prnewswire.com
+  kind: news
+  event_type: other
+  evidence_ids:
+  - ev-6417398299b1bea3
+  - ev-78e4ba134f1d4025
+  - ev-72084f4c7e0746cf
+  - ev-b1e1133f6a0a8c0f
+  - ev-6385b62a9f9e3256
+  - ev-18878cb24d3e2ea9
+  - ev-899438c0977f81bb
+  - ev-86b1a106059480c6
+- date: '2026-01-27'
+  headline_aliases:
+  - CEO says Archive360 is transforming from an archive tool into an AI data governance platform
+  - Archive360 transforms from archive tool to AI entry point
+  - Repositioned as a data governance platform feeding analytics and AI models
+  source_domain: crn.com
+  kind: news
+  event_type: positioning
+  evidence_ids:
+  - ev-077dde86ccfa3af4
+  - ev-7a68fb05942ed171
+  - ev-899438c0977f81bb
+- date: '2025-10-15'
+  headline_aliases:
+  - Named a Leader in the 2025 Gartner Magic Quadrant for the second consecutive year
+  - Archive360 a Leader in Gartner Magic Quadrant a 2nd straight year
+  - Gartner Magic Quadrant Leader 2025
+  source_domain: archive360.com
+  kind: news
+  event_type: award
+  evidence_ids:
+  - ev-8d81003356dfd2e6
+  - ev-e219bb4080d0b282
+  - ev-0a98fc7c9cc29020
+  - ev-86b1a106059480c6
+- date: '2025-10-14'
+  headline_aliases:
+  - Collaborated with Microsoft to deliver agentic AI that detects, investigates and preserves policy violations
+  - Archive360 and Microsoft deliver agentic AI for policy violations
+  - Microsoft collaboration on agentic AI
+  source_domain: archive360.com
+  kind: news
+  event_type: partnership
+  evidence_ids:
+  - ev-a713f0783da8dbde
+  - ev-610e58b1c3b86f2d
+  - ev-86b1a106059480c6
+- date: '2025-05-13'
+  headline_aliases:
+  - Launched a governed AI-ready data cloud for the modern enterprise
+  - Archive360 launches AI-Ready Data Cloud platform
+  - Launched the Archive360 Modern Archiving Platform
+  source_domain: prnewswire.com
+  kind: launch
+  event_type: product
+  evidence_ids:
+  - ev-8a87d8a8bf1528c9
+  - ev-a68a047edc127ab3
+  - ev-1b5010a1e9258686
+  - ev-0c5e5a2e66be96b5
+- date: '2019-05-30'
+  headline_aliases:
+  - Achieved 331 percent growth and continued its expansion trajectory
+  - Archive360 achieves 331 percent growth
+  - Reported 331% growth
+  source_domain: prnewswire.com
+  kind: news
+  event_type: expansion
+  evidence_ids:
+  - ev-d11ecb4aaf61d79c

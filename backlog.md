@@ -1,6 +1,10 @@
 # Backlog
 
 ## In flight
+- [ ] running-ads-free-scraper - Running ads enrichment via free Google Ads Transparency + Meta Ad Library scrapers; lineage ads-v3 1.00/1.00, halted for human review (since 2026-08-18)
+- [ ] news-product-launches-loop - News/launches enrichment collect + prompt loop; news-v5 dev 0.709 / holdout 0.708, anneal pending (since 2026-08-18)
+- [ ] competitor-intelligence-loop - Competitor enrichment collect + prompt loop; comp-v5 dev 0.678 / holdout 0.668, anneal pending (since 2026-08-18)
+  All three: docs/reports/signal-enrichments-live-run.md, branch wt/signal-enrichments.
 - [x] repo-cleanup-full-update - Checker PASS (4.71/5); sanitized local export fallback recorded; authoritative worktree C:\Users\mitch\Everything_CC\tools\data\research-process-builder\.worktrees\repo-cleanup-full-update (since 2026-08-10)
 ## Queued
 ## Done
