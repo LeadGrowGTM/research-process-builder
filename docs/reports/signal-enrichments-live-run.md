@@ -108,10 +108,9 @@ reviewed any of it; treat all three as Experiments pending human review.
 1. Done 2026-08-18: ads-v3 approved by Mitch after one GT fix (saas-01 CTA);
    see `docs/reports/ads-v3-review-sheet.md`. Approval carries the caveats
    listed there (adapter-faithfulness score, Meta handle-discovery gap).
-2. Anneal news and competitors: add prompt candidates (the loop already accepts
-   several), and compare the model ladder (gpt-5-nano, gpt-4.1, GPT-5.6 Luna)
-   because year-shifting and relative-date conversion look like a cheap-model
-   weakness rather than a prompt gap.
+2. Done 2026-08-18: news and competitors annealed to >= 0.90 dev and holdout
+   (news-v10-gpt41 0.924 / 0.989, comp-v10-gpt41 0.902 / 0.950); see
+   `docs/reports/signal-enrichments-anneal.md`. Pending human review.
 3. Add a `temperature` (or n-sample median) to the model client so lineage
    scores are comparable; the ICP loop shares this client, so change it under
    its tests.

@@ -536,6 +536,9 @@ def main(
                         help="restrict --collect to these company IDs (repeatable)")
     parser.add_argument("--overwrite", action="store_true",
                         help="let --collect replace an existing signal dossier")
+    parser.add_argument("--prompt", default=None,
+                        help="repo-relative prompt file that replaces the baseline prompt "
+                             "(the candidate id is the file stem)")
     parser.add_argument("--candidate", action="append", default=None,
                         help="repo-relative prompt file evaluated as an extra candidate "
                              "(repeatable; the candidate id is the file stem)")
@@ -544,11 +547,16 @@ def main(
     parser.add_argument("--resume", action="store_true")
     args = parser.parse_args(argv)
     root = Path(repo_root or Path(__file__).resolve().parents[2])
-    if args.candidate:
-        try:
-            spec = replace(spec, candidate_paths=(
+    if args.prompt or args.candidate:
+        overrides: dict[str, Any] = {}
+        if args.prompt:
+            overrides.update(prompt_path=Path(args.prompt), candidate_id=Path(args.prompt).stem)
+        if args.candidate:
+            overrides["candidate_paths"] = (
                 *spec.candidate_paths, *(Path(item) for item in args.candidate),
-            ))
+            )
+        try:
+            spec = replace(spec, **overrides)
         except ValueError as error:
             parser.error(str(error))
 

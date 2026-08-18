@@ -346,3 +346,25 @@ def test_candidate_flag_adds_prompt_files(repo: Path, capsys):
             Path("prompts/company-enrichment/candidates/v2.md"),
             Path("prompts/company-enrichment/other/v2.md"),
         )), repo)
+
+
+def test_prompt_flag_replaces_the_baseline_prompt(repo: Path, capsys):
+    prompts = repo / "prompts/company-enrichment/candidates"
+    prompts.mkdir(parents=True)
+    (prompts / "v3-only.md").write_text("Only prompt.\n", encoding="utf-8")
+    code = signal_loop.main(make_spec(), [
+        "--evaluate", "--lineage", "dry-prompt", "--dry-run",
+        "--prompt", "prompts/company-enrichment/candidates/v3-only.md",
+    ], repo_root=repo, model_client_factory=lambda **_: pytest.fail("no client"))
+    assert code == 0
+    plan = json.loads(capsys.readouterr().out)
+    from hashlib import sha256
+    assert plan["candidate_prompt_hashes"] == [sha256(b"Only prompt.").hexdigest()]
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "lineage-prompt"
+    result = run_loop(
+        make_spec(prompt_path=Path("prompts/company-enrichment/candidates/v3-only.md"),
+                  candidate_id="v3-only"),
+        repo_root=repo, run_root=run_root, model_client=FakeModelClient(), resume=False,
+    )
+    assert result["winner"]["candidate_id"] == "v3-only"
+    assert (run_root / "scores/holdout/v3-only.json").exists()
