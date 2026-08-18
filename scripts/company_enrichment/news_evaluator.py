@@ -1,0 +1,243 @@
+"""Deterministic scorer for the news-product-launches signal loop.
+
+Ground-truth record body (``benchmarks/signals/news-product-launches/ground-truth/<company>.yaml``)::
+
+    company_id: saas-01
+    as_of: '2026-08-18'
+    recent_window_days: 180
+    events:
+      - date: '2024-04-11'          # YYYY-MM-DD or YYYY-MM
+        headline_aliases: [Expanded leadership team]
+        source_domain: prnewswire.com
+        kind: news                  # news | launch
+        event_type: leadership
+        evidence_ids: [ev-...]
+
+Scoring (weights must equal ``NEWS_WEIGHTS``):
+
+- ``events`` 0.60: F1 of payload events matched to ground-truth events. A
+  match is the same source registrable domain and a date within three days
+  (same month when either side is month-only). Matching is kind-agnostic so
+  the ``kind`` component can measure placement; ground-truth events older
+  than ``recent_window_days`` before ``as_of`` are optional (they count when
+  matched but never against recall).
+- ``citation`` 0.25: fraction of payload events whose ``evidence_ids`` share at
+  least one ID with the matched ground-truth event.
+- ``kind`` 0.15: fraction of matched events placed in the correct collection.
+
+When ground truth has zero events the case is all-or-nothing: 1.0 when the
+payload has zero events and declares both collections unknown, otherwise 0
+with the hard failure ``invented_event``. Any event whose date text does not
+appear in the excerpts it cites is the hard failure ``uncited_date``.
+"""
+
+from __future__ import annotations
+
+from datetime import date, timedelta
+from decimal import Decimal
+from typing import Any, Mapping, Sequence
+
+from .contracts import CompanyDossier
+from .news_contracts import (
+    EVENT_TYPES_BY_KIND, NEWS_FIELDS, NewsEvent, NewsOutput, normalize_event_date,
+    parse_news_output,
+)
+from .signal_ground_truth import SignalGroundTruthRecord
+from .signal_loop import CaseScore
+
+NEWS_ENRICHMENT_ID = "news-product-launches"
+NEWS_WEIGHTS = {"events": Decimal(".60"), "citation": Decimal(".25"), "kind": Decimal(".15")}
+DEFAULT_RECENT_WINDOW_DAYS = 180
+DATE_TOLERANCE_DAYS = 3
+GT_KINDS = {"news": "news", "launch": "launches"}
+_MONTH_NAMES = (
+    "January", "February", "March", "April", "May", "June", "July", "August", "September",
+    "October", "November", "December",
+)
+_MONTH_ABBREVIATIONS = (
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Sept", "Oct", "Nov", "Dec",
+)
+
+
+def _domain(value: str) -> str:
+    from urllib.parse import urlparse
+
+    host = value.strip().lower()
+    if "://" in host:
+        host = urlparse(host).netloc
+    host = host.split("@")[-1].split(":")[0]
+    return host[4:] if host.startswith("www.") else host
+
+
+class GroundTruthEvent:
+    __slots__ = ("date", "aliases", "source_domain", "kind", "event_type", "evidence_ids",
+                 "optional")
+
+    def __init__(self, value: Mapping[str, Any], index: int) -> None:
+        label = f"events[{index}]"
+        if not isinstance(value, Mapping):
+            raise ValueError(f"{label} must be a mapping")
+        expected = {"date", "headline_aliases", "source_domain", "kind", "event_type",
+                    "evidence_ids"}
+        if set(value) != expected:
+            raise ValueError(f"{label} keys must exactly match {sorted(expected)}")
+        self.date = normalize_event_date(value["date"])
+        aliases = value["headline_aliases"]
+        if not isinstance(aliases, (list, tuple)) or not aliases or any(
+            not isinstance(item, str) or not item.strip() for item in aliases
+        ):
+            raise ValueError(f"{label}.headline_aliases must contain text")
+        self.aliases = tuple(" ".join(item.split()) for item in aliases)
+        domain = value["source_domain"]
+        if not isinstance(domain, str) or not domain.strip() or "/" in domain:
+            raise ValueError(f"{label}.source_domain must be a bare domain")
+        self.source_domain = _domain(domain)
+        if value["kind"] not in GT_KINDS:
+            raise ValueError(f"{label}.kind must be news or launch")
+        self.kind = GT_KINDS[value["kind"]]
+        event_type = value["event_type"]
+        if event_type not in EVENT_TYPES_BY_KIND[self.kind]:
+            raise ValueError(f"{label}.event_type is not valid for {self.kind}")
+        self.event_type = event_type
+        self.evidence_ids = tuple(value["evidence_ids"])
+        self.optional = False
+
+
+def _record_events(record: SignalGroundTruthRecord) -> tuple[list[GroundTruthEvent], date, int]:
+    body = record.body
+    extra = set(body) - {"events", "as_of", "recent_window_days"}
+    if extra:
+        raise ValueError(f"news ground truth has unexpected keys: {sorted(extra)}")
+    events_value = body.get("events")
+    if not isinstance(events_value, (list, tuple)):
+        raise ValueError("news ground truth events must be a list")
+    as_of_value = body.get("as_of")
+    if isinstance(as_of_value, date):
+        as_of = as_of_value
+    else:
+        try:
+            as_of = date.fromisoformat(str(as_of_value))
+        except (TypeError, ValueError) as error:
+            raise ValueError("news ground truth as_of must be YYYY-MM-DD") from error
+    window = body.get("recent_window_days", DEFAULT_RECENT_WINDOW_DAYS)
+    if not isinstance(window, int) or window <= 0:
+        raise ValueError("recent_window_days must be a positive integer")
+    events = [GroundTruthEvent(item, index) for index, item in enumerate(events_value)]
+    cutoff = as_of - timedelta(days=window)
+    for event in events:
+        first_day = date.fromisoformat(event.date if len(event.date) == 10 else event.date + "-01")
+        event.optional = first_day < cutoff
+    return events, as_of, window
+
+
+def validate_news_record(record: SignalGroundTruthRecord, dossier: CompanyDossier) -> None:
+    """``RecordValidator`` for ``dataset_loader``: strict body shape."""
+    _record_events(record)
+
+
+def _dates_match(payload_date: str, truth_date: str) -> bool:
+    if len(payload_date) == 7 or len(truth_date) == 7:
+        return payload_date[:7] == truth_date[:7]
+    delta = abs(date.fromisoformat(payload_date) - date.fromisoformat(truth_date))
+    return delta <= timedelta(days=DATE_TOLERANCE_DAYS)
+
+
+def date_variants(value: str) -> tuple[str, ...]:
+    """Text forms of a payload date that count as 'stated' in an excerpt."""
+    year = value[:4]
+    month = int(value[5:7])
+    names = (_MONTH_NAMES[month - 1], *(
+        abbreviation for abbreviation in _MONTH_ABBREVIATIONS
+        if _MONTH_NAMES[month - 1].startswith(abbreviation)
+    ))
+    if len(value) == 7:
+        variants = [value] + [f"{name} {year}" for name in names]
+        return tuple(dict.fromkeys(variants))
+    day = int(value[8:10])
+    variants = [value, f"{value[5:7]}/{value[8:10]}/{year}", f"{month}/{day}/{year}"]
+    for name in names:
+        variants.extend((
+            f"{name} {day}, {year}", f"{name} {day} {year}", f"{name}. {day}, {year}",
+            f"{day} {name} {year}", f"{day} {name}, {year}", f"{name} {day:02d}, {year}",
+        ))
+    return tuple(dict.fromkeys(variants))
+
+
+def date_is_cited(event: NewsEvent, excerpts: Mapping[str, str]) -> bool:
+    cited = " ".join(excerpts.get(evidence_id, "") for evidence_id in event.evidence_ids).lower()
+    return any(variant.lower() in cited for variant in date_variants(event.date))
+
+
+def _match_events(
+    payload: Sequence[tuple[str, NewsEvent]], truth: Sequence[GroundTruthEvent],
+) -> dict[int, int]:
+    """Greedy one-to-one match: payload index -> ground-truth index."""
+    matched: dict[int, int] = {}
+    used: set[int] = set()
+    for index, (_, event) in enumerate(payload):
+        source_domain = _domain(event.source_url)
+        for truth_index, candidate in enumerate(truth):
+            if truth_index in used or candidate.source_domain != source_domain:
+                continue
+            if _dates_match(event.date, candidate.date):
+                matched[index] = truth_index
+                used.add(truth_index)
+                break
+    return matched
+
+
+def _ratio(numerator: int, denominator: int) -> Decimal:
+    return Decimal(numerator) / Decimal(denominator) if denominator else Decimal("0")
+
+
+def _case(company_id: str, components: Mapping[str, Decimal],
+          failures: tuple[str, ...]) -> CaseScore:
+    score = sum((NEWS_WEIGHTS[key] * value for key, value in components.items()), Decimal("0"))
+    return CaseScore(company_id, dict(components), score, failures)
+
+
+def score_news(
+    payload: Mapping[str, Any], record: SignalGroundTruthRecord, dossier: CompanyDossier,
+) -> CaseScore:
+    zero = {key: Decimal("0") for key in NEWS_WEIGHTS}
+    retained = {item.evidence_id for item in dossier.evidence}
+    try:
+        output = parse_news_output(payload, retained)
+    except ValueError:
+        return _case(record.company_id, zero, ("contract_violation",))
+    truth, _, _ = _record_events(record)
+    excerpts = {item.evidence_id: item.excerpt for item in dossier.evidence}
+    events = output.events
+    failures: list[str] = []
+    for kind, event in events:
+        if not date_is_cited(event, excerpts):
+            failures.append("uncited_date")
+            break
+
+    if not truth:
+        clean = not events and set(output.unknowns) == set(NEWS_FIELDS)
+        if clean and not failures:
+            return _case(record.company_id, {key: Decimal("1") for key in NEWS_WEIGHTS}, ())
+        if events:
+            failures.append("invented_event")
+        return _case(record.company_id, zero, tuple(dict.fromkeys(failures)))
+
+    matched = _match_events(events, truth)
+    required = [index for index, item in enumerate(truth) if not item.optional]
+    recall_hits = sum(1 for truth_index in matched.values() if not truth[truth_index].optional)
+    precision = _ratio(len(matched), len(events))
+    recall = _ratio(recall_hits, len(required)) if required else Decimal("1")
+    f1 = (2 * precision * recall / (precision + recall)) if precision + recall else Decimal("0")
+    citation_hits = sum(
+        1 for index, truth_index in matched.items()
+        if set(events[index][1].evidence_ids) & set(truth[truth_index].evidence_ids)
+    )
+    kind_hits = sum(
+        1 for index, truth_index in matched.items() if events[index][0] == truth[truth_index].kind
+    )
+    components = {
+        "events": f1,
+        "citation": _ratio(citation_hits, len(events)),
+        "kind": _ratio(kind_hits, len(matched)),
+    }
+    return _case(record.company_id, components, tuple(dict.fromkeys(failures)))

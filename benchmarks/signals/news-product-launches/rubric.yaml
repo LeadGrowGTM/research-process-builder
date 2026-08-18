@@ -1,0 +1,5 @@
+weights:
+  events: 0.6
+  citation: 0.25
+  kind: 0.15
+threshold: 0.9
