@@ -182,16 +182,39 @@ def test_no_active_ads_is_inactive_with_ended_on(ads_db) -> None:
     "http",
     [
         FakeHttp(health={"status": "down"}),
+        FakeHttp(health={"status": "down", "signals": [
+            {"signal": "typeahead", "status": "down"},
+            {"signal": "search", "status": "ok"},
+        ]}),
         FakeHttp(health_error=ConnectionRefusedError()),
     ],
 )
-def test_health_down_returns_unknown_without_starting_job(http, ads_db) -> None:
+def test_health_down_raises_retryable_without_starting_job(http, ads_db) -> None:
     stream = FakeStream()
-    finding = _client(http, stream, ads_db).inspect(REQUEST)
-    assert finding.status is AdStatus.UNKNOWN
-    assert finding.channel == "meta"
+    with pytest.raises(RetryableFailure):
+        _client(http, stream, ads_db).inspect(REQUEST)
     assert len(http.calls) == 1
     assert stream.urls == []
+
+
+def test_degraded_ad_details_signal_does_not_block_bulk(ads_db) -> None:
+    http = FakeHttp(health={"status": "down", "signals": [
+        {"signal": "typeahead", "status": "ok"},
+        {"signal": "ad_details", "status": "down"},
+        {"signal": "search", "status": "ok"},
+    ]})
+    finding = _client(http, FakeStream(), ads_db).inspect(REQUEST)
+    assert finding.status is AdStatus.ACTIVE
+
+
+def test_not_found_with_matched_page_is_inactive_lower_confidence(ads_db) -> None:
+    row = {**COMPANY_ROW, "status": "not_found", "active_ads_count": 0,
+           "inactive_ads_count": 0, "last_ad_date": None}
+    http = FakeHttp(results={"job": {"status": "complete"}, "companies": [row]})
+    finding = _client(http, FakeStream(), ads_db).inspect(REQUEST)
+    assert finding.status is AdStatus.INACTIVE
+    assert finding.confidence == pytest.approx(0.7)
+    assert finding.evidence and "not_found" in finding.evidence[0].excerpt
 
 
 @pytest.mark.parametrize(

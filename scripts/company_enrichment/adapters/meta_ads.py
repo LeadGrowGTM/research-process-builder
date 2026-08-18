@@ -35,6 +35,11 @@ _HEALTH_TIMEOUT_SECONDS = 3
 _REQUEST_TIMEOUT_SECONDS = 30
 _BODY_EXCERPT_CHARS = 300
 _CLEAN_RESPONSE_CONFIDENCE = 0.9
+# A matched page whose library search returned no ads is a verified "inactive",
+# but Meta rate limiting can also produce empty results, so confidence is lower.
+_NOT_FOUND_CONFIDENCE = 0.7
+_MATCHED_STATUSES = frozenset({"done", "not_found"})
+_BULK_REQUIRED_SIGNALS = ("typeahead", "search")
 _AD_COLUMNS = (
     "id",
     "status",
@@ -139,8 +144,7 @@ class MetaAdLibraryClient:
         self._clock = clock
 
     def inspect(self, request: AdsRequest) -> AdFinding:
-        if not self._healthy():
-            return AdFinding.unknown(self.channel)
+        self._require_healthy()
         job_id = self._start_job(request)
         self._follow_stream(job_id)
         company = self._company_row(job_id, request)
@@ -149,14 +153,36 @@ class MetaAdLibraryClient:
         ads = self._read_ads(str(company["matched_page_id"]))
         return self._finding(company, ads)
 
-    def _healthy(self) -> bool:
+    def _require_healthy(self) -> None:
+        """Raise RetryableFailure when the scraper is unreachable or the signals bulk
+        matching depends on (advertiser typeahead, ad search) are down.
+
+        A degraded ``ad_details`` signal alone does not block bulk counting."""
         try:
             health = self._http_json(
                 "GET", f"{self._base_url}/api/health/meta", None, _HEALTH_TIMEOUT_SECONDS
             )
-        except Exception:
-            return False
-        return isinstance(health, dict) and health.get("status") != "down"
+        except Exception as error:  # noqa: BLE001 - any transport failure is retryable
+            raise RetryableFailure(
+                f"meta ad library scraper unreachable at {self._base_url}: "
+                f"{type(error).__name__}"
+            ) from None
+        if not isinstance(health, dict):
+            raise RetryableFailure("meta ad library health response was not an object")
+        signals = {
+            item.get("signal"): item.get("status")
+            for item in health.get("signals") or ()
+            if isinstance(item, dict)
+        }
+        down = sorted(
+            name for name in _BULK_REQUIRED_SIGNALS if signals.get(name) == "down"
+        )
+        if down:
+            raise RetryableFailure(
+                "meta ad library health down for required signals: " + ", ".join(down)
+            )
+        if not signals and health.get("status") == "down":
+            raise RetryableFailure("meta ad library health reports down")
 
     def _start_job(self, request: AdsRequest) -> str:
         payload = {
@@ -231,7 +257,7 @@ class MetaAdLibraryClient:
             (row for row in companies if row.get("company_name") == request.company_name),
             companies[0] if companies else None,
         )
-        if company is None or company.get("status") != "done":
+        if company is None or company.get("status") not in _MATCHED_STATUSES:
             return None
         if not company.get("matched_page_id"):
             return None
@@ -277,7 +303,11 @@ class MetaAdLibraryClient:
             call_to_action=call_to_action,
             landing_page=landing_page,
             evidence=(SourceObservation(url, _excerpt(company, ads)),),
-            confidence=_CLEAN_RESPONSE_CONFIDENCE,
+            confidence=(
+                _NOT_FOUND_CONFIDENCE
+                if company.get("status") == "not_found"
+                else _CLEAN_RESPONSE_CONFIDENCE
+            ),
         )
 
 
@@ -296,6 +326,7 @@ def _summary(company: Mapping[str, Any]) -> dict[str, Any]:
     return {
         key: company.get(key)
         for key in (
+            "status",
             "matched_name",
             "matched_page_id",
             "match_method",
@@ -346,6 +377,13 @@ def urllib_http_json(
         with urllib_request.urlopen(http_request, timeout=timeout_seconds) as response:
             raw = response.read()
     except urllib_error.HTTPError as error:
+        # The health endpoint answers 503 with a JSON body describing which
+        # Meta signals are down; surface that body instead of a bare failure.
+        if url.endswith("/api/health/meta") and error.code == 503:
+            try:
+                return json.loads(error.read().decode("utf-8"))
+            except (ValueError, OSError):
+                return {"status": "down"}
         raise RetryableFailure(f"meta ad library HTTP {error.code} for {method} {url}") from None
     return json.loads(raw.decode("utf-8"))
 
