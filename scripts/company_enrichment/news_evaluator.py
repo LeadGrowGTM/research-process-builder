@@ -42,12 +42,13 @@ from __future__ import annotations
 
 from datetime import date, timedelta
 from decimal import Decimal
+import re
 from typing import Any, Mapping, Sequence
 
 from .contracts import CompanyDossier
 from .news_contracts import (
     EVENT_TYPES_BY_KIND, NEWS_FIELDS, NewsEvent, NewsOutput, normalize_event_date,
-    parse_news_output,
+    parse_news_event, parse_news_output,
 )
 from .signal_ground_truth import SignalGroundTruthRecord
 from .signal_loop import CaseScore
@@ -198,10 +199,12 @@ def date_is_cited(
 # Their crawl date is never an event date, so an event supported only by such
 # pages (search-result pages do not count either way) is dropped.
 _EVERGREEN_HOSTS = ("help.", "docs.", "support.", "documentation.", "kb.")
+# Listing pages (author, tag, category) are deliberately not here: the collector
+# stores dated post snippets under them, and those snippets announce real events.
 _EVERGREEN_PATHS = (
     "/features/", "/feature/", "/solutions/", "/solution/", "/product/", "/products/",
     "/platform/", "/pricing", "/help/", "/docs/", "/documentation/", "/support/",
-    "/en/articles/", "/author/", "/authors/", "/tag/", "/tags/", "/category/", "/search",
+    "/en/articles/", "/search",
 )
 _SEARCH_RESULT_HOSTS = ("google.com", "bing.com", "duckduckgo.com")
 
@@ -235,38 +238,94 @@ def evergreen_only(event: NewsEvent, urls: Mapping[str, str]) -> bool:
     return bool(substantive) and all(is_evergreen_url(url) for url in substantive)
 
 
+def _parse_event(item: Any, kind: str, retained: set[str]) -> NewsEvent | str:
+    """A NewsEvent, or the reason the entry is malformed."""
+    try:
+        event = parse_news_event(item, kind)
+    except ValueError as error:
+        return f"invalid_event: {str(error)[:80]}"
+    if event.event_type not in EVENT_TYPES_BY_KIND[kind]:
+        return f"invalid_event: {kind} event_type {event.event_type}"
+    if not set(event.evidence_ids) <= retained:
+        return "invalid_event: unretained evidence"
+    return event
+
+
+_HEADLINE_STOPWORDS = frozenset({
+    "a", "an", "and", "as", "for", "in", "into", "its", "new", "of", "on", "the", "to", "with",
+})
+DUPLICATE_HEADLINE_OVERLAP = 0.5
+
+
+def _headline_tokens(text: str) -> frozenset[str]:
+    return frozenset(
+        token for token in re.findall(r"[a-z0-9]+", text.lower()) if token not in _HEADLINE_STOPWORDS
+    )
+
+
+def same_event(prior: NewsEvent, event: NewsEvent, urls: Mapping[str, str]) -> bool:
+    """Two entries report one real-world event when they share a cited Evidence
+    ID on the same date, or cite the same page and their headlines overlap
+    (the same launch reported once from a search snippet's date and once from
+    the post's own date line)."""
+    shared_ids = bool(set(prior.evidence_ids) & set(event.evidence_ids))
+    if shared_ids and prior.date == event.date:
+        return True
+    prior_urls = {urls.get(evidence_id, "") for evidence_id in prior.evidence_ids} - {""}
+    event_urls = {urls.get(evidence_id, "") for evidence_id in event.evidence_ids} - {""}
+    substantive = {url for url in prior_urls & event_urls if not is_search_result_url(url)}
+    if not substantive:
+        return False
+    left, right = _headline_tokens(prior.headline), _headline_tokens(event.headline)
+    if not left or not right:
+        return False
+    overlap = len(left & right) / len(left | right)
+    return overlap >= DUPLICATE_HEADLINE_OVERLAP
+
+
 def ground_news_payload(
     payload: Mapping[str, Any], dossier: CompanyDossier,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     """Ground the model's events in the dossier's Evidence.
 
-    Drops an event whose date is not stated by its cited Evidence
+    Drops a malformed entry (a year-only date, an unknown event type;
+    ``invalid_event``), an event whose date is not stated by its cited Evidence
     (``uncited_date``), an event supported only by evergreen pages
-    (``evergreen_page``), and a repeat of an event already kept (same date and
-    a shared Evidence ID; ``duplicate_event``). A collection that empties is
+    (``evergreen_page``), and a repeat of an event already kept (``same_event``:
+    a shared Evidence ID on the same date, or the same cited page with an
+    overlapping headline; ``duplicate_event``). A collection that empties is
     declared unknown. Returns the grounded payload and a report of what was
-    dropped. A payload that violates the contract is returned unchanged with
-    ``report["error"]`` so the evaluator records the contract failure itself.
+    dropped. A payload whose top-level shape violates the contract is returned
+    unchanged with ``report["error"]`` so the evaluator records the failure.
     """
+    if not isinstance(payload, Mapping) or set(payload) - {"unknowns"} != set(NEWS_FIELDS) or any(
+        not isinstance(payload[kind], (list, tuple)) for kind in NEWS_FIELDS
+    ):
+        return dict(payload) if isinstance(payload, Mapping) else {}, {
+            "dropped": [], "error": "news output must contain exactly news and launches",
+        }
     retained = {item.evidence_id for item in dossier.evidence}
-    try:
-        output = parse_news_output(payload, retained)
-    except ValueError as error:
-        return dict(payload), {"dropped": [], "error": str(error)[:200]}
     excerpts = {item.evidence_id: item.excerpt for item in dossier.evidence}
     urls = {item.evidence_id: item.url for item in dossier.evidence}
     grounded: dict[str, Any] = {kind: [] for kind in NEWS_FIELDS}
     dropped: list[dict[str, str]] = []
     kept: list[NewsEvent] = []
     for kind in NEWS_FIELDS:
-        for item, event in zip(payload[kind], getattr(output, kind)):
+        for item in payload[kind]:
+            parsed = _parse_event(item, kind, retained)
+            if isinstance(parsed, str):
+                dropped.append({"collection": kind, "date": str((item or {}).get("date", ""))
+                                if isinstance(item, Mapping) else "",
+                                "headline": str((item or {}).get("headline", ""))
+                                if isinstance(item, Mapping) else "", "reason": parsed})
+                continue
+            event = parsed
             reason = None
             if not date_is_cited(event, excerpts, urls):
                 reason = "uncited_date"
             elif evergreen_only(event, urls):
                 reason = "evergreen_page"
-            elif any(prior.date == event.date and set(prior.evidence_ids) & set(event.evidence_ids)
-                     for prior in kept):
+            elif any(same_event(prior, event, urls) for prior in kept):
                 reason = "duplicate_event"
             if reason is None:
                 grounded[kind].append(dict(item))
@@ -274,8 +333,12 @@ def ground_news_payload(
             else:
                 dropped.append({"collection": kind, "date": event.date,
                                 "headline": event.headline, "reason": reason})
+    declared = payload.get("unknowns", [])
+    declared = [item for item in declared if isinstance(item, str)] if isinstance(
+        declared, (list, tuple)) else []
     grounded["unknowns"] = list(dict.fromkeys([
-        *output.unknowns, *(kind for kind in NEWS_FIELDS if not grounded[kind]),
+        *(item for item in declared if item in NEWS_FIELDS and not grounded[item]),
+        *(kind for kind in NEWS_FIELDS if not grounded[kind]),
     ]))
     return grounded, {"dropped": dropped}
 

@@ -131,7 +131,9 @@ class NewsOutput:
         return tuple((kind, event) for kind in NEWS_FIELDS for event in getattr(self, kind))
 
 
-def _event(value: Any, kind: str) -> NewsEvent:
+def parse_news_event(value: Any, kind: str) -> NewsEvent:
+    """One event object from a ``news`` or ``launches`` array; raises ValueError
+    for a malformed entry so callers can drop it individually."""
     if not isinstance(value, Mapping):
         raise ValueError(f"{kind} entries must be objects")
     extra = set(value) - {"date", "headline", "event_type", "why_it_matters", "source_url",
@@ -157,7 +159,7 @@ def parse_news_output(
         items = value.get(kind)
         if not isinstance(items, (list, tuple)):
             raise ValueError(f"{kind} must be an array")
-        collections[kind] = tuple(_event(item, kind) for item in items)
+        collections[kind] = tuple(parse_news_event(item, kind) for item in items)
     unknowns = value.get("unknowns", [])
     if not isinstance(unknowns, (list, tuple)) or any(
         not isinstance(item, str) for item in unknowns

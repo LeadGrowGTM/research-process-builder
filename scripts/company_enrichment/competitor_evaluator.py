@@ -156,11 +156,32 @@ def subject_terms(subject_name: str | None, subject_domain: str | None) -> tuple
     return tuple(dict.fromkeys(term for term in terms if len(term) >= 4))
 
 
-def explicit_comparison(text: str, subject: tuple[str, ...]) -> bool:
+# Community threads mention tools people happen to use; that is an inference,
+# not an explicit comparison, even when the thread asks for alternatives.
+_COMMUNITY_HOSTS = (
+    "reddit.com", "quora.com", "news.ycombinator.com", "stackexchange.com",
+    "stackoverflow.com", "facebook.com", "linkedin.com", "x.com", "twitter.com",
+    "youtube.com", "medium.com", "indiehackers.com", "producthunt.com",
+)
+
+
+def _registrable_host(url: str) -> str:
+    host = urlparse(url.strip().lower()).netloc.split("@")[-1].split(":")[0]
+    return host[4:] if host.startswith("www.") else host
+
+
+def is_community_url(url: str) -> bool:
+    host = _registrable_host(url)
+    return any(host == item or host.endswith("." + item) for item in _COMMUNITY_HOSTS)
+
+
+def explicit_comparison(text: str, subject: tuple[str, ...], url: str = "") -> bool:
     """True when ``text`` explicitly positions companies against the subject: it
     names the subject (any of ``subject_terms``) and talks about alternatives,
-    competitors, or comparison. This is the ground-truth authoring rule for the
-    ``named`` bucket."""
+    competitors, or comparison, and it is not a community thread. This is the
+    ground-truth authoring rule for the ``named`` bucket."""
+    if url and is_community_url(url):
+        return False
     lowered = text.lower()
     names_subject = bool(subject) and any(term in normalize_name(text) for term in subject)
     return names_subject and any(marker in lowered for marker in _COMPARISON_MARKERS)
@@ -211,7 +232,7 @@ def ground_competitor_payload(
                                 "reason": "hallucinated_competitor"})
                 continue
             bucket = "named" if any(
-                explicit_comparison(excerpts[evidence_id], subject)
+                explicit_comparison(excerpts[evidence_id], subject, urls[evidence_id])
                 for evidence_id in cited
             ) else "inferred"
             relabeled += bucket != model_bucket

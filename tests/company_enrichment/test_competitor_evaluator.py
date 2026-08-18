@@ -270,6 +270,11 @@ def test_ground_competitor_payload_assigns_buckets_from_the_evidence():
     ))
     assert not explicit_comparison("Best marketing analytics tools", subject)
     assert not explicit_comparison("AgencyAnalytics pricing", subject)
+    # a community thread asking for alternatives is an inference, not a comparison
+    assert not explicit_comparison("Alternatives to AgencyAnalytics? We use Oviond", subject,
+                                   "https://www.reddit.com/r/agency/comments/1")
+    assert explicit_comparison("Alternatives to AgencyAnalytics: Oviond", subject,
+                               "https://blog.example/agencyanalytics-alternatives")
     # the model demoted an explicit alternative and promoted a thread mention:
     # the Evidence, not the model, decides the bucket
     payload = _payload(

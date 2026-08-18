@@ -312,3 +312,47 @@ def test_ground_news_payload_drops_evergreen_pages_and_duplicates():
         ("Embeddable content", "evergreen_page"),
         ("Smart Reports repeated as a launch", "duplicate_event"),
     ]
+
+
+def test_ground_news_payload_drops_malformed_entries_instead_of_failing_the_case():
+    from scripts.company_enrichment.news_evaluator import ground_news_payload
+    payload = _payload(
+        news=[_lead(), _lead(date="2024", headline="Year-only date")],
+        launches=[{**_lead(), "event_type": "leadership", "headline": "Wrong type for launches"}],
+        unknowns=[],
+    )
+    grounded, report = ground_news_payload(payload, DOSSIER)
+    assert [item["headline"] for item in grounded["news"]] == ["Expanded leadership team"]
+    assert grounded["launches"] == [] and grounded["unknowns"] == ["launches"]
+    assert [item["reason"].split(":")[0] for item in report["dropped"]] == [
+        "invalid_event", "invalid_event",
+    ]
+    assert score_news(grounded, RECORD, DOSSIER).hard_failures == ()
+
+
+def test_same_event_catches_one_launch_reported_under_two_dates():
+    from scripts.company_enrichment.news_evaluator import ground_news_payload
+    dossier = CompanyDossier("saas-01", "1.0", DOSSIER.assertions, (
+        *DOSSIER.evidence,
+        _ref("snippet", "Date: Sep 18, 2025 Snippet: Introducing Smart Reports for agencies",
+             "https://blog.example/author/nishant/"),
+        _ref("page", "Introducing Smart Reports for agencies. Posted on April 25, 2026",
+             "https://blog.example/author/nishant/"),
+    ))
+    launch = {
+        "date": "2026-04-25", "headline": "Released redesigned Smart Reports for agencies",
+        "event_type": "release", "why_it_matters": "w",
+        "source_url": "https://blog.example/author/nishant/", "evidence_ids": ["ev-page"],
+    }
+    twin = {**launch, "date": "2025-09-18", "headline": "Launched Smart Reports for agencies",
+            "evidence_ids": ["ev-snippet"]}
+    other = {**launch, "date": "2025-09-18", "headline": "Opened a Berlin office",
+             "evidence_ids": ["ev-snippet"]}
+    grounded, report = ground_news_payload(_payload(launches=[launch, twin, other], unknowns=[]), dossier)
+    assert [item["headline"] for item in grounded["launches"]] == [
+        "Released redesigned Smart Reports for agencies", "Opened a Berlin office",
+    ]
+    assert report["dropped"] == [{
+        "collection": "launches", "date": "2025-09-18",
+        "headline": "Launched Smart Reports for agencies", "reason": "duplicate_event",
+    }]
