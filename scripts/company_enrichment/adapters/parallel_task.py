@@ -18,9 +18,13 @@ $0.10 and the ``ultra`` tiers $0.30-$2.40), so this client enforces:
 4. key discipline - ``PARALLEL_API_KEY`` is read only inside
    ``build_parallel_task`` and never logged or persisted.
 
-Budget is charged at submit and never refunded, which over-counts runs the
-API ultimately fails for free; that bias is deliberate - the ceiling bounds
-worst-case spend, not the invoice.
+Budget is charged at submit; a definite no-run outcome (the API rejects the
+key or the request before a run is created) is refunded, while an ambiguous
+transport failure during submit is never refunded, which over-counts runs the
+API ultimately fails for free after actually receiving the request; that bias
+is deliberate - the ceiling bounds worst-case spend, not the invoice. Passing
+a ``BudgetLedger`` makes the ceiling durable across processes; without one,
+the ceiling is enforced per client instance only.
 """
 
 from __future__ import annotations
@@ -33,7 +37,9 @@ import os
 from typing import Any
 from urllib import error as urllib_error
 from urllib import request as urllib_request
+from uuid import uuid4
 
+from ..budgets import BudgetExhausted, BudgetLedger
 from ..providers import (
     AuthenticationFailure,
     BudgetFailure,
@@ -111,6 +117,8 @@ class ParallelTaskClient:
         processor: str = DEFAULT_TASK_PROCESSOR,
         budget_usd: str = DEFAULT_TASK_BUDGET_USD,
         base_url: str = PARALLEL_TASK_BASE_URL,
+        ledger: BudgetLedger | None = None,
+        budget_scope_id: str = "parallel-task",
     ) -> None:
         if not isinstance(api_key, str) or not api_key.strip():
             raise AuthenticationFailure("PARALLEL_API_KEY is not configured")
@@ -133,6 +141,8 @@ class ParallelTaskClient:
         self._budget = ceiling
         self._spent = Decimal("0")
         self._base_url = base_url.rstrip("/")
+        self._ledger = ledger
+        self._budget_scope_id = budget_scope_id
 
     @property
     def spent_usd(self) -> str:
@@ -164,6 +174,14 @@ class ParallelTaskClient:
                 f"parallel task budget exhausted: spent {self._spent} of "
                 f"{self._budget} USD; run costs {cost}"
             )
+        reservation = None
+        if self._ledger is not None:
+            try:
+                reservation = self._ledger.reserve(
+                    self._budget_scope_id, uuid4().hex, cost,
+                )
+            except BudgetExhausted as error:
+                raise BudgetFailure(str(error)) from None
         payload: dict[str, Any] = {"processor": self.processor, "input": task_input}
         if output_schema is not None:
             payload["task_spec"] = {
@@ -176,22 +194,39 @@ class ParallelTaskClient:
             response = self._http_post(
                 f"{self._base_url}/v1/tasks/runs", payload, self._headers(),
             )
-        except (AuthenticationFailure, ContractFailure, BudgetFailure):
+        except (AuthenticationFailure, ContractFailure):
+            # Definite no-run outcomes - the request never became a run, so
+            # the forced-spend charge above is refunded.
+            self._spent -= cost
+            if reservation is not None:
+                self._ledger.release(reservation)
+            raise
+        except BudgetFailure:
             raise
         except RetryableFailure as error:
             # A blind resubmit could double-spend; surface as terminal so the
             # caller decides, with budget already charged for the attempt.
+            if reservation is not None:
+                self._ledger.reconcile(reservation, cost)
             raise TerminalFailure(f"parallel task submit failed: {error}") from None
         except Exception as error:  # transport failures never carry the key
+            if reservation is not None:
+                self._ledger.reconcile(reservation, cost)
             raise TerminalFailure(
                 f"parallel task submit failed: {type(error).__name__}"
             ) from None
         if not isinstance(response, dict):
+            if reservation is not None:
+                self._ledger.reconcile(reservation, cost)
             raise ContractFailure("parallel task run returned a non-object response")
         run_id = response.get("run_id")
         status = response.get("status")
         if not isinstance(run_id, str) or not run_id or not isinstance(status, str):
+            if reservation is not None:
+                self._ledger.reconcile(reservation, cost)
             raise ContractFailure("parallel task run response is missing run_id/status")
+        if reservation is not None:
+            self._ledger.reconcile(reservation, cost)
         return TaskRun(run_id, status, self.processor, self.cost_per_run_usd)
 
     def get_result(
@@ -267,8 +302,15 @@ def build_parallel_task(
     budget_usd: str = DEFAULT_TASK_BUDGET_USD,
     http_post: HttpPost | None = None,
     http_get: HttpGet | None = None,
+    ledger: BudgetLedger | None = None,
+    budget_scope_id: str = "parallel-task",
 ) -> ParallelTaskClient:
-    """Build a task client from ``PARALLEL_API_KEY`` (injected via ``lg run``)."""
+    """Build a task client from ``PARALLEL_API_KEY`` (injected via ``lg run``).
+
+    Pass ``ledger`` (a file-locked ``BudgetLedger``) to make the budget
+    ceiling durable across processes; without one it is enforced only for
+    the lifetime of this client instance.
+    """
     api_key = os.environ.get("PARALLEL_API_KEY", "").strip()
     if not api_key:
         raise AuthenticationFailure("PARALLEL_API_KEY is not configured")
@@ -278,4 +320,5 @@ def build_parallel_task(
         http_get = http_get or default_get
     return ParallelTaskClient(
         http_post, http_get, api_key, processor=processor, budget_usd=budget_usd,
+        ledger=ledger, budget_scope_id=budget_scope_id,
     )

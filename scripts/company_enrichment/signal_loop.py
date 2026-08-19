@@ -94,6 +94,11 @@ CollectFn = Callable[[CollectRequest], CompanyDossier]
 PostprocessFn = Callable[[Mapping[str, Any], CompanyDossier], tuple[dict[str, Any], dict[str, Any]]]
 
 
+def _require_repo_relative(path: Path, name: str) -> None:
+    if path.is_absolute() or ".." in path.parts:
+        raise ValueError(f"{name} must be repo-relative without '..' segments")
+
+
 @dataclass(frozen=True)
 class SignalSpec:
     """Everything that differs between two signal-enrichment prompt loops."""
@@ -122,8 +127,8 @@ class SignalSpec:
         object.__setattr__(self, "fields", tuple(self.fields))
         object.__setattr__(self, "benchmark_dir", Path(self.benchmark_dir))
         object.__setattr__(self, "prompt_path", Path(self.prompt_path))
-        if self.benchmark_dir.is_absolute() or self.prompt_path.is_absolute():
-            raise ValueError("benchmark_dir and prompt_path must be repo-relative")
+        _require_repo_relative(self.benchmark_dir, "benchmark_dir")
+        _require_repo_relative(self.prompt_path, "prompt_path")
         for name in ("output_contract", "load_ground_truth", "score"):
             if not callable(getattr(self, name)):
                 raise ValueError(f"{name} must be callable")
@@ -132,8 +137,8 @@ class SignalSpec:
         if self.postprocess is not None and not callable(self.postprocess):
             raise ValueError("postprocess must be callable or None")
         candidate_paths = tuple(Path(item) for item in self.candidate_paths)
-        if any(item.is_absolute() for item in candidate_paths):
-            raise ValueError("candidate_paths must be repo-relative")
+        for item in candidate_paths:
+            _require_repo_relative(item, "candidate_paths")
         object.__setattr__(self, "candidate_paths", candidate_paths)
         object.__setattr__(self, "weights", validate_weights(self.weights))
         if not isinstance(self.candidate_id, str) or not self.candidate_id.strip():
