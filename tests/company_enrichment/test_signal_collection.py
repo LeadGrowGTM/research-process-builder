@@ -71,17 +71,20 @@ class FakeSearch:
         self.results = results or {}
         self.fail_on = set(fail_on)
         self.calls: list[tuple[str, str, str | None]] = []
+        self.objectives: list[str | None] = []
         self.mode = "web"
         self.tbs = None
 
     def for_query(self, *, mode, tbs):
         sibling = FakeSearch(self.results, self.fail_on)
         sibling.calls = self.calls
+        sibling.objectives = self.objectives
         sibling.mode, sibling.tbs = mode, tbs
         return sibling
 
     def search(self, request: SearchRequest) -> SearchResult:
         self.calls.append((request.query, self.mode, self.tbs))
+        self.objectives.append(request.objective)
         if request.query in self.fail_on:
             raise RetryableFailure("serper HTTP 500")
         return SearchResult(tuple(
@@ -150,6 +153,8 @@ def test_collect_builds_dossier_from_serp_pages_and_first_party(tmp_path: Path):
         ("agencyanalytics.com news", "news", "qdr:y"),
         ("AgencyAnalytics agency reporting launches", "web", "qdr:y"),
     ]
+    # PLAN has no objective template, so requests carry none
+    assert search.objectives == [None, None]
     # scrapes: dedupe by identity, drop own template page, top 2 per query, cap 2
     assert scrape.calls == ["https://www.prnewswire.com/a-launch", "https://techcrunch.com/agency"]
     assert probe.calls == ["https://agencyanalytics.com/blog", "https://agencyanalytics.com/news"]
@@ -305,3 +310,21 @@ def test_bind_collect_writes_signal_dossier_and_collection_log(tmp_path: Path):
     assert store.journal.is_file()
     collect(_request(repo, "saas-02"))
     assert factories == {"search": 1, "scrape": 2}  # factories reused across companies
+
+
+def test_plan_objective_is_rendered_and_forwarded(tmp_path: Path):
+    from dataclasses import replace as dc_replace
+
+    repo = build_repo(tmp_path)
+    search = FakeSearch(NEWS_RESULTS)
+    plan = dc_replace(
+        PLAN,
+        objective="Find dated news about {{company_name}} ({{domain}}), a {{category}} company.",
+    )
+
+    collect_search_signals(
+        _request(repo), plan=plan, search=search, scrape=FakeScrape(PAGES), now=NOW,
+    )
+
+    rendered = "Find dated news about AgencyAnalytics (agencyanalytics.com), a agency reporting company."
+    assert search.objectives == [rendered, rendered]

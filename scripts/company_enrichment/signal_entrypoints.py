@@ -59,6 +59,13 @@ NEWS_PLAN = SearchPlan(
                        "/product-updates", "/whats-new"),
     caps={"queries": 3, "scrapes": 6},
     freshness_days=365,
+    objective=(
+        "Find dated news about {{company_name}} ({{domain}}) from the last 12 "
+        "months: product launches, new features, funding, leadership, and "
+        "partnership announcements. Prefer the company's own changelog, "
+        "product-updates, newsroom, and blog pages plus dated press releases "
+        "and wire coverage. Every result should carry a publish date."
+    ),
 )
 COMPETITOR_PLAN = SearchPlan(
     queries=(
@@ -70,6 +77,13 @@ COMPETITOR_PLAN = SearchPlan(
     first_party_paths=("/competitors", "/compare", "/alternatives"),
     caps={"queries": 3, "scrapes": 6},
     freshness_days=180,
+    objective=(
+        "Find pages that name direct competitors and alternatives to "
+        "{{company_name}} ({{domain}}), a {{category}} company: 'best "
+        "alternatives' listicles, 'X vs Y' comparison pages, review-site "
+        "category pages, and the company's own compare pages. Prefer pages "
+        "that name several competing products."
+    ),
 )
 _MONTH_INDEX = {name: index for index, name in enumerate((
     "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"), 1)}

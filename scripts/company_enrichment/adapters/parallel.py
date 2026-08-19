@@ -54,6 +54,9 @@ PARALLEL_SEARCH_COST_USD = {
 }
 DEFAULT_SEARCH_MODE = "advanced"
 DEFAULT_RESULTS = 10
+# Per-result excerpt cap requested from the API; keeps folded excerpts inside
+# MAX_EXCERPT_CHARS and reduces structured-output stress downstream.
+MAX_RESULT_CHARS = 1200
 _SERP_MODES = ("web", "news")
 _TBS_DAYS = {"qdr:d": 1, "qdr:w": 7, "qdr:m": 30, "qdr:y": 365}
 
@@ -155,9 +158,14 @@ class ParallelSearchClient:
         payload: dict[str, Any] = {
             "search_queries": [request.query],
             "mode": self.search_mode,
-            "advanced_settings": {"max_results": self.num},
+            "advanced_settings": {
+                "max_results": self.num,
+                "excerpt_settings": {"max_chars_per_result": MAX_RESULT_CHARS},
+            },
         }
-        if self.mode == "news":
+        if request.objective:
+            payload["objective"] = request.objective
+        elif self.mode == "news":
             payload["objective"] = (
                 "Find dated news coverage, press releases, and announcements for "
                 f"this query: {request.query}"

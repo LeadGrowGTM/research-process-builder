@@ -113,12 +113,18 @@ class SearchPlan:
     freshness_days: int
     top_urls_per_query: int = 3
     excerpt_chars: int = 1500
+    # Natural-language intent template ({{domain}}/{{company_name}}/{{category}}
+    # placeholders) forwarded as ``SearchRequest.objective`` for objective-driven
+    # providers; keyword SERP providers ignore it.
+    objective: str | None = None
 
     def __post_init__(self) -> None:
         queries = tuple(self.queries)
         if not queries or not all(isinstance(item, QueryTemplate) for item in queries):
             raise ValueError("queries must contain at least one QueryTemplate")
         object.__setattr__(self, "queries", queries)
+        if self.objective is not None:
+            object.__setattr__(self, "objective", _text(self.objective, "objective"))
         paths = tuple(self.first_party_paths)
         if any(not isinstance(item, str) or not item.startswith("/") for item in paths):
             raise ValueError("first_party_paths must be absolute paths such as /blog")
@@ -402,11 +408,17 @@ def collect_search_signals(
     candidates: list[str] = []
     seen_urls: set[str] = set()
 
+    objective = None
+    if plan.objective is not None:
+        objective = plan.objective
+        for key in ("domain", "company_name", "category"):
+            objective = objective.replace("{{" + key + "}}", facts.get(key, ""))
+        objective = " ".join(objective.split())
     for query in plan.queries[: plan.caps["queries"]]:
         rendered = query.render(facts)
         provider = _search_provider_for(search, query)
         try:
-            result = provider.search(SearchRequest(rendered))
+            result = provider.search(SearchRequest(rendered, objective=objective))
         except (ProviderFailure, ValueError) as error:
             _log_failure(log, "search", rendered, error)
             log[-1]["fallbacks"] = list(getattr(provider, "last_failures", ()))

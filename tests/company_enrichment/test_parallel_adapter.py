@@ -72,6 +72,16 @@ def test_news_serp_mode_sets_objective_and_tbs_maps_to_after_date():
     _, payload, _ = post.calls[0]
     assert "acme news" in payload["objective"]
     assert payload["advanced_settings"]["source_policy"] == {"after_date": "2025-08-19"}
+    assert payload["advanced_settings"]["excerpt_settings"] == {"max_chars_per_result": 1200}
+
+
+def test_request_objective_overrides_the_mode_default():
+    post = RecordingPost({"results": []})
+    client = ParallelSearchClient(post, "k", serp_mode="news")
+
+    client.search(SearchRequest("acme news", objective="Find dated acme launches."))
+
+    assert post.calls[0][1]["objective"] == "Find dated acme launches."
 
 
 def test_unknown_tbs_window_is_ignored():
