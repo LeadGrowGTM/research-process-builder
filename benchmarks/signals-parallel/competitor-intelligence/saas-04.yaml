@@ -1,0 +1,938 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: identity
+  value: aPriori Technologies
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: description
+  value: 'About aPriori | Digital Transformation Manufacturing Partner Upcoming Webinar
+    Beyond a Tool: From Design for X to a New Engineering Mindset Register Now › MIC
+    Chicago From Design to Source — Measurable Impact at the Speed of AI Learn More
+    › US EN Login Why aPriori? Solutions Products Pricing About Resources Resources
+    Hub Blog Case Studies Cloud Security Documentation FAQs Glossary Guides Podcast
+    Webinars Videos Blog Articles Hot Trending Topics Artificial Intelligence Digital
+    Transformation Prod'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: offers
+  value: product cost software
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: icp
+  value: manufacturers
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: personas
+  value: manufacturers
+  visibility: message_safe
+company_id: saas-04
+corrections: []
+evidence:
+- content_hash: fe752f58cb8e0b98a01f0881279fa708d0e108813c408746804531793d415e69
+  evidence_id: ev-fe752f58cb8e0b98
+  excerpt: 'About aPriori | Digital Transformation Manufacturing Partner Upcoming
+    Webinar Beyond a Tool: From Design for X to a New Engineering Mindset Register
+    Now › MIC Chicago From Design to Source — Measurable Impact at the Speed of AI
+    Learn More › US EN Login Why aPriori? Solutions Products Pricing About Resources
+    Resources Hub Blog Case Studies Cloud Security Documentation FAQs Glossary Guides
+    Podcast Webinars Videos Blog Articles Hot Trending Topics Artificial Intelligence
+    Digital Transformation Product Lifecycle Intelligence Supply Chain Disruption
+    Business Goals Accelerate Product Development Reduce Costs & Increase Profit Win
+    More Profitable Business Product & Technology Design for Manufacturability Project
+    & Task Management Should Cost Sustainability Workflow Automation Department Cost
+    & Value Engineering Design Engineering Divisional GM & C-Suite IT Manufacturing
+    Engineering Quoting & Estimating Sourcing & Procurement Featured Resources Video:
+    aPriori & CNH Success Stories Profitability through DTC at Scale Webinar Replay: 
+    Quantified Design for Manufacture (DFM) with aPriori Request Demo aPriori Technologies
+    Transforming the Manufacturing Industry Since 2003 “aPriori is disrupting the
+    industry’s status quo” Founded in 2003, aPriori is disrupting the industry’s status
+    quo with groundbreaking work helping manufacturers digitally transform their businesses.
+    Through our unique, patented, intellectual property, we enable manufacturers to
+    accelerate product design, and bring products to markets faster while providing
+    visibility to the sustainability of their design and manufacturing choices. Our
+    impact is profound - our customers save millions of dollars each year, accelerate
+    time to market, all while creating a better world for future generations. Though
+    we are an established software firm, through our continued growth, we have maintained
+    the dynamic, collaborative nature of a start-up. With a global presence, including
+    North America, Europe, Asia, and India, we encoura'
+  retrieved_at: '2026-08-12T21:00:21.263165+00:00'
+  url: https://www.apriori.com/about/
+- content_hash: 3d93e43e256e02c1fd8b6c87897bbd2c234ef2bfc4d659b03cdbac08cfbf3203
+  evidence_id: ev-3d93e43e256e02c1
+  excerpt: aPriori Technologies | LinkedIn Skip to main content LinkedIn Top Content
+    People Learning Jobs Games Sign in Join now aPriori Technologies Software Development
+    Concord, MA 12,815 followers AI from Design to Source to Make See jobs Follow
+    View all 275 employees Report this company About us aPriori provides AI-powered
+    product intelligence that helps manufacturers make faster, more profitable decisions
+    from design through sourcing to production. Built on proprietary simulation engines
+    and deep manufacturing data, aPriori Intelligence delivers real-time insight into
+    product cost, manufacturability, and carbon footprint — enabling teams to reduce
+    time-to-market, improve margins, and meet environmental targets. According to
+    a Forrester Total Economic Impact™ study, aPriori customers achieve approximately
+    600% ROI within three years and payback in under six months. To learn more, visit
+    www.apriori.com. Website https://www.apriori.com External link for aPriori Technologies
+    Industry Software Development Company size 201-500 employees Headquarters Concord,
+    MA Type Privately Held Founded 2003 Specialties Digital Manufacturing Simulation,
+    Manufacturing Cost Models, Digital Factories, Design for Manufacturability, Design
+    to Margin, Source to Margin, Supply Chain Management, Manufacturing Automation,
+    Design to Cost, Make vs. Buy Analysis, Capital Asset Justification, Post-Launch
+    Product Costs Reduction (VA/VE), NPI Lifecycle Reduction, Cost Estimation , Spend
+    Analytics, Concept Costing, Digital Manufacturing, Manufacturing Intelligence,
+    Discrete Manufacturing, Digital Transformation, and Sustainability Products No
+    more previous content aP Analytics, Business Intelligence (BI) Software aP Analytics
+    Business Intelligence (BI) Software aP Design, Simulation Software aP Design Simulation
+    Software aP Generate, Simulation Software aP Generate Simulation Software aP Pro,
+    Computer-Aided Engineering (CAE) Software aP Pro Computer-Aided Engineering (CAE)
+    Software aP Workspace, Simulation S
+  retrieved_at: '2026-08-12T21:00:22.027996+00:00'
+  url: https://www.linkedin.com/company/apriori
+- content_hash: 1494a4907e1a3dc96e2a4a16584239cd25e34455ccfabdebd219ea1696104adb
+  evidence_id: ev-1494a4907e1a3dc9
+  excerpt: 'aPriori Receives Growth Investment From Vista Credit Partners for Its
+    Manufacturing Insights Platform - Vista Equity Partners Search Site… ✕ About About
+    25 years at the forefront of enterprise software investing. Firm About Vista Team
+    Sustainability Portfolio Value Creation Companies Opportunities Careers Strategies
+    Strategies Investing across the software lifecycle with tailored equity and credit
+    solutions. Private Equity Credit White Paper Investing in Enterprise Software
+    Learn from Robert F. Smith why enterprise software remains a compelling opportunity
+    for value creation White Paper Demystifying Generative AI Explore how Gen AI is
+    redefining industries News + Insights News + Insights Vista’s latest news and
+    insights from the forefront of enterprise software and AI investing. News Insights
+    by Vista Forefront Investing in AI Outlook Software’s Transition to Agentic Enterprise
+    AI Video Software’s Next Chapter: Robert F. Smith on The Next Era of Enterprise
+    Platforms Wealth Professionals Wealth Professionals A differentiated investment
+    partner for advisors and their clients. Overview Insights by Vista Forefront Strategies
+    Evergreen Private Equity Evergreen Credit White Paper Understanding Inference
+    and the Economics of Enterprise AI Chartbook Agentic AI Is Here - What Investors
+    Need to Know Unpacking the investor opportunity in Agentic AI Investor Login Back
+    All News and Press Releases Press Release October 19, 2023 aPriori Receives Growth
+    Investment From Vista Credit Partners for Its Manufacturing Insights Platform
+    CONCORD, Mass. — ( BUSINESS WIRE ) — aPriori today announced a growth investment
+    from Vista Credit Partners , a subsidiary of Vista Equity Partners and strategic
+    financing partner focused on the enterprise software, data, and technology markets.
+    The funding will be used to support continued innovation and meet growing demand
+    for aPriori’s cloud-based solution, which empowers manufacturers and product designers
+    to accurately estimate, manage, and optimize '
+  retrieved_at: '2026-08-12T21:00:22.524197+00:00'
+  url: https://www.vistaequitypartners.com/news/apriori-receives-growth-investment-from-vista-credit-partners-for-its-manufacturing-insights-platform/
+- content_hash: a65abaf6ceacf4824852a9f476a030744f7bbd5c88ecfb9fc8369358ec7795e9
+  evidence_id: ev-a65abaf6ceacf482
+  excerpt: 'Title: Top aPriori Alternatives, Competitors
+
+    Source: cbinsights.com
+
+    Snippet: # aPriori ## aPriori''s alternatives and competitors aPriori''s top competitors
+    include [Makersite](https://www.cbinsights.com/company/makersite/alternatives-competitors)
+    , [Assent](https://www.cbinsights.com/company/assent-compliance-inc/alternatives-competitors)
+    , and [Cosmo Tech](https://www.cbinsights.com/company/cosmo-tech/alternatives-competitors)
+    ... [Fero Labs](https://www.cbinsights.com/company/fero-labs/) Analyst Briefing
+    Submitted Fero Labs focuses on industrial process optimization software within
+    the manufacturing sector. The company offers AI-powered diagnostics and process
+    optimization tools … Start your free demo aPriori vs. Fero Labs ... FACTON specializes
+    in Enterprise Product Costing (EPC) solutions for the manufacturing industry.
+    The company''s software focuses on cost management processes, provides t… Start
+    your free demo aPriori vs. Facton View more in-depth data on: Compare aPriori
+    and Facton + Competitors + Products ... ### Top 8aPriori competitors * [Makersite](https://www.cbinsights.com/company/makersite/)
+    * [Assent](https://www.cbinsights.com/company/assent-compliance-inc/) * [Cosmo
+    Tech](https://www.cbinsights.com/company/cosmo-tech/) * [Eugenie AI](https://www.cbinsights.com/company/eugenieai/)
+    * [Fero Labs](https://www.cbinsights.com/company/fero-labs/) * [FactoryMind](https://www.cbinsights.com/company/factorymind/)
+    * [Hexagon](https://www.cbinsights.com/company/hexagon/) '
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.cbinsights.com/company/apriori-technologies/alternatives-competitors
+- content_hash: de9979e6858ccae205a7d35ba3aaf7214f46bf9c9f1e5802292bfb403b8c22d2
+  evidence_id: ev-de9979e6858ccae2
+  excerpt: 'Title: Top aPriori Technologies Competitors and Alternatives | Craft.co
+
+    Source: craft.co
+
+    Snippet: # aPriori Technologies Competitors and Similar Companies Clear all aPriori
+    Technologies''s competitors and similar companies include Unison Cost Engineering,
+    Autotrader, Kongsberg Digital and Infor US. Add company... You can compare up
+    to 12 companies. Please remove a company to add a new one ... [Autotrader](https://craft.co/apriori-technologies/competitors?competitors=apriori-technologies%2Cunison-cost-engineering%2Ckongsberg-digital-as%2Cinfor-us)
+    [Kongsberg ... | aPriori Technologies aPriori Technologies aPriori Technologies
+    is an enterprise cost management software platform enabling manufacturing companies
+    to manage their production cost. | Unison Cost Engineering Unison Cost Engineering
+    Unison Cost Engineering (formerly known as PRICE Systems) is a company that develops
+    cost estimation software solutions. | Autotrader Autotrader Autotrader is a company
+    that provides a car shopping site. | Kongsberg Digital Kongsberg Digital ... ##
+    View Company Profiles logo Unison Cost Engineering HQ McLean, US Unison Cost Engineering
+    (formerly known as PRICE Systems) is a company that develops cost estimation software
+    solutions. View company logo Autotrader HQ Atlanta, US Autotrader is a company
+    that provides a car shopping site. View company logo Kongsberg Digital HQ Lysaker,
+    NO'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://craft.co/apriori-technologies/competitors
+- content_hash: 167e104a02b0359de464413f6931dcac62d5ef9af3953c84874bd51c57d8386b
+  evidence_id: ev-167e104a02b0359d
+  excerpt: 'Title: List of Best aPriori Technologies Alternatives & Competitors 2025
+
+    Source: trustradius.com
+
+    Snippet: # aPriori Technologies Competitors and Alternatives ## Most Commonly
+    Compared to aPriori Technologies * Boothroyd Dewhurst DFMA Software ### Boothroyd
+    Dewhurst DFMA Software Compare * Teamcenter ### Teamcenter Compare * SOLIDWORKS
+    ### SOLIDWORKS Compare * FACTON ECP Suite ### FACTON ECP Suite Compare * Enovia
+    ### Enovia Compare * SAP Manufacturing Execution ### SAP Manufacturing Execution
+    Compare * Navisworks ### Navisworks Compare * Aras PLM ### Aras PLM Compare *
+    Simcenter STAR-CCM+ ### Simcenter STAR-CCM+ Compare * Simulink ### Simulink Compare
+    * Ansys Discovery ### Ansys Discovery Compare * Ansys Fluent ### Ansys Fluent
+    Compare * Ansys CFX ### Ansys CFX Compare * Simcenter Femap ### Simcenter Femap
+    Compare * Ansys SCADE Suite ### Ansys SCADE Suite Compare * Anylogic ### Anylogic
+    Compare * SimScale ### SimScale Compare ... ## Best aPriori Technologies Alternatives
+    for Medium-sized Companies ### Autodesk Inventor Autodesk Inventor 3D CAD software
+    offers professional-grade 3D mechanical design, documentation, and product simulation
+    tools. These blend parametric, direct, freeform, and rules-based design capabilities.
+    ... ### Solid Edge Score 7.9 out of 10 Solid Edge is a software solutions for
+    product development — 3D design, simulation, manufacturing, data management, and
+    cloud collaboration. Solid Edge aims to combine the speed and simplicity of direct
+    modeling with the'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.trustradius.com/products/apriori-technologies/competitors
+- content_hash: a71bc6471431fea59a2e7e2c5a69c6164b1f93c58c1d6d550528351bbef3da70
+  evidence_id: ev-a71bc6471431fea5
+  excerpt: 'Title: aPriori Enterprise Product Cost Management Alternatives
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top aPriori Enterprise Product Cost
+    Management alternatives. Easily compare competitors and read verified real user
+    reviews on Gartner Peer Insights. title: Top aPriori Enterprise Product Cost Management
+    Alternatives & Competitors 2026 | Gartner Peer Insights image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Coupa](https://www.gartner.com/reviews/product/coupa-2086513880) [Compare
+    with aPriori Enterprise Product Cost Management](https://www.gartner.com/reviews/market/supply-chain-cost-to-serve-analytics-technology/compare/product/coupa-2086513880-vs-apriori-enterprise-product-cost-management)
+    Add to Compare ... title: Top aPriori Enterprise Product Cost Management Alternatives
+    & Competitors 2026 | Gartner Peer Insights image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Coupa](https://www.gartner.com/reviews/product/coupa-2086513880) > 2. [Oracle
+    Cloud EPM Profitability and Cost Management](https://www.gartner.com/reviews/product/oracle-cloud-epm-profitability-and-cost-management)
+    > 3. [CostPerform](https://www.gartner.com/reviews/product/costperform) [Compare
+    with aPriori Enterprise Product Cost Management](https://www.gartner.com/reviews/market/supply-chain-cost-to-serve-analytics-technology/compare/product/costperform-vs-apriori-enterprise-product-cost-management'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.gartner.com/reviews/product/apriori-enterprise-product-cost-management/alternatives
+- content_hash: fad964277ed72e9c778c4cecec6213cc3e507fe94ec1966aacdb42cc84915fd7
+  evidence_id: ev-fad964277ed72e9c
+  excerpt: 'Detected date: 2026-06-07
+
+    Title: What is aPriori? Competitors, Complementary Techs & Usage | Sumble
+
+    Date: 2026-06-07
+
+    Source: sumble.com
+
+    Snippet: # **aPriori** ## What is aPriori? aPriori is a software platform focused
+    on product cost management (PCM). It provides manufacturers and product innovators
+    with the ability to analyze and optimize the cost of parts, products, and tooling
+    throughout the product lifecycle. This helps companies make more informed decisions
+    related to design, sourcing, and manufacturing, ultimately reducing costs and
+    improving profitability. It does this by leveraging virtual production environments
+    and detailed manufacturing process simulations. ... ## What other technologies
+    are related to aPriori? ### aPrioriCompetitor Technologies Costimator Costimator
+    No summary available Costimator is a cost estimation software, similar to aPriori,
+    and therefore a direct competitor. Number of organizations that mention technology
+    ... Costimator](https://sumble.com/orgs?as=%7B%22operator%22%3A%22AND%22%2C%22children%22%3A%5B%7B%22operator%22%3A%22AND%22%2C%22fields%22%3A%7B%22technology%22%3A%7B%22include%22%3A%5B%22costimator%22%5D%7D%7D%7D%5D%7D)
+    ... ### aPrioriComplementary Technologies Creo Creo Creo is a CAD software used
+    for product design and engineering. aPriori can utilize CAD data from Creo to
+    perform cost analysis, making them complementary. C CAD CAD software in general
+    provides the geometric data that aPriori analyzes for cost estimation. Therefore,
+    it is complementary.'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://sumble.com/tech/apriori
+- content_hash: bc975b3c0ceff3a1db17f79907f99f06390a7a92f3220bef733c969776a48ec7
+  evidence_id: ev-bc975b3c0ceff3a1
+  excerpt: 'Title: aPriori Alternative: DFMA Should Costing Software (2026)
+
+    Source: dfma.com
+
+    Snippet: # The Alternative for Teams That Want to Improve the Design, Not Just
+    Cost It ## DFMA vs aPriori: at a glance |aPriori |DFMA | | --- | --- | --- | |Primary
+    strength |✓ Geometry-driven costing pipelines, sustainability metrics, and enterprise
+    PLM integration |✓ Design improvement + defensible should-costing | |How accuracy
+    is achieved |Depends on whether inferred routing matches manufacturing reality
+    |✓ Explicit, user-directed assumptions aligned to how the part will actually be
+    made | |Cost estimate transparency |Assumptions can be reviewed and overridden,
+    but unpacking automated logic takes more effort |✓ Every driver visible, editable,
+    exportable | |Works without CAD |Requires 3D CAD geometry |✓ Feature descriptions,
+    drawings, or CAD | ... ## What DFMA delivers **NCR Voyix** * **85% part count
+    reduction** * **$1.1M annual labor savings** Read case study → **IGT** * **40%
+    total cost reduction** * **50% labor reduction** Read case study → **Fighter Aircraft**
+    * **81% part count reduction** * **78% cost reduction** Read case study → 50%
+    ... ## Frequently asked questions ### See the difference on your part #### Related
+    resources [DFMA Software by Boothroyd Dewhurst](https://www.dfma.com) Product
+    Simplification & Should Costing Software [Contact Us](https://www.dfma.com/contactus.asp)
+    National Medal of Technology National Medal of Technology Awarded to BDI founders,
+    1991'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.dfma.com/resources/apriori-alternative.asp
+- content_hash: 21b194a21719d1324e92a7a56915bd419d8defc32378748cb951d5b585d1fa45
+  evidence_id: ev-21b194a21719d132
+  excerpt: 'Detected date: 2026-03-24
+
+    Title: What is Product Cost Management Software?
+
+    Date: 2026-03-24
+
+    Source: apriori.com
+
+    Snippet: # Product Cost Management Software ## What are the benefits of product
+    cost management software? This allows product teams to assess the cost of alternative
+    materials, labor rates, and manufacturing overhead, giving them the ability to
+    make informed decisions about production costs. ... ## Related Resources ### How
+    are manufacturers conducting more effective supplier negotiations for savings?
+    * [Sustainability](https://www.apriori.com/product-sustainability/) * [Unique
+    Platform Features](https://www.apriori.com/technology-differentiators/)'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.apriori.com/glossary/product-cost-management-software/
+- content_hash: 86c8b57b16266f1f5e4ab3da46911868902f8e6e66c086afaba5d372df019cb6
+  evidence_id: ev-86c8b57b16266f1f
+  excerpt: 'Detected date: 2026-03-16
+
+    Title: Cost and Value Engineering
+
+    Date: 2026-03-16
+
+    Source: apriori.com
+
+    Snippet: # Cost and Value Engineering ## Maximize Cost Savings in Product Development
+    & Manufacturing With aPriori’s AI-powered cost engineering software, you can quickly
+    generate accurate estimates through advanced cost models and use three levels
+    of automation to boost profitability. ... ## Master Cost Efficiency & Unlock Substantial
+    Financial Benefits Use aPriori to expand cost engineering expertise throughout
+    the entire product development team to assess the cost impact of alternative designs,
+    sourcing decisions, and manufacturing process selections. Discover how Carrier
+    leveraged aPriori’s advanced cost-estimating software to save $30 million in **_one
+    year_ .** ... ## Cost and Value Engineering Resources ### Should Cost Analysis
+    and Negotiation Guide * [Unique Platform Features](https://www.apriori.com/technology-differentiators/)'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.apriori.com/solutions/roles/cost-and-value-engineering
+- content_hash: 06a0cb3a2b0287189ac3886c81ee31c6eab5d20db8f2747fe76ad96ff176b6fe
+  evidence_id: ev-06a0cb3a2b028718
+  excerpt: 'Title: aPriori Enterprise Product Cost Management Reviews & Ratings 2026
+    | Gartner Peer Insights
+
+    Source: gartner.com
+
+    Snippet: # aPriori Enterprise Product Cost Management ## Overview ### Product
+    Information on aPriori Enterprise Product Cost Management #### What is aPriori
+    Enterprise Product Cost Management? The software enables users to simulate manufacturing
+    processes, assess cost drivers, and compare alternate design scenarios, supporting
+    cost optimization decisions. ... ## Top aPriori Enterprise Product Cost Management
+    Alternatives Logo of Coupa ### 1. Coupa 4.6 (6 Ratings) Compare Logo of Oracle
+    Cloud EPM Profitability and Cost Management #### 2. Oracle Cloud EPM Profitability
+    and Cost Management 3.9 (4 Ratings) Compare Logo of CostPerform ##### 3. CostPerform
+    5 (3 Ratings) Compare View All Alternatives'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.gartner.com/reviews/market/supply-chain-cost-to-serve-analytics-technology/vendor/apriori/product/apriori-enterprise-product-cost-management/likes-dislikes
+- content_hash: 54a6a27d417fe94a4747e24bbf453974c3d6ac490daa0e22f9014e9bd0c4c486
+  evidence_id: ev-54a6a27d417fe94a
+  excerpt: 'Title: Top aPriori Technologies Competitors & Alternatives
+
+    Source: getlatka.com
+
+    Snippet: # Top aPriori Technologies Alternatives, Competitors & Similar Software
+    Year founded 2016 Funding - Team size 52 Location United States Compare aPriori
+    Technologies with FlexSim Software Products, Inc. 7 FlexSim Software Products,
+    Inc. logo FlexSim Software Products, Inc. Business Process Simulation Software
+    ... Compare aPriori Technologies with PuzzleData 12 PuzzleData logo PuzzleData
+    Business Process Simulation Software ... Revenue $770K Customers - Year founded
+    1992 Funding - Team size 7 Location United States Compare aPriori Technologies
+    with isee systems, inc. 16 isee systems, inc. logo isee systems, inc. Business
+    Process Simulation Software ... Revenue $68M Customers 400 Year founded 2008 Funding
+    $130.1M Team size 567 Location Germany Compare aPriori Technologies with Minitab
+    19 Minitab logo Minitab Business Process Simulation Software'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://getlatka.com/companies/apriori.com/competitors
+- content_hash: dcea1a0d5f7c18c48d96b7da838d623871af691ad8b8bd6c7ce407e96bdf2d63
+  evidence_id: ev-dcea1a0d5f7c18c4
+  excerpt: 'Query: aPriori Technologies product cost software alternatives OR competitors
+    OR "vs" OR "compared to"
+
+    1. https://www.cbinsights.com/company/apriori-technologies/alternatives-competitors
+
+    Title: Top aPriori Alternatives, Competitors
+
+    Source: cbinsights.com
+
+    Snippet: # aPriori ## aPriori''s alternatives and competitors aPriori''s top competitors
+    include [Makersite](https://www.cbinsights.com/company/makersite/alternatives-competitors)
+    , [Assent](https://www.cbinsights.com/company/assent-compliance-inc/alternatives-competitors)
+    , and [Cosmo Tech](https://www.cbinsights.com/company/cosmo-tech/alternatives-competitors)
+    ... [Fero Labs](https://www.cbinsights.com/company/fero-labs/) Analyst Briefing
+    Submitted Fero Labs focuses on industrial process optimization software within
+    the manufacturing sector. The company offers AI-powered diagnostics and process
+    optimization tools … Start your free demo aPriori vs. Fero Labs ... FACTON specializes
+    in Enterprise Product Costing (EPC) solutions for the manufacturing industry.
+    The company''s software focuses on cost management processes, provides t… Start
+    your free demo aPriori vs. Facton View more in-depth data on: Compare aPriori
+    and Facton + Competitors + Products ... ### Top 8aPriori competitors * [Makersite](https://www.cbinsights.com/company/makersite/)
+    * [Assent](https://www.cbinsights.com/company/assent-compliance-inc/) * [Cosmo
+    Tech](https://www.cbinsights.com/company/cosmo-tech/) * [Eugenie AI](https://www.cbinsights.com/company/eugeniea'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.google.com/search?q=aPriori+Technologies+product+cost+software+alternatives+OR+competitors+OR+%22vs%22+OR+%22compared+to%22
+- content_hash: 4948745425f95ddc057a246880ebd68680e6ab09a1b5ecc509c2c6ca0c18f04a
+  evidence_id: ev-4948745425f95ddc
+  excerpt: 'Detected date: 2025-08-28
+
+    Title: aPriori
+
+    Source: platform.tracxn.com
+
+    Snippet: 0","Blockchain Technology","FinTech","Yield Farming","US Tech","HiTech
+    - US","Enterprise Tech - US","Enterprise Applications","Enterprise Software"]
+    Geo Served: ["United States"] Xcorn Status: MINICORN Xcorn Date: 2025-08-28'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://platform.tracxn.com/a/d/company/58495cbde4b031b3762bf6fb/apriori?utm_source=parallel&utm_medium=ai#a:about
+- content_hash: 7233f7442ffe366ff3f4df08576628de46153f969740c20028974089adab54c2
+  evidence_id: ev-7233f7442ffe366f
+  excerpt: 'Title: Top aPriori Alternatives, Competitors
+
+    Source: cbinsights.com
+
+    Snippet: # aPriori ## aPriori''s alternatives and competitors aPriori''s top competitors
+    include [Makersite](https://www.cbinsights.com/company/makersite/alternatives-competitors)
+    , [Assent](https://www.cbinsights.com/company/assent-compliance-inc/alternatives-competitors)
+    , and [Cosmo Tech](https://www.cbinsights.com/company/cosmo-tech/alternatives-competitors)
+    ... Makersite Logo [Makersite](https://www.cbinsights.com/company/makersite/)
+    Analyst Briefing Submitted Makersite focuses on product lifecycle intelligence
+    within the manufacturing sector. The company provides a platform that integrates
+    artificial intelligence, data, and … Start your free demo ... * Assent Logo [Assent](https://www.cbinsights.com/company/assent-compliance-inc/)
+    Unclaimed Assent provides supply chain sustainability management solutions for
+    manufacturers in various industries, including industrial equipment, electronics,
+    medical devices, … Start your free demo aPriori vs. Assent ... + Customer References
+    and more * Eugenie AI Logo [Eugenie AI](https://www.cbinsights.com/company/eugenieai/)
+    Analyst Briefing Submitted Eugenie AI focuses on manufacturing within the industrial
+    AI sector. ... ### Top 8aPriori competitors * [Makersite](https://www.cbinsights.com/company/makersite/)
+    * [Assent](https://www.cbinsights.com/company/assent-compliance-inc/) * [Cosmo
+    Tech](https://www.cbinsights.com/company/cosmo-tech/) * [Eugenie AI](https://www.cbin'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.cbinsights.com/company/apriori-technologies/alternatives-competitors
+- content_hash: 72d008ad648d72c3c4c9557a233823cdee18da583b8e993051c506293949246e
+  evidence_id: ev-72d008ad648d72c3
+  excerpt: 'Title: List of Best aPriori Technologies Alternatives & Competitors 2025
+
+    Source: trustradius.com
+
+    Snippet: # aPriori Technologies Competitors and Alternatives ## Best aPriori Technologies
+    Alternatives for Small Businesses ### PTC Creo PTC offers Creo, the company''s
+    line of computer-aided design (CAD) products that support the product lifecycle
+    management (PLM) process with 2D and 3D design kits (Creo Elements and Creo Direct),
+    an augmented reality module, Creo Illustrate for technical illustrations, Creo
+    Sketch, Creo Schematics and Creo View for diagramming ... ## Best aPriori Technologies
+    Alternatives for Medium-sized Companies ### Autodesk Inventor Autodesk Inventor
+    3D CAD software offers professional-grade 3D mechanical design, documentation,
+    and product simulation tools. These blend parametric, direct, freeform, and rules-based
+    design capabilities. ... ### Navisworks Score 9.3 out of 10 Autodesk''s Navisworks
+    is a 3D model and construction project review and coordination software allowing
+    the user to combine design and construction data into a single model, and identify
+    and resolve clash and interference problems before construction. ... ### PTC Creo
+    PTC offers Creo, the company''s line of computer-aided design (CAD) products that
+    support the product lifecycle management (PLM) process with 2D and 3D design kits
+    (Creo Elements and Creo Direct), an augmented reality module, Creo Illustrate
+    for technical illustrations, Creo Sketch, Creo Schematics and Creo View for diagramming '
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.trustradius.com/products/apriori-technologies/competitors
+- content_hash: 463d2d4d7bb6916d31f644cdf34c2275e180af37d11be1f835216946e1d96591
+  evidence_id: ev-463d2d4d7bb6916d
+  excerpt: 'Title: Top 10 aPriori Manufacturing... Alternatives & Competitors
+
+    Source: g2.com
+
+    Snippet: # Top 10 aPriori Manufacturing... Alternatives & Competitors Other important
+    factors to consider when researching alternatives to aPriori Manufacturing Intelligence
+    Platform include design. The best overall aPriori Manufacturing Intelligence Platform
+    alternative is SOLIDWORKS. Other similar apps like aPriori Manufacturing Intelligence
+    Platform are SAP Ariba, Autodesk Fusion, Inventor, and MATLAB. ... ## Best Paid
+    & Free Alternatives to aPriori Manufacturing Intelligence Platform * SOLIDWORKS
+    * SAP Ariba * Autodesk Fusion * Inventor * MATLAB * Designcenter Solid Edge *
+    Procurify * Coupa Show More ... ## Top 10 Alternatives to aPriori Manufacturing
+    Intelligence Platform Recently Reviewed By G2 Community [Product Avatar Image](https://www.g2.com/products/procurify/reviews)
+    [Procurify](https://www.g2.com/products/procurify/reviews) By [Procurify](https://www.g2.com/sellers/procurify)
+    [4.6/5 (359)](https://www.g2.com/products/procurify/reviews) Product Description
+    Procurify is an evolution of Purchasing Software. Easy-to-use features, you get
+    the cost management capabilities you need to save on purchasing.'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.g2.com/products/apriori-manufacturing-intelligence-platform/competitors/alternatives
+- content_hash: 05479966adf748123ad02c7a901e9bb0521953dec457fc2b5bb67a1326a117c7
+  evidence_id: ev-05479966adf74812
+  excerpt: 'Title: aPriori Enterprise Product Cost Management Alternatives
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top aPriori Enterprise Product Cost
+    Management alternatives. Easily compare competitors and read verified real user
+    reviews on Gartner Peer Insights. title: Top aPriori Enterprise Product Cost Management
+    Alternatives & Competitors 2026 | Gartner Peer Insights image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Coupa](https://www.gartner.com/reviews/product/coupa-2086513880) > 2. [Oracle
+    Cloud EPM Profitability and Cost Management](https://www.gartner.com/reviews/product/oracle-cloud-epm-profitability-and-cost-management)
+    By [Oracle](https://www.gartner.com/reviews/market/supply-chain-cost-to-serve-analytics-technology/vendor/oracle)
+    3.9 ... title: Top aPriori Enterprise Product Cost Management Alternatives & Competitors
+    2026 | Gartner Peer Insights image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Coupa](https://www.gartner.com/reviews/product/coupa-2086513880) > 2. [Oracle
+    Cloud EPM Profitability and Cost Management](https://www.gartner.com/reviews/product/oracle-cloud-epm-profitability-and-cost-management)
+    Management](https://www.gartner.com/reviews/market/supply-chain-cost-to-serve-analytics-technology/compare/product/oracle-cloud-epm-profitability-and-cost-management-vs-apriori-enterprise-produ
+    ... title: Top aPriori Enterprise Product Cost Management Alternativ'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.gartner.com/reviews/product/apriori-enterprise-product-cost-management/alternatives
+- content_hash: 47bb1fa6815140d88c74c846b41551c0afa7ff313fd362b719324b38d491f3c5
+  evidence_id: ev-47bb1fa6815140d8
+  excerpt: 'Detected date: 2026-03-12
+
+    Title: aPriori Alternative: DFMA Should Costing Software (2026)
+
+    Date: 2026-03-12
+
+    Source: dfma.com
+
+    Snippet: # The Alternative for Teams That Want to Improve the Design, Not Just
+    Cost It ## DFMA vs aPriori: at a glance |aPriori |DFMA | | --- | --- | --- | |Primary
+    strength |✓ Geometry-driven costing pipelines, sustainability metrics, and enterprise
+    PLM integration |✓ Design improvement + defensible should-costing | ... |Cost
+    estimate transparency |Assumptions can be reviewed and overridden, but unpacking
+    automated logic takes more effort |✓ Every driver visible, editable, exportable
+    | |Works without CAD |Requires 3D CAD geometry |✓ Feature descriptions, drawings,
+    or CAD | ... ## Frequently asked questions DFMA by Boothroyd Dewhurst is a strong
+    alternative for teams that need transparent, driver-level should-cost estimates
+    they can trace, adjust, and defend. DFMA also includes Boothroyd-Dewhurst DFA
+    for product simplification—a differentiating capability rarely found in costing
+    tools focused primarily on estimating. Unlike aPriori, DFMA works without a finished
+    3D CAD model. Does DFMA require a 3D CAD model like aPriori? ... ### See the difference
+    on your part #### Related resources [DFMA Software by Boothroyd Dewhurst](https://www.dfma.com)
+    Product Simplification & Should Costing Software [Contact Us](https://www.dfma.com/contactus.asp)
+    National Medal of Technology National Medal of Technology Awarded to BDI founders,
+    1991'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.dfma.com/resources/apriori-alternative.asp
+- content_hash: feefd3606d0677e2538048d1f540f127fb4d3b26c14a28f4dccb3aa505e95338
+  evidence_id: ev-feefd3606d0677e2
+  excerpt: 'Title: Top 10 Basetwo AI Alternatives & Competitors in 2025 | G2
+
+    Source: g2.com
+
+    Snippet: # Top 10 Basetwo AI Alternatives & Competitors Other similar apps like
+    Basetwo AI are Tecnomatix, aPriori Digital Manufacturing Simulation Software,
+    KloudGin Field Service and Asset Management, and Akka. ... ## Best Paid & Free
+    Alternatives to Basetwo AI * SAP Business Technology Platform * Tecnomatix * aPriori
+    Digital Manufacturing Simulation Software * KloudGin Field Service and Asset Management
+    * Akka * NetBrain Next-Gen * Agora World * XMPro Show More ... ## Top 10 Alternatives
+    to Basetwo AI Recently Reviewed By G2 Community ### This is how G2 Deals can help
+    you: [See all Tecnomatix reviews](https://www.g2.com/products/tecnomatix/reviews)
+    #3 [aPriori Digital Manufacturing Simulation Software](https://www.g2.com/products/apriori-digital-manufacturing-simulation-software/reviews)
+    * [aPriori Digital Manufacturing Simulation Software](https://www.g2.com/products/apriori-digital-manufacturing-simulation-software/reviews)
+    [By aPriori Technologies](https://www.g2.com/sellers/apriori-technologies) (100)
+    4.5 out of 5'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.g2.com/products/basetwo-ai/competitors/alternatives
+- content_hash: 543f45ef09fd851537886dc52fbfda10882e0076c7206a9e36b7a7959123b061
+  evidence_id: ev-543f45ef09fd8515
+  excerpt: 'Detected date: 2026-06-07
+
+    Title: What is aPriori? Competitors, Complementary Techs & ...
+
+    Date: 2026-06-07
+
+    Source: sumble.com
+
+    Snippet: # **aPriori** ## What other technologies are related to aPriori? ###
+    aPrioriCompetitor Technologies Costimator Costimator No summary available Costimator
+    is a cost estimation software, similar to aPriori, and therefore a direct competitor.
+    Number of organizations that mention technology ... Costimator](https://sumble.com/orgs?as=%7B%22operator%22%3A%22AND%22%2C%22children%22%3A%5B%7B%22operator%22%3A%22AND%22%2C%22fields%22%3A%7B%22technology%22%3A%7B%22include%22%3A%5B%22costimator%22%5D%7D%7D%7D%5D%7D)
+    ⓘ Tap on a tech to explore matching organizations ### aPrioriComplementary Technologies
+    Creo Creo Creo is a CAD software used for product design and engineering. aPriori
+    can utilize CAD data from Creo to perform cost analysis, making them complementary.
+    C CAD CAD software in general provides the geometric data that aPriori analyzes
+    for cost estimation. Therefore, it is complementary.'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://sumble.com/tech/apriori
+- content_hash: 283d95afb3a8a550f48e8262146c1101e4873636d74640a6a9ede569166e83f1
+  evidence_id: ev-283d95afb3a8a550
+  excerpt: 'Title: Top aPriori Technologies Competitors & Alternatives
+
+    Source: getlatka.com
+
+    Snippet: # Top aPriori Technologies Alternatives, Competitors & Similar Software
+    Revenue $48.6M Customers - Year founded 1989 Funding - Team size 442 Location
+    United States Compare aPriori Technologies with InControl Enterprise Dynamics
+    4 InControl Enterprise Dynamics logo InControl Enterprise Dynamics Business Process
+    Simulation Software ... Revenue $440K Customers - Year founded 1985 Funding -
+    Team size 4 Location United States Compare aPriori Technologies with Kaizoft 17
+    Kaizoft logo Kaizoft Business Process Simulation Software ... Revenue $330K Customers
+    - Year founded 2021 Funding - Team size 3 Location United States Compare aPriori
+    Technologies with Camunda 18 Camunda logo Camunda Business Process Simulation
+    Software ... Revenue $68M Customers 400 Year founded 2008 Funding $130.1M Team
+    size 567 Location Germany Compare aPriori Technologies with Minitab 19 Minitab
+    logo Minitab Business Process Simulation Software'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://getlatka.com/companies/apriori.com/competitors
+- content_hash: 8453432cb80016a979dd118daf60cc459e5b3a07f044f9b13e287359df871881
+  evidence_id: ev-8453432cb80016a9
+  excerpt: 'Query: aPriori Technologies alternatives
+
+    1. https://platform.tracxn.com/a/d/company/58495cbde4b031b3762bf6fb/apriori?utm_source=parallel&utm_medium=ai#a:about
+
+    Title: aPriori
+
+    Source: platform.tracxn.com
+
+    Snippet: 0","Blockchain Technology","FinTech","Yield Farming","US Tech","HiTech
+    - US","Enterprise Tech - US","Enterprise Applications","Enterprise Software"]
+    Geo Served: ["United States"] Xcorn Status: MINICORN Xcorn Date: 2025-08-28
+
+    2. https://craft.co/apriori-technologies/competitors
+
+    Title: Top aPriori Technologies Competitors and Alternatives | Craft.co
+
+    Source: craft.co
+
+    Snippet: # aPriori Technologies Competitors and Similar Companies Clear all aPriori
+    Technologies''s competitors and similar companies include Unison Cost Engineering,
+    Autotrader, Kongsberg Digital and Infor US. Add company... You can compare up
+    to 12 companies. Please remove a company to add a new one ... [Autotrader](https://craft.co/apriori-technologies/competitors?competitors=apriori-technologies%2Cunison-cost-engineering%2Ckongsberg-digital-as%2Cinfor-us)
+    [Kongsberg ... | aPriori Technologies aPriori Technologies aPriori Technologies
+    is an enterprise cost management software platform enabling manufacturing companies
+    to manage their production cost. | Unison Cost Engineering Unison Cost Engineering
+    Unison Cost Engineering (formerly known as PRICE Systems) is a company that develops
+    cost estimation software solutions. | Autotrader Autotrader Autotrader is a company
+    that provides a car shopping site. | Kongsb'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.google.com/search?q=aPriori+Technologies+alternatives
+- content_hash: 9b0452c995118530763661832d821ff276b02b00251896fe26b5c44dee162259
+  evidence_id: ev-9b0452c995118530
+  excerpt: 'Title: Top aPriori Alternatives, Competitors
+
+    Source: cbinsights.com
+
+    Snippet: t… Start your free demo aPriori vs. Facton View more in-depth data on:
+    Competitors Products Customer References and more Compare aPriori and Facton New
+    call-to-action Top 8aPriori competitors Makersite Assent Cosmo Tech Eugenie AI
+    Fero Labs FactoryMind Hexagon Facton Compare aPriori to Competitors Customer References
+    and more Compare aPriori and Cosmo Tech Eugenie AI Logo Eugenie AI Analyst Briefing
+    Submitted Eugenie AI focuses on manufacturing within the industrial AI sector.
+    The company offers digital twin technology that enables real-time monitoring and
+    management of asse… Start your free demo aPriori vs. Eugenie AI View more in-depth
+    data on: Competitors Products Customer References and more Compare aPriori and
+    Eugenie AI Fero Labs Logo Fero Labs Analyst Briefing Submitted Fero'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.cbinsights.com/company/apriori-technologies/alternatives-competitors
+- content_hash: e27773161ffd020960ea29d2c515401eecb803b5198a180fd743a5cf7b7f020b
+  evidence_id: ev-e27773161ffd0209
+  excerpt: 'Title: List of Best aPriori Technologies Alternatives & Competitors 2025
+
+    Source: trustradius.com
+
+    Snippet: Skip to main content aPriori Technologies Reviews aPriori Technologies
+    aPriori Technologies Competitors and Alternatives About TrustRadius Scoring 8.7
+    out of 10 0 Best alternatives for: Small Businesses Medium-sized Companies Enterprises
+    Most Commonly Compared to aPriori Technologies Previous Next Boothroyd Dewhurst
+    DFMA Software ### Boothroyd Dewhurst DFMA Software Compare Teamcenter ### Teamcenter
+    Compare SOLIDWORKS ### SOLIDWORKS Compare FACTON ECP Suite ### FACTON ECP Suite
+    Compare Enovia ### Enovia Compare SAP Manufacturing Execution ### SAP Manufacturing
+    Execution Compare Navisworks ### Navisworks Compare Aras PLM ### Aras PLM Compare
+    Simcenter STAR-CCM+ ### Simcenter STAR-CCM+ Compare Simulink ### Simulink Compare
+    Ansys Discovery ### Ansys Discovery Compare Ansys Fluent ### Ansys'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.trustradius.com/products/apriori-technologies/competitors
+- content_hash: 6477a05ae15e1ac6a675cb45cb8253bff3c0f8ebfce9d9b011c0cebb9527f29e
+  evidence_id: ev-6477a05ae15e1ac6
+  excerpt: 'Title: Top aPriori Technologies Competitors and Alternatives
+
+    Source: craft.co
+
+    Snippet: aPriori Technologies&#39;s main competitors include Unison Cost Engineering,
+    Autotrader, Falkor and Infor US . You can compare up to 12 companies.'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://craft.co/apriori-technologies/competitors
+- content_hash: 1d3b1ddb3f99a22eacaeead51a0457df492520ecb06f4379296bf9ee51aede60
+  evidence_id: ev-1d3b1ddb3f99a22e
+  excerpt: 'Title: aPriori Enterprise Product Cost Management Alternatives
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top aPriori Enterprise Product Cost
+    Management alternatives. Easily compare competitors and read verified real user
+    reviews on Gartner Peer Insights. title: Top aPriori Enterprise Product Cost Management
+    Alternatives & Competitors 2026 | Gartner Peer Insights image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Coupa](https://www.gartner.com/reviews/product/coupa-2086513880) [Compare
+    with aPriori Enterprise Product Cost Management](https://www.gartner.com/reviews/market/supply-chain-cost-to-serve-analytics-technology/compare/product/coupa-2086513880-vs-apriori-enterprise-product-cost-management)
+    Add to Compare ... title: Top aPriori Enterprise Product Cost Management Alternatives
+    & Competitors 2026 | Gartner Peer Insights image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Coupa](https://www.gartner.com/reviews/product/coupa-2086513880) > 2. [Oracle
+    Cloud EPM Profitability and Cost Management](https://www.gartner.com/reviews/product/oracle-cloud-epm-profitability-and-cost-management)
+    Management](https://www.gartner.com/reviews/market/supply-chain-cost-to-serve-analytics-technology/compare/product/oracle-cloud-epm-profitability-and-cost-management-vs-apriori-enterprise-produ
+    ... title: Top aPriori Enterprise Product Cost Management Alternatives & Competitors
+    2026 | Gart'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.gartner.com/reviews/product/apriori-enterprise-product-cost-management/alternatives
+- content_hash: f6bcc05bcea7f5ee99d223a53aab0765b9ba9daa05c4dfbe29f7ba9cda296c55
+  evidence_id: ev-f6bcc05bcea7f5ee
+  excerpt: 'Title: APRIORI
+
+    Source: 3ds.com
+
+    Snippet: # APRIORI aPriori provides automated should cost, manufacturability and
+    product carbon footprint evaluation, by directly analyzing your 3D CAD models.
+    The aPriori... ## Contact Information **Company name:** APRIORI TECHNOLOGIES INC
+    **Company address:** 300 BAKER AVE STE 170 01742-2148 CONCORD MIDDLESEX MA, USA
+    **Website:** https://www.apriori.com/ ## Partner Overview **aPriori** provides
+    automated should cost, manufacturability and product carbon footprint evaluation,
+    by directly analyzing your 3D CAD models. The aPriori Manufacturing Insights Platform
+    is an end-to-end digital twin solution that empowers manufacturers to unlock and
+    identify new opportunities rapidly for innovation, growth, cost savings, and sustainability.
+    The aPriori Manufacturing Insights Platform leverages CATIA models to automate
+    and simulate the entire production process. aPriori provides design and manufacturing
+    data that teams use daily to make better decisions – including design and cost
+    engineering, procurement, and sustainability. ... ## Explore Partners solutions
+    [See all solutions](https://www.3ds.com/partners/find-solution) [aPriori CATIA
+    CostConnect](https://www.3ds.com/partners/solutions/200000000009520_PDT00000001037_aPriori_CATIA_CostConnect)
+    Through an innovative, patented understanding of how product design, materials
+    and manufacturing processes translate into product costs, aPriori is helping leading
+    manufacturing and product companies improve overal'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.3ds.com/partners/partner-details/200000000009520_APRIORI_TECHNOLOGIES_INC
+- content_hash: 1e568a4a3a69e905828d0b797cc1188b0c52630b76febbc10667569b54f358bb
+  evidence_id: ev-1e568a4a3a69e905
+  excerpt: 'Title: About aPriori | Digital Transformation Manufacturing Partner
+
+    Source: apriori.com
+
+    Snippet: # aPriori Technologies ## “aPriori is disrupting the industry’s status
+    quo” Founded in 2003, aPriori is disrupting the industry’s status quo with groundbreaking
+    work helping manufacturers digitally transform their businesses. Through our unique,
+    patented, intellectual property, we enable manufacturers to accelerate product
+    design, and bring products to markets faster while providing visibility to the
+    sustainability of their design and manufacturing choices. Our impact is profound
+    - our customers save millions of dollars each year, accelerate time to market,
+    all while creating a better world for future generations. Though we are an established
+    software firm, through our continued growth, we have maintained the dynamic, collaborative
+    nature of a start-up. ... As our greatest asset, employees’ contributions are
+    acknowledged through monthly company-wide meetings, often with promotions and
+    awards. We promote a positive work culture, employee-friendly policies, flexible
+    work schedules, pub nights, and an additional day off each quarter known as “aPriori
+    Day”. ## Our Partnerships Yield Innovative, Profitable, and Sustainable Products
+    Click below to see what to expect when partnering with aPriori: ... ### Global
+    Collaboration aPriori facilitates collaboration across global manufacturing teams
+    by providing a centralized cloud-based platform for cost-related data. ... ###
+    Enhanced Competiti'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: http://apriori.com/about
+- content_hash: 3fdcbdc401c01ad1b957b3b608a8da7197b7e23c93c2b368df91e297056f8687
+  evidence_id: ev-3fdcbdc401c01ad1
+  excerpt: 'Title: Compare aPriori Technologies vs SOLIDWORKS 2026
+
+    Source: trustradius.com
+
+    Snippet: Compare aPriori Technologies vs SOLIDWORKS. 479 verified user reviews
+    and ratings of features, pros, cons, pricing, support and more.'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.trustradius.com/compare-products/apriori-technologies-vs-solidworks
+- content_hash: 340037a53654b107e027e3c89c556d34cd5b3a804fa98b306cd8a012ec6f9ce0
+  evidence_id: ev-340037a53654b107
+  excerpt: 'Title: What is aPriori? Competitors, Complementary Techs & Usage | Sumble
+
+    Source: sumble.com
+
+    Snippet: [Sumble logo](https://sumble.com/orgs) [](https://sumble.com/orgs) [](https://sumble.com/feed)
+    [](https://sumble.com/lists) [](https://docs.sumble.com) [](https://sumble.com/account)
+    Explore Technology Competitors, Complementaries, Teams, and People [Sumble](https://sumble.com)
+    aPriori ... # **aPriori** ## What is aPriori? aPriori is a software platform focused
+    on product cost management (PCM). It provides manufacturers and product innovators
+    with the ability to analyze and optimize the cost of parts, products, and tooling
+    throughout the product lifecycle. This helps companies make more informed decisions
+    related to design, sourcing, and manufacturing, ultimately reducing costs and
+    improving profitability. It does this by leveraging virtual production environments
+    and detailed manufacturing process simulations. It is commonly used for cost estimation,
+    should-costing analysis, design for manufacturability (DFM), and supplier negotiation.
+    ... ## What other technologies are related to aPriori? ### aPrioriCompetitor Technologies
+    Costimator Costimator No summary available Costimator is a cost estimation software,
+    similar to aPriori, and therefore a direct competitor. Number of organizations
+    that mention technology ... ### aPrioriComplementary Technologies Creo Creo Creo
+    is a CAD software used for product design and engineering. aPriori can utilize
+    CAD data from Creo to perform cos'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://sumble.com/tech/apriori
+- content_hash: 70c59ce07f215fab84d6e2d06a002fb238a494e94aa98bca79fb7209161d183e
+  evidence_id: ev-70c59ce07f215fab
+  excerpt: 'Title: aPriori: AI from Design to Source to Make
+
+    Source: apriori.com
+
+    Snippet: # Product DFM CO ₂ Cycle Time Manufacturing Cost Intelligence AI from
+    Design to Source to Make Profitable, manufacturable, and sustainable products
+    at the speed of AI using aPriori’s unique simulation and manufacturing data. Request
+    a Demo Watch Overview ... # Automation Engine ## What Makes aPriori Unique? ###
+    Product CO ₂ DFM manufacturing cycle-time cost intelligence built on deep manufacturing
+    simulation expertise. #### From 3D CAD Models to Product Cost, Carbon, & DFM Intelligence
+    aPriori simulates real world manufacturing using the geometry from 3D-CAD models,
+    metadata, and our proprietary physics-based process models to simulate how a product
+    is actually made, what it should cost, and more. ... ## aPriori Platform ### Product
+    Intelligence from _Design_ to _Source_ to _Make_ aPriori is for engineering, procurement,
+    manufacturing, and estimating teams looking to transform how they develop products,
+    reduce costs, and win profitable business. SIMULATE aP Design Design-for-eXcellence
+    (cost, DFM, carbon, & more) earlier in the design process. ... ## Featured Resources
+    ### Explore Even More About aPriori * [Unique Platform Features](https://www.apriori.com/technology-differentiators/)'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: http://apriori.com/
+- content_hash: d927a83a7afef5ad85a3def7a9e057c3cc46590a5ecbbbcbfc751efc90b260af
+  evidence_id: ev-d927a83a7afef5ad
+  excerpt: 'Detected date: 2023-11-19
+
+    Title: aPriori Technologies
+
+    Source: linkedin.com
+
+    Snippet: * linkedin company id: 39932 * company id: 81775864 * slug: apriori *
+    name: aPriori Technologies * description - aPriori provides AI-powered product
+    intelligence that helps manufacturers make faster, more profitable decisions from
+    design through sourcing to production. ... # Specialties - name: Capital Asset
+    Justification - name: Concept Costing - name: Make vs. Buy Analysis - name: NPI
+    Lifecycle Reduction - name: Post-Launch Product Costs Reduction (VA/VE) - name:
+    Digital Factories - name: Design to Margin - name: Digital Manufacturing Simulation
+    - name: Manufacturing Cost Models - name: Source to Margin ... # Posts AI is only
+    as good as the data and context it receives. Spreadsheets, manual estimates, and
+    experience-driven decisions are not a training set. What aPriori continuously
+    generates from 3D CAD geometry is exactly what AI needs: structured, high-quality,
+    contextual data at the part and assembly levels. ... target="_self" data-tracking-control-name="public_post-text"
+    data-tracking-will-navigate="">aPriori Technologies</a>, walks through a live
+    demo: a plastic part evolving from an initial design with thickness issues, through
+    two revisions, down from a $2.28 part to $1.58 to $0.59, with aPriori tracking
+    the cost, the tradeoffs, and the ... # Crunchbase Funding - funding round count:
+    12 - round date: 2023-11-19 - round name: Series unknown - crunchbase company
+    name: aPriori Technologies - crunchbase company ur'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: http://linkedin.com/company/apriori
+- content_hash: 5c81e20e67397a6928c4126298b0a280f87b060a1fbddebd074c7e995818890a
+  evidence_id: ev-5c81e20e67397a69
+  excerpt: 'Query: aPriori Technologies vs
+
+    1. https://www.cbinsights.com/company/apriori-technologies/alternatives-competitors
+
+    Title: Top aPriori Alternatives, Competitors
+
+    Source: cbinsights.com
+
+    Snippet: t… Start your free demo aPriori vs. Facton View more in-depth data on:
+    Competitors Products Customer References and more Compare aPriori and Facton New
+    call-to-action Top 8aPriori competitors Makersite Assent Cosmo Tech Eugenie AI
+    Fero Labs FactoryMind Hexagon Facton Compare aPriori to Competitors Customer References
+    and more Compare aPriori and Cosmo Tech Eugenie AI Logo Eugenie AI Analyst Briefing
+    Submitted Eugenie AI focuses on manufacturing within the industrial AI sector.
+    The company offers digital twin technology that enables real-time monitoring and
+    management of asse… Start your free demo aPriori vs. Eugenie AI View more in-depth
+    data on: Competitors Products Customer References and more Compare aPriori and
+    Eugenie AI Fero Labs Logo Fero Labs Analyst Briefing Submitted Fero
+
+    2. https://www.trustradius.com/products/apriori-technologies/competitors
+
+    Title: List of Best aPriori Technologies Alternatives & Competitors 2025
+
+    Source: trustradius.com
+
+    Snippet: Skip to main content aPriori Technologies Reviews aPriori Technologies
+    aPriori Technologies Competitors and Alternatives About TrustRadius Scoring 8.7
+    out of 10 0 Best alternatives for: Small Businesses Medium-sized Companies Enterprises
+    Most Commonly Compared to aPriori Technologies Previous Next Boothroyd Dewhurst
+    DFMA Software ### '
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.google.com/search?q=aPriori+Technologies+vs
+- content_hash: d5412ca14632f4dc6353b747aca773e177fa65170b5053c7963a9306beac42ba
+  evidence_id: ev-d5412ca14632f4dc
+  excerpt: "Title: Top aPriori Alternatives, Competitors\n* [Technology Vendors](https://www.cbinsights.com/what-we-offer/technology-vendors/)\n\
+    \  * [Recent Research](https://www.cbinsights.com/research/)\n  * [Newsletter](https://www.cbinsights.com/newsletter/)\n\
+    \  * [Media Support](https://www.cbinsights.com/media-support/)\n  * [Login](https://www.cbinsights.com/login)\n\
+    \n\n\n[](https://www.cbinsights.com)\n\n  * Who We Serve\n\n    * Function\n\n\
+    \      * [Corporate Strategy](https://www.cbinsights.com/who-we-serve/function/corporate-strategy/)\n\
+    \      * [Corporate Venture Capital](https://www.cbinsights.com/who-we-serve/function/corporate-venture-capital/)\n\
+    \      * [Venture Capital](https://www.cbinsights.com/who-we-serve/function/venture-capital/)\n\
+    \      * [IT](https://www.cbinsights.com/who-we-serve/head-of-it/)\n      * [Corporate\
+    \ Innovation](https://www.cbinsights.com/who-we-serve/function/corporate-innovation/)\n\
+    \      * ### How VCs Use CB Insights\n\n[Go to the video gallery →](https://www.cbinsights.com/how-vcs-use-cb-insights/)\n\
+    \n    * Industries\n\n      * [Consumer & Retail](https://www.cbinsights.com/who-we-serve/industries/consumer/)\n\
+    \      * [Tech](https://www.cbinsights.com/who-we-serve/industries/tech/)\n  \
+    \    * [Insurance](https://www.cbinsights.com/who-we-serve/industries/insurance/)\n\
+    \      * [Healthcare](https://www.cbinsights.com/who-we-serve/industries/healthcare/)\n\
+    \      * [Industrials](https://www.cbinsights.com/who-we-serve/industries/industrials/)\n\
+    \      * [Financial Services](https://www.cbins"
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://www.cbinsights.com/company/apriori-technologies/alternatives-competitors
+- content_hash: 40909d5f479080a16ba6ec716cd47d42b50e17891cb6bfa4b8f2066c3f33ed0e
+  evidence_id: ev-40909d5f479080a1
+  excerpt: 'Title: Tracxn Login
+
+    Your browser was unable to load all of Tracxn resources. They may have been blocked
+    by your firewall, proxy or browser configuration. Press **Ctrl+F5** or **Ctrl+Shift+R**
+    to have your browser try again and if that doesn''t work, [**click here to retry**](/)
+    or mail us at [**hi@tracxn.com**](mailto:hi@tracxn.com?subject=Platform%20resources%20not%20loading)
+
+
+    __ Go Back
+
+
+    [](/?redirect=false)
+
+
+    #### Login to Access Tracxn
+
+
+    Business Email Address
+
+
+    Next
+
+
+    OR
+
+
+    Login using your business email address
+
+
+    Enter your business email address
+
+
+    eg. yourname@yourbusiness.com
+
+
+    We do not accept personal email addresses
+
+
+    eg. yourname@gmail.com
+
+
+    Log in with GOOGLE
+
+
+    MS-SymbolLockup
+
+
+    Log in with MICROSOFT
+
+
+    Don''t have an account? [Sign up]()'
+  retrieved_at: '2026-08-19T11:53:01.586105-04:00'
+  url: https://tracxn.com/login?redirecturl=%2Fa%2Fd%2Fcompany%2F58495cbde4b031b3762bf6fb%2Fapriori%3Futm_source%3Dparallel%26utm_medium%3Dai&utm_source=parallel&utm_medium=ai#a:about
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

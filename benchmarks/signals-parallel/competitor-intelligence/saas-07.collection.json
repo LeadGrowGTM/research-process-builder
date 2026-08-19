@@ -1,0 +1,121 @@
+{
+  "collected_at": "2026-08-19T11:53:48.372243-04:00",
+  "company_id": "saas-07",
+  "enrichment_id": "competitor-intelligence",
+  "entries": [
+    {
+      "category": "performance management",
+      "company_name": "Betterworks",
+      "domain": "betterworks.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Betterworks performance management alternatives OR competitors OR \"vs\" OR \"compared to\"",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Betterworks alternatives",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Betterworks vs",
+      "tbs": null
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.trakstar.com/comparisons/performance-management-software-comparison/betterworks-alternatives/",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.owler.com/company/betterworks: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.owler.com/company/betterworks"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "http://betterworks.com/product/performance-management-software",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "http://platform.tracxn.com/a/d/company/53050473e4b0f6e76eba83db/betterworks#a:about",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.gartner.com/reviews/product/%20betterworks-644793963/alternatives: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.gartner.com/reviews/product/%20betterworks-644793963/alternatives"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://peoplemanagingpeople.com/tools/best-betterworks-competitors/: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://peoplemanagingpeople.com/tools/best-betterworks-competitors/"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://betterworks.com/competitors: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://betterworks.com/competitors"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://betterworks.com/compare: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://betterworks.com/compare"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://betterworks.com/alternatives: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://betterworks.com/alternatives"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 36,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.015",
+  "signal_evidence": 39
+}

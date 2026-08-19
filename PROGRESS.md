@@ -1,5 +1,20 @@
 # Progress
 
+## 2026-08-12 — Company enrichment Phase 1
+
+- User correction: the benchmark and all tested offers must be B2B-only.
+- Branch: `wt/company-enrichment-b2b`.
+- Baseline: `py -m pytest -q` → `242 passed in 20.07s`.
+- RED: focused tests failed during collection because `scripts.company_enrichment` did not exist.
+- GREEN: `py -m pytest tests/company_enrichment/test_contracts.py tests/company_enrichment/test_definitions.py -q` → `15 passed`.
+- Regression: `py -m pytest -q` → `257 passed in 17.76s`; `git diff --check` clean; credential scan passed with zero violations.
+- Added immutable contracts, canonical secret-safe serialization, strict manifest loading, and eight B2B P0 manifests.
+- Human Gate 2 is pending before live provider integration. No network or paid provider call was made.
+- Routing revision: separated production waterfalls from comparative providers; homepage scrape is first for known domains, lg_free fills supported fields, Parallel is a late search fallback/comparator, and jobs route Harvest → free job enrichment → company careers scrape → Parallel.
+- Workspace instruction compatibility: Windows blocked a symbolic link without Administrator/Developer Mode, so local `AGENTS.md` was created as a verified hard link to `CLAUDE.md`.
+- Human approval recorded: Firecrawl L3/L4 may be used for public B2B company URLs after free L1/L2 are insufficient, starting with 1–3 fixtures and remaining within the $2 corpus/$1 experiment aggregate caps.
+- AI-Ark correction: this export is starting corpus data, not a provider benchmark. Generated a sanitized 60-company seed with 10 per B2B cohort and 15 shared-core members. All 60 have domain/description/industry seeds; 60 need target-customer research and 12 need products/services. Contact fields were excluded.
+
 ## 2026-08-10 — Recovery inventory preservation
 
 - RED: `py -m pytest tests/test_recovery_inventory.py -q` failed because `scripts.recovery_inventory` did not exist.

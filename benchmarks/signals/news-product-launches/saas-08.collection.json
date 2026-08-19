@@ -1,0 +1,149 @@
+{
+  "collected_at": "2026-08-18T11:41:43.985969-04:00",
+  "company_id": "saas-08",
+  "enrichment_id": "news-product-launches",
+  "entries": [
+    {
+      "category": "incident intelligence",
+      "company_name": "BigPanda",
+      "domain": "bigpanda.io",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "news",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "bigpanda.io news",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "BigPanda \"press release\" OR \"announces\" OR \"newsroom\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "BigPanda launches OR \"new feature\" OR \"introducing\" OR \"now available\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.consultancy.uk/news/45272/mozaic-announces-partnership-with-bigpanda",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.businesswire.com/news/home/20250528507389/en/BigPanda-Launches-Agentic-IT-Operations-to-Bring-Intelligent-Automation-to-the-%24200-billion-ITOps-Market: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.businesswire.com/news/home/20250528507389/en/BigPanda-Launches-Agentic-IT-Operations-to-Bring-Intelligent-Automation-to-the-%24200-billion-ITOps-Market"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.globenewswire.com/news-release/2022/04/07/2418568/0/en/bigpanda-names-rick-underwood-chief-revenue-officer.html: ReadTimeout",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.globenewswire.com/news-release/2022/04/07/2418568/0/en/bigpanda-names-rick-underwood-chief-revenue-officer.html"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.bigpanda.io/resource/video/major_incident_management_collaboration/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.bigpanda.io/press-release/partnership-with-servicenow/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.bigpanda.io/press-release/downdetector-partnership/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://bigpanda.io/blog",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://bigpanda.io/news",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://bigpanda.io/newsroom: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://bigpanda.io/newsroom"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://bigpanda.io/press: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://bigpanda.io/press"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://bigpanda.io/changelog: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://bigpanda.io/changelog"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://bigpanda.io/product-updates: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://bigpanda.io/product-updates"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://bigpanda.io/whats-new: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://bigpanda.io/whats-new"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 39,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.003",
+  "signal_evidence": 42
+}

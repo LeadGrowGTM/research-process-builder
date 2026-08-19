@@ -1,0 +1,970 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-a955bcab27663ac9
+  - ev-e4360a941a821eeb
+  - ev-a5a50f0d0b7f2637
+  field: identity
+  value: AgilePoint
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-a955bcab27663ac9
+  - ev-e4360a941a821eeb
+  - ev-a5a50f0d0b7f2637
+  field: description
+  value: Our Story Platform Vendor-Neutral Composable Architecture Real-Time Agentic
+    Governance Composable AppGen AI Control Tower Business-Enabled Agentic AI Sovereign
+    Enterprise AI Dynamic Process Layer Dynamic Process Patterns Tour AI-Powered Showcase​
+    Legal Agreement Reconciliation​ AI-Powered Email Triage​ AI-Powered Case Studies​
+    Warranty Claim Fraud Detection​ AI Lead Triage & Sales Enablement​ Agentic Maturity
+    Model​ Task-Centric Agentic AI​ Process-Centric Agentic AI​ Multi-Agent Real-Time
+    Agent
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-a955bcab27663ac9
+  - ev-e4360a941a821eeb
+  - ev-a5a50f0d0b7f2637
+  field: offers
+  value: business process automation
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-a955bcab27663ac9
+  - ev-e4360a941a821eeb
+  - ev-a5a50f0d0b7f2637
+  field: icp
+  value: enterprises
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-a955bcab27663ac9
+  - ev-e4360a941a821eeb
+  - ev-a5a50f0d0b7f2637
+  field: personas
+  value: enterprises
+  visibility: message_safe
+company_id: saas-02
+corrections: []
+evidence:
+- content_hash: a955bcab27663ac913982da24a234b95e727eacc2d7647744e95086225a35cd9
+  evidence_id: ev-a955bcab27663ac9
+  excerpt: 'Our Story Platform Vendor-Neutral Composable Architecture Real-Time Agentic
+    Governance Composable AppGen AI Control Tower Business-Enabled Agentic AI Sovereign
+    Enterprise AI Dynamic Process Layer Dynamic Process Patterns Tour AI-Powered Showcase​
+    Legal Agreement Reconciliation​ AI-Powered Email Triage​ AI-Powered Case Studies​
+    Warranty Claim Fraud Detection​ AI Lead Triage & Sales Enablement​ Agentic Maturity
+    Model​ Task-Centric Agentic AI​ Process-Centric Agentic AI​ Multi-Agent Real-Time
+    Agentic AI​ Multi-Vendor Agentic AI Mesh​ Composable App Creation and GenAI AppGen​
+    QuickStart Guide Videos ​ GenAI AppGen Solution By INDUSTRY Manufacturing Banking
+    Healthcare Government Energy & Utilities By buyer role For executives CIO, CDO,
+    COO perspectives For EA & developers Architecture teams & technical buyers Agentic
+    Maturity Model Pricing Our Story Resources Webinars & Events Live Training Schedule
+    Documentation AgilePoint Partners Customers & Case Studies Whitepapers & Brochures
+    Company About Us Why Partner with AgilePoint Trust center Contact us Request Demo
+    Start Free Trial → 22 YEARS Against the norm · since 2003 We didn''t set out to
+    build workflow. We set out to anticipate AI. When we started AgilePoint in 2003,
+    we made an unfashionable bet: that the world would eventually need an execution
+    architecture that could change in real time, driven by intelligence. Twenty-two
+    years later , the rest of the market is calling that bet "agentic AI." We''ve
+    been calling it composable architecture since day one. See the Journey → 2003
+    + Founded · zero VC funding raised 2007 Gartner BPM Cool Vendor validation 120
+    + Enterprise systems harmonized 1200 + Pre-built composable activities shipped
+    01 — The bet A workflow company that never wanted to be one. In 2003, our founders
+    made a choice that didn''t make business sense at the time. At UMass Amherst,
+    with a PhD path and offers from Intel, HP, and Sun on the table, the founder picked
+    something stranger: design a systems execution arc'
+  retrieved_at: '2026-08-12T21:00:48.382215+00:00'
+  url: https://www.agilepoint.com/our-story
+- content_hash: e4360a941a821eebf65e97103040dee38bf09c6722ce3a407b5f449fc84c4910
+  evidence_id: ev-e4360a941a821eeb
+  excerpt: AgilePoint | LinkedIn Skip to main content LinkedIn Top Content People
+    Learning Jobs Games Sign in Join now AgilePoint Software Development Mountain
+    View, California 5,176 followers Operationalize, Democratize, and Govern Enterprise
+    Agentic AI Orchestration with AgilePoint. Follow View all 180 employees Report
+    this company About us Founded in 2003 and headquartered in Mountain View, California,
+    AgilePoint enables Fortune 5000 companies and governments worldwide to operationalize,
+    democratize, and govern enterprise Agentic AI at run time with resilience and
+    integrity. Renowned for its Agentic AI Capability Maturity Model, AgilePoint has
+    defined the future-path architecture for AI-enabled organizations moving forward.
+    At the heart of AgilePoint’s platform is its platform-agnostic, composable architecture—a
+    centralized, exception-resistant hub built by reusing and harmonizing existing
+    tech stacks for Agentic AI. By leveraging exception resistance, AgilePoint captures
+    embedded decision intelligence to train its AI Control Tower Agentic Framework,
+    empowering organizations to operationalize AI with democratization and governance.
+    The AgilePoint AI Control Tower also serves as a universal governance container
+    for AI agents created with third-party frameworks such as LangChain, CrewAI, n8n,
+    Autogen, and more, enabling seamless support for multi-vendor and multi-agent
+    applications. Integrating over 1,200 business activities with 120+ systems, AgilePoint
+    delivers resilient, exception-resistant operations and dynamic adaptability unmatched
+    by conventional automation tools. Operationalize, Democratize, and Govern Enterprise
+    Agentic AI Orchestration with AgilePoint. Website https://agilepoint.com External
+    link for AgilePoint Industry Software Development Company size 51-200 employees
+    Headquarters Mountain View, California Type Privately Held Founded 2003 Specialties
+    BPMS, Workflow, Business Process Management, SharePoint, Low-Code, Forms, eForm,
+    Office 365, Digital Process Autom
+  retrieved_at: '2026-08-12T21:00:49.112683+00:00'
+  url: https://www.linkedin.com/company/agilepoint
+- content_hash: a5a50f0d0b7f2637a3b796fa0f9516af1dc70e45d9d65d67eb31cd1dd937eaec
+  evidence_id: ev-a5a50f0d0b7f2637
+  excerpt: 'AgilePoint Partnerships · Partnerbase My Lists Browse Partner Tech Stack
+    About Log In Sign Up My Lists Browse Partner Tech Stack About Log In Sign Up Home
+    / AgilePoint AgilePoint 129 Partners agilepoint.com Flag incorrect data Need to
+    track AgilePoint or find similar companies at scale? Use Trace for saved lists,
+    company monitoring, and richer firmographic and technographic filters. Join Trace
+    for Free Partner List Company Type Employees Industry Details Google Technology
+    51–200 Software & Tech Details Source Link MySQL AB Technology 201–500 Software
+    & Tech Details Source Link Microsoft Technology 10,001+ Software & Tech Details
+    Source Link Amazon Web Services Technology 5001–10000 Software & Tech Details
+    Source Link Salesforce Technology 10,001+ Software & Tech Details Source Link
+    Oracle Technology 5001–10000 Software & Tech Details Source Link HubSpot Technology
+    5001–10000 Software & Tech Details Source Link Atlassian Technology 10,001+ Software
+    & Tech Details Source Link Adobe Technology 10,001+ Software & Tech Details Source
+    Link Slack Technology 1001–5000 Software & Tech Details Source Link LinkedIn Technology
+    10,001+ Software & Tech Details Source Link SAP Technology 10,001+ Software &
+    Tech Details Source Link Snowflake Technology 5001–10000 Software & Tech Details
+    Source Link Mailchimp Technology 10,001+ Software & Tech Details Source Link Okta
+    Technology 5001–10000 Software & Tech Details Source Link Zendesk Technology 2–10
+    Software & Tech Details Source Link ServiceNow Technology 1001–5000 Software &
+    Tech Details Source Link Twitter Technology 5001–10000 Software & Tech Details
+    Source Link PayPal Technology 501–1000 Financial Services Details Source Link
+    Zoho Technology 10,001+ Software & Tech Details Source Link Zoom Technology 5001–10000
+    Software & Tech Details Source Link Oracle NetSuite Technology 1001–5000 Software
+    & Tech Details Source Link WordPress Technology 1001–5000 Software & Tech Details
+    Source Link Dropbox, Inc Technology 1001–5000 Software & '
+  retrieved_at: '2026-08-12T21:00:49.742124+00:00'
+  url: https://www.partnerbase.com/agilepoint
+- content_hash: 9086bbf0a4ac7c9f94eaf94fcd93982d3940d31e3931e76381cb3340569d619e
+  evidence_id: ev-9086bbf0a4ac7c9f
+  excerpt: 'Detected date: 2024-11-04
+
+    Title: AgilePoint Intelligent Process Automation App for ...
+
+    Date: 2024-11-04
+
+    Source: blog.agilepoint.com
+
+    Snippet: # AgilePoint Intelligent Process Automation App for SharePoint Online
+    We are thrilled to announce the launch of our completely redesigned SharePoint
+    app for AgilePoint. https://appsource.microsoft.com/en-in/product/office/WA200007669?tab=Overview
+    ... As mentioned in the Microsoft’s announcement, existing Microsoft and AgilePoint
+    customers can continue to use SharePoint Add-In and workflows till **April 1 st
+    2026** before which you need to move to the new SharePoint architecture. But don’t
+    worry—we’ve got your back! ... Hence it requires our upcoming release AgilePoint
+    NX v9 Software Update 1 which is going to be generally available in our production
+    cloud environments by end of November 2024 and available for on-premise customers
+    by mid-December 2024.'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://blog.agilepoint.com/agilepoint-intelligent-process-automation-app-for-sharepoint-online/
+- content_hash: f982912f1aaec407c95756733f64edf6be2b0540e0fe3e8e4fda175c27100c51
+  evidence_id: ev-f982912f1aaec407
+  excerpt: 'Detected date: May 19, 2026
+
+    Title: AgilePoint NX Unleashed
+
+    Source: blog.agilepoint.com
+
+    Snippet: # [AgilePoint Now Builds Machine Learning Models for You](https://blog.agilepoint.com/agilepoint-now-builds-machine-learning-models-for-you/)
+    In a release already filled with groundbreaking AI features, we’ve saved the crown
+    jewel – Machine Learning Model Foundry – for last. ... ## [A Visual Audit Trail
+    for Adaptive Automation](https://blog.agilepoint.com/a-visual-audit-trail-for-adaptive-automation/)
+    Posted on [May 19, 2026 May 27, 2026](https://blog.agilepoint.com/a-visual-audit-trail-for-adaptive-automation/)
+    by [Lucas Drege](https://blog.agilepoint.com/author/lucasdrege/) ... ## [OpenAI
+    Compatible LLMs Invoked from Your eForms!](https://blog.agilepoint.com/openai-compatible-llms-invoked-from-your-eforms/)
+    Posted on [April 14, 2026 April 15, 2026](https://blog.agilepoint.com/openai-compatible-llms-invoked-from-your-eforms/)
+    by [Lucas Drege](https://blog.agilepoint.com/author/lucasdrege/)'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://blog.agilepoint.com/
+- content_hash: 60eef4b36b88b8f022d9d5c5bd2de2ee16248d255aa14e77ec7d35105c3bcf8b
+  evidence_id: ev-60eef4b36b88b8f0
+  excerpt: 'Detected date: 2020-11-03
+
+    Title: AgilePoint Celebrates the Future of Automation
+
+    Date: 2020-11-03
+
+    Source: prnewswire.com
+
+    Snippet: # AgilePoint Celebrates the Future of Automation Digital process automation
+    software company launches version 8.0 of its landmark PaaS geared toward users
+    with minimal code experience. ## News provided by **AgilePoint, Inc.** Nov 02,
+    2020, 20:54 ET ## Share this article Share to X Share this article Share to X
+    MOUNTAIN VIEW, Calif. , Nov. 2, 2020 /PRNewswire/ -- Today, AgilePoint, a software
+    company specializing in digital process automation for users with minimal code
+    experience, launched version 8 of their landmark PaaS. ... * An addition of ServiceNow,
+    Jira, Microsoft Power Automate, and Ethereum Blockchain to the extensive list
+    of 70+ out-of-the-box integrations. * A host of new user-requested features that
+    make process automation stress-free.'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://www.prnewswire.com/news-releases/agilepoint-celebrates-the-future-of-automation-301165429.html
+- content_hash: 1e408159b6c725368b8ae39db9696456e783e1766db5a01839313dd5e4561637
+  evidence_id: ev-1e408159b6c72536
+  excerpt: 'Detected date: 2026-03-19
+
+    Title: From ''Software Factory'' to ''AI Factory'': How to Transition?
+
+    Date: 2026-03-19
+
+    Source: agilepoint.com
+
+    Snippet: # From ''Software Factory'' to ''AI Factory'': How to Transition? Mar
+    19, 2026 • BY Jesse Shiah • BY 4 min read ... ## 2) **To build an AI Factory,
+    organizations must ensure that existing IT systems and software applications can
+    be reused and coexist with it.** AgilePoint, an abstraction-enabled codeless composable
+    application platform, enables model-driven cross-platform composability. ... ##
+    Checkout Our Similar Blog Posts agilepoint-outlook-nx-task-manager-integration
+    AgilePoint + SharePoint Capabilities Modernized Microsoft Experiences: What''s
+    New for SharePoint and Outlook in NX v10 Agentic AI New in AgilePoint NX v10:
+    A Growing Lineup of Connectors Across AI, Data, and Automation ... # See Run-Time
+    Resilience in Real-Time In 2003, AgilePoint bet the world would need an execution
+    architecture that could change in real time, driven by intelligence. That composable
+    architecture made us a BPM pioneer (2007), a low-code leader (2016), and now the
+    missing dynamic process layer for agentic AI (2025). We were early.'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://www.agilepoint.com/blog-posts/from-software-factory-to-ai-factory-how-to-transition
+- content_hash: 66080bf94e378304cb2ba77374f4bc533129b7eec8d2f3611249dc2adf98c103
+  evidence_id: ev-66080bf94e378304
+  excerpt: 'Title: AgilePoint - Overview, News & Similar companies
+
+    Source: zoominfo.com
+
+    Snippet: # AgilePoint ## Sell smarter with deeper company insights. ### Top Executive
+    AgilePoint Logo * [Legal Automation Group Enters into Partnership Agreement with
+    AgilePoint](https://www.prnewswire.com:443/news-releases/legal-automation-group-enters-into-partnership-agreement-with-agilepoint-301452705.html)
+    MOUNTAIN VIEW, Calif., Jan.'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://www.zoominfo.com/c/agilepoint/353604301
+- content_hash: a6406c06119d669ccb13a562a0cb94760f3834a25885f56eb93fa7dbd18faa5b
+  evidence_id: ev-a6406c06119d669c
+  excerpt: 'Detected date: 2026-03-12
+
+    Title: Blog Post
+
+    Date: 2026-03-12
+
+    Source: agilepoint.com
+
+    Snippet: # An IT Leader’s Guide to Enterprise Business Process Automation Mar
+    12, 2026 • BY AgilePoint • BY 5 min read ... ## Checkout Our Similar Blog Posts
+    agilepoint-outlook-nx-task-manager-integration AgilePoint + SharePoint Capabilities
+    Modernized Microsoft Experiences: What''s New for SharePoint and Outlook in NX
+    v10 Agentic AI New in AgilePoint NX v10: A Growing Lineup of Connectors Across
+    AI, Data, and Automation AgilePoint + SharePoint Capabilities The SharePoint 2016
+    & 2019 Deadline Is Here: Modernize Before Support Ends Optimatia-home-one-testimonial-glow
+    ⏵ THE BOTTOM LINE ... # See Run-Time Resilience in Real-Time In 2003, AgilePoint
+    bet the world would need an execution architecture that could change in real time,
+    driven by intelligence. That composable architecture made us a BPM pioneer (2007),
+    a low-code leader (2016), and now the missing dynamic process layer for agentic
+    AI (2025). We were early.'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://www.agilepoint.com/blog-posts/an-it-leaders-guide-to-enterprise-business-process-automation
+- content_hash: b8f75a2972ef2b130d54111ebad134be12f90f078e90ff7ccee2fd89d946b523
+  evidence_id: ev-b8f75a2972ef2b13
+  excerpt: 'Detected date: 2022-09-15
+
+    Title: Canon Solutions America, Inc. Expands Digital Transformation Portfolio
+    with All-in-One AgilePoint Technology
+
+    Date: 2022-09-15
+
+    Source: prnewswire.com
+
+    Snippet: # Canon Solutions America, Inc. Expands Digital Transformation Portfolio
+    with All-in-One AgilePoint Technology ## News provided by **Canon Solutions America,
+    Inc.** Sep 14, 2022, 22:42 ET ## Share this article Share to X Share this article
+    Share to X _AgilePoint V8.0 is the only enterprise-ready digital transformation
+    platform_ MELVILLE, N.Y. , Sept. 14, 2022 /PRNewswire/ -- Canon Solutions America,
+    Inc., a wholly owned subsidiary of Canon U.S.A. , Inc., is pleased to announce
+    the availability of a cloud-based digital transformation platform, [AgilePoint
+    V8.0](https://c212.net/c/link/?t=0&l=en&o=3649214-1&h=2806469847&u=https%3A%2F%2Fwww.csa.canon.com%2Finternet%2Fportal%2Fus%2Fcsa%2Fproducts%2Fdetails%2Fsoftware%2Fenterprise-office%2Fagilepoint%2Fagilepoint&a=AgilePoint+V8.0)
+    .'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://www.prnewswire.com/news-releases/canon-solutions-america-inc-expands-digital-transformation-portfolio-with-all-in-one-agilepoint-technology-301624906.html
+- content_hash: a9303600c574b921ccf71c50e02200235ae992968a83b677cc819276096aae0a
+  evidence_id: ev-a9303600c574b921
+  excerpt: 'Title: AI Control Tower
+
+    Source: documentation.agilepoint.com
+
+    Snippet: To: AgilePoint NX v9.0, Software Update 1 © 2026 AgilePoint, Inc. All
+    rights reserved. Related Topics Amazon SageMaker tab MS Azure Machine Learning
+    tab Process Detail > AI Control Towers tab Examples (External) Supercharge Your
+    end-to-end Orchestration with AI Control Tower: Real-Time Monitoring and Smart
+    Decision Making (External) AI Control Tower – Predictive AI Agents for Image Classification
+    (External) Introducing the AI Control Tower for Azure Machine Learning Examples
+    - Step-by-step use case examples, information about what types of examples are
+    provided in the AgilePoint NX Product Documentation, and other resources where
+    you can find more examples. About This Page This page is a navigational feature
+    that can help you find the most important information about this topic from one'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://documentation.agilepoint.com/9000/startup/cloudglossaryAiControlTower.html
+- content_hash: 7bf3390903c824aed65861f3f10817525fe29ab35d715bd31dd0af1949ab1de2
+  evidence_id: ev-7bf3390903c824ae
+  excerpt: 'Query: agilepoint.com news
+
+    1. https://blog.agilepoint.com/agilepoint-intelligent-process-automation-app-for-sharepoint-online/
+
+    Title: AgilePoint Intelligent Process Automation App for ...
+
+    Date: 2024-11-04
+
+    Source: blog.agilepoint.com
+
+    Snippet: # AgilePoint Intelligent Process Automation App for SharePoint Online
+    We are thrilled to announce the launch of our completely redesigned SharePoint
+    app for AgilePoint. https://appsource.microsoft.com/en-in/product/office/WA200007669?tab=Overview
+    ... As mentioned in the Microsoft’s announcement, existing Microsoft and AgilePoint
+    customers can continue to use SharePoint Add-In and workflows till **April 1 st
+    2026** before which you need to move to the new SharePoint architecture. But don’t
+    worry—we’ve got your back! ... Hence it requires our upcoming release AgilePoint
+    NX v9 Software Update 1 which is going to be generally available in our production
+    cloud environments by end of November 2024 and available for on-premise customers
+    by mid-December 2024.
+
+    2. https://blog.agilepoint.com/
+
+    Title: AgilePoint NX Unleashed
+
+    Source: blog.agilepoint.com
+
+    Snippet: # [AgilePoint Now Builds Machine Learning Models for You](https://blog.agilepoint.com/agilepoint-now-builds-machine-learning-models-for-you/)
+    In a release already filled with groundbreaking AI features, we’ve saved the crown
+    jewel – Machine Learning Model Foundry – for last. ... ## [A Visual Audit Trail
+    for Adaptive Automation](https://blog.agilepoint.com/a-visual-audit-trail-for-adaptive-auto'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://www.google.com/search?q=agilepoint.com+news&tbm=nws
+- content_hash: 71b06e5ea5a0d41ba47b264567afd8b8c7fd928766a5cc0ee83a5448019d482f
+  evidence_id: ev-71b06e5ea5a0d41b
+  excerpt: 'Detected date: 2025-09-18
+
+    Title: Author: Nishant Shrivastava
+
+    Date: 2025-09-18
+
+    Source: blog.agilepoint.com
+
+    Snippet: # Author: Nishant Shrivastava ## [AgilePoint’s GenAI and Agentic AI Features
+    on Display in Platform Build from Scratch](https://blog.agilepoint.com/agilepoints-genai-and-agentic-ai-features-on-display-in-platform-build-from-scratch/)
+    2025](https://blog.agilepoint.com/agilepoints-genai-and-agentic-ai-features-on-display-in-platform-build-from-scratch/)
+    by [Nishant ... ## [Miscellaneous Enhancements to eForms as Part of v9.0 SU1 Release](https://blog.agilepoint.com/miscellaneous-enhancements-to-eforms-as-part-of-v9-0-su1-release/)
+    Posted on [November 19, 2024 November 19, 2024](https://blog.agilepoint.com/miscellaneous-enhancements-to-eforms-as-part-of-v9-0-su1-release/)
+    by [Nishant ... ## [AgilePoint Intelligent Process Automation App for SharePoint
+    Online](https://blog.agilepoint.com/agilepoint-intelligent-process-automation-app-for-sharepoint-online/)
+    Posted on [November 4, 2024 January 17, 2025](https://blog.agilepoint.com/agilepoint-intelligent-process-automation-app-for-sharepoint-online/)
+    by [Nishant'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://blog.agilepoint.com/author/nshrivastava79/
+- content_hash: a7e4370d00d51fef6be8aacc7a09b5ca74928f8602c6f2ecbd182d7a60e8f676
+  evidence_id: ev-a7e4370d00d51fef
+  excerpt: 'Detected date: 2026-06-02
+
+    Title: The enterprises that win won''t rent AI
+
+    Date: 2026-06-02
+
+    Source: agilepoint.com
+
+    Snippet: # When success becomes predictable, you scale it. ## An operating model,
+    not an experiment. Sovereign Enterprise AI isn''t a lab. It''s a _durable enterprise
+    operating model_ — and AgilePoint moves enterprises from fragmented initiatives
+    to governed, scalable, operational AI. Your CFO ... # Control the AI. Control
+    the data. Control the outcome. In 2003, AgilePoint bet the world would need an
+    execution architecture that could change in real time, driven by intelligence.
+    That composable architecture made us a BPM pioneer (2007), a low-code leader (2016),
+    and now the missing dynamic process layer for agentic AI (2025). We were early.
+    Now we''re on time to prove it: build your processes right, and your enterprise
+    AI succeeds 5–10X faster and more effectively. [](https://www.facebook.com/AgilePointInc)
+    [](https://www.instagram.com/AgilePoint/) [](https://twitter.com/agilepoint) [](https://www.linkedin.com/company/agilepoint)
+    [](https://www.youtube.com/AgilePoint) ⓒ 2026 AgilePoint Inc. - All rights Reserved'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://www.agilepoint.com/sovereign-enterprise-ai
+- content_hash: 5134a958772886ebda50d9fbe161d4dea670818fb7ba5df143dd3dffa7ce35fb
+  evidence_id: ev-5134a958772886eb
+  excerpt: 'Detected date: 2026-06-02
+
+    Title: Bridging the control gap
+
+    Date: 2026-06-02
+
+    Source: agilepoint.com
+
+    Snippet: # **Bridging the** ## A governance gateway, by design. _AgilePoint_ **decouples
+    adaptive decision-making** _from execution authorization. Every AI proposal passes
+    through an independent governance layer_ **before** _it touches a system of record._
+    action_point_architecture.diagram ... ## Manual coordination doesn''t scale. ###
+    Real-Time Credit Approval & Order Release AI continuously evaluates credit and
+    risk in real time. AgilePoint authorizes order release **the microsecond** criteria
+    are met — entirely safely. 🌐 Use Case 03 ... # Scale your velocity. Maintain your
+    control. In 2003, AgilePoint bet the world would need an execution architecture
+    that could change in real time, driven by intelligence. That composable architecture
+    made us a BPM pioneer (2007), a low-code leader (2016), and now the missing dynamic
+    process layer for agentic AI (2025). We were early.'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://www.agilepoint.com/real-time-agentic-governance
+- content_hash: eb5764b08da2de93505f5b778d1baa97b6115548e9dbeaf4b2c85d92dfbd28ae
+  evidence_id: ev-eb5764b08da2de93
+  excerpt: 'Detected date: April 2026
+
+    Title: April 2026 – AgilePoint NX Unleashed
+
+    Source: blog.agilepoint.com
+
+    Snippet: # Month: April 2026 ## [Introducing AgilePoint for SharePoint OnPremises
+    Subscription Edition with SharePoint Workflow Manager Support](https://blog.agilepoint.com/introducing-agilepoint-for-sharepoint-onpremises-subscription-edition-with-sharepoint-workflow-manager-support/)
+    We are thrilled to announce the launch of our completely redesigned SharePoint
+    ... aligned with Microsoft’s product roadmap. ... ## [AgilePoint v10 Now Supports
+    eForm Lookups for OpenAI!](https://blog.agilepoint.com/agilepoint-v10-now-supports-form-lookups-for-openai/)
+    To round out our support for the leading AI platform over the last years, AgilePoint
+    is proud to announce support for OpenAI (and other platforms coming soon!) at
+    the forms layer.'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://blog.agilepoint.com/2026/04/
+- content_hash: 4bc942357c1e261936cc9de208682f2c1805816d5f3d7a0715929cb588220e84
+  evidence_id: ev-4bc942357c1e2619
+  excerpt: 'Detected date: March 3, 2021
+
+    Title: AgilePoint Funding: How Much Did They Raise & Key Investors
+
+    Source: zoominfo.com
+
+    Snippet: Sign Up Contact Sales Log In Log In Contact Sales Sign Up AgilePoint
+    breadcrumbs-arrow AgilePoint Financial Insights # How Much Did AgilePoint Raise?
+    Funding & Key Investors AgilePoint has secured $849K in total financing, with
+    its most recent capital infusion of $499K occurring on March 3, 2021. This major
+    strategic investment underscores the company''s significant traction in the enterprise
+    software market. ... What is AgilePoint? AgilePoint has raised a total of $849K
+    across 2 funding rounds: 2020 Debt $350K 2021 Debt $499K Debt (2020): $350K with
+    participation from PPP Debt (2021): $499K led by PPP ## Key Investors in AgilePoint
+    PPP Public-Private Partnership PPP Public-Private Partnership ## What''s next
+    for AgilePoint? ... What are the most recent funding rounds that AgilePoint has
+    completed, and what were the funding rounds? AgilePoint has recently completed
+    2 funding rounds: Debt on Mar 3, 2021, Debt on Apr 28, 2020. What is the total
+    amount of funding AgilePoint has raised to date? AgilePoint has raised a total
+    of $849K in funding to date. How many funding rounds has AgilePoint completed?
+    AgilePoint has completed 2 funding rounds. How much funding did AgilePoint raise
+    in its most recent funding round? AgilePoint raised $499K in its most recent funding
+    round. Who are the lead investors in AgilePoint''s latest funding round? The lead
+    investor in AgilePoint''s latest funding rou'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: http://zoominfo.com/financial/agilepoint/353604301
+- content_hash: 3fb135dad264d4db0459e79b1da594377d3ec8820ccaa072ea661d629ed58533
+  evidence_id: ev-3fb135dad264d4db
+  excerpt: 'Title: AgilePoint Debuts Agentic Operations Control Tower To Orchestrate
+    Cross-Functional Workflows Across The Enterprise - The Detroit Free Press
+
+    Source: freep.com
+
+    Snippet: release content distributed by XPR Media. Members of the editorial and
+    news staff of the USA TODAY Network were not involved in the creation of this
+    content. AgilePoint Debuts Agentic Operations Control Tower To Orchestrate Cross-Functional
+    Workflows Across The Enterprise Reusable blocks (prompts, tools, policies, connectors)
+    accelerate solution assembly; runtime governance enforces identity, scope, and
+    escalation rules; observability captures lineage and metrics for each run. Availability
+    The Agentic Operations Control Tower is available to AgilePoint NX customers beginning
+    this quarter, with reference blueprints for finance, IT, and customer operations.
+    Existing NX workflows can be extended with agentic steps without re-platforming.
+    About AgilePoint AgilePoint is a leader in composable'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: http://freep.com/press-release/story/148625/agilepoint-debuts-agentic-operations-control-tower-to-orchestrate-cross-functional-workflows-across-the-enterprise
+- content_hash: 47142135a619ce1da3663d651e05e0c7e7faa4cac64462a3d43b54e24ab201e0
+  evidence_id: ev-47142135a619ce1d
+  excerpt: 'Detected date: March 11, 2026
+
+    Title: AgilePoint NX v9.0 Software Update 1 has been released! – AgilePoint
+
+    Source: helpdesk.agilepoint.com
+
+    Snippet: March 11, 2026 14:44 Updated Follow The installation package for AgilePoint
+    NX v9.0, Software Update 1 (09.00.0001) has been released with new fixes and enhancements.
+    List of New Fixes and Enhancements: Release Notes Installation: AgilePoint NX
+    v9.0 Software Update Installation Facebook Twitter LinkedIn Was this article helpful?
+    35 out of 35 found this helpful Have more questions? Submit a request Return to
+    top Related articles AgilePoint NX v9.0 has been released! Google Chrome Browser
+    Upgrade Patch Released Software Update 1 for AgilePoint NX v9.0 Released (1/13/25)
+    How do I use a network share as a file repository? Cumulative Update 7 Released
+    for AgilePoint NX v7.0 Software Update 2 (12/23/21) Comments 0 comments Article
+    is closed for comments. Logo Community Submit a request Sign in'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://helpdesk.agilepoint.com/hc/en-us/articles/37377003686291-AgilePoint-NX-v9-0-Software-Update-1-has-been-released
+- content_hash: 19e63f0ae2b1705cfb1e2f5edfc926fd12f2f5d61ef3e365c11c223fc519c55e
+  evidence_id: ev-19e63f0ae2b1705c
+  excerpt: 'Title: AgilePoint Information
+
+    Source: rocketreach.co
+
+    Snippet: # AgilePoint Information | **Website** | https://agilepoint.com | | **Revenue**
+    | $42 million | | **Funding** | $849000 | | **Employees** | 183 ( [138 on RocketReach](https://rocketreach.co/person?employer%5B%5D=140226%3AAgilePoint
+    "Search for AgilePoint Employees") ) | | **Founded** | 2003 | ... ## **AgilePoint
+    Questions** ### Who is the CEO and Co-Founder of AgilePoint? **Jesse Shiah** is
+    the CEO and Co-Founder of AgilePoint.'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://rocketreach.co/agilepoint-profile_b5c43a10f42e0d94
+- content_hash: 9a3f4856311088275433c0734c471730383d52e24f82ee91bbe3e590da555e02
+  evidence_id: ev-9a3f485631108827
+  excerpt: 'Detected date: January 27, 2026
+
+    Title: AgilePoint Debuts Agentic Operations Control Tower To Orchestrate Cross-Functional
+    Workflows Across The Enterprise - Shreveport Times | The Times
+
+    Source: shreveporttimes.com
+
+    Snippet: Distributed by EIN Presswire AgilePoint launched the Agentic Operations
+    Control Tower, enabling governed AI orchestration across systems and teams for
+    measurable business outcomes. SAN JOSE, CA, UNITED STATES, January 27, 2026 /
+    EINPresswire.com / — AgilePoint announced the Agentic Operations Control Tower,
+    a new capability in AgilePoint NX that coordinates multiple AI agents, business
+    systems, and human approvals to drive closed-loop outcomes across finance, IT,
+    supply chain, HR, and customer operations. Built on AgilePoint’s composable, model-driven
+    architecture, the Control Tower unifies discovery, orchestration, governance,
+    and measurement, enabling enterprises to move from one-off AI use cases to durable,
+    cross-functional value at scale. Compliance-By-Design: Embed policies'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://www.shreveporttimes.com/press-release/story/25834/agilepoint-debuts-agentic-operations-control-tower-to-orchestrate-cross-functional-workflows-across-the-enterprise
+- content_hash: f726fd12794d74708163e0c4640b1230e459c38ca5d9b334fb831efbcc47be9d
+  evidence_id: ev-f726fd12794d7470
+  excerpt: 'Query: AgilePoint "press release" OR "announces" OR "newsroom"
+
+    1. https://blog.agilepoint.com/author/nshrivastava79/
+
+    Title: Author: Nishant Shrivastava
+
+    Date: 2025-09-18
+
+    Source: blog.agilepoint.com
+
+    Snippet: # Author: Nishant Shrivastava ## [AgilePoint’s GenAI and Agentic AI Features
+    on Display in Platform Build from Scratch](https://blog.agilepoint.com/agilepoints-genai-and-agentic-ai-features-on-display-in-platform-build-from-scratch/)
+    2025](https://blog.agilepoint.com/agilepoints-genai-and-agentic-ai-features-on-display-in-platform-build-from-scratch/)
+    by [Nishant ... ## [Miscellaneous Enhancements to eForms as Part of v9.0 SU1 Release](https://blog.agilepoint.com/miscellaneous-enhancements-to-eforms-as-part-of-v9-0-su1-release/)
+    Posted on [November 19, 2024 November 19, 2024](https://blog.agilepoint.com/miscellaneous-enhancements-to-eforms-as-part-of-v9-0-su1-release/)
+    by [Nishant ... ## [AgilePoint Intelligent Process Automation App for SharePoint
+    Online](https://blog.agilepoint.com/agilepoint-intelligent-process-automation-app-for-sharepoint-online/)
+    Posted on [November 4, 2024 January 17, 2025](https://blog.agilepoint.com/agilepoint-intelligent-process-automation-app-for-sharepoint-online/)
+    by [Nishant
+
+    2. https://www.agilepoint.com/sovereign-enterprise-ai
+
+    Title: The enterprises that win won''t rent AI
+
+    Date: 2026-06-02
+
+    Source: agilepoint.com
+
+    Snippet: # When success becomes predictable, you scale it. ## An operating model,
+    not an experiment. Sovereign Enterprise AI isn''t a '
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://www.google.com/search?q=AgilePoint+%22press+release%22+OR+%22announces%22+OR+%22newsroom%22&tbs=qdr%3Ay
+- content_hash: 1670bd265b598202d9afea4ead28305ef3c72938e269b0b51fc2aa1c88255b50
+  evidence_id: ev-1670bd265b598202
+  excerpt: 'Detected date: 2026-03-11
+
+    Title: AgilePoint NX v9.0 Software Update 1 has been released!
+
+    Date: 2026-03-11
+
+    Source: helpdesk.agilepoint.com
+
+    Snippet: # AgilePoint NX v9.0 Software Update 1 has been released! Avatar AgilePoint
+    Documentation * March 11, 2026 14:44 * Updated Follow The installation package
+    for AgilePoint NX v9.0, Software Update 1 (09.00.0001) has been released with
+    new fixes and enhancements. **List of New Fixes and Enhancements:** ... ## Related
+    articles (1/13/25)](https://helpdesk.agilepoint.com/hc/en-us/related/click?data=BAh7CjobZGVzdGluYXRpb25fYXJ0aWNsZV9pZGwrCBMdvW3%2BIToYcmVmZXJyZXJfYXJ0aWNsZV9pZGwrCJMJB4P%2BIToLbG9jYWxlSSIKZW4tdXMGOgZFVDoIdXJsSSJgL2hjL2VuLXVzL2FydGljbGVzLzM3Mzc2NjQ2NTIwMDgzLVNvZnR3YXJlLVVwZGF0ZS0xLWZvci1BZ2lsZVBvaW50LU5YLXY5LTAtUmVsZWFzZWQtMS0xMy0yN
+    ... (12/23/21)](https://helpdesk.agilepoint.com/hc/en-us/related/click?data=BAh7CjobZGVzdGluYXRpb25fYXJ0aWNsZV9pZGwrCBMsGbMDBDoYcmVmZXJyZXJfYXJ0aWNsZV9pZGwrCJMJB4P%2BIToLbG9jYWxlSSIKZW4tdXMGOgZFVDoIdXJsSSJ0L2hjL2VuLXVzL2FydGljbGVzLzQ0MTM5MzYxODQzMzktQ3VtdWxhdGl2ZS1VcGRhdGUtNy1SZWxlYXNlZC1mb3ItQWdpbGVQb2ludC1OWC12Ny0wLVNvZnR3YX'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://helpdesk.agilepoint.com/hc/en-us/articles/37377003686291-AgilePoint-NX-v9-0-Software-Update-1-has-been-released
+- content_hash: fa078115f292924b915b3f8fc025b182d3a150325763f80b520575c8045d32a9
+  evidence_id: ev-fa078115f292924b
+  excerpt: 'Detected date: 2026-03-10
+
+    Title: Blog Post
+
+    Date: 2026-03-10
+
+    Source: agilepoint.com
+
+    Snippet: # Business Process Automation at Gartner App Innovation Summit 2023 ##
+    **The Rise of Low-Code/No-Code in Business Process Automation Gartner Summit**
+    ### **Q. What is your key from Gartner Summit 2023 you''d like to share?** Matt''s
+    most profound comment: "This shift is fascinating for me because I believe that
+    CD is healthier and more sustainable when IT champions it," Matt Hubbard. **Nishant
+    Shrivastava, Head of Product Development, AgilePoint** ... ## Checkout Our Similar
+    Blog Posts agilepoint-outlook-nx-task-manager-integration AgilePoint + SharePoint
+    Capabilities Modernized Microsoft Experiences: What''s New for SharePoint and
+    Outlook in NX v10 Agentic AI New in AgilePoint NX v10: A Growing Lineup of Connectors
+    Across AI, Data, and Automation ... # See Run-Time Resilience in Real-Time In
+    2003, AgilePoint bet the world would need an execution architecture that could
+    change in real time, driven by intelligence. That composable architecture made
+    us a BPM pioneer (2007), a low-code leader (2016), and now the missing dynamic
+    process layer for agentic AI (2025). We were early.'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://www.agilepoint.com/blog-posts/business-process-automation-agilepoints-takeaways-from-gartner-application-innovation-summit-2023
+- content_hash: 6e6a9b84f57cc37b31763f43c4057aee8323244d04fde9bc238f1ab1c74748c0
+  evidence_id: ev-6e6a9b84f57cc37b
+  excerpt: 'Detected date: 2025-11-11
+
+    Title: Progress Podio: Details, Reviews, Pricing, & Features
+
+    Date: 2025-11-11
+
+    Source: checkthat.ai
+
+    Snippet: # Progress Podio ## Related ### Brands [![AgilePoint logo](https://cdn.brandfetch.io/domain/agilepoint.com/w/128/h/128/fallback/404?c=1exidp0JcANW1N42osUgy)AgilePointagilepoint.comAgilePoint
+    is a no-code business process automation platform that orchestrates workflows
+    across 120+ enterprise systems for large organizations in reg...Low-Code/No-CodeBusiness
+    Process Automation](https://checkthat.ai/brands/agilepoint)'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://checkthat.ai/brands/progress-podio
+- content_hash: c0ebd39efe6c5b08b97d63ef15c5713c405b6135ff7195bf7d54dabc568a6791
+  evidence_id: ev-c0ebd39efe6c5b08
+  excerpt: 'Detected date: May 19, 2026
+
+    Title: AgilePoint NX Unleashed
+
+    Source: blog.agilepoint.com
+
+    Snippet: # [AgilePoint Now Builds Machine Learning Models for You](https://blog.agilepoint.com/agilepoint-now-builds-machine-learning-models-for-you/)
+    ## [A Visual Audit Trail for Adaptive Automation](https://blog.agilepoint.com/a-visual-audit-trail-for-adaptive-automation/)
+    Posted on [May 19, 2026 May 27, 2026](https://blog.agilepoint.com/a-visual-audit-trail-for-adaptive-automation/)
+    by [Lucas Drege](https://blog.agilepoint.com/author/lucasdrege/) ... ## [REST
+    Control Tower Available in AgilePoint NX v10!](https://blog.agilepoint.com/rest-control-tower-available-in-agilepoint-nx-v10/)
+    Posted on [March 30, 2026 April 3, 2026](https://blog.agilepoint.com/rest-control-tower-available-in-agilepoint-nx-v10/)
+    by [Lucas Drege](https://blog.agilepoint.com/author/lucasdrege/)'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://blog.agilepoint.com/
+- content_hash: ada8bc1a188f5b662bf3d014e07908f5582ebead9a15f1831bdffc6f6b066121
+  evidence_id: ev-ada8bc1a188f5b66
+  excerpt: 'Detected date: Jan 1, 1970
+
+    Title: AgilePoint - Crunchbase Company Profile & Funding
+
+    Source: crunchbase.com
+
+    Snippet: measure of growth based on company activity, operational metrics, and
+    investments Growth Trend - The change in the growth score over the given time
+    period Heat Score - The measure of the market interest, media activity, and Crunchbase
+    profile activity Heat Trend - The change in the heat score over the given time
+    period Learn More > 3M 1Y 2Y 5Y 10Y Recent Events Raised Funding Round Jan 1,
+    1970 Lorem ipsum dolor sit amet, consectetur Raised Funding Round Jan 1, 1970
+    Lorem ipsum dolor sit amet, consectetur Raised Funding Round Jan 1, 1970 Lorem
+    ipsum dolor sit amet, consectetur See more interactive data and historical milestones
+    on desktop for the best experience ## About AgilePoint CB Rank 296132 AgilePoint
+    inc. Photo of Steve Lima Steve Lima: Controller Past Role: Ross Systems, Team
+    Member'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://www.crunchbase.com/organization/agilepoint
+- content_hash: 9be5106b3956cfb6a78405b82e8712eae6e71f4b4d1071a7cb874817007294ba
+  evidence_id: ev-9be5106b3956cfb6
+  excerpt: 'Query: AgilePoint launches OR "new feature" OR "introducing" OR "now available"
+
+    1. https://blog.agilepoint.com/author/nshrivastava79/
+
+    Title: Author: Nishant Shrivastava
+
+    Date: 2025-09-18
+
+    Source: blog.agilepoint.com
+
+    Snippet: # Author: Nishant Shrivastava ## [AgilePoint’s GenAI and Agentic AI Features
+    on Display in Platform Build from Scratch](https://blog.agilepoint.com/agilepoints-genai-and-agentic-ai-features-on-display-in-platform-build-from-scratch/)
+    2025](https://blog.agilepoint.com/agilepoints-genai-and-agentic-ai-features-on-display-in-platform-build-from-scratch/)
+    by [Nishant ... ## [Miscellaneous Enhancements to eForms as Part of v9.0 SU1 Release](https://blog.agilepoint.com/miscellaneous-enhancements-to-eforms-as-part-of-v9-0-su1-release/)
+    Posted on [November 19, 2024 November 19, 2024](https://blog.agilepoint.com/miscellaneous-enhancements-to-eforms-as-part-of-v9-0-su1-release/)
+    by [Nishant ... ## [AgilePoint Intelligent Process Automation App for SharePoint
+    Online](https://blog.agilepoint.com/agilepoint-intelligent-process-automation-app-for-sharepoint-online/)
+    Posted on [November 4, 2024 January 17, 2025](https://blog.agilepoint.com/agilepoint-intelligent-process-automation-app-for-sharepoint-online/)
+    by [Nishant
+
+    2. https://helpdesk.agilepoint.com/hc/en-us/articles/37377003686291-AgilePoint-NX-v9-0-Software-Update-1-has-been-released
+
+    Title: AgilePoint NX v9.0 Software Update 1 has been released!
+
+    Date: 2026-03-11
+
+    Source: helpdesk.agilepoint.com
+
+    Snippet: # AgilePoint'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://www.google.com/search?q=AgilePoint+launches+OR+%22new+feature%22+OR+%22introducing%22+OR+%22now+available%22&tbs=qdr%3Ay
+- content_hash: 1b486cb118c77318cbe2663a1252ab62b1a6605ec7fd9f745036434bd4fda110
+  evidence_id: ev-1b486cb118c77318
+  excerpt: "Title: AgilePoint Intelligent Process Automation App for SharePoint Online\
+    \ – AgilePoint NX Unleashed\n[Skip to content](https://blog.agilepoint.com/agilepoint-intelligent-process-automation-app-for-sharepoint-online/#primary)\n\
+    [Menu](https://blog.agilepoint.com/agilepoint-intelligent-process-automation-app-for-sharepoint-online/)\n\
+    [![](https://blog.agilepoint.com/wp-content/uploads/2020/06/logo.png)](https://www.agilepoint.com)\
+    \ [AgilePoint NX Unleashed](https://blog.agilepoint.com/)\n  * [Home](https://blog.agilepoint.com)\n\
+    \  * [About Us](https://blog.agilepoint.com/about-us/)\n  * [Contact Us](https://www.agilepoint.com/contact)\n\
+    \n\n[![](https://blog.agilepoint.com/wp-content/uploads/2020/06/logo.png)](https://www.agilepoint.com)\
+    \ [AgilePoint NX Unleashed](https://blog.agilepoint.com/) [ ](https://blog.agilepoint.com/agilepoint-intelligent-process-automation-app-for-sharepoint-online/)\n\
+    ![AgilePoint NX Unleashed](https://blog.agilepoint.com/wp-content/uploads/2020/06/Writing.png)\n\
+    # AgilePoint Intelligent Process Automation App for SharePoint Online\nPosted\
+    \ on [November 4, 2024January 17, 2025](https://blog.agilepoint.com/agilepoint-intelligent-process-automation-app-for-sharepoint-online/)\
+    \ by [Nishant Shrivastava](https://blog.agilepoint.com/author/nshrivastava79/)\n\
+    We are thrilled to announce the launch of our completely redesigned SharePoint\
+    \ app for AgilePoint.\n<https://appsource.microsoft.com/en-in/product/office/WA200007669?tab=Overview>\n\
+    We understand how essential SharePoint is to "
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://blog.agilepoint.com/agilepoint-intelligent-process-automation-app-for-sharepoint-online/
+- content_hash: 5f6b02479177927eb10379283a560897d5b9665c3d8e0f103503fda308e6c2f7
+  evidence_id: ev-5f6b02479177927e
+  excerpt: "Title: AgilePoint NX Unleashed\nSkip to content\n\nMenu\n\n[](https://www.agilepoint.com)\
+    \ [AgilePoint NX Unleashed](https://blog.agilepoint.com/)\n\n  * [Home](https://blog.agilepoint.com)\n\
+    \  * [About Us](https://blog.agilepoint.com/about-us/)\n  * [Contact Us](https://www.agilepoint.com/contact)\n\
+    \n\n\n[](https://www.agilepoint.com) [AgilePoint NX Unleashed](https://blog.agilepoint.com/)\n\
+    \n## [AgilePoint Now Builds Machine Learning Models for You](https://blog.agilepoint.com/agilepoint-now-builds-machine-learning-models-for-you/)\n\
+    \nPosted on [June 30, 2026June 30, 2026](https://blog.agilepoint.com/agilepoint-now-builds-machine-learning-models-for-you/)\
+    \ by [Lucas Drege](https://blog.agilepoint.com/author/lucasdrege/)\n\nIn a release\
+    \ already filled with groundbreaking AI features, we've saved the crown jewel\
+    \ - Machine Learning Model Foundry - for last. We've already covered the dozens\
+    \ of new AI integrations and form lookups, AI Control Towers and enhancements\
+    \ to our wildly popular Generative AI for AppGen offering, but today's announcement\
+    \ will not only prove…\n\n[+](https://blog.agilepoint.com/agilepoint-now-builds-machine-learning-models-for-you/)\n\
+    \n## [Use GenAI to Add Sub-Processes to Existing Applications](https://blog.agilepoint.com/use-genai-to-add-sub-processes-to-existing-applications/)\n\
+    \nPosted on [June 16, 2026June 16, 2026](https://blog.agilepoint.com/use-genai-to-add-sub-processes-to-existing-applications/)\
+    \ by [Lucas Drege](https://blog.agilepoint.com/author/lucasdrege/)\n\nAgilePoint\
+    \ h"
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://blog.agilepoint.com/
+- content_hash: a241bfe3a45fae5979595046dfa697197e75881a32280375327c05a151866004
+  evidence_id: ev-a241bfe3a45fae59
+  excerpt: "Title: AgilePoint Celebrates the Future of Automation\n[Accessibility\
+    \ Statement](https://www.cision.com/about/accessibility/) Skip Navigation\n\n\
+    \  * [Resources](/resources/)\n  * [Investor Relations](/investor-relations-solutions/)\n\
+    \  * [Journalists](https://prnmedia.prnewswire.com/)\n  * [Agencies](https://www.cision.com/agencies/?utm_medium=referral&utm_source=prnewswire&utm_content=product&utm_campaign=2023-prn-all-products-page)\n\
+    \n\n  * [Client Login](https://app.prnewswire.com/login/auto)\n  * [Send a Release](/account/online-account-form/)\n\
+    \n\n\n[ ](/)\n\n  * [News](/news-releases/)\n  * [Products](/amplify-platform/)\n\
+    \  * [Contact](/contact-us/)\n\n\n\nSearch\n\n__\n\nSearch\n\nWhen typing in this\
+    \ field, a list of search results will appear and be automatically updated as\
+    \ you type.\n\nSearching for your content...\n\n__\n\n**No results found. Please\
+    \ change your search terms and try again.**\n\n  * News in Focus \n    *     \
+    \  * ## [Browse News Releases](/news-releases/)\n\n      * [All News Releases\
+    \ ](/news-releases/news-releases-list/)\n      * [All Public Company ](/news-releases/all-public-company-news/)\n\
+    \      * [English-only ](/news-releases/english-releases/)\n      * ## [News Releases\
+    \ Overview](/news-releases/)\n\n      * ## [Multimedia Gallery](/news-releases/multimedia/)\n\
+    \n      * [All Multimedia ](/news-releases/multimedia/multimedia-list/)\n    \
+    \  * [All Photos ](/news-releases/photos/photos-list/)\n      * [All Videos ](/news-releases/videos/videos-list/)\n\
+    \      * ## [ Multimedia Gallery Overview](/news-"
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://www.prnewswire.com/news-releases/agilepoint-celebrates-the-future-of-automation-301165429.html
+- content_hash: ca38f8c414374fff7929adbc37523d6f4efc19526c6189640aee7fdbaf044eb2
+  evidence_id: ev-ca38f8c414374fff
+  excerpt: "Title: Nishant Shrivastava &#8211; AgilePoint NX Unleashed\nSkip to content\n\
+    \nMenu\n\n[](https://www.agilepoint.com) [AgilePoint NX Unleashed](https://blog.agilepoint.com/)\n\
+    \n  * [Home](https://blog.agilepoint.com)\n  * [About Us](https://blog.agilepoint.com/about-us/)\n\
+    \  * [Contact Us](https://www.agilepoint.com/contact)\n\n\n\n[](https://www.agilepoint.com)\
+    \ [AgilePoint NX Unleashed](https://blog.agilepoint.com/)\n\n# Author: Nishant\
+    \ Shrivastava\n\n## [Introducing AgilePoint for SharePoint OnPremises Subscription\
+    \ Edition with SharePoint Workflow Manager Support](https://blog.agilepoint.com/introducing-agilepoint-for-sharepoint-onpremises-subscription-edition-with-sharepoint-workflow-manager-support/)\n\
+    \nPosted on [April 25, 2026May 25, 2026](https://blog.agilepoint.com/introducing-agilepoint-for-sharepoint-onpremises-subscription-edition-with-sharepoint-workflow-manager-support/)\
+    \ by [Nishant Shrivastava](https://blog.agilepoint.com/author/nshrivastava79/)\n\
+    \nWe are thrilled to announce the launch of our completely redesigned SharePoint\
+    \ On-Premises solution for AgilePoint which is compatible with Microsoft recommended\
+    \ SharePoint Workflow Manager. Why is this important Milestone? We understand\
+    \ how essential SharePoint is to our customers, and we remain closely aligned\
+    \ with Microsoft’s product roadmap. Couple of years back, Microsoft announced\
+    \ that…\n\n[+](https://blog.agilepoint.com/introducing-agilepoint-for-sharepoint-onpremises-subscription-edition-with-sharepoint-workflow-manager-support/)\n\
+    \n##"
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://blog.agilepoint.com/author/nshrivastava79/
+- content_hash: c437928493bec10b4119978f48c067effdd9d43297337cff2051224816f45c8f
+  evidence_id: ev-c437928493bec10b
+  excerpt: 'Title: The enterprises that win won&#x27;t rent AI
+
+    [](/)
+
+
+    Platform
+
+
+    [Vendor-Neutral Composable Architecture](/vendor-neutral-composable-architecture)[Real-Time
+    Agentic Governance](/real-time-agentic-governance)[Composable AppGen](/composable-appgen)[AI
+    Control Tower](/ai-control-tower)[Business-Enabled Agentic AI](/business-enabled-agentic-ai)[Sovereign
+    Enterprise AI](/sovereign-enterprise-ai)[Dynamic Process Layer](/maturity-model-overview)[Dynamic
+    Process Patterns](/dynamic-process-patterns)
+
+
+    Tour
+
+
+    AI-Powered Showcase​
+
+
+    [Legal Agreement Reconciliation​](/ai-driven-agreement-reconciliation)[AI-Powered
+    Email Triage​](/ai-driven-email-triage)
+
+
+    AI-Powered Case Studies​
+
+
+    [Warranty Claim Fraud Detection​](/warranty-claim-fraud-detection)[AI Lead Triage
+    & Sales Enablement​](/ai-lead-triage-sales-enablement)
+
+
+    Agentic Maturity Model​
+
+
+    [Task-Centric Agentic AI​](https://www.agilepoint.com/ai-agentic-model#Agentic-Task)[Process-Centric
+    Agentic AI​](https://www.agilepoint.com/ai-agentic-model#Agentic-Process)[Multi-Agent
+    Real-Time Agentic AI​](https://www.agilepoint.com/ai-agentic-model#Handle-Multi-Agent)[Multi-Vendor
+    Agentic AI Mesh​](https://www.agilepoint.com/ai-agentic-model#Agentic-Mesh)
+
+
+    Composable App Creation and GenAI AppGen​
+
+
+    [QuickStart Guide Videos ​](/quick-start-walkthrough)[GenAI AppGen ](https://www.agilepoint.com/quick-start-walkthrough#generative-ai)
+
+
+    Solution
+
+
+    By INDUSTRY
+
+
+    ManufacturingBankingHealthcareGovernmentEnergy & Utilities
+
+
+    By buyer role
+
+
+    For executivesCIO, '
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://www.agilepoint.com/sovereign-enterprise-ai
+- content_hash: e5fef0cd9f82db3bc831e89f7087515fe9bc82b58b00737ddeee662a8f0805ab
+  evidence_id: ev-e5fef0cd9f82db3b
+  excerpt: 'Title: Bridging the control gap
+
+    [](/)
+
+
+    Platform
+
+
+    [Vendor-Neutral Composable Architecture](/vendor-neutral-composable-architecture)[Real-Time
+    Agentic Governance](/real-time-agentic-governance)[Composable AppGen](/composable-appgen)[AI
+    Control Tower](/ai-control-tower)[Business-Enabled Agentic AI](/business-enabled-agentic-ai)[Sovereign
+    Enterprise AI](/sovereign-enterprise-ai)[Dynamic Process Layer](/maturity-model-overview)[Dynamic
+    Process Patterns](/dynamic-process-patterns)
+
+
+    Tour
+
+
+    AI-Powered Showcase​
+
+
+    [Legal Agreement Reconciliation​](/ai-driven-agreement-reconciliation)[AI-Powered
+    Email Triage​](/ai-driven-email-triage)
+
+
+    AI-Powered Case Studies​
+
+
+    [Warranty Claim Fraud Detection​](/warranty-claim-fraud-detection)[AI Lead Triage
+    & Sales Enablement​](/ai-lead-triage-sales-enablement)
+
+
+    Agentic Maturity Model​
+
+
+    [Task-Centric Agentic AI​](https://www.agilepoint.com/ai-agentic-model#Agentic-Task)[Process-Centric
+    Agentic AI​](https://www.agilepoint.com/ai-agentic-model#Agentic-Process)[Multi-Agent
+    Real-Time Agentic AI​](https://www.agilepoint.com/ai-agentic-model#Handle-Multi-Agent)[Multi-Vendor
+    Agentic AI Mesh​](https://www.agilepoint.com/ai-agentic-model#Agentic-Mesh)
+
+
+    Composable App Creation and GenAI AppGen​
+
+
+    [QuickStart Guide Videos ​](/quick-start-walkthrough)[GenAI AppGen ](https://www.agilepoint.com/quick-start-walkthrough#generative-ai)
+
+
+    Solution
+
+
+    By INDUSTRY
+
+
+    ManufacturingBankingHealthcareGovernmentEnergy & Utilities
+
+
+    By buyer role
+
+
+    For executivesCIO, CDO, COO perspectiv'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://www.agilepoint.com/real-time-agentic-governance
+- content_hash: a3132d0e2565a5e4eb2e62ce22e1122b8b2133d56d396b49d117935786cbe2de
+  evidence_id: ev-a3132d0e2565a5e4
+  excerpt: 'Title: Blog
+
+    [](/)
+
+
+    Platform
+
+
+    [Vendor-Neutral Composable Architecture](/vendor-neutral-composable-architecture)[Real-Time
+    Agentic Governance](/real-time-agentic-governance)[Composable AppGen](/composable-appgen)[AI
+    Control Tower](/ai-control-tower)[Business-Enabled Agentic AI](/business-enabled-agentic-ai)[Sovereign
+    Enterprise AI](/sovereign-enterprise-ai)[Dynamic Process Layer](/maturity-model-overview)[Dynamic
+    Process Patterns](/dynamic-process-patterns)
+
+
+    Tour
+
+
+    AI-Powered Showcase​
+
+
+    [Legal Agreement Reconciliation​](/ai-driven-agreement-reconciliation)[AI-Powered
+    Email Triage​](/ai-driven-email-triage)
+
+
+    AI-Powered Case Studies​
+
+
+    [Warranty Claim Fraud Detection​](/warranty-claim-fraud-detection)[AI Lead Triage
+    & Sales Enablement​](/ai-lead-triage-sales-enablement)
+
+
+    Agentic Maturity Model​
+
+
+    [Task-Centric Agentic AI​](https://www.agilepoint.com/ai-agentic-model#Agentic-Task)[Process-Centric
+    Agentic AI​](https://www.agilepoint.com/ai-agentic-model#Agentic-Process)[Multi-Agent
+    Real-Time Agentic AI​](https://www.agilepoint.com/ai-agentic-model#Handle-Multi-Agent)[Multi-Vendor
+    Agentic AI Mesh​](https://www.agilepoint.com/ai-agentic-model#Agentic-Mesh)
+
+
+    Composable App Creation and GenAI AppGen​
+
+
+    [QuickStart Guide Videos ​](/quick-start-walkthrough)[GenAI AppGen ](https://www.agilepoint.com/quick-start-walkthrough#generative-ai)
+
+
+    Solution
+
+
+    By INDUSTRY
+
+
+    ManufacturingBankingHealthcareGovernmentEnergy & Utilities
+
+
+    By buyer role
+
+
+    For executivesCIO, CDO, COO perspectivesFor EA & developer'
+  retrieved_at: '2026-08-19T12:23:09.066849-04:00'
+  url: https://www.agilepoint.com/blog
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

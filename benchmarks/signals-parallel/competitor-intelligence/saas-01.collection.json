@@ -1,0 +1,119 @@
+{
+  "collected_at": "2026-08-19T11:52:14.233308-04:00",
+  "company_id": "saas-01",
+  "enrichment_id": "competitor-intelligence",
+  "entries": [
+    {
+      "category": "reporting software",
+      "company_name": "AgencyAnalytics",
+      "domain": "agencyanalytics.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "AgencyAnalytics reporting software alternatives OR competitors OR \"vs\" OR \"compared to\"",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "AgencyAnalytics alternatives",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "AgencyAnalytics vs",
+      "tbs": null
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://windsor.ai/agencyanalytics-alternatives",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://agencyanalytics.com/competitors",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.g2.com/products/agencyanalytics/competitors/alternatives: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.g2.com/products/agencyanalytics/competitors/alternatives"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://platform.tracxn.com/a/d/company/5dc6d3d6f0e6f6357e22887e/agencyanalytics?utm_source=parallel&utm_medium=ai#a:about",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://portermetrics.com/en/compare/agencyanalytics-alternatives/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://seranking.com/blog/agencyanalytics-alternatives/",
+      "waterfall_level": 1
+    },
+    {
+      "status": "already_scraped",
+      "step": "first_party",
+      "target": "https://agencyanalytics.com/competitors"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agencyanalytics.com/compare: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agencyanalytics.com/compare"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agencyanalytics.com/alternatives: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agencyanalytics.com/alternatives"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 37,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.015",
+  "signal_evidence": 40
+}

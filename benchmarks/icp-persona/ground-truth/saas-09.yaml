@@ -1,0 +1,25 @@
+company_id: saas-09
+expected:
+  primary_icp:
+    buyer: Marketing teams
+    need: branded link and QR management
+    object: digital campaigns
+    evidence_ids: [ev-3702f99a90ca9db0, ev-772f852d326ccc26]
+  secondary_icps: []
+  outcomes:
+    - text: track campaign performance across online and offline channels
+      evidence_ids: [ev-3702f99a90ca9db0, ev-772f852d326ccc26]
+  observed_personas:
+    - role: marketers
+      evidence_ids: [ev-3702f99a90ca9db0]
+  inferred_personas: []
+acceptable_aliases:
+  primary.buyer: [Marketing teams, Digital marketing teams]
+  primary.need: [branded link and QR management, branded links and QR Code management]
+  primary.object: [digital campaigns, online and offline marketing campaigns]
+evidence_by_component:
+  primary.buyer: [ev-3702f99a90ca9db0, ev-772f852d326ccc26]
+  primary.need: [ev-3702f99a90ca9db0, ev-772f852d326ccc26]
+  primary.object: [ev-3702f99a90ca9db0, ev-772f852d326ccc26]
+  outcome.0: [ev-3702f99a90ca9db0, ev-772f852d326ccc26]
+  observed_persona.0: [ev-3702f99a90ca9db0]

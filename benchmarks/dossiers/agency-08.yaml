@@ -1,0 +1,148 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-834e6009b7d84e05
+  - ev-c29739110a8a1ce3
+  - ev-493214f71a4a0bd9
+  field: identity
+  value: Capacity
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-834e6009b7d84e05
+  - ev-c29739110a8a1ce3
+  - ev-493214f71a4a0bd9
+  field: description
+  value: Our Work in Arts and Culture | Capacity Skip to content Services Back View
+    all Services Close Digital Advertising Attract and engage your patrons with a
+    fully-managed ad strategy across all your platforms. AI Strategy We'll help your
+    organization use AI to save time and spark creativity while staying grounded in
+    your values. Creative Strategy Your creative assets + our impeccable execution
+    = thumb-stopping social content. Website Analytics Let's harness your website’s
+    data and uncover opportunit
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-834e6009b7d84e05
+  - ev-c29739110a8a1ce3
+  - ev-493214f71a4a0bd9
+  field: offers
+  value: arts marketing
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-834e6009b7d84e05
+  - ev-c29739110a8a1ce3
+  - ev-493214f71a4a0bd9
+  field: icp
+  value: arts organizations
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-834e6009b7d84e05
+  - ev-c29739110a8a1ce3
+  - ev-493214f71a4a0bd9
+  field: personas
+  value: arts organizations
+  visibility: message_safe
+company_id: agency-08
+corrections: []
+evidence:
+- content_hash: 834e6009b7d84e051b072ce94d96d7c7a6569311bdc94577cae4981b5f43d658
+  evidence_id: ev-834e6009b7d84e05
+  excerpt: 'Our Work in Arts and Culture | Capacity Skip to content Services Back
+    View all Services Close Digital Advertising Attract and engage your patrons with
+    a fully-managed ad strategy across all your platforms. AI Strategy We''ll help
+    your organization use AI to save time and spark creativity while staying grounded
+    in your values. Creative Strategy Your creative assets + our impeccable execution
+    = thumb-stopping social content. Website Analytics Let''s harness your website’s
+    data and uncover opportunities to optimize and grow. Email Strategy We’ll partner
+    on a strategy to level up your email program and help your ROI shine. Search &
+    Answer Engine Optimization Ensure visibility across the search landscape with
+    a technically sound website and content that deserves to rank #1 Resources Back
+    View all Resources Close Inspiration Capacity Blog Arts Unscripted Podcast Social
+    Media Content Calendar Tools & Education AI Toolkit CTA Generator Social Media
+    Ad Dimensions UTM Generator Webinars & Training Industry Studies 2026 State of
+    AI & the Arts 2024 Cultural Compass Events Boot Camp 2026 Capacity on the Road
+    Follow us Subscribe to our newsletter URL This field is for validation purposes
+    and should be left unchanged. Email Submit Our Work Our Team Connect Services
+    Back View all Services Close Digital Advertising Attract and engage your patrons
+    with a fully-managed ad strategy across all your platforms. AI Strategy We''ll
+    help your organization use AI to save time and spark creativity while staying
+    grounded in your values. Creative Strategy Your creative assets + our impeccable
+    execution = thumb-stopping social content. Website Analytics Let''s harness your
+    website’s data and uncover opportunities to optimize and grow. Email Strategy
+    We’ll partner on a strategy to level up your email program and help your ROI shine.
+    Search & Answer Engine Optimization Ensure visibility across the search landscape
+    with a technically sound website and content that deserves to rank #1 Resources
+    Back View'
+  retrieved_at: '2026-08-12T21:58:02.370634+00:00'
+  url: https://capacityinteractive.com/clients/
+- content_hash: c29739110a8a1ce36a21d0041a81f5bfa9e7321ab8fcaa9d02ee0569ef7ae8e7
+  evidence_id: ev-c29739110a8a1ce3
+  excerpt: 'Capacity | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now Capacity Advertising Services New York, New York 5,213
+    followers Follow Discover all 82 employees Report this company About us Capacity
+    Interactive is the premier digital marketing consulting firm for arts and culture,
+    with over 15 years spent working with ambitious arts and cultural organizations
+    to engage audiences, build community, and market smarter. Today, our team has
+    over 65 people working virtually around the U.S. Practice areas include digital
+    advertising, web analytics, search engine optimization (including AI search),
+    email strategy, online fundraising, content strategy and content creation. Additionally,
+    our practical, impact-focused, mission-aligned AI consulting can help your organization
+    use AI to save time and spark creativity—all while staying grounded in your values
+    Capacity also has a strong focus on education for our clients and in the arts
+    and cultural sector. Capacity hosts Boot Camp (an annual arts marketing conference
+    in New York City), CI to Eye with Monica Holt (a podcast released weekly on Thursdays),
+    and numerous free webinars across areas of marketing expertise. Website http://www.capacityinteractive.com
+    External link for Capacity Industry Advertising Services Company size 51-200 employees
+    Headquarters New York, New York Type Privately Held Specialties Digital Marketing
+    for the Arts, Social Media Strategy, AdWords Advertising, Banner Advertising,
+    Email Advertising, Digital Audit & Tune-Up, Website Analytics, AI Consulting,
+    Search Engine Optimization, AI Search, Search Engine Marketing, Content Strategy,
+    Content Creation, Social Media Marketing, AI Training, AI Policy, and Workshops
+    and Training Locations Primary 82 Nassau Street #60283 New York, New York 10038,
+    US Get directions Employees at Capacity Lisa Church Michelle Bodner Erik Gensler
+    Yosaif Cohain See all employees Updates Capacity 5,213 followers 5h Report this
+    post Your GA4 '
+  retrieved_at: '2026-08-12T21:58:03.150356+00:00'
+  url: https://www.linkedin.com/company/capacity-interactive
+- content_hash: 493214f71a4a0bd9029f48db63b3f1cc217a0b3ab5b675a2d1542cbd74acd3d1
+  evidence_id: ev-493214f71a4a0bd9
+  excerpt: 'Aug 05 2026 April 22, 2026 May 6, 2024 August 7, 2024 May 15, 2026 CultureSuite
+    partners with Capacity – CultureSuite Article Products Website Seamless integrations
+    with third-party tools and flexible building blocks Digital signage Automatically
+    display relevant information and content from your website Mailing Segment your
+    audience and create targeted messages How CultureSuite works Break the constant
+    rebuild cycle with our cloud-based platform Design Community Partners Resources
+    Articles Educational resources, innovative strategies and success stories Events
+    and webinars Learn from industry experts in live webinars and in-person events
+    Analytics support Professional analytics services tailored to arts and culture
+    venues Courses Transform your digital marketing skills with One Further About
+    Language English Nederlands Book a demo News April 22, 2026 CultureSuite partners
+    with Capacity CultureSuite has partnered with Capacity, a consultancy dedicated
+    exclusively to arts and cultural organisations, giving our Community access to
+    some of the most respected analytics and digital marketing expertise in the sector.
+    By CultureSuite Most venues know Capacity before they ever become a client. It''s
+    what happens when you spend 17 years building knowledge that the whole sector
+    pays attention to. We''re pleased to announce that CultureSuite has partnered
+    with Capacity to give our Community direct access to that expertise. Who is Capacity?
+    Founded in New York in 2008, Capacity is a marketing and analytics consultancy
+    that works exclusively with arts and cultural organisations – theatres, performing
+    arts centres, museums, orchestras, and cultural institutions across North America,
+    the UK, Ireland, and Australia and New Zealand. Over 200 organisations rely on
+    them, ranging from independent venues to major institutions. Their work spans
+    the full digital picture: web analytics and data strategy, paid media, SEO/AEO,
+    email and CRM, AI strategy and policy development, and content/crea'
+  retrieved_at: '2026-08-12T21:58:03.847976+00:00'
+  url: https://www.culturesuite.co/resources/articles/culturesuite-partners-with-capacity
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

@@ -1,0 +1,748 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: identity
+  value: Aligned
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: description
+  value: 'Digital Sales Room Software — #1 on G2 | Aligned Skip to content $60M raised.
+    70,000 sellers. 1M buyers. The deal workspace is here ➜ Read the announcement
+    Learn more Platform Close Platform Open Platform Explore our platform Product
+    Overview Platform at a glance Digital Sales Room Centralized buyer workspace Customer
+    Success Hub Manage customer outcomes Customer Onboarding Faster customer activation
+    Aligned AI AI aligned to revenue Mutual Action Plan Shared deal milestones Revenue
+    Intelligence '
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: offers
+  value: digital sales room
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: icp
+  value: sales teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: personas
+  value: sales teams
+  visibility: message_safe
+company_id: saas-03
+corrections: []
+evidence:
+- content_hash: 05398a2ef65666fa651567b24421f8e969484b93e8d6fe970bae6fd9b8776e71
+  evidence_id: ev-05398a2ef65666fa
+  excerpt: 'Digital Sales Room Software — #1 on G2 | Aligned Skip to content $60M
+    raised. 70,000 sellers. 1M buyers. The deal workspace is here ➜ Read the announcement
+    Learn more Platform Close Platform Open Platform Explore our platform Product
+    Overview Platform at a glance Digital Sales Room Centralized buyer workspace Customer
+    Success Hub Manage customer outcomes Customer Onboarding Faster customer activation
+    Aligned AI AI aligned to revenue Mutual Action Plan Shared deal milestones Revenue
+    Intelligence Revenue insights and signals Integrations Connect your tools Pricing
+    Resources Close Resources Open Resources Learn Articles Product insights and updates
+    Customer Stories How customers succeed with us Build Template Library Templates
+    to get started faster Guides & Playbooks Practical guides and best practices Login
+    Book a Demo Start free Crush your sales quota with Digital Sales Room Streamline
+    complex deals by consolidating conversations, stakeholders, processes, and resources
+    into a single shared space. #1 Digital Sales Room for SMB & Mid-Market (G2 Summer
+    ’26) Start with Google Start with Microsoft Book a Demo Start free Mid-Market
+    G2 Grid® for Digital Sales Room Software | Summer 2026 #1 Digital Sales Room for
+    SMB & Mid-Market (G2 Summer ’26) 50,000+ Sales & CS Teams Run Their Deals in Aligned
+    95% of the Buyer Journey Happens When You’re Not in the Room *gartner (so get
+    a room) Meet Aligned, Your Digital Sales Room Everything needed to win, all in
+    one place Create a virtual sales room for each deal Share the most up-to-date
+    sales content Streamline all discussions into topics Remove buyer friction & win
+    more deals Aligned is a single place to keep on top of deals, build strong business
+    cases with champions and get multiple stakeholders on board. I wish I had it early,
+    but I have it now, and I’m enjoying it immensely! Sarah Brazie Senior Account
+    Executive, Gong Align buyers to a Mutual Action Plan Build collaborative MAPs
+    with your champion Assign tasks and allow buyers to'
+  retrieved_at: '2026-08-12T21:20:31.919668+00:00'
+  url: https://www.alignedup.com/digital-sales-room/
+- content_hash: 22d60eecc23e228aa7d0cd79d8283286be9311a91848c743207678d21a8a49bb
+  evidence_id: ev-22d60eecc23e228a
+  excerpt: 'Aligned | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now Aligned Software Development Create a personalized
+    workspace for each deal and design a buying experience that wins quota. See jobs
+    Follow View all 76 employees Report this company About us Aligned is pioneering
+    the new way that B2B revenue teams interact with customers in today''s remote,
+    digital era. Instead of customers juggling multiple email threads, attachments
+    & tools, they have all resources in front of them in a single shared workspace
+    for easy decisions. Nothing gets buried and forgotten in threads. All stakeholders
+    join and collaborate, instead of staying behind the scenes. Both sides manage
+    mutual action plans to keep things on track, and reps can analyze buyer risks
+    and intent. Companies like Deel, Productboard, and SimilarWeb use it to win more
+    deals and close 45% faster. We are growing at a fast pace and looking for top
+    talents to join our core team. Website https://www.alignedup.com?utm_source=Social&utm_medium=Aligned_Page&utm_campaign=website_button&utm_id=163&avk=mvk_Linkedin_Page
+    External link for Aligned Industry Software Development Company size 51-200 employees
+    Headquarters Remote First Type Privately Held Founded 2021 Specialties Saas, Sales
+    Collaboration, Buyer Collaboration, Project Management, CRM, Sales Enablement,
+    and Sales Products No more previous content Aligned Customer Onboarding Deal Analytics
+    Digital Sales Room Mutual Action Plans No more next content Locations Primary
+    Remote First, US Get directions Employees at Aligned Charles Black Sam Rahmanian
+    Todd Clouser Erin C. See all employees Updates Aligned 47,664 followers 5h Report
+    this post There are 4 questions that will set the tone for your deal. When presented
+    well they will lead to higher win rates. Present them poorly and they will do
+    next to nothing. Here are 4 questions that will set every deal up for success
+    (and HOW to ask them): 1. Who Else Are You Evaluating? Yes, it''s'
+  retrieved_at: '2026-08-12T21:20:32.819137+00:00'
+  url: https://www.linkedin.com/company/alignedup
+- content_hash: 01e046900b8496acdb6722904a4406d618a57bfa5e51e4657a2b4786cada1235
+  evidence_id: ev-01e046900b8496ac
+  excerpt: 'Why NFX Invested in Aligned: The Sales Room Network Helping Companies
+    Close Deals 3x Faster Content Content Team Team Companies Companies About About
+    Products Products Signal Brieflink NFX Masterclass Get our weekly newsletter that
+    322K+ startup teams read Subscribe Why NFX Invested in Aligned: The Sales Room
+    Network Helping Companies Close Deals 3x Faster James Currier · @jamescurrier
+    · May 2023 · Israel James Currier · @jamescurrier May 2023 · Israel Table of Contents
+    1. Overly Complex Processes 2. Built-in Network Effects 3. Stellar Team Aligned
+    recently announced their $5.8M Seed round co-led by NFX and Hetz Ventures to create
+    the network to conduct software deals in. They sell sales teams a frictionless
+    workspace that helps software sales teams close deals 3x faster. Here are 3 reasons
+    why we backed them: 1. Overly Complex Processes Despite massive enterprise digitization,
+    77% of enterprise software buyers complain that their sales experiences are overly
+    complex. This leads to stalled and lost deals. Pointless friction. And, frankly,
+    shock/disappointment it still works this way in 2023. There needs to be a bridge
+    between a company’s CRM and their clients. Aligned creates that bridge with their
+    signature “online rooms” where sales teams communicate, coordinate on next steps,
+    share documents, sign proposals, etc. This real-time management speeds up deals
+    and makes buyers happy. It also gives salespeople the data behind the successes
+    and failures of their deals so they can improve their processes. 2. Built-in Network
+    Effects As more sellers adopt Aligned, more buyers will integrate it into their
+    own buying process. This lays the foundation for a network of B2B buyers and sellers.
+    The company also has defensibility through embedding. Once a B2B sales team adopts
+    Aligned, it’s nearly impossible for them to regress to the old way of sending
+    countless emails to dozens of stakeholders while navigating numerous platforms.
+    Any other way of conducting business feels ancie'
+  retrieved_at: '2026-08-12T21:20:33.437855+00:00'
+  url: https://www.nfx.com/post/why-nfx-invested-in-aligned
+- content_hash: 2ade7e70869d8aa1d0c5ef6eb8187423e45f64291be4050e5999f77fa4d09d91
+  evidence_id: ev-2ade7e70869d8aa1
+  excerpt: 'Detected date: February 11, 2026
+
+    Title: Aligned Raises $8M Series A to Lead the Buyer ...
+
+    Source: alignedup.com
+
+    Snippet: * [$60M raised. 70,000 sellers. 1M buyers. The deal workspace is here
+    ➜ Read the announcement](https://alignedup.com/blog/why-we-raised-60m-to-build-the-system-of-action-for-b2b-sales/)
+    [Learn more](https://alignedup.com/blog/why-we-raised-60m-to-build-the-system-of-action-for-b2b-sales/)
+    [aligned logo](https://alignedup.com) ... # Aligned’s 8M Series A Announcement
+    – Paving the Way for Buyer Enablement Why “we’ll just build it with AI” doesn’t
+    work for real enterprise deal rooms Gal Deitsch Gal Deitsch [Home](https://alignedup.com/)
+    / [Blog](https://alignedup.com/resources/) / Aligned’s 8M Series A Announcement
+    – Paving the Way for Buyer Enablement ... ## **By Gal Aga, CEO & Co-Founder**
+    February 11, 2026 [Watch the launch video](https://alignedup.com/?p=37793&preview=true#)
+    · [Book a demo](https://alignedup.com/?p=37793&preview=true#) Sales teams don’t
+    lose quota because they spend too much time on admin. They lose quota because
+    **deal execution** still runs on a 30-year-old workflow: email threads, attachments,
+    scattered links, and stakeholders looping in late. The CRM records what happened.
+    The deal gets executed somewhere else, usually in chaos. Today, we’re launching
+    the biggest release in Aligned’s history: **the AI Deal Workspace** . It’s a buyer-facing
+    system built to solve the part of selling that never got a proper workspace, the
+    real work of moving decisions forward.'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://alignedup.com/blog/aligneds-8m-series-a-announcement-paving-the-way-for-buyer-enablement
+- content_hash: 8790650ea4e340910536acdefb04afb2643c91fdad6005dc69a37d8ceeee17c0
+  evidence_id: ev-8790650ea4e34091
+  excerpt: 'Detected date: 2026-07-01
+
+    Title: Aligned Closes $60M Series B to Solidify Leadership
+
+    Date: 2026-07-01
+
+    Source: globenewswire.com
+
+    Snippet: # Aligned Closes $60M Series B to Solidify Leadership Position as the
+    System of Action for B2B Sales ## PeakSpan Capital leads round; Aligned replaces
+    legacy B2B sales workflows and tools with an agentic execution layer already used
+    by 70K sellers and 1M buyers NEW YORK and TEL AVIV, Israel, July 01, 2026 (GLOBE
+    NEWSWIRE) -- ... Workspace where sellers, buyers, and their AI agents run deals
+    together, today announced $60 million in Series B financing, bringing its total
+    funding to $73.8 million. ... The reason isn’t a deterioration in selling, but
+    instead that buying has gotten harder. ... [Aligned](https://www.globenewswire.com/Tracker?data=6G2dLwPaRlE7BHGDAt5eZEjslKV_oodS0vNuazAFw9G8X9TyJqn7B94NQfM-8FoX_gwFkTnJ7_UMRIN1WVjA-g==)
+    is the AI Deal Workspace where sellers, ... Learn more at [alignedup.com](https://www.globenewswire.com/Tracker?data=ZZvK-foq4A9KmcjN5bh9P7z8yePrOmTuUThD2C2Hb-rgMUKDQgRQgTNhx1iipZgVf_Ky8-3UBnQTL0oTNfioRg==)
+    . ... ## Tags ### Related Links * [Aligned](https://www.alignedup.com) * [PeakSpan
+    Capital](https://www.peakspancapital.com) ### Contact Data ``` Contact: BOCA Marketing
+    Agency ``` Contact Release Summary Aligned, the AI Deal Workspace where sellers,
+    buyers, and their AI agents run deals together, today announced $60 million in
+    Series B financing. Press Release Actions'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://www.globenewswire.com/news-release/2026/07/01/3320495/0/en/aligned-closes-60m-series-b-to-solidify-leadership-position-as-the-system-of-action-for-b2b-sales.html
+- content_hash: 473a66b32a6e9663318d594c443fc4295dccb540fb5c71e40e6235198d1f3f3f
+  evidence_id: ev-473a66b32a6e9663
+  excerpt: 'Title: Articles Archives
+
+    Source: alignedup.com
+
+    Snippet: Aligned Wins ''Top Sales Software 2025'' on G2. Aligned just won G2''s
+    ''Top Sales Software 2025'' Awards! Aligned''s 8M Series A Announcement – Paving
+    the Way for'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://alignedup.com/category/articles/
+- content_hash: 7582b81bd0d70a528fe3f3f975ce1b2e05aac679e27264c73391aac26f8b06b1
+  evidence_id: ev-7582b81bd0d70a52
+  excerpt: 'Detected date: 2026-07-02
+
+    Title: Aligned Raises $60M Series B
+
+    Date: 2026-07-02
+
+    Source: thesaasnews.com
+
+    Snippet: # Aligned Raises $60M Series B Aligned raises $60M in Series B funding
+    led by PeakSpan Capital to scale its AI-powered deal workspace platform for B2B
+    sales teams. Ben Murray profile image by [Ben Murray](https://www.thesaasnews.com/author/ben/)
+    Updated July 01, 2026 [](https://www.facebook.com/sharer.php?u=https://www.thesaasnews.com/news/aligned-raises-60m-series-b/)
+    [](https://twitter.com/intent/tweet?url=https://www.thesaasnews.com/news/aligned-raises-60m-series-b/&text=Aligned%20Raises%20%2460M%20Series%20B)
+    ... Aligned Raises $60M Series B Aligned, based in New York and Tel Aviv, is an
+    AI-powered deal workspace platform that facilitates collaboration between sellers,
+    buyers, and AI agents. The company announced it has raised $60 million in Series
+    B financing, bringing its total funding to date to $73.8 million. ... ## Funding
+    Details Company Website: [https://alignedup.com](https://alignedup.com/?ref=thesaasnews.com)
+    Company: Aligned Raised: $60M Round: Series B Funding Date: July 1, 2026 Lead
+    Investor: PeakSpan Capital Additional Investors: Hetz Ventures, JAL Ventures,
+    NFX Company Website: [https://alignedup.com](https://alignedup.com/?ref=thesaasnews.com)
+    Software Category: Sales Tech Source: [https://www.globenewswire.com/news-release/2026/07/01/3320495/0/en/aligned-closes-60m-series-b-to-solidify-leadership-position-as-the-system-of-action-for-b2b-sales.html](https://www.globenewsw'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://www.thesaasnews.com/news/aligned-raises-60m-series-b/
+- content_hash: d8ecbe7b74e254887a1e86ec959ad59b3721a8f35743c5af8cf90e2236bb9a3b
+  evidence_id: ev-d8ecbe7b74e25488
+  excerpt: 'Detected date: 2025-01-30
+
+    Title: Aligned raises $8M to shape the future of selling with AI sales rooms
+
+    Date: 2025-01-30
+
+    Source: prnewswire.com
+
+    Snippet: # Aligned raises $8M to shape the future of selling with AI sales rooms
+    ## News provided by **Aligned** 30 Jan, 2025, 18:52 IST ## Share this article
+    Share to X Share this article Share to X _With $14M raised so far, and over 30,000
+    users, Aligned enhances its AI-powered sales platform to act as the modern seller''s
+    ''Iron Man Suit'', helping close more deals faster_ TEL AVIV, Israel , Jan. 30,
+    2025 /PRNewswire/ -- [Aligned](https://alignedup.com/) , the Digital Sales Room
+    improving the buyer-vendor workflow from start to post-sale, announces it has
+    secured an $8 million investment led by [JAL Ventures](https://www.jalventures.com/)
+    . The round includes participation from existing investors [NFX](https://www.nfx.com/)
+    , [Hetz Ventures](https://www.hetz.vc/) , and CROs from leading SaaS companies,
+    bringing the total amount raised to $14 million . The funding will be used to
+    accelerate Aligned''s growth and the development of its AI capabilities aimed
+    at redefining the buyer-seller dynamic. Aligned has already tripled its revenue
+    in 2024 and achieved 142 percent in Net Revenue Retention (NRR), emphasizing the
+    loyalty and satisfaction of its customers. ... With [95 percent](https://alignedup.com/blog/buyer-enablement/)
+    of the buyer journey happening without direct sales interaction—driven by the
+    widespread digitalization and avoidance of poor sales experience'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://www.prnewswire.com/il/news-releases/aligned-raises-8m-to-shape-the-future-of-selling-with-ai-sales-rooms-302364616.html
+- content_hash: 2d3d6e50b93063ee81753d9dff0ae95e8af3bc22b9fbdd789cd81ac6d6bdeac8
+  evidence_id: ev-2d3d6e50b93063ee
+  excerpt: 'Detected date: 2026-07-01
+
+    Title: Aligned Closes $60M Series B to Solidify Leadership ...
+
+    Date: 2026-07-01
+
+    Source: fidelity.com
+
+    Snippet: * [**Home**](https://www.fidelity.com) » * News & Insights » * News »
+    * Print * Share Share Close Mutual Funds and Mutual Fund Investing - Fidelity
+    Investments Clicking a link will open a new window. + Facebook + Twitter + LinkedIn
+    * Default text size A * Larger text size A * Largest text size A {{news.byLine}},
+    {{news.distributor}} - {{getTimeformat(news.publicationTime)}} default * Facebook.
+    * Twitter. * LinkedIn. * Print {{news.disclaimer}} * Facebook. * Twitter. * LinkedIn.
+    * Print close **Send to** (Separate multiple e-mail addresses with commas) Please
+    enter a valid e-mail address **Your E-Mail Address** Please enter a valid e-mail
+    address Message (Optional) ... All information you provide will be used by Fidelity
+    solely for the purpose of sending the e-mail on your behalf.The subject line of
+    the e-mail you send will be "Fidelity.com: " Your e-mail has been sent. close
+    Your e-mail has been sent. # Related News * {{news.title}} {{news.category}} -
+    {{getTimeformat(news.pubDate)}} The statements and opinions expressed in any article
+    are those of the author. Fidelity Investments cannot guarantee the accuracy or
+    completeness of any statements or data. The following content was selected to
+    provide users with objective news, information, data and guidance on personal
+    finance topics drawn from a diverse collection of sources including affiliated
+    and non-affiliated finan'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://www.fidelity.com/news/article/default/202607010700PRIMZONEFULLFEED9755196
+- content_hash: 2db8a91d45ba0b0ad895ab7bbb462a732169b18590ecdc7c31c3bdf889298733
+  evidence_id: ev-2db8a91d45ba0b0a
+  excerpt: 'Detected date: 2026-06-14
+
+    Source: linkedin.com
+
+    Snippet: # Posts - linkedin company id: -1590523 - posted date: 2026-06-14 - content
+    html + Your CRM said 98%. The deal still collapsed. Aligned surfaces the risks
+    your forecast missed before they cost you the deal. - likes count: 2 - external
+    url: https://alignedup.com/get-free-demo/ ## Posted Date Range - min: 2026-06-03
+    - max: 2026-06-24 - linkedin company id: -1590523 - posted date: 2026-07-14 -
+    content html + Your deal is dying in their inbox. Aligned''s AI deal workspace
+    keeps buyers and sellers in one shared space, so deals keep moving and nothing
+    goes dark. Stop losing deals, start using Aligned. ... ## Posted Date Range -
+    min: 2026-07-04 - max: 2026-07-25 - linkedin company id: -1590523 - posted date:
+    2026-05-13 - content html + Deel runs 900 users on Aligned and cut their sales
+    cycle by 30%. If your buyers go quiet between meetings, book a demo and see exactly
+    why. - likes count: 9 - external url: https://alignedup.com/get-free-demo/ ##
+    Posted Date Range - min: 2026-03-25 - max: 2026-07-02 - linkedin company id: -1590523
+    - posted date: 2026-07-11 - content html + Aligned equips your internal champion
+    with the right buyer signals, content, and playbook to close the deal. - likes
+    count: 1 - external url: https://alignedup.com/get-free-demo/ ## Posted Date Range
+    - min: 2026-07-01 - max: 2026-07-22 - linkedin company id: -1590523 - posted date:
+    2026-05-29 - content html + Aligned shows you what''s happening in your deal when
+    you''re not in the room - s'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: http://linkedin.com/company/alignedup
+- content_hash: e3ac982caf65f2dde183dce6651e6eec4c2f7b116960e92a4339b8544afcf7ea
+  evidence_id: ev-e3ac982caf65f2dd
+  excerpt: 'Title: Press Release Archives
+
+    Source: aligneddc.com
+
+    Snippet: - Video Library - Press Releases - In the News * About + The Company
+    News Recent News [](https://aligneddc.com/press-release/aligned-data-centers-earns-great-place-to-work-certification-for-second-consecutive-year/)
+    Aligned Certified as Great Place to Work for Second Consecutive Year [Press Release](https://aligneddc.com/category/press-release/)
+    Aligned Data Centers Earns Great Place To Work Certification™ for Second Consecutive
+    Year - About Aligned - Our Leadership - Careers - Contact - Press Releases - Awards
+    - Company News ... - Video Library - Press Releases - In the News * About + The
+    Company News Recent News [](https://aligneddc.com/press-release/aligned-data-centers-earns-great-place-to-work-certification-for-second-consecutive-year/)
+    Aligned Certified as Great Place to Work for Second Consecutive Year [Press Release](https://aligneddc.com/category/press-release/)
+    Aligned Data Centers Earns Great Place To Work Certification™ for Second Consecutive
+    Year - About Aligned - Our Leadership - Careers - Contact - Press Releases - Awards
+    - Company News'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://aligneddc.com/category/press-release/
+- content_hash: 6ddc71062bf7fa698357aeaa528e346d8c91bc9781a9181e0672d5342c7b4f10
+  evidence_id: ev-6ddc71062bf7fa69
+  excerpt: 'Query: alignedup.com news
+
+    1. https://alignedup.com/blog/aligneds-8m-series-a-announcement-paving-the-way-for-buyer-enablement
+
+    Title: Aligned Raises $8M Series A to Lead the Buyer ...
+
+    Source: alignedup.com
+
+    Snippet: * [$60M raised. 70,000 sellers. 1M buyers. The deal workspace is here
+    ➜ Read the announcement](https://alignedup.com/blog/why-we-raised-60m-to-build-the-system-of-action-for-b2b-sales/)
+    [Learn more](https://alignedup.com/blog/why-we-raised-60m-to-build-the-system-of-action-for-b2b-sales/)
+    [aligned logo](https://alignedup.com) ... # Aligned’s 8M Series A Announcement
+    – Paving the Way for Buyer Enablement Why “we’ll just build it with AI” doesn’t
+    work for real enterprise deal rooms Gal Deitsch Gal Deitsch [Home](https://alignedup.com/)
+    / [Blog](https://alignedup.com/resources/) / Aligned’s 8M Series A Announcement
+    – Paving the Way for Buyer Enablement ... ## **By Gal Aga, CEO & Co-Founder**
+    February 11, 2026 [Watch the launch video](https://alignedup.com/?p=37793&preview=true#)
+    · [Book a demo](https://alignedup.com/?p=37793&preview=true#) Sales teams don’t
+    lose quota because they spend too much time on admin. They lose quota because
+    **deal execution** still runs on a 30-year-old workflow: email threads, attachments,
+    scattered links, and stakeholders looping in late. The CRM records what happened.
+    The deal gets executed somewhere else, usually in chaos. Today, we’re launching
+    the biggest release in Aligned’s history: **the AI Deal Workspace** . It’s a buyer-facing
+    syst'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://www.google.com/search?q=alignedup.com+news&tbm=nws
+- content_hash: da47f8c9dff6704bd6e41eb510da8a5151857edcbcf5f5797864f22bce650fac
+  evidence_id: ev-da47f8c9dff6704b
+  excerpt: 'Detected date: 2026-08-13
+
+    Title: Aligned Marketplace Raises $20 Million, Achieves Measurable Outcomes with
+    Large Employers
+
+    Date: 2026-08-13
+
+    Source: globenewswire.com
+
+    Snippet: # Aligned Marketplace Raises $20 Million, Achieves Measurable Outcomes
+    with Large Employers ## Explore [New Crypto Presale...](https://www.globenewswire.com/news-release/2026/08/18/3346590/0/en/new-crypto-presale-pepeto-reveals-funds-update-while-ethereum-price-prediction-targets-10-000.html)
+    August 18, 2026 02:19 ET ... [Kailas FUGA...](https://www.globenewswire.com/news-release/2026/08/18/3346586/0/en/kailas-fuga-continues-trail-shoe-innovation-with-new-fuga-ex-pro-g.html)
+    August 18, 2026 02:00 ET [Kailas FUGA Continues Trail Shoe Innovation with N...](https://www.globenewswire.com/news-release/2026/08/18/3346586/0/en/kailas-fuga-continues-trail-shoe-innovation-with-new-fuga-ex-pro-g.html
+    "Kailas FUGA...") [Designkit Launches...](https://www.globenewswire.com/news-release/2026/08/18/3346565/0/en/designkit-launches-ai-video-platform-that-turns-product-photos-into-e-commerce-marketing-videos.html)
+    August 17, 2026 22:00 ET ... [New Crypto Presale...](https://www.globenewswire.com/news-release/2026/08/18/3346590/0/en/new-crypto-presale-pepeto-reveals-funds-update-while-ethereum-price-prediction-targets-10-000.html)
+    August 18, 2026 02:19 ET ... GlobeNewswire is one of the world''s largest newswire
+    distribution networks, specializing in the delivery of corporate press releases,
+    financial disclosures and multimedia content to media, in'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://www.globenewswire.com/news-release/2026/08/13/3344772/0/en/aligned-marketplace-raises-20-million-achieves-measurable-outcomes-with-large-employers.html
+- content_hash: fea1be323ca8983b15b0c9c3a088653715f811ddf599e434fa09de2af67fc3b3
+  evidence_id: ev-fea1be323ca8983b
+  excerpt: 'Detected date: 2026-06-02
+
+    Title: Alignment Healthcare Shows How Earlier, Coordinated Care ...
+
+    Date: 2026-06-02
+
+    Source: ir.alignmenthealth.com
+
+    Snippet: # News Release Details ## Alignment Healthcare Shows How Earlier, Coordinated
+    Care Leads to Better Health and Fewer Emergencies in 2025 Impact Report Jun 2,
+    2026 PDF Version ### Fifth annual report introduces refreshed impact strategy,
+    aligned with long-term, responsible growth ORANGE, Calif., June 02, 2026 (GLOBE
+    NEWSWIRE) -- Alignment Healthcare, Inc. (NASDAQ: ALHC), today issued its 2025
+    Impact Report, detailing how its care model helps members stay healthier with
+    earlier care and reduces the likelihood of emergencies and more serious health
+    events. ... * **AVA** **®** , Alignment’s proprietary, AI-powered technology platform
+    that integrates clinical, pharmacy and utilization data to identify risks and
+    care gaps earlier ... **Operating in a Changing Medicare Advantage Environment**
+    The report is released at a time when the Medicare Advantage sector continues
+    to evolve in response to shifting economic and regulatory conditions. ... A consumer
+    brand name of Alignment Healthcare (NASDAQ: ALHC), Alignment Health’s mission-focused
+    team makes high-quality, low-cost care a reality for its Medicare Advantage members
+    every day.'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://ir.alignmenthealth.com/news-releases/news-release-details/alignment-healthcare-shows-how-earlier-coordinated-care-leads
+- content_hash: 95628567ab9464690f7e4381d4d8080673a061b3ebc27819cef52101acef6c24
+  evidence_id: ev-95628567ab946469
+  excerpt: 'Detected date: 2026-03-13
+
+    Title: Aligned Equity Acquisition and its Industry Impact
+
+    Date: 2026-03-13
+
+    Source: aligneddc.com
+
+    Snippet: [Press Release](https://aligneddc.com/category/press-release/) Aligned
+    Data Centers Breaks Ground on “Project Caprock,” a Sustainable 540 MW Next-Generation
+    Data Center Campus in Northwest Texas - Brazil - Chile - Colombia - Mexico * [Why
+    Aligned](https://aligneddc.com/aligned-data-centers-advantage/) + The Aligned
+    Advantage The Aligned Advantage ... - Video Library - Press Releases - In the
+    News * About + The Company News Recent News [](https://aligneddc.com/press-release/aligned-data-centers-earns-great-place-to-work-certification-for-second-consecutive-year/)
+    Aligned Certified as Great Place to Work for Second Consecutive Year [Press Release](https://aligneddc.com/category/press-release/)
+    ... [Press Release](https://aligneddc.com/category/press-release/) Aligned Data
+    Centers Breaks Ground on “Project Caprock,” a Sustainable 540 MW Next-Generation
+    Data Center Campus in Northwest Texas - Brazil - Chile - Colombia - Mexico * [Why
+    Aligned](https://aligneddc.com/aligned-data-centers-advantage/) + The Aligned
+    Advantage The Aligned Advantage ... - Video Library - Press Releases - In the
+    News * About + The Company News Recent News [](https://aligneddc.com/press-release/aligned-data-centers-earns-great-place-to-work-certification-for-second-consecutive-year/)
+    Aligned Certified as Great Place to Work for Second Consecutive Year [Press Release](https://aligneddc.com/category/pres'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://aligneddc.com/press-release/ai-infrastructure-partnership-aip-mgx-and-blackrocks-global-infrastructure-partners-gip-to-acquire-all-equity-in-aligned-data-centers
+- content_hash: e9ef126761eeb0fa2f88ba0b18e7d7a3840bd3dddc194ccd7821334fcb0a00ea
+  evidence_id: ev-e9ef126761eeb0fa
+  excerpt: 'Detected date: 2025-10-15
+
+    Title: News Archives
+
+    Date: 2025-10-15
+
+    Source: aligneddc.com
+
+    Snippet: [Press Release](https://aligneddc.com/category/press-release/) Aligned
+    Data Centers Breaks Ground on “Project Caprock,” a Sustainable 540 MW Next-Generation
+    Data Center Campus in Northwest Texas - Brazil - Chile - Colombia - Mexico * [Why
+    Aligned](https://aligneddc.com/aligned-data-centers-advantage/) + The Aligned
+    Advantage The Aligned Advantage ... - Video Library - Press Releases - In the
+    News * About + The Company News Recent News [](https://aligneddc.com/press-release/aligned-data-centers-earns-great-place-to-work-certification-for-second-consecutive-year/)
+    Aligned Certified as Great Place to Work for Second Consecutive Year [Press Release](https://aligneddc.com/category/press-release/)
+    ... [Press Release](https://aligneddc.com/category/press-release/) Aligned Data
+    Centers Breaks Ground on “Project Caprock,” a Sustainable 540 MW Next-Generation
+    Data Center Campus in Northwest Texas - Brazil - Chile - Colombia - Mexico * [Why
+    Aligned](https://aligneddc.com/aligned-data-centers-advantage/) + The Aligned
+    Advantage The Aligned Advantage ... - Video Library - Press Releases - In the
+    News * About + The Company News Recent News [](https://aligneddc.com/press-release/aligned-data-centers-earns-great-place-to-work-certification-for-second-consecutive-year/)
+    Aligned Certified as Great Place to Work for Second Consecutive Year [Press Release](https://aligneddc.com/category/press-release/)
+    Aligned Data Centers Earn'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://aligneddc.com/category/news/
+- content_hash: 18c910a5ce35182043a29efcb4c5bbd05a91780b10705d59e7b6dd4326b9a9d8
+  evidence_id: ev-18c910a5ce351820
+  excerpt: 'Query: Aligned "press release" OR "announces" OR "newsroom"
+
+    1. https://www.globenewswire.com/news-release/2026/08/13/3344772/0/en/aligned-marketplace-raises-20-million-achieves-measurable-outcomes-with-large-employers.html
+
+    Title: Aligned Marketplace Raises $20 Million, Achieves Measurable Outcomes with
+    Large Employers
+
+    Date: 2026-08-13
+
+    Source: globenewswire.com
+
+    Snippet: # Aligned Marketplace Raises $20 Million, Achieves Measurable Outcomes
+    with Large Employers ## Explore [New Crypto Presale...](https://www.globenewswire.com/news-release/2026/08/18/3346590/0/en/new-crypto-presale-pepeto-reveals-funds-update-while-ethereum-price-prediction-targets-10-000.html)
+    August 18, 2026 02:19 ET ... [Kailas FUGA...](https://www.globenewswire.com/news-release/2026/08/18/3346586/0/en/kailas-fuga-continues-trail-shoe-innovation-with-new-fuga-ex-pro-g.html)
+    August 18, 2026 02:00 ET [Kailas FUGA Continues Trail Shoe Innovation with N...](https://www.globenewswire.com/news-release/2026/08/18/3346586/0/en/kailas-fuga-continues-trail-shoe-innovation-with-new-fuga-ex-pro-g.html
+    "Kailas FUGA...") [Designkit Launches...](https://www.globenewswire.com/news-release/2026/08/18/3346565/0/en/designkit-launches-ai-video-platform-that-turns-product-photos-into-e-commerce-marketing-videos.html)
+    August 17, 2026 22:00 ET ... [New Crypto Presale...](https://www.globenewswire.com/news-release/2026/08/18/3346590/0/en/new-crypto-presale-pepeto-reveals-funds-update-while-ethereum-price-prediction-targets-10-000.htm'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://www.google.com/search?q=Aligned+%22press+release%22+OR+%22announces%22+OR+%22newsroom%22&tbs=qdr%3Ay
+- content_hash: ac9353cb482deb00f60c61f41b9e87021dc55c870bc00c7af4a2dbcca17982d8
+  evidence_id: ev-ac9353cb482deb00
+  excerpt: 'Detected date: 2026-06-02
+
+    Title: Aligned Raises $8M Series A to Lead the Buyer Enablement Revolution
+
+    Date: 2026-06-02
+
+    Source: alignedup.com
+
+    Snippet: # Aligned’s 8M Series A Announcement – Paving the Way for Buyer Enablement
+    ## **By Gal Aga, CEO & Co-Founder** Today, we’re launching the biggest release
+    in Aligned’s history: **the AI Deal Workspace** . It’s a buyer-facing system built
+    to solve the part of selling that never got a proper workspace, the real work
+    of moving decisions forward. ... ## Why this moment matters This shift is not
+    about adding more AI features. It is about creating a new operational layer for
+    sales, designed for how buying and selling actually work today.'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: http://alignedup.com/blog/aligneds-8m-series-a-announcement-paving-the-way-for-buyer-enablement
+- content_hash: be7b2f16c7cef29c2dee73cde5ded100d5ad7be1972046a84cca4305d9b2db65
+  evidence_id: ev-be7b2f16c7cef29c
+  excerpt: 'Detected date: 2025-10-16
+
+    Title: Macquarie Asset Management has been pivotal to the rapid growth and expansion
+    of Aligned Data Centers across the Americas | Macquarie Group
+
+    Date: 2025-10-16
+
+    Source: macquarie.com
+
+    Snippet: # Accelerating the growth of a market-leading data centre platform ##
+    First 1. ’Data Center Market Overview‘, Bloomberg New Energy Finance (BNEF), June
+    2025, https://about.bnef.com/insights (Accessed 23 September 2025). 2. ’New Energy
+    Outlook 2025‘, BNEF, April 2025, https://about.bnef.com/insights (Accessed 23
+    September 2025). 3. ... Aligned Data Centers, September 2025. 6. Aligned Data
+    Centers, https://aligneddc.com/why-aligned/technologies/ (Accessed 23 September
+    2025). 7. As at September 2025. 8. ... ### Macquarie Asset Management to lead
+    sale of Aligned Data Centers at an enterprise value of $US40 billion New York
+    15 October 2025 Learn more'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://www.macquarie.com/au/en/insights/accelerating-the-growth-of-aligned-data-centres-a-market-leading-data-centre-platform-in-the-americas.html
+- content_hash: bcd0863b0d087912a4a01bc8097b963a34ab8fb745a34e72680b1ae341543af8
+  evidence_id: ev-bcd0863b0d087912
+  excerpt: 'Detected date: 2026-02-16
+
+    Title: Aligned unveils AI Deal Workspace for B2B sales execution
+
+    Date: 2026-02-16
+
+    Source: contentgrip.com
+
+    Snippet: # Aligned launches the AI Deal Workspace, the missing execution layer
+    for modern sales The AI Deal Workspace by Aligned brings automation and real-time
+    collaboration to B2B sales, bridging the gap between CRM and buyers. * Celi Anindia
+    ## Celi Anindia 16 Feb 2026 • 3 min read Aligned launches the AI Deal Workspace,
+    the missing execution layer for modern sales [Aligned](https://alignedup.com)
+    , a sales tech company based in Tel Aviv, has launched the AI Deal Workspace—a
+    new buyer-facing platform designed to address the long-standing challenge of deal
+    execution in B2B sales. ... ## What is the AI Deal Workspace? Key features include:
+    * A shared, buyer-facing workspace where all deal activity happens in one place
+    * AI that understands full deal context and supports execution at every step *
+    Automation of deal resources, such as executive summaries, action items, and follow-ups
+    Aligned’s approach builds on its earlier work in Digital Sales Rooms, now evolving
+    into a more comprehensive execution environment for modern sales teams.'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: http://contentgrip.com/aligned-ai-deal-workspace
+- content_hash: cd3e89017f9c68f4140b60513a440ddb90f37f86355c00ecaacb0f86afc82ce3
+  evidence_id: ev-cd3e89017f9c68f4
+  excerpt: 'Detected date: 2026-02-11
+
+    Title: Aligned Launches the AI Deal Workspace
+
+    Date: 2026-02-11
+
+    Source: prnewswire.com
+
+    Snippet: # Aligned Launches the AI Deal Workspace -- the Missing Execution Layer
+    for Modern Sales ## News provided by **Aligned** Feb 11, 2026, 09:00 ET ## Share
+    this article Share to X Share this article Share to X TEL AVIV, Israel , Feb.
+    11, 2026 /PRNewswire/ -- Aligned today announced the **[AI Deal Workspace](https://alignedup.com/?avk=mvk_ai_native_aligned&utm_source=pr)**
+    , a new buyer-facing system designed to fix the part of selling that has stayed
+    broken for decades: **deal execution** . Sales teams have invested heavily in
+    CRMs, revenue intelligence, and AI features across the stack. Those tools made
+    internal work faster—tracking, forecasting, coaching, reporting—but the quota
+    gap rarely comes from missing fields or better dashboards. ... Aligned''s view
+    is that modern sales needs a missing operational layer: **an execution environment
+    built for how buying and selling actually work today.** **From Buyer Enablement
+    to AI-native deal execution** ... Today, Aligned is evolving that foundation into
+    the **AI Deal Workspace** : an execution layer that bridges internal systems of
+    record and the buyer''s decision process—so deals can be run in one place, with
+    AI driving progress where work actually happens. ... This shift is not about adding
+    more AI features or chasing trends. It is about creating a new operational layer
+    for sales, one designed for how buying and selling actually work today.'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://www.prnewswire.com/news-releases/aligned-launches-the-ai-deal-workspace--the-missing-execution-layer-for-modern-sales-302684951.html
+- content_hash: ee80d28e749833df0b5876f81edfb2a2184b60fd1f01d12946a218d90aa418bf
+  evidence_id: ev-ee80d28e749833df
+  excerpt: 'Detected date: 2026-02-11
+
+    Title: Aligned Launches the AI Deal Workspace -- the Missing Execution Layer for
+    Modern Sales
+
+    Date: 2026-02-11
+
+    Source: prnewswire.com
+
+    Snippet: # Aligned Launches the AI Deal Workspace -- the Missing Execution Layer
+    for Modern Sales ## News provided by **Aligned** 11 Feb, 2026, 16:00 IST ## Share
+    this article Share to X Share this article Share to X TEL AVIV, Israel , Feb.
+    11, 2026 /PRNewswire/ -- Aligned today announced the **[AI Deal Workspace](https://alignedup.com/?avk=mvk_ai_native_aligned&utm_source=pr)**
+    , a new buyer-facing system designed to fix the part of selling that has stayed
+    broken for decades: **deal execution** . Sales teams have invested heavily in
+    CRMs, revenue intelligence, and AI features across the stack. Those tools made
+    internal work faster—tracking, forecasting, coaching, reporting—but the quota
+    gap rarely comes from missing fields or better dashboards. ... Aligned''s view
+    is that modern sales needs a missing operational layer: **an execution environment
+    built for how buying and selling actually work today.** **From Buyer Enablement
+    to AI-native deal execution** ... Today, Aligned is evolving that foundation into
+    the **AI Deal Workspace** : an execution layer that bridges internal systems of
+    record and the buyer''s decision process—so deals can be run in one place, with
+    AI driving progress where work actually happens. ... This shift is not about adding
+    more AI features or chasing trends. It is about creating a new operational layer
+    for sales, one designe'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://www.prnewswire.com/il/news-releases/aligned-launches-the-ai-deal-workspace--the-missing-execution-layer-for-modern-sales-302684951.html
+- content_hash: c03bde8341a5f70c0b34f969ac4d4172bda84c44b9069e8fc02ed6390c37a694
+  evidence_id: ev-c03bde8341a5f70c
+  excerpt: 'Detected date: 2025-10-03
+
+    Title: Aligned Launches Aligned Access™, Its Software-defined Connectivity Solution
+    - Aligned Data Centers
+
+    Date: 2025-10-03
+
+    Source: aligneddc.com
+
+    Snippet: # Aligned Launches Aligned Access™, Its Software-defined Connectivity
+    Solution ## _Solution enables software-defined, carrier-neutral connectivity to
+    leading cloud service providers, data centers and network service providers_ **DALLAS
+    (March 20, 2019)** – [Aligned](https://alignedev.wpengine.com/) , a leading data
+    center provider offering innovative, sustainable and adaptable colocation and
+    build-to-scale solutions for cloud, enterprise, and managed service providers,
+    announces the launch of [Aligned Access™](https://alignedev.wpengine.com/solutions/connectivity/)
+    . ... “These ideals, along with our powerfully-built services, ultimately promote
+    better outcomes for customers both today and in the future, empowering critical
+    expansion while facilitating a new path ... ### You may also find Interesting
+    #### Aligned Data Centers Breaks Ground on “Project Caprock,” a Sustainable 540
+    MW Next-Generation Data Center Campus in Northwest Texas [](https://aligneddc.com/press-release/new-global-coalition-launches-in-brazil-to-build-data-center-talent-pipeline/)
+    New Global Coalition Launches in Brazil to Build Data Center Talent Pipeline ...
+    #### New Global Coalition Launches in Brazil to Build Data Center Talent Pipeline
+    Not consenting or withdrawing consent, may adversely affect certain features and
+    functions. Functional Functional A'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://aligneddc.com/aligned-energy-launches-aligned-access-its-software-defined-connectivity-solution
+- content_hash: 6faca1996502cf8cb5c069f4b4a2148f1c12bccade30341547a66ce357887802
+  evidence_id: ev-6faca1996502cf8c
+  excerpt: 'Query: Aligned launches OR "new feature" OR "introducing" OR "now available"
+
+    1. https://investor.aligntech.com/news-releases/news-release-details/align-technology-announces-clincheckr-live-plan-automates-doctor
+
+    Title: Align Technology Announces ClinCheck® Live Plan That Automates Doctor-Ready
+    Initial Invisalign® Treatment Plan in Minutes | Align Technology
+
+    Source: investor.aligntech.com
+
+    Snippet: # Align Technology Announces ClinCheck® Live Plan That Automates Doctor-Ready
+    Initial Invisalign® Treatment Plan in Minutes SAN JOSE, Calif. & TEMPE, Ariz.
+    --(BUSINESS WIRE)--Oct. 29, 2025-- Align Technology, Inc. ... ClinCheck® Live
+    Plan, a new feature in its Invisalign® digital treatment planning that automates
+    the generation of initial doctor-ready treatment plans within 15 minutes. This
+    advancement represents a major technological milestone in the Align™ Digital Platform,
+    that can reduce the Invisalign treatment planning cycle from days to minutes.
+    ... Over the past few years, Align has introduced a range of new treatment planning
+    tools and automation to enhance consistency, doctor control, and speed in treatment
+    planning. ... ClinCheck treatment planning innovations have included: **2020-2022**
+    : The launch of cloud-based ClinCheck® Pro 6.0 software and automated Invisalign®
+    Personalized Plan templates. **2022** : The introduction of the one-page Flex
+    Rx prescription form for workflow simplification and ClinCheck Live Update for
+    3D controls for real-time doctor modifications **20'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://www.google.com/search?q=Aligned+launches+OR+%22new+feature%22+OR+%22introducing%22+OR+%22now+available%22&tbs=qdr%3Ay
+- content_hash: 1f8269922f27e98d5e3a267f0e200c906af11cee6b714d19c2d8d69052e0eaec
+  evidence_id: ev-1f8269922f27e98d
+  excerpt: 'Title: Robot Challenge Screen
+
+    ![Robot](https://d1rozh26tys225.cloudfront.net/robot-suspicion.svg)
+
+    # alignedup.com
+
+    Checking the site connection security
+
+    ![CDN icon](https://d1rozh26tys225.cloudfront.net/loader.svg)
+
+    This page requires cookies to be enabled in your browser settings. Please check
+    this setting and enable cookies (if disabled)'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://alignedup.com/blog/aligneds-8m-series-a-announcement-paving-the-way-for-buyer-enablement
+- content_hash: b0b2f0d8764fc96f0227a4768ae86cfa23a3efc935e2010496d1d9743efc020f
+  evidence_id: ev-b0b2f0d8764fc96f
+  excerpt: 'Title: Robot Challenge Screen
+
+    ![Robot](https://d1rozh26tys225.cloudfront.net/robot-suspicion.svg)
+
+    # alignedup.com
+
+    Checking the site connection security
+
+    ![CDN icon](https://d1rozh26tys225.cloudfront.net/loader.svg)
+
+    This page requires cookies to be enabled in your browser settings. Please check
+    this setting and enable cookies (if disabled)'
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://alignedup.com/category/articles/
+- content_hash: 966be744b576ae7f8f9fab556f3faf955c1adbe6434541004b37b7b718203aa8
+  evidence_id: ev-966be744b576ae7f
+  excerpt: "Detected date: Jun 2, 2026\nTitle: Alignment Healthcare Shows How Earlier,\
+    \ Coordinated Care Leads to Better Health and Fewer Emergencies in 2025 Impact\
+    \ Report | Alignment Healthcare, Inc.\nSkip to main navigation \n\n[ ](https://www.alignmenthealthcare.com/)\n\
+    \n  * [Overview](/)\n  * [News & Events](/news-events/news-releases)\n    * [News\
+    \ Releases](/news-events/news-releases)\n    * [Events and Presentations](/news-events/events-and-presentations)\n\
+    \  * [Governance](/governance/governance-overview)\n    * [Governance Overview](/governance/governance-overview)\n\
+    \    * [Our Team](https://www.alignmenthealthcare.com/About-Us/Our-Team)\n   \
+    \ * [Committee Composition](/governance/committee-composition)\n  * [Stock Information](/stock-information/stock-quote-chart)\n\
+    \    * [Stock Quote & Chart](/stock-information/stock-quote-chart)\n    * [Historic\
+    \ Price Lookup](/stock-information/historic-price-lookup)\n    * [Investment Calculator](/stock-information/investment-calculator)\n\
+    \    * [Analyst Coverage](/stock-information/analyst-coverage)\n  * [Financials\
+    \ & Filings](/financial-filings/sec-filings)\n    * [SEC Filings](/financial-filings/sec-filings)\n\
+    \    * [Annual Reports & Proxies](/financial-filings/annual-reports-proxies)\n\
+    \  * [Resources](/resources/investor-faqs)\n    * [Investor FAQs](/resources/investor-faqs)\n\
+    \    * [Email Alerts](/resources/email-alerts)\n    * [Contact IR](/resources/contact-ir)\n\
+    \n\n\n# News Release Details\n\n## \n\nAlignment Healthcare Shows How Earlier,\
+    \ Coordinated Care Leads to Better Health and Fewer Emergencies in"
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://ir.alignmenthealth.com/news-releases/news-release-details/alignment-healthcare-shows-how-earlier-coordinated-care-leads
+- content_hash: 9df1219da802abae9d85a84ec0b455cd9cedec1e5e4faa32c0ccbd23cae4d9b9
+  evidence_id: ev-9df1219da802abae
+  excerpt: "Title: Aligned Equity Acquisition and its Industry Impact - Aligned Data\
+    \ Centers\nSkip to content\n\n  * [Customer Portal](https://aligned.service-now.com/)\n\
+    \  * [Partners](https://aligneddc.com/partners/)\n\n\n\n[ ](https://aligneddc.com)\n\
+    \n  * [Data Center Solutions](https://aligneddc.com/data-center-solutions/)\n\
+    \    * [See All Solutions](/data-center-solutions/)\n\n[See All Solutions](/data-center-solutions/)\n\
+    \n[ ](/hyperscale-and-build-to-scale-campus/ \"Hyperscale Campus and Build to\
+    \ Scale\")\n\nHyperscale Campus and Build to Scale\n\n[ ](/gigascale-campuses/\
+    \ \"Gigascale Campuses\")\n\nGigascale Campuses\n\n[ ](/multi-tenant-and-enterprise-data-centers/\
+    \ \"Multi-Tenant and Enterprise\")\n\nMulti-Tenant and Enterprise\n\n[ ](https://aligned-federal.com/\
+    \ \"Federal\")\n\nFederal\n\nFeatured Case Study \n\n[ ](https://aligneddc.com/case-studies/case-study-protecting-regional-water-resources/)\n\
+    \n[Case Studies](https://aligneddc.com/category/case-studies/)\n\nProtecting Regional\
+    \ Water Resources \n\n  * [Cooling Innovation](https://aligneddc.com/cooling-innovation/)\n\
+    \  * [Locations](https://aligneddc.com/locations/)\n    * North America\n\n  \
+    \    * [Abernathy](/abernathy-tx-data-center/)\n\n      * [Maryland](/maryland-data-centers/)\n\
+    \n      * [Atlanta](/atlanta-data-centers/)\n\n      * [Ohio](/northeast-ohio-data-centers/)\n\
+    \n      * [Chicago](/chicago-data-centers/)\n\n      * [Phoenix](/phoenix-data-centers/)\n\
+    \n      * [Dallas](/dallas-data-centers/)\n\n      * [Salt Lake City](/salt-lake-city-data-centers/)\n\
+    \n      * [Hillsboro](/hill"
+  retrieved_at: '2026-08-19T11:43:11.976647-04:00'
+  url: https://aligneddc.com/press-release/ai-infrastructure-partnership-aip-mgx-and-blackrocks-global-infrastructure-partners-gip-to-acquire-all-equity-in-aligned-data-centers/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

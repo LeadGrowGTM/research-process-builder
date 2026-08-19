@@ -1,0 +1,660 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: identity
+  value: BigPanda
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: description
+  value: Our Story - About BigPanda | BigPanda --> en --> en --> de Service + Support
+    Service Community Documentation Customer Support Platform Status Support Education
+    & Certification Professional Services Login Platform Agentic ITOps Platform The
+    BigPanda agentic ITOps platform uses AI to automate IT detection, triage, and
+    resolution, improving operational efficiency and reducing downtime and costs.
+    Explore the Platform Platform Overview AI Incident Prevention AI Detection & Response
+    L1 Agent AI Incide
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: offers
+  value: incident intelligence
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: icp
+  value: it teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: personas
+  value: it teams
+  visibility: message_safe
+company_id: saas-08
+corrections: []
+evidence:
+- content_hash: 8d10c83bbc00a2c9b190962859a301302faeb34990f83a1ceedfd0bdbb22bbf5
+  evidence_id: ev-8d10c83bbc00a2c9
+  excerpt: Our Story - About BigPanda | BigPanda --> en --> en --> de Service + Support
+    Service Community Documentation Customer Support Platform Status Support Education
+    & Certification Professional Services Login Platform Agentic ITOps Platform The
+    BigPanda agentic ITOps platform uses AI to automate IT detection, triage, and
+    resolution, improving operational efficiency and reducing downtime and costs.
+    Explore the Platform Platform Overview AI Incident Prevention AI Detection & Response
+    L1 Agent AI Incident Assistant IT Knowledge Graph Integrations Jira ServiceNow
+    All Integrations Solutions Transform ITSM with Agentic ITOps Learn how enterprises
+    can empower incident management teams with AI assistance by integrating agentic
+    AI into their incident management strategy. Get the e-book Solutions for Automating
+    L1 Detection & Response Empowering L2, L3, and SRE with AI Assistance Predicting
+    & Preventing Incidents & Outages Industries Financial Services Insurance Managed
+    Service Providers Manufacturing Retail Airlines All Industries My role is IT Operations
+    Incident Management IT Service Management Site Reliability Engineering Pricing
+    Customers Resources Derisking IT Change Management with Agentic AI Discover how
+    agentic AI transforms the IT change management process to predict high-risk changes,
+    prevent incidents, and protect engineering time. Read the White Paper Resource
+    Type AIOps Blog Case Studies E-books Webinars & Events All Resources Resource
+    Topic Agentic ITOps AIOps Alert Intelligence Analytics Automation Incident Management
+    Incident Prevention Integration ITOps Monitoring Customer Resources Customer Support
+    Professional Services BigPanda Education Company Careers We’re looking for talented,
+    passionate, creative, and fun people to join our embarrassment of Pandas. (Yes,
+    that’s really what a group of pandas is called!) Learn More About Us Our Story
+    Leadership Investors Partners Values and Culture Careers Media and Recognition
+    Awards Analysts Reports Newsroom Get a demo Con
+  retrieved_at: '2026-08-12T21:00:55.661668+00:00'
+  url: https://www.bigpanda.io/company/
+- content_hash: 09e959f239942a367999bcbf1f8343b79d2a993615867b04576b49ba7ee95647
+  evidence_id: ev-09e959f239942a36
+  excerpt: 'BigPanda | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now BigPanda Software Development Redwood City, California
+    53,705 followers Automate L1 operations. Augment incident response teams. Stop
+    IT incidents before they happen. See jobs Follow Discover all 332 employees Report
+    this company About us BigPanda keeps the digital world running with Agentic AI,
+    artificial intelligence that enables autonomous systems to make decisions and
+    perform tasks without constant human intervention. Beyond other AIOps solutions,
+    the BigPanda platform responds to and prevents IT incidents at machine speed,
+    improving operational efficiency and delivering exceptional service reliability.
+    Website http://bigpanda.io External link for BigPanda Industry Software Development
+    Company size 201-500 employees Headquarters Redwood City, California Type Privately
+    Held Founded 2012 Specialties IT Operations, IT Alert Management, DevOps, Data
+    Science, ITOM, IT Incident Management, AIOps, Machine Learning, ITOA, IT Event
+    Management, Service Operations, IT Monitoring, IT Automation, and ITOps Products
+    BigPanda BigPanda AIOps Platforms BigPanda keeps the digital world running by
+    transforming reactive, manual IT processes into proactive, intelligent automation.
+    The agentic IT operations platform uses AI to detect, respond to, and prevent
+    IT incidents at machine speed, improving operational efficiency and delivering
+    exceptional service reliability. AI Detection and Response: Automate L1 operations
+    and stop incidents before they escalate. Utilize real-time signals and intelligent
+    automation to minimize downtime, eliminate noise, and resolve incidents more efficiently
+    with AI that adapts to your specific environment. AI Incident Assistant: Give
+    incident escalation teams an always-on AI partner to improve collaboration, accelerate
+    investigation, and automate resolution. AI Incident Prevention: Automated change
+    analysis enables proactive and scalable change govern'
+  retrieved_at: '2026-08-12T21:00:56.445305+00:00'
+  url: https://www.linkedin.com/company/bigpanda
+- content_hash: 73b6e24a7ac9c3a5cc85eae81b5d52db1e7d0e5b4d8863ad3066f0a204c975c1
+  evidence_id: ev-73b6e24a7ac9c3a5
+  excerpt: 'AIOps startup BigPanda raises Series E extension, bringing its total capital
+    to $340M TechCrunch Desktop Logo TechCrunch Mobile Logo Latest Startups Venture
+    Apple Security AI Apps Disrupt 2026 Events Podcasts Newsletters Search Submit
+    Site Search Toggle Mega Menu Toggle Topics Latest AI Amazon Apps Biotech & Health
+    Climate Cloud Computing Commerce Crypto Enterprise EVs Fintech Fundraising Gadgets
+    Gaming Google Government & Policy Hardware Instagram Layoffs Media & Entertainment
+    Meta Microsoft Privacy Robotics Security Social Space Startups TikTok Transportation
+    Venture More from TechCrunch Staff Events Startup Battlefield StrictlyVC Newsletters
+    Podcasts Videos Partner Content TechCrunch Brand Studio Contact Us Image Credits:
+    Ralwel / Getty Images AIOps startup BigPanda raises Series E extension, bringing
+    its total capital to $340M Kyle Wiggers 4:00 AM PDT · August 17, 2022 BigPanda
+    , a startup developing AI to audit changes in IT environments and recommend how
+    to fix them, has raised $20 million in an extension of its Series E round. UBS
+    Next and Wells Fargo Strategic Capital contributed to the tranche, bringing BigPanda’s
+    total raised to $340 million. The company’s valuation remains unchanged at $1.2
+    billion. As my colleague Christine Hall recently reported, BigPanda works to prevent
+    corporate network outages by analyzing data from observability and monitoring
+    services. The platform can automate aspects of incident response, like ticketing,
+    and optionally connect to third-party runbook automation tools to run automated
+    workflows. BigPanda also provides analytics to track incident trends and metrics
+    and to enable teams to measure progress toward company goals. BigPanda was founded
+    in 2012 by Assaf Resnick and Elik Eizenberg. Resnick was an analyst at Moody’s
+    before becoming a principal at Sequoia Capital and a member at Jibe Ventures.
+    Eizenberg, formerly head of IT operations at IDF, worked on algorithms and software
+    at stock-trading startup MarketWindows prior to j'
+  retrieved_at: '2026-08-12T21:00:56.976508+00:00'
+  url: https://techcrunch.com/2022/08/17/aiops-startup-bigpanda-raises-series-e-extension-bringing-its-total-capital-to-340m/
+- content_hash: 1231a4bab7ee66989ed5dcceb1c15c32e8167e31f8b63b07d00defd3446ccf59
+  evidence_id: ev-1231a4bab7ee6698
+  excerpt: 'Title: Top BigPanda Alternatives & Competitors 2026
+
+    Snippet: 1. PagerDuty · 2. Splunk IT Service Intelligence (ITSI) · 3. ScienceLogic
+    AI Platform · 4. BMC Helix Observability & AIOps · 5. ignio · 6. Better Stack
+    · 7. Edwin AI.'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.gartner.com/reviews/product/bigpanda-1658620356/alternatives
+- content_hash: a58ede61ebf153fa03a74f96a4063efbe48382b1b67809b0baac8a25aa502d45
+  evidence_id: ev-a58ede61ebf153fa
+  excerpt: 'Title: LogicMonitor vs BigPanda
+
+    Snippet: LogicMonitor vs. BigPanda. LogicMonitor helps IT teams turn noisy, disconnected
+    alerts into a clear view of what is affecting critical services and users ...'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.logicmonitor.com/logicmonitor-vs-bigpanda
+- content_hash: 2ba11112b47e6f920564470f7209c976fb21add8169bce27223382216f63b9fb
+  evidence_id: ev-2ba11112b47e6f92
+  excerpt: 'Title: BigPanda Alternatives and Competitors | AIOps
+
+    Snippet: Reviews Say. Compared to BigPanda, Splunk AppDynamics is: More Transparent.
+    Better at Integrating. Easier to Implement.'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.softwarereviews.com/categories/215/products/7293/alternatives
+- content_hash: 41d87e2821f22ef2c620345296e6e6353a483c784dbbb6b05d34869bfa8d5e66
+  evidence_id: ev-41d87e2821f22ef2
+  excerpt: 'Detected date: Jul 1, 2026
+
+    Title: BigPanda Alternative for AI Incident Investigation and Root ...
+
+    Date: Jul 1, 2026
+
+    Snippet: BigPanda vs Sherlocks.ai. BigPanda and Sherlocks solve different parts
+    of the incident workflow. BigPanda is strongest upstream, where teams ...'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.sherlocks.ai/discover/bigpanda-alternatives-ai-incident-investigation
+- content_hash: 9b434f4400e62586f049242f67ff546d13d00606a64e8890fa9b28e465ff5a36
+  evidence_id: ev-9b434f4400e62586
+  excerpt: 'Detected date: Apr 27, 2026
+
+    Title: What is IT incident management? How does agentic ITOps ...
+
+    Date: Apr 27, 2026
+
+    Snippet: BigPanda AI Incident Prevention offers capabilities including predictive
+    analytics and change risk intelligence ... IT problem management VS. IT ...'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.bigpanda.io/blog/what-is-it-incident-management/
+- content_hash: 5eedfc88365be8695d94e065fbdafe231f4ff95e3ef4e990719ba8ab3c5b8264
+  evidence_id: ev-5eedfc88365be869
+  excerpt: 'Title: PagerDuty vs. BigPanda
+
+    Snippet: PagerDuty powers the entire incident lifecycle–from detection to resolution–with
+    built-in automation, orchestration, and actionable intelligence.'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.pagerduty.com/vs/bigpanda/
+- content_hash: 9594d4aa03fa1ca6dd82d37dcbd3d59792845f38411632ecdb964b2d7e7ea27a
+  evidence_id: ev-9594d4aa03fa1ca6
+  excerpt: 'Title: Introducing the BigPanda AI Incident Assistant
+
+    Snippet: Automate Root Cause Analysis: Teams using the AI Incident Assistant have
+    reported 200% time savings in generating root cause analyses compared to manual
+    ...'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.bigpanda.io/resource/video/bigpanda_ai_incident_assistant/
+- content_hash: 14602457fc9b2c768740a7a18a846d60b2ea5fc1674e117477bff473b4bebb33
+  evidence_id: ev-14602457fc9b2c76
+  excerpt: 'Detected date: Jul 18, 2026
+
+    Title: BitSentry vs BigPanda: AI Investigation or Enterprise ITOps?
+
+    Date: Jul 18, 2026
+
+    Snippet: BitSentry vs BigPanda: AI Investigation or Enterprise ITOps? BigPanda
+    turns enterprise event noise into correlated incidents. BitSentry runs ...'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://bitsentry.ai/blog/bitsentry-vs-bigpanda-ai-sre-comparison/
+- content_hash: 08e297fe86900fbb32e07b6a6e3bc11b03def6bc16a7dac47dc85a963cfd9fae
+  evidence_id: ev-08e297fe86900fbb
+  excerpt: 'Title: BigPanda vs Splunk ITSI (IT Service Intelligence) comparison
+
+    Snippet: BigPanda vs Splunk ITSI (IT Service Intelligence) comparison. BigPanda
+    and Splunk are both solutions in the IT Alerting and Incident Management category.'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.peerspot.com/products/comparisons/bigpanda_vs_splunk-itsi-it-service-intelligence
+- content_hash: 50590cd1efe59cf8fec55dbbcca606fd5d6dc99b524e04aa8eb7fe7c766325be
+  evidence_id: ev-50590cd1efe59cf8
+  excerpt: 'Query: BigPanda incident intelligence alternatives OR competitors OR "vs"
+    OR "compared to"
+
+    1. https://www.gartner.com/reviews/product/bigpanda-1658620356/alternatives
+
+    Title: Top BigPanda Alternatives & Competitors 2026
+
+    Snippet: 1. PagerDuty · 2. Splunk IT Service Intelligence (ITSI) · 3. ScienceLogic
+    AI Platform · 4. BMC Helix Observability & AIOps · 5. ignio · 6. Better Stack
+    · 7. Edwin AI.
+
+    2. https://www.logicmonitor.com/logicmonitor-vs-bigpanda
+
+    Title: LogicMonitor vs BigPanda
+
+    Snippet: LogicMonitor vs. BigPanda. LogicMonitor helps IT teams turn noisy, disconnected
+    alerts into a clear view of what is affecting critical services and users ...
+
+    3. https://www.softwarereviews.com/categories/215/products/7293/alternatives
+
+    Title: BigPanda Alternatives and Competitors | AIOps
+
+    Snippet: Reviews Say. Compared to BigPanda, Splunk AppDynamics is: More Transparent.
+    Better at Integrating. Easier to Implement.
+
+    4. https://www.sherlocks.ai/discover/bigpanda-alternatives-ai-incident-investigation
+
+    Title: BigPanda Alternative for AI Incident Investigation and Root ...
+
+    Date: Jul 1, 2026
+
+    Snippet: BigPanda vs Sherlocks.ai. BigPanda and Sherlocks solve different parts
+    of the incident workflow. BigPanda is strongest upstream, where teams ...
+
+    5. https://www.bigpanda.io/blog/what-is-it-incident-management/
+
+    Title: What is IT incident management? How does agentic ITOps ...
+
+    Date: Apr 27, 2026
+
+    Snippet: BigPanda AI Incident Prevention offers capabilities including predictive
+    analytics and change risk intel'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.google.com/search?q=BigPanda+incident+intelligence+alternatives+OR+competitors+OR+%22vs%22+OR+%22compared+to%22
+- content_hash: 5c8d5a7d323879c183590764ed0508045a4676ec41e3a9d436f9cecf99d2bbc9
+  evidence_id: ev-5c8d5a7d323879c1
+  excerpt: 'Title: Top BigPanda Alternatives & Competitors 2026
+
+    Snippet: BigPanda Alternatives · 1. PagerDuty · 2. Splunk IT Service Intelligence
+    (ITSI) · 3. ScienceLogic AI Platform · 4. BMC Helix Observability & AIOps · 5.
+    ignio.'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.gartner.com/reviews/product/bigpanda-1658620356/alternatives
+- content_hash: 8b36ae0329f6e0d0dc53a681eb0d45ab1f3c57c9f53df37bd7d4b5566800688c
+  evidence_id: ev-8b36ae0329f6e0d0
+  excerpt: 'Title: Top 10 BigPanda Alternatives & Competitors in 2026
+
+    Snippet: The best BigPanda alternatives are PagerDuty, Moogsoft, and Dynatrace.
+    Find top-ranking free & paid apps similar to BigPanda for your AIOps Tools needs.'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.g2.com/products/bigpanda/competitors/alternatives
+- content_hash: dfc46234260c904c23cc3c2dd042fb5e4883f8bedf8a595bfde1d892e4b6f4dd
+  evidence_id: ev-dfc46234260c904c
+  excerpt: 'Title: What are you using to integrate all your monitoring and ...
+
+    Date: 8 years ago
+
+    Snippet: There are the big few - PagerDuty, OpsGenie, BigPanda, VictorOps, but
+    they''re mostly oriented towards alerting (although VictorOps in particular ...'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.reddit.com/r/sysadmin/comments/89guax/what_are_you_using_to_integrate_all_your/
+- content_hash: fae3d920cd416bb357dde970079c87ca24c616bd3dd6f337a3fbddd75d76223a
+  evidence_id: ev-fae3d920cd416bb3
+  excerpt: 'Title: Comparison
+
+    Snippet: Keep is an alternative to platforms like BigPanda and Moogsoft. Customers
+    who have used both traditional platforms and Keep notice a significant improvement
+    in ...'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://docs.keephq.dev/overview/comparisons
+- content_hash: 17bb3639a13791094edce03ec8ad224503e94c62121d52f2c25230f48759b6d4
+  evidence_id: ev-17bb3639a1379109
+  excerpt: 'Title: BigPanda Alternatives and Competitors | AIOps
+
+    Snippet: Best Alternatives and Competitors to BigPanda · Dynatrace · Splunk AppDynamics
+    · Datadog · ServiceNow IT Operations Management · IBM Cloud Pak for AIOps · New
+    ...'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.softwarereviews.com/categories/215/products/7293/alternatives
+- content_hash: 0e8db007820e900573c1d0596b881207be2a4700dd06bc155be3af3bd7ad896d
+  evidence_id: ev-0e8db007820e9005
+  excerpt: 'Detected date: Jul 1, 2026
+
+    Title: BigPanda Alternative for AI Incident Investigation and Root ...
+
+    Date: Jul 1, 2026
+
+    Snippet: Sherlocks.ai is a better fit when teams need AI incident investigation,
+    root cause analysis, and infrastructure-aware debugging after alerts ...'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.sherlocks.ai/discover/bigpanda-alternatives-ai-incident-investigation
+- content_hash: ff0f27cc5aba783a38d162e6de85284447f3f750ebcc0108386686a4eebc2cdc
+  evidence_id: ev-ff0f27cc5aba783a
+  excerpt: 'Title: BigPanda: Agentic AI for IT Operations
+
+    Snippet: The BigPanda agentic ITOps platform uses AI to automate IT detection,
+    triage, and resolution, improving operational efficiency and reducing downtime
+    and costs.'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.bigpanda.io/
+- content_hash: fdd83aa23c18f7829e5ba899f58d265cac624a3b60a192b4e5815de29acdbb4e
+  evidence_id: ev-fdd83aa23c18f782
+  excerpt: 'Title: Companies that use Bigpanda (558)
+
+    Snippet: Bigpanda alternatives and competitors (224) Logo Azure Monitor22,810
+    Logo Zabbix22,351 Logo Wireshark21,861 Logo Kibana20,550'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://theirstack.com/en/technology/bigpanda
+- content_hash: 94fe239ae597b49139e7d309644d5c05d57fe00fad1e21185c0f8f235d8aff75
+  evidence_id: ev-94fe239ae597b491
+  excerpt: 'Title: BigPanda SaaS Platform
+
+    Snippet: BigPanda helps businesses prevent and resolve IT outages with our SaaS
+    platform for Event Correlation and Automation, powered by AIOps. BigPanda automatically
+    ...'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://docs.datadoghq.com/integrations/bigpanda-bigpanda/
+- content_hash: e2ae55d7c9e217dac9ad7f713151abdd07017f8d0528b1dbc371430bf4b51741
+  evidence_id: ev-e2ae55d7c9e217da
+  excerpt: 'Query: BigPanda alternatives
+
+    1. https://www.gartner.com/reviews/product/bigpanda-1658620356/alternatives
+
+    Title: Top BigPanda Alternatives & Competitors 2026
+
+    Snippet: BigPanda Alternatives · 1. PagerDuty · 2. Splunk IT Service Intelligence
+    (ITSI) · 3. ScienceLogic AI Platform · 4. BMC Helix Observability & AIOps · 5.
+    ignio.
+
+    2. https://www.g2.com/products/bigpanda/competitors/alternatives
+
+    Title: Top 10 BigPanda Alternatives & Competitors in 2026
+
+    Snippet: The best BigPanda alternatives are PagerDuty, Moogsoft, and Dynatrace.
+    Find top-ranking free & paid apps similar to BigPanda for your AIOps Tools needs.
+
+    3. https://www.reddit.com/r/sysadmin/comments/89guax/what_are_you_using_to_integrate_all_your/
+
+    Title: What are you using to integrate all your monitoring and ...
+
+    Date: 8 years ago
+
+    Snippet: There are the big few - PagerDuty, OpsGenie, BigPanda, VictorOps, but
+    they''re mostly oriented towards alerting (although VictorOps in particular ...
+
+    4. https://docs.keephq.dev/overview/comparisons
+
+    Title: Comparison
+
+    Snippet: Keep is an alternative to platforms like BigPanda and Moogsoft. Customers
+    who have used both traditional platforms and Keep notice a significant improvement
+    in ...
+
+    5. https://www.softwarereviews.com/categories/215/products/7293/alternatives
+
+    Title: BigPanda Alternatives and Competitors | AIOps
+
+    Snippet: Best Alternatives and Competitors to BigPanda · Dynatrace · Splunk AppDynamics
+    · Datadog · ServiceNow IT Operations Management · IBM Cloud Pak for AIOps · New
+    ...
+
+    6. https://'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.google.com/search?q=BigPanda+alternatives
+- content_hash: 36e200dc6b88397da45faee8416d6924199e956f648236df076afea3fc1571f2
+  evidence_id: ev-36e200dc6b88397d
+  excerpt: 'Title: LogicMonitor vs BigPanda
+
+    Snippet: BigPanda is primarily an incident intelligence and event correlation
+    platform that ingests alerts and context from connected monitoring, observability,
+    ITSM, ...'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.logicmonitor.com/logicmonitor-vs-bigpanda
+- content_hash: cc200fdac2f17335ad9c4a6a296e4efa38abce898ea6379da0f418f91904bf0c
+  evidence_id: ev-cc200fdac2f17335
+  excerpt: 'Title: AIOps Top BigPanda Alternatives and Competitors - SoftwareReviews
+
+    Snippet: Best Alternatives and Competitors to BigPanda · Dynatrace · Splunk AppDynamics
+    · Datadog · ServiceNow IT Operations Management · IBM Cloud Pak for AIOps · New
+    ...'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.softwarereviews.com/categories/215/products/7293/alternatives
+- content_hash: 5587beea78c22cdf43f5e957b0a46324942bab82a455899367da8422e05efb88
+  evidence_id: ev-5587beea78c22cdf
+  excerpt: 'Title: Top BigPanda Alternatives & Competitors 2026 - Gartner
+
+    Snippet: Check out real reviews verified by Gartner to see how BigPanda compares
+    to its competitors and find the best software or service for your organization.'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.gartner.com/reviews/product/bigpanda-1658620356/alternatives
+- content_hash: 4acfb91998c8f2e2417b7dca2b50553aaf5e9e3e2890c153601e57e1d713f817
+  evidence_id: ev-4acfb91998c8f2e2
+  excerpt: 'Title: PagerDuty vs. BigPanda
+
+    Snippet: Unlike BigPanda, PagerDuty works out of the box. Choose a platform that
+    doesn''t stop at insights. PagerDuty powers the entire incident lifecycle–from
+    detection ...'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.pagerduty.com/vs/bigpanda/
+- content_hash: e1d658b8654f91f3126173365a3ce99bb79517be8525ae8d8aeb6d03affa0000
+  evidence_id: ev-e1d658b8654f91f3
+  excerpt: 'Title: BigPanda + ServiceNow: AI‑powered ITOM automation
+
+    Snippet: BigPanda identifies patterns and groups related events to cut through
+    alert and ticket noise, pinpoint root cause quickly, and improve IT operations.'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.bigpanda.io/compare/servicenow-itom/
+- content_hash: 2e5920a97aeb56b939530b86d0acd0ec7ba8487a8863ef134f6ff13de1b1ea07
+  evidence_id: ev-2e5920a97aeb56b9
+  excerpt: 'Detected date: May 18, 2026
+
+    Title: LogicMonitor vs BigPanda vs Dynatrace: The AIOps Platform ...
+
+    Date: May 18, 2026
+
+    Snippet: LogicMonitor vs BigPanda vs Dynatrace: an unbiased 2026 comparison of
+    three leading AIOps platforms. Compare AI engines, infrastructure ...'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://technologymatch.com/blog/logicmonitor-vs-bigpanda-vs-dynatrace-the-aiops-platform-comparison
+- content_hash: 3c698503da2959d95af5abeb1572b35f28de01a29dda59f7ad3acad70ac9f1e0
+  evidence_id: ev-3c698503da2959d9
+  excerpt: 'Detected date: May 25, 2026
+
+    Title: AI assistant for major incident management - BigPanda
+
+    Date: May 25, 2026
+
+    Snippet: See how agentic AI from BigPanda for major incident management helps
+    ITOps teams collaborate faster, investigate smarter, and automate resolution.'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.bigpanda.io/resource/video/major_incident_management_collaboration/
+- content_hash: 832e604606263f1e48420b327045c724f8fdc422d8bfad26f6b0ed919266d3a6
+  evidence_id: ev-832e604606263f1e
+  excerpt: 'Detected date: Jul 18, 2026
+
+    Title: BitSentry vs BigPanda: AI Investigation or Enterprise ITOps?
+
+    Date: Jul 18, 2026
+
+    Snippet: BigPanda helps a large operations organization turn a noisy event stream
+    into an actionable incident. BitSentry helps the responder investigate ...'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://bitsentry.ai/blog/bitsentry-vs-bigpanda-ai-sre-comparison/
+- content_hash: 0453e7569adaba87097b930f9ed6d14b865e4ec645a8590a704ee70b81fe8b27
+  evidence_id: ev-0453e7569adaba87
+  excerpt: 'Detected date: Mar 8, 2021
+
+    Title: Enhance Your IT Operations: BigPanda + Monitoring Tools Guide
+
+    Date: Mar 8, 2021
+
+    Snippet: Seamlessly integrate BigPanda with best-in-class monitoring and observability
+    tools to shorten your incident management lifecycle and ...'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.youtube.com/watch?v=aFD676qaF1c
+- content_hash: 62823025cdbb8738b501ff1eca8a00367718909fb2a8c5bb93f9e00759073bb9
+  evidence_id: ev-62823025cdbb8738
+  excerpt: 'Detected date: Jul 1, 2026
+
+    Title: BigPanda Alternative for AI Incident Investigation and Root Cause ...
+
+    Date: Jul 1, 2026
+
+    Snippet: Compare BigPanda alternatives for AIOps teams that need AI incident investigation,
+    root cause analysis, and infrastructure-aware RCA beyond ...'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.sherlocks.ai/discover/bigpanda-alternatives-ai-incident-investigation
+- content_hash: 99ea4e03f2aa2f96cab20a10022f7f0406962184dd79503cf0a9f45312630b9f
+  evidence_id: ev-99ea4e03f2aa2f96
+  excerpt: 'Query: BigPanda vs
+
+    1. https://www.logicmonitor.com/logicmonitor-vs-bigpanda
+
+    Title: LogicMonitor vs BigPanda
+
+    Snippet: BigPanda is primarily an incident intelligence and event correlation
+    platform that ingests alerts and context from connected monitoring, observability,
+    ITSM, ...
+
+    2. https://www.softwarereviews.com/categories/215/products/7293/alternatives
+
+    Title: AIOps Top BigPanda Alternatives and Competitors - SoftwareReviews
+
+    Snippet: Best Alternatives and Competitors to BigPanda · Dynatrace · Splunk AppDynamics
+    · Datadog · ServiceNow IT Operations Management · IBM Cloud Pak for AIOps · New
+    ...
+
+    3. https://www.gartner.com/reviews/product/bigpanda-1658620356/alternatives
+
+    Title: Top BigPanda Alternatives & Competitors 2026 - Gartner
+
+    Snippet: Check out real reviews verified by Gartner to see how BigPanda compares
+    to its competitors and find the best software or service for your organization.
+
+    4. https://www.pagerduty.com/vs/bigpanda/
+
+    Title: PagerDuty vs. BigPanda
+
+    Snippet: Unlike BigPanda, PagerDuty works out of the box. Choose a platform that
+    doesn''t stop at insights. PagerDuty powers the entire incident lifecycle–from
+    detection ...
+
+    5. https://www.bigpanda.io/compare/servicenow-itom/
+
+    Title: BigPanda + ServiceNow: AI‑powered ITOM automation
+
+    Snippet: BigPanda identifies patterns and groups related events to cut through
+    alert and ticket noise, pinpoint root cause quickly, and improve IT operations.
+
+    6. https://technologymatch.com/blog/logicmonitor-vs-bigpanda-vs-dynatrace-the-aiops-pla'
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.google.com/search?q=BigPanda+vs
+- content_hash: 5d38c1f247bb205daba58279ffaec3971ca5dbbfa965c64f3e4aa20a8ff83fa2
+  evidence_id: ev-5d38c1f247bb205d
+  excerpt: "Title: LogicMonitor vs BigPanda\nForrester Total Economic Impact™ study\
+    \ finds Edwin AI delivered a 313% ROI for composite organization.\n\n[Read more](https://www.logicmonitor.com/resources/logicmonitor-edwin-ai-total-economic-impact-study-by-forrester)\n\
+    \n[Partners](https://www.logicmonitor.com/partners)\n\n[Docs](https://www.logicmonitor.com/support)\n\
+    \n[LM Academy](https://academy.logicmonitor.com/)\n\n[LM Community](https://community.logicmonitor.com)\n\
+    \n[English](https://www.logicmonitor.com/logicmonitor-vs-bigpanda \"English\"\
+    )\n\nEnglish\n\n[ German ](https://www.logicmonitor.com/de/logicmonitor-vs-bigpanda\
+    \ \"German\") [ French ](https://www.logicmonitor.com/fr/logicmonitor-vs-bigpanda\
+    \ \"French\")\n\n[](https://www.logicmonitor.com)\n\nPlatform \n\nSolutions \n\
+    \n[Pricing](https://www.logicmonitor.com/pricing)\n\nResources \n\nCompany \n\n\
+    View all\n\nPlatform\n\n  * [ Infrastructure  ](/infrastructure)\n  * [ Cloud\
+    \ & Multi-Cloud  ](/cloud)\n  * [ Log Management  ](/platform/logs)\n  * [ Edwin\
+    \ AI  ](/edwin-ai)\n\n\n\nSolution\n\n  * [ Automation  ](/solutions/automation)\n\
+    \  * [ Tool Consolidation  ](/solutions/tool-consolidation)\n  * [ Reduce MTTR\
+    \  ](/solutions/reduce-mttr)\n  * [ Cost Optimization  ](/platform/cost-optimization)\n\
+    \n\n\nIndustry\n\n  * [ Healthcare  ](/solutions/healthcare)\n  * [ Financial\
+    \ Services  ](/solutions/financial-services)\n  * [ Public Sector  ](/solutions/public-sector)\n\
+    \  * [ MSP  ](/solutions/msp)\n\n\n\nRole\n\n  * [ CIO  ](/solutions/cio)\n  *\
+    \ [ ITOps  ](/solutions/it-ops)\n  * [ CloudOps  ](/solutions/clo"
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.logicmonitor.com/logicmonitor-vs-bigpanda
+- content_hash: c73f4c200485e6fa6afd3c4cfe32bf7ad0232ae7770855b14bffbae4516ab532
+  evidence_id: ev-c73f4c200485e6fa
+  excerpt: "Title: BigPanda Alternatives and Competitors | AIOps | SoftwareReviews\n\
+    [Skip to main content](https://www.softwarereviews.com/categories/215/products/7293/alternatives#main)\n\
+    ![Info-Tech Research Group](https://cdn0.softwarereviews.com/assets/logos/info-tech/info-tech-research-group-db041b640665c6201359b0e19da6758cdeb39ea416ec6c156eecaf9bea0806bd.svg)\n\
+    [ ![SoftwareReviews](https://cdn1.softwarereviews.com/assets/logos/software_reviews/software_reviews_logo_centered-b3f3ddcf554938239aa2b9c4d2f16f9598dcc4ca7458ae11c4af4bd663bbbe59.svg)\
+    \ ](https://www.softwarereviews.com/ \"Home\")\nSearch\nSearch tips\nSearch for\
+    \ products, categories, or vendors.\nTry keywords like 'management', 'Microsoft',\
+    \ or 'CRM'\nSearch for **\"\"** by hitting _enter_ , or see suggested results.\n\
+    Cancel \n  * [Write a Review](https://www.softwarereviews.com/start)\n  * [Categories](https://www.softwarereviews.com/categories)\n\
+    \  * [Compare](https://www.softwarereviews.com/compare)\n  * [About Us](https://www.softwarereviews.com/about)\n\
+    \  * [Vendor Awards](https://www.softwarereviews.com/vendor-awards)\n  * [For\
+    \ Vendors](https://provider.softwarereviews.com/)\n  * More\n    * [Browse Reports](https://www.softwarereviews.com/reports)\n\
+    \    * [Vendor Technology Notes](https://www.softwarereviews.com/vendor-technology-notes)\n\
+    \    * [What We Do](https://www.softwarereviews.com/what-we-do)\n\n\n[ Log in\
+    \ Log in ](https://www.softwarereviews.com/access/new) Open search Toggle navigation\n\
+    [Write a Review](https://www.softwarereviews.com/start)"
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.softwarereviews.com/categories/215/products/7293/alternatives
+- content_hash: e5f08d6fd50720936de89765e0790db9ed715fd75e6f95b1c17e087778431a92
+  evidence_id: ev-e5f08d6fd5072093
+  excerpt: "Title: What are you using to integrate all your monitoring and incident\
+    \ management? : r/sysadmin\n[ Skip to main content ](https://www.reddit.com/r/sysadmin/comments/89guax/what_are_you_using_to_integrate_all_your/?solution=c918cdd9929efcaac918cdd9929efcaa&js_challenge=1&token=7afd7253fec22262ff1c52b1703fe9ecc33b985e8d9c0271ca56367948f17800&jsc_orig_r=#main-content)\n\
+    Open menu Open navigation [ ](https://www.reddit.com/)Go to Reddit Home\n[ Sign\
+    \ Up ](https://www.reddit.com/register/)Sign up for Reddit [ Log In ](https://www.reddit.com/login/)Log\
+    \ in to Reddit\nExpand user menu Open settings menu\n[ ![](https://styles.redditmedia.com/t5_2qnp7/styles/communityIcon_gcx9bz62dbg01.png?width=96&height=96&frame=1&auto=webp&s=0aa00f9d4735a3bacd781df9f0f27d8f1b10e067)\
+    \ Go to sysadmin  ](https://www.reddit.com/r/sysadmin/)\n[r/sysadmin](https://www.reddit.com/r/sysadmin/)\
+    \ • 8y ago\n[woodsman707](https://www.reddit.com/user/woodsman707/)\n#  What are\
+    \ you using to integrate all your monitoring and incident management? \nWe're\
+    \ a large enterprise with SCOM, OEM, Zenoss, Nagios, New Relic, and a handful\
+    \ of other monitoring/service impact tools. I'm looking for a 'roll-up' tool that\
+    \ can consume data from and integrate with all of these different monitoring tools\
+    \ and provide escalation, incident management (not helpdesk tickets, but incidents\
+    \ generated from alerts), incident correlation, and possibly a dashboard (and\
+    \ all the other buzzwords I've missed). I've looked at datadog, squared up, opsgenie\
+    \ - wh"
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.reddit.com/r/sysadmin/comments/89guax/what_are_you_using_to_integrate_all_your/
+- content_hash: f7b098b176cab87eb1872e0dd497d585730e89072157ffb1afd7a2b3444b684b
+  evidence_id: ev-f7b098b176cab87e
+  excerpt: "Title: Comparison - Keep\n> ## Documentation Index\n> \n> Fetch the complete\
+    \ documentation index at: [/llms.txt](/llms.txt)\n> \n> Use this file to discover\
+    \ all available pages before exploring further.\n\nSkip to main content\n\n[Keep\
+    \ home page](/)\n\nSearch...\n\n⌘KAsk Assistant\n\n  * [Platform](https://platform.keephq.dev/)\n\
+    \  * [keephq/keep](https://github.com/keephq/keep \"keephq/keep\")\n  * [keephq/keep](https://github.com/keephq/keep\
+    \ \"keephq/keep\")\n\n\n\nSearch...\n\nNavigation\n\nKey Concepts\n\nComparison\n\
+    \n### Overview\n\n  * [Introduction](/overview/introduction)\n  * [Playground](/overview/playground)\n\
+    \  * [Use Cases](/overview/usecases)\n  * Key Concepts\n\n    * [Glossary](/overview/glossary)\n\
+    \    * [Common Expression Language (CEL)](/overview/cel)\n    * [Fingerprints](/overview/fingerprints)\n\
+    \    * [Alerts Severity and Status](/overview/alertseverityandstatus)\n    * [Push\
+    \ vs Pull alerts](/overview/howdoeskeepgetmyalerts)\n    * [Comparison](/overview/comparisons)\n\
+    \  * [Support](/overview/support)\n  * [FAQ](/overview/faq)\n\n\n\n### AIOps\n\
+    \n  * AI\n\n  * Non-AI Correlation\n\n  * [Deduplication](/overview/deduplication)\n\
+    \  * [Extraction](/overview/enrichment/extraction)\n  * [Mapping](/overview/enrichment/mapping)\n\
+    \  * [Maintenance Windows](/overview/maintenance-windows)\n  * [Service Topology](/overview/servicetopology)\n\
+    \  * [Workflows](/overview/workflow-automation)\n\n\n\n### Alerts\n\n  * [Overview](/alerts/overview)\n\
+    \  * [Alert Table](/alerts/table)\n  * [Action Menu](/alerts/actionmenu)\n  *\
+    \ [Alert Sidebar](/alerts/"
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://docs.keephq.dev/overview/comparisons
+- content_hash: 837de3b1c5dcc67922d408db409dc0a6db6f32d6f8ad33b729ef5ec28f31d9fc
+  evidence_id: ev-837de3b1c5dcc679
+  excerpt: "Title: How BigPanda Enhances ServiceNow ITOM | BigPanda\nen \n\n    *\
+    \ [ en ](https://www.bigpanda.io/compare/servicenow-itom/)\n    * [ de ](https://www.bigpanda.io/de/)\n\
+    \n  * [ Service + Support ]()\n\n    *       * Service \n      * [ Community ](https://university.bigpanda.io/community)\n\
+    \      * [ Documentation ](https://docs.bigpanda.io/)\n      * [ Customer Support\
+    \ ](https://www.bigpanda.io/customer-support/)\n      * [ Platform Status ](https://status.bigpanda.io/)\n\
+    \    *       * Support \n      * [ Education & Certification ](https://www.bigpanda.io/bigpanda-education/)\n\
+    \      * [ Professional Services ](https://www.bigpanda.io/services/bigpanda-professional-services-packages/)\n\
+    \n  * [ Login ](https://a.bigpanda.io/)\n\n\n\n[ ](/)\n\n  * Platform\n\n    *\
+    \       * Agentic ITOps Platform\n\nThe BigPanda agentic ITOps platform uses AI\
+    \ to automate IT detection, triage, and resolution, improving operational efficiency\
+    \ and reducing downtime and costs. \n\n[Explore the Platform](https://www.bigpanda.io/our-product/)\n\
+    \n    *       * [ Platform Overview ](/our-product/)\n      * [ AI Incident Prevention\
+    \ ](/our-product/ai-incident-prevention/)\n      * [ AI Detection & Response ](/our-product/ai-detection-and-response/)\n\
+    \      * [ L1 Agent ](/our-product/l1-agent/)\n      * [ AI Incident Assistant\
+    \ ](/our-product/ai-incident-assistant/)\n      * [ IT Knowledge Graph ](/our-product/it-knowledge-graph/)\n\
+    \    *       * [ Integrations ](/integrations/)\n      * [ Jira ](/integrations/jira-service-management/)\n\
+    \      * "
+  retrieved_at: '2026-08-18T11:44:24.606241-04:00'
+  url: https://www.bigpanda.io/compare/servicenow-itom/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

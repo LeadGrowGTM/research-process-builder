@@ -1,0 +1,25 @@
+id: job-opportunity-mining
+name: B2B job-post opportunity mining
+owner: research-process-builder
+version: "1.0.0"
+status: proposed
+family: company-signals
+priority: P0
+entity_scopes: [company]
+input_schema_version: "1.0"
+output_schema_version: "1.0"
+required_inputs: [company_name, domain, seller_context]
+optional_inputs: [geography]
+execution_mode: search-and-scrape
+provider_candidates: [harvest-jobs, free-job-enrichment, company-careers-scrape, parallel-search]
+fallback_order: [harvest-jobs, free-job-enrichment, company-careers-scrape, parallel-search]
+benchmark_providers: [harvest-jobs, free-job-enrichment, company-careers-scrape, parallel-search]
+freshness_days: 14
+source_requirements: [job_primary, company_first_party]
+caps: {queries: 8, scrapes: 8, retries: 2, paid_cost_usd: 1.0}
+early_stop: source_saturation
+failure_rule: explicit_unknown
+output_visibility: message_safe
+benchmark_dataset_version: b2b-companies-1.0
+automated_gate: candidate_only
+human_gate: blind_verdict_required

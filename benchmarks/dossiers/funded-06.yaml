@@ -1,0 +1,187 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-0d96529b4d8e1f6d
+  - ev-f5e6492676893c46
+  - ev-347b26c20bfe35ea
+  - ev-446f77a4c70c7b19
+  field: identity
+  value: Parafin
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0d96529b4d8e1f6d
+  - ev-f5e6492676893c46
+  - ev-347b26c20bfe35ea
+  - ev-446f77a4c70c7b19
+  field: description
+  value: A financing program built for your platform | Parafin Products Platforms
+    Blog Careers Docs Login Contact sales A financing program, built for your platform
+    Fuel your growth by helping your business customers invest in theirs with white-labeled,
+    AI-powered financing that’s built to scale. Capital Spend Pay Over Time Capital
+    $9,000 $5,500 Adjust amount $10,000 Repayment rate 13% of sales Repayment frequency
+    Daily 30-day minimum $560.00 Capital fee $1,080.00 Capital amount $9,000.00 Total
+    owed $10,
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0d96529b4d8e1f6d
+  - ev-f5e6492676893c46
+  - ev-347b26c20bfe35ea
+  - ev-446f77a4c70c7b19
+  field: offers
+  value: embedded finance
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-446f77a4c70c7b19
+  field: growth
+  value: Primary funding event dated 2026-06-17
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0d96529b4d8e1f6d
+  - ev-f5e6492676893c46
+  - ev-347b26c20bfe35ea
+  - ev-446f77a4c70c7b19
+  field: icp
+  value: small businesses
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0d96529b4d8e1f6d
+  - ev-f5e6492676893c46
+  - ev-347b26c20bfe35ea
+  - ev-446f77a4c70c7b19
+  field: personas
+  value: small businesses
+  visibility: message_safe
+company_id: funded-06
+corrections: []
+evidence:
+- content_hash: 0d96529b4d8e1f6dcf6efe36bc133603b4c05c94dc73729c138f90ca96380d5d
+  evidence_id: ev-0d96529b4d8e1f6d
+  excerpt: A financing program built for your platform | Parafin Products Platforms
+    Blog Careers Docs Login Contact sales A financing program, built for your platform
+    Fuel your growth by helping your business customers invest in theirs with white-labeled,
+    AI-powered financing that’s built to scale. Capital Spend Pay Over Time Capital
+    $9,000 $5,500 Adjust amount $10,000 Repayment rate 13% of sales Repayment frequency
+    Daily 30-day minimum $560.00 Capital fee $1,080.00 Capital amount $9,000.00 Total
+    owed $10,080.00 Capital $9,000 $5,500 Adjust amount $10,000 Repayment rate 13%
+    of sales Repayment frequency Daily 30-day minimum $560.00 Capital fee $1,080.00
+    Capital amount $9,000.00 Total owed $10,080.00 Spend Card John Doe • • • • • •
+    • • • • • • 3 4 5 6 Expires • • • • • CVV • • • Available to spend $12,000.00
+    Home Depot - $250.00 250 points Automatic payment + $1,080.00 Pay Over Time 4
+    payments Financing fee $0.00 Total repayment $5,000.00 8 payments Financing fee
+    $50.00 Total repayment $5,050.00 12 payments Financing fee $300.00 Total repayment
+    $5,300.00 Accept $5,000 Trusted by leaders in emerging and established industries
+    Ready-to-launch embedded financial solutions Capital Provide access to fast and
+    flexible working capital.¹ Learn more Spend Turn everyday customer spend into
+    revenue and loyalty for your platform.² Learn more Pay Over Time Add a payment
+    method that grows your bottom line.¹ Learn more Power platform growth with embedded
+    finance Your brand, our infrastructure Our white‑labeled UI integrates seamlessly
+    into your platform, delivering an experience that looks and feels like your own.
+    Underwriting that improves every day AI-powered underwriting models trained on
+    over 1 billion cross-industry data points continuously improve to deliver high
+    approval rates and pre‑approved offers your customers want. Launch more with less
+    code Power your program with a single integration. Go live quickly using no‑code,
+    low‑code, or custom options that fit your team and roadmap. Join
+  retrieved_at: '2026-08-12T21:35:21.656376+00:00'
+  url: https://www.parafin.com/
+- content_hash: f5e6492676893c46c85c4fb01df3762c37be0da8be0eace8fae7038b2f82f6b3
+  evidence_id: ev-f5e6492676893c46
+  excerpt: Parafin | LinkedIn Agree & Join LinkedIn By clicking Continue to join or
+    sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie
+    Policy . Skip to main content LinkedIn Top Content People Learning Jobs Games
+    Sign in Join now Parafin Financial Services San Francisco, California 11,412 followers
+    We grow small businesses. See jobs Follow Discover all 159 employees Report this
+    company About us Parafin’s infrastructure powers financial services for marketplaces,
+    vertical SaaS, payment platforms, and more. With a single integration, platforms
+    can launch a full suite of financial products for their small business sellers,
+    including capital, spend management, and savings tools. These services provide
+    access to financing and help businesses thrive by leveraging real-time performance
+    data to offer customized financial solutions. Website https://www.parafin.com
+    External link for Parafin Industry Financial Services Company size 51-200 employees
+    Headquarters San Francisco, California Type Privately Held Founded 2020 Specialties
+    Embedded lending and Embedded capital Employees at Parafin Aunkur Arya LinkedIn
+    Member LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn Member View 159
+    employees at Parafin Sign in Welcome back Email or phone Password Show Forgot
+    password? Sign in or By clicking Continue to join or sign in, you agree to LinkedIn’s
+    User Agreement , Privacy Policy , and Cookie Policy . New to LinkedIn? Join now
+    or By clicking Continue to join or sign in, you agree to LinkedIn’s User Agreement
+    , Privacy Policy , and Cookie Policy . See all employees Locations Primary 301
+    Howard St San Francisco, California 94105, US Get directions Updates Parafin 11,412
+    followers 6h Report this post “Money is a tool, not a reflection of your worth.”
+    At Parafin, our mission is to grow small businesses by delivering capital through
+    the platforms they already use and trust. This series hits the streets to celebrate
+    and learn from the people building them. Meet Shefa
+  retrieved_at: '2026-08-12T21:35:22.403333+00:00'
+  url: https://www.linkedin.com/company/buildparafin
+- content_hash: 347b26c20bfe35ea4eb8456a000da02ec3bfab371c0068d01dc24c1d5b6c67b5
+  evidence_id: ev-347b26c20bfe35ea
+  excerpt: 'Parafin | Company Overview & News Sign Up For Newsletters Games Share
+    a News Tip Featured Featured Breaking News White House Watch Daily Cover Stories
+    2026 Best in State Next Gen Wealth Advisors List 7 New Rules For Success In The
+    First Year Of Your Career 2026 Best Brands For Value 2026 Forbes World''s Most
+    Influential CMOs List Humanity At The Heart Of Work: How AI Can Unleash The Power
+    Of People | Paid Program How Midsize Companies Get Trapped Between AI Promise
+    And AI Reality | Paid Program The AI Risks CEOs Didn’t Budget For | Paid Program
+    The Resilient Enterprise: How A Strategic Insurance Partner Helps Large Firms
+    Navigate Evolving Threats | Paid Program The Hidden Tax On Enterprise AI: 1 In
+    5 Workers Lose A Full Day Every Week | Paid Program Scaling AI Editorial Video
+    Series The Enterprise AI Shortcut: Why Co-Innovation Is Setting A New Speed For
+    Adopting and Operationalizing AI | Paid Program The Toughest Problems Are Never
+    Solved Alone | Paid Program How Chief Marketing Officers Are Scaling AI At Speed
+    — While Preserving Brand Trust AI’s Nuanced Impact And A Quest To Quantify It
+    Embracing And Bracing For AI Facing A Volatile Market, C-Suites Look To The CFO
+    For Strategic Guidance America''s Most Powerful Women In Sports CMO Unscripted:
+    Vulnerability Is The New Superpower For Leaders In The AI Era The Next AI Frontier:
+    Inside LG Electronics’ Strategic Investment In Arizona’s Tech Transformation |
+    Paid Program The Numbers Behind The 2026 World Cup Top Creators Show: How Katie
+    Fang Turned Her Viral Tears Into A Social Media Empire | Paid Program Meeting
+    The Moment In Enterprise: AI As AI Spending Surged 110%, Underlying Systems Didn’t
+    Keep Up | Paid Program 2026 50 Over 50 List | Paid Program Inside Smooth Technology:
+    A Cash Back Content Series | Paid Program C-Suite Unscripted: CIO Edition | Paid
+    Program Forbes Travel Guide’s 2026 Edge List Billionaires Billionaires See All
+    World''s Billionaires Forbes 400 America''s Richest Self-Made Women China''s Richest
+    India'
+  retrieved_at: '2026-08-12T21:35:23.329614+00:00'
+  url: https://www.forbes.com/companies/parafin/
+- content_hash: 446f77a4c70c7b19b1b085e901b4fb9ccc11d64589d98468cc6c0464d9f3caf3
+  evidence_id: ev-446f77a4c70c7b19
+  excerpt: 'Parafin announces new credit facility with Goldman Sachs and One William
+    Street Products Platforms Blog Careers Docs Login Contact sales Blog / Company
+    June 17, 2026 Parafin announces new credit facility with Goldman Sachs and One
+    William Street Team Parafin SAN FRANCISCO, CA, June 17, 2026 – Parafin, a leading
+    embedded financial infrastructure company named to the 2026 Forbes Fintech 50,
+    today announced a new credit facility led by Goldman Sachs, alongside One William
+    Street Capital Management, L.P. Building on Parafin''s recent warehouse credit
+    facility expansion with Silicon Valley Bank, EverBank, and Trinity Capital, the
+    new facility will help extend access to embedded lending for more small businesses
+    through the platforms they already use, including Amazon, DoorDash, Gusto, TikTok
+    Shop, Walmart, and many others. The additional capacity will support financing
+    products that help businesses manage cash flow, invest in growth, and navigate
+    day-to-day operating needs. The growth in financing capacity reflects consistent
+    demand from small businesses that return to Parafin’s products as they grow: the
+    majority of Parafin’s fundings go to repeat borrowers. With over 50,000 businesses
+    funded to date¹, that repeat usage underscores the role embedded capital plays
+    in helping businesses invest in growth and manage cash flows. “Small businesses
+    increasingly expect financial products to be built into the software and platforms
+    they already use to run their businesses,” said Sahill Poddar, cofounder and CEO
+    of Parafin. “Embedded lending is becoming a critical part of how businesses access
+    capital, and this facility strengthens our ability to meet that demand at scale.
+    Through our expanded financing capabilities, we are accelerating the delivery
+    of flexible financing to small businesses from every part of the economy, supported
+    by this credit facility from Goldman Sachs and One William Street." As the leader
+    in embedded lending, Parafin has extended over $35 billion in offers '
+  retrieved_at: '2026-08-12T21:35:23.937778+00:00'
+  url: https://www.parafin.com/blog/parafin-announces-new-credit-facility-with-goldman-sachs-and-one-william-street
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- hiring
+- news
+- launches
+- ads

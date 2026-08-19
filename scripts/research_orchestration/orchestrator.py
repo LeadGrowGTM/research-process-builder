@@ -201,8 +201,9 @@ class AutoresearchOrchestrator:
                             "prior_decisions": prior_decisions, "budget_remaining": remaining},
             Role.IN_BOUNDS_CHECKER: {"constraints": request.constraints, "experiment": experiment},
             Role.NOVELTY_CHECKER: {"experiment": experiment, "prior_fingerprints": prior_fingerprints},
-            Role.EXECUTOR: {"experiment": experiment, "execution_inputs": {}},
-            Role.EVALUATOR: {"rubric": "ground_truth_accuracy", "experiment": experiment,
+            Role.EXECUTOR: {"experiment": experiment,
+                            "execution_inputs": request.execution_inputs},
+            Role.EVALUATOR: {"rubric": request.rubric, "experiment": experiment,
                              "evidence": values.get(Role.EXECUTOR, ())},
         }
         return RoleEnvelope.create(role, payloads[role])

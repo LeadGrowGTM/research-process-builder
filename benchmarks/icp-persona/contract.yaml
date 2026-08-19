@@ -1,0 +1,5 @@
+version: "1.0"
+rendering: "{buyer} that need {need} for {object}"
+secondary_limit: 2
+unsupported_claim_policy: hard_fail
+unknown_policy: omit_optional_or_return_unknown

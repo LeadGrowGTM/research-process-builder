@@ -1,0 +1,109 @@
+company_id: saas-06
+as_of: '2026-08-18'
+recent_window_days: 180
+events:
+- date: '2026-08-06'
+  headline_aliases:
+  - Appointed new President and COO and a new CTO as Ben Leiken transitions from the CTO role
+  - Arkestro momentum drives leadership growth and appoints industry veterans
+  - Named new President and COO, CTO
+  source_domain: prnewswire.com
+  kind: news
+  event_type: leadership
+  evidence_ids:
+  - ev-9e13c86172acfd30
+  - ev-2c7ff01d003ff91e
+  - ev-eff2d256d2e54531
+  - ev-c44e347f79f2e794
+  - ev-6a843b76ec9e59bc
+  - ev-84894582cb07f59b
+- date: '2026-06-30'
+  headline_aliases:
+  - Listed as a Sample Vendor in the Gartner Hype Cycle for Procurement and Sourcing Solutions for the fourth consecutive year
+  - Arkestro listed as a Sample Vendor in Gartner Hype Cycle
+  - Gartner Hype Cycle Sample Vendor four consecutive years
+  source_domain: prnewswire.com
+  kind: news
+  event_type: award
+  evidence_ids:
+  - ev-172d33463bbcce18
+  - ev-9303e03ac2f9a724
+  - ev-ca5cfd4d5ede9834
+- date: '2026-04-30'
+  headline_aliases:
+  - Recognized in The Hackett Group's Spring 2026 SolutionMap procurement technology assessment
+  - Arkestro earns validation in Hackett Group Spring 2026 SolutionMap
+  - Hackett SolutionMap validation
+  source_domain: prnewswire.com
+  kind: news
+  event_type: award
+  evidence_ids:
+  - ev-a2c001b6d29c0e09
+- date: '2026-02-25'
+  headline_aliases:
+  - Nissan Americas began using Arkestro's predictive procurement technology
+  - Arkestro announces collaboration with Nissan
+  - Collaboration with Nissan to support predictive procurement transformation
+  source_domain: prnewswire.com
+  kind: news
+  event_type: partnership
+  evidence_ids:
+  - ev-631abf94cd31c115
+  - ev-5167de48d4ee92f1
+  - ev-45e34ef1817dc40c
+  - ev-718cff81daa93544
+  - ev-0cc3c274c420a839
+  - ev-84894582cb07f59b
+  - ev-ca5cfd4d5ede9834
+- date: '2025-12-19'
+  headline_aliases:
+  - Reported significant customer momentum and growth across industries heading into 2026
+  - Arkestro drives significant customer momentum, growth across industries
+  - Cross-industry customer growth heading into 2026
+  source_domain: prnewswire.com
+  kind: news
+  event_type: expansion
+  evidence_ids:
+  - ev-06a68a0f2d0ca32b
+  - ev-dc11235a1b9cb093
+  - ev-826f25f6a851569c
+  - ev-84894582cb07f59b
+- date: '2025-10-29'
+  headline_aliases:
+  - Unveiled Arkestro Labs, new AI-powered predictive procurement offerings, at Optimal '25
+  - Arkestro announces Arkestro Labs
+  - Launched Arkestro Labs research and development engine
+  source_domain: prnewswire.com
+  kind: launch
+  event_type: product
+  evidence_ids:
+  - ev-633ba5c2ae430e0a
+  - ev-a621f3550318d3e2
+  - ev-b932a2bb5a5a3404
+  - ev-1c3973df709e1b75
+  - ev-df408b921eeb8c54
+  - ev-511498789219d7e7
+- date: '2025-10-15'
+  headline_aliases:
+  - Expanded its Chevron deployment across global markets
+  - Arkestro announces customer expansion with Chevron
+  - Chevron customer expansion
+  source_domain: prnewswire.com
+  kind: news
+  event_type: expansion
+  evidence_ids:
+  - ev-a76b6e23fa891cb6
+  - ev-7cfe7e69cb585900
+  - ev-8b1a88b3fa26f344
+  - ev-ca5cfd4d5ede9834
+- date: '2025-05-14'
+  headline_aliases:
+  - Secured $36M in strategic investment to accelerate predictive procurement innovation
+  - Arkestro secures $36M strategic investment
+  - Raised $36 million
+  source_domain: prnewswire.com
+  kind: news
+  event_type: funding
+  evidence_ids:
+  - ev-e6e5d5cff2dc2a5e
+  - ev-98ca84b4107ee477

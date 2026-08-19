@@ -1,0 +1,620 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-6324c3add32674d3
+  - ev-da4b109ddeb08af9
+  - ev-98ca84b4107ee477
+  field: identity
+  value: Arkestro
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-6324c3add32674d3
+  - ev-da4b109ddeb08af9
+  - ev-98ca84b4107ee477
+  field: description
+  value: Automate Supplier Negotiations | Arkestro Predictive How It Works Get in
+    touch Learn how our customers achieve 18.8% average savings across all categories
+    of spend using the Arkestro Predictive Procurement Platform. Contact us Latest
+    news Read how Arkestro is driving enterprise procurement transformation in our
+    latest press and media coverage. Learn more What is Predictive Procurement? Learn
+    about Arkestro's patented technology Integrations Seamlessly implement at speed
+    Recognition Insights from
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-6324c3add32674d3
+  - ev-da4b109ddeb08af9
+  - ev-98ca84b4107ee477
+  field: offers
+  value: predictive procurement platform
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-6324c3add32674d3
+  - ev-da4b109ddeb08af9
+  - ev-98ca84b4107ee477
+  field: icp
+  value: procurement teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-6324c3add32674d3
+  - ev-da4b109ddeb08af9
+  - ev-98ca84b4107ee477
+  field: personas
+  value: procurement teams
+  visibility: message_safe
+company_id: saas-06
+corrections: []
+evidence:
+- content_hash: 6324c3add32674d3c100a917a9d57499b549a9d1f6003d2b4789cdbad6c44f2f
+  evidence_id: ev-6324c3add32674d3
+  excerpt: 'Automate Supplier Negotiations | Arkestro Predictive How It Works Get
+    in touch Learn how our customers achieve 18.8% average savings across all categories
+    of spend using the Arkestro Predictive Procurement Platform. Contact us Latest
+    news Read how Arkestro is driving enterprise procurement transformation in our
+    latest press and media coverage. Learn more What is Predictive Procurement? Learn
+    about Arkestro''s patented technology Integrations Seamlessly implement at speed
+    Recognition Insights from analysts and experts Industries Tap into savings for
+    oil & gas With a potential for saving 16-30% per line item, let Arkestro help
+    you cut costs. Learn more It''s time for an automotive tune up Increase procurement
+    efficiencies and drive big savings with Arkestro. Learn how Automotive Drive record
+    cost reductions Oil & Gas Fuel the future of oil and gas with automation High-Tech
+    Manufacturing Supercharge your team''s performance Manufacturing Optimize manufacturing
+    efficiency Construction Strategize your construction spend Financial Services
+    Turn procurement into a strategic value driver Food & Beverage Prep your food
+    and beverage procurement process Learn Arkestro Optimal ‘26 is coming to Houston
+    Optimal ‘26 will bring procurement and supply chain leaders together to explore
+    what’s next for enterprise procurement and how teams can Unlock the Predictive
+    Advantage at scale. Learn more Resource Center Explore our latest content Case
+    Studies What our customers are saying Analyst Reports The latest expert procurement
+    guidance Datasheets Product overviews for informed decisions Infographics Quick
+    bites of on-the-go information eBooks Procurement thought leadership pieces Events
+    Previous and upcoming events Webinars Previous and upcoming webinars Blog Explore
+    our blog Key procurement insights to support your Predictive Procurement journey,
+    no matter where you are. View blog Recent Blogs Process Science in Action: How
+    Automation Cuts Sourcing Cycles From Weeks to Days Aug 11, 2026 Ne'
+  retrieved_at: '2026-08-12T21:00:53.334767+00:00'
+  url: https://arkestro.com/predictive-procurement/
+- content_hash: da4b109ddeb08af999fab64ee6857b10986e45f82a61753a80b84579c130a14f
+  evidence_id: ev-da4b109ddeb08af9
+  excerpt: Arkestro | LinkedIn Agree & Join LinkedIn By clicking Continue to join
+    or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie
+    Policy . Skip to main content LinkedIn Top Content People Learning Jobs Games
+    Sign in Join now Arkestro Technology, Information and Internet San Francisco,
+    CA 9,767 followers Amplify the impact of procurement’s influence. Follow Discover
+    all 130 employees Report this company Overview Jobs Life About us Arkestro’s Predictive
+    Procurement platform accelerates enterprise spend transformation, using AI and
+    game theory to unlock trapped savings and reduce risk, enabling teams to influence
+    significantly more spend. Learn more at https://www.arkestro.com Website https://arkestro.com/
+    External link for Arkestro Industry Technology, Information and Internet Company
+    size 51-200 employees Headquarters San Francisco, CA Type Privately Held Specialties
+    strategic sourcing, procurement, contract management, software, procurement operations,
+    supply chain, supplier management, saas, b2b, cpg, consumer packaged goods, Chemical
+    Manufacturing, Biotechnology, Heath Services, Pharmaceutical, Food & Beverage,
+    Supplier Diversity, Construction, Interiors & Furnishings, Consumer Packaged Goods,
+    Predictive Procurement, Predictive Sourcing, Predictive Allocation, Predictive
+    Supplier Management, Direct Materials, Indirect Materials, CapEx, MRO, Indirect
+    Services, IT projects, Capital Expenditure, Logistics, Maintenance, Repair, and
+    Operations, Buyer, Purchasing, category manager, and supplier Employees at Arkestro
+    Ron Rasmussen LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn Member
+    LinkedIn Member View 130 employees at Arkestro Sign in Welcome back Email or phone
+    Password Show Forgot password? Sign in or By clicking Continue to join or sign
+    in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie Policy
+    . New to LinkedIn? Join now or By clicking Continue to join or sign in, you agree
+    to LinkedIn’s User Agreement , Privacy
+  retrieved_at: '2026-08-12T21:00:54.147466+00:00'
+  url: https://www.linkedin.com/company/arkestro
+- content_hash: 98ca84b4107ee4772fa691b240bbf25639595324251c1d54d637825e670fc780
+  evidence_id: ev-98ca84b4107ee477
+  excerpt: Arkestro - Products, Competitors, Financials, Employees, Headquarters Locations
+    Technology Vendors Recent Research Newsletter Media Support Login Who We Serve
+    Function Corporate Strategy Corporate Venture Capital Venture Capital IT Corporate
+    Innovation How VCs Use CB Insights Go to the video gallery → Industries Consumer
+    & Retail Tech Insurance Healthcare Industrials Financial Services Professional
+    Services Professional Services Learn More → Success Stories How We Help Understand
+    Tech Markets Anticipate Competitor Strategy Determine Tech Strategy Connect with
+    Tech Vendors & Partners Turbocharge Digital Transformation What We Offer Platform
+    Overview Technology Search Engine Market Analytics and Visualizations Team Management
+    and Collaboration Platform Overview Learn More → Data Research Personal Briefing
+    GenAI Instant Insights Public Equity Data Buyer Interview Transcripts Analyst
+    Briefings API & Data Feeds Integrations Overview Chrome and Edge Salesforce Affinity
+    Microsoft Excel Google Sheets Microsoft Teams Slack Google Slides App Partners
+    Browser Extension Pricing About Us Overview Our teams Business Development Engineering
+    Operations Product See all → Open Jobs Loading... Arkestro Analyst Briefing Submitted
+    arkestro.com Overview & Products Financials People Alternatives & Competitors
+    Customers Founded Year 2017 Stage Series B | Alive Total Raised $78.29M Valuation
+    $0000 View Last Raised $36M | 1 yr ago About Arkestro Arkestro focuses on predictive
+    procurement within the financial technology sector. The company provides solutions
+    that utilize artificial intelligence and game theory to assist in enterprise spending
+    transformation, aiming to achieve savings and manage financial risk. Arkestro's
+    services are intended to help teams influence enterprise spending. It was formerly
+    known as Bid Ops. It was founded in 2017 and is based in San Francisco, California.
+    Headquarters Location 60 29th Street Suite 148 San Francisco, California, 94110,
+    United States 888-724-3677 L
+  retrieved_at: '2026-08-12T21:00:54.893882+00:00'
+  url: https://www.cbinsights.com/company/arkestro
+- content_hash: 0ef99ac32abea8664bd20916ee746d5419a21b06139ae148a0972ec372db97b8
+  evidence_id: ev-0ef99ac32abea866
+  excerpt: 'Title: Predictive Procurement That Automates Supplier Negotiation
+
+    Snippet: Arkestro''s Predictive Procurement Platform arose out of frustrations
+    around outdated and inefficient procurement processes. ... Manual vs. Automated
+    Supplier ...'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://arkestro.com/predictive-procurement/
+- content_hash: b4cea94704e65d141d08c192a8c0d294f6f3c6dc69e3b11f2c94c1d0929c0a7f
+  evidence_id: ev-b4cea94704e65d14
+  excerpt: 'Detected date: Dec 19, 2025
+
+    Title: Arkestro Drives Significant Customer Momentum, Growth ...
+
+    Date: Dec 19, 2025
+
+    Snippet: Arkestro is the leading predictive procurement platform, accelerating
+    enterprise spend transformation and supply chain agility. By combining AI ...'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.prnewswire.com/news-releases/arkestro-drives-significant-customer-momentum-growth-across-industries-heading-into-2026-302646472.html
+- content_hash: a36b37a0574d780539c6e7a52da4eba4b550e3843b44390b7b5c7605271de99c
+  evidence_id: ev-a36b37a0574d7805
+  excerpt: 'Detected date: Nov 19, 2025
+
+    Title: Traditional vs. Predictive vs. Autonomous Procurement
+
+    Date: Nov 19, 2025
+
+    Snippet: Arkestro''s Predictive Procurement Platform ... vs. Predictive vs. Autonomous
+    Procurement: Understanding the Evolution. Predictive Procurement ...'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://arkestro.com/blog/traditional-vs-predictive-vs-autonomous-procurement-understanding-the-evolution/
+- content_hash: 021bcd3ea27d2164753a591496ede6cc967792dfe6f3cefe5f6d752a37d58a72
+  evidence_id: ev-021bcd3ea27d2164
+  excerpt: 'Title: Arkestro vs ORO comparison
+
+    Snippet: Arkestro vs ORO comparison. Arkestro and ORO Labs are both solutions
+    in the Procurement Software category. Arkestro is ranked #34, while ORO Labs is
+    ranked #16.'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.peerspot.com/products/comparisons/arkestro_vs_oro
+- content_hash: 8fc8a30e97588e3342b48c805444435565b4b04d3e5969f8a74aed763e04ddbd
+  evidence_id: ev-8fc8a30e97588e33
+  excerpt: 'Title: Arkestro''s Competitors, Revenue, Number of Employees ...
+
+    Snippet: Arkestro''s Founder & CEO, Robert DeSantis, currently has an approval
+    rating of 82%. Arkestro''s primary competitors are Sievo, Suplari, Zycus and 20
+    more.'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.owler.com/company/arkestro
+- content_hash: 54b13a98c0b35749c490494d0d56fae3a4484d081e73f7b2b68e9c217ab055c9
+  evidence_id: ev-54b13a98c0b35749
+  excerpt: 'Title: Arkestro Reviews & Ratings 2026 | Gartner Peer Insights
+
+    Snippet: Arkestro''s Predictive Procurement accelerates enterprise spend transformation,
+    using AI and game theory to unlock trapped savings and reduce risk, enabling ...'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.gartner.com/reviews/product/arkestro-1460331095
+- content_hash: 30ddd3a8457e2bb6183780a98be348a476f5131ec6b7baa75bb754c23eab45c3
+  evidence_id: ev-30ddd3a8457e2bb6
+  excerpt: 'Title: Arkestro | AOP Provider Directory
+
+    Snippet: Arkestro is the leading predictive procurement platform, helping enterprises
+    accelerate spend transformation and improve supply chain agility. ... Renaissance
+    vs.'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://artofprocurement.com/provider-directory/arkestro
+- content_hash: 1b43dbd46356cbffdf743fe636b86c806011bcffba779a6b1323ba8900ad4762
+  evidence_id: ev-1b43dbd46356cbff
+  excerpt: 'Title: Arkestro: Revenue, Competitors, Alternatives
+
+    Snippet: Arkestro top competitors are Navan, Dellfer and Gtriip and they have
+    annual revenue of $16.6M and 104 employees.'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://growjo.com/company/Arkestro
+- content_hash: e0ae33304fc73e2ca3ed4d8001d3e51ef1062c0ff96ad899ebdbe981a1ed381a
+  evidence_id: ev-e0ae33304fc73e2c
+  excerpt: 'Query: Arkestro predictive procurement platform alternatives OR competitors
+    OR "vs" OR "compared to"
+
+    1. https://arkestro.com/predictive-procurement/
+
+    Title: Predictive Procurement That Automates Supplier Negotiation
+
+    Snippet: Arkestro''s Predictive Procurement Platform arose out of frustrations
+    around outdated and inefficient procurement processes. ... Manual vs. Automated
+    Supplier ...
+
+    2. https://www.prnewswire.com/news-releases/arkestro-drives-significant-customer-momentum-growth-across-industries-heading-into-2026-302646472.html
+
+    Title: Arkestro Drives Significant Customer Momentum, Growth ...
+
+    Date: Dec 19, 2025
+
+    Snippet: Arkestro is the leading predictive procurement platform, accelerating
+    enterprise spend transformation and supply chain agility. By combining AI ...
+
+    3. https://arkestro.com/blog/traditional-vs-predictive-vs-autonomous-procurement-understanding-the-evolution/
+
+    Title: Traditional vs. Predictive vs. Autonomous Procurement
+
+    Date: Nov 19, 2025
+
+    Snippet: Arkestro''s Predictive Procurement Platform ... vs. Predictive vs. Autonomous
+    Procurement: Understanding the Evolution. Predictive Procurement ...
+
+    4. https://www.peerspot.com/products/comparisons/arkestro_vs_oro
+
+    Title: Arkestro vs ORO comparison
+
+    Snippet: Arkestro vs ORO comparison. Arkestro and ORO Labs are both solutions
+    in the Procurement Software category. Arkestro is ranked #34, while ORO Labs is
+    ranked #16.
+
+    5. https://www.owler.com/company/arkestro
+
+    Title: Arkestro''s Competitors, Revenue, Number of Employees ...
+
+    Snipp'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.google.com/search?q=Arkestro+predictive+procurement+platform+alternatives+OR+competitors+OR+%22vs%22+OR+%22compared+to%22
+- content_hash: 75eb02a9b78325ddfdd5dda73ce21311cbc62f26db6681613f62e52e77ccf71c
+  evidence_id: ev-75eb02a9b78325dd
+  excerpt: 'Title: Top Arkestro Alternatives, Competitors
+
+    Snippet: See how Arkestro compares to similar products. Arkestro''s top competitors
+    include Liberate, Levelpath, and Promoted. Liberate Logo. Liberate. Unclaimed.'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.cbinsights.com/company/arkestro/alternatives-competitors
+- content_hash: 108880aff9c8f2e9efab6945d087a24be6ee572de5ee645a877b25f51eab0f5d
+  evidence_id: ev-108880aff9c8f2e9
+  excerpt: 'Title: Predictive Procurement That Automates Supplier Negotiation
+
+    Snippet: Arkestro works with systems such as Coupa and SAP Ariba rather than replacing
+    them. It adds predictive pricing and automated supplier negotiation capabilities'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://arkestro.com/predictive-procurement/
+- content_hash: 9d735d1d5b90ada96127b7f7ff3e60b2802a591dfdfe3e6cc3d38cd17a88ad6a
+  evidence_id: ev-9d735d1d5b90ada9
+  excerpt: 'Title: Top Arkestro Alternatives & Competitors 2026
+
+    Snippet: Arkestro Alternatives · 1. SAP Ariba Sourcing Suite · 2. Workday Strategic
+    Sourcing · 3. JAGGAER Advantage (Legacy) · 4. Coupa · 5. GEP SMART · 6. JAGGAER
+    ...'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.gartner.com/reviews/product/arkestro-1460331095/alternatives
+- content_hash: 6960075b14439b337748b7f09caddd10e80004e8765aa03556875ffbee0df79c
+  evidence_id: ev-6960075b14439b33
+  excerpt: 'Title: Best Arkestro Alternatives 2026
+
+    Snippet: Alternatives to Arkestro · Top Arkestro Alternatives · Order.co · Tradogram
+    · ProcurementExpress.com · Field Materials AI · SAP Ariba · wherex · Pivot. by
+    Pivot.'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.capterra.com/p/177891/Arkestro/alternatives/
+- content_hash: 0faed605c0941eac5d4239deba4fe479662c898a56159357e9bee55637b490ac
+  evidence_id: ev-0faed605c0941eac
+  excerpt: 'Title: Arkestro - Vendor Directory - Spend Matters
+
+    Snippet: Arkestro is a Predictive Procurement platform that applies AI, data science,
+    behavioral modeling, and automation to sourcing and negotiation.'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://spendmatters.com/vendor-directory/arkestro/
+- content_hash: ee1f30704901b083ed761762e0d7bb03d16e03d68ea11d3c376e44f4bda83c2d
+  evidence_id: ev-ee1f30704901b083
+  excerpt: 'Title: Top 10 Arkestro Alternatives & Competitors in 2026
+
+    Snippet: The best Arkestro alternatives are SAP Ariba, Coupa, and Loopio. Find
+    top-ranking free & paid apps similar to Arkestro for your Autonomous Sourcing
+    needs.'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.g2.com/products/arkestro/competitors/alternatives
+- content_hash: 0fd2a05455866ee5a5047029a509125439d724919a49af4d6fc72eba38f109d2
+  evidence_id: ev-0fd2a05455866ee5
+  excerpt: 'Title: Predictive Procurement as a Scaling Strategy | The Hackett ...
+
+    Date: 1 year ago
+
+    Snippet: Arkestro''s Predictive Procurement accelerates enterprise spend transformation,
+    using AI and game theory to unlock trapped savings and reduce ...'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.youtube.com/watch?v=6Yyzzt1T5EU
+- content_hash: 6806c4265e39d09336dd51dd1382961e3609719540ae98b61170b19d8d71d22d
+  evidence_id: ev-6806c4265e39d093
+  excerpt: 'Title: Top Arkestro Alternatives & Competitors in 2026
+
+    Snippet: Most Commonly Comparedto Arkestro · SAP Ariba · Coupa · JAGGAER · GEP
+    Quantum Intelligence · Zip Intake-to-Procure · Precoro · PairSoft · Basware Procure-to-Pay.'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.trustradius.com/products/arkestro/competitors
+- content_hash: b669ce5a83b15b8c3e455a52ce68ac061b5b0129da6976306a6477a9799884a2
+  evidence_id: ev-b669ce5a83b15b8c
+  excerpt: 'Title: Arkestro
+
+    Snippet: With no software to install, Arkestro''s user-friendly platform gets
+    you up and running within hours, accelerating results and transforming procurement
+    into a ...'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://marketplace.infor.com/en-US/apps/459286/arkestro
+- content_hash: 23cbe8289a6a33f0822747a0969272c2c9a4f3b3970d9e233174c74fe97ac5d5
+  evidence_id: ev-23cbe8289a6a33f0
+  excerpt: 'Query: Arkestro alternatives
+
+    1. https://www.cbinsights.com/company/arkestro/alternatives-competitors
+
+    Title: Top Arkestro Alternatives, Competitors
+
+    Snippet: See how Arkestro compares to similar products. Arkestro''s top competitors
+    include Liberate, Levelpath, and Promoted. Liberate Logo. Liberate. Unclaimed.
+
+    2. https://arkestro.com/predictive-procurement/
+
+    Title: Predictive Procurement That Automates Supplier Negotiation
+
+    Snippet: Arkestro works with systems such as Coupa and SAP Ariba rather than replacing
+    them. It adds predictive pricing and automated supplier negotiation capabilities
+
+    3. https://www.gartner.com/reviews/product/arkestro-1460331095/alternatives
+
+    Title: Top Arkestro Alternatives & Competitors 2026
+
+    Snippet: Arkestro Alternatives · 1. SAP Ariba Sourcing Suite · 2. Workday Strategic
+    Sourcing · 3. JAGGAER Advantage (Legacy) · 4. Coupa · 5. GEP SMART · 6. JAGGAER
+    ...
+
+    4. https://www.capterra.com/p/177891/Arkestro/alternatives/
+
+    Title: Best Arkestro Alternatives 2026
+
+    Snippet: Alternatives to Arkestro · Top Arkestro Alternatives · Order.co · Tradogram
+    · ProcurementExpress.com · Field Materials AI · SAP Ariba · wherex · Pivot. by
+    Pivot.
+
+    5. https://spendmatters.com/vendor-directory/arkestro/
+
+    Title: Arkestro - Vendor Directory - Spend Matters
+
+    Snippet: Arkestro is a Predictive Procurement platform that applies AI, data science,
+    behavioral modeling, and automation to sourcing and negotiation.
+
+    6. https://www.g2.com/products/arkestro/competitors/alternatives
+
+    Title: Top 10 Arkestr'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.google.com/search?q=Arkestro+alternatives
+- content_hash: 2ed4f63767710f834b347d9fb6c368a8eedb903552f68eaeae23812e26ac9648
+  evidence_id: ev-2ed4f63767710f83
+  excerpt: 'Title: How Procurement Teams Win With Arkestro | Case Studies
+
+    Snippet: Arkestro helps teams anticipate where better outcomes may be possible
+    before suppliers are engaged, then automates the steps that move each event from
+    response ...'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://arkestro.com/case-studies/
+- content_hash: 87b00d9289b1aee13dec562fba6a11192e0c347c2991c7714f81c9085115689f
+  evidence_id: ev-87b00d9289b1aee1
+  excerpt: 'Title: Arkestro - Infor Marketplace
+
+    Snippet: Arkestro helps your sourcing, procurement, and purchasing teams collect
+    and compare quotes from suppliers using game theory and behavioral science'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://marketplace.infor.com/en-US/apps/459286/arkestro
+- content_hash: fef4388083e5a7595449c7b89dd88e1ec1f6eaba37856dac980ba50abd21d54d
+  evidence_id: ev-fef4388083e5a759
+  excerpt: 'Title: How Does Arkestro Compare to Fairmarkit?
+
+    Snippet: When searching for procurement software, two names come up: Arkestro
+    and Fairmarkit. We look at the key features of the two solutions and how they
+    compare.'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://arkestro.com/blog/how-does-bid-ops-compare-to-fairmarkit/
+- content_hash: 76c3b3b12e8766c29eeb2dc086e5c70976e404afb3d7d0f3837b1399106cf701
+  evidence_id: ev-76c3b3b12e8766c2
+  excerpt: 'Title: Arkestro vs e-Procurement Technologies 2026 - Gartner
+
+    Snippet: Arkestro has a rating of 3.8 stars with 5 reviews. e-Procurement Technologies
+    has a rating of 4 stars with 9 reviews. See side-by-side comparisons of product
+    ...'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.gartner.com/reviews/market/strategic-sourcing-application-suites/compare/arkestro-vs-e-procurement-technologies
+- content_hash: 84eda1d529f10b017ce5a80a77bdc7fb9f0be9e3112e078748510430dd6f36ba
+  evidence_id: ev-84eda1d529f10b01
+  excerpt: 'Detected date: Jan 5, 2024
+
+    Title: Arkestro | Optimizing Procurement Strategies - YouTube
+
+    Date: Jan 5, 2024
+
+    Snippet: Learn how our solution leverages behavioral science and game theory to
+    derive suggested prices, automate negotiations, and achieve cost ...'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.youtube.com/watch?v=ZAxWhatShkc
+- content_hash: 70ae554bea06c726d0cfb7519312fb6e52017b5e96a24f1030a042808b09d8b1
+  evidence_id: ev-70ae554bea06c726
+  excerpt: 'Title: Arkestro - Vendor Directory - Spend Matters
+
+    Snippet: With Arkestro, procurement frees up much-needed bandwidth for strategic
+    projects that increase margin, supply chain resilience, and measurable business
+    impact.'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://spendmatters.com/vendor-directory/arkestro/
+- content_hash: f26fa583847745ae47c17b2a6dbda0a62646d75da7608557d2c0357d3b58272e
+  evidence_id: ev-f26fa583847745ae
+  excerpt: 'Title: Arkestro vs ORO comparison - PeerSpot
+
+    Snippet: Arkestro and ORO Labs are both solutions in the Procurement Software
+    category. Arkestro is ranked #34, while ORO Labs is ranked #16.'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.peerspot.com/products/comparisons/arkestro_vs_oro
+- content_hash: 9da7b35a0f08217935ebaa652e39f76c7da90637472bd77209930e4069c7eb2e
+  evidence_id: ev-9da7b35a0f082179
+  excerpt: 'Detected date: Nov 13, 2022
+
+    Title: Who is Arkestro and what is predictive procurement?
+
+    Date: Nov 13, 2022
+
+    Snippet: Arkestro is a middleware platform that sits just above your systems of
+    record, such as your ERP system, and, perhaps, just below your ...'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.scmr.com/article/who_is_arkestro_and_what_is_predictive_procurement
+- content_hash: 0c1b9f9c401c9650318e64612c1f3920e9e0e00fbe4cb1b84bb0df9004b62e7b
+  evidence_id: ev-0c1b9f9c401c9650
+  excerpt: 'Title: Arkestro - LinkedIn
+
+    Snippet: Website: https://arkestro.com/ · Industry: Technology, Information and
+    Internet · Company size: 51-200 employees · Headquarters: San Francisco, CA ·
+    Type: Privately ...'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.linkedin.com/company/arkestro
+- content_hash: 03112648513ae342076760381d4b2006723beaed31386fac95e14cdaa3ea13ac
+  evidence_id: ev-03112648513ae342
+  excerpt: 'Title: Arkestro: Revenue, Competitors, Alternatives - Growjo
+
+    Snippet: Arkestro top competitors are Navan, Dellfer and Gtriip and they have
+    annual revenue of $16.6M and 104 employees.'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://growjo.com/company/Arkestro
+- content_hash: 8d9737ccf637fc35f10e35c4b0538ea06e3c5b722d6abc696efa4b8ffa43a459
+  evidence_id: ev-8d9737ccf637fc35
+  excerpt: 'Query: Arkestro vs
+
+    1. https://arkestro.com/case-studies/
+
+    Title: How Procurement Teams Win With Arkestro | Case Studies
+
+    Snippet: Arkestro helps teams anticipate where better outcomes may be possible
+    before suppliers are engaged, then automates the steps that move each event from
+    response ...
+
+    2. https://marketplace.infor.com/en-US/apps/459286/arkestro
+
+    Title: Arkestro - Infor Marketplace
+
+    Snippet: Arkestro helps your sourcing, procurement, and purchasing teams collect
+    and compare quotes from suppliers using game theory and behavioral science
+
+    3. https://arkestro.com/blog/how-does-bid-ops-compare-to-fairmarkit/
+
+    Title: How Does Arkestro Compare to Fairmarkit?
+
+    Snippet: When searching for procurement software, two names come up: Arkestro
+    and Fairmarkit. We look at the key features of the two solutions and how they
+    compare.
+
+    4. https://www.gartner.com/reviews/market/strategic-sourcing-application-suites/compare/arkestro-vs-e-procurement-technologies
+
+    Title: Arkestro vs e-Procurement Technologies 2026 - Gartner
+
+    Snippet: Arkestro has a rating of 3.8 stars with 5 reviews. e-Procurement Technologies
+    has a rating of 4 stars with 9 reviews. See side-by-side comparisons of product
+    ...
+
+    5. https://www.youtube.com/watch?v=ZAxWhatShkc
+
+    Title: Arkestro | Optimizing Procurement Strategies - YouTube
+
+    Date: Jan 5, 2024
+
+    Snippet: Learn how our solution leverages behavioral science and game theory to
+    derive suggested prices, automate negotiations, and achieve cost ...
+
+    6. https://spendmatters.com/vendor-dire'
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.google.com/search?q=Arkestro+vs
+- content_hash: a82e4e60cd1df7f37a68996664dc0f85d518100e822803ba13db37842f8d7177
+  evidence_id: ev-a82e4e60cd1df7f3
+  excerpt: "Title: Automate Supplier Negotiations | Arkestro Predictive\n[](/)\n\n\
+    \  * How It Works\n\n## Get in touch\n\nLearn how our customers achieve 18.8%\
+    \ average savings across all categories of spend using the Arkestro Predictive\
+    \ Procurement Platform.\n\n[Contact us](/contact-us/)\n\n## Latest news\n\nRead\
+    \ how Arkestro is driving enterprise procurement transformation in our latest\
+    \ press and media coverage.\n\n[Learn more](/press/)\n\n### [**What is Predictive\
+    \ Procurement?**](/predictive-procurement/)\n\nLearn about Arkestro's patented\
+    \ technology\n\n### [**Integrations**](/integrations/)\n\nSeamlessly implement\
+    \ at speed\n\n### [**Recognition**](/awards-and-recognition/)\n\nInsights from\
+    \ analysts and experts\n\n  * Industries\n\n### **Tap into savings for  \noil\
+    \ & gas**\n\nWith a potential for saving 16-30% per line item, let Arkestro help\
+    \ you cut costs.\n\n[Learn more](/industry/oil-and-gas/)\n\n### **It's time for\
+    \ an automotive tune up**\n\nIncrease procurement efficiencies and drive big savings\
+    \ with Arkestro.\n\n[Learn how](/industry/automotive/)\n\n### [**Automotive**](/industry/automotive/)\n\
+    \nDrive record cost reductions\n\n### **[Oil& Gas](/industry/oil-and-gas/)**\n\
+    \nFuel the future of oil and gas with automation\n\n### **[High-Tech Manufacturing](/industry/high-tech-manufacturing/)**\n\
+    \nSupercharge your team's performance\n\n### **[Manufacturing](/industry/manufacturing/)**\n\
+    \nOptimize manufacturing efficiency\n\n### **[Construction](/industry/construction/)**\n\
+    \nStrategize your construction spend\n\n### **[Financial Services](/industry/"
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://arkestro.com/predictive-procurement/
+- content_hash: 826f25f6a851569c458de5aa6fde406e8b5ef83616f4a9f3cbda8a4f0ba1ade4
+  evidence_id: ev-826f25f6a851569c
+  excerpt: "Title: Arkestro Drives Significant Customer Momentum, Growth Across Industries\
+    \ Heading Into 2026\n[Accessibility Statement](https://www.cision.com/about/accessibility/)\
+    \ Skip Navigation\n\n  * [Resources](/resources/)\n  * [Investor Relations](/investor-relations-solutions/)\n\
+    \  * [Journalists](https://prnmedia.prnewswire.com/)\n  * [Agencies](https://www.cision.com/agencies/?utm_medium=referral&utm_source=prnewswire&utm_content=product&utm_campaign=2023-prn-all-products-page)\n\
+    \n\n  * [Client Login](https://app.prnewswire.com/login/auto)\n  * [Send a Release](/account/online-account-form/)\n\
+    \n\n\n[ ](/)\n\n  * [News](/news-releases/)\n  * [Products](/amplify-platform/)\n\
+    \  * [Contact](/contact-us/)\n\n\n\nSearch\n\n__\n\nSearch\n\nWhen typing in this\
+    \ field, a list of search results will appear and be automatically updated as\
+    \ you type.\n\nSearching for your content...\n\n__\n\n**No results found. Please\
+    \ change your search terms and try again.**\n\n  * News in Focus \n    *     \
+    \  * ## [Browse News Releases](/news-releases/)\n\n      * [All News Releases\
+    \ ](/news-releases/news-releases-list/)\n      * [All Public Company ](/news-releases/all-public-company-news/)\n\
+    \      * [English-only ](/news-releases/english-releases/)\n      * ## [News Releases\
+    \ Overview](/news-releases/)\n\n      * ## [Multimedia Gallery](/news-releases/multimedia/)\n\
+    \n      * [All Multimedia ](/news-releases/multimedia/multimedia-list/)\n    \
+    \  * [All Photos ](/news-releases/photos/photos-list/)\n      * [All Videos ](/news-releases/videos/videos-list/)\n\
+    \     "
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.prnewswire.com/news-releases/arkestro-drives-significant-customer-momentum-growth-across-industries-heading-into-2026-302646472.html
+- content_hash: 41b0034849dd4b37a7c290b521d3db7fa8bf83b083a0f8257429dd67c2ecbf9d
+  evidence_id: ev-41b0034849dd4b37
+  excerpt: "Title: Traditional vs. Predictive vs. Autonomous Procurement: Understanding\
+    \ the Evolution | Arkestro\n[](/)\n\n  * How It Works\n\n## Get in touch\n\nLearn\
+    \ how our customers achieve 18.8% average savings across all categories of spend\
+    \ using the Arkestro Predictive Procurement Platform.\n\n[Contact us](/contact-us/)\n\
+    \n## Latest news\n\nRead how Arkestro is driving enterprise procurement transformation\
+    \ in our latest press and media coverage.\n\n[Learn more](/press/)\n\n### [**What\
+    \ is Predictive Procurement?**](/predictive-procurement/)\n\nLearn about Arkestro's\
+    \ patented technology\n\n### [**Integrations**](/integrations/)\n\nSeamlessly\
+    \ implement at speed\n\n### [**Recognition**](/awards-and-recognition/)\n\nInsights\
+    \ from analysts and experts\n\n  * Industries\n\n### **Tap into savings for  \n\
+    oil & gas**\n\nWith a potential for saving 16-30% per line item, let Arkestro\
+    \ help you cut costs.\n\n[Learn more](/industry/oil-and-gas/)\n\n### **It's time\
+    \ for an automotive tune up**\n\nIncrease procurement efficiencies and drive big\
+    \ savings with Arkestro.\n\n[Learn how](/industry/automotive/)\n\n### [**Automotive**](/industry/automotive/)\n\
+    \nDrive record cost reductions\n\n### **[Oil& Gas](/industry/oil-and-gas/)**\n\
+    \nFuel the future of oil and gas with automation\n\n### **[High-Tech Manufacturing](/industry/high-tech-manufacturing/)**\n\
+    \nSupercharge your team's performance\n\n### **[Manufacturing](/industry/manufacturing/)**\n\
+    \nOptimize manufacturing efficiency\n\n### **[Construction](/industry/construction/)**\n\
+    \nStrategize your construction spe"
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://arkestro.com/blog/traditional-vs-predictive-vs-autonomous-procurement-understanding-the-evolution/
+- content_hash: a24698d89b1292358a0c04fd0f74981e5f08caa5457274b65316284ae4676d8f
+  evidence_id: ev-a24698d89b129235
+  excerpt: "Title: Top Arkestro Alternatives, Competitors\n* [Technology Vendors](https://www.cbinsights.com/what-we-offer/technology-vendors/)\n\
+    \  * [Recent Research](https://www.cbinsights.com/research/)\n  * [Newsletter](https://www.cbinsights.com/newsletter/)\n\
+    \  * [Media Support](https://www.cbinsights.com/media-support/)\n  * [Login](https://www.cbinsights.com/login)\n\
+    \n\n\n[](https://www.cbinsights.com)\n\n  * Who We Serve\n\n    * Function\n\n\
+    \      * [Corporate Strategy](https://www.cbinsights.com/who-we-serve/function/corporate-strategy/)\n\
+    \      * [Corporate Venture Capital](https://www.cbinsights.com/who-we-serve/function/corporate-venture-capital/)\n\
+    \      * [Venture Capital](https://www.cbinsights.com/who-we-serve/function/venture-capital/)\n\
+    \      * [IT](https://www.cbinsights.com/who-we-serve/head-of-it/)\n      * [Corporate\
+    \ Innovation](https://www.cbinsights.com/who-we-serve/function/corporate-innovation/)\n\
+    \      * ### How VCs Use CB Insights\n\n[Go to the video gallery →](https://www.cbinsights.com/how-vcs-use-cb-insights/)\n\
+    \n    * Industries\n\n      * [Consumer & Retail](https://www.cbinsights.com/who-we-serve/industries/consumer/)\n\
+    \      * [Tech](https://www.cbinsights.com/who-we-serve/industries/tech/)\n  \
+    \    * [Insurance](https://www.cbinsights.com/who-we-serve/industries/insurance/)\n\
+    \      * [Healthcare](https://www.cbinsights.com/who-we-serve/industries/healthcare/)\n\
+    \      * [Industrials](https://www.cbinsights.com/who-we-serve/industries/industrials/)\n\
+    \      * [Financial Services](https://www.cbin"
+  retrieved_at: '2026-08-18T11:43:58.376103-04:00'
+  url: https://www.cbinsights.com/company/arkestro/alternatives-competitors
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

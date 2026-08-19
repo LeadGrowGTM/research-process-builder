@@ -1,0 +1,121 @@
+{
+  "collected_at": "2026-08-19T12:27:54.031700-04:00",
+  "company_id": "saas-03",
+  "enrichment_id": "competitor-intelligence",
+  "entries": [
+    {
+      "category": "digital sales room",
+      "company_name": "Aligned",
+      "domain": "alignedup.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 1,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Aligned digital sales room alternatives OR competitors OR \"vs\" OR \"compared to\"",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 1,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Aligned alternatives",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 3,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Aligned vs",
+      "tbs": null
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.gartner.com/reviews/product/aligned/alternatives: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.gartner.com/reviews/product/aligned/alternatives"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.g2.com/products/teamaligned/competitors/alternatives: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.g2.com/products/teamaligned/competitors/alternatives"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://getlatka.com/companies/aligned-alignedupcom/competitors",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://hummingdeck.com/blog/aligned-alternatives-2026",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.apollo.com/wealth/strategies/products/apollo-aligned-alternatives-e1",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.apollo.com/wealth/strategies/products",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "budget_exhausted",
+      "message": "paid scrape reservation refused (0.01 USD): gtm-waterfall:3:https://alignedup.com/competitors",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://alignedup.com/competitors"
+    },
+    {
+      "kind": "budget_exhausted",
+      "message": "paid scrape reservation refused (0.01 USD): gtm-waterfall:3:https://alignedup.com/compare",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://alignedup.com/compare"
+    },
+    {
+      "kind": "budget_exhausted",
+      "message": "paid scrape reservation refused (0.01 USD): gtm-waterfall:3:https://alignedup.com/alternatives",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://alignedup.com/alternatives"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 28,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.015",
+  "signal_evidence": 31
+}

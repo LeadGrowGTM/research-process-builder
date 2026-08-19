@@ -1,0 +1,25 @@
+company_id: saas-10
+expected:
+  primary_icp:
+    buyer: Commercial real-estate lenders
+    need: automated loan administration
+    object: construction finance workflows
+    evidence_ids: [ev-ce4724cc20ef689e, ev-be44ff703241ffbe, ev-d109a2df75fb122e]
+  secondary_icps: []
+  outcomes:
+    - text: reduce construction loan risk and process draws faster with stronger compliance
+      evidence_ids: [ev-ce4724cc20ef689e, ev-be44ff703241ffbe, ev-d109a2df75fb122e]
+  observed_personas: []
+  inferred_personas:
+    - role: construction loan administrators
+      based_on_evidence_ids: [ev-ce4724cc20ef689e, ev-be44ff703241ffbe]
+acceptable_aliases:
+  primary.buyer: [Commercial real-estate lenders, Commercial construction lenders]
+  primary.need: [automated loan administration, automated construction loan administration]
+  primary.object: [construction finance workflows, construction lending workflows]
+evidence_by_component:
+  primary.buyer: [ev-ce4724cc20ef689e, ev-d109a2df75fb122e]
+  primary.need: [ev-ce4724cc20ef689e, ev-be44ff703241ffbe]
+  primary.object: [ev-ce4724cc20ef689e, ev-be44ff703241ffbe, ev-d109a2df75fb122e]
+  outcome.0: [ev-ce4724cc20ef689e, ev-be44ff703241ffbe, ev-d109a2df75fb122e]
+  inferred_persona.0: [ev-ce4724cc20ef689e, ev-be44ff703241ffbe]

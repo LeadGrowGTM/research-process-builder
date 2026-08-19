@@ -1,0 +1,52 @@
+company_id: saas-04
+as_of: '2026-08-18'
+recent_window_days: 180
+events:
+- date: '2026-05-26'
+  headline_aliases:
+  - Launched aiSource, an AI sourcing solution for procurement teams
+  - aPriori Launches aiSource
+  - Introduced new AI sourcing solution aiSource
+  source_domain: businesswire.com
+  kind: launch
+  event_type: product
+  evidence_ids:
+  - ev-9e17863554e3babe
+  - ev-54935c90ae8f2f89
+  - ev-748e7424cf54c3fb
+  - ev-356306df3e5e2ca3
+  - ev-c97481af4a0871fd
+  - ev-04d8ccf7d7dec3e3
+  - ev-ca9eae2b3680b417
+  - ev-01eff1f6db2027b0
+  - ev-ca16008a734f0507
+- date: '2024-12'
+  headline_aliases:
+  - Shipped the December 2024 aP Design product update
+  - What's New in aP Design - December 2024
+  - aP Design release notes December 2024
+  source_domain: apriori.com
+  kind: launch
+  event_type: feature
+  evidence_ids:
+  - ev-8edcc9a9b43e1998
+- date: '2023-10-19'
+  headline_aliases:
+  - Received a growth investment from Vista Credit Partners
+  - aPriori Receives Growth Investment From Vista Credit Partners
+  - Growth funding from Vista Credit Partners for its manufacturing insights platform
+  source_domain: vistaequitypartners.com
+  kind: news
+  event_type: funding
+  evidence_ids:
+  - ev-1494a4907e1a3dc9
+  - ev-2b36bad3e295677e
+- date: '2021-07-20'
+  headline_aliases:
+  - CEO Stephanie Feraday accepted into Forbes Technology Council
+  - Stephanie Feraday, President & CEO of aPriori, Accepted into Forbes Technology Council
+  source_domain: businesswire.com
+  kind: news
+  event_type: award
+  evidence_ids:
+  - ev-046e723024f97022

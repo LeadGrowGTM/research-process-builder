@@ -1,0 +1,181 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-641b0619673d4a9c
+  - ev-a1cbcabe8d485114
+  - ev-af098f56784560da
+  - ev-a4d846b71a355e40
+  field: identity
+  value: A+P CPAs
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-641b0619673d4a9c
+  - ev-a1cbcabe8d485114
+  - ev-af098f56784560da
+  - ev-a4d846b71a355e40
+  field: description
+  value: 2023-10-04 Services - A+P CPAs A+P CPAs Certified Public Accountants | Business
+    Advisors Make a payment (801) 776-5241 Services Advisory Tax Preparation + Planning
+    Audit & Assurance Accounting Client Accounting + Advisory Services Cost Segregation
+    Industries Construction Real Estate Manufacturing Financial + Professional Services
+    Medical + Dental Restaurant + Retail …And So Much More Resources Bulletin Tax
+    Forms Track Your Refund Make a Payment How to Make a Utah Withholding Tax Payment
+    Online H
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-641b0619673d4a9c
+  - ev-a1cbcabe8d485114
+  - ev-af098f56784560da
+  - ev-a4d846b71a355e40
+  field: offers
+  value: accounting services
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-641b0619673d4a9c
+  - ev-a1cbcabe8d485114
+  - ev-af098f56784560da
+  - ev-a4d846b71a355e40
+  field: icp
+  value: small businesses
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-641b0619673d4a9c
+  - ev-a1cbcabe8d485114
+  - ev-af098f56784560da
+  - ev-a4d846b71a355e40
+  field: personas
+  value: small businesses
+  visibility: message_safe
+company_id: local-01
+corrections: []
+evidence:
+- content_hash: 641b0619673d4a9c6d1069778c4a1c18cf25622bd7b53a3ab28020b026d55d91
+  evidence_id: ev-641b0619673d4a9c
+  excerpt: '2023-10-04 Services - A+P CPAs A+P CPAs Certified Public Accountants |
+    Business Advisors Make a payment (801) 776-5241 Services Advisory Tax Preparation
+    + Planning Audit & Assurance Accounting Client Accounting + Advisory Services
+    Cost Segregation Industries Construction Real Estate Manufacturing Financial +
+    Professional Services Medical + Dental Restaurant + Retail …And So Much More Resources
+    Bulletin Tax Forms Track Your Refund Make a Payment How to Make a Utah Withholding
+    Tax Payment Online How to Make a UT Unemployment Payment Online How to Make a
+    Utah Sales Tax Payment Online About Meet the Team Careers Contact Us Services
+    Home  /  Services Services ADVISORY Our advisory services are developed from an
+    understanding of what an entrepreneur wants and needs from their business planning.
+    We provide personal, tailored coaching to ensure you have the right solutions
+    and plan in place. Many CPA firms focus on two main objectives: filing your tax
+    return and minimizing taxes. Those objectives are valid, but are only a piece
+    of the puzzle for your business. Advisory services should include a comprehensive
+    business and tax strategy, including identifying short-term and long-term goals
+    for your business to help you increase your net worth. Unlike many CPA firms,
+    we strive to take a proactive approach to our clients’ tax situation, rather than
+    reacting to it, often too late. We get to know you and your business so that we
+    can work together to develop an effective and efficient tax and wealth-building
+    strategy. TAX We understand federal, state, local, and international tax compliance
+    can be both a time and financial burden. At A+P you’ll find friendly tax professionals
+    who actually enjoy helping you file your tax returns and provide consulting services
+    on tax transactions and tax-savings opportunities. We can serve the tax needs
+    of: Individuals Partnerships/LLCs S corporations C corporations Not-for-Profit
+    organizations Trusts International tax reporting We provide consultin'
+  retrieved_at: '2026-08-12T22:40:43.902536+00:00'
+  url: https://apcpas.com/services/
+- content_hash: a1cbcabe8d4851143e32343d3daf4e4828dbeb8b08a8139836fbb2d0ba47a116
+  evidence_id: ev-a1cbcabe8d485114
+  excerpt: '2023-10-04 Contact Us - A+P CPAs A+P CPAs Certified Public Accountants
+    | Business Advisors Make a payment (801) 776-5241 Services Advisory Tax Preparation
+    + Planning Audit & Assurance Accounting Client Accounting + Advisory Services
+    Cost Segregation Industries Construction Real Estate Manufacturing Financial +
+    Professional Services Medical + Dental Restaurant + Retail …And So Much More Resources
+    Bulletin Tax Forms Track Your Refund Make a Payment How to Make a Utah Withholding
+    Tax Payment Online How to Make a UT Unemployment Payment Online How to Make a
+    Utah Sales Tax Payment Online About Meet the Team Careers Contact Us Contact Us
+    Home  /  Contact Us If you have any unanswered questions, please let us know.
+    Simply call, email or stop by to schedule an appointment. Office Hours: Monday:
+    8:00am – 5:00pm Tuesday: 8:00am – 5:00pm Wednesday: 8:00am – 5:00pm Thursday:
+    8:00am – 5:00pm Friday: Hours Vary Please Call Saturday & Sunday: Closed A+P CPAs
+    LLC 1689 East 1400 South Suite 100 Clearfield, UT 84015 Email: info@ap.cpa Phone:
+    (801) 776-5241 facebook linkedin instagram Services Advisory Tax Preparation +
+    Planning Audit & Assurance Accounting Newsletter Contact Us Phone This field is
+    for validation purposes and should be left unchanged. Name (Required) Business
+    Name (if applicable): Business Industry Accounting/Finance Advertising/Public
+    Relations Aerospace/Aviation Arts/Entertainment/Publishing Automotive Banking/Mortgage
+    Business Development Business Opportunity Clerical/Administrative Construction/Facilities
+    Consumer Goods Customer Service Education/Training Energy/Utilities Engineering
+    Government/Military Green Healthcare Hospitality/Travel Human Resources Installation/Maintenance
+    Insurance Internet Job Search Aids Law Enforcement/Security Legal Management/Executive
+    Manufacturing/Operations Marketing Non-Profit/Volunteer Pharmaceutical/Biotech
+    Professional Services QA/Quality Control Real Estate Restaurant/Food Service Retail
+    Sales Science/Research Skilled Labor Tec'
+  retrieved_at: '2026-08-12T22:47:11.110240+00:00'
+  url: https://apcpas.com/contact-us/
+- content_hash: af098f56784560dada328310befe860ed353bae099331fba129b0807469c6c79
+  evidence_id: ev-af098f56784560da
+  excerpt: 'A+P CPAs | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now A+P CPAs Accounting Clearfield, Utah 423 followers
+    Certified Public Accountants + Business Advisors Follow Discover all 28 employees
+    Report this company About us Welcome to A+P CPAs (formerly Adams & Petersen, CPAs)
+    where expertise meets excellence in tax and advisory services. We believe in building
+    strong, long-lasting, trusted relationships with our clients. Our approach goes
+    beyond mere transactions; it’s about understanding your unique circumstances,
+    goals, and aspirations. By taking the time to listen and learn about your needs,
+    we can provide customized solutions that align with your vision for success. As
+    a premier CPA firm, we specialize in providing tailored solutions to meet the
+    diverse needs of businesses, individuals, and organizations. Website http://ap.cpa
+    External link for A+P CPAs Industry Accounting Company size 11-50 employees Headquarters
+    Clearfield, Utah Type Privately Held Founded 2001 Specialties Tax, Tax Planning,
+    Real Estate, Construction, Government Contracting, Auditing, Financial Statements,
+    Cost Segregation, Accounting, QuickBooks, Like-kind Exchanges, Consulting, and
+    Business Advisors Locations Primary 1689 East 1400 South Suite 100 Clearfield,
+    Utah 84015, US Get directions Employees at A+P CPAs Matt Taggart Gary L Petersen,
+    CPA Brandon Olsen, CPA Thomas Burton, CPA See all employees Updates A+P CPAs 423
+    followers 1h Report this post Social Security can be an important source of retirement
+    income, but deciding when to claim your benefits is only part of the conversation.
+    Taxes, Medicare premiums, retirement account withdrawals, and spousal or survivor
+    benefits can all affect the bigger picture. Understanding how these factors interact
+    can help you make more informed decisions as you approach retirement. And because
+    choices made today may have tax implications for years to come, starting the conversation
+    early can give you more time '
+  retrieved_at: '2026-08-12T22:40:44.682401+00:00'
+  url: https://www.linkedin.com/company/a-p-cpas
+- content_hash: a4d846b71a355e4014b77df535f4c855516de70f8b2a34e382f37c75ff0055c0
+  evidence_id: ev-a4d846b71a355e40
+  excerpt: 31 Dec 2099 A+P CPAs | Accounting & Bookkeeping | Business Services | Tax
+    Preparation & Consulting About Who We Are Staff Executive Board Board of Governors
+    Contact Us Membership Member Login Directory Member Benefits Committees Certificate
+    of Origin Ribbon Cutting Request Events Calendar & Event Registration Community
+    Calendar Signature Chamber Events Sponsorships Resources Business Resources Discounts
+    Government Officials Job Board Blog Relocation Resources Visitor Resources About
+    Who We Are Staff Executive Board Board of Governors Contact Us Membership Member
+    Login Directory Member Benefits Committees Certificate of Origin Ribbon Cutting
+    Request Events Calendar & Event Registration Community Calendar Signature Chamber
+    Events Sponsorships Resources Business Resources Discounts Government Officials
+    Job Board Blog Relocation Resources Visitor Resources Join The Chamber Member
+    Login A+P CPAs Categories Accounting & Bookkeeping Business Services Tax Preparation
+    & Consulting 1689 East 1400 South, Suite 100 Clearfield UT 84015 (801) 776-5241
+    Send Email Visit My Company About Us A+P CPAs offers a broad spectrum of tax,
+    accounting, and audit services as well as robust advisory strategic planning services
+    focusing on personalized client attention. Highlights Experienced Business Partners
+    Aggressive Tax Planning Strategic Planning Business Advisory Services Solution
+    Based Rep/Contact Info View Personal Bio Patrick Munson × Patrick brings almost
+    two decades of experience in public accounting. One of his strengths is taking
+    complex things and breaking them down into clear, everyday language. Patrick helps
+    set the tone everywhere. He’s passionate about creating a strong, high-performance
+    culture where people feel valued and motivated. He’s the kind of leader who keeps
+    standards high but also knows how to bring  the energy. He serves as Chair of
+    the Legislative Affairs Committee for the Chamber and as Treasurer for the Ogden
+    School Foundation – roles where his strategic thinkin
+  retrieved_at: '2026-08-12T22:40:45.631965+00:00'
+  url: https://members.ogdenweberchamber.com/list/member/a-p-cpas-llc-94123
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce314f687506e476
+  - ev-3292ddfcc65f15aa
+  - ev-18c9bba83c99c3df
+  field: identity
+  value: B2B Industrial Packaging
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce314f687506e476
+  - ev-3292ddfcc65f15aa
+  - ev-18c9bba83c99c3df
+  field: description
+  value: About Us JavaScript seems to be disabled in your browser. For the best experience
+    on our site, be sure to turn on Javascript in your browser. My Account Sign In
+    Compare Products Create an Account Skip to Content Quick RFQ's Toggle Nav My Cart
+    Search Search Advanced Search Search Quick Links Customers Customers Log In Create
+    Account Contact Us Privacy Notice Manufacturers ARPAC Group BeA Fromm Galewrap
+    - ITW ITW Angleboard Klinch-Pak MAXUSA MIP Orgapack Paslode Pam Fastening Technology
+    Signode Te
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce314f687506e476
+  - ev-3292ddfcc65f15aa
+  - ev-18c9bba83c99c3df
+  field: offers
+  value: industrial packaging
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce314f687506e476
+  - ev-3292ddfcc65f15aa
+  - ev-18c9bba83c99c3df
+  field: icp
+  value: manufacturers
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce314f687506e476
+  - ev-3292ddfcc65f15aa
+  - ev-18c9bba83c99c3df
+  field: personas
+  value: manufacturers
+  visibility: message_safe
+company_id: supplier-10
+corrections: []
+evidence:
+- content_hash: ce314f687506e476b399f1412decfa92ca008c82a850e1dba0d5d09bbc848353
+  evidence_id: ev-ce314f687506e476
+  excerpt: About Us JavaScript seems to be disabled in your browser. For the best
+    experience on our site, be sure to turn on Javascript in your browser. My Account
+    Sign In Compare Products Create an Account Skip to Content Quick RFQ's Toggle
+    Nav My Cart Search Search Advanced Search Search Quick Links Customers Customers
+    Log In Create Account Contact Us Privacy Notice Manufacturers ARPAC Group BeA
+    Fromm Galewrap - ITW ITW Angleboard Klinch-Pak MAXUSA MIP Orgapack Paslode Pam
+    Fastening Technology Signode Teknika USA ZAPAK ARPAC Group BeA Fromm Galewrap
+    - ITW ITW Angleboard Klinch-Pak MAXUSA MIP Orgapack Paslode Pam Fastening Technology
+    Signode Teknika USA ZAPAK Shipping & Returns Shipping Shipping - In most cases
+    we'll ship your order on the same day if possible . Otherwise, orders are generally
+    shipped the next business day for all items in stock. Please call for details
+    and arrangements to ship internationally. Returns Returns - B2B Industrial Packaging
+    is happy to accept returns, for the cost of merchandise only and a 20% restocking
+    fee. Please call for more information. Service & Repair How It Works Free Strapping
+    Tool Repair Quote --> How It Works Free Strapping Tool Repair Quote Strapping
+    Tool Parts Steel Strapping Tool Parts Plastic Strapping Tool Parts About Us Executive
+    Team Account Home About Us 0 --> 0 --> B2B Industrial Packaging was born in Addison,
+    Illinois and has grown to one of the largest complete packaging solution providers
+    in the world. We sell over 75,000 protective packaging, janitorial, sanitation,
+    safety products and more to thousands of customers nationwide – from global corporations
+    to ecommerce startups. We also repair tools and equipment on site and in our state-of-the-art
+    facilities. Along the way we have acquired dozens of companies across the U.S.,
+    with 17 divisions that combine the power of a national corporation with a family-owned
+    business touch. This combination of local knowledge, local inventory, and local
+    attention to detail along with nat
+  retrieved_at: '2026-08-12T22:28:32.875151+00:00'
+  url: https://www.b2bind.com/about-b2b
+- content_hash: 3292ddfcc65f15aada1f752a6d15dedfee4cdebc7e9288e05ab9ea7475e6fbeb
+  evidence_id: ev-3292ddfcc65f15aa
+  excerpt: Jul 30, 2026 Jul 24, 2026 Jul 10, 2026 Jul 1, 2026 Jun 25, 2026 Jun 18,
+    2026 Jun 12, 2026 May 29, 2026 B2B Industrial Packaging | LinkedIn Agree & Join
+    LinkedIn By clicking Continue to join or sign in, you agree to LinkedIn’s User
+    Agreement , Privacy Policy , and Cookie Policy . Skip to main content LinkedIn
+    Top Content People Learning Jobs Games Sign in Join now B2B Industrial Packaging
+    Packaging and Containers Manufacturing Glendale Heights, Illinois 3,904 followers
+    Your National Neighbor See jobs Follow View all 134 employees Report this company
+    Overview Jobs About us We are America’s largest strapping distributor and Your
+    National Neighbor for packaging equipment and supplies. We supply a full range
+    of products including corrugated boxes, strapping, tape, stretch film, protective
+    packaging, and fasteners to clients throughout the U.S. and Mexico. With 24 distribution
+    centers nationwide, our local packaging specialists can help you save money and
+    improve your current packaging process with local knowledge, inventory, and attention
+    to detail. Matched with our national buying power, this is a consistently winning
+    combination for our thousands of clients. To contact B2B Industrial Packaging,
+    call 1-877-222-5747 or visit www.B2BInd.com. Website http://www.b2bind.com External
+    link for B2B Industrial Packaging Industry Packaging and Containers Manufacturing
+    Company size 501-1,000 employees Headquarters Glendale Heights, Illinois Type
+    Privately Held Founded 2004 Specialties Packaging Supplies, Carton Sealing Tape,
+    Polyester Strapping, Steel Strapping, Stretch Wrap, Edge Board, Strapping Tools,
+    Strapping Tool Repair, Fasteners, Corrugated Boxes, Tape, Tool Parts, and Stretch
+    Wrap Machines Employees at B2B Industrial Packaging Steve Patterson LinkedIn Member
+    LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn Member View 134 employees
+    at B2B Industrial Packaging Sign in Welcome back Email or phone Password Show
+    Forgot password? Sign in or By clicking Continue to join
+  retrieved_at: '2026-08-12T22:28:33.669253+00:00'
+  url: https://www.linkedin.com/company/b2b-industrial-packaging
+- content_hash: 18c9bba83c99c3df9547f7230848abcb6c72232857655a5acf47a22926fe9e94
+  evidence_id: ev-18c9bba83c99c3df
+  excerpt: 'Q2 2023 Packaging Quarterly Update Packaging Quarterly Update 2Copyright
+    © 2023 Deloitte Development LLC. All rights reserved. Deloitte Corporate Finance
+    LLC (DCF) is a leading global middle-market M&A adviser. Our professionals have
+    extensive knowledge in the packaging space and use their experience to help clients
+    enhance value. DCF’s Packaging Practice Industrials Leadership Will Frame Managing
+    Director Head of Industrials Chicago, IL wframe@deloitte.com Firm Overview Sector
+    Focus Paper and Paperboard Plastic Diversified Packaging Metal and Glass #1 2022
+    Global M&A Advisor by deals completed (1). 704 Completed deals in the last 12
+    months.  Deep relationships in place to gain critical strategic intelligence
+    and effectively market businesses.  Worldwide, DCF has 2,400 Corporate Finance
+    professionals throughout the Deloitte Touche Tohmatsu Limited network of member
+    firms in 60 countries that complement the North American team.  Combined with
+    member firms of Deloitte Touche Tohmatsu Limited, serves 79 percent of the Fortune
+    Global 500® (2). Bill Kerkam Managing Director Co-lead of paper, plastics and
+    packaging Charlotte, NC wkerkam@deloitte.com Ali Bandeali Vice President New York,
+    NY albandeali@deloitte.com Packaging Quarterly Update 3Copyright © 2023 Deloitte
+    Development LLC. All rights reserved. Table of contents Case study 4 Deloitte
+    thought leadership 5 Notable recent M&A transactions 6 Plastics, paper and packaging
+    trends 8 Comparable public companies 9 Appendix – sources cited 11 Packaging Quarterly
+    Update 4Copyright © 2023 Deloitte Development LLC. All rights reserved. Catapult
+    Print and Packaging, LLC Case study • Founded in 2018 and headquartered in Orlando,
+    FL, Catapult Print and Packaging, LLC (Catapult or the Company) is a value-added
+    specialty converter of high-quality labels, including linerless and pressure sensitive.
+    The Company serves leading brand names in the food, beverage, industrial and consumer
+    product markets. • The Company has made contin'
+  retrieved_at: '2026-08-12T22:28:35.150479+00:00'
+  url: https://www.investmentbanking.deloitte.com/content/dam/assets-zone6/xa/en/docs/industries/consumer-products/us-dcf-2023-q2-packaging-report.pdf?icid=learn_more_content_click
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

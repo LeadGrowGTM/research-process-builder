@@ -1,0 +1,111 @@
+# Sealed ground truth - AgencyAnalytics (agencyanalytics.com). Human-reviewed 2026-08-18.
+# named = listed on the subject's own /competitors page, in an "AgencyAnalytics
+# alternatives" article, or on a "<vendor> vs AgencyAnalytics" page.
+# inferred = tools an agency thread says it used instead, never explicitly compared.
+# Excluded on review: SourceForge "related software" (Adzooma, PBRS), SE Ranking nav
+# products (SE Visible, Planable), data sources, and month/nav tokens from the draft.
+company_id: saas-01
+evidence_ids:
+- ev-7e6ad1d9af39f4cd
+- ev-c21da92903aff77c
+- ev-0c22b842d9527006
+- ev-b19784ea9f90caa6
+- ev-d422cdb51a6d706a
+- ev-cc01b5d070e6ffba
+- ev-3c547ac6948135f9
+- ev-28f2ce0bbebc0bfb
+- ev-19c120d84e54148c
+- ev-00e5c1a3a7d55810
+- ev-2ddd9d7f26f68a4f
+- ev-d929ca141aeedad1
+- ev-6d0cc1284abf1527
+- ev-7b08a3dd43d826cd
+- ev-3f8fede465554abb
+- ev-572125c1a7250574
+- ev-8c03d1c487afd901
+- ev-4e97fc1ba62a80ac
+- ev-1ce28726ead570d6
+- ev-65e8475d8c6120fe
+- ev-3d95c8959542f9a7
+- ev-7549af3f362db9b5
+- ev-5fafe5658b6fba06
+- ev-33583b333053dd30
+- ev-43054b5055305201
+- ev-6f2b602ba43905a3
+- ev-1dc192d53227bc08
+- ev-7d4dc4374425e27b
+- ev-95a7a7a89c11fb60
+- ev-5953b755b3c5659d
+- ev-46322a1fa9ecc6ab
+- ev-ff9e2c3e814f30d9
+named:
+- name: DashThis
+  aliases: [Dash This]
+  domain: dashthis.com
+- name: Databox
+  aliases: []
+  domain: databox.com
+- name: ReportGarden
+  aliases: [Report Garden]
+  domain: reportgarden.com
+- name: TapClicks
+  aliases: [Tap Clicks]
+  domain: tapclicks.com
+- name: Klipfolio
+  aliases: []
+  domain: klipfolio.com
+- name: Looker Studio
+  aliases: [Google Looker Studio, Data Studio, Google Data Studio]
+  domain: null
+- name: Octoboard
+  aliases: []
+  domain: octoboard.com
+- name: Supermetrics
+  aliases: []
+  domain: supermetrics.com
+- name: SE Ranking
+  aliases: [SERanking]
+  domain: seranking.com
+- name: Swydo
+  aliases: []
+  domain: swydo.com
+- name: Whatagraph
+  aliases: []
+  domain: whatagraph.com
+- name: Reporting Ninja
+  aliases: [ReportingNinja]
+  domain: reportingninja.com
+- name: Coupler.io
+  aliases: [Coupler]
+  domain: coupler.io
+- name: Funnel
+  aliases: [Funnel.io]
+  domain: funnel.io
+- name: Geckoboard
+  aliases: []
+  domain: geckoboard.com
+- name: Coefficient
+  aliases: []
+  domain: coefficient.io
+- name: Porter Metrics
+  aliases: [PorterMetrics, Porter]
+  domain: portermetrics.com
+- name: Dataslayer
+  aliases: [Dataslayer.ai]
+  domain: dataslayer.ai
+- name: Windsor.ai
+  aliases: [Windsor]
+  domain: windsor.ai
+- name: SegMetrics
+  aliases: [Seg Metrics]
+  domain: segmetrics.io
+inferred:
+- name: Reportei
+  aliases: [ReportEI]
+  domain: reportei.com
+- name: Oviond
+  aliases: []
+  domain: oviond.com
+- name: ZapDigits
+  aliases: [Zap Digits]
+  domain: null

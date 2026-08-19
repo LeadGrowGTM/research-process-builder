@@ -2,5 +2,5 @@
 [mcp_servers.parallel-search]
 url = "https://search.parallel.ai/mcp-oauth"
 auth = "oauth"
-enabled_tools = ["web_search", "web_fetch"]
+enabled_tools = ["web_search"]
 default_tools_approval_mode = "prompt"

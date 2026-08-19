@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-199c8910d8617519
+  - ev-83d866f9da4ec765
+  - ev-eaac6f86257d7007
+  field: identity
+  value: Manulife Canada
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-199c8910d8617519
+  - ev-83d866f9da4ec765
+  - ev-eaac6f86257d7007
+  field: description
+  value: Group benefits plans for businesses | Manulife Skip to main navigation Skip
+    to submenu Skip to main content Skip to footer Personal Business Advisors Search
+    Contact us Sign in FR Menu Search Sign in Personal Business Advisors Plan and
+    learn Plan and learn Living healthier Life events Life events Raising a family
+    Changing jobs Preparing for retirement Healthy finances Healthy finances Protect
+    yourself against fraud Financial planning Saving Mental health Mental health conditions
+    and concerns Acce
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-199c8910d8617519
+  - ev-83d866f9da4ec765
+  - ev-eaac6f86257d7007
+  field: offers
+  value: group benefits
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-199c8910d8617519
+  - ev-83d866f9da4ec765
+  - ev-eaac6f86257d7007
+  field: icp
+  value: employers
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-199c8910d8617519
+  - ev-83d866f9da4ec765
+  - ev-eaac6f86257d7007
+  field: personas
+  value: employers
+  visibility: message_safe
+company_id: known-06
+corrections: []
+evidence:
+- content_hash: 199c8910d86175194eaf3fb45421b49f1c90b6f52323015fe27c01663a0ce497
+  evidence_id: ev-199c8910d8617519
+  excerpt: Group benefits plans for businesses | Manulife Skip to main navigation
+    Skip to submenu Skip to main content Skip to footer Personal Business Advisors
+    Search Contact us Sign in FR Menu Search Sign in Personal Business Advisors Plan
+    and learn Plan and learn Living healthier Life events Life events Raising a family
+    Changing jobs Preparing for retirement Healthy finances Healthy finances Protect
+    yourself against fraud Financial planning Saving Mental health Mental health conditions
+    and concerns Accessing treatment and support Prevention and staying mentally healthy
+    Group plans Group plans Group benefits Group retirement Manulife mobile app Tools
+    Insurance Insurance home Start your journey Our products Health insurance Life
+    insurance Travel insurance Combination insurance Mortgage protection insurance
+    Alumni, professional, and retail members Alumni, professional, and retail members
+    Health and dental premium receipts Investments Manulife Bank Vitality Manulife
+    Vitality How Manulife Vitality works Rewards and points Become a member Mobile
+    app Wearable devices Help Support Support Manulife ID Support Centre Claims Centre
+    Tax receipts and slips Find an advisor Contact us Contact us Request a search
+    for lost or unclaimed account Emergency travel assistance Tell us about a death
+    Resolve a complaint Group plans Group plans Group benefits Group retirement solutions
+    Insurance Insurance Individual insurance Alumni, professional and retail members
+    CoverMe Manulife forms Access online accounts FAQ FAQ Glossary of acronyms Group
+    benefits Group benefits Plans for small and large businesses Plans for small and
+    large businesses Customize your group benefits plan Personal Benefits Management
+    & prevention programs Management & prevention programs Short Term Absence Solution
+    Employee and family assistance programs Healthcare Online Support services Support
+    services Digital claims experience for plan members Keep your member health plan
+    sustainable Secure online services and tools Communica
+  retrieved_at: '2026-08-12T22:06:25.730297+00:00'
+  url: https://www.manulife.ca/business/group-benefits/plans-and-coverage.html
+- content_hash: 83d866f9da4ec76510c4a2ea0c0e7bd5566545c89767a44a903df93d4a5c793c
+  evidence_id: ev-83d866f9da4ec765
+  excerpt: 'Manulife Canada | LinkedIn Skip to main content LinkedIn Top Content People
+    Learning Jobs Games Sign in Join now Manulife Canada Financial Services Waterloo,
+    Ontario 21,779 followers Where will better take you™ Follow Discover all 297 employees
+    Report this company About us At Manulife, we want to empower Canadians to live
+    better. Better means building strong foundations for individuals, families and
+    businesses that can weather life’s unexpected challenges. It means being more
+    confident navigating health and wealth decisions, so you can plan for the day-to-day
+    and the long-term. And it means doing our part to ensure a more sustainable and
+    economically inclusive future for all. Manulife. Where will better take you™ Website
+    https://www.manulife.ca/ External link for Manulife Canada Industry Financial
+    Services Company size 10,001+ employees Headquarters Waterloo, Ontario Type Public
+    Company Locations Primary Waterloo, Ontario N2J4C6, CA Get directions Employees
+    at Manulife Canada Carrie Haggerty Nick Moskun, CHS Paul Kowalczyk Sameer Suri
+    See all employees Updates Manulife Canada 21,779 followers 8h Report this post
+    Longevity is closely connected to the health of the environments around us, including
+    Canada’s diverse plant and wildlife ecosystems. That''s why we partner with the
+    Nature Conservancy of Canada on the Big Backyard BioBlitz, empowering people across
+    Canada contribute to conservation efforts in their own communities. Together,
+    more than 6,000 participants have contributed over 59,000 ecological observations,
+    helping experts better understand and protect Canada''s ecosystems. Learn more
+    about our impact: https://ow.ly/ViyL50ZyVlV …more 15 1 Comment Like Comment Share
+    Manulife Canada 21,779 followers 1d Report this post The best summer activities
+    aren''t just about this season. They''re about staying healthy enough to enjoy
+    them for years to come. Whether you enjoy camping, hiking, road-tripping or going
+    to concerts, Dr. Jia Hu of Cleveland Clinic Canada offers pra'
+  retrieved_at: '2026-08-12T22:06:26.516307+00:00'
+  url: https://www.linkedin.com/company/manulife-canada
+- content_hash: eaac6f86257d70073281b825ad94bd5af4589df24d2c2d1faba3701fb771e0b4
+  evidence_id: ev-eaac6f86257d7007
+  excerpt: 2026-03-26 Mar 26, 2026 Manulife, Osara Health launch cancer coaching pilot
+    for group benefits members | Insurance Business CONTINUE TO SITE CONTINUE TO SITE
+    My account Logout Login News Insurance News Industry News Columns Diversity &
+    Inclusion Mergers & Acquisitions Legal Advisory Board Reinsurance TV Transformation
+    Risk Management Resources Annual Guides Business Strategy E-mag Editorial Panels
+    Events Guides IB Talk Industry insights Insurance Companies Opinion Premium Content
+    Webinars White papers Best In Insurance Specialty Benefits Cannabis Catastrophe
+    & Flood Claims Commercial Solutions Construction & Engineering Cyber Environmental
+    Group Benefits Hospitality Legal Insights Life & Health Marine Motor & Fleet Non-Profits
+    & Charities Professional Risks Property SME Transformation Travel IBmarkets Providers
+    Line of Business Contact Us Contact Us E-newsletter Authors Regular Contributors
+    Advertise IBmarkets - Contact Us Canada United States Canada United Kingdom Australia
+    New Zealand Asia Login Dashboard Group Benefits Manulife, Osara Health launch
+    cancer coaching pilot for group benefits members Manulife, Osara Health launch
+    cancer coaching pilot for group benefits members The program combines one-to-one
+    coaching and online tools to help members manage treatment Group Benefits By Josh
+    Recamara Mar 26, 2026 Share Manulife Canada has entered into a strategic partnership
+    with Osara Health to pilot Cancer Coach, a structured support program for people
+    navigating cancer treatment, recovery and the day-to-day impact of a diagnosis.
+    The program, initially available to select Manulife Group Benefits members with
+    disability coverage, is designed to sit alongside clinical care and focus on practical
+    issues such as sleep, energy, nutrition, stress and return‑to‑work planning. Cancer
+    remains a major challenge for Canadian employers and insurers. The Canadian Cancer
+    Society estimated there would be 254,800 new cancer diagnoses in 2025, up more
+    than 3% from the prior year, an
+  retrieved_at: '2026-08-12T22:06:27.040136+00:00'
+  url: https://www.insurancebusinessmag.com/ca/news/group-benefits/manulife-osara-health-launch-cancer-coaching-pilot-for-group-benefits-members-569889.aspx
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

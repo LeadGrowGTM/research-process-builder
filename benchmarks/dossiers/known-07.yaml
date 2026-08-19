@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-a3ce9688ce2906d9
+  - ev-fc963e2f97c6bfda
+  - ev-9dfbdf00876fcd13
+  field: identity
+  value: Moog Industrial
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-a3ce9688ce2906d9
+  - ev-fc963e2f97c6bfda
+  - ev-9dfbdf00876fcd13
+  field: description
+  value: 'November 26, 2024 October 21, 2024 June 10, 2024 April 8, 2024 Industrial
+    Automation × Your browser is out of date! For the best experience, please select
+    one of the following browsers: IE 10+ Chrome Firefox X This Site This Site All
+    Moog Sites X Search: This Site All Moog Sites Products Popular Products Actuation
+    Hexapods, Positioning & Motion Systems Motors & Servomotors Propulsion Satellite
+    Buses Servo Valves and Proportional Valves Slip Rings Turreted Weapon Systems
+    Weapon Stores Management '
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-a3ce9688ce2906d9
+  - ev-fc963e2f97c6bfda
+  - ev-9dfbdf00876fcd13
+  field: offers
+  value: motion control
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-a3ce9688ce2906d9
+  - ev-fc963e2f97c6bfda
+  - ev-9dfbdf00876fcd13
+  field: icp
+  value: industrial customers
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-a3ce9688ce2906d9
+  - ev-fc963e2f97c6bfda
+  - ev-9dfbdf00876fcd13
+  field: personas
+  value: industrial customers
+  visibility: message_safe
+company_id: known-07
+corrections: []
+evidence:
+- content_hash: a3ce9688ce2906d99f7716437a35ea4203c09748c7b6801c617590e38961c988
+  evidence_id: ev-a3ce9688ce2906d9
+  excerpt: 'November 26, 2024 October 21, 2024 June 10, 2024 April 8, 2024 Industrial
+    Automation × Your browser is out of date! For the best experience, please select
+    one of the following browsers: IE 10+ Chrome Firefox X This Site This Site All
+    Moog Sites X Search: This Site All Moog Sites Products Popular Products Actuation
+    Hexapods, Positioning & Motion Systems Motors & Servomotors Propulsion Satellite
+    Buses Servo Valves and Proportional Valves Slip Rings Turreted Weapon Systems
+    Weapon Stores Management View All Products Industries Aerospace & Defense Commercial
+    Aircraft Military Aircraft Digital Airfield Solutions Air Defense Land Defense
+    Naval Defense Space Industrial Construction Energy Industrial Automation Marine
+    Motorsport Simulation Technology Infrastructure Medical Medical Devices Medical
+    OEM Medical Ultrasonic Sensing News & Events Investors News Events and Presentations
+    Financials Stock Info Corporate Governance Shareholder Services Investors Home
+    Careers Life at Moog Our Work Students and Early Careers Suppliers Sustainability
+    Environmental Social Governance Contact Products Popular Products Actuation Hexapods,
+    Positioning & Motion Systems Motors & Servomotors Propulsion Satellite Buses Servo
+    Valves and Proportional Valves Slip Rings Turreted Weapon Systems Weapon Stores
+    Management View All Products Industries Aerospace & Defense Commercial Aircraft
+    Military Aircraft Digital Airfield Solutions Air Defense Land Defense Naval Defense
+    Space Industrial Construction Energy Industrial Automation Marine Motorsport Simulation
+    Technology Infrastructure Medical Medical Devices Medical OEM Medical Ultrasonic
+    Sensing News & Events Investors News Events and Presentations Financials Stock
+    Info Corporate Governance Shareholder Services Investors Home Careers Life at
+    Moog Our Work Students and Early Careers Suppliers Sustainability Environmental
+    Social Governance Contact Industries Industrial Automation Industrial Automation
+    Overview Solutions Featured Products News CONTACT US CO'
+  retrieved_at: '2026-08-12T22:06:27.516937+00:00'
+  url: https://www.moog.com/markets/industrial-automation.html
+- content_hash: fc963e2f97c6bfda479d7b154c0ed09e1f1906e8825799b9501a5bf2cd178088
+  evidence_id: ev-fc963e2f97c6bfda
+  excerpt: Moog Industrial | LinkedIn Agree & Join LinkedIn By clicking Continue to
+    join or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and
+    Cookie Policy . Skip to main content LinkedIn Top Content People Learning Jobs
+    Games Sign in Join now Moog Industrial Automation Machinery Manufacturing Elma,
+    New York 15,165 followers Shaping the way our world moves Follow View all 498
+    employees Report this company About us Welcome to the official Moog Industrial
+    Linkedin page! Moog Inc. is a worldwide designer, manufacturer, and integrator
+    of precision motion control products and systems. Moog’s high-performance systems
+    control military and commercial aircraft, satellites and space vehicles, launch
+    vehicles, missiles, industrial machinery, wind energy, marine applications, medical
+    equipment, and data centers. Moog Industrial provides high performance motion
+    control solutions combining electric, hydraulic, and hybrid technologies to help
+    performance-driven companies develop their next-generation machines. From designing
+    and manufacturing products and solutions to providing expert consultative support,
+    Moog collaborates with customers in many of the world's most challenging industrial
+    applications. Website https://www.moog.com/about-us/industrial-group.html External
+    link for Moog Industrial Industry Automation Machinery Manufacturing Company size
+    10,001+ employees Headquarters Elma, New York Type Public Company Employees at
+    Moog Industrial Gareth Kybett LinkedIn Member LinkedIn Member LinkedIn Member
+    LinkedIn Member LinkedIn Member View 498 employees at Moog Industrial Sign in
+    Welcome back Email or phone Password Show Forgot password? Sign in or By clicking
+    Continue to join or sign in, you agree to LinkedIn’s User Agreement , Privacy
+    Policy , and Cookie Policy . New to LinkedIn? Join now or By clicking Continue
+    to join or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy ,
+    and Cookie Policy . See all employees Locations Primary 300 Jamison Rd Elma, New
+  retrieved_at: '2026-08-12T22:06:28.258402+00:00'
+  url: https://www.linkedin.com/company/moog-industrial
+- content_hash: 9dfbdf00876fcd1304ef2dd0dc51f2243cbd70a51a4d00144d124fffd22b5c1d
+  evidence_id: ev-9dfbdf00876fcd13
+  excerpt: '2025 ANNUAL REPORT Shaping the way our world moves ™ OFFICERS AND DIRECTORS
+    OFFICERS Pat Roche President; Chief Executive Officer; Director Jennifer Walter
+    Executive Vice President; Chief Financial Officer Joseph Alfieri Vice President;
+    President Space and Defense Mark Graczyk Vice President; President Military Aircraft
+    Stuart K. McLachlan Vice President; President Industrial Michael Schaff Vice President;
+    President Commercial Aircraft Nicholas Hart Principal Accounting Officer; Controller
+    Elwira Kelly Senior Vice President; General Counsel and Corporate Secretary Paul
+    Wilkinson Executive Vice President; Chief Human Resources Officer Left to Right:
+    Paul Wilkinson, Elwira Kelly, Jennifer Walter, Pat Roche, Michael Schaff, Joseph
+    Alfieri, Stuart McLachlan, Mark Graczyk DIRECTORS Janet M. Coletti Retired Executive
+    Vice President and Chief Human Resources Officer of M&T Bank Corporation Donald
+    R. Fishback Retired Vice President and Chief Financial Officer of Moog Inc. William
+    G. Gisel, Jr. Current Executive Vice Chair and retired Chief Executive Officer
+    of Rich Products Corporation Peter J. Gundermann Chairman; President; Chief Executive
+    Officer of Astronics Corporation Kraig H. Kayser Non-executive Chairman and retired
+    President and Chief Executive Officer of Seneca Foods Corporation Mahesh Narang
+    Executive Vice President; President Access segment of Oshkosh Corporation Brenda
+    L. Reichelderfer Retired Senior Vice President and Managing Director of TriVista
+    John R. Scannell Non-executive Chairman of the Board and Director; Retired Chief
+    Executive Officer of Moog Inc. OUR YEAR IN FOCUS ROW 1 – Newly retrofitted, space-focused
+    actuation and avionics 120,000 sq. ft. facility in East Aurora, NY: supporting
+    launch vehicles, including NASA’s Artemis missions Courtesy of NASA ROW 2 – New
+    Advanced Integrated Manufacturing 150,000 sq. ft. facility in East Aurora, NY:
+    supporting flight-critical actuation systems for current military aircraft, including
+    the F-35 Courtesy of iStock'
+  retrieved_at: '2026-08-12T22:06:32.995126+00:00'
+  url: https://www.sec.gov/Archives/edgar/data/0000067887/000162828025058116/a2025moogannualreport.pdf
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

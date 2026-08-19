@@ -1,0 +1,147 @@
+# DRAFT ground truth - TODO_HUMAN: review every entry, then move this file to
+# ../ground-truth/ only after a human seals it. Generated from the signal dossier;
+# nothing here is validated. Delete candidates that are not real, fix dates and
+# kinds, keep evidence_ids pointing at the Evidence that proves the entry.
+# subject: Bitly (bitly.com)
+as_of: '2026-08-18'
+company_id: saas-09
+events:
+- date: TODO_HUMAN (4 months ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-c6134242a55beee2
+  headline_aliases:
+  - 'Introducing: Bitly Assist - Clearer Insights, Faster Decisions'
+  kind: TODO_HUMAN
+  source_domain: youtube.com
+- date: TODO_HUMAN (4 months ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-1bea0d05296a99a5
+  headline_aliases:
+  - Bitly Launches AI-Powered Assist for Faster Decision Making
+  kind: TODO_HUMAN
+  source_domain: linkedin.com
+- date: '2026-06-30'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-9f68c12d35f54506
+  headline_aliases:
+  - Bitly - 2026 Company Profile, Team, Funding & Competitors
+  kind: TODO_HUMAN
+  source_domain: tracxn.com
+- date: '2026-04-20'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-f4b11910ca7e74a4
+  headline_aliases:
+  - QR Code Generator is Now QRCG by Bitly
+  kind: TODO_HUMAN
+  source_domain: qr-code-generator.com
+- date: '2026-04-16'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-9a9c2811857173e9
+  headline_aliases:
+  - 'Bitly Free Plan: Features, Limits, and When to Upgrade'
+  kind: TODO_HUMAN
+  source_domain: bitly.com
+- date: '2026-04-02'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-fd616319d1681471
+  headline_aliases:
+  - Bitly Introduces AI-Powered Features to Simplify and Accelerate Marketing Analytics
+  kind: TODO_HUMAN
+  source_domain: google.com
+- date: '2026-04-02'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-4cf17467b0cef3a0
+  headline_aliases:
+  - Introducing Bitly Assist & Weekly Insights
+  kind: TODO_HUMAN
+  source_domain: bitly.com
+- date: '2026-04-02'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-0b49d7ad63e38407
+  headline_aliases:
+  - Bitly Introduces AI-Powered Features to Simplify and ...
+  kind: TODO_HUMAN
+  source_domain: bitly.com
+- date: '2026-03-19'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-389dadce2820ba1f
+  headline_aliases:
+  - Bitly Appoints Matt Young as CTO, Strengthening Leadership Team Under CEO Peter
+    Krivkovich
+  kind: TODO_HUMAN
+  source_domain: google.com
+- date: '2026-03-18'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-6f7b405959e5928e
+  headline_aliases:
+  - How Bitly's Link and QR Code Tools Power Marketing in ...
+  kind: TODO_HUMAN
+  source_domain: bitly.com
+- date: '2026-03-09'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-6f98ac52bafe786b
+  headline_aliases:
+  - Introducing Bitly's ChatGPT, Claude, and Copilot Integrations
+  kind: TODO_HUMAN
+  source_domain: bitly.com
+- date: '2026-02-27'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-2ac9be1eeca958f3
+  headline_aliases:
+  - How to Use Bitly for Digital Marketing
+  kind: TODO_HUMAN
+  source_domain: bitly.com
+- date: '2026-02-03'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-54a05e1e7089d228
+  headline_aliases:
+  - Bitly Enters 2026 as the Embedded Connection Layer Powering Links and QR Codes
+    Worldwide
+  kind: TODO_HUMAN
+  source_domain: google.com
+- date: '2026-02-03'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-86aa2fa0dd7d89bd
+  headline_aliases:
+  - Bitly Enters 2026 as the Embedded Connection Layer ...
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2026-02-03'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-f039b17ed80b1f55
+  headline_aliases:
+  - Bitly Enters 2026 With Expanded Link and QR Code ...
+  kind: TODO_HUMAN
+  source_domain: bitly.com
+- date: '2026-01-23'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-1a7d372516380bb0
+  headline_aliases:
+  - Press Room
+  kind: TODO_HUMAN
+  source_domain: bitly.com
+- date: '2019-04-18'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-3a6584e165ffccb0
+  headline_aliases:
+  - Bitly link shortener blocked in Egypt
+  kind: TODO_HUMAN
+  source_domain: google.com
+recent_window_days: 180

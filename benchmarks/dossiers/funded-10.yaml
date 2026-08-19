@@ -1,0 +1,167 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-56075e3402e75970
+  - ev-a352efe565f39d32
+  - ev-ea4b7dcdb6771b37
+  - ev-37598cd3f3fc828f
+  field: identity
+  value: ThoroughCare
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-56075e3402e75970
+  - ev-a352efe565f39d32
+  - ev-ea4b7dcdb6771b37
+  - ev-37598cd3f3fc828f
+  field: description
+  value: Care Coordination Software | ThoroughCare Skip to main content Our Solutions
+    We Support Accountable Care Organizations Care Coordination Providers Health Plans
+    Home Health Agencies Pharmacies Physician Groups By Function AI Analytics Annual
+    Wellness Visits Behavioral Health Integration Care Coordination Chronic Care Management
+    Mobile Patient App Principal Care Management Remote Patient Monitoring Transitional
+    Care Management Value-based Care Customer Success Clinical Advisory Services Integratio
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-56075e3402e75970
+  - ev-a352efe565f39d32
+  - ev-ea4b7dcdb6771b37
+  - ev-37598cd3f3fc828f
+  field: offers
+  value: care coordination software
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-37598cd3f3fc828f
+  field: growth
+  value: Primary funding event dated 2025-10-15
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-56075e3402e75970
+  - ev-a352efe565f39d32
+  - ev-ea4b7dcdb6771b37
+  - ev-37598cd3f3fc828f
+  field: icp
+  value: healthcare practices
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-56075e3402e75970
+  - ev-a352efe565f39d32
+  - ev-ea4b7dcdb6771b37
+  - ev-37598cd3f3fc828f
+  field: personas
+  value: healthcare practices
+  visibility: message_safe
+company_id: funded-10
+corrections: []
+evidence:
+- content_hash: 56075e3402e75970eadec08da9b13f09eb67e551108bee572126ca1083795866
+  evidence_id: ev-56075e3402e75970
+  excerpt: Care Coordination Software | ThoroughCare Skip to main content Our Solutions
+    We Support Accountable Care Organizations Care Coordination Providers Health Plans
+    Home Health Agencies Pharmacies Physician Groups By Function AI Analytics Annual
+    Wellness Visits Behavioral Health Integration Care Coordination Chronic Care Management
+    Mobile Patient App Principal Care Management Remote Patient Monitoring Transitional
+    Care Management Value-based Care Customer Success Clinical Advisory Services Integration
+    & Interoperability NCQA Prevalidation Opportunity Analysis Security & HIPAA Compliance
+    Technology Partnerships Training & Onboarding Who We Are About Us Contact Us Join
+    Our Team News and Press Events Learning Center Learning Center Resources Case
+    Studies Free Analysis Open Search Let's Connect Search for topics or resources
+    Enter your search below and hit enter or click the search icon. Close Search Our
+    Solutions Our Solutions We Support We Support Accountable Care Organizations Care
+    Coordination Providers Health Plans Home Health Agencies Pharmacies Physician
+    Groups By Function By Function AI Analytics Annual Wellness Visits Behavioral
+    Health Integration Care Coordination Chronic Care Management Mobile Patient App
+    Principal Care Management Remote Patient Monitoring Transitional Care Management
+    Value-based Care Customer Success Customer Success Clinical Advisory Services
+    Integration & Interoperability NCQA Prevalidation Opportunity Analysis Security
+    & HIPAA Compliance Technology Partnerships Training & Onboarding Who We Are Who
+    We Are About Us Contact Us Join Our Team News and Press Events Learning Center
+    Learning Center Learning Center Learning Center Resources Case Studies Free Analysis
+    Let's Connect Care Coordination Software | Est. 2013 A platform built by clinicians,
+    helping providers engage patients Providers use ThoroughCare to help 1M+ patients
+    manage their chronic conditions and live healthier lives. Care Coordination Software
+    | Clinical Advisory Services | AI-driv
+  retrieved_at: '2026-08-12T21:35:29.386295+00:00'
+  url: https://www.thoroughcare.net/
+- content_hash: a352efe565f39d320fd94eed2953883b13a38e44697cb99548d750243846dc0f
+  evidence_id: ev-a352efe565f39d32
+  excerpt: 'ThoroughCare | LinkedIn Agree & Join LinkedIn By clicking Continue to
+    join or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and
+    Cookie Policy . Skip to main content LinkedIn Top Content People Learning Jobs
+    Games Sign in Join now ThoroughCare Software Development Pittsburgh, Pennsylvania
+    4,569 followers Integrated care coordination software that enables healthcare
+    practices to seamlessly deliver value-based care. Follow View all 57 employees
+    Report this company About us ThoroughCare’s portfolio of integrated care coordination
+    software solutions enable healthcare practices to seamlessly deliver value-based
+    care management programs that enhance patient engagement and health outcomes.
+    Website http://www.thoroughcare.net External link for ThoroughCare Industry Software
+    Development Company size 11-50 employees Headquarters Pittsburgh, Pennsylvania
+    Type Privately Held Founded 2013 Specialties Health Care Assessment Software,
+    Health Care Questionnaire Software, Case and Disease Managment Assessemnts, Hospital
+    Discharge Planning Assessments, Chronic Care Management Software, and CCM Software
+    Employees at ThoroughCare Oliver Azevedo Barnes LinkedIn Member LinkedIn Member
+    LinkedIn Member LinkedIn Member LinkedIn Member View 57 employees at ThoroughCare
+    Sign in Welcome back Email or phone Password Show Forgot password? Sign in or
+    By clicking Continue to join or sign in, you agree to LinkedIn’s User Agreement
+    , Privacy Policy , and Cookie Policy . New to LinkedIn? Join now or By clicking
+    Continue to join or sign in, you agree to LinkedIn’s User Agreement , Privacy
+    Policy , and Cookie Policy . See all employees Locations Primary 2 Allegheny Center
+    Ste 1302 Pittsburgh, Pennsylvania 15212, US Get directions Updates ThoroughCare
+    4,569 followers 6d Report this post Primary is one of the highest-leverage investment
+    opportunities in transforming the economics of care. A recent perspective from
+    Empactful Capital reinforces what many of us are seeing firsthand: the '
+  retrieved_at: '2026-08-12T21:35:30.285396+00:00'
+  url: https://www.linkedin.com/company/thoroughcare-inc-
+- content_hash: ea4b7dcdb6771b371269e4939957047b5bc84e5a9107bb2c04443e5781fbdac9
+  evidence_id: ev-ea4b7dcdb6771b37
+  excerpt: ThoroughCare Stock Price, Funding, Valuation, Revenue & Financial Statements
+    Technology Vendors Recent Research Newsletter Media Support Login Who We Serve
+    Function Corporate Strategy Corporate Venture Capital Venture Capital IT Corporate
+    Innovation How VCs Use CB Insights Go to the video gallery → Industries Consumer
+    & Retail Tech Insurance Healthcare Industrials Financial Services Professional
+    Services Professional Services Learn More → Success Stories How We Help Understand
+    Tech Markets Anticipate Competitor Strategy Determine Tech Strategy Connect with
+    Tech Vendors & Partners Turbocharge Digital Transformation What We Offer Platform
+    Overview Technology Search Engine Market Analytics and Visualizations Team Management
+    and Collaboration Platform Overview Learn More → Data Research Personal Briefing
+    GenAI Instant Insights Public Equity Data Buyer Interview Transcripts Analyst
+    Briefings API & Data Feeds Integrations Overview Chrome and Edge Salesforce Affinity
+    Microsoft Excel Google Sheets Microsoft Teams Slack Google Slides App Partners
+    Browser Extension Pricing About Us Overview Our teams Business Development Engineering
+    Operations Product See all → Open Jobs Loading... ThoroughCare Unclaimed thoroughcare.net
+    Overview & Products Financials People Alternatives & Competitors Total Raised
+    $13.25M Investors Count 3 Funding, Valuation & Revenue 5 Fundings ThoroughCare
+    has raised $13.25M over 5 rounds . ThoroughCare's latest funding round was a Series
+    A - III for $2.25M on May 21, 2026 . Date Round Amount Investors Valuation Valuations
+    are submitted by companies, mined from state filings or news, provided by VentureSource,
+    or based on a comparables valuation model. Revenue Sources 5/21/2026 Series A
+    - III $2.25M Undisclosed Investors $XXM 0 FY undefined 1 10/23/2025 Series A -
+    II $XXM Subscribe to see more $XXM 0 FY undefined 10 10/2/2024 Series A $XXM Subscribe
+    to see more $XXM 0 FY undefined 10 5/17/2022 Debt $XXM Subscribe to see more $XXM
+    0 FY undefined 10 Other Inv
+  retrieved_at: '2026-08-12T21:35:30.747685+00:00'
+  url: https://www.cbinsights.com/company/thoroughcare/financials
+- content_hash: 37598cd3f3fc828fbd6df64f596267b79f642dfb1161cbdf43124c73578442ba
+  evidence_id: ev-37598cd3f3fc828f
+  excerpt: X0708 D LIVE 0001745729 Thoroughcare, Inc. 2 Allegheny Ctr Ste 701 PITTSBURGH
+    PA PENNSYLVANIA 15212 (844) 842-6422 DELAWARE None None Corporation true Daniel
+    Stephen Godla 2 Allegheny Ctr Ste 701 Pittsburgh PA PENNSYLVANIA 15212 Executive
+    Officer Director Founder and Chief Strategy Officer Other Technology Decline to
+    Disclose 06b false 2025-10-15 false true false 149995 4000000 2999985 1000015
+    false 3 0 0 0 false Thoroughcare, Inc. Daniel S. Godla Daniel S. Godla Founder
+    and Chief Strategy Officer 2025-10-23
+  retrieved_at: '2026-08-12T21:50:38.207942+00:00'
+  url: https://www.sec.gov/Archives/edgar/data/1745729/000174572925000003/primary_doc.xml
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- hiring
+- news
+- launches
+- ads

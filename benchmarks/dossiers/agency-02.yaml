@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-112020055575142a
+  - ev-8ad3fbb89313d4c7
+  - ev-514f20edc2141b0f
+  field: identity
+  value: AbelsonTaylor
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-112020055575142a
+  - ev-8ad3fbb89313d4c7
+  - ev-514f20edc2141b0f
+  field: description
+  value: '"> --> --> About AbelsonTaylor Advertising in Chicago | AbelsonTaylor, Inc.
+    Skip to main content Menu Close Menu Close About AbelsonTaylor Meet the Teams
+    Culture Our Work News and Insights Careers Internships Contact Us --> We’re built
+    for Great work For us, it’s fundamental Cherish creativity We let our imaginations
+    run wild and strive to push boundaries. Only the ideas that best solve real-world
+    business challenges make it out the door.     Always curious We champion learning
+    and knowledge sha'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-112020055575142a
+  - ev-8ad3fbb89313d4c7
+  - ev-514f20edc2141b0f
+  field: offers
+  value: advertising services
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-112020055575142a
+  - ev-8ad3fbb89313d4c7
+  - ev-514f20edc2141b0f
+  field: icp
+  value: brands
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-112020055575142a
+  - ev-8ad3fbb89313d4c7
+  - ev-514f20edc2141b0f
+  field: personas
+  value: brands
+  visibility: message_safe
+company_id: agency-02
+corrections: []
+evidence:
+- content_hash: 112020055575142abe780ec514582f6ad93da0ba3db9158dbce67916149264a1
+  evidence_id: ev-112020055575142a
+  excerpt: '"> --> --> About AbelsonTaylor Advertising in Chicago | AbelsonTaylor,
+    Inc. Skip to main content Menu Close Menu Close About AbelsonTaylor Meet the Teams
+    Culture Our Work News and Insights Careers Internships Contact Us --> We’re built
+    for Great work For us, it’s fundamental Cherish creativity We let our imaginations
+    run wild and strive to push boundaries. Only the ideas that best solve real-world
+    business challenges make it out the door.     Always curious We champion learning
+    and knowledge sharing, always looking for ways to channel our curiosity and improve
+    our offerings. Passionate about our people We’re committed to fostering a community
+    where people are valued and empowered to bring their diverse perspectives to the
+    table.     Fearlessly Independent As an independently owned agency, we like being
+    in charge of our own decisions. It’s what allows us to focus on the work that
+    delivers brand success.   Better together We believe good ideas can come from
+    anywhere. That’s why we draw on each of our teams’ unique expertise, working together
+    to overcome business challenges. Return On Imagination starts with Our focus on results
+    Play promotional video Imaginative solutions, focused on Health & wellness For
+    more than 40 years , we’ve been dreaming up exciting, new ways for healthcare
+    brands to reach their audiences. Our full category list is focused on four core
+    areas of business: Product Launches Positioning brands to make the biggest impact
+    at launch gives them momentum to succeed deep into their lifecycles. Direct to
+    consumer It’s a noisy world, and healthcare is complicated. The clearer the message
+    is conveyed, the more it will break through. Patient communication It takes an
+    understanding of the human story within the data to connect with the patients
+    who need to hear the message. Healthcare professional communication Fluency in
+    the language of science is critical to reach HCPs on a level that influences their decisions.
+    Always exploring, always expanding Our exper'
+  retrieved_at: '2026-08-12T21:57:49.719664+00:00'
+  url: https://www.abelsontaylor.com/about-at/
+- content_hash: 8ad3fbb89313d4c708942c8a6a952eb78ab486824125d0b6f8759331cafebc91
+  evidence_id: ev-8ad3fbb89313d4c7
+  excerpt: 'AbelsonTaylor Group | LinkedIn Skip to main content LinkedIn Top Content
+    People Learning Jobs Games Sign in Join now AbelsonTaylor Group Advertising Services
+    Chicago, Illinois 21,113 followers We Help the World Choose Better Health See
+    jobs Follow View all 260 employees Report this company Overview Jobs Life About
+    us With AbelsonTaylor Group, ROI is what you’ll get. A Return On Imagination—through
+    our expertise, insights, creativity, and strategy. Every discipline within our
+    agency dreams up imaginative ways to transform brands and drive measurable market
+    results. Website http://www.abelsontaylorgroup.com External link for AbelsonTaylor
+    Group Industry Advertising Services Company size 201-500 employees Headquarters
+    Chicago, Illinois Type Privately Held Founded 1981 Specialties Advertising, Broadcast,
+    Healthcare, Marketing, Digital Media, and Digital Advertising Locations Primary
+    433 W Van Buren St Suite 650N Chicago, Illinois 60607, US Get directions Employees
+    at AbelsonTaylor Group Jeremy Vannatta Kaelin Teegarden Dave Schafer Devon Wilkop
+    See all employees Updates AbelsonTaylor Group 21,113 followers 9h Report this
+    post 365 days of keeping projects on track and teams moving forward. Congratulations
+    on this milestone, Will Brendza! 🎊 6 Like Comment Share AbelsonTaylor Group 21,113
+    followers 1d Report this post During this summer’s connectAT, our HeartsATWork
+    team showed just how much good can happen when we work together. In just 15 minutes,
+    we prepared 100 meals for members of our community who are unhoused or experiencing
+    poverty. Thank you to Amy Restko and the entire HeartsATWork team for making a
+    difference! 9 Like Comment Share AbelsonTaylor Group 21,113 followers 2d Report
+    this post As part of connectAT this week, we put the social in ice cream social
+    while enjoying some delicious frozen treats. 🍦 18 Like Comment Share AbelsonTaylor
+    Group 21,113 followers 5d Report this post Today we say farewell to our 2026 #nextgenerATion
+    interns, and we will certainly mis'
+  retrieved_at: '2026-08-12T21:57:50.703972+00:00'
+  url: https://www.linkedin.com/company/abelson-taylor-group
+- content_hash: 514f20edc2141b0f7865bed7c9830942183f66d39c924f6b559205077e219d55
+  evidence_id: ev-514f20edc2141b0f
+  excerpt: '2026-06-24 2026-06-03 2026-05-06 2026-04-30 July 19, 2023 July 24, 2023
+    December 19, 2024 AbelsonTaylor Group Established as Parent Company of AbelsonTaylor,
+    AT Nutrient, Dose, and AT Activate - 4As Skip to content Agency Search Membership
+    Member Hub I’m New Here Log In Menu Close Search AbelsonTaylor Group Established
+    as Parent Company of AbelsonTaylor, AT Nutrient, Dose, and AT Activate Login Required
+    Member Only Home / 4As Blog / AbelsonTaylor Group Established as Parent Company
+    of AbelsonTaylor, AT Nutrient, Dose, and AT Activate Published 07.24.2023 Topic
+    Technology CHICAGO, July 19, 2023 – Reflecting its successful expansion into new
+    areas of healthcare marketing, leading health and wellness advertising agency
+    AbelsonTaylor today announced the formation of AbelsonTaylor Group, which will
+    serve as the parent company of the organization’s diverse healthcare businesses.
+    The group consists of four business units: flagship agency AbelsonTaylor, one
+    of the industry’s most revered and award-winning independent healthcare advertising
+    agencies; AT Nutrient, an agency for challenger brands and category competitors
+    with existing AbelsonTaylor clients; Dose, a full-service state-of-the-art production
+    studio; and AT Activate, a self-managed media implementation group that purchases
+    and optimizes paid media across all channels and platforms. “We are seeing tremendous
+    change in the healthcare industry, with the development of innovative new products,
+    new techniques for engaging with physicians and patients, and increasingly sophisticated
+    data capabilities,” said Jeff Berg, who will serve as president of AbelsonTaylor
+    Group. “Establishing AbelsonTaylor Group enables us to fully leverage our strategic,
+    creative and technical skills and take on a broader range of clients and assignments,”
+    he said, noting that the shared nucleus of all companies in the group is delivering
+    Return on Imagination (ROI), equaling measurable business success for every client.
+    The new company structur'
+  retrieved_at: '2026-08-12T21:57:52.204090+00:00'
+  url: https://www.aaaa.org/blog/abelsontaylor-group-established-as-parent-company-of-abelsontaylor-at-nutrient-dose-and-at-activate/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

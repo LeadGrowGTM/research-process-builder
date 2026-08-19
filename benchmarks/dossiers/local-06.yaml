@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-f3c09383c331db1d
+  - ev-15af4b8b51128218
+  - ev-feeb1c722849d3be
+  field: identity
+  value: Anderson Commercial Flooring
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-f3c09383c331db1d
+  - ev-15af4b8b51128218
+  - ev-feeb1c722849d3be
+  field: description
+  value: 'Anderson Commercial Flooring | Oakland, CA Home About Us History Values
+    Management Team Employee Team Services Projects Showroom Contact Us Select Page
+    Learn More Renowned Quality and Service For over 65 years we’ve provided our customers
+    with most innovative choices in floor coverings. Today that means a wide-variety
+    of flooring options: hardwood to concrete, carpet to vinyl. As a family-run business
+    for 3 generations, our decades of experience combined with a one-stop shop means
+    our customers '
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-f3c09383c331db1d
+  - ev-15af4b8b51128218
+  - ev-feeb1c722849d3be
+  field: offers
+  value: commercial flooring
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-f3c09383c331db1d
+  - ev-15af4b8b51128218
+  - ev-feeb1c722849d3be
+  field: icp
+  value: manufacturers
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-f3c09383c331db1d
+  - ev-15af4b8b51128218
+  - ev-feeb1c722849d3be
+  field: personas
+  value: manufacturers
+  visibility: message_safe
+company_id: local-06
+corrections: []
+evidence:
+- content_hash: f3c09383c331db1d1e886fbe4ffa98adc5997e02ecbd9756fd8894b157b93772
+  evidence_id: ev-f3c09383c331db1d
+  excerpt: 'Anderson Commercial Flooring | Oakland, CA Home About Us History Values
+    Management Team Employee Team Services Projects Showroom Contact Us Select Page
+    Learn More Renowned Quality and Service For over 65 years we’ve provided our customers
+    with most innovative choices in floor coverings. Today that means a wide-variety
+    of flooring options: hardwood to concrete, carpet to vinyl. As a family-run business
+    for 3 generations, our decades of experience combined with a one-stop shop means
+    our customers get all their flooring needs met . . . done right and always done
+    on time. Polished Concrete Stunning, durable and LEED approved, our polished concrete
+    process gives you a myriad of choices for lasting beauty for new concrete or retrofits.
+    Restoration Need new floors? Maybe not. Our unique restoration process can often
+    renew and beautify your older flooring, saving you time and money. Flooring Carpets
+    that are exquisite; hardwoods and laminate that are impressive and durable; and
+    functional vinyls that are still highly attractive. With hundreds of choices,
+    we have the exact right flooring for you. Moisture Mitigation Quick project? Little
+    time for concrete drying? Our moisture mitigation process can save the day and
+    preserves your warranty with flooring manufacturers. YOUR FLOORING PARTNER | YOUR
+    ONE STOP SHOP Every business is different and we recognize that your flooring
+    needs are unique. At Anderson, we sit down with you to fully understand both your
+    flooring needs and your business needs. Then we apply our decades of experience
+    to help you achieve the right balance of beauty and durability, to meet the particular
+    challenges of your commercial space. Finally, because we are vertically integrated,
+    we can be with you from the time you have an idea for the project to long after
+    the install is completed, giving you a stress-free experience. As one of our long-standing
+    customers said, “We don’t worry about you guys.”   Consider us your one-stop shop
+    and take advantage of all or'
+  retrieved_at: '2026-08-12T22:40:58.591055+00:00'
+  url: https://www.andersoncf.com/
+- content_hash: 15af4b8b511282183b734d208d8f6eb860a6421818c12a5e7c27f92456d424f6
+  evidence_id: ev-15af4b8b51128218
+  excerpt: 'Anderson Commercial Flooring | LinkedIn Skip to main content LinkedIn
+    Top Content People Learning Jobs Games Sign in Join now Anderson Commercial Flooring
+    Construction Oakland, California 592 followers A Reputation You Can Stand On See
+    jobs Follow View all 50 employees Report this company About us Anderson Commercial
+    Flooring is one of the largest family owned carpet and linoleum companies in the
+    Bay Area and has been in business since 1954. One of our greatest accomplishments
+    is staff recruitment and retention. There are many individuals that began 30 year
+    careers with us through the Union, remaining valued Anderson Commercial Flooring
+    employees beyond their retirement dates. We are dedicated to providing the very
+    highest standards of customer service and professional installation. Our specialty
+    is working directly for facilities and collaborating on large commercial construction
+    projects. Our values and commitment level are clearly stated by our corporate
+    motto, “A REPUTATION YOU CAN STAND ON”. Website https://www.andersoncf.com External
+    link for Anderson Commercial Flooring Industry Construction Company size 51-200
+    employees Headquarters Oakland, California Type Privately Held Founded 1954 Specialties
+    Flooring, Polished Concrete, Moisture Mitigation, Epoxy Coatings, and Walk Off
+    Mats and Entry Systems Locations Primary 1000 W Grand Ave Oakland, California
+    94607, US Get directions Sacramento, California 95815, US Get directions Union
+    City, California 94587, US Get directions Employees at Anderson Commercial Flooring
+    Linda (Bulkeley) Morine Tom Christophe Steve Christophe Cathy Mason See all employees
+    Updates Anderson Commercial Flooring 592 followers 4d Report this post We''re
+    #hiring a new Office Manager / Project Engineer in Walnut Creek, California. Apply
+    today or share this post with your network. Office Manager / Project Engineer
+    Anderson Commercial Flooring, Walnut Creek, CA 2 Like Comment Share Anderson Commercial
+    Flooring reposted this Brandi Rahill 3mo Rep'
+  retrieved_at: '2026-08-12T22:40:59.428301+00:00'
+  url: https://www.linkedin.com/company/anderson-commercial-flooring
+- content_hash: feeb1c722849d3bee79673fb43172fa51e50cbf90c000a5c48e40f129d2e5cc5
+  evidence_id: ev-feeb1c722849d3be
+  excerpt: Company Contractor Address Phone Fax Email License Number License Classifications
+    Expires Approval Limit ACCO ENGINEERED SYSTEMS INC dba ACCO ENGINEERED SYSTEMS
+    Cindi Adler 888 East Walnut Street, Pasadena, CA 91101(HQ)1133 Aladdin Avenue
+    San Leandro, CA 94577 818-244-6571 000-000-0000 cadler@accoes.com 120696_ A (General
+    Engineering Contractor), B (General Building Contractor), C- 4 (Boiler, Hot Water
+    Heating and Steam Fitting Contractor), C-10 (Electrical Contractor), C-20 (Warm-Air
+    Heating, Ventilating and Air- Conditioning Contractor), C-36 (Plumbing Contractor),
+    C-38 (Refrigeration Contractor), C-16 (Fire Protection Contractor), C-42 (Sanitation
+    System Contractor) 10/18/2024 $12,000,000 AGC INC Randy Attaway 745-B Camden Ave,
+    Campbell, CA, 95008 408-637-1135 408-369-0309 randy@agcinc.com 780352_ B (General
+    Building Contractor), C-20 (Warm-Air Heating, Ventilating and Air-Conditioning
+    Contractor), C-36 (Plumbing Contractor) 11/14/2024 $10,000,000 Alten Construction,
+    Inc. Karin Romeo, Bid Coordinator 1141 Marina Way South, Richmond, CA 94804 510-234-4200
+    510-234-4221 bids@altenconstruction.com 705713_ A (General Engineering Contractor),
+    B (General Building Contractor) 12/04/2024 $60,000,000 American Plumbing Systems,
+    Inc dba APSI Jay Hanacek 161 Palm Ave, Suite 9, Auburn, CA, 95603 530-537-2949
+    530-537-2597 jay@americanplumbingsyste ms.com 990571_ B (General Building Contractor),
+    C-4 (Boiler, Hot Water Heating and Steam Fitting Contractor), C-36 (Plumbing Contractor)
+    11/20/2024 $1,500,000 Angotti & Reilly, Inc. James Reilly 2200 JERROLD AVE, Suite
+    E, San Francisco, CA, 94124 415-575-3700 415-575-1470 estimating@angotti-reilly.com
+    473263_ A (General Engineering Contractor), B (General Building Contractor) 10/23/2024
+    $650,000 Anza Engineering Corp. Randy Potts P.O. Box 730, Brentwood, CA, 94513
+    925-513-2060 925-513-2063 anzaeng1@comcast.net 273213_ A (General Engineering
+    Contractor), B (General Building Contractor) 07/24/2024 $875,000 B E A M CONSTRUCTION
+    ENTERPRIS
+  retrieved_at: '2026-08-12T22:41:00.788829+00:00'
+  url: https://resources.finalsite.net/images/v1713544569/smfcsdnet/lauevfkzrsuh0h5fz53e/PrequalReport041924-NewFlooring.pdf
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

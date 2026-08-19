@@ -26,7 +26,8 @@ def _stub_roles() -> RoleRunners:
 def _resume_request(store: ArtifactStore) -> RunRequest:
     value = store.load_and_validate()
     return RunRequest(value["schema_version"], value["run_id"], value["brief"], tuple(value["constraints"]),
-                      value["baseline"], BudgetLimits(**value["budget_limits"]), value["approval_threshold"])
+                      value["baseline"], BudgetLimits(**value["budget_limits"]), value["approval_threshold"],
+                      value.get("execution_inputs", {}), value.get("rubric", "ground_truth_accuracy"))
 
 
 def main(argv: list[str] | None = None) -> int:

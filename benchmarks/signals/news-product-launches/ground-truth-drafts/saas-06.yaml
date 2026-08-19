@@ -1,0 +1,209 @@
+# DRAFT ground truth - TODO_HUMAN: review every entry, then move this file to
+# ../ground-truth/ only after a human seals it. Generated from the signal dossier;
+# nothing here is validated. Delete candidates that are not real, fix dates and
+# kinds, keep evidence_ids pointing at the Evidence that proves the entry.
+# subject: Arkestro (arkestro.com)
+as_of: '2026-08-18'
+company_id: saas-06
+events:
+- date: TODO_HUMAN (5 days ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-6a843b76ec9e59bc
+  headline_aliases:
+  - Arkestro names new President and COO, CTO as Bay Area ...
+  kind: TODO_HUMAN
+  source_domain: sfchronicle.com
+- date: TODO_HUMAN (4 days ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-6f0127232db74882
+  headline_aliases:
+  - Arkestro - Overview, News & Similar companies
+  kind: TODO_HUMAN
+  source_domain: zoominfo.com
+- date: TODO_HUMAN (24 hours ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-7537cd40f5879ae0
+  headline_aliases:
+  - Tahmeeda Bushra Khorasani, Arkestro Director of Supply Chain Innovation and Supplier
+    Ecosystem, Named Winner of 2026 Women in Supply Chain Award
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: TODO_HUMAN (24 hours ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-ab99789da691f020
+  headline_aliases:
+  - Tahmeeda Bushra Khorasani, Arkestro Director of Supply ...
+  kind: TODO_HUMAN
+  source_domain: finance.yahoo.com
+- date: TODO_HUMAN (23 hours ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-ca7c5ae76854409e
+  headline_aliases:
+  - Tahmeeda Bushra Khorasani, Arkestro Director of Supply ...
+  kind: TODO_HUMAN
+  source_domain: lelezard.com
+- date: TODO_HUMAN (2 weeks ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-9e13c86172acfd30
+  headline_aliases:
+  - Arkestro Momentum Drives Leadership Growth and Appoints Industry Powerhouse Veterans
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: TODO_HUMAN (1 month ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-172d33463bbcce18
+  headline_aliases:
+  - Arkestro listed as a Sample Vendor in Gartner® Hype Cycle™ for Procurement and
+    Sourcing Solutions for Four Consecutive Years
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2026-08-06'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-0cc3c274c420a839
+  headline_aliases:
+  - Arkestro Press Release Library
+  kind: TODO_HUMAN
+  source_domain: arkestro.com
+- date: '2026-08-06'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-2c7ff01d003ff91e
+  headline_aliases:
+  - Arkestro Momentum Drives Leadership Growth and ...
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2026-08-06'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-c44e347f79f2e794
+  headline_aliases:
+  - Arkestro Momentum Drives Leadership Growth and ...
+  kind: TODO_HUMAN
+  source_domain: aijourn.com
+- date: '2026-07-28'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-9c9a88bb4f8be61c
+  headline_aliases:
+  - AI + Game Theory for Better Supplier Negotiations
+  kind: TODO_HUMAN
+  source_domain: arkestro.com
+- date: '2026-06-30'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-9303e03ac2f9a724
+  headline_aliases:
+  - Arkestro listed as a Sample Vendor in Gartner® Hype ...
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2026-04-30'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-a2c001b6d29c0e09
+  headline_aliases:
+  - Arkestro Earns Validation in The Hackett Group's Spring 2026 SolutionMap Procurement
+    Technology Assessment
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2026-04-17'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-f242ada2af24cc4d
+  headline_aliases:
+  - 'Supplier Consolidation Without the Risk: 7 Strategies That ...'
+  kind: TODO_HUMAN
+  source_domain: arkestro.com
+- date: '2026-02-25'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-631abf94cd31c115
+  headline_aliases:
+  - Arkestro Announces Collaboration with Nissan to Support Predictive Procurement
+    Transformation
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2026-02-25'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-45e34ef1817dc40c
+  headline_aliases:
+  - Arkestro Announces Collaboration with Nissan to Support ...
+  kind: TODO_HUMAN
+  source_domain: arkestro.com
+- date: '2025-12-19'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-06a68a0f2d0ca32b
+  headline_aliases:
+  - Arkestro Drives Significant Customer Momentum, Growth Across Industries Heading
+    Into 2026
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2025-12-19'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-dc11235a1b9cb093
+  headline_aliases:
+  - Arkestro Drives Significant Customer Momentum, Growth ...
+  kind: TODO_HUMAN
+  source_domain: arkestro.com
+- date: '2025-11-25'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-676ac8e8d53e96b5
+  headline_aliases:
+  - Maximizing Efficiency in Automotive Procurement
+  kind: TODO_HUMAN
+  source_domain: arkestro.com
+- date: '2025-10-29'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-633ba5c2ae430e0a
+  headline_aliases:
+  - Arkestro Announces 'Arkestro Labs,' Powerful New Procurement AI Offerings at Optimal
+    '25
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2025-10-29'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-a621f3550318d3e2
+  headline_aliases:
+  - Arkestro Announces AI-Powered Predictive Procurement ...
+  kind: TODO_HUMAN
+  source_domain: sdcexec.com
+- date: '2025-10-15'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-a76b6e23fa891cb6
+  headline_aliases:
+  - Arkestro Announces Customer Expansion With Chevron, Driving Predictive Procurement
+    Transformation Across Global Markets
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2025-10-15'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-7cfe7e69cb585900
+  headline_aliases:
+  - Arkestro Announces Customer Expansion With Chevron ...
+  kind: TODO_HUMAN
+  source_domain: arkestro.com
+- date: '2025-05-14'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-e6e5d5cff2dc2a5e
+  headline_aliases:
+  - Arkestro Secures $36M in Strategic Investment to Accelerate Predictive Procurement
+    Innovation
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+recent_window_days: 180

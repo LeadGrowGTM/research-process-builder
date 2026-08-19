@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-7b179101da8868f4
+  - ev-8247981c53a7710f
+  - ev-3315ae60f23b8f18
+  field: identity
+  value: All Weather Insulated Panels
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-7b179101da8868f4
+  - ev-8247981c53a7710f
+  - ev-3315ae60f23b8f18
+  field: description
+  value: Your vision. Our purpose. TECHNICAL SERVICES BROCHURE Where Design Intent
+    Meets Digital Precision Your vision. Our purpose. 2 3 All Weather Insulated Panels
+    (AWIP) specializes in the engineering and production of advanced foam composite
+    insulated metal panels. Operating from strategically positioned facilities in
+    California, Arkansas, and Pennsylvania, AWIP delivers comprehensive technical
+    support and digital resources built to optimize design integration, ensure code
+    compliance, and enhance bui
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-7b179101da8868f4
+  - ev-8247981c53a7710f
+  - ev-3315ae60f23b8f18
+  field: offers
+  value: insulated metal panels
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-7b179101da8868f4
+  - ev-8247981c53a7710f
+  - ev-3315ae60f23b8f18
+  field: icp
+  value: building owners
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-7b179101da8868f4
+  - ev-8247981c53a7710f
+  - ev-3315ae60f23b8f18
+  field: personas
+  value: building owners
+  visibility: message_safe
+company_id: supplier-07
+corrections: []
+evidence:
+- content_hash: 7b179101da8868f42ba36d8db2dc46885e1452001760e868e9b58d0a089037eb
+  evidence_id: ev-7b179101da8868f4
+  excerpt: 'Your vision. Our purpose. TECHNICAL SERVICES BROCHURE Where Design Intent
+    Meets Digital Precision Your vision. Our purpose. 2 3 All Weather Insulated Panels
+    (AWIP) specializes in the engineering and production of advanced foam composite
+    insulated metal panels. Operating from strategically positioned facilities in
+    California, Arkansas, and Pennsylvania, AWIP delivers comprehensive technical
+    support and digital resources built to optimize design integration, ensure code
+    compliance, and enhance building performance across diverse applications. Innovative
+    Support at Every Step All Weather Insulated Panels | Technical Services Brochure
+    Strategic Partnership from Planning to Installation At AWIP, our Technical Services
+    team acts as an extension of your project team, from early planning stages to
+    final inspections. We provide tailored, hands-on support to help ensure your project
+    is meeting regulatory standards, constructible, and efficient. Our approach is
+    collaborative, responsive, and deeply rooted in technical expertise. Tomorrow’s
+    buildings demand more, and InnovaCELL™ delivers. Born from next-generation material
+    science, InnovaCELL™ fuses cutting-edge engineering with proven reliability to
+    set a new benchmark in modern construction. Engineered for today’s high-performance
+    building systems, InnovaCELL™ addresses thermal bridging, air leakage, and structural
+    demands with precision. Its advanced composition delivers reliable energy efficiency,
+    installation efficiency, and long-term durability, helping architects and contractors
+    meet stringent codes while ensuring consistent results across diverse project
+    applications. From Concept to Constructability Our technical specialists and design
+    professionals work closely with architects, engineers, and specifiers to ensure
+    AWIP products integrate seamlessly into your building envelope. Whether you need
+    help selecting the right panel profile or coordinating transitions between systems,
+    we’re here to help. Our support includes: •'
+  retrieved_at: '2026-08-12T22:28:25.201091+00:00'
+  url: https://www.awipanels.com/wp-content/uploads/2025/12/awip-technical-services-brochure-en.pdf
+- content_hash: 8247981c53a7710fef0dd199ee65d6a74ee166874d7904089470861e0e069854
+  evidence_id: ev-8247981c53a7710f
+  excerpt: All Weather Insulated Panels | LinkedIn Skip to main content LinkedIn Top
+    Content People Learning Jobs Games Sign in Join now All Weather Insulated Panels
+    Wholesale Building Materials Vacaville, CA 10,219 followers Innovator and industry
+    leader in the design and manufacturing of insulated metal wall and roof panels.
+    See jobs Follow Discover all 199 employees Report this company Overview Jobs Life
+    About us All Weather Insulated Panels Headquartered in Vacaville, CA, All Weather
+    Insulated Panels (AWIP) has three state-of-the-art continuous line manufacturing
+    facilities in Vacaville, CA, Little Rock, AR, and East Stroudsburg, PA . AWIP
+    is an innovator in the design, construction and advancement of insulated metal
+    panels and is strategically positioned to meet the growing energy, environmental
+    and economic challenges facing the North American building industry. AWIP provides
+    its customers with a broad line of insulated wall and roof panels and a full range
+    of complementary trims, accessories, and engineering services. Website http://awip.com
+    External link for All Weather Insulated Panels Industry Wholesale Building Materials
+    Company size 201-500 employees Headquarters Vacaville, CA Type Privately Held
+    Founded 2007 Specialties roof panels, wall panels, construction, manufacturing,
+    roofing, and insulated metal panels Locations Primary 929 Aldridge RD Vacaville,
+    CA 95688, US Get directions 15000 Panatela Parkway Little Rock, Arkansas 72206,
+    US Get directions 1276 Crowe Rd East Stroudsburg, Pennsylvania 18301, US Get directions
+    Employees at All Weather Insulated Panels Chuck Milner Charles Stephens Greg Lusty
+    Brooks Madden See all employees Updates All Weather Insulated Panels 10,219 followers
+    5h Report this post 🎉 20 Years of Building Better! Congratulations to AWIP on
+    celebrating 20 years of innovation in insulated metal building solutions! 🏢✨ From
+    its founding in Vacaville, CA in 2006 to expanding to three strategic manufacturing
+    plants across North America, AWIP has con
+  retrieved_at: '2026-08-12T22:28:25.942839+00:00'
+  url: https://www.linkedin.com/company/all-weather-insulated-panels
+- content_hash: 3315ae60f23b8f182d0420680abc27e1f4bbf5f2277773925490e72c05ca0139
+  evidence_id: ev-3315ae60f23b8f18
+  excerpt: 'Environmental Product Declaration AWIP - Insulated Metal Roof Panels –
+    Vacaville, CA – InnovaCELL foam and average steel 0 © 2025 SCSglobalServices.com
+    Environmental Product Declaration AWIP - Insulated Metal Roof Panels – Vacaville,
+    CA – InnovaCELL foam and average steel Declaration Owner All Weather Insulated
+    Panels sales@awipanels.com Contact Number: +1 (888) 970-AWIP (2947) https://www.awipanels.com/products/
+    Product Insulated Metal Panels: Roof produced in Vacaville, CA with InnovaCELL
+    foam and steel coils from AWIP’s average steel supply Products: SR2, HR3, HR5
+    Functional Unit The functional unit is 100 m 2 of building coverage area over
+    a 75-year building service life. EPD Number and Period of Validity SCS-EPD-10552
+    EPD Valid December 23, 2025 through December 22, 2030 Product Category Rule PCR
+    Guidance for Building-Related Products and Services Part A: Life Cycle Assessment
+    Calculation Rules and Report Requirements. Version 4.0. UL Environment. Mar. 2022
+    PCR Guidance for Building-Related Products and Services Part B: Insulated Metal
+    Panels, Metal Composite Panels, and Metal Cladding: Roof and Wall Panels, UL 10010–5.
+    October 23, 2018. Program Operator SCS Global Services 2000 Powell Street, Ste.
+    600, Emeryville, CA 94608 +1.510.452.8000 | www.SCSglobalServices.com Environmental
+    Product Declaration AWIP - Insulated Metal Roof Panels – Vacaville, CA – InnovaCELL
+    foam and average steel 1 © 2025 SCSglobalServices.com Declaration Owner: All Weather
+    Insulated Panels Address: 929 Aldridge Rd, Vacaville, CA 95688, USA Declaration
+    Number: SCS-EPD-10552 Declaration Validity Period: EPD Valid December 23, 2025
+    through December 22, 2030 Program Operator: SCS Global Services Declaration URL
+    Link: https://www.scsglobalservices.com/certified-green-products-guide LCA Practitioner:
+    Vicki Rybl, Sagar Siripuram | WAP Sustainability LCA Software and LCI database:
+    LCA FE - Version 10.9, MLC 2022.1 Product RSL: 30 years Markets of Applicability:
+    North America EPD Type: Product Sp'
+  retrieved_at: '2026-08-12T22:28:27.439858+00:00'
+  url: https://cdn.scscertified.com/products/cert_pdfs/SCS_EPD_10552_AWIP%20Roof%20InnovaCELL-Avg%20Steel_122325.pdf
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

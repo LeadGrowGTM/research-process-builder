@@ -1,0 +1,103 @@
+# Sealed ground truth - AgilePoint (agilepoint.com). Human-reviewed 2026-08-18.
+# named = listed on a Gartner / G2 / PeerSpot / TrustRadius / SourceForge / Slashdot
+# "AgilePoint alternatives" or "vs AgilePoint" page, or on a vendor's own
+# "AgilePoint alternative" comparison (Tallyfy, TableSprint).
+# Excluded on review: SEO aggregator lists of unrelated tools (SoftwareWorld: Visio,
+# Trello, Confluence, Zapier, Asana...; Findstack: Retool; WebCatalog: Baserow,
+# Thunkable), 6sense technographic shares (Apache Airflow, Google Cloud Workflows,
+# Control-M), partners and agent frameworks (ServiceNow, LangChain, CrewAI, n8n),
+# and vendors that appear only inside the run-together Tallyfy token blob (K2, Mendix).
+# Microsoft Power Automate and Power Apps are one Microsoft entry; IBM and Oracle
+# product variants are folded into one entry each.
+company_id: saas-02
+evidence_ids:
+- ev-b3140d9d0cd72444
+- ev-a579e0cd1ef0964a
+- ev-15843474af32b838
+- ev-39ea947dd84ab2f2
+- ev-5b7e99806156736f
+- ev-f5de681516e5c1d7
+- ev-cf5e87a704d06aa1
+- ev-4a738ea76bfedcc9
+- ev-2e3673eb73425827
+- ev-74f4cd0f7ba88009
+- ev-1a6026f0c2e21bad
+- ev-416d52520f5e9d78
+- ev-96c61226d5d8bde3
+- ev-e01102e8ee163f35
+- ev-e6b455f7496c7705
+- ev-c19bd9d49c54571d
+- ev-6c78455a7aae8814
+- ev-39baff5f0e41f8d6
+- ev-f74aa48ca45b4cbd
+named:
+- name: Tallyfy
+  aliases: []
+  domain: tallyfy.com
+- name: Nintex
+  aliases: []
+  domain: nintex.com
+- name: Appian
+  aliases: []
+  domain: appian.com
+- name: Bizagi
+  aliases: []
+  domain: bizagi.com
+- name: OpenText
+  aliases: [Open Text]
+  domain: opentext.com
+- name: Oracle
+  aliases: [Oracle BPM]
+  domain: oracle.com
+- name: ProcessMaker
+  aliases: [Process Maker]
+  domain: processmaker.com
+- name: Microsoft Power Automate
+  aliases: [Power Automate, Microsoft Power Apps, Power Apps, Microsoft Power Platform, Microsoft]
+  domain: null
+- name: Agiloft
+  aliases: []
+  domain: agiloft.com
+- name: IBM
+  aliases: [IBM Cloud Pak for Business Automation, IBM Blueworks, IBM BPM]
+  domain: ibm.com
+- name: Pegasystems
+  aliases: [Pega, PegaSystems]
+  domain: pega.com
+- name: ABBYY
+  aliases: []
+  domain: abbyy.com
+- name: Automation Anywhere
+  aliases: []
+  domain: automationanywhere.com
+- name: Camunda
+  aliases: []
+  domain: camunda.com
+- name: Informatica
+  aliases: [Informatica Intelligent Data Management Cloud, Informatica IDMC, IDMC]
+  domain: informatica.com
+- name: NICE Robotic Process Automation
+  aliases: [NICE, NICE RPA]
+  domain: nice.com
+- name: Ultimus
+  aliases: [Ultimus Digital Process Automation Suite]
+  domain: ultimus.com
+- name: TableSprint
+  aliases: [Table Sprint]
+  domain: tablesprint.com
+- name: Square 9 Softworks
+  aliases: [Square 9]
+  domain: null
+- name: Quixy
+  aliases: []
+  domain: quixy.com
+- name: CMW Platform
+  aliases: [CMW, CMW Lab]
+  domain: null
+- name: Creatio
+  aliases: []
+  domain: creatio.com
+- name: TIBCO
+  aliases: [TIBCO BPM, Tibco]
+  domain: tibco.com
+inferred: []

@@ -1,0 +1,123 @@
+# Sealed ground truth - subject: Built (getbuilt.com), Built Technologies.
+# Human-authored from the signal dossier; noise about other "Built" entities
+# (WP Engine Newsroom, Microsoft Build, Boeing, Replit, Stellantis) excluded.
+company_id: saas-10
+as_of: '2026-08-18'
+recent_window_days: 180
+events:
+- date: '2025-11-04'
+  headline_aliases:
+  - Launched Draw Agent, an AI agent that approves construction loan draws in minutes
+  - Built Launches Draw Agent to Approve Construction Loan Draws in Minutes
+  source_domain: getbuilt.com
+  kind: launch
+  event_type: product
+  evidence_ids:
+  - ev-791bb0fa8ca51e5c
+  - ev-17154dba4b404b24
+- date: '2025-09-15'
+  headline_aliases:
+  - Regions Bank launched a digital real estate banking portal powered by Built
+  - Industry First Regions Bank Launches Convenient Seamless Digital Portal for Real Estate Banking Clients
+  source_domain: ir.regions.com
+  kind: news
+  event_type: partnership
+  evidence_ids:
+  - ev-5164b3d683cbf14f
+  - ev-5fe079d00d8ed05a
+  - ev-2ce195301267e9e7
+- date: '2024-06-10'
+  headline_aliases:
+  - Unveiled unified CRE financing and asset and portfolio management capabilities for lenders
+  - Built Unveils Unified CRE Financing and Asset & Portfolio Management
+  source_domain: businesswire.com
+  kind: launch
+  event_type: feature
+  evidence_ids:
+  - ev-d281a802346124b4
+  - ev-2ce195301267e9e7
+- date: '2024-03-11'
+  headline_aliases:
+  - Expanded platform to real estate owners and developers with a new financial management and payments product
+  - Built Expands Platform to Real Estate Owners and Developers; Unveils Next Generation Financial Management and Payments Product
+  source_domain: businesswire.com
+  kind: launch
+  event_type: product
+  evidence_ids:
+  - ev-ac2b8071a7cbb731
+- date: '2024-01-22'
+  headline_aliases:
+  - Named Carnell Elliott SVP of Sales
+  - Built Technologies Names Tech Veteran SVP of Sales
+  source_domain: businesswire.com
+  kind: news
+  event_type: leadership
+  evidence_ids:
+  - ev-15995d682eee3ffa
+- date: '2023-04-13'
+  headline_aliases:
+  - Secured an investment from Citi
+  - Built Technologies Secures Investment From Citi
+  source_domain: canapi.com
+  kind: news
+  event_type: funding
+  evidence_ids:
+  - ev-d109a2df75fb122e
+- date: '2023-01-05'
+  headline_aliases:
+  - Added Bora Chung and Matt Marenghi as company advisors
+  - Built Technologies Names Digital Payment Expert Bora Chung and Engineering Veteran Matt Marenghi as Advisors
+  source_domain: businesswire.com
+  kind: news
+  event_type: leadership
+  evidence_ids:
+  - ev-7a27f9c278654141
+- date: '2022-02-07'
+  headline_aliases:
+  - Passed $200B in construction value managed and reached $1.5B unicorn valuation
+  - Built Technologies Reached More Than $200B in Total Construction Value Managed; Achieved $1.5B Valuation and Unicorn Status in 2021
+  source_domain: canapi.com
+  kind: news
+  event_type: other
+  evidence_ids:
+  - ev-d109a2df75fb122e
+- date: '2021-12-14'
+  headline_aliases:
+  - Introduced Built Pay, a construction payments product
+  - Built Technologies Introduces the Future of Construction Payments Built Pay
+  source_domain: financialpost.com
+  kind: launch
+  event_type: product
+  evidence_ids:
+  - ev-a81ac3fde2ca353d
+  - ev-153cd8aa69411ac1
+  - ev-2ce195301267e9e7
+  - ev-d109a2df75fb122e
+- date: '2021-09-30'
+  headline_aliases:
+  - Raised $125M Series D led by TCV at a $1.5B valuation
+  - Built Technologies Announces $125M Series D Financing Round Led by New Investor TCV
+  source_domain: businesswire.com
+  kind: news
+  event_type: funding
+  evidence_ids:
+  - ev-ab9d12481cf0d084
+  - ev-d109a2df75fb122e
+- date: '2018-04-04'
+  headline_aliases:
+  - CEO Chase Gilbert raised $21 million for Built
+  - The Boss Built's Chase Gilbert raised millions
+  source_domain: bizjournals.com
+  kind: news
+  event_type: funding
+  evidence_ids:
+  - ev-e1c75f9a92bdb72c
+- date: '2017-05-23'
+  headline_aliases:
+  - Trinity Real Estate Solutions integrated Built's draw management platform
+  - Trinity Real Estate Solutions Expands Portfolio with Built Technologies' Draw Management Platform Integration
+  source_domain: prnewswire.com
+  kind: news
+  event_type: partnership
+  evidence_ids:
+  - ev-1a64d72eba589a88

@@ -1,0 +1,146 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: identity
+  value: Aligned
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: description
+  value: 'Digital Sales Room Software — #1 on G2 | Aligned Skip to content $60M raised.
+    70,000 sellers. 1M buyers. The deal workspace is here ➜ Read the announcement
+    Learn more Platform Close Platform Open Platform Explore our platform Product
+    Overview Platform at a glance Digital Sales Room Centralized buyer workspace Customer
+    Success Hub Manage customer outcomes Customer Onboarding Faster customer activation
+    Aligned AI AI aligned to revenue Mutual Action Plan Shared deal milestones Revenue
+    Intelligence '
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: offers
+  value: digital sales room
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: icp
+  value: sales teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: personas
+  value: sales teams
+  visibility: message_safe
+company_id: saas-03
+corrections: []
+evidence:
+- content_hash: 05398a2ef65666fa651567b24421f8e969484b93e8d6fe970bae6fd9b8776e71
+  evidence_id: ev-05398a2ef65666fa
+  excerpt: 'Digital Sales Room Software — #1 on G2 | Aligned Skip to content $60M
+    raised. 70,000 sellers. 1M buyers. The deal workspace is here ➜ Read the announcement
+    Learn more Platform Close Platform Open Platform Explore our platform Product
+    Overview Platform at a glance Digital Sales Room Centralized buyer workspace Customer
+    Success Hub Manage customer outcomes Customer Onboarding Faster customer activation
+    Aligned AI AI aligned to revenue Mutual Action Plan Shared deal milestones Revenue
+    Intelligence Revenue insights and signals Integrations Connect your tools Pricing
+    Resources Close Resources Open Resources Learn Articles Product insights and updates
+    Customer Stories How customers succeed with us Build Template Library Templates
+    to get started faster Guides & Playbooks Practical guides and best practices Login
+    Book a Demo Start free Crush your sales quota with Digital Sales Room Streamline
+    complex deals by consolidating conversations, stakeholders, processes, and resources
+    into a single shared space. #1 Digital Sales Room for SMB & Mid-Market (G2 Summer
+    ’26) Start with Google Start with Microsoft Book a Demo Start free Mid-Market
+    G2 Grid® for Digital Sales Room Software | Summer 2026 #1 Digital Sales Room for
+    SMB & Mid-Market (G2 Summer ’26) 50,000+ Sales & CS Teams Run Their Deals in Aligned
+    95% of the Buyer Journey Happens When You’re Not in the Room *gartner (so get
+    a room) Meet Aligned, Your Digital Sales Room Everything needed to win, all in
+    one place Create a virtual sales room for each deal Share the most up-to-date
+    sales content Streamline all discussions into topics Remove buyer friction & win
+    more deals Aligned is a single place to keep on top of deals, build strong business
+    cases with champions and get multiple stakeholders on board. I wish I had it early,
+    but I have it now, and I’m enjoying it immensely! Sarah Brazie Senior Account
+    Executive, Gong Align buyers to a Mutual Action Plan Build collaborative MAPs
+    with your champion Assign tasks and allow buyers to'
+  retrieved_at: '2026-08-12T21:20:31.919668+00:00'
+  url: https://www.alignedup.com/digital-sales-room/
+- content_hash: 22d60eecc23e228aa7d0cd79d8283286be9311a91848c743207678d21a8a49bb
+  evidence_id: ev-22d60eecc23e228a
+  excerpt: 'Aligned | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now Aligned Software Development Create a personalized
+    workspace for each deal and design a buying experience that wins quota. See jobs
+    Follow View all 76 employees Report this company About us Aligned is pioneering
+    the new way that B2B revenue teams interact with customers in today''s remote,
+    digital era. Instead of customers juggling multiple email threads, attachments
+    & tools, they have all resources in front of them in a single shared workspace
+    for easy decisions. Nothing gets buried and forgotten in threads. All stakeholders
+    join and collaborate, instead of staying behind the scenes. Both sides manage
+    mutual action plans to keep things on track, and reps can analyze buyer risks
+    and intent. Companies like Deel, Productboard, and SimilarWeb use it to win more
+    deals and close 45% faster. We are growing at a fast pace and looking for top
+    talents to join our core team. Website https://www.alignedup.com?utm_source=Social&utm_medium=Aligned_Page&utm_campaign=website_button&utm_id=163&avk=mvk_Linkedin_Page
+    External link for Aligned Industry Software Development Company size 51-200 employees
+    Headquarters Remote First Type Privately Held Founded 2021 Specialties Saas, Sales
+    Collaboration, Buyer Collaboration, Project Management, CRM, Sales Enablement,
+    and Sales Products No more previous content Aligned Customer Onboarding Deal Analytics
+    Digital Sales Room Mutual Action Plans No more next content Locations Primary
+    Remote First, US Get directions Employees at Aligned Charles Black Sam Rahmanian
+    Todd Clouser Erin C. See all employees Updates Aligned 47,664 followers 5h Report
+    this post There are 4 questions that will set the tone for your deal. When presented
+    well they will lead to higher win rates. Present them poorly and they will do
+    next to nothing. Here are 4 questions that will set every deal up for success
+    (and HOW to ask them): 1. Who Else Are You Evaluating? Yes, it''s'
+  retrieved_at: '2026-08-12T21:20:32.819137+00:00'
+  url: https://www.linkedin.com/company/alignedup
+- content_hash: 01e046900b8496acdb6722904a4406d618a57bfa5e51e4657a2b4786cada1235
+  evidence_id: ev-01e046900b8496ac
+  excerpt: 'Why NFX Invested in Aligned: The Sales Room Network Helping Companies
+    Close Deals 3x Faster Content Content Team Team Companies Companies About About
+    Products Products Signal Brieflink NFX Masterclass Get our weekly newsletter that
+    322K+ startup teams read Subscribe Why NFX Invested in Aligned: The Sales Room
+    Network Helping Companies Close Deals 3x Faster James Currier · @jamescurrier
+    · May 2023 · Israel James Currier · @jamescurrier May 2023 · Israel Table of Contents
+    1. Overly Complex Processes 2. Built-in Network Effects 3. Stellar Team Aligned
+    recently announced their $5.8M Seed round co-led by NFX and Hetz Ventures to create
+    the network to conduct software deals in. They sell sales teams a frictionless
+    workspace that helps software sales teams close deals 3x faster. Here are 3 reasons
+    why we backed them: 1. Overly Complex Processes Despite massive enterprise digitization,
+    77% of enterprise software buyers complain that their sales experiences are overly
+    complex. This leads to stalled and lost deals. Pointless friction. And, frankly,
+    shock/disappointment it still works this way in 2023. There needs to be a bridge
+    between a company’s CRM and their clients. Aligned creates that bridge with their
+    signature “online rooms” where sales teams communicate, coordinate on next steps,
+    share documents, sign proposals, etc. This real-time management speeds up deals
+    and makes buyers happy. It also gives salespeople the data behind the successes
+    and failures of their deals so they can improve their processes. 2. Built-in Network
+    Effects As more sellers adopt Aligned, more buyers will integrate it into their
+    own buying process. This lays the foundation for a network of B2B buyers and sellers.
+    The company also has defensibility through embedding. Once a B2B sales team adopts
+    Aligned, it’s nearly impossible for them to regress to the old way of sending
+    countless emails to dozens of stakeholders while navigating numerous platforms.
+    Any other way of conducting business feels ancie'
+  retrieved_at: '2026-08-12T21:20:33.437855+00:00'
+  url: https://www.nfx.com/post/why-nfx-invested-in-aligned
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

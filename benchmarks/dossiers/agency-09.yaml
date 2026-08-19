@@ -1,0 +1,187 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-b3c0bb6bd3a27ec1
+  - ev-2c47687956ffc03c
+  - ev-4607030464278bda
+  - ev-a89baf5a6b6c979c
+  field: identity
+  value: Carney
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b3c0bb6bd3a27ec1
+  - ev-2c47687956ffc03c
+  - ev-4607030464278bda
+  - ev-a89baf5a6b6c979c
+  field: description
+  value: About Us - Carney About Work Expertise The Daily Carnage Work With Us Menu
+    About Work Expertise The Daily Carnage Work With Us A team as dynamic as the digital
+    landscape. We’re more than designers, developers, and marketers. We’re a nimble
+    team of data-obsessed strategists, deep thinkers, believers, and over-achievers
+    working together to make big dreams come true. We’re crafters and builders. And
+    giant killers. Well, we’re still working on that last one. But you could call
+    us slayers of all sort
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b3c0bb6bd3a27ec1
+  - ev-2c47687956ffc03c
+  - ev-4607030464278bda
+  - ev-a89baf5a6b6c979c
+  field: offers
+  value: digital marketing
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b3c0bb6bd3a27ec1
+  - ev-2c47687956ffc03c
+  - ev-4607030464278bda
+  - ev-a89baf5a6b6c979c
+  field: icp
+  value: brands
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b3c0bb6bd3a27ec1
+  - ev-2c47687956ffc03c
+  - ev-4607030464278bda
+  - ev-a89baf5a6b6c979c
+  field: personas
+  value: brands
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-a89baf5a6b6c979c
+  field: launches
+  value: Carney announced a redesigned Carney.co website and a new Daily Carnage hub
+    on December 22, 2025.
+  visibility: message_safe
+company_id: agency-09
+corrections: []
+evidence:
+- content_hash: b3c0bb6bd3a27ec1b785807e27b7a33bb7fd0824b09d72a4ff78db1c74a119e8
+  evidence_id: ev-b3c0bb6bd3a27ec1
+  excerpt: About Us - Carney About Work Expertise The Daily Carnage Work With Us Menu
+    About Work Expertise The Daily Carnage Work With Us A team as dynamic as the digital
+    landscape. We’re more than designers, developers, and marketers. We’re a nimble
+    team of data-obsessed strategists, deep thinkers, believers, and over-achievers
+    working together to make big dreams come true. We’re crafters and builders. And
+    giant killers. Well, we’re still working on that last one. But you could call
+    us slayers of all sorts. When we create, when we strategize, when we collaborate,
+    we always go in for the kill. Because we live for the thrill of seeing you win.
+    We’ve worked with incredible brands. We’ve been trusted by global brands and start-ups
+    for over 20 years. And each project, experiment, or challenge we took on made
+    us stronger and our clients happy. We always focus on three things about our work.
+    Quality We produce great work quickly and efficiently. You won’t have to wait
+    months for us to deliver. Teamwork We treat clients like coworkers. You’ll feel
+    like we’re sitting just a few desks away from you. We’ll even invite you to happy
+    hour. Results We focus on the big picture and bring on the win for our clients.
+    You won’t just get deliverables from us. You’ll get results. We bring fully integrated
+    capabilities to your team. See all focus areas Strategy Strategy We’re a trusted
+    growth partner for many brands, across many industries, including those who go
+    to space. We don’t limit ourselves to niches, we just love brands who dream big.
+    Brand Strategy Digital Marketing User Experience Media Planning Journey Mapping
+    Content Strategy Audience Research Design Design We’ll make your audience’s first,
+    second, and third impressions unforgettable with multi-channel brand experiences
+    that capture both digital and real-world applications. Ux/Ui Design Branding &
+    Identity Product Design Motion & Animation Graphic Design Video Editing 3D Design
+    Content Content Through thoughtful and compelling storytell
+  retrieved_at: '2026-08-12T21:52:42.077073+00:00'
+  url: https://carney.co/about-us/
+- content_hash: 2c47687956ffc03c789f302b254089ef39d960f0197e84e874e1b5089de7cffc
+  evidence_id: ev-2c47687956ffc03c
+  excerpt: 'Carney | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now Carney Advertising Services Pittsburgh, PA 5,145 followers
+    We’re nimble and quick, jumping over candlesticks to spur growth for brands. Follow
+    Discover all 41 employees Report this company About us A Team as Dynamic as the
+    Digital Landscape We’re more than designers, developers, and marketers. We’re
+    a nimble team of data-obsessed strategists, deep thinkers, believers, over-achievers,
+    artists, curators, and dedicated guides. We’re Crafters & Builders And giant killers.
+    Well, we’re still working on that last one. But you could call us slayers of all
+    sorts. When we create, when we strategize, when we collaborate, we always go in
+    for the kill. Because we live for the thrill of seeing you win. We’re Founded
+    by a Guy Named Rob Carney is a full-service digital agency focused on building
+    brands that break through the noise. Rob Carney founded our agency based on three
+    rules and we still live by them today: 1. QUALITY Produce great work quickly and
+    efficiently. You won’t have to wait months for your project to be delivered. 2.
+    TEAMWORK Treat clients like coworkers. You’ll feel like we’re sitting just a few
+    desks away from you. We’ll even invite you to happy hour every Thursday. 3. RESULTS
+    Build an agency that gets results for clients. You won’t just get deliverables
+    from us. You’ll get results. Website http://carney.co External link for Carney
+    Industry Advertising Services Company size 11-50 employees Headquarters Pittsburgh,
+    PA Type Partnership Specialties Strategy, Content, Design, Development, Marketing,
+    Analytics, Marketing Agency, Digital Marketing, Website Design, Website Development,
+    Full Stack Development, Branding, Advertising, Integrated Marketing Communications,
+    Paid Media, Social Media Management, SEO, SEM, Display Advertising, Content Marketing,
+    Email Marketing, Public Relations, Media, and Influencer Marketing Locations Primary
+    1130 S Braddock Ave Suite 200 P'
+  retrieved_at: '2026-08-12T21:52:42.888102+00:00'
+  url: https://www.linkedin.com/company/carney-co.
+- content_hash: 4607030464278bda00bcabe32ee3ad728db9e500381df9d9ffe2bc28bc8ff6ef
+  evidence_id: ev-4607030464278bda
+  excerpt: April 4, 2018 Carney Gets Results from Exclusive Focus on New Media Skip
+    to content Sign In Join Up --> About Us Board of Directors Fortyx80 President's
+    Message PTC in the News Staff Directory Tech Council Swag Events ATHENA CIO of
+    the Year & Tech Titan Awards Golf Outing Huntington Bank Breakfast Briefing Information
+    Technology Manufacturing Networking PA Data Center & Energy Innovation Summit
+    Public Policy Talent Tech 50 Member Events Virtual Archives Membership Member
+    Benefits Member Incentives Member Pillars New Members Testimonials Coalitions
+    Advanced Manufacturing Cybersecurity Data Center & AI Infrastructure Community
+    Defense Robotics & Innovation Coalition Nonprofit Coalition Talent Apprenti PGH
+    HireUP Recruiting Events Internships IT Challenge K12 STEM L.A.U.N.C.H. Pittsburgh
+    Career Connector Professional Development Volunteer Media TEQ Magazine OnRAMP
+    Magazine State of the Industry Report 40 Stories Member News Tech Poster Podcasts
+    AMP'd TechVibe Radio 10-Minute Tech Talks Health Care Reinvented Sponsorship Search
+    Sign In Join Up × Carney Gets Results from Exclusive Focus on New Media April
+    4, 2018 View Details Detail Detail Detail --> April 4, 2018 Share --> While many
+    advertising agencies have been playing catch-up to strengthen their digital media
+    capabilities, Carney (carney.co ) has been doing things differently for more than
+    a dozen years. From a spacious modern office in Regent Square, the full-service
+    digital agency helps clients in the technology, manufacturing, retail and not-for-profit
+    sectors increase demand for their products, services or missions by using web
+    technology to engage with customers, prospects and supporters. Besides focusing
+    exclusively on digital media, Carney further differentiates itself from other
+    agencies by being strategically focused, helping current and potential clients
+    develop strong understandings of how to optimize their digital marketing. “We
+    take a 30,000-foot view of our clients’ businesses to help them look at the
+  retrieved_at: '2026-08-12T21:52:43.566789+00:00'
+  url: https://www.pghtech.org/news-and-publications/carney-gets-results-exclusive-focus-new-media
+- content_hash: a89baf5a6b6c979c0031c13d335ca1d68803aa0ba93d2f100b7e8ea703445896
+  evidence_id: ev-a89baf5a6b6c979c
+  excerpt: december 12, 2025 AUGUST 13, 2026 AUGUST 12, 2026 AUGUST 11, 2026 Choose
+    Your Adventure 🏹 - Carney About Work Expertise The Daily Carnage Work With Us
+    Menu About Work Expertise The Daily Carnage Work With Us The Daily Carnage december
+    12, 2025 Choose Your Adventure 🏹 Are custom algos the future? Team Carnage Share
+    Copy link Share via email Share via LinkedIn Share via X Editor’s Note That fresh
+    email design feeling. ✨ Along with our hot-and-crispy new look, we’ve redesigned
+    Carney.co and created a fancy hub for all things The Daily Carnage, so you don’t
+    have to go digging in your inbox for something you forgot to remember from last
+    week. It’s never been easier to browse our latest recommended tools and tactics
+    or cruise through recent campaigns and Ads from the Past for inspiration. Take
+    it for a spin and let us know what you think. 😉 — Team Carnage Check it out Poll
+    Share Copy link Share via email Share via LinkedIn Share via X Do Ya Know? Which
+    of these recipes did NOT appear in Google's top searches for 2025? Mississippi
+    Pot Roast Hot Honey Marry Me Chicken Chimichurri Psst! You need to be a Daily
+    Carnage subscriber to participate in this poll. Enter your email below to subscribe
+    or verify your existing subscription Vote + Subscribe Subscribe to The Daily Carnage
+    Get a daily curation of marketing news, insights, tools, and culture—delivered
+    straight to your inbox. Subscribe Clicks Share Copy link Share via email Share
+    via LinkedIn Share via X Trending Stories BRANDS 📧 Béis gets called out for its
+    dirty Cyber Monday email stunt. 🎬 Netflix looks to acquire Warner Bros. for $83
+    billion. 😬 The Squidward Crocs are worse than we could have imagined. SOCIAL 🛟
+    Meta launches a 24/7 support hub. 🌀 Meta prioritizes Gen Z in Facebook redesign.
+    VIDEO 🎨 U.S. users can now change their Reels algorithms. 🤝 TikTok launches collaborative
+    Shared Feed options. ⏱️ The YouTube Shorts algorithm appears to have changed to
+    prioritize newer uploads. TRENDS 🫥 Consumers in 2026 will be full
+  retrieved_at: '2026-08-13T14:23:53.777859+00:00'
+  url: https://carney.co/daily-carnage/choose-your-adventure/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- ads

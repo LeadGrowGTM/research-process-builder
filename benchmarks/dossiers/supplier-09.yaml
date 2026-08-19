@@ -1,0 +1,146 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-9b33e0a869b30c36
+  - ev-274dce7c812c158c
+  - ev-2ba845026a121fc0
+  field: identity
+  value: Anderson International Corp
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-9b33e0a869b30c36
+  - ev-274dce7c812c158c
+  - ev-2ba845026a121fc0
+  field: description
+  value: '31 Dec 2099 Anderson International | About Us Skip to content CALL US TODAY:
+    1(800) 336-4730 About Us Contact Us Careers Partnerships Resources News and Blog
+    Search --> Processes Oilseed Products Polymer Products Feed Products Parts Services
+    Contract Manufacturing About Us Contact Us Careers Partnerships Resources News
+    and Blog About Us Anderson International Corp With 135+ years of process knowledge
+    and manufacturing experience, Anderson is the industry leader and trusted business
+    partner in pr'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-9b33e0a869b30c36
+  - ev-274dce7c812c158c
+  - ev-2ba845026a121fc0
+  field: offers
+  value: oilseed processing equipment
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-9b33e0a869b30c36
+  - ev-274dce7c812c158c
+  - ev-2ba845026a121fc0
+  field: icp
+  value: oilseed processors
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-9b33e0a869b30c36
+  - ev-274dce7c812c158c
+  - ev-2ba845026a121fc0
+  field: personas
+  value: oilseed processors
+  visibility: message_safe
+company_id: supplier-09
+corrections: []
+evidence:
+- content_hash: 9b33e0a869b30c36bf1eb2c6a883df2607cb8f54ac3f80c12a5091ac1daf2bb6
+  evidence_id: ev-9b33e0a869b30c36
+  excerpt: '31 Dec 2099 Anderson International | About Us Skip to content CALL US
+    TODAY: 1(800) 336-4730 About Us Contact Us Careers Partnerships Resources News
+    and Blog Search --> Processes Oilseed Products Polymer Products Feed Products
+    Parts Services Contract Manufacturing About Us Contact Us Careers Partnerships
+    Resources News and Blog About Us Anderson International Corp With 135+ years of
+    process knowledge and manufacturing experience, Anderson is the industry leader
+    and trusted business partner in providing solutions for the various markets we
+    service: Mechanical Oilseed Processing, Solvent Oilseed Processing, Biofuels,
+    Aqua Feed, Pet Feed, Feed Mill, Polymer Processing and Manufacturing Solutions
+    worldwide. Most of Anderson’s processing systems are built around the Expeller
+    ® press. The Expeller press was invented in the late 1800s by the company’s founder,
+    Valerius D. Anderson . All mechanical screw presses used in the industry today
+    are built from the concepts originally developed in Anderson’s Expeller press
+    design. Anderson has designed, manufactured, and commissioned over 12,000 pieces
+    of processing equipment for over 1,000 plant installations in over 100 countries.
+    Each processing solution is specifically tailored to the Customer’s unique needs
+    to ensure safety, maximize productivity and drive sustainability. Anderson stands
+    by our products and provides complete process support for the lifetime of our
+    systems through OEM replacement parts, application support and service. Anderson
+    has equipment installations from the 1920s still in operation today! Quality Quality
+    is paramount in our products and interactions with Customers and Anderson is committed
+    to continuously improving the organization with this goal in mind. We demonstrated
+    our commitment to quality by achieving ISO 9001:2008 certification in April 2014.
+    Two short years later, we were among the first in the industry to upgrade our
+    certification to the new ISO 9001:2015 standard. Our focus on quality and con'
+  retrieved_at: '2026-08-12T22:28:29.727772+00:00'
+  url: https://www.andersonintl.com/about-us/
+- content_hash: 274dce7c812c158cbcaf63a2871089f3f89ba568b308a455e3871782f7e8db54
+  evidence_id: ev-274dce7c812c158c
+  excerpt: 'Anderson International Corp | LinkedIn Agree & Join LinkedIn By clicking
+    Continue to join or sign in, you agree to LinkedIn’s User Agreement , Privacy
+    Policy , and Cookie Policy . Skip to main content LinkedIn Top Content People
+    Learning Jobs Games Sign in Join now Anderson International Corp Machinery Manufacturing
+    Stow, Ohio 3,727 followers Anderson is the industry leader in mechanical/solvent
+    oilseed processing, polymer processing and feed processing. See jobs Follow Discover
+    all 67 employees Report this company Overview Jobs About us With 135+ years of
+    process experience, Anderson International Corp is an industry leader and a trusted
+    partner in the various markets we service: Mechanical Oilseed Processing, Solvent
+    Oilseed Processing, Biofuels, Aqua Feed, Animal Feed, Pet Feed, Feed Mill and
+    Polymer Applications around the world. Anderson supplies a broad range of process
+    solutions, equipment, OEM parts and services to assure safety, productivity, quality
+    and sustainability for our Customers and the Industry. Website http://www.andersonintl.com
+    External link for Anderson International Corp Industry Machinery Manufacturing
+    Company size 51-200 employees Headquarters Stow, Ohio Type Privately Held Founded
+    1888 Specialties Engineering, CNC, Rubber Processing, Polymer Processing, Aqua
+    Feed, Animal Feed, Pet Food/Feed, Oilseed Processing, Equipment, Manufacturing,
+    Expeller Equipment, Expander Equipment, Ecomeal, Biofuel, Mechanical Oilseed Extraction,
+    Solvent Oilseed Extraction, Service, Replacement Parts, Assembly, and OEM Parts
+    Employees at Anderson International Corp Kristie Winfield, LinkedIn Member LinkedIn
+    Member LinkedIn Member LinkedIn Member LinkedIn Member View 67 employees at Anderson
+    International Corp Sign in Welcome back Email or phone Password Show Forgot password?
+    Sign in or By clicking Continue to join or sign in, you agree to LinkedIn’s User
+    Agreement , Privacy Policy , and Cookie Policy . New to LinkedIn? Join now or
+    By clicking Continue to join or '
+  retrieved_at: '2026-08-12T22:28:30.438545+00:00'
+  url: https://www.linkedin.com/company/anderson-international-corp
+- content_hash: 2ba845026a121fc0203867cbb1a942b38063f4c6bc649cea626992df41c99a75
+  evidence_id: ev-2ba845026a121fc0
+  excerpt: Anderson International Corp - U.S. Soybean Export Council About USSEC What
+    We Do Vision, Mission & Strategy Industry Collaborations Education Programs How
+    We Operate Core Values Affiliate Organizations Who We Are Board of Directors Leadership
+    Team Member Directory All USSEC Members View Allied Class View Exporter Class
+    Join USSEC Become a Member Careers Request for Proposals Why Choose U.S. Soy The
+    U.S. Soy Advantage Sustainability Superior Quality Reliable Supply Nutrition and
+    Health U.S. Soy Products Whole Soybeans Soybean Oil Soybean Meal Specialty Soy
+    Uses for U.S. Soy Animal Nutrition Aquaculture The Benefits of U.S. Soy for Human
+    Consumption Customized In-Market Support Collaborating for Shared Success Buyer
+    Tools Product and Feed Databases Specialty U.S. Soy Database Aquaculture Feed
+    Database Unit Conversions and Calculators Conversion Table Soybean Value Calculator
+    Soybean Oil Value Calculator Business Impact Solutions U.S. Soy Sustainability
+    Assurance Protocol (SSAP) Sustainable U.S. Soy Label In-Pond Raceway System Resource
+    Library Source U.S. Soy Market Insights News Events Become a Member Source U.S.
+    Soy Media Center Search Become a Member Source U.S. Soy Media Center Search primary-nav#mouseEnterHandler
+    mouseleave->primary-nav#mouseLeaveHandler" data-primary-nav-target="menuItem">
+    About USSEC primary-nav#toggleSubmenu focus->primary-nav#btnToggleFocusHandler
+    blur->primary-nav#btnToggleBlurHandler' aria-expanded='false' aria-controls='dropdown-menu-6185'
+    aria-label='Toggle Menu'> What We Do Vision, Mission & Strategy Industry Collaborations
+    Education Programs How We Operate Core Values Affiliate Organizations Who We Are
+    Board of Directors Leadership Team Member Directory All USSEC Members View Allied
+    Class View Exporter Class Join USSEC Become a Member Careers Request for Proposals
+    primary-nav#mouseEnterHandler mouseleave->primary-nav#mouseLeaveHandler" data-primary-nav-target="menuItem">
+    Why Choose U.S. Soy primary-nav#toggleSubmenu focus->primary-nav#b
+  retrieved_at: '2026-08-12T22:28:31.128220+00:00'
+  url: https://ussec.org/about-ussec/ussec-members/anderson-international-corp/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

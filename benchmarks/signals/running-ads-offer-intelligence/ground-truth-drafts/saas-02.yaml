@@ -1,0 +1,16 @@
+as_of: '2026-08-18'
+channels:
+  google:
+    evidence_ids:
+    - ev-32970edee86937fe
+    status: inactive
+  meta:
+    call_to_action: null
+    evidence_ids:
+    - ev-012c45de08359c5d
+    landing_page: null
+    observed_offer: TODO_HUMAN
+    offer_aliases:
+    - TODO_HUMAN
+    status: inactive
+company_id: saas-02

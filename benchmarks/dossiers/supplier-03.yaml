@@ -1,0 +1,145 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-3a06c42064e70261
+  - ev-14f08327e2502c6c
+  - ev-d580127a37ab373b
+  field: identity
+  value: Actylis
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3a06c42064e70261
+  - ev-14f08327e2502c6c
+  - ev-d580127a37ab373b
+  field: description
+  value: Actylis | Manufacturing --> --> --> --> --> --> --> Industries We Serve Pharmaceuticals
+    --> Pharmaceuticals Partners Biopharmaceuticals Specialty Chemicals Nutrition
+    Over the Counter Cosmetics --> Cosmetics Partners Agriscience Solutions & Services
+    Sourcing Manufacturing Services Why Partner with Us Our Unique Value Proposition
+    Global Reach, Local Expertise Our Sustainability Journey Our EHS Commitment Our
+    Quality Documentation Our Quality Documentation --> Insights & Resources Thought
+    Leadershi
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3a06c42064e70261
+  - ev-14f08327e2502c6c
+  - ev-d580127a37ab373b
+  field: offers
+  value: chemical manufacturing
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3a06c42064e70261
+  - ev-14f08327e2502c6c
+  - ev-d580127a37ab373b
+  field: icp
+  value: manufacturers
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3a06c42064e70261
+  - ev-14f08327e2502c6c
+  - ev-d580127a37ab373b
+  field: personas
+  value: manufacturers
+  visibility: message_safe
+company_id: supplier-03
+corrections: []
+evidence:
+- content_hash: 3a06c42064e70261cd4d6066fa5e168612ce89b09025ddb4e9b9bc6bc26fdde0
+  evidence_id: ev-3a06c42064e70261
+  excerpt: Actylis | Manufacturing --> --> --> --> --> --> --> Industries We Serve
+    Pharmaceuticals --> Pharmaceuticals Partners Biopharmaceuticals Specialty Chemicals
+    Nutrition Over the Counter Cosmetics --> Cosmetics Partners Agriscience Solutions
+    & Services Sourcing Manufacturing Services Why Partner with Us Our Unique Value
+    Proposition Global Reach, Local Expertise Our Sustainability Journey Our EHS Commitment
+    Our Quality Documentation Our Quality Documentation --> Insights & Resources Thought
+    Leadership Company Announcements Trade Shows & Events Blogs About Us Our Story
+    & Mission Leadership Team Board of Directors Locations North America Europe APAC
+    Careers Contact Us Get Sample or Quote Manufacturing At Actylis, we deliver flexible,
+    high-quality manufacturing solutions tailored to your needs—from custom synthesis
+    to large-scale production. Operating from ISO 9001:2015-certified facilities,
+    we combine advanced technologies with deep technical expertise to ensure precision,
+    scalability, and compliance across every project. Whether you're seeking toll
+    manufacturing or end-to-end process development, our team is here to turn your
+    most complex challenges into reliable, cost-effective results. Inquire Custom
+    & Toll Manufacturing Manufacturing Services Process Development Support Complex
+    Logistics Management --> Custom & Toll Manufacturing Custom & Toll Manufacturing
+    Manufacturing Services Process Development Support Complex Logistics Management
+    --> Custom & Toll Manufacturing Actylis offers flexible manufacturing solutions
+    through our state-of-the-art, ISO 9001:2015-certified facilities. Our custom and
+    toll manufacturing services cover a broad range of chemistries and processes,
+    including high-purity synthesis, purification, and custom formulations. We provide
+    scalable production, from small-batch synthesis to multi-ton quantities, using
+    specialized equipment. Our expertise in process optimization and purification
+    technologies, allows us to deliver customized solutions that mee
+  retrieved_at: '2026-08-12T22:28:08.234279+00:00'
+  url: https://www.actylis.com/manufacturing
+- content_hash: 14f08327e2502c6cbb815e0e85cd6eb67a408f25d87a0cb2ffe7902954572eb6
+  evidence_id: ev-14f08327e2502c6c
+  excerpt: Actylis | LinkedIn Agree & Join LinkedIn By clicking Continue to join or
+    sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie
+    Policy . Skip to main content LinkedIn Top Content People Learning Jobs Games
+    Sign in Join now Actylis Chemical Raw Materials Manufacturing Port Washington,
+    New York 19,809 followers Unique Supply. Simplified. See jobs Follow Discover
+    all 453 employees Report this company About us Actylis is a global solutions provider
+    with over 75 years of experience specializing in streamlining the management of
+    critical ingredients and raw materials for our business partners. We offer standard
+    and custom ingredients through our rapidly growing portfolio of GMP and non-GMP
+    facilities worldwide, and further choice through our strong sourcing hub network.
+    This unique hybrid option blending manufacturing and global sourcing, combined
+    with more than 75 years of sourcing and distribution experience makes Actylis
+    the Partner of Choice. Website https://www.actylis.com External link for Actylis
+    Industry Chemical Raw Materials Manufacturing Company size 501-1,000 employees
+    Headquarters Port Washington, New York Type Privately Held Specialties Chemicals,
+    Agricultural Protection Products, API and Pharma Intermediates, Manufacturing,
+    Analytical Services, Contract R&D, Contract GMP Manufacturing, Biopharmaceutical,
+    Pharmaceutical, and Sourcing Employees at Actylis Varun Vijay Rao LinkedIn Member
+    LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn Member View 453 employees
+    at Actylis Sign in Welcome back Email or phone Password Show Forgot password?
+    Sign in or By clicking Continue to join or sign in, you agree to LinkedIn’s User
+    Agreement , Privacy Policy , and Cookie Policy . New to LinkedIn? Join now or
+    By clicking Continue to join or sign in, you agree to LinkedIn’s User Agreement
+    , Privacy Policy , and Cookie Policy . See all employees Locations Primary 4 Tri
+    Harbor Ct Port Washington, New York 11050, US Get directions Updates Actylis 19
+  retrieved_at: '2026-08-12T22:28:09.300629+00:00'
+  url: https://www.linkedin.com/company/actylis
+- content_hash: d580127a37ab373b5194d2429073100c8277e39b1fbb4082b0511436080e5f51
+  evidence_id: ev-d580127a37ab373b
+  excerpt: 'Actylis - New Mountain Capital Your browser doesn''t support JavaScript!
+    About Us Our Strategies Private Equity Portfolio Credit Net Lease Our Team Social
+    Responsibility News News 2025 Year in Review Contact Home / Portfolio / Actylis
+    Actylis Status Current Private Equity Flagship Control Headquarters Port Washington,
+    NY Investment Date April 2019 Visit website Previous Next Actylis Founded in 1947,
+    Actylis is a virtual manufacturer of niche specialty materials sold into the life
+    sciences and advanced technology end markets. Actylis is particularly well-recognized
+    as a leader in active pharmaceutical ingredients (API) and pharmaceutical intermediates
+    as well as nutritional and agricultural protection ingredients. Actylis has over
+    2,000 clients and over 1,100 virtual manufacturing relationships with a particular
+    strength working with manufacturer partners in China and India. Actylis is headquartered
+    in Port Washington, NY and has business operations in nine countries providing
+    local support for customers and suppliers and just-in-time delivery capabilities.
+    New Mountain acquired Actylis as a result of the firm’s multi-year, proactive
+    “deep dive” effort in the specialty materials and life sciences sectors. New Mountain
+    first approached Actylis proactively in December 2017 and completed the acquisition
+    of Actylis in April 2019. New Mountain was assisted in its diligence by the former
+    CEO and CFO of the parent company, both of whom worked exclusively with New Mountain
+    to provide differentiated insight in the process. Back to Portfolio 1633 Broadway,
+    48th Floor | New York, New York 10019 Phone: (212) 720-0300 Email: [email protected]
+    About Us Overview History Private Equity Portfolio Credit Net Lease Team Social
+    Responsibility News Contact © New Mountain Capital 2026 Privacy Notice Disclosures
+    TOP'
+  retrieved_at: '2026-08-12T22:28:09.852180+00:00'
+  url: https://www.newmountaincapital.com/portfolio/actylis/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

@@ -1,0 +1,76 @@
+# Sealed ground truth - subject: Bitly (bitly.com). Human-authored from the
+# signal dossier; every date string appears literally in a cited excerpt.
+company_id: saas-09
+as_of: '2026-08-18'
+recent_window_days: 180
+events:
+- date: '2026-04-02'
+  headline_aliases:
+  - Launched Bitly Assist and Weekly Insights, AI-powered analytics features
+  - Bitly Introduces AI-Powered Features to Simplify and Accelerate Marketing Analytics
+  - Introducing Bitly Assist and Weekly Insights
+  source_domain: bitly.com
+  kind: launch
+  event_type: feature
+  evidence_ids:
+  - ev-0b49d7ad63e38407
+  - ev-4cf17467b0cef3a0
+  - ev-fd616319d1681471
+  - ev-43e26288b0407e33
+  - ev-7c71a03b6ebc4b17
+  - ev-ccea57597fef4189
+  - ev-1bea0d05296a99a5
+  - ev-c6134242a55beee2
+- date: '2026-03-09'
+  headline_aliases:
+  - Released ChatGPT, Claude, and Copilot integrations for Bitly links
+  - Introducing Bitly's LLM Integrations
+  source_domain: bitly.com
+  kind: launch
+  event_type: integration
+  evidence_ids:
+  - ev-6f98ac52bafe786b
+- date: '2026-03-19'
+  headline_aliases:
+  - Appointed Matt Young as Chief Technology Officer
+  - Bitly Appoints Matt Young as CTO
+  source_domain: google.com
+  kind: news
+  event_type: leadership
+  evidence_ids:
+  - ev-389dadce2820ba1f
+- date: '2026-02-03'
+  headline_aliases:
+  - Repositioned as the embedded connection layer for links and QR Codes worldwide
+  - Bitly Enters 2026 as the Embedded Connection Layer Powering Links and QR Codes Worldwide
+  - Bitly Enters 2026 With Expanded Link and QR Code Solutions
+  source_domain: bitly.com
+  kind: news
+  event_type: positioning
+  evidence_ids:
+  - ev-f039b17ed80b1f55
+  - ev-19787d7cde037cd6
+  - ev-86aa2fa0dd7d89bd
+  - ev-5777b8255ac2c2b2
+  - ev-54a05e1e7089d228
+  - ev-7c71a03b6ebc4b17
+  - ev-b3cc8bcebe5296b1
+  - ev-ccea57597fef4189
+- date: '2026-04-20'
+  headline_aliases:
+  - Rebranded QR Code Generator as QRCG by Bitly
+  - QR Code Generator is Now QRCG by Bitly
+  source_domain: qr-code-generator.com
+  kind: news
+  event_type: positioning
+  evidence_ids:
+  - ev-f4b11910ca7e74a4
+- date: '2019-04-18'
+  headline_aliases:
+  - Bitly link shortener blocked by internet providers in Egypt
+  - Bitly link shortener blocked in Egypt
+  source_domain: google.com
+  kind: news
+  event_type: other
+  evidence_ids:
+  - ev-3a6584e165ffccb0

@@ -1,0 +1,252 @@
+from datetime import date
+from decimal import Decimal
+from types import SimpleNamespace
+
+import pytest
+
+from scripts.company_enrichment.contracts import FailureKind
+from scripts.company_enrichment.budgets import Reservation
+from scripts.company_enrichment.providers import (
+    AdFinding,
+    AdStatus,
+    AdsRequest,
+    AuthenticationFailure,
+    CompanyProfile,
+    ContractFailure,
+    InsufficientEvidence,
+    KnownUrlRequest,
+    ProviderFailure,
+    ProviderRouter,
+    RetryableFailure,
+    SearchRequest,
+    SearchResult,
+    SourceObservation,
+    TerminalFailure,
+    ad_channels,
+    normalize_failure,
+)
+from scripts.company_enrichment.adapters.ads import MetaAdsAdapter
+from scripts.company_enrichment.adapters.gtm_waterfall import GtmWaterfallAdapter
+from scripts.company_enrichment.adapters.parallel import ParallelSearchAdapter
+
+
+def _observation(url: str = "https://acme.example/about") -> SourceObservation:
+    return SourceObservation(url=url, excerpt="Acme serves finance teams.")
+
+
+def test_parallel_bridge_exposes_search_without_known_url_fetch() -> None:
+    calls = []
+    adapter = ParallelSearchAdapter(
+        lambda query: (calls.append(query), [_observation()])[1]
+    )
+
+    result = adapter.search(SearchRequest("Acme customers"))
+
+    assert result == SearchResult((_observation(),))
+    assert calls == ["Acme customers"]
+    assert not hasattr(adapter, "scrape")
+    assert not hasattr(result, "provider_payload")
+
+
+def test_gtm_waterfall_reserves_only_before_paid_levels() -> None:
+    events = []
+
+    def execute(level, request):
+        events.append(("execute", level, request.url))
+        return () if level < 3 else (_observation(request.url),)
+
+    adapter = GtmWaterfallAdapter(
+        execute=execute,
+        reserve=lambda key, amount: (
+            events.append(("reserve", key, amount)),
+            Reservation("r-1", "scope", key, Decimal(amount)),
+        )[1],
+    )
+
+    result = adapter.scrape(KnownUrlRequest("https://acme.example"))
+
+    assert result.observations == (_observation("https://acme.example"),)
+    assert events == [
+        ("execute", 1, "https://acme.example"),
+        ("execute", 2, "https://acme.example"),
+        ("reserve", "gtm-waterfall:3:https://acme.example", "0.01"),
+        ("execute", 3, "https://acme.example"),
+    ]
+    assert adapter.executor_name == "firecrawl_waterfall.py"
+
+
+def test_gtm_paid_level_executes_only_for_reservation_creator() -> None:
+    executed = []
+
+    def execute(level, _request):
+        executed.append(level)
+        return ()
+
+    adapter = GtmWaterfallAdapter(
+        execute=execute,
+        reserve=lambda key, amount: Reservation(
+            "r-existing",
+            "scope",
+            key,
+            Decimal(amount),
+            created=False,
+        ),
+    )
+
+    with pytest.raises(RetryableFailure, match="already owned"):
+        adapter.scrape(KnownUrlRequest("https://acme.example"))
+
+    assert executed == [1, 2]
+
+
+@pytest.mark.parametrize(
+    ("error", "expected"),
+    [
+        (RetryableFailure("later"), FailureKind.RETRYABLE),
+        (TerminalFailure("bad target"), FailureKind.TERMINAL),
+        (AuthenticationFailure("token"), FailureKind.AUTHENTICATION_REQUIRED),
+        (ContractFailure("shape"), FailureKind.CONTRACT_INVALID),
+        (InsufficientEvidence("empty"), FailureKind.INSUFFICIENT_EVIDENCE),
+    ],
+)
+def test_provider_failures_normalize_without_payload_leakage(error, expected) -> None:
+    failure = normalize_failure(error)
+    assert failure.kind is expected
+    assert failure.message
+    assert not hasattr(failure, "payload")
+
+
+def test_router_keeps_known_urls_off_parallel() -> None:
+    router = ProviderRouter()
+    definition = SimpleNamespace(fallback_order=("parallel-search", "homepage-scrape"))
+    discovery = SimpleNamespace(
+        selected_capability="parallel-search",
+        eligible_capabilities=("homepage-scrape", "parallel-search"),
+    )
+
+    plan = router.route(definition, discovery, known_urls=("https://acme.example",))
+
+    assert plan.provider_ids == ("homepage-scrape", "parallel-search")
+    assert plan.known_url_provider == "homepage-scrape"
+
+
+def test_router_cannot_reintroduce_unverified_or_unavailable_providers() -> None:
+    router = ProviderRouter()
+    ads_definition = SimpleNamespace(
+        fallback_order=("meta-ads", "tiktok-ads", "linkedin-ads")
+    )
+    ads_discovery = SimpleNamespace(
+        selected_capability="linkedin-ads",
+        eligible_capabilities=("linkedin-ads",),
+    )
+
+    assert router.route(ads_definition, ads_discovery).provider_ids == ("linkedin-ads",)
+
+    with pytest.raises(ProviderFailure, match="known-URL capability gap"):
+        router.route(
+            SimpleNamespace(fallback_order=("homepage-scrape", "parallel-search")),
+            SimpleNamespace(
+                selected_capability="parallel-search",
+                eligible_capabilities=("parallel-search",),
+            ),
+            known_urls=("https://acme.example",),
+        )
+
+
+@pytest.mark.parametrize(
+    ("profile", "expected"),
+    [
+        (CompanyProfile(is_b2b=False), ("google", "meta")),
+        (CompanyProfile(is_b2b=True), ("google", "meta", "linkedin")),
+        (
+            CompanyProfile(is_b2b=True, is_ecommerce_or_cpg=True),
+            ("google", "meta", "linkedin", "tiktok"),
+        ),
+    ],
+)
+def test_ads_routing_is_channel_aware(profile, expected) -> None:
+    assert ad_channels(profile) == expected
+
+
+def test_ad_finding_preserves_normalized_offer_evidence() -> None:
+    finding = AdFinding(
+        channel="linkedin",
+        status=AdStatus.ACTIVE,
+        started_on=date(2026, 8, 1),
+        ended_on=None,
+        geography="Canada",
+        angle="Reduce close time",
+        offer="Workflow audit",
+        call_to_action="Book demo",
+        landing_page="https://acme.example/demo",
+        evidence=(_observation("https://linkedin.example/ad/1"),),
+        confidence=0.9,
+    )
+
+    assert finding.status is AdStatus.ACTIVE
+    assert finding.offer == "Workflow audit"
+    assert finding.evidence[0].url == "https://linkedin.example/ad/1"
+
+
+def test_meta_requires_small_validation_before_batch_eligibility() -> None:
+    inspected = []
+    adapter = MetaAdsAdapter(
+        inspect_one=lambda request: (
+            inspected.append(request.url),
+            AdFinding.unknown("meta"),
+        )[1],
+        measure_cost=lambda _request, _finding: "0.02",
+        max_sample_cost_usd="0.10",
+    )
+
+    assert adapter.batch_eligible is False
+    validation = adapter.validate(
+        (
+            AdsRequest("Acme", "https://acme.example"),
+            AdsRequest("Beta", "https://beta.example"),
+        )
+    )
+
+    assert validation.sample_size == 2
+    assert validation.schema_valid is True
+    assert validation.cost_valid is True
+    assert str(validation.measured_cost_usd) == "0.04"
+    assert adapter.batch_eligible is True
+    assert inspected == ["https://acme.example", "https://beta.example"]
+
+    with pytest.raises(ValueError, match="1 to 3"):
+        adapter.validate(())
+
+
+def test_meta_batch_stays_blocked_when_schema_or_cost_validation_fails() -> None:
+    wrong_schema = MetaAdsAdapter(
+        inspect_one=lambda _request: AdFinding.unknown("linkedin"),
+        measure_cost=lambda _request, _finding: "0.01",
+        max_sample_cost_usd="0.10",
+    )
+    excessive_cost = MetaAdsAdapter(
+        inspect_one=lambda _request: AdFinding.unknown("meta"),
+        measure_cost=lambda _request, _finding: "0.20",
+        max_sample_cost_usd="0.10",
+    )
+    request = (AdsRequest("Acme", "https://acme.example"),)
+
+    assert wrong_schema.validate(request).schema_valid is False
+    assert wrong_schema.batch_eligible is False
+    assert excessive_cost.validate(request).cost_valid is False
+    assert excessive_cost.batch_eligible is False
+
+
+def test_meta_rejects_non_ad_finding_payload_even_with_meta_channel() -> None:
+    adapter = MetaAdsAdapter(
+        inspect_one=lambda _request: SimpleNamespace(channel="meta"),
+        measure_cost=lambda _request, _finding: "0.01",
+        max_sample_cost_usd="0.10",
+    )
+
+    validation = adapter.validate(
+        (AdsRequest("Acme", "https://acme.example"),)
+    )
+
+    assert validation.schema_valid is False
+    assert adapter.batch_eligible is False

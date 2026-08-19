@@ -1,0 +1,190 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-3702f99a90ca9db0
+  - ev-772f852d326ccc26
+  - ev-b424ca67d485f53b
+  field: identity
+  value: Bitly
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3702f99a90ca9db0
+  - ev-772f852d326ccc26
+  - ev-b424ca67d485f53b
+  field: description
+  value: Bitly for Digital Marketing | Prove Campaign ROI Skip Navigation NEW Only
+    18% of marketers actually know what’s working. Are you one of them? Read the report
+    → NEU Nur 18 % der Marketer wissen wirklich, was funktioniert. Gehörst du dazu?
+    Zum Bericht → NOUVEAU Seulement 18% des spécialistes en marketing savent ce qui
+    marche vraiment. En faites-vous partie ? Lire le rapport → NOVITÀ Solo il 18%
+    dei marketer sa davvero cosa funziona. E tu? Leggi il report → NOVO Apenas 18%
+    dos profissionais de mark
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3702f99a90ca9db0
+  - ev-772f852d326ccc26
+  - ev-b424ca67d485f53b
+  field: offers
+  value: link management
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3702f99a90ca9db0
+  - ev-772f852d326ccc26
+  - ev-b424ca67d485f53b
+  field: icp
+  value: marketing teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3702f99a90ca9db0
+  - ev-772f852d326ccc26
+  - ev-b424ca67d485f53b
+  field: personas
+  value: marketing teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-8402922e2890657f
+  - ev-b03445978a65f94f
+  field: ads
+  value:
+    channels:
+    - call_to_action: null
+      channel: google
+      ended_on: '2026-08-18'
+      evidence_ids:
+      - ev-8402922e2890657f
+      failure: null
+      landing_page: null
+      started_on: '2022-04-05'
+      status: active
+    - call_to_action: null
+      channel: meta
+      ended_on: '2026-06-26'
+      evidence_ids:
+      - ev-b03445978a65f94f
+      failure: null
+      landing_page: null
+      started_on: null
+      status: inactive
+  visibility: message_safe
+company_id: saas-09
+corrections: []
+evidence:
+- content_hash: 3702f99a90ca9db0fee880ca12dcf4379365607ad7bd2a29f1648acf21840470
+  evidence_id: ev-3702f99a90ca9db0
+  excerpt: Bitly for Digital Marketing | Prove Campaign ROI Skip Navigation NEW Only
+    18% of marketers actually know what’s working. Are you one of them? Read the report
+    → NEU Nur 18 % der Marketer wissen wirklich, was funktioniert. Gehörst du dazu?
+    Zum Bericht → NOUVEAU Seulement 18% des spécialistes en marketing savent ce qui
+    marche vraiment. En faites-vous partie ? Lire le rapport → NOVITÀ Solo il 18%
+    dei marketer sa davvero cosa funziona. E tu? Leggi il report → NOVO Apenas 18%
+    dos profissionais de marketing sabem o que está funcionando. Você é um deles?
+    Ler o relatório → NOVEDAD En publicidad, solo el 18 % de las personas saben qué
+    funciona. ¿Eres una de ellas? Consulta el informe → புதிது 18% மார்க்கெட்டர்கள்
+    மட்டுமே முடிவுகளை அறிவார்கள். நீங்களும் ஒருவரா? படிக்க → ใหม่ มีเพียง 18% ของนักการตลาดที่รู้ว่าอะไรได้ผล
+    คุณเป็นหนึ่งในนั้นไหม? อ่านรายงาน → नया केवल 18% मार्केटर्स जानते हैं कि क्या
+    काम कर रहा है। क्या आप उनमें से एक हैं? रिपोर्ट पढ़ें → Menu Menu Menu Platform
+    Products URL Shortener Customize, share and track links QR Code Generator Dynamic
+    solutions to fit every business need Analytics A central place to track and analyze
+    performance Pages Mobile-friendly, no-code landing pages Features Link-in-bio
+    Curate and track links and content for social media profiles Branded Links Customize
+    links with your brand’s URL Mobile Links Short links for SMS messages UTM Campaigns
+    Track links and QR Codes with UTM parameters Digital Business Cards Grow your
+    network with virtual business cards 2D Barcodes Add a GS1 Digital Link to QR Codes
+    designed for packaging Integrations Bitly Shopify Integration Bitly + Canva Integration
+    See all integrations Discover more API & Documentation Trust Center AI AI Features
+    Bitly Assist AI-powered link and QR Code creation and analysis Bitly LLM Integrations
+    Bring link management to your AI assistant Bitly MCP Connect to AI agents with
+    the Model Context Protocol AI Resources Help Center Developers Trust Center Integrations
+    Marketplace What's New B
+  retrieved_at: '2026-08-12T21:00:57.540708+00:00'
+  url: https://bitly.com/pages/solutions/digital-marketing
+- content_hash: 772f852d326ccc26a6434f2f3372ed6f4328308bcc233aa1a95e8070798c48b3
+  evidence_id: ev-772f852d326ccc26
+  excerpt: Bitly | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now Bitly Software Development New York, NY 48,394 followers
+    Bitly makes it easy to create branded links and QR Codes, track every click and
+    scan, and see what’s working. Follow Discover all 338 employees Report this company
+    About us Bitly is a leading marketing platform for link and QR Code management,
+    enabling businesses of all sizes to see what’s working across online and offline
+    channels. Powering more than 100 billion clicks and scans annually worldwide,
+    Bitly makes it easy to create, share, and track short links and QR Codes, so brands
+    can find what’s resonating and scale their reach. More than 3M customers rely
+    on Bitly to connect with their audiences, from global enterprises to growing businesses,
+    including two-thirds of the Fortune 500. Website http://bitly.com/ External link
+    for Bitly Industry Software Development Company size 201-500 employees Headquarters
+    New York, NY Type Privately Held Specialties internet, URLs, data, links, social
+    publishing, social media, Twitter, Facebook, tracking links, analytics, social
+    media monitoring, social media analytics, analytics, qr codes, link-in-bio, digital
+    marketing, instagram, tik tok, landing pages, SMS, 2d barcodes, and connected
+    packaging Products No more previous content 2D Barcodes for Connected Packaging
+    Bitly, Link Management Tools Bitly Link Management Tools Bitly Analytics, Content
+    Analytics Tools Bitly Analytics Content Analytics Tools Bitly Landing Pages, Link
+    Management Tools Bitly Landing Pages Link Management Tools Bitly QR Codes, QR
+    Code Generator Software Bitly QR Codes QR Code Generator Software Bitly Short
+    Links (URL Shortener), Link Management Tools Bitly Short Links (URL Shortener)
+    Link Management Tools QRCG by Bitly, QR Code Generator Software QRCG by Bitly
+    QR Code Generator Software No more next content Locations Primary 139 5th Ave.
+    New York, NY 10010, US Get directions 1860 Blake St Denver, Col
+  retrieved_at: '2026-08-12T21:00:58.814245+00:00'
+  url: https://www.linkedin.com/company/bitly
+- content_hash: b424ca67d485f53b4f4e6a6341fd3e4956c2c44ffe640413b66e43d9c929b79b
+  evidence_id: ev-b424ca67d485f53b
+  excerpt: 'Spectrum Equity Portfolio: Bitly Portfolio Bitly is an enterprise-grade
+    link management and analytics platform. Peter Krivkovich, CEO of Bitly Sector
+    Marketing & Sales Technology Theme Data Analytics , Horizontal SaaS Status Current
+    Headquarters New York, New York CEO Peter Krivkovich URL bitly.com (Link opens
+    in new window) Investors Parag Khandelwal Cameron Ghorbani Partnership Year 2017
+    Disclosure Statements made herein by current or former employees of Spectrum Equity
+    portfolio companies for which no compensation was paid. Spectrum may have the
+    ability to exercise discretion on portfolio company employee compensation, promotion
+    and other employment decisions and certain portfolio company executives may also
+    be investors in Spectrum Equity funds. Peter Krivkovich, CEO of Bitly Insights
+    and News Portfolio News Bitly Announces Leadership Team Expansion Fueling Innovation
+    And Business Growth Read More Growth Insights Unpacking the PLG Motion with Bitly
+    and Lucid Software Read More Portfolio News Bitly Releases Mid-Year Report Revealing
+    a Transformational Shift in Global QR Code Usage and Adoption Read More Portfolio
+    News Bitly Strengthens Its Leadership Team with Appointment of Peter Krivkovich
+    as New Chief Financial Officer and Adds Nick Caldwell to Board of Directors Read
+    More Portfolio News Bitly Unveils “Imagine the PossiBITLYties” Advertising Campaign
+    To Showcase The Impact Of Its One-Of-A-Kind Connections Platform Read More Portfolio
+    News Bitly Wraps 2022 Surpassing $100M in ARR and 500,000+ Global Customers Read
+    More External Coverage TechCrunch: Bitly sells a majority stake to Spectrum Equity
+    for $63M Read More Portfolio News Bitly Receives Investment from Spectrum Equity
+    Read More Boston One International Place 35th Floor Boston, Massachusetts, 02110
+    617-464-4600 (Link opens in new window) San Francisco 140 New Montgomery 20th
+    Floor San Francisco, California, 94105 415-464-4600 (Link opens in new window)
+    London 175 Piccadilly Empire House London, W1J 9EN +4'
+  retrieved_at: '2026-08-12T21:00:59.318937+00:00'
+  url: https://www.spectrumequity.com/portfolio/bitly/
+- content_hash: 8402922e2890657f2c3b1e756e492ffee97a7d90a0427b0bf871c0c0ebbace92
+  evidence_id: ev-8402922e2890657f
+  excerpt: '{"ad_format_codes":{"1":127,"2":39,"3":34},"ad_formats":["image","text","video"],"domain":"bitly.com","error":null,"first_seen":"2022-04-05T18:15:52.000Z","last_seen":"2026-08-18T14:32:41.000Z","pages_scanned":5,"primary_advertiser":{"creatives":199,"id":"AR03806981014568304641","name":"Bitly,
+    Inc"},"running_ads":true,"total_creatives":200,"truncated":true,"unique_advertisers":2}'
+  retrieved_at: '2026-08-18T15:28:22.968987+00:00'
+  url: https://adstransparency.google.com/advertiser/AR03806981014568304641?region=anywhere
+- content_hash: b03445978a65f94f4e34d6bf3bb8c60e9e754af8c1c6869df122055c5c2cb561
+  evidence_id: ev-b03445978a65f94f
+  excerpt: '{"ads":[{"body":"Unlock the full power of your links. Explore Bitly''s
+    Connection Platform today.","cta_text":"Learn more","days_running":149,"headline":"Bitly.com","id":"1223193839540714","link_url":"https://bitly.com/pages/landing/bringing-us-all-a-bit-closer?utm_source=facebook&utm_medium=paid_social&utm_campaign=retargeting_website_visitors_image_fulldynamic","media_type":"carousel","started_at":"2025-06-18T07:00:00.000Z","status":"INACTIVE"},{"body":"Unlock
+    the full power of your links. Explore Bitly''s Connection Platform today.","cta_text":"Learn
+    more","days_running":149,"headline":"Bitly.com","id":"617252994080173","link_url":"https://bitly.com/pages/landing/bringing-us-all-a-bit-closer?utm_source=facebook&utm_medium=paid_social&utm_campaign=retargeting_website_visitors_video_fulldynamic","media_type":"carousel","started_at":"2025-06-18T07:00:00.000Z","status":"INACTIVE"},{"body":"Unlock
+    the full power of your links. Explore Bitly''s Connection Platform today.","cta_text":"Learn
+    more","days_running":94,"headline":"Bitly.com","id":"1290177315877607","link_url":"https://bitly.com/pages/landing/bringing-us-all-a-bit-closer?utm_source=facebook&utm_medium=paid_social&utm_campaign=retargeting_website_visitors_image_fulldynamic","media_type":"carousel","started_at":"2025-08-12T07:00:00.000Z","status":"INACTIVE"},{"body":"Still
+    thinking about Bitly? Your link data and analytics are waiting for you, jump back
+    in.","cta_text":"Sign up","days_running":65,"headline":"bitly.com","id":"1706180903907734","link_url":"https://bitly.com/pages/landing/bringing-us-all-a-bit-closer","media_type":"carousel","started_at":"2026-04-28T07:00:00.000Z","status":"INACTIVE"}],"summary":{"active_ads_count":0,"ad_types":["carousel","video","image"],"inactive_ads_count":200,"last_ad_date":"2026-06-26T07:00:00.000Z","match_method":"handle_fb","matched_name":"Bitly","matched_page_id":"111454522278222","platforms":["FACEBOOK","INSTAGRAM","AUDIENCE_NETWORK","MESSENGER"],"status":"done"}}'
+  retrieved_at: '2026-08-18T15:28:22.968987+00:00'
+  url: https://www.facebook.com/ads/library/?active_status=all&ad_type=all&view_all_page_id=111454522278222
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches

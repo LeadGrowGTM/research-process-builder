@@ -1,0 +1,118 @@
+# DRAFT ground truth - TODO_HUMAN: review every entry, then move this file to
+# ../ground-truth/ only after a human seals it. Generated from the signal dossier;
+# nothing here is validated. Delete candidates that are not real, fix dates and
+# kinds, keep evidence_ids pointing at the Evidence that proves the entry.
+# subject: Betterworks (betterworks.com); as_of 2026-08-18
+# every 'named' entry is a candidate token; strip the TODO_HUMAN prefix to keep,
+# move to 'inferred' when no Evidence compares it with the subject, or delete.
+# candidate evidence: {"performancemanagement": ["ev-3b25c7965105d24a", "ev-479e5a366d512f23", "ev-d87019093b62664b", "ev-f2fb791a6cc68dcb"], "okrs": ["ev-256442cec34d7110", "ev-574cf2a0a96e3437", "ev-a4ac02857ceac9f5", "ev-c7c2ab13a9cb4125"], "integrations": ["ev-574cf2a0a96e3437", "ev-c7c2ab13a9cb4125", "ev-f2fb791a6cc68dcb"], "country": ["ev-f2fb791a6cc68dcb"], "region": ["ev-f2fb791a6cc68dcb"], "europe": ["ev-f2fb791a6cc68dcb"], "canada": ["ev-f2fb791a6cc68dcb"], "australia": ["ev-f2fb791a6cc68dcb"], "feature": ["ev-f2fb791a6cc68dcb"], "payroll": ["ev-87e17951c83fe44d", "ev-995877fb9eded556", "ev-f2fb791a6cc68dcb"], "onboarding": ["ev-87e17951c83fe44d", "ev-995877fb9eded556", "ev-f2fb791a6cc68dcb"], "time": ["ev-87e17951c83fe44d", "ev-995877fb9eded556", "ev-f2fb791a6cc68dcb"], "attendance": ["ev-f2fb791a6cc68dcb"], "size": ["ev-f2fb791a6cc68dcb"], "smes": ["ev-f2fb791a6cc68dcb"], "startups": ["ev-f2fb791a6cc68dcb"], "scaleups": ["ev-f2fb791a6cc68dcb"], "global": ["ev-f2fb791a6cc68dcb"], "remote": ["ev-f2fb791a6cc68dcb"], "distributed": ["ev-f2fb791a6cc68dcb"], "globalcompliance": ["ev-f2fb791a6cc68dcb"], "eorservices": ["ev-f2fb791a6cc68dcb"], "contractormanagement": ["ev-f2fb791a6cc68dcb"], "nonprofits": ["ev-f2fb791a6cc68dcb"], "integrates": ["ev-f2fb791a6cc68dcb"], "quickbooks": ["ev-f2fb791a6cc68dcb"], "xero": ["ev-f2fb791a6cc68dcb"], "workday": ["ev-f2fb791a6cc68dcb"], "netsuite": ["ev-f2fb791a6cc68dcb"], "slack": ["ev-f2fb791a6cc68dcb"], "employer": ["ev-f2fb791a6cc68dcb"], "recordhire":
+company_id: saas-07
+evidence_ids:
+- ev-dcc1a8c71d39505e
+inferred: []
+named:
+- aliases: []
+  domain: null
+  name: TODO_HUMAN EOR
+- aliases: []
+  domain: null
+  name: TODO_HUMAN OKRs
+- aliases: []
+  domain: null
+  name: TODO_HUMAN EOR Providers
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Performance Management
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Lattice
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Performance
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Time
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Integrates
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Selecting
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Solution
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Mooncamp
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Integrations
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Payroll
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Management
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Tested
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Compensation
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Jan
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Onboarding
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Remote
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Culture Amp
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Peoplelogic
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Tability
+- aliases: []
+  domain: null
+  name: TODO_HUMAN QPR Performance
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Leapsome
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Profit
+- aliases: []
+  domain: okrstool.com
+  name: TODO_HUMAN okrstool.com
+- aliases: []
+  domain: profit.co
+  name: TODO_HUMAN profit.co
+- aliases: []
+  domain: go.okrstool.com
+  name: TODO_HUMAN go.okrstool.com
+- aliases: []
+  domain: learn.streamery.co
+  name: TODO_HUMAN learn.streamery.co
+- aliases: []
+  domain: nova.peoplelogic.ai
+  name: TODO_HUMAN nova.peoplelogic.ai
+- aliases: []
+  domain: app.peoplelogic.ai
+  name: TODO_HUMAN app.peoplelogic.ai
+- aliases: []
+  domain: app.okrstool.com
+  name: TODO_HUMAN app.okrstool.com
+- aliases: []
+  domain: developers.google.com
+  name: TODO_HUMAN developers.google.com
+- aliases: []
+  domain: 2fwww.youtube.com
+  name: TODO_HUMAN 2fwww.youtube.com
+- aliases: []
+  domain: support.google.com
+  name: TODO_HUMAN support.google.com

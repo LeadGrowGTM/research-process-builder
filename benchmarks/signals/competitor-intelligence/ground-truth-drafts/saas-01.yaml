@@ -1,0 +1,112 @@
+# DRAFT ground truth - TODO_HUMAN: review every entry, then move this file to
+# ../ground-truth/ only after a human seals it. Generated from the signal dossier;
+# nothing here is validated. Delete candidates that are not real, fix dates and
+# kinds, keep evidence_ids pointing at the Evidence that proves the entry.
+# subject: AgencyAnalytics (agencyanalytics.com); as_of 2026-08-18
+# every 'named' entry is a candidate token; strip the TODO_HUMAN prefix to keep,
+# move to 'inferred' when no Evidence compares it with the subject, or delete.
+# candidate evidence: {"join": ["ev-b5979e5e51835014"], "login": ["ev-b5979e5e51835014"], "open": ["ev-1dc192d53227bc08", "ev-95a7a7a89c11fb60", "ev-b5979e5e51835014"], "vendors": ["ev-b5979e5e51835014"], "articles": ["ev-b5979e5e51835014"], "podcast": ["ev-b5979e5e51835014"], "support": ["ev-b5979e5e51835014"], "documentationsubscribe": ["ev-b5979e5e51835014"], "newslettersupport": ["ev-b5979e5e51835014"], "request": ["ev-3c547ac6948135f9", "ev-b5979e5e51835014"], "vendorsadd": ["ev-b5979e5e51835014"], "resourcesarticles": ["ev-b5979e5e51835014"], "casestudies": ["ev-b5979e5e51835014"], "menu": ["ev-b5979e5e51835014"], "helpcreate": ["ev-b5979e5e51835014"], "joinlogin": ["ev-b5979e5e51835014"], "dashboard": ["ev-b5979e5e51835014"], "agencyanalyticsagencyanalytics": ["ev-b5979e5e51835014"], "rating": ["ev-b5979e5e51835014"], "write": ["ev-b5979e5e51835014"], "agencyanalyticspopular": ["ev-b5979e5e51835014"], "related": ["ev-b5979e5e51835014"], "adzooma": ["ev-b5979e5e51835014"], "ratings": ["ev-b5979e5e51835014"], "microsoft": ["ev-b5979e5e51835014"], "trackppc": ["ev-b5979e5e51835014"], "roi": ["ev-b5979e5e51835014"], "packed": ["ev-b5979e5e51835014"], "pbrspower": ["ev-b5979e5e51835014"], "distribution": ["ev-b5979e5e51835014"], "pbrs": ["ev-b5979e5e51835014"], "power": ["ev-1ce28726ead570d6", "ev-3d95c8959542f9a7", "ev-b5979e5e51835014"], "apr": ["ev-19c120d84e54148c", "ev-28f2ce0bbebc0bfb", "ev-b19784ea9f90caa6", "ev-cc01b5d070e6ffba"], "swydo": ["ev-b19784ea9f90caa6", "ev-d422cdb51a6d706a"], 
+company_id: saas-01
+evidence_ids:
+- ev-b852e22ac88f1aad
+inferred: []
+named:
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Apr
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Funnel
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Whatagraph
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Open
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Oct
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Databox
+- aliases: []
+  domain: null
+  name: TODO_HUMAN DashThis
+- aliases: []
+  domain: null
+  name: TODO_HUMAN TapClicks
+- aliases: []
+  domain: null
+  name: TODO_HUMAN SEO
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Power
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Mar
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Supermetrics
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Ranking
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Side
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Sign
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Log
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Join
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Request
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Adzooma
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Swydo
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Depth
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Klipfolio
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Tested
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Studio
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Any
+- aliases: []
+  domain: portermetrics.com
+  name: TODO_HUMAN portermetrics.com
+- aliases: []
+  domain: funnel.io
+  name: TODO_HUMAN funnel.io
+- aliases: []
+  domain: coupler.io
+  name: TODO_HUMAN coupler.io
+- aliases: []
+  domain: windsor.ai
+  name: TODO_HUMAN windsor.ai
+- aliases: []
+  domain: seranking.com
+  name: TODO_HUMAN seranking.com
+- aliases: []
+  domain: styles.redditmedia.com
+  name: TODO_HUMAN styles.redditmedia.com
+- aliases: []
+  domain: visible.seranking.com
+  name: TODO_HUMAN visible.seranking.com
+- aliases: []
+  domain: planable.io
+  name: TODO_HUMAN planable.io

@@ -1,0 +1,824 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-b852e22ac88f1aad
+  - ev-f4256ff7de9e092b
+  - ev-b5979e5e51835014
+  field: identity
+  value: AgencyAnalytics
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b852e22ac88f1aad
+  - ev-f4256ff7de9e092b
+  - ev-b5979e5e51835014
+  field: description
+  value: About AgencyAnalytics - We Help Marketing Agencies Scale The 2026 Agency
+    Benchmarks Report is here! Read it free The 2026 Agency Benchmarks Report is here!
+    Read it free The 2026 Agency Benchmarks Report is here! Read it free The 2026
+    Agency Benchmarks Report is here! Read it free Getting Started See how it works
+    for you The whole platform, explained in a four-minute guided tour. Watch the
+    Platform Tour Templates for your clients Pre-built report templates for every
+    channel, ready to customize. S
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b852e22ac88f1aad
+  - ev-f4256ff7de9e092b
+  - ev-b5979e5e51835014
+  field: offers
+  value: reporting software
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b852e22ac88f1aad
+  - ev-f4256ff7de9e092b
+  - ev-b5979e5e51835014
+  field: icp
+  value: marketing agencies
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-b852e22ac88f1aad
+  - ev-f4256ff7de9e092b
+  - ev-b5979e5e51835014
+  field: personas
+  value: marketing agencies
+  visibility: message_safe
+company_id: saas-01
+corrections: []
+evidence:
+- content_hash: b852e22ac88f1aadc330d7780b2e78a78408a05b2693ca344b8d11eec240f5a6
+  evidence_id: ev-b852e22ac88f1aad
+  excerpt: 'About AgencyAnalytics - We Help Marketing Agencies Scale The 2026 Agency
+    Benchmarks Report is here! Read it free The 2026 Agency Benchmarks Report is here!
+    Read it free The 2026 Agency Benchmarks Report is here! Read it free The 2026
+    Agency Benchmarks Report is here! Read it free Getting Started See how it works
+    for you The whole platform, explained in a four-minute guided tour. Watch the
+    Platform Tour Templates for your clients Pre-built report templates for every
+    channel, ready to customize. Start With a Template Connect your data 85+ data
+    sources your clients care about, in one platform. Find Your Integrations Get a
+    guided walkthrough A real human walks you through the platform, tailored to your
+    agency. Book a Demo Or skip straight to your own data — set up your first client
+    in minutes. Start Free Platform Reporting Save time on reporting. Automated Reports
+    Custom Dashboards Report Templates Drag & Drop Editor White Label Branding Custom
+    Metrics Insights Analyze results across clients. AI Analysis Metric Alerts Anomaly
+    Detection Trend Forecasting Benchmark Comparisons Clients and Team Retain more
+    clients. Client Portal Client Communication Task Management Access Control Goal
+    & Budget Tracking Trusted Data Centralize client data. 85+ Integrations Unified
+    Client Data Predictable Performance Catch Bad Data Early Deeper Campaign Analysis
+    Report on any channel SEO Social Paid eCommerce Multi-Channel See All Features
+    Resources Learn Blog KPI definitions Customer stories Videos Support Help center
+    Client reporting guide Platform tour Featured Read the 2026 Agency Benchmarks
+    Report Ahead of Next: The 2026 AgencyAnalytics Product Roadmap Pricing Login Login
+    Start Free My Account We Help Marketing Agencies Scale. Since 2010, we’ve been
+    improving our client reporting solutions based on feedback from growth-oriented
+    marketing agencies. With fully automated reports and custom dashboards, AgencyAnalytics
+    provides everything a marketing agency needs to save time, impress client'
+  retrieved_at: '2026-08-12T21:00:18.846689+00:00'
+  url: https://agencyanalytics.com/company/about
+- content_hash: f4256ff7de9e092b2030b13ddb895aba89ccada48f28d1e3fbe7e1fd7f52eb2e
+  evidence_id: ev-f4256ff7de9e092b
+  excerpt: AgencyAnalytics | LinkedIn Agree & Join LinkedIn By clicking Continue to
+    join or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and
+    Cookie Policy . Skip to main content LinkedIn Top Content People Learning Jobs
+    Games Sign in Join now AgencyAnalytics Software Development Toronto, Ontario 14,083
+    followers The only all-in-one automated reporting solution for marketing agencies.
+    See jobs Follow View all 123 employees Report this company About us AgencyAnalytics
+    is the only reporting and insights platform built for marketing agencies. Prove
+    your value to clients, win back the hours you lose to manual reporting, and keep
+    more of the clients you've worked hard to earn. Connect all your marketing channels
+    in one place and report on SEO, PPC, social media, email, call tracking, and more,
+    with 85+ integrations pulling live data into your dashboards and reports. Automate
+    report creation and scheduling so polished, accurate updates go out on time without
+    manual effort. Benchmark performance, spot trends early, and walk into client
+    calls already knowing what's working and what to fix with AI-powered insights.
+    Everything is fully white-labeled for your agency. Give clients their own login
+    to the web or mobile app, branded to look like you built the platform in-house.
+    Trusted by 7,000+ marketing agencies. Start a free trial at agencyanalytics.com.
+    Website https://agencyanalytics.com/ External link for AgencyAnalytics Industry
+    Software Development Company size 51-200 employees Headquarters Toronto, Ontario
+    Type Privately Held Founded 2010 Specialties Digital Marketing, SAAS, Link Building,
+    Facebook Marketing, Digital Marketing, Marketing Agencies, Marketing Performance,
+    Social Media Marketing, Client Marketing Reports, Marketing Analytics, Marketing
+    Agency, Digital Agency, Marketing Reporting, Client Reporting, Marketing Dashboards,
+    While Label Reporting, Marketing Analytics, AI Marketing Insights, Agency Reporting
+    Software, Marketing Performance, Client Marketi
+  retrieved_at: '2026-08-12T21:00:19.746428+00:00'
+  url: https://ca.linkedin.com/company/agencyanalytics
+- content_hash: b5979e5e51835014af2d9010867b877c6592c9f14cc21259777f01934a6d4a20
+  evidence_id: ev-b5979e5e51835014
+  excerpt: AgencyAnalytics Reviews in 2026 Join/Login Business Software Open Source
+    Software For Vendors Blog About More Articles SourceForge Podcast Support / Documentation
+    Subscribe to our Newsletter Support Request For Vendors Add a Product Join Login
+    Business Software Open Source Software SourceForge Podcast Resources Articles
+    Case Studies Blog Menu Help Create Join Login Home Compare Business Software Dashboard
+    Software AgencyAnalytics AgencyAnalytics 5.0 out of 5 stars. (1 Review and Rating
+    ) Write a Review Alternatives to AgencyAnalytics Popular Alternatives & Related
+    Software Adzooma (254 Ratings) Adzooma’s an award-winning digital marketing platform
+    that helps businesses of any size grow by making online marketing easy. Our all-in-one
+    platform helps you set up, manage, and optimize your Google, Facebook, and Microsoft
+    advertising campaigns all in one place. By leveraging innovative machine learning
+    and data science, our platform pinpoints what drives online business success to
+    make sure you get the most out of your advertising campaigns. Track PPC performance
+    and highlight over/under spend to improve your quality score, conversions, and
+    ROI. Packed with all the tools you need to grow your business, Adzooma gives you
+    a crystal clear view of where your online marketing is right now, then provides
+    personalized checklists to help you drive business growth. Join thousands of business
+    owners like you and see how we make growing your business online simple. Learn
+    more PBRS Power BI Reports Distribution (12 Ratings) PBRS is a powerful and versatile
+    tool that enhances the scheduling, automation, and distribution capabilities of
+    Power BI reports. It allows you to schedule Power BI reports to run at specific
+    dates and times, or set up recurring schedules based on your business needs. You
+    can also configure event-based triggers that run reports based on specific events
+    or conditions, such as database changes, file updates, email notifications, or
+    port activity. You can also custo
+  retrieved_at: '2026-08-12T21:00:20.602081+00:00'
+  url: https://sourceforge.net/software/product/AgencyAnalytics/
+- content_hash: bd009b1dea181f7dce83a31a021c09ca3e618215cfb3f741748bce0688c947ce
+  evidence_id: ev-bd009b1dea181f7d
+  excerpt: 'Detected date: 2026-07-31
+
+    Title: Product Roundup | AgencyAnalytics Knowledge Base
+
+    Date: 2026-07-31
+
+    Source: help.agencyanalytics.com
+
+    Snippet: # July 2026 During the Ahead of Next live session, we also shared a link
+    for our recently published **2026 AgencyAnalytics Marketing Agency Benchmarks
+    Report** , built from responses from 494 agency professionals. Read the report
+    **[here](https://agencyanalytics.com/agency-benchmarks-2026)** . # June 2026 In
+    the video above, you''ll see AgencyAnalytics'' latest round of launches built
+    to help you track, collaborate, and understand your clients'' data. ... **A few
+    more small but mighty updates from AgencyAnalytics in June** _Features:_ * [A
+    new home for AgencyAI (previously Ask AI)](https://agencyanalytics.canny.io/changelog/a-new-home-for-agencyai-previously-askai)
+    * [Restore deleted clients](https://agencyanalytics.canny.io/changelog/restore-deleted-clients)
+    ... # March 2026 In the video above, you''ll see AgencyAnalytics'' latest round
+    of launches built to help you fine-tune your data, and keep client insights automatically
+    up to date. The demo includes:'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://help.agencyanalytics.com/en/articles/13462766-product-roundup
+- content_hash: c637953c8efc799d41239900f0e3ca6bd067edd61bcf9dcca8b8c00b23da0235
+  evidence_id: ev-c637953c8efc799d
+  excerpt: 'Title: Newsroom - AgencyAnalytics
+
+    Source: agencyanalytics.com
+
+    Snippet: # Newsroom ## AgencyAnalytics Launches First AI Co-Pilot Exclusively
+    for Marketing Agencies AgencyAnalytics AI-powered tools speed up and go deeper
+    on client and data specific insights for marketing agencies The 2025 Marketing
+    Agency Benchmarks Report cover page ## AgencyAnalytics Releases the 2025 Marketing
+    Agency Benchmarks Report AgencyAnalytics releases the 2025 Marketing Agency Benchmarks
+    Report, with insights from 220+ agency leaders that reveal changing priorities,
+    AI disruption, and new growth tactics. Leadership Team Press Release Feature Image
+    ... ## In the News [The Secret to Gaining Agency Efficiency with Automated Reporting
+    with Joe Kindness](https://www.agencymastery360.com/podcast/agency-efficiency-automated-reporting)
+    [MTC Logo AgencyAnalytics Unveils 11-Second Smart Reports](https://www.martechcube.com/agencyanalytics-unveils-11-second-smart-reports/)
+    Show All News Articles'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: http://agencyanalytics.com/company/newsroom
+- content_hash: 720461db23c3095586960c8cdb58be87c16ed40b6e6bc13f8e31139e1679af6a
+  evidence_id: ev-720461db23c30955
+  excerpt: 'Detected date: 2026-08-12
+
+    Title: AgencyAnalytics Review: Hands-On Verdict + 2026 Pricing
+
+    Date: 2026-08-12
+
+    Source: nextgrowth.ai
+
+    Snippet: # AgencyAnalytics Review: Hands-On Verdict + 2026 Pricing 4.7/5 G2 rating
+    from verified reviews [g2.com](https://www.g2.com/products/agencyanalytics/reviews)
+    85+ Integrations across ad, SEO, social, and email [agencyanalytics.com](https://agencyanalytics.com/pricing)
+    2 mo Operational test across 6 of 8 client accounts ... ## AgencyAnalytics Features
+    That Actually Ship ### Goals, Scorecards, Anomaly Detection, and Forecasting (2026
+    Headline Additions) AgencyAnalytics shipped **four flagship features in late 2025
+    through Q1 2026** that materially close the gap with Looker Studio for analytical
+    depth, and they ship on the Core plan rather than being gated to the higher tiers.
+    ... AgencyAnalytics supports custom-domain CNAME setup (reports delivered from
+    reports.youragency.com, not agencyanalytics.com), a branded mobile app with your
+    agency’s logo and colors, and SMTP configuration so automated report emails send
+    from your own domain.'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://nextgrowth.ai/agencyanalytics-review/
+- content_hash: 116284431e78f4a681c7559714711a79ddcb7812f75ba7db6680740f4c85b385
+  evidence_id: ev-116284431e78f4a6
+  excerpt: 'Detected date: Aug 5, 2025
+
+    Title: Welcome to the New AgencyAnalytics: Built for Marketing Agencies. | AgencyAnalytics
+
+    Source: agencyanalytics.com
+
+    Snippet: [The 2026 Agency Benchmarks Report is here! Read it free The 2026 Agency
+    Benchmarks Report is here! Read it free The 2026 Agency Benchmarks Report is here!
+    Read it free The 2026 Agency Benchmarks Report is here! Read it free](https://agencyanalytics.com/agency-benchmarks-2026?utm_source=website&utm_medium=announcement-bar&utm_campaign=2026+Benchmarkreport)
+    ... # Welcome to the New AgencyAnalytics: Built for Marketing Agencies. Aug 5,
+    2025 39 minutes G2 and Capterra ratings Based on 500+ Reviews ## Join 7,000+ agencies
+    that run client reporting on AgencyAnalytics [Start Your Free Trial Today](https://app.agencyanalytics.com/signup?el=footer)
+    **Free 14-day trial.** No credit card required. Terms Privacy'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://agencyanalytics.com/videos/welcome-to-the-new-agencyanalytics-built-for-marketing-agencies
+- content_hash: 43a3669ce9a63060c92d246ddf71678c1ce28ef772327c13b432e93326f8b523
+  evidence_id: ev-43a3669ce9a63060
+  excerpt: 'Title: News & Updates | AgencyAnalytics Knowledge Base
+
+    Source: help.agencyanalytics.com
+
+    Snippet: # News & Updates Find more information about new features and product
+    updates here. By Daniella 1 author 1 article * [Product Roundup](https://help.agencyanalytics.com/en/articles/13462766-product-roundup)
+    AgencyAnalytics Knowledge Base * [Product Roadmap](https://updates.agencyanalytics.com/changelog)
+    * [Product Updates](https://updates.agencyanalytics.com/changelog) * [API](https://agencyanalytics.com/docs/api/introduction)
+    * [System Status](https://agencyanalytics.statuspage.io/)'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: http://help.agencyanalytics.com/en/collections/12613020-news-updates
+- content_hash: e7a8aa34b5d10f826d53a0ecd6607a52eee163b5918725f512d8d6c23029c70d
+  evidence_id: ev-e7a8aa34b5d10f82
+  excerpt: 'Detected date: 2024-04-11
+
+    Title: AgencyAnalytics Announces Senior Leadership Team ...
+
+    Date: 2024-04-11
+
+    Source: prnewswire.com
+
+    Snippet: # AgencyAnalytics Announces Senior Leadership Team Expansion Signifying
+    Its Commitment to Growth and Innovation ## Share this article TORONTO , April
+    11, 2024 /PRNewswire/ -- AgencyAnalytics, trusted by thousands of marketing agencies,
+    announces a significant expansion to its senior leadership team to accelerate
+    its commitment to product innovation and ROI for marketing agencies. ... Joining
+    AgencyAnalytics as the new Vice President of Product, Puneet Mulchandani brings
+    experience from his time as Senior Director of Product at Stack Overflow, and
+    deep knowledge of product and engineering from Developer Marketing, AdTech, Hospitality
+    Tech, HR tech, EdTech, and Digital Publishing.'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://www.prnewswire.com/news-releases/agencyanalytics-announces-senior-leadership-team-expansion-signifying-its-commitment-to-growth-and-innovation-302114035.html
+- content_hash: c3a3cb8b3c1d46b36355662a0cad92bda5884855e451057587a2d155a10ffb5a
+  evidence_id: ev-c3a3cb8b3c1d46b3
+  excerpt: 'Detected date: 2023-12-12
+
+    Title: AGENCYANALYTICS UNVEILS RAFT OF TIME-SAVING FEATURES FOR MARKETING AGENCIES
+
+    Date: 2023-12-12
+
+    Source: prnewswire.com
+
+    Snippet: # AGENCYANALYTICS UNVEILS RAFT OF TIME-SAVING FEATURES FOR MARKETING
+    AGENCIES ## News provided by **AgencyAnalytics** Dec 12, 2023, 09:00 ET ... ##
+    Share this article TORONTO , Dec. 12, 2023 /PRNewswire/ -- Thousands of marketing
+    agencies have trusted AgencyAnalytics with its client reporting solutions since
+    2010. ... * **MultiView Campaigns** , which helps agencies quickly and easily
+    connect multiple accounts per platform integration to a single client campaign.
+    Designed for agencies that manage multiple ad accounts or social profiles for
+    the same client, this new feature reduces costs and streamlines data insights.
+    * **Google BigQuery Integration** to quickly connect a Google BigQuery (often
+    used by agencies as a cost-effective and multicloud data warehouse) instance to
+    reports and dashboards to run custom SQL queries, create macros to filter by date,
+    and more. (Note: Coming in Mid-December).'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://www.prnewswire.com/news-releases/agencyanalytics-unveils-raft-of-time-saving-features-for-marketing-agencies-302012543.html
+- content_hash: 52c1f85518822971aabaf638ebb7f1b0691779b779354792e606a78dd8ba12a1
+  evidence_id: ev-52c1f85518822971
+  excerpt: 'Query: agencyanalytics.com news
+
+    1. https://help.agencyanalytics.com/en/articles/13462766-product-roundup
+
+    Title: Product Roundup | AgencyAnalytics Knowledge Base
+
+    Date: 2026-07-31
+
+    Source: help.agencyanalytics.com
+
+    Snippet: # July 2026 During the Ahead of Next live session, we also shared a link
+    for our recently published **2026 AgencyAnalytics Marketing Agency Benchmarks
+    Report** , built from responses from 494 agency professionals. Read the report
+    **[here](https://agencyanalytics.com/agency-benchmarks-2026)** . # June 2026 In
+    the video above, you''ll see AgencyAnalytics'' latest round of launches built
+    to help you track, collaborate, and understand your clients'' data. ... **A few
+    more small but mighty updates from AgencyAnalytics in June** _Features:_ * [A
+    new home for AgencyAI (previously Ask AI)](https://agencyanalytics.canny.io/changelog/a-new-home-for-agencyai-previously-askai)
+    * [Restore deleted clients](https://agencyanalytics.canny.io/changelog/restore-deleted-clients)
+    ... # March 2026 In the video above, you''ll see AgencyAnalytics'' latest round
+    of launches built to help you fine-tune your data, and keep client insights automatically
+    up to date. The demo includes:
+
+    2. http://agencyanalytics.com/company/newsroom
+
+    Title: Newsroom - AgencyAnalytics
+
+    Source: agencyanalytics.com
+
+    Snippet: # Newsroom ## AgencyAnalytics Launches First AI Co-Pilot Exclusively
+    for Marketing Agencies AgencyAnalytics AI-powered tools speed up and go deeper
+    on client and data specific insights for marketi'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://www.google.com/search?q=agencyanalytics.com+news&tbm=nws
+- content_hash: cb4bff357888f7820c996e1c28dce3a645d87cf14f3cc1c5090fa04480575396
+  evidence_id: ev-cb4bff357888f782
+  excerpt: 'Detected date: 2025-09-18
+
+    Title: AgencyAnalytics
+
+    Date: 2025-09-18
+
+    Source: facebook.com
+
+    Snippet: 18 Sept 2025 — Agencies are struggling. With so much AI-generated content
+    flooding the web, 57% of agency leaders say search visibility is already dropping.
+    On top'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://www.facebook.com/AgencyAnalytics/posts/agencies-are-struggling-with-so-much-ai-generated-content-flooding-the-web-57-of/1379193167543446/
+- content_hash: f51a341b775a340743a761b64e4d29bf0bef6428441195a06ee1b381107608e0
+  evidence_id: ev-f51a341b775a3407
+  excerpt: 'Detected date: 2025-11-01
+
+    Title: AgencyAnalytics | Using AI to speed up client reporting isn''t ...
+
+    Date: 2025-11-01
+
+    Source: instagram.com
+
+    Snippet: 1 Nov 2025 — agencyanalytics on October 23, 2025: " Using AI to speed
+    up client reporting isn''t cheating … it''s smart! With Ask AI and AI Summary
+    in AgencyAnalytics,'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://www.instagram.com/agencyanalytics/reel/DQg1i-QAFXP/?__d=1%E9%AA%87%E5%AE%A2%E6%9F%A5%E8%AF%A2%E5%AF%B9%E6%96%B9%E9%93%B6%E8%A1%8C%E5%8D%A1%E6%95%B0%E9%87%8F%2B%E4%BD%99%E9%A2%9D%2C%E6%9C%80%E5%85%88%E9%80%89%E6%8B%A9%E7%9A%84%E5%B7%A5%E5%85%B72025%E7%A4%BE%E5%B7%A5%E5%BA%93%E6%9C%80%E6%96%B0%E6%95%B0%E6%8D%AE%E5%9C%A8%E7%BA%BF%E6%9F%A5%E8%AF%A2%E7%BD%91%E7%AB%99%E2%9C%94%EF%B8%8Fb5a06.com
+- content_hash: 3240d4f76f01dfe8a0438192a5dc2cefe704d00cdbc9b967a97613d9cdb59b98
+  evidence_id: ev-3240d4f76f01dfe8
+  excerpt: 'Detected date: 2026-03-06
+
+    Title: Nonprofit Agency Analytics Platform
+
+    Date: 2026-03-06
+
+    Source: madtech.ai
+
+    Snippet: * MADTECH.AI is now featured in the Customer Journey Attribution Provider
+    Map 2025 by Marketing Science Today - [Read more »](https://marketingscience.today/provider_maps)
+    * New Release: _The MADTECH.AI Guide to Evaluating and Selecting iPaaS for Marketers._
+    Download ... # Build a Smarter, Faster, More Scalable B2C Agency [Start your free
+    trial](https://app.madtech.ai/signup) [Schedule your demo](https://calendly.com/bill-lederer/madtechai-introduction-clone)
+    [Product Tour](https://madtech.ai/wp-content/uploads/2025/09/MDI-Suite-Marketing-Decision-Intelligence-Suite-Product-Tour.mp4?autoplay=1)
+    ... ## in action now Integrate all your marketing data in minutes! [Watch video](https://madtech.ai/wp-content/uploads/2025/08/MADTECH.AI-iPaaS-Suite-Product-TOur-Video.mp4?autoplay=1)'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://madtech.ai/for-b2c-agencies-consultancies/
+- content_hash: 46291d82f5d967b107f7a1c9ef3693e46ac843db3bf4c33da79306cddc126c01
+  evidence_id: ev-46291d82f5d967b1
+  excerpt: 'Detected date: 2025-09-26
+
+    Title: We''re celebrating a big win this Fall! 🏆🍁 AgencyAnalytics just ...
+
+    Date: 2025-09-26
+
+    Source: facebook.com
+
+    Snippet: 26 Sept 2025 — We''re celebrating a big win this Fall! AgencyAnalytics
+    just picked up 68 new G2 badges —from Momentum Leader to Best Relationship—and
+    it''s all thanks'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://www.facebook.com/AgencyAnalytics/posts/were-celebrating-a-big-win-this-fall-agencyanalytics-just-picked-up-68-new-g2-ba/1386769886785774/
+- content_hash: 554c846a8976caa1d0438c0454176ec450d15daa484391621ad79c358b678d3c
+  evidence_id: ev-554c846a8976caa1
+  excerpt: 'Detected date: Jul 24, 2026
+
+    Title: AgencyAnalytics - Crunchbase Company Profile & Funding
+
+    Source: crunchbase.com
+
+    Snippet: # Company Performance Metrics Analytics Marketing SaaS SEO Software ##
+    Key People * Photo of Joe Kindness Joe Kindness: CEO & Co-Founder ## Details Legal
+    Name AgencyAnalytics Operating Status Active Company Type For Profit Founders
+    Joe Kindness About the Company AgencyAnalytics is an all-in-one marketing dashboard
+    and SEO platform designed for agencies. Save hours on client reporting every month
+    with easy-to-use drag-and-drop custom dashboards. Use our powerful report editor
+    for beautiful PDF and web-based reports that send automatically to your clients.
+    ... ## News and Press News • Jul 24, 2026 obfuscated obfuscated obfuscated obfuscated
+    obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated News • Sep 11,
+    2025 obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated
+    obfuscated obfuscated obfuscated News • Sep 10, 2025 obfuscated'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://www.crunchbase.com/organization/agency-analytics
+- content_hash: df97f00d23463fad8335fd73f49decdd412823bc25a67967f4450f5f4f80fb0b
+  evidence_id: ev-df97f00d23463fad
+  excerpt: 'Title: News & Updates | AgencyAnalytics Knowledge Base
+
+    Source: help.agencyanalytics.com
+
+    Snippet: # News & Updates Find more information about new features and product
+    updates here. By Daniella 1 author 1 article * [Product Roundup](https://help.agencyanalytics.com/en/articles/13462766-product-roundup)
+    AgencyAnalytics Knowledge Base * [Product Roadmap](https://updates.agencyanalytics.com/changelog)
+    * [Product Updates](https://updates.agencyanalytics.com/changelog) * [API](https://agencyanalytics.com/docs/api/introduction)
+    * [System Status](https://agencyanalytics.statuspage.io/)'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://help.agencyanalytics.com/en/collections/12613020-news-updates
+- content_hash: 0164fa42bda037f5188490d2db392de9d010b20e477f74a0934672bf1a06649f
+  evidence_id: ev-0164fa42bda037f5
+  excerpt: 'Detected date: 2026-07-31
+
+    Title: Product Roundup | AgencyAnalytics Knowledge Base
+
+    Date: 2026-07-31
+
+    Source: help.agencyanalytics.com
+
+    Snippet: # Product Roundup A monthly update and demo of the latest launches on
+    AgencyAnalytics. Written by Daniella Ingrao Updated over 2 weeks ago Table of
+    contents Welcome to your roundup of the latest product updates, featuring demos
+    and insights into new functionality released on the platform! ... # June 2026
+    In the video above, you''ll see AgencyAnalytics'' latest round of launches built
+    to help you track, collaborate, and understand your clients'' data. ... **A few
+    more small but mighty updates from AgencyAnalytics in June** _Features:_ * [A
+    new home for AgencyAI (previously Ask AI)](https://agencyanalytics.canny.io/changelog/a-new-home-for-agencyai-previously-askai)
+    * [Restore deleted clients](https://agencyanalytics.canny.io/changelog/restore-deleted-clients)
+    ... # March 2026 In the video above, you''ll see AgencyAnalytics'' latest round
+    of launches built to help you fine-tune your data, and keep client insights automatically
+    up to date. The demo includes:'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://help.agencyanalytics.com/en/articles/13462766-product-roundup
+- content_hash: afad9c0b5115b17e759ef70d824915030bfdf8430231ef1b6c6f3f1c15826a77
+  evidence_id: ev-afad9c0b5115b17e
+  excerpt: 'Query: AgencyAnalytics "press release" OR "announces" OR "newsroom"
+
+    1. https://www.facebook.com/AgencyAnalytics/posts/agencies-are-struggling-with-so-much-ai-generated-content-flooding-the-web-57-of/1379193167543446/
+
+    Title: AgencyAnalytics
+
+    Date: 2025-09-18
+
+    Source: facebook.com
+
+    Snippet: 18 Sept 2025 — Agencies are struggling. With so much AI-generated content
+    flooding the web, 57% of agency leaders say search visibility is already dropping.
+    On top
+
+    2. https://www.instagram.com/agencyanalytics/reel/DQg1i-QAFXP/?__d=1%E9%AA%87%E5%AE%A2%E6%9F%A5%E8%AF%A2%E5%AF%B9%E6%96%B9%E9%93%B6%E8%A1%8C%E5%8D%A1%E6%95%B0%E9%87%8F%2B%E4%BD%99%E9%A2%9D%2C%E6%9C%80%E5%85%88%E9%80%89%E6%8B%A9%E7%9A%84%E5%B7%A5%E5%85%B72025%E7%A4%BE%E5%B7%A5%E5%BA%93%E6%9C%80%E6%96%B0%E6%95%B0%E6%8D%AE%E5%9C%A8%E7%BA%BF%E6%9F%A5%E8%AF%A2%E7%BD%91%E7%AB%99%E2%9C%94%EF%B8%8Fb5a06.com
+
+    Title: AgencyAnalytics | Using AI to speed up client reporting isn''t ...
+
+    Date: 2025-11-01
+
+    Source: instagram.com
+
+    Snippet: 1 Nov 2025 — agencyanalytics on October 23, 2025: " Using AI to speed
+    up client reporting isn''t cheating … it''s smart! With Ask AI and AI Summary
+    in AgencyAnalytics,
+
+    3. https://madtech.ai/for-b2c-agencies-consultancies/
+
+    Title: Nonprofit Agency Analytics Platform
+
+    Date: 2026-03-06
+
+    Source: madtech.ai
+
+    Snippet: * MADTECH.AI is now featured in the Customer Journey Attribution Provider
+    Map 2025 by Marketing Science Today - [Read more »](https://marketingscience.today/provider_maps)
+    * New Release: _The MADTECH.AI Guide to Evalu'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://www.google.com/search?q=AgencyAnalytics+%22press+release%22+OR+%22announces%22+OR+%22newsroom%22&tbs=qdr%3Ay
+- content_hash: d6e0dfadcdae7aa5cdf5d04e64ab8e80988c4b6989dd855b22cb7df6494191ff
+  evidence_id: ev-d6e0dfadcdae7aa5
+  excerpt: 'Detected date: 2026-07-07
+
+    Title: Ahead of Next
+
+    Date: 2026-07-07
+
+    Source: agencyanalytics.com
+
+    Snippet: # Across 150,000 clients, AI search is rewriting discovery. Clients want
+    instant answers. AgencyAnalytics now puts your agency ahead of all of it. ## AI
+    didn’t just change agency work. It changed how you deliver results. **Reports
+    aren''t enough.** Clients want deeper insights that paint a story, not just numbers.
+    Trust **A weekly update is a missed window.** "Right now" is the new "this week."
+    Speed **AI search is the new SEO.** If your client isn''t showing up in ChatGPT,
+    they''re invisible. AEO **MCPs are reshaping every step.** From how performance
+    gets analyzed to how results are delivered. Data ... ## We see what’s coming.
+    Deliver what’s next. [](https://www.reddit.com/r/AgencyAnalytics/ "Reddit")'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://agencyanalytics.com/p/ahead-of-next
+- content_hash: 84532013af11db925ea137e10ac843ae8d16d445bf8106fa1b07d31b38abad8a
+  evidence_id: ev-84532013af11db92
+  excerpt: 'Detected date: 2026-06-24
+
+    Title: Report Overview
+
+    Date: 2026-06-24
+
+    Source: help.agencyanalytics.com
+
+    Snippet: # Report Overview Learn how to create reports, edit reports, download
+    them, and more. Written by AgencyAnalytics Team June 24, 2026 Table of contents
+    ... ## Saving your reports After creating the report or making any report changes,
+    the autosave feature will kick in. Each time a report autosaves, a report version
+    is created. To view a report''s version history, click the rewind icon in the
+    upper right of the report. ... ## Create templates * [Manage and Apply Report
+    Templates](https://help.agencyanalytics.com/en/articles/15234399-manage-and-apply-report-templates)
+    * [Create & Manage Reports](https://help.agencyanalytics.com/en/articles/15592180-create-manage-reports)
+    ... * [Product Roadmap](https://updates.agencyanalytics.com/changelog) * [Product
+    Updates](https://updates.agencyanalytics.com/changelog) * [API](https://agencyanalytics.com/docs/api/introduction)
+    * [System Status](https://agencyanalytics.statuspage.io/)'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://help.agencyanalytics.com/en/articles/4706526-report-overview
+- content_hash: 3a270e36d8e1b4781469390b67231cde3181d102c8cea9ad7d4180de7e718139
+  evidence_id: ev-3a270e36d8e1b478
+  excerpt: "Detected date: 2026-04-02\nTitle: Data comparison improvements\nDate:\
+    \ 2026-04-02\nSource: updates.agencyanalytics.com\nSnippet: AgencyAnalytics logo\
+    \ AgencyAnalytics Roadmap Feedback Feedback Changelog ← Back to changelog [Powered\
+    \ by Canny](https://canny.io/powered-by-canny?utm_source=changelog_subdomain&utm_medium=powered&utm_campaign=agencyanalytics&company=AgencyAnalytics)\
+    \ new Improvement # Data comparison improvements Understanding your data just\
+    \ got easier. The active comparison period is now visible directly in your report\
+    \ view, and you can choose to see comparison data as percentages or absolute values\
+    \ — whichever works best for you. What's new: * Comparison period now displayed\
+    \ in the top right corner of reports * Toggle between percentage and absolute\
+    \ change values for comparisons * Hover over comparison data in dashboards to\
+    \ see absolute values inline \uFEFF [](https://www.facebook.com/dialog/share?app_id=1606018679610384&display=page&href=https%3A%2F%2Fagencyanalytics.canny.io%2Fchangelog%2Fdata-comparison-improvements&redirect_uri=https%3A%2F%2Fagencyanalytics.canny.io%2Fchangelog%2Fdata-comparison-improvements)"
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://updates.agencyanalytics.com/changelog/data-comparison-improvements
+- content_hash: 085db273a2a9d5e4b5c0c0f43c8f9beb29525450ab12d7e0b17dea62453202ef
+  evidence_id: ev-085db273a2a9d5e4
+  excerpt: 'Detected date: 2026-08-13
+
+    Title: Paid Search Analytics: Metrics, GA4 & PPC Reporting Guide
+
+    Date: 2026-08-13
+
+    Source: agencyanalytics.com
+
+    Snippet: [The 2026 Agency Benchmarks Report is here! Read it free The 2026 Agency
+    Benchmarks Report is here! Read it free The 2026 Agency Benchmarks Report is here!
+    Read it free The 2026 Agency Benchmarks Report is here! Read it free](https://agencyanalytics.com/agency-benchmarks-2026?utm_source=website&utm_medium=announcement-bar&utm_campaign=2026+Benchmarkreport)
+    AgencyAnalytics * Getting Started * Pricing [Start Free](https://app.agencyanalytics.com/signup?el=global-nav)
+    [My Account](https://app.agencyanalytics.com/login) Back to Blog Published:Apr
+    30, 2026 ... # Paid search analytics: How to measure, analyze & improve PPC performance
+    ## Best tools for paid search analytics ### 1. AgencyAnalytics Monthly Paid Search
+    Performance Report Example Build Custom Marketing Dashboards in Minutes Save Time,
+    Impress Clients, and Deliver Results [Find Out What Custom Dashboards Can Do](https://agencyanalytics.com/features/custom-marketing-dashboards)'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://agencyanalytics.com/blog/paid-search-analytics
+- content_hash: ef44ed459dcfeda5eea6cb3412843fc34c5b4afcb1c9982bad76311aaa3c9853
+  evidence_id: ev-ef44ed459dcfeda5
+  excerpt: 'Detected date: 2026-03-15
+
+    Title: Agency Analytics - 2026 Company Profile, Team & Competitors - Tracxn
+
+    Date: 2026-03-15
+
+    Source: tracxn.com
+
+    Snippet: • AgencyAnalytics Unveils Benchmarks, Empowering Marketing Agencies with
+    Industry-Driven Insights MarTech Series • Nov 22, 2024 • Agency Analytics • AgencyAnalytics
+    Launches First AI Co-Pilot Exclusively for Marketing Agencies MarTech Series •
+    Sep 17, 2024 • Agency Analytics • AgencyAnalytics Unveils ‘Labs’ Functionality
+    Demand Gen Report • Dec 14, 2023 • Agency Analytics lock Get curated news about
+    company updates, funding rounds, M&A deals and others. Sign up today! View complete
+    company profile of Agency Analytics Are you a Founder ? Agency Analytics''s funding
+    and investors Agency Analytics has not raised any funding rounds yet. Agency Analytics''
+    founders and board of directors [Founder? Claim Profile](https://platform.tracxn.com/a/d/company'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://tracxn.com/d/companies/agency-analytics/__8gpFumsL-jzj8T5gxwqJzQugySiq4FJ20VmGC0zYluY
+- content_hash: 1130370a3c6201f018c5c18b1353494402e56ce5ae45ef3de993387455234766
+  evidence_id: ev-1130370a3c6201f0
+  excerpt: "Detected date: July 2, 2026\nTitle: Changelog | AgencyAnalytics\nSource:\
+    \ updates.agencyanalytics.com\nSnippet: # Everything about your client's data,\
+    \ now in one tab July 2, 2026 fixed Integration ... # Microsoft Ads: Impression\
+    \ Share metric removed June 30, 2026 new New Feature # AI Tracker is now in open\
+    \ beta You can now add AI search visibility to any AgencyAnalytics account with\
+    \ AI Tracker . It's a new add-on that shows you how your clients appear in AI-generated\
+    \ search responses. Connect it as a data source for any client to get started\
+    \ with your free 14-day trial . ... June 25, 2026 fixed Integration ... # Meta\
+    \ Ads: multi-select custom events filter Meta Ads - Custom Events Filter Click\
+    \ [here](https://help.agencyanalytics.com/en/articles/2018704-connect-facebook-ads-meta-ads)\
+    \ to learn more about connecting Meta Ads as a data source in AgencyAnalytics.\
+    \ \uFEFF ... # Advanced filtering for Views Advanced filtering is now available\
+    \ in Views. The same filtering you use across the app now works when you're building\
+    \ Views. Views lets you combine and shape your data into exactly the table you\
+    \ need, whether that's a client-ready presentation or an internal view for managing\
+    \ performance."
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: http://updates.agencyanalytics.com/changelog
+- content_hash: f8f17655f27eac874699b698adeacf3fd455b176e163d3f90ca3d8714052de7b
+  evidence_id: ev-f8f17655f27eac87
+  excerpt: 'Detected date: 2026-07-31
+
+    Title: Product Roundup | AgencyAnalytics Knowledge Base
+
+    Date: 2026-07-31
+
+    Source: help.agencyanalytics.com
+
+    Snippet: # Product Roundup A monthly update and demo of the latest launches on
+    AgencyAnalytics. Written by Daniella Ingrao Updated over 2 weeks ago Table of
+    contents Welcome to your roundup of the latest product updates, featuring demos
+    and insights into new functionality released on the platform! ... # June 2026
+    In the video above, you''ll see AgencyAnalytics'' latest round of launches built
+    to help you track, collaborate, and understand your clients'' data. ... **A few
+    more small but mighty updates from AgencyAnalytics in June** _Features:_ * [A
+    new home for AgencyAI (previously Ask AI)](https://agencyanalytics.canny.io/changelog/a-new-home-for-agencyai-previously-askai)
+    * [Restore deleted clients](https://agencyanalytics.canny.io/changelog/restore-deleted-clients)
+    ... # March 2026 In the video above, you''ll see AgencyAnalytics'' latest round
+    of launches built to help you fine-tune your data, and keep client insights automatically
+    up to date. The demo includes:'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: http://help.agencyanalytics.com/en/articles/13462766-product-roundup
+- content_hash: 8d15690f8ed6c053de34692d58d29a1dd94f18e5a40d6fc5b89de00b8aed8338
+  evidence_id: ev-8d15690f8ed6c053
+  excerpt: 'Detected date: 2026-03-01
+
+    Title: AgencyAnalytics Reviews (2026): Pricing and Features | Digital Agency Network
+
+    Date: 2026-03-01
+
+    Source: digitalagencynetwork.com
+
+    Snippet: # AgencyAnalytics ## AgencyAnalytics Reviews ### Software Features &
+    Functionality ##### Integrations with Top Marketing SaaS ##### Pricing ##### Customer
+    Service #### Automated client reporting for marketing agencies ##### Customized
+    reports ###### Pre-built templates for marketing agencies [](https://digitalagencynetwork.com/agencyanalytics-launches-ai-search-tracking-as-agencies-reportlosing-visibility-into-where-clients-get-found/
+    "AgencyAnalytics launches AI search tracking as agencies report losing visibility
+    into...") ... [AgencyAnalytics launches AI search tracking as agencies report
+    losing visibility into...](https://digitalagencynetwork.com/agencyanalytics-launches-ai-search-tracking-as-agencies-reportlosing-visibility-into-where-clients-get-found/)'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://digitalagencynetwork.com/tool/agencyanalytics/
+- content_hash: 7dcacc1524fa6ba68b0bde14ffb96c333d34ecc3bbe6f5d601c191cd7f0e220a
+  evidence_id: ev-7dcacc1524fa6ba6
+  excerpt: 'Query: AgencyAnalytics launches OR "new feature" OR "introducing" OR "now
+    available"
+
+    1. https://agencyanalytics.com/p/ahead-of-next
+
+    Title: Ahead of Next
+
+    Date: 2026-07-07
+
+    Source: agencyanalytics.com
+
+    Snippet: # Across 150,000 clients, AI search is rewriting discovery. Clients want
+    instant answers. AgencyAnalytics now puts your agency ahead of all of it. ## AI
+    didn’t just change agency work. It changed how you deliver results. **Reports
+    aren''t enough.** Clients want deeper insights that paint a story, not just numbers.
+    Trust **A weekly update is a missed window.** "Right now" is the new "this week."
+    Speed **AI search is the new SEO.** If your client isn''t showing up in ChatGPT,
+    they''re invisible. AEO **MCPs are reshaping every step.** From how performance
+    gets analyzed to how results are delivered. Data ... ## We see what’s coming.
+    Deliver what’s next. [](https://www.reddit.com/r/AgencyAnalytics/ "Reddit")
+
+    2. https://help.agencyanalytics.com/en/articles/4706526-report-overview
+
+    Title: Report Overview
+
+    Date: 2026-06-24
+
+    Source: help.agencyanalytics.com
+
+    Snippet: # Report Overview Learn how to create reports, edit reports, download
+    them, and more. Written by AgencyAnalytics Team June 24, 2026 Table of contents
+    ... ## Saving your reports After creating the report or making any report changes,
+    the autosave feature will kick in. Each time a report autosaves, a report version
+    is created. To view a report''s version history, click the rewind icon in the
+    upper right of the report. ... ## Cre'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://www.google.com/search?q=AgencyAnalytics+launches+OR+%22new+feature%22+OR+%22introducing%22+OR+%22now+available%22&tbs=qdr%3Ay
+- content_hash: d26c4c722f5b27a0b4aec21665b9e215a788a14a20b56bd73c01b8ff5fb5a231
+  evidence_id: ev-d26c4c722f5b27a0
+  excerpt: "Detected date: July 2026\nTitle: Product Roundup | AgencyAnalytics Knowledge\
+    \ Base\nSkip to main content\n\n[](/en/)\n\n[Login](https://app.agencyanalytics.com/login)[Start\
+    \ Trial](https://app.agencyanalytics.com/signup?utm_campaign=intercom&utm_source=helparticle&utm_medium=header)\n\
+    \n[Login](https://app.agencyanalytics.com/login)[Start Trial](https://app.agencyanalytics.com/signup?utm_campaign=intercom&utm_source=helparticle&utm_medium=header)\n\
+    \nSearch for articles...\n\n  1. [All Collections](/en/)\n\n  2. [News & Updates](https://help.agencyanalytics.com/en/collections/12613020-news-updates)\n\
+    \n  3. Product Roundup\n\n\n\n# Product Roundup\n\nA monthly update and demo of\
+    \ the latest launches on AgencyAnalytics.\n\nWritten by Daniella Ingrao\n\nUpdated\
+    \ over 2 weeks ago\n\nTable of contents\n\nWelcome to your roundup of the latest\
+    \ product updates, featuring demos and insights into new functionality released\
+    \ on the platform!\n\n  * July 2026 \\- _Ahead of Next: live product walkthrough_\n\
+    \n  * June 2026\n\n  * May 2026\n\n  * March 2026\n\n  * February 2026\n\n  *\
+    \ January 2026\n\n\n\n\nCome back often and stay in-the-know :)\n\n* * *\n\n#\
+    \ July 2026 \n\nIn the video above, you'll see a recap of AgencyAnalytics' latest\
+    \ live product walkthrough—Ahead of Next. You'll see demos of five features built\
+    \ to keep you ahead of how client work is changing.\n\n  * **AI Tracker -** see\
+    \ exactly how your clients show up across ChatGPT, Claude, and other AI engines\n\
+    \n  * **Views -** describe the table you want, and it builds itself\n\n  * **MCP\
+    \ -** live client data, right ins"
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://help.agencyanalytics.com/en/articles/13462766-product-roundup
+- content_hash: 98cee8d327a6a4076ee025ef4c48c57b0a220d0d0f2f896ecb30294a0cb512b3
+  evidence_id: ev-98cee8d327a6a407
+  excerpt: "Title: Newsroom - AgencyAnalytics\n[The 2026 Agency Benchmarks Report\
+    \ is here! Read it freeThe 2026 Agency Benchmarks Report is here! Read it freeThe\
+    \ 2026 Agency Benchmarks Report is here! Read it freeThe 2026 Agency Benchmarks\
+    \ Report is here! Read it free](https://agencyanalytics.com/agency-benchmarks-2026?utm_source=website&utm_medium=announcement-bar&utm_campaign=2026+Benchmarkreport)\n\
+    \n[](/)\n\n  * Getting Started\n\nSee how it works for you\n\nThe whole platform,\
+    \ explained in a four-minute guided tour.\n\n[Watch the Platform Tour](/platform-tour)\n\
+    \n[](/platform-tour)\n\nTemplates for your clients\n\nPre-built report templates\
+    \ for every channel, ready to customize.\n\n[Start With a Template](/templates)\n\
+    \n[](/templates)\n\nConnect your data\n\n85+ data sources your clients care about,\
+    \ in one platform.\n\n[Find Your Integrations](/integrations)\n\n[](/integrations)\n\
+    \nGet a guided walkthrough\n\nA real human walks you through the platform, tailored\
+    \ to your agency.\n\n[Book a Demo](/company/contact/sales)\n\n[](/company/contact/sales)\n\
+    \nOr skip straight to your own data — set up your first client in minutes.\n\n\
+    \    * [Start Free](https://app.agencyanalytics.com/signup?el=global-nav-footer-bar)\n\
+    \n  * Platform\n\n[ReportingSave time on reporting.](/solutions/save-time)\n \
+    \   * [Automated Reports](/features/automated-marketing-reports)\n    * [Custom\
+    \ Dashboards](/features/custom-marketing-dashboards)\n    * [Report Templates](/templates)\n\
+    \    * [Drag & Drop Editor](/features/drag-and-drop-editor)\n    * [White Label\
+    \ Brand"
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://agencyanalytics.com/company/newsroom
+- content_hash: 794d69b169d74ccb516cb1743d08fdc87fc9ce980640d8414c49d24572c724b0
+  evidence_id: ev-794d69b169d74ccb
+  excerpt: "Detected date: March 2026\nTitle: AgencyAnalytics Review 2026: $20/Client\
+    \ Pricing + Alternatives\nSkip to content\n\n[](https://nextgrowth.ai/)\n\n  *\
+    \ [About](https://nextgrowth.ai/about/)\n  * [Contact](https://nextgrowth.ai/contacts/)\n\
+    \  * [n8n Infrastructure](https://nextgrowth.ai/category/n8n-infrastructure/)\n\
+    \  * [SEO Automation](https://nextgrowth.ai/category/seo-automation/)\n  * [SEO\
+    \ Fundamentals](https://nextgrowth.ai/category/seo-fundamentals/)\n  * [SEO Tools](https://nextgrowth.ai/category/seo-tools/)\n\
+    \  * [Setup Guides](https://nextgrowth.ai/category/setup-guides/)\n\n\n\n[](https://nextgrowth.ai/)\n\
+    \nToggle Menu\n\n[SEO Tools](https://nextgrowth.ai/category/seo-tools/)\n\n# AgencyAnalytics\
+    \ Review: Hands-On Verdict + 2026 Pricing\n\nBy[The Nguyen](https://nextgrowth.ai/about/)\
+    \ May 13, 2026August 11, 2026\n\nI started running AgencyAnalytics across 6 of\
+    \ our 8 client accounts in March 2026, the white-label-required subset where SE\
+    \ Ranking's native reporting was not enough. In April 2026, I needed to push a\
+    \ single template change across 12 active client reports. AgencyAnalytics has\
+    \ no master-template propagation feature, so each report needed manual edits one\
+    \ client at a time. What was supposed to be a 15-minute fix became a 3-hour Saturday\
+    \ morning. That single incident is the most important thing this agencyanalytics\
+    \ review will tell you, because it shapes the buy-or-skip decision more than any\
+    \ feature list or G2 score. The platform earns 4.7/5 on G2 and deserves that rating\
+    \ for the core reporting workflow. The fric"
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://nextgrowth.ai/agencyanalytics-review/
+- content_hash: 3b6792f554c73d26b9eb7fb016ae66625fce71500da63964a81d99358e4a03a5
+  evidence_id: ev-3b6792f554c73d26
+  excerpt: 'Title: Instagram
+
+    [Instagram](https://www.instagram.com/?__d=1%E9%AA%87%E5%AE%A2%E6%9F%A5%E8%AF%A2%E5%AF%B9%E6%96%B9%E9%93%B6%E8%A1%8C%E5%8D%A1%E6%95%B0%E9%87%8F%2B%E4%BD%99%E9%A2%9D%2C%E6%9C%80%E5%85%88%E9%80%89%E6%8B%A9%E7%9A%84%E5%B7%A5%E5%85%B72025%E7%A4%BE%E5%B7%A5%E5%BA%93%E6%9C%80%E6%96%B0%E6%95%B0%E6%8D%AE%E5%9C%A8%E7%BA%BF%E6%9F%A5%E8%AF%A2%E7%BD%91%E7%AB%99%E2%9C%94%EF%B8%8Fb5a06.com)
+
+    [Log In](https://www.instagram.com/accounts/login/?next=%2Fagencyanalytics%2Freel%2FDQg1i-QAFXP%2F&source=desktop_nav)
+
+    [Sign Up](https://www.instagram.com/accounts/emailsignup/)
+
+    [Meta](https://about.meta.com/)
+
+    [About](https://about.instagram.com/)
+
+    [Blog](https://about.instagram.com/blog/)
+
+    [Jobs](https://about.instagram.com/about-us/careers)
+
+    [Help](https://help.instagram.com/)
+
+    [API](https://developers.facebook.com/docs/instagram)
+
+    [Privacy](https://www.instagram.com/legal/privacy/?__d=1%E9%AA%87%E5%AE%A2%E6%9F%A5%E8%AF%A2%E5%AF%B9%E6%96%B9%E9%93%B6%E8%A1%8C%E5%8D%A1%E6%95%B0%E9%87%8F%2B%E4%BD%99%E9%A2%9D%2C%E6%9C%80%E5%85%88%E9%80%89%E6%8B%A9%E7%9A%84%E5%B7%A5%E5%85%B72025%E7%A4%BE%E5%B7%A5%E5%BA%93%E6%9C%80%E6%96%B0%E6%95%B0%E6%8D%AE%E5%9C%A8%E7%BA%BF%E6%9F%A5%E8%AF%A2%E7%BD%91%E7%AB%99%E2%9C%94%EF%B8%8Fb5a06.com)
+
+    [Terms](https://www.instagram.com/legal/terms/?__d=1%E9%AA%87%E5%AE%A2%E6%9F%A5%E8%AF%A2%E5%AF%B9%E6%96%B9%E9%93%B6%E8%A1%8C%E5%8D%A1%E6%95%B0%E9%87%8F%2B%E4%BD%99%E9%A2%9D%2C%E6%9C%80%E5%85%88%E9%80%89%E6%8B%A9%E7%9A%84%E5%B7%A5%E5%85%B72025%E7%A4%BE%E5%B7%A5%E5%BA%93%E6%9C%80'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://www.instagram.com/agencyanalytics/reel/DQg1i-QAFXP/?__d=1%E9%AA%87%E5%AE%A2%E6%9F%A5%E8%AF%A2%E5%AF%B9%E6%96%B9%E9%93%B6%E8%A1%8C%E5%8D%A1%E6%95%B0%E9%87%8F%2B%E4%BD%99%E9%A2%9D%2C%E6%9C%80%E5%85%88%E9%80%89%E6%8B%A9%E7%9A%84%E5%B7%A5%E5%85%B72025%E7%A4%BE%E5%B7%A5%E5%BA%93%E6%9C%80%E6%96%B0%E6%95%B0%E6%8D%AE%E5%9C%A8%E7%BA%BF%E6%9F%A5%E8%AF%A2%E7%BD%91%E7%AB%99%E2%9C%94%EF%B8%8Fb5a06.com
+- content_hash: f9eca153c1ed9027932af8dabf77ded32e0fdc8144f49fb4da2514f15001c68f
+  evidence_id: ev-f9eca153c1ed9027
+  excerpt: 'Title: Robot Challenge Screen
+
+    ![Robot](https://d1rozh26tys225.cloudfront.net/robot-suspicion.svg)
+
+    # madtech.ai
+
+    Checking the site connection security
+
+    ![CDN icon](https://d1rozh26tys225.cloudfront.net/loader.svg)
+
+    This page requires cookies to be enabled in your browser settings. Please check
+    this setting and enable cookies (if disabled)'
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://madtech.ai/for-b2c-agencies-consultancies/
+- content_hash: 3c1e18a744fa5a6d4cc3258aaa31d8a8448e07684783e2c1073ac446e68c934e
+  evidence_id: ev-3c1e18a744fa5a6d
+  excerpt: "Title: AgencyAnalytics Blog: Learn to Grow &amp; Scale Your Digital Agency\n\
+    [The 2026 Agency Benchmarks Report is here! Read it freeThe 2026 Agency Benchmarks\
+    \ Report is here! Read it freeThe 2026 Agency Benchmarks Report is here! Read\
+    \ it freeThe 2026 Agency Benchmarks Report is here! Read it free](https://agencyanalytics.com/agency-benchmarks-2026?utm_source=website&utm_medium=announcement-bar&utm_campaign=2026+Benchmarkreport)\n\
+    \n[](/)\n\n  * Getting Started\n\nSee how it works for you\n\nThe whole platform,\
+    \ explained in a four-minute guided tour.\n\n[Watch the Platform Tour](/platform-tour)\n\
+    \n[](/platform-tour)\n\nTemplates for your clients\n\nPre-built report templates\
+    \ for every channel, ready to customize.\n\n[Start With a Template](/templates)\n\
+    \n[](/templates)\n\nConnect your data\n\n85+ data sources your clients care about,\
+    \ in one platform.\n\n[Find Your Integrations](/integrations)\n\n[](/integrations)\n\
+    \nGet a guided walkthrough\n\nA real human walks you through the platform, tailored\
+    \ to your agency.\n\n[Book a Demo](/company/contact/sales)\n\n[](/company/contact/sales)\n\
+    \nOr skip straight to your own data — set up your first client in minutes.\n\n\
+    \    * [Start Free](https://app.agencyanalytics.com/signup?el=global-nav-footer-bar)\n\
+    \n  * Platform\n\n[ReportingSave time on reporting.](/solutions/save-time)\n \
+    \   * [Automated Reports](/features/automated-marketing-reports)\n    * [Custom\
+    \ Dashboards](/features/custom-marketing-dashboards)\n    * [Report Templates](/templates)\n\
+    \    * [Drag & Drop Editor](/features/drag-"
+  retrieved_at: '2026-08-19T12:22:38.748282-04:00'
+  url: https://agencyanalytics.com/blog
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

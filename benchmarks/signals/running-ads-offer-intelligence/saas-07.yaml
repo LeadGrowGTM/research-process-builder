@@ -1,0 +1,183 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcc1a8c71d39505e
+  - ev-48db0e5bbd86695c
+  - ev-f2fb791a6cc68dcb
+  field: identity
+  value: Betterworks
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcc1a8c71d39505e
+  - ev-48db0e5bbd86695c
+  - ev-f2fb791a6cc68dcb
+  field: description
+  value: 'About Betterworks | Betterworks --> Limited time offer ☀️ ☀️ Summer Promotion:
+    It''s not too late. Make your end of year reviews a breeze! Learn more Solutions
+    Why Betterworks --> --> --> --> --> --> --> Resources Company Pricing Login Take
+    a tour Talk to an expert Products Performance Management Drive results through
+    aligned goals, continuous feedback, and meaningful conversations. Find your Solution
+    Talent Intelligence Identify, develop, and retain the talent your organization
+    needs to grow. Fi'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcc1a8c71d39505e
+  - ev-48db0e5bbd86695c
+  - ev-f2fb791a6cc68dcb
+  field: offers
+  value: performance management
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcc1a8c71d39505e
+  - ev-48db0e5bbd86695c
+  - ev-f2fb791a6cc68dcb
+  field: icp
+  value: hr leaders
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcc1a8c71d39505e
+  - ev-48db0e5bbd86695c
+  - ev-f2fb791a6cc68dcb
+  field: personas
+  value: hr leaders
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-6c12213d5b4cfd16
+  - ev-4dca630b941baaac
+  field: ads
+  value:
+    channels:
+    - call_to_action: null
+      channel: google
+      ended_on: '2026-08-18'
+      evidence_ids:
+      - ev-6c12213d5b4cfd16
+      failure: null
+      landing_page: null
+      started_on: '2022-03-28'
+      status: active
+    - call_to_action: null
+      channel: meta
+      ended_on: null
+      evidence_ids:
+      - ev-4dca630b941baaac
+      failure: null
+      landing_page: null
+      started_on: null
+      status: inactive
+  visibility: message_safe
+company_id: saas-07
+corrections: []
+evidence:
+- content_hash: dcc1a8c71d39505e77857cb29116e2becab3482aae9dfb038be90fccba03f481
+  evidence_id: ev-dcc1a8c71d39505e
+  excerpt: 'About Betterworks | Betterworks --> Limited time offer ☀️ ☀️ Summer Promotion:
+    It''s not too late. Make your end of year reviews a breeze! Learn more Solutions
+    Why Betterworks --> --> --> --> --> --> --> Resources Company Pricing Login Take
+    a tour Talk to an expert Products Performance Management Drive results through
+    aligned goals, continuous feedback, and meaningful conversations. Find your Solution
+    Talent Intelligence Identify, develop, and retain the talent your organization
+    needs to grow. Find your Solution Performance Management Drive results through
+    aligned goals, continuous feedback, and meaningful conversations. Find your Solution
+    Talent Intelligence Identify, develop, and retain the talent your organization
+    needs to grow. Find your Solution Modules Performance Management Drive results
+    through aligned goals, continuous feedback, and conversations. Goals & OKRs Align
+    team and individual goals to company priorities and track progress. Engagement
+    Measure employee sentiment and turn insights into meaningful action. Feedback
+    Enable continuous feedback that helps employees improve and grow faster. Analytics
+    & Insights Turn people data into clear insights that support smarter decisions.
+    Conversations Run review cycles that support better feedback and performance decisions.
+    AI for HR Improve consistency and fairness in performance and talent decisions.
+    1:1s Support more focused check-ins with shared agendas, notes, and follow-ups.
+    Talent Intelligence Identify, develop, and retain the talent your organization
+    needs to grow. Calibration Improve consistency and fairness in performance and
+    talent decisions. Succession Planning Identify future leaders and build stronger
+    pipelines for key roles. Skills Intelligence Understand workforce skills, gaps,
+    and development opportunities at scale. Unified Talent Profiles See each employee’s
+    skills, growth, and performance in one place. MCP Bring goals, recognition, and
+    performance data into your AI tools. Turn your people into a s'
+  retrieved_at: '2026-08-12T21:00:23.729989+00:00'
+  url: https://www.betterworks.com/about
+- content_hash: 48db0e5bbd86695c61e0c99e69309b00b4b12523a6aed9d2fcda9403026ab603
+  evidence_id: ev-48db0e5bbd86695c
+  excerpt: 'Betterworks | LinkedIn Agree & Join LinkedIn By clicking Continue to join
+    or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie
+    Policy . Skip to main content LinkedIn Top Content People Learning Jobs Games
+    Sign in Join now Betterworks Software Development Menlo Park, CA 67,904 followers
+    Turning performance into a business growth engine 📈 See jobs Follow View all 224
+    employees Report this company About us Betterworks helps organizations turn performance
+    into measurable business impact. Our AI-native performance intelligence solution
+    connects goals, feedback, skills, and talent intelligence to give leaders real-time
+    visibility into workforce capability, manager effectiveness, and progress against
+    business priorities. Built for large and fast-growing organizations, Betterworks
+    helps HR and business leaders align teams, coach employees, support growth and
+    internal mobility, and make evidence-based talent decisions grounded in real work—not
+    guesswork. By embedding performance into the flow of work, Betterworks enables
+    organizations to adapt faster, strengthen execution, and drive better business
+    outcomes. Because performance isn’t just an HR process—it’s how strategy gets
+    executed. Website http://www.betterworks.com External link for Betterworks Industry
+    Software Development Company size 51-200 employees Headquarters Menlo Park, CA
+    Type Privately Held Founded 2013 Specialties Technology, Future of work, Performance
+    and productivity, SaaS and cloud computing, Continuous performance management,
+    Performance management, HR, Goals/OKRs, Employee Engagement, Employee Development,
+    Leadership Development, Recognition, Conversations, Peer Feedback, Objective and
+    Key Results, Talent Intelligence, and Skills Development Products Betterworks
+    Betterworks Employee Performance Management Software Betterworks is the pioneer
+    in intelligent performance management software solutions. Its flexible, enterprise-ready
+    SaaS platform helps workforces and organizations '
+  retrieved_at: '2026-08-12T21:00:24.460767+00:00'
+  url: https://www.linkedin.com/company/betterworks
+- content_hash: f2fb791a6cc68dcbcce02fd0f2750f0ec41aa480705618a5041630c1a62a107d
+  evidence_id: ev-f2fb791a6cc68dcb
+  excerpt: 'Betterworks Review 2026: Performance Management, OKRs, and Integrations
+    HR Software Compare HR tools for your company HR Software by Country & Region
+    HR Software in the US HR Software in the UK HR Software in Europe HR Software
+    in Canada HR Software in Australia HR Software by Feature HR Software with Payroll
+    HR Software with Onboarding HR Software with Performance Management HR Software
+    with Time and Attendance HR Software with Analytics HR Software by Company Size
+    HR Software for Small Business HR Software for SMEs HR Software for Startups HR
+    Software for Scaleups HR Software for Enterprise HR Software for Global and Remote
+    Teams HR Software for Remote Teams HR Software for Distributed Teams HR Software
+    for Global Compliance HR Software with EOR Services HR Software for Contractor
+    Management HR Software for Nonprofits HR Software Integrations HR Software That
+    Integrates with QuickBooks HR Software That Integrates with Xero HR Software That
+    Integrates with Workday HR Software That Integrates with NetSuite HR Software
+    That Integrates with Slack Compare HR Software Employer of Record Hire globally
+    without local entities EOR by Country & Region EOR in the US EOR in the UK EOR
+    in Germany EOR in Canada EOR in Europe Global and International EOR Global EOR
+    Providers International EOR Providers Multi-Country EOR Providers EOR for Global
+    Expansion EOR for Remote Teams EOR by Company Size & Growth Stage EOR for Small
+    Business EOR for Startups EOR for Mid-Sized Businesses EOR for Enterprise EOR
+    for Fast-Growing Teams EOR by Compliance and Immigration Guides EOR Providers
+    with Compliance Support EOR Providers with Visa Support EOR Providers with Tax
+    Compliance GDPR-Compliant EOR Providers SOC 2-Compliant EOR Providers EOR by Payroll,
+    Benefits, and Operations Guides EOR Providers with Payroll EOR Providers with
+    Global Payroll EOR Providers with Local Payroll EOR Providers with Global Benefits
+    EOR Providers with Onboarding EOR by Industry EOR for Tech Companies EOR for Fintech '
+  retrieved_at: '2026-08-12T21:00:24.964969+00:00'
+  url: https://www.hr.software/reviews/betterworks
+- content_hash: 6c12213d5b4cfd16eaf2067c0669ac4e259a081e344a6118ffa0e43703e39147
+  evidence_id: ev-6c12213d5b4cfd16
+  excerpt: '{"ad_format_codes":{"1":57,"2":1,"3":7},"ad_formats":["image","text","video"],"domain":"betterworks.com","error":null,"first_seen":"2022-03-28T19:11:38.000Z","last_seen":"2026-08-18T00:10:20.000Z","pages_scanned":2,"primary_advertiser":{"creatives":64,"id":"AR05644020440683773953","name":"Betterworks
+    Systems INC"},"running_ads":true,"total_creatives":65,"truncated":false,"unique_advertisers":2}'
+  retrieved_at: '2026-08-18T15:27:16.752655+00:00'
+  url: https://adstransparency.google.com/advertiser/AR05644020440683773953?region=anywhere
+- content_hash: 4dca630b941baaac85954762c6aa1c3ce0b3a87291e7e3f0a348d51b85808c1c
+  evidence_id: ev-4dca630b941baaac
+  excerpt: '{"ads":[],"summary":{"active_ads_count":0,"ad_types":[],"inactive_ads_count":0,"last_ad_date":null,"match_method":"handle_ig","matched_name":"Betterworks","matched_page_id":"119824318076252","platforms":[],"status":"not_found"}}'
+  retrieved_at: '2026-08-18T15:27:16.752655+00:00'
+  url: https://www.facebook.com/ads/library/?active_status=all&ad_type=all&view_all_page_id=119824318076252
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches

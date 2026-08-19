@@ -1,0 +1,720 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-3702f99a90ca9db0
+  - ev-772f852d326ccc26
+  - ev-b424ca67d485f53b
+  field: identity
+  value: Bitly
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3702f99a90ca9db0
+  - ev-772f852d326ccc26
+  - ev-b424ca67d485f53b
+  field: description
+  value: Bitly for Digital Marketing | Prove Campaign ROI Skip Navigation NEW Only
+    18% of marketers actually know what’s working. Are you one of them? Read the report
+    → NEU Nur 18 % der Marketer wissen wirklich, was funktioniert. Gehörst du dazu?
+    Zum Bericht → NOUVEAU Seulement 18% des spécialistes en marketing savent ce qui
+    marche vraiment. En faites-vous partie ? Lire le rapport → NOVITÀ Solo il 18%
+    dei marketer sa davvero cosa funziona. E tu? Leggi il report → NOVO Apenas 18%
+    dos profissionais de mark
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3702f99a90ca9db0
+  - ev-772f852d326ccc26
+  - ev-b424ca67d485f53b
+  field: offers
+  value: link management
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3702f99a90ca9db0
+  - ev-772f852d326ccc26
+  - ev-b424ca67d485f53b
+  field: icp
+  value: marketing teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3702f99a90ca9db0
+  - ev-772f852d326ccc26
+  - ev-b424ca67d485f53b
+  field: personas
+  value: marketing teams
+  visibility: message_safe
+company_id: saas-09
+corrections: []
+evidence:
+- content_hash: 3702f99a90ca9db0fee880ca12dcf4379365607ad7bd2a29f1648acf21840470
+  evidence_id: ev-3702f99a90ca9db0
+  excerpt: Bitly for Digital Marketing | Prove Campaign ROI Skip Navigation NEW Only
+    18% of marketers actually know what’s working. Are you one of them? Read the report
+    → NEU Nur 18 % der Marketer wissen wirklich, was funktioniert. Gehörst du dazu?
+    Zum Bericht → NOUVEAU Seulement 18% des spécialistes en marketing savent ce qui
+    marche vraiment. En faites-vous partie ? Lire le rapport → NOVITÀ Solo il 18%
+    dei marketer sa davvero cosa funziona. E tu? Leggi il report → NOVO Apenas 18%
+    dos profissionais de marketing sabem o que está funcionando. Você é um deles?
+    Ler o relatório → NOVEDAD En publicidad, solo el 18 % de las personas saben qué
+    funciona. ¿Eres una de ellas? Consulta el informe → புதிது 18% மார்க்கெட்டர்கள்
+    மட்டுமே முடிவுகளை அறிவார்கள். நீங்களும் ஒருவரா? படிக்க → ใหม่ มีเพียง 18% ของนักการตลาดที่รู้ว่าอะไรได้ผล
+    คุณเป็นหนึ่งในนั้นไหม? อ่านรายงาน → नया केवल 18% मार्केटर्स जानते हैं कि क्या
+    काम कर रहा है। क्या आप उनमें से एक हैं? रिपोर्ट पढ़ें → Menu Menu Menu Platform
+    Products URL Shortener Customize, share and track links QR Code Generator Dynamic
+    solutions to fit every business need Analytics A central place to track and analyze
+    performance Pages Mobile-friendly, no-code landing pages Features Link-in-bio
+    Curate and track links and content for social media profiles Branded Links Customize
+    links with your brand’s URL Mobile Links Short links for SMS messages UTM Campaigns
+    Track links and QR Codes with UTM parameters Digital Business Cards Grow your
+    network with virtual business cards 2D Barcodes Add a GS1 Digital Link to QR Codes
+    designed for packaging Integrations Bitly Shopify Integration Bitly + Canva Integration
+    See all integrations Discover more API & Documentation Trust Center AI AI Features
+    Bitly Assist AI-powered link and QR Code creation and analysis Bitly LLM Integrations
+    Bring link management to your AI assistant Bitly MCP Connect to AI agents with
+    the Model Context Protocol AI Resources Help Center Developers Trust Center Integrations
+    Marketplace What's New B
+  retrieved_at: '2026-08-12T21:00:57.540708+00:00'
+  url: https://bitly.com/pages/solutions/digital-marketing
+- content_hash: 772f852d326ccc26a6434f2f3372ed6f4328308bcc233aa1a95e8070798c48b3
+  evidence_id: ev-772f852d326ccc26
+  excerpt: Bitly | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now Bitly Software Development New York, NY 48,394 followers
+    Bitly makes it easy to create branded links and QR Codes, track every click and
+    scan, and see what’s working. Follow Discover all 338 employees Report this company
+    About us Bitly is a leading marketing platform for link and QR Code management,
+    enabling businesses of all sizes to see what’s working across online and offline
+    channels. Powering more than 100 billion clicks and scans annually worldwide,
+    Bitly makes it easy to create, share, and track short links and QR Codes, so brands
+    can find what’s resonating and scale their reach. More than 3M customers rely
+    on Bitly to connect with their audiences, from global enterprises to growing businesses,
+    including two-thirds of the Fortune 500. Website http://bitly.com/ External link
+    for Bitly Industry Software Development Company size 201-500 employees Headquarters
+    New York, NY Type Privately Held Specialties internet, URLs, data, links, social
+    publishing, social media, Twitter, Facebook, tracking links, analytics, social
+    media monitoring, social media analytics, analytics, qr codes, link-in-bio, digital
+    marketing, instagram, tik tok, landing pages, SMS, 2d barcodes, and connected
+    packaging Products No more previous content 2D Barcodes for Connected Packaging
+    Bitly, Link Management Tools Bitly Link Management Tools Bitly Analytics, Content
+    Analytics Tools Bitly Analytics Content Analytics Tools Bitly Landing Pages, Link
+    Management Tools Bitly Landing Pages Link Management Tools Bitly QR Codes, QR
+    Code Generator Software Bitly QR Codes QR Code Generator Software Bitly Short
+    Links (URL Shortener), Link Management Tools Bitly Short Links (URL Shortener)
+    Link Management Tools QRCG by Bitly, QR Code Generator Software QRCG by Bitly
+    QR Code Generator Software No more next content Locations Primary 139 5th Ave.
+    New York, NY 10010, US Get directions 1860 Blake St Denver, Col
+  retrieved_at: '2026-08-12T21:00:58.814245+00:00'
+  url: https://www.linkedin.com/company/bitly
+- content_hash: b424ca67d485f53b4f4e6a6341fd3e4956c2c44ffe640413b66e43d9c929b79b
+  evidence_id: ev-b424ca67d485f53b
+  excerpt: 'Spectrum Equity Portfolio: Bitly Portfolio Bitly is an enterprise-grade
+    link management and analytics platform. Peter Krivkovich, CEO of Bitly Sector
+    Marketing & Sales Technology Theme Data Analytics , Horizontal SaaS Status Current
+    Headquarters New York, New York CEO Peter Krivkovich URL bitly.com (Link opens
+    in new window) Investors Parag Khandelwal Cameron Ghorbani Partnership Year 2017
+    Disclosure Statements made herein by current or former employees of Spectrum Equity
+    portfolio companies for which no compensation was paid. Spectrum may have the
+    ability to exercise discretion on portfolio company employee compensation, promotion
+    and other employment decisions and certain portfolio company executives may also
+    be investors in Spectrum Equity funds. Peter Krivkovich, CEO of Bitly Insights
+    and News Portfolio News Bitly Announces Leadership Team Expansion Fueling Innovation
+    And Business Growth Read More Growth Insights Unpacking the PLG Motion with Bitly
+    and Lucid Software Read More Portfolio News Bitly Releases Mid-Year Report Revealing
+    a Transformational Shift in Global QR Code Usage and Adoption Read More Portfolio
+    News Bitly Strengthens Its Leadership Team with Appointment of Peter Krivkovich
+    as New Chief Financial Officer and Adds Nick Caldwell to Board of Directors Read
+    More Portfolio News Bitly Unveils “Imagine the PossiBITLYties” Advertising Campaign
+    To Showcase The Impact Of Its One-Of-A-Kind Connections Platform Read More Portfolio
+    News Bitly Wraps 2022 Surpassing $100M in ARR and 500,000+ Global Customers Read
+    More External Coverage TechCrunch: Bitly sells a majority stake to Spectrum Equity
+    for $63M Read More Portfolio News Bitly Receives Investment from Spectrum Equity
+    Read More Boston One International Place 35th Floor Boston, Massachusetts, 02110
+    617-464-4600 (Link opens in new window) San Francisco 140 New Montgomery 20th
+    Floor San Francisco, California, 94105 415-464-4600 (Link opens in new window)
+    London 175 Piccadilly Empire House London, W1J 9EN +4'
+  retrieved_at: '2026-08-12T21:00:59.318937+00:00'
+  url: https://www.spectrumequity.com/portfolio/bitly/
+- content_hash: 9efb86a030b2d961d7ce8e42b8dfb0fc238a82804156f76dc8bc295cdcfa248a
+  evidence_id: ev-9efb86a030b2d961
+  excerpt: 'Title: Bitly Alternatives - Branch.io
+
+    Snippet: 1. Branch Activation — Best for unified link and QR management · 2. Rebrandly
+    — Best for basic branded domains · 3. TinyURL — Best for simplicity · 4. RocketLink
+    — ...'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://www.branch.io/resources/bitly-alternatives/
+- content_hash: 8d03da1cbd00b490fddd9e069800dbcb8f894e98a5aa0209c381404d532cbf57
+  evidence_id: ev-8d03da1cbd00b490
+  excerpt: 'Detected date: Jul 9, 2026
+
+    Title: What Is Link Management? Guide for Marketers (2026)
+
+    Date: Jul 9, 2026
+
+    Snippet: URL shortener vs. link management platform. A URL shortener compresses
+    long web addresses into shorter, more shareable links. A link management ...'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://bitly.com/blog/link-management/
+- content_hash: 4d49101167d855e5281e23171678f53c2253c03fea092b03e14db9a97822c053
+  evidence_id: ev-4d49101167d855e5
+  excerpt: 'Title: Bitly vs. Dub | The #1 Bitly Alternative
+
+    Snippet: Dub vs. others. With Dub, you get a more powerful and intuitive link
+    management platform at a fraction of the cost. Compare with Rebrandly.'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://dub.co/compare/bitly
+- content_hash: 24088cb2c9e0bd6925377cbd9d26f2268263b210408f067da63ed7e8d07ad401
+  evidence_id: ev-24088cb2c9e0bd69
+  excerpt: 'Detected date: Sep 30, 2020
+
+    Title: Bitly vs Rebrandly: Which Custom Link Shortener is the Best?
+
+    Date: Sep 30, 2020
+
+    Snippet: Bitly and Rebrandly are the two most popular link shorteners. Compare
+    Bitly vs Rebrandly on custom domains, link tracking, and more!'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://droplr.com/how-to/productivity-tools/bitly-vs-rebrandly-which-custom-link-shortener-is-the-best/
+- content_hash: 6ff15633b066adcf6a18afb58c5c3f37287ec2d116cc5ada785401d2c1baccfd
+  evidence_id: ev-6ff15633b066adcf
+  excerpt: 'Detected date: Apr 13, 2026
+
+    Title: Bitly Review 2026: Complete Analysis of Features, Pros, ...
+
+    Date: Apr 13, 2026
+
+    Snippet: Compared to some competitors, Bitly offers limited customization options
+    for link appearance and behavior. Users seeking advanced features ...'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://lunyb.com/blog/bitly-review-2026-pros-cons-alternatives
+- content_hash: 7e2c6d4723c75efb83126503d8275db8d6e28d1be65804c58852574399152957
+  evidence_id: ev-7e2c6d4723c75efb
+  excerpt: 'Title: Top 10 Bitly Alternatives & Competitors in 2026
+
+    Snippet: Bitly scores slightly higher in Usability (9.4 vs 9.2) and Ease of Setup
+    (9.4 vs 9.2), while BL.INK leads in Support (9.1 vs 8.6) and Ease of Doing Business
+    ...'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://www.g2.com/products/bitly/competitors/alternatives
+- content_hash: 171f9b8dcaa533233e96a25c35c0525de4866c8520870886657095981147ca8e
+  evidence_id: ev-171f9b8dcaa53323
+  excerpt: 'Detected date: May 19, 2026
+
+    Title: Bitly vs Sniply: Which Platform Fits Your Marketing Strategy?
+
+    Date: May 19, 2026
+
+    Snippet: Bitly vs Sniply at a glance. Feature, Bitly, Sniply. Primary use case,
+    Branded, trackable campaign connections, Curated links with CTA overlays.'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://www.qr-code-generator.com/blog/bitly-vs-sniply/
+- content_hash: c2d799fda2e1ab549442cfd38ea798361a8c6ef1324adae0c4bb46d241014c9a
+  evidence_id: ev-c2d799fda2e1ab54
+  excerpt: 'Title: Bitly Alternatives Worth Switching To (Free and Paid Options)
+
+    Snippet: Bitly alternatives when they need more flexible branding, better pricing,
+    stronger analytics, bulk link management, QR code support, password protection,
+    CSV ...'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://posh.vip/e/bitly-alternatives-worth-switching-to-free-and-paid-options-4
+- content_hash: 3d128beb7d840c83700a9925b89a444158c2b84a3dfd7043eb18e289269c3b03
+  evidence_id: ev-3d128beb7d840c83
+  excerpt: 'Detected date: May 20, 2026
+
+    Title: The 7 best URL shorteners in 2026
+
+    Date: May 20, 2026
+
+    Snippet: Rebrandly for the best all-around URL shortener · Bitly for enterprise
+    businesses · Dub for a modern URL shortener · TinyURL for free, fast, and ...'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://zapier.com/blog/best-url-shorteners/
+- content_hash: 7e49284a687850b7dfed6e5a188e6d26a7a338bfac683a33f58b59356c4e24d1
+  evidence_id: ev-7e49284a687850b7
+  excerpt: 'Query: Bitly link management alternatives OR competitors OR "vs" OR "compared
+    to"
+
+    1. https://www.branch.io/resources/bitly-alternatives/
+
+    Title: Bitly Alternatives - Branch.io
+
+    Snippet: 1. Branch Activation — Best for unified link and QR management · 2. Rebrandly
+    — Best for basic branded domains · 3. TinyURL — Best for simplicity · 4. RocketLink
+    — ...
+
+    2. https://bitly.com/blog/link-management/
+
+    Title: What Is Link Management? Guide for Marketers (2026)
+
+    Date: Jul 9, 2026
+
+    Snippet: URL shortener vs. link management platform. A URL shortener compresses
+    long web addresses into shorter, more shareable links. A link management ...
+
+    3. https://dub.co/compare/bitly
+
+    Title: Bitly vs. Dub | The #1 Bitly Alternative
+
+    Snippet: Dub vs. others. With Dub, you get a more powerful and intuitive link
+    management platform at a fraction of the cost. Compare with Rebrandly.
+
+    4. https://droplr.com/how-to/productivity-tools/bitly-vs-rebrandly-which-custom-link-shortener-is-the-best/
+
+    Title: Bitly vs Rebrandly: Which Custom Link Shortener is the Best?
+
+    Date: Sep 30, 2020
+
+    Snippet: Bitly and Rebrandly are the two most popular link shorteners. Compare
+    Bitly vs Rebrandly on custom domains, link tracking, and more!
+
+    5. https://lunyb.com/blog/bitly-review-2026-pros-cons-alternatives
+
+    Title: Bitly Review 2026: Complete Analysis of Features, Pros, ...
+
+    Date: Apr 13, 2026
+
+    Snippet: Compared to some competitors, Bitly offers limited customization options
+    for link appearance and behavior. Users seeking advanced features ...
+
+    '
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://www.google.com/search?q=Bitly+link+management+alternatives+OR+competitors+OR+%22vs%22+OR+%22compared+to%22
+- content_hash: 31a04e5480d9f62bf2c80d85f4ee45da2eaa136604f0b3c678667f03aaa90b15
+  evidence_id: ev-31a04e5480d9f62b
+  excerpt: 'Detected date: May 20, 2026
+
+    Title: The 7 best URL shorteners in 2026
+
+    Date: May 20, 2026
+
+    Snippet: If you''re looking for a Bitly alternative, Cuttly, T.ly, and T2M are
+    also worth checking out. y.gy offers great value, but it lacks a lot of ...'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://zapier.com/blog/best-url-shorteners/
+- content_hash: 25edf6e2cf5595bfa1cc6a0eb5436247e07ce37dfae6c4314e1060cfe8cd2fa5
+  evidence_id: ev-25edf6e2cf5595bf
+  excerpt: 'Title: Best url-shortner; as alternative to the bitly : r/webhosting
+
+    Date: 9 months ago
+
+    Snippet: I have had great results using BetterLinks Pro ($50) + WordPress on a
+    cheap shared hosting account (NixiHost $12/mo plan). It took all of 10 ...'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://www.reddit.com/r/webhosting/comments/1oqscil/best_urlshortner_as_alternative_to_the_bitly/
+- content_hash: 63795890e4f1409f9c6462ea4f7e52efd521a5ddab2f37bbea8c42696a5d4ebb
+  evidence_id: ev-63795890e4f1409f
+  excerpt: 'Title: 07 Best Bitly Alternative You Will Only Need (FREE)
+
+    Snippet: Some of the most popular alternatives to Bitly include Rebrandly, TinyURL,
+    and Pxl.to. These services offer similar features to Bitly,'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://medium.com/@himubin/07-best-bitly-alternative-you-will-only-need-free-520505cd265f
+- content_hash: 7842a2f4cebbf0fd153ec6b1c87b827dc37ea667494db2b0f26cbf262414c6e1
+  evidence_id: ev-7842a2f4cebbf0fd
+  excerpt: 'Title: Bitly Alternatives - Branch.io
+
+    Snippet: 1. Branch Activation — Best for unified link and QR management ・ 2. Rebrandly
+    — Best for basic branded domains ・ 3. TinyURL — Best for simplicity ・ 5. T2M —
+    ...'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://www.branch.io/resources/bitly-alternatives/
+- content_hash: 3cdce268d99ad7709a0f34df94e17d0f24736956596ba7784f80bc481f131cfe
+  evidence_id: ev-3cdce268d99ad770
+  excerpt: 'Detected date: Mar 18, 2026
+
+    Title: Google URL Shortener Alternatives: 10 Best Tools ...
+
+    Date: Mar 18, 2026
+
+    Snippet: The 10 best Google URL shortener alternatives · 1. Bitly · 2. Rebrandly
+    · 3. Short.io · 4. TinyURL · 5. BL.INK · 6. Dub · 7. Linkly · 8. GoLinks.'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://bitly.com/blog/google-url-shortener-alternatives/
+- content_hash: 4fe08622b2ca0c61f9ed57bd2c0fb10d7aec931e1145ce3134fcc00df119c201
+  evidence_id: ev-4fe08622b2ca0c61
+  excerpt: 'Title: Top 10 Bitly Alternatives & Competitors in 2026
+
+    Snippet: The best Bitly alternatives are BL.INK, Uniqode QR Code Generator, and
+    Rebrandly. Find top-ranking free & paid apps similar to Bitly for your URL Shortener
+    ...'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://www.g2.com/products/bitly/competitors/alternatives
+- content_hash: 3be46ca45247bcc84ab455b54faeb07c9b296f5e2d954a015dacab2e916d0b31
+  evidence_id: ev-3be46ca45247bcc8
+  excerpt: 'Title: Best Bitly Alternatives 2026
+
+    Snippet: Alternatives to Bitly · Top Bitly Alternatives · Linkly · Veshort · Recut
+    · Rebrandly · LinkCentral · CodeQR · ReSlug. by ReSlug. 5.0 (2) · View Profile.
+    ReSlug ...'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://www.capterra.com/p/172575/Bitly/alternatives/
+- content_hash: 8907e88745f11223e74a59b4185258662e370a92ed86f91fad7983d30bea612b
+  evidence_id: ev-8907e88745f11223
+  excerpt: 'Title: Bitly Alternative. Full Features, 100% Serverless, and One-Click
+    Install'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://www.reddit.com/r/selfhosted/comments/1ppg6l2/bitly_alternative_full_features_100_serverless/
+- content_hash: 23572941c496d09b5103334ef96dfaac4e5725ec41600cb2cddf37534379ba6c
+  evidence_id: ev-23572941c496d09b
+  excerpt: 'Title: What is the best alternative for bit.ly (URL shortener)? Why and
+    how does ...'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://www.quora.com/What-is-the-best-alternative-for-bit-ly-URL-shortener-Why-and-how-does-it-work-better-than-bit-ly
+- content_hash: 63106b2a2f9a30190aeafb7661ac79f69176539844d453cbbaa6193bd9340b34
+  evidence_id: ev-63106b2a2f9a3019
+  excerpt: 'Title: What are alternatives to the Bitly URL shortener service?'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://www.quora.com/What-are-alternatives-to-the-Bitly-URL-shortener-service
+- content_hash: 624c068861761f8beaa9f319a765255adb5199d542d52703af6794788b201bff
+  evidence_id: ev-624c068861761f8b
+  excerpt: 'Query: Bitly alternatives
+
+    1. https://zapier.com/blog/best-url-shorteners/
+
+    Title: The 7 best URL shorteners in 2026
+
+    Date: May 20, 2026
+
+    Snippet: If you''re looking for a Bitly alternative, Cuttly, T.ly, and T2M are
+    also worth checking out. y.gy offers great value, but it lacks a lot of ...
+
+    2. https://www.reddit.com/r/webhosting/comments/1oqscil/best_urlshortner_as_alternative_to_the_bitly/
+
+    Title: Best url-shortner; as alternative to the bitly : r/webhosting
+
+    Date: 9 months ago
+
+    Snippet: I have had great results using BetterLinks Pro ($50) + WordPress on a
+    cheap shared hosting account (NixiHost $12/mo plan). It took all of 10 ...
+
+    3. https://medium.com/@himubin/07-best-bitly-alternative-you-will-only-need-free-520505cd265f
+
+    Title: 07 Best Bitly Alternative You Will Only Need (FREE)
+
+    Snippet: Some of the most popular alternatives to Bitly include Rebrandly, TinyURL,
+    and Pxl.to. These services offer similar features to Bitly,
+
+    4. https://www.branch.io/resources/bitly-alternatives/
+
+    Title: Bitly Alternatives - Branch.io
+
+    Snippet: 1. Branch Activation — Best for unified link and QR management ・ 2. Rebrandly
+    — Best for basic branded domains ・ 3. TinyURL — Best for simplicity ・ 5. T2M —
+    ...
+
+    5. https://bitly.com/blog/google-url-shortener-alternatives/
+
+    Title: Google URL Shortener Alternatives: 10 Best Tools ...
+
+    Date: Mar 18, 2026
+
+    Snippet: The 10 best Google URL shortener alternatives · 1. Bitly · 2. Rebrandly
+    · 3. Short.io · 4. TinyURL · 5. BL.INK · 6. Dub · 7. Linkly · 8. GoLinks.
+
+    6. https://ww'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://www.google.com/search?q=Bitly+alternatives
+- content_hash: 17dac50576809d13ecddd952d19fe1bad9a14a71ad0388d6843db5323cdfb7c7
+  evidence_id: ev-17dac50576809d13
+  excerpt: 'Detected date: May 20, 2026
+
+    Title: The 7 best URL shorteners in 2026 - Zapier
+
+    Date: May 20, 2026
+
+    Snippet: Bitly is a full-service, business-grade URL shortener. It''s simple to
+    use and has all the features you could ask for in a link management ...'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://zapier.com/blog/best-url-shorteners/
+- content_hash: 80da3fbea0a6155f6429501b53895f051322c5990633916b7e33431b6c841f8b
+  evidence_id: ev-80da3fbea0a6155f
+  excerpt: 'Detected date: Nov 7, 2025
+
+    Title: Best url-shortner; as alternative to the bitly : r/webhosting - Reddit
+
+    Date: Nov 7, 2025
+
+    Snippet: /bitly honest trade-offs: smaller than the established players, fewer
+    integrations, and being early means there''ll be rough edges.'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://www.reddit.com/r/webhosting/comments/1oqscil/best_urlshortner_as_alternative_to_the_bitly/
+- content_hash: c14f929ebc21f4eb177ce6020e327ad5d0c6b5ac327f8cd00d7931853cee44c2
+  evidence_id: ev-c14f929ebc21f4eb
+  excerpt: 'Title: Bitly vs Short.io: Which Should You Choose? | Efficient App
+
+    Snippet: Bitly gives you more than just basic redirects, but the interface feels
+    outdated and key features time tracking are locked behind higher pricing, while
+    Short. ...'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://efficient.app/compare/bitly-vs-short
+- content_hash: 13f473994c34cdad3a4c7df5bf81d47ccb154e6fbd3315a59f6b01cf7bf53672
+  evidence_id: ev-13f473994c34cdad
+  excerpt: 'Detected date: Jul 26, 2026
+
+    Title: Bitly vs TinyURL: Which URL Shortener Is Better in 2026? - Lunyb
+
+    Date: Jul 26, 2026
+
+    Snippet: ROI, Bitly wins. TinyURL is faster and cheaper. Bitly is the better URL
+    shortener for businesses, marketers,'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://lunyb.com/blog/bitly-vs-tinyurl-which-url-shortener-is-better-2026-ms2fzdvy
+- content_hash: 5ef141caf88b4bf606e2120ca6189628425c4623cff67733f73b42314519f8d7
+  evidence_id: ev-5ef141caf88b4bf6
+  excerpt: 'Detected date: May 14, 2025
+
+    Title: STOP using Bitly, use this instead - YouTube
+
+    Date: May 14, 2025
+
+    Snippet: ... vs Short.io: https ... STOP using Bitly, use this instead. Best URL
+    Shortener: Bitly vs TinyURL vs Short.io vs Dub Links.'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://www.youtube.com/shorts/HNOC4ynxMaw
+- content_hash: 2160d9b140e59e6de578bc13e93a7aa31600e8fde9a915ea93d081bb8cfbac85
+  evidence_id: ev-2160d9b140e59e6d
+  excerpt: 'Detected date: Sep 30, 2020
+
+    Title: Bitly vs Rebrandly: Which Custom Link Shortener is the Best? - Droplr
+
+    Date: Sep 30, 2020
+
+    Snippet: Rebrandly is the less expensive option with more custom domains, longer
+    link history, and unlimited link editing. However, Bitly can be the ...'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://droplr.com/how-to/productivity-tools/bitly-vs-rebrandly-which-custom-link-shortener-is-the-best/
+- content_hash: ec7133ccf5e50c9a6794ad5e9b3f40dee3c27b1d054a20846ed3720adbe1b781
+  evidence_id: ev-ec7133ccf5e50c9a
+  excerpt: 'Title: Bitly | Short URLs, QR Codes, and More
+
+    Snippet: Bitly makes it easy to create, share, and track short links and QR Codes.
+    Find what''s resonating and scale it into bigger reach, more clicks, and more
+    sales.'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://bitly.com/
+- content_hash: f4ab5eab834cb3d2ecbac878e8d417a78e1754db4eb814eed7d165db813fa779
+  evidence_id: ev-f4ab5eab834cb3d2
+  excerpt: 'Detected date: May 22, 2026
+
+    Title: Bitly vs Linkly: An Honest Comparison for 2026 - Link Shortener
+
+    Date: May 22, 2026
+
+    Snippet: Bitly vs Linkly: an honest comparison of pricing, features, API capabilities,
+    retargeting and geo-targeting. Bitly handles that competently. ...'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://linklyhq.com/blog/bitly-vs-linkly
+- content_hash: 3c0ed67f797a47e14b57809430add79f5ba6c5d05911a5a85baeff9a947498eb
+  evidence_id: ev-3c0ed67f797a47e1
+  excerpt: 'Detected date: Apr 3, 2026
+
+    Title: Top 5 Bitly Alternatives - Free and Paid [2026] - ShortPen
+
+    Date: Apr 3, 2026
+
+    Snippet: These tools address Bitly''s shortcomings, offering things like more
+    generous free plans, no ads, deeper analytics, conversion tracking, branded ...'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://shortpen.com/bitly-alternatives
+- content_hash: f7a851a8dfb95c29430b1ac169c8f9fa426f0c3e84ff25b6ead0762d3a0fd13e
+  evidence_id: ev-f7a851a8dfb95c29
+  excerpt: 'Detected date: Nov 27, 2025
+
+    Title: Best Bitly Alternative (2025–2026): Why Cuttly Gives You More Control ...
+
+    Date: Nov 27, 2025
+
+    Snippet: Cuttly can replace Bitly for URL shortening and analytics, but it also
+    adds Link-in-bio pages, Surveys, QR Codes, TRAI tools and team workflows.'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://cutt.ly/resources/blog/bitly-alternative
+- content_hash: e1c34375537e6162bc0bdfc88ffeb29663f054885df926948ab56cb6149557c7
+  evidence_id: ev-e1c34375537e6162
+  excerpt: 'Query: Bitly vs
+
+    1. https://zapier.com/blog/best-url-shorteners/
+
+    Title: The 7 best URL shorteners in 2026 - Zapier
+
+    Date: May 20, 2026
+
+    Snippet: Bitly is a full-service, business-grade URL shortener. It''s simple to
+    use and has all the features you could ask for in a link management ...
+
+    2. https://www.reddit.com/r/webhosting/comments/1oqscil/best_urlshortner_as_alternative_to_the_bitly/
+
+    Title: Best url-shortner; as alternative to the bitly : r/webhosting - Reddit
+
+    Date: Nov 7, 2025
+
+    Snippet: /bitly honest trade-offs: smaller than the established players, fewer
+    integrations, and being early means there''ll be rough edges.
+
+    3. https://efficient.app/compare/bitly-vs-short
+
+    Title: Bitly vs Short.io: Which Should You Choose? | Efficient App
+
+    Snippet: Bitly gives you more than just basic redirects, but the interface feels
+    outdated and key features time tracking are locked behind higher pricing, while
+    Short. ...
+
+    4. https://lunyb.com/blog/bitly-vs-tinyurl-which-url-shortener-is-better-2026-ms2fzdvy
+
+    Title: Bitly vs TinyURL: Which URL Shortener Is Better in 2026? - Lunyb
+
+    Date: Jul 26, 2026
+
+    Snippet: ROI, Bitly wins. TinyURL is faster and cheaper. Bitly is the better URL
+    shortener for businesses, marketers,
+
+    5. https://www.youtube.com/shorts/HNOC4ynxMaw
+
+    Title: STOP using Bitly, use this instead - YouTube
+
+    Date: May 14, 2025
+
+    Snippet: ... vs Short.io: https ... STOP using Bitly, use this instead. Best URL
+    Shortener: Bitly vs TinyURL vs Short.io vs Dub Links.
+
+    6. https://droplr.com/how-to/productivity-t'
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://www.google.com/search?q=Bitly+vs
+- content_hash: 43b0b0fb4aac591039ea7a576cdd697cb1dfe02ff827d3423dd6376ec09f2347
+  evidence_id: ev-43b0b0fb4aac5910
+  excerpt: "Title: Bitly Alternatives | Branch\nSkip to content\n\n[](https://www.branch.io/)\n\
+    \n  * [Products](/products/)\n    * Left Column\n      * [EngagementIncrease conversions\
+    \ from owned and organic channels.](https://www.branch.io/products/engagement/)\n\
+    \      * [PerformanceImprove ads ROI with sophisticated attribution.](https://www.branch.io/products/performance/)\n\
+    \      * [ActivationDrive actions with branded short links and QR codes.](https://www.branch.io/products/activation/)\n\
+    \      * [DiscoveryReach your users with targeted programmatic media buying.](https://www.branch.io/products/discovery/)\n\
+    \    * Right column\n      * [Data ExportsGet your data where and how you want\
+    \ it, on your schedule.](https://www.branch.io/products/data-exports/)\n     \
+    \ * [IvyIntelligence that accelerates growth.](https://www.branch.io/products/ivyai/)\n\
+    \      * [BannersTargeted web-to-app banners that convert browsers into buyers.](https://www.branch.io/products/banners/)\n\
+    \      * [Link ManagementCreate, manage, and analyze links at scale](https://www.branch.io/products/linkhub/)\n\
+    \  * [Solutions](https://www.branch.io/use-cases/)\n    * Use Cases\n      * [Deep\
+    \ Linking](https://www.branch.io/deep-linking/)\n      * [Attribution](https://www.branch.io/attribution/)\n\
+    \      * [Advanced Compliance](https://www.branch.io/advanced-compliance/)\n \
+    \   * Industries\n      * [Health](https://www.branch.io/resources/guide/health-industry-hub/)\n\
+    \      * [Finance](https://www.branch.io/resources/guide/finance-industry-hub/)\n\
+    \      * ["
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://www.branch.io/resources/bitly-alternatives/
+- content_hash: b85dbd7b040bcd92cbc84e7dd7f7f940e2bba3705c14020bde236ce0994ca05c
+  evidence_id: ev-b85dbd7b040bcd92
+  excerpt: "Title: What Is Link Management? Guide for Marketers (2026)\nSkip Navigation\
+    \ \n\n[](https://bitly.com)\n\n  * \n\n\n  * Products\n    * [URL ShortenerCustomize,\
+    \ share, and track links](/pages/products/url-shortener)\n    * [QR CodesDynamic\
+    \ solutions to fit every business need](/pages/products/qr-codes)\n    * [Link-in-bioCurate\
+    \ and track links for social media profiles](/pages/products/link-in-bio)\n  \
+    \  * [AnalyticsA central place to track and analyze the performance of all short\
+    \ links and QR Codes](/pages/products/analytics)\n    * [2D BarcodesAdd a Global\
+    \ Trade Item Number (GTIN) to QR Codes designed for packaging](/pages/products/2d-barcode)\n\
+    \  * Solutions\n    * [RetailEnhance customer engagement](/pages/solutions/retail)\n\
+    \    * [Consumer Packaged GoodsConnect directly with consumers](/pages/solutions/consumer-packaged-goods)\n\
+    \    * [Media & EntertainmentCreate interactive experiences](/pages/solutions/media)\n\
+    \    * [Tech Software & HardwareImprove product education](/pages/solutions/technology)\n\
+    \    * [HospitalityStreamline guest services](/pages/solutions/hospitality)\n\
+    \    * [HealthcareSimplify patient communication](/pages/solutions/healthcare)\n\
+    \    * [InsuranceEnhance claims management](/pages/solutions/insurance)\n  * [Pricing](/pages/pricing)\n\
+    \  * [Resources](/pages/resources)\n    * [DevelopersAPI documentation and resources](https://dev.bitly.com/)\n\
+    \    * [Apps and IntegrationsConnect Bitly with existing tools and discover new\
+    \ ones](https://bitly.com/pages/marketplace)\n    * [BlogTips, bes"
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://bitly.com/blog/link-management/
+- content_hash: d9b6b3668ace8379da6be625b14ecef0f494091f78b98b4ac601e32370c7ad01
+  evidence_id: ev-d9b6b3668ace8379
+  excerpt: "Title: Bitly vs. Dub | The #1 Bitly Alternative | Dub\n* Product\n\n \
+    \ * Solutions\n\n  * Resources\n\n  * [Customers](/customers)\n  * [Pricing](/pricing)\n\
+    \  * [Enterprise](/enterprise)\n  * [Startups](/startups)\n  * [Log in](https://app.dub.co/login)\n\
+    \  * [Sign Up](https://app.dub.co/register)\n\n\n\n[](/home)\n\n  * Product\n\
+    \  * Solutions\n  * Resources\n  * [Customers](/customers)\n  * [Pricing](/pricing)\n\
+    \n\n\n# Dub vs Bitly\n\nLearn how Dub compares to Bitly and why Dub is the best\
+    \ Bitly alternative for all your marketing needs.\n\n[Start for free](https://app.dub.co/register)[Migrate\
+    \ from Bitly](/help/article/migrating-from-bitly)\n\n## Dub is a modern, delightful\
+    \ take on link management\n\nLinks AnalyticsAPI\n\nvs.\n\nSlide\n\nCreate custom\
+    \ short links that match your brand and stand out from the crowd, with free custom\
+    \ domains on all plans. [Learn more](/help/article/how-to-create-link)\n\n## Dub\
+    \ vs Bitly  \nat a glance\n\nDub is the #1 alternative to Bitly.  \nWith Dub,\
+    \ you get a more powerful and intuitive link management platform at a fraction\
+    \ of the cost.\n\n[Start for free](https://app.dub.co/register)\n\nCompare plansFind\
+    \ the perfect fit| [Pro](/pricing)| Growth  \n---|---|---  \n### [Monthly pricingHow\
+    \ much it costs per month ↗](/pricing)| $25/mo| $29/mo  \n### [Monthly links /\
+    \ QR codesHow many links / QR codes you can create per month ↗](/help/article/how-to-create-link)|\
+    \ 1,000/mo| 500/mo  \n### [Advanced analyticsAccess country, city, device, OS\
+    \ and referrer data ↗](/analytics)| |   \n  \n### Analytics data rete"
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://dub.co/compare/bitly
+- content_hash: 073cec778895f7e316b0d1d38d48b838cc4eec1c8a4d1390cf558db1da002dc1
+  evidence_id: ev-073cec778895f7e3
+  excerpt: "Title: The 7 best URL shorteners in 2026 | Zapier\nSkip to content[](/)\n\
+    \n  * Products\n\nZapier Automation Platform\n\nNo-code automation across 9,000+\
+    \ apps\n\nProducts\n\n    * [Zap workflowsDo-it-yourself automation for workflows](/workflows)\n\
+    \    * [TablesStore data your Zap workflows can read and update](/tables)\n  \
+    \  * [FormsCapture inputs that trigger workflows](/forms)\n    * [CanvasPlan and\
+    \ map your workflows with AI](/canvas)\n    * [AgentsCreate your own AI assistants\
+    \ for any task](/agents)\n    * [ChatbotsAnswer customer questions with AI chatbots](/ai/chatbot)\n\
+    \nCapabilities\n\n    * [App integrationsExplore 9,000+ app connections](/apps)\n\
+    \    * [AI automation \U0001FA84Cutting-edge AI to upgrade your workflows](/ai)\n\
+    \    * [SecurityEnterprise-grade security](/security-compliance)\n\n    * [Explore\
+    \ templates](/templates)\n    * [Explore use cases](/automations)\n    * [Join\
+    \ Zapier Early Access](/early-access)\n\nWhat's new\n\n    * [Zapier MCPAdd Zapier\
+    \ to your AI chat](/mcp)\n    * [Zapier SDKBetaInstall Zapier to your AI coding\
+    \ agent](/sdk)\n    * [FunctionsBetaCode your workflows in a web IDE](/functions)\n\
+    \    * [Lead RouterBetaTurn complex lead routing into one simple step](/l/leadrouter)\n\
+    \n  * Solutions\n\nSolutions\n\nHow Zapier can help you automate your work across\
+    \ teams\n\nBy team\n\n    * [RevOpsDrive revenue through automation](/solutions/revops)\n\
+    \    * [MarketingMultiply campaign effectiveness and ROI](/solutions/marketing)\n\
+    \    * [ITBetter manage systems with automation](/solutions/it)\n    * [HREmpow"
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://zapier.com/blog/best-url-shorteners/
+- content_hash: ff8088ce3323794724b9ac1195b162e9a43a915ab55bd2cfa7efa392ed4c430a
+  evidence_id: ev-ff8088ce33237947
+  excerpt: "Title: Best url-shortner; as alternative to the bitly : r/webhosting\n\
+    [ Skip to main content ](https://www.reddit.com/r/webhosting/comments/1oqscil/best_urlshortner_as_alternative_to_the_bitly/?solution=0a96deb777d4b9040a96deb777d4b904&js_challenge=1&token=7afd7253fec22262ff1c52b1703fe9ec647a5ed63d49854c0fe6c2a72a43ad90&jsc_orig_r=#main-content)\n\
+    Open menu Open navigation [ ](https://www.reddit.com/)Go to Reddit Home\n[ Sign\
+    \ Up ](https://www.reddit.com/register/)Sign up for Reddit [ Log In ](https://www.reddit.com/login/)Log\
+    \ in to Reddit\nExpand user menu Open settings menu\n[ ![](https://styles.redditmedia.com/t5_2qn3h/styles/communityIcon_o2w8ld24yqj61.png?width=96&height=96&frame=1&auto=webp&s=c008866b9c134f9f0abf788191d95548cac7d5b9)\
+    \ Go to webhosting  ](https://www.reddit.com/r/webhosting/)\n[r/webhosting](https://www.reddit.com/r/webhosting/)\
+    \ • 9mo ago\n[mommy_earth_505](https://www.reddit.com/user/mommy_earth_505/)\n\
+    #  Best url-shortner; as alternative to the bitly \n[ Technical Questions  ](https://www.reddit.com/r/webhosting/?f=flair_name%3A%22Technical%20Questions%22)\n\
+    Hi everyone, I’m looking for a simple URL-shortener service that allows decent\
+    \ analytics, and minimal cost. What are your current favourites (2025) and what\
+    \ trade-offs should I know about? dont recommend bitly as it dont have a monthly\
+    \ plan (as core) \nRead more\nArchived post. New comments cannot be posted and\
+    \ votes cannot be cast. \nShare \n#  People also ask about section \nPeople also\
+    \ ask about \n[ Best URL shorte"
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://www.reddit.com/r/webhosting/comments/1oqscil/best_urlshortner_as_alternative_to_the_bitly/
+- content_hash: 81015fdb1d2cd13be8b1e2c3578793167d0e9d094af6b1fd7c1f5307dcf8e0ad
+  evidence_id: ev-81015fdb1d2cd13b
+  excerpt: "Title: Medium\n[Sitemap](/sitemap/sitemap.xml)\n\n[Open in app](https://play.google.com/store/apps/details?id=com.medium.reader&referrer=utm_source%3DmobileNavBar&source=---top_nav_layout_nav-----------------------------------------)\n\
+    \nSign up\n\n[Sign in](/m/signin?operation=login&redirect=https%3A%2F%2Fmedium.com%2F%40himubin%2F07-best-bitly-alternative-you-will-only-need-free-520505cd265f&source=post_page---top_nav_layout_nav-----------------------global_nav------------------)\n\
+    \n[Medium Logo](/?source=---top_nav_layout_nav-----------------------------------------)\n\
+    \nGet app\n\n[Write](/m/signin?operation=register&redirect=https%3A%2F%2Fmedium.com%2Fnew-story&source=---top_nav_layout_nav-----------------------new_post_topnav------------------)\n\
+    \n[Search](/search?source=---top_nav_layout_nav-----------------------------------------)\n\
+    \nSign up\n\n[Sign in](/m/signin?operation=login&redirect=https%3A%2F%2Fmedium.com%2F%40himubin%2F07-best-bitly-alternative-you-will-only-need-free-520505cd265f&source=post_page---top_nav_layout_nav-----------------------global_nav------------------)\n\
+    \n  1. [Free Bitly Alternatives (My TOP #3): Summary](/?source=post_page-----520505cd265f---------------------------------------#9f1a\
+    \ \"Free Bitly Alternatives \\(My TOP #3\\): Summary\")\n  2. [Best Free Alternatives\
+    \ of Bitly](/?source=post_page-----520505cd265f---------------------------------------#35a5\
+    \ \"Best Free Alternatives of Bitly\")\n  3. [1) Pxl.to](/?source=post_page-----520505cd265f----------------------------"
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://medium.com/@himubin/07-best-bitly-alternative-you-will-only-need-free-520505cd265f
+- content_hash: 944fc86a58b1e4e1aaeff8ad93e4fb208fca45f14a41c45631cfacab36e9f8eb
+  evidence_id: ev-944fc86a58b1e4e1
+  excerpt: "Title: techlist.com\n---  \n**Entropy Management Services**   \n  \nConvert\
+    \ plaintext or hashed input to any other format   \nValidate hashes and underlying\
+    \ plaintexts   \n  \n2cf2b2c4a2e993afaf9a8e245671030a@techlist.com"
+  retrieved_at: '2026-08-18T11:44:48.341259-04:00'
+  url: https://techlist.com/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

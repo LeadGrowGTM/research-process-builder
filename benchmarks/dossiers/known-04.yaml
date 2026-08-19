@@ -1,0 +1,146 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-984b87206cffb6f4
+  - ev-5aa57dec22d1e2a7
+  - ev-0368468c2f022bd8
+  field: identity
+  value: Huhtamaki North America
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-984b87206cffb6f4
+  - ev-5aa57dec22d1e2a7
+  - ev-0368468c2f022bd8
+  field: description
+  value: Foodservice About Products Foodservice Consumer Goods Retail Sustainability
+    Careers search Global website clear English (United States) clear menu clear About
+    Products Foodservice Consumer Goods Retail Sustainability Careers Highlights Business
+    segments Language search Search chevron_left Back English (United States) chevron_left
+    Back search Foodservice Innovative packaging solutions for the Foodservice industry
+    Product catalog Foodservice arrow_drop_down Foodservice School Lunch Trays Tableware
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-984b87206cffb6f4
+  - ev-5aa57dec22d1e2a7
+  - ev-0368468c2f022bd8
+  field: offers
+  value: foodservice packaging
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-984b87206cffb6f4
+  - ev-5aa57dec22d1e2a7
+  - ev-0368468c2f022bd8
+  field: icp
+  value: foodservice operators
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-984b87206cffb6f4
+  - ev-5aa57dec22d1e2a7
+  - ev-0368468c2f022bd8
+  field: personas
+  value: foodservice operators
+  visibility: message_safe
+company_id: known-04
+corrections: []
+evidence:
+- content_hash: 984b87206cffb6f4e07419b0bff23dcb7ffb8c1be9f223fc0e792fe901a0587d
+  evidence_id: ev-984b87206cffb6f4
+  excerpt: Foodservice About Products Foodservice Consumer Goods Retail Sustainability
+    Careers search Global website clear English (United States) clear menu clear About
+    Products Foodservice Consumer Goods Retail Sustainability Careers Highlights Business
+    segments Language search Search chevron_left Back English (United States) chevron_left
+    Back search Foodservice Innovative packaging solutions for the Foodservice industry
+    Product catalog Foodservice arrow_drop_down Foodservice School Lunch Trays Tableware
+    Hinged Containers Drink carriers & trays Food trays Food Containers & Lids Cups
+    & Lids Product catalog Foodservice product literature Foodservice packaging share
+     Share Email Facebook LinkedIn Copy to clipboard We are a leader in the single-use
+    foodservice packaging industry, delivering solutions for operators and distributors
+    nationwide. Cups & lids Huhtamaki offers a full line of cups and lids for a wide
+    variety of beverages to meet every budget and need. Products are available in
+    paper or plastic and are ideal for serving everything from hot coffee to cold
+    iced tea.  Chinet Comfort® Insulated Cups and Lids Single Wall Hot Cups Single
+    Wall Cold Cups Envirable® Molded Fiber Lids     Read more Food containers & lids
+    Huhtamaki offers a comprehensive line of food containers and lids, including both
+    paper and molded fiber options, in a wide range of sizes and designs. With premium
+    strength construction, superior insulation, and tight-fitting lids, these containers
+    ensure foods stay at their optimal temperature, whether hot or cold. Available
+    in sizes ranging from 6 to 64 ounces and a variety of stock and custom prints,
+    there is a container ideal for any portion, product, and brand.    Paper food
+    containers Envirable ® Molded Fiber Bowls and Lids Read more Food trays Huhtamaki
+    offers an extensive line of food trays, cartons and boxes in a wide range of popular
+    shapes, sizes and functions. All products are made from renewable resources and
+    are available as shown, featuring a popu
+  retrieved_at: '2026-08-12T22:06:19.715139+00:00'
+  url: https://www.huhtamaki.com/en-us/north-america/foodservice/
+- content_hash: 5aa57dec22d1e2a7bf1819dbe17250dd0d10e51bf9e4e650181619ef981041ef
+  evidence_id: ev-5aa57dec22d1e2a7
+  excerpt: Huhtamaki North America | LinkedIn Skip to main content LinkedIn Top Content
+    People Learning Jobs Games Sign in Join now Huhtamaki North America Packaging
+    and Containers Manufacturing De Soto, Kansas 9,437 followers Protecting food,
+    people and the planet through innovative and sustainable packaging solutions.
+    Follow Discover all 330 employees Report this company About us Huhtamaki is a
+    leading provider of sustainable packaging solutions for consumers around the world.
+    At Huhtamaki North America, we create opportunities for our customers in markets
+    ranging from consumer goods and foodservice packaging to our retail business with
+    customized store brand disposable tableware solutions and the Chinet® brand, one
+    of the most recognized disposable tableware brands in North America. With expertise
+    in paperboard, molded fiber and plastic, we are leading the food packaging industry.
+    Thanks to the passion and hard work of nearly 4,000 team members in 18 manufacturing
+    facilities across the U.S. and Mexico, the future has never looked brighter for
+    Huhtamaki North America. Our ambition is to become the first choice in sustainable
+    packaging solutions globally, and it starts right here in North America. Our global
+    2030 Transformation Strategy sets the goal to achieve carbon neutral production
+    and designing all our products to be recyclable, compostable, or reusable. It’s
+    more than a simple promise. It drives our work everyday. It is a bold strategy,
+    and we are fully committed to making a difference where it matters. By working
+    as one, we can fulfill the needs of our customers, while protecting food, people,
+    and the planet. Website http://us.huhtamaki.com External link for Huhtamaki North
+    America Industry Packaging and Containers Manufacturing Company size 10,001+ employees
+    Headquarters De Soto, Kansas Type Public Company Locations Primary 9201 Packaging
+    Dr De Soto, Kansas 66018, US Get directions Employees at Huhtamaki North America
+    Todd Zimmer Alan Reynolds Michael Wadsworth Mered
+  retrieved_at: '2026-08-12T22:06:20.458791+00:00'
+  url: https://www.linkedin.com/company/huhtamaki-north-america
+- content_hash: 0368468c2f022bd8e9fb51bad3fb6edc766aa341876b214b3bb3b6519ec6bddd
+  evidence_id: ev-0368468c2f022bd8
+  excerpt: August 05, 2024 Aug. 5, 2024 Aug. 9, 2024 Feb. 27, 2024 July 9, 2024 March
+    6, 2024 March 04, 2026 March 4, 2026 Feb. 13, 2026 Aug. 6, 2026 Aug. 4, 2026 July
+    17, 2026 July 13, 2026 July 2, 2026 July 1, 2026 Starbucks, Huhtamaki partner
+    on compostable cold cup lids | Packaging Dive Skip to main content Don't miss
+    tomorrow's Packaging industry news Let Packaging Dive's free newsletter keep you
+    informed, straight from your inbox. By signing up to receive our newsletter, you
+    agree to our Terms of Use and Privacy Policy . You can unsubscribe at anytime.
+    Informa TechTarget | Food Dive Manufacturing Dive Waste Dive Explore our brands
+    An Informa TechTarget Publication Deep Dive Library Events Press Releases Topics
+    Sign up Search Sign up Search People also ask Loading questions... EPR & Regulation
+    M&A Supply Chain Sustainability Materials Technology & Innovation Manufacturing
+    Corporate News An article from Starbucks, Huhtamaki partner on compostable cold
+    cup lids While the fiber-based cups and lids for cold beverages initially will
+    roll out in 24 stores, more are likely to be added. Published Aug. 5, 2024 • Updated
+    Aug. 9, 2024 Katie Pyzyk Lead Reporter Share Copy link Email LinkedIn X/Twitter
+    Facebook Print License Add us on Google Starbucks is working with packaging company
+    Huhtamaki to introduce fiber-based, compostable cups and lids for cold beverages
+    at select locations. Permission granted by Starbucks Finland-based packaging company
+    Huhtamaki is helping Starbucks launch new compostable cups for cold beverages
+    in select locations by providing molded fiber lids. The compostable cups and lids
+    initially will roll out in 24 stores, based on local mandates, and more markets
+    are likely to be added in the future, a Starbucks spokesperson said via email.
+    Starbucks confirmed that Huhtamaki is a partner on this project. Huhtamaki, which
+    has more than a dozen U.S. locations, declined to comment on specific customer
+    partnerships. Both the fiber-based lids and cups will be opaque, sa
+  retrieved_at: '2026-08-12T22:06:21.349048+00:00'
+  url: https://www.packagingdive.com/news/starbucks-huhtamaki-compostable-molded-fiber-cups-lids-cold-beverages/723168/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

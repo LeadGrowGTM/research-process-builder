@@ -60,7 +60,7 @@ def test_project_config_declares_the_restricted_parallel_oauth_server() -> None:
     assert parallel == {
         "url": "https://search.parallel.ai/mcp-oauth",
         "auth": "oauth",
-        "enabled_tools": ["web_search", "web_fetch"],
+        "enabled_tools": ["web_search"],
         "default_tools_approval_mode": "prompt",
     }
 
@@ -114,7 +114,7 @@ def test_safe_config_values_and_environment_references_are_not_rejected() -> Non
     fixture = {
         "auth": "oauth",
         "url": "https://search.parallel.ai/mcp-oauth",
-        "enabled_tools": ["web_search", "web_fetch"],
+        "enabled_tools": ["web_search"],
         "parallel_token_env_var": "PARALLEL_SEARCH_AUTH",
     }
 

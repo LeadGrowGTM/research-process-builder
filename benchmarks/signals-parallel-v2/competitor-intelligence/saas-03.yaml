@@ -1,0 +1,710 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: identity
+  value: Aligned
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: description
+  value: 'Digital Sales Room Software — #1 on G2 | Aligned Skip to content $60M raised.
+    70,000 sellers. 1M buyers. The deal workspace is here ➜ Read the announcement
+    Learn more Platform Close Platform Open Platform Explore our platform Product
+    Overview Platform at a glance Digital Sales Room Centralized buyer workspace Customer
+    Success Hub Manage customer outcomes Customer Onboarding Faster customer activation
+    Aligned AI AI aligned to revenue Mutual Action Plan Shared deal milestones Revenue
+    Intelligence '
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: offers
+  value: digital sales room
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: icp
+  value: sales teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: personas
+  value: sales teams
+  visibility: message_safe
+company_id: saas-03
+corrections: []
+evidence:
+- content_hash: 05398a2ef65666fa651567b24421f8e969484b93e8d6fe970bae6fd9b8776e71
+  evidence_id: ev-05398a2ef65666fa
+  excerpt: 'Digital Sales Room Software — #1 on G2 | Aligned Skip to content $60M
+    raised. 70,000 sellers. 1M buyers. The deal workspace is here ➜ Read the announcement
+    Learn more Platform Close Platform Open Platform Explore our platform Product
+    Overview Platform at a glance Digital Sales Room Centralized buyer workspace Customer
+    Success Hub Manage customer outcomes Customer Onboarding Faster customer activation
+    Aligned AI AI aligned to revenue Mutual Action Plan Shared deal milestones Revenue
+    Intelligence Revenue insights and signals Integrations Connect your tools Pricing
+    Resources Close Resources Open Resources Learn Articles Product insights and updates
+    Customer Stories How customers succeed with us Build Template Library Templates
+    to get started faster Guides & Playbooks Practical guides and best practices Login
+    Book a Demo Start free Crush your sales quota with Digital Sales Room Streamline
+    complex deals by consolidating conversations, stakeholders, processes, and resources
+    into a single shared space. #1 Digital Sales Room for SMB & Mid-Market (G2 Summer
+    ’26) Start with Google Start with Microsoft Book a Demo Start free Mid-Market
+    G2 Grid® for Digital Sales Room Software | Summer 2026 #1 Digital Sales Room for
+    SMB & Mid-Market (G2 Summer ’26) 50,000+ Sales & CS Teams Run Their Deals in Aligned
+    95% of the Buyer Journey Happens When You’re Not in the Room *gartner (so get
+    a room) Meet Aligned, Your Digital Sales Room Everything needed to win, all in
+    one place Create a virtual sales room for each deal Share the most up-to-date
+    sales content Streamline all discussions into topics Remove buyer friction & win
+    more deals Aligned is a single place to keep on top of deals, build strong business
+    cases with champions and get multiple stakeholders on board. I wish I had it early,
+    but I have it now, and I’m enjoying it immensely! Sarah Brazie Senior Account
+    Executive, Gong Align buyers to a Mutual Action Plan Build collaborative MAPs
+    with your champion Assign tasks and allow buyers to'
+  retrieved_at: '2026-08-12T21:20:31.919668+00:00'
+  url: https://www.alignedup.com/digital-sales-room/
+- content_hash: 22d60eecc23e228aa7d0cd79d8283286be9311a91848c743207678d21a8a49bb
+  evidence_id: ev-22d60eecc23e228a
+  excerpt: 'Aligned | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now Aligned Software Development Create a personalized
+    workspace for each deal and design a buying experience that wins quota. See jobs
+    Follow View all 76 employees Report this company About us Aligned is pioneering
+    the new way that B2B revenue teams interact with customers in today''s remote,
+    digital era. Instead of customers juggling multiple email threads, attachments
+    & tools, they have all resources in front of them in a single shared workspace
+    for easy decisions. Nothing gets buried and forgotten in threads. All stakeholders
+    join and collaborate, instead of staying behind the scenes. Both sides manage
+    mutual action plans to keep things on track, and reps can analyze buyer risks
+    and intent. Companies like Deel, Productboard, and SimilarWeb use it to win more
+    deals and close 45% faster. We are growing at a fast pace and looking for top
+    talents to join our core team. Website https://www.alignedup.com?utm_source=Social&utm_medium=Aligned_Page&utm_campaign=website_button&utm_id=163&avk=mvk_Linkedin_Page
+    External link for Aligned Industry Software Development Company size 51-200 employees
+    Headquarters Remote First Type Privately Held Founded 2021 Specialties Saas, Sales
+    Collaboration, Buyer Collaboration, Project Management, CRM, Sales Enablement,
+    and Sales Products No more previous content Aligned Customer Onboarding Deal Analytics
+    Digital Sales Room Mutual Action Plans No more next content Locations Primary
+    Remote First, US Get directions Employees at Aligned Charles Black Sam Rahmanian
+    Todd Clouser Erin C. See all employees Updates Aligned 47,664 followers 5h Report
+    this post There are 4 questions that will set the tone for your deal. When presented
+    well they will lead to higher win rates. Present them poorly and they will do
+    next to nothing. Here are 4 questions that will set every deal up for success
+    (and HOW to ask them): 1. Who Else Are You Evaluating? Yes, it''s'
+  retrieved_at: '2026-08-12T21:20:32.819137+00:00'
+  url: https://www.linkedin.com/company/alignedup
+- content_hash: 01e046900b8496acdb6722904a4406d618a57bfa5e51e4657a2b4786cada1235
+  evidence_id: ev-01e046900b8496ac
+  excerpt: 'Why NFX Invested in Aligned: The Sales Room Network Helping Companies
+    Close Deals 3x Faster Content Content Team Team Companies Companies About About
+    Products Products Signal Brieflink NFX Masterclass Get our weekly newsletter that
+    322K+ startup teams read Subscribe Why NFX Invested in Aligned: The Sales Room
+    Network Helping Companies Close Deals 3x Faster James Currier · @jamescurrier
+    · May 2023 · Israel James Currier · @jamescurrier May 2023 · Israel Table of Contents
+    1. Overly Complex Processes 2. Built-in Network Effects 3. Stellar Team Aligned
+    recently announced their $5.8M Seed round co-led by NFX and Hetz Ventures to create
+    the network to conduct software deals in. They sell sales teams a frictionless
+    workspace that helps software sales teams close deals 3x faster. Here are 3 reasons
+    why we backed them: 1. Overly Complex Processes Despite massive enterprise digitization,
+    77% of enterprise software buyers complain that their sales experiences are overly
+    complex. This leads to stalled and lost deals. Pointless friction. And, frankly,
+    shock/disappointment it still works this way in 2023. There needs to be a bridge
+    between a company’s CRM and their clients. Aligned creates that bridge with their
+    signature “online rooms” where sales teams communicate, coordinate on next steps,
+    share documents, sign proposals, etc. This real-time management speeds up deals
+    and makes buyers happy. It also gives salespeople the data behind the successes
+    and failures of their deals so they can improve their processes. 2. Built-in Network
+    Effects As more sellers adopt Aligned, more buyers will integrate it into their
+    own buying process. This lays the foundation for a network of B2B buyers and sellers.
+    The company also has defensibility through embedding. Once a B2B sales team adopts
+    Aligned, it’s nearly impossible for them to regress to the old way of sending
+    countless emails to dozens of stakeholders while navigating numerous platforms.
+    Any other way of conducting business feels ancie'
+  retrieved_at: '2026-08-12T21:20:33.437855+00:00'
+  url: https://www.nfx.com/post/why-nfx-invested-in-aligned
+- content_hash: f80212b8382b41ad6e685969136345e2a64117588abd1aee4fc908ab9ce40f59
+  evidence_id: ev-f80212b8382b41ad
+  excerpt: 'Title: Top Aligned Alternatives & Competitors 2026
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top Aligned alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top Aligned Alternatives & Competitors 2026 | Gartner Peer Insights image:
+    https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Highspot](https://www.gartner.com/reviews/product/highspot) [Compare with
+    Aligned](https://www.gartner.com/reviews/market/digital-sales-rooms/compare/product/highspot-vs-aligned)
+    Add to Compare ... title: Top Aligned Alternatives & Competitors 2026 | Gartner
+    Peer Insights image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Highspot](https://www.gartner.com/reviews/product/highspot) > 2. [Dock](https://www.gartner.com/reviews/product/dock-1657854129)
+    [Compare with Aligned](https://www.gartner.com/reviews/market/digital-sales-rooms/compare/product/dock-1657854129-vs-aligned)
+    Add to Compare'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://www.gartner.com/reviews/product/aligned/alternatives
+- content_hash: 577a3c03bc625f6c9bd2501f2a8965364db5d2fe335145f47d5fdd00c2d6ad1d
+  evidence_id: ev-577a3c03bc625f6c
+  excerpt: 'Title: Top 10 Aligned Alternatives & Competitors in 2026 | G2
+
+    Source: g2.com
+
+    Snippet: Skip to Navigation Skip to Navigation Introducing G2.ai, the future of
+    software buying. Try now Home ... Sales Acceleration Software Digital Sales Room
+    Software Aligned Aligned Alternatives Aligned Top 10 Aligned Alternatives & Competitors
+    (1,009) 4.7 out of 5 Research alternative solutions to Aligned on G2, with real
+    user reviews on competing tools. Digital Sales Room Software is a widely used
+    technology, and many people are seeking high quality, simple software solutions
+    with content curation, internal communication, and editing and approval tools.
+    Other important factors to consider when researching alternatives to Aligned include
+    documents and emails. The best overall Aligned alternative is trumpet. Other similar
+    apps like Aligned are Dock, GetAccept, Allego, and DealHub.io. Aligned'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://www.g2.com/products/teamaligned/competitors/alternatives
+- content_hash: c1c08640892fe89542d286d1e5fd15790c16003c8256004e5edfb4086933e16e
+  evidence_id: ev-c1c08640892fe895
+  excerpt: 'Title: Top Aligned (alignedup.com) Competitors & Alternatives
+
+    Source: getlatka.com
+
+    Snippet: # Top Aligned (alignedup.com) Alternatives, Competitors & Similar Software
+    [Compare Aligned (alignedup.com) with Arkenea](https://getlatka.com/companies/aligned-alignedupcom/vs/arkenea.com)
+    1![Arkenea logo](https://getlatka.com/company-logo?d=arkenea.com&p=https%3A%2F%2Fstorage.getlatka.com%2Fimages%2Farkenea.com.png&f=0)
+    ... WebinOne — a digital experience platform designed for agencies ready to thrive
+    in a fast-paced digital world. Our journey began as Treepl, providing businesses
+    a reliable alternative when Adobe Business Catalyst closed its doors. ... Revenue
+    $1.3M Customers - Year founded 2019 Funding - Team size 12 Location United Kingdom
+    [Compare Aligned (alignedup.com) with NextAgency](https://getlatka.com/companies/aligned-alignedupcom/vs/nextagency.com)'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://getlatka.com/companies/aligned-alignedupcom/competitors
+- content_hash: 35d60a60108400ddff0c6c728fe17f259752f10fc2f29fab4e9e1c19aecbb947
+  evidence_id: ev-35d60a60108400dd
+  excerpt: 'Title: The 10 Best Digital Sales Room Software Compared (2026) - Dock.us
+
+    Source: dock.us
+
+    Snippet: # The 10 Best Digital Sales Room Software Compared (2026) **Aligned**
+    : Prescriptive deal room tool for small teams, with limited customizations 6.
+    **Dealhub** : CPQ software with some sales room features 7. **Trumpet:** Point
+    solution deal room for startups and individual AEs 8. ... ## Types of digital
+    sales rooms ### 4. DSR point solutions A relatively new category, these are tools
+    built specifically to create digital sales rooms—tools like [Aligned](https://alignedup.com/)
+    , [Flowla](https://www.flowla.com/) , and [Trumpet](https://www.sendtrumpet.com/)
+    . ... ## 5. Aligned ### What it is: Aligned is a digital sales room for small
+    businesses. It’s a DSR point solution that keeps things simple, with a fairly
+    prescriptive UI and defined inputs for the user. ... ### What people say about
+    it: Reviewers on G2 like [Aligned](https://www.g2.com/products/teamaligned/reviews)
+    for its “super easy information sharing,” “modern and convenient look,” and “straightforward
+    design.”'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://www.dock.us/library/digital-sales-room-software
+- content_hash: db6acc513c55c625ae0e328f2683e68d3e257035d218d16335362a0b6e03d440
+  evidence_id: ev-db6acc513c55c625
+  excerpt: 'Title: Best Digital Sales Rooms Reviews 2026
+
+    Source: gartner.com
+
+    Snippet: # Digital Sales Rooms Reviews and Ratings ## Popular Product Comparisons
+    [Highspot vs Seismic Enablement Cloud](https://www.gartner.com/reviews/market/digital-sales-rooms/compare/product/highspot-vs-seismic-enablement-cloud)[Aligned
+    vs Highspot](https://www.gartner.com/reviews/market/digital-sales-rooms/compare/product/aligned-vs-highspot)[Aligned
+    vs Seismic Enablement Cloud](https://www.gartner.com/reviews/market/digital-sales-rooms/compare/product/aligned-vs-seismic-enablement-cloud)[Omedym
+    vs Seismic Enablement Cloud](https://www.gartner.com/reviews/market/digital-sales-rooms/compare/product/omedym-vs-seismic-enablement-cloud)[Aligned
+    vs Mindtickle](https://www.gartner.com/reviews/market/digital-sales-rooms/compare/product/aligned-vs-mindtickle-892549902)'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://www.gartner.com/reviews/market/digital-sales-rooms
+- content_hash: 04c4142ee50f0fcded7cd4b634fbd873c460374b1fb3305a60e610fa72bbd84f
+  evidence_id: ev-04c4142ee50f0fcd
+  excerpt: 'Title: Flowla vs Aligned | The best digital sales room alternative
+
+    Source: flowla.com
+
+    Snippet: # #1 Aligned alternative ## More than a digital sales room. **Flowla
+    moves deals forward for you** with workflow automation & AI ### Create & manage
+    deal rooms without adoption friction Flowla doesn''t add extra work on your plate.
+    AutoPilot handles the deal room admin: - Auto-builds deal rooms from your triggers
+    - Nudges clients when tasks are overdue - Syncs all deal room activity to CRM,
+    and more. ... ### AI handles the busywork while you focus on clients Flowla''s
+    smart agents builds assets for you like: ‍ - Business cases from your Gong notes
+    - Handoff notes for CS using deal room data - Hyper-relevant follow up emails
+    based on relevant room activity, and more. Save your team''s energy for value-adding
+    activities. ... ## Compare Flowla vs. Aligned side-by-side Quickly compare the
+    key differences between the two. Flowla logo - colored Aligned Process & pipeline
+    automation Automated deal room creation, timely follow ups, and more working in
+    sync with CRM. Learn more → AI Agents'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://www.flowla.com/compare/aligned-alternative
+- content_hash: af67a86d5e67e8d3d291f02e131196c7ec66ec7d1109d8bc6895e60e397bfc15
+  evidence_id: ev-af67a86d5e67e8d3
+  excerpt: 'Title: Digital Sales Room Software — #1 on G2
+
+    Source: alignedup.com
+
+    Snippet: # Crush your sales quota with Digital Sales Room ## 50,000+ Sales & CS
+    Teams Run Their Deals in Aligned servicenow logo wordpress logo similarweb logo
+    usertsting logo chilipiper logo customerai logo productboard logo ... ## FAQs
+    While Digital Sales Rooms can be a great alternative to in-person meetings, they
+    do not completely replace them. In most cases, in-person meetings are still necessary
+    or preferred, depending on the nature of the deal or the preferences of the parties
+    involved. ... ## Here’s what they’re saying ### Dan Briscoe Platform Product Overview
+    Platform at a glance Digital Sales Room Centralized buyer workspace Customer Success
+    Hub Manage customer outcomes Customer Onboarding Faster customer activation Aligned
+    AI AI aligned to revenue Mutual Action Plan Shared deal milestones Revenue Intelligence
+    Revenue insights and signals Integrations'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://alignedup.com/digital-sales-room
+- content_hash: 1bb70a68e50b37451b36eadd78fea0e81277a94e95e6fba3938a2836705aafed
+  evidence_id: ev-1bb70a68e50b3745
+  excerpt: 'Detected date: 2026-08-05
+
+    Title: 7 Best Aligned Alternatives for Sales Teams (2026)
+
+    Date: 2026-08-05
+
+    Source: hummingdeck.com
+
+    Snippet: # 7 Best Aligned Alternatives for Sales Teams (2026) ## The seven best
+    alternatives ### 5. Flowla In a Flowla vs Aligned comparison, choose Flowla when
+    cross-lifecycle automation is central. Choose Aligned when collaborative room
+    creation, templates, and its enterprise integrations fit better. Compare the tier
+    that supports the required workflow. ... ## Frequently asked questions ### Which
+    Aligned competitors are best for small and mid-market sales teams? HummingDeck,
+    Trumpet, and Flowla make the strongest focused shortlist for most small and mid-market
+    sales teams. ... ### How do Aligned and GetAccept compare? Aligned centers on
+    collaborative digital sales rooms, while GetAccept combines rooms with document
+    creation, pricing tables, contracts, and e-signature. GetAccept is the stronger
+    fit when a team wants one proposal-to-signature workflow; Aligned is usually the
+    more focused room platform.'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://hummingdeck.com/blog/aligned-alternatives-2026
+- content_hash: 1cfb0873407fe7b376e3e49989c0d3634c3c6ab0a0fb19e4bc22a3c774c7719c
+  evidence_id: ev-1cfb0873407fe7b3
+  excerpt: 'Detected date: 2025-06-10
+
+    Title: Distribute vs Aligned: Which Digital Sales Room Wins in 2025?
+
+    Date: 2025-06-10
+
+    Source: distribute.so
+
+    Snippet: # Distribute vs Aligned: Full Digital Sales Room Breakdown If you''re
+    researching an **aligned alternative** or comparing the **best digital sales room
+    software** options, this comprehensive analysis reveals why fast-growing SaaS
+    teams are choosing Distribute''s document-like UX over traditional page builders
+    that reps abandon. ... ## 📊 At-a-Glance Comparison Table | Feature | Distribute
+    | Aligned | | Buyer-side UX | Document-style 1-pagers | Single-page workspace
+    | | Mutual Action Plans | AI-generated templates | Built-in collaborative MAPs
+    | | Branding options | Custom fonts, CNAME, white-label | Custom domain & branding
+    (Enterprise) | | Setup Time | 60 seconds | Under 5 minutes |'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://www.distribute.so/blog/distribute-vs-aligned
+- content_hash: 9dbbc931789547fad990fa82ab0c66abfe3c22dd95fb5f2a15eb4d1dff9f5e81
+  evidence_id: ev-9dbbc931789547fa
+  excerpt: 'Query: Aligned digital sales room alternatives OR competitors OR "vs"
+    OR "compared to"
+
+    1. https://www.gartner.com/reviews/product/aligned/alternatives
+
+    Title: Top Aligned Alternatives & Competitors 2026
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top Aligned alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top Aligned Alternatives & Competitors 2026 | Gartner Peer Insights image:
+    https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Highspot](https://www.gartner.com/reviews/product/highspot) [Compare with
+    Aligned](https://www.gartner.com/reviews/market/digital-sales-rooms/compare/product/highspot-vs-aligned)
+    Add to Compare ... title: Top Aligned Alternatives & Competitors 2026 | Gartner
+    Peer Insights image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Highspot](https://www.gartner.com/reviews/product/highspot) > 2. [Dock](https://www.gartner.com/reviews/product/dock-1657854129)
+    [Compare with Aligned](https://www.gartner.com/reviews/market/digital-sales-rooms/compare/product/dock-1657854129-vs-aligned)
+    Add to Compare
+
+    2. https://www.g2.com/products/teamaligned/competitors/alternatives
+
+    Title: Top 10 Aligned Alternatives & Competitors in 2026 | G2
+
+    Source: g2.com
+
+    Snippet: Skip to Navigation Skip to Navigation Introducing G2.ai, the future of
+    software buying. Try now Home ... Sales Acceleration Software Digital Sales Room
+    Softwa'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://www.google.com/search?q=Aligned+digital+sales+room+alternatives+OR+competitors+OR+%22vs%22+OR+%22compared+to%22
+- content_hash: 96b43045ed0d305f7f3750884d5a2a92cb9005d63d04a05a58f23a21a09207d6
+  evidence_id: ev-96b43045ed0d305f
+  excerpt: 'Title: Top Aligned (alignedup.com) Competitors & Alternatives
+
+    Source: getlatka.com
+
+    Snippet: # Top Aligned (alignedup.com) Alternatives, Competitors & Similar Software
+    [Compare Aligned (alignedup.com) with Arkenea](https://getlatka.com/companies/aligned-alignedupcom/vs/arkenea.com)
+    1![Arkenea logo](https://getlatka.com/company-logo?d=arkenea.com&p=https%3A%2F%2Fstorage.getlatka.com%2Fimages%2Farkenea.com.png&f=0)
+    ... Revenue $770K Customers - Year founded 2007 Funding - Team size 7 Location
+    United States [Compare Aligned (alignedup.com) with Vaporware](https://getlatka.com/companies/aligned-alignedupcom/vs/vaporware)
+    ... Revenue $1.3M Customers - Year founded 2009 Funding - Team size 11 Location
+    United States [Compare Aligned (alignedup.com) with Travitude](https://getlatka.com/companies/aligned-alignedupcom/vs/travitude.co.uk)
+    ... Revenue $1.3M Customers - Year founded 2019 Funding - Team size 12 Location
+    United Kingdom [Compare Aligned (alignedup.com) with NextAgency](https://getlatka.com/companies/aligned-alignedupcom/vs/nextagency.com)'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://getlatka.com/companies/aligned-alignedupcom/competitors
+- content_hash: 57265f177dc25a57c63f6139759c42857bc5b714e66363c8818a87141ca4dd64
+  evidence_id: ev-57265f177dc25a57
+  excerpt: 'Title: Top Aligned Alternatives & Competitors 2026 | Gartner Peer Insights
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top Aligned alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top Aligned Alternatives & Competitors 2026 | Gartner Peer Insights image:
+    https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Highspot](https://www.gartner.com/reviews/product/highspot) [Compare with
+    Aligned](https://www.gartner.com/reviews/market/digital-sales-rooms/compare/product/highspot-vs-aligned)
+    Add to Compare ... title: Top Aligned Alternatives & Competitors 2026 | Gartner
+    Peer Insights image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Highspot](https://www.gartner.com/reviews/product/highspot) > 2. [Dock](https://www.gartner.com/reviews/product/dock-1657854129)
+    [Compare with Aligned](https://www.gartner.com/reviews/market/digital-sales-rooms/compare/product/dock-1657854129-vs-aligned)
+    Add to Compare'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://www.gartner.com/reviews/product/aligned/alternatives
+- content_hash: 60d7f56cca370c348b7c2c9bddff9918a1a57108b7f244e19000a0798a75c92e
+  evidence_id: ev-60d7f56cca370c34
+  excerpt: 'Detected date: 2026-08-05
+
+    Title: 7 Best Aligned Alternatives for Sales Teams (2026)
+
+    Date: 2026-08-05
+
+    Source: hummingdeck.com
+
+    Snippet: # 7 Best Aligned Alternatives for Sales Teams (2026) ## The seven best
+    alternatives ### 2. Trumpet Trumpet calls its rooms Pods. Its [pricing page](https://www.sendtrumpet.com/pricing)
+    lists 10 free Pods per account with unlimited users, MAPs, comments, and basic
+    analytics. Pro is $45 per user per month or $450 per year, adding unlimited Pods,
+    templates, content management, analytics, and CRM integrations. ... ### 5. Flowla
+    In a Flowla vs Aligned comparison, choose Flowla when cross-lifecycle automation
+    is central. Choose Aligned when collaborative room creation, templates, and its
+    enterprise integrations fit better. Compare the tier that supports the required
+    workflow. ... ## Compare the products against a real deal If HummingDeck and Aligned
+    are the final two, the direct comparison separates their pricing, room limits,
+    MAPs, discussions, sharing controls, analytics, and integrations without repeating
+    this broader shortlist. [Start your free HummingDeck Pro trial.](https://hummingdeck.com/signup?plan=pro)'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://hummingdeck.com/blog/aligned-alternatives-2026
+- content_hash: 2e0eb6853240fab57e2e2d44f047859d45d2a0525106570cbce99e7752aef87b
+  evidence_id: ev-2e0eb6853240fab5
+  excerpt: 'Title: Apollo Aligned Alternatives (AAA E-1)
+
+    Source: apollo.com
+
+    Snippet: # Important Notice: Apollo Aligned Alternatives (AAA E-1) Jurisdiction
+    Select... ... Leave site I agree to the terms'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://www.apollo.com/wealth/strategies/products/apollo-aligned-alternatives-e1
+- content_hash: 776ac05b2ce0dc6d43a6f778242b422c63c46142eaf73e0d56da8ce4aae39a07
+  evidence_id: ev-776ac05b2ce0dc6d
+  excerpt: 'Title: Investment Products | Apollo Wealth
+
+    Source: apollo.com
+
+    Snippet: # SUGGESTED SEARCH TERMS ## Investment Products ### Investment Products
+    (15) Equity ### Apollo Aligned Alternatives E-1 A turnkey investment with no maturity
+    date that offers periodic liquidity and access to Apollo’s alternative investment
+    platform. Credit ### Apollo Asset Backed Credit Company Contact your Apollo representative
+    to learn more about this product.'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://www.apollo.com/wealth/strategies/products
+- content_hash: c594f8739163639687dffba5ddc080bc2474a8ece9c8cccfe3ad0cca1ef68fd3
+  evidence_id: ev-c594f87391636396
+  excerpt: 'Detected date: 2025-05-26
+
+    Title: Digital Sales Room Showdown: Distribute vs. Dock vs. Aligned vs. GetAccept
+    (2025 Comparison) | Distribute
+
+    Date: 2025-05-26
+
+    Source: distribute.so
+
+    Snippet: # Digital Sales Room Showdown: Distribute vs. Dock vs. Aligned vs. GetAccept
+    (2025 Comparison) Compare the top digital sales room platforms in 2025. See how
+    Distribute''s AI-native approach and document-like UX stack up against Dock, Aligned,
+    and GetAccept in features, pricing, and ease of adoption. ... ## Detailed Platform
+    Analysis ### Aligned: The Template Master FREE TIER TEMPLATE-DRIVEN 💪 Strengths
+    ✓ Quick Setup: Templates enable fast room creation ✓ Generous Free Plan: Best
+    free tier in the market ✓ AI Copilot: Helpful guidance for users ✓ User-Friendly:
+    Lower learning curve than competitors ⚡ Challenges × Template Limitations: May
+    feel restrictive'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://www.distribute.so/blog/digital-sales-room-showdown-distribute-vs-dock-vs-aligned-vs-getaccept
+- content_hash: 859733306c93742762b0ab94044e88c328edadfbcffa3e5323b6622d41c23772
+  evidence_id: ev-859733306c937427
+  excerpt: 'Title: Aligned vs IT Concepts: SaaS Company Comparison
+
+    Source: getlatka.com
+
+    Snippet: IT Concepts vs Aligned: SaaS Company Comparison | GetLatka'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://getlatka.com/companies/itconcepts.com/vs/aligneddc.com
+- content_hash: 0f3d6d2223c59db90e41b77608403c002e6ac2534af41755bb3c265e94697e64
+  evidence_id: ev-0f3d6d2223c59db9
+  excerpt: 'Title: 7 Best Aligned Alternatives for Sales Teams (2026)
+
+    Source: prospeo.io
+
+    Snippet: Sales Hub / B2B Sales Tools / Digital Sales Rooms 7 Best Aligned Alternatives
+    for Sales Teams (2026) Compare the best Aligned alternatives for digital sales
+    rooms in 2026. Free tiers, pricing, CRM integrations, and honest recommendations.
+    7 min read Prospeo Team Aligned logo Prospeo Your deal room links mean nothing
+    if stakeholder emails bounce. Verify contacts at 98% accuracy first. Verify Emails
+    Free → 7 min read Prospeo Team Table of Contents 7 Best Aligned Alternatives for
+    Sales Teams in 2026 Top Picks at a Glance What Aligned Costs (and Why Teams Switch)
+    Best Aligned Alternatives Compared How to Choose FAQ Sales tips on YouTube Share
+    7 Best Aligned Alternatives for Sales Teams in 2026 The platform has added AI
+    features like auto-generated deal resources, stakeholder mapping, and'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://prospeo.io/s/aligned-alternatives
+- content_hash: c4bc40d1f7ad5a92d22071c0502fb4e4ccaee0bad8bf10a7be09568df3d4870a
+  evidence_id: ev-c4bc40d1f7ad5a92
+  excerpt: 'Query: Aligned alternatives
+
+    1. https://www.g2.com/products/teamaligned/competitors/alternatives
+
+    Title: Top 10 Aligned Alternatives & Competitors in 2026 | G2
+
+    Source: g2.com
+
+    Snippet: Skip to Navigation Skip to Navigation Introducing G2.ai, the future of
+    software buying. Try now Home ... Sales Acceleration Software Digital Sales Room
+    Software Aligned Aligned Alternatives Aligned Top 10 Aligned Alternatives & Competitors
+    (1,009) 4.7 out of 5 Research alternative solutions to Aligned on G2, with real
+    user reviews on competing tools. Digital Sales Room Software is a widely used
+    technology, and many people are seeking high quality, simple software solutions
+    with content curation, internal communication, and editing and approval tools.
+    Other important factors to consider when researching alternatives to Aligned include
+    documents and emails. The best overall Aligned alternative is trumpet. Other similar
+    apps like Aligned are Dock, GetAccept, Allego, and DealHub.io. Aligned
+
+    2. https://getlatka.com/companies/aligned-alignedupcom/competitors
+
+    Title: Top Aligned (alignedup.com) Competitors & Alternatives
+
+    Source: getlatka.com
+
+    Snippet: # Top Aligned (alignedup.com) Alternatives, Competitors & Similar Software
+    [Compare Aligned (alignedup.com) with Arkenea](https://getlatka.com/companies/aligned-alignedupcom/vs/arkenea.com)
+    1![Arkenea logo](https://getlatka.com/company-logo?d=arkenea.com&p=https%3A%2F%2Fstorage.getlatka.com%2Fimages%2Farkenea.com.png&f=0)
+    ... Revenue $770K Customers - Year fo'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://www.google.com/search?q=Aligned+alternatives
+- content_hash: d91644f577a1ecd627e18fc079a46446088669b7010a2b7fa41a0af8a82eec7f
+  evidence_id: ev-d91644f577a1ecd6
+  excerpt: 'Title: The 10 Best Digital Sales Room Software Compared (2026) - Dock.us
+
+    Source: dock.us
+
+    Snippet: # The 10 Best Digital Sales Room Software Compared (2026) **Aligned**
+    : Prescriptive deal room tool for small teams, with limited customizations 6.
+    **Dealhub** : CPQ software with some sales room features 7. **Trumpet:** Point
+    solution deal room for startups and individual AEs 8. **Seismic** : Legacy sales
+    LMS with a sales room added more recently 9. **Spekit:** Up-and-coming AI-backed
+    enablement platform with basic deal rooms 10. **Vidyard** : Video tool for sales
+    teams with new deal room features added last year ... ## Types of digital sales
+    rooms ### 4. DSR point solutions A relatively new category, these are tools built
+    specifically to create digital sales rooms—tools like [Aligned](https://alignedup.com/)
+    , [Flowla](https://www.flowla.com/) , and [Trumpet](https://www.sendtrumpet.com/)
+    . ... ## 5. Aligned ### What it is: Aligned is a digital sales room for small
+    businesses. It’s a DSR point solution that keeps things simple, with a fairly
+    prescriptive UI and defined inputs for the user.'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://www.dock.us/library/digital-sales-room-software
+- content_hash: 96577522b3021468be7e83c1fa235079aa9f5fb77d1fbee9f9ff6099a9d83192
+  evidence_id: ev-96577522b3021468
+  excerpt: 'Title: Top Aligned (alignedup.com) Competitors & Alternatives - GetLatka
+
+    Source: getlatka.com
+
+    Snippet: # Top Aligned (alignedup.com) Alternatives, Competitors & Similar Software
+    [Compare Aligned (alignedup.com) with Arkenea](https://getlatka.com/companies/aligned-alignedupcom/vs/arkenea.com)
+    1![Arkenea logo](https://getlatka.com/company-logo?d=arkenea.com&p=https%3A%2F%2Fstorage.getlatka.com%2Fimages%2Farkenea.com.png&f=0)
+    ... Revenue $770K Customers - Year founded 2007 Funding - Team size 7 Location
+    United States [Compare Aligned (alignedup.com) with Vaporware](https://getlatka.com/companies/aligned-alignedupcom/vs/vaporware)
+    ... Revenue $1.3M Customers - Year founded 2009 Funding - Team size 11 Location
+    United States [Compare Aligned (alignedup.com) with Travitude](https://getlatka.com/companies/aligned-alignedupcom/vs/travitude.co.uk)
+    ... Revenue $1.3M Customers - Year founded 2019 Funding - Team size 12 Location
+    United Kingdom [Compare Aligned (alignedup.com) with NextAgency](https://getlatka.com/companies/aligned-alignedupcom/vs/nextagency.com)'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://getlatka.com/companies/aligned-alignedupcom/competitors
+- content_hash: 5f8d5991ddb95c5a2345ccbe52ac11438ceacb2a00759591279bbe9e6a743d8d
+  evidence_id: ev-5f8d5991ddb95c5a
+  excerpt: 'Title: 7 Best Aligned Alternatives for Sales Teams (2026)
+
+    Source: prospeo.io
+
+    Snippet: Best Aligned Alternatives Compared · Trumpet - Best Direct Replacement
+    · Recapped - Best for Deal Execution · Prospeo - Fix Your Contact Data First.'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://prospeo.io/s/aligned-alternatives
+- content_hash: ecf69e0b1eb5796cb454d9ef66babbd02d4d5fc05d6f7fafbe2917c570568f3f
+  evidence_id: ev-ecf69e0b1eb5796c
+  excerpt: 'Detected date: 2025-05-26
+
+    Title: Digital Sales Room Showdown: Distribute vs. Dock vs. Aligned vs. GetAccept
+    (2025 Comparison) | Distribute
+
+    Date: 2025-05-26
+
+    Source: distribute.so
+
+    Snippet: # Digital Sales Room Showdown: Distribute vs. Dock vs. Aligned vs. GetAccept
+    (2025 Comparison) Compare the top digital sales room platforms in 2025. See how
+    Distribute''s AI-native approach and document-like UX stack up against Dock, Aligned,
+    and GetAccept in features, pricing, and ease of adoption. ... ## Platform Overview:
+    The Contenders ### Distribute The AI-Native Document Experience Distribute Platform
+    Founded: 2023 (AI-native from day one) Approach: Document-like UX that reps already
+    know how to use Key Differentiator: Built with AI from the ground up, not bolted
+    on 🏢 ... ## Detailed Platform Analysis ### Aligned: The Template Master FREE TIER
+    TEMPLATE-DRIVEN 💪 Strengths ✓ Quick Setup: Templates enable fast room creation
+    ✓ Generous Free Plan: Best free tier in the market ✓ AI Copilot: Helpful guidance
+    for users ✓ User-Friendly: Lower learning curve than competitors ⚡ Challenges
+    × Template Limitations: May feel restrictive'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://www.distribute.so/blog/digital-sales-room-showdown-distribute-vs-dock-vs-aligned-vs-getaccept
+- content_hash: f5e80a7e566201376d050f9c4244d4cc5d0e903d527558c47e0e4b901e0536c6
+  evidence_id: ev-f5e80a7e56620137
+  excerpt: 'Query: Aligned vs
+
+    1. https://www.g2.com/products/teamaligned/competitors/alternatives
+
+    Title: Top 10 Aligned Alternatives & Competitors in 2026 | G2
+
+    Source: g2.com
+
+    Snippet: Skip to Navigation Skip to Navigation Introducing G2.ai, the future of
+    software buying. Try now Home ... Sales Acceleration Software Digital Sales Room
+    Software Aligned Aligned Alternatives Aligned Top 10 Aligned Alternatives & Competitors
+    (1,009) 4.7 out of 5 Research alternative solutions to Aligned on G2, with real
+    user reviews on competing tools. Digital Sales Room Software is a widely used
+    technology, and many people are seeking high quality, simple software solutions
+    with content curation, internal communication, and editing and approval tools.
+    Other important factors to consider when researching alternatives to Aligned include
+    documents and emails. The best overall Aligned alternative is trumpet. Other similar
+    apps like Aligned are Dock, GetAccept, Allego, and DealHub.io. Aligned
+
+    2. https://www.dock.us/library/digital-sales-room-software
+
+    Title: The 10 Best Digital Sales Room Software Compared (2026) - Dock.us
+
+    Source: dock.us
+
+    Snippet: # The 10 Best Digital Sales Room Software Compared (2026) **Aligned**
+    : Prescriptive deal room tool for small teams, with limited customizations 6.
+    **Dealhub** : CPQ software with some sales room features 7. **Trumpet:** Point
+    solution deal room for startups and individual AEs 8. **Seismic** : Legacy sales
+    LMS with a sales room added more recently 9. **Spekit:** Up-and-c'
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://www.google.com/search?q=Aligned+vs
+- content_hash: 52c2af21781402550b13d6a8111ea5e49eaf9b856a7a618c197cbba85affb39b
+  evidence_id: ev-52c2af2178140255
+  excerpt: "Title: Top Aligned (alignedup.com) Competitors &amp; Alternatives\n[](/)\n\
+    \n[Home](/)[SaaS Database](/saas-companies)[Add Your Company](/add)[Podcast](/podcast)[Pricing](/pricing)\n\
+    \n[SaaS database](/companies/directory?similar=a)/[Aligned (alignedup.com)](/companies/aligned-alignedupcom)/Competitors\n\
+    \n# Top Aligned (alignedup.com) Alternatives, Competitors & Similar Software\n\
+    \nFounded 2021\n\nFind 20 competitors in the Software Development Agency. Compare\
+    \ other SaaS such as Arkenea, Brocsoft and Insurance Agent App. These Aligned\
+    \ (alignedup.com) competitors have raised $9M and together serve more than 24\
+    \ customers and employ over 184 team members.\n\n[Compare Aligned (alignedup.com)\
+    \ with Arkenea](/companies/aligned-alignedupcom/vs/arkenea.com)\n\n1\n\n[Arkenea](/companies/arkenea.com)\n\
+    \nSoftware Development Agency\n\nCompany Description \"Arkenea, The leading app\
+    \ product development firm helping non-tech founders build better apps and websites”.\
+    \ Arkenea Technologies is a service partner to entrepreneurs and businesses from\
+    \ across the globe. The service offerings of the company are backed by an ingenious\
+    \ team that transforms the client's ideas into reality through consulting and\
+    \ development of mobile application and websites. Arkenea is a young and vibrant\
+    \ company that nurtures not only its clients, but also its employees to help them\
+    \ grow in their careers. Arkenea's belief is to add value to all its stakeholders,\
+    \ including engaged employees. Log on to explore more – www.arkenea.com\n\nRevenue\n\
+    \  "
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://getlatka.com/companies/aligned-alignedupcom/competitors
+- content_hash: 08f0a615f0fa2eb2dcdb498173af5724d2cb11ef205262a325193fce5ac7a973
+  evidence_id: ev-08f0a615f0fa2eb2
+  excerpt: "Detected date: July 15, 2026\nTitle: 7 Best Aligned Alternatives for Sales\
+    \ Teams (2026)\n[HummingDeck](/)\n\nEN\n\n[Back to blog](/en/blog)\n\n# 7 Best\
+    \ Aligned Alternatives for Sales Teams (2026)\n\nIlya Spiridonov[](https://linkedin.com/in/ilyaspiridonov)\n\
+    \n·July 15, 2026·Updated August 5, 2026·13 min read\n\nAligned is a capable digital\
+    \ sales room, but it is not the automatic best fit for every sales process. A\
+    \ small team may want a lower paid entry point, more detailed content analytics,\
+    \ or secure sharing without an enterprise contract. Another team may need proposal\
+    \ creation, e-signature, onboarding automation, or CPQ inside the same platform.\n\
+    \nThis guide compares the seven best Aligned alternatives for small and mid-market\
+    \ sales teams. It treats Aligned as the baseline, then evaluates each competitor\
+    \ on price, mutual action plans, buyer conversations, seller-private work, access\
+    \ control, analytics, integrations, and administrative overhead.\n\nWe checked\
+    \ public product and pricing pages on August 5, 2026. Confirm current terms with\
+    \ each vendor before buying.\n\nIn this article\n\n  1. Quick recommendations\n\
+    \  2. What Aligned does well\n  3. Why compare Aligned alternatives\n  4. How\
+    \ we evaluated the tools\n  5. Aligned alternatives compared\n  6. The seven best\
+    \ alternatives\n  7. When Aligned is still the better choice\n  8. Frequently\
+    \ asked questions\n\n\n\n## Quick recommendations\n\n  * **HummingDeck:** best\
+    \ overall for focused small and mid-market teams.\n  * **Trumpet:** best for polished,\
+    \ presentation-led buyer experiences.\n "
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://hummingdeck.com/blog/aligned-alternatives-2026
+- content_hash: 3c58ebb49171c0effce8674a08b70cbab6eea48c31e0ec8afb0f09d0b2da9ec2
+  evidence_id: ev-3c58ebb49171c0ef
+  excerpt: "Title: Country Allowed Notification\n###### Important Notice: Apollo Aligned\
+    \ Alternatives (AAA E-1)\n\nJurisdiction\n\nSelect... \n\nAustria Belgium Bulgaria\
+    \ Croatia Czech Republic Denmark Dubai International Financial Centre (DIFC) Estonia\
+    \ Finland France Germany Greece Hungary Iceland Ireland Italy Jersey Latvia Liechtenstein\
+    \ Lithuania Luxembourg Malta Monaco Netherlands Norway Poland Portugal Republic\
+    \ of Cyprus Romania Slovakia Slovenia Spain Sweden Switzerland United Arab Emirates\
+    \ United Kingdom\n\nInvestor Type\n\nSelect... \n\nTo proceed, please expand and\
+    \ read the information below.\n\nView All Collapse\n\nBy clicking 'I agree to\
+    \ the terms', I confirm that my investor type and country of residence are accurate,\
+    \ and I acknowledge the important information above.\n\nLeave site  I agree to\
+    \ the terms"
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://www.apollo.com/wealth/strategies/products/apollo-aligned-alternatives-e1
+- content_hash: 0c677f63551bb80a072b492bff13b1013c83892e3f0bf435bdf344b55b1fcd22
+  evidence_id: ev-0c677f63551bb80a
+  excerpt: "Title: Investment Products | Apollo Wealth\nWealth Professionals \n\n\
+    \  * [ General Public ](/homepage)\n  * [ Institutional Investors ](/institutional/homepage)\n\
+    \  * [ Public Shareholders ](https://ir.apollo.com)\n  * [ Wealth Professionals\
+    \ ](/wealth/homepage)\n\n\n\n[ ](/wealth/homepage)\n\nLog In \n\n  * [ Allfunds\
+    \ Login ](https://next.allfunds.com/login)\n  * [ CAIS Login ](https://www.caisgroup.com)\n\
+    \  * [ DST Vision Login ](https://vision.ssnc.cloud/tf/Vision?tx=VisStartup&cz=6210818081413)\n\
+    \  * [ GLASfunds Login ](http://glasfunds.com/)\n  * [ iCapital Login ](https://icapital.com)\n\
+    \n\n\n  * What We Do \n  * Advisor Resources \n  * Insights & News \n  * About\
+    \ Apollo \n\n\n\nWhat We Do\n\nExplore our investment strategies, solutions, and\
+    \ products designed to support diverse financial goals.\n\n  * Strategies\n  *\
+    \ Solutions\n  * [ Investment Products ](/wealth/strategies/products)\n\n\n\n\
+    \  * [ Credit ](/wealth/strategies/asset-management/credit)\n  * [ Equity ](/wealth/strategies/asset-management/equity)\n\
+    \  * [ Hybrid Solutions  ](/wealth/strategies/asset-management/hybrid-solutions)\n\
+    \  * [ Real Assets ](/wealth/strategies/asset-management/real-assets)\n  * [ Sports\
+    \ Capital ](/wealth/strategies/asset-management/apollo-sports-capital)\n\n\n\n\
+    \  * [ Family Office ](/wealth/strategies/family-office-solutions)\n  * [ Retirement\
+    \  ](/wealth/strategies/retirement)\n  * [ Wealth Solutions ](/wealth/strategies/solutions)\n\
+    \n\n\n[ Apollo's Differentiated Strategy Marc Rowan on how Apollo’s differentiated\
+    \ strategy was built for this m"
+  retrieved_at: '2026-08-19T12:27:54.031700-04:00'
+  url: https://www.apollo.com/wealth/strategies/products
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

@@ -1,0 +1,63 @@
+company_id: saas-03
+evidence_ids:
+- ev-619f79fe5a1a0eca
+- ev-babb44ca23ac1949
+- ev-af7213a3e609d7dc
+- ev-5923049240295dc6
+- ev-810fd0c3e770c63b
+- ev-ddc25445340f482b
+- ev-4b1b19cc4e77c532
+- ev-fd53559f9e308efc
+named:
+- name: Highspot
+  aliases: []
+  domain: null
+- name: Seismic
+  aliases: [Seismic Enablement Cloud]
+  domain: null
+- name: Mindtickle
+  aliases: [MindTickle]
+  domain: null
+- name: FollowUp
+  aliases: [Follow Up, GoFollowUp]
+  domain: gofollowup.ai
+- name: Distribute
+  aliases: [Distribute.so]
+  domain: distribute.so
+- name: Paage
+  aliases: []
+  domain: null
+- name: Trumpet
+  aliases: [trumpet, sendtrumpet]
+  domain: null
+- name: Dock
+  aliases: [Dock.us]
+  domain: dock.us
+- name: Arrows
+  aliases: []
+  domain: null
+- name: Flowla
+  aliases: []
+  domain: flowla.com
+- name: GetAccept
+  aliases: [Get Accept]
+  domain: null
+- name: Accord
+  aliases: []
+  domain: null
+- name: Allego
+  aliases: []
+  domain: null
+- name: DealHub
+  aliases: [DealHub.io]
+  domain: null
+- name: Spekit
+  aliases: []
+  domain: null
+- name: Vidyard
+  aliases: []
+  domain: null
+inferred:
+- name: Omedym
+  aliases: []
+  domain: null

@@ -1,0 +1,185 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-94eb82ad3020b576
+  - ev-7ed5c1bba88e9f44
+  - ev-e26c183facc11a75
+  - ev-d49bf8af04bf15cc
+  field: identity
+  value: Quantifind
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-94eb82ad3020b576
+  - ev-7ed5c1bba88e9f44
+  - ev-e26c183facc11a75
+  - ev-d49bf8af04bf15cc
+  field: description
+  value: 'Intelligent Financial Crimes Automation for AML and KYC | Quantifind New
+    Celent Report: Quantifind Unlocks Up to $177.9M in Annual Savings – DOWNLOAD NOW
+    Why Quantifind Solutions industries Financial Services Public Sector Mid-Size
+    Banks Use Cases Know Your Customer Sanctions Compliance Transaction Intelligence
+    Investigations Watchlist Screening Adverse Media Screening Credit Risk Enhanced
+    Due Diligence Intelligence & Investigations Economic Defense & Resource Security
+    Platform Search Case Manag'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-94eb82ad3020b576
+  - ev-7ed5c1bba88e9f44
+  - ev-e26c183facc11a75
+  - ev-d49bf8af04bf15cc
+  field: offers
+  value: fraud intelligence
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-d49bf8af04bf15cc
+  field: growth
+  value: Primary funding event dated 2026-06-26
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-94eb82ad3020b576
+  - ev-7ed5c1bba88e9f44
+  - ev-e26c183facc11a75
+  - ev-d49bf8af04bf15cc
+  field: icp
+  value: financial institutions
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-94eb82ad3020b576
+  - ev-7ed5c1bba88e9f44
+  - ev-e26c183facc11a75
+  - ev-d49bf8af04bf15cc
+  field: personas
+  value: financial institutions
+  visibility: message_safe
+company_id: funded-01
+corrections: []
+evidence:
+- content_hash: 94eb82ad3020b57627030dc82640bc5eb912defa540ca351a0768f7acf0e9c70
+  evidence_id: ev-94eb82ad3020b576
+  excerpt: 'Intelligent Financial Crimes Automation for AML and KYC | Quantifind New
+    Celent Report: Quantifind Unlocks Up to $177.9M in Annual Savings – DOWNLOAD NOW
+    Why Quantifind Solutions industries Financial Services Public Sector Mid-Size
+    Banks Use Cases Know Your Customer Sanctions Compliance Transaction Intelligence
+    Investigations Watchlist Screening Adverse Media Screening Credit Risk Enhanced
+    Due Diligence Intelligence & Investigations Economic Defense & Resource Security
+    Platform Search Case Management API Integration Batch Screening Resources Blog
+    White Papers Datasheets Reports Webinars Podcasts The Risk Lab Company About Us
+    WIRE Convergence News Careers Contact Us Graphyte Get a Demo The Risk Intelligence
+    Company Automated intelligence built for accuracy, delivered with speed, proven
+    at scale. Why Quantifind Harness the full potential of AI and external data to
+    streamline AML-KYC from end to end. THE GRAPHYTE™ PLATFORM Learn how banks are
+    using Graphyte to maximize their risk screening and investigations performance,
+    realize 40% productivity gains, and focus the talents of their teams on the highest
+    risks. Contact Us End-to-End Automation Impact Best-in-Class Accuracy Powerful
+    API s and Applications End-to-End Automation Impact Graphyte covers all the bases,
+    providing accurate, AI-driven risk assessments and powerful investigation tools
+    that deliver value throughout the full spectrum of risk mitigation use cases.
+    Financial Services Use Cases Efficiency and Performance Improvements from onboarding
+    to SAR submission Complete Data Coverage Thousands of sources searched from a
+    single platform Seamless Integrations Work within familiar case management systems
+    Best-in-Class Accuracy Ten years of data science and machine learning R&D and
+    patents are behind best-in-class risk assessment accuracy and scalability. Learn
+    about Name Science AI-Driven Entity resolution with 90% accuracy Dynamic Risk
+    Typologies Adapt to the risk space Patented Data Management Optimized speed and'
+  retrieved_at: '2026-08-12T21:34:18.558006+00:00'
+  url: https://www.quantifind.com/
+- content_hash: 7ed5c1bba88e9f445c89da8c33b4b21c9d33a1f325043f4fade7dfb468adf83c
+  evidence_id: ev-7ed5c1bba88e9f44
+  excerpt: Quantifind | LinkedIn Agree & Join LinkedIn By clicking Continue to join
+    or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie
+    Policy . Skip to main content LinkedIn Top Content People Learning Jobs Games
+    Sign in Join now Quantifind Software Development Palo Alto, California 8,810 followers
+    Our AI-powered Risk Intelligence helps organizations detect and mitigate risk
+    with greater accuracy and speed. See jobs Follow View all 133 employees Report
+    this company Overview Jobs Life About us Quantifind helps some of the world’s
+    biggest banks catch money laundering and fraud. Quantifind also works with government
+    agencies to use the same platform to uncover criminal networks and combat election
+    tampering. Unlike other players in this space, Quantifind delivers results as
+    software-as-a-service (SaaS) with consumer-grade user experiences. Quantifind
+    is a data science technology company whose AI platform uncovers signals of risk
+    across disparate and unstructured text sources. In financial crimes risk management,
+    Quantifind’s solution uniquely combines internal financial institution data with
+    public domain data to assess risk in the context of Know Your Customer (KYC),
+    Customer Due Diligence (CDD), Fraud Risk Management, and Anti-Money Laundering
+    (AML) processes. Today these compliance processes are burdened by ever-increasing
+    regulatory responsibilities and an expectation of frictionless transactions. Legacy
+    technologies demand increasingly more human resources as the operations expand;
+    Quantifind’s solution offers a way to cut through the inefficiency and enhance
+    effectiveness simultaneously. Website https://www.quantifind.com/ External link
+    for Quantifind Industry Software Development Company size 51-200 employees Headquarters
+    Palo Alto, California Type Privately Held Founded 2009 Specialties Big Data, Predictive
+    Analytics, Unstructured Data, Text Analytics, Fraud Analytics, Media Data, anti-money
+    laundering, fintech, regtech, machine learning, dat
+  retrieved_at: '2026-08-12T21:34:19.488251+00:00'
+  url: https://www.linkedin.com/company/quantifind
+- content_hash: e26c183facc11a75c4c9b045146306d2e03da7634a1c1637b8d0540446a60fdf
+  evidence_id: ev-e26c183facc11a75
+  excerpt: Quantifind, Inc. announced that it has received $200 million in funding
+    from Summit Partners, L.P., Citi Ventures, Inc., S&P Global Inc., Deloitte Ventures,
+    The Stephens Group, LLC | MarketScreener d7a965e.Bhza5wDCIZ-IEnDhNL7xcaBKPaka3gK4KZkxVUfjDdg.YFKMtHC6cvfgdDujXvmXPc8wcspg53jzc6puHiygNK1EcZGPQfp27tFcRA
+    Log In Create an account Continue with Google Continue with Apple Continue with
+    LinkedIn or by email Continue with an email Create an account with Google Create
+    an account with Apple Create an account with LinkedIn or by email Create an account
+    Back Enter your password Continue Forgot your password ? Log in Subscribe Markets
+    Stocks Top Capitalization United States North America Europe Asia Middle East
+    Sector Research Company Calendar Equity Analysis Most popular BED BATH & BEYOND
+    INC. SPACEX (SPACE EXPLORATION TECHNOLOGIES) MICROSOFT CORPORATION MICRON TECHNOLOGY,
+    INC. META PLATFORMS, INC. NEBIUS GROUP NVIDIA CORPORATION Indices Homepage Rankings
+    Europe America Asia Africa Index Analysis Indices News S&P 500 DOW JONES NASDAQ
+    100 TSX COMP FTSE 100 DAX CAC 40 EURO STOXX 50 Currency / Forex Homepage Rankings
+    Currency Cross Rate Currency Converter Forex Analysis Currencies News USD / EUR
+    USD / CAD USD / MXN USD / BRL USD / INR Commodities Homepage Energy Precious metals
+    Agriculture Industrial Metals Livestock and Cattle GOLD CRUDE OIL (WTI) CRUDE
+    OIL (BRENT) SILVER PLATINUM Cryptocurrencies Homepage Rankings Charts Analysis
+    News BITCOIN"/> BITCOIN ETHEREUM"/> ETHEREUM BINANCE COIN"/> BINANCE COIN SOLANA"/>
+    SOLANA CARDANO"/> CARDANO CHAINLINK"/> CHAINLINK Interest Rates Homepage Yield
+    Curve Developed Markets Emerging Markets ETF Summary Screener Analysis News News
+    All News Macroeconomics Policy Geopolitics Technology International Trade Military
+    conflicts Taxation Sustainable development Legal, Regulation and Crime Companies
+    Financial Results Analyst Recommendations Transcripts Press releases Insider transaction
+    Controversies Innovations and expansions IPOs Rumors Act
+  retrieved_at: '2026-08-12T21:34:20.239960+00:00'
+  url: https://www.marketscreener.com/news/quantifind-inc-announced-that-it-has-received-200-million-in-funding-from-summit-partners-l-p-c-ce7f5fd9de8cf42d
+- content_hash: d49bf8af04bf15cc38145fe3ede4d621cab854194870d3e5a5d3dc0d70f4751b
+  evidence_id: ev-d49bf8af04bf15cc
+  excerpt: Quantifind Announces $200 Million Growth Investment Led by Summit Partners
+    to Advance AI-native Risk Intelligence and Governed Agentic Middleware for Modern
+    Risk Operations Accessibility Statement Skip Navigation Resources Investor Relations
+    Journalists Agencies Client Login Send a Release News Products Contact Search
+    Search When typing in this field, a list of search results will appear and be
+    automatically updated as you type. Searching for your content... No results found.
+    Please change your search terms and try again. News in Focus Browse News Releases
+    All News Releases All Public Company English-only News Releases Overview Multimedia
+    Gallery All Multimedia All Photos All Videos Multimedia Gallery Overview Trending
+    Topics All Trending Topics Business & Money Auto & Transportation All Automotive
+    & Transportation Aerospace, Defense Air Freight Airlines & Aviation Automotive
+    Maritime & Shipbuilding Railroads and Intermodal Transportation Supply Chain/Logistics
+    Transportation, Trucking & Railroad Travel Trucking and Road Transportation Auto
+    & Transportation Overview View All Auto & Transportation Business Technology All
+    Business Technology Blockchain Broadcast Tech Computer & Electronics Computer
+    Hardware Computer Software Data Analytics Electronic Commerce Electronic Components
+    Electronic Design Automation Financial Technology High Tech Security Internet
+    Technology Nanotechnology Networks Peripherals Semiconductors Business Technology
+    Overview View All Business Technology Entertain­ment & Media All Entertain­ment
+    & Media Advertising Art Books Entertainment Film and Motion Picture Magazines
+    Music Publishing & Information Services Radio & Podcast Television Entertain­ment
+    & Media Overview View All Entertain­ment & Media Financial Services & Investing
+    All Financial Services & Investing Accounting News & Issues Acquisitions, Mergers
+    and Takeovers Banking & Financial Services Bankruptcy Bond & Stock Ratings Conference
+    Call Announcements Contracts Cryptocurrency Dividend
+  retrieved_at: '2026-08-12T21:34:20.639563+00:00'
+  url: https://www.prnewswire.com/news-releases/quantifind-announces-200-million-growth-investment-led-by-summit-partners-to-advance-ai-native-risk-intelligence-and-governed-agentic-middleware-for-modern-risk-operations-302811746.html
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- hiring
+- news
+- launches
+- ads

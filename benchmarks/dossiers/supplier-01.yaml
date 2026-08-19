@@ -1,0 +1,130 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-992c31bdfe070a57
+  - ev-e79f74c85ec5fbd1
+  - ev-46cd1a569ee67d32
+  field: identity
+  value: ABATIX
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-992c31bdfe070a57
+  - ev-e79f74c85ec5fbd1
+  - ev-46cd1a569ee67d32
+  field: description
+  value: 'OSHA Safety & Health Programs in Construction Download OSHA’s recommended
+    practices for Safety & Health Programs in Construction The ultimate resource for
+    safety professionals! These recommended practices use a proactive approach to
+    managing workplace safety and health. Key Take Aways: Prevent   workplace injuries
+    and illnesses Improve compliance by understanding the laws and regulations Reduce
+      costs, including significant reductions in workers'' compensation premiums Engage
+      workers Enhance  '
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-992c31bdfe070a57
+  - ev-e79f74c85ec5fbd1
+  - ev-46cd1a569ee67d32
+  field: offers
+  value: safety supplies
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-992c31bdfe070a57
+  - ev-e79f74c85ec5fbd1
+  - ev-46cd1a569ee67d32
+  field: icp
+  value: contractors
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-992c31bdfe070a57
+  - ev-e79f74c85ec5fbd1
+  - ev-46cd1a569ee67d32
+  field: personas
+  value: contractors
+  visibility: message_safe
+company_id: supplier-01
+corrections: []
+evidence:
+- content_hash: 992c31bdfe070a57a5847d6cd521cc7c3d7c6d3b4cdfba8fdcd1694752c26527
+  evidence_id: ev-992c31bdfe070a57
+  excerpt: 'OSHA Safety & Health Programs in Construction Download OSHA’s recommended
+    practices for Safety & Health Programs in Construction The ultimate resource for
+    safety professionals! These recommended practices use a proactive approach to
+    managing workplace safety and health. Key Take Aways: Prevent   workplace injuries
+    and illnesses Improve compliance by understanding the laws and regulations Reduce
+      costs, including significant reductions in workers'' compensation premiums Engage
+      workers Enhance   their social responsibility goals Increase   productivity
+    and enhance overall business operations © 2023 Abatix Corp. All Rights Reserved.'
+  retrieved_at: '2026-08-12T22:28:01.026949+00:00'
+  url: https://offer.abatix.com/osha-safety-health-programs-in-construction
+- content_hash: e79f74c85ec5fbd1f1d24136b958408badb31af2535bc0825a52845d67ef1abf
+  evidence_id: ev-e79f74c85ec5fbd1
+  excerpt: 'ABATIX | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now ABATIX Wholesale Mesquite, TX 4,855 followers Where
+    Service Meets Supply. See jobs Follow View all 212 employees Report this company
+    About us Established in 1983, ABATIX has grown into a nationally recognized supplier
+    of safety, environmental, construction, and industrial products. In addition to
+    products, we provide multiple service solutions to make our customers'' jobs easier
+    including eProcurement, customized online accounts, site evaluations and product
+    consultations, and much more. Website http://www.abatix.com External link for
+    ABATIX Industry Wholesale Company size 201-500 employees Headquarters Mesquite,
+    TX Type Privately Held Founded 1983 Specialties Safety Supplies, Fire and Water
+    Restoration Supplies, Environmental Supplies, and General Construction Supplies
+    Locations Primary 2400 Skyline Dr #400 Mesquite, TX 75149, US Get directions 415
+    Horizon Dr Suwanee, Georgia 30024, US Get directions 8184 LA-44 #101 Gonzales,
+    LA 70737, US Get directions 7170 W 43rd St #200 Houston, TX 77092, US Get directions
+    6500 Bowden Rd #307 Jacksonville, Florida 32216, US Get directions 5530 Arville
+    St Ste D Las Vegas, Nevada 89118, US Get directions 10051 Painter Ave Santa Fe
+    Springs, California 90670, US Get directions 21313 S 7th Street #200 Phoenix,
+    Arizona 85034, US Get directions 610 Lanark Dr #203A San Antonio, Texas 78218,
+    US Get directions 6490 Marindustry Pl Suite E San Diego, California 92121, US
+    Get directions 14068 Catalina St San Leandro, California 94577, US Get directions
+    1808 B St NW Suite 190 Auburn, Washington 98001, US Get directions 1600 Raley
+    Blvd Suite #10 West Sacramento, California 95691, US Get directions Show more
+    locations Show fewer locations Employees at ABATIX Brian Mendelsohn Marty Smith
+    Ruben Aviles Brandi Conger See all employees Updates ABATIX 4,855 followers 7h
+    Report this post When the job takes your crew off the ground, trust 3M™ Fall Pro'
+  retrieved_at: '2026-08-12T22:28:02.060679+00:00'
+  url: https://www.linkedin.com/company/abatix
+- content_hash: 46cd1a569ee67d329eae97b97381d6e73c75ad9d4746d47453993e99865995b3
+  evidence_id: ev-46cd1a569ee67d32
+  excerpt: 'Abatix Corp. - San Antonio, Texas | ProView Home San Antonio and Austin
+    Safety Equipment Supply Houses Abatix Corp. Share San Antonio, TX 78218 Request
+    Quote Pre-Qual Brochure Home Contact Us Portfolio Gallery (210) 598-6833 (877)
+    617-8310 Website Company Info Est. 1983 People Also View These Loading... Our
+    Story Established in 1983 and with branch offices in the Atlanta, Baton Rouge,
+    Chicago, Dallas, Houston, Jacksonville, Las Vegas, Los Angeles, Phoenix, San Antonio,
+    San Diego, San Francisco, Sacramento and Seattle areas, Abatix has grown into
+    a nationally recognized supplier of products for the General Construction, Industrial
+    Safety, Petrochemical, Energy, Environmental, Hospital, Fire and Water Restoration,
+    and Disaster Response industries supporting customers across the nation. Abatix
+    has excellent relationships with its vendors to provide our clients with thousands
+    of products, including: safety supplies, personal protective equipment, disaster
+    response equipment, environmental equipment, protective clothing, fall protection,
+    adhesives, abrasives, duct tape, poly sheeting, disinfectants, encapsulants, absorbents,
+    respirators, janitorial supplies, hand tools, power tools, safety vests, and so
+    much more. View More What We Do Safety Equipment Supply Houses Personal Protective
+    Equipment Respiratory Safety Heat Stress Items Abrasive Brushes Adhesives & Tapes
+    Caulk Guns Caulks & Sealants Spray Adhesives Tapes Hoses & Fittings Erosion Control
+    Garden Sprayers Building Materials & Hardware Nails & Screws Safety Fences & Windscreens
+    Chemicals & Lubricants Cleaners & Degreasers Mold Killers & Mildew Removers Abrasive
+    Discs Mastic & Adhesive Removers Odor Control Temporary Lighting Extension Cords
+    Fall Protection Lanyards Fall Protection Harnesses Hearing Protection Face Shields
+    Safety Supplies Gloves PPE-Eye Protection Anchor Points Guardline / Horizontal
+    Lifelines PPE-Hard Hats Eye Protection Heat Stress Lifelines Hand Protection Disposable
+    PPE Retractable Lanyards Hea'
+  retrieved_at: '2026-08-12T22:28:02.744822+00:00'
+  url: https://www.thebluebook.com/iProView/1258517
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

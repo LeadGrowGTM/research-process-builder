@@ -1,0 +1,25 @@
+id: growth-signals
+name: Consolidated B2B growth signals
+owner: research-process-builder
+version: "1.0.0"
+status: proposed
+family: company-signals
+priority: P0
+entity_scopes: [company]
+input_schema_version: "1.0"
+output_schema_version: "1.0"
+required_inputs: [company_name, domain]
+optional_inputs: [as_of]
+execution_mode: search-and-scrape
+provider_candidates: [homepage-scrape, lg-free, parallel-search]
+fallback_order: [homepage-scrape, lg-free, parallel-search]
+benchmark_providers: [homepage-scrape, lg-free, parallel-search]
+freshness_days: 30
+source_requirements: [first_party, two_independent]
+caps: {queries: 12, scrapes: 10, retries: 2, paid_cost_usd: 1.0}
+early_stop: source_saturation
+failure_rule: explicit_unknown
+output_visibility: message_safe
+benchmark_dataset_version: b2b-companies-1.0
+automated_gate: candidate_only
+human_gate: blind_verdict_required

@@ -1,0 +1,76 @@
+# Sealed ground truth - Betterworks (betterworks.com), authored 2026-08-18.
+# Excluded on purpose: benefitnews caregiving feature story (not an event), aihrdaily
+# and 2019 research-report coverage (content, not a material event), Allie Collins CMO
+# promotion (no stated date), Instagram/LinkedIn posts (no absolute date), competitor
+# alternatives articles.
+company_id: saas-07
+as_of: '2026-08-18'
+recent_window_days: 180
+events:
+- date: '2026-07-14'
+  headline_aliases:
+  - Launched MCP capabilities connecting performance data to AI assistants
+  - New AI capabilities connect performance data to AI assistants
+  - Betterworks MCP launch
+  source_domain: businesswire.com
+  kind: launch
+  event_type: integration
+  evidence_ids:
+  - ev-f908719543ebb806
+  - ev-c153df8366647596
+  - ev-26c82d95ed6f2121
+  - ev-55c31d199502fc54
+  - ev-1c924b4b55dfa283
+  - ev-8a1fa95e8a4f4a9e
+  - ev-bd665cd8747409fd
+- date: '2026-06-02'
+  headline_aliases:
+  - Acquired Rypple, an AI-native manager effectiveness platform
+  - Betterworks acquires Rypple
+  source_domain: businesswire.com
+  kind: news
+  event_type: acquisition
+  evidence_ids:
+  - ev-6474b5a652405a90
+  - ev-a104c336dafe047c
+  - ev-bd665cd8747409fd
+  - ev-f755a58ba1538e3a
+- date: '2026-05-06'
+  headline_aliases:
+  - Unveiled AI-powered Talent Intelligence product
+  - Launched AI-powered talent intelligence to turn performance into a business execution engine
+  source_domain: businesswire.com
+  kind: launch
+  event_type: product
+  evidence_ids:
+  - ev-92ce619034ef9c66
+  - ev-1f635f5b49c093b9
+  - ev-bd665cd8747409fd
+  - ev-f755a58ba1538e3a
+- date: '2020-02-20'
+  headline_aliases:
+  - Acquired Hyphen to connect employee engagement to business impact
+  - Betterworks acquires Hyphen
+  source_domain: prnewswire.com
+  kind: news
+  event_type: acquisition
+  evidence_ids:
+  - ev-2efa802254c8d6f1
+- date: '2019-10-15'
+  headline_aliases:
+  - Announced multiple new product features bringing continuous performance management into the flow of work
+  - New product features for continuous performance management
+  source_domain: prnewswire.com
+  kind: launch
+  event_type: feature
+  evidence_ids:
+  - ev-1df0467d44247ed6
+- date: '2017-07-26'
+  headline_aliases:
+  - CEO resigned amid sexual harassment lawsuit
+  - BetterWorks CEO Duggan resigns
+  source_domain: bloomberg.com
+  kind: news
+  event_type: leadership
+  evidence_ids:
+  - ev-ebd131aada743df9

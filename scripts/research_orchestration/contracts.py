@@ -138,6 +138,8 @@ class RunRequest(CanonicalContract):
     baseline: Mapping[str, float]
     budget_limits: "BudgetLimits"
     approval_threshold: float
+    execution_inputs: Mapping[str, Any] | None = None
+    rubric: str = "ground_truth_accuracy"
 
     def __post_init__(self) -> None:
         from .budgets import BudgetLimits
@@ -160,8 +162,16 @@ class RunRequest(CanonicalContract):
         _require_finite(self.approval_threshold, "approval_threshold")
         if self.approval_threshold != 0.90:
             raise SchemaError("approval_threshold must be exactly 0.90")
+        execution_inputs = self.execution_inputs or {}
+        if not isinstance(execution_inputs, MappingABC):
+            raise SchemaError("execution_inputs must be a mapping")
+        _require_text(self.rubric, "rubric")
         object.__setattr__(self, "constraints", frozen_constraints)
         object.__setattr__(self, "baseline", frozen_baseline)
+        object.__setattr__(
+            self, "execution_inputs",
+            _freeze(execution_inputs, field_name="execution_inputs"),
+        )
 
 @dataclass(frozen=True, slots=True)
 class RunSummary(CanonicalContract):

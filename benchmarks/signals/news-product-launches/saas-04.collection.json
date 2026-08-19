@@ -1,0 +1,149 @@
+{
+  "collected_at": "2026-08-18T11:40:39.133500-04:00",
+  "company_id": "saas-04",
+  "enrichment_id": "news-product-launches",
+  "entries": [
+    {
+      "category": "product cost software",
+      "company_name": "aPriori Technologies",
+      "domain": "apriori.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "news",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 5,
+      "status": "ok",
+      "step": "search",
+      "target": "apriori.com news",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 2,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "aPriori Technologies \"press release\" OR \"announces\" OR \"newsroom\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 2,
+      "status": "ok",
+      "step": "search",
+      "target": "aPriori Technologies launches OR \"new feature\" OR \"introducing\" OR \"now available\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.businesswire.com/news/home/20260526130779/en/aPriori-Launches-aiSource-an-AI-Sourcing-Solution-Giving-Procurement-Teams-the-Manufacturing-and-Cost-Intelligence-to-Win-More-Supplier-Negotiations: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.businesswire.com/news/home/20260526130779/en/aPriori-Launches-aiSource-an-AI-Sourcing-Solution-Giving-Procurement-Teams-the-Manufacturing-and-Cost-Intelligence-to-Win-More-Supplier-Negotiations"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.prnewswire.com/news-releases/apriori-bio-and-astar-infectious-diseases-labs-announce-strategic-partnership-to-advance-next-generation-influenza-vaccines-302617550.html",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.prnewswire.com/news-releases/flagship-pioneering-appoints-craig-williams-as-ceo-partner-and-chief-executive-officer-of-apriori-bio-302303361.html",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.facebook.com/aPrioriTechnologies/posts/apriori-earns-spot-as-world-procurement-awards-2026-finalist-were-proud-to-share/122190528932459684/: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.facebook.com/aPrioriTechnologies/posts/apriori-earns-spot-as-world-procurement-awards-2026-finalist-were-proud-to-share/122190528932459684/"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.linkedin.com/posts/stephanie-feraday-62b743_inside-aisource-scale-your-best-negotiators-activity-7465169879411748864-7yI_",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://startupintros.com/orgs/apriori-bio",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://apriori.com/blog",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://apriori.com/news",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://apriori.com/newsroom: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://apriori.com/newsroom"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://apriori.com/press: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://apriori.com/press"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://apriori.com/changelog: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://apriori.com/changelog"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://apriori.com/product-updates: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://apriori.com/product-updates"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://apriori.com/whats-new",
+      "waterfall_level": 1
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 25,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.003",
+  "signal_evidence": 28
+}

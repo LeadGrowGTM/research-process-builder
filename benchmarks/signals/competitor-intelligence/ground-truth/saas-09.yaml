@@ -1,0 +1,100 @@
+# Sealed ground truth - subject: Bitly (bitly.com). named = explicitly positioned
+# against Bitly by cited Evidence (Dub compare page, "Bitly vs X" articles,
+# Branch / Cuttly / Medium / Zapier "Bitly alternative" pieces, G2 and Capterra
+# "Bitly alternatives" listings, Reddit "alternative to the bitly" thread).
+# inferred = URL shorteners in roundups that never compare with Bitly.
+company_id: saas-09
+evidence_ids:
+- ev-4d49101167d855e5
+- ev-d9b6b3668ace8379
+- ev-5ef141caf88b4bf6
+- ev-3d128beb7d840c83
+- ev-3cdce268d99ad770
+- ev-7e49284a687850b7
+- ev-e1c34375537e6162
+- ev-24088cb2c9e0bd69
+- ev-2160d9b140e59e6d
+- ev-9efb86a030b2d961
+- ev-7842a2f4cebbf0fd
+- ev-63795890e4f1409f
+- ev-4fe08622b2ca0c61
+- ev-3be46ca45247bcc8
+- ev-624c068861761f8b
+- ev-13f473994c34cdad
+- ev-c14f929ebc21f4eb
+- ev-43b0b0fb4aac5910
+- ev-7e2c6d4723c75efb
+- ev-171f9b8dcaa53323
+- ev-f4ab5eab834cb3d2
+- ev-f7a851a8dfb95c29
+- ev-31a04e5480d9f62b
+- ev-81015fdb1d2cd13b
+- ev-25edf6e2cf5595bf
+named:
+- name: Dub
+  aliases: [Dub.co, Dub Links]
+  domain: dub.co
+- name: Rebrandly
+  aliases: []
+  domain: null
+- name: TinyURL
+  aliases: [Tiny URL]
+  domain: null
+- name: Short.io
+  aliases: [Shortio, Short io]
+  domain: short.io
+- name: Branch
+  aliases: [Branch Activation, Branch.io]
+  domain: branch.io
+- name: BL.INK
+  aliases: [BLINK, BL INK]
+  domain: null
+- name: Uniqode QR Code Generator
+  aliases: [Uniqode]
+  domain: null
+- name: Sniply
+  aliases: []
+  domain: null
+- name: Linkly
+  aliases: []
+  domain: linklyhq.com
+- name: Cuttly
+  aliases: [Cutt.ly, Cutt ly]
+  domain: cutt.ly
+- name: T.ly
+  aliases: [Tly, T ly]
+  domain: null
+- name: T2M
+  aliases: []
+  domain: null
+- name: RocketLink
+  aliases: [Rocket Link]
+  domain: null
+- name: Pxl.to
+  aliases: [Pxl, Pxlto]
+  domain: null
+- name: Veshort
+  aliases: []
+  domain: null
+- name: Recut
+  aliases: []
+  domain: null
+- name: LinkCentral
+  aliases: [Link Central]
+  domain: null
+- name: CodeQR
+  aliases: []
+  domain: null
+- name: ReSlug
+  aliases: []
+  domain: null
+- name: BetterLinks Pro
+  aliases: [BetterLinks, Better Links]
+  domain: null
+inferred:
+- name: GoLinks
+  aliases: [Go Links]
+  domain: null
+- name: y.gy
+  aliases: [ygy]
+  domain: null

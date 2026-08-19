@@ -1,0 +1,121 @@
+{
+  "collected_at": "2026-08-18T11:44:10.865494-04:00",
+  "company_id": "saas-07",
+  "enrichment_id": "competitor-intelligence",
+  "entries": [
+    {
+      "category": "performance management",
+      "company_name": "Betterworks",
+      "domain": "betterworks.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "Betterworks performance management alternatives OR competitors OR \"vs\" OR \"compared to\"",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 1,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Betterworks alternatives",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "Betterworks vs",
+      "tbs": null
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.betterworks.com/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://peoplelogic.ai/blog/betterworks-competitors",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.okrstool.com/blog/betterworks-alternatives",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://external.pi.gpi.aws.gartner.com/reviews/market/okr-software/vendor/betterworks/alternatives: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://external.pi.gpi.aws.gartner.com/reviews/market/okr-software/vendor/betterworks/alternatives"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.traineryhcm.com/7-best-betterworks-alternatives",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.youtube.com/watch?v=cuGJRKll06o",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://betterworks.com/competitors: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://betterworks.com/competitors"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://betterworks.com/compare: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://betterworks.com/compare"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://betterworks.com/alternatives: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://betterworks.com/alternatives"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 35,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.003",
+  "signal_evidence": 38
+}

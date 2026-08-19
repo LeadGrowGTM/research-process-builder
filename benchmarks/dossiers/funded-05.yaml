@@ -1,0 +1,225 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-94c69117cd8093b2
+  - ev-e834a9796afccd6b
+  - ev-024633805281f106
+  - ev-8faea4b84a15d058
+  - ev-70f96e917c28cb8d
+  field: identity
+  value: Baseten
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-94c69117cd8093b2
+  - ev-e834a9796afccd6b
+  - ev-024633805281f106
+  - ev-8faea4b84a15d058
+  - ev-70f96e917c28cb8d
+  field: description
+  value: 'Inference Platform: Deploy AI models in production | Baseten Try the new
+    DeepSeek V4 Flash today. Frontier intelligence at a fraction of the cost. Here
+    Products Solutions Resources Research Customers Pricing Models Docs Log in Get
+    started Inference is everything The fastest model runtimes, cross-cloud high availability,
+    and seamless developer workflows. Powered by the Baseten Inference Stack. Get
+    started Talk to an engineer Abridge website Clay website Cursor website Decagon
+    website descript web'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-94c69117cd8093b2
+  - ev-e834a9796afccd6b
+  - ev-024633805281f106
+  - ev-8faea4b84a15d058
+  - ev-70f96e917c28cb8d
+  field: offers
+  value: inference platform
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-70f96e917c28cb8d
+  field: pricing
+  value: Baseten publishes model API pricing and dedicated deployment pricing.
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-8faea4b84a15d058
+  field: growth
+  value: Primary funding event dated 2026-06-22
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-94c69117cd8093b2
+  - ev-e834a9796afccd6b
+  - ev-024633805281f106
+  - ev-8faea4b84a15d058
+  - ev-70f96e917c28cb8d
+  field: icp
+  value: engineers
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-94c69117cd8093b2
+  - ev-e834a9796afccd6b
+  - ev-024633805281f106
+  - ev-8faea4b84a15d058
+  - ev-70f96e917c28cb8d
+  field: personas
+  value: engineers
+  visibility: message_safe
+company_id: funded-05
+corrections: []
+evidence:
+- content_hash: 94c69117cd8093b2deffb8a8a2a474622e133a9f5bd4cc0db599abf513ba4b9d
+  evidence_id: ev-94c69117cd8093b2
+  excerpt: 'Inference Platform: Deploy AI models in production | Baseten Try the new
+    DeepSeek V4 Flash today. Frontier intelligence at a fraction of the cost. Here
+    Products Solutions Resources Research Customers Pricing Models Docs Log in Get
+    started Inference is everything The fastest model runtimes, cross-cloud high availability,
+    and seamless developer workflows. Powered by the Baseten Inference Stack. Get
+    started Talk to an engineer Abridge website Clay website Cursor website Decagon
+    website descript website EliseAI case study Gamma case study Harvey website Hubspot
+    website Lovable website Notion website OpenEvidence case study Parallel case study
+    Poolside case study World Labs case study Products The platform for high-performance
+    inference Dedicated inference for high-scale workloads Serve open-source, custom,
+    and fine-tuned AI models on infra purpose-built for high-performance inference
+    at massive scale. Start deploying Learn more Pre-optimized Model APIs Test new
+    workloads, prototype products, or evaluate the latest AI models optimized to be
+    the fastest in production — instantly. Learn more Kimi K3 Try It DeepSeek-V4-Flash-0731
+    Try It GLM-5.2 Fast Try It Explore the model Library Explore Run Training on Baseten
+    Train your models with frontier RL using the Loops SDK and easily deploy them
+    to production inference on the same stack. Learn more Baseten for Model Labs Distribute
+    and monetize your model on Baseten infrastructure Learn more The fastest inference
+    takes more than GPUs. Baseten delivers the infrastructure, tooling, and expertise
+    needed to bring the most performant AI products to market—fast. Bleeding-edge
+    performance research Run cutting-edge performance research with custom kernels,
+    the latest decoding techniques, and advanced caching baked into the Baseten Inference
+    Stack. Learn More Learn More Inference-optimized infrastructure Scale workloads
+    across any region and any cloud (in our cloud or yours), with blazing-fast cold
+    starts and 99.99% uptime out of the box.'
+  retrieved_at: '2026-08-12T21:35:20.336493+00:00'
+  url: https://www.baseten.co/
+- content_hash: e834a9796afccd6ba8511e9d44a6593e2eb7bb5fff6799ab212567fadd424240
+  evidence_id: ev-e834a9796afccd6b
+  excerpt: Baseten | LinkedIn Agree & Join LinkedIn By clicking Continue to join or
+    sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie
+    Policy . Skip to main content LinkedIn Top Content People Learning Jobs Games
+    Sign in Join now Baseten Software Development San Francisco, CA 38,873 followers
+    Own your inference. See jobs Follow View all 383 employees Report this company
+    Overview Jobs Life About us Inference is everything. Baseten is an AI infrastructure
+    platform giving you the tooling, expertise, and hardware needed to bring great
+    AI products to market - fast. Our proprietary Inference Stack utilizes the cutting-edge
+    of performance research combined with highly performant and reliable infrastructure
+    to give you out-of-the-box global availability with 99.99% of uptime. Website
+    https://www.baseten.co/ External link for Baseten Industry Software Development
+    Company size 201-500 employees Headquarters San Francisco, CA Type Privately Held
+    Specialties developer tools, software engineering, artificial intelligence, and
+    machine learning Products Baseten Baseten Machine Learning Software At Baseten
+    we provide all the infrastructure you need to deploy and serve ML models performantly,
+    scalably, and cost-efficiently. Get started in minutes, and avoid getting tangled
+    in complex deployment processes. You can deploy best-in-class open-source models
+    and take advantage of optimized serving for your own models. We also utilize horizontally
+    scalable services that take you from prototype to production, with light-speed
+    inference on infra that autoscales with your traffic. Best in class doesn't mean
+    breaking the bank. Run your models on the best infrastructure without running
+    up costs by taking advantage of our scaled-to-zero feature. Employees at Baseten
+    Jason Dupree LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn
+    Member View 383 employees at Baseten Sign in Welcome back Email or phone Password
+    Show Forgot password? Sign in or By clicking Cont
+  retrieved_at: '2026-08-12T21:35:21.232770+00:00'
+  url: https://www.linkedin.com/company/baseten
+- content_hash: 024633805281f106a0088858fedf4101c22c8eeaa01ba921a77476d02ee5138e
+  evidence_id: ev-024633805281f106
+  excerpt: Baseten Stock Price, Funding, Valuation, Revenue & Financial Statements
+    Technology Vendors Recent Research Newsletter Media Support Login Who We Serve
+    Function Corporate Strategy Corporate Venture Capital Venture Capital IT Corporate
+    Innovation How VCs Use CB Insights Go to the video gallery → Industries Consumer
+    & Retail Tech Insurance Healthcare Industrials Financial Services Professional
+    Services Professional Services Learn More → Success Stories How We Help Understand
+    Tech Markets Anticipate Competitor Strategy Determine Tech Strategy Connect with
+    Tech Vendors & Partners Turbocharge Digital Transformation What We Offer Platform
+    Overview Technology Search Engine Market Analytics and Visualizations Team Management
+    and Collaboration Platform Overview Learn More → Data Research Personal Briefing
+    GenAI Instant Insights Public Equity Data Buyer Interview Transcripts Analyst
+    Briefings API & Data Feeds Integrations Overview Chrome and Edge Salesforce Affinity
+    Microsoft Excel Google Sheets Microsoft Teams Slack Google Slides App Partners
+    Browser Extension Pricing About Us Overview Our teams Business Development Engineering
+    Operations Product See all → Open Jobs Loading... Baseten Analyst Briefing Submitted
+    baseten.co Overview & Products Financials People Alternatives & Competitors Customers
+    Total Raised $2.085B Investors Count 47 Deal Terms 4 Funding, Valuation & Revenue
+    8 Fundings Baseten has raised $2.085B over 8 rounds . Baseten's latest funding
+    round was a Series F for $1,500M on June 18, 2026 . Baseten's valuation in January
+    2026 was $5,000M . Baseten's latest post-money valuation is from June 2026 . Sign
+    up for a free demo to see Baseten's valuations in June 2026, September 2025, February
+    2025 and more. Baseten's 2025 revenue was $200M . Baseten's most recent revenue
+    is from 2025 . Sign up for a free demo to see revenue data from 2026, 2025 and
+    more. Date Round Amount Investors Valuation Valuations are submitted by companies,
+    mined from state filings or news, provi
+  retrieved_at: '2026-08-12T21:42:46.439159+00:00'
+  url: https://www.cbinsights.com/company/baseten/financials
+- content_hash: 8faea4b84a15d0582ba9df07c2fe0ad14ed3c97849915136010b949d033d36f3
+  evidence_id: ev-8faea4b84a15d058
+  excerpt: 'June 22, 2026 Announcing our Series F Try the new DeepSeek V4 Flash today.
+    Frontier intelligence at a fraction of the cost. Here Products Solutions Resources
+    Research Customers Pricing Models Docs Log in Get started News Announcing our
+    Series F Baseten raised a $1.5B Series F and achieved a $13B valuation Authors
+    Tuhin Srivastava Amir Haghighat Phil Howes Pankaj Gupta Last updated June 22,
+    2026 Table of contents Share Today, we are thrilled to announce Baseten’s $1.5B
+    Series F, led by Altimeter Capital, Conviction Partners, and Spark Capital, co-led
+    by Sands Capital and Wellington Management, with participation from Battery Ventures,
+    Blackbird, D.E. Shaw Ventures, Durable Capital Partners, Greylock, IVP, Verified
+    Capital, and 01A. This is our fourth fundraise in 18 months, and we are grateful
+    for our investors’ conviction and support and, most importantly, for the trust
+    and partnership of our customers. Over the last year, our revenue has grown 20x,
+    and inference volume has grown 40x. This growth reflects the new market reality
+    — inference is the most important layer in the AI stack, and Baseten has become
+    the partner of choice for companies looking for support with inference and post-training.
+    We are proud to work closely with the teams defining this era, including Cursor,
+    Notion, Lovable, Harvey, HubSpot, OpenEvidence, Abridge, Decagon, Parallel, and
+    many more. These companies have built products where intelligence is core to the
+    user experience, and their businesses are booming. They are also at the forefront
+    of a wave of companies that are more motivated than ever to own their intelligence
+    . As Satya Nadella shared last week, durable advantage will come from the learning
+    systems companies build around their own data, judgment, workflows, and feedback
+    loops. We see the same thing every day: our customers are building systems shaped
+    by proprietary data, evals, domain-specific harnesses, post-training, and custom
+    RL environments. The opportunity ahead has never bee'
+  retrieved_at: '2026-08-12T21:50:33.540554+00:00'
+  url: https://www.baseten.co/blog/announcing-our-series-f/
+- content_hash: 70f96e917c28cb8d5f07cf073d40af47bebea5078b63c5b1f4adfa86e9081563
+  evidence_id: ev-70f96e917c28cb8d
+  excerpt: 'Cloud Pricing Try the new DeepSeek V4 Flash today. Frontier intelligence
+    at a fraction of the cost. Here Products Solutions Resources Research Customers
+    Pricing Models Docs Log in Get started Pricing built for growth Production inference
+    that won''t break your product or your bank. Start building Talk to an engineer
+    Basic Deploy custom, fine-tuned, and open-source models Included in Basic: Dedicated
+    deployments Model APIs Training Fast cold starts SOC 2 Type II and HIPAA compliant
+    Email and in-app chat support Deployment options Baseten $0 per month, pay as
+    you go Get started Pro Unlimited autoscaling and priority compute access Everything
+    in Basic plus: Priority access to high-demand GPUs Dedicated compute Higher Model
+    API rate limits Hands-on engineering expertise Dedicated support on Slack and
+    Zoom Deployment options Baseten Volume discounts available Get a quote Enterprise
+    Full control in your cloud and ours Everything in Pro plus: Custom SLAs Self-host
+    deployments On-demand flex compute Use existing cloud commitments Full control
+    over data residency Advanced security and compliance Custom global regions Advanced
+    RBAC with Teams Deployment options Baseten Your VPC Hybrid Volume discounts available
+    Get a quote Pricing Best-in-class model performance, effortless autoscaling, and
+    blazing fast cold starts mean you get the most out of each GPU, saving money along
+    the way. Model APIs Instant access to pre-optimized models running on the Baseten
+    Inference Stack. Price per 1M tokens Model Input Cache Input Output Kimi K3 Kimi
+    K3 $3.00 $3.00 $0.30 $0.30 $15.00 Try Model API Try Model API $15.00 Try Kimi
+    K2.6 Kimi K2.6 $0.95 $0.95 $0.16 $0.16 $4.00 Try Model API Try Model API $4.00
+    Try Kimi K2.7 Code Kimi K2.7 Code $0.95 $0.95 $0.16 $0.16 $4.00 Try Model API
+    Try Model API $4.00 Try Inkling-Small Inkling-Small $0.50 $0.50 $0.10 $0.10 $1.20
+    Try Model API Try Model API $1.20 Try Inkling Inkling $1.00 $1.00 $0.17 $0.17
+    $4.05 Try Model API Try Model API $4.05 Try GLM-5.2 GLM-5.'
+  retrieved_at: '2026-08-13T14:15:14.969465+00:00'
+  url: https://www.baseten.co/pricing/
+schema_version: '1.0'
+unknowns:
+- technology
+- competitors
+- hiring
+- news
+- launches
+- ads

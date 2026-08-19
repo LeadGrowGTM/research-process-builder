@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-36eaefce14316b08
+  - ev-3d41bb1ad73add66
+  - ev-8d99d0158e10c2d6
+  field: identity
+  value: Chartis Interactive
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-36eaefce14316b08
+  - ev-3d41bb1ad73add66
+  - ev-8d99d0158e10c2d6
+  field: description
+  value: 'Chartis Interactive | Digital Marketing & Martech Agency Careers LinkedIn
+    Contact Work Services AI Services Strategy Data Campaigns Experiences Platforms
+    Verticals B2B B2C Our Thinking About us Work Services AI Services Strategy Data
+    Campaigns Experiences Platforms Verticals B2B B2C Our Thinking About Us Careers
+    linkedin Contact FEATURED SOLUTION aura+ See how AI platforms discover, interpret,
+    and position your brand. By analyzing authority signals, trust, and content structure
+    across platforms '
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-36eaefce14316b08
+  - ev-3d41bb1ad73add66
+  - ev-8d99d0158e10c2d6
+  field: offers
+  value: marketing services
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-36eaefce14316b08
+  - ev-3d41bb1ad73add66
+  - ev-8d99d0158e10c2d6
+  field: icp
+  value: brands
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-36eaefce14316b08
+  - ev-3d41bb1ad73add66
+  - ev-8d99d0158e10c2d6
+  field: personas
+  value: brands
+  visibility: message_safe
+company_id: agency-10
+corrections: []
+evidence:
+- content_hash: 36eaefce14316b08bbf095c15f6d98e8ddc1d4beb64b52d5f7263db5de2fb2c9
+  evidence_id: ev-36eaefce14316b08
+  excerpt: Chartis Interactive | Digital Marketing & Martech Agency Careers LinkedIn
+    Contact Work Services AI Services Strategy Data Campaigns Experiences Platforms
+    Verticals B2B B2C Our Thinking About us Work Services AI Services Strategy Data
+    Campaigns Experiences Platforms Verticals B2B B2C Our Thinking About Us Careers
+    linkedin Contact FEATURED SOLUTION aura+ See how AI platforms discover, interpret,
+    and position your brand. By analyzing authority signals, trust, and content structure
+    across platforms like ChatGPT, Claude, and Perplexity, aura+ reveals your Brands
+    true credibility in AI-driven discovery and how to improve it. RUN FREE AUDIT
+    Build Digital Authority & Trust Control Your Brand Narrative FEATURED CLIENT Thermacell
+    Improving how Thermacell is discovered across AI platforms while strengthening
+    the website experience that helps consumers understand the science behind its
+    mosquito protection technology. LEARN MORE AI Search & GEO Optimization UX & Product
+    Discovery Optimization FEATURED CLIENT University Hospitals Defining and scaling
+    AI solutions to drive improved brand visibility and discoverability across LLMs.
+    LEARN MORE GEO Content Pillar Pilot Execution Offsite Brand Signal Optimization
+    FEATURED CLIENT WNBA Driving the Organic Channel Marketing and Paid DTC Marketing
+    Strategies that drive fan acquisition and engagement. LEARN MORE Leading the 2026
+    Season DTC Marketing Strategy SEO, ASO, UAC and Social Marketing FEATURED CLIENT
+    HBOmax Executing global experimentation programs aimed at increasing subscription
+    volume and improving customer retention. LEARN MORE 28% Increase in user subscriptions
+    Global Award-winning MVT program FEATURED CLIENT Bloomberg Connects Executing
+    full-funnel digital marketing and experimentation initiatives to maximize app
+    acquisition, engagement, and retention for Bloomberg Connects. LEARN MORE 48%
+    increase in CVR on UAC Ads 500% increase in CVR for Meta campaigns FEATURED CLIENT
+    Nasdaq Improving Digital Maturity while Driving Increme
+  retrieved_at: '2026-08-12T21:52:44.665520+00:00'
+  url: https://chartis.io/
+- content_hash: 3d41bb1ad73add66c4e15ba5416cc558b979cd2cfeed3f0dc349e7806ad481f5
+  evidence_id: ev-3d41bb1ad73add66
+  excerpt: Chartis.io | LinkedIn Agree & Join LinkedIn By clicking Continue to join
+    or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie
+    Policy . Skip to main content LinkedIn Top Content People Learning Jobs Games
+    Sign in Join now Chartis.io Marketing Services New York, NY 8,463 followers Data-led
+    Marketing and Technology Consultancy I We Take Action to Create Value | Adweek
+    Fastest Growing Agency | Inc5000 See jobs Follow View all 45 employees Report
+    this company About us At Chartis.io, we understand the world doesn't need another
+    marketing agency. That is why we go beyond traditional marketing and technology
+    consulting—we are a value creation partner for our clients. We help brands leverage
+    data, AI, and digital innovation to build and optimize solutions that drive customer
+    & client acquisition, engagement, and long-term business growth. We partner closely
+    with our clients to align on business and marketing objectives, ensuring every
+    digital initiative delivers measurable impact. From strategy to execution, we
+    focus on creating scalable, high-performance digital experiences that drive revenue,
+    improve efficiency, and maximize ROI. Website https://chartis.io External link
+    for Chartis.io Industry Marketing Services Company size 51-200 employees Headquarters
+    New York, NY Type Partnership Founded 2019 Specialties Digital Marketing, Reporting,
+    Consulting, Private Equity, Optimization, Measurement, Data Strategy, Marketing
+    Tefchnology, Digital Strategy, and commerce strategy Employees at Chartis.io Sam
+    Dushkin LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn
+    Member View 45 employees at Chartis.io Sign in Welcome back Email or phone Password
+    Show Forgot password? Sign in or By clicking Continue to join or sign in, you
+    agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie Policy . New
+    to LinkedIn? Join now or By clicking Continue to join or sign in, you agree to
+    LinkedIn’s User Agreement , Privacy Policy , and Cookie Po
+  retrieved_at: '2026-08-12T21:52:45.544294+00:00'
+  url: https://www.linkedin.com/company/chartis-io
+- content_hash: 8d99d0158e10c2d6a7c8a125e23661961daba7db57613eb84fc724d84619ef44
+  evidence_id: ev-8d99d0158e10c2d6
+  excerpt: 'August 12, 2026 Working at Chartis Interactive | Great Place To Work®
+    Build trust. Earn recognition. Join Certification Nation Day Oct. 15. MENU Offerings
+    TRANSFORM YOUR CULTURE Discover how our survey platform builds high-trust cultures
+    & why leading companies choose us over other providers Explore Our Platform →
+    Certification Discover how earning Great Place To Work Certification™ can elevate
+    your brand and attract top talent. Best Workplaces Lists Explore the Fortune 100
+    Best Companies to Work For® and the rest of our famous Best Workplaces™ lists.
+    Our Model Top companies know that culture powers profits. Learn how we help you
+    improve your culture. Employee Surveys Measure culture with employee surveys and
+    benchmark results against top-ranked Best Workplaces. Employee Engagement Boost
+    engagement and retention with employee experience insights that help people and
+    business performance thrive. FAQs Find the answers to the most frequently asked
+    questions. FEATURED Why Great Place To Work: Watch this short video to see how
+    our employee experience platform improves culture, employer brand, and results.
+    Companies CERTIFIED & RECOGNIZED COMPANIES Employer awards and recognition are
+    key to building an employer brand and boosting recruitment. Get Started → View
+    all Certified companies Explore organizations that have earned Great Place To
+    Work Certification™ and see what sets them apart. View all lists Discover top
+    workplaces with our trusted and widely respected Best Workplaces lists. International
+    Lists Explore top workplaces around the globe Popular Lists Fortune 100 Best Companies
+    To Work For® Best Companies To Work For In The US Best Workplaces By Industry
+    People Companies That Care® World''s Best Workplaces™ List Publication Dates FEATURED
+    Interested in Making a Best Workplaces list? Get the premier distinction that
+    helps you attract the best talent, build brand recognition, and secure a competitive
+    advantage. Resources EXPLORE OUR INSIGHTS Explore our best research a'
+  retrieved_at: '2026-08-12T22:01:43.839352+00:00'
+  url: https://www.greatplacetowork.com/certified-company/7041229
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

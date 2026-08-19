@@ -1,0 +1,99 @@
+from concurrent.futures import ThreadPoolExecutor
+from decimal import Decimal
+
+import pytest
+
+from scripts.company_enrichment.budgets import (
+    BudgetExhausted,
+    BudgetLedger,
+    ReservationSettled,
+    ReservationState,
+)
+
+
+def test_budget_reserves_before_spend_and_reconciles_actual_cost(tmp_path) -> None:
+    ledger = BudgetLedger(tmp_path / "costs.jsonl", {"corpus-build": "2.00"})
+
+    reservation = ledger.reserve("corpus-build", "firecrawl:acme", "0.50")
+    assert ledger.reserved("corpus-build") == Decimal("0.50")
+    assert ledger.spent("corpus-build") == Decimal("0")
+
+    ledger.reconcile(reservation, "0.18")
+    assert ledger.reserved("corpus-build") == Decimal("0")
+    assert ledger.spent("corpus-build") == Decimal("0.18")
+
+
+def test_budget_reuses_idempotency_key_without_double_reserving(tmp_path) -> None:
+    ledger = BudgetLedger(tmp_path / "costs.jsonl", {"experiment:description": "1.00"})
+    first = ledger.reserve("experiment:description", "same-run", "0.40")
+    second = ledger.reserve("experiment:description", "same-run", "0.40")
+
+    assert first == second
+    assert first.should_execute is True
+    assert second.should_execute is False
+    assert ledger.reserved("experiment:description") == Decimal("0.40")
+
+
+def test_budget_denies_work_that_would_cross_aggregate_cap(tmp_path) -> None:
+    ledger = BudgetLedger(tmp_path / "costs.jsonl", {"corpus-build": "2.00"})
+    ledger.reserve("corpus-build", "one", "1.80")
+
+    with pytest.raises(BudgetExhausted):
+        ledger.reserve("corpus-build", "two", "0.21")
+
+
+def test_parallel_reservations_never_cross_cap(tmp_path) -> None:
+    ledger = BudgetLedger(tmp_path / "costs.jsonl", {"corpus-build": "2.00"})
+
+    def attempt(index: int) -> bool:
+        try:
+            ledger.reserve("corpus-build", f"run-{index}", "0.30")
+            return True
+        except BudgetExhausted:
+            return False
+
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        accepted = list(executor.map(attempt, range(10)))
+
+    assert sum(accepted) == 6
+    assert ledger.reserved("corpus-build") == Decimal("1.80")
+    assert ledger.reserved("corpus-build") <= Decimal("2.00")
+
+
+def test_release_is_idempotent_and_frees_an_unspent_reservation(tmp_path) -> None:
+    ledger = BudgetLedger(tmp_path / "costs.jsonl", {"corpus-build": "2.00"})
+    reservation = ledger.reserve("corpus-build", "failed-before-charge", "0.50")
+
+    ledger.release(reservation)
+    ledger.release(reservation)
+
+    assert ledger.reserved("corpus-build") == Decimal("0")
+    assert ledger.spent("corpus-build") == Decimal("0")
+
+
+def test_stale_lock_file_content_does_not_block_after_process_exit(tmp_path) -> None:
+    path = tmp_path / "costs.jsonl"
+    path.with_suffix(".jsonl.lock").write_text("dead-process", encoding="utf-8")
+    ledger = BudgetLedger(path, {"corpus-build": "2.00"})
+
+    ledger.reserve("corpus-build", "next", "0.25")
+
+    assert ledger.reserved("corpus-build") == Decimal("0.25")
+
+
+@pytest.mark.parametrize(
+    ("settle", "state"),
+    [
+        (lambda ledger, reservation: ledger.reconcile(reservation, "0.10"), ReservationState.RECONCILED),
+        (lambda ledger, reservation: ledger.release(reservation), ReservationState.RELEASED),
+    ],
+)
+def test_settled_idempotency_key_cannot_authorize_repurchase(tmp_path, settle, state) -> None:
+    ledger = BudgetLedger(tmp_path / "costs.jsonl", {"corpus-build": "2.00"})
+    reservation = ledger.reserve("corpus-build", "same-paid-call", "0.50")
+    settle(ledger, reservation)
+
+    with pytest.raises(ReservationSettled) as caught:
+        ledger.reserve("corpus-build", "same-paid-call", "0.50")
+
+    assert caught.value.state is state

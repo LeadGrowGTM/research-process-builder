@@ -1,0 +1,25 @@
+company_id: saas-03
+expected:
+  primary_icp:
+    buyer: B2B sales teams
+    need: shared deal workspaces
+    object: complex buying journeys
+    evidence_ids: [ev-05398a2ef65666fa, ev-22d60eecc23e228a, ev-01e046900b8496ac]
+  secondary_icps: []
+  outcomes:
+    - text: reduce buyer friction and close complex deals faster
+      evidence_ids: [ev-05398a2ef65666fa, ev-01e046900b8496ac]
+  observed_personas:
+    - role: sales representatives
+      evidence_ids: [ev-05398a2ef65666fa]
+  inferred_personas: []
+acceptable_aliases:
+  primary.buyer: [B2B sales teams, B2B revenue teams, Software sales teams]
+  primary.need: [shared deal workspaces, digital sales rooms]
+  primary.object: [complex buying journeys, complex sales processes]
+evidence_by_component:
+  primary.buyer: [ev-22d60eecc23e228a, ev-01e046900b8496ac]
+  primary.need: [ev-05398a2ef65666fa, ev-01e046900b8496ac]
+  primary.object: [ev-05398a2ef65666fa, ev-22d60eecc23e228a, ev-01e046900b8496ac]
+  outcome.0: [ev-05398a2ef65666fa, ev-01e046900b8496ac]
+  observed_persona.0: [ev-05398a2ef65666fa]

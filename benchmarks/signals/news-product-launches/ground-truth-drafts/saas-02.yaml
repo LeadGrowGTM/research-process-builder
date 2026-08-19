@@ -1,0 +1,113 @@
+# DRAFT ground truth - TODO_HUMAN: review every entry, then move this file to
+# ../ground-truth/ only after a human seals it. Generated from the signal dossier;
+# nothing here is validated. Delete candidates that are not real, fix dates and
+# kinds, keep evidence_ids pointing at the Evidence that proves the entry.
+# subject: AgilePoint (agilepoint.com)
+as_of: '2026-08-18'
+company_id: saas-02
+events:
+- date: TODO_HUMAN (6 months ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-496617759ff30b99
+  headline_aliases:
+  - AgilePoint Announces Expanded Support for ServiceNow at ...
+  kind: TODO_HUMAN
+  source_domain: youtube.com
+- date: TODO_HUMAN (5 months ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-72956f8e64f6fe91
+  headline_aliases:
+  - AgilePoint Introduces a Suite of OpenAI Process Activities
+  kind: TODO_HUMAN
+  source_domain: youtube.com
+- date: TODO_HUMAN (5 months ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-8a08869ff78dce0f
+  headline_aliases:
+  - AgilePoint Introduces Support for Memgraph
+  kind: TODO_HUMAN
+  source_domain: youtube.com
+- date: TODO_HUMAN (4 months ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-0894d7c72eb72de4
+  headline_aliases:
+  - AI Control Tower for Qwen
+  kind: TODO_HUMAN
+  source_domain: youtube.com
+- date: TODO_HUMAN (4 months ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-f3654800bb233be4
+  headline_aliases:
+  - Introducing the Universal AI Control Tower Dashboard
+  kind: TODO_HUMAN
+  source_domain: youtube.com
+- date: TODO_HUMAN (4 months ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-964a611188e615fd
+  headline_aliases:
+  - Introducing AI Control Towers for Claude
+  kind: TODO_HUMAN
+  source_domain: youtube.com
+- date: TODO_HUMAN (3 months ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-949d2d49e6d65147
+  headline_aliases:
+  - Visual Audit Trail for Adaptive Automations!
+  kind: TODO_HUMAN
+  source_domain: youtube.com
+- date: TODO_HUMAN (3 months ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-b73bd81143db3eab
+  headline_aliases:
+  - SS&C Blue Prism WorkHQ tackles real-world challenges at ...
+  kind: TODO_HUMAN
+  source_domain: linkedin.com
+- date: '2026-06-28'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-bfd06bab9bdb4e65
+  headline_aliases:
+  - AI-driven agreement reconciliation
+  kind: TODO_HUMAN
+  source_domain: agilepoint.com
+- date: '2026-04-01'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-8ee49560223c6867
+  headline_aliases:
+  - AgilePoint NX Connector for Qwen
+  kind: TODO_HUMAN
+  source_domain: blog.agilepoint.com
+- date: '2026-03-19'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-0cc63ea763746540
+  headline_aliases:
+  - 'From ''Software Factory'' to ''AI Factory'': How to Transition?'
+  kind: TODO_HUMAN
+  source_domain: agilepoint.com
+- date: '2025-09-18'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-0824b3e2df917997
+  headline_aliases:
+  - 'Author: Nishant Shrivastava'
+  kind: TODO_HUMAN
+  source_domain: blog.agilepoint.com
+- date: '2025-08-26'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-8c59d02c49f5aeeb
+  headline_aliases:
+  - Forrester Names Appian, IBM, Pegasystems, Salesforce ...
+  kind: TODO_HUMAN
+  source_domain: automationtoday.net
+recent_window_days: 180

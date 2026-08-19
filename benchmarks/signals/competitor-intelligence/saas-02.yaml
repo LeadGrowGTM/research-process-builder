@@ -1,0 +1,609 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-a955bcab27663ac9
+  - ev-e4360a941a821eeb
+  - ev-a5a50f0d0b7f2637
+  field: identity
+  value: AgilePoint
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-a955bcab27663ac9
+  - ev-e4360a941a821eeb
+  - ev-a5a50f0d0b7f2637
+  field: description
+  value: Our Story Platform Vendor-Neutral Composable Architecture Real-Time Agentic
+    Governance Composable AppGen AI Control Tower Business-Enabled Agentic AI Sovereign
+    Enterprise AI Dynamic Process Layer Dynamic Process Patterns Tour AI-Powered Showcase​
+    Legal Agreement Reconciliation​ AI-Powered Email Triage​ AI-Powered Case Studies​
+    Warranty Claim Fraud Detection​ AI Lead Triage & Sales Enablement​ Agentic Maturity
+    Model​ Task-Centric Agentic AI​ Process-Centric Agentic AI​ Multi-Agent Real-Time
+    Agent
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-a955bcab27663ac9
+  - ev-e4360a941a821eeb
+  - ev-a5a50f0d0b7f2637
+  field: offers
+  value: business process automation
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-a955bcab27663ac9
+  - ev-e4360a941a821eeb
+  - ev-a5a50f0d0b7f2637
+  field: icp
+  value: enterprises
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-a955bcab27663ac9
+  - ev-e4360a941a821eeb
+  - ev-a5a50f0d0b7f2637
+  field: personas
+  value: enterprises
+  visibility: message_safe
+company_id: saas-02
+corrections: []
+evidence:
+- content_hash: a955bcab27663ac913982da24a234b95e727eacc2d7647744e95086225a35cd9
+  evidence_id: ev-a955bcab27663ac9
+  excerpt: 'Our Story Platform Vendor-Neutral Composable Architecture Real-Time Agentic
+    Governance Composable AppGen AI Control Tower Business-Enabled Agentic AI Sovereign
+    Enterprise AI Dynamic Process Layer Dynamic Process Patterns Tour AI-Powered Showcase​
+    Legal Agreement Reconciliation​ AI-Powered Email Triage​ AI-Powered Case Studies​
+    Warranty Claim Fraud Detection​ AI Lead Triage & Sales Enablement​ Agentic Maturity
+    Model​ Task-Centric Agentic AI​ Process-Centric Agentic AI​ Multi-Agent Real-Time
+    Agentic AI​ Multi-Vendor Agentic AI Mesh​ Composable App Creation and GenAI AppGen​
+    QuickStart Guide Videos ​ GenAI AppGen Solution By INDUSTRY Manufacturing Banking
+    Healthcare Government Energy & Utilities By buyer role For executives CIO, CDO,
+    COO perspectives For EA & developers Architecture teams & technical buyers Agentic
+    Maturity Model Pricing Our Story Resources Webinars & Events Live Training Schedule
+    Documentation AgilePoint Partners Customers & Case Studies Whitepapers & Brochures
+    Company About Us Why Partner with AgilePoint Trust center Contact us Request Demo
+    Start Free Trial → 22 YEARS Against the norm · since 2003 We didn''t set out to
+    build workflow. We set out to anticipate AI. When we started AgilePoint in 2003,
+    we made an unfashionable bet: that the world would eventually need an execution
+    architecture that could change in real time, driven by intelligence. Twenty-two
+    years later , the rest of the market is calling that bet "agentic AI." We''ve
+    been calling it composable architecture since day one. See the Journey → 2003
+    + Founded · zero VC funding raised 2007 Gartner BPM Cool Vendor validation 120
+    + Enterprise systems harmonized 1200 + Pre-built composable activities shipped
+    01 — The bet A workflow company that never wanted to be one. In 2003, our founders
+    made a choice that didn''t make business sense at the time. At UMass Amherst,
+    with a PhD path and offers from Intel, HP, and Sun on the table, the founder picked
+    something stranger: design a systems execution arc'
+  retrieved_at: '2026-08-12T21:00:48.382215+00:00'
+  url: https://www.agilepoint.com/our-story
+- content_hash: e4360a941a821eebf65e97103040dee38bf09c6722ce3a407b5f449fc84c4910
+  evidence_id: ev-e4360a941a821eeb
+  excerpt: AgilePoint | LinkedIn Skip to main content LinkedIn Top Content People
+    Learning Jobs Games Sign in Join now AgilePoint Software Development Mountain
+    View, California 5,176 followers Operationalize, Democratize, and Govern Enterprise
+    Agentic AI Orchestration with AgilePoint. Follow View all 180 employees Report
+    this company About us Founded in 2003 and headquartered in Mountain View, California,
+    AgilePoint enables Fortune 5000 companies and governments worldwide to operationalize,
+    democratize, and govern enterprise Agentic AI at run time with resilience and
+    integrity. Renowned for its Agentic AI Capability Maturity Model, AgilePoint has
+    defined the future-path architecture for AI-enabled organizations moving forward.
+    At the heart of AgilePoint’s platform is its platform-agnostic, composable architecture—a
+    centralized, exception-resistant hub built by reusing and harmonizing existing
+    tech stacks for Agentic AI. By leveraging exception resistance, AgilePoint captures
+    embedded decision intelligence to train its AI Control Tower Agentic Framework,
+    empowering organizations to operationalize AI with democratization and governance.
+    The AgilePoint AI Control Tower also serves as a universal governance container
+    for AI agents created with third-party frameworks such as LangChain, CrewAI, n8n,
+    Autogen, and more, enabling seamless support for multi-vendor and multi-agent
+    applications. Integrating over 1,200 business activities with 120+ systems, AgilePoint
+    delivers resilient, exception-resistant operations and dynamic adaptability unmatched
+    by conventional automation tools. Operationalize, Democratize, and Govern Enterprise
+    Agentic AI Orchestration with AgilePoint. Website https://agilepoint.com External
+    link for AgilePoint Industry Software Development Company size 51-200 employees
+    Headquarters Mountain View, California Type Privately Held Founded 2003 Specialties
+    BPMS, Workflow, Business Process Management, SharePoint, Low-Code, Forms, eForm,
+    Office 365, Digital Process Autom
+  retrieved_at: '2026-08-12T21:00:49.112683+00:00'
+  url: https://www.linkedin.com/company/agilepoint
+- content_hash: a5a50f0d0b7f2637a3b796fa0f9516af1dc70e45d9d65d67eb31cd1dd937eaec
+  evidence_id: ev-a5a50f0d0b7f2637
+  excerpt: 'AgilePoint Partnerships · Partnerbase My Lists Browse Partner Tech Stack
+    About Log In Sign Up My Lists Browse Partner Tech Stack About Log In Sign Up Home
+    / AgilePoint AgilePoint 129 Partners agilepoint.com Flag incorrect data Need to
+    track AgilePoint or find similar companies at scale? Use Trace for saved lists,
+    company monitoring, and richer firmographic and technographic filters. Join Trace
+    for Free Partner List Company Type Employees Industry Details Google Technology
+    51–200 Software & Tech Details Source Link MySQL AB Technology 201–500 Software
+    & Tech Details Source Link Microsoft Technology 10,001+ Software & Tech Details
+    Source Link Amazon Web Services Technology 5001–10000 Software & Tech Details
+    Source Link Salesforce Technology 10,001+ Software & Tech Details Source Link
+    Oracle Technology 5001–10000 Software & Tech Details Source Link HubSpot Technology
+    5001–10000 Software & Tech Details Source Link Atlassian Technology 10,001+ Software
+    & Tech Details Source Link Adobe Technology 10,001+ Software & Tech Details Source
+    Link Slack Technology 1001–5000 Software & Tech Details Source Link LinkedIn Technology
+    10,001+ Software & Tech Details Source Link SAP Technology 10,001+ Software &
+    Tech Details Source Link Snowflake Technology 5001–10000 Software & Tech Details
+    Source Link Mailchimp Technology 10,001+ Software & Tech Details Source Link Okta
+    Technology 5001–10000 Software & Tech Details Source Link Zendesk Technology 2–10
+    Software & Tech Details Source Link ServiceNow Technology 1001–5000 Software &
+    Tech Details Source Link Twitter Technology 5001–10000 Software & Tech Details
+    Source Link PayPal Technology 501–1000 Financial Services Details Source Link
+    Zoho Technology 10,001+ Software & Tech Details Source Link Zoom Technology 5001–10000
+    Software & Tech Details Source Link Oracle NetSuite Technology 1001–5000 Software
+    & Tech Details Source Link WordPress Technology 1001–5000 Software & Tech Details
+    Source Link Dropbox, Inc Technology 1001–5000 Software & '
+  retrieved_at: '2026-08-12T21:00:49.742124+00:00'
+  url: https://www.partnerbase.com/agilepoint
+- content_hash: 9a9b0072e232749154004a565e216c231fc4299d196147d13e2ff0407211eea1
+  evidence_id: ev-9a9b0072e2327491
+  excerpt: 'Title: AgilePoint
+
+    Snippet: AgilePoint''s business automation platform empowers you to automate processes
+    ... Design-time and runtime pivots vs. fewer than 10 for traditional BPM, RPA
+    ...'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://www.agilepoint.com/
+- content_hash: 39ea947dd84ab2f2dcf4b8ab5e5276cccdfc21c8a9d50985ca60feb5c231dc48
+  evidence_id: ev-39ea947dd84ab2f2
+  excerpt: 'Title: AgilePoint Alternatives - Business Process Automation Tools
+
+    Snippet: Learn more about the top AgilePoint competitors & alternatives. Read
+    the latest reviews and find the best Business Process Automation Tools software.'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://www.gartner.com/reviews/market/business-process-automation-tools/vendor/agilepoint/alternatives?companySize=1
+- content_hash: 416d52520f5e9d7883e3d413034507383572ae2e454b40cd48802f1095e13f5d
+  evidence_id: ev-416d52520f5e9d78
+  excerpt: 'Title: NICE Robotic Process Automation vs AgilePoint
+
+    Snippet: Compare the similarities and differences between NICE Robotic Process
+    Automation vs AgilePoint customers by industry, by geography and by buying patterns.'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://6sense.com/tech/workflow-automation/agilepoint-vs-niceroboticprocessautomation
+- content_hash: 96c61226d5d8bde3390ca6bf82148895d062f07c86eb86842941d47c43a16bf4
+  evidence_id: ev-96c61226d5d8bde3
+  excerpt: 'Detected date: Dec 16, 2025
+
+    Title: BPM Software Comparison - Pegasystems vs AgilePoint
+
+    Date: Dec 16, 2025
+
+    Snippet: Comprehensive BPM comparison between PegaSystems vs AgilePoint pricing
+    and features. Discover enterprise platforms and TableSprint as an ...'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://tablesprint.com/blog/pegasystems-vs-agilePoint
+- content_hash: 74f4cd0f7ba88009fc81a4cc83399e1b93c7c50a04dd444a9bf293e56b365c07
+  evidence_id: ev-74f4cd0f7ba88009
+  excerpt: 'Title: AgilePoint vs Automation Anywhere comparison
+
+    Snippet: AgilePoint holds a 1.6% mindshare in BPM, compared to Automation Anywhere''s
+    0.9% mindshare. Additionally, 100% of AgilePoint users are willing to recommend
+    the ...'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://www.peerspot.com/products/comparisons/agilepoint_vs_automation-anywhere
+- content_hash: e01102e8ee163f354deec7d478cdf594eebc13fdcafaa08d2c7dce01b63b99cf
+  evidence_id: ev-e01102e8ee163f35
+  excerpt: 'Title: AgilePoint NX vs. Ultimus Digital Process Automation Suite
+
+    Snippet: Compare AgilePoint NX vs. Ultimus Digital Process Automation Suite using
+    this comparison chart. Compare price, features, and reviews of the software ...'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://sourceforge.net/software/compare/AgilePoint-NX-vs-Ultimus/
+- content_hash: 0d884214f2ec4ed2305bbe150a8726106aba0f0b15dbbd83ef41ed3bb0a527e8
+  evidence_id: ev-0d884214f2ec4ed2
+  excerpt: 'Title: What Is Business Process Automation (BPA)? A Complete Guide
+
+    Snippet: BPA vs Robotic Process Automation (RPA) ... RPA utilizes software robots
+    to automate narrow, repetitive tasks, such as transferring data from one field
+    to another ...'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://www.agilepoint.com/blog-posts/what-is-business-process-automation
+- content_hash: b3140d9d0cd72444ba2c020863d20fcaafd1e164375420eaf79b535d5bc3e17c
+  evidence_id: ev-b3140d9d0cd72444
+  excerpt: 'Title: Best AgilePoint Alternative
+
+    Snippet: 60-second workflows. No BPMN. No consultants. vs. The alternatives. ServiceNowAppianNintexPegaBizagiCamundaK2Oracle
+    BPMIBM BlueworksMendixTibco ...'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://tallyfy.com/agilepoint-alternative/
+- content_hash: e6b455f7496c7705edab7b728d3a95f5c1db70af8f110732e9253c3fa0065b40
+  evidence_id: ev-e6b455f7496c7705
+  excerpt: 'Title: Compare AgilePoint NX vs. Automation Anywhere in 2026
+
+    Snippet: Compare AgilePoint NX vs. Automation Anywhere in 2026 by cost, reviews,
+    features, integrations, deployment, target market, support options, trial offers,
+    ...'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://slashdot.org/software/comparison/AgilePoint-NX-vs-Automation-Anywhere/
+- content_hash: 6c78455a7aae8814bf9609465879e6d9ad25e55239a0999524b02035d01570bf
+  evidence_id: ev-6c78455a7aae8814
+  excerpt: 'Query: AgilePoint business process automation alternatives OR competitors
+    OR "vs" OR "compared to"
+
+    1. https://www.agilepoint.com/
+
+    Title: AgilePoint
+
+    Snippet: AgilePoint''s business automation platform empowers you to automate processes
+    ... Design-time and runtime pivots vs. fewer than 10 for traditional BPM, RPA
+    ...
+
+    2. https://www.gartner.com/reviews/market/business-process-automation-tools/vendor/agilepoint/alternatives?companySize=1
+
+    Title: AgilePoint Alternatives - Business Process Automation Tools
+
+    Snippet: Learn more about the top AgilePoint competitors & alternatives. Read
+    the latest reviews and find the best Business Process Automation Tools software.
+
+    3. https://6sense.com/tech/workflow-automation/agilepoint-vs-niceroboticprocessautomation
+
+    Title: NICE Robotic Process Automation vs AgilePoint
+
+    Snippet: Compare the similarities and differences between NICE Robotic Process
+    Automation vs AgilePoint customers by industry, by geography and by buying patterns.
+
+    4. https://tablesprint.com/blog/pegasystems-vs-agilePoint
+
+    Title: BPM Software Comparison - Pegasystems vs AgilePoint
+
+    Date: Dec 16, 2025
+
+    Snippet: Comprehensive BPM comparison between PegaSystems vs AgilePoint pricing
+    and features. Discover enterprise platforms and TableSprint as an ...
+
+    5. https://www.peerspot.com/products/comparisons/agilepoint_vs_automation-anywhere
+
+    Title: AgilePoint vs Automation Anywhere comparison
+
+    Snippet: AgilePoint holds a 1.6% mindshare in BPM, compared to Automation Anywhere''s
+    0.9% mindshare. Addition'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://www.google.com/search?q=AgilePoint+business+process+automation+alternatives+OR+competitors+OR+%22vs%22+OR+%22compared+to%22
+- content_hash: 5b7e99806156736f7bfbb31d08c7e0e1405b774cb59af3d451a5e2149fe37353
+  evidence_id: ev-5b7e99806156736f
+  excerpt: 'Title: Top AgilePoint Competitors & Alternatives 2026 - Gartner
+
+    Snippet: Top AgilePoint Alternatives · Nintex · Appian · Bizagi · OpenText · Oracle
+    · ProcessMaker. Considering alternatives to AgilePoint? See what Business Process
+    ...'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://www.gartner.com/reviews/market/business-process-management-platforms/vendor/agilepoint/alternatives
+- content_hash: 4a738ea76bfedcc9a5cd5ff33f44da8c17df72e1b50fa143d7fe7a2bb227630e
+  evidence_id: ev-4a738ea76bfedcc9
+  excerpt: 'Title: Top 10 AgilePoint NX Alternatives & Competitors in 2026 - G2
+
+    Snippet: The best AgilePoint NX alternatives are Nintex, Appian, and Microsoft
+    Power Automate. Find top-ranking free & paid apps similar to AgilePoint NX for
+    your ...'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://www.g2.com/products/agilepoint-nx/competitors/alternatives
+- content_hash: a579e0cd1ef0964ab630fc067cf80731ff20e63c19fb50f9d93eb772532d76fc
+  evidence_id: ev-a579e0cd1ef0964a
+  excerpt: 'Title: Best AgilePoint Alternative - Tallyfy
+
+    Snippet: Tallyfy is a better, proven alternative to AgilePoint. Lots of companies
+    are switching to Tallyfy from Agile Point BPM every week.'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://tallyfy.com/agilepoint-alternative/
+- content_hash: 2e3673eb73425827485be5363537a85e577ff4588c932adac883a216302f1d5e
+  evidence_id: ev-2e3673eb73425827
+  excerpt: 'Title: Top 10 AgilePoint Alternatives 2026 - PeerSpot
+
+    Snippet: The top alternative solutions include Informatica Intelligent Data Management
+    Cloud (IDMC), Automation Anywhere, and Camunda.'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://www.peerspot.com/products/agilepoint-alternatives-and-competitors
+- content_hash: f5de681516e5c1d71205980371eb5919e54b7511fac5eee2fa5eb1457f2eca39
+  evidence_id: ev-f5de681516e5c1d7
+  excerpt: 'Title: AgilePoint Alternatives - Business Process Automation Tools - Gartner
+
+    Snippet: Top AgilePoint Alternatives · Nintex · Agiloft · Appian · IBM · Pegasystems
+    · ABBYY · Bizagi · Oracle. Considering alternatives to AgilePoint? See what Business
+    ...'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://www.gartner.com/reviews/market/business-process-automation-tools/vendor/agilepoint/alternatives?companySize=1
+- content_hash: c19bd9d49c54571db56879f5356c73db94f44d6d6d2affb8f24ef36a6a3b35d6
+  evidence_id: ev-c19bd9d49c54571d
+  excerpt: 'Title: Top AgilePoint NX Alternatives & Competitors in 2026 - TrustRadius
+
+    Snippet: Best AgilePoint NX Alternatives for Medium-sized Companies · Square 9
+    Softworks · Quixy · CMW Platform · Creatio · IBM Cloud Pak for Business Automation
+    · TIBCO® BPM ...'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://www.trustradius.com/products/agilepoint-nx/competitors
+- content_hash: 651387aa3910566c34999f3b09c404403dfd2a18ea55e172fefa1724986880d5
+  evidence_id: ev-651387aa3910566c
+  excerpt: 'Title: AgilePoint - Market Share, Competitor Insights in Workflow Automation
+
+    Snippet: The top alternatives for AgilePoint workflow-automation tool are Apache
+    Airflow with 20.35%, Google Cloud Workflows with 10.47%, Control-M with 9.07%
+    market ...'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://6sense.com/tech/workflow-automation/agilepoint-market-share
+- content_hash: c20ce02261a939ff5cd003eda2c33b76da3b4cf25ae986a3128c69c352878e57
+  evidence_id: ev-c20ce02261a939ff
+  excerpt: 'Title: Top AgilePoint NX Alternatives & Competitors 2026 | SoftwareWorld
+
+    Snippet: Some of the best alternatives to AgilePoint NX include Visio, Trello,
+    Confluence, Zapier, Asana, Lucidchart, SoftExpert Suite, CMW Platform, Trainual,
+    Albato ...'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://www.softwareworld.co/competitors/agilepoint-nx-alternatives/
+- content_hash: 229fab0fca6bc8896984fc7838e6efd14729efbba627f14c51e89fbc39719816
+  evidence_id: ev-229fab0fca6bc889
+  excerpt: 'Title: Top 10 AgilePoint NX Alternatives & Competitors - Findstack
+
+    Snippet: Retool is a low-code platform that allows users to seamlessly build internal
+    tools in a short period of time. Users can create and customize tools using a
+    ...'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://findstack.com/products/agilepoint-nx/competitors/alternatives
+- content_hash: 5c3a8aa4c558b5c3616bb8100c3d1ade9fd17756431fa2c5b70633f33b4e180a
+  evidence_id: ev-5c3a8aa4c558b5c3
+  excerpt: 'Title: Top AgilePoint Alternatives - WebCatalog
+
+    Snippet: Baserow is an open-source, no-code platform for creating and managing
+    databases and applications, enabling collaboration without coding skills. Thunkable.'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://webcatalog.io/en/apps/agilepoint/alternatives
+- content_hash: 39baff5f0e41f8d6aa88e0219af963b504da32a12ea62940a0d35b0e124639ca
+  evidence_id: ev-39baff5f0e41f8d6
+  excerpt: 'Query: AgilePoint alternatives
+
+    1. https://www.gartner.com/reviews/market/business-process-management-platforms/vendor/agilepoint/alternatives
+
+    Title: Top AgilePoint Competitors & Alternatives 2026 - Gartner
+
+    Snippet: Top AgilePoint Alternatives · Nintex · Appian · Bizagi · OpenText · Oracle
+    · ProcessMaker. Considering alternatives to AgilePoint? See what Business Process
+    ...
+
+    2. https://www.g2.com/products/agilepoint-nx/competitors/alternatives
+
+    Title: Top 10 AgilePoint NX Alternatives & Competitors in 2026 - G2
+
+    Snippet: The best AgilePoint NX alternatives are Nintex, Appian, and Microsoft
+    Power Automate. Find top-ranking free & paid apps similar to AgilePoint NX for
+    your ...
+
+    3. https://tallyfy.com/agilepoint-alternative/
+
+    Title: Best AgilePoint Alternative - Tallyfy
+
+    Snippet: Tallyfy is a better, proven alternative to AgilePoint. Lots of companies
+    are switching to Tallyfy from Agile Point BPM every week.
+
+    4. https://www.peerspot.com/products/agilepoint-alternatives-and-competitors
+
+    Title: Top 10 AgilePoint Alternatives 2026 - PeerSpot
+
+    Snippet: The top alternative solutions include Informatica Intelligent Data Management
+    Cloud (IDMC), Automation Anywhere, and Camunda.
+
+    5. https://www.gartner.com/reviews/market/business-process-automation-tools/vendor/agilepoint/alternatives?companySize=1
+
+    Title: AgilePoint Alternatives - Business Process Automation Tools - Gartner
+
+    Snippet: Top AgilePoint Alternatives · Nintex · Agiloft · Appian · IBM · Pegasystems
+    · ABBYY · Bizagi · Oracle. Considering'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://www.google.com/search?q=AgilePoint+alternatives
+- content_hash: cf5e87a704d06aa170b0845207daca06fa2388da1f751d01fa27d8351f144069
+  evidence_id: ev-cf5e87a704d06aa1
+  excerpt: 'Title: Top AgilePoint Competitors & Alternatives 2026
+
+    Snippet: Check out real reviews verified by Gartner to see how AgilePoint compares
+    to its competitors and find the best software or service for your organization.'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://www.gartner.com/reviews/market/business-process-management-platforms/vendor/agilepoint/alternatives
+- content_hash: f0aedf44aa80ecf0ae67b4990a687c27fe5c89dfaa1bfdaf504f89affcefedab
+  evidence_id: ev-f0aedf44aa80ecf0
+  excerpt: 'Title: AgilePoint
+
+    Snippet: AgilePoint''s business automation platform empowers you to automate processes,
+    integrate systems, and boost agility across depts—say goodbye to data silos.'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://www.agilepoint.com/
+- content_hash: 64c783eab8883000347f0e32aad48b739c24eb6c2b63b062bbe1b33fd2c49317
+  evidence_id: ev-64c783eab8883000
+  excerpt: 'Title: AgilePoint NX - Connectors
+
+    Snippet: AgilePoint is a platform that opens up two-way communication to provide
+    native support for flows within larger, more scalable cross-organizational automations.'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://learn.microsoft.com/en-us/connectors/agilepointnx/
+- content_hash: c91b26fc23edb8fe47735a70fc71833fe1b223a6779c614440226b65c0931ed7
+  evidence_id: ev-c91b26fc23edb8fe
+  excerpt: 'Title: Introduction to AgilePoint
+
+    Snippet: This video provides a brief overview of the many advantages that our
+    responsive low-code application platform and its easy update features can benefit'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://video.agilepoint.com/index.php?v=228&pc=43&c=43
+- content_hash: fda7c7f82efb37804433123b2f561de6ade16fa7c05c70757237812ff23a9367
+  evidence_id: ev-fda7c7f82efb3780
+  excerpt: 'Title: AgilePoint - Market Share, Competitor Insights in Workflow ...
+
+    Snippet: AgilePoint is a digital process automation and low-code application development
+    platform. Apache Airflow with 20.35%, Google Cloud Workflows with 10.47%, ...'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://www.6sense.com/tech/workflow-automation/agilepoint-market-share
+- content_hash: a5bb1155d639a1f03f092f7ec641efd1fd43e404b2d9398366161fd11a6f5e77
+  evidence_id: ev-a5bb1155d639a1f0
+  excerpt: 'Title: 10 Minute Platform Overview
+
+    Date: 1 year ago
+
+    Snippet: This video provides a brief overview of the design environment found
+    in AgilePoint''s composable processs and agentic orchestration platform.'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://www.youtube.com/watch?v=OX9M7s2KPLw
+- content_hash: 65cb534905be65e1f69967502f324c628dc2c903c3fdbeb8087fd6e95909d30b
+  evidence_id: ev-65cb534905be65e1
+  excerpt: 'Title: Why AgilePoint Is a Game-Changer for Business Process ...
+
+    Snippet: AgilePoint is a low-code Business Process Management (BPM), and automation
+    platform designed to help organizations create and manage digital workflows with
+    ...'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://sysfort.com/agilepoint/
+- content_hash: 1a6026f0c2e21badaed3696027d8a066ad60b9051cf181d3fd364e6229977b44
+  evidence_id: ev-1a6026f0c2e21bad
+  excerpt: 'Title: AgilePoint vs Microsoft Power Apps comparison
+
+    Snippet: AgilePoint has an edge in flexibility and integration, while Microsoft
+    Power Apps is preferred due to its user-friendly interface and broad feature set.'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://www.peerspot.com/products/comparisons/agilepoint_vs_microsoft-power-apps
+- content_hash: a1a8ddfcf60583e2aaf4c14c25b3a16a88ea155b9450a620ba93018776106cb3
+  evidence_id: ev-a1a8ddfcf60583e2
+  excerpt: 'Title: AgilePoint NX Unleashed
+
+    Snippet: AgilePoint has long been heralded as platform that deftly blends ease
+    of use with advanced capabilities. Over the last year, we''ve worked hard to make
+    the ...'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://blog.agilepoint.com/
+- content_hash: f74aa48ca45b4cbd7607dd21c8c342e5d396354580417ad53e845290b381af53
+  evidence_id: ev-f74aa48ca45b4cbd
+  excerpt: 'Query: AgilePoint vs
+
+    1. https://www.gartner.com/reviews/market/business-process-management-platforms/vendor/agilepoint/alternatives
+
+    Title: Top AgilePoint Competitors & Alternatives 2026
+
+    Snippet: Check out real reviews verified by Gartner to see how AgilePoint compares
+    to its competitors and find the best software or service for your organization.
+
+    2. https://www.agilepoint.com/
+
+    Title: AgilePoint
+
+    Snippet: AgilePoint''s business automation platform empowers you to automate processes,
+    integrate systems, and boost agility across depts—say goodbye to data silos.
+
+    3. https://learn.microsoft.com/en-us/connectors/agilepointnx/
+
+    Title: AgilePoint NX - Connectors
+
+    Snippet: AgilePoint is a platform that opens up two-way communication to provide
+    native support for flows within larger, more scalable cross-organizational automations.
+
+    4. https://video.agilepoint.com/index.php?v=228&pc=43&c=43
+
+    Title: Introduction to AgilePoint
+
+    Snippet: This video provides a brief overview of the many advantages that our
+    responsive low-code application platform and its easy update features can benefit
+
+    5. https://www.6sense.com/tech/workflow-automation/agilepoint-market-share
+
+    Title: AgilePoint - Market Share, Competitor Insights in Workflow ...
+
+    Snippet: AgilePoint is a digital process automation and low-code application development
+    platform. Apache Airflow with 20.35%, Google Cloud Workflows with 10.47%, ...
+
+    6. https://www.youtube.com/watch?v=OX9M7s2KPLw
+
+    Title: 10 Minute Platform Overview
+
+    Date: 1 year ago
+
+    Snippet: '
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://www.google.com/search?q=AgilePoint+vs
+- content_hash: 52f25c483190047af66199426b4d263dc2a6a6e0172a9a38acb812ae16ca5d91
+  evidence_id: ev-52f25c483190047a
+  excerpt: 'Title: Home
+
+    [](/)
+
+
+    Platform
+
+
+    [Vendor-Neutral Composable Architecture](/vendor-neutral-composable-architecture)[Real-Time
+    Agentic Governance](/real-time-agentic-governance)[Composable AppGen](/composable-appgen)[AI
+    Control Tower](/ai-control-tower)[Business-Enabled Agentic AI](/business-enabled-agentic-ai)[Sovereign
+    Enterprise AI](/sovereign-enterprise-ai)[Dynamic Process Layer](/maturity-model-overview)[Dynamic
+    Process Patterns](/dynamic-process-patterns)
+
+
+    Tour
+
+
+    AI-Powered Showcase​
+
+
+    [Legal Agreement Reconciliation​](/ai-driven-agreement-reconciliation)[AI-Powered
+    Email Triage​](/ai-driven-email-triage)
+
+
+    AI-Powered Case Studies​
+
+
+    [Warranty Claim Fraud Detection​](/warranty-claim-fraud-detection)[AI Lead Triage
+    & Sales Enablement​](/ai-lead-triage-sales-enablement)
+
+
+    Agentic Maturity Model​
+
+
+    [Task-Centric Agentic AI​](https://www.agilepoint.com/ai-agentic-model#Agentic-Task)[Process-Centric
+    Agentic AI​](https://www.agilepoint.com/ai-agentic-model#Agentic-Process)[Multi-Agent
+    Real-Time Agentic AI​](https://www.agilepoint.com/ai-agentic-model#Handle-Multi-Agent)[Multi-Vendor
+    Agentic AI Mesh​](https://www.agilepoint.com/ai-agentic-model#Agentic-Mesh)
+
+
+    Composable App Creation and GenAI AppGen​
+
+
+    [QuickStart Guide Videos ​](/quick-start-walkthrough)[GenAI AppGen ](https://www.agilepoint.com/quick-start-walkthrough#generative-ai)
+
+
+    Solution
+
+
+    By INDUSTRY
+
+
+    ManufacturingBankingHealthcareGovernmentEnergy & Utilities
+
+
+    By buyer role
+
+
+    For executivesCIO, CDO, COO perspectivesFor EA & developer'
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://www.agilepoint.com/
+- content_hash: 15843474af32b8387fd2df0183702c5742117c4adbd59f8a4e486e339711c8f8
+  evidence_id: ev-15843474af32b838
+  excerpt: "Title: Best AgilePoint Alternative - Tallyfy\nSkip to main content\n\n\
+    [ ](/)\n\n  * Run Workflows \n\nEvery task gets done by a person, AI, or an app.\
+    \ Tallyfy runs all three\n\nPeople\n\n[ Workflow overview Start here ](/workflow/)[\
+    \ Documentation ](/documentation/)[ Tasks & Approvals ](/tasks-and-approvals/)[\
+    \ Forms ](/forms/)[ Live Status ](/tracking/)[ Automations ](/conditionals-and-automations/)[\
+    \ Guest Access ](/client-facing-views/)\n\nAI\n\n[ Tallyfy AI Start here ](/ai/)[\
+    \ Control AI ](/ai/#control-ai)[ MCP server ](/mcp-server/)[ ChatGPT ](/products/pro/integrations/byo-ai/chatgpt-integration/)[\
+    \ Claude ](/products/pro/integrations/byo-ai/claude-integration/)[ AI agents ](/products/pro/integrations/computer-ai-agents/)[\
+    \ Auto-Improve ](https://sternstella.com/)\n\nApps\n\n[ Integrations Start here\
+    \ ](/integrations/)[ Tallyfy VaultSoon ](/vault/)[ API & webhooks ](/products/pro/integrations/open-api/)[\
+    \ SSO ](/products/pro/integrations/authentication/)[ Robotics ](/products/pro/integrations/robotics/)\n\
+    \n[ Customer stories ](/customers/)[ SOC 2 Type II ](/legal/soc-2-type-2/)\n\n\
+    Every task gets done by a person, AI, or an app. Tallyfy runs all three\n\n[ Speak\
+    \ with us](/booking/)\n\n[ Customer stories](/customers/)[ SOC 2 Type II](/legal/soc-2-type-2/)\n\
+    \nPeople\n\n[Workflow overview ](/workflow/)[Documentation](/documentation/)[Tasks\
+    \ & Approvals](/tasks-and-approvals/)[Forms](/forms/)[Live Status](/tracking/)[Automations](/conditionals-and-automations/)[Guest\
+    \ Access](/client-facing-views/)\n\nAI\n\n[Tallyfy "
+  retrieved_at: '2026-08-18T11:43:15.756049-04:00'
+  url: https://tallyfy.com/agilepoint-alternative/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

@@ -1,0 +1,121 @@
+{
+  "collected_at": "2026-08-19T11:52:31.484341-04:00",
+  "company_id": "saas-02",
+  "enrichment_id": "competitor-intelligence",
+  "entries": [
+    {
+      "category": "business process automation",
+      "company_name": "AgilePoint",
+      "domain": "agilepoint.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "AgilePoint business process automation alternatives OR competitors OR \"vs\" OR \"compared to\"",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "AgilePoint alternatives",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "AgilePoint vs",
+      "tbs": null
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://platform.tracxn.com/a/d/company/53188555e4b01c90cfddb74b/agilepoint?utm_source=parallel&utm_medium=ai#a:about",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.gartner.com/reviews/market/business-process-automation-tools/vendor/agilepoint/alternatives?companySize=1: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.gartner.com/reviews/market/business-process-automation-tools/vendor/agilepoint/alternatives?companySize=1"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.g2.com/products/agilepoint-nx/competitors/alternatives: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.g2.com/products/agilepoint-nx/competitors/alternatives"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.gartner.com/reviews/market/business-process-management-platforms/vendor/agilepoint/alternatives: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.gartner.com/reviews/market/business-process-management-platforms/vendor/agilepoint/alternatives"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.peerspot.com/products/agilepoint-alternatives-and-competitors",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://tracxn.com/d/companies/agilepoint/__qJvRxCQ8-urW7XXQcF1uc29LPZcai63P8fXUALYl4_U",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agilepoint.com/competitors: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agilepoint.com/competitors"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agilepoint.com/compare: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agilepoint.com/compare"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agilepoint.com/alternatives: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agilepoint.com/alternatives"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 35,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.015",
+  "signal_evidence": 38
+}

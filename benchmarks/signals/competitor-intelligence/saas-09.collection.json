@@ -1,0 +1,121 @@
+{
+  "collected_at": "2026-08-18T11:44:48.341259-04:00",
+  "company_id": "saas-09",
+  "enrichment_id": "competitor-intelligence",
+  "entries": [
+    {
+      "category": "link management",
+      "company_name": "Bitly",
+      "domain": "bitly.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "Bitly link management alternatives OR competitors OR \"vs\" OR \"compared to\"",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Bitly alternatives",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Bitly vs",
+      "tbs": null
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.branch.io/resources/bitly-alternatives/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://bitly.com/blog/link-management/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://dub.co/compare/bitly",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://zapier.com/blog/best-url-shorteners/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.reddit.com/r/webhosting/comments/1oqscil/best_urlshortner_as_alternative_to_the_bitly/",
+      "waterfall_level": 2
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://medium.com/@himubin/07-best-bitly-alternative-you-will-only-need-free-520505cd265f",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://bitly.com/competitors",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://bitly.com/compare: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://bitly.com/compare"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://bitly.com/alternatives",
+      "waterfall_level": 1
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 39,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.003",
+  "signal_evidence": 42
+}

@@ -1,0 +1,857 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: identity
+  value: Built
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: description
+  value: 'Solutions for Lenders | Built | Powering Smarter Construction Finance The
+    Future of Real Estate Finance Starts Here: Meet the AI Draw Agent blt-logo-web
+    _:last-child]:only:tw-hidden" role="presentation"> Solutions Lenders Origination
+    Pipeline Management OM Extraction Underwriting Draw & Budget Management AI Draw
+    Agent Draw Inspections Risk Mitigation Portfolio Reporting Owners & Developers
+    Origination Pipeline Management OM Extraction Budget Management Capital Requests
+    Invoice Management Complia'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: offers
+  value: construction finance platform
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: icp
+  value: lenders
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: personas
+  value: lenders
+  visibility: message_safe
+company_id: saas-10
+corrections: []
+evidence:
+- content_hash: ce4724cc20ef689e8d15b16485840e125fb4659ed0f1ff520d95ce813ca909c9
+  evidence_id: ev-ce4724cc20ef689e
+  excerpt: 'Solutions for Lenders | Built | Powering Smarter Construction Finance
+    The Future of Real Estate Finance Starts Here: Meet the AI Draw Agent blt-logo-web
+    _:last-child]:only:tw-hidden" role="presentation"> Solutions Lenders Origination
+    Pipeline Management OM Extraction Underwriting Draw & Budget Management AI Draw
+    Agent Draw Inspections Risk Mitigation Portfolio Reporting Owners & Developers
+    Origination Pipeline Management OM Extraction Budget Management Capital Requests
+    Invoice Management Compliance Tracking Lien Waiver Management Payments Portfolio
+    Reporting Builders Budget Management Compliance Tracking Invoice Management Lien
+    Waiver Management Payments Powered by AI Trained on $3T+ in real estate finance
+    data. Built''s AI automates workflows and surfaces risk in real time. Integrations
+    Built connects to Sage, Yardi, Procore and more. Inspections & Due Diligence AI-powered
+    draw inspections that catch issues before funds move. _:last-child]:only:tw-hidden"
+    role="presentation"> Products Construction Loan Administration AI Draw Agent Draw
+    Inspections Draws & Budget Management Risk Mitigation Deal Management Origination
+    Pipeline Management OM Extraction Underwriting Portfolio Reporting Construction
+    Financials Budget Management Invoice Management Lien Waiver Management Capital
+    Requests Compliance Tracking Payments Lien Waiver Management & Payments Create
+    Lien Waivers Send Lien Waivers Track Lien Waivers Payments Integrations Meet Built''s
+    New Draw Agent Learn how the AI Draw Agent enables 2–5× capacity gains, 100% policy
+    adherence, 2× more risks flagged, and up to 95% faster draw processing. Watch
+    Here _:last-child]:only:tw-hidden" role="presentation"> Customers _:last-child]:only:tw-hidden"
+    role="presentation"> Resources Learn News Resource Center Built University Free
+    Tools & Templates Connect About Us Contact Us Integrations Help Desk Careers Learn
+    Built & Move Faster Free courses and resources to help your team get more out
+    of Built. Explore University Login Support B'
+  retrieved_at: '2026-08-12T21:00:59.875500+00:00'
+  url: https://getbuilt.com/solutions/lenders/
+- content_hash: be44ff703241ffbea1cca3c0894b3e42188b368c4a4a6237294ffb2b5682e52d
+  evidence_id: ev-be44ff703241ffbe
+  excerpt: "Built Technologies Careers, Perks + Culture | Built In Companies Jobs\
+    \ Articles Can't find your company? Create a company profile. View All Jobs Join\
+    \ Log In For Employers Companies Built Technologies Teams Built Technologies Save\
+    \ Saved HQ Nashville Total Offices: 2 260 Total Employees 125 Product + Tech Employees\
+    \ Year Founded: 2014 View Website Overview Jobs 13 Offices More Info Working at\
+    \ Built Technologies Culture & Values Career Growth & Development Compensation\
+    \ & Benefits Work-Life Balance & Wellbeing Leadership & Management Stability &\
+    \ Growth Is This Your Company? Manage Jobs Fintech Real Estate Built Technologies\
+    \ was founded in 2014 out of firsthand frustration with the challenges and pitfalls\
+    \ often associated with construction lending and the belief that technology could\
+    \ transform the loan management process. Built’s collaborative software streamlines\
+    \ the collateral monitoring and draw management process – a process widely recognized\
+    \ as highly cumbersome, costly, and fraught with risk. By bringing the draw management\
+    \ process online, Built helps lenders reduce construction loan risk, increase\
+    \ loan profitability, transform the borrower experience, simplify compliance,\
+    \ and provide unprecedented portfolio insights.\r\n Recently Posted Jobs at Built\
+    \ Technologies View All Built Technologies Senior Innovation Engineer, Marketplace\
+    \ In-Office or Remote 2 Locations Built Technologies Staff Innovation Engineer,\
+    \ Marketplace In-Office or Remote 2 Locations Built Technologies Senior Engineering\
+    \ Manager, Data In-Office or Remote 2 Locations Built Technologies Product Designer\
+    \ II Remote USA Built Technologies Staff Software Engineer, Data Platform Remote\
+    \ USA Built Technologies Account Executive - OGC (Dallas Based, Remote) Remote\
+    \ USA Built Technologies Account Executive Remote USA Built Technologies Client\
+    \ Support Representative In-Office Nashville, TN, USA Built Technologies FP&A\
+    \ Analyst In-Office 2 Locations View all jobs Built Technologies Offices Hybrid\
+    \ Workspace Employees "
+  retrieved_at: '2026-08-12T21:01:00.217137+00:00'
+  url: https://builtin.com/company/built-technologies
+- content_hash: d109a2df75fb122ea2ed95b53c219be7567f899176c51800ca7cc65ae4c4cd5b
+  evidence_id: ev-d109a2df75fb122e
+  excerpt: 'Canapi Investing in the New Financial Services Economy Team Portfolio
+    Insights Careers Investor Login Built Powering smarter construction finance Series
+    B Series C Series D About Built is the leading provider of construction finance
+    technology. The platform unites commercial and consumer construction lenders,
+    commercial real estate owners, commercial general contractors, residential homebuilders,
+    specialty contractors, title companies, and vendors to improve the flow of capital
+    through the construction ecosystem – from lender to vendor. By connecting all
+    key stakeholders involved in the construction process in real-time, the platform
+    helps mitigate risk, power faster draws and payments, ensure compliance, and inspire
+    customer loyalty. Investment Highlights Year Founded 2014 Employees 250-500 HQ
+    Location Nashville Built Technologies Announces $125M Series D Financing Round
+    September 30, 2021 Built Technologies Introduces the Future of Construction Payments:
+    Built Pay December 14, 2021 Built Technologies Reached More Than $200B in Total
+    Construction Value Managed; Achieved $1.5B Valuation and Unicorn Status in 2021
+    February 7, 2022 Built Technologies Secures Investment From Citi April 13, 2023
+    Why Canapi is Doubling Down on Built’s Series C February 3, 2021 1 / 4'
+  retrieved_at: '2026-08-12T21:01:00.797661+00:00'
+  url: https://www.canapi.com/investment/built
+- content_hash: d24dff1188bfadb44732a74471c6aaa40e1b5a9eb2ca7b3a3df6807d312c77ba
+  evidence_id: ev-d24dff1188bfadb4
+  excerpt: 'Detected date: 2026-08-18
+
+    Title: Banks Have Deployed AI Everywhere Except the Construction Loan File
+
+    Date: 2026-08-18
+
+    Source: getbuilt.com
+
+    Snippet: Why is construction draw review the hardest corner of AI adoption? It''s
+    not a maturity problem—it''s a shape problem.'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://getbuilt.com/blog/banks-ai-construction-loan-draw-review/
+- content_hash: 7663a8bc4fcfb654c762b177618325b9f4b7ed2aaef68407ad23151d50f5a010
+  evidence_id: ev-7663a8bc4fcfb654
+  excerpt: 'Detected date: Apr. 2, 2026
+
+    Title: News Archive
+
+    Source: getbuilt.com
+
+    Snippet: # What’s New at Built Explore the latest press releases, media coverage,
+    and updates from Built. ## Press Releases [Featured post ### Built Appoints Jason
+    Woods as Chief Financial Officer Apr. 2, 2026 Read more](https://getbuilt.com/news/built-appoints-jason-woods-as-chief-financial-officer/)
+    [### Built is Now a Fully Qualified Yardi® Ecosystem Partner Mar. 25, 2026 Read
+    more](https://getbuilt.com/news/built-is-now-a-fully-qualified-yardi-ecosystem-partner/)
+    [### Built Wins “Compliance Management Solution of the Year” Designation Mar.
+    19, 2026 Read more](https://getbuilt.com/news/built-wins-compliance-management-solution/)
+    [### Built Gives Sage Intacct Customers Real-Time Financial Visibility Across
+    Commercial Real Estate Projects Feb. 17, 2026 Read more](https://getbuilt.com/news/built-gives-sage-intacct-customers-real-time-financial-visibility-across-commercial-real-estate-projects/)
+    [### Built Launches Draw Agent to Approve Construction Loan Draws in Minutes Nov.
+    4, 2025 Read more](https://getbuilt.com/news/built-launches-draw-agent-to-approve-construction-loan-draws-in-minutes/)
+    [### The Future of Construction Payments is Free Oct. 15, 2025 Read more](https://getbuilt.com/news/the-future-of-construction-payments-is-free/)
+    [### Built Appoints Pat Poels as Chief Technology Officer Feb. 18, 2025 Read more](https://getbuilt.com/news/built-appoints-pat-poels-as-chief-technology-officer/)
+    ## Posts pagination 1 [2](https://getbui'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://getbuilt.com/news
+- content_hash: fe14624c33b5171823fce893c5c104bb5592ee234f6b4101ef90fc9f65d5ed44
+  evidence_id: ev-fe14624c33b51718
+  excerpt: 'Detected date: 2020-01-24
+
+    Title: Built
+
+    Source: linkedin.com
+
+    Snippet: Hundreds of top financial institutions and thousands of owners and builders
+    trust Built to manage hundreds of billions in real estate and construction activity—so
+    you spend less time on process and more time on progress. Learn more at getbuilt.com.
+    * website: http://www.getbuilt.com * employee count: 319 * founded year: 2014
+    * follower count: 16350 ... # Posts - linkedin company id: 3626039 - posted date:
+    2020-01-24 - content html + We''re excited to announce that Jim Fraser has joined
+    Built as Director of CRE Strategy. <a class="link" href="https://lnkd.in/d3Sm74a?trk=public_post-text"
+    target="_self" rel="nofollow" data-tracking-control-name="public_post-text" data-tracking-will-navigate="">https://lnkd.in/d3Sm74a</a>
+    - likes count: 135 - comments count: 38 - external url: https://news.getbuilt.com/built-technologies-lures-jim-fraser-cre
+    ## Posted Date Range - min: 2018-07-26 - max: 2021-07-25 - linkedin company id:
+    3626039 - posted date: 2026-07-21 - content html + <a class="link" href="https://www.linkedin.com/company/amazon-web-services"
+    target="_self" data-tracking-control-name="organization_guest_main-feed-card-text"
+    data-tracking-will-navigate="">Amazon Web Services (AWS)</a> and Built just published
+    the technical breakdown of the document engine we built: 250+ document types,
+    millions ... - linkedin company id: 3626039 - posted date: 2026-07-29 - content
+    html + Thank you <a class="link" href="https://www.linkedin.com/company/a'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://www.linkedin.com/company/built-technologies-inc-
+- content_hash: 0aaa134226e9bb3f867d76a9e819d90b256ace24ccbbd1d59bfb85ad0c61e025
+  evidence_id: ev-0aaa134226e9bb3f
+  excerpt: 'Detected date: May 6, 2026
+
+    Title: Built Technologies - Crunchbase Company Profile & Funding
+
+    Source: crunchbase.com
+
+    Snippet: obfuscation Private Venture - Series Unknown Nashville , Tennessee ,
+    United States 251-500 [getbuilt.com](http://getbuilt.com "getbuilt.com") [](https://www.facebook.com/builttechnologies
+    "View on Facebook") [](https://www.linkedin.com/company/built-technologies-inc-
+    "View on LinkedIn") ... # Company Performance Metrics obfuscation Private Venture
+    - Series Unknown Nashville , Tennessee , United States 251-500 [getbuilt.com](http://getbuilt.com
+    "getbuilt.com") [](https://www.facebook.com/builttechnologies "View on Facebook")
+    [](https://www.linkedin.com/company/built-technologies-inc- "View on LinkedIn")
+    ... With Built, capital moves faster, data stays clean, and risk stays in check.
+    More than 625 banks, private credit lenders, owners, and general contractors rely
+    on Built to manage over $350 billion in real estate and construction activity
+    annually. Learn more at www.getbuilt.com. Read More Phone Number (800) 655-8138
+    Contact Email getbuilt@getbuilt.com Hub Tags Unicorn Predictions & Insights ...
+    ## News and Press News • May 6, 2026 obfuscated obfuscated obfuscated obfuscated
+    obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated News • Mar 31,
+    2026 obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated
+    obfuscated obfuscated obfuscated News • Feb 7, 2026 obfuscated obfuscated obfuscated
+    obfuscated obfuscated obfuscated obfuscated obfuscated obfuscat'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://www.crunchbase.com/organization/built-technologies-inc
+- content_hash: 5f306813cc659d5d1954f581253be4c7fcb92de0c541cf761552b24578ba6a00
+  evidence_id: ev-5f306813cc659d5d
+  excerpt: 'Detected date: 2015-06-15
+
+    Title: Built (@BuiltTechnology) / Posts / X
+
+    Date: 2015-06-15
+
+    Source: x.com
+
+    Snippet: # Built @BuiltTechnology 🏢 Mission: Connect & Simplify Doing Business
+    in Real Estate🏠 Nashville, TN [getbuilt.com](https://t.co/82bZtkRFcp) Joined June
+    2015 1,125 Following 794 Followers Mention Follow Posts Posts Replies Replies
+    Media Media * Pinned user avatar [Built](https://x.com/BuiltTechnology) [@BuiltTechnology](https://x.com/BuiltTechnology)
+    Jun 10, 2024 We''re excited to share, "Enter Built," which dives into the complex
+    world of financing, developing, building, or owning & operating real estate assets
+    real & how Built''s platform connects & benefits the key players involved. Visit
+    [getbuilt.com](http://getbuilt.com) to learn more! 00:00 1 2 4 1K * user avatar
+    [Built](https://x.com/BuiltTechnology) [@BuiltTechnology](https://x.com/BuiltTechnology)
+    Jun 10, 2024 The 🌎 is built on Built! [#built #cre #realestate #fintech #constructiontech
+    #innovation | Built](https://t.co/RejEwUpRCP) [From linkedin.com](https://t.co/RejEwUpRCP)
+    3 407 * user avatar [Built](https://x.com/BuiltTechnology) [@BuiltTechnology](https://x.com/BuiltTechnology)
+    Mar 19, 2024 Built is excited to launch a new solution for Real Estate Owners
+    and Developers! This innovation streamlines budget management, accelerates payments,
+    and simplifies payables with digital methods and compliance document collection.
+    [Built Launches Budget Management, Payables Tools for Real Estate Owners | PYMNTS.com](https://t.co/6h5lQuewtD)
+    [From'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://x.com/BuiltTechnology?lang=en
+- content_hash: aa1beacd66d59bb7b2e80850ea93b5c5453f0491ffa5e9e317d8b311e98fffb1
+  evidence_id: ev-aa1beacd66d59bb7
+  excerpt: 'Detected date: 2025-11-04
+
+    Title: Built Launches Draw Agent to Approve Construction Loan Draws in Minutes
+
+    Date: 2025-11-04
+
+    Source: businesswire.com
+
+    Snippet: # **Built Launches Draw Agent to Approve Construction Loan Draws in Minutes**
+    [https://getbuilt.com/ai/draw-agent/](https://cts.businesswire.com/ct/CT?id=smartlink&url=https%3A%2F%2Fhubs.ly%2FQ03RxK3c0&esheet=54351023&newsitemid=20251104739836&lan=en-US&anchor=https%3A%2F%2Fgetbuilt.com%2Fai%2Fdraw-agent%2F&index=1&md5=3737197cf4e9e27b95c538
+    ... Learn more at [getbuilt.com](https://cts.businesswire.com/ct/CT?id=smartlink&url=https%3A%2F%2Fhubs.ly%2FQ03RxK3c0&esheet=54351023&newsitemid=20251104739836&lan=en-US&anchor=getbuilt.com&index=2&md5=8a2d21d64a368761756c17d74aafc3f6)
+    . ... ## Contacts ### Built Release Summary Built’s Draw Agent uses agentic AI
+    to approve construction loan draws in minutes, cutting review times by up to 95%
+    and improving risk detection. Release Versions [English](https://www.businesswire.com/news/home/20251104739836/en/Built-Launches-Draw-Agent-to-Approve-Construction-Loan-Draws-in-Minutes)
+    ... ## The Future of Construction Payments is Free NASHVILLE, Tenn.--( [BUSINESS
+    WIRE](https://www.businesswire.com) )--Built launches the industry’s first no-cost
+    digital payments and lien waiver solution, debuting today at Procore Groundbreak
+    2025.... Lien-Waiver-Management-News.jpg ## Construction''s Cash Crunch: 70% of
+    Contractors Say Payment Delays Threaten Industry NASHVILLE, Tenn.--( [BUSINESS
+    WIRE](https://www.businesswire.com) )--'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://www.businesswire.com/news/home/20251104739836/en/Built-Launches-Draw-Agent-to-Approve-Construction-Loan-Draws-in-Minutes
+- content_hash: 50bd94420c5e8cd33e1626dbcccda3e9bec01ec0647205fc89c75919b78ced79
+  evidence_id: ev-50bd94420c5e8cd3
+  excerpt: 'Detected date: 2024-06-10
+
+    Title: Built Unveils Unified CRE Financing and Asset & Portfolio Management, Enhancing
+    Lender Efficiency and Performance
+
+    Date: 2024-06-10
+
+    Source: businesswire.com
+
+    Snippet: Jun 10, 2024 10:29 AM Eastern Daylight Time # **Built Unveils Unified
+    CRE Financing and Asset & Portfolio Management, Enhancing Lender Efficiency and
+    Performance** Share _Lenders can now asset manage CRE loans, portfolio manage
+    the CRE book, and digitize draws on bridge and construction loans—all within a
+    single platform_ ... Financials](https://cts.businesswire.com/ct/CT?id=smartlink&url=https%3A%2F%2Fgetbuilt.com%2Fproducts%2Fproject-financials%2F&esheet=54041602&newsitemid=20240610211292&lan=en-US&anchor=Project+Financials&index=1&md5=084c82d
+    ... [getbuilt.com/cre](https://cts.businesswire.com/ct/CT?id=smartlink&url=http%3A%2F%2Fgetbuilt.com%2Fcre&esheet=54041602&newsitemid=20240610211292&lan=en-US&anchor=getbuilt.com%2Fcre&index=2&md5=9986e34e7fc4be62152240e71cbff6
+    cf) . ... [www.getbuilt.com](https://cts.businesswire.com/ct/CT?id=smartlink&url=https%3A%2F%2Fgetbuilt.com%2F%3Futm_medium%3Dearned_social%26utm_source%3Dpr%26utm_campaign%3Dproject-financials%26utm_content%3Dproject-financials-pres
+    s-release&esheet=54041602&newsitemid=20240610211292&lan=en-US&anchor=www.getbuilt.com&index=3&md5=e7f8cce2a3e39c61f8115eacfa48c322)
+    . ## Contacts Built Nick Halliwell [press@getbuilt.com](mailto:press@getbuilt.com)
+    Industry: ... ### Contacts Built Nick Halliwell [press@getbuilt.com](mailto:press@getbuilt.com)
+    Soc'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://www.businesswire.com/news/home/20240610211292/en/Built-Unveils-Unified-CRE-Financing-and-Asset-Portfolio-Management-Enhancing-Lender-Efficiency-and-Performance
+- content_hash: abfcc5ff8019830df7bbb76fe18121a3c426faea48994b5a922e91b1f5f9d2f2
+  evidence_id: ev-abfcc5ff8019830d
+  excerpt: 'Query: getbuilt.com news
+
+    1. https://getbuilt.com/blog/banks-ai-construction-loan-draw-review/
+
+    Title: Banks Have Deployed AI Everywhere Except the Construction Loan File
+
+    Date: 2026-08-18
+
+    Source: getbuilt.com
+
+    Snippet: Why is construction draw review the hardest corner of AI adoption? It''s
+    not a maturity problem—it''s a shape problem.
+
+    2. https://getbuilt.com/news
+
+    Title: News Archive
+
+    Source: getbuilt.com
+
+    Snippet: # What’s New at Built Explore the latest press releases, media coverage,
+    and updates from Built. ## Press Releases [Featured post ### Built Appoints Jason
+    Woods as Chief Financial Officer Apr. 2, 2026 Read more](https://getbuilt.com/news/built-appoints-jason-woods-as-chief-financial-officer/)
+    [### Built is Now a Fully Qualified Yardi® Ecosystem Partner Mar. 25, 2026 Read
+    more](https://getbuilt.com/news/built-is-now-a-fully-qualified-yardi-ecosystem-partner/)
+    [### Built Wins “Compliance Management Solution of the Year” Designation Mar.
+    19, 2026 Read more](https://getbuilt.com/news/built-wins-compliance-management-solution/)
+    [### Built Gives Sage Intacct Customers Real-Time Financial Visibility Across
+    Commercial Real Estate Projects Feb. 17, 2026 Read more](https://getbuilt.com/news/built-gives-sage-intacct-customers-real-time-financial-visibility-across-commercial-real-estate-projects/)
+    [### Built Launches Draw Agent to Approve Construction Loan Draws in Minutes Nov.
+    4, 2025 Read more](https://getbuilt.com/news/built-launches-draw-agent-to-approve-construction-loan-draws-i'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://www.google.com/search?q=getbuilt.com+news&tbm=nws
+- content_hash: 79adcd538d3ed6ebe5101ecb40ec889f6127e26aed286ab7b39ce779a9bceee1
+  evidence_id: ev-79adcd538d3ed6eb
+  excerpt: 'Detected date: 2026-08-18
+
+    Title: Krak Launches Multi-Asset Debit Card for U.S. Customers, Built to Reward
+    Spending as Americans Look to Escape Debt Cycle
+
+    Date: 2026-08-18
+
+    Source: businesswire.com
+
+    Snippet: Krak, the global money app from the makers of the multi-asset trading
+    platform Kraken, is bringing its innovative multi-asset debit card to'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://www.businesswire.com/news/home/20260817922844/en/Krak-Launches-Multi-Asset-Debit-Card-for-U.S.-Customers-Built-to-Reward-Spending-as-Americans-Look-to-Escape-Debt-Cycle
+- content_hash: c99172a03fca8231876b97d984e1d9b7d74060ffff30c07e350cacd1482840fd
+  evidence_id: ev-c99172a03fca8231
+  excerpt: 'Detected date: May 21, 2025
+
+    Title: Panel Built Inc
+
+    Source: panelbuiltinc.suite.accessnewswire.com
+
+    Snippet: # [Panel Built](https://panelbuiltinc.suite.accessnewswire.com/) ## Latest
+    News Feed Panel Built Inc. Announces Dave Arnold as New President Press Release
+    May 21, 2025 Panel Built Inc. Announces Dave Arnold as New President Panel Built
+    Introduces Modular Solutions for Art Storage, Museums, and Art Fairs Press Release
+    May 14, 2025 ... Press Release Feb 18, 2025 Panel Built Teams With Power Built
+    to Enhance Modular Wiring Solutions for Industrial Spaces _**Modular wiring solutions
+    improve efficiency, reduce costs, and streamline lighting installation for industrial
+    environments.**_ Press Release Jan 8, 2025 ... Press Release Jun 18, 2024 Panel
+    Built Boosts Security at Summer Events With Portable Guard Shacks Panel Built
+    prepares to secure summer events with its line of security shacks. Panel Built
+    Inc. Announces Release of White Rooms to Enhance Product Line Press Release Jun
+    13, 2024 Panel Built Inc. Announces Release of White Rooms to Enhance Product
+    Line Economical alternative to traditional cleanrooms now available at Panel Built
+    Panel Built, Inc. Prepares Solutions to Combat Heat Stress Press Release Jun 4,
+    2024 Panel Built, Inc. Prepares Solutions to Combat Heat Stress Panel Built responds
+    to industry-wide heat stress concerns by announcing prefabricated cooling solutions.
+    Protecting the Playing Field: Guard Booths Enhance Security at Stadiums Press
+    Release Mar 19, 2024 Protecting the Playing F'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://panelbuiltinc.suite.accessnewswire.com/
+- content_hash: 8bee87cb13687692ede2d882b115b5cd4dd5e36fb40b7d467d389b382cec74ce
+  evidence_id: ev-8bee87cb13687692
+  excerpt: 'Detected date: 2026-05-13
+
+    Title: Panel Built Announces Modular Building Facility Expansion
+
+    Date: 2026-05-13
+
+    Source: accessnewswire.com
+
+    Snippet: Back to the Newsroom Facebook X LinkedIn Email Panel Built, Inc. Announces
+    Facility Expansions to Support Strategic Growth and Key Utility Partnerships #
+    Panel Built, Inc. Announces Facility Expansions to Support Strategic Growth and
+    Key Utility Partnerships Wednesday, 13 May 2026 09:35 AM Topic: ## Company Update
+    **BLAIRSVILLE, GA / [ACCESS Newswire](https://www.accessnewswire.com/) / May 13,
+    2026 /** Panel Built, Inc., a leading provider of custom modular buildings and
+    enclosures, today announced several major operational expansions, strengthening
+    its ability to support large-scale infrastructure and utility projects. The facility
+    expansions include a 73,000-square-foot addition to the company''s main Blairsville
+    campus and a 6,400-square-foot expansion at its 129 facility. [](https://pr.report/ld0t)
+    This expansion comes at a pivotal time as Panel Built continues to strengthen
+    partnerships with industry leaders, including Schweitzer Engineering Laboratories
+    (SEL), and to support major utility customers. ... **About Panel Built, Inc.**
+    Panel Built, Inc. is a leading manufacturer of modular buildings, mezzanines,
+    and prefabricated structures serving a wide range of industries. Based in Blairsville,
+    Georgia, the company specializes in designing and manufacturing custom solutions
+    tailored to its customers'' specific needs. **Contact Information** **Media Contact**'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://www.accessnewswire.com/newsroom/en/industrial-and-manufacturing/panel-built-inc.-announces-facility-expansions-to-support-strategic-gr-1164829
+- content_hash: 10d3bb5aa1a6825e21c8c86dd5be3814ca8544870c42b85f5094375eb73afbe0
+  evidence_id: ev-10d3bb5aa1a6825e
+  excerpt: 'Query: Built "press release" OR "announces" OR "newsroom"
+
+    1. https://www.businesswire.com/news/home/20260817922844/en/Krak-Launches-Multi-Asset-Debit-Card-for-U.S.-Customers-Built-to-Reward-Spending-as-Americans-Look-to-Escape-Debt-Cycle
+
+    Title: Krak Launches Multi-Asset Debit Card for U.S. Customers, Built to Reward
+    Spending as Americans Look to Escape Debt Cycle
+
+    Date: 2026-08-18
+
+    Source: businesswire.com
+
+    Snippet: Krak, the global money app from the makers of the multi-asset trading
+    platform Kraken, is bringing its innovative multi-asset debit card to
+
+    2. https://www.moomoo.com/news/post/74732531/press-release-a1r-water-debuts-as-publicly-traded-company-to
+
+    Title: Press Release: A1R Water Debuts as Publicly Traded Company to Build Leading
+    CPG Brand in Atmospheric Water
+
+    Date: 2026-08-15
+
+    Source: moomoo.com
+
+    Snippet: # This site can’t be reached Allow Chrome to access the network in your
+    firewall or antivirus settings. If it is already listed as a program allowed to
+    access the network, try removing it from the list and adding it again. If you
+    use a proxy server… Go to the Chrome menu > Settings > System > Open your computer''s
+    proxy settings and make sure your configuration is set to "no proxy" or "direct."
+    **www.moomoo.com** unexpectedly closed the connection.
+
+    3. https://www.cms.gov/newsroom/press-releases/cms-news-cms-announces-nationwide-expansion-proven-joint-replacement-program
+
+    Title: CMS News: CMS Announces Nationwide Expansion of Proven Joint Replacement
+    Program | CMS
+
+    Date: 20'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://www.google.com/search?q=Built+%22press+release%22+OR+%22announces%22+OR+%22newsroom%22&tbs=qdr%3Ay
+- content_hash: e08624689040af00d49f73c3fc87ee76ad65637c40fa66bf83d8d5b15d6833a2
+  evidence_id: ev-e08624689040af00
+  excerpt: 'Detected date: 2026-04-17
+
+    Title: Introducing Flagship: feature flags built for the age of AI
+
+    Date: 2026-04-17
+
+    Source: blog.cloudflare.com
+
+    Snippet: # description: We are launching Flagship, a native feature flag service
+    built on Cloudflare’s global network to eliminate the latency of third-party providers.
+    By using KV Flagship is now available in closed beta. ... # description: We are
+    launching Flagship, a native feature flag service built on Cloudflare’s global
+    network to eliminate the latency of third-party providers. By using KV and Durable
+    Objects, Flagship allows for sub-millisecond flag evaluation. title: Introducing
+    Flagship: feature flags built for the age of AI image: https://blog.cloudflare.com/_emdash/api/media/file/01KW45PWESHNDVFP761B2J7BJ8.png
+    > The problem with feature flags on Workers > Get started with Flagship Starting
+    today, Flagship is in private beta. You can request for access [here](https://www.cloudflare.com/lp/flagship-private-beta/).
+    We''ll share more details on pricing as we approach general availability. ...
+    title: Introducing Flagship: feature flags built for the age of AI image: https://blog.cloudflare.com/_emdash/api/media/file/01KW45PWESHNDVFP761B2J7BJ8.png
+    > Subscribe to receive notifications of new posts * This Post is Available in
+    * [日本語](https://blog.cloudflare.com/ja-jp/flagship/) * [한국어](https://blog.cloudflare.com/ko-kr/flagship/)
+    * Switch Site Language * [English](https://blog.cloudflare.com/) * [Deutsch](https://blog.cloudflare.com/de-de/)
+    ... title: Introducing '
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://blog.cloudflare.com/flagship/
+- content_hash: d8d2f8ec31c08841ad983e88bdf360d70182d1ab2c0369283d0904511facb82b
+  evidence_id: ev-d8d2f8ec31c08841
+  excerpt: 'Detected date: 2025-10-06
+
+    Title: Introducing apps in ChatGPT and the new Apps SDK
+
+    Date: 2025-10-06
+
+    Source: openai.com
+
+    Snippet: # Introducing apps in ChatGPT and the new Apps SDK ## This page covers
+    the Apps launch. **_Update on November 13, 2025_** _: Apps are now available in
+    preview to ChatGPT Business, Enterprise and Edu customers._ Today we’re introducing
+    a new generation of apps you can chat with, right inside ChatGPT. Developers can
+    start building them today with the new Apps SDK, available in preview. ... Developers
+    can start building and testing apps today with the new Apps SDK preview, which
+    we’re releasing as an open standard built on the [Model Context Protocol ⁠ (opens
+    in a new window)](https://modelcontextprotocol.io/docs/getting-started/intro)
+    (MCP). ... ## Apps available today We worked with a small group of early partners
+    to launch the first set of apps, available in ChatGPT today. Their feedback helped
+    shape the Apps SDK preview available to developers now. Booking.com Canva Coursera
+    Expedia Figma Spotify Zillow ... ## Keep reading View all ChatGPT Ads expands
+    across Europe - Card image ChatGPT Ads expands across Europe Product Aug 18, 2026
+    ChatGPT for Teens — square card Introducing ChatGPT for Teens Product Aug 18,
+    2026 Previewing Ultrafast mode — clean cover Previewing Ultrafast mode: GPT-5.6
+    Sol at up to 14X the speed Product Aug 13, 2026'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://openai.com/index/introducing-apps-in-chatgpt/
+- content_hash: ebca6ef37a6b1bd42821f90ec25c25bd425ab80a42cf502511c3398e99f82e24
+  evidence_id: ev-ebca6ef37a6b1bd4
+  excerpt: 'Detected date: 2026-07-09
+
+    Title: Introducing a way to reflect on how you use Claude
+
+    Date: 2026-07-09
+
+    Source: anthropic.com
+
+    Snippet: # Introducing a way to reflect on how you use Claude Jul 9, 2026 Introducing
+    a way to reflect on how you use Claude Today we''re introducing, in beta, a new
+    way to reflect on and refine how you use Claude. In our [interviews](https://www.anthropic.com/features/81k-interviews)
+    with users, a common theme that’s emerged is a desire to better understand how,
+    exactly, AI can be integrated into daily life. ... We built this feature to help
+    answer these types of questions. It lets you easily track and visualize how you
+    use Claude, and decide whether that time aligns with your goals. Your reflection
+    dashboard can be found in Settings on Claude for web or the desktop app. ... ##
+    Getting started This tool is currently available in beta for Free, Pro, and Max
+    users who have memory turned on. Open [Settings in Claude](https://claude.ai/redirect/website.v1.036bd2ed-eca7-4854-b41e-926d70e835f8/settings/reflect)
+    on the web or the desktop app, and select the option to reflect on your usage
+    to generate your report. If you can''t generate a report, it may be because you
+    don’t have [Memory](https://claude.ai/redirect/website.v1.036bd2ed-eca7-4854-b41e-926d70e835f8/settings/capabilities?modal=memory)
+    turned on. Reflecting on your Cowork conversations will be available soon.'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://www.anthropic.com/news/reflect-with-claude
+- content_hash: 30984084dfd6f12730225918f529ebca0efe5b4db851e8193d7b05d1c97abcf6
+  evidence_id: ev-30984084dfd6f127
+  excerpt: 'Detected date: 2026-06-16
+
+    Title: Launching Version 15 of Wolfram Language & Mathematica
+
+    Date: 2026-06-16
+
+    Source: writings.stephenwolfram.com
+
+    Snippet: # Launching Version 15 of Wolfram Language & Mathematica: Built-in (Useful)
+    AI & Lots of New Core Functionality ## Bigger and Better Connectivity for Tabular
+    Another new feature in Version 15.0 is the connection of Tabular to [ExternalEvaluate](http://reference.wolfram.com/language/ref/ExternalEvaluate.html)
+    , allowing tabular data workflows that include both Wolfram Language and external
+    languages. ... ## Introducing Ready-to-Use Incremental Data Structures 14.3](https://writings.stephenwolfram.com/2025/08/new-features-everywhere-launching-version-14-3-of-wolfram-language-mathematica/)
+    , but now it’s packaged for immediate use, and doesn’t require explicit code compilation,
+    etc. ... ## Importing & Exporting the Latest Formats 14.3](https://writings.stephenwolfram.com/2025/08/new-features-everywhere-launching-version-14-3-of-wolfram-language-mathematica/)
+    respectively. In Version 15 we’re extending our Markdown support to include links,
+    images, tables, etc. ... ## Richer UX for Using Python & More in Notebooks 14.3](https://writings.stephenwolfram.com/2025/08/new-features-everywhere-launching-version-14-3-of-wolfram-language-mathematica/)
+    ), that gives one the ability to have separate, fully-encapsulated Python sessions
+    that carry and manage their own dependencies.'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://writings.stephenwolfram.com/2026/06/launching-version-15-of-wolfram-language-mathematica-built-in-useful-ai-lots-of-new-core-functionality/
+- content_hash: 34a4f7b4ff8961fa4a3b49c327a4c3a30d25cbac0dbb6728710e279e085f245a
+  evidence_id: ev-34a4f7b4ff8961fa
+  excerpt: 'Detected date: 2026-06-18
+
+    Title: Adobe Firefly introduces new agentic capabilities and an upgraded creative
+    AI studio built for the way you work
+
+    Date: 2026-06-18
+
+    Source: blog.adobe.com
+
+    Snippet: # **Adobe Firefly introduces new agentic capabilities and an upgraded
+    creative AI studio built for the way you work** [Firefly AI Assistant (beta)](https://www.adobe.com/products/firefly/features/ai-assistant.html)
+    , powered by Adobe’s creative agent, now includes new creative skills, tools and
+    personalization capabilities that help it ... ## **Firefly AI Assistant gets smarter,
+    more personal and more powerful** When we [launched](https://blog.adobe.com/en/publish/2026/04/15/introducing-firefly-ai-assistant-new-way-create-with-our-creative-agent)
+    the public beta of Firefly AI Assistant, we shared our vision for a fundamentally
+    new way to create — one where you start with an ... Today, we''re introducing
+    new creative skills and tools purpose-built for social creators and solopreneurs,
+    along with additional enhancements that help make Firefly AI Assistant more personalized
+    and context-aware over time. New creative skills and tools include: ... ## **Firefly
+    creative AI studio: from idea to finished content in one seamless workflow** The
+    upgraded Firefly creative AI studio experience — including the unified generation
+    and editing space, as well as Elements and Projects features — is available in
+    private beta through a waitlist: http://firefly.adobe.com/studio .'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://blog.adobe.com/en/publish/2026/06/18/adobe-firefly-introduces-new-agentic-capabilities-and-an-upgraded-creative-ai-studio-built-for-the-way-you-work
+- content_hash: f7585ef2bab4ff111819de49c3e45ec0506cbb1ca7826923518071c38f238ba0
+  evidence_id: ev-f7585ef2bab4ff11
+  excerpt: 'Source: businesswire.com
+
+    Snippet: # **Built Launches Draw Agent to Approve Construction Loan Draws in Minutes**
+    [original Built’s new Draw Agent harnesses the power of agentic AI to revolutionize
+    real estate finance, processing construction loan draws in minutes instead of
+    ... Built’s new Draw Agent harnesses the power of agentic AI to revolutionize
+    real estate finance, processing construction loan draws in minutes instead of
+    days. [](https://mms.businesswire.com/media/20251104739836/en/2630884/5/Blog_Image_2_%284%29.jpg?download=1)
+    ... Lenders are now using Draw Agent to process thousands of draws monthly—unlocking
+    faster payments, better risk management, and meaningful efficiency gains. This
+    is the first in a series of specialized agents Built will release over the coming
+    year. > ​​Draw Agent represents a new operating model for construction lending—moving
+    from manual review to intelligent execution.Share **​​Draw Agent represents a
+    new operating model for construction lending—moving from manual review to intelligent
+    execution.**'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: http://businesswire.com/news/home/20251104739836/en/Built-Launches-Draw-Agent-to-Approve-Construction-Loan-Draws-in-Minutes
+- content_hash: 784d291b0575615d3ae1f5239223e2c546a7d2d467e7c9009efdaeecd05e8906
+  evidence_id: ev-784d291b0575615d
+  excerpt: 'Detected date: 2026-05-19
+
+    Title: BUILT-RIGHT DIGITAL LAUNCHES SCALABLE MARKETING INFRASTRUCTURE FOR HOME
+    SERVICES FRANCHISES
+
+    Date: 2026-05-19
+
+    Source: prnewswire.com
+
+    Snippet: # BUILT-RIGHT DIGITAL LAUNCHES SCALABLE MARKETING INFRASTRUCTURE FOR
+    HOME SERVICES FRANCHISES ## News provided by **Built-Right Digital** May 19, 2026,
+    13:22 ET ... ## Share this article DALLAS , May 19, 2026 /PRNewswire/ -- Built-Right
+    Digital, a premier home services digital marketing agency, today announced its
+    scalable enterprise marketing solutions for [franchise networks and dealer ...
+    Built-Right Digital can construct unified corporate websites featuring optimized,
+    location-specific sub-pages, or build independent, high-performance micro-sites
+    that allow individual franchisees to accumulate long-term localized SEO equity
+    and dominate their respective territories. ... ## Explore Advertising Advertising
+    Computer & Electronics Computer & Electronics Multimedia & Internet Multimedia
+    & Internet New Products & Services New Products & Services News Releases in Similar
+    Topics'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://www.prnewswire.com/news-releases/built-right-digital-launches-scalable-marketing-infrastructure-for-home-services-franchises-302776580.html
+- content_hash: e54d10251694b5bfadde992024b5de5307130fc2ad68c096fa3b1eb8bed1172a
+  evidence_id: ev-e54d10251694b5bf
+  excerpt: 'Detected date: 2025-12-04
+
+    Title: Built Launches Draw Agent to Approve Construction Loan Draws in Minutes
+    | Built
+
+    Date: 2025-12-04
+
+    Source: getbuilt.com
+
+    Snippet: # Built Launches Draw Agent to Approve Construction Loan Draws in Minutes
+    Posted by [Nick Halliwell](https://getbuilt.com/blog/author/nick-halliwell/) |
+    11/4/25 _Built successfully introduces its first agentic AI offering, Draw Agent,
+    accelerating construction loan disbursements while reducing risk and saving up
+    to 95% of the time_ Built today announced its first agentic AI offering, Draw
+    Agent, transforming one of the construction industry’s biggest capital chokepoints:
+    construction loan draws. Lenders are now using Draw Agent to process thousands
+    of draws monthly—unlocking faster payments, better risk management, and meaningful
+    efficiency gains. This is the first in a series of specialized agents Built will
+    release over the coming year. **​​Draw Agent represents a new operating model
+    for construction lending—moving from manual review to intelligent execution.**'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://getbuilt.com/news/built-launches-draw-agent-to-approve-construction-loan-draws-in-minutes
+- content_hash: d2af784fbc7696461a12f65dc56e96b9488ddbf68d7b0ad350a5e5eea44ca496
+  evidence_id: ev-d2af784fbc769646
+  excerpt: 'Title: Pitt Athletics Launches New Storytelling And Multimedia Content
+    Initiatives Built Around Fan Connections And Access - Pitt Panthers #H2P
+
+    Source: pittsburghpanthers.com
+
+    Snippet: # University of Pittsburgh Athletics ## Pitt Athletics Launches New Storytelling
+    And Multimedia Content Initiatives Built Around Fan Connections And Access _''Beyond
+    the Script'' podcast debuts July 7 with Athletic Director Allen Greene ; new video
+    series, written features and Director of Storytelling Abby Schnable headline expansive
+    platform built for today''s fan_ ... of the program. The podcast debuts Tuesday,
+    July 7, with Athletic Director Allen Greene as the inaugural guest, and will be
+    available across all major streaming platforms. ... The initiative''s written
+    features operation publishes across PittsburghPanthers.com and social platforms,
+    anchored by weekly sport features that go beyond the scoreboard, while offering
+    fans behind-the-scenes access and ... ### Related Videos Skip Ad All Videos Pitt
+    Athletics | New content coming your way starting July 7... Pitt Athletics | New
+    content coming your way starting July 7... Friday, July 10 Built for Pitt. Built
+    for Pittsburgh. Introducing H2P NIL... Built for Pitt. Built for Pittsburgh. Introducing
+    H2P NIL... Tuesday, June 16'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://pittsburghpanthers.com/news/2026/7/6/general-pitt-athletics-launches-new-storytelling-and-multimedia-content-initiatives-built-around-fan-connections-and-acces
+- content_hash: 7b6410f13bee7bc9e63132a420f791f3c507001a0d30954870a42ac8c1b8d43f
+  evidence_id: ev-7b6410f13bee7bc9
+  excerpt: 'Query: Built launches OR "new feature" OR "introducing" OR "now available"
+
+    1. https://blog.cloudflare.com/flagship/
+
+    Title: Introducing Flagship: feature flags built for the age of AI
+
+    Date: 2026-04-17
+
+    Source: blog.cloudflare.com
+
+    Snippet: # description: We are launching Flagship, a native feature flag service
+    built on Cloudflare’s global network to eliminate the latency of third-party providers.
+    By using KV Flagship is now available in closed beta. ... # description: We are
+    launching Flagship, a native feature flag service built on Cloudflare’s global
+    network to eliminate the latency of third-party providers. By using KV and Durable
+    Objects, Flagship allows for sub-millisecond flag evaluation. title: Introducing
+    Flagship: feature flags built for the age of AI image: https://blog.cloudflare.com/_emdash/api/media/file/01KW45PWESHNDVFP761B2J7BJ8.png
+    > The problem with feature flags on Workers > Get started with Flagship Starting
+    today, Flagship is in private beta. You can request for access [here](https://www.cloudflare.com/lp/flagship-private-beta/).
+    We''ll share more details on pricing as we approach general availability. ...
+    title: Introducing Flagship: feature flags built for the age of AI image: https://blog.cloudflare.com/_emdash/api/media/file/01KW45PWESHNDVFP761B2J7BJ8.png
+    > Subscribe to receive notifications of new posts * This Post is Available in
+    * [日本語](https://blog.cloudflare.com/ja-jp/flagship/) * [한국어](https://blog.cloudflare.com/ko-kr/flagship/)
+    * Switch Site Langua'
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://www.google.com/search?q=Built+launches+OR+%22new+feature%22+OR+%22introducing%22+OR+%22now+available%22&tbs=qdr%3Ay
+- content_hash: 96a0fc0b49b25f9aad5f42e6d1aba6784b0870c35065724414094079430e4d63
+  evidence_id: ev-96a0fc0b49b25f9a
+  excerpt: "Title: Banks Have Deployed AI Everywhere Except the Construction Loan\
+    \ File | Built\n[The Future of Real Estate Finance Starts Here: Meet the AI Draw\
+    \ Agent __](https://hubs.ly/Q03RxKL40)\n\n[ blt-logo-web ](https://getbuilt.com)\n\
+    \n  * Solutions __\n\n    * [Lenders](https://getbuilt.com/solutions/lenders)\n\
+    \n      * [ Origination Pipeline Management  __](https://getbuilt.com/features/origination-pipeline-management/)\n\
+    \      * [ OM Extraction  __](https://getbuilt.com/ai-om-extraction/)\n      *\
+    \ [ Underwriting  __](https://getbuilt.com/features/underwriting)\n      * [ Draw\
+    \ & Budget Management  __](https://getbuilt.com/features/draw-management/)\n \
+    \     * [ AI Draw Agent  __](https://getbuilt.com/ai/draw-agent/)\n      * [ Draw\
+    \ Inspections  __](https://getbuilt.com/features/draw-inspections/)\n      * [\
+    \ Risk Mitigation  __](https://getbuilt.com/features/risk-mitigation/)\n     \
+    \ * [ Portfolio Reporting  __](https://getbuilt.com/features/portfolio-reporting/)\n\
+    \n    * [Owners & Developers](https://getbuilt.com/solutions/owners)\n\n     \
+    \ * [ Origination Pipeline Management  __](https://getbuilt.com/features/origination-pipeline-management/)\n\
+    \      * [ OM Extraction  __](https://getbuilt.com/ai-om-extraction/)\n      *\
+    \ [ Budget Management  __](https://getbuilt.com/features/budget-management/)\n\
+    \      * [ Capital Requests  __](https://getbuilt.com/features/capital-requests/)\n\
+    \      * [ Invoice Management  __](https://getbuilt.com/features/invoicing-management/)\n\
+    \      * [ Compliance Tracking  __](https://get"
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://getbuilt.com/blog/banks-ai-construction-loan-draw-review/
+- content_hash: 805cfa77acbf229213c09c3591f34b5f4e6f60c841b8c86502641971452f455e
+  evidence_id: ev-805cfa77acbf2292
+  excerpt: "Title: News Archive | Built\n[The Future of Real Estate Finance Starts\
+    \ Here: Meet the AI Draw Agent __](https://hubs.ly/Q03RxKL40)\n\n[ blt-logo-web\
+    \ ](https://getbuilt.com)\n\n  * Solutions __\n\n    * [Lenders](https://getbuilt.com/solutions/lenders)\n\
+    \n      * [ Origination Pipeline Management  __](https://getbuilt.com/features/origination-pipeline-management/)\n\
+    \      * [ OM Extraction  __](https://getbuilt.com/ai-om-extraction/)\n      *\
+    \ [ Underwriting  __](https://getbuilt.com/features/underwriting)\n      * [ Draw\
+    \ & Budget Management  __](https://getbuilt.com/features/draw-management/)\n \
+    \     * [ AI Draw Agent  __](https://getbuilt.com/ai/draw-agent/)\n      * [ Draw\
+    \ Inspections  __](https://getbuilt.com/features/draw-inspections/)\n      * [\
+    \ Risk Mitigation  __](https://getbuilt.com/features/risk-mitigation/)\n     \
+    \ * [ Portfolio Reporting  __](https://getbuilt.com/features/portfolio-reporting/)\n\
+    \n    * [Owners & Developers](https://getbuilt.com/solutions/owners)\n\n     \
+    \ * [ Origination Pipeline Management  __](https://getbuilt.com/features/origination-pipeline-management/)\n\
+    \      * [ OM Extraction  __](https://getbuilt.com/ai-om-extraction/)\n      *\
+    \ [ Budget Management  __](https://getbuilt.com/features/budget-management/)\n\
+    \      * [ Capital Requests  __](https://getbuilt.com/features/capital-requests/)\n\
+    \      * [ Invoice Management  __](https://getbuilt.com/features/invoicing-management/)\n\
+    \      * [ Compliance Tracking  __](https://getbuilt.com/features/compliance-tracking/)\n\
+    \      * [ Lien"
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://getbuilt.com/news/
+- content_hash: dead0b7e13055fd3197774bdd62a9cc218652b3d5b67d49539e441ba46448d1f
+  evidence_id: ev-dead0b7e13055fd3
+  excerpt: "Title: Built | LinkedIn\nSkip to main content  [ LinkedIn ](/?trk=organization_guest_nav-header-logo)\n\
+    \n  * [ Top Content  ](https://www.linkedin.com/top-content?trk=organization_guest_guest_nav_menu_topContent)\n\
+    \  * [ People  ](https://www.linkedin.com/pub/dir/+/+?trk=organization_guest_guest_nav_menu_people)\n\
+    \  * [ Learning  ](https://www.linkedin.com/learning/search?trk=organization_guest_guest_nav_menu_learning)\n\
+    \  * [ Jobs  ](https://www.linkedin.com/jobs/search?trk=organization_guest_guest_nav_menu_jobs)\n\
+    \  * [ Games  ](https://www.linkedin.com/games?trk=organization_guest_guest_nav_menu_games)\n\
+    \  * [ Get the app  ](ms-windows-store://pdp/?ProductId=9WZDNCRFJ4Q7&mode=mini&cid=guest_nav_upsell&trk=organization_guest_guest_nav_menu_windows)\n\
+    \n\n\n[ Sign in ](https://www.linkedin.com/login?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fcompany%2Fbuilt-technologies-inc-&fromSignIn=true&trk=organization_guest_nav-header-signin)\
+    \ [ Join now  ](https://www.linkedin.com/signup/cold-join?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fcompany%2Fbuilt-technologies-inc-&trk=organization_guest_nav-header-join)\
+    \ [ ](https://www.linkedin.com/login?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fcompany%2Fbuilt-technologies-inc-&fromSignIn=true&trk=organization_guest_nav-header-signin)\n\
+    \n#  Built \n\n##  Software Development \n\n###  Nashville, Tennessee  16,386\
+    \ followers \n\n####  Connect and Simplify Doing Business in Real Estate\n\n[\
+    \ See jobs ](https://www.linkedin.com/jobs/built-job"
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://www.linkedin.com/company/built-technologies-inc-
+- content_hash: c0ac14c4d35093d65743de3642fcd0ac831eb7020673b7123b30ff4130a88241
+  evidence_id: ev-c0ac14c4d35093d6
+  excerpt: "Detected date: Aug 3, 2026\nTitle: Panel Built Inc\n[ ](https://panelbuiltinc.suite.accessnewswire.com/)\n\
+    \nSustainable Construction    \n\n\n#  [ Panel Built ](https://panelbuiltinc.suite.accessnewswire.com/)\n\
+    \n__\n\n__\n\n###  __Media Room[ __RSS](browse/rss)\n\n  * [ __Press Releases](browse/pr)\n\
+    \  * [ __Contacts](browse/contact)\n  * [ __Social Wire](browse/social)\n\n\n\n\
+    ###  __Press Contact\n\n[Elizabeth Satterfield](contact/elizabeth-satterfield)\
+    \ Marketing and IT Manager \n\n  * [ esatterfield@panelbuilt.com ](mailto:moc.tliublenap@dleifrettase)\n\
+    \  * 8006363873 \n\n\n\n###  __Address\n\n**Panel Built**\n\n302 Beasley St \n\
+    \nBlairsville, GA 30514 \n\nUnited States \n\n+18006363873 \n\nFollow +\n\n  *\
+    \ [ __ ](https://www.instagram.com/Panelbuilt \"instagram\")\n  * [ __ ](https://www.twitter.com/Panelbuilt\
+    \ \"X\")\n\n\n\n##  Latest News Feed \n\n__[Tweeted](https://twitter.com/PanelBuilt/status/2084289532136968623)\
+    \ Aug 3, 2026  [ ](https://www.twitter.com/PanelBuilt) [ **Panel Built, Inc.**\
+    \ ](https://www.twitter.com/PanelBuilt)   \n[ @PanelBuilt ](https://www.twitter.com/PanelBuilt)\
+    \ Some names tell you where a company started. The work tells you how far it’s\
+    \ come. Since 1995, Panel Built has grown beyond wall panels into a one-stop shop\
+    \ for modular offices, mezzanines, guard booths, clean rooms, equipment enclosures,\
+    \ and morewV \n\n__[Tweeted](https://twitter.com/PanelBuilt/status/2076724451501035951)\
+    \ Jul 13, 2026  [ ](https://www.twitter.com/PanelBuilt) [ **Panel Built, Inc.**\
+    \ ](https://www.twitter.com/PanelBuilt)   \n[ @PanelBuilt ](https://www.twitter.c"
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://panelbuiltinc.suite.accessnewswire.com/
+- content_hash: 4b4d70adb76fcbcc48b24ed6e42df2fd20bac94e61435d2d7126a0907212ed14
+  evidence_id: ev-4b4d70adb76fcbcc
+  excerpt: "Detected date: 13 May 2026\nTitle: Panel Built Announces Modular Building\
+    \ Facility Expansion\n[ Back to the Newsroom ](/newsroom)\n\n* * *\n\n# Panel\
+    \ Built, Inc. Announces Facility Expansions to Support Strategic Growth and Key\
+    \ Utility Partnerships\n\nWednesday, 13 May 2026 09:35 AM \n\nTopic: \n\n####\
+    \  Company Update\n\n**BLAIRSVILLE, GA /[ACCESS Newswire](https://www.accessnewswire.com/)\
+    \ / May 13, 2026 / **Panel Built, Inc., a leading provider of custom modular buildings\
+    \ and enclosures, today announced several major operational expansions, strengthening\
+    \ its ability to support large-scale infrastructure and utility projects. The\
+    \ facility expansions include a 73,000-square-foot addition to the company's main\
+    \ Blairsville campus and a 6,400-square-foot expansion at its 129 facility.\n\n\
+    [](https://pr.report/ld0t)\n\nThis expansion comes at a pivotal time as Panel\
+    \ Built continues to strengthen partnerships with industry leaders, including\
+    \ Schweitzer Engineering Laboratories (SEL), and to support major utility customers.\n\
+    \nAs part of this initiative, Panel Built is positioning itself as a comprehensive\
+    \ solution provider, delivering scalable, high-quality enclosures tailored to\
+    \ the evolving needs of the power and utility sector.\n\n\"Our recent operational\
+    \ growth allows us to take on more complex, large-scale projects with confidence.\
+    \ We are excited about the opportunity to collaborate with SEL to deliver innovative,\
+    \ reliable solutions that meet the demands of modern power infrastructure,\" said\
+    \ Panel Built's Steve Grzesik.\n\nPanel"
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://www.accessnewswire.com/newsroom/en/industrial-and-manufacturing/panel-built-inc.-announces-facility-expansions-to-support-strategic-gr-1164829
+- content_hash: 457cab1fe7546b23f803c4908d5629e76d9cda3e71f0d9a1d378e67c9c89fb42
+  evidence_id: ev-457cab1fe7546b23
+  excerpt: "Title: Blog | Built | Powering Smarter Construction Finance\n[The Future\
+    \ of Real Estate Finance Starts Here: Meet the AI Draw Agent __](https://hubs.ly/Q03RxKL40)\n\
+    \n[ blt-logo-web ](https://getbuilt.com)\n\n  * Solutions __\n\n    * [Lenders](https://getbuilt.com/solutions/lenders)\n\
+    \n      * [ Origination Pipeline Management  __](https://getbuilt.com/features/origination-pipeline-management/)\n\
+    \      * [ OM Extraction  __](https://getbuilt.com/ai-om-extraction/)\n      *\
+    \ [ Underwriting  __](https://getbuilt.com/features/underwriting)\n      * [ Draw\
+    \ & Budget Management  __](https://getbuilt.com/features/draw-management/)\n \
+    \     * [ AI Draw Agent  __](https://getbuilt.com/ai/draw-agent/)\n      * [ Draw\
+    \ Inspections  __](https://getbuilt.com/features/draw-inspections/)\n      * [\
+    \ Risk Mitigation  __](https://getbuilt.com/features/risk-mitigation/)\n     \
+    \ * [ Portfolio Reporting  __](https://getbuilt.com/features/portfolio-reporting/)\n\
+    \n    * [Owners & Developers](https://getbuilt.com/solutions/owners)\n\n     \
+    \ * [ Origination Pipeline Management  __](https://getbuilt.com/features/origination-pipeline-management/)\n\
+    \      * [ OM Extraction  __](https://getbuilt.com/ai-om-extraction/)\n      *\
+    \ [ Budget Management  __](https://getbuilt.com/features/budget-management/)\n\
+    \      * [ Capital Requests  __](https://getbuilt.com/features/capital-requests/)\n\
+    \      * [ Invoice Management  __](https://getbuilt.com/features/invoicing-management/)\n\
+    \      * [ Compliance Tracking  __](https://getbuilt.com/features/comp"
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://getbuilt.com/blog/
+- content_hash: 83ed63b9b96a7447309709c706c9c9b393d2e1611b43794b1d986c8624be5392
+  evidence_id: ev-83ed63b9b96a7447
+  excerpt: "Title: Release Notes Archive | Built\n[The Future of Real Estate Finance\
+    \ Starts Here: Meet the AI Draw Agent __](https://hubs.ly/Q03RxKL40)\n\n[ blt-logo-web\
+    \ ](https://getbuilt.com)\n\n  * Solutions __\n\n    * [Lenders](https://getbuilt.com/solutions/lenders)\n\
+    \n      * [ Origination Pipeline Management  __](https://getbuilt.com/features/origination-pipeline-management/)\n\
+    \      * [ OM Extraction  __](https://getbuilt.com/ai-om-extraction/)\n      *\
+    \ [ Underwriting  __](https://getbuilt.com/features/underwriting)\n      * [ Draw\
+    \ & Budget Management  __](https://getbuilt.com/features/draw-management/)\n \
+    \     * [ AI Draw Agent  __](https://getbuilt.com/ai/draw-agent/)\n      * [ Draw\
+    \ Inspections  __](https://getbuilt.com/features/draw-inspections/)\n      * [\
+    \ Risk Mitigation  __](https://getbuilt.com/features/risk-mitigation/)\n     \
+    \ * [ Portfolio Reporting  __](https://getbuilt.com/features/portfolio-reporting/)\n\
+    \n    * [Owners & Developers](https://getbuilt.com/solutions/owners)\n\n     \
+    \ * [ Origination Pipeline Management  __](https://getbuilt.com/features/origination-pipeline-management/)\n\
+    \      * [ OM Extraction  __](https://getbuilt.com/ai-om-extraction/)\n      *\
+    \ [ Budget Management  __](https://getbuilt.com/features/budget-management/)\n\
+    \      * [ Capital Requests  __](https://getbuilt.com/features/capital-requests/)\n\
+    \      * [ Invoice Management  __](https://getbuilt.com/features/invoicing-management/)\n\
+    \      * [ Compliance Tracking  __](https://getbuilt.com/features/compliance-tracking/)\n\
+    \     "
+  retrieved_at: '2026-08-19T11:51:24.307870-04:00'
+  url: https://getbuilt.com/whats-new/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

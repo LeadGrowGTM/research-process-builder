@@ -1,0 +1,25 @@
+id: running-ads-offer-intelligence
+name: Running ads and offer intelligence
+owner: research-process-builder
+version: "1.0.0"
+status: proposed
+family: company-signals
+priority: P0
+entity_scopes: [company]
+input_schema_version: "1.0"
+output_schema_version: "1.0"
+required_inputs: [company_name, domain]
+optional_inputs: [b2b_segment, geography]
+execution_mode: search-and-scrape
+provider_candidates: [lg-free, linkedin-ads, meta-ads]
+fallback_order: [lg-free, linkedin-ads, meta-ads]
+benchmark_providers: [lg-free, linkedin-ads, meta-ads]
+freshness_days: 7
+source_requirements: [channel_primary, landing_page]
+caps: {queries: 6, scrapes: 6, retries: 2, paid_cost_usd: 1.0}
+early_stop: applicable_channels_checked
+failure_rule: explicit_unknown
+output_visibility: message_safe
+benchmark_dataset_version: b2b-companies-1.0
+automated_gate: candidate_only
+human_gate: blind_verdict_required

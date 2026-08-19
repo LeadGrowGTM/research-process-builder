@@ -1,0 +1,168 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: identity
+  value: Built
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: description
+  value: 'Solutions for Lenders | Built | Powering Smarter Construction Finance The
+    Future of Real Estate Finance Starts Here: Meet the AI Draw Agent blt-logo-web
+    _:last-child]:only:tw-hidden" role="presentation"> Solutions Lenders Origination
+    Pipeline Management OM Extraction Underwriting Draw & Budget Management AI Draw
+    Agent Draw Inspections Risk Mitigation Portfolio Reporting Owners & Developers
+    Origination Pipeline Management OM Extraction Budget Management Capital Requests
+    Invoice Management Complia'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: offers
+  value: construction finance platform
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: icp
+  value: lenders
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: personas
+  value: lenders
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-2a90920be7b4e432
+  field: ads
+  value:
+    channels:
+    - call_to_action: null
+      channel: google
+      ended_on: '2026-08-18'
+      evidence_ids:
+      - ev-2a90920be7b4e432
+      failure: null
+      landing_page: null
+      started_on: '2021-10-25'
+      status: active
+    - call_to_action: null
+      channel: meta
+      ended_on: null
+      evidence_ids: []
+      failure: null
+      landing_page: null
+      started_on: null
+      status: unknown
+  visibility: message_safe
+company_id: saas-10
+corrections: []
+evidence:
+- content_hash: ce4724cc20ef689e8d15b16485840e125fb4659ed0f1ff520d95ce813ca909c9
+  evidence_id: ev-ce4724cc20ef689e
+  excerpt: 'Solutions for Lenders | Built | Powering Smarter Construction Finance
+    The Future of Real Estate Finance Starts Here: Meet the AI Draw Agent blt-logo-web
+    _:last-child]:only:tw-hidden" role="presentation"> Solutions Lenders Origination
+    Pipeline Management OM Extraction Underwriting Draw & Budget Management AI Draw
+    Agent Draw Inspections Risk Mitigation Portfolio Reporting Owners & Developers
+    Origination Pipeline Management OM Extraction Budget Management Capital Requests
+    Invoice Management Compliance Tracking Lien Waiver Management Payments Portfolio
+    Reporting Builders Budget Management Compliance Tracking Invoice Management Lien
+    Waiver Management Payments Powered by AI Trained on $3T+ in real estate finance
+    data. Built''s AI automates workflows and surfaces risk in real time. Integrations
+    Built connects to Sage, Yardi, Procore and more. Inspections & Due Diligence AI-powered
+    draw inspections that catch issues before funds move. _:last-child]:only:tw-hidden"
+    role="presentation"> Products Construction Loan Administration AI Draw Agent Draw
+    Inspections Draws & Budget Management Risk Mitigation Deal Management Origination
+    Pipeline Management OM Extraction Underwriting Portfolio Reporting Construction
+    Financials Budget Management Invoice Management Lien Waiver Management Capital
+    Requests Compliance Tracking Payments Lien Waiver Management & Payments Create
+    Lien Waivers Send Lien Waivers Track Lien Waivers Payments Integrations Meet Built''s
+    New Draw Agent Learn how the AI Draw Agent enables 2–5× capacity gains, 100% policy
+    adherence, 2× more risks flagged, and up to 95% faster draw processing. Watch
+    Here _:last-child]:only:tw-hidden" role="presentation"> Customers _:last-child]:only:tw-hidden"
+    role="presentation"> Resources Learn News Resource Center Built University Free
+    Tools & Templates Connect About Us Contact Us Integrations Help Desk Careers Learn
+    Built & Move Faster Free courses and resources to help your team get more out
+    of Built. Explore University Login Support B'
+  retrieved_at: '2026-08-12T21:00:59.875500+00:00'
+  url: https://getbuilt.com/solutions/lenders/
+- content_hash: be44ff703241ffbea1cca3c0894b3e42188b368c4a4a6237294ffb2b5682e52d
+  evidence_id: ev-be44ff703241ffbe
+  excerpt: "Built Technologies Careers, Perks + Culture | Built In Companies Jobs\
+    \ Articles Can't find your company? Create a company profile. View All Jobs Join\
+    \ Log In For Employers Companies Built Technologies Teams Built Technologies Save\
+    \ Saved HQ Nashville Total Offices: 2 260 Total Employees 125 Product + Tech Employees\
+    \ Year Founded: 2014 View Website Overview Jobs 13 Offices More Info Working at\
+    \ Built Technologies Culture & Values Career Growth & Development Compensation\
+    \ & Benefits Work-Life Balance & Wellbeing Leadership & Management Stability &\
+    \ Growth Is This Your Company? Manage Jobs Fintech Real Estate Built Technologies\
+    \ was founded in 2014 out of firsthand frustration with the challenges and pitfalls\
+    \ often associated with construction lending and the belief that technology could\
+    \ transform the loan management process. Built’s collaborative software streamlines\
+    \ the collateral monitoring and draw management process – a process widely recognized\
+    \ as highly cumbersome, costly, and fraught with risk. By bringing the draw management\
+    \ process online, Built helps lenders reduce construction loan risk, increase\
+    \ loan profitability, transform the borrower experience, simplify compliance,\
+    \ and provide unprecedented portfolio insights.\r\n Recently Posted Jobs at Built\
+    \ Technologies View All Built Technologies Senior Innovation Engineer, Marketplace\
+    \ In-Office or Remote 2 Locations Built Technologies Staff Innovation Engineer,\
+    \ Marketplace In-Office or Remote 2 Locations Built Technologies Senior Engineering\
+    \ Manager, Data In-Office or Remote 2 Locations Built Technologies Product Designer\
+    \ II Remote USA Built Technologies Staff Software Engineer, Data Platform Remote\
+    \ USA Built Technologies Account Executive - OGC (Dallas Based, Remote) Remote\
+    \ USA Built Technologies Account Executive Remote USA Built Technologies Client\
+    \ Support Representative In-Office Nashville, TN, USA Built Technologies FP&A\
+    \ Analyst In-Office 2 Locations View all jobs Built Technologies Offices Hybrid\
+    \ Workspace Employees "
+  retrieved_at: '2026-08-12T21:01:00.217137+00:00'
+  url: https://builtin.com/company/built-technologies
+- content_hash: d109a2df75fb122ea2ed95b53c219be7567f899176c51800ca7cc65ae4c4cd5b
+  evidence_id: ev-d109a2df75fb122e
+  excerpt: 'Canapi Investing in the New Financial Services Economy Team Portfolio
+    Insights Careers Investor Login Built Powering smarter construction finance Series
+    B Series C Series D About Built is the leading provider of construction finance
+    technology. The platform unites commercial and consumer construction lenders,
+    commercial real estate owners, commercial general contractors, residential homebuilders,
+    specialty contractors, title companies, and vendors to improve the flow of capital
+    through the construction ecosystem – from lender to vendor. By connecting all
+    key stakeholders involved in the construction process in real-time, the platform
+    helps mitigate risk, power faster draws and payments, ensure compliance, and inspire
+    customer loyalty. Investment Highlights Year Founded 2014 Employees 250-500 HQ
+    Location Nashville Built Technologies Announces $125M Series D Financing Round
+    September 30, 2021 Built Technologies Introduces the Future of Construction Payments:
+    Built Pay December 14, 2021 Built Technologies Reached More Than $200B in Total
+    Construction Value Managed; Achieved $1.5B Valuation and Unicorn Status in 2021
+    February 7, 2022 Built Technologies Secures Investment From Citi April 13, 2023
+    Why Canapi is Doubling Down on Built’s Series C February 3, 2021 1 / 4'
+  retrieved_at: '2026-08-12T21:01:00.797661+00:00'
+  url: https://www.canapi.com/investment/built
+- content_hash: 2a90920be7b4e43270333d4effa126ef29d1005136d705a58402d4fb8004994e
+  evidence_id: ev-2a90920be7b4e432
+  excerpt: '{"ad_format_codes":{"1":25,"2":2,"3":1},"ad_formats":["image","text","video"],"domain":"getbuilt.com","error":null,"first_seen":"2021-10-25T07:00:00.000Z","last_seen":"2026-08-18T10:19:51.000Z","pages_scanned":1,"primary_advertiser":{"creatives":28,"id":"AR01149563939693002753","name":"Built
+    Technologies, Inc."},"running_ads":true,"total_creatives":28,"truncated":false,"unique_advertisers":1}'
+  retrieved_at: '2026-08-18T15:29:59.240888+00:00'
+  url: https://adstransparency.google.com/advertiser/AR01149563939693002753?region=anywhere
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches

@@ -1,0 +1,60 @@
+# Sealed ground truth - subject: Built (getbuilt.com), Built Technologies,
+# construction finance. named = explicitly positioned against Built by cited
+# Evidence: CB Insights competitors, Banner "Top 5 Built Competitors", Crunchbase
+# "alternatives to Built Technologies", SourceForge "Built vs" chart, and Built's
+# own "finance layer vs full ERP replacement" blog. Excluded as other entities:
+# G2 "Built" Core HR (UKG Pro, Rippling, Dayforce), BuiltWith, Building
+# Alternatives; MightyBot and Procore/Sage/Yardi integrations are partners.
+company_id: saas-10
+evidence_ids:
+- ev-3f6685fd1a1d9cf3
+- ev-b44bb88303b62ece
+- ev-3a767f77aaaefdb7
+- ev-e2e404eb9754471d
+- ev-a50fac69ca424ad9
+- ev-5ecec11f62cf7c97
+- ev-3c44e5ea24a8cf7c
+named:
+- name: Handle
+  aliases: []
+  domain: null
+- name: TrustPoint
+  aliases: [Trust Point]
+  domain: null
+- name: Sitewire
+  aliases: [Site Wire]
+  domain: null
+- name: Banner
+  aliases: [withbanner]
+  domain: withbanner.com
+- name: Yardi Construction Manager
+  aliases: [Yardi]
+  domain: null
+- name: AvidXchange
+  aliases: [Avid Xchange]
+  domain: null
+- name: Nexus Systems
+  aliases: [Nexus, Bottomline, Nexus Systems (Bottomline)]
+  domain: null
+- name: Coupa
+  aliases: []
+  domain: null
+- name: Construction Lending For Windows
+  aliases: [Construction Lending for Windows]
+  domain: null
+- name: Taktile
+  aliases: []
+  domain: null
+- name: Oscilar
+  aliases: []
+  domain: null
+- name: BillingPlatform
+  aliases: [Billing Platform]
+  domain: null
+- name: Sage Intacct
+  aliases: [Sage]
+  domain: null
+inferred:
+- name: Buildertrend
+  aliases: [Builder Trend]
+  domain: null

@@ -1,0 +1,84 @@
+company_id: saas-06
+evidence_ids:
+- ev-fef4388083e5a759
+- ev-021bcd3ea27d2164
+- ev-f26fa583847745ae
+- ev-76c3b3b12e8766c2
+- ev-9d735d1d5b90ada9
+- ev-6806c4265e39d093
+- ev-ee1f30704901b083
+- ev-6960075b14439b33
+- ev-75eb02a9b78325dd
+- ev-8fc8a30e97588e33
+- ev-108880aff9c8f2e9
+- ev-e0ae33304fc73e2c
+- ev-23cbe8289a6a33f0
+- ev-8d9737ccf637fc35
+named:
+- name: Fairmarkit
+  aliases: [FairMarkIt]
+  domain: null
+- name: ORO Labs
+  aliases: [ORO]
+  domain: null
+- name: e-Procurement Technologies
+  aliases: [eProcurement Technologies]
+  domain: null
+- name: SAP Ariba
+  aliases: [SAP Ariba Sourcing Suite, Ariba]
+  domain: null
+- name: Coupa
+  aliases: []
+  domain: null
+- name: Workday Strategic Sourcing
+  aliases: [Workday]
+  domain: null
+- name: JAGGAER
+  aliases: [Jaggaer, JAGGAER Advantage, JAGGAER Advantage (Legacy)]
+  domain: null
+- name: GEP
+  aliases: [GEP SMART, GEP Quantum Intelligence]
+  domain: null
+- name: Zip
+  aliases: [Zip Intake-to-Procure]
+  domain: null
+- name: Precoro
+  aliases: []
+  domain: null
+- name: PairSoft
+  aliases: []
+  domain: null
+- name: Basware
+  aliases: [Basware Procure-to-Pay]
+  domain: null
+- name: Order.co
+  aliases: [Order]
+  domain: order.co
+- name: Tradogram
+  aliases: []
+  domain: null
+- name: ProcurementExpress.com
+  aliases: [ProcurementExpress]
+  domain: procurementexpress.com
+- name: Field Materials AI
+  aliases: [Field Materials]
+  domain: null
+- name: wherex
+  aliases: [Wherex]
+  domain: null
+- name: Pivot
+  aliases: []
+  domain: null
+- name: Levelpath
+  aliases: []
+  domain: null
+- name: Sievo
+  aliases: []
+  domain: null
+- name: Suplari
+  aliases: []
+  domain: null
+- name: Zycus
+  aliases: []
+  domain: null
+inferred: []

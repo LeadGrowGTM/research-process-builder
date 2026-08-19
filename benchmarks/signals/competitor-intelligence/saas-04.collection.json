@@ -1,0 +1,121 @@
+{
+  "collected_at": "2026-08-18T11:43:34.942927-04:00",
+  "company_id": "saas-04",
+  "enrichment_id": "competitor-intelligence",
+  "entries": [
+    {
+      "category": "product cost software",
+      "company_name": "aPriori Technologies",
+      "domain": "apriori.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "aPriori Technologies product cost software alternatives OR competitors OR \"vs\" OR \"compared to\"",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "aPriori Technologies alternatives",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "aPriori Technologies vs",
+      "tbs": null
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.dfma.com/resources/apriori-alternative.asp",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.capterra.com/p/162255/aPriori/: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.capterra.com/p/162255/aPriori/"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://sumble.com/tech/apriori",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.trustradius.com/products/apriori-technologies/competitors: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.trustradius.com/products/apriori-technologies/competitors"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.cbinsights.com/company/apriori-technologies/alternatives-competitors",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://craft.co/apriori-technologies/competitors: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://craft.co/apriori-technologies/competitors"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://apriori.com/competitors: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://apriori.com/competitors"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://apriori.com/compare: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://apriori.com/compare"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://apriori.com/alternatives: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://apriori.com/alternatives"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 32,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.003",
+  "signal_evidence": 35
+}

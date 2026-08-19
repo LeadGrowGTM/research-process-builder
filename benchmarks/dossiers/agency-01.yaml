@@ -1,0 +1,147 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcd6e43589a51620
+  - ev-5c2f948869d0671a
+  - ev-e356d6f8720cd689
+  field: identity
+  value: 10Fold Communications
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcd6e43589a51620
+  - ev-5c2f948869d0671a
+  - ev-e356d6f8720cd689
+  field: description
+  value: '31 Dec 2099 August 10, 2026 August 4, 2026 July 16, 2026 July 6, 2026 -->
+    --> --> 10Fold - Award Winning PR Agency for B2B Tech Companies Blog News Events
+    About Us Join Us How We Do It Services Overview Analyst Relations Content Services
+    Messaging Media Relations Business Press Programs Crisis Communications Social
+    Media MetricsMatter™ Domain Expertise Overview AI and Big Data Cloud and Data
+    Management Cybersecurity Enterprise Software Energy & Infrastructure Fintech Life
+    Sciences, Healthcare & '
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcd6e43589a51620
+  - ev-5c2f948869d0671a
+  - ev-e356d6f8720cd689
+  field: offers
+  value: public relations
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcd6e43589a51620
+  - ev-5c2f948869d0671a
+  - ev-e356d6f8720cd689
+  field: icp
+  value: technology companies
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcd6e43589a51620
+  - ev-5c2f948869d0671a
+  - ev-e356d6f8720cd689
+  field: personas
+  value: technology companies
+  visibility: message_safe
+company_id: agency-01
+corrections: []
+evidence:
+- content_hash: dcd6e43589a516200a6a0a1fe22166eb0d12c78401a45a54918238072e8cab63
+  evidence_id: ev-dcd6e43589a51620
+  excerpt: '31 Dec 2099 August 10, 2026 August 4, 2026 July 16, 2026 July 6, 2026
+    --> --> --> 10Fold - Award Winning PR Agency for B2B Tech Companies Blog News
+    Events About Us Join Us How We Do It Services Overview Analyst Relations Content
+    Services Messaging Media Relations Business Press Programs Crisis Communications
+    Social Media MetricsMatter™ Domain Expertise Overview AI and Big Data Cloud and
+    Data Management Cybersecurity Enterprise Software Energy & Infrastructure Fintech
+    Life Sciences, Healthcare & Pharmaceuticals Mobility Case Studies Clients Contact
+    Us Search for: Search for: Blog News Events About Us Join Us We Help Innovators
+    Change the World More than 500 Technology Companies Have Relied on 10Fold to Grow
+    Share of Voice and increase Corporate Value. We deliver integrated communications
+    programs, including marketing services, social media, digital strategies and public
+    relations services to help clients outpace competition and achieve goals. Let’s
+    talk Learn more about us 10Fold, Award Winning Integrated Marketing Agency for
+    B2B Tech Companies 10Fold is a B2B tech marketing and PR agency helping technology
+    companies grow their visibility, credibility, and market share. With 98 industry
+    awards won since 2010, we bring a proven track record of delivering results that
+    matter for enterprise and high-growth brands. We could certainly brag about our
+    extensive network of connections, stellar reputation, senior experienced staff,
+    and business impact, but we prefer to let others do the talking for us. See What
+    We’ve Accomplished Discover the Services of our B2B Tech PR Agency Analyst Relations
+    We help you build trusted relationships with industry analysts important to your
+    industry. Starting with a strategic plan that includes milestones, goals and timelines,
+    we help you ensure your solutions are represented accurately and favorably in
+    research reports, conversations and market conversations that are reaching your
+    prospects. Know more →   Business and Broadcast Media Program'
+  retrieved_at: '2026-08-12T21:52:35.701561+00:00'
+  url: https://10fold.com/
+- content_hash: 5c2f948869d0671aaeed594a9fb64df2c0112ca6aba00c80a5a2d6585d744300
+  evidence_id: ev-5c2f948869d0671a
+  excerpt: '10Fold Communications | LinkedIn Skip to main content LinkedIn Top Content
+    People Learning Jobs Games Sign in Join now 10Fold Communications Public Relations
+    and Communications Services San Francisco, CA 2,594 followers 10Fold amplifies
+    B2B Tech Brands with award-winning communications that improve company valuations
+    and support goals. Follow Discover all 43 employees Report this company About
+    us 10Fold is a PR and integrated marketing agency with offices in San Diego, Austin
+    TX, and Boston. Considered as part of the top eight percent of agencies in the
+    U.S. (based on size), 10Fold offers strategic communications and content services
+    to deep-tech B2B companies. 10Fold specializes in networking, IT security, AI,
+    cloud, storage, Big Data, enterprise software, DevOps, wireless and telecom. The
+    award-winning, highly-specialized account teams consist of multi-year public relations
+    veterans, broadcasters and former journalists. 10Fold is a full-service firm that
+    is widely known for its media and analyst relations, original content development,
+    corporate messaging, and social media (paid and organic). For more information,
+    please visit www.10fold.com or follow us on Twitter (@10foldComms) and Facebook
+    (10Fold). Interested in joining us? Check out this presentation to learn more
+    about what we do and what we have to offer! Website http://www.10fold.com External
+    link for 10Fold Communications Industry Public Relations and Communications Services
+    Company size 11-50 employees Headquarters San Francisco, CA Type Privately Held
+    Founded 1995 Specialties digital marketing, social media advertising, social media
+    marketing, and linkedin advertising Locations Primary 44 Montgomery Street # 3065
+    San Francisco, CA 94104, US Get directions 800 Broadway Suite 309 Walnut Creek,
+    California 94509, US Get directions 600 Congress Ave Austin, Texas 78701, US Get
+    directions 704 J St San Diego, California 92101, US Get directions Employees at
+    10Fold Communications Susan Thomas Mark Button Caitlin'
+  retrieved_at: '2026-08-12T21:52:36.631810+00:00'
+  url: https://www.linkedin.com/company/10foldcomms
+- content_hash: e356d6f8720cd6892fced1ba9674e823e65b7cc09b327667d4e9f6815da5a90f
+  evidence_id: ev-e356d6f8720cd689
+  excerpt: 10Fold Communications | San Francisco — PR Agenc... — Online PR POWER ·
+    REPUTATION · FOREVER New We're proud to announce our open-source PR Agency Platform
+    — self-host your agency site. Learn more → Products Free Trial Social Listening
+    Brand Radar Monitor your brand across Facebook, Instagram, X, LinkedIn & Google
+    News with AI-powered sentiment analysis. Start Monitoring New PR Mail @online.pr
+    Email Professional PR email with your @online.pr address. Send pitches, track
+    opens, and manage media outreach. Open Mail Discover Network PR agencies worldwide
+    Distribution Newswires & channels Publications Media outlets Rankings Top agencies
+    Tools PR Packages Press release distribution Reputation Intelligence Media monitoring
+    Certifications Membership & training Build Marketplace Hire PR talent Open Source
+    Self-hosted platform Blog Insights & resources Network Distribution Publications
+    C$ CAD Display currency $ USD US Dollar € EUR Euro £ GBP British Pound ₹ INR Indian
+    Rupee A$ AUD Australian Dollar C$ CAD Canadian Dollar ¥ JPY Japanese Yen AED AED
+    UAE Dirham S$ SGD Singapore Dollar R$ BRL Brazilian Real MX$ MXN Mexican Peso
+    R ZAR South African Rand CHF CHF Swiss Franc CN¥ CNY Chinese Yuan NZ$ NZD New
+    Zealand Dollar Prices convert for display only. All charges are in USD. Log in
+    Enter Platform Social Listening Free Trial AI-powered brand monitoring PR Mail
+    New @online.pr professional email All Products Discover Network Distribution Publications
+    Rankings Tools PR Packages Reputation Intelligence Certifications Build Marketplace
+    Open Source Blog Network Distribution Publications Log in Enter Platform Home
+    / PR Agencies / United States / 10Fold Communications 10Fold Communications 10Fold
+    Communications is a public relations agency based in San Francisco (founded 1995).
+    San Francisco Founded 1995 11-50 employees Website LinkedIn Facebook Twitter This
+    profile is unclaimed. Register as an agency to claim it. About 10Fold Communications
+    10Fold Communications is a public relations an
+  retrieved_at: '2026-08-12T21:57:48.591775+00:00'
+  url: https://online.pr/agency/10fold-communications-united-states
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

@@ -1,0 +1,97 @@
+# Sealed ground truth - Betterworks (betterworks.com), authored 2026-08-18.
+# named = explicitly positioned against Betterworks by cited Evidence (subject homepage
+# "vs" links, tability.io compare page, alternatives articles from okrstool, mooncamp,
+# traineryhcm, peoplelogic, peoplemanagingpeople, trakstar, G2, Gartner) AND that plausibly
+# solves the same buyer problem (performance management / OKR / engagement / talent).
+# Excluded: hr.software nav tokens and integrations (QuickBooks, Xero, Slack, NetSuite),
+# Peoplelogic feature-category headings, Streamery/Nova (vendor sub-brands), Josh Bersin
+# roundup mentions other than Reflektiv (which is inferred), and category-mismatched
+# 6sense/Gartner names (QPR Performance Management, MangoApps, Namely, Kudos, Microsoft).
+company_id: saas-07
+evidence_ids:
+- ev-3ed612d5ac1ad11a
+- ev-dc8fa9764b7e4fd3
+- ev-5449b6f408d948ee
+- ev-a4ac02857ceac9f5
+- ev-c951a9cf0bfc0579
+- ev-56c768c650b3dd52
+- ev-7197dfc36553fb3e
+- ev-0665ba4fefafa7e9
+- ev-f6c6ab59ba8fc934
+- ev-dede78c9e1834700
+- ev-e7476b82c1b005a6
+- ev-46223a1a175373fb
+- ev-66d1bccef66290a0
+- ev-9415dc661ab009d0
+- ev-3b25c7965105d24a
+named:
+- name: Lattice
+  aliases: []
+  domain: lattice.com
+- name: 15Five
+  aliases: [Fifteen Five]
+  domain: 15five.com
+- name: Culture Amp
+  aliases: [CultureAmp]
+  domain: cultureamp.com
+- name: Leapsome
+  aliases: []
+  domain: leapsome.com
+- name: Mooncamp
+  aliases: []
+  domain: mooncamp.com
+- name: Tability
+  aliases: []
+  domain: tability.io
+- name: Profit.co
+  aliases: [Profit]
+  domain: profit.co
+- name: Cascade
+  aliases: [Cascade Strategy]
+  domain: cascade.app
+- name: UKG
+  aliases: [Ultimate Kronos Group]
+  domain: ukg.com
+- name: Cornerstone
+  aliases: [Cornerstone OnDemand]
+  domain: cornerstoneondemand.com
+- name: Jira Align
+  aliases: [Atlassian Jira Align]
+  domain: null
+- name: JOP
+  aliases: []
+  domain: null
+- name: OKRs Tool
+  aliases: [OKRsTool]
+  domain: okrstool.com
+- name: Perdoo
+  aliases: []
+  domain: perdoo.com
+- name: Synergita
+  aliases: []
+  domain: synergita.com
+- name: Quantive
+  aliases: [Quantive Results, Gtmhub]
+  domain: quantive.com
+- name: TraineryHCM
+  aliases: [Trainery, Trainery One, Trainery HCM]
+  domain: traineryhcm.com
+- name: Rippling
+  aliases: []
+  domain: rippling.com
+- name: Workday HCM
+  aliases: [Workday]
+  domain: workday.com
+- name: WorkBoard
+  aliases: []
+  domain: workboard.com
+- name: Peoplelogic
+  aliases: [Peoplelogic.ai]
+  domain: peoplelogic.ai
+- name: Trakstar
+  aliases: []
+  domain: trakstar.com
+inferred:
+- name: Reflektiv
+  aliases: [Reflektive]
+  domain: null
