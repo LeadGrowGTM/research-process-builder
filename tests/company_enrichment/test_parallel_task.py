@@ -77,21 +77,21 @@ def test_output_schema_wraps_into_task_spec():
     assert payload["source_policy"] == {"after_date": "2025-08-19"}
 
 
-def test_expensive_processors_are_rejected_at_construction():
-    for processor in ("pro", "ultra", "ultra2x", "core2x"):
+def test_processors_above_base_are_rejected_at_construction():
+    for processor in ("core", "core2x", "pro", "ultra", "ultra2x"):
         with pytest.raises(ValueError):
             _client(processor=processor)
 
 
 def test_budget_exhaustion_blocks_submit_before_any_http():
-    client, post, _ = _client(processor="core", budget_usd="0.04")
+    client, post, _ = _client(processor="base", budget_usd="0.015")
 
     client.create_run("first")
-    assert client.spent_usd == "0.025"
+    assert client.spent_usd == "0.01"
     with pytest.raises(BudgetFailure):
         client.create_run("second")
     assert len(post.calls) == 1
-    assert client.spent_usd == "0.025"
+    assert client.spent_usd == "0.01"
 
 
 def test_ambiguous_submit_failure_is_terminal_not_retryable_and_stays_charged():

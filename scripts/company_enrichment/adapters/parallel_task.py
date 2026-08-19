@@ -7,8 +7,8 @@ on 2026-08-19). Task runs are orders of magnitude more expensive than search
 queries (``lite`` $0.005, ``base`` $0.01, ``core`` $0.025 per run; ``pro``
 $0.10 and the ``ultra`` tiers $0.30-$2.40), so this client enforces:
 
-1. a processor allowlist - only ``lite``, ``base``, and ``core`` construct;
-   ``pro``/``ultra*`` raise ``ValueError`` with no override flag;
+1. a processor allowlist - only ``lite`` and ``base`` (the second tier)
+   construct; ``core`` and above raise ``ValueError`` with no override flag;
 2. a hard budget ceiling - cumulative spend is charged when a run is
    submitted, and a submit that would exceed the ceiling raises
    ``BudgetFailure`` before any HTTP request is made;
@@ -44,7 +44,7 @@ from ..providers import (
 )
 
 PARALLEL_TASK_BASE_URL = "https://api.parallel.ai"
-ALLOWED_TASK_PROCESSORS = {"lite": "0.005", "base": "0.01", "core": "0.025"}
+ALLOWED_TASK_PROCESSORS = {"lite": "0.005", "base": "0.01"}
 DEFAULT_TASK_PROCESSOR = "base"
 DEFAULT_TASK_BUDGET_USD = "1.00"
 DEFAULT_RESULT_TIMEOUT_SECONDS = 600
@@ -117,7 +117,7 @@ class ParallelTaskClient:
         if processor not in ALLOWED_TASK_PROCESSORS:
             raise ValueError(
                 f"processor must be one of {sorted(ALLOWED_TASK_PROCESSORS)}; "
-                f"expensive tiers (pro/ultra*) are not allowed"
+                f"tiers above base (core/pro/ultra*) are not allowed"
             )
         try:
             ceiling = Decimal(budget_usd)
