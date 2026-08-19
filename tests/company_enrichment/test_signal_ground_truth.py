@@ -197,6 +197,13 @@ def test_ground_truth_must_cite_signal_dossier_evidence(tmp_path: Path):
         load_signal_dataset(
             tmp_path, load_dossiers(tmp_path), enrichment_id=ENRICHMENT, weights=WEIGHTS,
         )
+    # Cross-collector variant corpora cannot contain the sealed collection's
+    # content-addressed Evidence IDs; check_citations=False loads them anyway.
+    dataset = load_signal_dataset(
+        tmp_path, load_dossiers(tmp_path), enrichment_id=ENRICHMENT, weights=WEIGHTS,
+        check_citations=False,
+    )
+    assert set(dataset.development_ids) <= set(ALL_IDS)
 
 
 def test_missing_signal_file_fails_closed(repo: Path):

@@ -210,6 +210,7 @@ def _load_split(path: Path) -> tuple[tuple[str, ...], tuple[str, ...]]:
 
 def _load_record(
     path: Path, company_id: str, dossier: CompanyDossier, validate_record: RecordValidator | None,
+    *, check_citations: bool = True,
 ) -> SignalGroundTruthRecord:
     value, _ = _load_yaml(path, f"ground truth {company_id}")
     if value.get("company_id") != company_id or dossier.company_id != company_id:
@@ -219,7 +220,7 @@ def _load_record(
         raise ValueError(f"ground truth {company_id} must contain a record body")
     record = SignalGroundTruthRecord(company_id, body)
     retained = {item.evidence_id for item in dossier.evidence}
-    if not record.all_evidence_ids <= retained:
+    if check_citations and not record.all_evidence_ids <= retained:
         raise ValueError(f"ground truth {company_id} cites Evidence absent from its signal dossier")
     if validate_record is not None:
         validate_record(record, dossier)
@@ -273,9 +274,16 @@ def load_signal_dataset(
     weights: Mapping[str, Decimal],
     validate_record: RecordValidator | None = None,
     capability: object | None = None,
+    check_citations: bool = True,
 ) -> SignalDataset | EvaluatorSignalDataset:
     """Validate all ten records; return development answers only unless the caller
-    holds the evaluator capability."""
+    holds the evaluator capability.
+
+    ``check_citations=False`` skips the citation-vs-dossier subset check for
+    variant corpora collected by another search provider: ground-truth Evidence
+    IDs are content-addressed to the sealed collection, so a new collection can
+    never contain them and the citation component is excluded cross-collector.
+    """
     if enrichment_id not in P0_ENRICHMENTS:
         raise ValueError(f"unknown P0 enrichment: {enrichment_id}")
     if capability is not None and (
@@ -293,7 +301,7 @@ def load_signal_dataset(
     records = {
         company_id: _load_record(
             dataset_root / "ground-truth" / f"{company_id}.yaml", company_id,
-            dossiers[company_id], validate_record,
+            dossiers[company_id], validate_record, check_citations=check_citations,
         )
         for company_id in ALL_IDS
     }

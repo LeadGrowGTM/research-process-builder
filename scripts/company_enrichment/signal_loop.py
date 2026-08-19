@@ -20,6 +20,7 @@ from __future__ import annotations
 import argparse
 from dataclasses import dataclass, field, replace
 from decimal import Decimal
+from functools import partial
 from hashlib import sha256
 import json
 import os
@@ -574,6 +575,12 @@ def main(
             )
         if args.benchmark_dir:
             overrides["benchmark_dir"] = Path(args.benchmark_dir)
+            # Variant corpora are collected by another provider, so ground-truth
+            # Evidence IDs (content-addressed to the sealed collection) cannot
+            # appear in them; the citation component is excluded cross-collector.
+            overrides["load_ground_truth"] = partial(
+                spec.load_ground_truth, check_citations=False,
+            )
         try:
             spec = replace(spec, **overrides)
         except ValueError as error:
