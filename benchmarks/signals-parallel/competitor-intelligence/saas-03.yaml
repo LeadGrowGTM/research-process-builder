@@ -1,0 +1,954 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: identity
+  value: Aligned
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: description
+  value: 'Digital Sales Room Software — #1 on G2 | Aligned Skip to content $60M raised.
+    70,000 sellers. 1M buyers. The deal workspace is here ➜ Read the announcement
+    Learn more Platform Close Platform Open Platform Explore our platform Product
+    Overview Platform at a glance Digital Sales Room Centralized buyer workspace Customer
+    Success Hub Manage customer outcomes Customer Onboarding Faster customer activation
+    Aligned AI AI aligned to revenue Mutual Action Plan Shared deal milestones Revenue
+    Intelligence '
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: offers
+  value: digital sales room
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: icp
+  value: sales teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: personas
+  value: sales teams
+  visibility: message_safe
+company_id: saas-03
+corrections: []
+evidence:
+- content_hash: 05398a2ef65666fa651567b24421f8e969484b93e8d6fe970bae6fd9b8776e71
+  evidence_id: ev-05398a2ef65666fa
+  excerpt: 'Digital Sales Room Software — #1 on G2 | Aligned Skip to content $60M
+    raised. 70,000 sellers. 1M buyers. The deal workspace is here ➜ Read the announcement
+    Learn more Platform Close Platform Open Platform Explore our platform Product
+    Overview Platform at a glance Digital Sales Room Centralized buyer workspace Customer
+    Success Hub Manage customer outcomes Customer Onboarding Faster customer activation
+    Aligned AI AI aligned to revenue Mutual Action Plan Shared deal milestones Revenue
+    Intelligence Revenue insights and signals Integrations Connect your tools Pricing
+    Resources Close Resources Open Resources Learn Articles Product insights and updates
+    Customer Stories How customers succeed with us Build Template Library Templates
+    to get started faster Guides & Playbooks Practical guides and best practices Login
+    Book a Demo Start free Crush your sales quota with Digital Sales Room Streamline
+    complex deals by consolidating conversations, stakeholders, processes, and resources
+    into a single shared space. #1 Digital Sales Room for SMB & Mid-Market (G2 Summer
+    ’26) Start with Google Start with Microsoft Book a Demo Start free Mid-Market
+    G2 Grid® for Digital Sales Room Software | Summer 2026 #1 Digital Sales Room for
+    SMB & Mid-Market (G2 Summer ’26) 50,000+ Sales & CS Teams Run Their Deals in Aligned
+    95% of the Buyer Journey Happens When You’re Not in the Room *gartner (so get
+    a room) Meet Aligned, Your Digital Sales Room Everything needed to win, all in
+    one place Create a virtual sales room for each deal Share the most up-to-date
+    sales content Streamline all discussions into topics Remove buyer friction & win
+    more deals Aligned is a single place to keep on top of deals, build strong business
+    cases with champions and get multiple stakeholders on board. I wish I had it early,
+    but I have it now, and I’m enjoying it immensely! Sarah Brazie Senior Account
+    Executive, Gong Align buyers to a Mutual Action Plan Build collaborative MAPs
+    with your champion Assign tasks and allow buyers to'
+  retrieved_at: '2026-08-12T21:20:31.919668+00:00'
+  url: https://www.alignedup.com/digital-sales-room/
+- content_hash: 22d60eecc23e228aa7d0cd79d8283286be9311a91848c743207678d21a8a49bb
+  evidence_id: ev-22d60eecc23e228a
+  excerpt: 'Aligned | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now Aligned Software Development Create a personalized
+    workspace for each deal and design a buying experience that wins quota. See jobs
+    Follow View all 76 employees Report this company About us Aligned is pioneering
+    the new way that B2B revenue teams interact with customers in today''s remote,
+    digital era. Instead of customers juggling multiple email threads, attachments
+    & tools, they have all resources in front of them in a single shared workspace
+    for easy decisions. Nothing gets buried and forgotten in threads. All stakeholders
+    join and collaborate, instead of staying behind the scenes. Both sides manage
+    mutual action plans to keep things on track, and reps can analyze buyer risks
+    and intent. Companies like Deel, Productboard, and SimilarWeb use it to win more
+    deals and close 45% faster. We are growing at a fast pace and looking for top
+    talents to join our core team. Website https://www.alignedup.com?utm_source=Social&utm_medium=Aligned_Page&utm_campaign=website_button&utm_id=163&avk=mvk_Linkedin_Page
+    External link for Aligned Industry Software Development Company size 51-200 employees
+    Headquarters Remote First Type Privately Held Founded 2021 Specialties Saas, Sales
+    Collaboration, Buyer Collaboration, Project Management, CRM, Sales Enablement,
+    and Sales Products No more previous content Aligned Customer Onboarding Deal Analytics
+    Digital Sales Room Mutual Action Plans No more next content Locations Primary
+    Remote First, US Get directions Employees at Aligned Charles Black Sam Rahmanian
+    Todd Clouser Erin C. See all employees Updates Aligned 47,664 followers 5h Report
+    this post There are 4 questions that will set the tone for your deal. When presented
+    well they will lead to higher win rates. Present them poorly and they will do
+    next to nothing. Here are 4 questions that will set every deal up for success
+    (and HOW to ask them): 1. Who Else Are You Evaluating? Yes, it''s'
+  retrieved_at: '2026-08-12T21:20:32.819137+00:00'
+  url: https://www.linkedin.com/company/alignedup
+- content_hash: 01e046900b8496acdb6722904a4406d618a57bfa5e51e4657a2b4786cada1235
+  evidence_id: ev-01e046900b8496ac
+  excerpt: 'Why NFX Invested in Aligned: The Sales Room Network Helping Companies
+    Close Deals 3x Faster Content Content Team Team Companies Companies About About
+    Products Products Signal Brieflink NFX Masterclass Get our weekly newsletter that
+    322K+ startup teams read Subscribe Why NFX Invested in Aligned: The Sales Room
+    Network Helping Companies Close Deals 3x Faster James Currier · @jamescurrier
+    · May 2023 · Israel James Currier · @jamescurrier May 2023 · Israel Table of Contents
+    1. Overly Complex Processes 2. Built-in Network Effects 3. Stellar Team Aligned
+    recently announced their $5.8M Seed round co-led by NFX and Hetz Ventures to create
+    the network to conduct software deals in. They sell sales teams a frictionless
+    workspace that helps software sales teams close deals 3x faster. Here are 3 reasons
+    why we backed them: 1. Overly Complex Processes Despite massive enterprise digitization,
+    77% of enterprise software buyers complain that their sales experiences are overly
+    complex. This leads to stalled and lost deals. Pointless friction. And, frankly,
+    shock/disappointment it still works this way in 2023. There needs to be a bridge
+    between a company’s CRM and their clients. Aligned creates that bridge with their
+    signature “online rooms” where sales teams communicate, coordinate on next steps,
+    share documents, sign proposals, etc. This real-time management speeds up deals
+    and makes buyers happy. It also gives salespeople the data behind the successes
+    and failures of their deals so they can improve their processes. 2. Built-in Network
+    Effects As more sellers adopt Aligned, more buyers will integrate it into their
+    own buying process. This lays the foundation for a network of B2B buyers and sellers.
+    The company also has defensibility through embedding. Once a B2B sales team adopts
+    Aligned, it’s nearly impossible for them to regress to the old way of sending
+    countless emails to dozens of stakeholders while navigating numerous platforms.
+    Any other way of conducting business feels ancie'
+  retrieved_at: '2026-08-12T21:20:33.437855+00:00'
+  url: https://www.nfx.com/post/why-nfx-invested-in-aligned
+- content_hash: 577a3c03bc625f6c9bd2501f2a8965364db5d2fe335145f47d5fdd00c2d6ad1d
+  evidence_id: ev-577a3c03bc625f6c
+  excerpt: 'Title: Top 10 Aligned Alternatives & Competitors in 2026 | G2
+
+    Source: g2.com
+
+    Snippet: Skip to Navigation Skip to Navigation Introducing G2.ai, the future of
+    software buying. Try now Home ... Sales Acceleration Software Digital Sales Room
+    Software Aligned Aligned Alternatives Aligned Top 10 Aligned Alternatives & Competitors
+    (1,009) 4.7 out of 5 Research alternative solutions to Aligned on G2, with real
+    user reviews on competing tools. Digital Sales Room Software is a widely used
+    technology, and many people are seeking high quality, simple software solutions
+    with content curation, internal communication, and editing and approval tools.
+    Other important factors to consider when researching alternatives to Aligned include
+    documents and emails. The best overall Aligned alternative is trumpet. Other similar
+    apps like Aligned are Dock, GetAccept, Allego, and DealHub.io. Aligned'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.g2.com/products/teamaligned/competitors/alternatives
+- content_hash: 04ba5e5bcbf79bc8e95c42dd5e55fa2f0b1e500af33b805ba83726b12081c8c0
+  evidence_id: ev-04ba5e5bcbf79bc8
+  excerpt: 'Title: Top Aligned Alternatives & Competitors 2026
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top Aligned alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top Aligned Alternatives & Competitors 2026 | Gartner Peer Insights image:
+    https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Highspot](https://www.gartner.com/reviews/product/highspot) By [Highspot](https://www.gartner.com/reviews/market/digital-sales-rooms/vendor/highspot)
+    4.8 [(22 Ratings)](https://www.gartner.com/reviews/product/highspot#reviews-ratings-section-3d37gh4)
+    ... title: Top Aligned Alternatives & Competitors 2026 | Gartner Peer Insights
+    image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Highspot](https://www.gartner.com/reviews/product/highspot) [Compare with
+    Aligned](https://www.gartner.com/reviews/market/digital-sales-rooms/compare/product/highspot-vs-aligned)
+    Add to Compare ... title: Top Aligned Alternatives & Competitors 2026 | Gartner
+    Peer Insights image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Highspot](https://www.gartner.com/reviews/product/highspot) > 2. [Dock](https://www.gartner.com/reviews/product/dock-1657854129)
+    [Compare with Aligned](https://www.gartner.com/reviews/market/digital-sales-rooms/compare/product/dock-1657854129-vs-aligned)
+    Add to Compare ... title: Top Aligned Alternatives & C'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.gartner.com/reviews/product/aligned/alternatives
+- content_hash: ccb82e1ce0c106373d08d693a1ee4723e896f86dc87a20d36c94c19b4c2220c3
+  evidence_id: ev-ccb82e1ce0c10637
+  excerpt: 'Detected date: 2026-08-05
+
+    Title: 7 Best Aligned Alternatives for Sales Teams (2026)
+
+    Date: 2026-08-05
+
+    Source: hummingdeck.com
+
+    Snippet: # 7 Best Aligned Alternatives for Sales Teams (2026) It treats Aligned
+    as the baseline, then evaluates each competitor on price, mutual action plans,
+    buyer conversations, seller-private work, access control, analytics, integrations,
+    and administrative overhead. ... ## The seven best alternatives ### 5. Flowla
+    In a Flowla vs Aligned comparison, choose Flowla when cross-lifecycle automation
+    is central. Choose Aligned when collaborative room creation, templates, and its
+    enterprise integrations fit better. Compare the tier that supports the required
+    workflow. ... ## Frequently asked questions ### Which Aligned competitors are
+    best for small and mid-market sales teams? HummingDeck, Trumpet, and Flowla make
+    the strongest focused shortlist for most small and mid-market sales teams. ...
+    ### How do Aligned and GetAccept compare? Aligned centers on collaborative digital
+    sales rooms, while GetAccept combines rooms with document creation, pricing tables,
+    contracts, and e-signature. GetAccept is the stronger fit when a team wants one
+    proposal-to-signature workflow; Aligned is usually the more focused room platform.
+    ### How do Flowla and Aligned compare? Flowla emphasizes repeatable, AI-assisted
+    workflows across sales, onboarding, and customer success. Aligned emphasizes collaborative
+    rooms, AI-assisted room creation, templates, and enterprise sales integrations.
+    ... ## Compare the p'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://hummingdeck.com/blog/aligned-alternatives-2026
+- content_hash: 5ba8f0d7fa9a20dcaade062d33f8be2551d72dfd6bd8529c7d8b3f21b811eb3d
+  evidence_id: ev-5ba8f0d7fa9a20dc
+  excerpt: 'Detected date: 2025-06-10
+
+    Title: Distribute vs Aligned: Which Digital Sales Room Wins in 2025?
+
+    Date: 2025-06-10
+
+    Source: distribute.so
+
+    Snippet: # Distribute vs Aligned: Full Digital Sales Room Breakdown When evaluating
+    **aligned vs distribute** for your sales team''s digital sales room needs, you''re
+    comparing two fundamentally different approaches to buyer enablement. While Aligned
+    focuses on collaborative workspaces with template-driven setup, Distribute revolutionizes
+    the space with **AI-native 1-pagers** that executives actually read and forward.
+    If you''re researching an **aligned alternative** or comparing the **best digital
+    sales room software** options, this comprehensive analysis reveals why fast-growing
+    SaaS teams are choosing Distribute''s document-like UX over traditional page builders
+    that reps abandon. Distribute vs Aligned: Document UX vs Workspace UX side-by-side
+    comparison Distribute''s document-style 1-pagers vs Aligned''s collaborative workspaces
+    ⚡ ... ## Deal Velocity & Buyer Engagement **Aligned''s Approach: Collaborative
+    Workspaces** * **68% more stakeholder access** through shared workspace visibility
+    * **Template-driven setup** for consistent buyer experiences * **Multi-threaded
+    engagement** tracking across decision-makers * **Free forever plan** reducing
+    adoption barriers ... ## FAQ: Distribute vs Aligned ### Is Distribute a direct
+    replacement for Aligned''s digital sales room? Distribute takes a fundamentally
+    different approach. While Aligned focuses on collaborative workspaces, Distr'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.distribute.so/blog/distribute-vs-aligned
+- content_hash: 12a07db81b49bf47136af9cf8724b87e92e6a659073880b2d82ef6fd273cf0b9
+  evidence_id: ev-12a07db81b49bf47
+  excerpt: 'Title: The 10 Best Digital Sales Room Software Compared (2026) - Dock.us
+
+    Source: dock.us
+
+    Snippet: # The 10 Best Digital Sales Room Software Compared (2026) Others (like
+    [Dock](https://www.dock.us/solutions/sales) ) let you build a customized workspace
+    that guides your customers all the way through the deal, the purchase, and on
+    into implementation. And others are just expensive slide deck software. ... **Aligned**
+    : Prescriptive deal room tool for small teams, with limited customizations 6.
+    **Dealhub** : CPQ software with some sales room features 7. **Trumpet:** Point
+    solution deal room for startups and individual AEs 8. **Seismic** : Legacy sales
+    LMS with a sales room added more recently 9. **Spekit:** Up-and-coming AI-backed
+    enablement platform with basic deal rooms 10. **Vidyard** : Video tool for sales
+    teams with new deal room features added last year ... ## Types of digital sales
+    rooms ### 4. DSR point solutions A relatively new category, these are tools built
+    specifically to create digital sales rooms—tools like [Aligned](https://alignedup.com/)
+    , [Flowla](https://www.flowla.com/) , and [Trumpet](https://www.sendtrumpet.com/)
+    . ... ## 8. Seismic ### What it is: Seismic is a legacy sales CMS that recently
+    added sales coaching and DSR tools. It’s a massive, feature-heavy sales enablement
+    platform that leans strongly toward enterprise customers.'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.dock.us/library/digital-sales-room-software
+- content_hash: 33db3ce018b97e7b874c0e2ce38f6d47f99ed32dc051e0df7d65cc6a4db54d51
+  evidence_id: ev-33db3ce018b97e7b
+  excerpt: 'Title: Best Digital Sales Rooms Reviews 2026 | Gartner Peer Insights
+
+    Source: gartner.com
+
+    Snippet: # Digital Sales Rooms Reviews and Ratings ## Popular Product Comparisons
+    [Highspot vs Seismic Enablement Cloud](https://www.gartner.com/reviews/market/digital-sales-rooms/compare/product/highspot-vs-seismic-enablement-cloud)[Aligned
+    vs Highspot](https://www.gartner.com/reviews/market/digital-sales-rooms/compare/product/aligned-vs-highspot)[Aligned
+    vs Seismic Enablement Cloud](https://www.gartner.com/reviews/market/digital-sales-rooms/compare/product/aligned-vs-seismic-enablement-cloud)[Omedym
+    vs Seismic Enablement Cloud](https://www.gartner.com/reviews/market/digital-sales-rooms/compare/product/omedym-vs-seismic-enablement-cloud)[Aligned
+    vs Mindtickle](https://www.gartner.com/reviews/market/digital-sales-rooms/compare/product/aligned-vs-mindtickle-892549902)
+    ... ## Product Listings ### [Aligned](https://www.gartner.com/reviews/product/aligned?marketSeoName=digital-sales-rooms)
+    [By Aligned](https://www.gartner.com/reviews/market/digital-sales-rooms/vendor/aligned)
+    5 [(1 Rating)](https://www.gartner.com/reviews/product/aligned?marketSeoName=digital-sales-rooms#reviews-ratings-section-3d37gh4)
+    OVERVIEWALTERNATIVES Aligned is a software designed to streamline business-to-business
+    sales processes by providing a collaborative digital workspace for buyers and
+    sellers.'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.gartner.com/reviews/market/digital-sales-rooms
+- content_hash: 9fdb7ba07de30c43fbd08cea938d0cc77dbc3deef98d341f0ba2e64ac052441f
+  evidence_id: ev-9fdb7ba07de30c43
+  excerpt: 'Title: Digital Sales Room Software — #1 on G2
+
+    Source: alignedup.com
+
+    Snippet: # Crush your sales quota with Digital Sales Room Streamline complex deals
+    by consolidating conversations, stakeholders, processes, and resources into a
+    single shared space. * #1 Digital Sales Room for SMB & Mid-Market (G2 Summer ’26)
+    [Start with Google](https://my.teamaligned.com/api/v1/auth/google) ... [Book a
+    Demo](https://alignedup.com/get-free-demo/) [Start free](https://my.teamaligned.com/)
+    [Mid-Market G2 Grid® for Digital Sales Room Software | Summer 2026](https://www.g2.com/categories/digital-sales-room?segment=mid-market)
+    * #1 Digital Sales Room for SMB & Mid-Market (G2 Summer ’26) ... ## 50,000+ Sales
+    & CS Teams Run Their Deals in Aligned servicenow logo wordpress logo similarweb
+    logo usertsting logo chilipiper logo customerai logo productboard logo ... ##
+    FAQs While Digital Sales Rooms can be a great alternative to in-person meetings,
+    they do not completely replace them. In most cases, in-person meetings are still
+    necessary or preferred, depending on the nature of the deal or the preferences
+    of the parties involved. ... ## Here’s what they’re saying ### Ryan Barry CEO
+    “We just closed one of our bigger deals of the year ($200k) and they spent over
+    5 hours in their Aligned sales room.”'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: http://alignedup.com/digital-sales-room
+- content_hash: dbf98e1eec7471fd14404389c873b2058e5889fa996531f047200d6c8d979ed9
+  evidence_id: ev-dbf98e1eec7471fd
+  excerpt: 'Detected date: 2026-08-06
+
+    Title: Dock.us alternatives 2026: 7 digital sales room tools compared
+
+    Date: 2026-08-06
+
+    Source: hummingdeck.com
+
+    Snippet: # Dock.us alternatives 2026: 7 digital sales room tools compared ## Quick
+    answer by workflow * **HummingDeck:** finished content, focused buyer Rooms, mutual
+    action plans, contextual Discussions, and detailed document signals without a
+    five-seat paid package. * **Aligned:** collaborative room-first work with content,
+    comments, mutual action plans, and buyer-facing AI. ... ## Dock alternatives at
+    a glance | **Aligned** | Collaborative room-first work and buyer-facing AI are
+    central | [Free; Basic $29/user/month annually](https://alignedup.com/pricing/)
+    | Rooms, MAPs, comments, and content | PandaDoc integration listed on Pro | Focused
+    collaborative deal workspace | Deep CRM sync, private comments, custom ... ##
+    Frequently asked questions ### What is the best Dock.us alternative? HummingDeck
+    fits focused Rooms and document analytics for small teams; Aligned fits collaborative
+    room-first work; Trumpet fits presentation-led buyer execution; Flowla fits AI-assisted
+    revenue workflows; GetAccept fits proposal-to-signature work; and Arrows fits
+    CRM-centered execution. ... ### Which Dock alternative is best for digital sales
+    rooms? HummingDeck and Aligned are focused room-first options. Trumpet adds a
+    presentation-led buyer experience, Flowla adds AI workflow automation, and Arrows
+    ties the room closely to HubSpot or Salesforce. ... ## Replace the platform only
+    when '
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://hummingdeck.com/blog/dock-alternatives-2026
+- content_hash: c0ee61192215797272ba96bba99fce707bffa15c41c0a256c2deeb903cb64ee5
+  evidence_id: ev-c0ee611922157972
+  excerpt: 'Title: Flowla vs Aligned | The best digital sales room alternative
+
+    Source: flowla.com
+
+    Snippet: # #1 Aligned alternative ## More than a digital sales room. **Flowla
+    moves deals forward for you** with workflow automation & AI ### Create & manage
+    deal rooms without adoption friction Flowla doesn''t add extra work on your plate.
+    AutoPilot handles the deal room admin: - Auto-builds deal rooms from your triggers
+    - Nudges clients when tasks are overdue - Syncs all deal room activity to CRM,
+    and more. Keep doing what you do - Flowla keeps everything running smoothly in
+    the background. ### AI handles the busywork while you focus on clients Flowla''s
+    smart agents builds assets for you like: ‍ - Business cases from your Gong notes
+    - Handoff notes for CS using deal room data - Hyper-relevant follow up emails
+    based on relevant room activity, and more. Save your team''s energy for value-adding
+    activities. ... ## Compare Flowla vs. Aligned side-by-side Quickly compare the
+    key differences between the two. Flowla logo - colored Aligned Process & pipeline
+    automation Automated deal room creation, timely follow ups, and more working in
+    sync with CRM. Learn more → AI Agents ... ## I have a few more questions… ###
+    Can multiple teams use Flowla? Yes.‍ Unlike most digital sales rooms that focus
+    purely on pre-signature deals, Flowla supports the full end-to-end journey, where
+    CS & RevOps are never an afterthought. In fact, our happiest customers are those
+    that use Flowla across multiple teams. That’s wh'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.flowla.com/compare/aligned-alternative
+- content_hash: 734d2a2fe7dc67cda23b7a80379b28dcf2b362abdf10502aa48946b7b2155ea7
+  evidence_id: ev-734d2a2fe7dc67cd
+  excerpt: 'Detected date: 2025-12-08
+
+    Title: 7 Best Aligned Digital Sales Room Alternatives for Startups ...
+
+    Date: 2025-12-08
+
+    Source: gofollowup.ai
+
+    Snippet: 7 Best Aligned Digital Sales Room Alternatives for Startups ... Dec 8,
+    2025 — Explore the top Digital Sales Room tools that give startups a faster, simpler
+    alternative to Aligned in 2026. Compare features, pricing, and use'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.gofollowup.ai/blog/best-aligned-digital-sales-room-alternatives-startups
+- content_hash: 85b6e31550b64747afc32a437e2980a446f12555127c29b3fdfc95192730833e
+  evidence_id: ev-85b6e31550b64747
+  excerpt: 'Query: Aligned digital sales room alternatives OR competitors OR "vs"
+    OR "compared to"
+
+    1. https://www.g2.com/products/teamaligned/competitors/alternatives
+
+    Title: Top 10 Aligned Alternatives & Competitors in 2026 | G2
+
+    Source: g2.com
+
+    Snippet: Skip to Navigation Skip to Navigation Introducing G2.ai, the future of
+    software buying. Try now Home ... Sales Acceleration Software Digital Sales Room
+    Software Aligned Aligned Alternatives Aligned Top 10 Aligned Alternatives & Competitors
+    (1,009) 4.7 out of 5 Research alternative solutions to Aligned on G2, with real
+    user reviews on competing tools. Digital Sales Room Software is a widely used
+    technology, and many people are seeking high quality, simple software solutions
+    with content curation, internal communication, and editing and approval tools.
+    Other important factors to consider when researching alternatives to Aligned include
+    documents and emails. The best overall Aligned alternative is trumpet. Other similar
+    apps like Aligned are Dock, GetAccept, Allego, and DealHub.io. Aligned
+
+    2. https://www.gartner.com/reviews/product/aligned/alternatives
+
+    Title: Top Aligned Alternatives & Competitors 2026
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top Aligned alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top Aligned Alternatives & Competitors 2026 | Gartner Peer Insights image:
+    https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.google.com/search?q=Aligned+digital+sales+room+alternatives+OR+competitors+OR+%22vs%22+OR+%22compared+to%22
+- content_hash: ad22404abc9e0965d6785e21ba42fd5e11ff08f28f9bab55eb332d1c413c3d23
+  evidence_id: ev-ad22404abc9e0965
+  excerpt: 'Title: Apollo Aligned Alternatives | Fidante
+
+    Source: fidante.com
+
+    Snippet: # Breadcrumb ## About the Fund The Apollo Aligned Alternatives Fund[1]
+    (“Fund”) is an open-ended, semi-liquid fund which offers investors access to Apollo’s
+    comprehensive alternatives platform*. The Fund is designed to be a core component
+    of an investor’s alternative or private markets allocation. Opportunity to invest
+    alongside Apollo’s balance sheet in a fully invested, seasoned portfolio. The
+    Fund seeks to generate equity-like returns with less than half the volatility
+    of listed equities. IM logo ... ## Fund Facts Fund size displayed at a class level
+    only. Interests in the Apollo Aligned Alternatives Fund ARSN 667 548 825 are offered
+    by Fidante Partners Limited (ABN 94 002 835 592 AFSL 234 668) (Fidante). Fidante
+    has appointed Apollo Management Singapore Pte Ltd (ABN 97 635 094 914), a company
+    incorporated in Singapore (UEN No. ... Interests in the Apollo Aligned Alternatives
+    Fund ARSN 667 548 825 are offered by Fidante Partners Limited (ABN 94 002 835
+    592 AFSL 234 668) (Fidante). Fidante has appointed Apollo Management Singapore
+    Pte Ltd (ABN 97 635 094 914), a company incorporated in Singapore (UEN No. 200618603H)
+    as the investment manager of the Fund. ... The Fund gains its exposure to the
+    underlying assets by investing in an AUD share class of the Apollo Aligned Alternatives
+    (E-1), Class I5 (Underlying Fund), a sub compartment of the Apollo Private Markets
+    SICAV (Underlying Umbrella Fund) which in'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.fidante.com/au/investment-managers/apollo-global-management/apollo-aligned-alternatives-fund
+- content_hash: f1c4cef541ced4f599c43aab4ceddc4302fa3747517d745ebae2fd532e569479
+  evidence_id: ev-f1c4cef541ced4f5
+  excerpt: 'Title: Apollo Aligned Alternatives Fund HOW3532AU Overview | Morningstar
+
+    Source: morningstar.com.au
+
+    Snippet: # Apollo Aligned Alternatives Fund ## ETFs * Australian ETFs * Active
+    Australian Equity ETFs * Passive Australian Equity ETFs * Emerging Market Equity
+    ETFs * Sustainable ETFs * Active Global Equity ETFs * Passive Global Equity ETFs
+    * Active Australian Fixed Interest ETFs * Passive Australian Fixed Interest ETFs
+    * Active Australian Listed Property ETFs * Passive Australian Listed Property
+    ETFs * Active Global Fixed Interest ETFs * Passive Global Fixed Interest ETFs
+    * Active Global Infrastructure ETFs * Passive Global Infrastructure ETFs * Active
+    Global Property ETFs * Passive Global Property ETFs ... ## LICs ### Market Movers
+    | Name | Last price | Change | % Change | | **Telstra Group Ltd** TLS | 4.78 |
+    - 0.06 | -1.24% | | **Liontown Ltd** LTR | 1.28 | 0.05 | 3.66% | | **South32 Ltd**
+    S32 | 4.76 | - 0.17 | -3.45% | | **Zip Co Ltd** ZIP | 2.73 | - 0.04 | -1.44% |
+    | **PLS Group Ltd** PLS | 4.87 | 0.01 | 0.21% | | **Cleanaway Waste Management
+    Ltd** CWY | 2.71 | - 0.02 | -0.73% | | **Droneshield Ltd** DRO | 1.96 | - 0.05
+    | -2.49% | | **Sigma Healthcare Ltd** SIG | 2.98 | 0.00 | 0.00% | | **HomeCo Daily
+    Needs REIT** HDN | 1.16 | - 0.05 | -4.15% | | **Scentre Group** SCG | 3.77 | -
+    0.02 | -0.53% | ... Market Indices * All Ords * ASX 20 * ASX 50 * ASX 100 * ASX
+    200 * ASX 300 POPULAR PAGES'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.morningstar.com.au/investments/security/fund/46261
+- content_hash: 7f22af6f26ba6fad7f000fb7bd2bb23810ee33f7af28cb34909a0243084fff9f
+  evidence_id: ev-7f22af6f26ba6fad
+  excerpt: 'Title: Apollo Aligned Alternatives (AAA E-1)
+
+    Source: apollo.com
+
+    Snippet: # Important Notice: Apollo Aligned Alternatives (AAA E-1) Jurisdiction
+    Select... Austria Belgium Bulgaria Croatia Czech Republic Denmark Dubai International
+    Financial Centre (DIFC) Estonia Finland France Germany Greece Hungary Iceland
+    Ireland Italy Jersey Latvia Liechtenstein Lithuania Luxembourg Malta Monaco Netherlands
+    Norway Poland Portugal Republic of Cyprus Romania Slovakia Slovenia Spain Sweden
+    Switzerland United Arab Emirates United Kingdom ... Leave site I agree to the
+    terms'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.apollo.com/wealth/strategies/products/apollo-aligned-alternatives-e1
+- content_hash: d1042eafbdfac08a899dee2a3ea27d447eefbd83c48fa8e7a8a0c25b9e598c2e
+  evidence_id: ev-d1042eafbdfac08a
+  excerpt: 'Title: Investment Products | Apollo Wealth
+
+    Source: apollo.com
+
+    Snippet: # SUGGESTED SEARCH TERMS ## Investment Products ### Investment Products
+    (15) Equity ### Apollo Aligned Alternatives E-1 A turnkey investment with no maturity
+    date that offers periodic liquidity and access to Apollo’s alternative investment
+    platform. Credit ### Apollo Asset Backed Credit Company Contact your Apollo representative
+    to learn more about this product. ... Credit ### Apollo Diversified Credit Fund
+    An interval fund that dynamically pursues high-quality opportunities in alternative
+    credit. Real Assets ### Apollo Diversified Real Estate Fund An interval fund that
+    invests in an actively managed portfolio of institutional private and public real
+    estate securities. ... Equity ### Apollo Global Private Markets ELTIF Apollo Global
+    Private Markets ELTIF (“AGPM ELTIF” or the “Fund”) is a perpetual, semi-liquid
+    fund that seeks to provide investors with long-term capital appreciation by investing
+    primarily in the equity of established private companies globally via secondaries
+    and ... #### See How Alternatives Could Affect Your Portfolio Allocation Pro lets
+    you build an illustrative, custom portfolio that delivers personalized insights
+    tailored to your risk tolerance, investment horizon, and asset class preferences.
+    Try Allocation Pro Try Allocation Pro'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.apollo.com/wealth/strategies/products
+- content_hash: e1eac2a4e39effafb4a66101c2a83c6d787e79fce7c15ca66db4cca0104a0341
+  evidence_id: ev-e1eac2a4e39effaf
+  excerpt: 'Title: Top Aligned Alternatives & Competitors 2026 | Gartner Peer Insights
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top Aligned alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top Aligned Alternatives & Competitors 2026 | Gartner Peer Insights image:
+    https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Highspot](https://www.gartner.com/reviews/product/highspot) [Compare with
+    Aligned](https://www.gartner.com/reviews/market/digital-sales-rooms/compare/product/highspot-vs-aligned)
+    Add to Compare ... title: Top Aligned Alternatives & Competitors 2026 | Gartner
+    Peer Insights image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > Top Alternatives to Aligned * [Omedym](https://www.gartner.com/reviews/product/omedym)
+    * [Mindtickle](https://www.gartner.com/reviews/product/mindtickle-892549902) *
+    [DealHub DealRoom](https://www.gartner.com/reviews/product/dealhub-dealroom) ...
+    title: Top Aligned Alternatives & Competitors 2026 | Gartner Peer Insights image:
+    https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > Top Alternatives to Aligned ```json tegration with Salesforce. It keeps everyone
+    accountable and well-informed.","author":{"@type":"Person","name":"Verified Reviewer"},"itemReviewed":{"@type":"Product","name":"Highspot","url":"https://www.gartner.com/reviews/product/highspot","aggregateRating":{"@typ'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.gartner.com/reviews/product/aligned/alternatives
+- content_hash: 7b08179649356aee3e9e16ab730f781ab2c1a720f21d97aa7ee06a0b5919b71f
+  evidence_id: ev-7b08179649356aee
+  excerpt: 'Title: Aligned Reviews & Ratings 2026 | Gartner Peer Insights
+
+    Source: gartner.com
+
+    Snippet: # Aligned by Aligned in Digital Sales Rooms 5.0 (1 Rating) Compare Write
+    a Review Download PDF Overview About Company Key Insights Top Alternatives Reviews
+    and Ratings (1) ... ## About Company ### Company Description Aligned is a Digital
+    Sales Room designed to streamline buyer-seller workflows and enhance collaboration
+    between sales teams and buyers. With an AI-powered workspace, Aligned helps teams
+    improve communication, empower buyer champions, and align stakeholders effectively.
+    ... ## Key Insights ### Aligned Likes & Dislikes Like It''s surprising how helpful
+    it can be to keep everyone aligned on the same page, from the beginning to the
+    end of every deal. I like the shared page and mutual account plan and shared tasks
+    Read Full Review Dislike It makes necessary to have some cultural training on
+    adoption, predisposition to accept it ... ## Top Aligned Alternatives Logo of
+    Highspot ### 1. Highspot 4.8 (10 Ratings) Compare Logo of Omedym #### 2. Omedym
+    4.8 (4 Ratings) Compare Logo of Seismic Enablement Cloud ##### 3. Seismic Enablement
+    Cloud 4.6 (3 Ratings) Compare View All Alternatives'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.gartner.com/reviews/product/aligned
+- content_hash: 0380b137005dbbc292f5cd031f70b247bb81353aeded52d0d0331829f6cfcdc5
+  evidence_id: ev-0380b137005dbbc2
+  excerpt: 'Title: Apollo Aligned Alternatives CIT Fund - Markets Insider
+
+    Source: markets.businessinsider.com
+
+    Snippet: # Apollo Aligned Alternatives CIT Fund ## funds category comparison |
+    Name | 1y Perf. | | First Trust Alternative Opportunities Fund Class A | 9.11
+    | | Alta Privately Managed Alts Class 2 | 9.42 | | First Trust Alternative Opportunities
+    Fund Class I | 9.43 | | Stepstone Private Markets S | 9.70 | | Beacon Pointe Multi-Alternative
+    Fund Class I Shares | 9.95 |'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://markets.businessinsider.com/funds/apollo-aligned-alternatives-cit-us03771k1060
+- content_hash: 7cb349c5897b0dcc279d2be1a1b395405de4167dcd8f39d1f20ea09a9421363f
+  evidence_id: ev-7cb349c5897b0dcc
+  excerpt: 'Detected date: 2026-08-05
+
+    Title: Apollo Aligned Alternatives
+
+    Date: 2026-08-05
+
+    Source: wealthclub.co.uk
+
+    Snippet: Home Private Markets and Real Assets Private Markets funds Apollo Aligned
+    Alternatives # Apollo Aligned Alternatives Manager video interview – watch below
+    **Reliance on this promotion for the purpose of buying units to which the promotion
+    relates may expose an individual to a significant risk of losing all of the property
+    or other assets invested. Promotion made by** Wealth Club Ltd. Offer details View
+    offer details & apply Apply | Asset class: | Multi-asset | | Strategy: | Manager
+    funds / Co-investments | | Structure: | Evergreen | | Unit type: | Accumulation
+    | | Subscriptions/redemptions: | Monthly / Quarterly | | Access: | Direct | |
+    Minimum investment: | £26,000 (Direct) | | Target return: | 12-15% | | Next deadline:
+    | 17 Aug 2026 (5pm, cleared funds) | ## Important documents * [Prospectus](https://www.wealthclub.co.uk/download-document?documentId=f8e9a239-acdc-418a-8173-84b2b94fcd1b&productId=f5876de5-00d5-c28f-8dec-1b69834d4d41&backPage=c0a748b8-7b9b-40eb-ade8-1f72c4cc2126)
+    ... Apply direct ## Access restricted offers To access the offer details and read
+    the most recent review, please click here to enter your details, so we can check
+    if we already have it on record. [Trustpilot](https://uk.trustpilot.com/review/www.wealthclub.co.uk)
+    Growth Investor Awards 2023 - Winner Best Investment Platform Growth Investor
+    Awards 2022 - Winner Best Investment Platform Growth Investor Awards 2021 - W'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.wealthclub.co.uk/private-markets-and-real-assets/private-markets-funds/apollo-aligned-alternatives/
+- content_hash: 452e222c5b8bb371783a29c43a621c1947ed4820dda5c802d858e9ed023044aa
+  evidence_id: ev-452e222c5b8bb371
+  excerpt: 'Query: Aligned alternatives
+
+    1. https://platform.tracxn.com/a/d/company/5318c220e4b0f7e165e6dc96/align%20group?utm_source=parallel&utm_medium=ai#a:about
+
+    Title: Align Group
+
+    Source: platform.tracxn.com
+
+    Snippet: The company offers alternatives to local authority services for various
+    projects. It supports extensions and large-scale developments, working with architects,
+    contractors, and developers. Services include plan certification, site inspection
+    programmes, and liaison with authorities. Final certification is provided upon
+    compliance. Stage: Unfunded
+
+    2. https://www.fidante.com/au/investment-managers/apollo-global-management/apollo-aligned-alternatives-fund
+
+    Title: Apollo Aligned Alternatives | Fidante
+
+    Source: fidante.com
+
+    Snippet: # Breadcrumb ## About the Fund The Apollo Aligned Alternatives Fund[1]
+    (“Fund”) is an open-ended, semi-liquid fund which offers investors access to Apollo’s
+    comprehensive alternatives platform*. The Fund is designed to be a core component
+    of an investor’s alternative or private markets allocation. Opportunity to invest
+    alongside Apollo’s balance sheet in a fully invested, seasoned portfolio. The
+    Fund seeks to generate equity-like returns with less than half the volatility
+    of listed equities. IM logo ... ## Fund Facts Fund size displayed at a class level
+    only. Interests in the Apollo Aligned Alternatives Fund ARSN 667 548 825 are offered
+    by Fidante Partners Limited (ABN 94 002 835 592 AFSL 234 668) (Fidante). Fidante
+    has appointed Apollo Management Sin'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.google.com/search?q=Aligned+alternatives
+- content_hash: 9c9c0897422cef2fb0770fd9fd0dd0777b8fe2759e9663bcc6d5f876ff19fd85
+  evidence_id: ev-9c9c0897422cef2f
+  excerpt: 'Title: Aligned
+
+    Source: platform.tracxn.com
+
+    Snippet: Name: Aligned | Website Url: https://aligned.law | Short Description:
+    Provider of legal services for purpose-driven businesses | Stage: Unfunded | Primary
+    Sector: Business Services | Primary Subsector: Legal Services | Linkedin Url:
+    https://linkedin.com/company/aligned-law | Detailed Description: Provider of legal
+    services for purpose-driven businesses. It offers legal counsel to B Corps, cooperatives,
+    and entrepreneurs. Services encompass entity formation, trademarking, capital
+    raising, contract negotiation, and succession planning. The firm assists clients
+    in aligning their legal structures and contracts with their values, focusing on
+    equity, sustainability, and community impact. Legal frameworks are developed to
+    support unique business needs and values throughout the business lifecycle. |
+    Employee Count Official: 1'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://platform.tracxn.com/a/d/company/5dc590fcf0e6f6392029ed6f/aligned?utm_source=parallel&utm_medium=ai#a:about
+- content_hash: 67ec3ebfcb7e0f73856ae24d339cf3621dc044faa3fc4f2aea75f06a1655339e
+  evidence_id: ev-67ec3ebfcb7e0f73
+  excerpt: 'Title: Comparison of aligned vs misaligned results presented as ...
+
+    Source: researchgate.net
+
+    Snippet: Comparison of aligned vs misaligned results presented as (a) contours
+    of KL (top) and δ KL (%) (bottom) in the left column result from properly aligned'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.researchgate.net/figure/Comparison-of-aligned-vs-misaligned-results-presented-as-a-contours-of-KL-top-and-d_fig3_362654197
+- content_hash: 7708fb098bff36ca6dd55445d21383c9ea2f0380a9b552c81baef491695fd80e
+  evidence_id: ev-7708fb098bff36ca
+  excerpt: 'Detected date: 2025-10-23
+
+    Title: aligned or align? - Knowledge is the Only Good
+
+    Date: 2025-10-23
+
+    Source: blog.mynl.com
+
+    Snippet: # aligned or align? programming llm Fine points of TeX alignment environments.
+    Author Stephen J. Mildenhall Published 2025-10-23 Modified 2025-10-23 Beware:
+    aligned environments in Quarto documents work differently in PDF (LaTeX) and HTML
+    rendering. This post explains why. ## The Golden Rule: Avoid Nesting Display Math
+    The core issue lies in LaTeX’s strictness: you cannot put one display math environment
+    inside another (e.g., `align` inside `equation` or `$$...$$` ). Confusingly, you
+    can with HTML Jax rendering. | Environment Type | Examples | Use Case | | **Display
+    Math** | `\begin{equation}` , `\begin{align}` , `$$...$$` | These must be used
+    as **standalone** blocks. | | **Inner Math** | `\begin{aligned}` , `\begin{gathered}`
+    | These are designed to be **nested** inside another math environment. | ### Correct
+    Usage for Aligned Equations | Goal | Environment | Numbered? | Correct Syntax
+    | | **Alignment Inside `equation`** | `\begin{aligned}` | No (but outer `equation`
+    is numbered) | Use inside `\begin{equation} ... \end{equation}` . | **Key Takeaway:**
+    For unnumbered aligned equations, use `\begin{align*} ... \end{align*}` directly.
+    This is the universally correct syntax that works for both HTML (using MathJax/KaTeX)
+    and PDF (using LaTeX). ### Stars The asterisk versions, like `\begin{align*} ...
+    \end{align*}` , are the correct way to produce **unnumbered** aligned equations'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://blog.mynl.com/posts/programming/2025-10-23-aligned-or-align/
+- content_hash: 8502f876ebe93838d1dc3b7f58078d07ceb951442fa10232332901b7da5a0ec3
+  evidence_id: ev-8502f876ebe93838
+  excerpt: 'Detected date: 2024-11-12
+
+    Title: Parallel versus aligned relationships and the difference it makes. -
+
+    Date: 2024-11-12
+
+    Source: bniblog.co.nz
+
+    Snippet: Search [Home](https://bniblog.co.nz/) [Be Inspired](https://bniblog.co.nz/category/be-inspired/)
+    Parallel versus aligned relationships and the difference it makes. [Be Inspired](https://bniblog.co.nz/category/be-inspired/)
+    # Parallel versus aligned relationships and the difference it makes. by [BNI New
+    Zealand](https://bniblog.co.nz/author/graham-southwell/) written by [BNI New Zealand](https://bniblog.co.nz/author/graham-southwell/)
+    _275_ Article contributed by Wilma Ham. Aligned relationships are described in
+    _[**Women Like Me**](http://womenlikemeonline.com/ "WomenLikeMe Homepage")_ as;
+    > A heart centered team comes from love, flexibility, co-operation, integrity
+    and joy and produces phenomenal results while not sweating it in the process.Go
+    to _[**Women Like Me**](http://womenlikemeonline.com/ "WomenLikeMe Homepage")_
+    for more on Playing Team in ... John in particular is not looking forward to this
+    task and given that we already have a lot of other things to do, it could have
+    become a real problem between us if we had a parallel relationship rather than
+    this aligned one. ... I have learned to play team from a heart centered, aligned
+    place rather than coming from a hierarchical, ego centered parallel way of being
+    **A heart centered team comes from love, flexibility, co-operation, integrity
+    and joy and produces phenomenal results while not ... John in '
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://bniblog.co.nz/be-inspired/parallel-versus-aligned-relationships-and-the-difference-it-makes/
+- content_hash: d9b891a97beaff79cd7a10ced6cdd6232850351ee4860ab6abffa39bc166bc0d
+  evidence_id: ev-d9b891a97beaff79
+  excerpt: 'Title: aline vs. align
+
+    Source: linguix.com
+
+    Snippet: # aline vs. align Writers sometimes type "aline" when they mean "align."
+    The two look and sound similar, but only one is the modern verb. Below are clear
+    rules, real-use examples for work, school, and casual contexts, ready-to-copy
+    wrong→right pairs, quick rewrites, and short hyphenation and spacing notes. ...
+    ## Quick answer **Use align (verb) to mean "put in line," "adjust," or "bring
+    into agreement." Aline is normally a proper name (Aline) or an obsolete variant
+    - not the standard verb.** * If you mean an action (arrange, adjust, agree), write
+    **align** . * If you see **Aline** capitalized, it''s a person''s name and correct
+    as a name. * If you mean the noun phrase "a line" (two words), write _a line_
+    . ## Is "common mistakes aline" correct? That phrase looks like a typo. Most readers
+    will treat "aline" in that context as a misspelling of **align** or as an accidental
+    concatenation of "a line." ... ## Which form is **correct:** align, aline, or
+    a line? Match form to meaning: * **align** - verb: arrange, adjust, bring into
+    agreement. Example: "Align the columns." * **Aline** - proper name. Example: "Aline
+    joined the team." * _a line_ - two-word noun phrase. Example: "Draw a line across
+    the page." ... ## Grammar notes **Align** is a transitive verb in many contexts:
+    you align something (align the text, align the team). It also appears intransitively
+    in some phrases (e.g., "Our goals align"). Check prepositions: _align with_ i'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://linguix.com/english/common-mistake/aline
+- content_hash: a9f18933e82405fb874ade52be1e237b90ba92b3cd0af92896a25f4967eed8a0
+  evidence_id: ev-a9f18933e82405fb
+  excerpt: 'Detected date: 2014-07-04
+
+    Title: What''s the difference between split and aligned?
+
+    Date: 2014-07-04
+
+    Source: tex.stackexchange.com
+
+    Snippet: # What''s the difference between split and aligned? * As one answer to
+    [the above question](https://tex.stackexchange.com/questions/63929) points out,
+    inside `equation` environments (but not inside `gather` or `align` environments),
+    the `split` and `aligned` environments have different vertical spacing from the
+    surrounding text. ... * As Mico noted in comments, section 3.7 of the `amsmath`
+    User Guide notes that `aligned` (together with `alignedat` and `gathered` ) accepts
+    an optional `[t]` or `[b]` argument, for explicit vertical placement of any equation
+    tags. `split` does not accept any such argument. * As egreg notes in [his answer](https://tex.stackexchange.com/questions/187938/whats-the-difference-between-split-and-aligned)
+    , `split` will on the other hand honor the `tbtags` or (default) `centertags`
+    option to the `amsmath` package. Whereas `aligned` and its friends will not. ...
+    On the other hand, `aligned` and its friends can be freely combined with other
+    unaligned materials, or even other blocks of `aligned` and so on. They will be
+    horizontally juxtaposed and vertically centered. ... ## 3 Answers 3 One important
+    difference is that `split` obeys to the `centertags` (default) or `tbtags` option.
+    Here is an example ``` \documentclass[twocolumn]{article} \usepackage[ % tbtags,
+    % leqno, ]{amsmath} \begin{document} \begin{align} a&=b\\ \begin{split} c&=d+{}\\
+    &=e+{'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://tex.stackexchange.com/questions/187938/whats-the-difference-between-split-and-aligned
+- content_hash: cd7e886985bec9911f89fcfe060d88d5888c52f9fbb7da054eb2dbb9ddbcf4d6
+  evidence_id: ev-cd7e886985bec991
+  excerpt: 'Title: Top Aligned Data Centers Alternatives, Competitors - CB Insights
+
+    Source: cbinsights.com
+
+    Snippet: # Aligned Data Centers ## Aligned Data Centers''s alternatives and competitors
+    Aligned Data Centers vs. AirTrunk View more in-depth data on: * Competitors *
+    Products * Customer References and more Compare Aligned Data Centers and AirTrunk
+    [New call-to-action](https://cta-redirect.hubspot.com/cta/redirect/763793/44dc5cae-a986-48aa-996a-34cb6eef5c03)
+    ... Aligned Data Centers vs. Yotta View more in-depth data on: Compare Aligned
+    Data Centers and Yotta + Competitors + Products + Customer References and more
+    * EdgeConneX Logo [EdgeConneX](https://www.cbinsights.com/company/edgeconnex/)
+    Unclaimed EdgeConneX specializes in custom-built data center solutions for various
+    scales and applications within the technology sector. The company offers purpose-built
+    capacity… Start your free demo Aligned Data Centers vs. EdgeConneX View more in-depth
+    data on: ... Start your free demo Aligned Data Centers vs. Prime Data Centers
+    View more in-depth data on: Compare Aligned Data Centers and Prime Data Centers
+    + Competitors + Products + Customer References and more * Vantage Data Centers
+    Logo ... Aligned Data Centers vs. Vantage Data Centers View more in-depth data
+    on: Compare Aligned Data Centers and Vantage Data Centers + Competitors + Products
+    + Customer References and more * EdgeCore Digital Infrastructure Logo ... Aligned
+    Data Centers vs. Scala Data Centers View more in-depth data on: Compare '
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.cbinsights.com/company/aligned-energy/alternatives-competitors
+- content_hash: f1fc83a28bd231e50216737f81da54e632bccb980d2e7232d3c2cc071b0d5510
+  evidence_id: ev-f1fc83a28bd231e5
+  excerpt: 'Title: Aligned vs IT Concepts: SaaS Company Comparison
+
+    Source: getlatka.com
+
+    Snippet: Section: > How IT Concepts hit $120.3M revenue with a 13 person ... IT
+    Concepts CEO shares how IT Concepts grew to $120.3M. IT Concepts has bootstrapped.
+    See IT Concepts growth here. Aligned vs IT Concepts: SaaS Company Comparison Explore
+    a detailed comparison of top SaaS companies like Aligned, IT Concepts. See how
+    they stack up in key business metrics including revenue, pricing, funding'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://getlatka.com/companies/itconcepts.com/vs/aligneddc.com
+- content_hash: ac1d6e30bb210d7671217fd1c8c5b0633a92dbff09ee17a5b72b223e63549c8f
+  evidence_id: ev-ac1d6e30bb210d76
+  excerpt: 'Detected date: 2011-01-12
+
+    Title: Which one should I use: \begin{align} or \begin{aligned}?
+
+    Date: 2011-01-12
+
+    Source: tex.stackexchange.com
+
+    Snippet: # Which one should I use: \begin{align} or \begin{aligned}? Ask Question
+    Asked 15 years, 6 months ago Modified [5 years, 4 months ago](https://tex.stackexchange.com/questions/8788/which-one-should-i-use-beginalign-or-beginaligned?lastactivity
+    "2021-03-22 04:21:54Z") Viewed 128k times 39 Which one should I use: `\begin{align}`
+    or `\begin{aligned}` ? * equations Share Improve this question Follow edited Nov
+    26, 2011 at 17:50 lockstep''s user avatar lockstep 258k 75 75 gold badges 740
+    740 silver badges 805 805 bronze badges asked Jan 12, 2011 at 9:02 Display Name''s
+    user avatar Display Name 50.6k 52 52 gold badges 197 197 silver badges 354 354
+    bronze badges 6 * 1 You use `align` outside the math mode, and `aligned` inside
+    the math mode. kennytm – kennytm 2011-01-12 09:16:46 +00:00 Commented Jan 12,
+    2011 at 9:16 * @KennyTM: Only that? Display Name – Display Name 2011-01-12 09:17:54
+    +00:00 Commented Jan 12, 2011 at 9:17 ... ## 3 Answers 3 If you have a series
+    of equations that you want to have mutual alignment, then you would use `align`
+    . If the equations are part of a larger equation, then `aligned` is the right
+    environment. I often will use `\begin{equation}\begin{aligned} ... \end{aligned}\end{equation}`
+    to give a single equation number to a group, for example if I''m showing steps.
+    Share Improve this answer Follow answered Jan 12, 2011 at 11:15 TH.''s user avat'
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://tex.stackexchange.com/questions/8788/which-one-should-i-use-beginalign-or-beginaligned
+- content_hash: 6d70f7812489f59b9edafc8795c7a12d4f740243633c25d880f3c1b0c08f6aea
+  evidence_id: ev-6d70f7812489f59b
+  excerpt: 'Query: Aligned vs
+
+    1. https://platform.tracxn.com/a/d/company/5dc590fcf0e6f6392029ed6f/aligned?utm_source=parallel&utm_medium=ai#a:about
+
+    Title: Aligned
+
+    Source: platform.tracxn.com
+
+    Snippet: Name: Aligned | Website Url: https://aligned.law | Short Description:
+    Provider of legal services for purpose-driven businesses | Stage: Unfunded | Primary
+    Sector: Business Services | Primary Subsector: Legal Services | Linkedin Url:
+    https://linkedin.com/company/aligned-law | Detailed Description: Provider of legal
+    services for purpose-driven businesses. It offers legal counsel to B Corps, cooperatives,
+    and entrepreneurs. Services encompass entity formation, trademarking, capital
+    raising, contract negotiation, and succession planning. The firm assists clients
+    in aligning their legal structures and contracts with their values, focusing on
+    equity, sustainability, and community impact. Legal frameworks are developed to
+    support unique business needs and values throughout the business lifecycle. |
+    Employee Count Official: 1
+
+    2. https://www.researchgate.net/figure/Comparison-of-aligned-vs-misaligned-results-presented-as-a-contours-of-KL-top-and-d_fig3_362654197
+
+    Title: Comparison of aligned vs misaligned results presented as ...
+
+    Source: researchgate.net
+
+    Snippet: Comparison of aligned vs misaligned results presented as (a) contours
+    of KL (top) and δ KL (%) (bottom) in the left column result from properly aligned
+
+    3. https://blog.mynl.com/posts/programming/2025-10-23-aligned-or-align/
+
+    Title: aligned or '
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.google.com/search?q=Aligned+vs
+- content_hash: 08f0a615f0fa2eb2dcdb498173af5724d2cb11ef205262a325193fce5ac7a973
+  evidence_id: ev-08f0a615f0fa2eb2
+  excerpt: "Detected date: July 15, 2026\nTitle: 7 Best Aligned Alternatives for Sales\
+    \ Teams (2026)\n[HummingDeck](/)\n\nEN\n\n[Back to blog](/en/blog)\n\n# 7 Best\
+    \ Aligned Alternatives for Sales Teams (2026)\n\nIlya Spiridonov[](https://linkedin.com/in/ilyaspiridonov)\n\
+    \n·July 15, 2026·Updated August 5, 2026·13 min read\n\nAligned is a capable digital\
+    \ sales room, but it is not the automatic best fit for every sales process. A\
+    \ small team may want a lower paid entry point, more detailed content analytics,\
+    \ or secure sharing without an enterprise contract. Another team may need proposal\
+    \ creation, e-signature, onboarding automation, or CPQ inside the same platform.\n\
+    \nThis guide compares the seven best Aligned alternatives for small and mid-market\
+    \ sales teams. It treats Aligned as the baseline, then evaluates each competitor\
+    \ on price, mutual action plans, buyer conversations, seller-private work, access\
+    \ control, analytics, integrations, and administrative overhead.\n\nWe checked\
+    \ public product and pricing pages on August 5, 2026. Confirm current terms with\
+    \ each vendor before buying.\n\nIn this article\n\n  1. Quick recommendations\n\
+    \  2. What Aligned does well\n  3. Why compare Aligned alternatives\n  4. How\
+    \ we evaluated the tools\n  5. Aligned alternatives compared\n  6. The seven best\
+    \ alternatives\n  7. When Aligned is still the better choice\n  8. Frequently\
+    \ asked questions\n\n\n\n## Quick recommendations\n\n  * **HummingDeck:** best\
+    \ overall for focused small and mid-market teams.\n  * **Trumpet:** best for polished,\
+    \ presentation-led buyer experiences.\n "
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://hummingdeck.com/blog/aligned-alternatives-2026
+- content_hash: 9d2dbb3801934bbe38cef97a4913418033e43a2f8bdcaeb389dbb20d375c03ef
+  evidence_id: ev-9d2dbb3801934bbe
+  excerpt: "Title: Apollo Aligned Alternatives | Fidante\nSkip to main content \n\n\
+    Australia\n\n  * [Australia](https://www.fidante.com/au/)\n  * [UK/Europe](https://www.fidante.com/eu/)\n\
+    \n\n\n[ ](/au)\n\nSearch\n\n##  Main navigation \n\nSearch\n\n  * [Investment\
+    \ Managers](/au/investment-managers)\n\n  * [Our Funds](/au/our-funds)\n\n   \
+    \ * [All Funds](/au/our-funds)\n\n    * [Australian Equity Funds](/au/australian-equities\
+    \ \"Australian Equity Funds\")\n\n    * [Global Equity Funds](/au/global-equities\
+    \ \"Global Equity Funds\")\n\n    * [Alternative Funds](/au/alternatives)\n\n\
+    \    * [Fixed Income Funds](/au/fixed-income \"Fixed Income Funds\")\n\n    *\
+    \ [Managed Funds](/au/managed-funds \"Managed Funds\")\n\n    * [Active ETFs](/au/active-etfs-unlocked)\n\
+    \n  * [Insights & News](/au/insights)\n\n  * [ESG](/au/esg)\n\n    * [Our Sustainable\
+    \ Offering](/au/sustainable-investing-unlocked \"Sustainable Investment Fund Managers\"\
+    )\n\n    * [ESG Knowledge Hub](https://fidante.com/au/insights?combine=&field_manager_category_target_id=All&field_tags_target_id=3026&field_investment_manager_target_id=\
+    \ \"ESG Knowledge Hub\")\n\n  * [Contact Us](/au/contact-us)\n\n  * [Invest Online](/au/invest-online)\n\
+    \n\n\n\n## Breadcrumb\n\n  1. [Home](/au)\n  2. [Investment Managers](/au/investment-managers)\n\
+    \  3. [Apollo Global Management](/au/investment-managers/apollo-global-management)\n\
+    \  4. Apollo Aligned Alternatives Fund \n\n\n\nAlternatives\n\n##  Apollo Aligned\
+    \ Alternatives Fund \n\nYou are viewing as user from:\n\nAustraliaUK/Europe\n\n\
+    Fund Overview  Why this Fund\n\n##  About the Fu"
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.fidante.com/au/investment-managers/apollo-global-management/apollo-aligned-alternatives-fund
+- content_hash: 7eccf3b568bc59d60bc7cdc26d75d7628720f3440dfd0f493d1334f5e533cba5
+  evidence_id: ev-7eccf3b568bc59d6
+  excerpt: "Title: Apollo Aligned Alternatives Fund HOW3532AU Overview | Morningstar\n\
+    Skip to Content\n\nSearch\n\n[](/)\n\n  * [Home](/)\n  * Markets\n  * Investments\n\
+    \  * News and Insights\n  * Learn\n  * Products\n  * Solutions\n  * About\n\n\n\
+    \nMarket Centre\n\n  * [Australia](/market/australia)\n  * [United States](/market/united-states)\n\
+    \  * [Europe](/market/europe)\n  * [Asia](/market/asia)\n\n\n\n\nMarket Report\n\
+    \n  * [ASX Market ReportRoundup of ASX market movements](/market/asx-market-report)\n\
+    \n\n\n\nMarket Calendar\n\n  * [Upcoming DividendsDividend payments in the coming\
+    \ 90 days](/market/upcoming-dividends)\n\n\n\n\nDiscover Investments\n\n  * [Investment\
+    \ Ideas](/investments/ideas)\n\n\n\n\nRead the latest investing news and insights\
+    \ \n\n  * [Top Stories](/insights/top-stories)\n  * [Markets](/insights/markets)\n\
+    \  * [Personal Finance](/insights/personal-finance)\n  * [Retirement](/insights/retirement)\n\
+    \n\n\n\n  * [Stocks](/insights/stocks)\n  * [ETFs](/insights/etfs)\n  * [Funds](/insights/funds)\n\
+    \  * [Fixed Income](/insights/fixed-income)\n\n\n\n\nIndustry Insights\n\n  *\
+    \ [Adviser Spotlight ](https://spotlight.morningstarhub.com.au/?utm_source=morningstar.com.au&utm_medium=menu-header-adviser-spotlight)\n\
+    \n  * [Manager Spotlight ](https://go.morningstar.com/subscribe-manager-spotlight?utm_source=morningstar.com.au&utm_medium=menu-header-manager-spotlight)\n\
+    \n  * [Firstlinks ](https://www.firstlinks.com.au/?utm_source=morningstar.com.au&utm_medium=menu-header-firstlinks)\n\
+    \n\n\n\nInvesting content\n\n  * [Investing guides](/learn/investing-guides)\n\
+    \  *"
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.morningstar.com.au/investments/security/fund/46261
+- content_hash: 3c58ebb49171c0effce8674a08b70cbab6eea48c31e0ec8afb0f09d0b2da9ec2
+  evidence_id: ev-3c58ebb49171c0ef
+  excerpt: "Title: Country Allowed Notification\n###### Important Notice: Apollo Aligned\
+    \ Alternatives (AAA E-1)\n\nJurisdiction\n\nSelect... \n\nAustria Belgium Bulgaria\
+    \ Croatia Czech Republic Denmark Dubai International Financial Centre (DIFC) Estonia\
+    \ Finland France Germany Greece Hungary Iceland Ireland Italy Jersey Latvia Liechtenstein\
+    \ Lithuania Luxembourg Malta Monaco Netherlands Norway Poland Portugal Republic\
+    \ of Cyprus Romania Slovakia Slovenia Spain Sweden Switzerland United Arab Emirates\
+    \ United Kingdom\n\nInvestor Type\n\nSelect... \n\nTo proceed, please expand and\
+    \ read the information below.\n\nView All Collapse\n\nBy clicking 'I agree to\
+    \ the terms', I confirm that my investor type and country of residence are accurate,\
+    \ and I acknowledge the important information above.\n\nLeave site  I agree to\
+    \ the terms"
+  retrieved_at: '2026-08-19T11:52:46.881710-04:00'
+  url: https://www.apollo.com/wealth/strategies/products/apollo-aligned-alternatives-e1
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

@@ -1,0 +1,149 @@
+{
+  "collected_at": "2026-08-19T11:44:32.893255-04:00",
+  "company_id": "saas-05",
+  "enrichment_id": "news-product-launches",
+  "entries": [
+    {
+      "category": "data management platform",
+      "company_name": "Archive360",
+      "domain": "archive360.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "news",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "archive360.com news",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Archive360 \"press release\" OR \"announces\" OR \"newsroom\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Archive360 launches OR \"new feature\" OR \"introducing\" OR \"now available\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.archive360.com/a360-news-blog",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.morningstar.com/news/pr-newswire/20260811ny23510/archive360-named-to-the-inc-5000-list-of-fastest-growing-private-companies-in-america-2026",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.prnewswire.com/news-releases/archive360-launches-a-governed-ai-ready-data-cloud-to-meet-future-needs-of-the-modern-enterprise-302453204.html",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.prnewswire.com/news-releases/archive360-named-to-the-inc-5000-list-of-fastest-growing-private-companies-in-america-2026-302847985.html",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.prnewswire.com/news-releases/archive360-achieves-fedramp-authorization-302796181.html",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.archive360.com/a360-news-blog/archive360-collaborates-with-microsoft-to-deliver-agentic-ai-that-detects-investigates-and-preserves-policy-violations",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://archive360.com/blog",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://archive360.com/news",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://archive360.com/newsroom: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://archive360.com/newsroom"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://archive360.com/press: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://archive360.com/press"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://archive360.com/changelog: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://archive360.com/changelog"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://archive360.com/product-updates: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://archive360.com/product-updates"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://archive360.com/whats-new: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://archive360.com/whats-new"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 40,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.015",
+  "signal_evidence": 43
+}

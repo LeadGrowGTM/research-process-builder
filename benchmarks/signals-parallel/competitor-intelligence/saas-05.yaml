@@ -1,0 +1,906 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-0c8cabd1fc6337a7
+  - ev-026452c8b94e5acd
+  - ev-67663586c7a2110a
+  field: identity
+  value: Archive360
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0c8cabd1fc6337a7
+  - ev-026452c8b94e5acd
+  - ev-67663586c7a2110a
+  field: description
+  value: About Us | Archive360 | Modern Data Archiving. Skip to content Archive360®
+    named to Inc. 5000 list of fastest-growing companies for the 2nd consecutive year. 
+    Read More Here Platform Archive360 Platform Platform Overview AI-ready data management,
+    compliance, & discovery Governance Unified governance for all data types across
+    multiple systems Compliance Consistent legal, regulatory & operational data compliance
+    Security Zero-trust, least privilege security by design Process Platform Process
+    Archi
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0c8cabd1fc6337a7
+  - ev-026452c8b94e5acd
+  - ev-67663586c7a2110a
+  field: offers
+  value: data management platform
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0c8cabd1fc6337a7
+  - ev-026452c8b94e5acd
+  - ev-67663586c7a2110a
+  field: icp
+  value: government agencies
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0c8cabd1fc6337a7
+  - ev-026452c8b94e5acd
+  - ev-67663586c7a2110a
+  field: personas
+  value: government agencies
+  visibility: message_safe
+company_id: saas-05
+corrections: []
+evidence:
+- content_hash: 0c8cabd1fc6337a7e51bc418ede6d8693c4e2bb6fb5d371ffcc6e45d3d4280d1
+  evidence_id: ev-0c8cabd1fc6337a7
+  excerpt: 'About Us | Archive360 | Modern Data Archiving. Skip to content Archive360®
+    named to Inc. 5000 list of fastest-growing companies for the 2nd consecutive year. 
+    Read More Here Platform Archive360 Platform Platform Overview AI-ready data management,
+    compliance, & discovery Governance Unified governance for all data types across
+    multiple systems Compliance Consistent legal, regulatory & operational data compliance
+    Security Zero-trust, least privilege security by design Process Platform Process
+    Archive and govern critical data at petabyte scale 1. Collect Compliantly capture
+    all data types from wide range of sources 2. Manage Class-based, policy-driven
+    management of data lifecycle risk & value 3. Access Policy-driven access controls
+    at the file and field-level Solutions Industry Energy Federal Government Finance
+    Healthcare Life Sciences Legal Use Case AI & Analytics Compliance & Audit Data
+    Discovery Digital Communications Governance & Archiving Application & Data Retirement
+    File Archiving Mobile Communications Data Migration Supervision & Surveillance
+    ERP Modernization SAP Archiving Application Legacy Email Archives EMC SourceOne
+    Enterprise Vault / EV.Cloud More... Legacy Applications Data Sources / Connectors
+    Microsoft 365 Slack Zoom More... Customers Support Support Portal Knowledge Base
+    Services Advisory & Implementation Platform & Infrastructure Monitoring Customer
+    Success Migration Resources Type All Resources Analyst Reports Blog Case Studies
+    Datasheet eBook Interview Podcast Survey Technical Guide Video Whitepaper Webinar
+    Partners Partner Partner Program Overview Our Partnership with Microsoft Become
+    a Partner Find a Partner Partner Portal Company Contact Us About Us Leadership
+    Events News In the Media Careers Get a Demo Contact Sales Get to know Archive360®
+    Govern what matters - and prove it. Archive360 is the Enterprise Data and AI Governance
+    Platform for regulated organizations.   Dedicated tenant. Customer-managed keys.
+    Audit-ready evidence - so your security '
+  retrieved_at: '2026-08-12T21:00:50.696368+00:00'
+  url: https://www.archive360.com/about-archive360/
+- content_hash: 026452c8b94e5acd92b49814e68e027235264dc14c683ee629ffd880c1c7a152
+  evidence_id: ev-026452c8b94e5acd
+  excerpt: 'Archive360 | LinkedIn Agree & Join LinkedIn By clicking Continue to join
+    or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie
+    Policy . Skip to main content LinkedIn Top Content People Learning Jobs Games
+    Sign in Join now Archive360 Software Development New York, NY 5,110 followers
+    Govern what matters - and prove it. Follow View all 135 employees Report this
+    company About us Archive360 helps regulated enterprises govern complex data across
+    communications, records, legacy systems, and AI data. With policy-based retention,
+    access controls, encryption, search, and audit-ready traceability, Archive360
+    keeps critical data secure, compliant, defensible, and available when needed.
+    As AI adoption grows, Archive360 helps organizations govern prompts, outputs,
+    metadata, logs, and decision context, creating a trusted foundation for compliance,
+    risk reduction, and defensible AI use. Trusted data. Governed AI. Defensible outcomes.
+    Website http://www.archive360.com External link for Archive360 Industry Software
+    Development Company size 51-200 employees Headquarters New York, NY Type Privately
+    Held Founded 2011 Specialties Archive Migration , Azure, Cloud Archiving, eDiscovery,
+    Regulatory Compliance, SEC 17 a-4, Information Management, GDPR, Legal Defensibility,
+    Application retirement, data archiving, legacy archives, Data Governance, Records
+    Management, Legacy Application Retirement, AI, Analytics, Digital Communications,
+    Modern Archiving, File Archiving, Data retirement, SAP Archiving, ERP Modernization,
+    AI Data Readiness, AI Governance, Enterprise Data, and AI Ready data control plane
+    Employees at Archive360 Michael Coffield LinkedIn Member LinkedIn Member LinkedIn
+    Member LinkedIn Member LinkedIn Member View 135 employees at Archive360 Sign in
+    Welcome back Email or phone Password Show Forgot password? Sign in or By clicking
+    Continue to join or sign in, you agree to LinkedIn’s User Agreement , Privacy
+    Policy , and Cookie Policy . New to LinkedIn? Join '
+  retrieved_at: '2026-08-12T21:00:51.334967+00:00'
+  url: https://www.linkedin.com/company/archive360
+- content_hash: 67663586c7a2110af3e1bf055752bc8845409596684fcdac7f525a6be13d5d48
+  evidence_id: ev-67663586c7a2110a
+  excerpt: Archive360 | Carahsoft AVAILABLE 24x7 888.662.2724 AVAILABLE 24x7 (888)
+    66CARAH Fast & Accurate Request A Quote menu home SOLVE close back to main menu
+    Markets We Serve back to main menu View Public Sector Markets Federal Government
+    DoD/DoW Intelligence & National Defense State & Local Government Higher Ed K-12
+    Healthcare Tribal Nations Canadian Government View Commercial Markets Defense
+    Industrial Base Regulated Industries Critical Infrastructure Energy & Utilities
+    Financial Services Manufacturing Enterprise Technology Solutions Nonprofits Technology
+    Manufacturers back to main menu View All Vendors Adobe Atlassian AWS Broadcom
+    Cohesity CrowdStrike Databricks Dell Technologies Docusign ElasticSearch Equifax
+    F5 Forescout Gigamon GitLab Google Cloud Granicus HPE OpenText Microsoft Nutanix
+    NVIDIA Okta Oracle Palo Alto Networks Proofpoint Red Hat SAP Salesforce SentinelOne
+    ServiceNow Snowflake Solarwinds Splunk Tableau Trellix VMware Zscaler Zoom Solutions
+    Portfolio back to main menu View All Solutions 5G Aerospace & Maritime Artificial
+    Intelligence Autonomy & Robotic Technology CMMC Customer Experience & Engagement
+    Cyber Workforce Development Cybersecurity DevSecOps DoD IL Education Technology
+    Emerging Technologies Executive Protection FedRAMP Technologies Financial IT Geospatial
+    GovCon GovRAMP Hardware Healthcare Technology Human Capital Technology IoT & OT
+    Law Enforcement Technology Legal & Courtroom Technology MultiCloud Open Source
+    OSINT Physical Security Quantum Records & Information Management Smart Cities
+    Space Tech Supply Chain Management Zero Trust View All Vendors View all Markets
+    View all Solutions Request a Quote sales@carahsoft.com 888.662.2724 Solutions
+    for Public Sector and Solutions for Commercial and Enterprise Carahsoft is the
+    largest partner, distributor, and Master Aggregator™ for the industry's leading
+    software manufacturers. See all of our Technology Solutions See all of our Vendors
+    LEARN close back to main menu Events back to main menu All Events
+  retrieved_at: '2026-08-12T21:00:52.529274+00:00'
+  url: https://www.carahsoft.com/archive360
+- content_hash: 3ce64206654d53544c030c7997f43fd5c283c8b12f37f7c0dfbce2efb53b55d5
+  evidence_id: ev-3ce64206654d5354
+  excerpt: 'Title: Archive360
+
+    Source: platform.tracxn.com
+
+    Snippet: Short Description: Provider of data migration and data management solutions
+    Detailed Description: Provider of data migration and data management solutions.
+    The platform provides the facility of secure migration of data from on premise
+    and cloud repositories.'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://platform.tracxn.com/a/d/company/535d0f23e4b05065349bcede/archive360?utm_source=parallel&utm_medium=ai#a:about
+- content_hash: e8bb28ffc87b565dd52b31b23ac4422554937f59d6e8e697d3f82b3dd8354d7b
+  evidence_id: ev-e8bb28ffc87b565d
+  excerpt: 'Title: Top Archive360 Alternatives & Competitors 2026 | Gartner Peer Insights
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top Archive360 alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top Archive360 Alternatives & Competitors 2026 | Gartner Peer Insights
+    image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Google Vault](https://www.gartner.com/reviews/product/google-vault) > 2.
+    [Arctera Enterprise Vault](https://www.gartner.com/reviews/product/arctera-enterprise-vault)
+    > 3. [Cloud Archive](https://www.gartner.com/reviews/product/cloud-archive) >
+    6. [Smarsh Enterprise Platform](https://www.gartner.com/reviews/product/smarsh-enterprise-platform)
+    In addition, conducting search, discovery and retrieval of communication data
+    is always easy and this comes in handy when conducting audit trails. ... title:
+    Top Archive360 Alternatives & Competitors 2026 | Gartner Peer Insights image:
+    https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Google Vault](https://www.gartner.com/reviews/product/google-vault) > 2.
+    [Arctera Enterprise Vault](https://www.gartner.com/reviews/product/arctera-enterprise-vault)
+    > 3. [Cloud Archive](https://www.gartner.com/reviews/product/cloud-archive) >
+    6. [Smarsh Enterprise Platform](https://www.gartner.com/reviews/product/smarsh-enterprise-platform)
+    [Compare with Archive360](https://www.gartner.com/review'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.gartner.com/reviews/product/archive-360-1/alternatives
+- content_hash: 0d040165c0c5df61d1c27f093dc69e22319aa17c6708d41095632f98f822374e
+  evidence_id: ev-0d040165c0c5df61
+  excerpt: 'Title: Top 10 Archive360 Alternatives & Competitors in 2026
+
+    Source: g2.com
+
+    Snippet: # Top 10 Archive360 Alternatives & Competitors The best overall alternative
+    to Archive360 is [NinjaOne](https://www.g2.com/products/ninjaone/reviews) , rated
+    ~4.7 stars on G2 from 4365+ reviewers. It is frequently praised for remote access
+    and automation. Other well-known alternatives to Archive360 are: * [Yext](https://www.g2.com/products/yext/reviews)
+    – known for helpful and centralized management (G2 star rating ~4.4) * [Paubox](https://www.g2.com/products/paubox/reviews)
+    – highly rated for security and customer support (G2 star rating ~4.9) * [Gryphon
+    ONE](https://www.g2.com/products/gryphon-one/reviews) – offers helpful and user
+    interface (G2 star rating ~4.2) * [CyberSentriq](https://www.g2.com/products/cybersentriq/reviews)
+    – best suited for teams that need backup solutions and backup ease (G2 star rating
+    ~4.6) ... ## Top 10 Alternatives to Archive360 Recently Reviewed By G2 Community
+    CyberSentriq Sponsored CyberSentriq 4.6/5 (391) Product Description CyberSentriq
+    is an integrated cybersecurity and data protection platform, leveraging solutions
+    from two best-of breed vendors in the MSP space. ... The NinjaOne Unified IT Operations
+    Platform delivers endpoint management, autonomous patching, backup, and remote
+    access in a single console to improve efficiency, increase resilience, and reduce
+    spend. ... CyberSentriq Sponsored CyberSentriq 4.6/5 (391) Product Description
+    CyberSentriq is an i'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.g2.com/products/archive360/competitors/alternatives
+- content_hash: c65a27bcd6aea64f47a2c25e2122d37e75fc3b0dd06a95c0c5e8981bc25723dc
+  evidence_id: ev-c65a27bcd6aea64f
+  excerpt: 'Title: 10 Best Archive360 Competitors & Alternatives 2026
+
+    Source: archondatastore.com
+
+    Snippet: # 10 Best Archive360 Competitors and Alternatives for Data Archiving
+    ## 1) Archon That makes it particularly useful when the evaluation is really about
+    legacy system decommissioning and managing historical business data, not just
+    [communications compliance.](https://www.archondatastore.com/blog/communications-compliance/)
+    ... ## 2) Google Vault **Best for:** Organizations operating almost entirely inside
+    Google Workspace that need retention, [legal hold and eDiscovery](https://www.archondatastore.com/blog/ediscovery-legal-hold/)
+    without adding a separate platform. ... * Native integration across Gmail, Drive,
+    Chat, and other Google services * No separate platform to deploy or manage * Works
+    well when the requirement is clearly bounded to Google Workspace data **What to
+    keep in mind:** Google Vault is not a backup platform or a cross-platform archive.
+    It does not solve for Microsoft 365, social, mobile, voice, or decommissioned
+    business applications. ... ## 6) Barracuda Barracuda covers the basics of email
+    archiving with cloud, virtual, and appliance deployment options. It handles retention,
+    search, legal hold, and role-based access, and tends to appeal to teams that want
+    a contained archive without a larger governance platform attached. **Why organizations
+    consider it:** * Positioned for email archiving in mid-market or lean-IT environments
+    * Flexible deployment, including cloud and'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: http://archondatastore.com/blog/archive360-competitors-alternatives
+- content_hash: 114aed83286d33ce5e47d972a23e5ab53cdfb9deec7b9c40253081268d951afa
+  evidence_id: ev-114aed83286d33ce
+  excerpt: 'Title: List of Best Archive360 Alternatives & Competitors 2026
+
+    Source: trustradius.com
+
+    Snippet: # Archive360 Competitors and Alternatives ## Most Commonly Compared to
+    Archive360 * Informatica Data Archive (legacy) ### Informatica Data Archive (legacy)
+    Compare * Arctera Enterprise Vault ### Arctera Enterprise Vault Compare * OpenText
+    Information Archiving ### OpenText Information Archiving Compare * [Mimecast Cloud
+    Archive ### Mimecast Cloud Archive Compare [Get A Quote](https://www.mimecast.com/get-a-quote?utm_campaign=TrustRadius%20Review&utm_source=trustradius.com&utm_medium=click)](/compare-products/archive360-vs-mimecast-cloud-archive)
+    * Google Vault ### Google Vault Compare * Amazon S3 Glacier ### Amazon S3 Glacier
+    Compare * Microsoft Exchange Online Archiving ### Microsoft Exchange Online Archiving
+    Compare * Sonian (discontinued) ### Sonian (discontinued) Compare * Carbonite
+    Information Archiving ### Carbonite Information Archiving Compare ## Best Archive360
+    Alternatives for Small Businesses ### Cove Data Protection Score 9.6 out of 10
+    Cove Data Protection (formerly N-Able Backup) is designed to cover servers, datacenters,
+    applications, and workstations, and is provided to ensure business continuity
+    and at-a-glance assessment and fast issue resolution via customizable dashboard.
+    ... ### AppRiver from OpenText Score 5.2 out of 10 AppRiver from OpenText (formerly
+    from Zix from 2019, which was acquired by OpenText), is a hosted messaging gateway
+    and security platform featu'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.trustradius.com/products/archive360/competitors
+- content_hash: 86e697d0682b65a9b3d58faefb52c4eb25067d0ffc6a6105e7dd4f558de54d22
+  evidence_id: ev-86e697d0682b65a9
+  excerpt: 'Title: Archive360''s Competitors, Revenue ...
+
+    Source: owler.com
+
+    Snippet: Archive360''s primary competitors are Mimecast, Quadrotech, Transvault
+    and 11 more . Competitors View 14 Archive360 competitors here.'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.owler.com/company/archive360
+- content_hash: 76a6f89ed261a5af667ab2aaa8d8d3ab743fa7be83bf5bcc22652294b25eead2
+  evidence_id: ev-76a6f89ed261a5af
+  excerpt: 'Title: Top Archive360 Competitors & Alternatives 2026 | Gartner Peer Insights
+    - Digital Communications Governance and Archiving Solutions
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top Archive360 competitors & alternatives.
+    Read the latest reviews and find the best Digital Communications Governance and
+    Archiving Sol ![Powered by Google Translate](https://www.gartner.com/reviews/images/peer-insights/powered-by-google-translate.svg)This
+    service may contain translations provided by Goog Gartner Peer Insights content
+    consists of the opinions of individual end users based on their own experiences,
+    and should not be construed as statements of fact, nor do t This site is protected
+    by hCaptcha and its [Privacy Policy](https://hcaptcha.com/privacy) and [Terms
+    of Service](https://hcaptcha.com/terms) apply.'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.gartner.com/reviews/market/digital-communications-governance-and-archiving-solutions/vendor/archive360/alternatives
+- content_hash: ffb27af88566397f3837bf825c4f9afcd445071fb37e31d346337ae9bca65ede
+  evidence_id: ev-ffb27af88566397f
+  excerpt: 'Title: Archive360 vs SAS Data Management comparison
+
+    Source: peerspot.com
+
+    Snippet: Archive360 and SAS are both solutions in the Data Governance category.
+    Archive360 is ranked #66, while SAS is ranked #23 with an average rating of 10.0.'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.peerspot.com/products/comparisons/archive360_vs_sas-data-management
+- content_hash: e8415a3d3dbd79884c1b389bd81e907f72439b149427ae284bff8f0d9a84ccb8
+  evidence_id: ev-e8415a3d3dbd7988
+  excerpt: 'Title: Archive360 Unified Data Governance for Azure
+
+    Source: marketplace.microsoft.com
+
+    Snippet: https://store-images.s-microsoft.com/image/apps.12262.dec9225e-ab11-4c07-a67a-1e7fd261fcf0.9fda1d5b-543c-4071-bbdd-459fffefa739.e68f8191-ed99-416f-ae33-585651019a57
+    ... # Archive360 Unified Data Governance for Azure ## Modern Archiving & Data
+    Governance at Scale Archive360 delivers a **modern archiving platform** that enables
+    organizations to **identify, collect, manage, and act on all enterprise data**
+    —ensuring **compliance, security, and AI-driven insights** . As data ages, its
+    **value declines** while the risks and costs ... Our **dedicated SaaS platform,
+    deployed within your Azure tenant** , scales to petabytes and gives customers
+    full control over **data ingestion, search performance, storage costs, security,
+    encryption, and access.** ** ** ... ### **AI-Ready Data Collection & Management**
+    #### **Compliant & Defensible Data Governance** ##### **Advanced Search & AI-Powered
+    Insights** * **Access control-driven search results** based on user roles, metadata
+    classifications, and case parameters. * **AI-powered data discovery** with advanced
+    filtering (Boolean, Proximity, Fuzzy logic). * Integration with **Power BI, Tableau,
+    SuperSet** , and third-party tools for analytics.'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://marketplace.microsoft.com/en-us/product/office/archive360.archive360-archive2azure?tab=overview
+- content_hash: 6debe3263b98b285e890af678f3188b03cee8e46f85790eb2335998767646db8
+  evidence_id: ev-6debe3263b98b285
+  excerpt: 'Title: Migrate Enterprise Vault Data Securely with Archive360.
+
+    Source: archive360.com
+
+    Snippet: ``` + ##### [Archive360 Platform](https://www.archive360.com/data-archiving-platform)
+    - [Platform Overview](https://www.archive360.com/data-archiving-platform) AI-ready
+    data management, compliance, & discovery ``` ... # **Discover Your Arctera Enterprise
+    Vault Alternative with Archive360 ®** ## Schedule a Time to Discuss Your Secure
+    Arctera EV Migration With Archive360 ® Explore How Archive360 ® Provides the Best
+    Alternative to Enterprise Vault, Ensuring Secure Data Migration and Management
+    for your Enterprise Organization. ... ## Switch from Enterprise Vault with Experts
+    You Can Trust ### Comprehensive Migration Support: #### Competitive Advantages:
+    **Cost Efficiency:** Archive360 not only minimizes your upfront investment but
+    also offers a predictable cost model. By transitioning to a more cost-efficient
+    cloud-based archive, your organization can achieve significant savings and a better
+    allocation of resources. ... Archive360’s platform enables you to harness these
+    technologies for a smarter, more strategic approach to data management. ... ##
+    Data Archiving Archive360 has helped more than 2000 organizations worldwide migrate
+    over 150 PB of data to the cloud and manage it there to meet their compliance
+    obligations, reduce IT costs, improve AI models, and make faster, better informed
+    business decisions. ### Industry Leader for Application Retirement and Archive
+    Migration #### Faster'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.archive360.com/enterprise-vault-data-archiving
+- content_hash: 996e82f6f75bf3ac6a846512f16b3f7337395caeba9561ec3dfa8397c41a5ccf
+  evidence_id: ev-996e82f6f75bf3ac
+  excerpt: 'Query: Archive360 data management platform alternatives OR competitors
+    OR "vs" OR "compared to"
+
+    1. https://platform.tracxn.com/a/d/company/535d0f23e4b05065349bcede/archive360?utm_source=parallel&utm_medium=ai#a:about
+
+    Title: Archive360
+
+    Source: platform.tracxn.com
+
+    Snippet: Short Description: Provider of data migration and data management solutions
+    Detailed Description: Provider of data migration and data management solutions.
+    The platform provides the facility of secure migration of data from on premise
+    and cloud repositories.
+
+    2. https://www.gartner.com/reviews/product/archive-360-1/alternatives
+
+    Title: Top Archive360 Alternatives & Competitors 2026 | Gartner Peer Insights
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top Archive360 alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top Archive360 Alternatives & Competitors 2026 | Gartner Peer Insights
+    image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Google Vault](https://www.gartner.com/reviews/product/google-vault) > 2.
+    [Arctera Enterprise Vault](https://www.gartner.com/reviews/product/arctera-enterprise-vault)
+    > 3. [Cloud Archive](https://www.gartner.com/reviews/product/cloud-archive) >
+    6. [Smarsh Enterprise Platform](https://www.gartner.com/reviews/product/smarsh-enterprise-platform)
+    In addition, conducting search, discovery and retrieval of communication data
+    is always easy and this comes in handy when '
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.google.com/search?q=Archive360+data+management+platform+alternatives+OR+competitors+OR+%22vs%22+OR+%22compared+to%22
+- content_hash: df8c54fb82932d97c6563c3c1be974f94174ad06b4592ac4b391ae5490ed0aa9
+  evidence_id: ev-df8c54fb82932d97
+  excerpt: 'Title: Archive360
+
+    Source: platform.tracxn.com
+
+    Snippet: Recent News: Archive360, EVT partner to automate retention compliance
+    https://securitybrief.asia/story/archive360-evt-partner-to-automate-retention-compliance
+    2026-03 Archive360 Transforms From Archive Tool To AI Entry Point: CEO https://www.crn.
+    ... com/news-releases/archive360-and-neev-data-partnership-delivers-breakthrough-in-governing-operational-and-legacy-erp-system-historic-data-provisioning-it-for-ai-and-analytics-302527263.html
+    2025-08 Name: Archive360 Website Url: https://www.archive360.com/ Founded Year:
+    2011'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://platform.tracxn.com/a/d/company/535d0f23e4b05065349bcede/archive360?utm_source=parallel&utm_medium=ai#a:about
+- content_hash: 710b362e42d473ccdc0a6e51d1f712188c6cbbc598dce3d712b946456ba78b2e
+  evidence_id: ev-710b362e42d473cc
+  excerpt: 'Title: Top Archive360 Alternatives & Competitors 2026
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top Archive360 alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top Archive360 Alternatives & Competitors 2026 | Gartner Peer Insights
+    image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Google Vault](https://www.gartner.com/reviews/product/google-vault) > 2.
+    [Arctera Enterprise Vault](https://www.gartner.com/reviews/product/arctera-enterprise-vault)
+    > 3. [Cloud Archive](https://www.gartner.com/reviews/product/cloud-archive) >
+    5. [Barracuda Message Archiver](https://www.gartner.com/reviews/product/barracuda-message-archiver)
+    By [Barracuda](https://www.gartner.com/reviews/market/digital-communications-governance-and-archiving-solutions/vendor/barracuda)
+    4.4 ... title: Top Archive360 Alternatives & Competitors 2026 | Gartner Peer Insights
+    image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > Top Alternatives to Archive360 * [Google Vault](https://www.gartner.com/reviews/product/google-vault)
+    * [Arctera Enterprise Vault](https://www.gartner.com/reviews/product/arctera-enterprise-vault)
+    * [Cloud Archive](https://www.gartner.com/reviews/product/cloud-archive) ... title:
+    Top Archive360 Alternatives & Competitors 2026 | Gartner Peer Insights image:
+    https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    >'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.gartner.com/reviews/product/archive-360-1/alternatives
+- content_hash: 63f97aaac49b529d558565ad91f979a18d3fa302a777663a1990062a819f08a5
+  evidence_id: ev-63f97aaac49b529d
+  excerpt: 'Title: Top 10 Archive360 Alternatives & Competitors in 2026
+
+    Source: g2.com
+
+    Snippet: # Top 10 Archive360 Alternatives & Competitors The best overall alternative
+    to Archive360 is [NinjaOne](https://www.g2.com/products/ninjaone/reviews) , rated
+    ~4.7 stars on G2 from 4365+ reviewers. It is frequently praised for remote access
+    and automation. Other well-known alternatives to Archive360 are: * [Yext](https://www.g2.com/products/yext/reviews)
+    – known for helpful and centralized management (G2 star rating ~4.4) * [Paubox](https://www.g2.com/products/paubox/reviews)
+    – highly rated for security and customer support (G2 star rating ~4.9) * [Gryphon
+    ONE](https://www.g2.com/products/gryphon-one/reviews) – offers helpful and user
+    interface (G2 star rating ~4.2) * [CyberSentriq](https://www.g2.com/products/cybersentriq/reviews)
+    – best suited for teams that need backup solutions and backup ease (G2 star rating
+    ~4.6) ... ## Top 10 Alternatives to Archive360 Recently Reviewed By G2 Community
+    Categories in common with Archive360: Email Archiving Try for free [Product Avatar
+    Image](https://www.g2.com/products/yext/reviews) [Yext](https://www.g2.com/products/yext/reviews)
+    By [Yext](https://www.g2.com/sellers/yext) ... CyberSentriq Sponsored CyberSentriq
+    4.6/5 (391) Product Description CyberSentriq is an integrated cybersecurity and
+    data protection platform, leveraging solutions from two best-of breed vendors
+    in the MSP space. ... Categories in common with Archive360: Digital Communications
+    Govern'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.g2.com/products/archive360/competitors/alternatives
+- content_hash: c920e48d1839dbe3366d9023b59e1551e51bc8c5682c7861cdfd691926b5c538
+  evidence_id: ev-c920e48d1839dbe3
+  excerpt: 'Title: 10 Best Archive360 Competitors & Alternatives 2026
+
+    Source: archondatastore.com
+
+    Snippet: # 10 Best Archive360 Competitors and Alternatives for Data Archiving
+    ## The Right Alternative Starts With the Right Question | **Financial services
+    FINRA/SEC compliance** | **Archon, Proofpoint, Smarsh** | Archon fits when regulated
+    retention and supervision must extend beyond communications into broader enterprise
+    records. | **Jatheon** | | **Cloud-native email security + archiving bundle**
+    | **Mimecast** | Fits organizations looking to combine email security, continuity,
+    and archiving in a single cloud-first environment. | **Proofpoint** | | **Google
+    Workspace-only environment** | **Google Vault** | A practical fit when users and
+    data live primarily inside Gmail, Drive, Chat, and other Google Workspace services.
+    | **Jatheon** | | **SMB / mid-market cost-conscious archiving** | **Jatheon, Barracuda**
+    | Both fit teams looking for straightforward archiving with a simpler scope and
+    lower complexity. | **Mimecast** | | **Unified data protection + archiving** |
+    **Archon** | Fits when long-term retention, compliance, and access need to align
+    with broader enterprise data governance across structured and unstructured systems.
+    | **Commvault** |'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: http://archondatastore.com/blog/archive360-competitors-alternatives
+- content_hash: edc8c263db24573e208f6b7f33956f9e7831229e6a24ad34b3f3bb12a68a9339
+  evidence_id: ev-edc8c263db24573e
+  excerpt: 'Title: Archive360’s Competitors, Revenue, Number of Employees, Funding,
+    Acquisitions & News - Owler Company Profile
+
+    Source: owler.com
+
+    Snippet: # Archive360 is a New York-based information management platform that
+    offers solutions such as E-mail archive migration and regulatory compliance for
+    government agencies... Read more Overview Competitors Acquisitions Funding News
+    & Insights Archive360 Co-Founder & CEO: Robert DeSteno Co-Founder & CEO Robert
+    DeSteno ... ## News ### Archive360 Competitors 1 [Mimecast](https://www.owler.com/company/mimecast)
+    Follow 2 [Quadrotech](https://www.owler.com/company/quadrotech-it) Follow 3 [Transvault](https://www.owler.com/company/transvault)
+    Follow 4 [Simply Migrate](https://www.owler.com/company/simplymigrate) Follow
+    5 [Insentra](https://www.owler.com/company/insentra) Follow 6 [Akaibu](https://www.owler.com/company/akaibu)
+    Follow 7 [Datadobi](https://www.owler.com/company/datadobi) Follow 8 [ENow](https://www.owler.com/company/enowsoftware)
+    Follow 9 [CoreView](https://www.owler.com/company/coreview) Follow 10 [SkyKick](https://www.owler.com/company/skykick)
+    Follow [Unlock 11 + competitors](https://www.owler.com/checkout/owlerpro?utm_source=product&utm_medium=cp&utm_campaign=web&utm_content=upsell-banner&utm_term=unlock-competitors-cp)'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.owler.com/company/archive360
+- content_hash: 288848b46ac6f51b39936137c93a3bdbb30431a267c0860858a5d9996335519f
+  evidence_id: ev-288848b46ac6f51b
+  excerpt: 'Title: List of Best Archive360 Alternatives & Competitors 2026
+
+    Source: trustradius.com
+
+    Snippet: # Archive360 Competitors and Alternatives ## Most Commonly Compared to
+    Archive360 * Informatica Data Archive (legacy) ### Informatica Data Archive (legacy)
+    Compare * Arctera Enterprise Vault ### Arctera Enterprise Vault Compare * OpenText
+    Information Archiving ### OpenText Information Archiving Compare * [Mimecast Cloud
+    Archive ### Mimecast Cloud Archive Compare [Get A Quote](https://www.mimecast.com/get-a-quote?utm_campaign=TrustRadius%20Review&utm_source=trustradius.com&utm_medium=click)](/compare-products/archive360-vs-mimecast-cloud-archive)
+    * Google Vault ### Google Vault Compare ... ## Best Archive360 Alternatives for
+    Small Businesses ### Cove Data Protection Score 9.6 out of 10 Cove Data Protection
+    (formerly N-Able Backup) is designed to cover servers, datacenters, applications,
+    and workstations, and is provided to ensure business continuity and at-a-glance
+    assessment and fast issue resolution via customizable dashboard. ... ### AppRiver
+    from OpenText Score 5.2 out of 10 AppRiver from OpenText (formerly from Zix from
+    2019, which was acquired by OpenText), is a hosted messaging gateway and security
+    platform featuring anti-spam and email encryption / data loss capability. ...
+    ## Best Archive360 Alternatives for Enterprises ### Arctera Enterprise Vault Score
+    5.0 out of 10 Arctera Enterprise Vault is a file archiving option.'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.trustradius.com/products/archive360/competitors
+- content_hash: 5b955878aa3762a42e1756de1d8ba18d9c316035cf6f2c2cdda0bc7b63c2851d
+  evidence_id: ev-5b955878aa3762a4
+  excerpt: 'Title: Migrate Enterprise Vault Data Securely with Archive360.
+
+    Source: archive360.com
+
+    Snippet: # **Discover Your Arctera Enterprise Vault Alternative with Archive360
+    ®** Your Trusted Partner for Seamless EV Migration and Secure Data Management.
+    53 ## Schedule a Time to Discuss Your Secure Arctera EV Migration With Archive360
+    ® Explore How Archive360 ® Provides the Best Alternative to Enterprise Vault,
+    Ensuring Secure Data Migration and Management for your Enterprise Organization.
+    ... ## Switch from Enterprise Vault with Experts You Can Trust ### Comprehensive
+    Migration Support: #### Competitive Advantages: **Cost Efficiency:** Archive360
+    not only minimizes your upfront investment but also offers a predictable cost
+    model. By transitioning to a more cost-efficient cloud-based archive, your organization
+    can achieve significant savings and a better allocation of resources. ... ## Data
+    Archiving Archive360 has helped more than 2000 organizations worldwide migrate
+    over 150 PB of data to the cloud and manage it there to meet their compliance
+    obligations, reduce IT costs, improve AI models, and make faster, better informed
+    business decisions. ... ### Industry Leader for Application Retirement and Archive
+    Migration #### Lower Costs Eliminate your EV licensing, maintenance, and support
+    costs. For Microsoft 365 customers, you can avoid costly legal and eDiscovery
+    issues associated with storing inactive user data in a shared mailbox and save
+    M365 licensing costs by archiving inactive use'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.archive360.com/enterprise-vault-data-archiving
+- content_hash: cd1272436732df78db39554dc68c6e129e417ca8a271b3cb99baac8255a2c306
+  evidence_id: ev-cd1272436732df78
+  excerpt: 'Title: Archive360 Unified Data Governance for Azure
+
+    Source: marketplace.microsoft.com
+
+    Snippet: https://store-images.s-microsoft.com/image/apps.12262.dec9225e-ab11-4c07-a67a-1e7fd261fcf0.9fda1d5b-543c-4071-bbdd-459fffefa739.e68f8191-ed99-416f-ae33-585651019a57
+    # Archive360 Unified Data Governance for Azure ## by Archive360, LLC [](http://aka.ms/appsource/azurebenefit
+    "Azure benefit eligible") __ 4.5 (6ratings) Get it now [Overview](https://marketplace.microsoft.com/en-us/product/archive360.archive360-archive2azure?tab=Overview)
+    [Plans](https://marketplace.microsoft.com/en-us/product/archive360.archive360-archive2azure?tab=PlansAndPrice)
+    [Ratings + reviews](https://marketplace.microsoft.com/en-us/product/archive360.archive360-archive2azure?tab=Reviews)
+    [Details + support](https://marketplace.microsoft.com/en-us/product/archive360.archive360-archive2azure?tab=DetailsAndSupport)
+    ... ## Other apps from Archive360, LLC [FastCollect from Archive360 Archive360,
+    LLC +1 Compliant, secure, fast migration and onboarding of your data estates to
+    Azure for 80+ data types NaN out of 1](https://marketplace.microsoft.com/en-us/product/archive360.43004c92-f54a-4029-9ae9-2aa99ebf913c?tab=Overview)'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://marketplace.microsoft.com/en-us/product/office/archive360.archive360-archive2azure?tab=overview
+- content_hash: 8e695870f12e38451db52a80364fcca3438bd314aff98b9e4e7d76f2354a5c2a
+  evidence_id: ev-8e695870f12e3845
+  excerpt: 'Detected date: 2026-03-20
+
+    Title: Archive360 - 2026 Company Profile, Funding & Competitors
+
+    Date: 2026-03-20
+
+    Source: tracxn.com
+
+    Snippet: # [Archive360 - Company Profile](https://www.archive360.com/) ## Archive360''s
+    Competitors and alternates Top competitors of Archive360 include Cloud.com , LeanIX
+    and HYCU .Here is the list of Top 10 competitors of Archive360, ranked by Tracxn
+    score: | Rank | Company Details | Short Description | Total Funding | Investors
+    | Tracxn Score | | 1st | Logo for Cloud.com | | | | | Cloud.com'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://tracxn.com/d/companies/archive360/__Ycsv5LhzN_Seh0LbwLtlSvtLhv8KJFxhTn_7neDGUKM
+- content_hash: d24feea0f1028892d625af37293c33dfe5c5ea5156decb254f8b46a1c5650ed5
+  evidence_id: ev-d24feea0f1028892
+  excerpt: 'Query: Archive360 alternatives
+
+    1. https://platform.tracxn.com/a/d/company/535d0f23e4b05065349bcede/archive360?utm_source=parallel&utm_medium=ai#a:about
+
+    Title: Archive360
+
+    Source: platform.tracxn.com
+
+    Snippet: Recent News: Archive360, EVT partner to automate retention compliance
+    https://securitybrief.asia/story/archive360-evt-partner-to-automate-retention-compliance
+    2026-03 Archive360 Transforms From Archive Tool To AI Entry Point: CEO https://www.crn.
+    ... com/news-releases/archive360-and-neev-data-partnership-delivers-breakthrough-in-governing-operational-and-legacy-erp-system-historic-data-provisioning-it-for-ai-and-analytics-302527263.html
+    2025-08 Name: Archive360 Website Url: https://www.archive360.com/ Founded Year:
+    2011
+
+    2. https://www.gartner.com/reviews/product/archive-360-1/alternatives
+
+    Title: Top Archive360 Alternatives & Competitors 2026
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top Archive360 alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top Archive360 Alternatives & Competitors 2026 | Gartner Peer Insights
+    image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Google Vault](https://www.gartner.com/reviews/product/google-vault) > 2.
+    [Arctera Enterprise Vault](https://www.gartner.com/reviews/product/arctera-enterprise-vault)
+    > 3. [Cloud Archive](https://www.gartner.com/reviews/product/cloud-archive) >
+    5. [Barracuda Message Archiver](https://www.'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.google.com/search?q=Archive360+alternatives
+- content_hash: 59e2f17562501bcff501aaf35a607709ace893791abe32f0031a7038a6e71b82
+  evidence_id: ev-59e2f17562501bcf
+  excerpt: 'Title: Archive360
+
+    Source: platform.tracxn.com
+
+    Snippet: com/news-releases/archive360-and-neev-data-partnership-delivers-breakthrough-in-governing-operational-and-legacy-erp-system-historic-data-provisioning-it-for-ai-and-analytics-302527263.html
+    2025-08 Name: Archive360 Website Url: https://www.archive360.com/ Founded Year:
+    2011 ... Location Country: United States Location State: New York Location City:
+    New York City All Locations: [{"country":"United States","city":"New York City","state":"New
+    York"}] Countries Count: 1 Primary Sector: Enterprise Infrastructure Primary Subsector:
+    Cloud Infrastructure'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://platform.tracxn.com/a/d/company/535d0f23e4b05065349bcede/archive360?utm_source=parallel&utm_medium=ai#a:about
+- content_hash: f20b41c2f53e7280616e69b79a6a3f22b24794d6156aec0577b21ea648c77031
+  evidence_id: ev-f20b41c2f53e7280
+  excerpt: 'Title: Archive360 - 2026 Company Profile, Team, Funding & Competitors
+    - Tracxn
+
+    Source: tracxn.com
+
+    Snippet: # [Archive360 - Company Profile](https://www.archive360.com/) ## FAQs
+    about Archive360 Archive360 ranks 8th amongst 100 active competitors , of which
+    9 are funded. It stands 10th in terms of total funding among its competitors.
+    The most recent competitors to raise funding was Komprise , which secured $37M
+    in Jan, 2023. What does Archive360 do?'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: http://tracxn.com/d/companies/archive360/__Ycsv5LhzN_Seh0LbwLtlSvtLhv8KJFxhTn_7neDGUKM
+- content_hash: c5bee8b8612fa2b807393d53ff6e24d9ee575feda4accc7b0b55b0a9a67c1f5f
+  evidence_id: ev-c5bee8b8612fa2b8
+  excerpt: 'Title: Top Archive360 Alternatives & Competitors 2026 | Gartner Peer Insights
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top Archive360 alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top Archive360 Alternatives & Competitors 2026 | Gartner Peer Insights
+    image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Google Vault](https://www.gartner.com/reviews/product/google-vault) [Compare
+    with Archive360](https://www.gartner.com/reviews/market/digital-communications-governance-and-archiving-solutions/compare/product/google-vault-vs-archive-360-1)
+    Add to Compare ... title: Top Archive360 Alternatives & Competitors 2026 | Gartner
+    Peer Insights image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Google Vault](https://www.gartner.com/reviews/product/google-vault) > 2.
+    [Arctera Enterprise Vault](https://www.gartner.com/reviews/product/arctera-enterprise-vault)
+    [Compare with Archive360](https://www.gartner.com/reviews/market/digital-communications-governance-and-archiving-solutions/compare/product/arctera-enterprise-vault-vs-archive-360-1)
+    Add to Compare ... title: Top Archive360 Alternatives & Competitors 2026 | Gartner
+    Peer Insights image: https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [Google Vault](https://www.gartner.com/reviews/product/google-vault) > 2.
+    [Arctera Enterprise Vault]'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.gartner.com/reviews/product/archive-360-1/alternatives
+- content_hash: 85e9f581faef7ccb0d1803745cda13d9162ef1137cd1202dbcaa32bfd6734579
+  evidence_id: ev-85e9f581faef7ccb
+  excerpt: 'Detected date: 2026-08-18
+
+    Title: 10 Best Archive360 Competitors and Alternatives for Data Archiving
+
+    Date: 2026-08-18
+
+    Source: archondatastore.com
+
+    Snippet: # 10 Best Archive360 Competitors and Alternatives for Data Archiving
+    Archive 360 Alternatives * Abubacker Malik SH [Abubacker Malik SH](https://www.archondatastore.com/author/maliksh/)
+    * • * April 7, 2026 **Key Points** * Many Archive360 alternatives are considered
+    after migration is complete, when gaps in governance, retention, and long-term
+    access become harder to ignore. * Security, immutability, legal hold, and auditability
+    often become the key factors in choosing an archive platform. ... ## The Right
+    Alternative Starts With the Right Question ### Final Take The vendors on this
+    list are not interchangeable. Each one was built for a specific scope of problem,
+    and that distinction is not visible in a feature comparison or a standard demo.
+    ... ## Frequently Asked Questions ### [How to Get Defensible Deletion Right in
+    Enterprise Data Archives](https://www.archondatastore.com/blog/defensible-deletion/)
+    #### [Abubacker Malik SH](https://www.archondatastore.com/author/maliksh/) * Archive360
+    Competitors and Alternatives to Evaluate 1) Archon 2) Google Vault 3) Arctera
+    Enterprise Vault 4) Mimecast 5) Proofpoint 6) Barracuda 7) Smarsh 8) Jatheon 9)
+    Commvault 10) OpenText (Retain + InfoArchive) * The Right Alternative Starts With
+    the Right Question'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.archondatastore.com/blog/archive360-competitors-alternatives/
+- content_hash: 9084f70c555ae4bcd8fcd6a224ff6a55293b50647f4c6044cef6c31cd78e2bda
+  evidence_id: ev-9084f70c555ae4bc
+  excerpt: 'Title: Archive360’s Competitors, Revenue, Number of Employees, Funding,
+    Acquisitions & News - Owler Company Profile
+
+    Source: owler.com
+
+    Snippet: Archive360''s primary competitors are Mimecast, Quadrotech, Transvault
+    and 11 more. Insentra competitors | Akaibu competitors | Datadobi competitors
+    | ENow'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.owler.com/company/archive360
+- content_hash: 09ec066ff06e4bbacb46bfcf8b5600dbdafd121e2a8ef2ee0ce7cd866cd94c81
+  evidence_id: ev-09ec066ff06e4bba
+  excerpt: 'Title: Archive360
+
+    Source: sapinsider.org
+
+    Snippet: A modern cloud archiving platform that seamlessly integrates with your
+    data ecosystem—streamlining onboarding, classification, retention, and deletion.'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://sapinsider.org/vendor-showcase/archive360/
+- content_hash: 5cd8b62087798644b267c90f37d7f17eaba46b6e105fcf9607c162260eae5c00
+  evidence_id: ev-5cd8b62087798644
+  excerpt: 'Title: Archive360 - Crunchbase Company Profile & Funding
+
+    Source: crunchbase.com
+
+    Snippet: Resources Advanced Search Start Free Trial Talk With Sales Pricing Archive360
+    Growth Score 83 CB Rank 133700 Heat Score 66 Save Actions Archive360 is the industry
+    standard for providing trouble-free, scalable, and defensible solutions for archive
+    migrations. Founded obfuscated ... # Company Performance Metrics Archive360 is
+    the industry standard for providing trouble-free, scalable, and defensible solutions
+    for archive migrations. Founded obfuscated ... * Marian Breeze Logo Marian Breeze:
+    Director of Business Development, Americas * Photo of Tibi Popp Tibi Popp: Co-Founder
+    & Chief Technology Officer ## Details Legal Name Archive360, LLC Operating Status
+    Active Company Type For Profit Founders Robert DeSteno , Tibi Popp About the Company
+    Archive360, Inc. provides next generation email archive migration software solutions.
+    Archive360’s main solution offering is the Archive2Anywhere Product Suite, a data
+    migration platform that integrates with numerous data sources and target repositories
+    for fast and defensible archive migrations. ... ## Growth Insight * **Full access
+    to financial & funding data** on unlimited profiles * **Export up to 2k results/month**
+    for analysis * **Track market signals** on competitors, products, and R&D * **Preview
+    private company insights and predictions** Try Pro Free Financials ... ## Company
+    Funding Unlock best-in-class Market Intelligence with Crunchbase Pro * E'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.crunchbase.com/organization/archive360
+- content_hash: 99f07852b170350f6249e51e8e8c0da4f5ca67c9f3946b6e3a32b557ad79af99
+  evidence_id: ev-99f07852b170350f
+  excerpt: 'Title: Top Cloud Archive Competitors & Alternatives 2026 | Gartner Peer
+    Insights
+
+    Source: gartner.com
+
+    Snippet: # Cloud Archive Alternatives ## Competitors and Alternatives to Cloud
+    Archive ### Top Cloud Archive Alternatives (All Time) How alternatives are selected
+    __ * Google Vault * Proofpoint Archive * Archive360 * Barracuda Message Archiver
+    * Smarsh Enterprise Platform * Jatheon Archiving Suite * Global Relay Archive
+    * Commvault Archiving (Legacy) ... ### Top alternatives ranked by recent software
+    buyers #### Proofpoint This is a dependable solution for compliance and long term
+    email retention. Messages are stored securely and can be retrieved when needed.
+    Read Full Review All ratings, reviews and insights for Proofpoint Archive Compare
+    Proofpoint Archive to Cloud Archive Archive360 4.5 66 Ratings #### Archive360
+    The customer service is excellent. The vendor''s business hours do not always
+    end at 9 PM. The vendor understanding the urgency that often times comes with
+    our requests. Read Full Review All ratings, reviews and insights for Archive360
+    Compare Archive360 to Cloud Archive 4.6 65 Ratings'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.gartner.com/reviews/market/digital-communications-governance-and-archiving-solutions/vendor/mimecast/product/cloud-archive/alternatives
+- content_hash: 7a4e564c53e6e1ddec5e7d8a0dcd7ad5d91c43cc0d0b04c76a52feb538f2ffbb
+  evidence_id: ev-7a4e564c53e6e1dd
+  excerpt: 'Title: Archive360 2025 Company Profile: Valuation, Investors, Acquisition
+    | PitchBook
+
+    Source: pitchbook.com
+
+    Snippet: FAQs When was Archive360 founded? Archive360 was founded in 2011. * Where
+    is Archive360 headquartered? Archive360 is headquartered in New York, NY. * What
+    is the size of Archive360? Archive360 has 74 total employees. * What industry
+    is Archive360 in? Archive360’s primary industry is IT Consulting and Outsourcing.
+    * Is Archive360 a private or public company? Archive360 is a Private company.
+    * What is Archive360’s current revenue? The current revenue for Archive360 is
+    . * Who are Archive360’s competitors? Bluesource, CloudAlly , Box (IT Services)
+    , erwin , and Mimecast are some of the 21 competitors of Archive360. * When was
+    Archive360 acquired? Archive360 was acquired on 30-Jun-2023. Data Transparency
+    Corporate Office One Liberty Plaza 165 Broadway New York, NY 10006 United States
+    +1'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://pitchbook.com/profiles/company/123555-52
+- content_hash: 960a0b8a1750dcd498a57ae9123f72f3c7de11f1f1b67e184e9dc8f8a539a2e6
+  evidence_id: ev-960a0b8a1750dcd4
+  excerpt: 'Title: Companies Using Archive360, Market Share, Customers and Competitors
+
+    Source: discovery.hgdata.com
+
+    Snippet: **NOTE** : This data is refreshed every 3 months. For faster refreshes
+    talk to our [Sales Team](https://hginsights.com/hgi/lp/discovery-demo-request?utm_source=sumo&utm_medium=popup&utm_campaign=demo-request-home&utm_content=see-demo)
+    about the HG Platform! [CONTACT US](https://hginsights.com/contact-us-for-hg-discovery/)
+    # Archive360 Archive360 is an information management and archiving solution designed
+    for IT administrators. It enables users to manage compliance with privacy laws,
+    analyze and automate records classification, accomplish filtering and legal hold
+    capabilities, manage archives, legacy content experience database and index corruption,
+    scan, tag and quarantine data, migrate ... show more COMPANIES WE TRACK USING
+    Archive360 81 [Create a Target Segment](https://hginsights.com/hgi/lp/discovery-demo-request?utm_source=sumo&utm_medium=popup&utm_campaign=demo-request-home&utm_content=see-demo)
+    ## Products Related To Archive360 Global Relay Archive SAP Data Services Inmagic
+    IBM InfoSphere Platform Ericsson Adaptive Inventory ## Companies Currently Using
+    Archive360 Download CSV Sample (25 companies) | Company Name | Website | HQ Address
+    | City | State | Zip | Country | Top Level Industry | Sub Level Industry | Employees
+    | Revenue (USD) | Phone | Last Verified | | RR Donnelley | [rrd.com](http://rrd.com)
+    | 35 W. Wacker, 36th Flr | Chicago | IL | 60601 | US | B'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://discovery.hgdata.com/product/archive360
+- content_hash: b0d92794b2c1cdef522514fe0c560a0dc426a5e7bd6ff57142ce1d753859e3e4
+  evidence_id: ev-b0d92794b2c1cdef
+  excerpt: 'Query: Archive360 vs
+
+    1. https://platform.tracxn.com/a/d/company/535d0f23e4b05065349bcede/archive360?utm_source=parallel&utm_medium=ai#a:about
+
+    Title: Archive360
+
+    Source: platform.tracxn.com
+
+    Snippet: com/news-releases/archive360-and-neev-data-partnership-delivers-breakthrough-in-governing-operational-and-legacy-erp-system-historic-data-provisioning-it-for-ai-and-analytics-302527263.html
+    2025-08 Name: Archive360 Website Url: https://www.archive360.com/ Founded Year:
+    2011 ... Location Country: United States Location State: New York Location City:
+    New York City All Locations: [{"country":"United States","city":"New York City","state":"New
+    York"}] Countries Count: 1 Primary Sector: Enterprise Infrastructure Primary Subsector:
+    Cloud Infrastructure
+
+    2. http://tracxn.com/d/companies/archive360/__Ycsv5LhzN_Seh0LbwLtlSvtLhv8KJFxhTn_7neDGUKM
+
+    Title: Archive360 - 2026 Company Profile, Team, Funding & Competitors - Tracxn
+
+    Source: tracxn.com
+
+    Snippet: # [Archive360 - Company Profile](https://www.archive360.com/) ## FAQs
+    about Archive360 Archive360 ranks 8th amongst 100 active competitors , of which
+    9 are funded. It stands 10th in terms of total funding among its competitors.
+    The most recent competitors to raise funding was Komprise , which secured $37M
+    in Jan, 2023. What does Archive360 do?
+
+    3. https://www.gartner.com/reviews/product/archive-360-1/alternatives
+
+    Title: Top Archive360 Alternatives & Competitors 2026 | Gartner Peer Insights
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more abou'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.google.com/search?q=Archive360+vs
+- content_hash: 6780bf81c92c924f22a06b2d77f180e69399e098b8180d6c8c15d39269629ac3
+  evidence_id: ev-6780bf81c92c924f
+  excerpt: 'Title: Tracxn Login
+
+    Your browser was unable to load all of Tracxn resources. They may have been blocked
+    by your firewall, proxy or browser configuration. Press **Ctrl+F5** or **Ctrl+Shift+R**
+    to have your browser try again and if that doesn''t work, [**click here to retry**](/)
+    or mail us at [**hi@tracxn.com**](mailto:hi@tracxn.com?subject=Platform%20resources%20not%20loading)
+
+
+    __ Go Back
+
+
+    [](/?redirect=false)
+
+
+    #### Login to Access Tracxn
+
+
+    Business Email Address
+
+
+    Next
+
+
+    OR
+
+
+    Login using your business email address
+
+
+    Enter your business email address
+
+
+    eg. yourname@yourbusiness.com
+
+
+    We do not accept personal email addresses
+
+
+    eg. yourname@gmail.com
+
+
+    Log in with GOOGLE
+
+
+    MS-SymbolLockup
+
+
+    Log in with MICROSOFT
+
+
+    Don''t have an account? [Sign up]()'
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://tracxn.com/login?redirecturl=%2Fa%2Fd%2Fcompany%2F535d0f23e4b05065349bcede%2Farchive360%3Futm_source%3Dparallel%26utm_medium%3Dai&utm_source=parallel&utm_medium=ai#a:about
+- content_hash: de51373ea57d5593c850bbcd471ec29042ec7de252bdea83a791ccc8c5b66618
+  evidence_id: ev-de51373ea57d5593
+  excerpt: "Title: 10 Best Archive360 Competitors &amp; Alternatives 2026\n[Platform\
+    \ 3 Solutions is now Archon](https://www.archondatastore.com/blog/platform-3-solutions-rebrands-as-archon/)\
+    \ | [Featured in the Gartner® Hype Cycle™](https://www.archondatastore.com/#Gartner)\
+    \   \n[]()\n\n[ ](https://www.archondatastore.com/)\n\n  * Products\n\nArchon\
+    \ Enterprise Archiving Suite\n\nOne Platform to Archive, Analyze, and Govern Enterprise\
+    \ Data\n\nProducts\n\n[ Archon Data Store™ Archive enterprise data for fast, compliant\
+    \ access ](/products/archon-data-store/)\n\n[ Archon ETL™ Ingest and organize\
+    \ data across legacy systems ](https://www.archondatastore.com/products/etl/)\n\
+    \n[ Archon Analyzer™ Analyze data before archive to meet audit demands ](https://www.archondatastore.com/products/analyzer/)\n\
+    \n[ Patient3Sixty™ Unify patient records from multiple systems ](https://www.archondatastore.com/products/patient3sixty/)\n\
+    \nProfessional Solutions\n\n[ Application Decommissioning  Shut down legacy systems\
+    \ without losing access ](/solutions/application-decommissioning/)\n\n[ SAP Archiving\
+    \ Solutions Archive SAP data to stay audit-ready ](https://www.archondatastore.com/solutions/archon-archivelink/)\n\
+    \n[ Data Archival & Retention  Store and retrieve historical data securely and\
+    \ instantly  ](/solutions/data-archival-and-retention/)\n\n[ Data Migration Move\
+    \ data across platforms with zero downtime ](/solutions/data-migration/)\n\n[\
+    \ Download Now ](https://www.archondatastore.com/#ebook)\n\n  * Solutions\n\n\
+    Solutions\n\nSmart archiving and deco"
+  retrieved_at: '2026-08-19T11:53:16.316469-04:00'
+  url: https://www.archondatastore.com/blog/archive360-competitors-alternatives/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

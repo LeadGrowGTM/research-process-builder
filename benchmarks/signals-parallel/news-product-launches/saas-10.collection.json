@@ -1,0 +1,147 @@
+{
+  "collected_at": "2026-08-19T11:51:24.307870-04:00",
+  "company_id": "saas-10",
+  "enrichment_id": "news-product-launches",
+  "entries": [
+    {
+      "category": "construction finance platform",
+      "company_name": "Built",
+      "domain": "getbuilt.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "news",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 7,
+      "status": "ok",
+      "step": "search",
+      "target": "getbuilt.com news",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 7,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Built \"press release\" OR \"announces\" OR \"newsroom\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "dropped_off_subject": 1,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Built launches OR \"new feature\" OR \"introducing\" OR \"now available\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://getbuilt.com/blog/banks-ai-construction-loan-draw-review/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://getbuilt.com/news",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.linkedin.com/company/built-technologies-inc-",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.businesswire.com/news/home/20260817922844/en/Krak-Launches-Multi-Asset-Debit-Card-for-U.S.-Customers-Built-to-Reward-Spending-as-Americans-Look-to-Escape-Debt-Cycle: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.businesswire.com/news/home/20260817922844/en/Krak-Launches-Multi-Asset-Debit-Card-for-U.S.-Customers-Built-to-Reward-Spending-as-Americans-Look-to-Escape-Debt-Cycle"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://panelbuiltinc.suite.accessnewswire.com/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.accessnewswire.com/newsroom/en/industrial-and-manufacturing/panel-built-inc.-announces-facility-expansions-to-support-strategic-gr-1164829",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://getbuilt.com/blog",
+      "waterfall_level": 1
+    },
+    {
+      "status": "already_scraped",
+      "step": "first_party",
+      "target": "https://getbuilt.com/news"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://getbuilt.com/newsroom: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://getbuilt.com/newsroom"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://getbuilt.com/press: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://getbuilt.com/press"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://getbuilt.com/changelog: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://getbuilt.com/changelog"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://getbuilt.com/product-updates: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://getbuilt.com/product-updates"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://getbuilt.com/whats-new",
+      "waterfall_level": 1
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 29,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.015",
+  "signal_evidence": 32
+}

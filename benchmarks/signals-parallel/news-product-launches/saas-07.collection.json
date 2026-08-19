@@ -1,0 +1,147 @@
+{
+  "collected_at": "2026-08-19T11:49:42.737802-04:00",
+  "company_id": "saas-07",
+  "enrichment_id": "news-product-launches",
+  "entries": [
+    {
+      "category": "performance management",
+      "company_name": "Betterworks",
+      "domain": "betterworks.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "news",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "betterworks.com news",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 1,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Betterworks \"press release\" OR \"announces\" OR \"newsroom\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "Betterworks launches OR \"new feature\" OR \"introducing\" OR \"now available\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "http://betterworks.com/press",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.betterworks.com/betterworks-acquires-rypple-to-advance-manager-effectiveness-and-ai-native-performance-management",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.prnewswire.com/news-releases/betterworks-announces-multiple-new-product-features-that-bring-continuous-performance-management-into-the-flow-of-work-300938624.html",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.businesswire.com/news/home/20260506230172/en/Betterworks-Unveils-AI-Powered-Talent-Intelligence-to-Turn-Performance-Into-a-Business-Execution-Engine: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.businesswire.com/news/home/20260506230172/en/Betterworks-Unveils-AI-Powered-Talent-Intelligence-to-Turn-Performance-Into-a-Business-Execution-Engine"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.businesswire.com/news/home/20260602407140/en/Betterworks-Acquires-Rypple-to-Advance-Manager-Effectiveness-and-AI-Native-Performance-Management: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.businesswire.com/news/home/20260602407140/en/Betterworks-Acquires-Rypple-to-Advance-Manager-Effectiveness-and-AI-Native-Performance-Management"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.betterworks.com/unleash-2025",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://betterworks.com/blog",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://betterworks.com/news: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://betterworks.com/news"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://betterworks.com/newsroom: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://betterworks.com/newsroom"
+    },
+    {
+      "status": "already_scraped",
+      "step": "first_party",
+      "target": "https://betterworks.com/press"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://betterworks.com/changelog: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://betterworks.com/changelog"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://betterworks.com/product-updates: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://betterworks.com/product-updates"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://betterworks.com/whats-new: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://betterworks.com/whats-new"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 36,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.015",
+  "signal_evidence": 39
+}

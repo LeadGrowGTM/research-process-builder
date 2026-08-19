@@ -1,0 +1,942 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-3702f99a90ca9db0
+  - ev-772f852d326ccc26
+  - ev-b424ca67d485f53b
+  field: identity
+  value: Bitly
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3702f99a90ca9db0
+  - ev-772f852d326ccc26
+  - ev-b424ca67d485f53b
+  field: description
+  value: Bitly for Digital Marketing | Prove Campaign ROI Skip Navigation NEW Only
+    18% of marketers actually know what’s working. Are you one of them? Read the report
+    → NEU Nur 18 % der Marketer wissen wirklich, was funktioniert. Gehörst du dazu?
+    Zum Bericht → NOUVEAU Seulement 18% des spécialistes en marketing savent ce qui
+    marche vraiment. En faites-vous partie ? Lire le rapport → NOVITÀ Solo il 18%
+    dei marketer sa davvero cosa funziona. E tu? Leggi il report → NOVO Apenas 18%
+    dos profissionais de mark
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3702f99a90ca9db0
+  - ev-772f852d326ccc26
+  - ev-b424ca67d485f53b
+  field: offers
+  value: link management
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3702f99a90ca9db0
+  - ev-772f852d326ccc26
+  - ev-b424ca67d485f53b
+  field: icp
+  value: marketing teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-3702f99a90ca9db0
+  - ev-772f852d326ccc26
+  - ev-b424ca67d485f53b
+  field: personas
+  value: marketing teams
+  visibility: message_safe
+company_id: saas-09
+corrections: []
+evidence:
+- content_hash: 3702f99a90ca9db0fee880ca12dcf4379365607ad7bd2a29f1648acf21840470
+  evidence_id: ev-3702f99a90ca9db0
+  excerpt: Bitly for Digital Marketing | Prove Campaign ROI Skip Navigation NEW Only
+    18% of marketers actually know what’s working. Are you one of them? Read the report
+    → NEU Nur 18 % der Marketer wissen wirklich, was funktioniert. Gehörst du dazu?
+    Zum Bericht → NOUVEAU Seulement 18% des spécialistes en marketing savent ce qui
+    marche vraiment. En faites-vous partie ? Lire le rapport → NOVITÀ Solo il 18%
+    dei marketer sa davvero cosa funziona. E tu? Leggi il report → NOVO Apenas 18%
+    dos profissionais de marketing sabem o que está funcionando. Você é um deles?
+    Ler o relatório → NOVEDAD En publicidad, solo el 18 % de las personas saben qué
+    funciona. ¿Eres una de ellas? Consulta el informe → புதிது 18% மார்க்கெட்டர்கள்
+    மட்டுமே முடிவுகளை அறிவார்கள். நீங்களும் ஒருவரா? படிக்க → ใหม่ มีเพียง 18% ของนักการตลาดที่รู้ว่าอะไรได้ผล
+    คุณเป็นหนึ่งในนั้นไหม? อ่านรายงาน → नया केवल 18% मार्केटर्स जानते हैं कि क्या
+    काम कर रहा है। क्या आप उनमें से एक हैं? रिपोर्ट पढ़ें → Menu Menu Menu Platform
+    Products URL Shortener Customize, share and track links QR Code Generator Dynamic
+    solutions to fit every business need Analytics A central place to track and analyze
+    performance Pages Mobile-friendly, no-code landing pages Features Link-in-bio
+    Curate and track links and content for social media profiles Branded Links Customize
+    links with your brand’s URL Mobile Links Short links for SMS messages UTM Campaigns
+    Track links and QR Codes with UTM parameters Digital Business Cards Grow your
+    network with virtual business cards 2D Barcodes Add a GS1 Digital Link to QR Codes
+    designed for packaging Integrations Bitly Shopify Integration Bitly + Canva Integration
+    See all integrations Discover more API & Documentation Trust Center AI AI Features
+    Bitly Assist AI-powered link and QR Code creation and analysis Bitly LLM Integrations
+    Bring link management to your AI assistant Bitly MCP Connect to AI agents with
+    the Model Context Protocol AI Resources Help Center Developers Trust Center Integrations
+    Marketplace What's New B
+  retrieved_at: '2026-08-12T21:00:57.540708+00:00'
+  url: https://bitly.com/pages/solutions/digital-marketing
+- content_hash: 772f852d326ccc26a6434f2f3372ed6f4328308bcc233aa1a95e8070798c48b3
+  evidence_id: ev-772f852d326ccc26
+  excerpt: Bitly | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now Bitly Software Development New York, NY 48,394 followers
+    Bitly makes it easy to create branded links and QR Codes, track every click and
+    scan, and see what’s working. Follow Discover all 338 employees Report this company
+    About us Bitly is a leading marketing platform for link and QR Code management,
+    enabling businesses of all sizes to see what’s working across online and offline
+    channels. Powering more than 100 billion clicks and scans annually worldwide,
+    Bitly makes it easy to create, share, and track short links and QR Codes, so brands
+    can find what’s resonating and scale their reach. More than 3M customers rely
+    on Bitly to connect with their audiences, from global enterprises to growing businesses,
+    including two-thirds of the Fortune 500. Website http://bitly.com/ External link
+    for Bitly Industry Software Development Company size 201-500 employees Headquarters
+    New York, NY Type Privately Held Specialties internet, URLs, data, links, social
+    publishing, social media, Twitter, Facebook, tracking links, analytics, social
+    media monitoring, social media analytics, analytics, qr codes, link-in-bio, digital
+    marketing, instagram, tik tok, landing pages, SMS, 2d barcodes, and connected
+    packaging Products No more previous content 2D Barcodes for Connected Packaging
+    Bitly, Link Management Tools Bitly Link Management Tools Bitly Analytics, Content
+    Analytics Tools Bitly Analytics Content Analytics Tools Bitly Landing Pages, Link
+    Management Tools Bitly Landing Pages Link Management Tools Bitly QR Codes, QR
+    Code Generator Software Bitly QR Codes QR Code Generator Software Bitly Short
+    Links (URL Shortener), Link Management Tools Bitly Short Links (URL Shortener)
+    Link Management Tools QRCG by Bitly, QR Code Generator Software QRCG by Bitly
+    QR Code Generator Software No more next content Locations Primary 139 5th Ave.
+    New York, NY 10010, US Get directions 1860 Blake St Denver, Col
+  retrieved_at: '2026-08-12T21:00:58.814245+00:00'
+  url: https://www.linkedin.com/company/bitly
+- content_hash: b424ca67d485f53b4f4e6a6341fd3e4956c2c44ffe640413b66e43d9c929b79b
+  evidence_id: ev-b424ca67d485f53b
+  excerpt: 'Spectrum Equity Portfolio: Bitly Portfolio Bitly is an enterprise-grade
+    link management and analytics platform. Peter Krivkovich, CEO of Bitly Sector
+    Marketing & Sales Technology Theme Data Analytics , Horizontal SaaS Status Current
+    Headquarters New York, New York CEO Peter Krivkovich URL bitly.com (Link opens
+    in new window) Investors Parag Khandelwal Cameron Ghorbani Partnership Year 2017
+    Disclosure Statements made herein by current or former employees of Spectrum Equity
+    portfolio companies for which no compensation was paid. Spectrum may have the
+    ability to exercise discretion on portfolio company employee compensation, promotion
+    and other employment decisions and certain portfolio company executives may also
+    be investors in Spectrum Equity funds. Peter Krivkovich, CEO of Bitly Insights
+    and News Portfolio News Bitly Announces Leadership Team Expansion Fueling Innovation
+    And Business Growth Read More Growth Insights Unpacking the PLG Motion with Bitly
+    and Lucid Software Read More Portfolio News Bitly Releases Mid-Year Report Revealing
+    a Transformational Shift in Global QR Code Usage and Adoption Read More Portfolio
+    News Bitly Strengthens Its Leadership Team with Appointment of Peter Krivkovich
+    as New Chief Financial Officer and Adds Nick Caldwell to Board of Directors Read
+    More Portfolio News Bitly Unveils “Imagine the PossiBITLYties” Advertising Campaign
+    To Showcase The Impact Of Its One-Of-A-Kind Connections Platform Read More Portfolio
+    News Bitly Wraps 2022 Surpassing $100M in ARR and 500,000+ Global Customers Read
+    More External Coverage TechCrunch: Bitly sells a majority stake to Spectrum Equity
+    for $63M Read More Portfolio News Bitly Receives Investment from Spectrum Equity
+    Read More Boston One International Place 35th Floor Boston, Massachusetts, 02110
+    617-464-4600 (Link opens in new window) San Francisco 140 New Montgomery 20th
+    Floor San Francisco, California, 94105 415-464-4600 (Link opens in new window)
+    London 175 Piccadilly Empire House London, W1J 9EN +4'
+  retrieved_at: '2026-08-12T21:00:59.318937+00:00'
+  url: https://www.spectrumequity.com/portfolio/bitly/
+- content_hash: f0ec15e1817efe70111428d2a7d23bca683dbf37b9c533d1c8cba05fa02c79bb
+  evidence_id: ev-f0ec15e1817efe70
+  excerpt: 'Detected date: 2026-04-02
+
+    Title: Bitly Introduces AI-Powered Features to Simplify and ...
+
+    Date: 2026-04-02
+
+    Source: prnewswire.com
+
+    Snippet: # Bitly Introduces AI-Powered Features to Simplify and Accelerate Marketing
+    Analytics ## News provided by **Bitly Inc.** Apr 02, 2026, 11:00 ET ... ## Share
+    this article NEW YORK , April 2, 2026 /PRNewswire/ -- [Bitly Inc](https://edge.prnewswire.com/c/link/?t=0&l=en&o=4655488-1&h=2838815585&u=https%3A%2F%2Fbitly.com%2F&a=Bitly+Inc)
+    ., a leading global platform for link and QR Code management, today announced
+    the launch of Bitly Assist and Weekly Insights, two new AI-powered features ...
+    **Bitly Assist** is an AI-powered chat assistant built directly into the Bitly
+    platform as a conversational layer, available wherever you work within Bitly.
+    ... Media Contact: Jenny Coppola, [jenny.coppola@bit.ly](mailto:jenny.coppola@bit.ly)
+    SOURCE Bitly Inc. [## 21 % more press release views with Request a Demo](https://www.prnewswire.com/amplify-platform/?site_refer=press-release-widget)
+    × ## Also from this source Bitly Appoints Matt Young as CTO, Strengthening Leadership
+    Team Under CEO Peter Krivkovich ### Bitly Appoints Matt Young as CTO, Strengthening
+    Leadership Team Under CEO Peter Krivkovich Bitly Inc., a leading global platform
+    for link and QR Code management, today announced the appointment of Matt Young
+    as Chief Technology Officer. The ... Bitly Enters 2026 as the Embedded Connection
+    Layer Powering Links and QR Codes Worldwide ... ## Products * [Explore Our Platform](htt'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://www.prnewswire.com/news-releases/bitly-introduces-ai-powered-features-to-simplify-and-accelerate-marketing-analytics-302732666.html
+- content_hash: 1f1829b536598fe96a3f0e23fc1bf2579821c6c3ae3e292c55f664fe26632936
+  evidence_id: ev-1f1829b536598fe9
+  excerpt: 'Detected date: 2026-02-03
+
+    Title: Bitly Enters 2026 as the Embedded Connection Layer ...
+
+    Date: 2026-02-03
+
+    Source: prnewswire.com
+
+    Snippet: # Bitly Enters 2026 as the Embedded Connection Layer Powering Links and
+    QR Codes Worldwide ## News provided by **Bitly Inc.** Feb 03, 2026, 09:00 ET ...
+    ## Share this article 3, 2026 /PRNewswire/ -- [Bitly Inc.](https://edge.prnewswire.com/c/link/?t=0&l=en&o=4608958-1&h=421200646&u=https%3A%2F%2Fbitly.com%2F&a=Bitly+Inc.)
+    , a global leader in link and QR Code management, is evolving its role as core
+    infrastructure for how businesses create, protect, and measure digital interactions
+    across ... Founded in 2008, Bitly has evolved alongside the internet itself. As
+    the company enters 2026, Bitly remains focused on delivering trusted, secure connections
+    at scale and bringing clearer visibility into which campaigns and touchpoints
+    drive results. **About Bitly** ... **Media Contact:** Jenny Coppola, [jenny.coppola@bit.ly](mailto:jenny.coppola@bit.ly)
+    SOURCE Bitly Inc. [## 21 % more press release views with Request a Demo](https://www.prnewswire.com/amplify-platform/?site_refer=press-release-widget)
+    × ... ## Also from this source ### Bitly Introduces AI-Powered Features to Simplify
+    and Accelerate Marketing Analytics Bitly Inc., a leading global platform for link
+    and QR Code management, today announced the launch of Bitly Assist and Weekly
+    Insights, two new... Bitly Appoints Matt Young as CTO, Strengthening Leadership
+    Team Under CEO Peter Krivkovich ### Bitly Appoints Matt You'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://www.prnewswire.com/news-releases/bitly-enters-2026-as-the-embedded-connection-layer-powering-links-and-qr-codes-worldwide-302676857.html
+- content_hash: bdb5b304edda28b5d78415c10dd61cd0fc2baba641fa0459105c8836f2dd52f8
+  evidence_id: ev-bdb5b304edda28b5
+  excerpt: 'Detected date: 2026-03-19
+
+    Title: Press Room
+
+    Date: 2026-03-19
+
+    Source: bitly.com
+
+    Snippet: # There is always something happening here. ## Press Releases ### [Bitly
+    Introduces AI-Powered Features to Simplify and Accelerate Marketing Analytics](https://bitly.com/pages/resources/press/bitly-introduces-ai-powered-features)
+    March 19, 2026 ### [Bitly Appoints Matt Young as CTO, Strengthening Leadership
+    Team Under CEO Peter Krivkovich](https://bitly.com/pages/resources/press/bitly-appoints-matt-young-as-cto)
+    [Read More](https://bitly.com/pages/resources/press/bitly-appoints-matt-young-as-cto)
+    [](https://bitly.com/pages/resources/press/bitly-connection-layer-links-qr-codes-2026)
+    February 3, 2026 ... ### [Bitly Enters 2026 as the Embedded Connection Layer Powering
+    Links and QR Codes Worldwide](https://bitly.com/pages/resources/press/bitly-connection-layer-links-qr-codes-2026)
+    November 21, 2024 ### [Bitly Launches New ‘Text-to-Pay’ and ‘Text-to-Buy’ Partner
+    Category in App Marketplace](https://bitly.com/pages/resources/press/bitly-launches-new-conversational-commerce-category-in-app-marketplace)
+    [Read More](https://bitly.com/pages/resources/press/bitly-launches-new-conversational-commerce-category-in-app-marketplace)
+    ... ### [Bitly Announces Partnership with Global Internet Forum to Counter Terrorism](https://bitly.com/pages/resources/press/bitly-announces-partnership-with-global-internet-forum-to-counter-terrorism)
+    [Read More](https://bitly.com/pages/resources/press/bitly-announces-partnership-with-global-interne'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://bitly.com/pages/press
+- content_hash: 072079465be08361ce305bf239cb86ab3308a141b7d1c0ccf8249e4d7f32e0bc
+  evidence_id: ev-072079465be08361
+  excerpt: 'Detected date: August 13, 2026
+
+    Title: What''s new at Bitly?
+
+    Source: support.bitly.com
+
+    Snippet: 1. Bitly Support 2. Bitly Updates 3. Product Release Notes ... # What''s
+    new at Bitly? Megan Chang * Updated August 13, 2026 19:49 # July 2026 * PDF Export
+    for Links and QR Codes * Dynamic Routing * Period-over-Period Comparisons ...
+    # June 2025 ## Bitly is now SOC 2 compliant We are proud to announce that Bitly
+    is SOC 2 compliant. This milestone reinforces our commitment to protecting your
+    data with industry-leading security standards. It means an independent auditor
+    confirmed we’re doing all the right things to keep your information safe. SOC
+    2 standards include: ... # May 2025 * Bitly + Twitch Integration * Bitly + Adobe
+    Express Integration ## Bitly + Twitch Integration With the new Bitly + Twitch
+    integration you can now create and share short links and QR Codes right from your
+    Twitch Creator Dashboard. Perfect for sharing short link and QR Codes with your
+    live audience. **Learn more** : ... # April 2025 ## Changes to the Bitly mobile
+    app Create short links, share instantly, and monitor performance–all from your
+    phone. Features: ... # January 2024 ## Bitly Home page and onboarding checklist
+    We released a new Home page full of shortcuts, insights, and tips, including a
+    checklist of activities that can help you become an expert in everything Bitly
+    can offer you. All of your metrics, including the ones that used to be on the
+    Dashboard, are now available on the Analytics page.'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://support.bitly.com/hc/en-us/articles/34262355353997-What-s-new-at-Bitly
+- content_hash: a59d9b6029245808784570c837ed8f420a8aeb909ee0631e323d6da1bfbdf672
+  evidence_id: ev-a59d9b6029245808
+  excerpt: 'Title: Bit.ly
+
+    Source: techcrunch.com
+
+    Snippet: Bitly Launches Social Data APIs For Real-Time Seach, Attention Spikes,
+    And Deeper Looks At URLs Jan 8,'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://techcrunch.com/tag/bit-ly/
+- content_hash: e9cd2aa574fbcf4eec61c7e32b74710398df60beedf3b46dcaa8ce6887ef4dd5
+  evidence_id: ev-e9cd2aa574fbcf4e
+  excerpt: 'Detected date: 2025-02-14
+
+    Title: Bitly injecting ads into shortened links
+
+    Date: 2025-02-14
+
+    Source: news.ycombinator.com
+
+    Snippet: | | | [flagged] [Bitly injecting ads into shortened links](https://social.jvns.ca/@b0rk/114002651694606295)
+    ( [jvns.ca](https://news.ycombinator.com/from?site=jvns.ca) ) | ... | | |[albert_e](https://news.ycombinator.com/user?id=albert_e)
+    [on Feb 14, 2025](https://news.ycombinator.com/item?id=43049805) | next [[–]](javascript:void(0))
+    So the solution is to pre-scrape all bitly URL expansions by brute force and seed
+    the torrent so that someone else can build a librebit.ly ? | | --- | --- | ---
+    | ... A better source might be the bitly terms of service: https://bitly.com/pages/terms-of-service
+    (1.4 Destination Preview) | | --- | --- | --- | ... > _"Bitly is now using ads
+    on free accounts to continue delivering free plans at no cost to our users. As
+    part of the update, we introduced an interstitial page that includes a preview
+    of the link destination and an ad. If you prefer an ad-free experience, you can
+    upgrade to one of our paid plans here."_ : [https://support.bitly.com/hc/en-us/articles/32874287800333-W...](https://support.bitly.com/hc/en-us/articles/32874287800333-Why-are-there-ads-on-my-links)
+    | | --- | --- | --- | ... ``` Upcoming changes to our Terms of Service We are
+    making some adjustments to our Terms of Service and Privacy Policy that will affect
+    you as a user of Bitly''s free plan. Beginning in the next month, when your audience
+    interacts with your Bitly links or QR'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://news.ycombinator.com/item?id=43049525
+- content_hash: 936689ebc6fb0006bb783f55076713008ce680a7abf60b2dace5f7a6631795a4
+  evidence_id: ev-936689ebc6fb0006
+  excerpt: 'Title: Bitly News Archives - Bitly | Blog
+
+    Source: bitly.com
+
+    Snippet: # Bitly News [Read article: Meet QRCG by Bitly: Built for Easy QR Code
+    Generation Bitly News #### Meet QRCG by Bitly: Built for Easy QR Code Generation
+    Find out how QRCG by Bitly is redefining QR Code creation with easy customization,
+    seamless control, and Bitly-powered ... [Read article: How Real Customer Feedback
+    Turned Into 45 G2 Badges for Bitly This Spring Bitly News #### How Real Customer
+    Feedback Turned Into 45 G2 Badges for Bitly This Spring See what badges Bitly
+    earned across the URL Shortening, QR Codes, and Content Analytics categories thanks
+    to our customers.](https://bitly.com/blog/bitly-badges-2026-spring-report/) ...
+    [Read article: Google URL Shortener Update: What You Need to Know About the August
+    25 Deadline Bitly News #### Google URL Shortener Update: What You Need to Know
+    About the August 25 Deadline Most goo.gl links are safe! Learn which ones expire
+    August 25 and what to do next.](https://bitly.com/blog/google-url-shortener-shutdown/)
+    [Read article: Bitly Is SOC 2 Compliant: What It Means and Why It Matters Bitly
+    News #### Bitly Is SOC 2 Compliant: What It Means and Why It Matters Bitly is
+    committed to supporting secure enterprise workflows, and our SOC 2 compliance
+    is proof.](https://bitly.com/blog/bitly-soc-2-compliance/) ... [Read article:
+    How Bitly Customers Helped Us Earn 48 G2 Badges in the 2025 Spring Report Bitly
+    News #### How Bitly Customers Helped Us Earn 48 G2 Badges in the 20'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://bitly.com/blog/category/bitly-news/
+- content_hash: 25d58a7e35d78aade3455523a4616937bd7c94562d15e7e361019f6d1372d24a
+  evidence_id: ev-25d58a7e35d78aad
+  excerpt: 'Query: bitly.com news
+
+    1. https://www.prnewswire.com/news-releases/bitly-introduces-ai-powered-features-to-simplify-and-accelerate-marketing-analytics-302732666.html
+
+    Title: Bitly Introduces AI-Powered Features to Simplify and ...
+
+    Date: 2026-04-02
+
+    Source: prnewswire.com
+
+    Snippet: # Bitly Introduces AI-Powered Features to Simplify and Accelerate Marketing
+    Analytics ## News provided by **Bitly Inc.** Apr 02, 2026, 11:00 ET ... ## Share
+    this article NEW YORK , April 2, 2026 /PRNewswire/ -- [Bitly Inc](https://edge.prnewswire.com/c/link/?t=0&l=en&o=4655488-1&h=2838815585&u=https%3A%2F%2Fbitly.com%2F&a=Bitly+Inc)
+    ., a leading global platform for link and QR Code management, today announced
+    the launch of Bitly Assist and Weekly Insights, two new AI-powered features ...
+    **Bitly Assist** is an AI-powered chat assistant built directly into the Bitly
+    platform as a conversational layer, available wherever you work within Bitly.
+    ... Media Contact: Jenny Coppola, [jenny.coppola@bit.ly](mailto:jenny.coppola@bit.ly)
+    SOURCE Bitly Inc. [## 21 % more press release views with Request a Demo](https://www.prnewswire.com/amplify-platform/?site_refer=press-release-widget)
+    × ## Also from this source Bitly Appoints Matt Young as CTO, Strengthening Leadership
+    Team Under CEO Peter Krivkovich ### Bitly Appoints Matt Young as CTO, Strengthening
+    Leadership Team Under CEO Peter Krivkovich Bitly Inc., a leading global platform
+    for link and QR Code management, today announced the appointment of Matt Young
+    as Ch'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://www.google.com/search?q=bitly.com+news&tbm=nws
+- content_hash: df7bc260014d956bac2391292d1008b4dad37e40184d3019f77c2daa85e6874e
+  evidence_id: ev-df7bc260014d956b
+  excerpt: 'Detected date: 2026-06-11
+
+    Title: Press Room
+
+    Date: 2026-06-11
+
+    Source: bitly.com
+
+    Snippet: # There is always something happening here. ## Press Releases ### [Bitly
+    Introduces AI-Powered Features to Simplify and Accelerate Marketing Analytics](https://bitly.com/pages/th/resources/press/bitly-introduces-ai-powered-features)
+    19 มีนาคม 2026 ... ### [Bitly Appoints Matt Young as CTO, Strengthening Leadership
+    Team Under CEO Peter Krivkovich](https://bitly.com/pages/th/resources/press/bitly-appoints-matt-young-as-cto)
+    [](https://bitly.com/pages/th/resources/press/bitly-connection-layer-links-qr-codes-2026)
+    3 กุมภาพันธ์ 2026 ### [Bitly Enters 2026 as the Embedded Connection Layer Powering
+    Links and QR Codes Worldwide](https://bitly.com/pages/th/resources/press/bitly-connection-layer-links-qr-codes-2026)
+    [Read More](https://bitly.com/pages/th/resources/press/bitly-connection-layer-links-qr-codes-2026)
+    ... 21 พฤศจิกายน 2024 ... ### [Bitly Announces Partnership with Global Internet
+    Forum to Counter Terrorism](https://bitly.com/pages/th/resources/press/bitly-announces-partnership-with-global-internet-forum-to-counter-terrorism)
+    [Read More](https://bitly.com/pages/th/resources/press/bitly-announces-partnership-with-global-internet-forum-to-counter-terrorism)
+    [](https://www.retailtouchpoints.com/features/executive-viewpoints/unboxing-the-future-how-connected-packaging-strengthens-brand-consistency)
+    26 สิงหาคม 2024 ... ### [Bitly Announces Leadership Team Expansion Fueling Innovation
+    And Business Growth](https://bitly.'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://bitly.com/pages/th/press
+- content_hash: 6efcfbdf7087da12070f12877faa8ae2e0ae22b45e1d4aac68996edc08f361ad
+  evidence_id: ev-6efcfbdf7087da12
+  excerpt: 'Detected date: 2026-02-03
+
+    Title: Bitly Enters 2026 as the Embedded Connection Layer ...
+
+    Date: 2026-02-03
+
+    Source: prnewswire.com
+
+    Snippet: # Bitly Enters 2026 as the Embedded Connection Layer Powering Links and
+    QR Codes Worldwide ## News provided by **Bitly Inc.** Feb 03, 2026, 09:00 ET ...
+    ## Share this article 3, 2026 /PRNewswire/ -- [Bitly Inc.](https://edge.prnewswire.com/c/link/?t=0&l=en&o=4608958-1&h=421200646&u=https%3A%2F%2Fbitly.com%2F&a=Bitly+Inc.)
+    , a global leader in link and QR Code management, is evolving its role as core
+    infrastructure for how businesses create, protect, and measure digital interactions
+    across ... In 2025 alone, Bitly blocked approximately one million malicious URLs
+    and protected nearly one billion clicks through real-time warnings, reinforcing
+    Bitly''s key role as trusted infrastructure. ... **Media Contact:** Jenny Coppola,
+    [jenny.coppola@bit.ly](mailto:jenny.coppola@bit.ly) SOURCE Bitly Inc. [## 21 %
+    more press release views with Request a Demo](https://www.prnewswire.com/amplify-platform/?site_refer=press-release-widget)
+    × ... ## Also from this source ### Bitly Introduces AI-Powered Features to Simplify
+    and Accelerate Marketing Analytics Bitly Inc., a leading global platform for link
+    and QR Code management, today announced the launch of Bitly Assist and Weekly
+    Insights, two new... Bitly Appoints Matt Young as CTO, Strengthening Leadership
+    Team Under CEO Peter Krivkovich ### Bitly Appoints Matt Young as CTO, Strengthening
+    Leadership Team Under CEO Peter Krivkovich Bitly'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://www.prnewswire.com/news-releases/bitly-enters-2026-as-the-embedded-connection-layer-powering-links-and-qr-codes-worldwide-302676857.html
+- content_hash: 3c56b9a48400e3942dedc0be093d4adcfc73f6c3512e868c71fc48b9b63364e1
+  evidence_id: ev-3c56b9a48400e394
+  excerpt: 'Detected date: 2026-03-23
+
+    Title: Bitly Appoints Matt Young as CTO, Strengthening Leadership Team
+
+    Date: 2026-03-23
+
+    Source: bitly.com
+
+    Snippet: # Bitly Appoints Matt Young as CTO, Strengthening Leadership Team Under
+    CEO Peter Krivkovich March 19, 2026 min read White bitly logo on an orange background.
+    White bitly logo on an orange background. **NEW YORK** – Thursday, March 19 _–_
+    [Bitly Inc](https://bitly.com/) ., a leading global platform for link and QR Code
+    management, today announced the appointment of **Matt Young** as Chief Technology
+    Officer. The hire marks the latest in a series of strategic leadership appointments
+    under CEO **Peter Krivkovich** , who took the helm in 2025 and has been focused
+    on strengthening Bitly’s leadership team to accelerate platform innovation and
+    scale the ... That scale is supported by 99.99% uptime and Bitly’s proprietary
+    Trust & Safety infrastructure, which blocked one million malicious URLs and protected
+    nearly one billion clicks in 2025 alone. ... Alongside these appointments, Bitly
+    also announced several leadership promotions over the past year, reflecting the
+    company’s continued investment in customer and employee experience.'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://bitly.com/pages/resources/press/bitly-appoints-matt-young-as-cto/
+- content_hash: 9fa44f8d52f7e29d966c9c1c71b2f9332fdf5b7cce2b30baa39b33764acf755b
+  evidence_id: ev-9fa44f8d52f7e29d
+  excerpt: 'Detected date: 2025-11-05
+
+    Title: Bitly - Crunchbase Company Profile & Funding
+
+    Date: 2025-11-05
+
+    Source: crunchbase.com
+
+    Snippet: # Company Performance Metrics ## M&A Details Bitly was acquired by Spectrum
+    Equity for obfuscated obfuscation on obfuscated obfuscation . Transaction Name
+    Bitly acquired by Spectrum Equity Logo Bitly acquired by Spectrum Equity Acquired
+    by Spectrum Equity Logo Spectrum Equity Announced Date obfuscated obfuscation
+    Price obfuscated obfuscation ## Company Funding ... ## News and Press News • Apr
+    2, 2026 obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated
+    obfuscated obfuscated obfuscated News • Apr 2, 2026 obfuscated obfuscated obfuscated
+    obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated News
+    • Mar 19, 2026 obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated
+    obfuscated obfuscated obfuscated obfuscated News • Feb 3, 2026 obfuscated obfuscated
+    obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated
+    Access a complete feed of recent news and press, from product launches to leadership
+    changes.'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://www.crunchbase.com/organization/bitly
+- content_hash: 5a72228569fcecc44ceb994734441735dd40f7b49b5dc2962be4ca4cef311e78
+  evidence_id: ev-5a72228569fcecc4
+  excerpt: 'Detected date: 2026-08-03
+
+    Title: Bitly 2026 Company Profile: Valuation, Funding & Investors
+
+    Date: 2026-08-03
+
+    Source: pitchbook.com
+
+    Snippet: # Bitly ## Bitly Comparisons Description Primary Industry HQ Location
+    Employees Total Raised Post Valuation Last Financing Details Bitly Developer of
+    a link management platform intended to optimize short-track links by reducing
+    the uniform resource locator Business/Productivity Software New York, NY 349 As
+    of 2025 logo Milan, Italy logo'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://pitchbook.com/profiles/company/43128-82
+- content_hash: e9d676b57710605c616dbe6fa19ca4d35813d598cb6410765f113f0d76deae4c
+  evidence_id: ev-e9d676b57710605c
+  excerpt: 'Detected date: 2026-06-30
+
+    Title: Bitly - 2026 Company Profile, Team, Funding & Competitors - Tracxn
+
+    Date: 2026-06-30
+
+    Source: tracxn.com
+
+    Snippet: # [Bitly - Company Profile](https://bitly.com) ## News related to Bitly
+    [Bitly Announces Leadership Team Expansion Fueling Innovation And Business Growth](https://www.prnewswire.com/news-releases/bitly-announces-leadership-team-expansion-fueling-innovation-and-business-growth-302177300.html)
+    PR Newswire • Jun 20, 2024 • Bitly •'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://tracxn.com/d/companies/bitly/__DOnUxKFrdDxOovnQ5RtXDQOyze8wevOeGqnY7qnJ494
+- content_hash: b1639518e2a756032a1f6eecc2bc3745bd361cd26cb1cbc7a42f0422307a9b83
+  evidence_id: ev-b1639518e2a75603
+  excerpt: 'Detected date: Apr 02, 2026
+
+    Title: Bitly Inc. News and Press Releases | PR Newswire
+
+    Source: prnewswire.com
+
+    Snippet: # News from Bitly Inc. A wide array of domestic and global news stories;
+    news topics include politics/government, business, technology, religion, sports/entertainment,
+    science/nature, and health/lifestyle. ## Latest Bitly Introduces AI-Powered Features
+    to Simplify and Accelerate Marketing Analytics ### Apr 02, 2026, 11:00 ET Bitly
+    Introduces AI-Powered Features to Simplify and Accelerate Marketing Analytics
+    Bitly Inc., a leading global platform for link and QR Code management, today announced
+    the launch of Bitly Assist and Weekly Insights, two ... Bitly Appoints Matt Young
+    as CTO, Strengthening Leadership Team Under CEO Peter Krivkovich ### Mar 19, 2026,
+    11:00 ET Bitly Appoints Matt Young as CTO, Strengthening Leadership Team Under
+    CEO Peter Krivkovich Bitly Inc., a leading global platform for link and QR Code
+    management, today announced the appointment of Matt Young as ... Bitly Announces
+    Partnership with Global Internet Forum to Counter Terrorism ### Oct 10, 2024,
+    09:00 ET Bitly Announces Partnership with Global Internet Forum to Counter Terrorism
+    Bitly Inc., the world''s leading Connections Platform, announced today a new strategic
+    partnership with the Global Internet Forum to Counter Terrorism ... ... Bitly
+    Announces Leadership Team Expansion Fueling Innovation And Business Growth ###
+    Jun 20, 2024, 07:30 ET Bitly Announces Leadership Team Expansion Fueling Innovation
+    And Business Growth'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://www.prnewswire.com/news/bitly-inc.
+- content_hash: c8fa366ad6310510bd6ae51924390c3af8b2f524ccf7fb5d15d3a06baddba98c
+  evidence_id: ev-c8fa366ad6310510
+  excerpt: 'Detected date: 2026-04-02
+
+    Title: Bitly Introduces AI-Powered Features to Simplify and Accelerate Marketing
+    Analytics
+
+    Date: 2026-04-02
+
+    Source: finance.yahoo.com
+
+    Snippet: # U.S. markets closed This is a paid press release. Contact the press
+    release distributor directly with any inquiries. [](https://www.prnewswire.com/
+    "PR Newswire") # Bitly Introduces AI-Powered Features to Simplify and Accelerate
+    Marketing Analytics PR Newswire April 2, 2026 3 min read NEW YORK, April 2, 2026
+    /PRNewswire/ -- [Bitly Inc](https://bitly.com/) ., a leading global platform for
+    link and QR Code management, today announced the launch of Bitly Assist and Weekly
+    Insights, two new AI-powered features designed to help marketers ... Bitly is
+    a leading global platform for link and QR Code management, enabling brands and
+    businesses to create, manage, and measure digital interactions across online and
+    offline channels. (PRNewsfoto/Bitly Inc.)'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://finance.yahoo.com/sectors/technology/articles/bitly-introduces-ai-powered-features-150000121.html
+- content_hash: 1b67c6f738faeb85283203852788a8c0b12ee0fd3cebeae5091709945dbea9d8
+  evidence_id: ev-1b67c6f738faeb85
+  excerpt: 'Detected date: February 20, 2025
+
+    Title: RSVP for the pop-up newsroom at https://bit.ly/4a1NOIZ. ...
+
+    Source: facebook.com
+
+    Snippet: June 29 at 5:30 p.m.: Mark your calendars for February 20, 2025, presents
+    the first **Executive Report Live Interview** Location: Real News Public Relations,'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://www.facebook.com/dallasmorningnews/posts/rsvp-for-the-pop-up-newsroom-at-and-join-us-for-two-panels-june-29-at-530-pm-mee/1482232873945546/
+- content_hash: 75877be7ec8b42ffa4734808bf0041d1456b735ebd23d82b03d07423a6914ff3
+  evidence_id: ev-75877be7ec8b42ff
+  excerpt: 'Detected date: Apr 2, 2026
+
+    Title: Bitly Introduces AI-Powered Features to Simplify and Accelerate Marketing
+    Analytics | Morningstar
+
+    Source: morningstar.com
+
+    Snippet: Provided by PR Newswire Apr 2, 2026, 3:00:00 PM Bitly Introduces AI-Powered
+    Features to Simplify and Accelerate Marketing Analytics ## Bitly Introduces AI-Powered
+    Features to Simplify and Accelerate Marketing Analytics PR Newswire NEW YORK,
+    April 2, 2026 NEW YORK , April 2, 2026 /PRNewswire/ -- Bitly Inc ., a leading
+    global platform for link and QR Code management, today announced the launch of
+    Bitly Assist and Weekly Insights, two new AI-powered features designed to help
+    marketers move faster from data to action. Marketing teams now have access to
+    more data than ever before, but quickly surfacing insights that are easy to act
+    on remains a challenge. For more information, visit https://bitly.com/ . Media
+    Contact: Jenny Coppola, jenny.coppola@bit.ly View original content to download'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://www.morningstar.com/news/pr-newswire/20260402ny25140/bitly-introduces-ai-powered-features-to-simplify-and-accelerate-marketing-analytics
+- content_hash: 2cf3199cc98b646fb35df703e814fc6d5e8a99cbd31c283e8823c8bfabf1a834
+  evidence_id: ev-2cf3199cc98b646f
+  excerpt: 'Query: Bitly "press release" OR "announces" OR "newsroom"
+
+    1. https://bitly.com/pages/th/press
+
+    Title: Press Room
+
+    Date: 2026-06-11
+
+    Source: bitly.com
+
+    Snippet: # There is always something happening here. ## Press Releases ### [Bitly
+    Introduces AI-Powered Features to Simplify and Accelerate Marketing Analytics](https://bitly.com/pages/th/resources/press/bitly-introduces-ai-powered-features)
+    19 มีนาคม 2026 ... ### [Bitly Appoints Matt Young as CTO, Strengthening Leadership
+    Team Under CEO Peter Krivkovich](https://bitly.com/pages/th/resources/press/bitly-appoints-matt-young-as-cto)
+    [](https://bitly.com/pages/th/resources/press/bitly-connection-layer-links-qr-codes-2026)
+    3 กุมภาพันธ์ 2026 ### [Bitly Enters 2026 as the Embedded Connection Layer Powering
+    Links and QR Codes Worldwide](https://bitly.com/pages/th/resources/press/bitly-connection-layer-links-qr-codes-2026)
+    [Read More](https://bitly.com/pages/th/resources/press/bitly-connection-layer-links-qr-codes-2026)
+    ... 21 พฤศจิกายน 2024 ... ### [Bitly Announces Partnership with Global Internet
+    Forum to Counter Terrorism](https://bitly.com/pages/th/resources/press/bitly-announces-partnership-with-global-internet-forum-to-counter-terrorism)
+    [Read More](https://bitly.com/pages/th/resources/press/bitly-announces-partnership-with-global-internet-forum-to-counter-terrorism)
+    [](https://www.retailtouchpoints.com/features/executive-viewpoints/unboxing-the-future-how-connected-packaging-strengthens-brand-consistency)
+    26 สิงหาคม 2024 ... ### [Bi'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://www.google.com/search?q=Bitly+%22press+release%22+OR+%22announces%22+OR+%22newsroom%22&tbs=qdr%3Ay
+- content_hash: 52311f6552b267c5cdc9ce4478fbd110051c6568ef5c249007321b047dad1f36
+  evidence_id: ev-52311f6552b267c5
+  excerpt: 'Source: prnewswire.com
+
+    Snippet: # Bitly Enters 2026 as the Embedded Connection Layer Powering Links and
+    QR Codes Worldwide ## Also from this source Bitly Introduces AI-Powered Features
+    to Simplify and Accelerate Marketing Analytics ### Bitly Introduces AI-Powered
+    Features to Simplify and Accelerate Marketing Analytics Bitly Inc., a leading
+    global platform for link and QR Code management, today announced the launch of
+    Bitly Assist and Weekly Insights, two new... Bitly Appoints Matt Young as CTO,
+    Strengthening Leadership Team Under CEO Peter Krivkovich'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: http://prnewswire.com/news-releases/bitly-enters-2026-as-the-embedded-connection-layer-powering-links-and-qr-codes-worldwide-302676857.html
+- content_hash: 93d29667dba8cb6d3606dc4f461aaf37e39d7f11b3b06bffbe4bfdb3bf793195
+  evidence_id: ev-93d29667dba8cb6d
+  excerpt: 'Detected date: 2026-03-09
+
+    Title: Introducing Bitly''s ChatGPT, Claude, and Copilot Integrations
+
+    Date: 2026-03-09
+
+    Source: bitly.com
+
+    Snippet: # Introducing Bitly’s LLM Integrations: Bringing Trusted Links Into Your
+    AI Workflows March 9, 2026 min read Bitly logo with LLM logos around it ... That’s
+    the friction we set out to resolve with Bitly’s new LLM integrations. ... ## **What
+    can you do with Bitly’s LLM integrations?** Next, you paste in a list of URLs
+    for a campaign launch. Instead of creating links one by one, you generate them
+    all in a single conversation. Titles, tags, and UTM parameters follow the same
+    structure every time.'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://bitly.com/blog/introducing-bitly-llm-integrations
+- content_hash: a0988dc2d842efc1efa7e281de1aa8cb7f3d92183bba46d6122f7ce19ddab6eb
+  evidence_id: ev-a0988dc2d842efc1
+  excerpt: 'Detected date: 2026-02-03
+
+    Title: Bitly Enters 2026 With Expanded Link and QR Code ...
+
+    Date: 2026-02-03
+
+    Source: bitly.com
+
+    Snippet: # Bitly Enters 2026 as the Embedded Connection Layer Powering Links and
+    QR Codes Worldwide **NEW YORK** — February 3, 2026 — [Bitly Inc.](https://bitly.com/)
+    , a global leader in link and QR Code management, is evolving its role as core
+    infrastructure for how businesses create, protect, and measure digital interactions
+    across channels and ... In 2025 alone, Bitly blocked approximately one million
+    malicious URLs and protected nearly one billion clicks through real-time warnings,
+    reinforcing Bitly’s key role as trusted infrastructure. ... Integrations across
+    key design, collaboration, and commerce tools let teams create and measure connections
+    without leaving their workflows, including a new [Shopify integration](https://bitly.com/blog/introducing-the-bitly-shopify-integration/)
+    that'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://bitly.com/pages/resources/press/bitly-connection-layer-links-qr-codes-2026
+- content_hash: 034c1709a519e264aed8e39adbbb8e901f25e730790fdda3e3faa6bac0d6b5a8
+  evidence_id: ev-034c1709a519e264
+  excerpt: 'Title: Video: Bitly Assist tutorial
+
+    Source: support.bitly.com
+
+    Snippet: # Video: Bitly Assist tutorial This video introduces Bitly Assist — an
+    AI-powered chat assistant built directly into Bitly. AI Assist lets you get insights
+    from your link and QR Code data in seconds using plain language within the Bitly
+    product. Instead of digging through dashboards, you can ask questions and take
+    action all in one place. ... * Access Bitly Assist * Use suggested prompts to
+    get started quickly * Get a performance summary of your clicks and engagement
+    * Ask follow-up questions to identify top-performing channels * Create multiple
+    new links directly through the chat assistant * Review and approve link creation
+    before it''s finalized Bitly Assist is available across all paid plans. Learn
+    more about Bitly Assist in What is Bitly Assist? . Have more questions? Submit
+    a request Return to top Logo [](https://www.facebook.com/bitly) [](https://twitter.com/bitly)
+    [](https://www.linkedin.com/company/552285) [](https://instagram.com/bitly)'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://support.bitly.com/hc/en-us/articles/44978369858701-Video-Bitly-Assist-tutorial
+- content_hash: 6bc052eda5594ad8e0b2cd83f3a7103e39b931a18d8e489e8201d78c20fa0835
+  evidence_id: ev-6bc052eda5594ad8
+  excerpt: 'Detected date: 2026-02-14
+
+    Title: Bitly Enterprise Pricing (2026)
+
+    Date: 2026-02-14
+
+    Source: linklyhq.com
+
+    Snippet: Linkly logo * Features * Solutions * Integrations * Pricing * Support
+    * en [Get Started Free](https://go.linklyhq.com/sign-up) Linkly logo Features
+    Smart Links QR Codes Branded Domains Link Analytics Retargeting Pixels Team Workspaces
+    Solutions Enterprise SMS Marketing Developers Agencies Integrations Pricing Support
+    ... # Bitly Enterprise Pricing (2026) [Bitly](https://bitly.com/pages/pricing)
+    is the world''s most well known URL shortener. Its pricing has changed significantly
+    over the past few years, most notably with the introduction of **interstitial
+    ads on free-plan links** in early 2025. Bitly now offers five tiers - Free, Core,
+    Growth, Premium, and Enterprise - each with different limits on links, QR codes,
+    and data retention. Below is a full breakdown of every Bitly plan in 2026 and
+    how they compare to alternatives like Linkly . ... ## How Linkly compares Linkly
+    includes custom domains, retargeting pixels, link rotation, and unlimited users.
+    You only pay based on click volume, not artificial feature gates.'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://linklyhq.com/blog/bitly-enterprise-pricing
+- content_hash: 07ae8d36367e22eb21e49bf57d6a5cf17cf3e09df2b413b854b9150a7670feb6
+  evidence_id: ev-07ae8d36367e22eb
+  excerpt: 'Detected date: 2026-02-03
+
+    Title: Bitly Inc. News and Press Releases | PR Newswire
+
+    Date: 2026-02-03
+
+    Source: prnewswire.com
+
+    Snippet: # News from Bitly Inc. A wide array of domestic and global news stories;
+    news topics include politics/government, business, technology, religion, sports/entertainment,
+    science/nature, and health/lifestyle. ## Latest Bitly Introduces AI-Powered Features
+    to Simplify and Accelerate Marketing Analytics ### Apr 02, 2026, 11:00 ET Bitly
+    Introduces AI-Powered Features to Simplify and Accelerate Marketing Analytics
+    Bitly Inc., a leading global platform for link and QR Code management, today announced
+    the launch of Bitly Assist and Weekly Insights, two ... Bitly Launches New ''Text-to-Pay''
+    and ''Text-to-Buy'' Partner Category in App Marketplace ### Nov 21, 2024, 07:00
+    ET Bitly Launches New ''Text-to-Pay'' and ''Text-to-Buy'' Partner Category in
+    App Marketplace Bitly Inc., the world''s leading Connections Platform, today announced
+    the expansion of its app marketplace with new text-to-pay and ... Bitly Enters
+    Estimated $1.9 Billion Landing Page Market with New Pages Product Launch ### May
+    30, 2024, 12:15 ET Bitly Enters Estimated $1.9 Billion Landing Page Market with
+    New Pages Product Launch Bitly Inc., the world''s leading Connections Platform,
+    announced the launch of its latest product: Bitly Pages. ... Bitly Introduces
+    First Automated API Solution For Scaling 2D Barcodes ### Feb 13, 2024, 09:00 ET
+    Bitly Introduces First Automated API Solution For Scaling 2D Barcodes Bitly Inc.,
+    the world''s'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://www.prnewswire.com/news/bitly-inc.
+- content_hash: 756f1b3c617b42c4d3758e2edb2cbbf33508f1d98c56fdc75c1bcd51f5946d1d
+  evidence_id: ev-756f1b3c617b42c4
+  excerpt: 'Detected date: 2026-04-02
+
+    Title: Bitly Introduces AI-Powered Features to Simplify and Accelerate Marketing
+    Analytics
+
+    Date: 2026-04-02
+
+    Source: finance.yahoo.com
+
+    Snippet: # Bitly Introduces AI-Powered Features to Simplify and Accelerate Marketing
+    Analytics PR Newswire April 2, 2026 3 min read NEW YORK, April 2, 2026 /PRNewswire/
+    -- [Bitly Inc](https://bitly.com/) ., a leading global platform for link and QR
+    Code management, today announced the launch of Bitly Assist and Weekly Insights,
+    two new AI-powered features designed to help marketers ... **Bitly Assist** is
+    an AI-powered chat assistant built directly into the Bitly platform as a conversational
+    layer, available wherever you work within Bitly. It enables customers to ask questions
+    about link and QR Code performance, such as which links received the most clicks
+    this week or which channels are driving engagement, and receive answers in seconds.
+    ... **Weekly Insights** is a new experience within Bitly Analytics that automatically
+    highlights meaningful changes in link and QR Code performance. Updated weekly,
+    it identifies patterns across links, referrers, geographies, and devices—bringing
+    the most important signals forward without requiring teams to build or run manual
+    reports.'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://finance.yahoo.com/sectors/technology/articles/bitly-introduces-ai-powered-features-150000121.html
+- content_hash: 92d5d97dde8f84d97cbcfcc2c0ae3025f936bf585428136fdd7e35e2032666e5
+  evidence_id: ev-92d5d97dde8f84d9
+  excerpt: 'Detected date: 2026-06-30
+
+    Title: Bitly - 2026 Company Profile, Team, Funding & Competitors - Tracxn
+
+    Date: 2026-06-30
+
+    Source: tracxn.com
+
+    Snippet: Brook Auto Catch Light WebDisclosure • Jun 22, 2026 • Bitly • Mutua Madrileña
+    acquires 100% of Reynasa to strengthen Capital-Riesgo.es • May 14, 2026 • Bitly
+    • Bitty & Beau''s Coffee Launches "Share the Good" Campaign for Wilmington Heroes
+    PR Newswire • Nov 05, 2025 • Bitly • Startup ARS Smart Robotics Raises RUB 248
+    Million in Exchange for 17% of Shares in Pre-IPO Rusbase • May 22, 2025 • Bitly
+    , • Authvia and Bitly Launch Integrated Text-to-Pay Functionality for Bitly’s
+    Hundreds of Thousands of Customers KTXV / KUCW • Dec 18, 2024 • Bitly , Authvia
+    • Bitly Launches New ''Text-to-Pay'' and ''Text-to-Buy'' Partner Category in App
+    Marketplace PR Newswire • Nov 21, 2024 • Bitly , Authvia , AudienceTap , OneText
+    Bitly is a series D company based in New York'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://tracxn.com/d/companies/bitly/__DOnUxKFrdDxOovnQ5RtXDQOyze8wevOeGqnY7qnJ494
+- content_hash: f0834c943f6f2ad54da8b28bc512a04cdcb0f92a79b4b1a21e2b38ab6d6094f0
+  evidence_id: ev-f0834c943f6f2ad5
+  excerpt: 'Detected date: December 2025
+
+    Title: MCP Changelog | Bitly Developer - Bitly API
+
+    Source: dev.bitly.com
+
+    Snippet: # MCP Changelog | Release Date | Summary | | December 2025 | Added OAuth
+    2.1 with Dynamic Client Registration (DCR) for secure authentication. All MCP
+    endpoints now require authentication. | | August 2025 | Initial release of the
+    Bitly MCP Server with core link management, analytics, and QR code tools. |'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://dev.bitly.com/bitly-mcp/overview/mcp-changelog
+- content_hash: bc7001bfc4661b07aa253fa6ee32079e69a91f53fdea5b39c16bbcb31a134365
+  evidence_id: ev-bc7001bfc4661b07
+  excerpt: 'Query: Bitly launches OR "new feature" OR "introducing" OR "now available"
+
+    1. http://prnewswire.com/news-releases/bitly-enters-2026-as-the-embedded-connection-layer-powering-links-and-qr-codes-worldwide-302676857.html
+
+    Source: prnewswire.com
+
+    Snippet: # Bitly Enters 2026 as the Embedded Connection Layer Powering Links and
+    QR Codes Worldwide ## Also from this source Bitly Introduces AI-Powered Features
+    to Simplify and Accelerate Marketing Analytics ### Bitly Introduces AI-Powered
+    Features to Simplify and Accelerate Marketing Analytics Bitly Inc., a leading
+    global platform for link and QR Code management, today announced the launch of
+    Bitly Assist and Weekly Insights, two new... Bitly Appoints Matt Young as CTO,
+    Strengthening Leadership Team Under CEO Peter Krivkovich
+
+    2. https://bitly.com/blog/introducing-bitly-llm-integrations
+
+    Title: Introducing Bitly''s ChatGPT, Claude, and Copilot Integrations
+
+    Date: 2026-03-09
+
+    Source: bitly.com
+
+    Snippet: # Introducing Bitly’s LLM Integrations: Bringing Trusted Links Into Your
+    AI Workflows March 9, 2026 min read Bitly logo with LLM logos around it ... That’s
+    the friction we set out to resolve with Bitly’s new LLM integrations. ... ## **What
+    can you do with Bitly’s LLM integrations?** Next, you paste in a list of URLs
+    for a campaign launch. Instead of creating links one by one, you generate them
+    all in a single conversation. Titles, tags, and UTM parameters follow the same
+    structure every time.
+
+    3. https://bitly.com/pages/resources/press/bitly-conn'
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://www.google.com/search?q=Bitly+launches+OR+%22new+feature%22+OR+%22introducing%22+OR+%22now+available%22&tbs=qdr%3Ay
+- content_hash: 43e26288b0407e337d9afb568e575485f0489ae575a0c8ce1f2b74f9a4c34284
+  evidence_id: ev-43e26288b0407e33
+  excerpt: "Title: Bitly Introduces AI-Powered Features to Simplify and Accelerate\
+    \ Marketing Analytics\n[Accessibility Statement](https://www.cision.com/about/accessibility/)\
+    \ Skip Navigation\n\n  * [Resources](/resources/)\n  * [Investor Relations](/investor-relations-solutions/)\n\
+    \  * [Journalists](https://prnmedia.prnewswire.com/)\n  * [Agencies](https://www.cision.com/agencies/?utm_medium=referral&utm_source=prnewswire&utm_content=product&utm_campaign=2023-prn-all-products-page)\n\
+    \n\n  * [Client Login](https://app.prnewswire.com/login/auto)\n  * [Send a Release](/account/online-account-form/)\n\
+    \n\n\n[ ](/)\n\n  * [News](/news-releases/)\n  * [Products](/amplify-platform/)\n\
+    \  * [Contact](/contact-us/)\n\n\n\nSearch\n\n__\n\nSearch\n\nWhen typing in this\
+    \ field, a list of search results will appear and be automatically updated as\
+    \ you type.\n\nSearching for your content...\n\n__\n\n**No results found. Please\
+    \ change your search terms and try again.**\n\n  * News in Focus \n    *     \
+    \  * ## [Browse News Releases](/news-releases/)\n\n      * [All News Releases\
+    \ ](/news-releases/news-releases-list/)\n      * [All Public Company ](/news-releases/all-public-company-news/)\n\
+    \      * [English-only ](/news-releases/english-releases/)\n      * ## [News Releases\
+    \ Overview](/news-releases/)\n\n      * ## [Multimedia Gallery](/news-releases/multimedia/)\n\
+    \n      * [All Multimedia ](/news-releases/multimedia/multimedia-list/)\n    \
+    \  * [All Photos ](/news-releases/photos/photos-list/)\n      * [All Videos ](/news-releases/videos/videos-list/)\n\
+    \      * ## "
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://www.prnewswire.com/news-releases/bitly-introduces-ai-powered-features-to-simplify-and-accelerate-marketing-analytics-302732666.html
+- content_hash: 5777b8255ac2c2b2603954e5c5732312bc60f67f5a78b12864e9dfb9a210ee63
+  evidence_id: ev-5777b8255ac2c2b2
+  excerpt: "Title: Bitly Enters 2026 as the Embedded Connection Layer Powering Links\
+    \ and QR Codes Worldwide\n[Accessibility Statement](https://www.cision.com/about/accessibility/)\
+    \ Skip Navigation\n\n  * [Resources](/resources/)\n  * [Investor Relations](/investor-relations-solutions/)\n\
+    \  * [Journalists](https://prnmedia.prnewswire.com/)\n  * [Agencies](https://www.cision.com/agencies/?utm_medium=referral&utm_source=prnewswire&utm_content=product&utm_campaign=2023-prn-all-products-page)\n\
+    \n\n  * [Client Login](https://app.prnewswire.com/login/auto)\n  * [Send a Release](/account/online-account-form/)\n\
+    \n\n\n[ ](/)\n\n  * [News](/news-releases/)\n  * [Products](/amplify-platform/)\n\
+    \  * [Contact](/contact-us/)\n\n\n\nSearch\n\n__\n\nSearch\n\nWhen typing in this\
+    \ field, a list of search results will appear and be automatically updated as\
+    \ you type.\n\nSearching for your content...\n\n__\n\n**No results found. Please\
+    \ change your search terms and try again.**\n\n  * News in Focus \n    *     \
+    \  * ## [Browse News Releases](/news-releases/)\n\n      * [All News Releases\
+    \ ](/news-releases/news-releases-list/)\n      * [All Public Company ](/news-releases/all-public-company-news/)\n\
+    \      * [English-only ](/news-releases/english-releases/)\n      * ## [News Releases\
+    \ Overview](/news-releases/)\n\n      * ## [Multimedia Gallery](/news-releases/multimedia/)\n\
+    \n      * [All Multimedia ](/news-releases/multimedia/multimedia-list/)\n    \
+    \  * [All Photos ](/news-releases/photos/photos-list/)\n      * [All Videos ](/news-releases/videos/videos-list/)\n\
+    \      "
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://www.prnewswire.com/news-releases/bitly-enters-2026-as-the-embedded-connection-layer-powering-links-and-qr-codes-worldwide-302676857.html
+- content_hash: 8eaf772157511cfb562fda751f3a2e6974117f3f26b987e08d0e4c0b8225e69c
+  evidence_id: ev-8eaf772157511cfb
+  excerpt: "Title: Press Room - Bitly\nSkip Navigation\n\n[ ](https://bitly.com)\n\
+    \nMenu\n\n[ ](https://bitly.com) Menu\n\nMenu\n\n  * Platform\n\n### Products\n\
+    \n    * [URL Shortener  \n**Customize, share and track links**](https://bitly.com/pages/products/url-shortener)\n\
+    \    * [QR Code Generator  \n**Dynamic solutions to fit every business need**](https://bitly.com/pages/products/qr-codes)\n\
+    \    * [Analytics  \n**A central place to track and analyze performance**](https://bitly.com/pages/products/analytics)\n\
+    \    * [Pages  \n**Mobile-friendly, no-code landing pages**](https://bitly.com/pages/products/pages)\n\
+    \n### Features\n\n    * [Link-in-bio  \n**Curate and track links and content for\
+    \ social media profiles**](https://bitly.com/pages/features/link-in-bio)\n   \
+    \ * [Branded Links  \n**Customize links with your brand’s URL**  \n](https://bitly.com/pages/features/branded-links)\n\
+    \    * [Mobile Links  \n**Short links for SMS messages**](https://bitly.com/pages/features/mobile-links)\n\
+    \    * [UTM Campaigns  \n**Track links and QR Codes with UTM parameters**](https://bitly.com/pages/features/utm-tracking)\n\
+    \    * [Digital Business Cards  \n**Grow your network with virtual business cards**](https://bitly.com/pages/features/digital-business-cards)\n\
+    \    * [2D Barcodes  \n**Add a GS1 Digital Link to QR Codes designed for packaging**](https://bitly.com/pages/products/2d-barcodes)\n\
+    \n### Integrations\n\n[ Bitly Shopify Integration ](https://bitly.com/pages/marketplace/shopify)\
+    \ [ Bitly + Canva Integration ](https://bitly.com/pages/marketplace/c"
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://bitly.com/pages/press
+- content_hash: 87ca9928a101c1ca06ccd248a53ae13fc920d475f7e7ee66d230d8857ba82a88
+  evidence_id: ev-87ca9928a101c1ca
+  excerpt: "Title: Press Room - Bitly\nSkip Navigation\n\n[ ](https://bitly.com)\n\
+    \nMenu\n\n[ ](https://bitly.com) Menu\n\nMenu\n\n  * แพลตฟอร์ม\n\n### ผลิตภัณฑ์\n\
+    \n[]()\n\n    * [URL Shortener  \n**ปรับแต่ง แบ่งปัน และติดตามลิงก์**](https://bitly.com/pages/th/products/url-shortener)\n\
+    \    * [ตัวสร้าง QR Code  \n**โซลูชันที่ยืดหยุ่นตอบโจทย์ทุกความต้องการทางธุรกิจ**](https://bitly.com/pages/th/products/qr-code)\n\
+    \    * [Analytics  \n**สถานที่กลางในการติดตามและวิเคราะห์ประสิทธิภาพ**](https://bitly.com/pages/th/products/analytics)\n\
+    \    * [Page  \n**Landing page ที่เหมาะกับมือถือและไม่ต้องเขียนโค้ด**](https://bitly.com/pages/th/products/pages)\n\
+    \n### ฟีเจอร์\n\n[]()\n\n    * [Link-in-bio  \n**คัดสรรและติดตามลิงก์และเนื้อหาสำหรับโปรไฟล์โซเชียลมีเดีย**](https://bitly.com/pages/th/features/link-in-bio)\n\
+    \    * [Branded Link  \n**ปรับแต่งลิงก์ด้วย URL ของแบรนด์คุณ**  \n](https://bitly.com/pages/th/features/branded-link)\n\
+    \    * [ลิงก์สำหรับมือถือ  \n**ลิงก์สั้นสำหรับข้อความ SMS**](https://bitly.com/pages/th/features/mobile-links)\n\
+    \    * [แคมเปญ UTM  \n**ติดตามลิงก์และ QR Code ด้วยพารามิเตอร์ UTM**](https://bitly.com/pages/th/features/utm-tracking)\n\
+    \    * [นามบัตรดิจิทัล  \n**ขยายเครือข่ายของคุณด้วยนามบัตรดิจิทัล**](https://bitly.com/pages/th/features/digital-business-cards)\n\
+    \    * [2D Barcode  \n**เพิ่ม GS1 Digital Link  \nลงใน QR Code ที่ออกแบบสำหรับบรรจุภัณฑ์**](https://bitly.com/pages/th/products/2d-barcode)\n\
+    \n### การผสานการทำงาน\n\n[ Bitly Shopify Integration ](https://bitly.com/pages/marketplace/shopify)\
+    \ [ Bitly + Canva Integration ](https"
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://bitly.com/pages/th/press
+- content_hash: f2f9bc954365fa27ed908dce94f415ed228d203ab454765bd6fb488ba53be7cb
+  evidence_id: ev-f2f9bc954365fa27
+  excerpt: "Title: Bitly Appoints Matt Young as CTO, Strengthening Leadership Team\n\
+    Skip Navigation \n\n[](https://bitly.com)\n\n  * \n\n\n  * Products\n    * [URL\
+    \ ShortenerCustomize, share, and track links](/pages/products/url-shortener)\n\
+    \    * [QR CodesDynamic solutions to fit every business need](/pages/products/qr-codes)\n\
+    \    * [Link-in-bioCurate and track links for social media profiles](/pages/products/link-in-bio)\n\
+    \    * [AnalyticsA central place to track and analyze the performance of all short\
+    \ links and QR Codes](/pages/products/analytics)\n    * [2D BarcodesAdd a Global\
+    \ Trade Item Number (GTIN) to QR Codes designed for packaging](/pages/products/2d-barcode)\n\
+    \  * Solutions\n    * [RetailEnhance customer engagement](/pages/solutions/retail)\n\
+    \    * [Consumer Packaged GoodsConnect directly with consumers](/pages/solutions/consumer-packaged-goods)\n\
+    \    * [Media & EntertainmentCreate interactive experiences](/pages/solutions/media)\n\
+    \    * [Tech Software & HardwareImprove product education](/pages/solutions/technology)\n\
+    \    * [HospitalityStreamline guest services](/pages/solutions/hospitality)\n\
+    \    * [HealthcareSimplify patient communication](/pages/solutions/healthcare)\n\
+    \    * [InsuranceEnhance claims management](/pages/solutions/insurance)\n  * [Pricing](/pages/pricing)\n\
+    \  * [Resources](/pages/resources)\n    * [DevelopersAPI documentation and resources](https://dev.bitly.com/)\n\
+    \    * [Apps and IntegrationsConnect Bitly with existing tools and discover new\
+    \ ones](https://bitly.com/pages/marketplace)\n    * [B"
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://bitly.com/pages/resources/press/bitly-appoints-matt-young-as-cto/
+- content_hash: 390ba5f40cd8c1af67e241b1ce9d02e92658b18f9f2aea1184592ee266d7a708
+  evidence_id: ev-390ba5f40cd8c1af
+  excerpt: "Title: Bitly | Blog\nSkip Navigation \n\n[](https://bitly.com)\n\n  *\
+    \ \n\n\n  * Products\n    * [URL ShortenerCustomize, share, and track links](/pages/products/url-shortener)\n\
+    \    * [QR CodesDynamic solutions to fit every business need](/pages/products/qr-codes)\n\
+    \    * [Link-in-bioCurate and track links for social media profiles](/pages/products/link-in-bio)\n\
+    \    * [AnalyticsA central place to track and analyze the performance of all short\
+    \ links and QR Codes](/pages/products/analytics)\n    * [2D BarcodesAdd a Global\
+    \ Trade Item Number (GTIN) to QR Codes designed for packaging](/pages/products/2d-barcode)\n\
+    \  * Solutions\n    * [RetailEnhance customer engagement](/pages/solutions/retail)\n\
+    \    * [Consumer Packaged GoodsConnect directly with consumers](/pages/solutions/consumer-packaged-goods)\n\
+    \    * [Media & EntertainmentCreate interactive experiences](/pages/solutions/media)\n\
+    \    * [Tech Software & HardwareImprove product education](/pages/solutions/technology)\n\
+    \    * [HospitalityStreamline guest services](/pages/solutions/hospitality)\n\
+    \    * [HealthcareSimplify patient communication](/pages/solutions/healthcare)\n\
+    \    * [InsuranceEnhance claims management](/pages/solutions/insurance)\n  * [Pricing](/pages/pricing)\n\
+    \  * [Resources](/pages/resources)\n    * [DevelopersAPI documentation and resources](https://dev.bitly.com/)\n\
+    \    * [Apps and IntegrationsConnect Bitly with existing tools and discover new\
+    \ ones](https://bitly.com/pages/marketplace)\n    * [BlogTips, best practices\
+    \ and more](/blog/)\n    * [Re"
+  retrieved_at: '2026-08-19T11:51:00.892777-04:00'
+  url: https://bitly.com/blog/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads
