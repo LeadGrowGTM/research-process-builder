@@ -1,0 +1,719 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-6324c3add32674d3
+  - ev-da4b109ddeb08af9
+  - ev-98ca84b4107ee477
+  field: identity
+  value: Arkestro
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-6324c3add32674d3
+  - ev-da4b109ddeb08af9
+  - ev-98ca84b4107ee477
+  field: description
+  value: Automate Supplier Negotiations | Arkestro Predictive How It Works Get in
+    touch Learn how our customers achieve 18.8% average savings across all categories
+    of spend using the Arkestro Predictive Procurement Platform. Contact us Latest
+    news Read how Arkestro is driving enterprise procurement transformation in our
+    latest press and media coverage. Learn more What is Predictive Procurement? Learn
+    about Arkestro's patented technology Integrations Seamlessly implement at speed
+    Recognition Insights from
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-6324c3add32674d3
+  - ev-da4b109ddeb08af9
+  - ev-98ca84b4107ee477
+  field: offers
+  value: predictive procurement platform
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-6324c3add32674d3
+  - ev-da4b109ddeb08af9
+  - ev-98ca84b4107ee477
+  field: icp
+  value: procurement teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-6324c3add32674d3
+  - ev-da4b109ddeb08af9
+  - ev-98ca84b4107ee477
+  field: personas
+  value: procurement teams
+  visibility: message_safe
+company_id: saas-06
+corrections: []
+evidence:
+- content_hash: 6324c3add32674d3c100a917a9d57499b549a9d1f6003d2b4789cdbad6c44f2f
+  evidence_id: ev-6324c3add32674d3
+  excerpt: 'Automate Supplier Negotiations | Arkestro Predictive How It Works Get
+    in touch Learn how our customers achieve 18.8% average savings across all categories
+    of spend using the Arkestro Predictive Procurement Platform. Contact us Latest
+    news Read how Arkestro is driving enterprise procurement transformation in our
+    latest press and media coverage. Learn more What is Predictive Procurement? Learn
+    about Arkestro''s patented technology Integrations Seamlessly implement at speed
+    Recognition Insights from analysts and experts Industries Tap into savings for
+    oil & gas With a potential for saving 16-30% per line item, let Arkestro help
+    you cut costs. Learn more It''s time for an automotive tune up Increase procurement
+    efficiencies and drive big savings with Arkestro. Learn how Automotive Drive record
+    cost reductions Oil & Gas Fuel the future of oil and gas with automation High-Tech
+    Manufacturing Supercharge your team''s performance Manufacturing Optimize manufacturing
+    efficiency Construction Strategize your construction spend Financial Services
+    Turn procurement into a strategic value driver Food & Beverage Prep your food
+    and beverage procurement process Learn Arkestro Optimal ‘26 is coming to Houston
+    Optimal ‘26 will bring procurement and supply chain leaders together to explore
+    what’s next for enterprise procurement and how teams can Unlock the Predictive
+    Advantage at scale. Learn more Resource Center Explore our latest content Case
+    Studies What our customers are saying Analyst Reports The latest expert procurement
+    guidance Datasheets Product overviews for informed decisions Infographics Quick
+    bites of on-the-go information eBooks Procurement thought leadership pieces Events
+    Previous and upcoming events Webinars Previous and upcoming webinars Blog Explore
+    our blog Key procurement insights to support your Predictive Procurement journey,
+    no matter where you are. View blog Recent Blogs Process Science in Action: How
+    Automation Cuts Sourcing Cycles From Weeks to Days Aug 11, 2026 Ne'
+  retrieved_at: '2026-08-12T21:00:53.334767+00:00'
+  url: https://arkestro.com/predictive-procurement/
+- content_hash: da4b109ddeb08af999fab64ee6857b10986e45f82a61753a80b84579c130a14f
+  evidence_id: ev-da4b109ddeb08af9
+  excerpt: Arkestro | LinkedIn Agree & Join LinkedIn By clicking Continue to join
+    or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie
+    Policy . Skip to main content LinkedIn Top Content People Learning Jobs Games
+    Sign in Join now Arkestro Technology, Information and Internet San Francisco,
+    CA 9,767 followers Amplify the impact of procurement’s influence. Follow Discover
+    all 130 employees Report this company Overview Jobs Life About us Arkestro’s Predictive
+    Procurement platform accelerates enterprise spend transformation, using AI and
+    game theory to unlock trapped savings and reduce risk, enabling teams to influence
+    significantly more spend. Learn more at https://www.arkestro.com Website https://arkestro.com/
+    External link for Arkestro Industry Technology, Information and Internet Company
+    size 51-200 employees Headquarters San Francisco, CA Type Privately Held Specialties
+    strategic sourcing, procurement, contract management, software, procurement operations,
+    supply chain, supplier management, saas, b2b, cpg, consumer packaged goods, Chemical
+    Manufacturing, Biotechnology, Heath Services, Pharmaceutical, Food & Beverage,
+    Supplier Diversity, Construction, Interiors & Furnishings, Consumer Packaged Goods,
+    Predictive Procurement, Predictive Sourcing, Predictive Allocation, Predictive
+    Supplier Management, Direct Materials, Indirect Materials, CapEx, MRO, Indirect
+    Services, IT projects, Capital Expenditure, Logistics, Maintenance, Repair, and
+    Operations, Buyer, Purchasing, category manager, and supplier Employees at Arkestro
+    Ron Rasmussen LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn Member
+    LinkedIn Member View 130 employees at Arkestro Sign in Welcome back Email or phone
+    Password Show Forgot password? Sign in or By clicking Continue to join or sign
+    in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie Policy
+    . New to LinkedIn? Join now or By clicking Continue to join or sign in, you agree
+    to LinkedIn’s User Agreement , Privacy
+  retrieved_at: '2026-08-12T21:00:54.147466+00:00'
+  url: https://www.linkedin.com/company/arkestro
+- content_hash: 98ca84b4107ee4772fa691b240bbf25639595324251c1d54d637825e670fc780
+  evidence_id: ev-98ca84b4107ee477
+  excerpt: Arkestro - Products, Competitors, Financials, Employees, Headquarters Locations
+    Technology Vendors Recent Research Newsletter Media Support Login Who We Serve
+    Function Corporate Strategy Corporate Venture Capital Venture Capital IT Corporate
+    Innovation How VCs Use CB Insights Go to the video gallery → Industries Consumer
+    & Retail Tech Insurance Healthcare Industrials Financial Services Professional
+    Services Professional Services Learn More → Success Stories How We Help Understand
+    Tech Markets Anticipate Competitor Strategy Determine Tech Strategy Connect with
+    Tech Vendors & Partners Turbocharge Digital Transformation What We Offer Platform
+    Overview Technology Search Engine Market Analytics and Visualizations Team Management
+    and Collaboration Platform Overview Learn More → Data Research Personal Briefing
+    GenAI Instant Insights Public Equity Data Buyer Interview Transcripts Analyst
+    Briefings API & Data Feeds Integrations Overview Chrome and Edge Salesforce Affinity
+    Microsoft Excel Google Sheets Microsoft Teams Slack Google Slides App Partners
+    Browser Extension Pricing About Us Overview Our teams Business Development Engineering
+    Operations Product See all → Open Jobs Loading... Arkestro Analyst Briefing Submitted
+    arkestro.com Overview & Products Financials People Alternatives & Competitors
+    Customers Founded Year 2017 Stage Series B | Alive Total Raised $78.29M Valuation
+    $0000 View Last Raised $36M | 1 yr ago About Arkestro Arkestro focuses on predictive
+    procurement within the financial technology sector. The company provides solutions
+    that utilize artificial intelligence and game theory to assist in enterprise spending
+    transformation, aiming to achieve savings and manage financial risk. Arkestro's
+    services are intended to help teams influence enterprise spending. It was formerly
+    known as Bid Ops. It was founded in 2017 and is based in San Francisco, California.
+    Headquarters Location 60 29th Street Suite 148 San Francisco, California, 94110,
+    United States 888-724-3677 L
+  retrieved_at: '2026-08-12T21:00:54.893882+00:00'
+  url: https://www.cbinsights.com/company/arkestro
+- content_hash: fc9a4af114e00425be25bf38ca26a73a9c7ae802828dfed9c383f4cc68575382
+  evidence_id: ev-fc9a4af114e00425
+  excerpt: 'Title: Top Arkestro Alternatives, Competitors
+
+    Source: cbinsights.com
+
+    Snippet: # Arkestro ## Compare Arkestro to Competitors ORO Labs focuses on agentic
+    procurement orchestration within the procurement technology sector. It provides
+    a platform integrating people, processes, systems, and data to facilitate procurement
+    workflows, ensure compliance, and utilize artificial intelligence (AI) for risk
+    management and supplier onboarding. ... Zip operates in the artificial intelligence
+    (AI) and procurement technology sectors. It provides a platform for automating
+    and managing procurement processes. It offers solutions, including intake-to-procure,
+    procure-to-pay, supplier onboarding, sourcing, risk orchestration, and contract
+    management. ... Precoro specializes in procurement centralization and automation
+    within the business software sector. Its offerings include a platform for managing
+    intake, purchasing, and analytics to improve the procurement process.'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.cbinsights.com/company/arkestro/alternatives-competitors
+- content_hash: e67a79c73be970da00c6adec69341de55b8c07b5887fd697460e0a3bab636734
+  evidence_id: ev-e67a79c73be970da
+  excerpt: 'Title: Top Arkestro Alternatives & Competitors 2026
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top Arkestro alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top Arkestro Alternatives & Competitors 2026 | Gartner Peer Insights image:
+    https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > Top Alternatives to Arkestro ```json on":"Sievo is our spend analytics and savings
+    monitoring platform. It is particularly valuable in complex environments with
+    multiple ERPs, or holding companies, providing a single source of truth through
+    a consolidated taxonomy. Their customer support is strong and the platform delivers
+    a wide range ```'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.gartner.com/reviews/product/arkestro-1460331095/alternatives
+- content_hash: e58872d99b624c7c30ff79d292d936f81c479a8432e076dff69ae56e98cb1b07
+  evidence_id: ev-e58872d99b624c7c
+  excerpt: 'Title: Top 10 Arkestro Alternatives & Competitors in 2026 | G2
+
+    Source: g2.com
+
+    Snippet: Skip to Navigation Skip to Navigation Save these alternatives to your
+    board Keep these tools in one place and compare them anytime. Save to board Home
+    ... Procurement Software Autonomous Sourcing Arkestro Arkestro Alternatives Arkestro
+    Top 10 Arkestro Alternatives & Competitors (11) 5.0 out of 5 Thousands of users
+    compare Arkestro with other Autonomous Sourcing tools to find the best fit for
+    their team or business. In most cases, users compare alternatives based on reliability
+    and ease of use. The best overall alternative to Arkestro is SAP Ariba , rated
+    ~4.1 stars on G2 from 742+ reviewers. It is frequently praised for procurement
+    efficiency and efficiency. Other well-known alternatives to Arkestro are: Coupa
+    – known for intuitive and simple (G2 star rating ~4.2) Loopio – highly rated'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.g2.com/products/arkestro/competitors/alternatives
+- content_hash: 2e3d5100a23f678eef7584b837f626cab904765d909e3c0c474168df1aea0dbc
+  evidence_id: ev-2e3d5100a23f678e
+  excerpt: 'Title: Top Arkestro Alternatives & Competitors 2026
+
+    Source: softwareworld.co
+
+    Snippet: # Top Arkestro Alternatives & Competitors ## Arkestro is also listed
+    in these categories: [Procurement Software](https://www.softwareworld.co/procurement-software/)
+    | [Sourcing Software](https://www.softwareworld.co/sourcing-software/) [### Arkestro](https://www.softwareworld.co/software/arkestro-reviews/)
+    [Write a Review](https://www.softwareworld.co/software/arkestro-reviews/) ...
+    ## All Competitors and Alternatives to Arkestro Fraxion is a comprehensive procurement
+    software designed to streamline the purchasing process for organizations of all
+    sizes. This platform offers a user-friendly interface that simplifies sourcing,
+    vendor management, and order tracking, ensuring efficient procurement operations.
+    ... wherex is an intuitive and efficient procurement software that streamlines
+    the entire procurement process, from sourcing to purchasing and payment. The platform
+    allows businesses to manage supplier relationships, track orders, and handle invoices
+    in one centralized system.'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.softwareworld.co/competitors/arkestro-alternatives/
+- content_hash: 02ccd5d9b91c77640bf9b72ba8ce1e236780f3d1a76c9b88915e80fb36d50032
+  evidence_id: ev-02ccd5d9b91c7764
+  excerpt: 'Title: How Does Arkestro Compare to Fairmarkit?
+
+    Source: arkestro.com
+
+    Snippet: # How Does Arkestro Compare to Fairmarkit? Procurement and sourcing professionals
+    who are researching advanced new procurement software often find two names that
+    come up repeatedly: Arkestro and Fairmarkit. The two solutions aren’t necessarily
+    in direct competition. ... ## **Arkestro Key Features and Capabilities** - Forecast
+    Outcomes: sourcing with AI predictive pricing to beat the market and lock in better
+    pricing faster than competitors while helping the sourcing team to become a strategic
+    asset to business ... Arkestro’s value proposition is that it is the only predictive
+    procurement software that helps procurement teams continuously exceed targets,
+    delivering 2-5x more savings.'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://arkestro.com/blog/how-does-bid-ops-compare-to-fairmarkit/
+- content_hash: 95dfb01aeb612b8f12f1d7f18ef49c8941811bac0bd3be7d237c95a61982e219
+  evidence_id: ev-95dfb01aeb612b8f
+  excerpt: 'Detected date: 2025-11-19
+
+    Title: Traditional vs. Predictive vs. Autonomous Procurement
+
+    Date: 2025-11-19
+
+    Source: arkestro.com
+
+    Snippet: Key procurement insights to support your Predictive Procurement journey,
+    no matter where you are. View blog * Partners * About Us Our story Arkestro''s
+    Predictive Procurement Platform arose out of frustrations around outdated and
+    inefficient procurement processes. Learn how we can help you make faster, smarter
+    decisions with existing resources. ... # Traditional vs. Predictive vs. Autonomous
+    Procurement: Understanding the Evolution ## **Predictive Procurement: Data-Driven
+    and Proactive** ### **Arkestro’s Three Sciences: Making Predictive Procurement
+    Work** * **Supplier Science:** Identifies best-fit suppliers, predicts performance,
+    and automates counteroffers to build reliable, strategic relationships. ... ##
+    **The Evolution Curve: Where Your Company Stands** Every organization sits somewhere
+    on the procurement evolution curve, moving from **manual and reactive** to **predictive
+    and intelligent** , eventually reaching **explainable automation.** And while
+    this procurement platform comparison can help identify the right tools to support
+    your'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://arkestro.com/blog/traditional-vs-predictive-vs-autonomous-procurement-understanding-the-evolution/
+- content_hash: b2064751c9bde1a5f476b175218ff8682f93fc37751c1e20556117034bb07591
+  evidence_id: ev-b2064751c9bde1a5
+  excerpt: 'Title: Arkestro vs ORO comparison
+
+    Source: peerspot.com
+
+    Snippet: # Arkestro vs ORO comparison ## Comparisons AutomationEdge vs Automation
+    Anywhere Logo AutomationEdge vs Automation Anywhere Compared 3% of the time WorkFusion
+    vs Automation Anywhere Logo WorkFusion vs Automation Anywhere Compared 2% of the
+    time More Automation Anywhere Competitors No data available SAP Ariba Procurement
+    vs ORO Logo SAP Ariba Procurement vs ORO Compared 44% of the time Levelpath vs
+    ORO Logo Levelpath vs ORO Compared 44% of the time GEP SMART vs ORO Logo GEP SMART
+    vs ORO Compared 12% of the time More ORO Competitors ... ## Overview [Automation
+    Anywhere](https://www.automationanywhere.com) Arkestro is a leading predictive
+    procurement orchestration platform designed to streamline purchasing processes
+    and enhance decision-making using AI-driven insights.'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.peerspot.com/products/comparisons/arkestro_vs_oro
+- content_hash: d48da106fd3c5aac2a8eaa3e0d32eaca39207c74ee3ae6683aa96184155803e1
+  evidence_id: ev-d48da106fd3c5aac
+  excerpt: 'Detected date: 2026-02-26
+
+    Title: Nissan & Arkestro: The Predictive Procurement Transformation | Procurement
+    Magazine
+
+    Date: 2026-02-26
+
+    Source: procurementmag.com
+
+    Snippet: # Nissan & Arkestro: The Predictive Procurement Transformation ## Shifting
+    landscapes The platform merges AI and game theory with its own patented science
+    technologies – Negotiation Science, Supplier Science, and Process Science. ...
+    ## Procurement transformation Arkestro''s game-theoretic capabilities and automation
+    prevent time and efficiency barriers which makes traditional procurement processes
+    slower. It helps organisations address issues related to data access, speed and
+    event management, by streamlining sourcing workflows. ... It can also boost supply
+    chain resilience due to its predictive nature. By blending its fact-based strategies
+    and AI-powered supplier selection through its accurate prediction capabilities,
+    Arkestro can spot at-risk suppliers, quickly identify alternatives and therefore
+    mitigate risk amid a volatile environment.'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://procurementmag.com/news/nissan-arkestro-predictive-procurement-transformation
+- content_hash: 4e4f81d3f63ba5fbe3fe61698d85890499bc86810e3e4a576adabe26604d9ac2
+  evidence_id: ev-4e4f81d3f63ba5fb
+  excerpt: 'Title: Top Arkestro Alternatives & Competitors in 2026
+
+    Source: trustradius.com
+
+    Snippet: # Arkestro Competitors and Alternatives ## Most Commonly Compared to
+    Arkestro * [GEP Quantum Intelligence ### GEP Quantum Intelligence Compare [Let''s
+    Connect](https://www.gep.com/company/contact-us?utm_source=TrustRadius&utm_medium=Banner&utm_campaign=RaaS-Partner)](/compare-products/arkestro-vs-gep-quantum-intelligence)
+    * Emptoris ### Emptoris Compare ... ## Best Arkestro Alternatives for Medium-sized
+    Companies ### Stampli Score 8.4 out of 10 Stampli offers software to run any procure-to-pay
+    (P2P) process — and Billy, an AI employee, to operate it. The platform unifies
+    Procurement, Invoice Management, and Payments in one system that automates AP
+    while keeping teams in control. ... ## Best Arkestro Alternatives for Enterprises
+    ### GEP Quantum Intelligence GEP Quantum Intelligence (Qi) is a procurement orchestration
+    platform that utilizes a multi-agent system to automate and manage end-to-end
+    procurement and supply chain workflows across disparate enterprise resource planning
+    (ERP) environments.'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.trustradius.com/products/arkestro/competitors
+- content_hash: 1e2c1a3d347d8f550dca7dc121faba511414a6d841a0802b1dcb5e995cecab17
+  evidence_id: ev-1e2c1a3d347d8f55
+  excerpt: 'Title: Top Globality Alternatives, Competitors
+
+    Source: cbinsights.com
+
+    Snippet: # Globality ## Globality''s alternatives and competitors Compare Globality
+    and Nvelop + Pricing + Customer references + Products * Arkestro Logo [Arkestro](https://www.cbinsights.com/company/arkestro/)
+    Analyst Briefing Submitted Arkestro focuses on predictive procurement within the
+    financial technology sector. ... ### Top 10Globality competitors * [Nvelop](https://www.cbinsights.com/company/nvelop/)
+    * [Arkestro](https://www.cbinsights.com/company/arkestro/) * [ProcureTech](https://www.cbinsights.com/company/procuretech/)
+    * [Archlet](https://www.cbinsights.com/company/archlet/) * [TimeFlow](https://www.cbinsights.com/company/timeflow/)
+    ... ## Compare Globality to Competitors Fairmarkit is a sourcing platform that
+    uses AI to assist procurement processes for organizations across various sectors.
+    The company provides services including automated sourcing, supplier recommendations,
+    and the creation of statements of work, all aimed at improving the procurement
+    lifecycle.'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.cbinsights.com/company/globality/alternatives-competitors
+- content_hash: 1fe476eb23e05b9f8268987f5f43130a5efa24ef28afe05030e666eed30a0578
+  evidence_id: ev-1fe476eb23e05b9f
+  excerpt: 'Query: Arkestro predictive procurement platform alternatives OR competitors
+    OR "vs" OR "compared to"
+
+    1. https://www.cbinsights.com/company/arkestro/alternatives-competitors
+
+    Title: Top Arkestro Alternatives, Competitors
+
+    Source: cbinsights.com
+
+    Snippet: # Arkestro ## Compare Arkestro to Competitors ORO Labs focuses on agentic
+    procurement orchestration within the procurement technology sector. It provides
+    a platform integrating people, processes, systems, and data to facilitate procurement
+    workflows, ensure compliance, and utilize artificial intelligence (AI) for risk
+    management and supplier onboarding. ... Zip operates in the artificial intelligence
+    (AI) and procurement technology sectors. It provides a platform for automating
+    and managing procurement processes. It offers solutions, including intake-to-procure,
+    procure-to-pay, supplier onboarding, sourcing, risk orchestration, and contract
+    management. ... Precoro specializes in procurement centralization and automation
+    within the business software sector. Its offerings include a platform for managing
+    intake, purchasing, and analytics to improve the procurement process.
+
+    2. https://www.gartner.com/reviews/product/arkestro-1460331095/alternatives
+
+    Title: Top Arkestro Alternatives & Competitors 2026
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top Arkestro alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top Arkestro Alternatives & Competitors 2026 | Gar'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.google.com/search?q=Arkestro+predictive+procurement+platform+alternatives+OR+competitors+OR+%22vs%22+OR+%22compared+to%22
+- content_hash: 6937185e7516b547abcfdb8940965347e53c4f9227bdeb45e57bef20fb9f3d96
+  evidence_id: ev-6937185e7516b547
+  excerpt: 'Title: Top Arkestro Alternatives, Competitors
+
+    Source: cbinsights.com
+
+    Snippet: # Arkestro ## Arkestro''s alternatives and competitors * Omnea Logo [Omnea](https://www.cbinsights.com/company/omnea/)
+    Unclaimed Omnea specializes in procurement management software. It provides supplier
+    management, procurement workflow automation, commercial governance, and risk management
+    tools… See More Arkestro vs. Omnea ... Levelpath operates as a procurement platform
+    utilizing automation and workflow orchestration for the procurement industry.
+    It provides services including sourcing event… See More Arkestro vs. Levelpath
+    View Arkestro''s entire Analyst Briefing Arkestro''s Analyst Briefing includes
+    information on: ... ## Compare Arkestro to Competitors ORO Labs focuses on agentic
+    procurement orchestration within the procurement technology sector. It provides
+    a platform integrating people, processes, systems, and data to facilitate procurement
+    workflows, ensure compliance, and utilize artificial intelligence (AI) for risk
+    management and supplier onboarding.'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.cbinsights.com/company/arkestro/alternatives-competitors
+- content_hash: a402ccd35c15f97af1f1c603f3ff3f7815298973b19a6bc59532ca31a59d65d8
+  evidence_id: ev-a402ccd35c15f97a
+  excerpt: 'Title: Top Arkestro Alternatives & Competitors 2026
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top Arkestro alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top Arkestro Alternatives & Competitors 2026 | Gartner Peer Insights image:
+    https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [SAP Ariba Sourcing Suite](https://www.gartner.com/reviews/product/sap-ariba-sourcing-suite-)
+    > 2. [Workday Strategic Sourcing](https://www.gartner.com/reviews/product/workday-strategic-sourcing)
+    > 3. [JAGGAER Advantage (Legacy)](https://www.gartner.com/reviews/product/jaggaer-advantage)
+    > 6. [JAGGAER Direct Strategic Sourcing Suite (Legacy)](https://www.gartner.com/reviews/product/jaggaer-direct-strategic-sourcing-suite)
+    [Compare with Arkestro](https://www.gartner.com/reviews/market/strategic-sourcing-application-suites/compare/product/jaggaer-direct-strategic-sourcing-suite-vs-arkestro-1460331095)
+    Add to Compare'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.gartner.com/reviews/product/arkestro-1460331095/alternatives
+- content_hash: 8855852835ecbaeba1fc27102c5785d6851c525c0193c17401c7d7057497e1dd
+  evidence_id: ev-8855852835ecbaeb
+  excerpt: 'Title: Best Arkestro Alternatives 2026
+
+    Source: capterra.com
+
+    Snippet: # Alternatives to Arkestro ## Tradogram by Tradogram Inc. 4.5 (109) Visit
+    Website Manage your direct & indirect purchasing on your own private procurement
+    platform. Free version available. Learn more about Tradogram Compare Save Tabset
+    anchor Fraxion ## Fraxion by Fraxion 4.4 (130) Visit Website Easy-to-use procurement
+    software that drives informed spending decisions, efficiencies, and cost savings.
+    Learn more about Fraxion Compare Save Tabset anchor ProcurementExpress.com ...
+    ## wherex by wherex 4.1 (58) View Profile SaaS for B2B procurement optimization,
+    enabling automated sourcing, bidding, and supplier management. Learn more about
+    wherex Compare Save Tabset anchor ProcurePro ... ## Spendflo by Spendflo 4.7 (55)
+    View Profile Spendflo is an AI-native procurement platform that orchestrates intake,
+    renewals & vendor spend across finance, procurement, IT & Legal Learn more about
+    Spendflo Compare Save Tabset anchor TYASuite'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.capterra.com/p/177891/Arkestro/alternatives/
+- content_hash: 1ffc88845543c34f23921f833115a705e73fe597d3842b0d5fe1d301419b1024
+  evidence_id: ev-1ffc88845543c34f
+  excerpt: 'Title: Top Arkestro Alternatives & Competitors in 2026
+
+    Source: trustradius.com
+
+    Snippet: # Arkestro Competitors and Alternatives ## Most Commonly Compared to
+    Arkestro * [SAP Ariba ### SAP Ariba Compare [SAP Ariba info](https://www.sap.com/products/spend-management.html?utm_campaign=TrustRadius%20Review&utm_source=trustradius.com&utm_medium=click)](/compare-products/arkestro-vs-sap-ariba)
+    * [GEP Quantum Intelligence ### GEP Quantum Intelligence Compare [Let''s Connect](https://www.gep.com/company/contact-us?utm_source=TrustRadius&utm_medium=Banner&utm_campaign=RaaS-Partner)](/compare-products/arkestro-vs-gep-quantum-intelligence)
+    * Emptoris ### Emptoris Compare ... * [SAP Cloud ERP (SAP S/4HANA Cloud) ### SAP
+    Cloud ERP (SAP S/4HANA Cloud) Compare [Try For Free](https://www.sap.com/products/erp/s4hana/trial.html?utm_campaign=TrustRadius%20Review&utm_source=trustradius.com&utm_medium=click)](/compare-products/arkestro-vs-sap-cloud-erp)
+    * JAGGAER ### JAGGAER Compare'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.trustradius.com/products/arkestro/competitors
+- content_hash: 69556a8e369701e3df6066cff012d3a361c0f7a52a51ba33dd76922a40bc06a5
+  evidence_id: ev-69556a8e369701e3
+  excerpt: 'Title: Arkestro vs ORO comparison
+
+    Source: peerspot.com
+
+    Snippet: # Arkestro vs ORO comparison ## Categories and Ranking Arkestro Logo
+    Arkestro Average Rating 0.0 Number of Reviews 0 Ranking in other categories Procurement
+    Software (34th) ORO Logo ORO Average Rating 0.0 Number of Reviews 0 Ranking in
+    other categories Procurement Software (16th) ... ## Comparisons AutomationEdge
+    vs Automation Anywhere Logo AutomationEdge vs Automation Anywhere Compared 3%
+    of the time WorkFusion vs Automation Anywhere Logo WorkFusion vs Automation Anywhere
+    Compared 2% of the time More Automation Anywhere Competitors No data available
+    SAP Ariba Procurement vs ORO Logo SAP Ariba Procurement vs ORO Compared 44% of
+    the time Levelpath vs ORO Logo Levelpath vs ORO Compared 44% of the time GEP SMART
+    vs ORO Logo GEP SMART vs ORO Compared 12% of the time More ORO Competitors'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.peerspot.com/products/comparisons/arkestro_vs_oro
+- content_hash: 2874ca4e9154fec6caa222c87698c8f94a412a602f0c489bf996346dc736fb88
+  evidence_id: ev-2874ca4e9154fec6
+  excerpt: 'Title: How Does Arkestro Compare to Fairmarkit?
+
+    Source: arkestro.com
+
+    Snippet: # How Does Arkestro Compare to Fairmarkit? Procurement and sourcing professionals
+    who are researching advanced new procurement software often find two names that
+    come up repeatedly: Arkestro and Fairmarkit. The two solutions aren’t necessarily
+    in direct competition. ... ## **Fairmarkit Key Features and Capabilities** - Request
+    Management: easily create RFxs, review vendor responses, and award bids - Process
+    Automation: touchless intake, streamlined vendor communication, and automatic
+    bid collection - Vendor Recommendations: recommendation engine automatically identifies
+    the best vendors for purchases ... ## **Arkestro Key Features and Capabilities**
+    - Forecast Outcomes: sourcing with AI predictive pricing to beat the market and
+    lock in better pricing faster than competitors while helping the sourcing team
+    to become a strategic asset to business'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://arkestro.com/blog/how-does-bid-ops-compare-to-fairmarkit/
+- content_hash: a319f9d6fe18b9110b2e90df453d66a0ae78de4dc1060dd16b146fe6f10f5460
+  evidence_id: ev-a319f9d6fe18b911
+  excerpt: 'Title: Top Gainfront Alternatives, Competitors
+
+    Source: cbinsights.com
+
+    Snippet: Gainfront Unclaimed gainfront.com Overview & Products Financials People
+    Alternatives & Competitors Gainfront''s alternatives and competitors See how Gainfront
+    compares to similar products. Gainfront''s top competitors include SpotSource
+    , Arkestro , and Globality . SpotSource Logo SpotSource Unclaimed SpotSource is
+    focused on Enterprise Supplier Management (ESM) within the business operations
+    and service procurement domain. It offers a platform for organizations to f… Start
+    your free demo Gainfront vs. SpotSource View more in-depth data on: Globality
+    View more in-depth data on: Competitors Products Customer References and more
+    Compare Gainfront and Globality Tacto Logo Tacto Unclaimed Tacto is a company
+    that provides procurement intelligence for the industrial sector. Its main offerings'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.cbinsights.com/company/gainfront/alternatives-competitors
+- content_hash: 0e0e714948710423552675a1418c6f89b462c71a6380bd25e9a254ed237fa25d
+  evidence_id: ev-0e0e714948710423
+  excerpt: 'Detected date: 2024-08-07
+
+    Title: How Does Arkestro Compare to Scout RFP?
+
+    Date: 2024-08-07
+
+    Source: arkestro.com
+
+    Snippet: # How Does Arkestro Compare to Scout RFP (Workday Sourcing)? Two names
+    that are often part of the discussion on advanced procurement software solutions
+    are Arkestro and Scout RFP. At a high level, it might sound as though these are
+    similar systems. ... ## **Scout RFP vs Arkestro – Scout RFP’s Strengths** According
+    to the Scout RFP website, these are the capabilities that set this procurement
+    software apart from competing solutions. ... - **Flexibility to purchase how you
+    like** because Scout RFP offers a flexible business process framework - **Strategically
+    source suppliers** by identifying those who provide the best product and service
+    at the best value ... ## **How Does That Compare to Arkestro?** The difference
+    between the two shows that these solutions are not really direct competitors,
+    and each has situations where they would be the clear best choice.'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://arkestro.com/blog/how-does-arkestro-compare-to-scout-rfp/
+- content_hash: dd3c9ce2f72385063878b38b390478f60a1f89654b5acac769ef40dec0a39fc9
+  evidence_id: ev-dd3c9ce2f7238506
+  excerpt: 'Title: Arkestro Software Pricing, Alternatives & More 2026 | Capterra
+
+    Source: capterra.com
+
+    Snippet: Free version not included Capterra Shortlist charts the highest-rated
+    and most popular products... Our "Best of" badge program showcases products with
+    the highest ratings... Our "Best of" badge program showcases products with the
+    highest ratings... Do you work for Arkestro? Manage this product listing Compare
+    with a popular alternative Capterra selects software alternatives based on relevant
+    features, verified user reviews and user interactions. Placement may be influenced
+    by client status. Arkestro 5.0 (4) Arkestro VS. ProcurementExpress.com ProcurementExpress.com
+    Tradogram logo Tradogram 4.5 (109) Starting price $425.00 Per User, Per Month
+    Pricing Options Free Trial Free Version User Rating 94% of reviewers rated it
+    above 4 stars Visit Website NetSuite logo NetSuite 4.2 (2,057) Starting'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.capterra.com/p/177891/Arkestro/
+- content_hash: bf3f363aea31c56f669484cebe956f0614dc783f76792461e3b67520c3a5e3fc
+  evidence_id: ev-bf3f363aea31c56f
+  excerpt: 'Query: Arkestro alternatives
+
+    1. https://www.cbinsights.com/company/arkestro/alternatives-competitors
+
+    Title: Top Arkestro Alternatives, Competitors
+
+    Source: cbinsights.com
+
+    Snippet: # Arkestro ## Arkestro''s alternatives and competitors * Omnea Logo [Omnea](https://www.cbinsights.com/company/omnea/)
+    Unclaimed Omnea specializes in procurement management software. It provides supplier
+    management, procurement workflow automation, commercial governance, and risk management
+    tools… See More Arkestro vs. Omnea ... Levelpath operates as a procurement platform
+    utilizing automation and workflow orchestration for the procurement industry.
+    It provides services including sourcing event… See More Arkestro vs. Levelpath
+    View Arkestro''s entire Analyst Briefing Arkestro''s Analyst Briefing includes
+    information on: ... ## Compare Arkestro to Competitors ORO Labs focuses on agentic
+    procurement orchestration within the procurement technology sector. It provides
+    a platform integrating people, processes, systems, and data to facilitate procurement
+    workflows, ensure compliance, and utilize artificial intelligence (AI) for risk
+    management and supplier onboarding.
+
+    2. https://www.gartner.com/reviews/product/arkestro-1460331095/alternatives
+
+    Title: Top Arkestro Alternatives & Competitors 2026
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top Arkestro alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top Arkestro Alternatives & Com'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.google.com/search?q=Arkestro+alternatives
+- content_hash: 66b66d9bb559ffc096c210be94729c4a191b43f9552cb2f9fe29873f71d4f172
+  evidence_id: ev-66b66d9bb559ffc0
+  excerpt: 'Detected date: 2026-06-30
+
+    Title: Arkestro listed as a Sample Vendor in Gartner® Hype Cycle™ for Procurement
+    and Sourcing Solutions for Four Consecutive Years
+
+    Date: 2026-06-30
+
+    Source: prnewswire.com
+
+    Snippet: # Arkestro listed as a Sample Vendor in Gartner® Hype Cycle™ for Procurement
+    and Sourcing Solutions for Four Consecutive Years ## Share this article Following
+    its placement in 2025, Arkestro was named in two categories for 2026: _Supplier
+    Discovery_ and _Autonomous Sourcing_ . ... **About Arkestro ** Arkestro is the
+    leading predictive procurement platform, accelerating enterprise spend transformation
+    and supply chain agility. By combining AI and game theory with Arkestro''s patented
+    three science technologies—Negotiation Science, Supplier Science, and Process
+    Science—Arkestro shifts traditional procurement to become a proactive, results-driven
+    function.'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.prnewswire.com/news-releases/arkestro-listed-as-a-sample-vendor-in-gartner-hype-cycle-for-procurement-and-sourcing-solutions-for-four-consecutive-years-302814412.html
+- content_hash: 1837474ed85f5d54bf3e87c1191cda4e4d00525a5e4e729c636d4577b79e7886
+  evidence_id: ev-1837474ed85f5d54
+  excerpt: 'Title: Arkestro vs ORO (2026)
+
+    Source: peerspot.com
+
+    Snippet: # Arkestro vs ORO comparison ## Categories and Ranking Arkestro Logo
+    Arkestro Average Rating 0.0 Number of Reviews 0 Ranking in other categories Procurement
+    Software (34th) ORO Logo ORO Average Rating 0.0 Number of Reviews 0 Ranking in
+    other categories Procurement Software (16th) ... ## Comparisons AutomationEdge
+    vs Automation Anywhere Logo AutomationEdge vs Automation Anywhere Compared 3%
+    of the time WorkFusion vs Automation Anywhere Logo WorkFusion vs Automation Anywhere
+    Compared 2% of the time More Automation Anywhere Competitors No data available
+    SAP Ariba Procurement vs ORO Logo SAP Ariba Procurement vs ORO Compared 44% of
+    the time Levelpath vs ORO Logo Levelpath vs ORO Compared 44% of the time GEP SMART
+    vs ORO Logo GEP SMART vs ORO Compared 12% of the time More ORO Competitors'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.peerspot.com/products/comparisons/arkestro_vs_oro
+- content_hash: fc18a6a0e50cb661af8466b1197f2338c53ca01299376ead0f6f9151ec1a6bbb
+  evidence_id: ev-fc18a6a0e50cb661
+  excerpt: 'Detected date: 2025-02-28
+
+    Title: How Arkestro is Transforming Procurement for Enterprises
+
+    Date: 2025-02-28
+
+    Source: procurementmag.com
+
+    Snippet: # How Arkestro is Transforming Procurement for Enterprises [Arkestro](https://procurementmag.com/technology-and-ai/how-arkestro-redefines-procurements-role-in-business-growth)
+    , the leading Predictive Procurement Platform, announced that a leading multinational
+    energy company has entered into a global multi-year enterprise agreement to ...
+    ## Customer impact and strategic partnership Arkestro''s Predictive Procurement
+    Platform uses AI, behavioural science and game theory to [accelerate sourcing](https://procurementmag.com/procurement-strategy/arkestro-shaping-future-of-sourcing)
+    cycles, enhance supplier collaboration and drive an average of 18.8% cost reduction
+    across all spend ... ## Growing industry adoption Rob DeSantis, Co-Founder and
+    CEO, Arkestro, adds: "This relationship has been a tremendous milestone for Arkestro
+    and we''re thrilled to be partnering with a top-tier energy company to showcase
+    the power of predictive procurement in action. Rob DeSantis, Co-Founder and CEO,
+    Arkestro'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://procurementmag.com/digital-procurement/arkestro-transforming-procurement-enterprises
+- content_hash: bc26cdcde591878ae7794b34c31177724afbda8157b4483498a9286019838fed
+  evidence_id: ev-bc26cdcde591878a
+  excerpt: 'Query: Arkestro vs
+
+    1. https://www.cbinsights.com/company/arkestro/alternatives-competitors
+
+    Title: Top Arkestro Alternatives, Competitors
+
+    Source: cbinsights.com
+
+    Snippet: # Arkestro ## Arkestro''s alternatives and competitors * Omnea Logo [Omnea](https://www.cbinsights.com/company/omnea/)
+    Unclaimed Omnea specializes in procurement management software. It provides supplier
+    management, procurement workflow automation, commercial governance, and risk management
+    tools… See More Arkestro vs. Omnea ... Levelpath operates as a procurement platform
+    utilizing automation and workflow orchestration for the procurement industry.
+    It provides services including sourcing event… See More Arkestro vs. Levelpath
+    View Arkestro''s entire Analyst Briefing Arkestro''s Analyst Briefing includes
+    information on: ... ## Compare Arkestro to Competitors ORO Labs focuses on agentic
+    procurement orchestration within the procurement technology sector. It provides
+    a platform integrating people, processes, systems, and data to facilitate procurement
+    workflows, ensure compliance, and utilize artificial intelligence (AI) for risk
+    management and supplier onboarding.
+
+    2. https://www.gartner.com/reviews/product/arkestro-1460331095/alternatives
+
+    Title: Top Arkestro Alternatives & Competitors 2026
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top Arkestro alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top Arkestro Alternatives & Competitors 2'
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.google.com/search?q=Arkestro+vs
+- content_hash: a24698d89b1292358a0c04fd0f74981e5f08caa5457274b65316284ae4676d8f
+  evidence_id: ev-a24698d89b129235
+  excerpt: "Title: Top Arkestro Alternatives, Competitors\n* [Technology Vendors](https://www.cbinsights.com/what-we-offer/technology-vendors/)\n\
+    \  * [Recent Research](https://www.cbinsights.com/research/)\n  * [Newsletter](https://www.cbinsights.com/newsletter/)\n\
+    \  * [Media Support](https://www.cbinsights.com/media-support/)\n  * [Login](https://www.cbinsights.com/login)\n\
+    \n\n\n[](https://www.cbinsights.com)\n\n  * Who We Serve\n\n    * Function\n\n\
+    \      * [Corporate Strategy](https://www.cbinsights.com/who-we-serve/function/corporate-strategy/)\n\
+    \      * [Corporate Venture Capital](https://www.cbinsights.com/who-we-serve/function/corporate-venture-capital/)\n\
+    \      * [Venture Capital](https://www.cbinsights.com/who-we-serve/function/venture-capital/)\n\
+    \      * [IT](https://www.cbinsights.com/who-we-serve/head-of-it/)\n      * [Corporate\
+    \ Innovation](https://www.cbinsights.com/who-we-serve/function/corporate-innovation/)\n\
+    \      * ### How VCs Use CB Insights\n\n[Go to the video gallery →](https://www.cbinsights.com/how-vcs-use-cb-insights/)\n\
+    \n    * Industries\n\n      * [Consumer & Retail](https://www.cbinsights.com/who-we-serve/industries/consumer/)\n\
+    \      * [Tech](https://www.cbinsights.com/who-we-serve/industries/tech/)\n  \
+    \    * [Insurance](https://www.cbinsights.com/who-we-serve/industries/insurance/)\n\
+    \      * [Healthcare](https://www.cbinsights.com/who-we-serve/industries/healthcare/)\n\
+    \      * [Industrials](https://www.cbinsights.com/who-we-serve/industries/industrials/)\n\
+    \      * [Financial Services](https://www.cbin"
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.cbinsights.com/company/arkestro/alternatives-competitors
+- content_hash: 7e61980cbf4fdbb32e4fd9a9dbe751d673872bdda54dce89ebfdcff3f8c485a8
+  evidence_id: ev-7e61980cbf4fdbb3
+  excerpt: "Title: Arkestro vs ORO (2026)\nheight=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"\
+    >\n\nNo more typing reviews! [Try our Samantha](/interviews/new?src=orba), our\
+    \ new voice AI agent.\n\n[](/ \"Unbiased reviews from the tech community\")\n\n\
+    __\n\n__\n\n__\n\n  * __\n  * Categories\n\nCybersecurity\n\n[Endpoint Detection\
+    \ and Response (EDR)](/categories/endpoint-detection-and-response-edr)[Vulnerability\
+    \ Management](/categories/vulnerability-management)[Cloud Security Posture Management\
+    \ (CSPM)](/categories/cloud-security-posture-management-cspm)[Endpoint Protection\
+    \ Platform (EPP)](/categories/endpoint-protection-platform-epp)[Extended Detection\
+    \ and Response (XDR)](/categories/extended-detection-and-response-xdr)[Security\
+    \ Information and Event Management (SIEM)](/categories/security-information-and-event-management-siem)[Container\
+    \ Security](/categories/container-security)[Firewalls](/categories/firewalls)[ZTNA](/categories/ztna)[ZTNA\
+    \ as a Service](/categories/ztna-as-a-service)[Cloud-Native Application Protection\
+    \ Platforms (CNAPP)](/categories/cloud-native-application-protection-platforms-cnapp)[Cloud\
+    \ Workload Protection Platforms (CWPP)](/categories/cloud-workload-protection-platforms-cwpp)[Secure\
+    \ Access Service Edge (SASE)](/categories/secure-access-service-edge-sase)[Data\
+    \ Loss Prevention (DLP)](/categories/data-loss-prevention-dlp)[Access Management](/categories/access-management)[Intrusion\
+    \ Detection and Prevention Software (IDPS)](/categories/intrusion-detection-and-prevention-software-idps"
+  retrieved_at: '2026-08-19T12:28:32.371210-04:00'
+  url: https://www.peerspot.com/products/comparisons/arkestro_vs_oro
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

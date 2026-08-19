@@ -1,0 +1,767 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: identity
+  value: Aligned
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: description
+  value: 'Digital Sales Room Software — #1 on G2 | Aligned Skip to content $60M raised.
+    70,000 sellers. 1M buyers. The deal workspace is here ➜ Read the announcement
+    Learn more Platform Close Platform Open Platform Explore our platform Product
+    Overview Platform at a glance Digital Sales Room Centralized buyer workspace Customer
+    Success Hub Manage customer outcomes Customer Onboarding Faster customer activation
+    Aligned AI AI aligned to revenue Mutual Action Plan Shared deal milestones Revenue
+    Intelligence '
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: offers
+  value: digital sales room
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: icp
+  value: sales teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: personas
+  value: sales teams
+  visibility: message_safe
+company_id: saas-03
+corrections: []
+evidence:
+- content_hash: 05398a2ef65666fa651567b24421f8e969484b93e8d6fe970bae6fd9b8776e71
+  evidence_id: ev-05398a2ef65666fa
+  excerpt: 'Digital Sales Room Software — #1 on G2 | Aligned Skip to content $60M
+    raised. 70,000 sellers. 1M buyers. The deal workspace is here ➜ Read the announcement
+    Learn more Platform Close Platform Open Platform Explore our platform Product
+    Overview Platform at a glance Digital Sales Room Centralized buyer workspace Customer
+    Success Hub Manage customer outcomes Customer Onboarding Faster customer activation
+    Aligned AI AI aligned to revenue Mutual Action Plan Shared deal milestones Revenue
+    Intelligence Revenue insights and signals Integrations Connect your tools Pricing
+    Resources Close Resources Open Resources Learn Articles Product insights and updates
+    Customer Stories How customers succeed with us Build Template Library Templates
+    to get started faster Guides & Playbooks Practical guides and best practices Login
+    Book a Demo Start free Crush your sales quota with Digital Sales Room Streamline
+    complex deals by consolidating conversations, stakeholders, processes, and resources
+    into a single shared space. #1 Digital Sales Room for SMB & Mid-Market (G2 Summer
+    ’26) Start with Google Start with Microsoft Book a Demo Start free Mid-Market
+    G2 Grid® for Digital Sales Room Software | Summer 2026 #1 Digital Sales Room for
+    SMB & Mid-Market (G2 Summer ’26) 50,000+ Sales & CS Teams Run Their Deals in Aligned
+    95% of the Buyer Journey Happens When You’re Not in the Room *gartner (so get
+    a room) Meet Aligned, Your Digital Sales Room Everything needed to win, all in
+    one place Create a virtual sales room for each deal Share the most up-to-date
+    sales content Streamline all discussions into topics Remove buyer friction & win
+    more deals Aligned is a single place to keep on top of deals, build strong business
+    cases with champions and get multiple stakeholders on board. I wish I had it early,
+    but I have it now, and I’m enjoying it immensely! Sarah Brazie Senior Account
+    Executive, Gong Align buyers to a Mutual Action Plan Build collaborative MAPs
+    with your champion Assign tasks and allow buyers to'
+  retrieved_at: '2026-08-12T21:20:31.919668+00:00'
+  url: https://www.alignedup.com/digital-sales-room/
+- content_hash: 22d60eecc23e228aa7d0cd79d8283286be9311a91848c743207678d21a8a49bb
+  evidence_id: ev-22d60eecc23e228a
+  excerpt: 'Aligned | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now Aligned Software Development Create a personalized
+    workspace for each deal and design a buying experience that wins quota. See jobs
+    Follow View all 76 employees Report this company About us Aligned is pioneering
+    the new way that B2B revenue teams interact with customers in today''s remote,
+    digital era. Instead of customers juggling multiple email threads, attachments
+    & tools, they have all resources in front of them in a single shared workspace
+    for easy decisions. Nothing gets buried and forgotten in threads. All stakeholders
+    join and collaborate, instead of staying behind the scenes. Both sides manage
+    mutual action plans to keep things on track, and reps can analyze buyer risks
+    and intent. Companies like Deel, Productboard, and SimilarWeb use it to win more
+    deals and close 45% faster. We are growing at a fast pace and looking for top
+    talents to join our core team. Website https://www.alignedup.com?utm_source=Social&utm_medium=Aligned_Page&utm_campaign=website_button&utm_id=163&avk=mvk_Linkedin_Page
+    External link for Aligned Industry Software Development Company size 51-200 employees
+    Headquarters Remote First Type Privately Held Founded 2021 Specialties Saas, Sales
+    Collaboration, Buyer Collaboration, Project Management, CRM, Sales Enablement,
+    and Sales Products No more previous content Aligned Customer Onboarding Deal Analytics
+    Digital Sales Room Mutual Action Plans No more next content Locations Primary
+    Remote First, US Get directions Employees at Aligned Charles Black Sam Rahmanian
+    Todd Clouser Erin C. See all employees Updates Aligned 47,664 followers 5h Report
+    this post There are 4 questions that will set the tone for your deal. When presented
+    well they will lead to higher win rates. Present them poorly and they will do
+    next to nothing. Here are 4 questions that will set every deal up for success
+    (and HOW to ask them): 1. Who Else Are You Evaluating? Yes, it''s'
+  retrieved_at: '2026-08-12T21:20:32.819137+00:00'
+  url: https://www.linkedin.com/company/alignedup
+- content_hash: 01e046900b8496acdb6722904a4406d618a57bfa5e51e4657a2b4786cada1235
+  evidence_id: ev-01e046900b8496ac
+  excerpt: 'Why NFX Invested in Aligned: The Sales Room Network Helping Companies
+    Close Deals 3x Faster Content Content Team Team Companies Companies About About
+    Products Products Signal Brieflink NFX Masterclass Get our weekly newsletter that
+    322K+ startup teams read Subscribe Why NFX Invested in Aligned: The Sales Room
+    Network Helping Companies Close Deals 3x Faster James Currier · @jamescurrier
+    · May 2023 · Israel James Currier · @jamescurrier May 2023 · Israel Table of Contents
+    1. Overly Complex Processes 2. Built-in Network Effects 3. Stellar Team Aligned
+    recently announced their $5.8M Seed round co-led by NFX and Hetz Ventures to create
+    the network to conduct software deals in. They sell sales teams a frictionless
+    workspace that helps software sales teams close deals 3x faster. Here are 3 reasons
+    why we backed them: 1. Overly Complex Processes Despite massive enterprise digitization,
+    77% of enterprise software buyers complain that their sales experiences are overly
+    complex. This leads to stalled and lost deals. Pointless friction. And, frankly,
+    shock/disappointment it still works this way in 2023. There needs to be a bridge
+    between a company’s CRM and their clients. Aligned creates that bridge with their
+    signature “online rooms” where sales teams communicate, coordinate on next steps,
+    share documents, sign proposals, etc. This real-time management speeds up deals
+    and makes buyers happy. It also gives salespeople the data behind the successes
+    and failures of their deals so they can improve their processes. 2. Built-in Network
+    Effects As more sellers adopt Aligned, more buyers will integrate it into their
+    own buying process. This lays the foundation for a network of B2B buyers and sellers.
+    The company also has defensibility through embedding. Once a B2B sales team adopts
+    Aligned, it’s nearly impossible for them to regress to the old way of sending
+    countless emails to dozens of stakeholders while navigating numerous platforms.
+    Any other way of conducting business feels ancie'
+  retrieved_at: '2026-08-12T21:20:33.437855+00:00'
+  url: https://www.nfx.com/post/why-nfx-invested-in-aligned
+- content_hash: 11550039cf87f6719f2a317d5a0f557f9dd4695d93a9dc39ca6c57f1f9c4cd89
+  evidence_id: ev-11550039cf87f671
+  excerpt: 'Detected date: 2026-07-01
+
+    Title: Aligned Closes $60M Series B to Solidify Leadership
+
+    Date: 2026-07-01
+
+    Source: globenewswire.com
+
+    Snippet: # Aligned Closes $60M Series B to Solidify Leadership Position as the
+    System of Action for B2B Sales ## PeakSpan Capital leads round; Aligned replaces
+    legacy B2B sales workflows and tools with an agentic execution layer already used
+    by 70K sellers and 1M buyers Workspace where sellers, buyers, and their AI agents
+    run deals together, today announced $60 million in Series B financing, bringing
+    its total funding to $73.8 million. ... Aligned Exec Team Aligned Executive Team
+    Starting from the left - Gal Deitsch, Co-founder and Chief Product Officer, Gal
+    Aga, Co-founder and ...'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://www.globenewswire.com/news-release/2026/07/01/3320495/0/en/aligned-closes-60m-series-b-to-solidify-leadership-position-as-the-system-of-action-for-b2b-sales.html
+- content_hash: ef080bf06dfcf0aedf8de9bb6e6a06d3f627a95303e4b2ac76a57da3a1aec9ea
+  evidence_id: ev-ef080bf06dfcf0ae
+  excerpt: 'Detected date: 2026-02-11
+
+    Title: Aligned Raises $8M Series A to Lead the Buyer ...
+
+    Date: 2026-02-11
+
+    Source: alignedup.com
+
+    Snippet: * [$60M raised. 70,000 sellers. 1M buyers. The deal workspace is here
+    ➜ Read the announcement](https://alignedup.com/blog/why-we-raised-60m-to-build-the-system-of-action-for-b2b-sales/)
+    [Learn more](https://alignedup.com/blog/why-we-raised-60m-to-build-the-system-of-action-for-b2b-sales/)
+    [aligned logo](https://alignedup.com) ... # Aligned’s 8M Series A Announcement
+    – Paving the Way for Buyer Enablement ## **By Gal Aga, CEO & Co-Founder** February
+    11, 2026 [Watch the launch video](https://alignedup.com/?p=37793&preview=true#)
+    · [Book a demo](https://alignedup.com/?p=37793&preview=true#) Sales teams don’t
+    lose quota because they spend too much time on admin. ... Today, we’re launching
+    the biggest release in Aligned’s history: **the AI Deal Workspace** . It’s a buyer-facing
+    system built to solve the part of selling that never got a proper workspace, the
+    real work of moving decisions forward.'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://alignedup.com/blog/aligneds-8m-series-a-announcement-paving-the-way-for-buyer-enablement/
+- content_hash: 9b4d9df3a4564d4f5696acb8a70f45620433cdf8d927896fb11942aa52e75bf3
+  evidence_id: ev-9b4d9df3a4564d4f
+  excerpt: 'Detected date: 2026-07-01
+
+    Title: Aligned Raises $60M Series B
+
+    Date: 2026-07-01
+
+    Source: thesaasnews.com
+
+    Snippet: # Aligned Raises $60M Series B Aligned raises $60M in Series B funding
+    led by PeakSpan Capital to scale its AI-powered deal workspace platform for B2B
+    sales teams. Ben Murray profile image by [Ben Murray](https://www.thesaasnews.com/author/ben/)
+    Updated July 01, 2026 ... Aligned Raises $60M Series B Aligned, based in New York
+    and Tel Aviv, is an AI-powered deal workspace platform that facilitates collaboration
+    between sellers, buyers, and AI agents. The company announced it has raised $60
+    million in Series B financing, bringing its total funding to date to $73.8 million.
+    ... ## Funding Details Company Website: [https://alignedup.com](https://alignedup.com/?ref=thesaasnews.com)
+    Company: Aligned Raised: $60M Round: Series B Funding Date: July 1, 2026 Lead
+    Investor: PeakSpan Capital Additional Investors: Hetz Ventures, JAL Ventures,
+    NFX Company Website: [https://alignedup.com](https://alignedup.com/?ref=thesaasnews.com)
+    Software Category: Sales Tech Source:'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://www.thesaasnews.com/news/aligned-raises-60m-series-b/
+- content_hash: 8bd4f7f1e5a62f529229494205ddbe2ea384d240e8b1f6e71944002fbca4a823
+  evidence_id: ev-8bd4f7f1e5a62f52
+  excerpt: 'Detected date: 2026-07-01
+
+    Title: Why We Raised $60M to Build the System of Action for B2B ...
+
+    Date: 2026-07-01
+
+    Source: alignedup.com
+
+    Snippet: * Platform Close Platform Open Platform Explore our platform Product
+    Overview Platform at a glance Digital Sales Room Centralized buyer workspace Customer
+    Success Hub Manage customer outcomes Customer Onboarding Faster customer activation
+    Aligned AI AI aligned to revenue Mutual Action Plan Shared deal milestones Revenue
+    Intelligence ... # Why We Raised $60M to Build the System of Action for B2B Sales
+    ## Table of contents ### Employees #### Share Earlier this year, we closed a $60
+    million Series B led by PeakSpan Capital, with participation from NFX, Hetz Ventures,
+    and JAL Ventures, bringing our total funding to $73.8 million.​ ... ## **Why Our
+    Investors Backed Us** Matt Melymuka, who joins our board of directors, put it
+    simply: _“I’ve partnered with companies in the GTM technology space for the past
+    15 years and spent the last three years looking for the company that would own
+    the execution layer of sales. The research all pointed at one company: Aligned.'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://alignedup.com/blog/why-we-raised-60m-to-build-the-system-of-action-for-b2b-sales/
+- content_hash: 05eb7727e8ec34abb2db82a0c41458dfb4b962b72b33cedd7c4df91a5279e17b
+  evidence_id: ev-05eb7727e8ec34ab
+  excerpt: 'Detected date: 30 Jan, 2025
+
+    Title: Aligned raises $8M to shape the future of selling with AI ...
+
+    Source: prnewswire.com
+
+    Snippet: # Aligned raises $8M to shape the future of selling with AI sales rooms
+    ## News provided by **Aligned** 30 Jan, 2025, 18:52 IST ... ## Share this article
+    TEL AVIV, Israel , Jan. 30, 2025 /PRNewswire/ -- [Aligned](https://alignedup.com/)
+    , the Digital Sales Room improving the buyer-vendor workflow from start to post-sale,
+    announces it has secured an $8 million investment led by [JAL Ventures](https://www.jalventures.com/)
+    . The round includes participation from existing investors [NFX](https://www.nfx.com/)
+    , [Hetz Ventures](https://www.hetz.vc/) , and CROs from leading SaaS companies,
+    bringing the total amount raised to $14 million . ... Recognized by G2 as leaders
+    in AI-driven Digital Sales Rooms, Aligned is at the forefront of shaping the future
+    of Buyer Enablement . To learn more, visit: [https://alignedup.com](https://alignedup.com/)
+    .'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: http://prnewswire.com/il/news-releases/aligned-raises-8m-to-shape-the-future-of-selling-with-ai-sales-rooms-302364616.html
+- content_hash: 1f99d8f8a0770aa3b4854789e73b5372909c3cb10918299795c7c96e4bf1248c
+  evidence_id: ev-1f99d8f8a0770aa3
+  excerpt: 'Detected date: 2026-07-01
+
+    Title: Aligned Closes $60M Series B to Solidify Leadership ...
+
+    Date: 2026-07-01
+
+    Source: fidelity.com
+
+    Snippet: * [**Home**](https://www.fidelity.com) » * News & Insights » * News »
+    * Print * Share Share Close Mutual Funds and Mutual Fund Investing - Fidelity
+    Investments Clicking a link will open a new window. + Facebook + Twitter + LinkedIn
+    * Default text size A * Larger text size A * Largest text size A'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://www.fidelity.com/news/article/default/202607010700PRIMZONEFULLFEED9755196
+- content_hash: dfd5aa2b35e3280db20ea58ee564386a898404d3edc935cfac330b86dccf1292
+  evidence_id: ev-dfd5aa2b35e3280d
+  excerpt: 'Detected date: Jul 30, 2026
+
+    Title: Aligned - Crunchbase Company Profile & Funding
+
+    Source: crunchbase.com
+
+    Snippet: # Company Performance Metrics ## M&A Details Aligned was acquired by
+    AI Infrastructure Partners for obfuscated obfuscation on obfuscated obfuscation
+    . Transaction Name Aligned acquired by AI Infrastructure Partners Logo Aligned
+    acquired by AI Infrastructure Partners Acquired by AI Infrastructure Partners
+    Logo AI Infrastructure Partners Announced Date obfuscated ... ## News and Press
+    obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated
+    obfuscated News • Jul 30, 2026 obfuscated obfuscated obfuscated obfuscated obfuscated
+    obfuscated obfuscated obfuscated obfuscated obfuscated Access a complete feed
+    of recent news and press, from product launches to leadership changes. ... ##
+    Lists Featuring This Company Where is Aligned ''s headquarters? Aligned is located
+    in Plano , Texas , United States . Who invested in Aligned ? Aligned has 5 investors
+    including MGX and Global Infrastructure Partners . When was the last funding round
+    for Aligned ? Aligned closed its last funding round on obfuscated'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://www.crunchbase.com/organization/aligned-dd2b
+- content_hash: 3f398581b8f0fc519b81c15cf110d8ba8eeeaf5124bd45cdde9cf65f8119f59d
+  evidence_id: ev-3f398581b8f0fc51
+  excerpt: 'Query: alignedup.com news
+
+    1. https://www.globenewswire.com/news-release/2026/07/01/3320495/0/en/aligned-closes-60m-series-b-to-solidify-leadership-position-as-the-system-of-action-for-b2b-sales.html
+
+    Title: Aligned Closes $60M Series B to Solidify Leadership
+
+    Date: 2026-07-01
+
+    Source: globenewswire.com
+
+    Snippet: # Aligned Closes $60M Series B to Solidify Leadership Position as the
+    System of Action for B2B Sales ## PeakSpan Capital leads round; Aligned replaces
+    legacy B2B sales workflows and tools with an agentic execution layer already used
+    by 70K sellers and 1M buyers Workspace where sellers, buyers, and their AI agents
+    run deals together, today announced $60 million in Series B financing, bringing
+    its total funding to $73.8 million. ... Aligned Exec Team Aligned Executive Team
+    Starting from the left - Gal Deitsch, Co-founder and Chief Product Officer, Gal
+    Aga, Co-founder and ...
+
+    2. https://alignedup.com/blog/aligneds-8m-series-a-announcement-paving-the-way-for-buyer-enablement/
+
+    Title: Aligned Raises $8M Series A to Lead the Buyer ...
+
+    Date: 2026-02-11
+
+    Source: alignedup.com
+
+    Snippet: * [$60M raised. 70,000 sellers. 1M buyers. The deal workspace is here
+    ➜ Read the announcement](https://alignedup.com/blog/why-we-raised-60m-to-build-the-system-of-action-for-b2b-sales/)
+    [Learn more](https://alignedup.com/blog/why-we-raised-60m-to-build-the-system-of-action-for-b2b-sales/)
+    [aligned logo](https://alignedup.com) ... # Aligned’s 8M Series A Announcement
+    – Paving the Way for Buyer Enableme'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://www.google.com/search?q=alignedup.com+news&tbm=nws
+- content_hash: f5f4284e240c2d795a5655d6f688c2ff712dd74b2fb807e090d2140be6f4f0cf
+  evidence_id: ev-f5f4284e240c2d79
+  excerpt: 'Detected date: 2026-08-13
+
+    Title: Aligned Marketplace Raises $20 Million, Achieves Measurable Outcomes with
+    Large Employers
+
+    Date: 2026-08-13
+
+    Source: globenewswire.com
+
+    Snippet: # Aligned Marketplace Raises $20 Million, Achieves Measurable Outcomes
+    with Large Employers ## A Third-Party Validated 12 Percent Reduction in Total
+    Cost of Care Delivered in Year One For A Large Fortune 500 Company Proves the
+    Independent Primary Care Model Works at Scale NEW YORK, Aug. 13, 2026 (GLOBE NEWSWIRE)
+    -- [Aligned ... MJAOpISzeJTSlvP3_BeRX) , the marketplace connecting self-insured
+    employers to independent advanced and direct primary care, today announced an
+    additional $20'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://www.globenewswire.com/news-release/2026/08/13/3344772/0/en/aligned-marketplace-raises-20-million-achieves-measurable-outcomes-with-large-employers.html
+- content_hash: 9323e468609b8f7cf80ff7ceda9a7cbe70ab26dd77571e00997085db67df86a9
+  evidence_id: ev-9323e468609b8f7c
+  excerpt: 'Detected date: 2026-01-16
+
+    Title: Goal Alignment Section Enhanced and Available on the ...
+
+    Date: 2026-01-16
+
+    Source: help.sap.com
+
+    Snippet: Jan 16, 2026 — Now, the parent goal name is shown in the " Aligned Up
+    " area, with a link to open its details. The " Aligned Up " and " Aligned Down"
+    areas are presented vertically'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://help.sap.com/docs/successfactors-release-information/8e0d540f96474717bbf18df51e54e522/451de50033144727a108d49651e5acf8.html
+- content_hash: cf0a53a1d25adf7b814065bbc93586630f90bf6020e5f765a0adccd5b0850790
+  evidence_id: ev-cf0a53a1d25adf7b
+  excerpt: 'Detected date: 2025-10-15
+
+    Title: Aligned Equity Acquisition and its Industry Impact
+
+    Date: 2025-10-15
+
+    Source: aligneddc.com
+
+    Snippet: # AI Infrastructure Partnership (AIP), MGX, and BlackRock’s Global Infrastructure
+    Partners (GIP) to Acquire All Equity in Aligned Data Centers ## _Aligned Data
+    Centers Is an Industry-Leading Provider of Innovative, Sustainable, and Adaptive
+    Digital Infrastructure Powering the World’s Most Complex and Demanding Cloud and
+    AI Workloads_ NEW YORK, ABU DHABI and DALLAS – October 15, 2025 – The Artificial
+    Intelligence Infrastructure Partnership (“AIP”), MGX, and BlackRock’s Global ...
+    (“Aligned” or the “Company”) from private infrastructure funds managed by Macquarie
+    Asset Management and its co-invest partners.'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://aligneddc.com/press-release/ai-infrastructure-partnership-aip-mgx-and-blackrocks-global-infrastructure-partners-gip-to-acquire-all-equity-in-aligned-data-centers/
+- content_hash: 762658f90ac2f97b1b4a3a6c9c7c217c45293b8b2bc515f3ec820669804d30f4
+  evidence_id: ev-762658f90ac2f97b
+  excerpt: 'Detected date: 2026-07-22
+
+    Title: BlackRock’s GIP, Microsoft-backed AI group buy Aligned Data Centers for
+    $40B
+
+    Date: 2026-07-22
+
+    Source: esgdive.com
+
+    Snippet: # BlackRock’s GIP, Microsoft-backed AI group buy Aligned Data Centers
+    for $40B ## Dive Brief: * The deal was [first announced in October](https://aligneddc.com/press-release/ai-infrastructure-partnership-aip-mgx-and-blackrocks-global-infrastructure-partners-gip-to-acquire-all-equity-in-aligned-data-centers/)
+    , also at a $40 billion valuation. BlackRock, Microsoft and Nvidia, along with
+    MGX and GIP, [launched the AI Infrastructure Partnership](https://www.esgdive.com/news/blackrock-microsoft-gip-mgx-ai-infrastructure-data-center-energy-investment-partnership/727543/)
+    in September 2024 with the goal of investing in next-generation AI infrastructure.
+    ... ### Dive Insight: Since the AI Infrastructure Partnership launched, [the Elon
+    Musk owned xAI](https://www.blackrock.com/corporate/newsroom/press-releases/article/corporate-one/press-releases/ai-infrastructure-partnership)
+    , [Singapore sovereign wealth fund Temasek and the Kuwait Investment'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://www.esgdive.com/news/blackrocks-gip-microsoft-backed-ai-group-buy-aligned-data-centers-for-40/825920/
+- content_hash: 8e708054c00955a7f06bda8d26d36d129d33c00077e555e33ed2ff7a937a4d03
+  evidence_id: ev-8e708054c00955a7
+  excerpt: 'Detected date: 2025-10-03
+
+    Title: Aligned Launches Aligned Access™, Its Software-defined Connectivity Solution
+    - Aligned Data Centers
+
+    Date: 2025-10-03
+
+    Source: aligneddc.com
+
+    Snippet: # Aligned Launches Aligned Access™, Its Software-defined Connectivity
+    Solution ## _Solution enables software-defined, carrier-neutral connectivity to
+    leading cloud service providers, data centers and network service providers_ *
+    **Aligned DCI Access** – Secure, low-latency, high-resiliency and cost-effective
+    Data Center Interconnect (DCI) Access, enabling connectivity from customers’ own
+    facilities or managed ... ### You may also find Interesting [](https://aligneddc.com/press-release/aligned-data-centers-earns-great-place-to-work-certification-for-second-consecutive-year/)
+    Aligned Data Centers Earns Great Place To Work Certification™ for Second Consecutive
+    Year [Press Release](https://aligneddc.com/category/press-release/)'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://aligneddc.com/aligned-energy-launches-aligned-access-its-software-defined-connectivity-solution
+- content_hash: a7e257183b72ac6ff3488770e676906ba2c4c9c6e4fcc963c2fe0272da9c6949
+  evidence_id: ev-a7e257183b72ac6f
+  excerpt: 'Detected date: 2025-10-15
+
+    Title: Aligned Data Centers Set To Be Acquired For $40 Billion - CRN
+
+    Date: 2025-10-15
+
+    Source: crn.com
+
+    Snippet: # Aligned Data Centers Set To Be Acquired For $40 Billion Aligned Data
+    Centers CEO Andrew Schaap said this is the first investment by this group of investors,
+    which is referred to in a news release as “the consortium.” The Global AI Infrastructure
+    Investment Partnership launched in September 2024 and includes MGX, BlackRock,
+    Microsoft, ... In January, Aligned announced it won $5 billion in equity investment
+    and $7 billion in debt commitments in a round of funding led by Macquarie. ...
+    Larry Fink, chairman and CEO of BlackRock, has previously said that with data
+    centers as the bedrock of a digital economy, the AIP partnership will unlock a
+    “multi-trillion dollar long-term investment opportunity” that will lead to economic
+    growth, job creation and AI technology'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://www.crn.com/news/data-center/2025/aligned-data-centers-set-to-be-acquired-for-40-billion
+- content_hash: 865dc714fea2dea6f807c247ce70258295bfe07fa091117caed10c90eb0010aa
+  evidence_id: ev-865dc714fea2dea6
+  excerpt: 'Detected date: 2026-07-01
+
+    Title: Aligned bags $60M in funding to build the AI-native sales execution layer
+    for enterprise deals - SiliconANGLE
+
+    Date: 2026-07-01
+
+    Source: siliconangle.com
+
+    Snippet: # Aligned bags $60M in funding to build the AI-native sales execution
+    layer for enterprise deals [Team Aligned Inc.](https://alignedup.com) , a startup
+    that uses artificial intelligence to streamline deal execution for corporate buyers
+    and sellers, said today it has clinched $60 million in a new round of funding.
+    PeakSpan Capital led the Series B round, which saw participation from all of the
+    company’s earlier backers, including Hetz Ventures, JAL Ventures and NFX, bringing
+    its total amount raised to date to $73.8 million. Aligned is the developer of
+    an AI-native collaborative dealmaking platform that aims to help overcome the
+    chaotic nature of business-to-business sales execution. ... Deal Workspace](https://alignedup.com/customer-collaboration-platform/)
+    that sellers can share with prospective buyers following an initial meeting.'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://siliconangle.com/2026/07/01/aligned-bags-60m-funding-build-ai-native-sales-execution-layer-enterprise-deals/
+- content_hash: 0a9e03a2f7cd7cf968b8ad7a7a41689f6adbf1c1d76745a694fd1b0a2cedd91b
+  evidence_id: ev-0a9e03a2f7cd7cf9
+  excerpt: 'Detected date: 2026-02-10
+
+    Title: Aligned - 2026 Company Profile, Team, Funding & Competitors - Tracxn
+
+    Date: 2026-02-10
+
+    Source: tracxn.com
+
+    Snippet: Increases Aligned Data Centers Debt Facility to Over $1B Private Equity
+    Wire • Aug 25, 2025 • Meta , Aligned , Blue Owl , Blackstone and 2 others • Aligned
+    gets $1b from Blackstone for Americas AI data centers Tech in Asia • Aug 21, 2025
+    • Aligned , Blackstone , Aligned , JEMB Realty • Aligned Data Centers unveils
+    mega-scale AI campus in Ohio Capacity Media • Jul 24, 2025 • Aligned • Aligned
+    looks to develop three more data centers at Quantum Frederick park in Maryland
+    DCD • May 23, 2025 • Aligned lock Get curated news about company updates, funding
+    rounds, M&A deals and others. Sign up today! View complete company profile of
+    Aligned Are you a Founder ? Legal Entity Name | Date of Incorporation | Revenue
+    | Latest Employee Count | Documents ALIGNED DATA CENTERS LLC CIN'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://tracxn.com/d/companies/aligned/__bTgtxTeliFZJd3OljUUNwuk84LhJ-vhpljCdVPWC8Ao
+- content_hash: f6c02f8e07e8ebeb6660551f8fa36a683f277b6d83c549380b8cb94dc62cf8de
+  evidence_id: ev-f6c02f8e07e8ebeb
+  excerpt: 'Query: Aligned "press release" OR "announces" OR "newsroom"
+
+    1. https://www.globenewswire.com/news-release/2026/08/13/3344772/0/en/aligned-marketplace-raises-20-million-achieves-measurable-outcomes-with-large-employers.html
+
+    Title: Aligned Marketplace Raises $20 Million, Achieves Measurable Outcomes with
+    Large Employers
+
+    Date: 2026-08-13
+
+    Source: globenewswire.com
+
+    Snippet: # Aligned Marketplace Raises $20 Million, Achieves Measurable Outcomes
+    with Large Employers ## A Third-Party Validated 12 Percent Reduction in Total
+    Cost of Care Delivered in Year One For A Large Fortune 500 Company Proves the
+    Independent Primary Care Model Works at Scale NEW YORK, Aug. 13, 2026 (GLOBE NEWSWIRE)
+    -- [Aligned ... MJAOpISzeJTSlvP3_BeRX) , the marketplace connecting self-insured
+    employers to independent advanced and direct primary care, today announced an
+    additional $20
+
+    2. https://help.sap.com/docs/successfactors-release-information/8e0d540f96474717bbf18df51e54e522/451de50033144727a108d49651e5acf8.html
+
+    Title: Goal Alignment Section Enhanced and Available on the ...
+
+    Date: 2026-01-16
+
+    Source: help.sap.com
+
+    Snippet: Jan 16, 2026 — Now, the parent goal name is shown in the " Aligned Up
+    " area, with a link to open its details. The " Aligned Up " and " Aligned Down"
+    areas are presented vertically
+
+    3. https://aligneddc.com/press-release/ai-infrastructure-partnership-aip-mgx-and-blackrocks-global-infrastructure-partners-gip-to-acquire-all-equity-in-aligned-data-centers/
+
+    Title: Aligned Equity Acquisition and i'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://www.google.com/search?q=Aligned+%22press+release%22+OR+%22announces%22+OR+%22newsroom%22&tbs=qdr%3Ay
+- content_hash: cf67e2de750df819fc6751e2a81ee00e59a6aebd0a57b1ae0ac29901682985c7
+  evidence_id: ev-cf67e2de750df819
+  excerpt: 'Detected date: February 11, 2026
+
+    Title: Aligned Raises $8M Series A to Lead the Buyer Enablement Revolution
+
+    Source: alignedup.com
+
+    Snippet: Aligned''s 8M Series A Announcement – Paving the Way for Buyer Enablement
+    **By Gal Aga, CEO & Co-Founder** February 11, 2026 [Watch the launch video](https://alignedup.com/?p=37793&preview=true#)
+    · [Book a demo](https://alignedup.com/?p=37793&preview=true#) Sales teams don''t
+    lose quota because they spend too much time on admin. ... Today, we''re launching
+    the biggest release in Aligned''s history: **the AI Deal Workspace** . It''s a
+    buyer-facing system built to solve the part of selling that never got a proper
+    workspace, the real work of moving decisions forward. ... From Buyer Enablement
+    to AI-native deal execution We call that approach **Buyer Enablement** : improving
+    the buyer''s ability to make a confident decision and move the process forward
+    internally. **The AI Deal Workspace is the execution layer between your CRM and
+    your buyer.** Your CRM records deals. **Aligned runs them, with you. What the
+    AI Deal Workspace does 1. Auto-builds the workspace after every call Executive
+    summary tailored to how the customer makes decisions Requested content already
+    organized Open action items already listed and assigned 2. Reads signals across
+    calls, email, CRM, and workspace engagement Flags risk and slippage early Identifies
+    what changed and why it matters Recommends the next best move like a 24/7 VP Sales
+    focused on execution 3. Maps stakeholders automatically to guide multithreadi'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: http://alignedup.com/blog/aligneds-8m-series-a-announcement-paving-the-way-for-buyer-enablement
+- content_hash: c016b2ed7ee84129a7e84ae31ecffb291ca4d7fb33fb14ad375b7ea438e9d6be
+  evidence_id: ev-c016b2ed7ee84129
+  excerpt: 'Detected date: 2026-07-01
+
+    Title: Aligned Closes $60M Series B to Solidify Leadership
+
+    Date: 2026-07-01
+
+    Source: globenewswire.com
+
+    Snippet: # Aligned Closes $60M Series B to Solidify Leadership Position as the
+    System of Action for B2B Sales ## PeakSpan Capital leads round; Aligned replaces
+    legacy B2B sales workflows and tools with an agentic execution layer already used
+    by 70K sellers and 1M buyers NEW YORK and TEL AVIV, Israel, July 01, 2026 (GLOBE
+    NEWSWIRE) -- ... Workspace where sellers, buyers, and their AI agents run deals
+    together, today announced $60 million in Series B financing, bringing its total
+    funding to $73.8 million. ... Aligned Exec Team Aligned Executive Team Starting
+    from the left - Gal Deitsch, Co-founder and Chief Product Officer, Gal Aga, Co-founder
+    and ...'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://www.globenewswire.com/news-release/2026/07/01/3320495/0/en/aligned-closes-60m-series-b-to-solidify-leadership-position-as-the-system-of-action-for-b2b-sales.html
+- content_hash: 8bac23b4530330aa7757037f93c2f7c361a4c4d021d1ee12394ec22d34313a6a
+  evidence_id: ev-8bac23b4530330aa
+  excerpt: 'Title: Why We Raised $60M to Build the System of Action for B2B ...
+
+    Source: alignedup.com
+
+    Snippet: * Platform Close Platform Open Platform Explore our platform Product
+    Overview Platform at a glance Digital Sales Room Centralized buyer workspace Customer
+    Success Hub Manage customer outcomes Customer Onboarding Faster customer activation
+    Aligned AI AI aligned to revenue Mutual Action Plan Shared deal milestones Revenue
+    Intelligence ... # Why We Raised $60M to Build the System of Action for B2B Sales
+    ## Table of contents ### Employees #### Share Earlier this year, we closed a $60
+    million Series B led by PeakSpan Capital, with participation from NFX, Hetz Ventures,
+    and JAL Ventures, bringing our total funding to $73.8 million.​ ... ## **Why Our
+    Investors Backed Us** Matt Melymuka, who joins our board of directors, put it
+    simply: _“I’ve partnered with companies in the GTM technology space for the past
+    15 years and spent the last three years looking for the company that would own
+    the execution layer of sales. The research all pointed at one company: Aligned.'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://alignedup.com/blog/why-we-raised-60m-to-build-the-system-of-action-for-b2b-sales/
+- content_hash: b9b172d76f6d5270ca803b6697a546f0482addd5e2798fd7c52e0bc67ff064b7
+  evidence_id: ev-b9b172d76f6d5270
+  excerpt: 'Detected date: Jul 28, 2569
+
+    Title: Aligned - Schedule Tracker - Apps on Google Play
+
+    Source: play.google.com
+
+    Snippet: Jul 28, 2569 BE — FREE FEATURES : · Track up to 5 activities in your
+    daily routine. · Export your data to CSV (up to 3 times) Track unlimited activities
+    with no limits. backup ·'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://play.google.com/store/apps/details?id=com.prismtree.aligned&hl=en
+- content_hash: 546c4018619690521ea90718c74fdde558bc99c82ad2a0af824b79a006953e54
+  evidence_id: ev-546c401861969052
+  excerpt: 'Detected date: 2026-04-20
+
+    Title: Aligned Completes $375 Million Secured Loan with Goldman Sachs - Aligned
+    Data Centers
+
+    Date: 2026-04-20
+
+    Source: aligneddc.com
+
+    Snippet: # Aligned Completes $375 Million Secured Loan with Goldman Sachs ## Data
+    center provider secures credit facility to support expansion plans and lower cost
+    of capital 25, 2018)** – Aligned, a leading data center provider offering innovative,
+    sustainable and adaptable colocation and build-to-scale solutions for cloud, enterprise,
+    and managed service providers, today announced it has completed a $375 million
+    ... This new loan provides Aligned lower-cost capital to support the company’s
+    substantial near- and long-term development objectives. The loan, inclusive of
+    extension options, matures in October 2023. ... “Along with the investment made
+    by Macquarie Infrastructure Partners earlier this year as well as the continued
+    support of BlueMountain Capital Management, this significant funding with Goldman
+    Sachs positions us to aggressively address the'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://aligneddc.com/press-release/aligned-energy-completes-375-million-secured-loan-with-goldman-sachs
+- content_hash: 491dba09113e2df0ee9175ef750be2a98c90f85a524fd798adc5a0b232bd0678
+  evidence_id: ev-491dba09113e2df0
+  excerpt: 'Detected date: 2025-10-03
+
+    Title: Aligned Data Centers Completes $12+ Billion Capital Raise
+
+    Date: 2025-10-03
+
+    Source: aligneddc.com
+
+    Snippet: # Aligned Data Centers Completes $12+ Billion Capital Raise **DALLAS
+    – January 15, 2025 –** Aligned Data Centers, a leading technology infrastructure
+    company offering innovative, sustainable and adaptive [Scale Data Centers](https://aligneddc.com/solutions/scale-data-centers/)
+    and [Build-to-Scale](https://aligneddc.com/solutions/build-to-scale/) solutions
+    for global hyperscale and enterprise customers, today announced it has completed
+    another round of capital raising totaling over $5 billion of new primary equity
+    and over $7 billion of new debt commitments ... This funding round reflects the
+    company’s strong momentum, aggressive pursuit of growth opportunities, and successful
+    execution of its strategic plan to date. **# # #** **About Aligned Data Centers**'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://aligneddc.com/press-release/aligned-data-centers-completes-12-billion-capital-raise
+- content_hash: 2ae2894dfaf409de95a647e7dafa3f4d9e42abd5c3f2a86b522e498fd48cb233
+  evidence_id: ev-2ae2894dfaf409de
+  excerpt: 'Title: Aligned secures $12 billion in funding for 5GW data center build
+    out - DCD
+
+    Source: datacenterdynamics.com
+
+    Snippet: Prior to this latest raise, Macquarie Asset Management was already the
+    largest shareholder in Aligned. Macquarie first invested in Aligned in 2018, joining
+    BlueMountain Capital Management. Abu Dhabi’s sovereign investment arm, the Mubadala
+    Investment Company, took a minority stake in Aligned in 2023 , while investment
+    firm CenterSquare Investment Management (not to be confused with Brookfield-owned
+    data center operator Centersquare) invested in Aligned last year . Beyond Aligned,
+    Macquarie Asset Management, part of Macquarie Group, has invested in multiple
+    data center companies. Home News The Investment & Markets Channel Aligned secures
+    $12 billion in funding for 5GW data center build out It jointly owned APAC operator
+    AirTrunk until it was sold to Blackstone and CPP last year, owns a'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://www.datacenterdynamics.com/en/news/aligned-secures-12-billion-in-funding-for-5gw-data-center-build-out
+- content_hash: a817426c9b3c91bb23a844b6d12de7fe0fdc509c3c9568dd88de7001c9b9451e
+  evidence_id: ev-a817426c9b3c91bb
+  excerpt: 'Query: Aligned launches OR "new feature" OR "introducing" OR "now available"
+
+    1. http://alignedup.com/blog/aligneds-8m-series-a-announcement-paving-the-way-for-buyer-enablement
+
+    Title: Aligned Raises $8M Series A to Lead the Buyer Enablement Revolution
+
+    Source: alignedup.com
+
+    Snippet: Aligned''s 8M Series A Announcement – Paving the Way for Buyer Enablement
+    **By Gal Aga, CEO & Co-Founder** February 11, 2026 [Watch the launch video](https://alignedup.com/?p=37793&preview=true#)
+    · [Book a demo](https://alignedup.com/?p=37793&preview=true#) Sales teams don''t
+    lose quota because they spend too much time on admin. ... Today, we''re launching
+    the biggest release in Aligned''s history: **the AI Deal Workspace** . It''s a
+    buyer-facing system built to solve the part of selling that never got a proper
+    workspace, the real work of moving decisions forward. ... From Buyer Enablement
+    to AI-native deal execution We call that approach **Buyer Enablement** : improving
+    the buyer''s ability to make a confident decision and move the process forward
+    internally. **The AI Deal Workspace is the execution layer between your CRM and
+    your buyer.** Your CRM records deals. **Aligned runs them, with you. What the
+    AI Deal Workspace does 1. Auto-builds the workspace after every call Executive
+    summary tailored to how the customer makes decisions Requested content already
+    organized Open action items already listed and assigned 2. Reads signals across
+    calls, email, CRM, and workspace engagement Flags risk and slippage e'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://www.google.com/search?q=Aligned+launches+OR+%22new+feature%22+OR+%22introducing%22+OR+%22now+available%22&tbs=qdr%3Ay
+- content_hash: e1a3342c3e9b9baa1c11fb40f7f0b4fbc2de5e43c46c16aa30d046103c39c814
+  evidence_id: ev-e1a3342c3e9b9baa
+  excerpt: 'Title: Robot Challenge Screen
+
+    ![Robot](https://d1rozh26tys225.cloudfront.net/robot-suspicion.svg)
+
+    # alignedup.com
+
+    Checking the site connection security
+
+    ![CDN icon](https://d1rozh26tys225.cloudfront.net/loader.svg)
+
+    This page requires cookies to be enabled in your browser settings. Please check
+    this setting and enable cookies (if disabled)'
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://alignedup.com/blog/aligneds-8m-series-a-announcement-paving-the-way-for-buyer-enablement/
+- content_hash: 9eb9dc39c0a982acee7d5c0e0e53b632e8084b6d3bca7a21c753f77d27b4045f
+  evidence_id: ev-9eb9dc39c0a982ac
+  excerpt: "Detected date: July 01, 2026\nTitle: Aligned Raises $60M Series B\n# [The\
+    \ SaaS News ](https://www.thesaasnews.com)\n\n[Sign in](https://www.thesaasnews.com/signin)\
+    \ [Subscribe](https://www.thesaasnews.com/subscribe)\n\n  * [ Home ](https://www.thesaasnews.com/)\n\
+    \  * [ Funding News ](https://www.thesaasnews.com/funding-rounds/)\n  * [ Database\
+    \ ](https://www.thesaasnews.com/funding-database/)\n  * [ Sign In ](https://www.thesaasnews.com/#/portal/signin)\n\
+    \  * [ About ](https://www.thesaasnews.com/about-us/)\n\n\n\n  * [ Home ](https://www.thesaasnews.com/)\n\
+    \  * [ Funding News ](https://www.thesaasnews.com/funding-rounds/)\n  * [ Database\
+    \ ](https://www.thesaasnews.com/funding-database/)\n  * [ Sign In ](https://www.thesaasnews.com/#/portal/signin)\n\
+    \  * [ About ](https://www.thesaasnews.com/about-us/)\n\n[Sign in](https://www.thesaasnews.com/signin)\n\
+    \n  * Sign up\n  * [Privacy Policy](https://www.thesaasnews.com/privacy-policy/)\n\
+    \  * [Terms & Conditions](https://www.thesaasnews.com/terms-conditions/)\n\n\n\
+    \n## Subscribe to Our Newsletter\n\nSubscribe\n\nSuccess! Now Check Your Email\n\
+    \nTo complete Subscribe, click the confirmation link in your inbox. If it doesn’t\
+    \ arrive within 3 minutes, check your spam folder.\n\n[Ok, Thanks](https://www.thesaasnews.com)\n\
+    \n[ ](https://x.com/thesaasnews)\n\n[Series B](/tag/series-b/)\n\n# Aligned Raises\
+    \ $60M Series B\n\nAligned raises $60M in Series B funding led by PeakSpan Capital\
+    \ to scale its AI-powered deal workspace platform for B2B sales teams.\n\nby [Ben\
+    \ Murray](https://www.thesaasnews.com/author/ben/)\n\nUpdated "
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://www.thesaasnews.com/news/aligned-raises-60m-series-b/
+- content_hash: 9df1219da802abae9d85a84ec0b455cd9cedec1e5e4faa32c0ccbd23cae4d9b9
+  evidence_id: ev-9df1219da802abae
+  excerpt: "Title: Aligned Equity Acquisition and its Industry Impact - Aligned Data\
+    \ Centers\nSkip to content\n\n  * [Customer Portal](https://aligned.service-now.com/)\n\
+    \  * [Partners](https://aligneddc.com/partners/)\n\n\n\n[ ](https://aligneddc.com)\n\
+    \n  * [Data Center Solutions](https://aligneddc.com/data-center-solutions/)\n\
+    \    * [See All Solutions](/data-center-solutions/)\n\n[See All Solutions](/data-center-solutions/)\n\
+    \n[ ](/hyperscale-and-build-to-scale-campus/ \"Hyperscale Campus and Build to\
+    \ Scale\")\n\nHyperscale Campus and Build to Scale\n\n[ ](/gigascale-campuses/\
+    \ \"Gigascale Campuses\")\n\nGigascale Campuses\n\n[ ](/multi-tenant-and-enterprise-data-centers/\
+    \ \"Multi-Tenant and Enterprise\")\n\nMulti-Tenant and Enterprise\n\n[ ](https://aligned-federal.com/\
+    \ \"Federal\")\n\nFederal\n\nFeatured Case Study \n\n[ ](https://aligneddc.com/case-studies/case-study-protecting-regional-water-resources/)\n\
+    \n[Case Studies](https://aligneddc.com/category/case-studies/)\n\nProtecting Regional\
+    \ Water Resources \n\n  * [Cooling Innovation](https://aligneddc.com/cooling-innovation/)\n\
+    \  * [Locations](https://aligneddc.com/locations/)\n    * North America\n\n  \
+    \    * [Abernathy](/abernathy-tx-data-center/)\n\n      * [Maryland](/maryland-data-centers/)\n\
+    \n      * [Atlanta](/atlanta-data-centers/)\n\n      * [Ohio](/northeast-ohio-data-centers/)\n\
+    \n      * [Chicago](/chicago-data-centers/)\n\n      * [Phoenix](/phoenix-data-centers/)\n\
+    \n      * [Dallas](/dallas-data-centers/)\n\n      * [Salt Lake City](/salt-lake-city-data-centers/)\n\
+    \n      * [Hillsboro](/hill"
+  retrieved_at: '2026-08-19T12:23:28.502400-04:00'
+  url: https://aligneddc.com/press-release/ai-infrastructure-partnership-aip-mgx-and-blackrocks-global-infrastructure-partners-gip-to-acquire-all-equity-in-aligned-data-centers/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

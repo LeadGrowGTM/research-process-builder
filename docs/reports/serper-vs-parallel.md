@@ -99,11 +99,44 @@ evidence-ID enum in the output contract grows with them.
 Parallel is 5x the per-query price at `advanced` and scored roughly a third of
 Serper's F1 on both signals. All runs stayed under the $1.00 per-lineage cap.
 
+## Round 2 - objective steering (2026-08-19, same day)
+
+Round 1 used Parallel as a SERP clone. Round 2 used it as designed (commit
+`daf60b3`): each plan carries a natural-language `objective` (news: dated
+first-party changelog/newsroom and wire coverage; competitors: alternatives
+and comparison pages) forwarded as `SearchRequest.objective`, plus a
+1200-char per-result excerpt cap to relieve the structured-output stress.
+Same prompts, model, queries, and cost. Corpora:
+`benchmarks/signals-parallel-v2/`; lineages `news-v13-parallel`,
+`comp-v13-parallel`.
+
+| A/B metric | Round 1 | Round 2 | Serper |
+|---|---|---|---|
+| news events dev | 0.306 | 0.246 | **0.976** |
+| news events holdout | 0.516 | 0.604 | **1.000** |
+| comp named_set dev | 0.272 | 0.516 | **0.878** |
+| comp named_set holdout | 0.546 | 0.478 | **0.943** |
+| hard failures (comp dev) | 3 | **0** | 0 |
+
+What round 2 proved:
+
+- The **excerpt cap fixed reliability**: all three `invalid_output` failures
+  disappeared, and competitor labeling recovered to 0.948 dev / 0.875
+  holdout. Worth keeping regardless of provider choice.
+- Objective steering roughly **doubled competitor dev recall** (0.272 to
+  0.516; part of that is the hard-failure fix) but moved news within noise
+  (dev down, holdout up). The gap to Serper is retrieval coverage, not
+  prompt-side steering: Parallel's index simply does not surface the niche
+  in-window first-party changelog items and comparison listicles the ground
+  truth demands, however the request is phrased.
+
 ## Verdict
 
-- **Keep Serper as the primary collector** for news and competitor signals.
-  Keep `FallbackSearch(("serper", "parallel"))` order unchanged; Parallel now
-  has a real transport, so the fallback is live instead of a stub.
+- **Keep Serper as the primary collector** for news and competitor signals -
+  confirmed by both rounds, including objective steering in round 2. Keep
+  `FallbackSearch(("serper", "parallel"))` order unchanged; Parallel now has
+  a real transport, so the fallback is live instead of a stub, and it keeps
+  the objective steering plus excerpt cap from round 2.
 - Parallel's Search API is not competitive for dated-event and
   comparison-page mining at 5x the cost. If used as fallback only, `turbo`
   mode ($0.001/query) is the right tier.

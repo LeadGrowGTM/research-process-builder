@@ -1,0 +1,121 @@
+{
+  "collected_at": "2026-08-19T12:29:02.552629-04:00",
+  "company_id": "saas-08",
+  "enrichment_id": "competitor-intelligence",
+  "entries": [
+    {
+      "category": "incident intelligence",
+      "company_name": "BigPanda",
+      "domain": "bigpanda.io",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "BigPanda incident intelligence alternatives OR competitors OR \"vs\" OR \"compared to\"",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "BigPanda alternatives",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "BigPanda vs",
+      "tbs": null
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.softwarereviews.com/categories/215/products/7293/alternatives",
+      "waterfall_level": 2
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.gartner.com/reviews/product/bigpanda-1658620356/alternatives: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.gartner.com/reviews/product/bigpanda-1658620356/alternatives"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.peerspot.com/products/comparisons/bigpanda_vs_splunk-itsi-it-service-intelligence",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.sherlocks.ai/discover/bigpanda-competitors-alternatives",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.startuphub.ai/startups/bigpanda/alternatives",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.g2.com/products/bigpanda/competitors/alternatives: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.g2.com/products/bigpanda/competitors/alternatives"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://bigpanda.io/competitors: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://bigpanda.io/competitors"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://bigpanda.io/compare",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://bigpanda.io/alternatives: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://bigpanda.io/alternatives"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 33,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.015",
+  "signal_evidence": 36
+}
