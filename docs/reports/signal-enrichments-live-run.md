@@ -31,7 +31,7 @@ is unchanged (all pre-existing tests green).
 - Google Ads Transparency: `running_ads: true`, 197 creatives, first_seen 2022-08-13, last_seen 2026-08-18. Free.
 - Meta Ad Library: `handle_fb` match on page 120680864620158, 90 active / 15 inactive ads, per-ad copy, CTA, landing page from the scraper's SQLite. ~60 s per company, `workers: 1` (Meta rate-limits). Free.
 - Serper: competitor champion query returns the subject's own `/competitors` page plus alternatives articles; `{{domain}} news` on the news endpoint returns dated PR-wire items only without a time filter (`qdr:m`/`qdr:y` returned 0 for smaller SaaS), so the news query runs unfiltered and recency is scored, not filtered.
-- Parallel: no key exists in any secret project; the adapter lands as a normalized failure, never a crash.
+- Parallel: not exercised in this run; the adapter landed as a normalized failure, never a crash. (Correction 2026-08-19: PARALLEL_API_KEY does exist in gtm-orchestrator prod/staging - the 2026-08-18 check looked at dev. The adapter's HTTP transport is not yet implemented.)
 
 ## Results by lineage
 

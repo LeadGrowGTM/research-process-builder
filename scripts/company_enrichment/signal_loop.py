@@ -33,7 +33,7 @@ from .executors import P0_ENRICHMENTS
 from .experiment_runner import ExperimentInput, ModelClient
 from .openai_model_client import build_openai_model_client
 from .signal_evidence import (
-    load_cached_dossiers, load_signal_dossier, save_signal_dossier, signal_dossier_path,
+    load_cached_dossiers, load_signal_dossier, save_signal_dossier,
 )
 from .signal_ground_truth import (
     ALL_IDS, DEVELOPMENT_IDS, HOLDOUT_IDS, EvaluatorSignalDataset,
@@ -53,6 +53,9 @@ MODEL_ID = os.environ.get("SIGNAL_LOOP_MODEL", "gpt-4.1-mini")
 CAP_USD = Decimal("1.00")
 THRESHOLD = Decimal(".90")
 _LINEAGE = re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9._-]{0,79}$")
+# Comma-separated search provider order consumed by the entrypoints' lazy
+# search factory (for example "parallel" or "serper,parallel").
+SEARCH_PROVIDER_ENV = "SIGNAL_SEARCH_PROVIDER"
 _STARTED_MARKERS = ("cost.json", "outputs", "scores", "gate.json", "result.json")
 
 
@@ -78,6 +81,9 @@ class CollectRequest:
     company_id: str
     base: CompanyDossier
     repo_root: Path
+    # Repo-relative dossier directory; ``None`` keeps the canonical
+    # ``benchmarks/signals/<enrichment_id>`` location.
+    benchmark_dir: Path | None = None
 
 
 ScoreFn = Callable[[Mapping[str, Any], SignalGroundTruthRecord, CompanyDossier], CaseScore]
@@ -493,14 +499,16 @@ def collect_signals(
     written: list[str] = []
     skipped: list[str] = []
     for company_id in company_ids:
-        target = signal_dossier_path(repo_root, spec.enrichment_id, company_id)
+        target = repo_root / spec.benchmark_dir / f"{company_id}.yaml"
         if target.exists() and not overwrite:
             skipped.append(company_id)
             continue
         if dry_run:
             written.append(company_id)
             continue
-        dossier = spec.collect(CollectRequest(company_id, bases[company_id], repo_root))
+        dossier = spec.collect(CollectRequest(
+            company_id, bases[company_id], repo_root, benchmark_dir=spec.benchmark_dir,
+        ))
         if not isinstance(dossier, CompanyDossier) or dossier.company_id != company_id:
             raise ValueError(f"collect must return the signal dossier for {company_id}")
         base_ids = {item.evidence_id for item in bases[company_id].evidence}
@@ -511,7 +519,7 @@ def collect_signals(
     return {
         "approval": False, "dry_run": dry_run, "enrichment_id": spec.enrichment_id,
         "phase": "collect", "skipped_existing": skipped,
-        "targets": [str(signal_dossier_path(repo_root, spec.enrichment_id, company_id))
+        "targets": [str(repo_root / spec.benchmark_dir / f"{company_id}.yaml")
                     for company_id in written],
         "written" if not dry_run else "planned": written,
     }
@@ -542,12 +550,21 @@ def main(
     parser.add_argument("--candidate", action="append", default=None,
                         help="repo-relative prompt file evaluated as an extra candidate "
                              "(repeatable; the candidate id is the file stem)")
+    parser.add_argument("--benchmark-dir", default=None,
+                        help="repo-relative dossier directory that replaces the spec's "
+                             "benchmark dir (collect writes there; evaluate reads dossiers "
+                             "from there while ground truth stays in the sealed location)")
+    parser.add_argument("--search-provider", default=None,
+                        help=f"comma-separated search provider order for --collect; sets "
+                             f"{SEARCH_PROVIDER_ENV} for this process")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--allow-paid", action="store_true")
     parser.add_argument("--resume", action="store_true")
     args = parser.parse_args(argv)
     root = Path(repo_root or Path(__file__).resolve().parents[2])
-    if args.prompt or args.candidate:
+    if args.search_provider:
+        os.environ[SEARCH_PROVIDER_ENV] = args.search_provider
+    if args.prompt or args.candidate or args.benchmark_dir:
         overrides: dict[str, Any] = {}
         if args.prompt:
             overrides.update(prompt_path=Path(args.prompt), candidate_id=Path(args.prompt).stem)
@@ -555,6 +572,8 @@ def main(
             overrides["candidate_paths"] = (
                 *spec.candidate_paths, *(Path(item) for item in args.candidate),
             )
+        if args.benchmark_dir:
+            overrides["benchmark_dir"] = Path(args.benchmark_dir)
         try:
             spec = replace(spec, **overrides)
         except ValueError as error:

@@ -530,7 +530,10 @@ def bind_collect(
             request, plan=plan, search=state["search"], scrape=state["scrape"], now=now,
             first_party_scrape=state["first_party"], evidence_store=store,
         )
-        target = signal_dossier_path(request.repo_root, enrichment_id, request.company_id)
+        if request.benchmark_dir is not None:
+            target = Path(request.repo_root) / request.benchmark_dir / f"{request.company_id}.yaml"
+        else:
+            target = signal_dossier_path(request.repo_root, enrichment_id, request.company_id)
         write_collection_log(collection_log_path(target), outcome, extra={
             "enrichment_id": enrichment_id, "collected_at": now.isoformat(),
         })

@@ -368,3 +368,58 @@ def test_prompt_flag_replaces_the_baseline_prompt(repo: Path, capsys):
     )
     assert result["winner"]["candidate_id"] == "v3-only"
     assert (run_root / "scores/holdout/v3-only.json").exists()
+
+
+def test_collect_benchmark_dir_override_writes_beside_sealed_corpus(repo: Path, capsys):
+    seen: dict[str, Any] = {}
+
+    def collect(request: CollectRequest) -> CompanyDossier:
+        seen["benchmark_dir"] = request.benchmark_dir
+        return signal_dossier(
+            request.company_id, request.base,
+            (_ref(request.company_id, "parallel", '{"source": "parallel"}'),),
+        )
+
+    variant_dir = f"benchmarks/signals-parallel/{ENRICHMENT}"
+    spec = make_spec(collect=collect)
+    sealed = repo / "benchmarks/signals" / ENRICHMENT / "saas-01.yaml"
+    before = sealed.read_bytes()
+
+    assert signal_loop.main(
+        spec, ["--collect", "--company", "saas-01", "--benchmark-dir", variant_dir],
+        repo_root=repo,
+    ) == 0
+    assert sealed.read_bytes() == before
+    assert seen["benchmark_dir"] == Path(variant_dir)
+    target = repo / variant_dir / "saas-01.yaml"
+    assert load_signal_dossier(target).evidence[-1].excerpt == '{"source": "parallel"}'
+    result = json.loads(capsys.readouterr().out)
+    assert result["written"] == ["saas-01"] and str(target) in result["targets"]
+
+    with pytest.raises(SystemExit):
+        signal_loop.main(
+            spec, ["--collect", "--benchmark-dir", str(repo / "absolute")], repo_root=repo,
+        )
+
+
+def test_search_provider_flag_sets_env_for_collect(repo: Path, capsys, monkeypatch):
+    import os
+
+    monkeypatch.delenv(signal_loop.SEARCH_PROVIDER_ENV, raising=False)
+    seen: dict[str, Any] = {}
+
+    def collect(request: CollectRequest) -> CompanyDossier:
+        seen["provider"] = os.environ.get(signal_loop.SEARCH_PROVIDER_ENV)
+        return signal_dossier(
+            request.company_id, request.base,
+            (_ref(request.company_id, "google", '{"running_ads": false}'),),
+        )
+
+    assert signal_loop.main(
+        make_spec(collect=collect),
+        ["--collect", "--company", "saas-01", "--overwrite", "--search-provider", "parallel"],
+        repo_root=repo,
+    ) == 0
+    assert seen["provider"] == "parallel"
+    capsys.readouterr()
+    os.environ.pop(signal_loop.SEARCH_PROVIDER_ENV, None)

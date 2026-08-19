@@ -214,3 +214,21 @@ def test_draft_rejects_unknown_company(tmp_path: Path, capsys):
                           ["--draft-ground-truth", "--company", "nope"], repo_root=tmp_path)
     assert code == 2
     assert json.loads(capsys.readouterr().out)["error"] == "ValueError"
+
+
+def test_search_factory_orders_providers_from_env(monkeypatch):
+    from scripts.company_enrichment.signal_entrypoints import _search_factory
+    from scripts.company_enrichment.signal_loop import SEARCH_PROVIDER_ENV
+
+    monkeypatch.delenv(SEARCH_PROVIDER_ENV, raising=False)
+    assert _search_factory().provider == "serper"
+    monkeypatch.setenv(SEARCH_PROVIDER_ENV, "parallel")
+    assert _search_factory().provider == "parallel"
+    monkeypatch.setenv(SEARCH_PROVIDER_ENV, "parallel,serper")
+    assert _search_factory().provider == "parallel"
+    monkeypatch.setenv(SEARCH_PROVIDER_ENV, "serper,bogus")
+    with pytest.raises(ValueError):
+        _search_factory()
+    monkeypatch.setenv(SEARCH_PROVIDER_ENV, " , ")
+    with pytest.raises(ValueError):
+        _search_factory()

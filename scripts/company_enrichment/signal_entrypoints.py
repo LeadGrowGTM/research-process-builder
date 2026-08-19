@@ -45,7 +45,7 @@ from .signal_collection import (
 )
 from .signal_evidence import load_signal_dossier, signal_dossier_path
 from .signal_ground_truth import ALL_IDS, dataset_loader
-from .signal_loop import SignalSpec, main as signal_main
+from .signal_loop import SEARCH_PROVIDER_ENV, SignalSpec, main as signal_main
 
 NEWS_PLAN = SearchPlan(
     queries=(
@@ -104,8 +104,25 @@ _DRAFT_HEADER = (
 )
 
 
+_SEARCH_BUILDERS = {"serper": build_serper_search, "parallel": build_parallel_search}
+DEFAULT_SEARCH_PROVIDERS = "serper,parallel"
+
+
 def _search_factory() -> FallbackSearch:
-    return FallbackSearch((("serper", build_serper_search), ("parallel", build_parallel_search)))
+    """Ordered providers from ``SIGNAL_SEARCH_PROVIDER`` (default serper,parallel).
+
+    Read lazily at first collect (the factory is invoked by ``bind_collect``),
+    so ``--search-provider`` on the loop CLI takes effect without re-wiring.
+    """
+    raw = os.environ.get(SEARCH_PROVIDER_ENV, "").strip() or DEFAULT_SEARCH_PROVIDERS
+    names = tuple(dict.fromkeys(name.strip() for name in raw.split(",") if name.strip()))
+    unknown = sorted(set(names) - set(_SEARCH_BUILDERS))
+    if not names or unknown:
+        raise ValueError(
+            f"{SEARCH_PROVIDER_ENV} must name providers from "
+            f"{sorted(_SEARCH_BUILDERS)}: {raw!r}"
+        )
+    return FallbackSearch(tuple((name, _SEARCH_BUILDERS[name]) for name in names))
 
 
 def build_news_spec() -> SignalSpec:
