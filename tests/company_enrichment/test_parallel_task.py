@@ -1,10 +1,13 @@
 from __future__ import annotations
 
+from decimal import Decimal
+
 import pytest
 
 from scripts.company_enrichment.adapters.parallel_task import (
     ALLOWED_TASK_PROCESSORS, ParallelTaskClient, build_parallel_task,
 )
+from scripts.company_enrichment.budgets import BudgetLedger
 from scripts.company_enrichment.providers import (
     AuthenticationFailure, BudgetFailure, ContractFailure, RetryableFailure,
     TerminalFailure,
@@ -110,12 +113,92 @@ def test_submit_auth_and_contract_failures_pass_through():
     client, _, _ = _client(post_response=AuthenticationFailure("rejected"))
     with pytest.raises(AuthenticationFailure):
         client.create_run("q")
+    assert client.spent_usd == "0.00"
+    client, _, _ = _client(post_response=ContractFailure("bad request"))
+    with pytest.raises(ContractFailure):
+        client.create_run("q")
+    assert client.spent_usd == "0.00"
     client, _, _ = _client(post_response="not an object")
     with pytest.raises(ContractFailure):
         client.create_run("q")
+    assert client.spent_usd == "0.01"
     client, _, _ = _client(post_response={"status": "queued"})
     with pytest.raises(ContractFailure):
         client.create_run("q")
+    assert client.spent_usd == "0.01"
+
+
+def test_definite_no_run_response_stays_charged_not_refunded():
+    client, _, _ = _client(post_response={"run_id": "trun_1"})
+    with pytest.raises(ContractFailure):
+        client.create_run("q")
+    assert client.spent_usd == "0.01"
+
+
+def test_ledger_reserve_release_on_auth_and_contract_failures(tmp_path):
+    ledger = BudgetLedger(tmp_path / "costs.jsonl", {"parallel-task": "1.00"})
+    client, _, _ = _client(
+        post_response=AuthenticationFailure("rejected"), ledger=ledger,
+    )
+    with pytest.raises(AuthenticationFailure):
+        client.create_run("q")
+    assert client.spent_usd == "0.00"
+    assert ledger.reserved("parallel-task") == Decimal("0")
+    assert ledger.spent("parallel-task") == Decimal("0")
+
+    client, _, _ = _client(post_response=ContractFailure("bad request"), ledger=ledger)
+    with pytest.raises(ContractFailure):
+        client.create_run("q")
+    assert client.spent_usd == "0.00"
+    assert ledger.reserved("parallel-task") == Decimal("0")
+    assert ledger.spent("parallel-task") == Decimal("0")
+
+
+def test_ledger_reconciles_charged_spend_on_ambiguous_transport_failure(tmp_path):
+    ledger = BudgetLedger(tmp_path / "costs.jsonl", {"parallel-task": "1.00"})
+    client, _, _ = _client(
+        post_response=RetryableFailure("HTTP 503"), ledger=ledger,
+    )
+    with pytest.raises(TerminalFailure):
+        client.create_run("q")
+    assert client.spent_usd == "0.01"
+    assert ledger.reserved("parallel-task") == Decimal("0")
+    assert ledger.spent("parallel-task") == Decimal("0.01")
+
+
+def test_ledger_reconciles_on_budget_failure_raised_by_transport(tmp_path):
+    ledger = BudgetLedger(tmp_path / "costs.jsonl", {"parallel-task": "1.00"})
+    client, _, _ = _client(
+        post_response=BudgetFailure("blocked upstream"), ledger=ledger,
+    )
+    with pytest.raises(BudgetFailure):
+        client.create_run("q")
+    assert client.spent_usd == "0.01"
+    assert ledger.reserved("parallel-task") == Decimal("0")
+    assert ledger.spent("parallel-task") == Decimal("0.01")
+
+
+def test_ledger_reconciles_on_successful_submit(tmp_path):
+    ledger = BudgetLedger(tmp_path / "costs.jsonl", {"parallel-task": "1.00"})
+    client, _, _ = _client(ledger=ledger)
+    client.create_run("q")
+    assert client.spent_usd == "0.01"
+    assert ledger.reserved("parallel-task") == Decimal("0")
+    assert ledger.spent("parallel-task") == Decimal("0.01")
+
+
+def test_ledger_enforces_durable_ceiling_across_two_client_instances(tmp_path):
+    ledger = BudgetLedger(tmp_path / "costs.jsonl", {"parallel-task": "0.015"})
+    first, _, _ = _client(ledger=ledger)
+    second, _, _ = _client(ledger=ledger)
+
+    first.create_run("first")
+    assert first.spent_usd == "0.01"
+
+    with pytest.raises(BudgetFailure):
+        second.create_run("second")
+    assert second.spent_usd == "0"
+    assert ledger.spent("parallel-task") == Decimal("0.01")
 
 
 def test_get_result_parses_output_and_citation_observations():

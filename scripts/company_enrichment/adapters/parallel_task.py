@@ -202,6 +202,8 @@ class ParallelTaskClient:
                 self._ledger.release(reservation)
             raise
         except BudgetFailure:
+            if reservation is not None:
+                self._ledger.reconcile(reservation, cost)
             raise
         except RetryableFailure as error:
             # A blind resubmit could double-spend; surface as terminal so the
