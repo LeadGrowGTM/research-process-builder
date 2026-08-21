@@ -103,7 +103,16 @@ def test_price_table_estimate_and_cached_usage_use_decimal_rates(
     assert MODEL_PRICES["gpt-5-nano"].input_per_million == Decimal("0.05")
     assert MODEL_PRICES["gpt-4.1-mini"].cached_input_per_million == Decimal("0.10")
     assert MODEL_PRICES["gpt-4.1-mini"].batch_output_per_million == Decimal("0.80")
-    assert MODEL_PRICES["gpt-5.6-luna"].batch_input_per_million == Decimal("0.50")
+    # gpt-5.6-luna list rates as of 2026-08-20 (Mitch): 0.20 in / 0.02 cache
+    # read / 0.25 cache write / 1.20 out; batch is 50% of in/out.
+    assert MODEL_PRICES["gpt-5.6-luna"].input_per_million == Decimal("0.20")
+    assert MODEL_PRICES["gpt-5.6-luna"].cached_input_per_million == Decimal("0.02")
+    assert MODEL_PRICES["gpt-5.6-luna"].cache_write_input_per_million == Decimal("0.25")
+    assert MODEL_PRICES["gpt-5.6-luna"].output_per_million == Decimal("1.20")
+    assert MODEL_PRICES["gpt-5.6-luna"].batch_input_per_million == Decimal("0.10")
+    # gpt-4o-mini is a benchmark model, not production-approved (Mitch, 2026-08-20).
+    assert MODEL_PRICES["gpt-4o-mini"].input_per_million == Decimal("0.15")
+    assert MODEL_PRICES["gpt-4o-mini"].output_per_million == Decimal("0.60")
     estimator = OpenAIModelClient(
         artifact_root=tmp_path / "estimate", sdk_client=SimpleNamespace(),
     )
@@ -135,6 +144,31 @@ def test_price_table_estimate_and_cached_usage_use_decimal_rates(
         + Decimal("100") * Decimal("1.60")
     ) / Decimal("1000000")
     assert execution.actual_cost_usd == str(expected)
+
+    # Cache writes bill at the model's write rate on the synchronous track
+    # (gpt-5.6-luna writes cost more than plain input: 0.25 vs 0.20).
+    write_responses = _SyncResponses()
+    original_write_create = write_responses.create
+
+    def with_cache_write(**kwargs):
+        response = original_write_create(**kwargs)
+        response.usage.input_tokens_details = SimpleNamespace(
+            cached_tokens=100, cache_write_tokens=700,
+        )
+        return response
+
+    write_responses.create = with_cache_write
+    luna_execution = OpenAIModelClient(
+        artifact_root=tmp_path / "cache-write",
+        sdk_client=SimpleNamespace(responses=write_responses),
+    ).execute((_request("gpt-5.6-luna"),), ExecutionTrack.SYNCHRONOUS)[0]
+    luna_expected = (
+        Decimal("200") * Decimal("0.20")
+        + Decimal("100") * Decimal("0.02")
+        + Decimal("700") * Decimal("0.25")
+        + Decimal("100") * Decimal("1.20")
+    ) / Decimal("1000000")
+    assert luna_execution.actual_cost_usd == str(luna_expected)
 
 
 def test_estimate_covers_full_request_body_and_provider_framing(

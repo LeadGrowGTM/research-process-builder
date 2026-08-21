@@ -39,22 +39,22 @@ def _runner(tmp_path: Path, scores, client=None):
     )
 
 
-def test_candidate_gate_aggregates_all_six_model_track_reports(
+def test_candidate_gate_aggregates_all_eight_model_track_reports(
     tmp_path: Path,
 ) -> None:
-    summary = _runner(tmp_path, [1.0, 0, 0, 0, 0, 0]).run(
+    summary = _runner(tmp_path, [1.0, 0, 0, 0, 0, 0, 0, 0]).run(
         "company-description", allow_paid=True,
     )
 
-    assert summary.programmed_gate_score == 1 / 6
+    assert summary.programmed_gate_score == 1 / 8
     assert summary.status == "experiment"
     assert Path(summary.gate_artifact_path).is_file()
 
 
-def test_all_six_passing_reports_create_one_real_aggregate_manifest(
+def test_all_eight_passing_reports_create_one_real_aggregate_manifest(
     tmp_path: Path,
 ) -> None:
-    summary = _runner(tmp_path, [0.9] * 6).run(
+    summary = _runner(tmp_path, [0.9] * 8).run(
         "icp-persona-analysis", allow_paid=True,
     )
 
@@ -62,14 +62,14 @@ def test_all_six_passing_reports_create_one_real_aggregate_manifest(
     assert summary.programmed_gate_score == 0.9
     assert summary.status == "candidate"
     assert manifest.is_file()
-    assert manifest.read_text(encoding="utf-8").count('"report_hash"') == 6
+    assert manifest.read_text(encoding="utf-8").count('"report_hash"') == 8
 
 
 def test_completed_resume_revalidates_aggregate_without_model_calls(
     tmp_path: Path,
 ) -> None:
     client = CountingClient()
-    first = _runner(tmp_path, [0.95] * 6, client).run(
+    first = _runner(tmp_path, [0.95] * 8, client).run(
         "company-description", allow_paid=True,
     )
     call_count = client.executions

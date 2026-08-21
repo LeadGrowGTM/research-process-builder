@@ -4,16 +4,47 @@
 
 ---
 
-build validated web research processes through self-annealing loops. takes any research goal, generates search patterns, tests them against real companies, scores accuracy, and iterates until 90%+ reliability.
+build validated web research through self-annealing loops. take a research goal, generate an approach, test it against real companies with sealed ground truth, score it deterministically, and iterate until it clears 90%+ - then a human reviews before anything is reused.
 
-**this is the factory that produces research agent prompts.**
+**an Experiment becomes an Approval only after programmed validation at >= 90% AND explicit human review.** that gate applies to everything here.
 
-the output is a portable `.md` file with step-by-step search instructions that any agent (Claude Code, Clay/Claygent, custom GPT, browser agent, OpenAI Agents) can follow to reliably surface specific intelligence about companies.
+the repo has two layers that share the methodology:
+
+### layer 1: company enrichment loops (code-graded, per-company signals)
+
+`scripts/company_enrichment/` runs collect -> extract -> ground -> score loops that produce structured, cited signals for a company (news and product launches, competitors, running ads / offer intelligence). each enrichment is specified in `enrichments/p0/*.yaml`, prompted from `prompts/company-enrichment/`, and evaluated against sealed corpora in `benchmarks/`.
+
+what makes the loop trustworthy:
+
+- **deterministic grounding** - code, not model judgment, drops uncited dates, evergreen pages, duplicates, hallucinated or self competitors before anything is scored or shipped. the artifact keeps `model_output` next to the grounded `output` with a per-case report of what was dropped and why.
+- **budget-guarded model client** - only approved models can run (gpt-4.1-mini, gpt-5-nano, gpt-5.6-luna; the client rejects anything else before spend), with a durable ledger, Decimal pricing incl. batch rates, and a hard per-run cost cap.
+- **provider transports** - Serper (search + news) as primary, Parallel Search as typed fallback, plus a budget-guarded Parallel Task API client and a free scrape waterfall over first-party paths. provider choice is evidence-backed: see [docs/reports/serper-vs-parallel.md](docs/reports/serper-vs-parallel.md).
+- **anneal reports** - every lineage (prompt x model x code version) is recorded with dev/holdout scores, hard failures, and cost: see [docs/reports/signal-enrichments-anneal.md](docs/reports/signal-enrichments-anneal.md).
+
+measured cost at current champion lineages (gpt-5.6-luna at 2026-08-20 list rates): ~$0.005-0.007 per company per enrichment, half that via batch API, plus ~$0.006/company of Serper collection - about $11/1k companies for news + competitors combined, ~$6/1k batched.
+
+entrypoints (all support `--help` without running a job):
+
+```powershell
+py scripts/company_enrichment_cli.py --help
+py scripts/company_enrichment_news_loop.py --help
+py scripts/company_enrichment_competitor_loop.py --help
+py scripts/company_enrichment_ads_loop.py --help
+```
+
+### layer 2: the process factory (portable search-pattern prompts)
+
+the original layer: a self-annealing loop that produces portable `.md` process files with step-by-step search instructions that any agent (Claude Code, Clay/Claygent, custom GPT, browser agent, OpenAI Agents) can follow to reliably surface specific intelligence about companies.
 
 ## what's inside
 
 ```
 ├── SKILL.md                          # the methodology — how to build research processes
+├── enrichments/p0/                   # enrichment specs (inputs, caps, gates, providers)
+├── prompts/company-enrichment/       # graduated + candidate enrichment prompts
+├── scripts/company_enrichment/       # collect/evaluate/anneal pipeline + adapters + budget ledger
+├── benchmarks/                       # sealed corpora + ground truth (immutable)
+├── docs/reports/                     # anneal reports, provider A/Bs, review sheets
 └── processes/
     ├── find-profiles.md              # 6 steps · 100% accuracy
     ├── find-competitors.md           # 7 steps · 93% accuracy
@@ -26,7 +57,7 @@ the output is a portable `.md` file with step-by-step search instructions that a
     └── find-negativity.md            # 6 steps · 90% accuracy
 ```
 
-## how it works
+## how the factory works
 
 the methodology has 6 phases:
 
