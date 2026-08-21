@@ -223,3 +223,17 @@ in `MODEL_PRICES` and sits in `EXPERIMENT_MODELS` for benchmarking only
 luna ~USD 11 synchronous / ~6 batch; gpt-4.1-mini ~17 (below gate);
 gpt-4o-mini ~5 (far below gate). Luna recommendation unchanged and now also
 the near-cheapest option.
+
+## Addendum 2026-08-21: approval and graduation
+
+Mitch approved news-v11-luna and comp-v11-luna as-is (review sheet
+`docs/reports/luna-signals-review-sheet.md`, Decision section). Both
+Experiments are now Approvals. The winning candidates were folded into the
+canonical prompts - `prompts/company-enrichment/news-product-launches.md` is
+now the news-v3-kind-rules text and
+`prompts/company-enrichment/competitor-intelligence.md` the
+comp-v3-category-sanity text - so the baseline loop runs the graduated
+prompts with no --prompt flag. The candidate files moved to
+`archive/2026-08-21-graduated-signal-prompt-candidates/` (content unchanged,
+so lineage prompt hashes remain reproducible). Next steps 1 and 3 above are
+done; step 2 (n-sample median for mini) is moot at current luna pricing.

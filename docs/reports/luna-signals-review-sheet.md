@@ -410,14 +410,21 @@ Grounding: 1 bucket(s) reassigned from the Evidence
 
 news-v11-luna:
 
-- [ ] Approve as-is
+- [x] Approve as-is
 - [ ] Approve after GT fixes (list):
 - [ ] Reject (reason):
 
 comp-v11-luna:
 
-- [ ] Approve as-is
+- [x] Approve as-is
 - [ ] Approve after GT fixes (list):
 - [ ] Reject (reason):
 
-Reviewer: ____  Date: ____
+Reviewer: Mitchell Keller  Date: 2026-08-21
+
+Approval context: decision taken after the 2026-08-20 repricing review
+(gpt-5.6-luna at 0.20/0.02/0.25/1.20 per 1M tokens - about USD 11 per 1k
+companies synchronous, 6 batched, for both enrichments combined) and the
+gpt-4o-mini floor benchmark (0.779/0.764 news, 0.804/0.879 comp - below
+gate). Both Experiments graduate: the winning candidate prompts are folded
+into `prompts/company-enrichment/` as the canonical enrichment prompts.
