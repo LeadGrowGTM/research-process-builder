@@ -56,9 +56,11 @@ _WEIGHTS = {
     "grammar": Decimal(".20"), "citation": Decimal(".20"),
     "buyer": Decimal(".10"), "plain_language": Decimal(".05"),
 }
+# Historical rubric for the legacy buyer/need/object payload shape, per
+# docs/superpowers/plans/2026-08-14-icp-persona-native-loop.md.
 _LEGACY_WEIGHTS = {
-    "buyer": Decimal(".15"), "need": Decimal(".15"), "object": Decimal(".15"),
-    "citation": Decimal(".20"), "persona": Decimal(".20"), "readability": Decimal(".15"),
+    "buyer": Decimal(".25"), "need": Decimal(".20"), "object": Decimal(".20"),
+    "citation": Decimal(".20"), "persona": Decimal(".10"), "readability": Decimal(".05"),
 }
 
 
