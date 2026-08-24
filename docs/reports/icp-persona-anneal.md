@@ -60,11 +60,26 @@ Citation spot-check: "trapped savings" (saas-06) is the company's own
 language - the cited LinkedIn Evidence reads "unlock trapped savings" - not a
 model invention.
 
+## Post-approval fix: persona guidance restored (v27-luna)
+
+The no-mistakes review of this branch caught that the prompt rewrite had
+dropped all persona instructions while the output contract still required
+`observed_personas` / `inferred_personas` - the model was populating them
+uninstructed. Mitch chose fix-now; the pipeline restored a compact
+"## Persona rules" section (observed = roles the Evidence states, cited;
+inferred = implied roles, labeled, citing `based_on_evidence_ids`; never the
+same role in both; empty arrays when Evidence names none). Validation lineage
+**icp-persona-live-v27-luna: dev 1.00 / holdout 1.00, zero hard failures,
+USD 0.0143** - ICP sentences held, persona arrays came back disciplined
+(no observed/inferred duplicates; saas-05 correctly inferred-only), and the
+saas-08 sentence dropped its "IT" repetition ("IT operations teams who need
+lower downtime"). v27-luna is the shipping lineage; prompt hash 56e0a671.
+
 ## Known nits (accepted, future iteration fodder)
 
-- saas-08 repeats the buyer word "IT" inside the outcome; the prompt forbids
-  it but the evaluator does not score it.
 - saas-07's secondary outcome "business priority progress" is clunky.
+- Persona arrays are still unscored by the rubric; correctness rests on the
+  prompt rules and human review.
 
 ## How to reproduce
 
