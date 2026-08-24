@@ -40,6 +40,17 @@ Choose exactly one relationship:
   substitute a broader business benefit such as retention, revenue, or growth
   unless the Evidence states it as the buyer's own problem.
 
+## Persona rules
+
+- `observed_personas`: only roles the Evidence explicitly states. Cite that
+  Evidence in `evidence_ids`.
+- `inferred_personas`: only roles reasonably implied but never stated. Cite the
+  Evidence the inference rests on in `based_on_evidence_ids`.
+- Never put the same role in both arrays.
+- Return an empty array for either list when the Evidence names no roles.
+- Keep role phrasing short and in the buyer's own language. Never invent a
+  title the Evidence does not support.
+
 ## Never do this
 
 - Never use a comma or the word `and` anywhere in the rendered sentence.
