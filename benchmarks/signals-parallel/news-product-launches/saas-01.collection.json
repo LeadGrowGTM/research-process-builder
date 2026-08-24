@@ -1,0 +1,149 @@
+{
+  "collected_at": "2026-08-19T11:42:31.104616-04:00",
+  "company_id": "saas-01",
+  "enrichment_id": "news-product-launches",
+  "entries": [
+    {
+      "category": "reporting software",
+      "company_name": "AgencyAnalytics",
+      "domain": "agencyanalytics.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "news",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 8,
+      "status": "ok",
+      "step": "search",
+      "target": "agencyanalytics.com news",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 1,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 8,
+      "status": "ok",
+      "step": "search",
+      "target": "AgencyAnalytics \"press release\" OR \"announces\" OR \"newsroom\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "AgencyAnalytics launches OR \"new feature\" OR \"introducing\" OR \"now available\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://agencyanalytics.com/blog/digital-marketing-analytics",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "http://agencyanalytics.com/company/newsroom",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "http://help.agencyanalytics.com/en/collections/12613020-news-updates",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.facebook.com/ThinkwithGoogle/posts/ready-to-future-proof-your-agency-partnerships-boston-consulting-groups-janet-ba/1653388430128417/: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.facebook.com/ThinkwithGoogle/posts/ready-to-future-proof-your-agency-partnerships-boston-consulting-groups-janet-ba/1653388430128417/"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://agencyanalytics.com/company/newsroom/2025-marketing-agency-benchmarks-report",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://help.agencyanalytics.com/en/articles/13462766-product-roundup",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://agencyanalytics.com/blog",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agencyanalytics.com/news: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agencyanalytics.com/news"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agencyanalytics.com/newsroom: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agencyanalytics.com/newsroom"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agencyanalytics.com/press: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agencyanalytics.com/press"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agencyanalytics.com/changelog: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agencyanalytics.com/changelog"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agencyanalytics.com/product-updates: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agencyanalytics.com/product-updates"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agencyanalytics.com/whats-new: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agencyanalytics.com/whats-new"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 34,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.015",
+  "signal_evidence": 37
+}

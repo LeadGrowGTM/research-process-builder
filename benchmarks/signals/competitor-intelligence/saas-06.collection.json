@@ -1,0 +1,121 @@
+{
+  "collected_at": "2026-08-18T11:43:58.376103-04:00",
+  "company_id": "saas-06",
+  "enrichment_id": "competitor-intelligence",
+  "entries": [
+    {
+      "category": "predictive procurement platform",
+      "company_name": "Arkestro",
+      "domain": "arkestro.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 1,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "Arkestro predictive procurement platform alternatives OR competitors OR \"vs\" OR \"compared to\"",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "Arkestro alternatives",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Arkestro vs",
+      "tbs": null
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://arkestro.com/predictive-procurement/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.prnewswire.com/news-releases/arkestro-drives-significant-customer-momentum-growth-across-industries-heading-into-2026-302646472.html",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://arkestro.com/blog/traditional-vs-predictive-vs-autonomous-procurement-understanding-the-evolution/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.cbinsights.com/company/arkestro/alternatives-competitors",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.gartner.com/reviews/product/arkestro-1460331095/alternatives: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.gartner.com/reviews/product/arkestro-1460331095/alternatives"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.capterra.com/p/177891/Arkestro/alternatives/: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.capterra.com/p/177891/Arkestro/alternatives/"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://arkestro.com/competitors: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://arkestro.com/competitors"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://arkestro.com/compare: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://arkestro.com/compare"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://arkestro.com/alternatives: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://arkestro.com/alternatives"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 34,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.003",
+  "signal_evidence": 37
+}

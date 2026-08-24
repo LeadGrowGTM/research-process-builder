@@ -1,0 +1,121 @@
+{
+  "collected_at": "2026-08-19T12:29:54.345502-04:00",
+  "company_id": "saas-10",
+  "enrichment_id": "competitor-intelligence",
+  "entries": [
+    {
+      "category": "construction finance platform",
+      "company_name": "Built",
+      "domain": "getbuilt.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 1,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Built construction finance platform alternatives OR competitors OR \"vs\" OR \"compared to\"",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Built alternatives",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Built vs",
+      "tbs": null
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.cbinsights.com/company/built/alternatives-competitors",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.getapp.sg/alternatives/2046877/built: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.getapp.sg/alternatives/2046877/built"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://rabbet.com/blog/alternatives-to-built",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.g2.com/products/built/competitors/alternatives: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.g2.com/products/built/competitors/alternatives"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.capterra.com/p/159434/Built/alternatives/: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.capterra.com/p/159434/Built/alternatives/"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://withbanner.com/info/built-alternatives",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://getbuilt.com/competitors: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://getbuilt.com/competitors"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://getbuilt.com/compare: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://getbuilt.com/compare"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://getbuilt.com/alternatives: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://getbuilt.com/alternatives"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 31,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.015",
+  "signal_evidence": 34
+}

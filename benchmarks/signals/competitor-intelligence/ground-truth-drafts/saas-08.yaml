@@ -1,0 +1,130 @@
+# DRAFT ground truth - TODO_HUMAN: review every entry, then move this file to
+# ../ground-truth/ only after a human seals it. Generated from the signal dossier;
+# nothing here is validated. Delete candidates that are not real, fix dates and
+# kinds, keep evidence_ids pointing at the Evidence that proves the entry.
+# subject: BigPanda (bigpanda.io); as_of 2026-08-18
+# every 'named' entry is a candidate token; strip the TODO_HUMAN prefix to keep,
+# move to 'inferred' when no Evidence compares it with the subject, or delete.
+# candidate evidence: {"pagerduty": ["ev-1231a4bab7ee6698", "ev-4acfb91998c8f2e2", "ev-5c8d5a7d323879c1", "ev-5eedfc88365be869"], "splunk": ["ev-08e297fe86900fbb", "ev-1231a4bab7ee6698", "ev-5c8d5a7d323879c1"], "serviceintelligence": ["ev-08e297fe86900fbb", "ev-1231a4bab7ee6698", "ev-5c8d5a7d323879c1"], "itsi": ["ev-1231a4bab7ee6698", "ev-5c8d5a7d323879c1"], "sciencelogic": ["ev-1231a4bab7ee6698", "ev-5c8d5a7d323879c1"], "bmchelix": ["ev-1231a4bab7ee6698", "ev-5c8d5a7d323879c1"], "observability": ["ev-1231a4bab7ee6698", "ev-5c8d5a7d323879c1"], "aiops": ["ev-1231a4bab7ee6698", "ev-17bb3639a1379109", "ev-2ba11112b47e6f92", "ev-2e5920a97aeb56b9"], "betterstack": ["ev-1231a4bab7ee6698"], "edwin": ["ev-1231a4bab7ee6698", "ev-5d38c1f247bb205d"], "logicmonitor": ["ev-2e5920a97aeb56b9", "ev-36e200dc6b88397d", "ev-5d38c1f247bb205d", "ev-a58ede61ebf153fa"], "say": ["ev-2ba11112b47e6f92"], "splunkappdynamics": ["ev-17bb3639a1379109", "ev-2ba11112b47e6f92", "ev-cc200fdac2f17335"], "transparent": ["ev-2ba11112b47e6f92"], "better": ["ev-2ba11112b47e6f92"], "integrating": ["ev-2ba11112b47e6f92"], "easier": ["ev-2ba11112b47e6f92"], "implement": ["ev-2ba11112b47e6f92"], "jul": ["ev-0e8db007820e9005", "ev-14602457fc9b2c76", "ev-41d87e2821f22ef2", "ev-62823025cdbb8738"], "incidentinvestigation": ["ev-0e8db007820e9005", "ev-41d87e2821f22ef2", "ev-62823025cdbb8738"], "root": ["ev-0e8db007820e9005", "ev-41d87e2821f22ef2"], "sherlocks": ["ev-0e8db007820e9005", "ev-41d87e2821f22ef2"], "sherlocks.ai": ["ev-0e8db007820e900
+company_id: saas-08
+evidence_ids:
+- ev-8d10c83bbc00a2c9
+inferred: []
+named:
+- aliases: []
+  domain: null
+  name: TODO_HUMAN AIOps
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Jul
+- aliases: []
+  domain: null
+  name: TODO_HUMAN PagerDuty
+- aliases: []
+  domain: null
+  name: TODO_HUMAN LogicMonitor
+- aliases: []
+  domain: null
+  name: TODO_HUMAN ITOps
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Search
+- aliases: []
+  domain: null
+  name: TODO_HUMAN BitSentry
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Dynatrace
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Service Intelligence
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Keep
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Splunk
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Edwin
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Splunk AppDynamics
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Incident Investigation
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Sherlocks
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Incident Assistant
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Investigation
+- aliases: []
+  domain: null
+  name: TODO_HUMAN SoftwareReviews
+- aliases: []
+  domain: null
+  name: TODO_HUMAN English
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Overview
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Support
+- aliases: []
+  domain: null
+  name: TODO_HUMAN ITSI
+- aliases: []
+  domain: null
+  name: TODO_HUMAN ScienceLogic
+- aliases: []
+  domain: null
+  name: TODO_HUMAN BMC Helix
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Observability
+- aliases: []
+  domain: softwarereviews.com
+  name: TODO_HUMAN softwarereviews.com
+- aliases: []
+  domain: logicmonitor.com
+  name: TODO_HUMAN logicmonitor.com
+- aliases: []
+  domain: sherlocks.ai
+  name: TODO_HUMAN sherlocks.ai
+- aliases: []
+  domain: github.com
+  name: TODO_HUMAN github.com
+- aliases: []
+  domain: academy.logicmonitor.com
+  name: TODO_HUMAN academy.logicmonitor.com
+- aliases: []
+  domain: community.logicmonitor.com
+  name: TODO_HUMAN community.logicmonitor.com
+- aliases: []
+  domain: cdn0.softwarereviews.com
+  name: TODO_HUMAN cdn0.softwarereviews.com
+- aliases: []
+  domain: cdn1.softwarereviews.com
+  name: TODO_HUMAN cdn1.softwarereviews.com
+- aliases: []
+  domain: provider.softwarereviews.com
+  name: TODO_HUMAN provider.softwarereviews.com
+- aliases: []
+  domain: platform.keephq.dev
+  name: TODO_HUMAN platform.keephq.dev
+- aliases: []
+  domain: university.bigpanda.io
+  name: TODO_HUMAN university.bigpanda.io
+- aliases: []
+  domain: docs.bigpanda.io
+  name: TODO_HUMAN docs.bigpanda.io
+- aliases: []
+  domain: status.bigpanda.io
+  name: TODO_HUMAN status.bigpanda.io
+- aliases: []
+  domain: a.bigpanda.io
+  name: TODO_HUMAN a.bigpanda.io

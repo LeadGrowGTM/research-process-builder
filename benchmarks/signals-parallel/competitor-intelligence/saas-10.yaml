@@ -1,0 +1,875 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: identity
+  value: Built
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: description
+  value: 'Solutions for Lenders | Built | Powering Smarter Construction Finance The
+    Future of Real Estate Finance Starts Here: Meet the AI Draw Agent blt-logo-web
+    _:last-child]:only:tw-hidden" role="presentation"> Solutions Lenders Origination
+    Pipeline Management OM Extraction Underwriting Draw & Budget Management AI Draw
+    Agent Draw Inspections Risk Mitigation Portfolio Reporting Owners & Developers
+    Origination Pipeline Management OM Extraction Budget Management Capital Requests
+    Invoice Management Complia'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: offers
+  value: construction finance platform
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: icp
+  value: lenders
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: personas
+  value: lenders
+  visibility: message_safe
+company_id: saas-10
+corrections: []
+evidence:
+- content_hash: ce4724cc20ef689e8d15b16485840e125fb4659ed0f1ff520d95ce813ca909c9
+  evidence_id: ev-ce4724cc20ef689e
+  excerpt: 'Solutions for Lenders | Built | Powering Smarter Construction Finance
+    The Future of Real Estate Finance Starts Here: Meet the AI Draw Agent blt-logo-web
+    _:last-child]:only:tw-hidden" role="presentation"> Solutions Lenders Origination
+    Pipeline Management OM Extraction Underwriting Draw & Budget Management AI Draw
+    Agent Draw Inspections Risk Mitigation Portfolio Reporting Owners & Developers
+    Origination Pipeline Management OM Extraction Budget Management Capital Requests
+    Invoice Management Compliance Tracking Lien Waiver Management Payments Portfolio
+    Reporting Builders Budget Management Compliance Tracking Invoice Management Lien
+    Waiver Management Payments Powered by AI Trained on $3T+ in real estate finance
+    data. Built''s AI automates workflows and surfaces risk in real time. Integrations
+    Built connects to Sage, Yardi, Procore and more. Inspections & Due Diligence AI-powered
+    draw inspections that catch issues before funds move. _:last-child]:only:tw-hidden"
+    role="presentation"> Products Construction Loan Administration AI Draw Agent Draw
+    Inspections Draws & Budget Management Risk Mitigation Deal Management Origination
+    Pipeline Management OM Extraction Underwriting Portfolio Reporting Construction
+    Financials Budget Management Invoice Management Lien Waiver Management Capital
+    Requests Compliance Tracking Payments Lien Waiver Management & Payments Create
+    Lien Waivers Send Lien Waivers Track Lien Waivers Payments Integrations Meet Built''s
+    New Draw Agent Learn how the AI Draw Agent enables 2–5× capacity gains, 100% policy
+    adherence, 2× more risks flagged, and up to 95% faster draw processing. Watch
+    Here _:last-child]:only:tw-hidden" role="presentation"> Customers _:last-child]:only:tw-hidden"
+    role="presentation"> Resources Learn News Resource Center Built University Free
+    Tools & Templates Connect About Us Contact Us Integrations Help Desk Careers Learn
+    Built & Move Faster Free courses and resources to help your team get more out
+    of Built. Explore University Login Support B'
+  retrieved_at: '2026-08-12T21:00:59.875500+00:00'
+  url: https://getbuilt.com/solutions/lenders/
+- content_hash: be44ff703241ffbea1cca3c0894b3e42188b368c4a4a6237294ffb2b5682e52d
+  evidence_id: ev-be44ff703241ffbe
+  excerpt: "Built Technologies Careers, Perks + Culture | Built In Companies Jobs\
+    \ Articles Can't find your company? Create a company profile. View All Jobs Join\
+    \ Log In For Employers Companies Built Technologies Teams Built Technologies Save\
+    \ Saved HQ Nashville Total Offices: 2 260 Total Employees 125 Product + Tech Employees\
+    \ Year Founded: 2014 View Website Overview Jobs 13 Offices More Info Working at\
+    \ Built Technologies Culture & Values Career Growth & Development Compensation\
+    \ & Benefits Work-Life Balance & Wellbeing Leadership & Management Stability &\
+    \ Growth Is This Your Company? Manage Jobs Fintech Real Estate Built Technologies\
+    \ was founded in 2014 out of firsthand frustration with the challenges and pitfalls\
+    \ often associated with construction lending and the belief that technology could\
+    \ transform the loan management process. Built’s collaborative software streamlines\
+    \ the collateral monitoring and draw management process – a process widely recognized\
+    \ as highly cumbersome, costly, and fraught with risk. By bringing the draw management\
+    \ process online, Built helps lenders reduce construction loan risk, increase\
+    \ loan profitability, transform the borrower experience, simplify compliance,\
+    \ and provide unprecedented portfolio insights.\r\n Recently Posted Jobs at Built\
+    \ Technologies View All Built Technologies Senior Innovation Engineer, Marketplace\
+    \ In-Office or Remote 2 Locations Built Technologies Staff Innovation Engineer,\
+    \ Marketplace In-Office or Remote 2 Locations Built Technologies Senior Engineering\
+    \ Manager, Data In-Office or Remote 2 Locations Built Technologies Product Designer\
+    \ II Remote USA Built Technologies Staff Software Engineer, Data Platform Remote\
+    \ USA Built Technologies Account Executive - OGC (Dallas Based, Remote) Remote\
+    \ USA Built Technologies Account Executive Remote USA Built Technologies Client\
+    \ Support Representative In-Office Nashville, TN, USA Built Technologies FP&A\
+    \ Analyst In-Office 2 Locations View all jobs Built Technologies Offices Hybrid\
+    \ Workspace Employees "
+  retrieved_at: '2026-08-12T21:01:00.217137+00:00'
+  url: https://builtin.com/company/built-technologies
+- content_hash: d109a2df75fb122ea2ed95b53c219be7567f899176c51800ca7cc65ae4c4cd5b
+  evidence_id: ev-d109a2df75fb122e
+  excerpt: 'Canapi Investing in the New Financial Services Economy Team Portfolio
+    Insights Careers Investor Login Built Powering smarter construction finance Series
+    B Series C Series D About Built is the leading provider of construction finance
+    technology. The platform unites commercial and consumer construction lenders,
+    commercial real estate owners, commercial general contractors, residential homebuilders,
+    specialty contractors, title companies, and vendors to improve the flow of capital
+    through the construction ecosystem – from lender to vendor. By connecting all
+    key stakeholders involved in the construction process in real-time, the platform
+    helps mitigate risk, power faster draws and payments, ensure compliance, and inspire
+    customer loyalty. Investment Highlights Year Founded 2014 Employees 250-500 HQ
+    Location Nashville Built Technologies Announces $125M Series D Financing Round
+    September 30, 2021 Built Technologies Introduces the Future of Construction Payments:
+    Built Pay December 14, 2021 Built Technologies Reached More Than $200B in Total
+    Construction Value Managed; Achieved $1.5B Valuation and Unicorn Status in 2021
+    February 7, 2022 Built Technologies Secures Investment From Citi April 13, 2023
+    Why Canapi is Doubling Down on Built’s Series C February 3, 2021 1 / 4'
+  retrieved_at: '2026-08-12T21:01:00.797661+00:00'
+  url: https://www.canapi.com/investment/built
+- content_hash: db21ec91b76062af2e1f1ff55c9a502b66cf90b9de1280925c68524638929b32
+  evidence_id: ev-db21ec91b76062af
+  excerpt: 'Title: Top Built Alternatives, Competitors
+
+    Source: cbinsights.com
+
+    Snippet: # Built ## Built''s alternatives and competitors Built''s top competitors
+    include [Handle](https://www.cbinsights.com/company/handle/alternatives-competitors)
+    , [TrustPoint](https://www.cbinsights.com/company/trustpoint-1/alternatives-competitors)
+    , and [Sitewire](https://www.cbinsights.com/company/sitewire/alternatives-competitors)
+    . Handle Logo [Handle](https://www.cbinsights.com/company/handle/) Unclaimed Handle
+    specializes in construction payment management software. Its main offerings include
+    lien rights management, waiver exchange, and online payment solutions designe…
+    See More Built vs. Handle ... [CoFi](https://www.cbinsights.com/company/cofi-1/)
+    Unclaimed CoFi offers construction finance within the financial technology sector.
+    It offers a construction loan marketplace and a digital lending platform designed
+    to streamline… See More Built vs. CoFi View Built''s entire Analyst Briefing ...
+    [Land Gorilla](https://www.cbinsights.com/company/land-gorilla/) Unclaimed Land
+    Gorilla focuses on construction loan management software and operates within the
+    financial technology industry. The company provides a cloud-based ecosystem that
+    i… See More Built vs. Land Gorilla ... ## Compare Built to Competitors Their main
+    offerings include platforms for real estate development and construction finance
+    that facilitate project execution, document management, budget tracking, and risk
+    management. ... The company prov'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://www.cbinsights.com/company/built/alternatives-competitors
+- content_hash: 46cd82bddc9bbdb4036fce34cddf28493a8e184bf6c9cbaa92e2650578c37ba2
+  evidence_id: ev-46cd82bddc9bbdb4
+  excerpt: 'Title: Top 10 Built Alternatives & Competitors in 2026 | G2
+
+    Source: g2.com
+
+    Snippet: Skip to Navigation Skip to Navigation 2026 Best Software Awards are here!
+    See the list Home ... Financial Services Software Loan Origination Software Built
+    Built Alternatives Built Top 10 Built Alternatives & Competitors (15) 4.4 out
+    of 5 If you are considering Built, you may also want to investigate similar alternatives
+    or competitors to find the best solution. Loan Origination Software is a widely
+    used technology, and many people are seeking popular, simple software solutions
+    with compliance management and contractor portal. Other important factors to consider
+    when researching alternatives to Built include user experience and projects. The
+    best overall Built alternative is Land Gorilla. Other similar apps like Built
+    are LendingPad, CloudBankin, Finflux, and nCino''s Mortgage Suite. Built'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://www.g2.com/products/built/competitors/alternatives
+- content_hash: 93b812dcba02f3d2dcb7f170efe24a98a3181c894ce6c7d30eae4e1a5affe210
+  evidence_id: ev-93b812dcba02f3d2
+  excerpt: 'Title: Built Alternatives & Competitors
+
+    Source: getapp.sg
+
+    Snippet: # Built Alternatives ## FOUNDATION 4.3 (388) Financial management tool
+    for construction firms Learn More Compare ... ## GCPay ### Overview GCPay is a
+    cloud-based payment management software designed to help businesses in the construction
+    industry manage payment applications, calculations, lien waivers, and remittances
+    on a collaborative platform. Features include remote access, document storage,
+    contact management, and role-based permissions. Read more about GCPay ... ## Adaptive
+    ### Overview Adaptive is the AI-powered project accounting platform built for
+    construction companies. It automates job costing, billing, WIP tracking, accounts
+    payable, compliance, and payments while syncing in real time with your existing
+    ERP and accounting systems. Read more about Adaptive ... ## Procore 4.5 (2665)
+    Cloud-based construction management platform Learn More Compare ... ## Buildertrend
+    ### Overview Buildertrend is a construction project management software designed
+    to help home builders, remodelers and specialty contractors manage jobs, sales,
+    finances, client relationships and more on one convenient platform. The software
+    offers a range of features, such as scheduling, financial management, communication
+    toolsnd more. ... ## Autodesk Forma 4.3 (2207) Construction management platform
+    Learn More Compare ... ## Popular comparisons * [Built Vs FOUNDATION](https://www.getapp.sg/compare/2031435/2046877/foundationsoft/vs/built'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://www.getapp.sg/alternatives/2046877/built
+- content_hash: 6568864a622e7426afb497058888b84742045970efdd4652aa0ed0a9727f6b14
+  evidence_id: ev-6568864a622e7426
+  excerpt: 'Title: Built | The Real Estate & Construction Finance Platform
+
+    Source: getbuilt.com
+
+    Snippet: # Time is money. Don’t waste either. Fund, develop, build, and manage
+    on one AI-powered platform for faster decisions and greater control. Banks Private
+    Credit Owners & Developers General Contractors ... ## The Built platform advantage
+    ### Digital Payments Streamline payments with full transparency and control. 0%
+    Faster Funding 0% Faster Insights 0% Less Admin Work ... ## Don''t take our word
+    for it. Hear from our customers. [Learn more about Built + Waltz Construction](https://getbuilt.com/case-study/built-waltz-construction/)
+    “Built is a big reason that we’re able to stand out in the market. Prior to Built,
+    our draw time was a week. Now that we are on the Built system, our turn time is
+    a day to two days.” ... [Learn more about Built + Waltz Construction](https://getbuilt.com/case-study/built-waltz-construction/)
+    “Built is a big reason that we’re able to stand out in the market. Prior to Built,
+    our draw time was a week. Now that we are on the Built system, our turn time is
+    a day to two days.” ... [Learn more about Built + Waltz Construction](https://getbuilt.com/case-study/built-waltz-construction/)
+    “Built is a big reason that we’re able to stand out in the market. Prior to Built,
+    our draw time was a week. Now that we are on the Built system, our turn time is
+    a day to two days.”'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://getbuilt.com/
+- content_hash: a91a7c0aecaa49800a55719b307e1353d6882e81afca3460614bed3d56728896
+  evidence_id: ev-a91a7c0aecaa4980
+  excerpt: 'Detected date: 2026-06-15
+
+    Title: Rabbet - Alternatives to Built
+
+    Date: 2026-06-15
+
+    Source: rabbet.com
+
+    Snippet: # Alternatives to Built If you are a construction lender looking at Built,
+    it helps to see the other platforms that handle construction loan administration
+    and where each one fits. This guide gives a short, objective rundown of the alternatives
+    lenders most often consider. ... ## Popular alternatives ### Rabbet for construction
+    lenders Construction finance system that covers draw review, budgets, compliance,
+    and portfolio insights for lenders. Rabbet brings budgets, documents, and draw
+    activity into one organized loan administration system, with automated checks
+    built in so standards hold as the portfolio scales, and portfolio views that surface
+    budget changes and exposure early. ... ### Land Gorilla Construction loan management
+    software with a bundled inspection service. Land Gorilla is residential-focused
+    and pairs draw management with a turnkey inspector network, which makes it a fit
+    for residential lenders that want inspections managed for them. ### Abrigo Lending,
+    compliance, and risk software oriented to community institutions. Abrigo is commonly
+    considered by community banks and credit unions that already use it for origination
+    or compliance and want to keep more of that work with one vendor.'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://rabbet.com/blog/alternatives-to-built
+- content_hash: fd0de9ce416c7cb5a27dfaa0c1ef78ed3aaea09bb3ca9d5cdb5e52ee3c040ae0
+  evidence_id: ev-fd0de9ce416c7cb5
+  excerpt: 'Detected date: 2021-08-12
+
+    Title: 13 Fintech Companies Transforming Construction Finance
+
+    Date: 2021-08-12
+
+    Source: levelset.com
+
+    Snippet: # 13 Fintech Companies Transforming Construction Finance ## 2. Procore
+    With [the company’s IPO](https://www.bloomberg.com/news/articles/2021-05-20/construction-software-firm-procore-raises-634-5-million-in-ipo)
+    in 2021, Procore cemented itself as one of the world’s leading platforms for all
+    things construction management — including finance, accounting, and cash flow.
+    ... ## 5. Built Built’s goal is to provide financial solutions for everyone on
+    a project, including lenders and contractors. Beyond the software solutions for
+    lenders or contractors, Built also partners with inspections services, keeping
+    lenders up to date on their investments. ### **Built’s financial solutions** ####
+    **Software for lending** Construction Loan Management can be tough, but Built’s
+    [Lending software](https://getbuilt.com/software-for-lenders/) solution aims to
+    make it easier. With risk management tools, automatic alerts, and faster draws,
+    Built’s designed specifically for today’s construction lenders. ... ## 7. Briq
+    ### **Briq’s financial solutions** #### Debit account for contractors In April
+    2021, Briq launched [a banking platform](https://www.br.iq/blog/briq-launches-first-payment-and-rewards-card-built-for-construction-companies)
+    for contractors with a debit card for purchases. ... ## 9. ECL Software ### **Fund
+    control for lenders** This platform manages change orders, documents, inspec'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://www.levelset.com/blog/fintech-companies-transforming-construction-finance/
+- content_hash: 0a0cb57e50de3df3b952f44e6fa70ae49db68bb49f4c8b79c673439381d1ced2
+  evidence_id: ev-0a0cb57e50de3df3
+  excerpt: 'Title: Top Handle Alternatives, Competitors
+
+    Source: cbinsights.com
+
+    Snippet: # Handle ## Handle''s alternatives and competitors See how Handle compares
+    to similar products. Handle''s top competitors include [Built](https://www.cbinsights.com/company/built/alternatives-competitors)
+    , and [Rabbet](https://www.cbinsights.com/company/contract-simply/alternatives-competitors)
+    . Built Logo [Built](https://www.cbinsights.com/company/built/) Analyst Briefing
+    Submitted Built offers construction finance technology and real estate finance
+    technology. It offers a centralized platform for construction loan administration,
+    real estate asse… Start your free demo Handle vs. Built ... * Rabbet Logo [Rabbet](https://www.cbinsights.com/company/contract-simply/)
+    Analyst Briefing Submitted Rabbet is a construction finance software platform
+    that focuses on streamlining the financial management process for the real estate
+    development and lending sectors. Th… Start your free demo ... ## Compare Handle
+    to Competitors Built offers construction finance technology and real estate finance
+    technology. It offers a centralized platform for construction loan administration,
+    real estate asset management, project financials, and payment management, designed
+    to increase efficiency and collaboration among stakeholders. ... Land Gorilla
+    provides construction finance technology within the lending and construction industry.
+    The company offers a cloud-based platform for managing construction loans, aimed
+    at lenders, co'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://www.cbinsights.com/company/handle/alternatives-competitors
+- content_hash: 05b4056f16dd11f625e14c41c310fb42104f21b79091d8eb19d637a0f599bd7d
+  evidence_id: ev-05b4056f16dd11f6
+  excerpt: 'Detected date: 2026-02-26
+
+    Title: Built | The Real Estate & Construction Finance Platform
+
+    Date: 2026-02-26
+
+    Source: getbuilt.com
+
+    Snippet: * Products Construction Loan Administration Streamline management of
+    your entire construction loan portfolio. [Learn More](https://getbuilt.com/features/construction-loan-administration/)
+    Faster Insights. Better Decisions. Identify risks faster and deliver real-time
+    portfolio insights—no spreadsheets required. [See How](https://getbuilt.com/blog/construction-loan-reporting-key-takeaways-from-builts-reporting-analytics-webinar/)
+    Deal Management Automate workflows & drive insights for commercial real estate
+    deals. [Read More](https://getbuilt.com/products/deal-management/) To Build or
+    Buy? Making the right choice: A comprehensive guide to build vs buy. [Get Your
+    eBook](https://getbuilt.com/ebook/build-vs-buy-cre-software/) Construction Financials
+    Manage your budget, draws, and accounts payable in one place. [Learn More](https://getbuilt.com/products/construction-financials/)
+    Break Free from Tech Myths Discover how outdated beliefs may be limiting your
+    project’s potential. ... ``` + Learn - [About Us Discover Built’s mission, values,
+    and the team driving innovation in construction finance.](https://getbuilt.com/about-us/)
+    - [Built University Learn how to use Built with our best resources.](https://getbuilt.com/university/)
+    ``` ... # Time is money. Don’t waste either. ## The Built platform advantage ###
+    Digital Payments Streamline payments with full transparency and contr'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://getbuilt.com/news/elliemaeintegration
+- content_hash: 0ee20648252fa54c329a3173849c8f0746683ddbbae5f8b2756f82dc5094a268
+  evidence_id: ev-0ee20648252fa54c
+  excerpt: 'Detected date: 2025-01-24
+
+    Title: Best Built Alternatives & Competitors for 2026
+
+    Date: 2025-01-24
+
+    Source: research.com
+
+    Snippet: # Best Built Alternatives & Competitors for 2026 ## What is Built? Built
+    software is a cloud-based platform tailored specifically to simplify construction
+    finance workflows. It offers a robust set of tools designed to optimize the management
+    of construction loans, streamlining draw and budget oversight. ... ## Frequently
+    Asked Questions about Built What are the most popular alternatives to Built? The
+    leading competitors to Built include Premier Construction Software, Werx, Sage
+    Construction Suite, Autodesk Construction Cloud, Acumatica Cloud ERP, Buildern,
+    Buildertrend, and Land Gorilla, among others. Are there Built alternatives designed
+    specifically for construction lending and finance? Yes, platforms like Sitewire
+    and CoFi focus on construction lending and finance by providing specialized digital
+    lending and loan marketplace solutions tailored to the industry. ... Do Built
+    alternatives serve varied segments within the construction industry? Indeed, these
+    alternatives cater to a broad spectrum of users, such as general contractors,
+    developers, homebuilders, specialty contractors, and financial institutions involved
+    in construction financing. ... Where can I find pricing and review comparisons
+    for Built alternatives? Platforms like Capterra, G2, Slashdot, and GetApp offer
+    detailed side-by-side comparisons, user feedback, and pricing details for Built
+    alternatives. Can Built a'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://research.com/software/alternatives/best-built-alternatives
+- content_hash: b69557e8b4f5aa5feb14bbc231c4fc846b012d33bee422ad381a7c31e6c7aa96
+  evidence_id: ev-b69557e8b4f5aa5f
+  excerpt: 'Query: Built construction finance platform alternatives OR competitors
+    OR "vs" OR "compared to"
+
+    1. https://www.cbinsights.com/company/built/alternatives-competitors
+
+    Title: Top Built Alternatives, Competitors
+
+    Source: cbinsights.com
+
+    Snippet: # Built ## Built''s alternatives and competitors Built''s top competitors
+    include [Handle](https://www.cbinsights.com/company/handle/alternatives-competitors)
+    , [TrustPoint](https://www.cbinsights.com/company/trustpoint-1/alternatives-competitors)
+    , and [Sitewire](https://www.cbinsights.com/company/sitewire/alternatives-competitors)
+    . Handle Logo [Handle](https://www.cbinsights.com/company/handle/) Unclaimed Handle
+    specializes in construction payment management software. Its main offerings include
+    lien rights management, waiver exchange, and online payment solutions designe…
+    See More Built vs. Handle ... [CoFi](https://www.cbinsights.com/company/cofi-1/)
+    Unclaimed CoFi offers construction finance within the financial technology sector.
+    It offers a construction loan marketplace and a digital lending platform designed
+    to streamline… See More Built vs. CoFi View Built''s entire Analyst Briefing ...
+    [Land Gorilla](https://www.cbinsights.com/company/land-gorilla/) Unclaimed Land
+    Gorilla focuses on construction loan management software and operates within the
+    financial technology industry. The company provides a cloud-based ecosystem that
+    i… See More Built vs. Land Gorilla ... ## Compare Built to Competitors Their main
+    offerings include platforms fo'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://www.google.com/search?q=Built+construction+finance+platform+alternatives+OR+competitors+OR+%22vs%22+OR+%22compared+to%22
+- content_hash: 41e2259ee457afcb73d5a21c754dc393ce77bb6c52bcc7b9235f97ca5719ad2d
+  evidence_id: ev-41e2259ee457afcb
+  excerpt: 'Detected date: 2024-12-04
+
+    Title: Top 5 Built Competitors and Alternatives in 2024
+
+    Date: 2024-12-04
+
+    Source: withbanner.com
+
+    Snippet: # Top 5 Built Competitors and Alternatives in 2024 ## What is Built?
+    [Built](https://www.builtapp.com/) provides a modular platform for position management
+    and organizational chart software, catering to various industries. ... ## Best
+    Alternatives to Built ### 1. Banner [Banner](https://withbanner.com/) is a project
+    management tool designed to streamline and make project delivery predictable and
+    efficient. It offers real-time spend controls, centralizes all project data into
+    one system, and eliminates manual data entry through advanced technology and integrations.
+    ... ### 2. Yardi Construction Manager [Yardi Construction Manager](https://www.yardi.com/products/construction-manager/)
+    is a software solution designed to streamline and manage various aspects of commercial
+    real estate construction projects. It offers features such as project visibility,
+    risk mitigation, contract management, and enhanced collaboration. The software
+    also integrates with other Yardi products to provide a comprehensive management
+    experience. ... ### 3. AvidXchange [AvidXchange](https://www.avidxchange.com/)
+    offers accounts payable automation software designed to increase efficiency, visibility,
+    and control in the AP process. The software integrates with various accounting
+    systems and connects to a large supplier network, allowing businesses to process
+    invoices and make payments electronically. This'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://withbanner.com/info/built-alternatives
+- content_hash: 63b6f9267710fcd70322292b495d435d2ce6a4ad2971edf9f1491e23a0d732a8
+  evidence_id: ev-63b6f9267710fcd7
+  excerpt: 'Title: Built Alternatives
+
+    Source: capterra.co.uk
+
+    Snippet: 2. Loan Servicing Software 3. Built 4. [Built Alternatives](https://www.capterra.co.uk/alternatives/159434/built)
+    Built logo ... # Built Alternatives ## FOUNDATION by Foundation Software 4.3 (388)
+    Reviews View Profile Add to compare Cloud-based construction accounting software
+    offering job costing, payroll, project management, time tracking, and more features.
+    Show more details Integrations Starting Price: No pricing found Likelihood to
+    recommend: 8.0 / 10 GCPay logo ## GCPay by Autodesk 4.7 (484) Reviews View Profile
+    Add to compare GCPay is cloud-based construction payment software automating payment
+    apps, lien waivers, compliance docs, and payments. Show more details Security
+    features Starting Price: No pricing found Likelihood to recommend: 8.8 / 10 Viewpoint
+    Spectrum logo ... ## Premier Construction Software by Premier Construction Software
+    4.7 (288) Reviews View Profile Add to compare All-in-one financial & project management
+    construction cloud ERP, providing you with real-time visibility into your business.
+    Show more details Security features Starting Price: US$125.00 /month Likelihood
+    to recommend: 9.1 / 10 ... ## Ressio Software by Ressio Software 5.0 (33) Reviews
+    View Profile Add to compare Ressio helps builders and contractors streamline their
+    construction project management processes, saving time and increasing efficiency
+    Show more details Integrations Starting Price: No pricing found Likelihood to
+    recommend'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://www.capterra.co.uk/alternatives/159434/built
+- content_hash: 2ac98691bea7bea2f1c931cdc56e7783ccc85f5b41576dc0553d4659f4f264fd
+  evidence_id: ev-2ac98691bea7bea2
+  excerpt: 'Title: Top Built Alternatives, Competitors
+
+    Source: cbinsights.com
+
+    Snippet: # Built ## Built''s alternatives and competitors Built''s top competitors
+    include [Handle](https://www.cbinsights.com/company/handle/alternatives-competitors)
+    , [TrustPoint](https://www.cbinsights.com/company/trustpoint-1/alternatives-competitors)
+    , and [Sitewire](https://www.cbinsights.com/company/sitewire/alternatives-competitors)
+    . Handle Logo [Handle](https://www.cbinsights.com/company/handle/) Unclaimed Handle
+    specializes in construction payment management software. Its main offerings include
+    lien rights management, waiver exchange, and online payment solutions designe…
+    See More Built vs. Handle ... * TrustPoint Logo [TrustPoint](https://www.cbinsights.com/company/trustpoint-1/)
+    Analyst Briefing Submitted TrustPoint specializes in construction loan management
+    software. The company offers a platform that automates draw management and provides
+    predictive portfolio analytic… See More Built vs. ... [CoFi](https://www.cbinsights.com/company/cofi-1/)
+    Unclaimed CoFi offers construction finance within the financial technology sector.
+    It offers a construction loan marketplace and a digital lending platform designed
+    to streamline… See More Built vs. CoFi View Built''s entire Analyst Briefing ...
+    Northspyre is a company specializing in real estate development management software.
+    Its platform includes financial modeling, deal and development management, and
+    anal… See More Built vs. Northspyre View Built''s entir'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://www.cbinsights.com/company/built/alternatives-competitors
+- content_hash: 575aa8eb202cd5c987fc18b9c20b18ef8fd2e13eb2f5a41bd47ade5db723191c
+  evidence_id: ev-575aa8eb202cd5c9
+  excerpt: 'Detected date: 2026-04-27
+
+    Title: I tried 10 BuiltWith alternatives - here are ones I actually liked
+
+    Date: 2026-04-27
+
+    Source: bloomberry.com
+
+    Snippet: # I tried 10 BuiltWith alternatives – here are ones I actually liked
+    1. Bloomberry – best for enterprise tech detection 2. Wappalyzer – inexpensive
+    browser extension for real-time tech stack lookups 3. SimilarTech – tech lookup
+    with strong filtering capabilities 4. TechPeeker – ideal for finding websites
+    that use popular frameworks 5. WhatRuns – completely free (but limited) alternative
+    6. Apps Run The World – a solid option for market researchers 7. NerdyData – good
+    if you’re very technical and know what you’re searching for 8. CRFT Lookup – free
+    alternative if you just need to look up tech stack for a website 9. FUL.io – free
+    alternative for simple website tech stack lookups 10. urlscan.io – useful for
+    security and OSINT-style research [ **NOTE** : If you’re building a BuiltWith
+    alternative and want me to include it, shoot me an email with login details. I’m
+    happy to test it and see if it makes sense to add it to this list.] ## #1: Bloomberry
+    – best BuiltWith alternative for enterprise tech detection [Bloomberry](https://bloomberry.com)
+    is a strong BuiltWith alternative built especially for sales teams that want to
+    build targeted lead lists based on what technologies companies use. ... ## #3:
+    SimilarTech – tech lookup with strong filtering capabilities [SimilarTech](https://similartech.com)
+    is another BuiltWith alternative focused on web technology dete'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://bloomberry.com/blog/5-builtwith-alternatives-for-technology-intelligence/
+- content_hash: 93315cce088bf8e9c0a5083a350d4aa0dd15984a8f7157c6c359f45c49d4c7ff
+  evidence_id: ev-93315cce088bf8e9
+  excerpt: 'Title: piotrkulpinski/open-source-alternatives
+
+    Source: github.com
+
+    Snippet: # Awesome Open Source Alternatives [Awesome](https://awesome.re/) ##
+    Business Software ### CRM & Sales * [Open Mercato](https://openalternative.co/open-mercato)
+    - AI-native CRM/ERP foundation with 80% already built `MIT` `⭐ 1.6K` * [Relaticle](https://openalternative.co/relaticle)
+    - Modern open-source CRM that grows with your business `AGPL-3.0` `⭐ 1.5K` ...
+    ### ERP & Operations * [Open Mercato](https://openalternative.co/open-mercato)
+    - AI-native CRM/ERP foundation with 80% already built `MIT` `⭐ 1.6K` * [Shelf](https://openalternative.co/shelf)
+    - Effortless inventory management for modern businesses `AGPL-3.0` `⭐ 3K` ...
+    ### Finance & Accounting * [OpenBB](https://openalternative.co/openbb) - AI-powered
+    analytics workspace built for investment teams `AGPL-3.0` `⭐ 72K` * [OpenMeter](https://openalternative.co/openmeter)
+    - Real-time usage metering and billing for AI companies `Apache-2.0` `⭐ 2.2K`
+    ... ### Marketing & Customer Engagement * **[Dub Partners](https://openalternative.co/dub-partners)**
+    - Affiliate marketing platform built for SaaS companies `AGPL-3.0` `⭐ 24K` * **[Novu](https://openalternative.co/novu)**
+    - Multi-channel notification infrastructure for apps `⭐ 39K` ... ### Customer
+    Support & Success * [Chaskiq](https://openalternative.co/chaskiq) - Open-source
+    customer communication platform `⭐ 3.6K` * [Chatwoot](https://openalternative.co/chatwoot)
+    - Omnichannel customer support with a buil'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://github.com/piotrkulpinski/open-source-alternatives
+- content_hash: bbf33d8affb3b5f5372c669d3adcb733bcd3439d5b896c83b33e13a4c3bca035
+  evidence_id: ev-bbf33d8affb3b5f5
+  excerpt: 'Title: Built | The Real Estate & Construction Finance Platform
+
+    Source: getbuilt.com
+
+    Snippet: Fund, develop, build , and manage on one AI-powered platform. Built for
+    banks, private credit, owners, developers, and general contractors.'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://getbuilt.com/
+- content_hash: ad5672eecf46a6eda7a57fbac0c53ebb9d4ab37a54c4dfd79e4c8836165b8923
+  evidence_id: ev-ad5672eecf46a6ed
+  excerpt: 'Title: Best Built Alternatives 2026
+
+    Source: capterra.com
+
+    Snippet: # Alternatives to Built ## Top Built Alternatives Overall Rating: 3.9
+    (410) Ease of Use 3.7 Customer Service 3.5 Features 3.7 Value for Money 3.5 Tabset
+    anchor All Built Alternatives At a Glance Top Alternatives for Built * FOUNDATION
+    * GCPay * Viewpoint Spectrum * Premier Construction Software * Viewpoint Vista
+    Tabset anchor ## Premier Construction Software by Premier Construction Software
+    4.7 (287) View Profile All-in-one financial & project management construction
+    cloud ERP, providing you with real-time visibility into your business. Learn more
+    about Premier Construction Software Compare Save Tabset anchor ... ## Sage Construction
+    Suite by Sage 4.0 (1013) View Profile Control your business finances and make
+    data-driven decisions with trusted cloud software built of 50 years of construction
+    experience. Learn more about Sage Construction Suite Compare Save Tabset anchor
+    ... ## JobTread by JobTread Software 4.9 (141) View Profile Construction software
+    to keep your jobs and your business on track and on budget. Learn more about JobTread
+    Compare Save Tabset anchor ... ## Ressio Software by Ressio Software 5.0 (32)
+    View Profile Ressio helps builders and contractors streamline their construction
+    project management processes, saving time and increasing efficiency Learn more
+    about Ressio Software Compare Save Tabset anchor'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://www.capterra.com/p/159434/Built/alternatives/
+- content_hash: aabbbaf030956e69ee70a46259bdabfa4dd42733faa6be722ceac3735d5993b2
+  evidence_id: ev-aabbbaf030956e69
+  excerpt: 'Query: Built alternatives
+
+    1. https://www.g2.com/products/built/competitors/alternatives
+
+    Title: Top 10 Built Alternatives & Competitors in 2026 | G2
+
+    Source: g2.com
+
+    Snippet: Skip to Navigation Skip to Navigation 2026 Best Software Awards are here!
+    See the list Home ... Financial Services Software Loan Origination Software Built
+    Built Alternatives Built Top 10 Built Alternatives & Competitors (15) 4.4 out
+    of 5 If you are considering Built, you may also want to investigate similar alternatives
+    or competitors to find the best solution. Loan Origination Software is a widely
+    used technology, and many people are seeking popular, simple software solutions
+    with compliance management and contractor portal. Other important factors to consider
+    when researching alternatives to Built include user experience and projects. The
+    best overall Built alternative is Land Gorilla. Other similar apps like Built
+    are LendingPad, CloudBankin, Finflux, and nCino''s Mortgage Suite. Built
+
+    2. https://withbanner.com/info/built-alternatives
+
+    Title: Top 5 Built Competitors and Alternatives in 2024
+
+    Date: 2024-12-04
+
+    Source: withbanner.com
+
+    Snippet: # Top 5 Built Competitors and Alternatives in 2024 ## What is Built?
+    [Built](https://www.builtapp.com/) provides a modular platform for position management
+    and organizational chart software, catering to various industries. ... ## Best
+    Alternatives to Built ### 1. Banner [Banner](https://withbanner.com/) is a project
+    management tool designed to streamline and make project'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://www.google.com/search?q=Built+alternatives
+- content_hash: db4450365372a3af267143c21590e82d57bb427094ed93a228dfa6c0362aa4e3
+  evidence_id: ev-db4450365372a3af
+  excerpt: 'Title: BUILT definition in American English
+
+    Source: collinsdictionary.com
+
+    Snippet: # Definition of ''built'' ## built ( b ɪ lt [IPA Pronunciation Guide](https://blog.collinsdictionary.com/ipa-pronunciation-guide-cobuild/
+    "IPA Pronunciation Guide") ) ... Built is the past tense and past participle of
+    [build](https://www.collinsdictionary.com/us/dictionary/english/build "Definition
+    of build") . 2. adjective If you say that someone is built in a particular way,
+    you are describing the kind of body they have. ...a strong, powerfully-built man
+    of 60. ... ## built in American English verb transitive , verb intransitive 1.
+    pt. & pp. of [build](https://www.collinsdictionary.com/us/dictionary/english/build
+    "Definition of build") adjective 2. informal ... 1. pt. and pp. of [build](https://www.collinsdictionary.com/us/dictionary/english/build
+    "Definition of build") adjective 2. informal a. of sound or [sturdy](https://www.collinsdictionary.com/us/dictionary/english/sturdy
+    "Definition of sturdy") [construction](https://www.collinsdictionary.com/us/dictionary/english/construction
+    "Definition of construction") These cars are really built b. ... noting any member
+    or part of a vessel [assembled](https://www.collinsdictionary.com/us/dictionary/english/assemble
+    "Definition of assembled") from pieces a built frame a built spar COBUILD frequency
+    band ... ## built in British English 1. the past tense and past participle of
+    [build](https://www.collinsdictionary.com/us/dictionary/english/build "Defini'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://www.collinsdictionary.com/us/dictionary/english/built
+- content_hash: bbdf18afdad8c4f3adb941e705c670023f616627bdb8370cc6c536143fa7d79a
+  evidence_id: ev-bbdf18afdad8c4f3
+  excerpt: 'Detected date: 2025-10-23
+
+    Title: How to Use Build or Built? (Irregular Verbs)
+
+    Date: 2025-10-23
+
+    Source: grammarflex.com
+
+    Snippet: # How to Use Build or Built? (Irregular Verbs) ## Verb forms of ''build''
+    Simple Cont. Perfect Perfect Cont. [Present](https://www.grammarflex.com/knowledgebase/what-is-the-present-tense-forms-of-the-present-tense)
+    I/you/they build • He/she/it builds [Past](https://www.grammarflex.com/knowledgebase/the-past-tense)
+    I/you/they built • He/she/it built [Future](https://www.grammarflex.com/knowledgebase/future-tense)
+    I/you/they will build • He/she/it will build [Present](https://www.grammarflex.com/knowledgebase/what-is-the-present-tense-forms-of-the-present-tense)
+    I am/you are building • He/she/it is building [Past](https://www.grammarflex.com/knowledgebase/the-past-tense)
+    I was/you were building • He/she/it was building [Future](https://www.grammarflex.com/knowledgebase/future-tense)
+    I/you will be building • He/she/it will be building [Present](https://www.grammarflex.com/knowledgebase/what-is-the-present-tense-forms-of-the-present-tense)
+    I/you have built • He/she/it has built [Past](https://www.grammarflex.com/knowledgebase/the-past-tense)
+    I/you had built • He/she/it had built [Future](https://www.grammarflex.com/knowledgebase/future-tense)
+    ... ## Is "build" a regular or irregular verb? Answer: Build is an [irregular
+    verb](https://www.grammarflex.com/knowledgebase/regular-and-irregular-verbs) —
+    its past conjugations are built in all cases. **Note:** Regular verbs end in -ed
+    in th'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://www.grammarflex.com/knowledgebase/build-or-built
+- content_hash: 943ce6433634f989e354520e8cf0f7d55e32936b9d32610aa1cafd2d433adf11
+  evidence_id: ev-943ce6433634f989
+  excerpt: 'Detected date: 2018-06-25
+
+    Title: is built vs is build
+
+    Date: 2018-06-25
+
+    Source: forum.wordreference.com
+
+    Snippet: Jun 25, 2018 — The past participle is ''built'' used adjectivally, if
+    you like, after the verb (to) ''be'', while ''build'' is the infinitive form.'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://forum.wordreference.com/threads/is-built-vs-is-build.3472964/
+- content_hash: ffb0d677ac0bd759c63448a889ded54042fb305a414ac6a6d97fef39fd1245bb
+  evidence_id: ev-ffb0d677ac0bd759
+  excerpt: 'Detected date: 2021-09-13
+
+    Title: Builded or Built
+
+    Date: 2021-09-13
+
+    Source: purecambridgetext.com
+
+    Snippet: # Builded or Built Both builded and built are past participles of build.
+    Dictionaries, even my beloved Oxford, dismiss the difference. They declare, Builded
+    = Built; it’s simply a poetic, and now archaic, version of built. ... “For every
+    house is **builded** by some _man_ ; but he that **built** all things _is_ God.”
+    - Hebrews 3:4 Surely they knew what they were doing, and didn’t just randomly
+    throw in an archaic or poetic participle. Why would they use one, and then, in
+    a seemingly identical case, use the other? “…and there **builded** an altar unto
+    the Lord….and there he **builded** an altar unto the LORD….” Genesis 12:7, 8 Poetic?
+    Hmmmm, later, the same man, doing exactly the same activity: “…and Abraham **built**
+    an altar there….” - Genesis 22:9 ... In Nehemiah, chapter 3, the Jews were repairing
+    the wall. In 3:1, they builded. In 3:2, next to him builded. Then, and not randomly,
+    in 3:3, “But the fish gate did the sons of Hassenaah build…” Ah, with the helping
+    verb did, the base verb is used. Why? Why not builded? ... Moving ahead to Nehemiah
+    chapter 3:14,15. “He built it, and set up the doors thereof, the locks thereof,
+    and the bars thereof.” He gathered together a complete set of materials and hardware:
+    **built** is used. This pattern is repeated in 3:15. Now, the opponents mocked
+    the Jews as they began to repair the wall (4:1-3), word came to Sanballat that
+    “we builded the wall.” (Far from '
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://www.purecambridgetext.com/post/builded-or-built
+- content_hash: e5878d089a12b3aa834312ffc0d3253c4846c0ad85f0a78f917acdf1488f47ee
+  evidence_id: ev-e5878d089a12b3aa
+  excerpt: 'Title: Built vs FOUNDATION Comparison
+
+    Source: softwareadvice.com.au
+
+    Snippet: 1. Home 2. Construction Accounting Software 3. [Built vs FOUNDATION](https://www.softwareadvice.com.au/compare/205813/419696/built/vs/foundation)
+    Software Advice offers objective, independent research and verified user reviews.
+    We may earn a referral fee when you visit a vendor through our links. Learn more
+    Our commitment ... # Built vs FOUNDATION Comparison Built ## Built Learn More
+    FOUNDATION ## FOUNDATION Learn More Find products to compare ## Overview Built
+    **Built** Built powers smarter construction finance. Software that mitigates risk,
+    maximizes productivity and increases revenue, Built simplifies money... Learn
+    more ### Images View 3 images Built FOUNDATION **FOUNDATION** FOUNDATION is construction
+    accounting solution designed for contractors in the construction industry. It
+    combines job costing, payroll, invoicing,... Learn more View 5 images FOUNDATION
+    ## Reviews Built **Built** ### Overall rating 4.3 **(35 reviews)** ### Features
+    rating Value for Money 4.2 Functionality 4.1 Ease of Use 4.3 Customer Support
+    4.4 View all reviews FOUNDATION **FOUNDATION** ### Overall rating 4.3 **(388 reviews)**
+    ### Features rating Value for Money 4.2 Functionality 4.2 Ease of Use 4.1 Customer
+    Support 4.4 View all reviews ## Pricing Built **Built** * Free Version * Free
+    Trial FOUNDATION **FOUNDATION** * Free Version * Free Trial ## Deployment Built
+    **Built** * Cloud-based * On-premises FOUNDATION **FOUNDATION'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://www.softwareadvice.com.au/compare/205813/419696/built/vs/foundation
+- content_hash: 88023f26fc7e0c604e04b003cef68bebe38c375fa8b5657eedb6766bdb7ecb12
+  evidence_id: ev-88023f26fc7e0c60
+  excerpt: 'Title: Competitor Analysis: Framework, Template & Best Practices
+
+    Source: productboard.com
+
+    Snippet: * Platform What’s new An image of the interface for Spark An agent built
+    for product teams It’s specialized for your product work, remembers all your context,
+    and is built for your whole team. Learn more + Productboard Spark AI agent context
+    awareness across your product and customers + Integrations Connect Productboard
+    to 25+ native integrations + Security Keep your data secure and compliant, SOC2-verified
+    + Enterprise Product Management AI tools built for scale and compliance * Use
+    Cases eBook AI-powered product workflows AI-powered product workflows How to build
+    an agentic AI workflow for product management Read Now ... # Competitor Analysis
+    ## Competitive Analysis Framework Use categories like "fully supported," "partially
+    supported," "not available" rather than binary yes/no. * **Positioning Map:**
+    Plot competitors on two axes (e.g., ease of use vs. power, price vs. features)
+    to visualize market positioning and identify white space. ... ## Using Competitor
+    Analysis in Product Decisions **Roadmap prioritization:** Identify table-stakes
+    features required to compete vs. differentiating capabilities that win deals.
+    Prioritize investments that strengthen your unique value. ... ## Frequently Asked
+    Questions **How do you identify true differentiation vs. perceived differentiation?**'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://www.productboard.com/glossary/competitor-analysis/
+- content_hash: 47545394437cdbaa074c72d79fe6089e1bac02d604a192be2e1e08304686309e
+  evidence_id: ev-47545394437cdbaa
+  excerpt: 'Detected date: 2026-08-18
+
+    Title: Pick An Isuzu Built By Someone Else: 1999 Isuzu Oasis vs 2006 Isuzu Ascender
+
+    Date: 2026-08-18
+
+    Source: theautopian.com
+
+    Snippet: It''s not uncommon for automakers to fill the gaps in their lineups by
+    selling cars from other manufacturers. In the case of Isuzu in the'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://www.theautopian.com/pick-an-isuzu-built-by-someone-else-1999-isuzu-oasis-vs-2006-isuzu-ascender/
+- content_hash: dc6345e671e027c2e165156a761b702b618e14b2d7a30c9f619551ea08215d84
+  evidence_id: ev-dc6345e671e027c2
+  excerpt: 'Detected date: 2026-08-13
+
+    Title: Buildertrend vs Procore vs Built Simple (2026)
+
+    Date: 2026-08-13
+
+    Source: builtsimple.com.au
+
+    Snippet: # Built Simple vs Buildertrend vs Procore: The Ultimate Construction
+    Software Comparison (2025) ## 4. Pricing Breakdown ### Buildertrend Pricing |
+    Plan | Monthly Price | Key Features | | **Core** | $299/month | Project management,
+    scheduling, communication | | **Pro** | $499/month | Core + financial tools, time
+    tracking, surveys | | **Premium** | $799/month | Pro + premium onboarding, enhanced
+    support | ... ### Head-to-Head Cost Comparison | Platform | Monthly Cost | Annual
+    Cost | Cost/User | | Built Simple (Pro) | $399 | $3,828 (annual billing $319/mo)
+    | $27 | | Buildertrend (Pro) | Custom quote (was $499) | (was $5,988) | $33 |
+    | Procore | $750+ | $9,000+ | $50+ | ... | Platform | Monthly Cost | Annual Cost
+    | Cost/User | | Built Simple (Pro) | $399 | $3,828 (annual billing $319/mo) |
+    $8 | | Buildertrend (Premium) | Custom quote (was $799) | (was $9,588) | $16 |
+    | Procore | $1,500+ | $18,000+ | $30+ | ... ### 3-Year Total Cost of Ownership
+    | Cost Component | Built Simple | Buildertrend | Procore | | 3-Year Subscription
+    | $7,200 | $14,364 | $27,000+ | | Implementation | $0 | $1,000 | $10,000 | | Training
+    | $500 | $1,500 | $5,000 | | Integrations | $0 | $500 | $3,000 | | **3-Year TCO**
+    | **$7,700** | **$17,364** | **$45,000+** | ... ## 5. Feature-by-Feature Comparison
+    ### Scheduling & Calendar **Verdict:** – **Procore** has the most advanced scheduling
+    with full critical '
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://builtsimple.com.au/blog/built-simple-vs-buildertrend-vs-procore-the-ultimate-construction-software-comparison-2025/
+- content_hash: 570ddceec44a06d74d74b773eb14969838d4f7e5fff2a4f4f71a5b4fc533d8d1
+  evidence_id: ev-570ddceec44a06d7
+  excerpt: 'Query: Built vs
+
+    1. https://www.collinsdictionary.com/us/dictionary/english/built
+
+    Title: BUILT definition in American English
+
+    Source: collinsdictionary.com
+
+    Snippet: # Definition of ''built'' ## built ( b ɪ lt [IPA Pronunciation Guide](https://blog.collinsdictionary.com/ipa-pronunciation-guide-cobuild/
+    "IPA Pronunciation Guide") ) ... Built is the past tense and past participle of
+    [build](https://www.collinsdictionary.com/us/dictionary/english/build "Definition
+    of build") . 2. adjective If you say that someone is built in a particular way,
+    you are describing the kind of body they have. ...a strong, powerfully-built man
+    of 60. ... ## built in American English verb transitive , verb intransitive 1.
+    pt. & pp. of [build](https://www.collinsdictionary.com/us/dictionary/english/build
+    "Definition of build") adjective 2. informal ... 1. pt. and pp. of [build](https://www.collinsdictionary.com/us/dictionary/english/build
+    "Definition of build") adjective 2. informal a. of sound or [sturdy](https://www.collinsdictionary.com/us/dictionary/english/sturdy
+    "Definition of sturdy") [construction](https://www.collinsdictionary.com/us/dictionary/english/construction
+    "Definition of construction") These cars are really built b. ... noting any member
+    or part of a vessel [assembled](https://www.collinsdictionary.com/us/dictionary/english/assemble
+    "Definition of assembled") from pieces a built frame a built spar COBUILD frequency
+    band ... ## built in British English 1. the past tense and past participle'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://www.google.com/search?q=Built+vs
+- content_hash: fcf07fef2d91c50b012c5ea63f8035fb89e857cce33ed0309baa19cafcf731fe
+  evidence_id: ev-fcf07fef2d91c50b
+  excerpt: "Title: Top Built Alternatives, Competitors\n* [Technology Vendors](https://www.cbinsights.com/what-we-offer/technology-vendors/)\
+    \  \n  * [Recent Research](https://www.cbinsights.com/research/)\n  * [Newsletter](https://www.cbinsights.com/newsletter/)\n\
+    \  * [Media Support](https://www.cbinsights.com/media-support/)\n  * [Login](https://www.cbinsights.com/login)\n\
+    \n[](https://www.cbinsights.com)\n\n  * Who We Serve\n    * Function\n      *\
+    \ [Corporate Strategy](https://www.cbinsights.com/who-we-serve/function/corporate-strategy/)\n\
+    \      * [Corporate Venture Capital](https://www.cbinsights.com/who-we-serve/function/corporate-venture-capital/)\n\
+    \      * [Venture Capital](https://www.cbinsights.com/who-we-serve/function/venture-capital/)\n\
+    \      * [IT](https://www.cbinsights.com/who-we-serve/head-of-it/)\n      * [Corporate\
+    \ Innovation](https://www.cbinsights.com/who-we-serve/function/corporate-innovation/)\n\
+    \      * How VCs Use CB Insights[Go to the video gallery →](https://www.cbinsights.com/how-vcs-use-cb-insights/)\n\
+    \    * Industries\n      * [Consumer & Retail](https://www.cbinsights.com/who-we-serve/industries/consumer/)\n\
+    \      * [Tech](https://www.cbinsights.com/who-we-serve/industries/tech/)\n  \
+    \    * [Insurance](https://www.cbinsights.com/who-we-serve/industries/insurance/)\n\
+    \      * [Healthcare](https://www.cbinsights.com/who-we-serve/industries/healthcare/)\n\
+    \      * [Industrials](https://www.cbinsights.com/who-we-serve/industries/industrials/)\n\
+    \      * [Financial Services](https://www.cbinsights.com/wh"
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://www.cbinsights.com/company/built/alternatives-competitors
+- content_hash: f6490f08a2cea5e63968b1ffa7ce00e0fbe7ebb293af5bef244eb2f41285124d
+  evidence_id: ev-f6490f08a2cea5e6
+  excerpt: 'Title: Top 5 Built Competitors and Alternatives in 2024
+
+    [](https://withbanner.com/)[Login](https://withbanner.com/)[Blog](https://blog.withbanner.com/)Contact
+    Us[[email protected]](/cdn-cgi/l/email-protection#6c05020a032c1b0518040e0d0202091e420f0301)[(415)
+    231-7512](tel:835:+\(415\)231-7512)Book a demo[](https://www.linkedin.com/company/withbanner)[](https://withbanner.com/)/[Info](https://withbanner.com/info/)ArticleminArticleTop
+    5 Built Competitors and Alternatives in 2024Explore the top 5 Built Alternatives
+    competitors in 2024. Compare platforms for managing capital, payments, and financial
+    workflows.Wed Oct 16, 2024ContributorsBanner TeamTable of ContentsTitle 1Built
+    offers a modular platform for position management and organizational chart solutions,
+    designed to help businesses manage their workforce efficiently. With features
+    like advanced org charts, position management, and succession planning, it caters
+    to the needs of HR professionals and directors. For those seeking alternatives,
+    several other tools in the market provide similar functionalities.What is Built?[Built](https://www.builtapp.com/)
+    provides a modular platform for position management and organizational chart software,
+    catering to various industries. The company offers advanced org charts for planning
+    growth and changes, robust workforce planning and budgeting tools, and succession
+    planning to ensure organizational resilience. Built''s platform is designed to
+    be versatile, allowing businesses to pay for onl'
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://withbanner.com/info/built-alternatives
+- content_hash: c9ee3779aada04fb203deb40b73ef2789234653e5b105cd6b44c2d78cbf7b689
+  evidence_id: ev-c9ee3779aada04fb
+  excerpt: "Detected date: June 2026\nTitle: I tried 10 BuiltWith alternatives - here\
+    \ are ones I actually liked\n[ Bloomberry ](https://bloomberry.com/blog/) __Archives\n\
+    \n  * [June 2026](https://bloomberry.com/blog/2026/06/)\n  * [May 2026](https://bloomberry.com/blog/2026/05/)\n\
+    \  * [April 2026](https://bloomberry.com/blog/2026/04/)\n  * [March 2026](https://bloomberry.com/blog/2026/03/)\n\
+    \  * [February 2026](https://bloomberry.com/blog/2026/02/)\n  * [January 2026](https://bloomberry.com/blog/2026/01/)\n\
+    \  * [November 2025](https://bloomberry.com/blog/2025/11/)\n  * [October 2025](https://bloomberry.com/blog/2025/10/)\n\
+    \  * [September 2025](https://bloomberry.com/blog/2025/09/)\n  * [August 2025](https://bloomberry.com/blog/2025/08/)\n\
+    \  * [April 2024](https://bloomberry.com/blog/2024/04/)\n  * [March 2024](https://bloomberry.com/blog/2024/03/)\n\
+    \  * [February 2024](https://bloomberry.com/blog/2024/02/)\n  * [January 2024](https://bloomberry.com/blog/2024/01/)\n\
+    \  * [December 2023](https://bloomberry.com/blog/2023/12/)\n\nCategories\n\n \
+    \ * [AI](https://bloomberry.com/blog/category/ai/)\n  * [Compensation](https://bloomberry.com/blog/category/compensation/)\n\
+    \  * [GTM](https://bloomberry.com/blog/category/gtm/)\n  * [GTM Tech](https://bloomberry.com/blog/category/gtm-tech/)\n\
+    \  * [Hiring & Interviewing](https://bloomberry.com/blog/category/hiring-interviewing/)\n\
+    \  * [Labor Trends](https://bloomberry.com/blog/category/labor-trends/)\n  * [Learning\
+    \ & Development](https://bloomberry.com/blog/category/learning-development/)\n\
+    \  * [Technology Intelligen"
+  retrieved_at: '2026-08-19T11:54:55.997518-04:00'
+  url: https://bloomberry.com/blog/5-builtwith-alternatives-for-technology-intelligence/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

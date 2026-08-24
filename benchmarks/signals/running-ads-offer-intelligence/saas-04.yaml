@@ -1,0 +1,175 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: identity
+  value: aPriori Technologies
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: description
+  value: 'About aPriori | Digital Transformation Manufacturing Partner Upcoming Webinar
+    Beyond a Tool: From Design for X to a New Engineering Mindset Register Now › MIC
+    Chicago From Design to Source — Measurable Impact at the Speed of AI Learn More
+    › US EN Login Why aPriori? Solutions Products Pricing About Resources Resources
+    Hub Blog Case Studies Cloud Security Documentation FAQs Glossary Guides Podcast
+    Webinars Videos Blog Articles Hot Trending Topics Artificial Intelligence Digital
+    Transformation Prod'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: offers
+  value: product cost software
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: icp
+  value: manufacturers
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: personas
+  value: manufacturers
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-a012eafd2279bf0f
+  field: ads
+  value:
+    channels:
+    - call_to_action: null
+      channel: google
+      ended_on: null
+      evidence_ids:
+      - ev-a012eafd2279bf0f
+      failure: null
+      landing_page: null
+      started_on: null
+      status: inactive
+    - call_to_action: null
+      channel: meta
+      ended_on: null
+      evidence_ids: []
+      failure: null
+      landing_page: null
+      started_on: null
+      status: unknown
+  visibility: message_safe
+company_id: saas-04
+corrections: []
+evidence:
+- content_hash: fe752f58cb8e0b98a01f0881279fa708d0e108813c408746804531793d415e69
+  evidence_id: ev-fe752f58cb8e0b98
+  excerpt: 'About aPriori | Digital Transformation Manufacturing Partner Upcoming
+    Webinar Beyond a Tool: From Design for X to a New Engineering Mindset Register
+    Now › MIC Chicago From Design to Source — Measurable Impact at the Speed of AI
+    Learn More › US EN Login Why aPriori? Solutions Products Pricing About Resources
+    Resources Hub Blog Case Studies Cloud Security Documentation FAQs Glossary Guides
+    Podcast Webinars Videos Blog Articles Hot Trending Topics Artificial Intelligence
+    Digital Transformation Product Lifecycle Intelligence Supply Chain Disruption
+    Business Goals Accelerate Product Development Reduce Costs & Increase Profit Win
+    More Profitable Business Product & Technology Design for Manufacturability Project
+    & Task Management Should Cost Sustainability Workflow Automation Department Cost
+    & Value Engineering Design Engineering Divisional GM & C-Suite IT Manufacturing
+    Engineering Quoting & Estimating Sourcing & Procurement Featured Resources Video:
+    aPriori & CNH Success Stories Profitability through DTC at Scale Webinar Replay: 
+    Quantified Design for Manufacture (DFM) with aPriori Request Demo aPriori Technologies
+    Transforming the Manufacturing Industry Since 2003 “aPriori is disrupting the
+    industry’s status quo” Founded in 2003, aPriori is disrupting the industry’s status
+    quo with groundbreaking work helping manufacturers digitally transform their businesses.
+    Through our unique, patented, intellectual property, we enable manufacturers to
+    accelerate product design, and bring products to markets faster while providing
+    visibility to the sustainability of their design and manufacturing choices. Our
+    impact is profound - our customers save millions of dollars each year, accelerate
+    time to market, all while creating a better world for future generations. Though
+    we are an established software firm, through our continued growth, we have maintained
+    the dynamic, collaborative nature of a start-up. With a global presence, including
+    North America, Europe, Asia, and India, we encoura'
+  retrieved_at: '2026-08-12T21:00:21.263165+00:00'
+  url: https://www.apriori.com/about/
+- content_hash: 3d93e43e256e02c1fd8b6c87897bbd2c234ef2bfc4d659b03cdbac08cfbf3203
+  evidence_id: ev-3d93e43e256e02c1
+  excerpt: aPriori Technologies | LinkedIn Skip to main content LinkedIn Top Content
+    People Learning Jobs Games Sign in Join now aPriori Technologies Software Development
+    Concord, MA 12,815 followers AI from Design to Source to Make See jobs Follow
+    View all 275 employees Report this company About us aPriori provides AI-powered
+    product intelligence that helps manufacturers make faster, more profitable decisions
+    from design through sourcing to production. Built on proprietary simulation engines
+    and deep manufacturing data, aPriori Intelligence delivers real-time insight into
+    product cost, manufacturability, and carbon footprint — enabling teams to reduce
+    time-to-market, improve margins, and meet environmental targets. According to
+    a Forrester Total Economic Impact™ study, aPriori customers achieve approximately
+    600% ROI within three years and payback in under six months. To learn more, visit
+    www.apriori.com. Website https://www.apriori.com External link for aPriori Technologies
+    Industry Software Development Company size 201-500 employees Headquarters Concord,
+    MA Type Privately Held Founded 2003 Specialties Digital Manufacturing Simulation,
+    Manufacturing Cost Models, Digital Factories, Design for Manufacturability, Design
+    to Margin, Source to Margin, Supply Chain Management, Manufacturing Automation,
+    Design to Cost, Make vs. Buy Analysis, Capital Asset Justification, Post-Launch
+    Product Costs Reduction (VA/VE), NPI Lifecycle Reduction, Cost Estimation , Spend
+    Analytics, Concept Costing, Digital Manufacturing, Manufacturing Intelligence,
+    Discrete Manufacturing, Digital Transformation, and Sustainability Products No
+    more previous content aP Analytics, Business Intelligence (BI) Software aP Analytics
+    Business Intelligence (BI) Software aP Design, Simulation Software aP Design Simulation
+    Software aP Generate, Simulation Software aP Generate Simulation Software aP Pro,
+    Computer-Aided Engineering (CAE) Software aP Pro Computer-Aided Engineering (CAE)
+    Software aP Workspace, Simulation S
+  retrieved_at: '2026-08-12T21:00:22.027996+00:00'
+  url: https://www.linkedin.com/company/apriori
+- content_hash: 1494a4907e1a3dc96e2a4a16584239cd25e34455ccfabdebd219ea1696104adb
+  evidence_id: ev-1494a4907e1a3dc9
+  excerpt: 'aPriori Receives Growth Investment From Vista Credit Partners for Its
+    Manufacturing Insights Platform - Vista Equity Partners Search Site… ✕ About About
+    25 years at the forefront of enterprise software investing. Firm About Vista Team
+    Sustainability Portfolio Value Creation Companies Opportunities Careers Strategies
+    Strategies Investing across the software lifecycle with tailored equity and credit
+    solutions. Private Equity Credit White Paper Investing in Enterprise Software
+    Learn from Robert F. Smith why enterprise software remains a compelling opportunity
+    for value creation White Paper Demystifying Generative AI Explore how Gen AI is
+    redefining industries News + Insights News + Insights Vista’s latest news and
+    insights from the forefront of enterprise software and AI investing. News Insights
+    by Vista Forefront Investing in AI Outlook Software’s Transition to Agentic Enterprise
+    AI Video Software’s Next Chapter: Robert F. Smith on The Next Era of Enterprise
+    Platforms Wealth Professionals Wealth Professionals A differentiated investment
+    partner for advisors and their clients. Overview Insights by Vista Forefront Strategies
+    Evergreen Private Equity Evergreen Credit White Paper Understanding Inference
+    and the Economics of Enterprise AI Chartbook Agentic AI Is Here - What Investors
+    Need to Know Unpacking the investor opportunity in Agentic AI Investor Login Back
+    All News and Press Releases Press Release October 19, 2023 aPriori Receives Growth
+    Investment From Vista Credit Partners for Its Manufacturing Insights Platform
+    CONCORD, Mass. — ( BUSINESS WIRE ) — aPriori today announced a growth investment
+    from Vista Credit Partners , a subsidiary of Vista Equity Partners and strategic
+    financing partner focused on the enterprise software, data, and technology markets.
+    The funding will be used to support continued innovation and meet growing demand
+    for aPriori’s cloud-based solution, which empowers manufacturers and product designers
+    to accurately estimate, manage, and optimize '
+  retrieved_at: '2026-08-12T21:00:22.524197+00:00'
+  url: https://www.vistaequitypartners.com/news/apriori-receives-growth-investment-from-vista-credit-partners-for-its-manufacturing-insights-platform/
+- content_hash: a012eafd2279bf0f7c06f81a9645a72fd415728a54e53ba805ca6b6448f16005
+  evidence_id: ev-a012eafd2279bf0f
+  excerpt: '{"ad_format_codes":{},"ad_formats":[],"domain":"apriori.com","error":null,"first_seen":null,"last_seen":null,"pages_scanned":1,"primary_advertiser":null,"running_ads":false,"total_creatives":0,"truncated":false,"unique_advertisers":0}'
+  retrieved_at: '2026-08-18T15:27:06.381260+00:00'
+  url: https://adstransparency.google.com/?domain=apriori.com
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches

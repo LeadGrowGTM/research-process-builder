@@ -1,0 +1,97 @@
+# DRAFT ground truth - TODO_HUMAN: review every entry, then move this file to
+# ../ground-truth/ only after a human seals it. Generated from the signal dossier;
+# nothing here is validated. Delete candidates that are not real, fix dates and
+# kinds, keep evidence_ids pointing at the Evidence that proves the entry.
+# subject: Arkestro (arkestro.com); as_of 2026-08-18
+# every 'named' entry is a candidate token; strip the TODO_HUMAN prefix to keep,
+# move to 'inferred' when no Evidence compares it with the subject, or delete.
+# candidate evidence: {"financials": ["ev-98ca84b4107ee477"], "employees": ["ev-8fc8a30e97588e33", "ev-98ca84b4107ee477"], "headquarterslocations": ["ev-98ca84b4107ee477"], "technologyvendors": ["ev-98ca84b4107ee477", "ev-a24698d89b129235"], "recentresearch": ["ev-98ca84b4107ee477", "ev-a24698d89b129235"], "newslettermedia": ["ev-98ca84b4107ee477"], "supportlogin": ["ev-98ca84b4107ee477"], "servefunction": ["ev-98ca84b4107ee477"], "corporatestrategy": ["ev-98ca84b4107ee477", "ev-a24698d89b129235"], "corporateventure": ["ev-98ca84b4107ee477", "ev-a24698d89b129235"], "capitalventure": ["ev-98ca84b4107ee477"], "capital": ["ev-98ca84b4107ee477", "ev-a24698d89b129235"], "corporateinnovation": ["ev-98ca84b4107ee477", "ev-a24698d89b129235"], "vcs": ["ev-98ca84b4107ee477", "ev-a24698d89b129235"], "use": ["ev-98ca84b4107ee477", "ev-a24698d89b129235"], "insights": ["ev-41b0034849dd4b37", "ev-98ca84b4107ee477", "ev-a24698d89b129235"], "industriesconsumer": ["ev-98ca84b4107ee477"], "retailtech": ["ev-98ca84b4107ee477"], "insurancehealthcare": ["ev-98ca84b4107ee477"], "industrialsfinancial": ["ev-98ca84b4107ee477"], "servicesprofessional": ["ev-98ca84b4107ee477"], "services": ["ev-98ca84b4107ee477"], "successstories": ["ev-98ca84b4107ee477"], "helpunderstand": ["ev-98ca84b4107ee477"], "techmarkets": ["ev-98ca84b4107ee477"], "anticipate": ["ev-98ca84b4107ee477"], "strategydetermine": ["ev-98ca84b4107ee477"], "techstrategy": ["ev-98ca84b4107ee477"], "connect": ["ev-98ca84b4107ee477"], "techvendors": ["ev-98ca84b
+company_id: saas-06
+evidence_ids:
+- ev-6324c3add32674d3
+inferred: []
+named:
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Predictive Procurement
+- aliases: []
+  domain: null
+  name: TODO_HUMAN ORO Labs
+- aliases: []
+  domain: null
+  name: TODO_HUMAN SAP Ariba
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Insights
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Overview
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Predictive
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Autonomous Procurement
+- aliases: []
+  domain: null
+  name: TODO_HUMAN ORO
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Procurement
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Revenue
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Coupa
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Financials
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Employees
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Technology Vendors
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Recent Research
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Corporate Strategy
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Corporate Venture
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Capital
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Corporate Innovation
+- aliases: []
+  domain: null
+  name: TODO_HUMAN VCs
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Use
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Services Professional
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Raised
+- aliases: []
+  domain: null
+  name: TODO_HUMAN San Francisco
+- aliases: []
+  domain: null
+  name: TODO_HUMAN California
+- aliases: []
+  domain: cbinsights.com
+  name: TODO_HUMAN cbinsights.com
+- aliases: []
+  domain: order.co
+  name: TODO_HUMAN order.co
+- aliases: []
+  domain: procurementexpress.com
+  name: TODO_HUMAN procurementexpress.com

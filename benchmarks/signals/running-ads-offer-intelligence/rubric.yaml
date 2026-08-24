@@ -1,0 +1,5 @@
+weights:
+  status: 0.6
+  landing_page: 0.2
+  offer: 0.2
+threshold: 0.9

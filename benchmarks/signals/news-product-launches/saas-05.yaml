@@ -1,0 +1,777 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-0c8cabd1fc6337a7
+  - ev-026452c8b94e5acd
+  - ev-67663586c7a2110a
+  field: identity
+  value: Archive360
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0c8cabd1fc6337a7
+  - ev-026452c8b94e5acd
+  - ev-67663586c7a2110a
+  field: description
+  value: About Us | Archive360 | Modern Data Archiving. Skip to content Archive360®
+    named to Inc. 5000 list of fastest-growing companies for the 2nd consecutive year. 
+    Read More Here Platform Archive360 Platform Platform Overview AI-ready data management,
+    compliance, & discovery Governance Unified governance for all data types across
+    multiple systems Compliance Consistent legal, regulatory & operational data compliance
+    Security Zero-trust, least privilege security by design Process Platform Process
+    Archi
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0c8cabd1fc6337a7
+  - ev-026452c8b94e5acd
+  - ev-67663586c7a2110a
+  field: offers
+  value: data management platform
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0c8cabd1fc6337a7
+  - ev-026452c8b94e5acd
+  - ev-67663586c7a2110a
+  field: icp
+  value: government agencies
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-0c8cabd1fc6337a7
+  - ev-026452c8b94e5acd
+  - ev-67663586c7a2110a
+  field: personas
+  value: government agencies
+  visibility: message_safe
+company_id: saas-05
+corrections: []
+evidence:
+- content_hash: 0c8cabd1fc6337a7e51bc418ede6d8693c4e2bb6fb5d371ffcc6e45d3d4280d1
+  evidence_id: ev-0c8cabd1fc6337a7
+  excerpt: 'About Us | Archive360 | Modern Data Archiving. Skip to content Archive360®
+    named to Inc. 5000 list of fastest-growing companies for the 2nd consecutive year. 
+    Read More Here Platform Archive360 Platform Platform Overview AI-ready data management,
+    compliance, & discovery Governance Unified governance for all data types across
+    multiple systems Compliance Consistent legal, regulatory & operational data compliance
+    Security Zero-trust, least privilege security by design Process Platform Process
+    Archive and govern critical data at petabyte scale 1. Collect Compliantly capture
+    all data types from wide range of sources 2. Manage Class-based, policy-driven
+    management of data lifecycle risk & value 3. Access Policy-driven access controls
+    at the file and field-level Solutions Industry Energy Federal Government Finance
+    Healthcare Life Sciences Legal Use Case AI & Analytics Compliance & Audit Data
+    Discovery Digital Communications Governance & Archiving Application & Data Retirement
+    File Archiving Mobile Communications Data Migration Supervision & Surveillance
+    ERP Modernization SAP Archiving Application Legacy Email Archives EMC SourceOne
+    Enterprise Vault / EV.Cloud More... Legacy Applications Data Sources / Connectors
+    Microsoft 365 Slack Zoom More... Customers Support Support Portal Knowledge Base
+    Services Advisory & Implementation Platform & Infrastructure Monitoring Customer
+    Success Migration Resources Type All Resources Analyst Reports Blog Case Studies
+    Datasheet eBook Interview Podcast Survey Technical Guide Video Whitepaper Webinar
+    Partners Partner Partner Program Overview Our Partnership with Microsoft Become
+    a Partner Find a Partner Partner Portal Company Contact Us About Us Leadership
+    Events News In the Media Careers Get a Demo Contact Sales Get to know Archive360®
+    Govern what matters - and prove it. Archive360 is the Enterprise Data and AI Governance
+    Platform for regulated organizations.   Dedicated tenant. Customer-managed keys.
+    Audit-ready evidence - so your security '
+  retrieved_at: '2026-08-12T21:00:50.696368+00:00'
+  url: https://www.archive360.com/about-archive360/
+- content_hash: 026452c8b94e5acd92b49814e68e027235264dc14c683ee629ffd880c1c7a152
+  evidence_id: ev-026452c8b94e5acd
+  excerpt: 'Archive360 | LinkedIn Agree & Join LinkedIn By clicking Continue to join
+    or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie
+    Policy . Skip to main content LinkedIn Top Content People Learning Jobs Games
+    Sign in Join now Archive360 Software Development New York, NY 5,110 followers
+    Govern what matters - and prove it. Follow View all 135 employees Report this
+    company About us Archive360 helps regulated enterprises govern complex data across
+    communications, records, legacy systems, and AI data. With policy-based retention,
+    access controls, encryption, search, and audit-ready traceability, Archive360
+    keeps critical data secure, compliant, defensible, and available when needed.
+    As AI adoption grows, Archive360 helps organizations govern prompts, outputs,
+    metadata, logs, and decision context, creating a trusted foundation for compliance,
+    risk reduction, and defensible AI use. Trusted data. Governed AI. Defensible outcomes.
+    Website http://www.archive360.com External link for Archive360 Industry Software
+    Development Company size 51-200 employees Headquarters New York, NY Type Privately
+    Held Founded 2011 Specialties Archive Migration , Azure, Cloud Archiving, eDiscovery,
+    Regulatory Compliance, SEC 17 a-4, Information Management, GDPR, Legal Defensibility,
+    Application retirement, data archiving, legacy archives, Data Governance, Records
+    Management, Legacy Application Retirement, AI, Analytics, Digital Communications,
+    Modern Archiving, File Archiving, Data retirement, SAP Archiving, ERP Modernization,
+    AI Data Readiness, AI Governance, Enterprise Data, and AI Ready data control plane
+    Employees at Archive360 Michael Coffield LinkedIn Member LinkedIn Member LinkedIn
+    Member LinkedIn Member LinkedIn Member View 135 employees at Archive360 Sign in
+    Welcome back Email or phone Password Show Forgot password? Sign in or By clicking
+    Continue to join or sign in, you agree to LinkedIn’s User Agreement , Privacy
+    Policy , and Cookie Policy . New to LinkedIn? Join '
+  retrieved_at: '2026-08-12T21:00:51.334967+00:00'
+  url: https://www.linkedin.com/company/archive360
+- content_hash: 67663586c7a2110af3e1bf055752bc8845409596684fcdac7f525a6be13d5d48
+  evidence_id: ev-67663586c7a2110a
+  excerpt: Archive360 | Carahsoft AVAILABLE 24x7 888.662.2724 AVAILABLE 24x7 (888)
+    66CARAH Fast & Accurate Request A Quote menu home SOLVE close back to main menu
+    Markets We Serve back to main menu View Public Sector Markets Federal Government
+    DoD/DoW Intelligence & National Defense State & Local Government Higher Ed K-12
+    Healthcare Tribal Nations Canadian Government View Commercial Markets Defense
+    Industrial Base Regulated Industries Critical Infrastructure Energy & Utilities
+    Financial Services Manufacturing Enterprise Technology Solutions Nonprofits Technology
+    Manufacturers back to main menu View All Vendors Adobe Atlassian AWS Broadcom
+    Cohesity CrowdStrike Databricks Dell Technologies Docusign ElasticSearch Equifax
+    F5 Forescout Gigamon GitLab Google Cloud Granicus HPE OpenText Microsoft Nutanix
+    NVIDIA Okta Oracle Palo Alto Networks Proofpoint Red Hat SAP Salesforce SentinelOne
+    ServiceNow Snowflake Solarwinds Splunk Tableau Trellix VMware Zscaler Zoom Solutions
+    Portfolio back to main menu View All Solutions 5G Aerospace & Maritime Artificial
+    Intelligence Autonomy & Robotic Technology CMMC Customer Experience & Engagement
+    Cyber Workforce Development Cybersecurity DevSecOps DoD IL Education Technology
+    Emerging Technologies Executive Protection FedRAMP Technologies Financial IT Geospatial
+    GovCon GovRAMP Hardware Healthcare Technology Human Capital Technology IoT & OT
+    Law Enforcement Technology Legal & Courtroom Technology MultiCloud Open Source
+    OSINT Physical Security Quantum Records & Information Management Smart Cities
+    Space Tech Supply Chain Management Zero Trust View All Vendors View all Markets
+    View all Solutions Request a Quote sales@carahsoft.com 888.662.2724 Solutions
+    for Public Sector and Solutions for Commercial and Enterprise Carahsoft is the
+    largest partner, distributor, and Master Aggregator™ for the industry's leading
+    software manufacturers. See all of our Technology Solutions See all of our Vendors
+    LEARN close back to main menu Events back to main menu All Events
+  retrieved_at: '2026-08-12T21:00:52.529274+00:00'
+  url: https://www.carahsoft.com/archive360
+- content_hash: 5ec0d093fe5a9a5278b73d3b7fc7ca65279af8b7ffa561e121f76fce91b8454b
+  evidence_id: ev-5ec0d093fe5a9a52
+  excerpt: 'Detected date: Aug. 11, 2026
+
+    Title: Archive360® Named to the Inc. 5000 List of Fastest-Growing Private Companies
+    in America 2026
+
+    Date: 1 week ago
+
+    Source: Morningstar
+
+    Snippet: PR Newswire. NEW YORK, Aug. 11, 2026. This Recognition Marks the Second
+    Consecutive Year the Company Has Been Listed, Earning a Place Among...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.morningstar.com/news/pr-newswire/20260811ny23510/archive360-named-to-the-inc-5000-list-of-fastest-growing-private-companies-in-america-2026
+- content_hash: 6417398299b1bea34ac22ed29ed007d4d2d0567a4f7eb0b74b1688afd82b55e2
+  evidence_id: ev-6417398299b1bea3
+  excerpt: 'Detected date: Jun 10, 2026
+
+    Title: Archive360 Achieves FedRAMP Authorization
+
+    Date: Jun 10, 2026
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Archive360, an Enterprise Data and AI Governance Platform
+    for regulated enterprises and government agencies, today announced...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.prnewswire.com/news-releases/archive360-achieves-fedramp-authorization-302796181.html
+- content_hash: 077dde86ccfa3af4ef65658998334c41507258c285e571eed1dae67faa1c10c0
+  evidence_id: ev-077dde86ccfa3af4
+  excerpt: 'Detected date: Jan 27, 2026
+
+    Title: Archive360 Transforms From Archive Tool To AI Entry Point: CEO
+
+    Date: Jan 27, 2026
+
+    Source: crn.com
+
+    Snippet: Archive360 is building on its data archiving technology to help businesses
+    take advantage of new AI tools to gain improved insights from...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.crn.com/news/storage/2026/archive360-transforms-from-archive-tool-to-ai-entry-point-ceo
+- content_hash: 8a87d8a8bf1528c9d095fbafa623f992e8e7ec328f69baafa6c471a01eff0768
+  evidence_id: ev-8a87d8a8bf1528c9
+  excerpt: 'Detected date: May 13, 2025
+
+    Title: Archive360 Launches a Governed AI-Ready Data Cloud to Meet Future Needs
+    of the Modern Enterprise
+
+    Date: May 13, 2025
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Archive360, the modern archiving company redefining the
+    role of archiving in enterprise data management, has announced it has...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.prnewswire.com/news-releases/archive360-launches-a-governed-ai-ready-data-cloud-to-meet-future-needs-of-the-modern-enterprise-302453204.html
+- content_hash: 73bd1a94bd8820590d2f3a88da9b02969aff85aea35b4137e9bb4b34cec7bcd3
+  evidence_id: ev-73bd1a94bd882059
+  excerpt: 'Detected date: Dec 18, 2017
+
+    Title: News Bits: Cisco, Cloudian, Axis, Rubrik, Archive360, Apposite, Toshiba,
+    StreamSets, & Instana
+
+    Date: Dec 18, 2017
+
+    Source: StorageReview.com
+
+    Snippet: This week''s News Bits we look at a number of small announcements, small
+    in terms of the content, not the impact they have.'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.storagereview.com/news/news-bits-cisco-cloudian-axis-rubrik-archive360-apposite-toshiba-streamsets-instana
+- content_hash: d11ecb4aaf61d79c932a22966df7d7abaa90903dda834608bd9a30aa3924674c
+  evidence_id: ev-d11ecb4aaf61d79c
+  excerpt: 'Detected date: May 30, 2019
+
+    Title: Archive360 Achieves 331 Percent Growth and Continues Expansion Trajectory
+
+    Date: May 30, 2019
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Archive360®, a software company that helps regulated businesses
+    manage risk and unlock hidden value from human-generated data...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.prnewswire.com/news-releases/archive360-achieves-331-percent-growth-and-continues-expansion-trajectory-300858985.html
+- content_hash: 899438c0977f81bb4324190aef199ded5b9d77bb6f8c60bb9f80a6c860cf0f17
+  evidence_id: ev-899438c0977f81bb
+  excerpt: 'Query: archive360.com news
+
+    1. https://www.morningstar.com/news/pr-newswire/20260811ny23510/archive360-named-to-the-inc-5000-list-of-fastest-growing-private-companies-in-america-2026
+
+    Title: Archive360® Named to the Inc. 5000 List of Fastest-Growing Private Companies
+    in America 2026
+
+    Date: 1 week ago
+
+    Source: Morningstar
+
+    Snippet: PR Newswire. NEW YORK, Aug. 11, 2026. This Recognition Marks the Second
+    Consecutive Year the Company Has Been Listed, Earning a Place Among...
+
+    2. https://www.prnewswire.com/news-releases/archive360-achieves-fedramp-authorization-302796181.html
+
+    Title: Archive360 Achieves FedRAMP Authorization
+
+    Date: Jun 10, 2026
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Archive360, an Enterprise Data and AI Governance Platform
+    for regulated enterprises and government agencies, today announced...
+
+    3. https://www.crn.com/news/storage/2026/archive360-transforms-from-archive-tool-to-ai-entry-point-ceo
+
+    Title: Archive360 Transforms From Archive Tool To AI Entry Point: CEO
+
+    Date: Jan 27, 2026
+
+    Source: crn.com
+
+    Snippet: Archive360 is building on its data archiving technology to help businesses
+    take advantage of new AI tools to gain improved insights from...
+
+    4. https://solutionsreview.com/data-management/data-management-news-for-the-week-of-march-20-updates-from-denodo-ibm-snowflake-more/
+
+    Title: Data Management News for the Week of March 20; Updates from Denodo, IBM,
+    Snowflake & More
+
+    Date: Mar 20, 2026
+
+    Source: Solutions Review
+
+    Snippet: Solutions Review Executive Editor Tim King curat'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.google.com/search?q=archive360.com+news&tbm=nws
+- content_hash: a713f0783da8dbde5083b6d4694190fe43126dab05934386678737e6bbf48bad
+  evidence_id: ev-a713f0783da8dbde
+  excerpt: 'Detected date: Oct 14, 2025
+
+    Title: Archive360 & Microsoft Deliver Agentic AI for Policy ...
+
+    Date: Oct 14, 2025
+
+    Snippet: Archive360® announces FedRAMP® status for secure federal digital communications
+    archiving. ... Archive360 collaborates with Mircosoft press release image ...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.archive360.com/a360-news-blog/archive360-collaborates-with-microsoft-to-deliver-agentic-ai-that-detects-investigates-and-preserves-policy-violations
+- content_hash: 8d81003356dfd2e6a9d0d41f087cc39a5f5ca93916a5f6d167dda96048bb283c
+  evidence_id: ev-8d81003356dfd2e6
+  excerpt: 'Detected date: Oct 15, 2025
+
+    Title: Archive360 A Leader in Gartner® Magic Quadrant™ a 2nd ...
+
+    Date: Oct 15, 2025
+
+    Snippet: Archive360® announces FedRAMP® status for secure federal digital communications
+    archiving. Read More Here. Platform. Archive360 Platform · Platform Overview.
+    AI ...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.archive360.com/a360-news-blog/archive360-named-a-leader-in-the-2025-gartner-magic-quadrant-for-the-second-consecutive-year
+- content_hash: b1e1133f6a0a8c0f1fc722a75079593ea65d94ac09b5b7dfa26910a07526db38
+  evidence_id: ev-b1e1133f6a0a8c0f
+  excerpt: 'Detected date: Jun 10, 2026
+
+    Title: Archive360® Achieves FedRAMP® Authorization.
+
+    Date: Jun 10, 2026
+
+    Snippet: Archive360® announces FedRAMP® status for secure federal digital communications
+    archiving. ... Press Release. Archive360® Achieves FedRAMP® Authorization.'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.archive360.com/a360-news-blog/archive360-achieves-fedramp-authorization
+- content_hash: 04f12a80855bb7f15875f43d00b472944913c2467ebf6c74c527bbd91b741429
+  evidence_id: ev-04f12a80855bb7f1
+  excerpt: 'Detected date: Jan 22, 2026
+
+    Title: Application & Data Retirement Solution.
+
+    Date: Jan 22, 2026
+
+    Snippet: Archive360® announces FedRAMP® status for secure federal digital communications
+    archiving. Read More Here. Platform. Archive360 Platform · Platform Overview.
+    AI ...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.archive360.com/application-and-data-retirement
+- content_hash: 78e4ba134f1d4025dba06ae94f3d7739663be82ccabc3109c7fad053b216e026
+  evidence_id: ev-78e4ba134f1d4025
+  excerpt: 'Detected date: Jun 10, 2026
+
+    Title: Archive360 Achieves FedRAMP Authorization
+
+    Date: Jun 10, 2026
+
+    Snippet: For more information, visit archive360.com. About Archive360. Archive360
+    ... more press release views with. Request a Demo. ×. Modal title. Also from this
+    ...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.prnewswire.com/news-releases/archive360-achieves-fedramp-authorization-302796181.html
+- content_hash: a477af535345b9ca446bdbcd7dd8d6b1b83c9050fb13a374b58ab95de2cea820
+  evidence_id: ev-a477af535345b9ca
+  excerpt: 'Detected date: Jul 7, 2026
+
+    Title: Archive360 - 2026 Company Profile, Funding & Competitors
+
+    Date: Jul 7, 2026
+
+    Snippet: About usOur InvestorsMedia & NewsroomCareersContact Us · Logo for ...
+    Archive360 Announces Relativity''s Inclusion in Archive360 Extend Developer ...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://tracxn.com/d/companies/archive360/__Ycsv5LhzN_Seh0LbwLtlSvtLhv8KJFxhTn_7neDGUKM
+- content_hash: dded6e4351f9bedab26218ffb275fb757c3b019ec1d358a22bc5958ebf036b7c
+  evidence_id: ev-dded6e4351f9beda
+  excerpt: 'Detected date: Apr 22, 2026
+
+    Title: Talk to an Expert
+
+    Date: Apr 22, 2026
+
+    Snippet: Archive360® announces FedRAMP® status for secure federal digital communications
+    archiving. Read More Here. Platform. Archive360 Platform · Platform Overview.
+    AI ...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.archive360.com/talk-to-expert
+- content_hash: 28b64a2a4940b63dded6232635d93b6f3b3441101efec69e29c267d3e0edf8d5
+  evidence_id: ev-28b64a2a4940b63d
+  excerpt: 'Title: Archive360® Named to the Inc. 5000 List of Fastest ...
+
+    Date: 7 days ago
+
+    Snippet: Archive360® Named to the Inc. 5000 List of Fastest-Growing Private ...
+    Newsroom · Investor Relations. Get Help. Advertising Opportunities. Feedback.'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.morningstar.com/news/pr-newswire/20260811ny23510/archive360-named-to-the-inc-5000-list-of-fastest-growing-private-companies-in-america-2026
+- content_hash: f11c841e4ca3ebb8e4ee24979571b06d9f995f404e0038f81bd56d76fbd73e04
+  evidence_id: ev-f11c841e4ca3ebb8
+  excerpt: 'Detected date: Sep 18, 2025
+
+    Title: RISE with SAP and Data Archiving Best Practice.
+
+    Date: Sep 18, 2025
+
+    Snippet: Archive360® announces FedRAMP® status for secure federal digital communications
+    archiving. Read More Here. Platform. Archive360 Platform · Platform Overview.
+    AI ...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.archive360.com/rise-with-sap-and-data-archiving-best-practice
+- content_hash: e219bb4080d0b282a7f9b50f700b74f3fff7d4a54daa5c05238899356d3c62d5
+  evidence_id: ev-e219bb4080d0b282
+  excerpt: 'Detected date: Oct 15, 2025
+
+    Title: 2025 Gartner® Magic Quadrant™.
+
+    Date: Oct 15, 2025
+
+    Snippet: Archive360® announces FedRAMP® status for secure federal digital communications
+    archiving. Read More Here. Platform. Archive360 Platform · Platform Overview.
+    AI ...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.archive360.com/report/dcga2025-gartner-magic-quadrant
+- content_hash: 86b1a106059480c6b37d9d2d0836e525a7c0bbfa631443cf993b057e18e4e3ae
+  evidence_id: ev-86b1a106059480c6
+  excerpt: 'Query: Archive360 "press release" OR "announces" OR "newsroom"
+
+    1. https://www.archive360.com/a360-news-blog/archive360-collaborates-with-microsoft-to-deliver-agentic-ai-that-detects-investigates-and-preserves-policy-violations
+
+    Title: Archive360 & Microsoft Deliver Agentic AI for Policy ...
+
+    Date: Oct 14, 2025
+
+    Snippet: Archive360® announces FedRAMP® status for secure federal digital communications
+    archiving. ... Archive360 collaborates with Mircosoft press release image ...
+
+    2. https://www.archive360.com/a360-news-blog/archive360-named-a-leader-in-the-2025-gartner-magic-quadrant-for-the-second-consecutive-year
+
+    Title: Archive360 A Leader in Gartner® Magic Quadrant™ a 2nd ...
+
+    Date: Oct 15, 2025
+
+    Snippet: Archive360® announces FedRAMP® status for secure federal digital communications
+    archiving. Read More Here. Platform. Archive360 Platform · Platform Overview.
+    AI ...
+
+    3. https://www.archive360.com/a360-news-blog/archive360-achieves-fedramp-authorization
+
+    Title: Archive360® Achieves FedRAMP® Authorization.
+
+    Date: Jun 10, 2026
+
+    Snippet: Archive360® announces FedRAMP® status for secure federal digital communications
+    archiving. ... Press Release. Archive360® Achieves FedRAMP® Authorization.
+
+    4. https://www.archive360.com/application-and-data-retirement
+
+    Title: Application & Data Retirement Solution.
+
+    Date: Jan 22, 2026
+
+    Snippet: Archive360® announces FedRAMP® status for secure federal digital communications
+    archiving. Read More Here. Platform. Archive360 Platform · Platform Overview.
+    AI ...
+
+    5. '
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.google.com/search?q=Archive360+%22press+release%22+OR+%22announces%22+OR+%22newsroom%22&tbs=qdr%3Ay
+- content_hash: 1b5010a1e92586863b491c59bbd9dc4cf28b63a91b93f52470405a5dd4608eb1
+  evidence_id: ev-1b5010a1e9258686
+  excerpt: 'Detected date: Sep 29, 2025
+
+    Title: Archive360
+
+    Date: Sep 29, 2025
+
+    Snippet: Sep 29, 2025 Archive360 Launches a Governed AI-Ready Data Cloud s of
+    the Modern EnterpriseArchive360 has launched the Archive360 Modern Archiving Platform,
+    a ...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://sapinsider.org/vendor-showcase/archive360/
+- content_hash: a68a047edc127ab3290f6d34363a7bc9ef8e62e6efe6b3b7c9687d5fc12be81d
+  evidence_id: ev-a68a047edc127ab3
+  excerpt: 'Detected date: Jul 7, 2026
+
+    Title: Archive360 - 2026 Company Profile, Funding & Competitors
+
+    Date: Jul 7, 2026
+
+    Snippet: Archive360 Launches AI-Ready Data Cloud PlatformAiThority•May 13, 2025•Archive360
+    ... Archive360 Announces Relativity''s Inclusion in Archive360 Extend ...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://tracxn.com/d/companies/archive360/__Ycsv5LhzN_Seh0LbwLtlSvtLhv8KJFxhTn_7neDGUKM
+- content_hash: 7c4e3ddee8e97d1caa8551c8c6d52f77e5f9a70950696c809d8846453358b152
+  evidence_id: ev-7c4e3ddee8e97d1c
+  excerpt: 'Detected date: Oct 8, 2025
+
+    Title: How to turn your archive into an AI-ready hub with Archive360
+
+    Date: Oct 8, 2025
+
+    Snippet: The replay of this session on scaling AI is now available — and it offers
+    valuable insights for organizations looking to advance their AI strategies. Key
+    ...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.linkedin.com/posts/archive360_ai-digitaltransformation-datamanagement-activity-7381705142347309056-SZDP
+- content_hash: f02bec272d0b38fe3e8636e249642e77dbf5d1363c9c1593515759c78594bd27
+  evidence_id: ev-f02bec272d0b38fe
+  excerpt: 'Detected date: Aug 21, 2025
+
+    Title: Neev Data
+
+    Date: Aug 21, 2025
+
+    Snippet: Introducing FleetDrive 360''s Enterprise Solution for Larger Fleets!
+    "Our Enterprise version addresses the unique needs of larger fleet operations
+    ...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.facebook.com/neevdata/posts/were-proud-to-join-forces-with-archive360-to-deliver-a-breakthrough-in-enterpris/122185184000337235/
+- content_hash: 386ecffbe578b49e8e6461a2801e626facd429babebe915db0239813b0699134
+  evidence_id: ev-386ecffbe578b49e
+  excerpt: 'Title: AI Governance Beyond Models and Workflows | Archive360 ...
+
+    Date: 2 weeks ago
+
+    Snippet: Archive360 helps regulated enterprises and government agencies bring
+    communications, records, application data, active data, and supported AI interactions'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.linkedin.com/posts/archive360_ai-governance-is-often-discussed-in-terms-activity-7490414366048153600-huM7
+- content_hash: 0e0410a2f18f488dbb45ac95ed4946f66c29ecdd60560372e9986aec3bda873f
+  evidence_id: ev-0e0410a2f18f488d
+  excerpt: 'Title: Data Governance Crucial for AI Readiness and Compliance ...
+
+    Date: 1 month ago
+
+    Snippet: ... introducing its own approach to regulating AI technologies. In next
+    week''s ... Archive360 4y. Archiving ALL Salesforce Data for Compliance & eDiscovery.'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.linkedin.com/posts/archive360_innovationincompliance-aigovernance-datagovernance-activity-7480635737122574336-fedU
+- content_hash: 18878cb24d3e2ea90a43719d89d199258038e4d70f634bc8211e92acad2844a9
+  evidence_id: ev-18878cb24d3e2ea9
+  excerpt: 'Title: Archive360 Achieves FedRAMP Authorization at Moderate ...
+
+    Snippet: Introducing our brand new DMD Experts Series, launching today! Each ...
+    Archive360 4y. Archiving ALL Salesforce Data for Compliance & eDiscovery. Archive360
+    4y ...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.linkedin.com/posts/archive360_archive360-has-achieved-fedramp-authorization-activity-7487877096149696512-Hqie
+- content_hash: 0094c63453b862ac200504a38bf0ee91d63dd4b1297bec74d03aef746f7e815b
+  evidence_id: ev-0094c63453b862ac
+  excerpt: 'Title: For Jamie Cabezas at Archive360, finding HR answers ...
+
+    Snippet: Introducing CAGA Verified. Complete a free AI Governance Assessment and
+    earn a public verification profile that shows your understanding of responsible
+    AI ...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.instagram.com/p/DPKAiLUj_rE/
+- content_hash: 4a018b0f04a36bee1fc5d5bcae55c5a7ee9ce13e9505a78ce95be8b1d3de790b
+  evidence_id: ev-4a018b0f04a36bee
+  excerpt: 'Detected date: Apr 20, 2026
+
+    Title: UK launches GBP £500m sovereign AI fund amid doubts
+
+    Date: Apr 20, 2026
+
+    Snippet: The UK government has launched a GBP £500 million Sovereign AI fund,
+    Archive360 works with regulated organisations on data and AI governance cloud-based
+    ...'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://itbrief.co.uk/story/uk-launches-gbp-500m-sovereign-ai-fund-amid-doubts
+- content_hash: 0c5e5a2e66be96b5414197b18953bcd97e64617a0c30293d52a34282f540afef
+  evidence_id: ev-0c5e5a2e66be96b5
+  excerpt: 'Query: Archive360 launches OR "new feature" OR "introducing" OR "now available"
+
+    1. https://sapinsider.org/vendor-showcase/archive360/
+
+    Title: Archive360
+
+    Date: Sep 29, 2025
+
+    Snippet: Sep 29, 2025 Archive360 Launches a Governed AI-Ready Data Cloud s of
+    the Modern EnterpriseArchive360 has launched the Archive360 Modern Archiving Platform,
+    a ...
+
+    2. https://tracxn.com/d/companies/archive360/__Ycsv5LhzN_Seh0LbwLtlSvtLhv8KJFxhTn_7neDGUKM
+
+    Title: Archive360 - 2026 Company Profile, Funding & Competitors
+
+    Date: Jul 7, 2026
+
+    Snippet: Archive360 Launches AI-Ready Data Cloud PlatformAiThority•May 13, 2025•Archive360
+    ... Archive360 Announces Relativity''s Inclusion in Archive360 Extend ...
+
+    3. https://www.linkedin.com/posts/archive360_ai-digitaltransformation-datamanagement-activity-7381705142347309056-SZDP
+
+    Title: How to turn your archive into an AI-ready hub with Archive360
+
+    Date: Oct 8, 2025
+
+    Snippet: The replay of this session on scaling AI is now available — and it offers
+    valuable insights for organizations looking to advance their AI strategies. Key
+    ...
+
+    4. https://www.facebook.com/neevdata/posts/were-proud-to-join-forces-with-archive360-to-deliver-a-breakthrough-in-enterpris/122185184000337235/
+
+    Title: Neev Data
+
+    Date: Aug 21, 2025
+
+    Snippet: Introducing FleetDrive 360''s Enterprise Solution for Larger Fleets!
+    "Our Enterprise version addresses the unique needs of larger fleet operations
+    ...
+
+    5. https://www.linkedin.com/posts/archive360_ai-governance-is-often-discussed-in-terms-activity-7490414366048'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.google.com/search?q=Archive360+launches+OR+%22new+feature%22+OR+%22introducing%22+OR+%22now+available%22&tbs=qdr%3Ay
+- content_hash: d884f3128495a7e833e12692a51fe2300a7b143c98a78be6121dfa83c6bfd41e
+  evidence_id: ev-d884f3128495a7e8
+  excerpt: "Detected date: Aug 11, 2026\nTitle: Archive360® Named to the Inc. 5000\
+    \ List of Fastest-Growing Private Companies in America 2026 | Morningstar\nMorningstar\
+    \ brands and products \n\nCompany \n\n[](/)\n\n[ ](/login?destination=https://www.morningstar.com/news/pr-newswire/20260811ny23510/archive360-named-to-the-inc-5000-list-of-fastest-growing-private-companies-in-america-2026)\n\
+    \n  * [ Portfolio ](/tools/portfolio)\n  * Tools\n\n\n\n\n  * Sections\n\n  *\
+    \ Markets\n\n  * [ Funds ](/funds)\n  * [ ETFs ](/topics/etfs)\n  * [ Stocks ](/stocks)\n\
+    \  * [ Bonds ](/bonds)\n\n\n\n  * Investing Ideas\n\n\n\n\n  * [ For Advisors\
+    \ ](/financial-advisors)\n\n\n\n  * [ Home ](/)\n\n\n\n  * Tools\n\n    * [ Portfolio\
+    \ ](/tools/portfolio)\n    * [ Watchlists ](/tools/watchlists)\n    * [ Screener\
+    \ ](/tools/screener)\n    * [ Compare ](/tools/compare)\n    * [ Chart ](/tools/chart)\n\
+    \    * [ Rating Changes ](/tools/rating-changes)\n\n\n\n\n  * Sections\n\n  *\
+    \ Markets\n\n  * [ Funds ](/funds)\n  * [ ETFs ](/topics/etfs)\n  * [ Stocks ](/stocks)\n\
+    \  * [ Bonds ](/bonds)\n\n\n\n  * Investing Ideas\n\n\n\n\n  * [ For Advisors\
+    \ ](/financial-advisors)\n\n\n\n  * Media\n\n\n\n\n  * [ Help ](/help-center)\n\
+    \  * [ What’s New ](/whats-new)\n  * [ Notifications  ](/notifications)\n\n\n\n\
+    \  * Products for Investors\n\n  * [ All Products and Services  ](/business)\n\
+    \n\n\n  1. [ Home](/)\n  2. [ News](/news)\n  3. [ PR Newswire](/news/pr-newswire)\n\
+    \  4. Archive360® Named to the Inc. 5000 List of Fastest-Growing Private Companies\
+    \ in America 2026\n\n\n\n\n#  Archive360® Named to the Inc. 5000 List of Fastest-Growing\
+    \ Private Companies in America 2"
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.morningstar.com/news/pr-newswire/20260811ny23510/archive360-named-to-the-inc-5000-list-of-fastest-growing-private-companies-in-america-2026
+- content_hash: 72084f4c7e0746cffc14d0917a922dfcf512548f931fcead3f34562efe43622e
+  evidence_id: ev-72084f4c7e0746cf
+  excerpt: "Title: Archive360 Achieves FedRAMP Authorization\n[Accessibility Statement](https://www.cision.com/about/accessibility/)\
+    \ Skip Navigation\n\n  * [Resources](/resources/)\n  * [Investor Relations](/investor-relations-solutions/)\n\
+    \  * [Journalists](https://prnmedia.prnewswire.com/)\n  * [Agencies](https://www.cision.com/agencies/?utm_medium=referral&utm_source=prnewswire&utm_content=product&utm_campaign=2023-prn-all-products-page)\n\
+    \n\n  * [Client Login](https://app.prnewswire.com/login/auto)\n  * [Send a Release](/account/online-account-form/)\n\
+    \n\n\n[ ](/)\n\n  * [News](/news-releases/)\n  * [Products](/amplify-platform/)\n\
+    \  * [Contact](/contact-us/)\n\n\n\nSearch\n\n__\n\nSearch\n\nWhen typing in this\
+    \ field, a list of search results will appear and be automatically updated as\
+    \ you type.\n\nSearching for your content...\n\n__\n\n**No results found. Please\
+    \ change your search terms and try again.**\n\n  * News in Focus \n    *     \
+    \  * ## [Browse News Releases](/news-releases/)\n\n      * [All News Releases\
+    \ ](/news-releases/news-releases-list/)\n      * [All Public Company ](/news-releases/all-public-company-news/)\n\
+    \      * [English-only ](/news-releases/english-releases/)\n      * ## [News Releases\
+    \ Overview](/news-releases/)\n\n      * ## [Multimedia Gallery](/news-releases/multimedia/)\n\
+    \n      * [All Multimedia ](/news-releases/multimedia/multimedia-list/)\n    \
+    \  * [All Photos ](/news-releases/photos/photos-list/)\n      * [All Videos ](/news-releases/videos/videos-list/)\n\
+    \      * ## [ Multimedia Gallery Overview](/news-relea"
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.prnewswire.com/news-releases/archive360-achieves-fedramp-authorization-302796181.html
+- content_hash: 7a68fb05942ed17131045af0426c09c11c855767ffad55d43fae7fb7a9d4d47c
+  evidence_id: ev-7a68fb05942ed171
+  excerpt: 'Title: Archive360 Transforms From Archive Tool To AI Entry Point: CEO
+
+    # Archive360 Transforms From Archive Tool To AI Entry Point: CEO
+
+
+    _‘The first evolution [of Archive360] was adding analytics, feeding data into
+    some tools like [Microsoft] Power BI or Snowflake or Databricks so customers can
+    do more analytics on archived data. The next step with this platform is really
+    to become more of a data governance platform to not just feed analytics engines,
+    but also AI models as well,’ says Archive360 CEO Jerry Caviston._
+
+
+    Archive360 began as a data migration services company but quickly transformed
+    into a specialized archive platform provider. Identifying gaps in the market—such
+    as lack of cloud-native offerings, vendor lock-in, and insufficient security—the
+    company set out to develop a cloud-based, single-tenant SaaS platform that prioritizes
+    customer data ownership and zero-trust security.
+
+
+    This unique approach enables granular data control and indexing, positioning Archive360
+    as an innovator in the field and opening the door to more advanced operations,
+    said Jerry Caviston, CEO of the New York-based company.
+
+
+    “The first evolution was adding analytics, feeding data into some tools like [Microsoft]
+    Power BI or Snowflake or Databricks so customers can do more analytics on archived
+    data,” Caviston said. “The next step with this platform is really to become more
+    of a data governance platform to not just feed analytics engines, but also AI
+    models as well.”
+
+
+    **[Related:[The 2025 Storag'
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.crn.com/news/storage/2026/archive360-transforms-from-archive-tool-to-ai-entry-point-ceo
+- content_hash: 610e58b1c3b86f2d6195cb3b15336d7a9d33650f37fc0b20f33cbdaea038d0c3
+  evidence_id: ev-610e58b1c3b86f2d
+  excerpt: "Title: Archive360 &amp; Microsoft Deliver Agentic AI for Policy Violations.\n\
+    Skip to content\n\nArchive360® named to Inc. 5000 list of fastest-growing companies\
+    \ for the 2nd consecutive year. \n\n[ Read More Here ](https://www.archive360.com/a360-news-blog/archive360-named-to-the-inc.-5000-list-of-fastest-growing-private-companies-in-america-2026)\n\
+    \n[ ](https://www.archive360.com/)\n\n  * [Platform](javascript:void\\(0\\);)\n\
+    \n    * #####  [ Archive360 Platform ](https://www.archive360.com/data-archiving-platform)\n\
+    \n      * [ Platform Overview ](https://www.archive360.com/data-archiving-platform)\n\
+    \nAI-ready data management, compliance, & discovery \n\n      * [ Governance ](https://www.archive360.com/unified-data-governance#governance)\n\
+    \nUnified governance for all data types across multiple systems\n\n      * [ Compliance\
+    \ ](https://www.archive360.com/unified-data-governance#compliance)\n\nConsistent\
+    \ legal, regulatory & operational data compliance\n\n      * [ Security ](https://www.archive360.com/unified-data-governance#security)\n\
+    \nZero-trust, least privilege security by design\n\n    * #####  [ Process ](https://www.archive360.com/data-governance-simplified)\n\
+    \n      * [ Platform Process ](https://www.archive360.com/data-governance-simplified)\n\
+    \nArchive and govern critical data at petabyte scale \n\n      * [ 1\\. Collect\
+    \ ](https://www.archive360.com/data-governance-simplified#collect)\n\nCompliantly\
+    \ capture all data types from wide range of sources\n\n      * [ 2\\. Manage ](https://www.archive360.com/data-gove"
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.archive360.com/a360-news-blog/archive360-collaborates-with-microsoft-to-deliver-agentic-ai-that-detects-investigates-and-preserves-policy-violations
+- content_hash: 0a98fc7c9cc29020741a9b0d8caeac9d2cecaa9eb0e61d989ea1ebb04c6ae2cc
+  evidence_id: ev-0a98fc7c9cc29020
+  excerpt: "Title: Archive360 A Leader in Gartner® Magic Quadrant™ a 2nd Straight\
+    \ Year.\nSkip to content\n\nArchive360® named to Inc. 5000 list of fastest-growing\
+    \ companies for the 2nd consecutive year. \n\n[ Read More Here ](https://www.archive360.com/a360-news-blog/archive360-named-to-the-inc.-5000-list-of-fastest-growing-private-companies-in-america-2026)\n\
+    \n[ ](https://www.archive360.com/)\n\n  * [Platform](javascript:void\\(0\\);)\n\
+    \n    * #####  [ Archive360 Platform ](https://www.archive360.com/data-archiving-platform)\n\
+    \n      * [ Platform Overview ](https://www.archive360.com/data-archiving-platform)\n\
+    \nAI-ready data management, compliance, & discovery \n\n      * [ Governance ](https://www.archive360.com/unified-data-governance#governance)\n\
+    \nUnified governance for all data types across multiple systems\n\n      * [ Compliance\
+    \ ](https://www.archive360.com/unified-data-governance#compliance)\n\nConsistent\
+    \ legal, regulatory & operational data compliance\n\n      * [ Security ](https://www.archive360.com/unified-data-governance#security)\n\
+    \nZero-trust, least privilege security by design\n\n    * #####  [ Process ](https://www.archive360.com/data-governance-simplified)\n\
+    \n      * [ Platform Process ](https://www.archive360.com/data-governance-simplified)\n\
+    \nArchive and govern critical data at petabyte scale \n\n      * [ 1\\. Collect\
+    \ ](https://www.archive360.com/data-governance-simplified#collect)\n\nCompliantly\
+    \ capture all data types from wide range of sources\n\n      * [ 2\\. Manage ](https://www.archive360.com/data-gove"
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.archive360.com/a360-news-blog/archive360-named-a-leader-in-the-2025-gartner-magic-quadrant-for-the-second-consecutive-year
+- content_hash: 6385b62a9f9e3256e2b6ec10dbd4f2cddeb87594276c8a923551eedb53776d09
+  evidence_id: ev-6385b62a9f9e3256
+  excerpt: "Title: Archive360® Achieves FedRAMP® Authorization.\nSkip to content\n\
+    \nArchive360® named to Inc. 5000 list of fastest-growing companies for the 2nd\
+    \ consecutive year. \n\n[ Read More Here ](https://www.archive360.com/a360-news-blog/archive360-named-to-the-inc.-5000-list-of-fastest-growing-private-companies-in-america-2026)\n\
+    \n[ ](https://www.archive360.com/)\n\n  * [Platform](javascript:void\\(0\\);)\n\
+    \n    * #####  [ Archive360 Platform ](https://www.archive360.com/data-archiving-platform)\n\
+    \n      * [ Platform Overview ](https://www.archive360.com/data-archiving-platform)\n\
+    \nAI-ready data management, compliance, & discovery \n\n      * [ Governance ](https://www.archive360.com/unified-data-governance#governance)\n\
+    \nUnified governance for all data types across multiple systems\n\n      * [ Compliance\
+    \ ](https://www.archive360.com/unified-data-governance#compliance)\n\nConsistent\
+    \ legal, regulatory & operational data compliance\n\n      * [ Security ](https://www.archive360.com/unified-data-governance#security)\n\
+    \nZero-trust, least privilege security by design\n\n    * #####  [ Process ](https://www.archive360.com/data-governance-simplified)\n\
+    \n      * [ Platform Process ](https://www.archive360.com/data-governance-simplified)\n\
+    \nArchive and govern critical data at petabyte scale \n\n      * [ 1\\. Collect\
+    \ ](https://www.archive360.com/data-governance-simplified#collect)\n\nCompliantly\
+    \ capture all data types from wide range of sources\n\n      * [ 2\\. Manage ](https://www.archive360.com/data-governance-simplified#manage"
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.archive360.com/a360-news-blog/archive360-achieves-fedramp-authorization
+- content_hash: cf34f50367b6d9ae387268b0abc7de24f20c136fb7c33da212df9df018bfc85d
+  evidence_id: ev-cf34f50367b6d9ae
+  excerpt: "Title: Archive360 Blog.\nSkip to content\n\nArchive360® named to Inc.\
+    \ 5000 list of fastest-growing companies for the 2nd consecutive year. \n\n[ Read\
+    \ More Here ](https://www.archive360.com/a360-news-blog/archive360-named-to-the-inc.-5000-list-of-fastest-growing-private-companies-in-america-2026)\n\
+    \n[ ](https://www.archive360.com/)\n\n  * [Platform](javascript:void\\(0\\);)\n\
+    \n    * #####  [ Archive360 Platform ](https://www.archive360.com/data-archiving-platform)\n\
+    \n      * [ Platform Overview ](https://www.archive360.com/data-archiving-platform)\n\
+    \nAI-ready data management, compliance, & discovery \n\n      * [ Governance ](https://www.archive360.com/unified-data-governance#governance)\n\
+    \nUnified governance for all data types across multiple systems\n\n      * [ Compliance\
+    \ ](https://www.archive360.com/unified-data-governance#compliance)\n\nConsistent\
+    \ legal, regulatory & operational data compliance\n\n      * [ Security ](https://www.archive360.com/unified-data-governance#security)\n\
+    \nZero-trust, least privilege security by design\n\n    * #####  [ Process ](https://www.archive360.com/data-governance-simplified)\n\
+    \n      * [ Platform Process ](https://www.archive360.com/data-governance-simplified)\n\
+    \nArchive and govern critical data at petabyte scale \n\n      * [ 1\\. Collect\
+    \ ](https://www.archive360.com/data-governance-simplified#collect)\n\nCompliantly\
+    \ capture all data types from wide range of sources\n\n      * [ 2\\. Manage ](https://www.archive360.com/data-governance-simplified#manage)\n\
+    \nClass-based, policy-drive"
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.archive360.com/blog
+- content_hash: 0d657c3a0d58c937ce061207455b6ddfe0623b71fa04a5fbeac0932079a61b68
+  evidence_id: ev-0d657c3a0d58c937
+  excerpt: "Title: Archive360 News.\nSkip to content\n\nArchive360® named to Inc.\
+    \ 5000 list of fastest-growing companies for the 2nd consecutive year. \n\n[ Read\
+    \ More Here ](https://www.archive360.com/a360-news-blog/archive360-named-to-the-inc.-5000-list-of-fastest-growing-private-companies-in-america-2026)\n\
+    \n[ ](https://www.archive360.com/)\n\n  * [Platform](javascript:void\\(0\\);)\n\
+    \n    * #####  [ Archive360 Platform ](https://www.archive360.com/data-archiving-platform)\n\
+    \n      * [ Platform Overview ](https://www.archive360.com/data-archiving-platform)\n\
+    \nAI-ready data management, compliance, & discovery \n\n      * [ Governance ](https://www.archive360.com/unified-data-governance#governance)\n\
+    \nUnified governance for all data types across multiple systems\n\n      * [ Compliance\
+    \ ](https://www.archive360.com/unified-data-governance#compliance)\n\nConsistent\
+    \ legal, regulatory & operational data compliance\n\n      * [ Security ](https://www.archive360.com/unified-data-governance#security)\n\
+    \nZero-trust, least privilege security by design\n\n    * #####  [ Process ](https://www.archive360.com/data-governance-simplified)\n\
+    \n      * [ Platform Process ](https://www.archive360.com/data-governance-simplified)\n\
+    \nArchive and govern critical data at petabyte scale \n\n      * [ 1\\. Collect\
+    \ ](https://www.archive360.com/data-governance-simplified#collect)\n\nCompliantly\
+    \ capture all data types from wide range of sources\n\n      * [ 2\\. Manage ](https://www.archive360.com/data-governance-simplified#manage)\n\
+    \nClass-based, policy-drive"
+  retrieved_at: '2026-08-18T11:40:54.463390-04:00'
+  url: https://www.archive360.com/a360-news-blog
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

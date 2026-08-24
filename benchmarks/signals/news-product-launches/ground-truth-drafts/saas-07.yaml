@@ -1,0 +1,166 @@
+# DRAFT ground truth - TODO_HUMAN: review every entry, then move this file to
+# ../ground-truth/ only after a human seals it. Generated from the signal dossier;
+# nothing here is validated. Delete candidates that are not real, fix dates and
+# kinds, keep evidence_ids pointing at the Evidence that proves the entry.
+# subject: Betterworks (betterworks.com)
+as_of: '2026-08-18'
+company_id: saas-07
+events:
+- date: TODO_HUMAN (2 months ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-1e2e8b7042efefdc
+  headline_aliases:
+  - 'Breaking: CEO announces a strategic restructuring of HR ...'
+  kind: TODO_HUMAN
+  source_domain: instagram.com
+- date: TODO_HUMAN (2 days ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-7f7edbb57badcd41
+  headline_aliases:
+  - Betterworks - Overview, News & Similar companies
+  kind: TODO_HUMAN
+  source_domain: zoominfo.com
+- date: TODO_HUMAN (1 month ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-55c31d199502fc54
+  headline_aliases:
+  - Betterworks Launches New AI Capabilities That Connect Performance Data to AI Assistants
+  kind: TODO_HUMAN
+  source_domain: finance.yahoo.com
+- date: '2026-08-05'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-6494bc9d6556cc5a
+  headline_aliases:
+  - Instagram
+  kind: TODO_HUMAN
+  source_domain: instagram.com
+- date: '2026-07-23'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-920d261e03f36035
+  headline_aliases:
+  - 10 Best Betterworks Alternatives (Tested, 2026)
+  kind: TODO_HUMAN
+  source_domain: okrstool.com
+- date: '2026-07-14'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-f908719543ebb806
+  headline_aliases:
+  - Betterworks Launches New AI Capabilities That Connect ...
+  kind: TODO_HUMAN
+  source_domain: businesswire.com
+- date: '2026-07-14'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-26c82d95ed6f2121
+  headline_aliases:
+  - Betterworks Launches New AI Capabilities That Connect ...
+  kind: TODO_HUMAN
+  source_domain: finance.yahoo.com
+- date: '2026-07-02'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-fdf6b9777f22b309
+  headline_aliases:
+  - Executives Think AI Has Transformed Performance Reviews ...
+  kind: TODO_HUMAN
+  source_domain: aihrdaily.com
+- date: '2026-06-02'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-6474b5a652405a90
+  headline_aliases:
+  - Betterworks Acquires Rypple to Advance Manager Effectiveness and AI-Native Performance
+    Management
+  kind: TODO_HUMAN
+  source_domain: businesswire.com
+- date: '2026-06-02'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-a104c336dafe047c
+  headline_aliases:
+  - Betterworks Acquires Rypple to Advance Manager ...
+  kind: TODO_HUMAN
+  source_domain: businesswire.com
+- date: '2026-05-28'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-d9eb0e9af5da550d
+  headline_aliases:
+  - Betterworks' benefits and culture help this leader manage dual caregiving roles
+  kind: TODO_HUMAN
+  source_domain: benefitnews.com
+- date: '2026-05-13'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-737377b6ac37c6f3
+  headline_aliases:
+  - Betterworks Alternatives for OKR Management
+  kind: TODO_HUMAN
+  source_domain: synergita.com
+- date: '2026-05-06'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-92ce619034ef9c66
+  headline_aliases:
+  - Betterworks Unveils AI-Powered Talent Intelligence to Turn Performance Into a
+    Business Execution Engine
+  kind: TODO_HUMAN
+  source_domain: businesswire.com
+- date: '2026-05-06'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-1f635f5b49c093b9
+  headline_aliases:
+  - Betterworks Unveils AI-Powered Talent Intelligence to Turn ...
+  kind: TODO_HUMAN
+  source_domain: businesswire.com
+- date: '2020-02-20'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-2efa802254c8d6f1
+  headline_aliases:
+  - Betterworks Acquires Hyphen, Enabling Every Enterprise to Better Connect Employee
+    Engagement to Business Impact
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2019-10-15'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-1df0467d44247ed6
+  headline_aliases:
+  - Betterworks Announces Multiple New Product Features That Bring Continuous Performance
+    Management® Into the Flow of Work
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2019-10-11'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-b9fbfbce6d22529a
+  headline_aliases:
+  - Betterworks Research Indicates Adopting Continuous Performance
+  kind: TODO_HUMAN
+  source_domain: techrseries.com
+- date: '2019-10-10'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-229ba2044cb891c8
+  headline_aliases:
+  - Betterworks Research Indicates Adopting Continuous Performance Management Delivers
+    Improved Business Outcomes
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2017-07-26'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-ebd131aada743df9
+  headline_aliases:
+  - BetterWorks CEO Resigns Amid Sexual Harassment Lawsuit
+  kind: TODO_HUMAN
+  source_domain: bloomberg.com
+recent_window_days: 180

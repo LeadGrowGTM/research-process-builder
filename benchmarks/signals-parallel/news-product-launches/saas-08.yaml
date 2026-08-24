@@ -1,0 +1,1088 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: identity
+  value: BigPanda
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: description
+  value: Our Story - About BigPanda | BigPanda --> en --> en --> de Service + Support
+    Service Community Documentation Customer Support Platform Status Support Education
+    & Certification Professional Services Login Platform Agentic ITOps Platform The
+    BigPanda agentic ITOps platform uses AI to automate IT detection, triage, and
+    resolution, improving operational efficiency and reducing downtime and costs.
+    Explore the Platform Platform Overview AI Incident Prevention AI Detection & Response
+    L1 Agent AI Incide
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: offers
+  value: incident intelligence
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: icp
+  value: it teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: personas
+  value: it teams
+  visibility: message_safe
+company_id: saas-08
+corrections: []
+evidence:
+- content_hash: 8d10c83bbc00a2c9b190962859a301302faeb34990f83a1ceedfd0bdbb22bbf5
+  evidence_id: ev-8d10c83bbc00a2c9
+  excerpt: Our Story - About BigPanda | BigPanda --> en --> en --> de Service + Support
+    Service Community Documentation Customer Support Platform Status Support Education
+    & Certification Professional Services Login Platform Agentic ITOps Platform The
+    BigPanda agentic ITOps platform uses AI to automate IT detection, triage, and
+    resolution, improving operational efficiency and reducing downtime and costs.
+    Explore the Platform Platform Overview AI Incident Prevention AI Detection & Response
+    L1 Agent AI Incident Assistant IT Knowledge Graph Integrations Jira ServiceNow
+    All Integrations Solutions Transform ITSM with Agentic ITOps Learn how enterprises
+    can empower incident management teams with AI assistance by integrating agentic
+    AI into their incident management strategy. Get the e-book Solutions for Automating
+    L1 Detection & Response Empowering L2, L3, and SRE with AI Assistance Predicting
+    & Preventing Incidents & Outages Industries Financial Services Insurance Managed
+    Service Providers Manufacturing Retail Airlines All Industries My role is IT Operations
+    Incident Management IT Service Management Site Reliability Engineering Pricing
+    Customers Resources Derisking IT Change Management with Agentic AI Discover how
+    agentic AI transforms the IT change management process to predict high-risk changes,
+    prevent incidents, and protect engineering time. Read the White Paper Resource
+    Type AIOps Blog Case Studies E-books Webinars & Events All Resources Resource
+    Topic Agentic ITOps AIOps Alert Intelligence Analytics Automation Incident Management
+    Incident Prevention Integration ITOps Monitoring Customer Resources Customer Support
+    Professional Services BigPanda Education Company Careers We’re looking for talented,
+    passionate, creative, and fun people to join our embarrassment of Pandas. (Yes,
+    that’s really what a group of pandas is called!) Learn More About Us Our Story
+    Leadership Investors Partners Values and Culture Careers Media and Recognition
+    Awards Analysts Reports Newsroom Get a demo Con
+  retrieved_at: '2026-08-12T21:00:55.661668+00:00'
+  url: https://www.bigpanda.io/company/
+- content_hash: 09e959f239942a367999bcbf1f8343b79d2a993615867b04576b49ba7ee95647
+  evidence_id: ev-09e959f239942a36
+  excerpt: 'BigPanda | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now BigPanda Software Development Redwood City, California
+    53,705 followers Automate L1 operations. Augment incident response teams. Stop
+    IT incidents before they happen. See jobs Follow Discover all 332 employees Report
+    this company About us BigPanda keeps the digital world running with Agentic AI,
+    artificial intelligence that enables autonomous systems to make decisions and
+    perform tasks without constant human intervention. Beyond other AIOps solutions,
+    the BigPanda platform responds to and prevents IT incidents at machine speed,
+    improving operational efficiency and delivering exceptional service reliability.
+    Website http://bigpanda.io External link for BigPanda Industry Software Development
+    Company size 201-500 employees Headquarters Redwood City, California Type Privately
+    Held Founded 2012 Specialties IT Operations, IT Alert Management, DevOps, Data
+    Science, ITOM, IT Incident Management, AIOps, Machine Learning, ITOA, IT Event
+    Management, Service Operations, IT Monitoring, IT Automation, and ITOps Products
+    BigPanda BigPanda AIOps Platforms BigPanda keeps the digital world running by
+    transforming reactive, manual IT processes into proactive, intelligent automation.
+    The agentic IT operations platform uses AI to detect, respond to, and prevent
+    IT incidents at machine speed, improving operational efficiency and delivering
+    exceptional service reliability. AI Detection and Response: Automate L1 operations
+    and stop incidents before they escalate. Utilize real-time signals and intelligent
+    automation to minimize downtime, eliminate noise, and resolve incidents more efficiently
+    with AI that adapts to your specific environment. AI Incident Assistant: Give
+    incident escalation teams an always-on AI partner to improve collaboration, accelerate
+    investigation, and automate resolution. AI Incident Prevention: Automated change
+    analysis enables proactive and scalable change govern'
+  retrieved_at: '2026-08-12T21:00:56.445305+00:00'
+  url: https://www.linkedin.com/company/bigpanda
+- content_hash: 73b6e24a7ac9c3a5cc85eae81b5d52db1e7d0e5b4d8863ad3066f0a204c975c1
+  evidence_id: ev-73b6e24a7ac9c3a5
+  excerpt: 'AIOps startup BigPanda raises Series E extension, bringing its total capital
+    to $340M TechCrunch Desktop Logo TechCrunch Mobile Logo Latest Startups Venture
+    Apple Security AI Apps Disrupt 2026 Events Podcasts Newsletters Search Submit
+    Site Search Toggle Mega Menu Toggle Topics Latest AI Amazon Apps Biotech & Health
+    Climate Cloud Computing Commerce Crypto Enterprise EVs Fintech Fundraising Gadgets
+    Gaming Google Government & Policy Hardware Instagram Layoffs Media & Entertainment
+    Meta Microsoft Privacy Robotics Security Social Space Startups TikTok Transportation
+    Venture More from TechCrunch Staff Events Startup Battlefield StrictlyVC Newsletters
+    Podcasts Videos Partner Content TechCrunch Brand Studio Contact Us Image Credits:
+    Ralwel / Getty Images AIOps startup BigPanda raises Series E extension, bringing
+    its total capital to $340M Kyle Wiggers 4:00 AM PDT · August 17, 2022 BigPanda
+    , a startup developing AI to audit changes in IT environments and recommend how
+    to fix them, has raised $20 million in an extension of its Series E round. UBS
+    Next and Wells Fargo Strategic Capital contributed to the tranche, bringing BigPanda’s
+    total raised to $340 million. The company’s valuation remains unchanged at $1.2
+    billion. As my colleague Christine Hall recently reported, BigPanda works to prevent
+    corporate network outages by analyzing data from observability and monitoring
+    services. The platform can automate aspects of incident response, like ticketing,
+    and optionally connect to third-party runbook automation tools to run automated
+    workflows. BigPanda also provides analytics to track incident trends and metrics
+    and to enable teams to measure progress toward company goals. BigPanda was founded
+    in 2012 by Assaf Resnick and Elik Eizenberg. Resnick was an analyst at Moody’s
+    before becoming a principal at Sequoia Capital and a member at Jibe Ventures.
+    Eizenberg, formerly head of IT operations at IDF, worked on algorithms and software
+    at stock-trading startup MarketWindows prior to j'
+  retrieved_at: '2026-08-12T21:00:56.976508+00:00'
+  url: https://techcrunch.com/2022/08/17/aiops-startup-bigpanda-raises-series-e-extension-bringing-its-total-capital-to-340m/
+- content_hash: cd78ed4b8c68de00fe9694896d2fbd5350a94c85fcf18ddfc6fba115c34f4511
+  evidence_id: ev-cd78ed4b8c68de00
+  excerpt: 'Title: Mitaklemim-Bigpanda
+
+    Source: platform.tracxn.com
+
+    Snippet: Name: Mitaklemim-Bigpanda | Stage: Unfunded | Primary Sector: Nonprofits
+    | Primary Subsector: Foundations'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://platform.tracxn.com/a/d/company/6400be8d242f1933e692bb1b/mitaklemim-bigpanda?utm_source=parallel&utm_medium=ai#a:about
+- content_hash: 007eec7bbdae65de978058f14d8125b56046e759f12cee7267a4e26e99b33a9a
+  evidence_id: ev-007eec7bbdae65de
+  excerpt: 'Detected date: 2026-08-18
+
+    Title: AIOps vendor BigPanda raises $190 million
+
+    Date: 2026-08-18
+
+    Source: techtarget.com
+
+    Snippet: BigPanda''s funding success shows the interest of investors in AIOps
+    and the growth of AI across industries.'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.techtarget.com/it-infrastructure/news/252511875/AIOps-vendor-BigPanda-raises-190-million
+- content_hash: cb89e2f78f33443545d2bb9ae390d82fa03fcc046aa8b374227a4a367600c37c
+  evidence_id: ev-cb89e2f78f334435
+  excerpt: 'Detected date: 2026-08-06
+
+    Title: Mozaic announces partnership with BigPanda
+
+    Date: 2026-08-06
+
+    Source: consultancy.uk
+
+    Snippet: # Mozaic announces partnership with BigPanda 06 August 2026 Consultancy.uk
+    **_As it looks to help clients obtain AI-powered operational intelligence for
+    their service management, Mozaic has announced a new partnership with BigPanda.
+    The alliance will help organisations address legacy technology issues which hold
+    back the adoption of AI tools._** ... BigPanda is an agentic ITOps platform, trusted
+    by some of the world’s largest enterprises. It will now become a key technology
+    component within Mozaic’s Enterprise Service Integration, or ESI, Reference Architecture.
+    ... Chris Loveridge, EMEA regional vice president at BigPanda, added, “Mozaic
+    combines deep enterprise transformation experience with a strong position across
+    both the Halo and ServiceNow ecosystems. ... Together, BigPanda and Mozaic will
+    help customers reduce alert noise, accelerate the journey from detection to resolution,
+    and create the operational foundations required for AI-driven and agentic service
+    management.” * Mozaic * AI & Gen AI * Partnerships * [](mailto:?&subject=Mozaic
+    announces partnership with BigPanda&body=https://www.consultancy.uk/news/45272/mozaic-announces-partnership-with-bigpanda)
+    ... Darren Gerry joins Mozaic as director Darren Gerry has arrived at Mozaic as
+    an engagement director. He brings three decades of experience to the role, as
+    the firm looks to strengthen its leadership team. 14 August 20'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.consultancy.uk/news/45272/mozaic-announces-partnership-with-bigpanda
+- content_hash: 17dd56dacfa50c44c80109c8e8ea50943bea74ceea4c56eff0bdf84146a13592
+  evidence_id: ev-17dd56dacfa50c44
+  excerpt: 'Detected date: 2025-10-08
+
+    Title: Announcing AIOps partnerships with Dynatrace, New Relic, and BigPanda -
+    Inside Atlassian
+
+    Date: 2025-10-08
+
+    Source: atlassian.com
+
+    Snippet: # Announcing AIOps partnerships with Dynatrace, New Relic, and BigPanda
+    Sign up now ... Subscribe Search October 7, 2025 [Jira Service Management](https://www.atlassian.com/blog/search?apps%5B0%5D=jira-service-management)
+    As part of the [Service Collection announcement at Team ‘25 Europe](https://www.atlassian.com/blog/announcements/team25-europe-service-collection)
+    , we’re excited to introduce new partnerships with leading observability vendors—Dynatrace,
+    New Relic, and BigPanda—to help ... * **Disconnected incident response:** Incident
+    management is often isolated from upstream monitoring and observability signals,
+    leading to slow, manual triage ... ## Unite AI-powered observability insights
+    with end-to-end incident management With new integrations to [Dynatrace](https://www.dynatrace.com/news/blog/dynatrace-and-atlassian-delivering-agentic-ai-that-transforms-your-end-to-end-incident-management)
+    , [New Relic](https://newrelic.com/blog/nerdlog/atlassian-agentic-integration)
+    , and [BigPanda](http://bigpanda.io/blog/jira-service-management-bigpanda-integration)
+    for Jira Service Management, IT Ops teams now have instant access to AI-driven
+    observability insights for smarter incident detection, faster diagnosis and remediation,
+    and enhanced ... With new agentic integrations between Dynatrace, New Relic, and
+    the Atlassian Rovo Ops agent, '
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.atlassian.com/blog/jira-service-management/announcing-aiops-partnerships-with-dynatrace-new-relic-and-bigpanda
+- content_hash: f9138073be410f0a848568e89f688d5daa93d38f6cc1280a0bc286773029a2e3
+  evidence_id: ev-f9138073be410f0a
+  excerpt: 'Detected date: November 10, 2025
+
+    Title: BigPanda Acquires Velocity to Accelerate Leadership ...
+
+    Source: bigpanda.io
+
+    Snippet: # BigPanda Acquires Velocity to Accelerate Leadership in Agentic IT Operations
+    ## **_Acquisition expands BigPanda’s leadership team, deepens investment in agentic
+    AI, and accelerates delivery of AI-driven automation._** **SAN FRANCISCO — November
+    10, 2025 —** BigPanda, a leader in Agentic IT Operations, today announced the
+    acquisition of Velocity, an AI-powered SRE company with deep expertise with SRE
+    and major ... ### **Advancing the Era of Agentic IT Operations** Their talent,
+    technology, and customer-centric mindset are a natural fit for BigPanda as customers
+    work to transform reactive, human-led operations into proactive, reasoning-based
+    automation that frees talent from repetitive tasks and reduces operating costs.
+    ... ### **Welcoming Velocity’s Leadership and Team** As part of the acquisition,
+    Tal Kain, founder and CEO of Velocity, joins BigPanda as VP of AI Detection and
+    Response. Tal brings decades of experience leading high-impact engineering teams
+    and building AI systems that scale in complex enterprise environments. Before
+    founding Velocity, Tal held leadership roles in several successful startups, including
+    companies acquired by Oracle, Verint, and PSG. His early career in Israel’s elite
+    Unit 8200 laid the foundation for a lifelong focus on intelligent automation and
+    operational resilience. ... That’s why the world’s most trusted brands rely on
+    BigPanda to improve operation'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: http://bigpanda.io/press-release/bigpanda-acquires-velocity
+- content_hash: 7408c30901cc0d2b2521607d7fc64ce5419a7e56a68165949c12da125d03c320
+  evidence_id: ev-7408c30901cc0d2b
+  excerpt: 'Detected date: 2025-05-28
+
+    Title: BigPanda Launches Agentic IT Operations to Bring Intelligent Automation
+    to the $200 billion ITOps Market
+
+    Date: 2025-05-28
+
+    Source: businesswire.com
+
+    Snippet: May 28, 2025 10:00 AM Eastern Daylight Time # **BigPanda Launches Agentic
+    IT Operations to Bring Intelligent Automation to the $200 billion ITOps Market**
+    Share AI-powered automation lowers costs, increases resiliency, improves customer
+    experiences, and empowers IT teams to scale incident response without growing
+    headcount. REDWOOD CITY, Calif.--( [BUSINESS WIRE](https://www.businesswire.com)
+    )-- BigPanda, the leader in agentic IT operations, today announced a sweeping
+    evolution of its offerings with the introduction of [the BigPanda agentic IT ...
+    platform](https://cts.businesswire.com/ct/CT?id=smartlink&url=https%3A%2F%2Fwww.bigpanda.io%2Four-product%2F&esheet=54260860&newsitemid=20250528507389&lan=en-US&anchor=the+BigPanda+agentic+IT+operations+platform&index=1&md5=644c3346
+    ... > BigPanda’s new Agentic IT operations unleashes new AI solutions on the $200
+    billion ITOps market, turning slow, manual incident workflows into intelligent
+    agents that free up talent and reduce operating costs.Share ... Assistant:](https://cts.businesswire.com/ct/CT?id=smartlink&url=https%3A%2F%2Fwww.bigpanda.io%2Four-product%2Fai-incident-assistant%2F&esheet=54260860&newsitemid=20250528507389&lan=en-US&anchor=BigPanda+AI+Incident+Assistant%3A&inde
+    ... **Availability** * BigPanda AI Detection and Response is generally available
+    today, wit'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.businesswire.com/news/home/20250528507389/en/BigPanda-Launches-Agentic-IT-Operations-to-Bring-Intelligent-Automation-to-the-%24200-billion-ITOps-Market
+- content_hash: c4ea1e303daf33a179808417c55ea5c4441cb577f8d8806f70006a3597046210
+  evidence_id: ev-c4ea1e303daf33a1
+  excerpt: 'Detected date: 2026-07-31
+
+    Title: BigPanda: Agentic AI for IT Operations
+
+    Date: 2026-07-31
+
+    Source: bigpanda.io
+
+    Snippet: - [Incident Management Incident Management](https://www.bigpanda.io/solutions/incident-management/)
+    - IT Service Management IT Service Management - [Site Reliability Engineering
+    Site Reliability Engineering](https://www.bigpanda.io/solutions/sre/) * Pricing
+    * Customers * [Resources](https://www.bigpanda.io/content-hub/) ... - [Incident
+    Management Incident Management](https://www.bigpanda.io/solutions/incident-management/)
+    - IT Service Management IT Service Management - [Site Reliability Engineering
+    Site Reliability Engineering](https://www.bigpanda.io/solutions/sre/) * Pricing
+    * Customers * [Resources](https://www.bigpanda.io/content-hub/) ... # Agentic
+    AI for IT operations ## Automate IT work. Unleash the productivity of your teams.
+    Provide first responders with the answer before the ticket arrives * Ensure every
+    incident ticket includes context, root cause, and a recommended action. * Enable
+    your L2 operators to stop investigating and start resolving. * Surface SLA risk
+    before it becomes a breach. ... * Reduce the size, length, and frequency of your
+    bridge calls. * Speed IT incident resolution and unblock execution. * Eliminate
+    silos and automate major incident coordination. Stop incidents before they start
+    * Prevent outages before they impact your customers. * Accelerate change approvals
+    with clear, automated risk analysis. * Unlock engineering velocity with faster
+    approved changes.'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.bigpanda.io/
+- content_hash: 57552b953f8ab47b4916afa65241e10c59b4615b115a7586fb1f5f3070956930
+  evidence_id: ev-57552b953f8ab47b
+  excerpt: 'Detected date: 2026-04-17
+
+    Title: Get Help
+
+    Date: 2026-04-17
+
+    Source: docs.bigpanda.io
+
+    Snippet: * [BigPanda Login](https://a.bigpanda.io/) * [Release Notes](https://docs.bigpanda.io/docs/release-notes)
+    * [API Reference](https://api-docs.bigpanda.io/en) * [BigPanda Education](https://www.bigpanda.io/bigpanda-education/)
+    _print_ Toggle navigation ... # Get Help ## Open a Support Ticket ### Contact
+    BigPanda From Inside The Application #### View Announcements BigPanda sometimes
+    sends you a message to announce a new feature or service that is available to
+    you. The announcement can appear across the full screen, as a window in the top
+    right corner, or as a small text popup beside the **Messenger** button. 1. Click
+    the announcement to read it. 2. (Optional) Send a message to provide feedback
+    or ask a question. 3. Click the **X** in the top right to close the message window.
+    The message is saved to your list of conversations. ... ## Customer Suggestions
+    ### Customer Suggestions FAQs **How can I find the suggestions my account team
+    created on my behalf before March 2025?** * You can open a support ticket to receive
+    a report of all suggestions opened through the new system and suggestions entered
+    by the account management team. **Why do so many suggestions come back as Future
+    Consideration?** ... ## System Improvements You can stay up to date on new features
+    and system improvements by checking our monthly Release Notes , the [support portal](https://support.bigpanda.io/)
+    , or right in your inbox through our [month'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://docs.bigpanda.io/en/get-help
+- content_hash: 2f12f1bbcaf46b1a9b23a1583072b25929f68189d2c61bbd0a4c6f329ec10594
+  evidence_id: ev-2f12f1bbcaf46b1a
+  excerpt: 'Detected date: 2022-01-12
+
+    Title: BigPanda Raises $190 Million in Funding at $1.2 Billion Valuation
+
+    Date: 2022-01-12
+
+    Source: globenewswire.com
+
+    Snippet: # BigPanda Raises $190 Million in Funding at $1.2 Billion Valuation ##
+    Company Cements Its Leadership of Fast-Growing AIOps Category January 12, 2022
+    08:00 ET | Source: BigPanda SAN FRANCISCO, Jan. 12, 2022 (GLOBE NEWSWIRE) -- [BigPanda,
+    Inc.](https://www.globenewswire.com/Tracker?data=Zd9Kf7j5L7wOxZojfUOje8-RjlT7PsFVr46eTmi3rF1PaKK6siOyPqYqXzb-G-O132QwxmCPHmRK9dUPOjMuVQ==)
+    , the leader in AIOps Event Correlation and Automation, today cemented its leadership
+    position in the AIOps market with a new $190 million funding round. ... Eric Noeth,
+    partner at Advent, will join BigPanda’s board of directors, and Sanjay Poonen,
+    formerly President of SAP and COO of VMware, will join as a strategic advisor.
+    ... This funding will enable BigPanda to continue to innovate on its best-in-class
+    AIOps capabilities, by increasing the size of its machine learning, product, and
+    R&D teams, as well as making strategic acquisitions. ... * Total revenue flowing
+    through the channel tripled, and the total number of deals generated by BigPanda’s
+    channel partners more than doubled in 2021 * BigPanda also grew by 104% in new
+    employee hires in the last two years ... BigPanda is backed by Advent International,
+    Insight Partners, Sequoia Capital, Mayfield, Battery Ventures, Glynn Capital,
+    Greenfield Partners and Pelion. Visit [www.bigpanda.io](https://www.globenewswire.com/Tracker?data=G'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.globenewswire.com/news-release/2022/01/12/2365641/0/en/bigpanda-raises-190-million-in-funding-at-1-2-billion-valuation.html
+- content_hash: 7f5a9b6bd83b32d03c5486e6e4339bff4a9070c5490b4943a000ec35c8c60f8f
+  evidence_id: ev-7f5a9b6bd83b32d0
+  excerpt: 'Detected date: 2022-01-12
+
+    Title: BigPanda gets its horn after securing $190M in fresh capital
+
+    Date: 2022-01-12
+
+    Source: techcrunch.com
+
+    Snippet: Elik Eizenberg, Assaf Resnick, Big Panda **Image Credits:** Big Panda
+    / Elik Eizenberg and Assaf Resnick, co-founders of Big Panda [](https://www.facebook.com/sharer.php?u=https%3A%2F%2Ftechcrunch.com%2F2022%2F01%2F12%2Fbigpandas-gets-its-horn-after-securing-190m-in-fresh-capital%2F)
+    [](https://twitter.com/intent/tweet?url=https%3A%2F%2Ftechcrunch.com%2F2022%2F01%2F12%2Fbigpandas-gets-its-horn-after-securing-190m-in-fresh-capital%2F&text=BigPanda+gets+its+horn+after+securing+%24190M+in+fresh+capital&via=techcrunch)
+    [](https://www.linkedin.com/shareArticle?url=https%3A%2F%2Ftechcrunch.com%2F2022%2F01%2F12%2Fbigpandas-gets-its-horn-after-securing-190m-in-fresh-capital%2F&title=BigPanda+gets+its+horn+after+securing+%24190M+in+fresh+capital&summary=The+company%E2%80%99s+technology+transforms+huge+volumes+of+IT+data+into+actionable+insight+and+automates+incident+m
+    ... [](mailto:?subject=BigPanda+gets+its+horn+after+securing+%24190M+in+fresh+capital&body=Article%3A+https%3A%2F%2Ftechcrunch.com%2F2022%2F01%2F12%2Fbigpandas-gets-its-horn-after-securing-190m-in-fresh-capital%2F)
+    [](https://techcrunch.com/2022/01/12/bigpandas-gets-its-horn-after-securing-190m-in-fresh-capital/)
+    # BigPanda gets its horn after securing $190M in fresh capital [Christine Hall](https://techcrunch.com/author/christine-hall/)
+    5:00 AM PST · January 12, 2022 [](https://www.facebook.com/sharer.php'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://techcrunch.com/2022/01/12/bigpandas-gets-its-horn-after-securing-190m-in-fresh-capital/
+- content_hash: 13e562597d51186a6ee650c7cce01e3fad8a935e1f9f86c960280ec4453ebcc2
+  evidence_id: ev-13e562597d51186a
+  excerpt: 'Query: bigpanda.io news
+
+    1. https://platform.tracxn.com/a/d/company/6400be8d242f1933e692bb1b/mitaklemim-bigpanda?utm_source=parallel&utm_medium=ai#a:about
+
+    Title: Mitaklemim-Bigpanda
+
+    Source: platform.tracxn.com
+
+    Snippet: Name: Mitaklemim-Bigpanda | Stage: Unfunded | Primary Sector: Nonprofits
+    | Primary Subsector: Foundations
+
+    2. https://www.techtarget.com/it-infrastructure/news/252511875/AIOps-vendor-BigPanda-raises-190-million
+
+    Title: AIOps vendor BigPanda raises $190 million
+
+    Date: 2026-08-18
+
+    Source: techtarget.com
+
+    Snippet: BigPanda''s funding success shows the interest of investors in AIOps
+    and the growth of AI across industries.
+
+    3. https://www.consultancy.uk/news/45272/mozaic-announces-partnership-with-bigpanda
+
+    Title: Mozaic announces partnership with BigPanda
+
+    Date: 2026-08-06
+
+    Source: consultancy.uk
+
+    Snippet: # Mozaic announces partnership with BigPanda 06 August 2026 Consultancy.uk
+    **_As it looks to help clients obtain AI-powered operational intelligence for
+    their service management, Mozaic has announced a new partnership with BigPanda.
+    The alliance will help organisations address legacy technology issues which hold
+    back the adoption of AI tools._** ... BigPanda is an agentic ITOps platform, trusted
+    by some of the world’s largest enterprises. It will now become a key technology
+    component within Mozaic’s Enterprise Service Integration, or ESI, Reference Architecture.
+    ... Chris Loveridge, EMEA regional vice president at BigPanda, added, “Mozaic
+    combines deep enterprise transformat'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.google.com/search?q=bigpanda.io+news&tbm=nws
+- content_hash: da19b761ee98a7f8091594f72c958b10814b79db77f781bee95802334874e06f
+  evidence_id: ev-da19b761ee98a7f8
+  excerpt: 'Detected date: 2025-12-15
+
+    Title: BigPanda introduces AI-powered external observability and a new partnership
+    with Downdetector by Ookla | BigPanda
+
+    Date: 2025-12-15
+
+    Source: bigpanda.io
+
+    Snippet: - [https://www.bigpanda.io/wp-content/uploads/2026/01/icon-logo.svg Careers](https://www.bigpanda.io/company/panda-way/jobs/)
+    - Media and Recognition - https://www.bigpanda.io/wp-content/uploads/2026/01/icon-awards.svg
+    Awards - https://www.bigpanda.io/wp-content/uploads/2026/01/icon-newsroom.svg
+    Analysts Reports - [https://www.bigpanda.io/wp-content/uploads/2026/01/icon-newsroom.svg
+    Newsroom](https://www.bigpanda.io/company/newsroom/) * Get a demo * Contact us
+    * [Platform](https://www.bigpanda.io/our-product/) - Agentic ITOps Platform ...
+    - [https://www.bigpanda.io/wp-content/uploads/2026/01/icon-logo.svg Careers](https://www.bigpanda.io/company/panda-way/jobs/)
+    - Media and Recognition - https://www.bigpanda.io/wp-content/uploads/2026/01/icon-awards.svg
+    Awards - https://www.bigpanda.io/wp-content/uploads/2026/01/icon-newsroom.svg
+    Analysts Reports - [https://www.bigpanda.io/wp-content/uploads/2026/01/icon-newsroom.svg
+    Newsroom](https://www.bigpanda.io/company/newsroom/) * Service + Support ... #
+    BigPanda introduces AI-powered external observability and a new partnership with
+    Downdetector by Ookla _New partnership delivers real-time insight into third-party
+    outages, enabling enterprises to resolve incidents faster and with greater confidence._
+    SAN FRANCISCO — December 16, 2025 BigPanda, a leading provider of agent'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.bigpanda.io/press-release/downdetector-partnership/
+- content_hash: 63f96809b65ae5dd2df6d355bf189fe2aa85417c1757eb70bddd1f5e4dda5f8d
+  evidence_id: ev-63f96809b65ae5dd
+  excerpt: 'Title: BigPanda Partners with ServiceNow to Extend ...
+
+    Source: businesswire.com
+
+    Snippet: # BigPanda Partners with ServiceNow to Extend ServiceNow with Advanced
+    Event Intelligence and Incident Automation REDWOOD CITY, Calif.--( [BUSINESS WIRE](https://www.businesswire.com)
+    )-- BigPanda, the agentic IT operations platform for enterprise IT, today announced
+    a new partnership with ServiceNow as an elite Build Partner, the highest ... ##
+    Contacts * [Networks](https://www.businesswire.com/newsroom?industry=1000120)
+    * [Security](https://www.businesswire.com/newsroom?industry=1050094) * [Data Management](https://www.businesswire.com/newsroom?industry=1000056)
+    * [Technology](https://www.businesswire.com/newsroom?industry=1000178) * [Artificial
+    Intelligence](https://www.businesswire.com/newsroom?industry=1778623) ... ###
+    BigPanda Release Versions [English](https://www.businesswire.com/news/home/20260401511917/en/BigPanda-Partners-with-ServiceNow-to-Extend-ServiceNow-with-Advanced-Event-Intelligence-and-Incident-Automation)
+    ... ## BigPanda Introduces AI-Powered External Observability and a New Partnership
+    with Downdetector by Ookla SAN FRANCISCO--( [BUSINESS WIRE](https://www.businesswire.com)
+    )--BigPanda adds AI-powered external observability with Downdetector® by Ookla®,
+    giving enterprises real-time insight into third-party service outages.... logo.jpg
+    ... ## BigPanda Report Finds Many Monitoring and Observability Tools Flood Enterprises
+    With Noise, Not Insight REDWOOD CITY, Calif.--('
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.businesswire.com/news/home/20260401511917/en/BigPanda-Partners-with-ServiceNow-to-Extend-ServiceNow-with-Advanced-Event-Intelligence-and-Incident-Automation
+- content_hash: 36c09ac1e1412c0201f5481b2546e0ed219e293eca30c9bdb49561c210e6f17b
+  evidence_id: ev-36c09ac1e1412c02
+  excerpt: 'Detected date: 2025-11-10
+
+    Title: Press release: BigPanda Acquires Velocity to Accelerate Leadership in Agentic
+    IT Operations
+
+    Date: 2025-11-10
+
+    Source: windpress.info
+
+    Snippet: Windpress Digest Network How does it work Digest **/ Press release**
+    calendar_today 10/11/2025 # BigPanda Acquires Velocity to Accelerate Leadership
+    in Agentic IT Operations target Compatibility help Save (0) bookmark_border upload
+    Share BigPanda, a leader in Agentic IT Operations, today announced the acquisition
+    of Velocity, an AI-powered SRE company with deep expertise with SRE and major
+    incident response teams. The move strengthens BigPanda’s leadership in the fast-emerging
+    field of agentic AI for IT Operations and advances the company’s vision to bring
+    reasoning-based automation to one of the largest and most expensive frontiers
+    of manual, human-driven work in the ... As part of the acquisition, Tal Kain,
+    founder and CEO of Velocity, joins BigPanda as VP of AI Detection and Response.
+    Tal brings decades of experience leading high-impact engineering teams and building
+    AI systems that scale in complex enterprise environments. ... View source version
+    on businesswire.com: https://www.businesswire.com/news/home/20251110426205/en/
+    * Labour market * stock market * Information Technology * Tecnica * Software *
+    Computer networks * WEB AND SOCIAL NETWORK * Computer hardware ... ## Related
+    press calendar_today 28/05/2025 upload Information Technology Tecnica Software
+    Computer networks WEB AND SOCIAL NETWORK Computer hardware Industria Big'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://windpress.info/en/press-release/941995/bigpanda-acquires-velocity-to-accelerate-leadership-in-agentic-it-operations
+- content_hash: ec4fbca58d70441622e462ed58cbc21959ad1d8d78bce29dce8e3b45c1295354
+  evidence_id: ev-ec4fbca58d704416
+  excerpt: 'Detected date: 2025-10-08
+
+    Title: Announcing AIOps partnerships with Dynatrace, New Relic, and BigPanda -
+    Inside Atlassian
+
+    Date: 2025-10-08
+
+    Source: atlassian.com
+
+    Snippet: # Announcing AIOps partnerships with Dynatrace, New Relic, and BigPanda
+    Sign up now ... Deliver service at high velocity Browse all apps Explore posts
+    for all Atlassian apps * [News](https://www.atlassian.com/blog/company-news) ...
+    Subscribe Search October 7, 2025 [Jira Service Management](https://www.atlassian.com/blog/search?apps%5B0%5D=jira-service-management)
+    As part of the [Service Collection announcement at Team ‘25 Europe](https://www.atlassian.com/blog/announcements/team25-europe-service-collection)
+    , we’re excited to introduce new partnerships with leading observability vendors—Dynatrace,
+    New Relic, and BigPanda—to help IT teams predict and prevent incidents faster,
+    while still helping to recover service quickly when issues do arise. ... * **Disconnected
+    incident response:** Incident management is often isolated from upstream monitoring
+    and observability signals, leading to slow, manual triage ... ## Unite AI-powered
+    observability insights with end-to-end incident management [BigPanda](http://bigpanda.io/blog/jira-service-management-bigpanda-integration)
+    for Jira Service Management, IT Ops teams now have instant access to AI-driven
+    observability insights for smarter incident detection, faster diagnosis and remediation,
+    and enhanced ... incident triage and prioritization. Powered by the BigPanda integration,
+    incidents are auto'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.atlassian.com/blog/jira-service-management/announcing-aiops-partnerships-with-dynatrace-new-relic-and-bigpanda
+- content_hash: e289eb922716d27c65fcff50a68eeb62a5d14136ce510bdec7d5df27160c20d4
+  evidence_id: ev-e289eb922716d27c
+  excerpt: 'Detected date: 2026-04-14
+
+    Title: BigPanda Partners with ServiceNow
+
+    Date: 2026-04-14
+
+    Source: bigpanda.io
+
+    Snippet: - Media and Recognition - Awards Awards - Analysts Reports Analysts Reports
+    - [Newsroom Newsroom](https://www.bigpanda.io/company/newsroom/) * Get a demo
+    * Contact us * [Platform](https://www.bigpanda.io/our-product/) - Agentic ITOps
+    Platform ... - Media and Recognition - Awards Awards - Analysts Reports Analysts
+    Reports - [Newsroom Newsroom](https://www.bigpanda.io/company/newsroom/) * Service
+    + Support ... # BigPanda Partners with ServiceNow to Extend ServiceNow with Advanced
+    Event Intelligence and Incident Automation ## New certified application helps
+    enterprises reduce alert noise by up to 99% and accelerate incident resolution
+    **REDWOOD CITY, Calif., April 1st, 2026** — BigPanda, the agentic IT operations
+    platform for enterprise IT, today announced a new partnership with ServiceNow
+    as an elite Build Partner, the highest level of partnership within the'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.bigpanda.io/press-release/partnership-with-servicenow/
+- content_hash: 44addbf63627843f206967ba8543a07b12ee838a25eca65acb7fcb0fa34b79a4
+  evidence_id: ev-44addbf63627843f
+  excerpt: 'Detected date: July 30, 2026
+
+    Title: Press Release
+
+    Source: cmsdistribution.com
+
+    Snippet: # Press Release The technology sector is always evolving, and so is CMS
+    Distribution. Keep up to date with both market news, and the UK and Ireland’s
+    largest independent value-added distributor. Read More [](https://www.cmsdistribution.com/press-release/cms-distribution-signs-bigpanda-to-expand-agentic-it-operations)
+    ... ## [CMS Distribution signs BigPanda to expand Agentic IT Operations](https://www.cmsdistribution.com/press-release/cms-distribution-signs-bigpanda-to-expand-agentic-it-operations)
+    Posted on July 30, 2026 by [Huw Jones](https://www.cmsdistribution.com/press-release/author/huw-jones)
+    London, United Kingdom – 30th July 2026 – CMS Distribution, a leading value-added
+    technology distributor, today announced a new distribution... [Read More](https://www.cmsdistribution.com/press-release/cms-distribution-signs-bigpanda-to-expand-agentic-it-operations)
+    ... [Cables Direct](https://www.cmsdistribution.com/press-release/tag/cables-direct)
+    ... ## [CMS Distribution announces strategic partnership with HKC to deliver intelligent
+    display solutions across the UK and Ireland](https://www.cmsdistribution.com/press-release/cms-distribution-announces-strategic-partnership-with-hkc-to-deliver-intelligent-display-solutions-across-the-uk-and-ireland)
+    Posted on November 26, 2025 ... ## [Newgen Distribution Becomes CMS Distribution
+    Nordics](https://www.cmsdistribution.com/press-release/newgen-distribution-becomes-cms-distributi'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.cmsdistribution.com/press-release
+- content_hash: 82c7ad0bd2eab5c3f3be67d8d48b1bacd6413a786213773ded07caefcb6d7f6f
+  evidence_id: ev-82c7ad0bd2eab5c3
+  excerpt: 'Detected date: 2026-08-05
+
+    Title: BigPanda - 2026 Company Profile & Team
+
+    Date: 2026-08-05
+
+    Source: tracxn.com
+
+    Snippet: # [BigPanda - Company Profile](https://bigpanda.io) ## News related to
+    BigPanda [BigPanda Announces Generative AI for Automated Incident Analysis](https://www.apmdigest.com/bigpanda-announces-generative-ai-for-automated-incident-analysis)
+    APMdigest • Jul 12, 2023 • BigPanda •'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://tracxn.com/d/companies/bigpanda/__WUzKLUpTSEm6x1hshS09GQQtQFLEKvqmbaWcUgB_4nA
+- content_hash: 0ed368c9217d2a6b29d9fcd5348ce0e75766db1cf76824d6d14670978e50d94f
+  evidence_id: ev-0ed368c9217d2a6b
+  excerpt: 'Detected date: 2025-12-16
+
+    Title: BigPanda Introduces AI-Powered External Observability and a New Partnership
+    with Downdetector by Ookla
+
+    Date: 2025-12-16
+
+    Source: businesswire.com
+
+    Snippet: # **BigPanda Introduces AI-Powered External Observability and a New Partnership
+    with Downdetector by Ookla** SAN FRANCISCO--( [BUSINESS WIRE](https://www.businesswire.com)
+    )-- BigPanda, a leading provider of agentic IT operations solutions, announced
+    today a strategic integration with [Downdetector® by ... ## Contacts * [Data Management](https://www.businesswire.com/newsroom?industry=1000056)
+    * [Security](https://www.businesswire.com/newsroom?industry=1050094) * [Technology](https://www.businesswire.com/newsroom?industry=1000178)
+    * [Software](https://www.businesswire.com/newsroom?industry=1000169) * [Networks](https://www.businesswire.com/newsroom?industry=1000120)
+    * [Artificial Intelligence](https://www.businesswire.com/newsroom?industry=1778623)
+    * [Internet](https://www.businesswire.com/newsroom?industry=1000098) ... ### BigPanda
+    NASDAQ:ZD Release Summary BigPanda adds AI-powered external observability with
+    Downdetector® by Ookla®, giving enterprises real-time insight into third-party
+    service outages. Release Versions ... ## BigPanda Partners with ServiceNow to
+    Extend ServiceNow with Advanced Event Intelligence and Incident Automation REDWOOD
+    CITY, Calif.--( [BUSINESS WIRE](https://www.businesswire.com) )--BigPanda, the
+    agentic IT operations platform for enterprise IT, today announced a new partnership
+    with ServiceN'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.businesswire.com/news/home/20251216388641/en/BigPanda-Introduces-AI-Powered-External-Observability-and-a-New-Partnership-with-Downdetector-by-Ookla
+- content_hash: 77eda1f10f506384c31d3c3d79aa9caf1c0274ccc0672ecd16fc68092933d421
+  evidence_id: ev-77eda1f10f506384
+  excerpt: 'Detected date: November 12, 2025
+
+    Title: BigPanda Acquires Velocity | APMdigest
+
+    Source: apmdigest.com
+
+    Snippet: [Observability Comes of Age: Why 2026 Is the Turning Point](https://www.dynatrace.com/resources/observability-comes-of-age-why-2026-is-the-turning-point-19563507/)
+    * Featured Webinar [Virtual Summit 2025: IT by the Numbers](https://www.automox.com/resources/webinars-videos/on-demand-webinar-virtual-summit-may-2025)
+    * Featured White Paper ... [2025 Observability trends: Maturing beyond the hype
+    and delivering results](https://www.elastic.co/virtual-events/observability-trends-2025?utm_campaign=2025-observability-trends-webinar&utm_id=701Vv00000FMIk2IAH&utm_source=referral&utm_medium=apmdigest)
+    * Featured Report ... [State of Observability 2025](https://www.manageengine.com/it-operations-management/observability-report-2025.html?utm_source=APMDigest&utm_medium=Website&utm_campaign=OPMPlus-News)
+    * Featured White Paper ... # BigPanda Acquires Velocity November 12, 2025 [](https://www.addtoany.com/share=https%3A%2F%2Fwww.apmdigest.com%2Fbigpanda-acquires-velocity&title=BigPanda%20Acquires%20Velocity)
+    Learn more about BigPanda BigPanda announced the acquisition of Velocity, an AI-powered
+    SRE company with deep expertise with SRE and major incident response teams. ...
+    November 12, 2025 [](https://www.addtoany.com/share=https%3A%2F%2Fwww.apmdigest.com%2Fbigpanda-acquires-velocity&title=BigPanda%20Acquires%20Velocity)
+    Learn more about BigPanda BigPanda announced the acquisition of Velocity, an AI-powered
+    SRE c'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.apmdigest.com/bigpanda-acquires-velocity
+- content_hash: 76e176a4eca6a4d5b633973237414c06be1778808bcc37a918ca4d9890465828
+  evidence_id: ev-76e176a4eca6a4d5
+  excerpt: 'Query: BigPanda "press release" OR "announces" OR "newsroom"
+
+    1. https://www.bigpanda.io/press-release/downdetector-partnership/
+
+    Title: BigPanda introduces AI-powered external observability and a new partnership
+    with Downdetector by Ookla | BigPanda
+
+    Date: 2025-12-15
+
+    Source: bigpanda.io
+
+    Snippet: - [https://www.bigpanda.io/wp-content/uploads/2026/01/icon-logo.svg Careers](https://www.bigpanda.io/company/panda-way/jobs/)
+    - Media and Recognition - https://www.bigpanda.io/wp-content/uploads/2026/01/icon-awards.svg
+    Awards - https://www.bigpanda.io/wp-content/uploads/2026/01/icon-newsroom.svg
+    Analysts Reports - [https://www.bigpanda.io/wp-content/uploads/2026/01/icon-newsroom.svg
+    Newsroom](https://www.bigpanda.io/company/newsroom/) * Get a demo * Contact us
+    * [Platform](https://www.bigpanda.io/our-product/) - Agentic ITOps Platform ...
+    - [https://www.bigpanda.io/wp-content/uploads/2026/01/icon-logo.svg Careers](https://www.bigpanda.io/company/panda-way/jobs/)
+    - Media and Recognition - https://www.bigpanda.io/wp-content/uploads/2026/01/icon-awards.svg
+    Awards - https://www.bigpanda.io/wp-content/uploads/2026/01/icon-newsroom.svg
+    Analysts Reports - [https://www.bigpanda.io/wp-content/uploads/2026/01/icon-newsroom.svg
+    Newsroom](https://www.bigpanda.io/company/newsroom/) * Service + Support ... #
+    BigPanda introduces AI-powered external observability and a new partnership with
+    Downdetector by Ookla _New partnership delivers real-time insight into third-party
+    outages, enabling enterprises t'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.google.com/search?q=BigPanda+%22press+release%22+OR+%22announces%22+OR+%22newsroom%22&tbs=qdr%3Ay
+- content_hash: 4991238507f68d8512e1ff065b64e1bfc11428463a57ebc47ef180f0d7872bfb
+  evidence_id: ev-4991238507f68d85
+  excerpt: 'Detected date: 2025-09-05
+
+    Title: What are agentic IT Operations?
+
+    Date: 2025-09-05
+
+    Source: bigpanda.io
+
+    Snippet: # What are agentic IT Operations? ## What is agentic AI? **Aware:** They
+    understand context, their environment, and the goals of the user. **Autonomous:**
+    They can break down tasks, make decisions, and act independently. **Adaptive:**
+    They learn and evolve from new data, experiences, and feedback. ... ## How enterprises
+    can prepare for agentic ITOps with an incremental approach to an AI-first data
+    strategy To help you get started, BigPanda released our new e-book, _Laying the
+    data foundation for agentic ITOps: A strategic guide for enterprise IT leaders_
+    . This guide will help enterprise IT leaders prepare their organization for agentic
+    ITOps and lay the groundwork for advanced features like AI Detection and Response
+    , AI Incident Prevention , and AI Incident Assistant . ... ## Check out our latest
+    posts [Read the blog](https://www.bigpanda.io/blog/ai-incident-assistant-servicenow-now-assist/)
+    [News & events hidden #### Agentic ITOps is here. Here’s what early movers are
+    doing.](https://www.bigpanda.io/blog/bigpanda-26-key-learnings/) [Read the blog](https://www.bigpanda.io/blog/bigpanda-26-key-learnings/)'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.bigpanda.io/blog/what-are-agentic-it-operations/
+- content_hash: 2aa49e090e2d2d5328d82a0fee7377f6eca3099e4dd6d3e7b6a172a1065db758
+  evidence_id: ev-2aa49e090e2d2d53
+  excerpt: 'Detected date: 2026-05-13
+
+    Title: AI Incident Assistant (IA)
+
+    Date: 2026-05-13
+
+    Source: eu-docs.bigpanda.io
+
+    Snippet: May 13, 2026 — BigPanda AI Incident Assistant is an always-on partner
+    that helps IT teams streamline collaboration, investigate smarter, automate resolution
+    and drive'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://eu-docs.bigpanda.io/en/ai-incident-assistant--ia-.html
+- content_hash: 8cfb8a040ffde6a4ebfb896aa1842af553f59b0ba8878cafdf776e9587986d86
+  evidence_id: ev-8cfb8a040ffde6a4
+  excerpt: 'Detected date: Mar 23, 2026
+
+    Title: BigPanda Presse und Newsroom
+
+    Source: bigpanda.io
+
+    Snippet: Mar 23, 2026 — BigPanda Partners with ServiceNow to Extend ServiceNow
+    with Advanced Event Intelligence and Incident Automation März 31, 2026'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: http://bigpanda.io/de/ueber-bigpanda/presse-und-newsroom
+- content_hash: e5b8d17b286a1ca967229ee8ecf2d695c052e5a5b7a1c4cff6b3a21a0aed21ba
+  evidence_id: ev-e5b8d17b286a1ca9
+  excerpt: 'Detected date: 2025-12-24
+
+    Title: Release Notes | Updates to InsightFinder Platform Features
+
+    Date: 2025-12-24
+
+    Source: insightfinder.com
+
+    Snippet: Dec 24, 2025 — This release introduces advanced RCA with a new MI Causal
+    Algorithm, new integrations with CloudWatch, Snowflake, and BigPanda. metric aggregation,
+    PDF exports'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://insightfinder.com/insightfinder-release-notes/
+- content_hash: 53752b5f8263e5209106eeb801d2b0f1f15fd283180a019f092174492797edc7
+  evidence_id: ev-53752b5f8263e520
+  excerpt: 'Detected date: 2025-10-08
+
+    Title: Announcing AIOps partnerships with Dynatrace, New Relic, and BigPanda -
+    Inside Atlassian
+
+    Date: 2025-10-08
+
+    Source: atlassian.com
+
+    Snippet: # Announcing AIOps partnerships with Dynatrace, New Relic, and BigPanda
+    Subscribe Search October 7, 2025 [Jira Service Management](https://www.atlassian.com/blog/search?apps%5B0%5D=jira-service-management)
+    As part of the [Service Collection announcement at Team ‘25 Europe](https://www.atlassian.com/blog/announcements/team25-europe-service-collection)
+    , we’re excited to introduce new partnerships with leading observability vendors—Dynatrace,
+    New Relic, and BigPanda—to help ... ## Unite AI-powered observability insights
+    with end-to-end incident management [BigPanda](http://bigpanda.io/blog/jira-service-management-bigpanda-integration)
+    for Jira Service Management, IT Ops teams now have instant access to AI-driven
+    observability insights for smarter incident detection, faster diagnosis and remediation,
+    and enhanced ... * **Enhanced post-incident reviews:** After resolution, teams
+    can use Rovo Ops to generate a post-incident review (PIR) by pulling timelines,
+    incident details, and monitoring data into a Confluence page.'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.atlassian.com/blog/jira-service-management/announcing-aiops-partnerships-with-dynatrace-new-relic-and-bigpanda
+- content_hash: 2c76ea7ef6a085bde630a86f0e011ef4bf0e2167dde6ba98f8f9c6d9dc1300e5
+  evidence_id: ev-2c76ea7ef6a085bd
+  excerpt: 'Detected date: June 2026
+
+    Title: Release Notes
+
+    Source: docs.bigpanda.io
+
+    Snippet: # **Release Notes** ## June 2026 **New features released in June 2026**
+    : Multiple Realtime Health Dashboards, ADR Improvements ... ## May 2026 **New
+    features released in May 2026:** Health Dashboard Improvements ### New Documentation
+    Site Layout The BigPanda documentation site layout will be updated on May 19,
+    2026. Find answers more easily with a new organization and refreshed content.
+    ... ## March 2026 **New features released in March 2026:** ServiceNow 3.0 Store
+    App, Incident Correlation, Service Desk Observability, BigPanda University Improvements,
+    and more! ### BigPanda - ServiceNow v3 store app The BigPanda ServiceNow integration
+    v3.0 is now available on the ServiceNow Store. This is a complete rebuild of the
+    integration, certified by ServiceNow, that brings significant performance, security,
+    and functionality improvements to your incident management workflows. ... ## February
+    2026 **New features released in February 2026** : AI Triage, Chat Platform Update,
+    Major Incident Management (MIM), and more! ... ### AI Incident Assistant Releases
+    February 2026 #### New Biggy API Endpoints Several new Biggy API endpoints are
+    now available: ... #### New On-Call Integrations The following new on-call integrations
+    are now available in beta release status: * Everbridge * Grafana OnCall * MIR3
+    Use these integrations to enable paging and on-call schedule retrieval. ... ##
+    Feature Deprecations ### Deprecated Features #### November'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://docs.bigpanda.io/en/release-notes
+- content_hash: 2b1016616e5cb2a7fce15c2f29620695b7d2ac3c959bdd3d5efc83c24b0e461d
+  evidence_id: ev-2b1016616e5cb2a7
+  excerpt: 'Detected date: 2026-08-16
+
+    Title: BigPanda - Overview, News & Similar companies
+
+    Date: 2026-08-16
+
+    Source: zoominfo.com
+
+    Snippet: 3 days ago — BigPanda is a private software company. It offers The PANDA
+    rollout process, Level-0 Automation, event correlation and root cause analysis.'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.zoominfo.com/c/bigpanda/372896875
+- content_hash: e944d4b3b4da3462be8a34c2e83e7f1c66747ae18d14276595e2a3910a5af029
+  evidence_id: ev-e944d4b3b4da3462
+  excerpt: 'Detected date: 2026-07-30
+
+    Title: CMS Distribution signs BigPanda to expand Agentic IT Operations
+
+    Date: 2026-07-30
+
+    Source: cmsdistribution.com
+
+    Snippet: # CMS Distribution signs BigPanda to expand Agentic IT Operations London,
+    United Kingdom – 30th July 2026 – CMS Distribution, a leading value-added technology
+    distributor, today announced a new distribution partnership with BigPanda, which
+    builds the context layer for Agentic ITOps.'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.cmsdistribution.com/press-release/cms-distribution-signs-bigpanda-to-expand-agentic-it-operations
+- content_hash: 860822346cf93040313d16db99dc2155265910c22a29b5f0fe66774de05dfbb3
+  evidence_id: ev-860822346cf93040
+  excerpt: 'Title: Fetched web page
+
+    Source: linkedin.com
+
+    Snippet: linkedin company id: 2598034 company id: 83536579 Slug: bigpanda Name:
+    BigPanda description BigPanda keeps the digital world running with Agentic AI,
+    artificial intelligence that enables autonomous systems to make decisions and
+    perform tasks without constant human intervention. Beyond other AIOps solutions,
+    the BigPanda platform responds to and prevents IT incidents at machine speed,
+    improving operational efficiency and delivering exceptional service reliability.
+    Website: http://bigpanda.io employee count: 334 founded year: 2012 follower count:
+    53608 linkedin url: https://www.linkedin.com/company/bigpanda country iso: US
+    country name: United States Locality: Redwood City, California Type: Privately
+    Held Size: 200 company headline Automate L1 operations. Augment incident response
+    teams. Website: http://bigpanda.io. External link for BigPanda ; Industry: Software
+    Development ; Company size: 201-500 employees ; Headquarters: Redwood City, California.
+    * linkedin company id: 2598034 company id: 83536579 slug: bigpanda name: BigPanda
+    description BigPanda keeps the digital world running with Agentic AI, artificial
+    intelligence that enables autonomous systems to make decisions and perform tasks
+    without constant human intervention. Beyond other AIOps solutions, the BigPanda
+    platform responds to and prevents IT incidents at machine speed, improving operational
+    efficiency and delivering exceptional service reliability. website: http:'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: http://linkedin.com/company/bigpanda
+- content_hash: b8ee08ec8db7a799735be56148c347bd4c51cb2acfcf20c340ee5e818ea459ae
+  evidence_id: ev-b8ee08ec8db7a799
+  excerpt: 'Title: BigPanda
+
+    Source: techcrunch.com
+
+    Snippet: # BigPanda Headlines Only Load More * Illustration of IT operations team
+    working together surrounded by different types of equipment. [Enterprise](https://techcrunch.com/category/enterprise/)
+    [BigPanda launches generative AI tool designed specifically for ITOps](https://techcrunch.com/2024/04/17/bigpanda-brings-generative-ai-to-itops/)
+    ... ## Most Popular * [Some Claude users are mad that Anthropic’s new watermarks
+    will catch them using it at their jobs, classes](https://techcrunch.com/2026/08/12/some-claude-users-are-mad-that-anthropics-new-watermarks-will-catch-them-cheating-at-their-jobs-classes/)
+    + [Lucas Ropek](https://techcrunch.com/author/lucas-ropek/)'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://techcrunch.com/tag/bigpanda
+- content_hash: c34b0c6f23fb675bfd892bfcbf86426f715daf5120ef38b97494f5a965107e86
+  evidence_id: ev-c34b0c6f23fb675b
+  excerpt: 'Query: BigPanda launches OR "new feature" OR "introducing" OR "now available"
+
+    1. https://www.bigpanda.io/blog/what-are-agentic-it-operations/
+
+    Title: What are agentic IT Operations?
+
+    Date: 2025-09-05
+
+    Source: bigpanda.io
+
+    Snippet: # What are agentic IT Operations? ## What is agentic AI? **Aware:** They
+    understand context, their environment, and the goals of the user. **Autonomous:**
+    They can break down tasks, make decisions, and act independently. **Adaptive:**
+    They learn and evolve from new data, experiences, and feedback. ... ## How enterprises
+    can prepare for agentic ITOps with an incremental approach to an AI-first data
+    strategy To help you get started, BigPanda released our new e-book, _Laying the
+    data foundation for agentic ITOps: A strategic guide for enterprise IT leaders_
+    . This guide will help enterprise IT leaders prepare their organization for agentic
+    ITOps and lay the groundwork for advanced features like AI Detection and Response
+    , AI Incident Prevention , and AI Incident Assistant . ... ## Check out our latest
+    posts [Read the blog](https://www.bigpanda.io/blog/ai-incident-assistant-servicenow-now-assist/)
+    [News & events hidden #### Agentic ITOps is here. Here’s what early movers are
+    doing.](https://www.bigpanda.io/blog/bigpanda-26-key-learnings/) [Read the blog](https://www.bigpanda.io/blog/bigpanda-26-key-learnings/)
+
+    2. https://eu-docs.bigpanda.io/en/ai-incident-assistant--ia-.html
+
+    Title: AI Incident Assistant (IA)
+
+    Date: 2026-05-13
+
+    Source: eu-docs.bigpanda.io
+
+    Snip'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.google.com/search?q=BigPanda+launches+OR+%22new+feature%22+OR+%22introducing%22+OR+%22now+available%22&tbs=qdr%3Ay
+- content_hash: 655906bf83d1f450cf5c4aa5b0d5e754d7e30901abcdc11af66b398f6c273590
+  evidence_id: ev-655906bf83d1f450
+  excerpt: 'Title: Tracxn Login
+
+    Your browser was unable to load all of Tracxn resources. They may have been blocked
+    by your firewall, proxy or browser configuration. Press **Ctrl+F5** or **Ctrl+Shift+R**
+    to have your browser try again and if that doesn''t work, [**click here to retry**](/)
+    or mail us at [**hi@tracxn.com**](mailto:hi@tracxn.com?subject=Platform%20resources%20not%20loading)
+
+
+    __ Go Back
+
+
+    [](/?redirect=false)
+
+
+    #### Login to Access Tracxn
+
+
+    Business Email Address
+
+
+    Next
+
+
+    OR
+
+
+    Login using your business email address
+
+
+    Enter your business email address
+
+
+    eg. yourname@yourbusiness.com
+
+
+    We do not accept personal email addresses
+
+
+    eg. yourname@gmail.com
+
+
+    Log in with GOOGLE
+
+
+    MS-SymbolLockup
+
+
+    Log in with MICROSOFT
+
+
+    Don''t have an account? [Sign up]()'
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://tracxn.com/login?redirecturl=%2Fa%2Fd%2Fcompany%2F6400be8d242f1933e692bb1b%2Fmitaklemim-bigpanda%3Futm_source%3Dparallel%26utm_medium%3Dai&utm_source=parallel&utm_medium=ai#a:about
+- content_hash: 080bf6c7f7bf35be2517e3b8a9047a75bd08111a442e133c720e6761e4a23354
+  evidence_id: ev-080bf6c7f7bf35be
+  excerpt: "Title: AIOps vendor BigPanda raises $190 million | TechTarget\n__[ IT\
+    \ Infrastructure ](https://www.techtarget.com/) __ Search the TechTarget Network\
+    \ __\n\n[Login](https://www.techtarget.com/login) [Register](https://www.techtarget.com/register)\n\
+    \n[Informa TechTarget](https://www.informatechtarget.com/) Explore the Network\n\
+    \n  * [AI & Emerging Tech](https://www.techtarget.com/ai/)\n  * [Cybersecurity](https://www.techtarget.com/cybersecurity/)\n\
+    \  * [Data Technologies](https://www.techtarget.com/data-technologies/)\n  * [Enterprise\
+    \ Software](https://www.techtarget.com/enterprise-software/)\n  * [IT Strategy](https://www.techtarget.com/it-strategy/)\n\
+    \n[An Informa TechTarget Publication](https://www.informatechtarget.com/) [Explore\
+    \ our brands](https://www.informatechtarget.com/our-brands)\n\n  * [ IT Infrastructure\
+    \ ](https://www.techtarget.com/it-infrastructure/)\n\n  *     * [Application Architecture](https://www.techtarget.com/it-infrastructure/resources/Application-Architecture)\n\
+    \    * [Cloud Computing](https://www.techtarget.com/it-infrastructure/resources/Cloud-Computing)\n\
+    \    * [Data Center](https://www.techtarget.com/it-infrastructure/resources/Data-Center)\n\
+    \    * [IT Operations](https://www.techtarget.com/it-infrastructure/resources/IT-Operations)\n\
+    \    * [Networking](https://www.techtarget.com/it-infrastructure/resources/Networking)\n\
+    \    * More Topics __\n\n      * [Storage](https://www.techtarget.com/it-infrastructure/resources/Storage)\n\
+    \nOther Content\n    * [News](https://www.techtarget.com/"
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.techtarget.com/it-infrastructure/news/252511875/AIOps-vendor-BigPanda-raises-190-million
+- content_hash: 240577970e6f04a4e827faf5168bf6520f711466746fa8471456534e4c803245
+  evidence_id: ev-240577970e6f04a4
+  excerpt: "Title: Mozaic announces partnership with BigPanda\n[ Part of Consultancy.org\
+    \ Consultancy.uk ](https://www.consultancy.uk \"Consultancy.uk\")\n\nSearch…\n\
+    \nUnited Kingdom __\n\n[Join the platform](/join-the-platform \"Join the platform\"\
+    )\n\n  * [News](/news \"Consulting news in the UK\")\n  * [Consulting Firms](/firms\
+    \ \"Consulting Firms in the UK\")\n  * [Projects](/projects \"Consulting projects\
+    \ in the UK\")\n  * [Services](/services \"Consulting services in the UK\")\n\
+    \  * [Rankings](/rankings \"Top consulting firms in the UK\")\n  * [Jobs](/jobs\
+    \ \"Consulting jobs in the UK\")\n  * [Career](/career \"Consulting career in\
+    \ the UK\")\n  * [Consulting Industry](/consulting-industry \"Consulting industry\
+    \ in the UK\")\n  * [Partners](/partners \"Partners\")\n\n\n\n\n\n\n[ Consultancy.uk\
+    \ ](https://www.consultancy.uk \"Consultancy.uk\")\n\n  * [News](/news)\n  * [Consulting\
+    \ Firms](/firms)\n  * [Projects](/projects)\n  * [Services](/services)\n  * [Rankings](/rankings)\n\
+    \  * [Jobs](/jobs)\n  * Consulting Industry\n  * Career\n  * [Partners](/partners)\n\
+    \n\n\n  * Select a **Region**\n\n\n\n  * [Join the platform](/join-the-platform)\n\
+    \n\n\nMain menu \n\n  * [Career](/career)\n  * [Working as a consultant](/career/working-as-a-consultant)\n\
+    \  * [Applying for a job](/career/applying-for-a-job)\n  * [Working in consulting](/career/working-in-consulting)\n\
+    \  * [Salary & Bonus](/news/consulting/salary-bonus)\n  * [Internships](/internships)\n\
+    \n\n\nMain menu \n\n  * [Consulting Industry](/consulting-industry)\n  * [United\
+    \ Kingdom](/consulting-industry/united-kingdom)\n  * [UK "
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.consultancy.uk/news/45272/mozaic-announces-partnership-with-bigpanda
+- content_hash: 6513550a0bbd4a768c7e3a88c6a911df2b802a57419f3a2021a6faefd7cc30a3
+  evidence_id: ev-6513550a0bbd4a76
+  excerpt: "Title: BigPanda introduces AI-powered external observability and a new\
+    \ partnership with Downdetector by Ookla | BigPanda\nen \n\n    * [ en ](https://www.bigpanda.io/)\n\
+    \    * [ de ](https://www.bigpanda.io/de/)\n\n  * [ Service + Support ]()\n\n\
+    \    *       * Service \n      * [ Community ](https://university.bigpanda.io/community)\n\
+    \      * [ Documentation ](https://docs.bigpanda.io/)\n      * [ Customer Support\
+    \ ](https://www.bigpanda.io/customer-support/)\n      * [ Platform Status ](https://status.bigpanda.io/)\n\
+    \    *       * Support \n      * [ Education & Certification ](https://www.bigpanda.io/bigpanda-education/)\n\
+    \      * [ Professional Services ](https://www.bigpanda.io/services/bigpanda-professional-services-packages/)\n\
+    \n  * [ Login ](https://a.bigpanda.io/)\n\n\n\n[ ](/)\n\n  * Platform\n\n    *\
+    \       * Agentic ITOps Platform\n\nThe BigPanda agentic ITOps platform uses AI\
+    \ to automate IT detection, triage, and resolution, improving operational efficiency\
+    \ and reducing downtime and costs. \n\n[Explore the Platform](https://www.bigpanda.io/our-product/)\n\
+    \n    *       * [ Platform Overview ](/our-product/)\n      * [ AI Incident Prevention\
+    \ ](/our-product/ai-incident-prevention/)\n      * [ AI Detection & Response ](/our-product/ai-detection-and-response/)\n\
+    \      * [ L1 Agent ](/our-product/l1-agent/)\n      * [ AI Incident Assistant\
+    \ ](/our-product/ai-incident-assistant/)\n      * [ IT Knowledge Graph ](/our-product/it-knowledge-graph/)\n\
+    \    *       * [ Integrations ](/integrations/)\n      * [ Jira ](/integr"
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.bigpanda.io/press-release/downdetector-partnership/
+- content_hash: f6db30b1b400e0ce777e2556935868e22042305fe28acc1c436db8d3a8d634ec
+  evidence_id: ev-f6db30b1b400e0ce
+  excerpt: "Title: Press release: BigPanda Acquires Velocity to Accelerate Leadership\
+    \ in Agentic IT Operations\n[](/)\n\n[ Digest ](/digest)[ Network ](/network)[\
+    \ How does it work ](/how-it-works)\n\nDigest**/ Press release**\n\ncalendar_today\
+    \  10/11/2025 \n\n# BigPanda Acquires Velocity to Accelerate Leadership in Agentic\
+    \ IT Operations\n\ntarget Compatibility help \n\nSave(0)bookmark_border\n\nuploadShare\n\
+    \nBigPanda, a leader in Agentic IT Operations, today announced the acquisition\
+    \ of Velocity, an AI-powered SRE company with deep expertise with SRE and major\
+    \ incident response teams. \n\nThe move strengthens BigPanda’s leadership in the\
+    \ fast-emerging field of agentic AI for IT Operations and advances the company’s\
+    \ vision to bring reasoning-based automation to one of the largest and most expensive\
+    \ frontiers of manual, human-driven work in the enterprise. \n\n**Advancing the\
+    \ Era of Agentic IT Operations**\n\nBigPanda was founded on the belief that AI\
+    \ could fundamentally change how enterprises keep digital services running by\
+    \ eliminating the manual toil that holds back IT Operations teams. \n\nWith its\
+    \ Agentic IT Operations platform, BigPanda automates L1 Operations, augments SRE\
+    \ and major incident teams, and predicts and prevents incidents before they impact\
+    \ customers. \n\nThe acquisition of Velocity deepens that foundation. Their talent,\
+    \ technology, and customer-centric mindset are a natural fit for BigPanda as customers\
+    \ work to transform reactive, human-led operations into proactive, reasoning-based\
+    \ automation t"
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://windpress.info/en/press-release/941995/bigpanda-acquires-velocity-to-accelerate-leadership-in-agentic-it-operations
+- content_hash: ec8c97239c0474ccf92203862f54f14e32241b52f9cc3093eb4b471639efea8e
+  evidence_id: ev-ec8c97239c0474cc
+  excerpt: "Title: BigPanda AIOps blog | BigPanda\nen \n\n    * [ en ](https://www.bigpanda.io/blog/)\n\
+    \    * [ de ](https://www.bigpanda.io/de/)\n\n  * [ Service + Support ]()\n\n\
+    \    *       * Service \n      * [ Community ](https://university.bigpanda.io/community)\n\
+    \      * [ Documentation ](https://docs.bigpanda.io/)\n      * [ Customer Support\
+    \ ](https://www.bigpanda.io/customer-support/)\n      * [ Platform Status ](https://status.bigpanda.io/)\n\
+    \    *       * Support \n      * [ Education & Certification ](https://www.bigpanda.io/bigpanda-education/)\n\
+    \      * [ Professional Services ](https://www.bigpanda.io/services/bigpanda-professional-services-packages/)\n\
+    \n  * [ Login ](https://a.bigpanda.io/)\n\n\n\n[ ](/)\n\n  * Platform\n\n    *\
+    \       * Agentic ITOps Platform\n\nThe BigPanda agentic ITOps platform uses AI\
+    \ to automate IT detection, triage, and resolution, improving operational efficiency\
+    \ and reducing downtime and costs. \n\n[Explore the Platform](https://www.bigpanda.io/our-product/)\n\
+    \n    *       * [ Platform Overview ](/our-product/)\n      * [ AI Incident Prevention\
+    \ ](/our-product/ai-incident-prevention/)\n      * [ AI Detection & Response ](/our-product/ai-detection-and-response/)\n\
+    \      * [ L1 Agent ](/our-product/l1-agent/)\n      * [ AI Incident Assistant\
+    \ ](/our-product/ai-incident-assistant/)\n      * [ IT Knowledge Graph ](/our-product/it-knowledge-graph/)\n\
+    \    *       * [ Integrations ](/integrations/)\n      * [ Jira ](/integrations/jira-service-management/)\n\
+    \      * [ ServiceNow ](/integrations/servicen"
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.bigpanda.io/blog/
+- content_hash: df1f2f695d1a71ca30e75f7abc8d6ea7455927b3202b5c01a33e3454de8a6f39
+  evidence_id: ev-df1f2f695d1a71ca
+  excerpt: "Title: BigPanda Newsroom and Press | BigPanda\nen \n\n    * [ en ](https://www.bigpanda.io/company/newsroom/)\n\
+    \    * [ de ](https://www.bigpanda.io/de/ueber-bigpanda/presse-und-newsroom/)\n\
+    \n  * [ Service + Support ]()\n\n    *       * Service \n      * [ Community ](https://university.bigpanda.io/community)\n\
+    \      * [ Documentation ](https://docs.bigpanda.io/)\n      * [ Customer Support\
+    \ ](https://www.bigpanda.io/customer-support/)\n      * [ Platform Status ](https://status.bigpanda.io/)\n\
+    \    *       * Support \n      * [ Education & Certification ](https://www.bigpanda.io/bigpanda-education/)\n\
+    \      * [ Professional Services ](https://www.bigpanda.io/services/bigpanda-professional-services-packages/)\n\
+    \n  * [ Login ](https://a.bigpanda.io/)\n\n\n\n[ ](/)\n\n  * Platform\n\n    *\
+    \       * Agentic ITOps Platform\n\nThe BigPanda agentic ITOps platform uses AI\
+    \ to automate IT detection, triage, and resolution, improving operational efficiency\
+    \ and reducing downtime and costs. \n\n[Explore the Platform](https://www.bigpanda.io/our-product/)\n\
+    \n    *       * [ Platform Overview ](/our-product/)\n      * [ AI Incident Prevention\
+    \ ](/our-product/ai-incident-prevention/)\n      * [ AI Detection & Response ](/our-product/ai-detection-and-response/)\n\
+    \      * [ L1 Agent ](/our-product/l1-agent/)\n      * [ AI Incident Assistant\
+    \ ](/our-product/ai-incident-assistant/)\n      * [ IT Knowledge Graph ](/our-product/it-knowledge-graph/)\n\
+    \    *       * [ Integrations ](/integrations/)\n      * [ Jira ](/integrations/jira-service-man"
+  retrieved_at: '2026-08-19T11:50:07.941319-04:00'
+  url: https://www.bigpanda.io/company/newsroom/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

@@ -1,0 +1,149 @@
+{
+  "collected_at": "2026-08-18T11:42:41.896958-04:00",
+  "company_id": "saas-10",
+  "enrichment_id": "news-product-launches",
+  "entries": [
+    {
+      "category": "construction finance platform",
+      "company_name": "Built",
+      "domain": "getbuilt.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 1,
+      "fallbacks": [],
+      "mode": "news",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "getbuilt.com news",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 3,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Built \"press release\" OR \"announces\" OR \"newsroom\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "dropped_off_subject": 2,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Built launches OR \"new feature\" OR \"introducing\" OR \"now available\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://ir.regions.com/news-events/press-releases/news-details/2025/Industry-First-Regions-Bank-Launches-Convenient-Seamless-Digital-Portal-for-Real-Estate-Banking-Clients/default.aspx",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.businesswire.com/news/home/20240610211292/en/Built-Unveils-Unified-CRE-Financing-and-Asset-Portfolio-Management-Enhancing-Lender-Efficiency-and-Performance: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.businesswire.com/news/home/20240610211292/en/Built-Unveils-Unified-CRE-Financing-and-Asset-Portfolio-Management-Enhancing-Lender-Efficiency-and-Performance"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://financialpost.com/pmn/press-releases-pmn/business-wire-news-releases-pmn/built-technologies-introduces-the-future-of-construction-payments-built-pay",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.facebook.com/wpengine/videos/breaking-news-wp-engine-newsroom-just-launched-%EF%B8%8Fweve-built-a-new-standard-for-mo/2180813389415561/",
+      "waterfall_level": 2
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://whatworks.news/2025/12/09/chris-fitzsimon-tells-us-how-states-newsroom-has-built-a-nationwide-statehouse-news-network/: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://whatworks.news/2025/12/09/chris-fitzsimon-tells-us-how-states-newsroom-has-built-a-nationwide-statehouse-news-network/"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.instagram.com/reel/DUTOjA-gWLM/",
+      "waterfall_level": 2
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://getbuilt.com/blog",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://getbuilt.com/news",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://getbuilt.com/newsroom: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://getbuilt.com/newsroom"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://getbuilt.com/press: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://getbuilt.com/press"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://getbuilt.com/changelog: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://getbuilt.com/changelog"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://getbuilt.com/product-updates: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://getbuilt.com/product-updates"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://getbuilt.com/whats-new",
+      "waterfall_level": 1
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 34,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.003",
+  "signal_evidence": 37
+}

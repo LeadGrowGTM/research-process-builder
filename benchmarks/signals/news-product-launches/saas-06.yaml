@@ -1,0 +1,779 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-6324c3add32674d3
+  - ev-da4b109ddeb08af9
+  - ev-98ca84b4107ee477
+  field: identity
+  value: Arkestro
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-6324c3add32674d3
+  - ev-da4b109ddeb08af9
+  - ev-98ca84b4107ee477
+  field: description
+  value: Automate Supplier Negotiations | Arkestro Predictive How It Works Get in
+    touch Learn how our customers achieve 18.8% average savings across all categories
+    of spend using the Arkestro Predictive Procurement Platform. Contact us Latest
+    news Read how Arkestro is driving enterprise procurement transformation in our
+    latest press and media coverage. Learn more What is Predictive Procurement? Learn
+    about Arkestro's patented technology Integrations Seamlessly implement at speed
+    Recognition Insights from
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-6324c3add32674d3
+  - ev-da4b109ddeb08af9
+  - ev-98ca84b4107ee477
+  field: offers
+  value: predictive procurement platform
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-6324c3add32674d3
+  - ev-da4b109ddeb08af9
+  - ev-98ca84b4107ee477
+  field: icp
+  value: procurement teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-6324c3add32674d3
+  - ev-da4b109ddeb08af9
+  - ev-98ca84b4107ee477
+  field: personas
+  value: procurement teams
+  visibility: message_safe
+company_id: saas-06
+corrections: []
+evidence:
+- content_hash: 6324c3add32674d3c100a917a9d57499b549a9d1f6003d2b4789cdbad6c44f2f
+  evidence_id: ev-6324c3add32674d3
+  excerpt: 'Automate Supplier Negotiations | Arkestro Predictive How It Works Get
+    in touch Learn how our customers achieve 18.8% average savings across all categories
+    of spend using the Arkestro Predictive Procurement Platform. Contact us Latest
+    news Read how Arkestro is driving enterprise procurement transformation in our
+    latest press and media coverage. Learn more What is Predictive Procurement? Learn
+    about Arkestro''s patented technology Integrations Seamlessly implement at speed
+    Recognition Insights from analysts and experts Industries Tap into savings for
+    oil & gas With a potential for saving 16-30% per line item, let Arkestro help
+    you cut costs. Learn more It''s time for an automotive tune up Increase procurement
+    efficiencies and drive big savings with Arkestro. Learn how Automotive Drive record
+    cost reductions Oil & Gas Fuel the future of oil and gas with automation High-Tech
+    Manufacturing Supercharge your team''s performance Manufacturing Optimize manufacturing
+    efficiency Construction Strategize your construction spend Financial Services
+    Turn procurement into a strategic value driver Food & Beverage Prep your food
+    and beverage procurement process Learn Arkestro Optimal ‘26 is coming to Houston
+    Optimal ‘26 will bring procurement and supply chain leaders together to explore
+    what’s next for enterprise procurement and how teams can Unlock the Predictive
+    Advantage at scale. Learn more Resource Center Explore our latest content Case
+    Studies What our customers are saying Analyst Reports The latest expert procurement
+    guidance Datasheets Product overviews for informed decisions Infographics Quick
+    bites of on-the-go information eBooks Procurement thought leadership pieces Events
+    Previous and upcoming events Webinars Previous and upcoming webinars Blog Explore
+    our blog Key procurement insights to support your Predictive Procurement journey,
+    no matter where you are. View blog Recent Blogs Process Science in Action: How
+    Automation Cuts Sourcing Cycles From Weeks to Days Aug 11, 2026 Ne'
+  retrieved_at: '2026-08-12T21:00:53.334767+00:00'
+  url: https://arkestro.com/predictive-procurement/
+- content_hash: da4b109ddeb08af999fab64ee6857b10986e45f82a61753a80b84579c130a14f
+  evidence_id: ev-da4b109ddeb08af9
+  excerpt: Arkestro | LinkedIn Agree & Join LinkedIn By clicking Continue to join
+    or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie
+    Policy . Skip to main content LinkedIn Top Content People Learning Jobs Games
+    Sign in Join now Arkestro Technology, Information and Internet San Francisco,
+    CA 9,767 followers Amplify the impact of procurement’s influence. Follow Discover
+    all 130 employees Report this company Overview Jobs Life About us Arkestro’s Predictive
+    Procurement platform accelerates enterprise spend transformation, using AI and
+    game theory to unlock trapped savings and reduce risk, enabling teams to influence
+    significantly more spend. Learn more at https://www.arkestro.com Website https://arkestro.com/
+    External link for Arkestro Industry Technology, Information and Internet Company
+    size 51-200 employees Headquarters San Francisco, CA Type Privately Held Specialties
+    strategic sourcing, procurement, contract management, software, procurement operations,
+    supply chain, supplier management, saas, b2b, cpg, consumer packaged goods, Chemical
+    Manufacturing, Biotechnology, Heath Services, Pharmaceutical, Food & Beverage,
+    Supplier Diversity, Construction, Interiors & Furnishings, Consumer Packaged Goods,
+    Predictive Procurement, Predictive Sourcing, Predictive Allocation, Predictive
+    Supplier Management, Direct Materials, Indirect Materials, CapEx, MRO, Indirect
+    Services, IT projects, Capital Expenditure, Logistics, Maintenance, Repair, and
+    Operations, Buyer, Purchasing, category manager, and supplier Employees at Arkestro
+    Ron Rasmussen LinkedIn Member LinkedIn Member LinkedIn Member LinkedIn Member
+    LinkedIn Member View 130 employees at Arkestro Sign in Welcome back Email or phone
+    Password Show Forgot password? Sign in or By clicking Continue to join or sign
+    in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie Policy
+    . New to LinkedIn? Join now or By clicking Continue to join or sign in, you agree
+    to LinkedIn’s User Agreement , Privacy
+  retrieved_at: '2026-08-12T21:00:54.147466+00:00'
+  url: https://www.linkedin.com/company/arkestro
+- content_hash: 98ca84b4107ee4772fa691b240bbf25639595324251c1d54d637825e670fc780
+  evidence_id: ev-98ca84b4107ee477
+  excerpt: Arkestro - Products, Competitors, Financials, Employees, Headquarters Locations
+    Technology Vendors Recent Research Newsletter Media Support Login Who We Serve
+    Function Corporate Strategy Corporate Venture Capital Venture Capital IT Corporate
+    Innovation How VCs Use CB Insights Go to the video gallery → Industries Consumer
+    & Retail Tech Insurance Healthcare Industrials Financial Services Professional
+    Services Professional Services Learn More → Success Stories How We Help Understand
+    Tech Markets Anticipate Competitor Strategy Determine Tech Strategy Connect with
+    Tech Vendors & Partners Turbocharge Digital Transformation What We Offer Platform
+    Overview Technology Search Engine Market Analytics and Visualizations Team Management
+    and Collaboration Platform Overview Learn More → Data Research Personal Briefing
+    GenAI Instant Insights Public Equity Data Buyer Interview Transcripts Analyst
+    Briefings API & Data Feeds Integrations Overview Chrome and Edge Salesforce Affinity
+    Microsoft Excel Google Sheets Microsoft Teams Slack Google Slides App Partners
+    Browser Extension Pricing About Us Overview Our teams Business Development Engineering
+    Operations Product See all → Open Jobs Loading... Arkestro Analyst Briefing Submitted
+    arkestro.com Overview & Products Financials People Alternatives & Competitors
+    Customers Founded Year 2017 Stage Series B | Alive Total Raised $78.29M Valuation
+    $0000 View Last Raised $36M | 1 yr ago About Arkestro Arkestro focuses on predictive
+    procurement within the financial technology sector. The company provides solutions
+    that utilize artificial intelligence and game theory to assist in enterprise spending
+    transformation, aiming to achieve savings and manage financial risk. Arkestro's
+    services are intended to help teams influence enterprise spending. It was formerly
+    known as Bid Ops. It was founded in 2017 and is based in San Francisco, California.
+    Headquarters Location 60 29th Street Suite 148 San Francisco, California, 94110,
+    United States 888-724-3677 L
+  retrieved_at: '2026-08-12T21:00:54.893882+00:00'
+  url: https://www.cbinsights.com/company/arkestro
+- content_hash: 9e13c86172acfd305a15592ce9a06be3d85f06a099cec2dd1fa25057e6e060bf
+  evidence_id: ev-9e13c86172acfd30
+  excerpt: 'Title: Arkestro Momentum Drives Leadership Growth and Appoints Industry
+    Powerhouse Veterans
+
+    Date: 2 weeks ago
+
+    Source: PR Newswire
+
+    Snippet: Two enterprise SaaS operators bring 50 years of combined experience to
+    Arkestro''s leadership team as Ben Leiken transitions from CTO to...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.prnewswire.com/news-releases/arkestro-momentum-drives-leadership-growth-and-appoints-industry-powerhouse-veterans-302844608.html
+- content_hash: 06a68a0f2d0ca32b8c19b8ca9f9d62da673fd6b88b6dc0e4902ec63a4199329a
+  evidence_id: ev-06a68a0f2d0ca32b
+  excerpt: 'Detected date: Dec 19, 2025
+
+    Title: Arkestro Drives Significant Customer Momentum, Growth Across Industries
+    Heading Into 2026
+
+    Date: Dec 19, 2025
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Arkestro, the leading predictive procurement platform
+    accelerating enterprise scale, today announced significant customer...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.prnewswire.com/news-releases/arkestro-drives-significant-customer-momentum-growth-across-industries-heading-into-2026-302646472.html
+- content_hash: 631abf94cd31c115de7cfdfc692f7470869029ecb9eb917fb60f818a44abd35d
+  evidence_id: ev-631abf94cd31c115
+  excerpt: 'Detected date: Feb 25, 2026
+
+    Title: Arkestro Announces Collaboration with Nissan to Support Predictive Procurement
+    Transformation
+
+    Date: Feb 25, 2026
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Arkestro, a predictive procurement platform, today announced
+    that Nissan Americas has begun using Arkestro''s technology as...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.prnewswire.com/news-releases/arkestro-announces-collaboration-with-nissan-to-support-predictive-procurement-transformation-302697203.html
+- content_hash: 633ba5c2ae430e0a4934c96ad79e2f3b9bd8a0a1ed43a6f5683f29dcb14e1e49
+  evidence_id: ev-633ba5c2ae430e0a
+  excerpt: 'Detected date: Oct 29, 2025
+
+    Title: Arkestro Announces ''Arkestro Labs,'' Powerful New Procurement AI Offerings
+    at Optimal ''25
+
+    Date: Oct 29, 2025
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Arkestro, the leading predictive procurement platform
+    accelerating enterprise scale, today announced Arkestro Labs,...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.prnewswire.com/news-releases/arkestro-announces-arkestro-labs-powerful-new-procurement-ai-offerings-at-optimal-25-302598472.html
+- content_hash: a76b6e23fa891cb603e83317a2b615ae802acad3464d11b4d7351fa381813258
+  evidence_id: ev-a76b6e23fa891cb6
+  excerpt: 'Detected date: Oct 15, 2025
+
+    Title: Arkestro Announces Customer Expansion With Chevron, Driving Predictive
+    Procurement Transformation Across Global Markets
+
+    Date: Oct 15, 2025
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Arkestro, the leading predictive procurement platform
+    accelerating enterprise scale, today announced the expansion of its...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.prnewswire.com/news-releases/arkestro-announces-customer-expansion-with-chevron-driving-predictive-procurement-transformation-across-global-markets-302585089.html
+- content_hash: 7537cd40f5879ae095234e382d159e1fee761070775548e1c079bf90b6af1f54
+  evidence_id: ev-7537cd40f5879ae0
+  excerpt: 'Title: Tahmeeda Bushra Khorasani, Arkestro Director of Supply Chain Innovation
+    and Supplier Ecosystem, Named Winner of 2026 Women in Supply Chain Award
+
+    Date: 24 hours ago
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Arkestro, the leading predictive procurement platform
+    accelerating enterprise scale, today announced its Director of Supply...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.prnewswire.com/news-releases/tahmeeda-bushra-khorasani-arkestro-director-of-supply-chain-innovation-and-supplier-ecosystem-named-winner-of-2026-women-in-supply-chain-award-302852136.html
+- content_hash: a2c001b6d29c0e0900ba6db649e66763fa156aec9b4b2d61aaf4b79e6d58a07d
+  evidence_id: ev-a2c001b6d29c0e09
+  excerpt: 'Detected date: Apr 30, 2026
+
+    Title: Arkestro Earns Validation in The Hackett Group''s Spring 2026 SolutionMap
+    Procurement Technology Assessment
+
+    Date: Apr 30, 2026
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Arkestro, the leading predictive procurement platform
+    accelerating enterprise scale, today announced it has been recognized...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.prnewswire.com/news-releases/arkestro-earns-validation-in-the-hackett-groups-spring-2026-solutionmap-procurement-technology-assessment-302759116.html
+- content_hash: 172d33463bbcce183f5f803c70154f84a4de32d9757c30f5fbd5aa6f701a3763
+  evidence_id: ev-172d33463bbcce18
+  excerpt: 'Title: Arkestro listed as a Sample Vendor in Gartner® Hype Cycle™ for
+    Procurement and Sourcing Solutions for Four Consecutive Years
+
+    Date: 1 month ago
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Arkestro, the leading predictive procurement platform
+    accelerating enterprise scale, today announced that it has been...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.prnewswire.com/news-releases/arkestro-listed-as-a-sample-vendor-in-gartner-hype-cycle-for-procurement-and-sourcing-solutions-for-four-consecutive-years-302814412.html
+- content_hash: e6e5d5cff2dc2a5e5b945e0e30dd0716570cb073aad9d7f58524ac2e4d50de0a
+  evidence_id: ev-e6e5d5cff2dc2a5e
+  excerpt: 'Detected date: May 14, 2025
+
+    Title: Arkestro Secures $36M in Strategic Investment to Accelerate Predictive
+    Procurement Innovation
+
+    Date: May 14, 2025
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Arkestro, the premier Predictive Procurement Platform
+    accelerating enterprise spend transformation, today announced a...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.prnewswire.com/news-releases/arkestro-secures-36m-in-strategic-investment-to-accelerate-predictive-procurement-innovation-302454539.html
+- content_hash: 84894582cb07f59b30743d9c25da40892e135918f80a1cf99e05754a7dec0887
+  evidence_id: ev-84894582cb07f59b
+  excerpt: 'Query: arkestro.com news
+
+    1. https://www.prnewswire.com/news-releases/arkestro-momentum-drives-leadership-growth-and-appoints-industry-powerhouse-veterans-302844608.html
+
+    Title: Arkestro Momentum Drives Leadership Growth and Appoints Industry Powerhouse
+    Veterans
+
+    Date: 2 weeks ago
+
+    Source: PR Newswire
+
+    Snippet: Two enterprise SaaS operators bring 50 years of combined experience to
+    Arkestro''s leadership team as Ben Leiken transitions from CTO to...
+
+    2. https://www.prnewswire.com/news-releases/arkestro-drives-significant-customer-momentum-growth-across-industries-heading-into-2026-302646472.html
+
+    Title: Arkestro Drives Significant Customer Momentum, Growth Across Industries
+    Heading Into 2026
+
+    Date: Dec 19, 2025
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Arkestro, the leading predictive procurement platform
+    accelerating enterprise scale, today announced significant customer...
+
+    3. https://www.prnewswire.com/news-releases/arkestro-announces-collaboration-with-nissan-to-support-predictive-procurement-transformation-302697203.html
+
+    Title: Arkestro Announces Collaboration with Nissan to Support Predictive Procurement
+    Transformation
+
+    Date: Feb 25, 2026
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Arkestro, a predictive procurement platform, today announced
+    that Nissan Americas has begun using Arkestro''s technology as...
+
+    4. https://www.prnewswire.com/news-releases/arkestro-announces-arkestro-labs-powerful-new-procurement-ai-offerings-at-optimal-25-302598472.html
+
+    Title: Arkestro Announces ''Arkest'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.google.com/search?q=arkestro.com+news&tbm=nws
+- content_hash: 7cfe7e69cb585900b1115fb9cb90558c9987b9c15c9f3d499d0a169509d690b3
+  evidence_id: ev-7cfe7e69cb585900
+  excerpt: 'Detected date: Oct 15, 2025
+
+    Title: Arkestro Announces Customer Expansion With Chevron ...
+
+    Date: Oct 15, 2025
+
+    Snippet: Arkestro Announces Customer Expansion With Chevron, Driving Predictive
+    Procurement Transformation Across Global Markets ... View Press Release. “Driving
+    fast time ...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://arkestro.com/press-releases/arkestro-announces-customer-expansion-with-chevron-driving-predictive-procurement-transformation-across-global-markets/
+- content_hash: 45e34ef1817dc40c0753ce38cd175248e09e131ef2319d5ca5ca377929a1a252
+  evidence_id: ev-45e34ef1817dc40c
+  excerpt: 'Detected date: Feb 25, 2026
+
+    Title: Arkestro Announces Collaboration with Nissan to Support ...
+
+    Date: Feb 25, 2026
+
+    Snippet: Arkestro Announces Collaboration with Nissan to Support Predictive Procurement
+    Transformation ... View Press Release. Arkestro''s game-theoretic capabilities
+    and ...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://arkestro.com/press-releases/arkestro-announces-collaboration-with-nissan-to-support-predictive-procurement-transformation/
+- content_hash: 0cc3c274c420a839d515a83bf022d5f7897facd9fc5dbce5129a805dcf73e1f2
+  evidence_id: ev-0cc3c274c420a839
+  excerpt: 'Detected date: Aug 6, 2026
+
+    Title: Arkestro Press Release Library
+
+    Date: Aug 6, 2026
+
+    Snippet: Arkestro Announces Collaboration with Nissan to Support Predictive Procurement
+    Transformation. SAN FRANCISCO, Feb. 25, 2026 — Arkestro, a predictive ...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://arkestro.com/press/
+- content_hash: 9303e03ac2f9a7241fd80ce00bc5e8b94008c79f0c8b379bf14d741ca8753784
+  evidence_id: ev-9303e03ac2f9a724
+  excerpt: 'Detected date: Jun 30, 2026
+
+    Title: Arkestro listed as a Sample Vendor in Gartner® Hype ...
+
+    Date: Jun 30, 2026
+
+    Snippet: Learn more about Arkestro at www.arkestro.com. To view the entire report
+    ... more press release views with. Request a Demo. ×. Modal title. Also from this
+    ...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.prnewswire.com/news-releases/arkestro-listed-as-a-sample-vendor-in-gartner-hype-cycle-for-procurement-and-sourcing-solutions-for-four-consecutive-years-302814412.html
+- content_hash: 1c3973df709e1b759b241467f843f4ff74b949684b6a37c2cfaf169dd9ac8931
+  evidence_id: ev-1c3973df709e1b75
+  excerpt: 'Title: Ben Leiken''s Post
+
+    Snippet: Arkestro Announces ''Arkestro Labs,'' Powerful New Procurement AI ...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.linkedin.com/posts/benleiken_arkestro-announces-arkestro-labs-powerful-activity-7389392175249182722-YsTo
+- content_hash: dc11235a1b9cb093150a2c1eb4351d6fb1c7c3a69bf50ae387bb53f0de7f709b
+  evidence_id: ev-dc11235a1b9cb093
+  excerpt: 'Detected date: Dec 19, 2025
+
+    Title: Arkestro Drives Significant Customer Momentum, Growth ...
+
+    Date: Dec 19, 2025
+
+    Snippet: View Press Release. “The cross-industry traction we''ve seen this year
+    marks a major inflection point in Arkestro''s trajectory. It is the kind of growth
+    you ...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://arkestro.com/press-releases/arkestro-drives-significant-customer-momentum-growth-across-industries-heading-into-2026/
+- content_hash: 2c7ff01d003ff91ef09c662f3cf307490433e622c887917ec0305c5a6d611d9a
+  evidence_id: ev-2c7ff01d003ff91e
+  excerpt: 'Detected date: Aug 6, 2026
+
+    Title: Arkestro Momentum Drives Leadership Growth and ...
+
+    Date: Aug 6, 2026
+
+    Snippet: Learn more about Arkestro at www.arkestro.com and register for Optimal
+    ... more press release views with. Request a Demo. ×. Modal title. Also from this
+    ...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.prnewswire.com/news-releases/arkestro-momentum-drives-leadership-growth-and-appoints-industry-powerhouse-veterans-302844608.html
+- content_hash: ab99789da691f0207203d0c7936c214b03ef85d7911a65cfe7957e57fb211b53
+  evidence_id: ev-ab99789da691f020
+  excerpt: 'Title: Tahmeeda Bushra Khorasani, Arkestro Director of Supply ...
+
+    Date: 24 hours ago
+
+    Snippet: This is a paid press release. Contact the press release distributor directly
+    with any inquiries. PR Newswire. Tahmeeda Bushra Khorasani, Arkestro Director
+    of ...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://finance.yahoo.com/technology/ai/articles/tahmeeda-bushra-khorasani-arkestro-director-160000540.html
+- content_hash: 6a843b76ec9e59bc5ce0c3b77da15a7f7b8d595e719de3e1c757c850e6181ce1
+  evidence_id: ev-6a843b76ec9e59bc
+  excerpt: 'Title: Arkestro names new President and COO, CTO as Bay Area ...
+
+    Date: 5 days ago
+
+    Snippet: Newsroom News · Terms of Use · Code of Conduct · Privacy Notice · Your
+    Privacy ... Arkestro names new President and COO, CTO as Bay Area procurement
+    company ...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.sfchronicle.com/business/people-on-the-move/article/arkestro-names-new-president-coo-cto-bay-area-22386554.php
+- content_hash: 6f0127232db74882e602b3cb075bc3d2587166b791cd1bb3f0de24b2dd748d85
+  evidence_id: ev-6f0127232db74882
+  excerpt: 'Title: Arkestro - Overview, News & Similar companies
+
+    Date: 4 days ago
+
+    Snippet: Arkestro Announces Collaboration with Nissan to Support Predictive Procurement
+    Transformation ... Newsroom · Engineering Blog · Privacy Center. Free Trial. Log
+    ...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.zoominfo.com/c/arkestro-inc/398877134
+- content_hash: ca5cfd4d5ede983425f6717ab301c03167be109e5dfce600cb0c1955675fcf1f
+  evidence_id: ev-ca5cfd4d5ede9834
+  excerpt: 'Query: Arkestro "press release" OR "announces" OR "newsroom"
+
+    1. https://arkestro.com/press-releases/arkestro-announces-customer-expansion-with-chevron-driving-predictive-procurement-transformation-across-global-markets/
+
+    Title: Arkestro Announces Customer Expansion With Chevron ...
+
+    Date: Oct 15, 2025
+
+    Snippet: Arkestro Announces Customer Expansion With Chevron, Driving Predictive
+    Procurement Transformation Across Global Markets ... View Press Release. “Driving
+    fast time ...
+
+    2. https://arkestro.com/press-releases/arkestro-announces-collaboration-with-nissan-to-support-predictive-procurement-transformation/
+
+    Title: Arkestro Announces Collaboration with Nissan to Support ...
+
+    Date: Feb 25, 2026
+
+    Snippet: Arkestro Announces Collaboration with Nissan to Support Predictive Procurement
+    Transformation ... View Press Release. Arkestro''s game-theoretic capabilities
+    and ...
+
+    3. https://arkestro.com/press/
+
+    Title: Arkestro Press Release Library
+
+    Date: Aug 6, 2026
+
+    Snippet: Arkestro Announces Collaboration with Nissan to Support Predictive Procurement
+    Transformation. SAN FRANCISCO, Feb. 25, 2026 — Arkestro, a predictive ...
+
+    4. https://www.prnewswire.com/news-releases/arkestro-listed-as-a-sample-vendor-in-gartner-hype-cycle-for-procurement-and-sourcing-solutions-for-four-consecutive-years-302814412.html
+
+    Title: Arkestro listed as a Sample Vendor in Gartner® Hype ...
+
+    Date: Jun 30, 2026
+
+    Snippet: Learn more about Arkestro at www.arkestro.com. To view the entire report
+    ... more press release views with.'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.google.com/search?q=Arkestro+%22press+release%22+OR+%22announces%22+OR+%22newsroom%22&tbs=qdr%3Ay
+- content_hash: b932a2bb5a5a3404414a49d9b9d4aaa2f0198d39471734231b58d7af43d25aaf
+  evidence_id: ev-b932a2bb5a5a3404
+  excerpt: 'Title: Arkestro Labs: Next-gen procurement software unveiled
+
+    Snippet: Introducing Arkestro Labs. Today at Arkestro Optimal ''25 we''re unveiling
+    Arkestro Labs, our research and development engine focused on building the next
+    ...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.linkedin.com/posts/arkestro_arkestro-announces-arkestro-labs-powerful-activity-7389309977321996288-NfnH
+- content_hash: a621f3550318d3e26c430961edf8258f583ac9de71392455ec8ce39cf9aaa4da
+  evidence_id: ev-a621f3550318d3e2
+  excerpt: 'Detected date: Oct 29, 2025
+
+    Title: Arkestro Announces AI-Powered Predictive Procurement ...
+
+    Date: Oct 29, 2025
+
+    Snippet: Arkestro Labs is a research and development engine focused on building
+    the next generation of AI-powered, predictive procurement software.'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.sdcexec.com/sourcing-procurement/procurement-software/news/22953716/arkestro-arkestro-announces-aipowered-predictive-procurement-software
+- content_hash: 676ac8e8d53e96b5ee760372131261e33628d4c49afc8dd4f615a022ad1bae70
+  evidence_id: ev-676ac8e8d53e96b5
+  excerpt: 'Detected date: Nov 25, 2025
+
+    Title: Maximizing Efficiency in Automotive Procurement
+
+    Date: Nov 25, 2025
+
+    Snippet: We''ll show you how automotive teams are launching events in days, introducing
+    competition in “locked” categories, and capturing double-digit savings on spend.'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://arkestro.com/industry/automotive/
+- content_hash: f586e24c1aef65da1907396afa027e1b2a76d15a2f08be46cb8cea0ab4049265
+  evidence_id: ev-f586e24c1aef65da
+  excerpt: 'Title: Arkestro - Overview, News & Similar companies
+
+    Date: 4 days ago
+
+    Snippet: Product Launch: Get notified when Arkestro launches new products. Click
+    to see if Arkestro had a recent Job posting/layoffs. Check out if Arkestro is
+    spiking ...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.zoominfo.com/c/arkestro-inc/398877134
+- content_hash: f242ada2af24cc4ded7342348982516f87a43d44e3cf3dc7c334b3f6aa45cd68
+  evidence_id: ev-f242ada2af24cc4d
+  excerpt: 'Detected date: Apr 17, 2026
+
+    Title: Supplier Consolidation Without the Risk: 7 Strategies That ...
+
+    Date: Apr 17, 2026
+
+    Snippet: Arkestro helps procurement teams assess consolidation opportunities ...
+    introducing unnecessary risks. Why Supplier Consolidation Often Fails.'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://arkestro.com/blog/supplier-consolidation-without-the-risk-7-strategies-that-protect-your-supply-chain/
+- content_hash: c44e347f79f2e79485a5d9604087f38e017ba8a09ec15f9809607f7689706fca
+  evidence_id: ev-c44e347f79f2e794
+  excerpt: 'Detected date: Aug 6, 2026
+
+    Title: Arkestro Momentum Drives Leadership Growth and ...
+
+    Date: Aug 6, 2026
+
+    Snippet: Arkestro is the leading predictive procurement platform, taking place
+    October 13–15, 2026.'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://aijourn.com/arkestro-momentum-drives-leadership-growth-and-appoints-industry-powerhouse-veterans/
+- content_hash: ca7c5ae76854409eae7c8017c30296b11cbbba8c2f270abf7f9bb069440de539
+  evidence_id: ev-ca7c5ae76854409e
+  excerpt: 'Title: Tahmeeda Bushra Khorasani, Arkestro Director of Supply ...
+
+    Date: 23 hours ago
+
+    Snippet: Imparta Launches Cracking the Channel Code: Growing the Channel in a
+    Year of Margin Decline. Imparta today announces the launch of Cracking the Channel
+    Code ...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.lelezard.com/en/news-22335068.html
+- content_hash: df408b921eeb8c542ebdeee5486ad91dafabb0865f72411edf2b5d8b9b12cbda
+  evidence_id: ev-df408b921eeb8c54
+  excerpt: 'Title: Ben Leiken''s Post
+
+    Snippet: Introducing Arkestro Labs. Today at Arkestro Optimal ''25 we''re unveiling
+    ...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.linkedin.com/posts/benleiken_arkestro-announces-arkestro-labs-powerful-activity-7389392175249182722-YsTo
+- content_hash: 9c9a88bb4f8be61cebaea9bff040c4ee7e5130bf4c43af6f3ea6419230b1504d
+  evidence_id: ev-9c9a88bb4f8be61c
+  excerpt: 'Detected date: Jul 28, 2026
+
+    Title: AI + Game Theory for Better Supplier Negotiations
+
+    Date: Jul 28, 2026
+
+    Snippet: ... introducing friction or confusion for suppliers. AI negotiation procurement
+    makes this approach more transparent and structured. Negotiation Science further
+    ...'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://arkestro.com/blog/negotiation-science-game-theory-enterprise/
+- content_hash: 511498789219d7e7c2facb15dcc1cc67ecbc7d9edb140baa15f452e304cc12ac
+  evidence_id: ev-511498789219d7e7
+  excerpt: 'Query: Arkestro launches OR "new feature" OR "introducing" OR "now available"
+
+    1. https://www.linkedin.com/posts/arkestro_arkestro-announces-arkestro-labs-powerful-activity-7389309977321996288-NfnH
+
+    Title: Arkestro Labs: Next-gen procurement software unveiled
+
+    Snippet: Introducing Arkestro Labs. Today at Arkestro Optimal ''25 we''re unveiling
+    Arkestro Labs, our research and development engine focused on building the next
+    ...
+
+    2. https://www.sdcexec.com/sourcing-procurement/procurement-software/news/22953716/arkestro-arkestro-announces-aipowered-predictive-procurement-software
+
+    Title: Arkestro Announces AI-Powered Predictive Procurement ...
+
+    Date: Oct 29, 2025
+
+    Snippet: Arkestro Labs is a research and development engine focused on building
+    the next generation of AI-powered, predictive procurement software.
+
+    3. https://arkestro.com/industry/automotive/
+
+    Title: Maximizing Efficiency in Automotive Procurement
+
+    Date: Nov 25, 2025
+
+    Snippet: We''ll show you how automotive teams are launching events in days, introducing
+    competition in “locked” categories, and capturing double-digit savings on spend.
+
+    4. https://www.zoominfo.com/c/arkestro-inc/398877134
+
+    Title: Arkestro - Overview, News & Similar companies
+
+    Date: 4 days ago
+
+    Snippet: Product Launch: Get notified when Arkestro launches new products. Click
+    to see if Arkestro had a recent Job posting/layoffs. Check out if Arkestro is
+    spiking ...
+
+    5. https://arkestro.com/blog/supplier-consolidation-without-the-risk-7-strategies-that-protect-your-supply-chai'
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.google.com/search?q=Arkestro+launches+OR+%22new+feature%22+OR+%22introducing%22+OR+%22now+available%22&tbs=qdr%3Ay
+- content_hash: eff2d256d2e54531e104481e33e70611ffb8d12192d9b5ec35db03ce87390966
+  evidence_id: ev-eff2d256d2e54531
+  excerpt: "Title: Arkestro Momentum Drives Leadership Growth and Appoints Industry\
+    \ Powerhouse Veterans\n[Accessibility Statement](https://www.cision.com/about/accessibility/)\
+    \ Skip Navigation\n\n  * [Resources](/resources/)\n  * [Investor Relations](/investor-relations-solutions/)\n\
+    \  * [Journalists](https://prnmedia.prnewswire.com/)\n  * [Agencies](https://www.cision.com/agencies/?utm_medium=referral&utm_source=prnewswire&utm_content=product&utm_campaign=2023-prn-all-products-page)\n\
+    \n\n  * [Client Login](https://app.prnewswire.com/login/auto)\n  * [Send a Release](/account/online-account-form/)\n\
+    \n\n\n[ ](/)\n\n  * [News](/news-releases/)\n  * [Products](/amplify-platform/)\n\
+    \  * [Contact](/contact-us/)\n\n\n\nSearch\n\n__\n\nSearch\n\nWhen typing in this\
+    \ field, a list of search results will appear and be automatically updated as\
+    \ you type.\n\nSearching for your content...\n\n__\n\n**No results found. Please\
+    \ change your search terms and try again.**\n\n  * News in Focus \n    *     \
+    \  * ## [Browse News Releases](/news-releases/)\n\n      * [All News Releases\
+    \ ](/news-releases/news-releases-list/)\n      * [All Public Company ](/news-releases/all-public-company-news/)\n\
+    \      * [English-only ](/news-releases/english-releases/)\n      * ## [News Releases\
+    \ Overview](/news-releases/)\n\n      * ## [Multimedia Gallery](/news-releases/multimedia/)\n\
+    \n      * [All Multimedia ](/news-releases/multimedia/multimedia-list/)\n    \
+    \  * [All Photos ](/news-releases/photos/photos-list/)\n      * [All Videos ](/news-releases/videos/videos-list/)\n\
+    \      * ##"
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.prnewswire.com/news-releases/arkestro-momentum-drives-leadership-growth-and-appoints-industry-powerhouse-veterans-302844608.html
+- content_hash: 826f25f6a851569c458de5aa6fde406e8b5ef83616f4a9f3cbda8a4f0ba1ade4
+  evidence_id: ev-826f25f6a851569c
+  excerpt: "Title: Arkestro Drives Significant Customer Momentum, Growth Across Industries\
+    \ Heading Into 2026\n[Accessibility Statement](https://www.cision.com/about/accessibility/)\
+    \ Skip Navigation\n\n  * [Resources](/resources/)\n  * [Investor Relations](/investor-relations-solutions/)\n\
+    \  * [Journalists](https://prnmedia.prnewswire.com/)\n  * [Agencies](https://www.cision.com/agencies/?utm_medium=referral&utm_source=prnewswire&utm_content=product&utm_campaign=2023-prn-all-products-page)\n\
+    \n\n  * [Client Login](https://app.prnewswire.com/login/auto)\n  * [Send a Release](/account/online-account-form/)\n\
+    \n\n\n[ ](/)\n\n  * [News](/news-releases/)\n  * [Products](/amplify-platform/)\n\
+    \  * [Contact](/contact-us/)\n\n\n\nSearch\n\n__\n\nSearch\n\nWhen typing in this\
+    \ field, a list of search results will appear and be automatically updated as\
+    \ you type.\n\nSearching for your content...\n\n__\n\n**No results found. Please\
+    \ change your search terms and try again.**\n\n  * News in Focus \n    *     \
+    \  * ## [Browse News Releases](/news-releases/)\n\n      * [All News Releases\
+    \ ](/news-releases/news-releases-list/)\n      * [All Public Company ](/news-releases/all-public-company-news/)\n\
+    \      * [English-only ](/news-releases/english-releases/)\n      * ## [News Releases\
+    \ Overview](/news-releases/)\n\n      * ## [Multimedia Gallery](/news-releases/multimedia/)\n\
+    \n      * [All Multimedia ](/news-releases/multimedia/multimedia-list/)\n    \
+    \  * [All Photos ](/news-releases/photos/photos-list/)\n      * [All Videos ](/news-releases/videos/videos-list/)\n\
+    \     "
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.prnewswire.com/news-releases/arkestro-drives-significant-customer-momentum-growth-across-industries-heading-into-2026-302646472.html
+- content_hash: 5167de48d4ee92f13020508e3b816e393e3601cff4c054e3a8b5c26d1c2e297b
+  evidence_id: ev-5167de48d4ee92f1
+  excerpt: "Title: Arkestro Announces Collaboration with Nissan to Support Predictive\
+    \ Procurement Transformation\n[Accessibility Statement](https://www.cision.com/about/accessibility/)\
+    \ Skip Navigation\n\n  * [Resources](/resources/)\n  * [Investor Relations](/investor-relations-solutions/)\n\
+    \  * [Journalists](https://prnmedia.prnewswire.com/)\n  * [Agencies](https://www.cision.com/agencies/?utm_medium=referral&utm_source=prnewswire&utm_content=product&utm_campaign=2023-prn-all-products-page)\n\
+    \n\n  * [Client Login](https://app.prnewswire.com/login/auto)\n  * [Send a Release](/account/online-account-form/)\n\
+    \n\n\n[ ](/)\n\n  * [News](/news-releases/)\n  * [Products](/amplify-platform/)\n\
+    \  * [Contact](/contact-us/)\n\n\n\nSearch\n\n__\n\nSearch\n\nWhen typing in this\
+    \ field, a list of search results will appear and be automatically updated as\
+    \ you type.\n\nSearching for your content...\n\n__\n\n**No results found. Please\
+    \ change your search terms and try again.**\n\n  * News in Focus \n    *     \
+    \  * ## [Browse News Releases](/news-releases/)\n\n      * [All News Releases\
+    \ ](/news-releases/news-releases-list/)\n      * [All Public Company ](/news-releases/all-public-company-news/)\n\
+    \      * [English-only ](/news-releases/english-releases/)\n      * ## [News Releases\
+    \ Overview](/news-releases/)\n\n      * ## [Multimedia Gallery](/news-releases/multimedia/)\n\
+    \n      * [All Multimedia ](/news-releases/multimedia/multimedia-list/)\n    \
+    \  * [All Photos ](/news-releases/photos/photos-list/)\n      * [All Videos ](/news-releases/videos/videos-list/)\n\
+    \ "
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://www.prnewswire.com/news-releases/arkestro-announces-collaboration-with-nissan-to-support-predictive-procurement-transformation-302697203.html
+- content_hash: 8b1a88b3fa26f3443458740192584c27ca1e27869155f290ae7cba375c941961
+  evidence_id: ev-8b1a88b3fa26f344
+  excerpt: "Title: Arkestro Announces Customer Expansion With Chevron, Driving Predictive\
+    \ Procurement Transformation Across Global Markets | Arkestro\n[](/)\n\n  * How\
+    \ It Works\n\n## Get in touch\n\nLearn how our customers achieve 18.8% average\
+    \ savings across all categories of spend using the Arkestro Predictive Procurement\
+    \ Platform.\n\n[Contact us](/contact-us/)\n\n## Latest news\n\nRead how Arkestro\
+    \ is driving enterprise procurement transformation in our latest press and media\
+    \ coverage.\n\n[Learn more](/press/)\n\n### [**What is Predictive Procurement?**](/predictive-procurement/)\n\
+    \nLearn about Arkestro's patented technology\n\n### [**Integrations**](/integrations/)\n\
+    \nSeamlessly implement at speed\n\n### [**Recognition**](/awards-and-recognition/)\n\
+    \nInsights from analysts and experts\n\n  * Industries\n\n### **Tap into savings\
+    \ for  \noil & gas**\n\nWith a potential for saving 16-30% per line item, let\
+    \ Arkestro help you cut costs.\n\n[Learn more](/industry/oil-and-gas/)\n\n###\
+    \ **It's time for an automotive tune up**\n\nIncrease procurement efficiencies\
+    \ and drive big savings with Arkestro.\n\n[Learn how](/industry/automotive/)\n\
+    \n### [**Automotive**](/industry/automotive/)\n\nDrive record cost reductions\n\
+    \n### **[Oil& Gas](/industry/oil-and-gas/)**\n\nFuel the future of oil and gas\
+    \ with automation\n\n### **[High-Tech Manufacturing](/industry/high-tech-manufacturing/)**\n\
+    \nSupercharge your team's performance\n\n### **[Manufacturing](/industry/manufacturing/)**\n\
+    \nOptimize manufacturing efficiency\n\n### **[Construction](/industry/construction/"
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://arkestro.com/press-releases/arkestro-announces-customer-expansion-with-chevron-driving-predictive-procurement-transformation-across-global-markets/
+- content_hash: 718cff81daa9354421b4470e9712b371b60bd79615177efa9bbff2cf516c707a
+  evidence_id: ev-718cff81daa93544
+  excerpt: "Title: Arkestro Announces Collaboration with Nissan to Support Predictive\
+    \ Procurement Transformation | Arkestro\n[](/)\n\n  * How It Works\n\n## Get in\
+    \ touch\n\nLearn how our customers achieve 18.8% average savings across all categories\
+    \ of spend using the Arkestro Predictive Procurement Platform.\n\n[Contact us](/contact-us/)\n\
+    \n## Latest news\n\nRead how Arkestro is driving enterprise procurement transformation\
+    \ in our latest press and media coverage.\n\n[Learn more](/press/)\n\n### [**What\
+    \ is Predictive Procurement?**](/predictive-procurement/)\n\nLearn about Arkestro's\
+    \ patented technology\n\n### [**Integrations**](/integrations/)\n\nSeamlessly\
+    \ implement at speed\n\n### [**Recognition**](/awards-and-recognition/)\n\nInsights\
+    \ from analysts and experts\n\n  * Industries\n\n### **Tap into savings for  \n\
+    oil & gas**\n\nWith a potential for saving 16-30% per line item, let Arkestro\
+    \ help you cut costs.\n\n[Learn more](/industry/oil-and-gas/)\n\n### **It's time\
+    \ for an automotive tune up**\n\nIncrease procurement efficiencies and drive big\
+    \ savings with Arkestro.\n\n[Learn how](/industry/automotive/)\n\n### [**Automotive**](/industry/automotive/)\n\
+    \nDrive record cost reductions\n\n### **[Oil& Gas](/industry/oil-and-gas/)**\n\
+    \nFuel the future of oil and gas with automation\n\n### **[High-Tech Manufacturing](/industry/high-tech-manufacturing/)**\n\
+    \nSupercharge your team's performance\n\n### **[Manufacturing](/industry/manufacturing/)**\n\
+    \nOptimize manufacturing efficiency\n\n### **[Construction](/industry/construction/)**\n\
+    \nStrategize your const"
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://arkestro.com/press-releases/arkestro-announces-collaboration-with-nissan-to-support-predictive-procurement-transformation/
+- content_hash: 1e7891e4bb5867cba6e73b6fcdbb820d5ab2f8f353f7d12eaa9664c1c2bc706f
+  evidence_id: ev-1e7891e4bb5867cb
+  excerpt: "Title: Arkestro Press Release Library\n[](/)\n\n  * How It Works\n\n##\
+    \ Get in touch\n\nLearn how our customers achieve 18.8% average savings across\
+    \ all categories of spend using the Arkestro Predictive Procurement Platform.\n\
+    \n[Contact us](/contact-us/)\n\n## Latest news\n\nRead how Arkestro is driving\
+    \ enterprise procurement transformation in our latest press and media coverage.\n\
+    \n[Learn more](/press/)\n\n### [**What is Predictive Procurement?**](/predictive-procurement/)\n\
+    \nLearn about Arkestro's patented technology\n\n### [**Integrations**](/integrations/)\n\
+    \nSeamlessly implement at speed\n\n### [**Recognition**](/awards-and-recognition/)\n\
+    \nInsights from analysts and experts\n\n  * Industries\n\n### **Tap into savings\
+    \ for  \noil & gas**\n\nWith a potential for saving 16-30% per line item, let\
+    \ Arkestro help you cut costs.\n\n[Learn more](/industry/oil-and-gas/)\n\n###\
+    \ **It's time for an automotive tune up**\n\nIncrease procurement efficiencies\
+    \ and drive big savings with Arkestro.\n\n[Learn how](/industry/automotive/)\n\
+    \n### [**Automotive**](/industry/automotive/)\n\nDrive record cost reductions\n\
+    \n### **[Oil& Gas](/industry/oil-and-gas/)**\n\nFuel the future of oil and gas\
+    \ with automation\n\n### **[High-Tech Manufacturing](/industry/high-tech-manufacturing/)**\n\
+    \nSupercharge your team's performance\n\n### **[Manufacturing](/industry/manufacturing/)**\n\
+    \nOptimize manufacturing efficiency\n\n### **[Construction](/industry/construction/)**\n\
+    \nStrategize your construction spend\n\n### **[Financial Services](/industry/financial-services/)**"
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://arkestro.com/press/
+- content_hash: 9f0370e85c0dff38f006c2d26a93d0da9900f1c10572c2c43b7f64e17c32174e
+  evidence_id: ev-9f0370e85c0dff38
+  excerpt: "Title: Procurement Insights Blog | Arkestro Blog\n[](/)\n\n  * How It\
+    \ Works\n\n## Get in touch\n\nLearn how our customers achieve 18.8% average savings\
+    \ across all categories of spend using the Arkestro Predictive Procurement Platform.\n\
+    \n[Contact us](/contact-us/)\n\n## Latest news\n\nRead how Arkestro is driving\
+    \ enterprise procurement transformation in our latest press and media coverage.\n\
+    \n[Learn more](/press/)\n\n### [**What is Predictive Procurement?**](/predictive-procurement/)\n\
+    \nLearn about Arkestro's patented technology\n\n### [**Integrations**](/integrations/)\n\
+    \nSeamlessly implement at speed\n\n### [**Recognition**](/awards-and-recognition/)\n\
+    \nInsights from analysts and experts\n\n  * Industries\n\n### **Tap into savings\
+    \ for  \noil & gas**\n\nWith a potential for saving 16-30% per line item, let\
+    \ Arkestro help you cut costs.\n\n[Learn more](/industry/oil-and-gas/)\n\n###\
+    \ **It's time for an automotive tune up**\n\nIncrease procurement efficiencies\
+    \ and drive big savings with Arkestro.\n\n[Learn how](/industry/automotive/)\n\
+    \n### [**Automotive**](/industry/automotive/)\n\nDrive record cost reductions\n\
+    \n### **[Oil& Gas](/industry/oil-and-gas/)**\n\nFuel the future of oil and gas\
+    \ with automation\n\n### **[High-Tech Manufacturing](/industry/high-tech-manufacturing/)**\n\
+    \nSupercharge your team's performance\n\n### **[Manufacturing](/industry/manufacturing/)**\n\
+    \nOptimize manufacturing efficiency\n\n### **[Construction](/industry/construction/)**\n\
+    \nStrategize your construction spend\n\n### **[Financial Services](/industry/financial-s"
+  retrieved_at: '2026-08-18T11:41:09.389430-04:00'
+  url: https://arkestro.com/blog/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

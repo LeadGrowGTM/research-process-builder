@@ -1,0 +1,189 @@
+# DRAFT ground truth - TODO_HUMAN: review every entry, then move this file to
+# ../ground-truth/ only after a human seals it. Generated from the signal dossier;
+# nothing here is validated. Delete candidates that are not real, fix dates and
+# kinds, keep evidence_ids pointing at the Evidence that proves the entry.
+# subject: Archive360 (archive360.com)
+as_of: '2026-08-18'
+company_id: saas-05
+events:
+- date: TODO_HUMAN (7 days ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-28b64a2a4940b63d
+  headline_aliases:
+  - Archive360® Named to the Inc. 5000 List of Fastest ...
+  kind: TODO_HUMAN
+  source_domain: morningstar.com
+- date: TODO_HUMAN (2 weeks ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-386ecffbe578b49e
+  headline_aliases:
+  - AI Governance Beyond Models and Workflows | Archive360 ...
+  kind: TODO_HUMAN
+  source_domain: linkedin.com
+- date: TODO_HUMAN (1 month ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-0e0410a2f18f488d
+  headline_aliases:
+  - Data Governance Crucial for AI Readiness and Compliance ...
+  kind: TODO_HUMAN
+  source_domain: linkedin.com
+- date: '2026-08-11'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-5ec0d093fe5a9a52
+  headline_aliases:
+  - Archive360® Named to the Inc. 5000 List of Fastest-Growing Private Companies in
+    America 2026
+  kind: TODO_HUMAN
+  source_domain: morningstar.com
+- date: '2026-08-11'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-d884f3128495a7e8
+  headline_aliases:
+  - Archive360® Named to the Inc. 5000 List of Fastest-Growing Private Companies in
+    America 2026 | Morningstar
+  kind: TODO_HUMAN
+  source_domain: morningstar.com
+- date: '2026-07-07'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-a477af535345b9ca
+  headline_aliases:
+  - Archive360 - 2026 Company Profile, Funding & Competitors
+  kind: TODO_HUMAN
+  source_domain: tracxn.com
+- date: '2026-06-10'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-6417398299b1bea3
+  headline_aliases:
+  - Archive360 Achieves FedRAMP Authorization
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2026-06-10'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-b1e1133f6a0a8c0f
+  headline_aliases:
+  - Archive360® Achieves FedRAMP® Authorization.
+  kind: TODO_HUMAN
+  source_domain: archive360.com
+- date: '2026-04-22'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-dded6e4351f9beda
+  headline_aliases:
+  - Talk to an Expert
+  kind: TODO_HUMAN
+  source_domain: archive360.com
+- date: '2026-04-20'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-4a018b0f04a36bee
+  headline_aliases:
+  - UK launches GBP £500m sovereign AI fund amid doubts
+  kind: TODO_HUMAN
+  source_domain: itbrief.co.uk
+- date: '2026-01-27'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-077dde86ccfa3af4
+  headline_aliases:
+  - 'Archive360 Transforms From Archive Tool To AI Entry Point: CEO'
+  kind: TODO_HUMAN
+  source_domain: crn.com
+- date: '2026-01-22'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-04f12a80855bb7f1
+  headline_aliases:
+  - Application & Data Retirement Solution.
+  kind: TODO_HUMAN
+  source_domain: archive360.com
+- date: '2025-10-15'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-8d81003356dfd2e6
+  headline_aliases:
+  - Archive360 A Leader in Gartner® Magic Quadrant™ a 2nd ...
+  kind: TODO_HUMAN
+  source_domain: archive360.com
+- date: '2025-10-15'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-e219bb4080d0b282
+  headline_aliases:
+  - 2025 Gartner® Magic Quadrant™.
+  kind: TODO_HUMAN
+  source_domain: archive360.com
+- date: '2025-10-14'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-a713f0783da8dbde
+  headline_aliases:
+  - Archive360 & Microsoft Deliver Agentic AI for Policy ...
+  kind: TODO_HUMAN
+  source_domain: archive360.com
+- date: '2025-10-08'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-7c4e3ddee8e97d1c
+  headline_aliases:
+  - How to turn your archive into an AI-ready hub with Archive360
+  kind: TODO_HUMAN
+  source_domain: linkedin.com
+- date: '2025-09-29'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-1b5010a1e9258686
+  headline_aliases:
+  - Archive360
+  kind: TODO_HUMAN
+  source_domain: sapinsider.org
+- date: '2025-09-18'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-f11c841e4ca3ebb8
+  headline_aliases:
+  - RISE with SAP and Data Archiving Best Practice.
+  kind: TODO_HUMAN
+  source_domain: archive360.com
+- date: '2025-08-21'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-f02bec272d0b38fe
+  headline_aliases:
+  - Neev Data
+  kind: TODO_HUMAN
+  source_domain: facebook.com
+- date: '2025-05-13'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-8a87d8a8bf1528c9
+  headline_aliases:
+  - Archive360 Launches a Governed AI-Ready Data Cloud to Meet Future Needs of the
+    Modern Enterprise
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2019-05-30'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-d11ecb4aaf61d79c
+  headline_aliases:
+  - Archive360 Achieves 331 Percent Growth and Continues Expansion Trajectory
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2017-12-18'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-73bd1a94bd882059
+  headline_aliases:
+  - 'News Bits: Cisco, Cloudian, Axis, Rubrik, Archive360, Apposite, Toshiba, StreamSets,
+    & Instana'
+  kind: TODO_HUMAN
+  source_domain: storagereview.com
+recent_window_days: 180

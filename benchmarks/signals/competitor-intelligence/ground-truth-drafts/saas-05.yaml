@@ -1,0 +1,91 @@
+# DRAFT ground truth - TODO_HUMAN: review every entry, then move this file to
+# ../ground-truth/ only after a human seals it. Generated from the signal dossier;
+# nothing here is validated. Delete candidates that are not real, fix dates and
+# kinds, keep evidence_ids pointing at the Evidence that proves the entry.
+# subject: Archive360 (archive360.com); as_of 2026-08-18
+# every 'named' entry is a candidate token; strip the TODO_HUMAN prefix to keep,
+# move to 'inferred' when no Evidence compares it with the subject, or delete.
+# candidate evidence: {"modernemail": ["ev-6275974389e38207"], "archiving": ["ev-6275974389e38207"], "regulatedindustries": ["ev-6275974389e38207"], "unified": ["ev-6275974389e38207"], "governance": ["ev-6275974389e38207"], "sas": ["ev-aaeba31b2ebb16e4", "ev-d8200f247a1956b1"], "management": ["ev-aaeba31b2ebb16e4", "ev-d8200f247a1956b1", "ev-eaccb23e98b43975"], "additionally": ["ev-aaeba31b2ebb16e4"], "reviewspricing": ["ev-aaeba31b2ebb16e4"], "jan": ["ev-393e3e7ded688279"], "archive360transforms": ["ev-393e3e7ded688279"], "entrypoint": ["ev-393e3e7ded688279"], "unifiedarchive": ["ev-3d545b6c807fa1c6"], "migration": ["ev-3d545b6c807fa1c6", "ev-de51373ea57d5593", "ev-eaccb23e98b43975"], "mvp": ["ev-3d545b6c807fa1c6"], "archive360open": ["ev-3d545b6c807fa1c6"], "saasarchives": ["ev-3d545b6c807fa1c6"], "standard": ["ev-3d545b6c807fa1c6"], "manage": ["ev-3d545b6c807fa1c6"], "limited": ["ev-3d545b6c807fa1c6"], "records": ["ev-3d545b6c807fa1c6"], "vault": ["ev-4e00b49c90182cec", "ev-8f113f48b07cce21", "ev-eaccb23e98b43975"], "arctera": ["ev-8f113f48b07cce21"], "proofpointarchive": ["ev-8f113f48b07cce21"], "barracudamessage": ["ev-8f113f48b07cce21"], "archiver": ["ev-8f113f48b07cce21"], "smarsh": ["ev-0bb70966ceb5cfb7", "ev-8f113f48b07cce21"], "apr": ["ev-4e00b49c90182cec", "ev-d0644a9ba97b06ff"], "evaluate": ["ev-4e00b49c90182cec"], "archon": ["ev-4e00b49c90182cec", "ev-de51373ea57d5593"], "mimecast": ["ev-4e00b49c90182cec"], "proofpoint": ["ev-4e00b49c90182cec"], "migrate": ["ev-eaccb23e98b43975"], "se
+company_id: saas-05
+evidence_ids:
+- ev-0c8cabd1fc6337a7
+inferred: []
+named:
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Vault
+- aliases: []
+  domain: null
+  name: TODO_HUMAN SAS
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Apr
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Archon
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Management
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Migration
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Jan
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Smarsh
+- aliases: []
+  domain: null
+  name: TODO_HUMAN MessageSolution
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Yext
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Response
+- aliases: []
+  domain: null
+  name: TODO_HUMAN ZTNA
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Protection Platforms
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Prevention
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Analyze
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Store
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Modern Email
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Archiving
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Regulated Industries
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Unified
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Governance
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Additionally
+- aliases: []
+  domain: null
+  name: TODO_HUMAN ReviewsPricing
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Archive360 Transforms
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Entry Point
+- aliases: []
+  domain: archondatastore.com
+  name: TODO_HUMAN archondatastore.com

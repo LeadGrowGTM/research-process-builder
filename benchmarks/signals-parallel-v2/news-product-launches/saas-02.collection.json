@@ -1,0 +1,149 @@
+{
+  "collected_at": "2026-08-19T12:23:09.066849-04:00",
+  "company_id": "saas-02",
+  "enrichment_id": "news-product-launches",
+  "entries": [
+    {
+      "category": "business process automation",
+      "company_name": "AgilePoint",
+      "domain": "agilepoint.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 1,
+      "fallbacks": [],
+      "mode": "news",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "agilepoint.com news",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "AgilePoint \"press release\" OR \"announces\" OR \"newsroom\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 8,
+      "status": "ok",
+      "step": "search",
+      "target": "AgilePoint launches OR \"new feature\" OR \"introducing\" OR \"now available\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://blog.agilepoint.com/agilepoint-intelligent-process-automation-app-for-sharepoint-online/",
+      "waterfall_level": 2
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://blog.agilepoint.com/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.prnewswire.com/news-releases/agilepoint-celebrates-the-future-of-automation-301165429.html",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://blog.agilepoint.com/author/nshrivastava79/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.agilepoint.com/sovereign-enterprise-ai",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.agilepoint.com/real-time-agentic-governance",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://agilepoint.com/blog",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agilepoint.com/news: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agilepoint.com/news"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agilepoint.com/newsroom: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agilepoint.com/newsroom"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agilepoint.com/press: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agilepoint.com/press"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agilepoint.com/changelog: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agilepoint.com/changelog"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agilepoint.com/product-updates: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agilepoint.com/product-updates"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agilepoint.com/whats-new: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agilepoint.com/whats-new"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 32,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.015",
+  "signal_evidence": 35
+}

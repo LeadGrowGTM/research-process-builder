@@ -37,9 +37,10 @@ EXPERIMENT_ENRICHMENTS = (
     "icp-persona-analysis",
     "growth-signals",
 )
+# Approved models only (Mitch, 2026-08-18): never the full gpt-4.1 tier or the
+# gpt-4o family.
 EXPERIMENT_MODELS = (
     "gpt-5-nano",
-    "gpt-4o-mini",
     "gpt-4.1-mini",
     "gpt-5.6-luna",
 )

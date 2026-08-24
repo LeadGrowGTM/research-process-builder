@@ -1,0 +1,218 @@
+# DRAFT ground truth - TODO_HUMAN: review every entry, then move this file to
+# ../ground-truth/ only after a human seals it. Generated from the signal dossier;
+# nothing here is validated. Delete candidates that are not real, fix dates and
+# kinds, keep evidence_ids pointing at the Evidence that proves the entry.
+# subject: BigPanda (bigpanda.io)
+as_of: '2026-08-18'
+company_id: saas-08
+events:
+- date: TODO_HUMAN (8 months ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-50743903a55b89b8
+  headline_aliases:
+  - Agentic ITOps Boosts Efficiency with BigPanda | BigPanda ...
+  kind: TODO_HUMAN
+  source_domain: linkedin.com
+- date: TODO_HUMAN (3 months ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-8cebe51941112d5e
+  headline_aliases:
+  - 'BigPanda + ServiceNow: Autonomous IT Operations in Action'
+  kind: TODO_HUMAN
+  source_domain: youtube.com
+- date: TODO_HUMAN (2 weeks ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-7d0b1c6be1cfb392
+  headline_aliases:
+  - Mozaic announces partnership with BigPanda
+  kind: TODO_HUMAN
+  source_domain: consultancy.uk
+- date: TODO_HUMAN (1 month ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-d262ab7a6a1c883b
+  headline_aliases:
+  - Introducing AI Incident Prevention from BigPanda
+  kind: TODO_HUMAN
+  source_domain: youtube.com
+- date: '2026-08-03'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-7bcfedacaf007ad4
+  headline_aliases:
+  - Mozaic Announces Partnership with BigPanda to Bring AI ...
+  kind: TODO_HUMAN
+  source_domain: mozaic.net
+- date: '2026-04-13'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-59fde914e9c5545c
+  headline_aliases:
+  - An autonomous L1 operator for your enterprise
+  kind: TODO_HUMAN
+  source_domain: bigpanda.io
+- date: '2026-04-08'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-8de1fcf5ac6abe52
+  headline_aliases:
+  - Come meet us at ServiceNow Knowledge 2026
+  kind: TODO_HUMAN
+  source_domain: bigpanda.io
+- date: '2026-04-01'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-576d6bbe725649f1
+  headline_aliases:
+  - BigPanda Partners with ServiceNow
+  kind: TODO_HUMAN
+  source_domain: bigpanda.io
+- date: '2026-04-01'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-29ce3aa5dc93077e
+  headline_aliases:
+  - BigPanda Partners with ServiceNow to Extend ...
+  kind: TODO_HUMAN
+  source_domain: businesswire.com
+- date: '2026-03-24'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-065136200a773325
+  headline_aliases:
+  - 2024 Release Notes
+  kind: TODO_HUMAN
+  source_domain: docs.bigpanda.io
+- date: '2026-03-23'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-7249918756ec7c48
+  headline_aliases:
+  - BigPanda Presse und Newsroom
+  kind: TODO_HUMAN
+  source_domain: bigpanda.io
+- date: '2025-12-16'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-d53e9f00edd5aba4
+  headline_aliases:
+  - BigPanda introduces AI-powered external observability ...
+  kind: TODO_HUMAN
+  source_domain: bigpanda.io
+- date: '2025-12-15'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-2dcd7b71d5ecf763
+  headline_aliases:
+  - 2025 Release Notes
+  kind: TODO_HUMAN
+  source_domain: docs.bigpanda.io
+- date: '2025-12-11'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-f148de46a4c27169
+  headline_aliases:
+  - Empower incident management teams with AI assistance
+  kind: TODO_HUMAN
+  source_domain: bigpanda.io
+- date: '2025-12-05'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-346b6f3108037ea3
+  headline_aliases:
+  - Introducing the Triage Agent for agentic L1 operations
+  kind: TODO_HUMAN
+  source_domain: bigpanda.io
+- date: '2025-11-10'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-b09f6fe475b99231
+  headline_aliases:
+  - Advancing Agentic IT Operations with AI
+  kind: TODO_HUMAN
+  source_domain: bigpanda.io
+- date: '2025-10-01'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-65c33d728ddec67e
+  headline_aliases:
+  - The BigPanda observability tool rationalization framework
+  kind: TODO_HUMAN
+  source_domain: bigpanda.io
+- date: '2025-05-28'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-608c36c099c99174
+  headline_aliases:
+  - BigPanda Launches Agentic IT Operations to Bring Intelligent Automation to the
+    $200 billion ITOps Market
+  kind: TODO_HUMAN
+  source_domain: businesswire.com
+- date: '2024-03-18'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-54dfb82b5799e37e
+  headline_aliases:
+  - BigPanda Appoints Tom Melzl as Chief Revenue Officer
+  kind: TODO_HUMAN
+  source_domain: businesswire.com
+- date: '2022-04-07'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-d597bd66956502bf
+  headline_aliases:
+  - BigPanda Names Rick Underwood Chief Revenue Officer
+  kind: TODO_HUMAN
+  source_domain: globenewswire.com
+- date: '2022-01-12'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-6e730a5594f7ad61
+  headline_aliases:
+  - BigPanda Transforms Into A Unicorn After $190M Raise
+  kind: TODO_HUMAN
+  source_domain: news.crunchbase.com
+- date: '2022-01-12'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-a57d089db58e42a3
+  headline_aliases:
+  - BigPanda gets its horn after securing $190M in fresh capital
+  kind: TODO_HUMAN
+  source_domain: techcrunch.com
+- date: '2022-01-12'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-c5181fa06b29b44e
+  headline_aliases:
+  - AIOps vendor BigPanda raises $190 million
+  kind: TODO_HUMAN
+  source_domain: techtarget.com
+- date: '2022-01-12'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-10a7d91e979af116
+  headline_aliases:
+  - BigPanda Raises $190 Million in Funding at $1.2 Billion Valuation
+  kind: TODO_HUMAN
+  source_domain: globenewswire.com
+- date: '2015-06-25'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-3543ca5fa9b968cc
+  headline_aliases:
+  - BigPanda® Now Integrated With Librato® Platform
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2015-05-21'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-5a8ee95f763cd576
+  headline_aliases:
+  - Wix Wins With BigPanda
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+recent_window_days: 180

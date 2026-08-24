@@ -1,0 +1,100 @@
+# DRAFT ground truth - TODO_HUMAN: review every entry, then move this file to
+# ../ground-truth/ only after a human seals it. Generated from the signal dossier;
+# nothing here is validated. Delete candidates that are not real, fix dates and
+# kinds, keep evidence_ids pointing at the Evidence that proves the entry.
+# subject: Built (getbuilt.com); as_of 2026-08-18
+# every 'named' entry is a candidate token; strip the TODO_HUMAN prefix to keep,
+# move to 'inferred' when no Evidence compares it with the subject, or delete.
+# candidate evidence: {"jul": ["ev-5ecec11f62cf7c97"], "constructionfinancial": ["ev-3c44e5ea24a8cf7c", "ev-5ecec11f62cf7c97"], "management": ["ev-3c44e5ea24a8cf7c", "ev-5ecec11f62cf7c97"], "owners": ["ev-5ecec11f62cf7c97"], "specializedfinance": ["ev-5ecec11f62cf7c97"], "layer": ["ev-5ecec11f62cf7c97"], "fullerp": ["ev-5ecec11f62cf7c97"], "replacement": ["ev-5ecec11f62cf7c97"], "evaluate": ["ev-5ecec11f62cf7c97"], "options": ["ev-5ecec11f62cf7c97"], "accountingerps": ["ev-5ecec11f62cf7c97"], "yardi": ["ev-5ecec11f62cf7c97"], "sageintacct": ["ev-5ecec11f62cf7c97"], "nov": ["ev-f27faf10059648ce", "ev-f85c154d147abbec"], "autonomousconstruction": ["ev-f85c154d147abbec"], "lendingagent": ["ev-f85c154d147abbec"], "constructionlending": ["ev-e2e404eb9754471d"], "windows": ["ev-e2e404eb9754471d"], "jun": ["ev-3da503ba73604aac", "ev-83aaa4cf4fbc9336"], "constructionplatforms": ["ev-3da503ba73604aac"], "spreadsheets": ["ev-3da503ba73604aac"], "switch": ["ev-3da503ba73604aac"], "updatedjun": ["ev-3da503ba73604aac"], "keyinsights": ["ev-3da503ba73604aac"], "purpose": ["ev-3da503ba73604aac"], "builtlaunches": ["ev-f27faf10059648ce"], "drawagent": ["ev-f27faf10059648ce"], "approveconstruction": ["ev-f27faf10059648ce"], "loan": ["ev-f27faf10059648ce"], "demo": ["ev-b40ead1a59979dec"], "brightspace": ["ev-b40ead1a59979dec"], "blackboard": ["ev-b40ead1a59979dec"], "trello": ["ev-b40ead1a59979dec"], "builders": ["ev-3c44e5ea24a8cf7c"], "connect": ["ev-3c44e5ea24a8cf7c"], "buildertrend": ["ev-3c44e5ea24a8cf7c"], "
+company_id: saas-10
+evidence_ids:
+- ev-ce4724cc20ef689e
+inferred: []
+named:
+- aliases: []
+  domain: null
+  name: TODO_HUMAN BuiltWith
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Nov
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Jun
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Bloomberry
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Handle
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Open
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Jul
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Construction Financial
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Management
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Construction Lending
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Windows
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Construction Platforms
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Spreadsheets
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Buildertrend
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Built Technologies
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Sep
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Apr
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Does
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Oct
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Coupa
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Bought
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Mar
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Sign
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Log
+- aliases: []
+  domain: null
+  name: TODO_HUMAN People
+- aliases: []
+  domain: bloomberry.com
+  name: TODO_HUMAN bloomberry.com
+- aliases: []
+  domain: builtwith.com
+  name: TODO_HUMAN builtwith.com
+- aliases: []
+  domain: builtvsbought.com
+  name: TODO_HUMAN builtvsbought.com
+- aliases: []
+  domain: styles.redditmedia.com
+  name: TODO_HUMAN styles.redditmedia.com

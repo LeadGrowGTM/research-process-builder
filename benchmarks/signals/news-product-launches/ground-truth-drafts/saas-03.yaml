@@ -1,0 +1,122 @@
+# DRAFT ground truth - TODO_HUMAN: review every entry, then move this file to
+# ../ground-truth/ only after a human seals it. Generated from the signal dossier;
+# nothing here is validated. Delete candidates that are not real, fix dates and
+# kinds, keep evidence_ids pointing at the Evidence that proves the entry.
+# subject: Aligned (alignedup.com)
+as_of: '2026-08-18'
+company_id: saas-03
+events:
+- date: TODO_HUMAN (6 months ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-37184dca15d02f6f
+  headline_aliases:
+  - Aligned Launches AI Deal Workspace for Sales Execution ...
+  kind: TODO_HUMAN
+  source_domain: linkedin.com
+- date: TODO_HUMAN (6 months ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-e6f3927d11c7b319
+  headline_aliases:
+  - Introducing The Aligned AI Deal Workspace
+  kind: TODO_HUMAN
+  source_domain: youtube.com
+- date: TODO_HUMAN (4 weeks ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-1413b3d1590ec55f
+  headline_aliases:
+  - Aligned Data Centers Acquired by AIP, MGX, and GIP for $40 ...
+  kind: TODO_HUMAN
+  source_domain: linkedin.com
+- date: TODO_HUMAN (1 month ago)
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-564f66db29e563a6
+  headline_aliases:
+  - Aligned Closes $60M Series B to Solidify Leadership Position as the System of
+    Action for B2B Sales
+  kind: TODO_HUMAN
+  source_domain: globenewswire.com
+- date: '2026-07-22'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-01ea5f511dfa68ce
+  headline_aliases:
+  - BlackRock's GIP, Microsoft-backed AI group buy Aligned ...
+  kind: TODO_HUMAN
+  source_domain: esgdive.com
+- date: '2026-07-21'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-6b7cc0e678cbfe8f
+  headline_aliases:
+  - Aligned Data Centers Acquisition Closes at $40 Billion
+  kind: TODO_HUMAN
+  source_domain: aligneddc.com
+- date: '2026-07-21'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-d32acfef81d0abe3
+  headline_aliases:
+  - Macquarie Asset Management Announces Successful ...
+  kind: TODO_HUMAN
+  source_domain: finance.yahoo.com
+- date: '2026-07-20'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-362a0ebc1a729056
+  headline_aliases:
+  - Macquarie Asset Management Announces Successful ...
+  kind: TODO_HUMAN
+  source_domain: businesswire.com
+- date: '2026-06-09'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-86e8e899c23a0c3d
+  headline_aliases:
+  - Introducing Cross-Dataset Alignment in NavVis
+  kind: TODO_HUMAN
+  source_domain: navvis.com
+- date: '2025-11-09'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-83a6a6f33e974de0
+  headline_aliases:
+  - 'Introducing the Aligned eQMS: Your Complete Digital Quality ...'
+  kind: TODO_HUMAN
+  source_domain: aligned.ch
+- date: '2025-10-15'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-bdb590d6560d0469
+  headline_aliases:
+  - Macquarie Asset Management to lead sale of Aligned Data ...
+  kind: TODO_HUMAN
+  source_domain: macquarie.com
+- date: '2025-10-15'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-73df3359e0535f16
+  headline_aliases:
+  - Aligned Equity Acquisition and its Industry Impact
+  kind: TODO_HUMAN
+  source_domain: aligneddc.com
+- date: '2025-10-15'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-1108184755dca6dc
+  headline_aliases:
+  - AIP, BlackRock's GIP, MGX to buy Aligned Data Centers
+  kind: TODO_HUMAN
+  source_domain: tmtfinance.com
+- date: '2025-02-19'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-a2ca3aa9f16b7bc3
+  headline_aliases:
+  - Aligned Earns Spot on G2's 2025 Best Software Awards for Top Sales Software
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+recent_window_days: 180

@@ -1,0 +1,97 @@
+# Sealed ground truth - BigPanda (bigpanda.io), authored 2026-08-18.
+# named = explicitly positioned against BigPanda by cited Evidence (Gartner, G2,
+# SoftwareReviews alternatives listings; pagerduty.com, logicmonitor.com, sherlocks.ai,
+# bitsentry.ai "vs" pages; PeerSpot BigPanda vs Splunk ITSI; Keep docs comparison;
+# technologymatch three-way comparison). ServiceNow ITOM and Datadog are listed by
+# SoftwareReviews as competitors although BigPanda's own compare page and Datadog docs
+# frame them as complements/integrations - kept as named (conflict).
+# Excluded: theirstack co-occurrence tokens (Azure Monitor, Zabbix, Wireshark, Kibana),
+# the reddit poster's own monitoring stack (SCOM, OEM, Zenoss, Nagios, New Relic),
+# the truncated "New ..." token on SoftwareReviews.
+company_id: saas-08
+evidence_ids:
+- ev-1231a4bab7ee6698
+- ev-5c8d5a7d323879c1
+- ev-5587beea78c22cdf
+- ev-50590cd1efe59cf8
+- ev-e2ae55d7c9e217da
+- ev-99ea4e03f2aa2f96
+- ev-a58ede61ebf153fa
+- ev-36e200dc6b88397d
+- ev-5d38c1f247bb205d
+- ev-2ba11112b47e6f92
+- ev-17bb3639a1379109
+- ev-cc200fdac2f17335
+- ev-08e297fe86900fbb
+- ev-41d87e2821f22ef2
+- ev-0e8db007820e9005
+- ev-62823025cdbb8738
+- ev-14602457fc9b2c76
+- ev-832e604606263f1e
+- ev-5eedfc88365be869
+- ev-4acfb91998c8f2e2
+- ev-8b36ae0329f6e0d0
+- ev-fae3d920cd416bb3
+- ev-dfc46234260c904c
+- ev-2e5920a97aeb56b9
+- ev-e1d658b8654f91f3
+- ev-94fe239ae597b491
+named:
+- name: PagerDuty
+  aliases: []
+  domain: pagerduty.com
+- name: Splunk IT Service Intelligence (ITSI)
+  aliases: [Splunk ITSI, Splunk IT Service Intelligence, Splunk, ITSI]
+  domain: splunk.com
+- name: ScienceLogic AI Platform
+  aliases: [ScienceLogic]
+  domain: sciencelogic.com
+- name: BMC Helix Observability & AIOps
+  aliases: [BMC Helix, BMC, BMC Helix Observability and AIOps]
+  domain: bmc.com
+- name: ignio
+  aliases: [Digitate ignio]
+  domain: null
+- name: Better Stack
+  aliases: [BetterStack]
+  domain: betterstack.com
+- name: Edwin AI
+  aliases: [LogicMonitor Edwin AI]
+  domain: null
+- name: LogicMonitor
+  aliases: []
+  domain: logicmonitor.com
+- name: Splunk AppDynamics
+  aliases: [AppDynamics]
+  domain: appdynamics.com
+- name: Dynatrace
+  aliases: []
+  domain: dynatrace.com
+- name: Datadog
+  aliases: []
+  domain: datadoghq.com
+- name: ServiceNow IT Operations Management
+  aliases: [ServiceNow ITOM, ServiceNow]
+  domain: servicenow.com
+- name: IBM Cloud Pak for AIOps
+  aliases: [IBM]
+  domain: null
+- name: Sherlocks.ai
+  aliases: [Sherlocks]
+  domain: sherlocks.ai
+- name: BitSentry
+  aliases: []
+  domain: bitsentry.ai
+- name: Moogsoft
+  aliases: []
+  domain: moogsoft.com
+- name: Keep
+  aliases: [KeepHQ]
+  domain: keephq.dev
+inferred:
+- name: OpsGenie
+  aliases: [Opsgenie]
+  domain: null
+- name: VictorOps
+  aliases: []
+  domain: null

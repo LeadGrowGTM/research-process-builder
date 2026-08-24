@@ -1,0 +1,9 @@
+as_of: '2026-08-18'
+channels:
+  google:
+    evidence_ids:
+    - ev-10ba100aac3745d9
+    status: active
+  meta:
+    status: unknown
+company_id: saas-03

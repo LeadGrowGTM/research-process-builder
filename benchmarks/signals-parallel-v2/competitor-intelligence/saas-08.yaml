@@ -1,0 +1,825 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: identity
+  value: BigPanda
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: description
+  value: Our Story - About BigPanda | BigPanda --> en --> en --> de Service + Support
+    Service Community Documentation Customer Support Platform Status Support Education
+    & Certification Professional Services Login Platform Agentic ITOps Platform The
+    BigPanda agentic ITOps platform uses AI to automate IT detection, triage, and
+    resolution, improving operational efficiency and reducing downtime and costs.
+    Explore the Platform Platform Overview AI Incident Prevention AI Detection & Response
+    L1 Agent AI Incide
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: offers
+  value: incident intelligence
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: icp
+  value: it teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-8d10c83bbc00a2c9
+  - ev-09e959f239942a36
+  - ev-73b6e24a7ac9c3a5
+  field: personas
+  value: it teams
+  visibility: message_safe
+company_id: saas-08
+corrections: []
+evidence:
+- content_hash: 8d10c83bbc00a2c9b190962859a301302faeb34990f83a1ceedfd0bdbb22bbf5
+  evidence_id: ev-8d10c83bbc00a2c9
+  excerpt: Our Story - About BigPanda | BigPanda --> en --> en --> de Service + Support
+    Service Community Documentation Customer Support Platform Status Support Education
+    & Certification Professional Services Login Platform Agentic ITOps Platform The
+    BigPanda agentic ITOps platform uses AI to automate IT detection, triage, and
+    resolution, improving operational efficiency and reducing downtime and costs.
+    Explore the Platform Platform Overview AI Incident Prevention AI Detection & Response
+    L1 Agent AI Incident Assistant IT Knowledge Graph Integrations Jira ServiceNow
+    All Integrations Solutions Transform ITSM with Agentic ITOps Learn how enterprises
+    can empower incident management teams with AI assistance by integrating agentic
+    AI into their incident management strategy. Get the e-book Solutions for Automating
+    L1 Detection & Response Empowering L2, L3, and SRE with AI Assistance Predicting
+    & Preventing Incidents & Outages Industries Financial Services Insurance Managed
+    Service Providers Manufacturing Retail Airlines All Industries My role is IT Operations
+    Incident Management IT Service Management Site Reliability Engineering Pricing
+    Customers Resources Derisking IT Change Management with Agentic AI Discover how
+    agentic AI transforms the IT change management process to predict high-risk changes,
+    prevent incidents, and protect engineering time. Read the White Paper Resource
+    Type AIOps Blog Case Studies E-books Webinars & Events All Resources Resource
+    Topic Agentic ITOps AIOps Alert Intelligence Analytics Automation Incident Management
+    Incident Prevention Integration ITOps Monitoring Customer Resources Customer Support
+    Professional Services BigPanda Education Company Careers We’re looking for talented,
+    passionate, creative, and fun people to join our embarrassment of Pandas. (Yes,
+    that’s really what a group of pandas is called!) Learn More About Us Our Story
+    Leadership Investors Partners Values and Culture Careers Media and Recognition
+    Awards Analysts Reports Newsroom Get a demo Con
+  retrieved_at: '2026-08-12T21:00:55.661668+00:00'
+  url: https://www.bigpanda.io/company/
+- content_hash: 09e959f239942a367999bcbf1f8343b79d2a993615867b04576b49ba7ee95647
+  evidence_id: ev-09e959f239942a36
+  excerpt: 'BigPanda | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now BigPanda Software Development Redwood City, California
+    53,705 followers Automate L1 operations. Augment incident response teams. Stop
+    IT incidents before they happen. See jobs Follow Discover all 332 employees Report
+    this company About us BigPanda keeps the digital world running with Agentic AI,
+    artificial intelligence that enables autonomous systems to make decisions and
+    perform tasks without constant human intervention. Beyond other AIOps solutions,
+    the BigPanda platform responds to and prevents IT incidents at machine speed,
+    improving operational efficiency and delivering exceptional service reliability.
+    Website http://bigpanda.io External link for BigPanda Industry Software Development
+    Company size 201-500 employees Headquarters Redwood City, California Type Privately
+    Held Founded 2012 Specialties IT Operations, IT Alert Management, DevOps, Data
+    Science, ITOM, IT Incident Management, AIOps, Machine Learning, ITOA, IT Event
+    Management, Service Operations, IT Monitoring, IT Automation, and ITOps Products
+    BigPanda BigPanda AIOps Platforms BigPanda keeps the digital world running by
+    transforming reactive, manual IT processes into proactive, intelligent automation.
+    The agentic IT operations platform uses AI to detect, respond to, and prevent
+    IT incidents at machine speed, improving operational efficiency and delivering
+    exceptional service reliability. AI Detection and Response: Automate L1 operations
+    and stop incidents before they escalate. Utilize real-time signals and intelligent
+    automation to minimize downtime, eliminate noise, and resolve incidents more efficiently
+    with AI that adapts to your specific environment. AI Incident Assistant: Give
+    incident escalation teams an always-on AI partner to improve collaboration, accelerate
+    investigation, and automate resolution. AI Incident Prevention: Automated change
+    analysis enables proactive and scalable change govern'
+  retrieved_at: '2026-08-12T21:00:56.445305+00:00'
+  url: https://www.linkedin.com/company/bigpanda
+- content_hash: 73b6e24a7ac9c3a5cc85eae81b5d52db1e7d0e5b4d8863ad3066f0a204c975c1
+  evidence_id: ev-73b6e24a7ac9c3a5
+  excerpt: 'AIOps startup BigPanda raises Series E extension, bringing its total capital
+    to $340M TechCrunch Desktop Logo TechCrunch Mobile Logo Latest Startups Venture
+    Apple Security AI Apps Disrupt 2026 Events Podcasts Newsletters Search Submit
+    Site Search Toggle Mega Menu Toggle Topics Latest AI Amazon Apps Biotech & Health
+    Climate Cloud Computing Commerce Crypto Enterprise EVs Fintech Fundraising Gadgets
+    Gaming Google Government & Policy Hardware Instagram Layoffs Media & Entertainment
+    Meta Microsoft Privacy Robotics Security Social Space Startups TikTok Transportation
+    Venture More from TechCrunch Staff Events Startup Battlefield StrictlyVC Newsletters
+    Podcasts Videos Partner Content TechCrunch Brand Studio Contact Us Image Credits:
+    Ralwel / Getty Images AIOps startup BigPanda raises Series E extension, bringing
+    its total capital to $340M Kyle Wiggers 4:00 AM PDT · August 17, 2022 BigPanda
+    , a startup developing AI to audit changes in IT environments and recommend how
+    to fix them, has raised $20 million in an extension of its Series E round. UBS
+    Next and Wells Fargo Strategic Capital contributed to the tranche, bringing BigPanda’s
+    total raised to $340 million. The company’s valuation remains unchanged at $1.2
+    billion. As my colleague Christine Hall recently reported, BigPanda works to prevent
+    corporate network outages by analyzing data from observability and monitoring
+    services. The platform can automate aspects of incident response, like ticketing,
+    and optionally connect to third-party runbook automation tools to run automated
+    workflows. BigPanda also provides analytics to track incident trends and metrics
+    and to enable teams to measure progress toward company goals. BigPanda was founded
+    in 2012 by Assaf Resnick and Elik Eizenberg. Resnick was an analyst at Moody’s
+    before becoming a principal at Sequoia Capital and a member at Jibe Ventures.
+    Eizenberg, formerly head of IT operations at IDF, worked on algorithms and software
+    at stock-trading startup MarketWindows prior to j'
+  retrieved_at: '2026-08-12T21:00:56.976508+00:00'
+  url: https://techcrunch.com/2022/08/17/aiops-startup-bigpanda-raises-series-e-extension-bringing-its-total-capital-to-340m/
+- content_hash: df0fc65303ecb7a3aaff07ebebef12d1bfb1c818b2340c656147941a53f3df55
+  evidence_id: ev-df0fc65303ecb7a3
+  excerpt: 'Title: BigPanda Alternatives and Competitors | AIOps
+
+    Source: softwarereviews.com
+
+    Snippet: # AIOps ## Best Alternatives and Competitors to BigPanda ### Reviews
+    Say #### Reviews Say Compared to BigPanda , Splunk AppDynamics is: More Transparent
+    Better at Integrating Easier to Implement Easier to Customize More Respectful
+    Less Innovative Optimize hybrid and on-prem application performance with full-stack
+    observability linked to business performance. Compare Software ... Compare Software
+    [#### Cisco Systems ### Splunk IT Service Intelligence](https://www.softwarereviews.com/products/cisco-systems-splunk-it-service-intelligence?c_id=215)
+    7.3 Composite Score + 89 Emotional Footprint 39 Reviews Compared to BigPanda ,
+    Splunk IT Service Intelligence is: Less Caring Worse at Support Less Inspiring
+    ... ## Most Popular BigPanda Comparisons * Dynatrace Logo Dynatrace Compare *
+    Splunk AppDynamics Logo Splunk AppDynamics Compare * Splunk IT Service Intelligence
+    Logo Splunk IT Service Intelligence Compare * New Relic Logo New Relic Compare
+    * VuNet vuSmartMaps Logo VuNet vuSmartMaps Compare * Datadog Logo Datadog Compare'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.softwarereviews.com/categories/215/products/7293/alternatives
+- content_hash: ecce0f8becf71cccc3de7917015258e4a36e5751f71e19228d55bb795edd0600
+  evidence_id: ev-ecce0f8becf71ccc
+  excerpt: 'Title: Top BigPanda Alternatives & Competitors 2026
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top BigPanda alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top BigPanda Alternatives & Competitors 2026 | Gartner Peer Insights image:
+    https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [PagerDuty](https://www.gartner.com/reviews/product/pagerduty-611415551)
+    > 2. [Splunk IT Service Intelligence (ITSI)](https://www.gartner.com/reviews/product/splunk-it-service-intelligence)
+    > 3. [ScienceLogic AI Platform](https://www.gartner.com/reviews/product/sciencelogic-ai-platform)
+    > 6. [Better Stack](https://www.gartner.com/reviews/product/better-stack) Best
+    tool for loginning and for incident management. We setup the dashboard quickly
+    and easily within a few mins to track performance. [Read all insights and reviews
+    for Better Stack](https://www.gartner.com/reviews/product/better-stack#reviews-ratings-section-3d37gh4)'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.gartner.com/reviews/product/bigpanda-1658620356/alternatives
+- content_hash: 66993e6275048bf5b493d47dda95b3707a70713b20cdf44a1172ea1e005a118f
+  evidence_id: ev-66993e6275048bf5
+  excerpt: 'Detected date: 2025-01-02
+
+    Title: BigPanda vs Splunk ITSI (IT Service Intelligence) (2026)
+
+    Date: 2025-01-02
+
+    Source: peerspot.com
+
+    Snippet: # BigPanda vs Splunk ITSI (IT Service Intelligence) comparison ## Mindshare
+    comparison As of **August 2026** , in the IT Alerting and Incident Management
+    category, the mindshare of **BigPanda** is **2.7%** , down from 4.7% compared
+    to the previous year. The mindshare of **Splunk ITSI (IT Service Intelligence)**
+    is **2.0%** , down from 2.4% compared to the previous year. ... ## Comparisons
+    ServiceNow vs BigPanda Logo ServiceNow vs BigPanda Compared 4% of the time More
+    BigPanda Competitors Avantra vs Splunk ITSI (IT Service Intelligence) Logo Avantra
+    vs Splunk ITSI (IT Service Intelligence) Compared 8% of the time ServiceNow IT
+    Operations Management vs Splunk ITSI (IT Service Intelligence) Logo ... Splunk
+    AppDynamics vs Splunk ITSI (IT Service Intelligence) Compared 6% of the time AWS
+    Auto Scaling vs Splunk ITSI (IT Service Intelligence) Logo AWS Auto Scaling vs
+    Splunk ITSI (IT Service Intelligence) Compared 5% of the time More Splunk ITSI
+    (IT Service Intelligence) Competitors'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.peerspot.com/products/comparisons/bigpanda_vs_splunk-itsi-it-service-intelligence
+- content_hash: d75b22d771208e2d3069fbb47509da65c73f64537d1abf4ea3b28f13448da48b
+  evidence_id: ev-d75b22d771208e2d
+  excerpt: 'Title: Top 10 BigPanda Alternatives & Competitors in 2026 | G2
+
+    Source: g2.com
+
+    Snippet: (117) 4.5 out of 5 Looking for alternatives or competitors to BigPanda?
+    AIOps Tools is a widely used technology, and many people are seeking quick, popular
+    software solutions with alerting, text generation, and proactive identification.
+    Other important factors to consider when researching alternatives to BigPanda
+    include integration and incident management. The best overall BigPanda alternative
+    is PagerDuty. Other similar apps like BigPanda are Moogsoft, Dynatrace, Datadog,
+    and Splunk Enterprise. BigPanda alternatives can be found in AIOps Tools but may
+    also be in Application Performance Monitoring (APM) Tools or Incident Management
+    Software . Show More Show Less Share linkedin twitter facebook gmail mail copy_link
+    Best Paid & Free Alternatives to BigPanda Skip to Navigation Skip to'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.g2.com/products/bigpanda/competitors/alternatives
+- content_hash: 444037864550338e82dbd20ce73c816546879d040e0301e70d284a3ac03687ff
+  evidence_id: ev-444037864550338e
+  excerpt: 'Detected date: 2026-07-18
+
+    Title: BitSentry vs BigPanda: AI Investigation or Enterprise ITOps?
+
+    Date: 2026-07-18
+
+    Source: bitsentry.ai
+
+    Snippet: # BitSentry vs BigPanda: AI Investigation or Enterprise ITOps? BigPanda
+    is a serious AI/ITOps platform. It ingests high volumes of operational events,
+    suppresses noise, correlates related alerts into incidents, and enriches those
+    incidents with topology, change, and business context. ... ## What BigPanda does
+    BigPanda’s [Incident Intelligence documentation](https://docs.bigpanda.io/en/incident-intelligence)
+    describes how teams can enrich incidents with topology, service data, recent changes,
+    and relevant runbooks to support triage. ... ## The comparison | | BigPanda |
+    BitSentry | | AI workflow | AI-assisted investigation, incident coordination,
+    and L1 operations on the BigPanda platform | AI interprets diagnostic output and
+    connects the evidence across a runbook |'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://bitsentry.ai/blog/bitsentry-vs-bigpanda-ai-sre-comparison
+- content_hash: 5b7b16572a321705f7f02cdaea8f2caf374cda0381374939150a70e7a9dfb076
+  evidence_id: ev-5b7b16572a321705
+  excerpt: 'Title: Top 10 BigPanda Alternatives 2026 - PeerSpot
+
+    Source: peerspot.com
+
+    Snippet: # Top 10 BigPanda Alternatives ## BigPanda Alternatives Report Download
+    BigPanda vs. OpsRamp Report Pricing BigPanda offers a low setup cost, while OpsRamp
+    requires a higher investment for initial setup. View comparison Pricing BigPanda
+    offers a low setup cost, while OpsRamp requires a higher investment for initial
+    setup. BigPanda Logo Splunk ITSI (IT Service Intelligence) ... BigPanda suits
+    those prioritizing efficiency, while Splunk ITSI appeals to those seeking deep
+    IT intelligence. Download BigPanda vs. Splunk ITSI (IT Service Intelligence) Report
+    Pricing BigPanda offers a more cost-effective setup, while Splunk ITSI incurs
+    a higher initial investment. View comparison Pricing BigPanda offers a more cost-effective
+    setup, while Splunk ITSI incurs a higher initial investment. BigPanda Logo'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.peerspot.com/products/bigpanda-alternatives-and-competitors
+- content_hash: 697f3931cb636fa7aa13f75c0a0207057d75e63ef0147e3394f41e226a08fd96
+  evidence_id: ev-697f3931cb636fa7
+  excerpt: 'Title: Top BigPanda Alternatives, Competitors - CB Insights
+
+    Source: cbinsights.com
+
+    Snippet: # BigPanda ## BigPanda''s alternatives and competitors Compare BigPanda
+    and New Relic + Pricing + Customer references + Products * Moogsoft Logo [Moogsoft](https://www.cbinsights.com/company/moogsoft/)
+    Analyst Briefing Submitted Moogsoft focuses on artificial intelligence for information
+    technology (IT) Operations (AIOps) incident management. ... [ScienceLogic](https://www.cbinsights.com/company/sciencelogic/)
+    Analyst Briefing Submitted ScienceLogic is a company that focuses on AI for IT
+    Operations (AIOps), providing intelligent, automated IT operations within the
+    technology sector. The company offers … See More BigPanda vs. ScienceLogic ...
+    Fabrix.ai provides Agentic artificial intelligence (AI) operational intelligence
+    solutions within the information technology (IT) operations, network operations,
+    and ar… See More BigPanda vs. Fabrix.ai View BigPanda''s entire Analyst Briefing
+    BigPanda''s Analyst Briefing includes information on:'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.cbinsights.com/company/bigpanda/alternatives-competitors
+- content_hash: 14f7649ec60781864f2cfc036e027eeb9a6c2d40bbb45d60f98a751018bc5e79
+  evidence_id: ev-14f7649ec6078186
+  excerpt: 'Detected date: 2026-08-02
+
+    Title: 7 Best BigPanda Competitors and Alternatives 2026
+
+    Date: 2026-08-02
+
+    Source: sherlocks.ai
+
+    Snippet: # 7 Best BigPanda Competitors and Alternatives 2026 ## BigPanda competitors
+    at a glance | BigPanda competitor | Best for | Core approach | Main difference
+    from BigPanda | | **PagerDuty** | On-call incident response | AIOps, paging, escalation
+    and orchestration | Extends event intelligence into responder mobilization and
+    response automation | ... ## Best BigPanda competitors and alternatives ### 2.
+    Splunk ITSI — Best BigPanda competitor for enterprise event intelligence Splunk
+    IT Service Intelligence is an AIOps platform that normalizes alerts, reduces event
+    noise, correlates related signals, and connects incidents with service health
+    and business impact. **Compared with BigPanda:** Both products aggregate cross-domain
+    events into fewer, higher-context incidents.'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.sherlocks.ai/discover/bigpanda-competitors-alternatives
+- content_hash: 137d43365c58cff8a71e1f5f36ca18634e04106692c86566bec6be5457bfc776
+  evidence_id: ev-137d43365c58cff8
+  excerpt: 'Title: Incident Intelligence
+
+    Source: docs.bigpanda.io
+
+    Snippet: 28 thg 5, 2025 — With this powerful algorithm, BigPanda can effectively
+    and accurately correlate alerts to reduce your monitoring noise by as much as
+    90 – 99%.'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://docs.bigpanda.io/docs/incident-intelligence
+- content_hash: bf3bbf8a28e139149b25617cff57d4c2eaa0a158dd176dc2ebb8ae29d18e02de
+  evidence_id: ev-bf3bbf8a28e13914
+  excerpt: 'Title: Top CloudFabrix Alternatives, Competitors
+
+    Source: cbinsights.com
+
+    Snippet: intelligence (AI) for autonomous systems in the information technology
+    (IT) operations domain. It provides a platform allowing for respon… See More Fabrix.ai
+    vs. BigPanda View Fabrix.ai''s entire Analyst Briefing Fabrix.ai''s Analyst Briefing
+    includes information on: Pricing Customer references Products Compare Fabrix.ai
+    and BigPanda New call-to-action Top 2Fabrix.ai competitors Moogsoft BigPanda Compare
+    Fabrix.ai to Competitors The company offers a platform that integrates hybrid
+    cloud monitoring, application monitoring, IT workflow automation, observability,
+    and network management. ScienceLogic''s solutions aim to support digital transformation
+    initiatives. It was founded in 2003 and is based in Reston, Virginia. BigPanda
+    Logo BigPanda BigPanda focuses on artificial intelligence (AI) for'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.cbinsights.com/company/cloudfabrix/alternatives-competitors
+- content_hash: 1a6f05d542c9214298d9bdd2eac01b38fa3f2b8b67f1781194f554681ceaebe8
+  evidence_id: ev-1a6f05d542c92142
+  excerpt: 'Query: BigPanda incident intelligence alternatives OR competitors OR "vs"
+    OR "compared to"
+
+    1. https://www.softwarereviews.com/categories/215/products/7293/alternatives
+
+    Title: BigPanda Alternatives and Competitors | AIOps
+
+    Source: softwarereviews.com
+
+    Snippet: # AIOps ## Best Alternatives and Competitors to BigPanda ### Reviews
+    Say #### Reviews Say Compared to BigPanda , Splunk AppDynamics is: More Transparent
+    Better at Integrating Easier to Implement Easier to Customize More Respectful
+    Less Innovative Optimize hybrid and on-prem application performance with full-stack
+    observability linked to business performance. Compare Software ... Compare Software
+    [#### Cisco Systems ### Splunk IT Service Intelligence](https://www.softwarereviews.com/products/cisco-systems-splunk-it-service-intelligence?c_id=215)
+    7.3 Composite Score + 89 Emotional Footprint 39 Reviews Compared to BigPanda ,
+    Splunk IT Service Intelligence is: Less Caring Worse at Support Less Inspiring
+    ... ## Most Popular BigPanda Comparisons * Dynatrace Logo Dynatrace Compare *
+    Splunk AppDynamics Logo Splunk AppDynamics Compare * Splunk IT Service Intelligence
+    Logo Splunk IT Service Intelligence Compare * New Relic Logo New Relic Compare
+    * VuNet vuSmartMaps Logo VuNet vuSmartMaps Compare * Datadog Logo Datadog Compare
+
+    2. https://www.gartner.com/reviews/product/bigpanda-1658620356/alternatives
+
+    Title: Top BigPanda Alternatives & Competitors 2026
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top BigPanda alte'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.google.com/search?q=BigPanda+incident+intelligence+alternatives+OR+competitors+OR+%22vs%22+OR+%22compared+to%22
+- content_hash: aa10b16bf790c3be0802769d5f66a9f66e6ccb98541664d7d6d904dab1c74f58
+  evidence_id: ev-aa10b16bf790c3be
+  excerpt: 'Title: Top BigPanda Alternatives & Competitors 2026
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top BigPanda alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top BigPanda Alternatives & Competitors 2026 | Gartner Peer Insights image:
+    https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [PagerDuty](https://www.gartner.com/reviews/product/pagerduty-611415551)
+    > 2. [Splunk IT Service Intelligence (ITSI)](https://www.gartner.com/reviews/product/splunk-it-service-intelligence)
+    > 3. [ScienceLogic AI Platform](https://www.gartner.com/reviews/product/sciencelogic-ai-platform)
+    [Compare with BigPanda](https://www.gartner.com/reviews/market/event-intelligence-solutions/compare/product/sciencelogic-ai-platform-vs-bigpanda-1658620356)
+    Add to Compare'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.gartner.com/reviews/product/bigpanda-1658620356/alternatives
+- content_hash: d4df9ec760ae1f2f32ae8687bb7b9248f7ce866422a7b2cff1c828d1985669bb
+  evidence_id: ev-d4df9ec760ae1f2f
+  excerpt: 'Detected date: 2026-08-02
+
+    Title: 7 Best BigPanda Competitors and Alternatives 2026
+
+    Date: 2026-08-02
+
+    Source: sherlocks.ai
+
+    Snippet: # 7 Best BigPanda Competitors and Alternatives 2026 ## BigPanda competitors
+    at a glance | BigPanda competitor | Best for | Core approach | Main difference
+    from BigPanda | | **PagerDuty** | On-call incident response | AIOps, paging, escalation
+    and orchestration | Extends event intelligence into responder mobilization and
+    response automation | ... ## Best BigPanda competitors and alternatives ### 3.
+    PagerDuty — Best BigPanda competitor for on-call incident response PagerDuty connects
+    correlated events directly to responder mobilization and the wider response lifecycle,
+    making it better suited to teams that need paging and coordinated action alongside
+    AIOps. ... ## Continue Reading ### [9 Best PagerDuty Alternatives for On-Call
+    and Incident Response (2026)](https://www.sherlocks.ai/discover/pagerduty-alternatives)
+    Find the right **PagerDuty replacement** based on pricing, paging, escalation,
+    migration effort, ITSM, self-hosting, Slack workflows, and **AI-assisted RCA**
+    .'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.sherlocks.ai/discover/bigpanda-competitors-alternatives
+- content_hash: 448d4a8fcb1fe9035c75315184e822c4f36df46215cd056fa37952a69d0fd08d
+  evidence_id: ev-448d4a8fcb1fe903
+  excerpt: 'Title: BigPanda Alternatives and Competitors | AIOps
+
+    Source: softwarereviews.com
+
+    Snippet: # AIOps ## Best Alternatives and Competitors to BigPanda Compare how
+    **BigPanda** stacks up to the competition in the areas that matter most to real
+    users to short list options that will best fit your business needs. [#### Dynatrace
+    ### Dynatrace](https://www.softwarereviews.com/products/dynatrace?c_id=215) 8.3
+    Composite Score + 96 ... ### Reviews Say #### Reviews Say Compare Software [####
+    Cisco Systems ### Splunk IT Service Intelligence](https://www.softwarereviews.com/products/cisco-systems-splunk-it-service-intelligence?c_id=215)
+    7.3 Composite Score + 89 Emotional Footprint 39 Reviews Compared to BigPanda ,
+    Splunk IT Service Intelligence is: Less Caring Worse at Support Less Inspiring
+    ... ## Most Popular BigPanda Comparisons * Dynatrace Logo Dynatrace Compare *
+    Splunk AppDynamics Logo Splunk AppDynamics Compare * Splunk IT Service Intelligence
+    Logo Splunk IT Service Intelligence Compare * New Relic Logo New Relic Compare
+    * VuNet vuSmartMaps Logo VuNet vuSmartMaps Compare * Datadog Logo Datadog Compare'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: http://softwarereviews.com/categories/215/products/7293/alternatives
+- content_hash: 1c1b8c63fb8d964e82ef82727bb62ca2c97fe7e05dbdc63aa2819d9d43496200
+  evidence_id: ev-1c1b8c63fb8d964e
+  excerpt: 'Title: BigPanda Alternatives & Competitors (2026)
+
+    Source: startuphub.ai
+
+    Snippet: # Alternatives to BigPanda The top AIOps companies similar to BigPanda,
+    ranked by relevance (named competitors first, then how closely their sectors overlap)
+    and our 0-100 AI-readiness score. Each links to a full profile with funding and
+    team. ... * Neradot 35 Artificial Intelligence · San Francisco, United States
+    * Cerebrate AI 34 Generative AI * CO Codery 28 Artificial Intelligence · $2.9M
+    * Oak Miner 20 Enterprise * IN Invoice to Excel AI 8 Invoice Processing * Zenduty
+    0 Incident Management · Bengaluru, India · $1.0M ... | Company | Sector | HQ |
+    Funding | Score | | NeuBird AI | Artificial Intelligence | San Francisco, United
+    States | $60.6M | 58 | | Moogsoft | MLOps | San Francisco, United States | $116.5M
+    | 50 | | Sana | AI Search Engine | San Francisco, United States | — | 78 | ...
+    | Company | Sector | HQ | Funding | Score | | NeuBird AI | Artificial Intelligence
+    | San Francisco, United States | $60.6M | 58 | | Moogsoft | MLOps | San Francisco,
+    United States | $116.5M | 50 | | Tines | Security Automation | Dublin, Ireland
+    | $260.1M | 66 |'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.startuphub.ai/startups/bigpanda/alternatives
+- content_hash: 1a5aae752ca6e742df70c1903a612e558a101f021c5cc613378810f7a2946a8c
+  evidence_id: ev-1a5aae752ca6e742
+  excerpt: 'Detected date: 2022-10-13
+
+    Title: Top 10 BigPanda Alternatives 2026 - PeerSpot
+
+    Date: 2022-10-13
+
+    Source: peerspot.com
+
+    Snippet: # Top 10 BigPanda Alternatives ## BigPanda Alternatives Report Download
+    BigPanda vs. ScienceLogic Report Pricing ScienceLogic has an expensive setup cost
+    compared to BigPanda, which offers a more budget-friendly initial setup. View
+    comparison Pricing ScienceLogic has an expensive setup cost compared to BigPanda,
+    which offers a more budget-friendly initial setup. ... Download BMC TrueSight
+    vs. BigPanda Report Pricing BMC TrueSight has a higher setup cost compared to
+    BigPanda, which offers a more budget-friendly initial setup for businesses. View
+    comparison Pricing ... Download BigPanda vs. SolarWinds Incident Response Report
+    Pricing BigPanda has a higher setup cost compared to SolarWinds Incident Response,
+    which offers more budget-friendly initial pricing for teams. For organizations
+    mindful of upfront expenses, SolarWinds pushes ahead in affordability. View comparison'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.peerspot.com/products/bigpanda-alternatives-and-competitors
+- content_hash: f99618c5d293b96fd1ed54206f885fad188eb107316f5092d938dee84af1a120
+  evidence_id: ev-f99618c5d293b96f
+  excerpt: 'Title: List of Best BigPanda Alternatives & Competitors 2026
+
+    Source: trustradius.com
+
+    Snippet: # BigPanda Competitors and Alternatives ## Most Commonly Compared to
+    BigPanda * Moogsoft ### Moogsoft Compare * [PagerDuty ### PagerDuty Compare [Start
+    Free Trial](https://www.pagerduty.com/sign-up?utm_campaign=TrustRadius%20Review&utm_source=trustradius.com&utm_medium=click)](/compare-products/bigpanda-vs-pagerduty)
+    * [Datadog ### Datadog Compare [Try It For Free](https://www.datadoghq.com/de/dg/monitor/free-trial/?utm_medium=review-site&utm_campaign=dg-coreplatform-ww-trustradius-observability&utm_source=trustradius.com)](/compare-products/bigpanda-vs-datadog)
+    * OpsGenie (sunset) ### OpsGenie (sunset) Compare ... More](https://www.splunk.com/en_us/software/it-service-intelligence.html?utm_campaign=TrustRadius%20Review&utm_source=trustradius.com&utm_medium=click)](/compare-products/bigpanda-vs-splunk-it-service-intelligence)
+    * Splunk On-Call ### Splunk On-Call Compare * DX Spectrum ### DX Spectrum Compare'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.trustradius.com/products/bigpanda/competitors
+- content_hash: ae2e8816886c2f292528b2b33a8c99bdcadc605a22ff1df16853f26999c74c63
+  evidence_id: ev-ae2e8816886c2f29
+  excerpt: 'Detected date: 2026-07-29
+
+    Title: BigPanda Alternative for Incident Investigation and Root Cause Analysis
+
+    Date: 2026-07-29
+
+    Source: sherlocks.ai
+
+    Snippet: # BigPanda Alternative for Incident Investigation and Root Cause Analysis
+    ## BigPanda vs Sherlocks.ai Sherlocks is strongest downstream, where teams need
+    incident investigation, root cause analysis, infrastructure-aware debugging, and
+    recommended next actions. It helps SRE and engineering teams reduce the time spent
+    manually investigating production issues. ... ## What to compare in BigPanda alternatives
+    If you are comparing BigPanda competitors, do not only ask whether a tool has
+    AI. Ask which part of the incident workflow it actually improves. A useful BigPanda
+    competitors comparison should look at these areas. ... ## BigPanda replacement
+    vs investigation layer If you are comparing BigPanda competitors because you want
+    another alert-correlation platform, Sherlocks may not be the closest equivalent.
+    If you are comparing BigPanda alternatives because engineers still spend too much
+    time finding root cause, Sherlocks is a strong fit.'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.sherlocks.ai/discover/bigpanda-alternatives-ai-incident-investigation
+- content_hash: d93873f6bb4abe450750edb5239cf2aba3df06c806c8a3e5483f59d3cd392d58
+  evidence_id: ev-d93873f6bb4abe45
+  excerpt: 'Title: Top BigPanda Alternatives, Competitors - CB Insights
+
+    Source: cbinsights.com
+
+    Snippet: # BigPanda ## BigPanda''s alternatives and competitors * SolarWinds Logo
+    [SolarWinds](https://www.cbinsights.com/company/solarwinds/) Unclaimed SolarWinds
+    provides hybrid IT observability and IT management software. It focuses on operational
+    resilience across various sectors. It offers products to monitor, mana… See More
+    BigPanda vs. SolarWinds ... [ScienceLogic](https://www.cbinsights.com/company/sciencelogic/)
+    Analyst Briefing Submitted ScienceLogic is a company that focuses on AI for IT
+    Operations (AIOps), providing intelligent, automated IT operations within the
+    technology sector. The company offers … See More BigPanda vs. ScienceLogic ...
+    Fabrix.ai provides Agentic artificial intelligence (AI) operational intelligence
+    solutions within the information technology (IT) operations, network operations,
+    and ar… See More BigPanda vs. Fabrix.ai View BigPanda''s entire Analyst Briefing
+    BigPanda''s Analyst Briefing includes information on:'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.cbinsights.com/company/bigpanda/alternatives-competitors
+- content_hash: 6e712b0e152f0d98ad7a28b1d186d959f39232099cb78616d19d769c2c301f7b
+  evidence_id: ev-6e712b0e152f0d98
+  excerpt: 'Title: Top Bigpanda Competitors & Alternatives
+
+    Source: getlatka.com
+
+    Snippet: # Top Bigpanda Alternatives, Competitors & Similar Software [Compare
+    Bigpanda with Lightricks](https://getlatka.com/companies/bigpanda/vs/lightricks.com)
+    1![Lightricks logo](https://storage.getlatka.com/images/lightricks.com.png) [Lightricks](https://getlatka.com/companies/lightricks.com)
+    ServiceNow Marketplace Apps ... Revenue $82.6M Customers 100 Year founded 2013
+    Funding $320M Team size 573 Location France [Compare Bigpanda with Shift Technology](https://getlatka.com/companies/bigpanda/vs/shift-technology.com)
+    ... ## Browse more competitors [![BigOven logo](https://storage.getlatka.com/images/bigoven.com.png)Previous
+    competitorsBigOven competitors](https://getlatka.com/companies/bigoven/competitors)[![Bigpicture.io
+    logo](https://storage.getlatka.com/images/bigpicture.io.png)Next competitorsBigpicture.io'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://getlatka.com/companies/bigpanda/competitors
+- content_hash: eb537f2c9c631bfa350c48e32435c0b0df1f7b0e1fa1d468591fb1c11b15e22a
+  evidence_id: ev-eb537f2c9c631bfa
+  excerpt: 'Query: BigPanda alternatives
+
+    1. https://www.gartner.com/reviews/product/bigpanda-1658620356/alternatives
+
+    Title: Top BigPanda Alternatives & Competitors 2026
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top BigPanda alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top BigPanda Alternatives & Competitors 2026 | Gartner Peer Insights image:
+    https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [PagerDuty](https://www.gartner.com/reviews/product/pagerduty-611415551)
+    > 2. [Splunk IT Service Intelligence (ITSI)](https://www.gartner.com/reviews/product/splunk-it-service-intelligence)
+    > 3. [ScienceLogic AI Platform](https://www.gartner.com/reviews/product/sciencelogic-ai-platform)
+    [Compare with BigPanda](https://www.gartner.com/reviews/market/event-intelligence-solutions/compare/product/sciencelogic-ai-platform-vs-bigpanda-1658620356)
+    Add to Compare
+
+    2. https://www.sherlocks.ai/discover/bigpanda-competitors-alternatives
+
+    Title: 7 Best BigPanda Competitors and Alternatives 2026
+
+    Date: 2026-08-02
+
+    Source: sherlocks.ai
+
+    Snippet: # 7 Best BigPanda Competitors and Alternatives 2026 ## BigPanda competitors
+    at a glance | BigPanda competitor | Best for | Core approach | Main difference
+    from BigPanda | | **PagerDuty** | On-call incident response | AIOps, paging, escalation
+    and orchestration | Extends event intelligence into responder mobilization and
+    response automation | ... ## Best Bi'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.google.com/search?q=BigPanda+alternatives
+- content_hash: 1f1788dbdeb16810dc3798ad87d359d74993d652c56ce3a884edc3c74e3368c7
+  evidence_id: ev-1f1788dbdeb16810
+  excerpt: 'Title: BigPanda Alternatives and Competitors | AIOps
+
+    Source: softwarereviews.com
+
+    Snippet: # AIOps ## Best Alternatives and Competitors to BigPanda Compare how
+    **BigPanda** stacks up to the competition in the areas that matter most to real
+    users to short list options that will best fit your business needs. [#### Dynatrace
+    ### Dynatrace](https://www.softwarereviews.com/products/dynatrace?c_id=215) 8.3
+    Composite Score + 96 ... ### Reviews Say #### Reviews Say Compare Software [####
+    Cisco Systems ### Splunk IT Service Intelligence](https://www.softwarereviews.com/products/cisco-systems-splunk-it-service-intelligence?c_id=215)
+    7.3 Composite Score + 89 Emotional Footprint 39 Reviews Compared to BigPanda ,
+    Splunk IT Service Intelligence is: Less Caring Worse at Support Less Inspiring
+    ... ## Most Popular BigPanda Comparisons * Dynatrace Logo Dynatrace Compare *
+    Splunk AppDynamics Logo Splunk AppDynamics Compare * Splunk IT Service Intelligence
+    Logo Splunk IT Service Intelligence Compare * New Relic Logo New Relic Compare
+    * VuNet vuSmartMaps Logo VuNet vuSmartMaps Compare * Datadog Logo Datadog Compare'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.softwarereviews.com/categories/215/products/7293/alternatives
+- content_hash: 32affb12ac66987bb5f2f319c3deedf997e20c1c4536864c14bae9746dd1a481
+  evidence_id: ev-32affb12ac66987b
+  excerpt: 'Title: Top BigPanda Alternatives & Competitors 2026
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top BigPanda alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner Peer Insights.
+    title: Top BigPanda Alternatives & Competitors 2026 | Gartner Peer Insights image:
+    https://www.gartner.com/imagesrv/apps/peerinsights/images/gpi-twitter-img-fa.png
+    > 1. [PagerDuty](https://www.gartner.com/reviews/product/pagerduty-611415551)
+    > 2. [Splunk IT Service Intelligence (ITSI)](https://www.gartner.com/reviews/product/splunk-it-service-intelligence)
+    [Compare with BigPanda](https://www.gartner.com/reviews/market/event-intelligence-solutions/compare/product/splunk-it-service-intelligence-vs-bigpanda-1658620356)
+    Add to Compare'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.gartner.com/reviews/product/bigpanda-1658620356/alternatives
+- content_hash: 7f1e8317bd62a73d7c77a76aab2935086c9ae73e0ee19e1ce1880dc1c38d59bc
+  evidence_id: ev-7f1e8317bd62a73d
+  excerpt: 'Title: BigPanda Alternatives & Competitors (2026)
+
+    Source: startuphub.ai
+
+    Snippet: Alternatives to BigPanda ; New Relic, Enterprise Software, San Francisco,
+    United States ; Coralogix, Observability, Tel Aviv, Israel ; Edgeverve Smart,
+    Artificial'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.startuphub.ai/startups/bigpanda/alternatives
+- content_hash: ad33614f138e840a5f0ce905490d97951f997708d6cdbe63bd34a0f4b8028fb7
+  evidence_id: ev-ad33614f138e840a
+  excerpt: 'Title: PagerDuty vs. BigPanda
+
+    Source: pagerduty.com
+
+    Snippet: Unlike BigPanda, PagerDuty works out of the box . Choose a platform that
+    doesn''t stop at insights. PagerDuty powers the entire incident lifecycle–from
+    detection'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.pagerduty.com/vs/bigpanda/
+- content_hash: 891d8c65cf4bc1f1de96402bd9c2a9fd08de6524027c3914ca0797054e0dd720
+  evidence_id: ev-891d8c65cf4bc1f1
+  excerpt: 'Title: BigPanda - Market Share, Competitor Insights in Network Monitoring
+
+    Source: 6sense.com
+
+    Snippet: # BigPanda ## Market Share of BigPanda ### Top Competitors and Alternatives
+    of BigPanda | Technology | Domains | Market Share (Est.) | Versus page | | GStatic
+    | 2284094 | 86.71% | BigPanda vs GStatic | | Datadog | 164062 | 6.23% | BigPanda
+    vs Datadog | | Nagios | 29624 | 1.12% | BigPanda vs Nagios | | Loggly | 3970 |
+    0.15% | BigPanda vs Loggly | ... | Technology | Domains | Market Share (Est.)
+    | Versus page | | GStatic | 2284094 | 86.71% | BigPanda vs GStatic | | Datadog
+    | 164062 | 6.23% | BigPanda vs Datadog | | Nagios | 29624 | 1.12% | BigPanda vs
+    Nagios | | SysAid | 2402 | 0.09% | BigPanda vs SysAid | ... image arrow_icon Compare
+    arrow_icon Popular Comparisons The top three of BigPanda’s competitors in the
+    Network Monitoring category are GStatic with 86.71%, Datadog with 6.23%, Nagios
+    with 1.12% market share. BigPanda vs GStatic arrow_icon BigPanda vs Datadog arrow_icon
+    BigPanda vs Nagios'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.6sense.com/tech/network-monitoring/bigpanda-market-share
+- content_hash: d2ec9dfec3c50425a60850fa19271fd40cf0d6921e3f51d1884e2ce1b4a64a8c
+  evidence_id: ev-d2ec9dfec3c50425
+  excerpt: 'Title: Top Bigpanda Competitors & Alternatives
+
+    Source: getlatka.com
+
+    Snippet: # Top Bigpanda Alternatives, Competitors & Similar Software Revenue $80.7M
+    Customers - Year founded 2013 Funding $335M Team size 559 Location Israel [Compare
+    Bigpanda with Ntiva](https://getlatka.com/companies/bigpanda/vs/Ntiva) ... Year
+    founded 2018 Funding - Team size 237 Location Chile [Compare Bigpanda with Tractable](https://getlatka.com/companies/bigpanda/vs/tractable.ai)
+    ... Customers - Year founded - Funding - Team size 720 Location Canada [Compare
+    Bigpanda with Construction AI](https://getlatka.com/companies/bigpanda/vs/construction.ai)
+    ... Customers - Year founded - Funding - Team size 720 Location Canada [Compare
+    Bigpanda with Threat Tec](https://getlatka.com/companies/bigpanda/vs/Threat%5FTec)
+    ... Revenue $82.6M Customers 100 Year founded 2013 Funding $320M Team size 573
+    Location France [Compare Bigpanda with Plat4mation](https://getlatka.com/companies/bigpanda/vs/plat4mation.com)'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://getlatka.com/companies/bigpanda/competitors
+- content_hash: 38b450635bd363617017a6ad6c1b4c1c48bc0f6ddc560573901af9f27c8a71c4
+  evidence_id: ev-38b450635bd36361
+  excerpt: 'Query: BigPanda vs
+
+    1. https://www.softwarereviews.com/categories/215/products/7293/alternatives
+
+    Title: BigPanda Alternatives and Competitors | AIOps
+
+    Source: softwarereviews.com
+
+    Snippet: # AIOps ## Best Alternatives and Competitors to BigPanda Compare how
+    **BigPanda** stacks up to the competition in the areas that matter most to real
+    users to short list options that will best fit your business needs. [#### Dynatrace
+    ### Dynatrace](https://www.softwarereviews.com/products/dynatrace?c_id=215) 8.3
+    Composite Score + 96 ... ### Reviews Say #### Reviews Say Compare Software [####
+    Cisco Systems ### Splunk IT Service Intelligence](https://www.softwarereviews.com/products/cisco-systems-splunk-it-service-intelligence?c_id=215)
+    7.3 Composite Score + 89 Emotional Footprint 39 Reviews Compared to BigPanda ,
+    Splunk IT Service Intelligence is: Less Caring Worse at Support Less Inspiring
+    ... ## Most Popular BigPanda Comparisons * Dynatrace Logo Dynatrace Compare *
+    Splunk AppDynamics Logo Splunk AppDynamics Compare * Splunk IT Service Intelligence
+    Logo Splunk IT Service Intelligence Compare * New Relic Logo New Relic Compare
+    * VuNet vuSmartMaps Logo VuNet vuSmartMaps Compare * Datadog Logo Datadog Compare
+
+    2. https://www.gartner.com/reviews/product/bigpanda-1658620356/alternatives
+
+    Title: Top BigPanda Alternatives & Competitors 2026
+
+    Source: gartner.com
+
+    Snippet: # description: Learn more about the top BigPanda alternatives. Easily
+    compare competitors and read verified real user reviews on Gartner'
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.google.com/search?q=BigPanda+vs
+- content_hash: c73f4c200485e6fa6afd3c4cfe32bf7ad0232ae7770855b14bffbae4516ab532
+  evidence_id: ev-c73f4c200485e6fa
+  excerpt: "Title: BigPanda Alternatives and Competitors | AIOps | SoftwareReviews\n\
+    [Skip to main content](https://www.softwarereviews.com/categories/215/products/7293/alternatives#main)\n\
+    ![Info-Tech Research Group](https://cdn0.softwarereviews.com/assets/logos/info-tech/info-tech-research-group-db041b640665c6201359b0e19da6758cdeb39ea416ec6c156eecaf9bea0806bd.svg)\n\
+    [ ![SoftwareReviews](https://cdn1.softwarereviews.com/assets/logos/software_reviews/software_reviews_logo_centered-b3f3ddcf554938239aa2b9c4d2f16f9598dcc4ca7458ae11c4af4bd663bbbe59.svg)\
+    \ ](https://www.softwarereviews.com/ \"Home\")\nSearch\nSearch tips\nSearch for\
+    \ products, categories, or vendors.\nTry keywords like 'management', 'Microsoft',\
+    \ or 'CRM'\nSearch for **\"\"** by hitting _enter_ , or see suggested results.\n\
+    Cancel \n  * [Write a Review](https://www.softwarereviews.com/start)\n  * [Categories](https://www.softwarereviews.com/categories)\n\
+    \  * [Compare](https://www.softwarereviews.com/compare)\n  * [About Us](https://www.softwarereviews.com/about)\n\
+    \  * [Vendor Awards](https://www.softwarereviews.com/vendor-awards)\n  * [For\
+    \ Vendors](https://provider.softwarereviews.com/)\n  * More\n    * [Browse Reports](https://www.softwarereviews.com/reports)\n\
+    \    * [Vendor Technology Notes](https://www.softwarereviews.com/vendor-technology-notes)\n\
+    \    * [What We Do](https://www.softwarereviews.com/what-we-do)\n\n\n[ Log in\
+    \ Log in ](https://www.softwarereviews.com/access/new) Open search Toggle navigation\n\
+    [Write a Review](https://www.softwarereviews.com/start)"
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.softwarereviews.com/categories/215/products/7293/alternatives
+- content_hash: c1d9176c0e0329e35306e082d5ab1e78c9131460ba2c6af835ef63070f557567
+  evidence_id: ev-c1d9176c0e0329e3
+  excerpt: "Title: BigPanda vs Splunk ITSI (IT Service Intelligence) (2026)\nheight=\"\
+    0\" width=\"0\" style=\"display:none;visibility:hidden\">\n\nNo more typing reviews!\
+    \ [Try our Samantha](/interviews/new?src=orba), our new voice AI agent.\n\n[](/\
+    \ \"Unbiased reviews from the tech community\")\n\n__\n\n__\n\n__\n\n  * __\n\
+    \  * Categories\n\nCybersecurity\n\n[Endpoint Detection and Response (EDR)](/categories/endpoint-detection-and-response-edr)[Vulnerability\
+    \ Management](/categories/vulnerability-management)[Cloud Security Posture Management\
+    \ (CSPM)](/categories/cloud-security-posture-management-cspm)[Endpoint Protection\
+    \ Platform (EPP)](/categories/endpoint-protection-platform-epp)[Extended Detection\
+    \ and Response (XDR)](/categories/extended-detection-and-response-xdr)[Security\
+    \ Information and Event Management (SIEM)](/categories/security-information-and-event-management-siem)[Container\
+    \ Security](/categories/container-security)[Firewalls](/categories/firewalls)[ZTNA](/categories/ztna)[ZTNA\
+    \ as a Service](/categories/ztna-as-a-service)[Cloud-Native Application Protection\
+    \ Platforms (CNAPP)](/categories/cloud-native-application-protection-platforms-cnapp)[Cloud\
+    \ Workload Protection Platforms (CWPP)](/categories/cloud-workload-protection-platforms-cwpp)[Secure\
+    \ Access Service Edge (SASE)](/categories/secure-access-service-edge-sase)[Data\
+    \ Loss Prevention (DLP)](/categories/data-loss-prevention-dlp)[Access Management](/categories/access-management)[Intrusion\
+    \ Detection and Prevention Software (IDPS)](/categories/intrusion-dete"
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.peerspot.com/products/comparisons/bigpanda_vs_splunk-itsi-it-service-intelligence
+- content_hash: 7be3b3c92a0175d257542e92b87dbb6201ec78b9628e6b3f7df7dacc58cd4386
+  evidence_id: ev-7be3b3c92a0175d2
+  excerpt: "Detected date: 2026-08-02\nTitle: 7 Best BigPanda Competitors and Alternatives\
+    \ 2026\n[Sherlocks AI](/) [ All Articles ](/discover)\n\n· 2026-08-02 · 9 min\
+    \ read\n\n# 7 Best BigPanda Competitors and Alternatives 2026\n\nCompare BigPanda\
+    \ competitors and alternatives for AIOps, IT monitoring, event correlation, AI\
+    \ incident investigation, root cause analysis, and incident response.\n\nSherlocks\
+    \ AI Team\n\nThe leading BigPanda competitors and alternatives are **Sherlocks.ai,\
+    \ Splunk ITSI, PagerDuty, Dynatrace, Datadog, IBM Instana, and Resolve AI.**\n\
+    \nFor teams comparing alternatives to BigPanda software, Sherlocks.ai is the best\
+    \ overall stack-preserving option: it combines signal correlation, topology-aware\
+    \ investigation, evidence-backed RCA, incident collaboration, and controlled remediation\
+    \ without replacing existing monitoring tools.\n\n## BigPanda competitors at a\
+    \ glance\n\nBigPanda competitor | Best for | Core approach | Main difference from\
+    \ BigPanda  \n---|---|---|---  \n**Sherlocks.ai** | AI incident operations | Correlation,\
+    \ explainable RCA and controlled remediation | Extends correlation into investigation\
+    \ and remediation without replacing monitoring tools  \n**Splunk ITSI** | Enterprise\
+    \ event intelligence | Cross-domain AIOps and service-health analysis | Connects\
+    \ Splunk-based event correlation with services, KPIs and business impact  \n**PagerDuty**\
+    \ | On-call incident response | AIOps, paging, escalation and orchestration |\
+    \ Extends event intelligence into responder mobilization and response automation\
+    \  \n**Dynatrace**"
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.sherlocks.ai/discover/bigpanda-competitors-alternatives
+- content_hash: 776f34ac87e384b5e0dbb036e1d2e0c05761a263fa6a3122f6bf5ddb2e7343ef
+  evidence_id: ev-776f34ac87e384b5
+  excerpt: "Title: BigPanda Alternatives &amp; Competitors (2026) | StartupHub.ai\
+    \ | StartupHub.ai\n* [StartupHub.ai: AI Ecosystem Hub](/)\n\n\n\nDiscover\n\n\
+    \  * [Home](/)\n  * [Search](/search)\n  * [Jobs](/jobs)\n  * [News](/news)\n\
+    \  * Browse\n\n  * [Rankings](/rankings)\n  * [Deals](/deals)\n  * [Watchlist](/watchlist)\n\
+    \  * [Lists](/lists)\n\n\n\nIntelligence\n\n  * [Market Analysis](/analysis)\n\
+    \  * [Comparison](/comparison)\n  * [Claude's Corner](/claudes-corner)\n  * [Claude's\
+    \ Trades](/trader-claudes)\n  * [Agentic Arbitrage](/arbitrage)\n  * [Today in\
+    \ AI Podcast](/podcast)\n\n\n\nTools\n\n  * Content & Video\n\n  * Marketing &\
+    \ Growth\n\n  * Research & Data\n\n  * [Founder Game](/founder-test)\n\n\n\nCompany\n\
+    \n  * [Pricing](/pricing)\n  * [Solutions](/solutions)\n  * [Advertise](/advertise)\n\
+    \  * [Publish Content](/newswire)\n  * [Affiliate Program](/affiliate)\n  * [About](/about)\n\
+    \  * [Terms](/terms)\n  * [Privacy](/privacy)\n\n\n\nAccount\n\n  * Sign In\n\n\
+    \n\nToggle Sidebar\n\n  1. [Home](/)\n  2.   3. [Startups](/search?type=Startup)\n\
+    \  4.   5. [Bigpanda](/startups/bigpanda)\n  6.   7. Alternatives\n\n\n\n[Home](/)/[BigPanda](/startups/bigpanda)/Alternatives\n\
+    \n# Alternatives to BigPanda\n\nThe top AIOps companies similar to BigPanda, ranked\
+    \ by relevance (named competitors first, then how closely their sectors overlap)\
+    \ and our 0-100 AI-readiness score. Each links to a full profile with funding\
+    \ and team.\n\n[Open source alternatives to BigPanda (60) →](/startups/bigpanda/open-source-alternatives)\n\
+    \n  * [Website ](https://www.pagerduty.com/?utm_source=start"
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.startuphub.ai/startups/bigpanda/alternatives
+- content_hash: 837de3b1c5dcc67922d408db409dc0a6db6f32d6f8ad33b729ef5ec28f31d9fc
+  evidence_id: ev-837de3b1c5dcc679
+  excerpt: "Title: How BigPanda Enhances ServiceNow ITOM | BigPanda\nen \n\n    *\
+    \ [ en ](https://www.bigpanda.io/compare/servicenow-itom/)\n    * [ de ](https://www.bigpanda.io/de/)\n\
+    \n  * [ Service + Support ]()\n\n    *       * Service \n      * [ Community ](https://university.bigpanda.io/community)\n\
+    \      * [ Documentation ](https://docs.bigpanda.io/)\n      * [ Customer Support\
+    \ ](https://www.bigpanda.io/customer-support/)\n      * [ Platform Status ](https://status.bigpanda.io/)\n\
+    \    *       * Support \n      * [ Education & Certification ](https://www.bigpanda.io/bigpanda-education/)\n\
+    \      * [ Professional Services ](https://www.bigpanda.io/services/bigpanda-professional-services-packages/)\n\
+    \n  * [ Login ](https://a.bigpanda.io/)\n\n\n\n[ ](/)\n\n  * Platform\n\n    *\
+    \       * Agentic ITOps Platform\n\nThe BigPanda agentic ITOps platform uses AI\
+    \ to automate IT detection, triage, and resolution, improving operational efficiency\
+    \ and reducing downtime and costs. \n\n[Explore the Platform](https://www.bigpanda.io/our-product/)\n\
+    \n    *       * [ Platform Overview ](/our-product/)\n      * [ AI Incident Prevention\
+    \ ](/our-product/ai-incident-prevention/)\n      * [ AI Detection & Response ](/our-product/ai-detection-and-response/)\n\
+    \      * [ L1 Agent ](/our-product/l1-agent/)\n      * [ AI Incident Assistant\
+    \ ](/our-product/ai-incident-assistant/)\n      * [ IT Knowledge Graph ](/our-product/it-knowledge-graph/)\n\
+    \    *       * [ Integrations ](/integrations/)\n      * [ Jira ](/integrations/jira-service-management/)\n\
+    \      * "
+  retrieved_at: '2026-08-19T12:29:02.552629-04:00'
+  url: https://www.bigpanda.io/compare/servicenow-itom/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

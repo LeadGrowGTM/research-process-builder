@@ -87,26 +87,26 @@ def test_resume_recovers_group_without_repurchase_after_crash(
         "company-description", allow_paid=True, resume=True,
     )
 
-    assert client.executions == calls_at_crash + 7
-    assert summary.completed_cases == 24
+    assert client.executions == calls_at_crash + 5
+    assert summary.completed_cases == 18
     rows = tuple(
         json.loads(line) for line in (
             tmp_path / "company-description" / "outcomes.jsonl"
         ).read_text(encoding="utf-8").splitlines()
     )
-    assert len([row for row in rows if row["status"] == "completed"]) == 24
+    assert len([row for row in rows if row["status"] == "completed"]) == 18
     assert len({
         (row["company_id"], row["requested_model_id"], row["execution_track"])
         for row in rows if row["status"] == "completed"
-    }) == 24
-    assert len(list(tmp_path.rglob("report.json"))) == 8
+    }) == 18
+    assert len(list(tmp_path.rglob("report.json"))) == 6
     budget_rows = tuple(
         json.loads(line) for line in (
             tmp_path / "company-description" / "budget.jsonl"
         ).read_text(encoding="utf-8").splitlines()
     )
-    assert sum(row["kind"] == "reserve" for row in budget_rows) == 8
-    assert sum(row["kind"] == "reconcile" for row in budget_rows) == 8
+    assert sum(row["kind"] == "reserve" for row in budget_rows) == 6
+    assert sum(row["kind"] == "reconcile" for row in budget_rows) == 6
 
 
 def test_invalid_model_output_is_journaled_and_not_promoted(tmp_path: Path) -> None:
@@ -133,7 +133,7 @@ def test_invalid_model_output_is_journaled_and_not_promoted(tmp_path: Path) -> N
         row["status"] == "failed" and row["failure"] == "contract_invalid"
         for row in rows
     )
-    assert len(list(tmp_path.rglob("report.json"))) == 8
+    assert len(list(tmp_path.rglob("report.json"))) == 6
 
 
 def test_client_exception_is_journaled_as_retryable_failure(tmp_path: Path) -> None:
@@ -165,17 +165,17 @@ def test_client_exception_is_journaled_as_retryable_failure(tmp_path: Path) -> N
         ).read_text(encoding='utf-8').splitlines()
     )
     assert sum(row['kind'] == 'release' for row in budget_rows) == 0
-    assert sum(row['kind'] == 'reconcile' for row in budget_rows) == 8
+    assert sum(row['kind'] == 'reconcile' for row in budget_rows) == 6
     assert sum(
         Decimal(row['actual_cost'])
         for row in budget_rows if row['kind'] == 'reconcile'
-    ) == Decimal('0.24')
+    ) == Decimal('0.18')
 
     resumed = _runner(tmp_path, BrokenClient(executions=1)).run(
         "icp-persona-analysis", allow_paid=True, resume=True,
     )
 
-    assert resumed.completed_cases == 24
+    assert resumed.completed_cases == 18
     assert (
         tmp_path / "icp-persona-analysis" / "blind-output-map.json"
     ).is_file()
@@ -209,7 +209,7 @@ def test_repeated_provider_failures_use_monotonic_attempt_reservations(
         ).read_text(encoding="utf-8").splitlines()
     )
 
-    assert summary.completed_cases == 24
+    assert summary.completed_cases == 18
     target = [
         row["idempotency_key"] for row in rows
         if row["kind"] == "reserve"

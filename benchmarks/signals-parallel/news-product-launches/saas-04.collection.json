@@ -1,0 +1,149 @@
+{
+  "collected_at": "2026-08-19T11:44:06.371293-04:00",
+  "company_id": "saas-04",
+  "enrichment_id": "news-product-launches",
+  "entries": [
+    {
+      "category": "product cost software",
+      "company_name": "aPriori Technologies",
+      "domain": "apriori.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "news",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "apriori.com news",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 1,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 8,
+      "status": "ok",
+      "step": "search",
+      "target": "aPriori Technologies \"press release\" OR \"announces\" OR \"newsroom\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "aPriori Technologies launches OR \"new feature\" OR \"introducing\" OR \"now available\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.morningstar.com/news/business-wire/20260812970314/apriori-technologies-launches-aisource-giving-procurement-teams-the-manufacturing-product-intelligence-to-negotiate-on-equal-terms-with-suppliers",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.apriori.com/press-release/apriori-release-2020-now-available/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.apriori.com/press-release/apriori-appoints-three-executives-supports-global-manufacturing-intelligence-growth/",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.streetinsider.com/Business+Wire/aPriori+Technologies+Launches+aiSource%2C+Giving+Procurement+Teams+the+Manufacturing+Product+Intelligence+to+Negotiate+on+Equal+Terms+with+Suppliers/26948410.html: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.streetinsider.com/Business+Wire/aPriori+Technologies+Launches+aiSource%2C+Giving+Procurement+Teams+the+Manufacturing+Product+Intelligence+to+Negotiate+on+Equal+Terms+with+Suppliers/26948410.html"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.businesswire.com/news/home/20260526130779/en/aPriori-Launches-aiSource-an-AI-Sourcing-Solution-Giving-Procurement-Teams-the-Manufacturing-and-Cost-Intelligence-to-Win-More-Supplier-Negotiations: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.businesswire.com/news/home/20260526130779/en/aPriori-Launches-aiSource-an-AI-Sourcing-Solution-Giving-Procurement-Teams-the-Manufacturing-and-Cost-Intelligence-to-Win-More-Supplier-Negotiations"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.zoominfo.com/c/apriori-inc/7230360: HTTPError",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.zoominfo.com/c/apriori-inc/7230360"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://apriori.com/blog",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://apriori.com/news",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://apriori.com/newsroom: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://apriori.com/newsroom"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://apriori.com/press: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://apriori.com/press"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://apriori.com/changelog: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://apriori.com/changelog"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://apriori.com/product-updates: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://apriori.com/product-updates"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://apriori.com/whats-new",
+      "waterfall_level": 1
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 36,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.015",
+  "signal_evidence": 39
+}

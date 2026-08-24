@@ -1,0 +1,32 @@
+# Sealed ground truth - AgilePoint (agilepoint.com). Human-reviewed 2026-08-18.
+# Excluded on review: YouTube and LinkedIn items that carry only relative dates
+# (ServiceNow forms support, OpenAI activities, Memgraph, AI Control Towers), the
+# undated solution page (agreement reconciliation), a thought-leadership blog post,
+# and the third-party Forrester DPA Wave article that is about other vendors.
+company_id: saas-02
+as_of: '2026-08-18'
+recent_window_days: 180
+events:
+- date: '2026-04-01'
+  headline_aliases:
+  - Introduced an AgilePoint NX connector for Qwen
+  - Added Qwen support with process activities and AI Control Towers
+  - AgilePoint NX Connector for Qwen
+  source_domain: blog.agilepoint.com
+  kind: launch
+  event_type: integration
+  evidence_ids:
+  - ev-8ee49560223c6867
+  - ev-bf83fde3d3448b7f
+  - ev-c22aa10a80fa953c
+- date: '2026-04-25'
+  headline_aliases:
+  - Launched a redesigned SharePoint On-Premises Subscription Edition
+  - Introduced AgilePoint for SharePoint OnPremises Subscription Edition with Workflow Manager support
+  - New SharePoint On-Premises solution compatible with SharePoint Workflow Manager
+  source_domain: blog.agilepoint.com
+  kind: launch
+  event_type: product
+  evidence_ids:
+  - ev-ca38f8c414374fff
+  - ev-0824b3e2df917997

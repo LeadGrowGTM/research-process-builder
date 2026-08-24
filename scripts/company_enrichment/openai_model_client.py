@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from decimal import Decimal
 from hashlib import sha256
+from urllib.parse import urlparse
 import io
 import json
 import os
@@ -21,6 +22,13 @@ from .icp_persona_contracts import parse_icp_output
 _MILLION = Decimal("1000000")
 _DEFAULT_MAX_OUTPUT_TOKENS = 1_024
 _MODEL_MAX_OUTPUT_TOKENS = {"gpt-5-nano": 4_096}
+# Field-keyed signal contracts (news events, competitor sets) legitimately run
+# to twenty-plus cited entries; 1,024 tokens truncates them into invalid JSON.
+_FIELD_KEYED_MAX_OUTPUT_TOKENS = 4_096
+# Field-keyed signal requests pin sampling so two lineages that differ only in
+# prompt text are comparable. Reasoning models reject ``temperature``.
+_FIELD_KEYED_TEMPERATURE = 0
+_REASONING_MODEL_PREFIXES = ("gpt-5", "o1", "o3", "o4")
 _SECRET_PATTERN = re.compile(
     r"(?i)(?:sk|sess|key)-[a-z0-9_-]{8,}|bearer\s+[a-z0-9._-]+"
 )
@@ -38,14 +46,14 @@ class ModelPrice:
 
 # OpenAI list prices in USD per one million text tokens. Batch is 50% of the
 # standard rate. Decimal literals keep the budget ledger free of float drift.
+# Only these models may run (workspace policy, Mitch 2026-08-18): gpt-4.1-mini,
+# gpt-5-nano, and the flagship gpt-5.6-luna. The full gpt-4.1 tier and the
+# gpt-4o family are never used and are deliberately absent, so a request for
+# them fails validation before any spend. Do not add models without approval.
 MODEL_PRICES: Mapping[str, ModelPrice] = {
     "gpt-5-nano": ModelPrice(
         Decimal("0.05"), Decimal("0.005"), Decimal("0.40"),
         Decimal("0.025"), Decimal("0.0025"), Decimal("0.20"),
-    ),
-    "gpt-4o-mini": ModelPrice(
-        Decimal("0.15"), Decimal("0.075"), Decimal("0.60"),
-        Decimal("0.075"), Decimal("0.0375"), Decimal("0.30"),
     ),
     "gpt-4.1-mini": ModelPrice(
         Decimal("0.40"), Decimal("0.10"), Decimal("1.60"),
@@ -178,7 +186,7 @@ class OpenAIModelClient:
             for item in requests
         )
         output_tokens = sum(
-            self._max_output_tokens(item.requested_model_id)
+            self._max_output_tokens(item.requested_model_id, item)
             for item in requests
         )
         return str(
@@ -247,10 +255,21 @@ class OpenAIModelClient:
         raise ValueError("unsupported execution track")
 
     @staticmethod
-    def _max_output_tokens(model: str) -> int:
-        return _MODEL_MAX_OUTPUT_TOKENS.get(
-            model, _DEFAULT_MAX_OUTPUT_TOKENS,
+    def _is_field_keyed(request: "ExperimentInput | None") -> bool:
+        """Signal enrichments (news, competitors, ads) use the field-keyed
+        contract path; ICP/persona and legacy flat requests do not."""
+        return (
+            request is not None
+            and request.output_contract is not None
+            and request.enrichment_id != "icp-persona-analysis"
         )
+
+    @staticmethod
+    def _max_output_tokens(model: str, request: "ExperimentInput | None" = None) -> int:
+        limit = _MODEL_MAX_OUTPUT_TOKENS.get(model, _DEFAULT_MAX_OUTPUT_TOKENS)
+        if OpenAIModelClient._is_field_keyed(request):
+            return max(limit, _FIELD_KEYED_MAX_OUTPUT_TOKENS)
+        return limit
 
     @staticmethod
     def _override_metadata(request: ExperimentInput) -> dict[str, str]:
@@ -277,6 +296,25 @@ class OpenAIModelClient:
         }
 
     @staticmethod
+    def _subject_line(request: ExperimentInput) -> str:
+        """Field-keyed signal requests name the subject so the model does not
+        confuse it with a similarly named company in the Evidence. The subject
+        is the dossier's ``identity`` assertion plus the host of its first base
+        Evidence URL; the line is omitted for ICP and legacy requests."""
+        if not OpenAIModelClient._is_field_keyed(request):
+            return ""
+        dossier = request.dossier
+        name = next((str(item.value) for item in dossier.assertions
+                     if item.field == "identity" and item.value), None)
+        host = urlparse(dossier.evidence[0].url).netloc.lower() if dossier.evidence else ""
+        host = host.split("@")[-1].split(":")[0]
+        host = host[4:] if host.startswith("www.") else host
+        if not name and not host:
+            return ""
+        label = f"{name} ({host})" if name and host else (name or host)
+        return f"Subject company: {label}\n"
+
+    @staticmethod
     def _prompt(request: ExperimentInput) -> str:
         evidence = [
             {
@@ -293,6 +331,7 @@ class OpenAIModelClient:
             return (
                 f"{request.prompt_text.rstrip()}\n\n"
                 f"Company ID: {request.company_id}\n"
+                f"{OpenAIModelClient._subject_line(request)}"
                 f"Enrichment: {request.enrichment_id}\n"
                 f"Requested fields: {json.dumps(fields)}\n"
                 f"Evidence: {json.dumps(evidence, ensure_ascii=False, sort_keys=True)}"
@@ -347,7 +386,7 @@ class OpenAIModelClient:
             "model": request.requested_model_id,
             "input": self._prompt(request),
             "max_output_tokens": self._max_output_tokens(
-                request.requested_model_id,
+                request.requested_model_id, request,
             ),
             "store": True,
             "text": {
@@ -361,6 +400,10 @@ class OpenAIModelClient:
         }
         if request.requested_model_id == "gpt-5-nano":
             body["reasoning"] = {"effort": "minimal"}
+        if self._is_field_keyed(request) and not request.requested_model_id.startswith(
+            _REASONING_MODEL_PREFIXES
+        ):
+            body["temperature"] = _FIELD_KEYED_TEMPERATURE
         return body
 
     def _request_digest(self, request: ExperimentInput) -> str:
@@ -499,6 +542,8 @@ class OpenAIModelClient:
         request: ExperimentInput, output: Any,
     ) -> tuple[tuple[FieldAssertion, ...], tuple[str, ...]]:
         if request.output_contract is not None:
+            if request.enrichment_id != "icp-persona-analysis":
+                return OpenAIModelClient._validated_field_keyed_output(request, output)
             return OpenAIModelClient._validated_icp_output(request, output)
 
         if not isinstance(output, Mapping):
@@ -627,6 +672,80 @@ class OpenAIModelClient:
             ),
             (),
         )
+
+    @staticmethod
+    def _is_empty_collection(value: Any) -> bool:
+        """True for ``[]`` or an object whose list-valued members are all empty."""
+        if isinstance(value, list):
+            return not value
+        if isinstance(value, Mapping):
+            members = [item for item in value.values() if isinstance(item, list)]
+            return bool(members) and all(not item for item in members)
+        return False
+
+    @staticmethod
+    def _collect_evidence_ids(value: Any, allowed: set[str]) -> list[str]:
+        """Collect every nested ``evidence_ids`` array, each non-empty and retained."""
+        found: list[str] = []
+        if isinstance(value, Mapping):
+            for key, item in value.items():
+                if key != "evidence_ids":
+                    found.extend(OpenAIModelClient._collect_evidence_ids(item, allowed))
+                    continue
+                if not isinstance(item, list) or not item:
+                    raise ValueError("evidence_ids must be a non-empty array")
+                if any(not isinstance(evidence_id, str) for evidence_id in item):
+                    raise ValueError("evidence_ids must contain text IDs")
+                if not set(item).issubset(allowed):
+                    raise ValueError("assertion cites Evidence outside the dossier")
+                found.extend(item)
+        elif isinstance(value, list):
+            for item in value:
+                found.extend(OpenAIModelClient._collect_evidence_ids(item, allowed))
+        return found
+
+    @staticmethod
+    def _validated_field_keyed_output(
+        request: ExperimentInput, output: Any,
+    ) -> tuple[tuple[FieldAssertion, ...], tuple[str, ...]]:
+        """Validate a nested contract keyed by the enrichment's P0 fields.
+
+        Top-level keys must equal the enrichment's fields, plus an optional
+        ``unknowns`` list naming fields within scope. Every nested
+        ``evidence_ids`` array must be non-empty and cite retained Evidence.
+        Each field becomes one message-safe FieldAssertion whose evidence is
+        the union of the arrays nested under it; a field with no citation
+        must be declared unknown.
+        """
+        if not isinstance(output, dict):
+            raise ValueError("structured field-keyed output must be an object")
+        fields = P0_ENRICHMENTS[request.enrichment_id]
+        if set(output) - {"unknowns"} != set(fields):
+            raise ValueError("field-keyed output must contain exactly the requested fields")
+        unknown_values = output.get("unknowns", [])
+        if not isinstance(unknown_values, list) or any(
+            not isinstance(item, str) or item not in fields for item in unknown_values
+        ):
+            raise ValueError("unknown field is outside enrichment scope")
+        unknowns = tuple(dict.fromkeys(unknown_values))
+        allowed_evidence = {item.evidence_id for item in request.dossier.evidence}
+        assertions = []
+        for field in fields:
+            evidence_ids = tuple(dict.fromkeys(
+                OpenAIModelClient._collect_evidence_ids(output[field], allowed_evidence)
+            ))
+            if not evidence_ids and field not in unknowns:
+                if OpenAIModelClient._is_empty_collection(output[field]):
+                    # An explicitly empty collection is the model saying "nothing
+                    # supported"; treat it as the unknown it is rather than
+                    # failing the whole case over a missing declaration.
+                    unknowns = (*unknowns, field)
+                else:
+                    raise ValueError(f"field {field} cites no Evidence and is not unknown")
+            assertions.append(FieldAssertion(
+                field, output[field], evidence_ids, 1.0, Visibility.MESSAGE_SAFE,
+            ))
+        return tuple(assertions), unknowns
 
     @staticmethod
     def _execution_payload(value: ModelExecution) -> dict[str, Any]:

@@ -1,0 +1,11 @@
+as_of: '2026-08-18'
+channels:
+  google:
+    evidence_ids:
+    - ev-32970edee86937fe
+    status: inactive
+  meta:
+    evidence_ids:
+    - ev-012c45de08359c5d
+    status: inactive
+company_id: saas-02

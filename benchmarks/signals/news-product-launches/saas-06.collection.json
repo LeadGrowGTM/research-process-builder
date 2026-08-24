@@ -1,0 +1,147 @@
+{
+  "collected_at": "2026-08-18T11:41:09.389430-04:00",
+  "company_id": "saas-06",
+  "enrichment_id": "news-product-launches",
+  "entries": [
+    {
+      "category": "predictive procurement platform",
+      "company_name": "Arkestro",
+      "domain": "arkestro.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "news",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "arkestro.com news",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Arkestro \"press release\" OR \"announces\" OR \"newsroom\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "dropped_off_subject": 1,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Arkestro launches OR \"new feature\" OR \"introducing\" OR \"now available\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.prnewswire.com/news-releases/arkestro-momentum-drives-leadership-growth-and-appoints-industry-powerhouse-veterans-302844608.html",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.prnewswire.com/news-releases/arkestro-drives-significant-customer-momentum-growth-across-industries-heading-into-2026-302646472.html",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.prnewswire.com/news-releases/arkestro-announces-collaboration-with-nissan-to-support-predictive-procurement-transformation-302697203.html",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://arkestro.com/press-releases/arkestro-announces-customer-expansion-with-chevron-driving-predictive-procurement-transformation-across-global-markets/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://arkestro.com/press-releases/arkestro-announces-collaboration-with-nissan-to-support-predictive-procurement-transformation/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://arkestro.com/press/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://arkestro.com/blog",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://arkestro.com/news: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://arkestro.com/news"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://arkestro.com/newsroom: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://arkestro.com/newsroom"
+    },
+    {
+      "status": "already_scraped",
+      "step": "first_party",
+      "target": "https://arkestro.com/press"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://arkestro.com/changelog: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://arkestro.com/changelog"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://arkestro.com/product-updates: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://arkestro.com/product-updates"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://arkestro.com/whats-new: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://arkestro.com/whats-new"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 38,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.003",
+  "signal_evidence": 41
+}

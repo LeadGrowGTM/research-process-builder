@@ -1,0 +1,768 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: identity
+  value: Built
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: description
+  value: 'Solutions for Lenders | Built | Powering Smarter Construction Finance The
+    Future of Real Estate Finance Starts Here: Meet the AI Draw Agent blt-logo-web
+    _:last-child]:only:tw-hidden" role="presentation"> Solutions Lenders Origination
+    Pipeline Management OM Extraction Underwriting Draw & Budget Management AI Draw
+    Agent Draw Inspections Risk Mitigation Portfolio Reporting Owners & Developers
+    Origination Pipeline Management OM Extraction Budget Management Capital Requests
+    Invoice Management Complia'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: offers
+  value: construction finance platform
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: icp
+  value: lenders
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-ce4724cc20ef689e
+  - ev-be44ff703241ffbe
+  - ev-d109a2df75fb122e
+  field: personas
+  value: lenders
+  visibility: message_safe
+company_id: saas-10
+corrections: []
+evidence:
+- content_hash: ce4724cc20ef689e8d15b16485840e125fb4659ed0f1ff520d95ce813ca909c9
+  evidence_id: ev-ce4724cc20ef689e
+  excerpt: 'Solutions for Lenders | Built | Powering Smarter Construction Finance
+    The Future of Real Estate Finance Starts Here: Meet the AI Draw Agent blt-logo-web
+    _:last-child]:only:tw-hidden" role="presentation"> Solutions Lenders Origination
+    Pipeline Management OM Extraction Underwriting Draw & Budget Management AI Draw
+    Agent Draw Inspections Risk Mitigation Portfolio Reporting Owners & Developers
+    Origination Pipeline Management OM Extraction Budget Management Capital Requests
+    Invoice Management Compliance Tracking Lien Waiver Management Payments Portfolio
+    Reporting Builders Budget Management Compliance Tracking Invoice Management Lien
+    Waiver Management Payments Powered by AI Trained on $3T+ in real estate finance
+    data. Built''s AI automates workflows and surfaces risk in real time. Integrations
+    Built connects to Sage, Yardi, Procore and more. Inspections & Due Diligence AI-powered
+    draw inspections that catch issues before funds move. _:last-child]:only:tw-hidden"
+    role="presentation"> Products Construction Loan Administration AI Draw Agent Draw
+    Inspections Draws & Budget Management Risk Mitigation Deal Management Origination
+    Pipeline Management OM Extraction Underwriting Portfolio Reporting Construction
+    Financials Budget Management Invoice Management Lien Waiver Management Capital
+    Requests Compliance Tracking Payments Lien Waiver Management & Payments Create
+    Lien Waivers Send Lien Waivers Track Lien Waivers Payments Integrations Meet Built''s
+    New Draw Agent Learn how the AI Draw Agent enables 2–5× capacity gains, 100% policy
+    adherence, 2× more risks flagged, and up to 95% faster draw processing. Watch
+    Here _:last-child]:only:tw-hidden" role="presentation"> Customers _:last-child]:only:tw-hidden"
+    role="presentation"> Resources Learn News Resource Center Built University Free
+    Tools & Templates Connect About Us Contact Us Integrations Help Desk Careers Learn
+    Built & Move Faster Free courses and resources to help your team get more out
+    of Built. Explore University Login Support B'
+  retrieved_at: '2026-08-12T21:00:59.875500+00:00'
+  url: https://getbuilt.com/solutions/lenders/
+- content_hash: be44ff703241ffbea1cca3c0894b3e42188b368c4a4a6237294ffb2b5682e52d
+  evidence_id: ev-be44ff703241ffbe
+  excerpt: "Built Technologies Careers, Perks + Culture | Built In Companies Jobs\
+    \ Articles Can't find your company? Create a company profile. View All Jobs Join\
+    \ Log In For Employers Companies Built Technologies Teams Built Technologies Save\
+    \ Saved HQ Nashville Total Offices: 2 260 Total Employees 125 Product + Tech Employees\
+    \ Year Founded: 2014 View Website Overview Jobs 13 Offices More Info Working at\
+    \ Built Technologies Culture & Values Career Growth & Development Compensation\
+    \ & Benefits Work-Life Balance & Wellbeing Leadership & Management Stability &\
+    \ Growth Is This Your Company? Manage Jobs Fintech Real Estate Built Technologies\
+    \ was founded in 2014 out of firsthand frustration with the challenges and pitfalls\
+    \ often associated with construction lending and the belief that technology could\
+    \ transform the loan management process. Built’s collaborative software streamlines\
+    \ the collateral monitoring and draw management process – a process widely recognized\
+    \ as highly cumbersome, costly, and fraught with risk. By bringing the draw management\
+    \ process online, Built helps lenders reduce construction loan risk, increase\
+    \ loan profitability, transform the borrower experience, simplify compliance,\
+    \ and provide unprecedented portfolio insights.\r\n Recently Posted Jobs at Built\
+    \ Technologies View All Built Technologies Senior Innovation Engineer, Marketplace\
+    \ In-Office or Remote 2 Locations Built Technologies Staff Innovation Engineer,\
+    \ Marketplace In-Office or Remote 2 Locations Built Technologies Senior Engineering\
+    \ Manager, Data In-Office or Remote 2 Locations Built Technologies Product Designer\
+    \ II Remote USA Built Technologies Staff Software Engineer, Data Platform Remote\
+    \ USA Built Technologies Account Executive - OGC (Dallas Based, Remote) Remote\
+    \ USA Built Technologies Account Executive Remote USA Built Technologies Client\
+    \ Support Representative In-Office Nashville, TN, USA Built Technologies FP&A\
+    \ Analyst In-Office 2 Locations View all jobs Built Technologies Offices Hybrid\
+    \ Workspace Employees "
+  retrieved_at: '2026-08-12T21:01:00.217137+00:00'
+  url: https://builtin.com/company/built-technologies
+- content_hash: d109a2df75fb122ea2ed95b53c219be7567f899176c51800ca7cc65ae4c4cd5b
+  evidence_id: ev-d109a2df75fb122e
+  excerpt: 'Canapi Investing in the New Financial Services Economy Team Portfolio
+    Insights Careers Investor Login Built Powering smarter construction finance Series
+    B Series C Series D About Built is the leading provider of construction finance
+    technology. The platform unites commercial and consumer construction lenders,
+    commercial real estate owners, commercial general contractors, residential homebuilders,
+    specialty contractors, title companies, and vendors to improve the flow of capital
+    through the construction ecosystem – from lender to vendor. By connecting all
+    key stakeholders involved in the construction process in real-time, the platform
+    helps mitigate risk, power faster draws and payments, ensure compliance, and inspire
+    customer loyalty. Investment Highlights Year Founded 2014 Employees 250-500 HQ
+    Location Nashville Built Technologies Announces $125M Series D Financing Round
+    September 30, 2021 Built Technologies Introduces the Future of Construction Payments:
+    Built Pay December 14, 2021 Built Technologies Reached More Than $200B in Total
+    Construction Value Managed; Achieved $1.5B Valuation and Unicorn Status in 2021
+    February 7, 2022 Built Technologies Secures Investment From Citi April 13, 2023
+    Why Canapi is Doubling Down on Built’s Series C February 3, 2021 1 / 4'
+  retrieved_at: '2026-08-12T21:01:00.797661+00:00'
+  url: https://www.canapi.com/investment/built
+- content_hash: 5164b3d683cbf14fd521e10cd2dc409f0fee3c08726a2dbb7108f9d038f40794
+  evidence_id: ev-5164b3d683cbf14f
+  excerpt: 'Detected date: Sep 15, 2025
+
+    Title: Industry First: Regions Bank Launches Convenient, Seamless Digital Portal
+    for Real Estate Banking Clients
+
+    Date: Sep 15, 2025
+
+    Source: Regions Bank
+
+    Snippet: Powered by Built, the new client portal will accelerate draw approvals,
+    improve collaboration and increase project transparency.'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://ir.regions.com/news-events/press-releases/news-details/2025/Industry-First-Regions-Bank-Launches-Convenient-Seamless-Digital-Portal-for-Real-Estate-Banking-Clients/default.aspx
+- content_hash: d281a802346124b47366bd6b4f9b5372fdcf0f7f0c97ed54f9582772fa3a5c45
+  evidence_id: ev-d281a802346124b4
+  excerpt: 'Detected date: Jun 10, 2024
+
+    Title: Built Unveils Unified CRE Financing and Asset & Portfolio Management, Enhancing
+    Lender Efficiency and Performance
+
+    Date: Jun 10, 2024
+
+    Source: Business Wire
+
+    Snippet: Built, a leading software platform designed to connect and simplify doing
+    business in real estate, has announced new advanced capabilities...'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.businesswire.com/news/home/20240610211292/en/Built-Unveils-Unified-CRE-Financing-and-Asset-Portfolio-Management-Enhancing-Lender-Efficiency-and-Performance
+- content_hash: a81ac3fde2ca353d8e977c21ce9cc9868c4856556ea448f747ce726756459d9b
+  evidence_id: ev-a81ac3fde2ca353d
+  excerpt: 'Detected date: Dec 14, 2021
+
+    Title: Built Technologies Introduces the Future of Construction Payments: Built
+    Pay
+
+    Date: Dec 14, 2021
+
+    Source: Financial Post
+
+    Snippet: Designed to simplify making and receiving payments for the construction
+    community.'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://financialpost.com/pmn/press-releases-pmn/business-wire-news-releases-pmn/built-technologies-introduces-the-future-of-construction-payments-built-pay
+- content_hash: 1a64d72eba589a885bb0941b126184d0ae4735a510ecccd1067f399e0090ccd5
+  evidence_id: ev-1a64d72eba589a88
+  excerpt: 'Detected date: May 23, 2017
+
+    Title: Trinity Real Estate Solutions Expands Portfolio with Built Technologies''
+    Draw Management Platform Integration
+
+    Date: May 23, 2017
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Trinity Real Estate Solutions today announced valuable
+    enhancements for their new construction and renovation lender clients...'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.prnewswire.com/news-releases/trinity-real-estate-solutions-expands-portfolio-with-built-technologies-draw-management-platform-integration-300462313.html
+- content_hash: 15995d682eee3ffabaa497201952df80484983deeaa3a671140d75595dae5b35
+  evidence_id: ev-15995d682eee3ffa
+  excerpt: 'Detected date: Jan 22, 2024
+
+    Title: Built Technologies Names Tech Veteran SVP of Sales
+
+    Date: Jan 22, 2024
+
+    Source: Business Wire
+
+    Snippet: Carnell Elliott tapped to scale market-leading construction and real
+    estate finance platform to its next stage of growth.'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.businesswire.com/news/home/20240122780686/en/Built-Technologies-Names-Tech-Veteran-SVP-of-Sales
+- content_hash: e1c75f9a92bdb72c143bcc81725f97216cdf7c8b268001c222b48b9343e4c0b6
+  evidence_id: ev-e1c75f9a92bdb72c
+  excerpt: 'Detected date: Apr 4, 2018
+
+    Title: The Boss: Built''s Chase Gilbert raised millions, lives in his parents''
+    basement
+
+    Date: Apr 4, 2018
+
+    Source: The Business Journals
+
+    Snippet: Chase Gilbert got married, raised $21 million for his company and bought
+    his first home all in the span of 10 days.'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.bizjournals.com/nashville/news/2018/04/04/the-boss-builtschase-gilbert-raised-millions-lives.html
+- content_hash: ac2b8071a7cbb7317bd9edaaa42b4a597576eaaa9134e1efccd451d569e38a6e
+  evidence_id: ev-ac2b8071a7cbb731
+  excerpt: 'Detected date: Mar 11, 2024
+
+    Title: Built Expands Platform to Real Estate Owners and Developers; Unveils Next
+    Generation Financial Management and Payments Product
+
+    Date: Mar 11, 2024
+
+    Source: Business Wire
+
+    Snippet: Built''s next-gen financial management and payments product for real
+    estate owners and developers improves the movement of money and decision...'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.businesswire.com/news/home/20240311655232/en/Built-Expands-Platform-to-Real-Estate-Owners-and-Developers-Unveils-Next-Generation-Financial-Management-and-Payments-Product
+- content_hash: ab9d12481cf0d0844f4cb34977a9c91d9408575fa1bc01428951d1ce370b0b36
+  evidence_id: ev-ab9d12481cf0d084
+  excerpt: 'Detected date: Sep 30, 2021
+
+    Title: Built Technologies Announces $125M Series D Financing Round Led by New
+    Investor TCV
+
+    Date: Sep 30, 2021
+
+    Source: Business Wire
+
+    Snippet: Built Technologies today announced $125M in Series D funding with a valuation
+    of $1.5B. Lead investor for the round is Silicon Valley-based...'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.businesswire.com/news/home/20210930005263/en/Built-Technologies-Announces-%24125M-Series-D-Financing-Round-Led-by-New-Investor-TCV
+- content_hash: 7a27f9c278654141ca076fa6d19588e4485e471bb70af15c6a0880179f2f0550
+  evidence_id: ev-7a27f9c278654141
+  excerpt: 'Detected date: Jan 5, 2023
+
+    Title: Built Technologies Names Digital Payment Expert Bora Chung and Engineering
+    Veteran Matt Marenghi as Advisors
+
+    Date: Jan 5, 2023
+
+    Source: Business Wire
+
+    Snippet: Fintech unicorn Built Technologies adds two industry veterans as company
+    advisors, Bora Chung and Matt Marenghi.'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.businesswire.com/news/home/20230105005660/en/Built-Technologies-Names-Digital-Payment-Expert-Bora-Chung-and-Engineering-Veteran-Matt-Marenghi-as-Advisors
+- content_hash: 2ce195301267e9e7ae249b329c75d6a9d8dfdc4d919b8157eb943e53205fa448
+  evidence_id: ev-2ce195301267e9e7
+  excerpt: 'Query: getbuilt.com news
+
+    1. https://ir.regions.com/news-events/press-releases/news-details/2025/Industry-First-Regions-Bank-Launches-Convenient-Seamless-Digital-Portal-for-Real-Estate-Banking-Clients/default.aspx
+
+    Title: Industry First: Regions Bank Launches Convenient, Seamless Digital Portal
+    for Real Estate Banking Clients
+
+    Date: Sep 15, 2025
+
+    Source: Regions Bank
+
+    Snippet: Powered by Built, the new client portal will accelerate draw approvals,
+    improve collaboration and increase project transparency.
+
+    2. https://www.businesswire.com/news/home/20240610211292/en/Built-Unveils-Unified-CRE-Financing-and-Asset-Portfolio-Management-Enhancing-Lender-Efficiency-and-Performance
+
+    Title: Built Unveils Unified CRE Financing and Asset & Portfolio Management, Enhancing
+    Lender Efficiency and Performance
+
+    Date: Jun 10, 2024
+
+    Source: Business Wire
+
+    Snippet: Built, a leading software platform designed to connect and simplify doing
+    business in real estate, has announced new advanced capabilities...
+
+    3. https://financialpost.com/pmn/press-releases-pmn/business-wire-news-releases-pmn/built-technologies-introduces-the-future-of-construction-payments-built-pay
+
+    Title: Built Technologies Introduces the Future of Construction Payments: Built
+    Pay
+
+    Date: Dec 14, 2021
+
+    Source: Financial Post
+
+    Snippet: Designed to simplify making and receiving payments for the construction
+    community.
+
+    4. https://ir.regions.com/news-events/press-releases/news-details/2021/Regions-Bank-Digitizes-Homebuilder-Financing-with-Convenient-Se'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.google.com/search?q=getbuilt.com+news&tbm=nws
+- content_hash: dde133cd2fc44033f6d6c92ef1c4d17714373794ac77357c5a6c6e5d18cb1caa
+  evidence_id: ev-dde133cd2fc44033
+  excerpt: 'Title: Breaking news… WP Engine Newsroom just launched! 🗞️ ...
+
+    Date: 6 months ago
+
+    Snippet: Breaking news… WP Engine Newsroom just launched! 🗞️ We''ve built a new
+    ... PRESS RELEASE & CONTENT CIRCULATION SERVICES ‼️ Amplify your reach with ...'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.facebook.com/wpengine/videos/breaking-news-wp-engine-newsroom-just-launched-%EF%B8%8Fweve-built-a-new-standard-for-mo/2180813389415561/
+- content_hash: 5ae344d3d918e5ec57cc348c7e1eb52305f9b78e1b15c482d8533bbf724b9773
+  evidence_id: ev-5ae344d3d918e5ec
+  excerpt: 'Detected date: Dec 9, 2025
+
+    Title: Chris Fitzsimon tells us how States Newsroom has built a ...
+
+    Date: Dec 9, 2025
+
+    Snippet: States Newsroom has a presence in all 50 states, with its own news organizations
+    in 39 states and partnerships with existing nonprofits in the other 11. In ...'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://whatworks.news/2025/12/09/chris-fitzsimon-tells-us-how-states-newsroom-has-built-a-nationwide-statehouse-news-network/
+- content_hash: 43ff783480293fc4d4c73337aa0c5b55a5e4c7d77bd0838e66b6fc150f75344c
+  evidence_id: ev-43ff783480293fc4
+  excerpt: 'Title: WP Engine on Instagram: "Breaking news… WP Engine ...
+
+    Date: 6 months ago
+
+    Snippet: ... Newsroom just launched! 🗞️ We''ve built a new ... Company X Announces
+    Record Quarterly Results and Strategic Growth Plan The Press Release in 2026 ...'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.instagram.com/reel/DUTOjA-gWLM/
+- content_hash: ccb464f203e859ad8020f0251adeb8fa6fb1879cc2bab7cc121a9bb53c443689
+  evidence_id: ev-ccb464f203e859ad
+  excerpt: 'Detected date: Feb 4, 2026
+
+    Title: WP Engine Launches Newsroom, a Publishing Platform Built ...
+
+    Date: Feb 4, 2026
+
+    Snippet: The WordPress-based platform marks WP Engine''s move into newsroom publishing
+    infrastructure, targeting mid-to-enterprise media organizations.'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.therepository.email/wp-engine-launches-newsroom-a-publishing-platform-built-on-big-bites-newsroom-expertise
+- content_hash: d79061ad4deed0df447d00da2c31d87b2999a049e9aa081e80f7ba34316ed236
+  evidence_id: ev-d79061ad4deed0df
+  excerpt: 'Detected date: Aug 6, 2026
+
+    Title: Newsroom
+
+    Date: Aug 6, 2026
+
+    Snippet: Newsroom · Careers · Investor Relations. Menu. Our ... Discovery Announces
+    Agentic AI-Powered Advertising Technology Built on AWS, its Preferred Cloud Provider.'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.wbd.com/newsroom
+- content_hash: f8a9dc74e149868c129633d98d4f6ea4754d765b41a1e8e6f7c3e9899d6a928a
+  evidence_id: ev-f8a9dc74e149868c
+  excerpt: 'Title: Your newsroom''s structure might still be built for print. That
+    is a ...
+
+    Date: 9 hours ago
+
+    Snippet: Your newsroom''s structure might still be built for print. That is a
+    problem now that AI is changing how the work gets done. Nils sit down with Selma
+    Stern, ...'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.linkedin.com/posts/kilkaya_your-newsrooms-structure-might-still-be-activity-7495364660167319553-R6Ul
+- content_hash: 9cf4e62d1fa6e62cc21457e4f9aae4009367fc85f8838e69a3e355cb4dbc43b0
+  evidence_id: ev-9cf4e62d1fa6e62c
+  excerpt: 'Title: The best newsroom tools are built by people who''ve actually ...
+
+    Date: 1 month ago
+
+    Snippet: That''s why we''re building AI that solves real newsroom challenges—not
+    just the things that demo well. Watch Rachel''s thoughts in the video below. Want
+    to ...'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.facebook.com/apenps/videos/rachel-gabrielsen-reducing-the-busywork-between-journalists-and-the-story/2059211291371530/
+- content_hash: 7eeaecdbbbe1d5f96a2fd040cdc7ae52901070b2651fb2e86d23e04c8d66e7e7
+  evidence_id: ev-7eeaecdbbbe1d5f9
+  excerpt: 'Query: Built "press release" OR "announces" OR "newsroom"
+
+    1. https://www.facebook.com/wpengine/videos/breaking-news-wp-engine-newsroom-just-launched-%EF%B8%8Fweve-built-a-new-standard-for-mo/2180813389415561/
+
+    Title: Breaking news… WP Engine Newsroom just launched! 🗞️ ...
+
+    Date: 6 months ago
+
+    Snippet: Breaking news… WP Engine Newsroom just launched! 🗞️ We''ve built a new
+    ... PRESS RELEASE & CONTENT CIRCULATION SERVICES ‼️ Amplify your reach with ...
+
+    2. https://whatworks.news/2025/12/09/chris-fitzsimon-tells-us-how-states-newsroom-has-built-a-nationwide-statehouse-news-network/
+
+    Title: Chris Fitzsimon tells us how States Newsroom has built a ...
+
+    Date: Dec 9, 2025
+
+    Snippet: States Newsroom has a presence in all 50 states, with its own news organizations
+    in 39 states and partnerships with existing nonprofits in the other 11. In ...
+
+    3. https://www.instagram.com/reel/DUTOjA-gWLM/
+
+    Title: WP Engine on Instagram: "Breaking news… WP Engine ...
+
+    Date: 6 months ago
+
+    Snippet: ... Newsroom just launched! 🗞️ We''ve built a new ... Company X Announces
+    Record Quarterly Results and Strategic Growth Plan The Press Release in 2026 ...
+
+    4. https://www.therepository.email/wp-engine-launches-newsroom-a-publishing-platform-built-on-big-bites-newsroom-expertise
+
+    Title: WP Engine Launches Newsroom, a Publishing Platform Built ...
+
+    Date: Feb 4, 2026
+
+    Snippet: The WordPress-based platform marks WP Engine''s move into newsroom publishing
+    infrastructure, targeting mid-to-enterprise media organizations.
+
+    5. https://www.'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.google.com/search?q=Built+%22press+release%22+OR+%22announces%22+OR+%22newsroom%22&tbs=qdr%3Ay
+- content_hash: 791bb0fa8ca51e5c49c3f1dba2b50242a858de7f3e778f53e7eaa663dbdb6766
+  evidence_id: ev-791bb0fa8ca51e5c
+  excerpt: 'Detected date: Nov 4, 2025
+
+    Title: Built Launches Draw Agent to Approve Construction Loan ...
+
+    Date: Nov 4, 2025
+
+    Snippet: The launch of Draw Agent marks a pivotal step in applying purpose-built
+    software, proprietary data, and advanced AI to the complex, interconnected world
+    of real ...'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://getbuilt.com/news/built-launches-draw-agent-to-approve-construction-loan-draws-in-minutes/
+- content_hash: 5cb3a2202694249cc30ff21a38b317b6647123abb973eefb2132733fdebeac03
+  evidence_id: ev-5cb3a2202694249c
+  excerpt: 'Title: Introducing Project Solara: Composing a new platform for agent
+    ...
+
+    Date: 2 months ago
+
+    Snippet: Introducing Project Solara, a new platform built from the ground up to
+    power agent-driven experiences, including two new concept devices that reimagine
+    how ...'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.youtube.com/watch?v=OO8Z04KMARE
+- content_hash: 88b0b82db7bf19c6bd037b7551211a991618271192c91c00cd3b51d31a98ee81
+  evidence_id: ev-88b0b82db7bf19c6
+  excerpt: 'Detected date: Jun 8, 2026
+
+    Title: Microsoft Build 2026 recap: vision, launches, and top ...
+
+    Date: Jun 8, 2026
+
+    Snippet: MAI-Code-1-Flash is now available for GitHub Copilot. This is Microsoft''s
+    latest small-tier coding model, and it''s the first in a new wave of purpose-built
+    ...'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://developer.microsoft.com/blog/build-recap/
+- content_hash: 580bed9040ee0a7dee0f65eb6ede598ceff78b363f7c3313c102ceccd91fd99c
+  evidence_id: ev-580bed9040ee0a7d
+  excerpt: 'Detected date: Jun 2, 2026
+
+    Title: Build 2026: Furthering Windows as the trusted platform for ...
+
+    Date: Jun 2, 2026
+
+    Snippet: Introducing Project Solara. We''re introducing Project Solara, a new
+    platform built from the ground up to power agent-driven experiences, including
+    two new ...'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/
+- content_hash: 369c6fbcef89bc1c143206fb6b9e8ebaa409a980849da794cb8ca05482b8a68a
+  evidence_id: ev-369c6fbcef89bc1c
+  excerpt: 'Detected date: Aug 22, 2025
+
+    Title: Boeing-Built X-37B Spaceplane Launches, Beginning Eighth ...
+
+    Date: Aug 22, 2025
+
+    Snippet: Launch is the starting line for this mission, but the work that follows
+    –the quiet, methodical work on orbit, analysis and eventual return is where progress
+    is ...'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://boeing.mediaroom.com/2025-08-22-Boeing-Built-X-37B-Spaceplane-Launches,-Beginning-Eighth-Mission
+- content_hash: b00e0de6c641002506aeb6709ed1e70cb6868e7e473ed7e9bda4f3446947ec44
+  evidence_id: ev-b00e0de6c6410025
+  excerpt: 'Title: It''s here. Astro AI officially launches today. Built exclusively
+    ...
+
+    Date: 7 months ago
+
+    Snippet: Join the launch list at https://bit. ly/4qFlPoV. Tiffany Neiwert and
+    10 others.'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.facebook.com/NewHomeStar/videos/its-here-astro-ai-officially-launches-today-built-exclusively-for-new-home-sales/1204165701893621/
+- content_hash: 1a7d98f4d5d775af8c0bfa33bf806a0523e2151aa8b721ebec44290834354c6c
+  evidence_id: ev-1a7d98f4d5d775af
+  excerpt: 'Detected date: Mar 11, 2026
+
+    Title: Introducing Replit Agent 4: Built for Creativity
+
+    Date: Mar 11, 2026
+
+    Snippet: Introducing Agent 4 — our fastest, most versatile Agent yet. It''s built
+    around a simple idea: you should spend your time creating, not coordinating.'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://replit.com/blog/introducing-agent-4-built-for-creativity
+- content_hash: 38f56f5afa00d8bee28298d195d4f9453ba76b938225b5bba07637f832db9139
+  evidence_id: ev-38f56f5afa00d8be
+  excerpt: 'Title: Stellantis STLA One platform launches in the US with ...
+
+    Date: 22 hours ago
+
+    Snippet: Under FaSTLAne 2030''s North American product plan, Stellantis expects
+    11 all-new and 12 refreshed vehicles to launch in the region over the next four
+    years, ...'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.automotivemanufacturingsolutions.com/news/stellantis-stla-one-platform-launches-in-us-with-belvidere-built-jeep-cherokee/2720504
+- content_hash: 17154dba4b404b24a4f15e83b85ad6a99ada979e9e0797f435b5293f499f181e
+  evidence_id: ev-17154dba4b404b24
+  excerpt: 'Query: Built launches OR "new feature" OR "introducing" OR "now available"
+
+    1. https://getbuilt.com/news/built-launches-draw-agent-to-approve-construction-loan-draws-in-minutes/
+
+    Title: Built Launches Draw Agent to Approve Construction Loan ...
+
+    Date: Nov 4, 2025
+
+    Snippet: The launch of Draw Agent marks a pivotal step in applying purpose-built
+    software, proprietary data, and advanced AI to the complex, interconnected world
+    of real ...
+
+    2. https://www.youtube.com/watch?v=OO8Z04KMARE
+
+    Title: Introducing Project Solara: Composing a new platform for agent ...
+
+    Date: 2 months ago
+
+    Snippet: Introducing Project Solara, a new platform built from the ground up to
+    power agent-driven experiences, including two new concept devices that reimagine
+    how ...
+
+    3. https://developer.microsoft.com/blog/build-recap/
+
+    Title: Microsoft Build 2026 recap: vision, launches, and top ...
+
+    Date: Jun 8, 2026
+
+    Snippet: MAI-Code-1-Flash is now available for GitHub Copilot. This is Microsoft''s
+    latest small-tier coding model, and it''s the first in a new wave of purpose-built
+    ...
+
+    4. https://adsknews.autodesk.com/en/news/autodesk-design-and-make-intelligence/
+
+    Title: Introducing Forma Building Design - ADSK News - Autodesk
+
+    Date: Apr 7, 2026
+
+    Snippet: Expanding connections between Forma and Revit. This launch also introduces
+    Revit as the first Forma Connected Client, now available in Tech Preview. This
+    ...
+
+    5. https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-develop'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.google.com/search?q=Built+launches+OR+%22new+feature%22+OR+%22introducing%22+OR+%22now+available%22&tbs=qdr%3Ay
+- content_hash: 5fe079d00d8ed05a0e5b13a8529a8f459bc457df526242390dc5b9be1a25fb15
+  evidence_id: ev-5fe079d00d8ed05a
+  excerpt: "Title: Industry First: Regions Bank Launches Convenient, Seamless Digital\
+    \ Portal for Real Estate Banking Clients | Regions Financial Corporation\nSkip\
+    \ to main content\n\n[](javascript:__doPostBack\\('lnkPostback',''\\))\n\n  *\
+    \ [Home](https://ir.regions.com/home/default.aspx)\n    * [Company](https://ir.regions.com/company/company-profile/default.aspx)\n\
+    \      * [Company Profile](https://ir.regions.com/company/company-profile/default.aspx)\n\
+    \      * [Investor FAQs](https://ir.regions.com/company/investor-faqs/default.aspx)\n\
+    \      * [Doing More Today](https://doingmoretoday.com/)\n    * [News & Events](https://ir.regions.com/news-events/events-and-presentations/default.aspx)\n\
+    \      * [Events & Presentations](https://ir.regions.com/news-events/events-and-presentations/default.aspx)\n\
+    \      * [Press Releases](https://ir.regions.com/news-events/press-releases/default.aspx)\n\
+    \      * [Investor Day 2019](https://ir.regions.com/news-events/investor-day-2019/default.aspx)\n\
+    \      * [Investor Email Alerts](https://ir.regions.com/news-events/investor-email-alerts/default.aspx)\n\
+    \    * [Financial Information](https://ir.regions.com/financial-information/quarterly-investor-info/default.aspx)\n\
+    \      * [Quarterly Investor Info](https://ir.regions.com/financial-information/quarterly-investor-info/default.aspx)\n\
+    \      * [SEC Filings](https://ir.regions.com/financial-information/sec-filings/default.aspx)\n\
+    \      * [Regulatory Disclosures](https://ir.regions.com/financial-information/regulatory-disclosures/default.aspx)\n"
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://ir.regions.com/news-events/press-releases/news-details/2025/Industry-First-Regions-Bank-Launches-Convenient-Seamless-Digital-Portal-for-Real-Estate-Banking-Clients/default.aspx
+- content_hash: 153cd8aa69411ac1fed8ad7b1fc351d47c8e9c4e95e1b7e073f2b59115fe3a3b
+  evidence_id: ev-153cd8aa69411ac1
+  excerpt: "Title: Built Technologies Introduces the Future of Construction Payments:\
+    \ Built Pay | Financial Post\nAdvertisement oop\n\nStory continues below\n\nThis\
+    \ advertisement has not loaded yet, but your article continues below.\n\nSkip\
+    \ to Content\n\n[ **Challenge your brain with PUZZMO's daily puzzles.** Start\
+    \ playing >> **Challenge your brain with PUZZMO's daily puzzles.** Start playing\
+    \ >> ](https://puzzmoinc.sjv.io/c/5286880/1974273/21275?utm_source=on-net&utm_medium=promo-banner&utm_campaign=puzzmo&utm_content=Puzzmo-\
+    \ FP \"Challenge your brain with PUZZMO's daily puzzles.\")\n\nSections\n\nSearch\
+    \ Search financialpost.com\n\nPerform search\n\n[ ](/ \"Link to Home page\")\n\
+    \nShare\n\nShare this Story : Financial Post\n\n  * [ Copy Link ](https://financialpost.com/pmn/press-releases-pmn/business-wire-news-releases-pmn/built-technologies-introduces-the-future-of-construction-payments-built-pay)\n\
+    \  * [ Email ](mailto:?Subject=I%20saw%20this%20on%20Financial%20Post&Body=https%3A//financialpost.com/pmn/press-releases-pmn/business-wire-news-releases-pmn/built-technologies-introduces-the-future-of-construction-payments-built-pay\
+    \ \"Share via email\")\n  * [ X ](https://twitter.com/intent/tweet?url=https%3A//financialpost.com/pmn/press-releases-pmn/business-wire-news-releases-pmn/built-technologies-introduces-the-future-of-construction-payments-built-pay&text=Financial%20Post&via=\
+    \ \"Share on X in new tab\")\n  * [ Reddit ](https://www.reddit.com/submit?kind=link&url=https%3A//financialpost.com/pmn/press-releases-pmn/busines"
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://financialpost.com/pmn/press-releases-pmn/business-wire-news-releases-pmn/built-technologies-introduces-the-future-of-construction-payments-built-pay
+- content_hash: d6feb273150289244ec7a89e4a36a22b4e2b66d66371c04cee5780f6fb1caad4
+  evidence_id: ev-d6feb27315028924
+  excerpt: 'Title: Breaking news… WP Engine Newsroom just launched! 🗞️ We’ve built
+    a new standard for modern publishing, specifically designed to give editorial
+    teams the speed and scale they need to lead the news cycle. See how we’re powering
+    the future of media: https://bit.ly/3NMjY31 | WP Engine | Facebook
+
+    Facebook
+
+    [Log In](https://www.facebook.com/login/device-based/regular/login/?login_attempt=1&next=https%3A%2F%2Fwww.facebook.com%2Fwpengine%2Fvideos%2Fbreaking-news-wp-engine-newsroom-just-launched-%25EF%25B8%258Fweve-built-a-new-standard-for-mo%2F2180813389415561%2F)
+
+    Log In
+
+    [Forgot Account?](https://www.facebook.com/recover/initiate?ars=royal_blue_bar)
+
+    # [Video](https://www.facebook.com/watch/)
+
+    [Home](https://www.facebook.com/watch/)
+
+    [Live](https://www.facebook.com/watch/live/?ref=watch)
+
+    [Reels](https://www.facebook.com/reel/?s=bookmark)
+
+    [Explore](https://www.facebook.com/watch/topic/)
+
+    More
+
+    [Home](https://www.facebook.com/watch/)
+
+    [Live](https://www.facebook.com/watch/live/?ref=watch)
+
+    [Reels](https://www.facebook.com/reel/?s=bookmark)
+
+    [Explore](https://www.facebook.com/watch/topic/)
+
+    0:00 / 0:32
+
+    Breaking news… WP Engine Newsroom just launched! 🗞️ We’ve built a new standard
+    for modern publishing, specifically designed to give editorial teams the speed
+    and scale they need to lead the news cycle. See how we’re powering the future
+    of media: https://bit.ly/3NMjY31
+
+    Like
+
+    Comment
+
+    Share
+
+    ![](data:image/svg+xml,%3Csvg%20fill=''none''%20xmlns=''http://www.w3.org/2000/svg''%20viewBox=''0%200%2016%2016'
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.facebook.com/wpengine/videos/breaking-news-wp-engine-newsroom-just-launched-%EF%B8%8Fweve-built-a-new-standard-for-mo/2180813389415561/
+- content_hash: b1eb8b445f37225ad78ee2e3c8ce9461a40ae2d5727665b3c4cb14a7e67f600a
+  evidence_id: ev-b1eb8b445f37225a
+  excerpt: 'Title: Instagram
+
+    [Instagram](https://www.instagram.com/)
+
+    [Log In](https://www.instagram.com/accounts/login/?next=%2Freel%2FDUTOjA-gWLM%2F&source=desktop_nav)
+
+    [Sign Up](https://www.instagram.com/accounts/emailsignup/)
+
+    Close
+
+    ![wpengine''s profile picture](https://scontent-yyz1-1.cdninstagram.com/v/t51.2885-19/446103705_366855185899013_4615718623586050240_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=100&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4zMjAuQzMifQ%3D%3D&_nc_ohc=81a1OCUd69UQ7kNvwFgqjOY&_nc_oc=AdpvuvmEzNY4FK96o-Ov0aPZjU8T3vyKy9knK0M6O-vR5yUIom5sDZA7JunHtoe9B8E&_nc_zt=24&_nc_ht=scontent-yyz1-1.cdninstagram.com&_nc_ss=7b60f&oh=00_AQEx0qjZS1-B6clBO2GTyMufYzxUkBAfWHcDuua13xaD0w&oe=6A8A497A)
+
+    Never miss a post from wpengine
+
+    Sign up for Instagram to stay in the loop.
+
+    [Sign up](https://www.instagram.com/accounts/emailsignup/)
+
+    [Log in](https://www.instagram.com/accounts/login/?source=desktop_dynamic_landing_dialog)
+
+    ![wpengine''s profile picture](https://scontent-yyz1-1.cdninstagram.com/v/t51.2885-19/446103705_366855185899013_4615718623586050240_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=100&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4zMjAuQzMifQ%3D%3D&_nc_ohc=81a1OCUd69UQ7kNvwFgqjOY&_nc_oc=AdpvuvmEzNY4FK96o-Ov0aPZjU8T3vyKy9knK0M6O-vR5yUIom5sDZA7JunHtoe9B8E&_nc_zt=24&_nc_ht=scontent-yyz1-1.cdninstagram.com&_nc_ss=7b60f&oh=00_AQEx0qjZS1-B6clBO2GTyMufYzxUkBAfWHcDuua13xaD0w&oe=6A8A497A)
+
+    [wpengine](https://www.instagram.com/wpengine/)
+
+    Verified
+
+    '
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://www.instagram.com/reel/DUTOjA-gWLM/
+- content_hash: 457cab1fe7546b23f803c4908d5629e76d9cda3e71f0d9a1d378e67c9c89fb42
+  evidence_id: ev-457cab1fe7546b23
+  excerpt: "Title: Blog | Built | Powering Smarter Construction Finance\n[The Future\
+    \ of Real Estate Finance Starts Here: Meet the AI Draw Agent __](https://hubs.ly/Q03RxKL40)\n\
+    \n[ blt-logo-web ](https://getbuilt.com)\n\n  * Solutions __\n\n    * [Lenders](https://getbuilt.com/solutions/lenders)\n\
+    \n      * [ Origination Pipeline Management  __](https://getbuilt.com/features/origination-pipeline-management/)\n\
+    \      * [ OM Extraction  __](https://getbuilt.com/ai-om-extraction/)\n      *\
+    \ [ Underwriting  __](https://getbuilt.com/features/underwriting)\n      * [ Draw\
+    \ & Budget Management  __](https://getbuilt.com/features/draw-management/)\n \
+    \     * [ AI Draw Agent  __](https://getbuilt.com/ai/draw-agent/)\n      * [ Draw\
+    \ Inspections  __](https://getbuilt.com/features/draw-inspections/)\n      * [\
+    \ Risk Mitigation  __](https://getbuilt.com/features/risk-mitigation/)\n     \
+    \ * [ Portfolio Reporting  __](https://getbuilt.com/features/portfolio-reporting/)\n\
+    \n    * [Owners & Developers](https://getbuilt.com/solutions/owners)\n\n     \
+    \ * [ Origination Pipeline Management  __](https://getbuilt.com/features/origination-pipeline-management/)\n\
+    \      * [ OM Extraction  __](https://getbuilt.com/ai-om-extraction/)\n      *\
+    \ [ Budget Management  __](https://getbuilt.com/features/budget-management/)\n\
+    \      * [ Capital Requests  __](https://getbuilt.com/features/capital-requests/)\n\
+    \      * [ Invoice Management  __](https://getbuilt.com/features/invoicing-management/)\n\
+    \      * [ Compliance Tracking  __](https://getbuilt.com/features/comp"
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://getbuilt.com/blog/
+- content_hash: 805cfa77acbf229213c09c3591f34b5f4e6f60c841b8c86502641971452f455e
+  evidence_id: ev-805cfa77acbf2292
+  excerpt: "Title: News Archive | Built\n[The Future of Real Estate Finance Starts\
+    \ Here: Meet the AI Draw Agent __](https://hubs.ly/Q03RxKL40)\n\n[ blt-logo-web\
+    \ ](https://getbuilt.com)\n\n  * Solutions __\n\n    * [Lenders](https://getbuilt.com/solutions/lenders)\n\
+    \n      * [ Origination Pipeline Management  __](https://getbuilt.com/features/origination-pipeline-management/)\n\
+    \      * [ OM Extraction  __](https://getbuilt.com/ai-om-extraction/)\n      *\
+    \ [ Underwriting  __](https://getbuilt.com/features/underwriting)\n      * [ Draw\
+    \ & Budget Management  __](https://getbuilt.com/features/draw-management/)\n \
+    \     * [ AI Draw Agent  __](https://getbuilt.com/ai/draw-agent/)\n      * [ Draw\
+    \ Inspections  __](https://getbuilt.com/features/draw-inspections/)\n      * [\
+    \ Risk Mitigation  __](https://getbuilt.com/features/risk-mitigation/)\n     \
+    \ * [ Portfolio Reporting  __](https://getbuilt.com/features/portfolio-reporting/)\n\
+    \n    * [Owners & Developers](https://getbuilt.com/solutions/owners)\n\n     \
+    \ * [ Origination Pipeline Management  __](https://getbuilt.com/features/origination-pipeline-management/)\n\
+    \      * [ OM Extraction  __](https://getbuilt.com/ai-om-extraction/)\n      *\
+    \ [ Budget Management  __](https://getbuilt.com/features/budget-management/)\n\
+    \      * [ Capital Requests  __](https://getbuilt.com/features/capital-requests/)\n\
+    \      * [ Invoice Management  __](https://getbuilt.com/features/invoicing-management/)\n\
+    \      * [ Compliance Tracking  __](https://getbuilt.com/features/compliance-tracking/)\n\
+    \      * [ Lien"
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://getbuilt.com/news/
+- content_hash: 83ed63b9b96a7447309709c706c9c9b393d2e1611b43794b1d986c8624be5392
+  evidence_id: ev-83ed63b9b96a7447
+  excerpt: "Title: Release Notes Archive | Built\n[The Future of Real Estate Finance\
+    \ Starts Here: Meet the AI Draw Agent __](https://hubs.ly/Q03RxKL40)\n\n[ blt-logo-web\
+    \ ](https://getbuilt.com)\n\n  * Solutions __\n\n    * [Lenders](https://getbuilt.com/solutions/lenders)\n\
+    \n      * [ Origination Pipeline Management  __](https://getbuilt.com/features/origination-pipeline-management/)\n\
+    \      * [ OM Extraction  __](https://getbuilt.com/ai-om-extraction/)\n      *\
+    \ [ Underwriting  __](https://getbuilt.com/features/underwriting)\n      * [ Draw\
+    \ & Budget Management  __](https://getbuilt.com/features/draw-management/)\n \
+    \     * [ AI Draw Agent  __](https://getbuilt.com/ai/draw-agent/)\n      * [ Draw\
+    \ Inspections  __](https://getbuilt.com/features/draw-inspections/)\n      * [\
+    \ Risk Mitigation  __](https://getbuilt.com/features/risk-mitigation/)\n     \
+    \ * [ Portfolio Reporting  __](https://getbuilt.com/features/portfolio-reporting/)\n\
+    \n    * [Owners & Developers](https://getbuilt.com/solutions/owners)\n\n     \
+    \ * [ Origination Pipeline Management  __](https://getbuilt.com/features/origination-pipeline-management/)\n\
+    \      * [ OM Extraction  __](https://getbuilt.com/ai-om-extraction/)\n      *\
+    \ [ Budget Management  __](https://getbuilt.com/features/budget-management/)\n\
+    \      * [ Capital Requests  __](https://getbuilt.com/features/capital-requests/)\n\
+    \      * [ Invoice Management  __](https://getbuilt.com/features/invoicing-management/)\n\
+    \      * [ Compliance Tracking  __](https://getbuilt.com/features/compliance-tracking/)\n\
+    \     "
+  retrieved_at: '2026-08-18T11:42:41.896958-04:00'
+  url: https://getbuilt.com/whats-new/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

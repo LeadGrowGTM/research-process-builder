@@ -1,0 +1,149 @@
+{
+  "collected_at": "2026-08-18T11:39:57.678392-04:00",
+  "company_id": "saas-02",
+  "enrichment_id": "news-product-launches",
+  "entries": [
+    {
+      "category": "business process automation",
+      "company_name": "AgilePoint",
+      "domain": "agilepoint.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "news",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 0,
+      "status": "ok",
+      "step": "search",
+      "target": "agilepoint.com news",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 3,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "AgilePoint \"press release\" OR \"announces\" OR \"newsroom\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "dropped_off_subject": 0,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.001",
+      "provider": "serper",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "AgilePoint launches OR \"new feature\" OR \"introducing\" OR \"now available\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.youtube.com/watch?v=k-sJK0miz1Y",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.linkedin.com/posts/agilepoint_agentai-aigovernance-enterpriseai-activity-7458138614301024257-0gMz",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.linkedin.com/posts/blue-prism-limited_bplaunchlivenyc-activity-7457761141273001984-mSsr",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://blog.agilepoint.com/agilepoint_nx_connector-for-qwen/",
+      "waterfall_level": 2
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://blog.agilepoint.com/author/nshrivastava79/",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://www.linkedin.com/posts/agilepoint_metaorchestration-agenticai-n8n-activity-7454576178532683776-ikP7",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "first_party",
+      "target": "https://agilepoint.com/blog",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agilepoint.com/news: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agilepoint.com/news"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agilepoint.com/newsroom: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agilepoint.com/newsroom"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agilepoint.com/press: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agilepoint.com/press"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agilepoint.com/changelog: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agilepoint.com/changelog"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agilepoint.com/product-updates: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agilepoint.com/product-updates"
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://agilepoint.com/whats-new: HTTPError",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://agilepoint.com/whats-new"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 27,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.003",
+  "signal_evidence": 30
+}

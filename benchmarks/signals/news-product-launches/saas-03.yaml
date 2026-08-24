@@ -1,0 +1,554 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: identity
+  value: Aligned
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: description
+  value: 'Digital Sales Room Software — #1 on G2 | Aligned Skip to content $60M raised.
+    70,000 sellers. 1M buyers. The deal workspace is here ➜ Read the announcement
+    Learn more Platform Close Platform Open Platform Explore our platform Product
+    Overview Platform at a glance Digital Sales Room Centralized buyer workspace Customer
+    Success Hub Manage customer outcomes Customer Onboarding Faster customer activation
+    Aligned AI AI aligned to revenue Mutual Action Plan Shared deal milestones Revenue
+    Intelligence '
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: offers
+  value: digital sales room
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: icp
+  value: sales teams
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-05398a2ef65666fa
+  - ev-22d60eecc23e228a
+  - ev-01e046900b8496ac
+  field: personas
+  value: sales teams
+  visibility: message_safe
+company_id: saas-03
+corrections: []
+evidence:
+- content_hash: 05398a2ef65666fa651567b24421f8e969484b93e8d6fe970bae6fd9b8776e71
+  evidence_id: ev-05398a2ef65666fa
+  excerpt: 'Digital Sales Room Software — #1 on G2 | Aligned Skip to content $60M
+    raised. 70,000 sellers. 1M buyers. The deal workspace is here ➜ Read the announcement
+    Learn more Platform Close Platform Open Platform Explore our platform Product
+    Overview Platform at a glance Digital Sales Room Centralized buyer workspace Customer
+    Success Hub Manage customer outcomes Customer Onboarding Faster customer activation
+    Aligned AI AI aligned to revenue Mutual Action Plan Shared deal milestones Revenue
+    Intelligence Revenue insights and signals Integrations Connect your tools Pricing
+    Resources Close Resources Open Resources Learn Articles Product insights and updates
+    Customer Stories How customers succeed with us Build Template Library Templates
+    to get started faster Guides & Playbooks Practical guides and best practices Login
+    Book a Demo Start free Crush your sales quota with Digital Sales Room Streamline
+    complex deals by consolidating conversations, stakeholders, processes, and resources
+    into a single shared space. #1 Digital Sales Room for SMB & Mid-Market (G2 Summer
+    ’26) Start with Google Start with Microsoft Book a Demo Start free Mid-Market
+    G2 Grid® for Digital Sales Room Software | Summer 2026 #1 Digital Sales Room for
+    SMB & Mid-Market (G2 Summer ’26) 50,000+ Sales & CS Teams Run Their Deals in Aligned
+    95% of the Buyer Journey Happens When You’re Not in the Room *gartner (so get
+    a room) Meet Aligned, Your Digital Sales Room Everything needed to win, all in
+    one place Create a virtual sales room for each deal Share the most up-to-date
+    sales content Streamline all discussions into topics Remove buyer friction & win
+    more deals Aligned is a single place to keep on top of deals, build strong business
+    cases with champions and get multiple stakeholders on board. I wish I had it early,
+    but I have it now, and I’m enjoying it immensely! Sarah Brazie Senior Account
+    Executive, Gong Align buyers to a Mutual Action Plan Build collaborative MAPs
+    with your champion Assign tasks and allow buyers to'
+  retrieved_at: '2026-08-12T21:20:31.919668+00:00'
+  url: https://www.alignedup.com/digital-sales-room/
+- content_hash: 22d60eecc23e228aa7d0cd79d8283286be9311a91848c743207678d21a8a49bb
+  evidence_id: ev-22d60eecc23e228a
+  excerpt: 'Aligned | LinkedIn Skip to main content LinkedIn Top Content People Learning
+    Jobs Games Sign in Join now Aligned Software Development Create a personalized
+    workspace for each deal and design a buying experience that wins quota. See jobs
+    Follow View all 76 employees Report this company About us Aligned is pioneering
+    the new way that B2B revenue teams interact with customers in today''s remote,
+    digital era. Instead of customers juggling multiple email threads, attachments
+    & tools, they have all resources in front of them in a single shared workspace
+    for easy decisions. Nothing gets buried and forgotten in threads. All stakeholders
+    join and collaborate, instead of staying behind the scenes. Both sides manage
+    mutual action plans to keep things on track, and reps can analyze buyer risks
+    and intent. Companies like Deel, Productboard, and SimilarWeb use it to win more
+    deals and close 45% faster. We are growing at a fast pace and looking for top
+    talents to join our core team. Website https://www.alignedup.com?utm_source=Social&utm_medium=Aligned_Page&utm_campaign=website_button&utm_id=163&avk=mvk_Linkedin_Page
+    External link for Aligned Industry Software Development Company size 51-200 employees
+    Headquarters Remote First Type Privately Held Founded 2021 Specialties Saas, Sales
+    Collaboration, Buyer Collaboration, Project Management, CRM, Sales Enablement,
+    and Sales Products No more previous content Aligned Customer Onboarding Deal Analytics
+    Digital Sales Room Mutual Action Plans No more next content Locations Primary
+    Remote First, US Get directions Employees at Aligned Charles Black Sam Rahmanian
+    Todd Clouser Erin C. See all employees Updates Aligned 47,664 followers 5h Report
+    this post There are 4 questions that will set the tone for your deal. When presented
+    well they will lead to higher win rates. Present them poorly and they will do
+    next to nothing. Here are 4 questions that will set every deal up for success
+    (and HOW to ask them): 1. Who Else Are You Evaluating? Yes, it''s'
+  retrieved_at: '2026-08-12T21:20:32.819137+00:00'
+  url: https://www.linkedin.com/company/alignedup
+- content_hash: 01e046900b8496acdb6722904a4406d618a57bfa5e51e4657a2b4786cada1235
+  evidence_id: ev-01e046900b8496ac
+  excerpt: 'Why NFX Invested in Aligned: The Sales Room Network Helping Companies
+    Close Deals 3x Faster Content Content Team Team Companies Companies About About
+    Products Products Signal Brieflink NFX Masterclass Get our weekly newsletter that
+    322K+ startup teams read Subscribe Why NFX Invested in Aligned: The Sales Room
+    Network Helping Companies Close Deals 3x Faster James Currier · @jamescurrier
+    · May 2023 · Israel James Currier · @jamescurrier May 2023 · Israel Table of Contents
+    1. Overly Complex Processes 2. Built-in Network Effects 3. Stellar Team Aligned
+    recently announced their $5.8M Seed round co-led by NFX and Hetz Ventures to create
+    the network to conduct software deals in. They sell sales teams a frictionless
+    workspace that helps software sales teams close deals 3x faster. Here are 3 reasons
+    why we backed them: 1. Overly Complex Processes Despite massive enterprise digitization,
+    77% of enterprise software buyers complain that their sales experiences are overly
+    complex. This leads to stalled and lost deals. Pointless friction. And, frankly,
+    shock/disappointment it still works this way in 2023. There needs to be a bridge
+    between a company’s CRM and their clients. Aligned creates that bridge with their
+    signature “online rooms” where sales teams communicate, coordinate on next steps,
+    share documents, sign proposals, etc. This real-time management speeds up deals
+    and makes buyers happy. It also gives salespeople the data behind the successes
+    and failures of their deals so they can improve their processes. 2. Built-in Network
+    Effects As more sellers adopt Aligned, more buyers will integrate it into their
+    own buying process. This lays the foundation for a network of B2B buyers and sellers.
+    The company also has defensibility through embedding. Once a B2B sales team adopts
+    Aligned, it’s nearly impossible for them to regress to the old way of sending
+    countless emails to dozens of stakeholders while navigating numerous platforms.
+    Any other way of conducting business feels ancie'
+  retrieved_at: '2026-08-12T21:20:33.437855+00:00'
+  url: https://www.nfx.com/post/why-nfx-invested-in-aligned
+- content_hash: 564f66db29e563a6cdd48341121d06c6f5c572e2bee0d01dc3aab7e2807af646
+  evidence_id: ev-564f66db29e563a6
+  excerpt: 'Title: Aligned Closes $60M Series B to Solidify Leadership Position as
+    the System of Action for B2B Sales
+
+    Date: 1 month ago
+
+    Source: GlobeNewswire
+
+    Snippet: Aligned, the AI Deal Workspace where sellers, buyers, and their AI agents
+    run deals together, today announced $60 million in Series B...'
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://www.globenewswire.com/news-release/2026/07/01/3320495/0/en/aligned-closes-60m-series-b-to-solidify-leadership-position-as-the-system-of-action-for-b2b-sales.html
+- content_hash: a2ca3aa9f16b7bc3ee458235bace29e784758b96d1fb2dc698d5272ab27997dd
+  evidence_id: ev-a2ca3aa9f16b7bc3
+  excerpt: 'Detected date: Feb 19, 2025
+
+    Title: Aligned Earns Spot on G2''s 2025 Best Software Awards for Top Sales Software
+
+    Date: Feb 19, 2025
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Aligned, a pioneering buyer enablement platform transforming
+    how sales teams close deals with its AI Sales Rooms,...'
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://www.prnewswire.com/news-releases/aligned-earns-spot-on-g2s-2025-best-software-awards-for-top-sales-software-302380406.html
+- content_hash: 05e4c4ad55380e84b384b53a1876804767cb0f670d3e8a3e51a9b6535cae4cda
+  evidence_id: ev-05e4c4ad55380e84
+  excerpt: 'Query: alignedup.com news
+
+    1. https://www.globenewswire.com/news-release/2026/07/01/3320495/0/en/aligned-closes-60m-series-b-to-solidify-leadership-position-as-the-system-of-action-for-b2b-sales.html
+
+    Title: Aligned Closes $60M Series B to Solidify Leadership Position as the System
+    of Action for B2B Sales
+
+    Date: 1 month ago
+
+    Source: GlobeNewswire
+
+    Snippet: Aligned, the AI Deal Workspace where sellers, buyers, and their AI agents
+    run deals together, today announced $60 million in Series B...
+
+    2. https://www.prnewswire.com/news-releases/aligned-earns-spot-on-g2s-2025-best-software-awards-for-top-sales-software-302380406.html
+
+    Title: Aligned Earns Spot on G2''s 2025 Best Software Awards for Top Sales Software
+
+    Date: Feb 19, 2025
+
+    Source: PR Newswire
+
+    Snippet: PRNewswire/ -- Aligned, a pioneering buyer enablement platform transforming
+    how sales teams close deals with its AI Sales Rooms,...'
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://www.google.com/search?q=alignedup.com+news&tbm=nws
+- content_hash: 6b7cc0e678cbfe8fb9d050cce28de1fa14a3c2fc3514657b76f25cd24d46b8c6
+  evidence_id: ev-6b7cc0e678cbfe8f
+  excerpt: 'Detected date: Jul 21, 2026
+
+    Title: Aligned Data Centers Acquisition Closes at $40 Billion
+
+    Date: Jul 21, 2026
+
+    Snippet: [This press release contains forward-looking statements, including statements
+    regarding the expected benefits of the transaction, the future plans, strategy
+    and ...'
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://aligneddc.com/press-release/aip-mgx-and-blackrocks-gip-close-acquisition-of-aligned-data-centers/
+- content_hash: bdb590d6560d04698020a668692f3bb91d7f5105ee324ec9db777e174d30badb
+  evidence_id: ev-bdb590d6560d0469
+  excerpt: 'Detected date: Oct 15, 2025
+
+    Title: Macquarie Asset Management to lead sale of Aligned Data ...
+
+    Date: Oct 15, 2025
+
+    Snippet: Press Release. Macquarie Asset Management to lead sale of Aligned Data
+    Centers at an enterprise value of $US40 billion. Link copied to clipboard. New
+    York, 15 ...'
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://www.macquarie.com/au/en/about/news/2025/macquarie-asset-management-to-lead-sale-of-aligned-data-centers-at-an-enterprise-value-of-us-40-billion.html
+- content_hash: 73df3359e0535f16a0d34db5dac643bda5a0f32fcdf0d59142e2a1a36774ee6f
+  evidence_id: ev-73df3359e0535f16
+  excerpt: 'Detected date: Oct 15, 2025
+
+    Title: Aligned Equity Acquisition and its Industry Impact
+
+    Date: Oct 15, 2025
+
+    Snippet: Press Release. Aligned Data Centers Completes $1.18 Billion Securitization
+    Financing.'
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://aligneddc.com/press-release/ai-infrastructure-partnership-aip-mgx-and-blackrocks-global-infrastructure-partners-gip-to-acquire-all-equity-in-aligned-data-centers/
+- content_hash: 1108184755dca6dcb914b6f1f2a33fa9106263060c6d761a12d0fb81df4b5170
+  evidence_id: ev-1108184755dca6dc
+  excerpt: 'Detected date: Oct 15, 2025
+
+    Title: AIP, BlackRock''s GIP, MGX to buy Aligned Data Centers
+
+    Date: Oct 15, 2025
+
+    Snippet: A Macquarie Asset Management press release said it had invested in Aligned
+    via its Macquarie Infrastructure Partners V fund in July 2020, following an ...'
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://www.tmtfinance.com/intel/aip-blackrocks-gip-mgx-buy-aligned-data-centers
+- content_hash: 1413b3d1590ec55f58609785852f173b2e3ac5821b9e83864187a0bb47df8963
+  evidence_id: ev-1413b3d1590ec55f
+  excerpt: 'Title: Aligned Data Centers Acquired by AIP, MGX, and GIP for $40 ...
+
+    Date: 4 weeks ago
+
+    Snippet: I want to sincerely congratulate the entire Aligned Data Centers team
+    on this massive accomplishment! A simple industry press release for most represents
+    ...'
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://www.linkedin.com/posts/andrewschaap1_its-hard-to-overstate-what-todays-announcement-activity-7485296478081650688-GUKZ
+- content_hash: 01ea5f511dfa68cef26b15c000a9c1b043e0c0c869e35baa1c0f360fb7bb4f42
+  evidence_id: ev-01ea5f511dfa68ce
+  excerpt: 'Detected date: Jul 22, 2026
+
+    Title: BlackRock''s GIP, Microsoft-backed AI group buy Aligned ...
+
+    Date: Jul 22, 2026
+
+    Snippet: The acquisition of Aligned Data Centers represents AIP''s first investment,
+    according to a July 21 press release. Aligned Data Centers will remain a Dallas
+    ...'
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://www.esgdive.com/news/blackrocks-gip-microsoft-backed-ai-group-buy-aligned-data-centers-for-40/825920/
+- content_hash: 362a0ebc1a729056ed396e549e1e4289af5e35720e16d9cf6769852e444aeec5
+  evidence_id: ev-362a0ebc1a729056
+  excerpt: 'Detected date: Jul 20, 2026
+
+    Title: Macquarie Asset Management Announces Successful ...
+
+    Date: Jul 20, 2026
+
+    Snippet: Explore examples and press release best practices! For Journalists. -.
+    Macquarie Asset Management Announces Successful Close of Aligned Data Centers
+    Transaction.'
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://www.businesswire.com/news/home/20260720109837/en/Macquarie-Asset-Management-Announces-Successful-Close-of-Aligned-Data-Centers-Transaction
+- content_hash: ca39713280704cf3e1ca3e0f95353a4932a890925e1981b6a2b1b52f7900b04b
+  evidence_id: ev-ca39713280704cf3
+  excerpt: 'Title: Aligned Data Centers | Maura J. ONeill
+
+    Snippet: Aligned Data Centers Announces $1.18 Billion Securitization - Aligned
+    ...'
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://www.linkedin.com/posts/maura-j-o-neill_aligned-data-centersannounces-118-billion-activity-7488261451871072256-5jat
+- content_hash: d32acfef81d0abe35a62071011a155267aaf123329ecc111d362532fe492e0ef
+  evidence_id: ev-d32acfef81d0abe3
+  excerpt: 'Detected date: Jul 21, 2026
+
+    Title: Macquarie Asset Management Announces Successful ...
+
+    Date: Jul 21, 2026
+
+    Snippet: Macquarie Asset Management Announces Successful Close of Aligned Data
+    Centers Transaction ... Contact the press release distributor directly with any
+    inquiries.'
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://finance.yahoo.com/technology/articles/macquarie-asset-management-announces-successful-102400617.html
+- content_hash: 9cd81574d50ca75916dc09b0cce300ccdae54e618d69a61a9b8c379140928917
+  evidence_id: ev-9cd81574d50ca759
+  excerpt: 'Query: Aligned "press release" OR "announces" OR "newsroom"
+
+    1. https://aligneddc.com/press-release/aip-mgx-and-blackrocks-gip-close-acquisition-of-aligned-data-centers/
+
+    Title: Aligned Data Centers Acquisition Closes at $40 Billion
+
+    Date: Jul 21, 2026
+
+    Snippet: [This press release contains forward-looking statements, including statements
+    regarding the expected benefits of the transaction, the future plans, strategy
+    and ...
+
+    2. https://www.macquarie.com/au/en/about/news/2025/macquarie-asset-management-to-lead-sale-of-aligned-data-centers-at-an-enterprise-value-of-us-40-billion.html
+
+    Title: Macquarie Asset Management to lead sale of Aligned Data ...
+
+    Date: Oct 15, 2025
+
+    Snippet: Press Release. Macquarie Asset Management to lead sale of Aligned Data
+    Centers at an enterprise value of $US40 billion. Link copied to clipboard. New
+    York, 15 ...
+
+    3. https://aligneddc.com/press-release/ai-infrastructure-partnership-aip-mgx-and-blackrocks-global-infrastructure-partners-gip-to-acquire-all-equity-in-aligned-data-centers/
+
+    Title: Aligned Equity Acquisition and its Industry Impact
+
+    Date: Oct 15, 2025
+
+    Snippet: Press Release. Aligned Data Centers Completes $1.18 Billion Securitization
+    Financing.
+
+    4. https://www.tmtfinance.com/intel/aip-blackrocks-gip-mgx-buy-aligned-data-centers
+
+    Title: AIP, BlackRock''s GIP, MGX to buy Aligned Data Centers
+
+    Date: Oct 15, 2025
+
+    Snippet: A Macquarie Asset Management press release said it had invested in Aligned
+    via its Macquarie Infrastructure Partners V fund in July 2020, f'
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://www.google.com/search?q=Aligned+%22press+release%22+OR+%22announces%22+OR+%22newsroom%22&tbs=qdr%3Ay
+- content_hash: 37184dca15d02f6f6aca94768e78037cafd2f408333e59a977e0fa056001fff7
+  evidence_id: ev-37184dca15d02f6f
+  excerpt: 'Title: Aligned Launches AI Deal Workspace for Sales Execution ...
+
+    Date: 6 months ago
+
+    Snippet: Today marks the BIGGEST launch in Aligned''s history! It''s a foundational
+    moment for our company as we announce a new category. We dreamed of this future
+    of ...'
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://www.linkedin.com/posts/galaga_today-marks-the-biggest-launch-in-aligned-activity-7427337117841813504-VHsY
+- content_hash: bba41c8f156c38e6630f27d23021d06281193189ec2db3cee0afed3c4bfa41ac
+  evidence_id: ev-bba41c8f156c38e6
+  excerpt: 'Title: Aligned Launches AI Deal Workspace for Buyer ...
+
+    Snippet: Aligned has launched the AI Deal Workspace, a buyer-facing execution
+    platform that transforms deal management by bridging CRM tracking with real-time
+    buyer ...'
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://www.linkedin.com/posts/techintelpro_aligned-launches-ai-deal-workspace-for-sales-activity-7427728515573227520-Y6Y5
+- content_hash: 86e8e899c23a0c3d6b85fb9cc65e39a2ee43f703a86a24f7afab3f78ca917fe8
+  evidence_id: ev-86e8e899c23a0c3d
+  excerpt: 'Detected date: Jun 9, 2026
+
+    Title: Introducing Cross-Dataset Alignment in NavVis
+
+    Date: Jun 9, 2026
+
+    Snippet: Introducing Cross-Dataset Alignment in NavVis: Save Hours Across Every
+    Project ... aligned or adjusted after processing, CDA helps datasets align earlier
+    ...'
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://www.navvis.com/blog/introducing-cross-dataset-alignment-in-navvis-save-hours-across-every-project
+- content_hash: e6f3927d11c7b319bd975bf301384e65faffb96bd70ead669d2cbf509c59c9e0
+  evidence_id: ev-e6f3927d11c7b319
+  excerpt: 'Title: Introducing The Aligned AI Deal Workspace
+
+    Date: 6 months ago
+
+    Snippet: Try it for free at www.alignedup.com. Introducing The Aligned AI Deal
+    Workspace. @aligned25792.8K views6 months ago more. Subscribe. Comments.'
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://www.youtube.com/watch?v=3QRGlfDhqRc
+- content_hash: 83a6a6f33e974de01ebccfd6e8ab00cb58e3c0d046829f2e1071eeed86985e05
+  evidence_id: ev-83a6a6f33e974de0
+  excerpt: 'Detected date: Nov 9, 2025
+
+    Title: Introducing the Aligned eQMS: Your Complete Digital Quality ...
+
+    Date: Nov 9, 2025
+
+    Snippet: After 18 months of hard work, we are ready for the imminent launch of
+    the Aligned eQMS, our new electronic Quality Management System that perfectly
+    complements ...'
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://www.aligned.ch/resources/insights-and-articles/product-news/introducing-the-aligned-eqms-your-complete-digital-quality-management-solution
+- content_hash: 16a3f58b02d14fdd17100899a935783e063a28ae5cae98efb3adf0edcfbd7fea
+  evidence_id: ev-16a3f58b02d14fdd
+  excerpt: 'Query: Aligned launches OR "new feature" OR "introducing" OR "now available"
+
+    1. https://www.linkedin.com/posts/galaga_today-marks-the-biggest-launch-in-aligned-activity-7427337117841813504-VHsY
+
+    Title: Aligned Launches AI Deal Workspace for Sales Execution ...
+
+    Date: 6 months ago
+
+    Snippet: Today marks the BIGGEST launch in Aligned''s history! It''s a foundational
+    moment for our company as we announce a new category. We dreamed of this future
+    of ...
+
+    2. https://www.commerce.nc.gov/news/press-releases/2026/07/09/north-carolina-launches-nc-align-advisory-council-advance-defense-innovation-and-economic-growth
+
+    Title: North Carolina Launches NC ALIGN Advisory Council to ...
+
+    Date: Jul 9, 2026
+
+    Snippet: Today Governor Josh Stein, in partnership with the North Carolina Department
+    of Commerce, announced the launch of NC ALIGN (North Carolina Advisory Leaders
+    ...
+
+    3. https://www.linkedin.com/posts/techintelpro_aligned-launches-ai-deal-workspace-for-sales-activity-7427728515573227520-Y6Y5
+
+    Title: Aligned Launches AI Deal Workspace for Buyer ...
+
+    Snippet: Aligned has launched the AI Deal Workspace, a buyer-facing execution
+    platform that transforms deal management by bridging CRM tracking with real-time
+    buyer ...
+
+    4. https://www.navvis.com/blog/introducing-cross-dataset-alignment-in-navvis-save-hours-across-every-project
+
+    Title: Introducing Cross-Dataset Alignment in NavVis
+
+    Date: Jun 9, 2026
+
+    Snippet: Introducing Cross-Dataset Alignment in NavVis: Save Hours Across Every
+    Project ... aligned or adjusted'
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://www.google.com/search?q=Aligned+launches+OR+%22new+feature%22+OR+%22introducing%22+OR+%22now+available%22&tbs=qdr%3Ay
+- content_hash: fd3ab6323152f2c175360470f62cd0c894766b203689ea06912a6379e7bfe1ad
+  evidence_id: ev-fd3ab6323152f2c1
+  excerpt: "Title: Aligned Earns Spot on G2's 2025 Best Software Awards for Top Sales\
+    \ Software\n[Accessibility Statement](https://www.cision.com/about/accessibility/)\
+    \ Skip Navigation\n\n  * [Resources](/resources/)\n  * [Investor Relations](/investor-relations-solutions/)\n\
+    \  * [Journalists](https://prnmedia.prnewswire.com/)\n  * [Agencies](https://www.cision.com/agencies/?utm_medium=referral&utm_source=prnewswire&utm_content=product&utm_campaign=2023-prn-all-products-page)\n\
+    \n\n  * [Client Login](https://app.prnewswire.com/login/auto)\n  * [Send a Release](/account/online-account-form/)\n\
+    \n\n\n[ ](/)\n\n  * [News](/news-releases/)\n  * [Products](/amplify-platform/)\n\
+    \  * [Contact](/contact-us/)\n\n\n\nSearch\n\n__\n\nSearch\n\nWhen typing in this\
+    \ field, a list of search results will appear and be automatically updated as\
+    \ you type.\n\nSearching for your content...\n\n__\n\n**No results found. Please\
+    \ change your search terms and try again.**\n\n  * News in Focus \n    *     \
+    \  * ## [Browse News Releases](/news-releases/)\n\n      * [All News Releases\
+    \ ](/news-releases/news-releases-list/)\n      * [All Public Company ](/news-releases/all-public-company-news/)\n\
+    \      * [English-only ](/news-releases/english-releases/)\n      * ## [News Releases\
+    \ Overview](/news-releases/)\n\n      * ## [Multimedia Gallery](/news-releases/multimedia/)\n\
+    \n      * [All Multimedia ](/news-releases/multimedia/multimedia-list/)\n    \
+    \  * [All Photos ](/news-releases/photos/photos-list/)\n      * [All Videos ](/news-releases/videos/videos-list/)\n\
+    \      * ## [ Multim"
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://www.prnewswire.com/news-releases/aligned-earns-spot-on-g2s-2025-best-software-awards-for-top-sales-software-302380406.html
+- content_hash: ccf28407f3f9ea3e0915278bd38d29868fce9d42bcf1b098ed5b9dc5f681fa1a
+  evidence_id: ev-ccf28407f3f9ea3e
+  excerpt: "Title: Aligned Data Centers Acquisition Closes at $40 Billion\nSkip to\
+    \ content\n\n  * [Customer Portal](https://aligned.service-now.com/)\n  * [Partners](https://aligneddc.com/partners/)\n\
+    \n\n\n[ ](https://aligneddc.com)\n\n  * [Data Center Solutions](https://aligneddc.com/data-center-solutions/)\n\
+    \    * [See All Solutions](/data-center-solutions/)\n\n[See All Solutions](/data-center-solutions/)\n\
+    \n[ ](/hyperscale-and-build-to-scale-campus/ \"Hyperscale Campus and Build to\
+    \ Scale\")\n\nHyperscale Campus and Build to Scale\n\n[ ](/gigascale-campuses/\
+    \ \"Gigascale Campuses\")\n\nGigascale Campuses\n\n[ ](/multi-tenant-and-enterprise-data-centers/\
+    \ \"Multi-Tenant and Enterprise\")\n\nMulti-Tenant and Enterprise\n\n[ ](https://aligned-federal.com/\
+    \ \"Federal\")\n\nFederal\n\nFeatured Case Study \n\n[ ](https://aligneddc.com/case-studies/case-study-protecting-regional-water-resources/)\n\
+    \n[Case Studies](https://aligneddc.com/category/case-studies/)\n\nProtecting Regional\
+    \ Water Resources \n\n  * [Cooling Innovation](https://aligneddc.com/cooling-innovation/)\n\
+    \  * [Locations](https://aligneddc.com/locations/)\n    * North America\n\n  \
+    \    * [Abernathy](/abernathy-tx-data-center/)\n\n      * [Maryland](/maryland-data-centers/)\n\
+    \n      * [Atlanta](/atlanta-data-centers/)\n\n      * [Ohio](/northeast-ohio-data-centers/)\n\
+    \n      * [Chicago](/chicago-data-centers/)\n\n      * [Phoenix](/phoenix-data-centers/)\n\
+    \n      * [Dallas](/dallas-data-centers/)\n\n      * [Salt Lake City](/salt-lake-city-data-centers/)\n\
+    \n      * [Hillsboro](/hillsboro-data-centers/"
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://aligneddc.com/press-release/aip-mgx-and-blackrocks-gip-close-acquisition-of-aligned-data-centers/
+- content_hash: 23d5ed10d5e96f7275179c98f4be2291c25d4cf5da478d0621d86e3302df901b
+  evidence_id: ev-23d5ed10d5e96f72
+  excerpt: "Title: Macquarie Asset Management to lead sale of Aligned Data Centers\
+    \ at an enterprise value of $US40 billion | Macquarie Group\n[ ](/au/en.html)\n\
+    \n  * Insights\n\n    * Insights\n\nAs a global specialist in sectors ranging\
+    \ from renewables and infrastructure to technology, resources, commodities and\
+    \ energy, Macquarie has deep expertise and capabilities in these areas.\n\n[Explore\
+    \ our insights](/au/en/insights.html)\n    * Topics\n\n      * [Commodities](/au/en/insights/commodities.html)\n\
+    \      * [Energy and climate solutions](/au/en/insights/energy-and-climate-solutions.html)\n\
+    \      * [Industrials](/au/en/insights/industrials.html)\n      * [Infrastructure](/au/en/insights/infrastructure.html)\n\
+    \      * [Investing](/au/en/insights/investing.html)\n      * [Market commentary](/au/en/insights/market-commentary.html)\n\
+    \      * [Technology and services](/au/en/insights/technology-and-services.html)\n\
+    \    * Spotlight topic\n\n      * [Sovereign resilience](/au/en/insights/sovereign-resilience.html)\n\
+    \      * [Digital ecosystem](/au/en/insights/investing-across-the-digital-ecosystem.html)\n\
+    \n  * About\n\n    * About\n\nWe are a global financial services organisation\
+    \ with Australian heritage, operating in 30 markets.\n\n[Learn about us](/au/en/about.html)\n\
+    \    *       * [News](/au/en/about/news.html)\n      * [Company](/au/en/about/company.html)\n\
+    \      * [Community](/au/en/about/community.html)\n      * [Sustainability](/au/en/about/company/sustainability.html)\n\
+    \    *       * [Corporate Governance](/au/en/about/company"
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://www.macquarie.com/au/en/about/news/2025/macquarie-asset-management-to-lead-sale-of-aligned-data-centers-at-an-enterprise-value-of-us-40-billion.html
+- content_hash: 9df1219da802abae9d85a84ec0b455cd9cedec1e5e4faa32c0ccbd23cae4d9b9
+  evidence_id: ev-9df1219da802abae
+  excerpt: "Title: Aligned Equity Acquisition and its Industry Impact - Aligned Data\
+    \ Centers\nSkip to content\n\n  * [Customer Portal](https://aligned.service-now.com/)\n\
+    \  * [Partners](https://aligneddc.com/partners/)\n\n\n\n[ ](https://aligneddc.com)\n\
+    \n  * [Data Center Solutions](https://aligneddc.com/data-center-solutions/)\n\
+    \    * [See All Solutions](/data-center-solutions/)\n\n[See All Solutions](/data-center-solutions/)\n\
+    \n[ ](/hyperscale-and-build-to-scale-campus/ \"Hyperscale Campus and Build to\
+    \ Scale\")\n\nHyperscale Campus and Build to Scale\n\n[ ](/gigascale-campuses/\
+    \ \"Gigascale Campuses\")\n\nGigascale Campuses\n\n[ ](/multi-tenant-and-enterprise-data-centers/\
+    \ \"Multi-Tenant and Enterprise\")\n\nMulti-Tenant and Enterprise\n\n[ ](https://aligned-federal.com/\
+    \ \"Federal\")\n\nFederal\n\nFeatured Case Study \n\n[ ](https://aligneddc.com/case-studies/case-study-protecting-regional-water-resources/)\n\
+    \n[Case Studies](https://aligneddc.com/category/case-studies/)\n\nProtecting Regional\
+    \ Water Resources \n\n  * [Cooling Innovation](https://aligneddc.com/cooling-innovation/)\n\
+    \  * [Locations](https://aligneddc.com/locations/)\n    * North America\n\n  \
+    \    * [Abernathy](/abernathy-tx-data-center/)\n\n      * [Maryland](/maryland-data-centers/)\n\
+    \n      * [Atlanta](/atlanta-data-centers/)\n\n      * [Ohio](/northeast-ohio-data-centers/)\n\
+    \n      * [Chicago](/chicago-data-centers/)\n\n      * [Phoenix](/phoenix-data-centers/)\n\
+    \n      * [Dallas](/dallas-data-centers/)\n\n      * [Salt Lake City](/salt-lake-city-data-centers/)\n\
+    \n      * [Hillsboro](/hill"
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://aligneddc.com/press-release/ai-infrastructure-partnership-aip-mgx-and-blackrocks-global-infrastructure-partners-gip-to-acquire-all-equity-in-aligned-data-centers/
+- content_hash: 49584faeaed33d35b5ae4e17f27770452098871489cd2e33743bd47f1e7887e2
+  evidence_id: ev-49584faeaed33d35
+  excerpt: "Title: Today marks the BIGGEST launch in Aligned’s history! It’s a foundational\
+    \ moment for our company as we announce a new category. We dreamed of this future\
+    \ of sales 4 years ago. We just didn’t expect… | Gal Aga | 215 comments\nAgree\
+    \ & Join LinkedIn \n\nBy clicking Continue to join or sign in, you agree to LinkedIn’s\
+    \ [User Agreement](/legal/user-agreement?trk=linkedin-tc_auth-button_user-agreement),\
+    \ [Privacy Policy](/legal/privacy-policy?trk=linkedin-tc_auth-button_privacy-policy),\
+    \ and [Cookie Policy](/legal/cookie-policy?trk=linkedin-tc_auth-button_cookie-policy).\
+    \ \n\n`` `` `` `` `` `` `` Skip to main content  [ LinkedIn ](/?trk=public_post_nav-header-logo)\n\
+    \n  * [ Top Content  ](https://www.linkedin.com/top-content?trk=public_post_guest_nav_menu_topContent)\n\
+    \  * [ People  ](https://www.linkedin.com/pub/dir/+/+?trk=public_post_guest_nav_menu_people)\n\
+    \  * [ Learning  ](https://www.linkedin.com/learning/search?trk=public_post_guest_nav_menu_learning)\n\
+    \  * [ Jobs  ](https://www.linkedin.com/jobs/search?trk=public_post_guest_nav_menu_jobs)\n\
+    \  * [ Games  ](https://www.linkedin.com/games?trk=public_post_guest_nav_menu_games)\n\
+    \  * [ Get the app  ](ms-windows-store://pdp/?ProductId=9WZDNCRFJ4Q7&mode=mini&cid=guest_nav_upsell&trk=public_post_guest_nav_menu_windows)\n\
+    \n\n\n[ Sign in ](https://www.linkedin.com/login?session_redirect=https%3A%2F%2Fwww%2Elinkedin%2Ecom%2Fposts%2Fgalaga_today-marks-the-biggest-launch-in-aligned-activity-7427337117841813504-VHsY&fromSignIn=true&trk=public_post_nav-hea"
+  retrieved_at: '2026-08-18T11:40:15.976613-04:00'
+  url: https://www.linkedin.com/posts/galaga_today-marks-the-biggest-launch-in-aligned-activity-7427337117841813504-VHsY
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

@@ -120,7 +120,7 @@ def test_matrix_uses_fixed_saas_core_and_official_exact_model_ids() -> None:
         "company-description", "icp-persona-analysis", "growth-signals",
     )
     assert EXPERIMENT_MODELS == (
-        "gpt-5-nano", "gpt-4o-mini", "gpt-4.1-mini", "gpt-5.6-luna",
+        "gpt-5-nano", "gpt-4.1-mini", "gpt-5.6-luna",
     )
 
 
@@ -133,11 +133,11 @@ def test_run_uses_one_aggregate_dollar_cap_and_separate_tracks(
         "company-description", allow_paid=True,
     )
 
-    assert len(client.calls) == 8
+    assert len(client.calls) == 6
     assert {track for track, _ids in client.calls} == {
         ExecutionTrack.SYNCHRONOUS, ExecutionTrack.BATCH,
     }
-    assert len(benchmark.plans) == 8
+    assert len(benchmark.plans) == 6
     assert all(len(plan.cases) == 3 for plan in benchmark.plans)
     assert {plan.requested_model_id for plan in benchmark.plans} == set(
         EXPERIMENT_MODELS
@@ -145,8 +145,8 @@ def test_run_uses_one_aggregate_dollar_cap_and_separate_tracks(
     assert summary.status == "candidate"
     assert summary.approved is False
     assert summary.source_purchases == 0
-    assert summary.source_cache_hits == 24
-    assert summary.model_cost_usd == Decimal("0.24")
+    assert summary.source_cache_hits == 18
+    assert summary.model_cost_usd == Decimal("0.18")
     assert summary.cap_usd == Decimal("1.00")
 
 
@@ -162,10 +162,10 @@ def test_resume_reuses_append_only_outcomes_without_model_or_source_calls(
 
     second = runner.run("icp-persona-analysis", allow_paid=True, resume=True)
 
-    assert first.completed_cases == second.completed_cases == 24
+    assert first.completed_cases == second.completed_cases == 18
     assert len(client.calls) == call_count
     assert journal.read_bytes() == original
-    assert second.resumed_cases == 24
+    assert second.resumed_cases == 18
 
 
 def test_paid_execution_requires_opt_in_and_never_exceeds_one_dollar(
@@ -175,7 +175,7 @@ def test_paid_execution_requires_opt_in_and_never_exceeds_one_dollar(
         _runner(tmp_path, FakeClient([])).run("growth-signals")
 
     with pytest.raises(ValueError, match="aggregate experiment cap"):
-        _runner(tmp_path / "over", FakeClient([], estimated_cost="0.05")).run(
+        _runner(tmp_path / "over", FakeClient([], estimated_cost="0.07")).run(
             "growth-signals", allow_paid=True,
         )
 

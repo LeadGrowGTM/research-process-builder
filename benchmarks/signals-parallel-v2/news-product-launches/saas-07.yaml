@@ -1,0 +1,852 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcc1a8c71d39505e
+  - ev-48db0e5bbd86695c
+  - ev-f2fb791a6cc68dcb
+  field: identity
+  value: Betterworks
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcc1a8c71d39505e
+  - ev-48db0e5bbd86695c
+  - ev-f2fb791a6cc68dcb
+  field: description
+  value: 'About Betterworks | Betterworks --> Limited time offer ☀️ ☀️ Summer Promotion:
+    It''s not too late. Make your end of year reviews a breeze! Learn more Solutions
+    Why Betterworks --> --> --> --> --> --> --> Resources Company Pricing Login Take
+    a tour Talk to an expert Products Performance Management Drive results through
+    aligned goals, continuous feedback, and meaningful conversations. Find your Solution
+    Talent Intelligence Identify, develop, and retain the talent your organization
+    needs to grow. Fi'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcc1a8c71d39505e
+  - ev-48db0e5bbd86695c
+  - ev-f2fb791a6cc68dcb
+  field: offers
+  value: performance management
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcc1a8c71d39505e
+  - ev-48db0e5bbd86695c
+  - ev-f2fb791a6cc68dcb
+  field: icp
+  value: hr leaders
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-dcc1a8c71d39505e
+  - ev-48db0e5bbd86695c
+  - ev-f2fb791a6cc68dcb
+  field: personas
+  value: hr leaders
+  visibility: message_safe
+company_id: saas-07
+corrections: []
+evidence:
+- content_hash: dcc1a8c71d39505e77857cb29116e2becab3482aae9dfb038be90fccba03f481
+  evidence_id: ev-dcc1a8c71d39505e
+  excerpt: 'About Betterworks | Betterworks --> Limited time offer ☀️ ☀️ Summer Promotion:
+    It''s not too late. Make your end of year reviews a breeze! Learn more Solutions
+    Why Betterworks --> --> --> --> --> --> --> Resources Company Pricing Login Take
+    a tour Talk to an expert Products Performance Management Drive results through
+    aligned goals, continuous feedback, and meaningful conversations. Find your Solution
+    Talent Intelligence Identify, develop, and retain the talent your organization
+    needs to grow. Find your Solution Performance Management Drive results through
+    aligned goals, continuous feedback, and meaningful conversations. Find your Solution
+    Talent Intelligence Identify, develop, and retain the talent your organization
+    needs to grow. Find your Solution Modules Performance Management Drive results
+    through aligned goals, continuous feedback, and conversations. Goals & OKRs Align
+    team and individual goals to company priorities and track progress. Engagement
+    Measure employee sentiment and turn insights into meaningful action. Feedback
+    Enable continuous feedback that helps employees improve and grow faster. Analytics
+    & Insights Turn people data into clear insights that support smarter decisions.
+    Conversations Run review cycles that support better feedback and performance decisions.
+    AI for HR Improve consistency and fairness in performance and talent decisions.
+    1:1s Support more focused check-ins with shared agendas, notes, and follow-ups.
+    Talent Intelligence Identify, develop, and retain the talent your organization
+    needs to grow. Calibration Improve consistency and fairness in performance and
+    talent decisions. Succession Planning Identify future leaders and build stronger
+    pipelines for key roles. Skills Intelligence Understand workforce skills, gaps,
+    and development opportunities at scale. Unified Talent Profiles See each employee’s
+    skills, growth, and performance in one place. MCP Bring goals, recognition, and
+    performance data into your AI tools. Turn your people into a s'
+  retrieved_at: '2026-08-12T21:00:23.729989+00:00'
+  url: https://www.betterworks.com/about
+- content_hash: 48db0e5bbd86695c61e0c99e69309b00b4b12523a6aed9d2fcda9403026ab603
+  evidence_id: ev-48db0e5bbd86695c
+  excerpt: 'Betterworks | LinkedIn Agree & Join LinkedIn By clicking Continue to join
+    or sign in, you agree to LinkedIn’s User Agreement , Privacy Policy , and Cookie
+    Policy . Skip to main content LinkedIn Top Content People Learning Jobs Games
+    Sign in Join now Betterworks Software Development Menlo Park, CA 67,904 followers
+    Turning performance into a business growth engine 📈 See jobs Follow View all 224
+    employees Report this company About us Betterworks helps organizations turn performance
+    into measurable business impact. Our AI-native performance intelligence solution
+    connects goals, feedback, skills, and talent intelligence to give leaders real-time
+    visibility into workforce capability, manager effectiveness, and progress against
+    business priorities. Built for large and fast-growing organizations, Betterworks
+    helps HR and business leaders align teams, coach employees, support growth and
+    internal mobility, and make evidence-based talent decisions grounded in real work—not
+    guesswork. By embedding performance into the flow of work, Betterworks enables
+    organizations to adapt faster, strengthen execution, and drive better business
+    outcomes. Because performance isn’t just an HR process—it’s how strategy gets
+    executed. Website http://www.betterworks.com External link for Betterworks Industry
+    Software Development Company size 51-200 employees Headquarters Menlo Park, CA
+    Type Privately Held Founded 2013 Specialties Technology, Future of work, Performance
+    and productivity, SaaS and cloud computing, Continuous performance management,
+    Performance management, HR, Goals/OKRs, Employee Engagement, Employee Development,
+    Leadership Development, Recognition, Conversations, Peer Feedback, Objective and
+    Key Results, Talent Intelligence, and Skills Development Products Betterworks
+    Betterworks Employee Performance Management Software Betterworks is the pioneer
+    in intelligent performance management software solutions. Its flexible, enterprise-ready
+    SaaS platform helps workforces and organizations '
+  retrieved_at: '2026-08-12T21:00:24.460767+00:00'
+  url: https://www.linkedin.com/company/betterworks
+- content_hash: f2fb791a6cc68dcbcce02fd0f2750f0ec41aa480705618a5041630c1a62a107d
+  evidence_id: ev-f2fb791a6cc68dcb
+  excerpt: 'Betterworks Review 2026: Performance Management, OKRs, and Integrations
+    HR Software Compare HR tools for your company HR Software by Country & Region
+    HR Software in the US HR Software in the UK HR Software in Europe HR Software
+    in Canada HR Software in Australia HR Software by Feature HR Software with Payroll
+    HR Software with Onboarding HR Software with Performance Management HR Software
+    with Time and Attendance HR Software with Analytics HR Software by Company Size
+    HR Software for Small Business HR Software for SMEs HR Software for Startups HR
+    Software for Scaleups HR Software for Enterprise HR Software for Global and Remote
+    Teams HR Software for Remote Teams HR Software for Distributed Teams HR Software
+    for Global Compliance HR Software with EOR Services HR Software for Contractor
+    Management HR Software for Nonprofits HR Software Integrations HR Software That
+    Integrates with QuickBooks HR Software That Integrates with Xero HR Software That
+    Integrates with Workday HR Software That Integrates with NetSuite HR Software
+    That Integrates with Slack Compare HR Software Employer of Record Hire globally
+    without local entities EOR by Country & Region EOR in the US EOR in the UK EOR
+    in Germany EOR in Canada EOR in Europe Global and International EOR Global EOR
+    Providers International EOR Providers Multi-Country EOR Providers EOR for Global
+    Expansion EOR for Remote Teams EOR by Company Size & Growth Stage EOR for Small
+    Business EOR for Startups EOR for Mid-Sized Businesses EOR for Enterprise EOR
+    for Fast-Growing Teams EOR by Compliance and Immigration Guides EOR Providers
+    with Compliance Support EOR Providers with Visa Support EOR Providers with Tax
+    Compliance GDPR-Compliant EOR Providers SOC 2-Compliant EOR Providers EOR by Payroll,
+    Benefits, and Operations Guides EOR Providers with Payroll EOR Providers with
+    Global Payroll EOR Providers with Local Payroll EOR Providers with Global Benefits
+    EOR Providers with Onboarding EOR by Industry EOR for Tech Companies EOR for Fintech '
+  retrieved_at: '2026-08-12T21:00:24.964969+00:00'
+  url: https://www.hr.software/reviews/betterworks
+- content_hash: c9d7604a996d2accb4d879956df32cacd951a16f1337b0222845b8d6b398c025
+  evidence_id: ev-c9d7604a996d2acc
+  excerpt: 'Detected date: 2026-08-17
+
+    Title: AI Is Outpacing Performance Management in Banking
+
+    Date: 2026-08-17
+
+    Source: betterworks.com
+
+    Snippet: # AI Is Moving Banking Faster. Can Performance Management Keep Up? By
+    Aimie Lim August 17, 2026 5 minutes read Table of Contents Share ... * AI leaders
+    see ~3x the ROI of slower adopters (IDC) — but only when execution keeps pace
+    with adoption. * Just 16% of banks say their talent decisions are predictive,
+    and 73% report real business losses from workforce intelligence gaps (Betterworks,
+    2026). * Annual review cycles can''t track priorities that shift mid-quarter —
+    by review time, the work''s context has often changed twice. * Performance management
+    is execution infrastructure, not an HR process — it''s what connects strategy
+    shifts to the people doing the work.'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.betterworks.com/magazine/ai-is-moving-banking-faster-can-performance-management-keep-up
+- content_hash: bec8ecf70e411b35fa2105fe46b1a9a993710ad25b13d65bd10255f3ed87c376
+  evidence_id: ev-bec8ecf70e411b35
+  excerpt: 'Detected date: March 3, 2026
+
+    Title: Press and Announcements | Human Resources Software | Betterworks
+
+    Source: betterworks.com
+
+    Snippet: # Betterworks Press 2026](https://www.betterworks.com/betterworks-launches-new-ai-capabilities-that-connect-performance-data-to-ai-assistants)
+    [Betterworks Acquires Rypple to Advance Manager Effectiveness and AI-Native Performance
+    Management Read Story → June 2, ... 2026](https://www.betterworks.com/betterworks-unveils-ai-powered-talent-intelligence-to-turn-performance-into-a-business-execution-engine)
+    New Betterworks Study Finds Almost 50% of Employees Are Not Comfortable Using
+    AI, Challenging CHROs to Close the AI ROI Gap Read Story → March 3, 2026 Betterworks
+    Redefines ... 2025](https://www.forbes.com/councils/forbescommunicationscouncil/2025/01/31/five-reasons-why-your-cmo-shouldnt-report-to-the-cro-and-whats-at-stake-if-they-do)
+    EmpowerHR 2025 Betterworks Announces 2025 EmpowerHR Americas Summit: Redefining
+    HR Leadership for an AI-Driven Future Read Story → January 28, 2025 [Forbes How'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: http://betterworks.com/press
+- content_hash: 270ddebdea8413055b1ac2686fd8ebbe26c7f58ee9fc3b43ab013009fd438198
+  evidence_id: ev-270ddebdea841305
+  excerpt: 'Detected date: 2026-05-06
+
+    Title: Betterworks Unveils AI-Powered Talent Intelligence to Turn ...
+
+    Date: 2026-05-06
+
+    Source: businesswire.com
+
+    Snippet: # **Betterworks Unveils AI-Powered Talent Intelligence to Turn Performance
+    Into a Business Execution Engine** At the center of the release are new Talent
+    Intelligence features that bring together Unified Talent Profiles, Skills Intelligence,
+    Calibration, and Succession Planning into a single, AI-powered system designed
+    for speed and ... These product features build on Betterworks’ AI-native platform,
+    designed to integrate seamlessly into how work already happens—eliminating the
+    need for managers and employees to constantly input data into disconnected systems.
+    ... ## New Betterworks Study Finds Almost 50% of Employees Are Not Comfortable
+    Using AI, Challenging CHROs to Close the AI ROI Gap MENLO PARK, Calif.--( [BUSINESS
+    WIRE](https://www.businesswire.com) )--Betterworks, the leading performance management
+    software company, today released its flagship 2026 State of Performance Enablement
+    report, The'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.businesswire.com/news/home/20260506230172/en/Betterworks-Unveils-AI-Powered-Talent-Intelligence-to-Turn-Performance-Into-a-Business-Execution-Engine
+- content_hash: be0571af515947191bcbb2d12bf3979d823a91bf015de4d1ebf0c93845fcad53
+  evidence_id: ev-be0571af51594719
+  excerpt: 'Detected date: 2026-08-16
+
+    Title: Betterworks - Overview, News & Similar companies
+
+    Date: 2026-08-16
+
+    Source: zoominfo.com
+
+    Snippet: 3 days ago — Product Launch: Get notified when Betterworks launches new
+    products . Congratulate Masked Content for being promoted to Masked Content at
+    Betterworks. Check if'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.zoominfo.com/c/betterworks-systems-inc/346003061
+- content_hash: d757714f2afc0d8c73b7b39f9179c6bda6ca6a3d730836808713e5d5156f3b45
+  evidence_id: ev-d757714f2afc0d8c
+  excerpt: 'Detected date: 2026-07-14
+
+    Title: Betterworks Launches New AI Capabilities That Connect ...
+
+    Date: 2026-07-14
+
+    Source: businesswire.com
+
+    Snippet: Jul 14, 2026 — Betterworks helps managers prepare for coaching conversations,
+    identify emerging risks, and generate leadership-ready updates.'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.businesswire.com/news/home/20260714162785/en/Betterworks-Launches-New-AI-Capabilities-That-Connect-Performance-Data-to-AI-Assistants
+- content_hash: 9a7c2481e2285d06c72eb8b00b2c1d1d5f751eadda27a10b49894f379d7deafd
+  evidence_id: ev-9a7c2481e2285d06
+  excerpt: 'Detected date: 2026-07-13
+
+    Title: Betterworks: Funding, Team & Investors
+
+    Date: 2026-07-13
+
+    Source: startupintros.com
+
+    Snippet: How It Works Pricing Blog Events Search orgs, people, news, resources...
+    ⌘K [Get Started →](https://app.startupintros.com/signup) Search organizations,
+    people, news, resources, and content... / How It Works Pricing Blog Events [Get
+    Started →](https://app.startupintros.com/signup) Loading organizations... ...
+    # Product How It Works Pricing ## Resources Blog Events Contact ### Company Privacy
+    Terms'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://startupintros.com/orgs/betterworks
+- content_hash: e4e9718bef7b48b84741414d4dce416b24bb2db6b63ec220fedd952f9842a7c2
+  evidence_id: ev-e4e9718bef7b48b8
+  excerpt: 'Detected date: 2026-07-20
+
+    Title: Betterworks Launches New AI Capabilities That Connect Performance Data
+    to AI Assistants
+
+    Date: 2026-07-20
+
+    Source: finance.yahoo.com
+
+    Snippet: New Model Context Protocol (MCP) capabilities enable AI agents to securely
+    access Betterworks performance data, helping organizations move'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://finance.yahoo.com/technology/ai/articles/betterworks-launches-ai-capabilities-connect-130500318.html
+- content_hash: b21c81312afca2134e3bdf43cff90e80d7a91845b8e7b82ba854eb0f1ed9ab9e
+  evidence_id: ev-b21c81312afca213
+  excerpt: 'Detected date: 2019-10-15
+
+    Title: Betterworks Announces Multiple New Product Features That Bring Continuous
+    Performance Management® Into the Flow of Work
+
+    Date: 2019-10-15
+
+    Source: prnewswire.com
+
+    Snippet: # Betterworks Announces Multiple New Product Features That Bring Continuous
+    Performance Management® Into the Flow of Work ## Share this article Continue Reading
+    The new Betterworks homepage was designed for ease of use, simplicity, and clarity,
+    boosting adoption and usage rates. With update from Slack, employees can update
+    their goal progress, add comments and give recognition wholly within the Slack
+    window without having to exit to another tool. ... * A real-time **activity stream**
+    that summarizes, in an engaging, intuitive timeline view, all of the updates relevant
+    to the goals of the user, including personal, departmental and cross-functional
+    team goals as well as top company priorities. ... * **Update from Slack** enables
+    employees to update their goal progress, add comments and/or give recognition
+    wholly within the Slack window, rather than having to exit to another tool.'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.prnewswire.com/news-releases/betterworks-announces-multiple-new-product-features-that-bring-continuous-performance-management-into-the-flow-of-work-300938624.html
+- content_hash: d28655609e2d4eaeaf98023e07172bb351eadbc660927a8dab5d86186ba8f87f
+  evidence_id: ev-d28655609e2d4eae
+  excerpt: 'Detected date: May 2026
+
+    Title: Release Notes – Betterworks
+
+    Source: support.betterworks.com
+
+    Snippet: # Release Notes * Release: August 11th, 2026 - MCP Server v0.74.0 * Release:
+    August 11th, 2026 * Release: July 28th, 2026 * Release: July 14th, 2026 * Release:
+    June 30th, 2026 * Release: June 16th, 2026 * Release: June 2nd, 2026 * Release:
+    May 19th, 2026 * Spring Release - May 2026 * Release: May 5th, 2026 * Release:
+    April 21st, 2026 * Release: April 7th, 2026 * Release: March 24th, 2026 * Release:
+    March 10th, 2026 * Release: February 25th, 2026 * Release: February 10th, 2026
+    * Release: January 28th, 2026 * Release: January 13th, 2026 * Release: December
+    16th, 2025 * Release: December 2nd, 2025 * Release: November 18th, 2025 * Release:
+    November 4th, 2025 * Release: October 21st, 2025 * Release: October 7th, 2025
+    * Release: September 23rd, 2025 * Release: September 9th, 2025 * Release: August
+    26th, 2025 * Release: August 12th, 2025 * Release: July 29th, 2025 * Release:
+    July 15th, 2025 * 1'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://support.betterworks.com/hc/en-us/sections/360012378232-Release-Notes
+- content_hash: dd44529c16af1e14d6b83a6fc4c98c3f5f635b3ef694eeadb3f83c8c4677e7dd
+  evidence_id: ev-dd44529c16af1e14
+  excerpt: 'Detected date: 2020-02-20
+
+    Title: Betterworks Acquires Hyphen, Enabling Every Enterprise to Better Connect
+    Employee Engagement to Business Impact
+
+    Date: 2020-02-20
+
+    Source: prnewswire.com
+
+    Snippet: # Betterworks Acquires Hyphen, Enabling Every Enterprise to Better Connect
+    Employee Engagement to Business Impact ## Share this article Betterworks'' solution
+    has seen multiple updates following the company''s [Series B funding round in
+    early 2019](https://c212.net/c/link/?t=0&l=en&o=2725086-1&h=3232560265&u=https%3A%2F%2Fwww.prnewswire.com%2Fnews-releases%2Fbetterworks-total-financing-exceeds-65m-with-extended-series-b-funding-round-accelerating-growth-of-its-enterprise-continuous-performance-management-solution-300808333.html&a=Series+B+funding+round+in+ear
+    ... Based in Redwood City, CA Betterworks has received more than $65M in funding
+    and is used daily by employees and managers from 119 countries in more than 20
+    languages.'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.prnewswire.com/news-releases/betterworks-acquires-hyphen-enabling-every-enterprise-to-better-connect-employee-engagement-to-business-impact-301008194.html
+- content_hash: f0260b0ccb89880d491fac1812970782ccfac8593e6cc4ce4cd9cc8c5aad4b3e
+  evidence_id: ev-f0260b0ccb89880d
+  excerpt: 'Query: betterworks.com news
+
+    1. https://www.betterworks.com/magazine/ai-is-moving-banking-faster-can-performance-management-keep-up
+
+    Title: AI Is Outpacing Performance Management in Banking
+
+    Date: 2026-08-17
+
+    Source: betterworks.com
+
+    Snippet: # AI Is Moving Banking Faster. Can Performance Management Keep Up? By
+    Aimie Lim August 17, 2026 5 minutes read Table of Contents Share ... * AI leaders
+    see ~3x the ROI of slower adopters (IDC) — but only when execution keeps pace
+    with adoption. * Just 16% of banks say their talent decisions are predictive,
+    and 73% report real business losses from workforce intelligence gaps (Betterworks,
+    2026). * Annual review cycles can''t track priorities that shift mid-quarter —
+    by review time, the work''s context has often changed twice. * Performance management
+    is execution infrastructure, not an HR process — it''s what connects strategy
+    shifts to the people doing the work.
+
+    2. http://betterworks.com/press
+
+    Title: Press and Announcements | Human Resources Software | Betterworks
+
+    Source: betterworks.com
+
+    Snippet: # Betterworks Press 2026](https://www.betterworks.com/betterworks-launches-new-ai-capabilities-that-connect-performance-data-to-ai-assistants)
+    [Betterworks Acquires Rypple to Advance Manager Effectiveness and AI-Native Performance
+    Management Read Story → June 2, ... 2026](https://www.betterworks.com/betterworks-unveils-ai-powered-talent-intelligence-to-turn-performance-into-a-business-execution-engine)
+    New Betterworks Study Finds Almost 50% of Employees'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.google.com/search?q=betterworks.com+news&tbm=nws
+- content_hash: 72acf741a97d8986e42e81b03121b0e61014182f6d323909c7bfd52f658b0d77
+  evidence_id: ev-72acf741a97d8986
+  excerpt: 'Detected date: 2026-05-06
+
+    Title: Betterworks Unveils AI-Powered Talent Intelligence to Turn ...
+
+    Date: 2026-05-06
+
+    Source: businesswire.com
+
+    Snippet: # **Betterworks Unveils AI-Powered Talent Intelligence to Turn Performance
+    Into a Business Execution Engine** ## New Betterworks Study Finds Almost 50% of
+    Employees Are Not Comfortable Using AI, Challenging CHROs to Close the AI ROI
+    Gap MENLO PARK, Calif.--( [BUSINESS WIRE](https://www.businesswire.com) )--Betterworks,
+    the leading performance management software company, today released its flagship
+    2026 State of Performance Enablement report, The ... ## Betterworks Announces
+    2025 EmpowerHR Europe Summit: Unleashing the Next Era of HR MENLO PARK, Calif.--(
+    [BUSINESS WIRE](https://www.businesswire.com) )--Betterworks, the leading modern
+    performance management software company, is thrilled to announce the return of
+    EmpowerHR Europe. ... ### Contacts Ashley Diano [PRforBetterworks@bospar.com](mailto:PRforBetterworks@bospar.com)'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.businesswire.com/news/home/20260506230172/en/Betterworks-Unveils-AI-Powered-Talent-Intelligence-to-Turn-Performance-Into-a-Business-Execution-Engine
+- content_hash: 0a2236463c4d6523724d7fcad0c8c53f74b5f46e6a46fc82b643deee4c4d3787
+  evidence_id: ev-0a2236463c4d6523
+  excerpt: 'Detected date: 2025-09-17
+
+    Title: Best Performance Management Software (2026 Guide)
+
+    Date: 2025-09-17
+
+    Source: betterworks.com
+
+    Snippet: # Best Performance Management Software (2026 Guide) ## Top performance
+    management software tools **_NextGen platform launched Jan 2026: 400+ new features,
+    Manager Command Center, Performance Summaries_** |1,000+ employees | |Workday
+    Performance |Enterprise HCM + performance: Talent reviews, HCM suite |10,000+
+    | ... ## Top 10 best performance management software choices (2026) ### 1. Betterworks
+    — _Best for enterprises and mid-market companies that need AI-native performance
+    enablement at scale_ In January 2026, Betterworks launched NextGen — over **400
+    customer-prioritized features** including a Manager Command Center that gives
+    managers a mission-control view of team performance, automated Performance Summaries
+    ... ## See Betterworks in Action Betterworks is trusted by HR leaders at Intuit,
+    Udemy, and the University of Phoenix. The NextGen platform — launched January
+    2026 — brings 400+ enterprise-requested features, an AI-native architecture, and
+    the industry''s deepest calibration tools.'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.betterworks.com/magazine/best-performance-management-software
+- content_hash: 01d219cc2ebc23597fba1124746476f1b2888450eb7d06df6dbbacfaae65e899
+  evidence_id: ev-01d219cc2ebc2359
+  excerpt: 'Detected date: 2026-04-29
+
+    Title: Succession Planning Software for Critical Roles and Bench Strength | Betterworks
+
+    Date: 2026-04-29
+
+    Source: betterworks.com
+
+    Snippet: # Succession Planning for a World Where Key Roles Don’t Wait for Q4 [](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.betterworks.com%2Fmagazine%2Fsuccession-planning-for-a-world-where-key-roles-dont-wait-for-q4)
+    ... ## **Why annual succession planning is no longer enough** Research suggests
+    that as many as [81% of companies lack a formal succession plan](https://www.scottmadden.com/insight/succession-planning-why-it-must-be-a-2025-priority/)
+    , leaving significant gaps in leadership coverage. ... ## **How Betterworks operationalizes
+    modern succession planning** Our Spring 2026 release centers on [Talent Intelligence](https://www.betterworks.com/product/talent-intelligence)
+    powered by performance — a dynamic, real-time understanding of people grounded
+    in actual work signals, not static profiles.'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.betterworks.com/magazine/succession-planning-for-a-world-where-key-roles-dont-wait-for-q4
+- content_hash: d856b56a6ecb28f49c568e68632e5a6e46f18063f3f7fc2955ea8fe72b6ea461
+  evidence_id: ev-d856b56a6ecb28f4
+  excerpt: 'Detected date: 2026-08-16
+
+    Title: Betterworks - Overview, News & Similar companies
+
+    Date: 2026-08-16
+
+    Source: zoominfo.com
+
+    Snippet: # Error 1015 Ray ID: 9237c5f7ca0eeac0 • 2025-03-20 19:56:31 UTC'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.zoominfo.com/c/betterworks-systems-inc/346003061
+- content_hash: 02c7f4b4113ed4ac2580e127ed18f94ef128cbcde48eb03ef95a4592c4edfe26
+  evidence_id: ev-02c7f4b4113ed4ac
+  excerpt: 'Detected date: 2026-07-14
+
+    Title: Betterworks Launches New AI Capabilities That Connect Performance Data
+    to AI Assistants
+
+    Date: 2026-07-14
+
+    Source: finance.yahoo.com
+
+    Snippet: # Betterworks Launches New AI Capabilities That Connect Performance Data
+    to AI Assistants Business Wire Tue, July 14, 2026 at 8:05 AM CDT 3 min read _New
+    Model Context Protocol (MCP) capabilities enable AI agents to securely access
+    Betterworks performance data, helping organizations move from reactive work to
+    proactive execution._ **MENLO PARK, Calif., July 14, 2026** --( [BUSINESS WIRE](https://www.businesswire.com)
+    )--AI assistants are changing how work gets done, but they''re only as useful
+    as the business context they can access. Today, Betterworks announced the beta
+    launch of its [Model Context Protocol (MCP) ... e7b15913d7d18f50f57d) , enabling
+    organizations to securely connect Betterworks performance data with AI assistants
+    such as ChatGPT, Claude, Microsoft Copilot, Gemini, and other MCP-compatible tools.'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://finance.yahoo.com/technology/ai/articles/betterworks-launches-ai-capabilities-connect-130500318.html
+- content_hash: b736cf51cf58595d14f1dc7d8ae0dadeb6a1b9c695117f9c70b07eab45705378
+  evidence_id: ev-b736cf51cf58595d
+  excerpt: 'Detected date: 2026-06-02
+
+    Title: Betterworks Acquires Rypple to Advance Manager Effectiveness and AI-Native
+    Performance Management
+
+    Date: 2026-06-02
+
+    Source: businesswire.com
+
+    Snippet: Jun 2, 2026 9:00 AM Eastern Daylight Time ... # **Betterworks Acquires
+    Rypple to Advance Manager Effectiveness and AI-Native Performance Management**
+    ## New Betterworks Study Finds Almost 50% of Employees Are Not Comfortable Using
+    AI, Challenging CHROs to Close the AI ROI Gap MENLO PARK, Calif.--( [BUSINESS
+    WIRE](https://www.businesswire.com) )--Betterworks, the leading performance management
+    software company, today released its flagship 2026 State of Performance Enablement
+    report, The ... ## Betterworks Announces 2025 EmpowerHR Europe Summit: Unleashing
+    the Next Era of HR MENLO PARK, Calif.--( [BUSINESS WIRE](https://www.businesswire.com)
+    )--Betterworks, the leading modern performance management software company, is
+    thrilled to announce the return of EmpowerHR Europe.'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.businesswire.com/news/home/20260602407140/en/Betterworks-Acquires-Rypple-to-Advance-Manager-Effectiveness-and-AI-Native-Performance-Management
+- content_hash: 944b60addfca80d5b4b6fd1e70419b6d401822530337554c9cfc53b1c344df88
+  evidence_id: ev-944b60addfca80d5
+  excerpt: 'Detected date: 2026-06-02
+
+    Title: Betterworks Acquires Rypple to Advance Manager Effectiveness and AI-Native
+    Performance Management
+
+    Date: 2026-06-02
+
+    Source: techrseries.com
+
+    Snippet: # Betterworks Acquires Rypple to Advance Manager Effectiveness and AI-Native
+    Performance Management [By **Business Wire**](https://techrseries.com/author/business-wire/
+    "Browse Author Articles") On **Jun 2, 2026** [](https://techrseries.com/wp-content/uploads/2026/06/Betterworks-Acquires-Rypple-to-Advance-Manager-Effectiveness-and-AI-Native-Performance-Management.jpg)
+    ## _**Acquisition expands Betterworks’ investment in connecting real-time performance
+    management with manager enablement**_ [Betterworks](https://www.betterworks.com/)
+    , a leading enterprise performance management platform, announced the acquisition
+    of Rypple, an AI-native platform designed to help managers lead more effectively
+    in the flow'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://techrseries.com/employee-engagement/betterworks-acquires-rypple-to-advance-manager-effectiveness-and-ai-native-performance-management/
+- content_hash: 0c07f7f493b13889d097e6b92e365f887ccf383f131a2cca4c4dd53fa6f18373
+  evidence_id: ev-0c07f7f493b13889
+  excerpt: 'Detected date: 2026-05-06
+
+    Title: Betterworks Unveils AI-Powered Talent Intelligence to Turn Performance
+    Into a Business Execution Engine | Morningstar
+
+    Date: 2026-05-06
+
+    Source: morningstar.com
+
+    Snippet: # Betterworks Unveils AI-Powered Talent Intelligence to Turn Performance
+    Into a Business Execution Engine Provided by Business Wire May 6, 2026, 10:00:00
+    AM **Betterworks Unveils AI-Powered Talent Intelligence to Turn Performance Into
+    a Business Execution Engine** ... The release advances Betterworks’ vision of
+    turning performance into a business execution engine—capturing signals from goals,
+    feedback, and 1:1s in the flow of work, and transforming them into the intelligence
+    leaders need to align ... At the center of the release are new Talent Intelligence
+    features that bring together Unified Talent Profiles, Skills Intelligence, Calibration,
+    and Succession Planning into a single, AI-powered system designed for speed and'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.morningstar.com/news/business-wire/20260506230172/betterworks-unveils-ai-powered-talent-intelligence-to-turn-performance-into-a-business-execution-engine
+- content_hash: 45c7a76917ecff31fcbe733b8f3f1853ee33cd68b322f1cdc3f33968aca646d4
+  evidence_id: ev-45c7a76917ecff31
+  excerpt: 'Query: Betterworks "press release" OR "announces" OR "newsroom"
+
+    1. https://www.businesswire.com/news/home/20260506230172/en/Betterworks-Unveils-AI-Powered-Talent-Intelligence-to-Turn-Performance-Into-a-Business-Execution-Engine
+
+    Title: Betterworks Unveils AI-Powered Talent Intelligence to Turn ...
+
+    Date: 2026-05-06
+
+    Source: businesswire.com
+
+    Snippet: # **Betterworks Unveils AI-Powered Talent Intelligence to Turn Performance
+    Into a Business Execution Engine** ## New Betterworks Study Finds Almost 50% of
+    Employees Are Not Comfortable Using AI, Challenging CHROs to Close the AI ROI
+    Gap MENLO PARK, Calif.--( [BUSINESS WIRE](https://www.businesswire.com) )--Betterworks,
+    the leading performance management software company, today released its flagship
+    2026 State of Performance Enablement report, The ... ## Betterworks Announces
+    2025 EmpowerHR Europe Summit: Unleashing the Next Era of HR MENLO PARK, Calif.--(
+    [BUSINESS WIRE](https://www.businesswire.com) )--Betterworks, the leading modern
+    performance management software company, is thrilled to announce the return of
+    EmpowerHR Europe. ... ### Contacts Ashley Diano [PRforBetterworks@bospar.com](mailto:PRforBetterworks@bospar.com)
+
+    2. https://www.betterworks.com/magazine/best-performance-management-software
+
+    Title: Best Performance Management Software (2026 Guide)
+
+    Date: 2025-09-17
+
+    Source: betterworks.com
+
+    Snippet: # Best Performance Management Software (2026 Guide) ## Top performance
+    management software tools **_NextGen platform launched Jan 2'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.google.com/search?q=Betterworks+%22press+release%22+OR+%22announces%22+OR+%22newsroom%22&tbs=qdr%3Ay
+- content_hash: 75cf670e1ec9fe95af0b6fd709afb059307f5d40f7eff8e6edac6b4769162f34
+  evidence_id: ev-75cf670e1ec9fe95
+  excerpt: 'Detected date: 2026-01-13
+
+    Title: Betterworks NextGen Features Unlock Performance With AI
+
+    Date: 2026-01-13
+
+    Source: betterworks.com
+
+    Snippet: # Betterworks NextGen Features Unlock Intelligent Performance With AI
+    By Michelle Gouldsberry January 13, 2026 6 minutes read Share ... “With Betterworks
+    NextGen, we’ve reimagined performance enablement for the AI era,” says Cheryl
+    Johnson, Betterworks chief product and technology officer. ... ## You Might Find
+    Interesting [Virtual October 26, 2026 2026 Gartner HR Symposium - Orlando Register
+    now](https://www.gartner.com/en/conferences/na/hr-symposium-us) [Virtual October
+    20, 2026 2026 Unleash World - Paris Register now](https://www.unleash.ai/events/unleash-paris)
+    Betterworks News August 11, 2026 Betterworks Named Performance Platform of the
+    Year in the Inaugural HR Tech Breakthrough Awards Read more Performance Management
+    July 29, 2026 Why HR Leaders Move Performance Management from UKG to Betterworks
+    Read more'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.betterworks.com/magazine/betterworks-nextgen-key-features-for-hr-leaders
+- content_hash: 7e76a579970d21bded6fccbe2c230f639c4bda38f8d55a7858ba0f7fc6f18b15
+  evidence_id: ev-7e76a579970d21bd
+  excerpt: 'Detected date: 2026-07-14
+
+    Title: Betterworks Launches New AI Capabilities That Connect ...
+
+    Date: 2026-07-14
+
+    Source: businesswire.com
+
+    Snippet: Betterworks Launches New AI Capabilities That Connect ... Jul 14, 2026
+    — Today, Betterworks announced the beta launch of its Model Context Protocol (MCP)
+    Server, enabling organizations to securely connect Betterworks performance data'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.businesswire.com/news/home/20260714162785/en/Betterworks-Launches-New-AI-Capabilities-That-Connect-Performance-Data-to-AI-Assistants
+- content_hash: 8f0cc53553f4dd0c2b84ddf20b5dc3650dc9259ef6b72da03b6bfd1d9bb51eb6
+  evidence_id: ev-8f0cc53553f4dd0c
+  excerpt: 'Detected date: 2026-07-14
+
+    Title: Betterworks Launches New AI Capabilities That Connect ...
+
+    Date: 2026-07-14
+
+    Source: finance.yahoo.com
+
+    Snippet: 14 Jul 2026 — Betterworks announced the beta launch of its Model Context.
+    AI assistants such as ChatGPT, Claude, Microsoft Copilot, Gemini, and other MCP-compatible
+    tools.'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://finance.yahoo.com/technology/ai/articles/betterworks-launches-ai-capabilities-connect-130500318.html
+- content_hash: f48ef6109c868816535f93c981e3b42b0c067e5c58d8f25eeb3fc531746e58a5
+  evidence_id: ev-f48ef6109c868816
+  excerpt: 'Detected date: 2026-05-06
+
+    Title: Betterworks Unveils AI-Powered Talent Intelligence to Turn ...
+
+    Date: 2026-05-06
+
+    Source: businesswire.com
+
+    Snippet: # **Betterworks Unveils AI-Powered Talent Intelligence to Turn Performance
+    Into a Business Execution Engine** The release advances Betterworks’ vision of
+    turning performance into a business execution engine—capturing signals from goals,
+    feedback, and 1:1s in the flow of work, and transforming them into the intelligence
+    leaders need to align ... At the center of the release are new Talent Intelligence
+    features that bring together Unified Talent Profiles, Skills Intelligence, Calibration,
+    and Succession Planning into a single, AI-powered system designed for speed and
+    ... ## New Betterworks Study Finds Almost 50% of Employees Are Not Comfortable
+    Using AI, Challenging CHROs to Close the AI ROI Gap MENLO PARK, Calif.--( [BUSINESS
+    WIRE](https://www.businesswire.com) )--Betterworks, the leading performance management
+    software company, today released its flagship 2026 State of Performance Enablement
+    report, The'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.businesswire.com/news/home/20260506230172/en/Betterworks-Unveils-AI-Powered-Talent-Intelligence-to-Turn-Performance-Into-a-Business-Execution-Engine
+- content_hash: 193dc23cbc397b2e51de77f14d9620f185d75f0865fe3b79d438af9b349cf41e
+  evidence_id: ev-193dc23cbc397b2e
+  excerpt: 'Detected date: 2026-01-16
+
+    Title: Betterworks unveils AI-native NextGen performance platform
+
+    Date: 2026-01-16
+
+    Source: itbrief.co.nz
+
+    Snippet: # Betterworks unveils AI-native NextGen performance platform Fri, 16th
+    Jan 2026 Catherine Knowles CATHERINE KNOWLES News Editor Betterworks has launched
+    a new version of its performance management platform, called NextGen, with more
+    than 400 new features. The company said the release centres on an AI-native foundation
+    and new tools for managers and HR teams. It said the product design reflects requests
+    from existing customers. ... "Performance enablement is entering a new era," said
+    Doug Dennerline, Chief Executive Officer, Betterworks. ... **Performance summaries**
+    The release also includes Performance Summaries. Betterworks said this feature
+    synthesises goals, feedback and achievements into a narrative view of performance.'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://itbrief.co.nz/story/betterworks-unveils-ai-native-nextgen-performance-platform
+- content_hash: 780f7155095d0130204307b5a16c07ef06ae6b176675ec9d22160bde0b0b74d6
+  evidence_id: ev-780f7155095d0130
+  excerpt: 'Detected date: 2025-10-09
+
+    Title: Why Betterworks Is Thriving in the Performance Management Revolution -
+    Brandon Hall Group
+
+    Date: 2025-10-09
+
+    Source: brandonhall.com
+
+    Snippet: # Why Betterworks Is Thriving in the Performance Management Revolution
+    * [Claude Werder](https://brandonhall.com/author/claude-werder-2/) * October 9,
+    2025 The numbers tell a story most HR leaders already know in their bones: traditional
+    performance management is broken. ... The organization adopted [Betterworks](https://www.betterworks.com/)
+    to enable agile goal-setting, continuous feedback, and equitable evaluation —
+    building a transparent, flexible, and technology-enabled goal framework that aligned
+    employees around shared company ... Under CEO Doug Dennerline, a longtime executive
+    who also served as president of SAP SuccessFactors, the company has transformed
+    from an OKR-focused tool into a comprehensive performance enablement platform
+    that’s winning major enterprise deals against both legacy HCM'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://brandonhall.com/why-betterworks-is-thriving-in-the-performance-management-revolution/
+- content_hash: 26451619f73cb4f3a8500d409ca975f649c2157722acf38a1fddb0e26d9d6821
+  evidence_id: ev-26451619f73cb4f3
+  excerpt: 'Query: Betterworks launches OR "new feature" OR "introducing" OR "now
+    available"
+
+    1. https://www.betterworks.com/magazine/betterworks-nextgen-key-features-for-hr-leaders
+
+    Title: Betterworks NextGen Features Unlock Performance With AI
+
+    Date: 2026-01-13
+
+    Source: betterworks.com
+
+    Snippet: # Betterworks NextGen Features Unlock Intelligent Performance With AI
+    By Michelle Gouldsberry January 13, 2026 6 minutes read Share ... “With Betterworks
+    NextGen, we’ve reimagined performance enablement for the AI era,” says Cheryl
+    Johnson, Betterworks chief product and technology officer. ... ## You Might Find
+    Interesting [Virtual October 26, 2026 2026 Gartner HR Symposium - Orlando Register
+    now](https://www.gartner.com/en/conferences/na/hr-symposium-us) [Virtual October
+    20, 2026 2026 Unleash World - Paris Register now](https://www.unleash.ai/events/unleash-paris)
+    Betterworks News August 11, 2026 Betterworks Named Performance Platform of the
+    Year in the Inaugural HR Tech Breakthrough Awards Read more Performance Management
+    July 29, 2026 Why HR Leaders Move Performance Management from UKG to Betterworks
+    Read more
+
+    2. https://www.businesswire.com/news/home/20260714162785/en/Betterworks-Launches-New-AI-Capabilities-That-Connect-Performance-Data-to-AI-Assistants
+
+    Title: Betterworks Launches New AI Capabilities That Connect ...
+
+    Date: 2026-07-14
+
+    Source: businesswire.com
+
+    Snippet: Betterworks Launches New AI Capabilities That Connect ... Jul 14, 2026
+    — Today, Betterworks announced the beta launch of its Mode'
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.google.com/search?q=Betterworks+launches+OR+%22new+feature%22+OR+%22introducing%22+OR+%22now+available%22&tbs=qdr%3Ay
+- content_hash: bbf1b8b5783bb1b3762316bd27c01987d748ae101ffd022d1ff3853496be29a1
+  evidence_id: ev-bbf1b8b5783bb1b3
+  excerpt: "Title: AI Is Outpacing Performance Management in Banking | Betterworks\n\
+    Limited time offer \n\n☀️ ☀️ Summer Promotion: It's not too late.  \nMake your\
+    \ end of year reviews a breeze! \n\n[ Learn more ](/pricing)\n\n[ ](/)\n\nSolutions\
+    \  [ Why Betterworks ](/why-betterworks) Resources  Company  [ Pricing ](/plans)\n\
+    \n[ Login ](https://app.betterworks.com)\n\n[ Take a tour  ](/tour)\n\n[ Talk\
+    \ to an expert  ](/contact-us)\n\nProducts \n\nPerformance Management \n\nDrive\
+    \ results through aligned goals, continuous feedback, and meaningful conversations.\
+    \ \n\n[ Find your Solution  ](/product/performance-management-software)\n\nTalent\
+    \ Intelligence \n\nIdentify, develop, and retain the talent your organization\
+    \ needs to grow. \n\n[ Find your Solution  ](/product/talent-intelligence)\n\n\
+    Performance Management \n\nDrive results through aligned goals, continuous feedback,\
+    \ and meaningful conversations. \n\n[ Find your Solution  ](/product/performance-management-software)\n\
+    \nTalent Intelligence \n\nIdentify, develop, and retain the talent your organization\
+    \ needs to grow. \n\n[ Find your Solution  ](/product/talent-intelligence)\n\n\
+    Modules \n\n[ Performance Management  Drive results through aligned goals, continuous\
+    \ feedback, and conversations.  ](/product/performance-management-software) [\
+    \ Goals & OKRs  Align team and individual goals to company priorities and track\
+    \ progress.  ](/product/okr-software) [ Engagement  Measure employee sentiment\
+    \ and turn insights into meaningful action.  ](/product/employee-survey-tools)\
+    \ [ Feedback  Enable con"
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.betterworks.com/magazine/ai-is-moving-banking-faster-can-performance-management-keep-up
+- content_hash: c80dbd46ee1db3be1c0a25cff6813747ce63389e92ff3b1a79dcb599912138f3
+  evidence_id: ev-c80dbd46ee1db3be
+  excerpt: "Title: Press and Announcements | Human Resources Software | Betterworks\n\
+    Limited time offer \n\n☀️ ☀️ Summer Promotion: It's not too late.  \nMake your\
+    \ end of year reviews a breeze! \n\n[ Learn more ](/pricing)\n\n[ ](/)\n\nSolutions\
+    \  [ Why Betterworks ](/why-betterworks) Resources  Company  [ Pricing ](/plans)\n\
+    \n[ Login ](https://app.betterworks.com)\n\n[ Take a tour  ](/tour)\n\n[ Talk\
+    \ to an expert  ](/contact-us)\n\nProducts \n\nPerformance Management \n\nDrive\
+    \ results through aligned goals, continuous feedback, and meaningful conversations.\
+    \ \n\n[ Find your Solution  ](/product/performance-management-software)\n\nTalent\
+    \ Intelligence \n\nIdentify, develop, and retain the talent your organization\
+    \ needs to grow. \n\n[ Find your Solution  ](/product/talent-intelligence)\n\n\
+    Performance Management \n\nDrive results through aligned goals, continuous feedback,\
+    \ and meaningful conversations. \n\n[ Find your Solution  ](/product/performance-management-software)\n\
+    \nTalent Intelligence \n\nIdentify, develop, and retain the talent your organization\
+    \ needs to grow. \n\n[ Find your Solution  ](/product/talent-intelligence)\n\n\
+    Modules \n\n[ Performance Management  Drive results through aligned goals, continuous\
+    \ feedback, and conversations.  ](/product/performance-management-software) [\
+    \ Goals & OKRs  Align team and individual goals to company priorities and track\
+    \ progress.  ](/product/okr-software) [ Engagement  Measure employee sentiment\
+    \ and turn insights into meaningful action.  ](/product/employee-survey-tools)\
+    \ [ Feedback  Enable co"
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.betterworks.com/press
+- content_hash: a2f97f1db4a593cee7c4e0b11a33013836a7391696fe087d0e8fe85e9dbfa79a
+  evidence_id: ev-a2f97f1db4a593ce
+  excerpt: "Title: Best Performance Management Software (2026 Guide) | Betterworks\n\
+    Limited time offer \n\n☀️ ☀️ Summer Promotion: It's not too late.  \nMake your\
+    \ end of year reviews a breeze! \n\n[ Learn more ](/pricing)\n\n[ ](/)\n\nSolutions\
+    \  [ Why Betterworks ](/why-betterworks) Resources  Company  [ Pricing ](/plans)\n\
+    \n[ Login ](https://app.betterworks.com)\n\n[ Take a tour  ](/tour)\n\n[ Talk\
+    \ to an expert  ](/contact-us)\n\nProducts \n\nPerformance Management \n\nDrive\
+    \ results through aligned goals, continuous feedback, and meaningful conversations.\
+    \ \n\n[ Find your Solution  ](/product/performance-management-software)\n\nTalent\
+    \ Intelligence \n\nIdentify, develop, and retain the talent your organization\
+    \ needs to grow. \n\n[ Find your Solution  ](/product/talent-intelligence)\n\n\
+    Performance Management \n\nDrive results through aligned goals, continuous feedback,\
+    \ and meaningful conversations. \n\n[ Find your Solution  ](/product/performance-management-software)\n\
+    \nTalent Intelligence \n\nIdentify, develop, and retain the talent your organization\
+    \ needs to grow. \n\n[ Find your Solution  ](/product/talent-intelligence)\n\n\
+    Modules \n\n[ Performance Management  Drive results through aligned goals, continuous\
+    \ feedback, and conversations.  ](/product/performance-management-software) [\
+    \ Goals & OKRs  Align team and individual goals to company priorities and track\
+    \ progress.  ](/product/okr-software) [ Engagement  Measure employee sentiment\
+    \ and turn insights into meaningful action.  ](/product/employee-survey-tools)\
+    \ [ Feedback  Enable con"
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.betterworks.com/magazine/best-performance-management-software
+- content_hash: dec26a71a882063013b625d23decd84a24a02deecd2a6b40bef95a7cc3d8a9cb
+  evidence_id: ev-dec26a71a8820630
+  excerpt: "Title: Succession Planning Software for Critical Roles and Bench Strength\
+    \ | Betterworks\nLimited time offer \n\n☀️ ☀️ Summer Promotion: It's not too late.\
+    \  \nMake your end of year reviews a breeze! \n\n[ Learn more ](/pricing)\n\n\
+    [ ](/)\n\nSolutions  [ Why Betterworks ](/why-betterworks) Resources  Company\
+    \  [ Pricing ](/plans)\n\n[ Login ](https://app.betterworks.com)\n\n[ Take a tour\
+    \  ](/tour)\n\n[ Talk to an expert  ](/contact-us)\n\nProducts \n\nPerformance\
+    \ Management \n\nDrive results through aligned goals, continuous feedback, and\
+    \ meaningful conversations. \n\n[ Find your Solution  ](/product/performance-management-software)\n\
+    \nTalent Intelligence \n\nIdentify, develop, and retain the talent your organization\
+    \ needs to grow. \n\n[ Find your Solution  ](/product/talent-intelligence)\n\n\
+    Performance Management \n\nDrive results through aligned goals, continuous feedback,\
+    \ and meaningful conversations. \n\n[ Find your Solution  ](/product/performance-management-software)\n\
+    \nTalent Intelligence \n\nIdentify, develop, and retain the talent your organization\
+    \ needs to grow. \n\n[ Find your Solution  ](/product/talent-intelligence)\n\n\
+    Modules \n\n[ Performance Management  Drive results through aligned goals, continuous\
+    \ feedback, and conversations.  ](/product/performance-management-software) [\
+    \ Goals & OKRs  Align team and individual goals to company priorities and track\
+    \ progress.  ](/product/okr-software) [ Engagement  Measure employee sentiment\
+    \ and turn insights into meaningful action.  ](/product/employee-survey-tools)\
+    \ [ Fee"
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.betterworks.com/magazine/succession-planning-for-a-world-where-key-roles-dont-wait-for-q4
+- content_hash: c5fb17fd43f4fa7bfff1007d4133e662dab7aa8f714a1e15be0044f95b403cf5
+  evidence_id: ev-c5fb17fd43f4fa7b
+  excerpt: "Title: The Loop Magazine | Betterworks\nLimited time offer \n\n☀️ ☀️ Summer\
+    \ Promotion: It's not too late.  \nMake your end of year reviews a breeze! \n\n\
+    [ Learn more ](/pricing)\n\n[ ](/)\n\nSolutions  [ Why Betterworks ](/why-betterworks)\
+    \ Resources  Company  [ Pricing ](/plans)\n\n[ Login ](https://app.betterworks.com)\n\
+    \n[ Take a tour  ](/tour)\n\n[ Talk to an expert  ](/contact-us)\n\nProducts \n\
+    \nPerformance Management \n\nDrive results through aligned goals, continuous feedback,\
+    \ and meaningful conversations. \n\n[ Find your Solution  ](/product/performance-management-software)\n\
+    \nTalent Intelligence \n\nIdentify, develop, and retain the talent your organization\
+    \ needs to grow. \n\n[ Find your Solution  ](/product/talent-intelligence)\n\n\
+    Performance Management \n\nDrive results through aligned goals, continuous feedback,\
+    \ and meaningful conversations. \n\n[ Find your Solution  ](/product/performance-management-software)\n\
+    \nTalent Intelligence \n\nIdentify, develop, and retain the talent your organization\
+    \ needs to grow. \n\n[ Find your Solution  ](/product/talent-intelligence)\n\n\
+    Modules \n\n[ Performance Management  Drive results through aligned goals, continuous\
+    \ feedback, and conversations.  ](/product/performance-management-software) [\
+    \ Goals & OKRs  Align team and individual goals to company priorities and track\
+    \ progress.  ](/product/okr-software) [ Engagement  Measure employee sentiment\
+    \ and turn insights into meaningful action.  ](/product/employee-survey-tools)\
+    \ [ Feedback  Enable continuous feedback that helps empl"
+  retrieved_at: '2026-08-19T12:25:39.155185-04:00'
+  url: https://www.betterworks.com/magazine
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

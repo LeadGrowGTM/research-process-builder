@@ -1,0 +1,126 @@
+# DRAFT ground truth - TODO_HUMAN: review every entry, then move this file to
+# ../ground-truth/ only after a human seals it. Generated from the signal dossier;
+# nothing here is validated. Delete candidates that are not real, fix dates and
+# kinds, keep evidence_ids pointing at the Evidence that proves the entry.
+# subject: aPriori Technologies (apriori.com)
+as_of: '2026-08-18'
+company_id: saas-04
+events:
+- date: '2026-07-13'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-2500bdeb1a3ce677
+  headline_aliases:
+  - 'Apriori Bio: Funding, Team & Investors'
+  kind: TODO_HUMAN
+  source_domain: startupintros.com
+- date: '2026-07-13'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-c8c312cfd34800ec
+  headline_aliases:
+  - 'Apriori Bio: Funding, Team &amp; Investors | Startup Intros'
+  kind: TODO_HUMAN
+  source_domain: startupintros.com
+- date: '2026-07-04'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-cd5a6de821200110
+  headline_aliases:
+  - APRIORI TECHNOLOGIES INDIA PRIVATE LIMITED
+  kind: TODO_HUMAN
+  source_domain: tracxn.com
+- date: '2026-05-28'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-c97481af4a0871fd
+  headline_aliases:
+  - 'New AI Sourcing Solution: Supplier Cost Data=Better ...'
+  kind: TODO_HUMAN
+  source_domain: apriori.com
+- date: '2026-05-26'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-9e17863554e3babe
+  headline_aliases:
+  - aPriori Launches aiSource, an AI Sourcing Solution Giving Procurement Teams the
+    Manufacturing and Cost Intelligence to Win More Supplier Negotiations
+  kind: TODO_HUMAN
+  source_domain: businesswire.com
+- date: '2026-05-26'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-54935c90ae8f2f89
+  headline_aliases:
+  - aPriori Launches aiSource, an AI Sourcing Solution Giving ...
+  kind: TODO_HUMAN
+  source_domain: businesswire.com
+- date: '2025-12-22'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-2b36bad3e295677e
+  headline_aliases:
+  - News and Press Releases
+  kind: TODO_HUMAN
+  source_domain: vistaequitypartners.com
+- date: '2025-11-18'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-d2b83714b0f103b0
+  headline_aliases:
+  - Apriori Bio and A*STAR Infectious Diseases Labs Announce Strategic Partnership
+    to Advance Next Generation Influenza Vaccines
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2025-11-18'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-cdec7a0961ff4e0d
+  headline_aliases:
+  - Apriori Bio and A*STAR Infectious Diseases Labs ...
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2025-08-20'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-84e3c8a16c510921
+  headline_aliases:
+  - A Priori Specialty Foods Co.
+  kind: TODO_HUMAN
+  source_domain: acumatica.com
+- date: 2024-12
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-8edcc9a9b43e1998
+  headline_aliases:
+  - What’s New in aP Design - December 2024
+  kind: TODO_HUMAN
+  source_domain: apriori.com
+- date: '2024-11-13'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-cb84a5e5f720dfb6
+  headline_aliases:
+  - Flagship Pioneering Appoints Craig Williams as CEO-Partner and Chief Executive
+    Officer of Apriori Bio
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2022-07-11'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-cd5cf4531574aefa
+  headline_aliases:
+  - Flagship Pioneering Launches Apriori Bio to Provide Variant-Proof Protection from
+    the Greatest Viral Threats
+  kind: TODO_HUMAN
+  source_domain: prnewswire.com
+- date: '2021-07-20'
+  event_type: TODO_HUMAN
+  evidence_ids:
+  - ev-046e723024f97022
+  headline_aliases:
+  - Stephanie Feraday, President & CEO of aPriori, Accepted into Forbes Technology
+    Council
+  kind: TODO_HUMAN
+  source_domain: businesswire.com
+recent_window_days: 180

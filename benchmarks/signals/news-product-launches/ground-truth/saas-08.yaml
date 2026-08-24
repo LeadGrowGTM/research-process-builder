@@ -1,0 +1,145 @@
+# Sealed ground truth - BigPanda (bigpanda.io), authored 2026-08-18.
+# Excluded on purpose: docs release-notes pages (page dates do not attribute to a
+# specific entry), YouTube/LinkedIn posts with only relative dates, solutions/blog
+# content pages (tool rationalization framework, incident management explainer),
+# newsroom index pages, the 2015 Wix customer-win release (weakest, trimmed for size).
+company_id: saas-08
+as_of: '2026-08-18'
+recent_window_days: 180
+events:
+- date: '2026-08-03'
+  headline_aliases:
+  - Mozaic partnership to bring AI-powered operational intelligence to enterprise service management
+  - Mozaic announces partnership with BigPanda
+  source_domain: mozaic.net
+  kind: news
+  event_type: partnership
+  evidence_ids:
+  - ev-7bcfedacaf007ad4
+  - ev-7d0b1c6be1cfb392
+  - ev-240577970e6f04a4
+  - ev-0089dfe6b9871390
+- date: '2026-04-13'
+  headline_aliases:
+  - Introduced the BigPanda L1 Agent, an autonomous AI IT operator
+  - BigPanda L1 Agent launch
+  source_domain: bigpanda.io
+  kind: launch
+  event_type: product
+  evidence_ids:
+  - ev-59fde914e9c5545c
+  - ev-ac575220ddec0853
+  - ev-b7ee1f340e9c8d07
+- date: '2026-04-08'
+  headline_aliases:
+  - Introduced the BigPanda for ServiceNow application, now available in the ServiceNow Store
+  - BigPanda for ServiceNow app
+  source_domain: bigpanda.io
+  kind: launch
+  event_type: integration
+  evidence_ids:
+  - ev-8de1fcf5ac6abe52
+  - ev-ac575220ddec0853
+  - ev-8cebe51941112d5e
+- date: '2026-04-01'
+  headline_aliases:
+  - Partnered with ServiceNow to extend ServiceNow with event intelligence and incident automation
+  - BigPanda partners with ServiceNow
+  source_domain: bigpanda.io
+  kind: news
+  event_type: partnership
+  evidence_ids:
+  - ev-576d6bbe725649f1
+  - ev-29ce3aa5dc93077e
+  - ev-4a93687a7a12375b
+  - ev-7249918756ec7c48
+  - ev-bbd5f61bfbca84fb
+- date: '2025-12-16'
+  headline_aliases:
+  - Introduced AI-powered external observability and a partnership with Downdetector by Ookla
+  - Downdetector partnership
+  source_domain: bigpanda.io
+  kind: launch
+  event_type: feature
+  evidence_ids:
+  - ev-d53e9f00edd5aba4
+  - ev-6513550a0bbd4a76
+  - ev-bbd5f61bfbca84fb
+- date: '2025-12-05'
+  headline_aliases:
+  - Introduced the Triage Agent for agentic L1 operations
+  - BigPanda Triage Agent launch
+  source_domain: bigpanda.io
+  kind: launch
+  event_type: product
+  evidence_ids:
+  - ev-346b6f3108037ea3
+  - ev-ac575220ddec0853
+- date: '2025-11-10'
+  headline_aliases:
+  - Acquired Velocity to advance agentic IT operations
+  - BigPanda acquires Velocity
+  source_domain: bigpanda.io
+  kind: news
+  event_type: acquisition
+  evidence_ids:
+  - ev-b09f6fe475b99231
+  - ev-5cc7d574b444e987
+- date: '2025-05-28'
+  headline_aliases:
+  - Launched Agentic IT Operations offerings for the ITOps market
+  - BigPanda launches agentic IT operations
+  source_domain: businesswire.com
+  kind: launch
+  event_type: product
+  evidence_ids:
+  - ev-608c36c099c99174
+  - ev-0089dfe6b9871390
+- date: '2024-03-18'
+  headline_aliases:
+  - Appointed Tom Melzl as chief revenue officer
+  source_domain: businesswire.com
+  kind: news
+  event_type: leadership
+  evidence_ids:
+  - ev-54dfb82b5799e37e
+- date: '2022-08-17'
+  headline_aliases:
+  - Raised a $20 million Series E extension, bringing total capital to $340 million
+  - Series E extension
+  source_domain: techcrunch.com
+  kind: news
+  event_type: funding
+  evidence_ids:
+  - ev-73b6e24a7ac9c3a5
+- date: '2022-04-07'
+  headline_aliases:
+  - Named Rick Underwood chief revenue officer
+  source_domain: globenewswire.com
+  kind: news
+  event_type: leadership
+  evidence_ids:
+  - ev-d597bd66956502bf
+  - ev-0089dfe6b9871390
+- date: '2022-01-12'
+  headline_aliases:
+  - Raised $190 million Series D at a $1.2 billion valuation
+  - BigPanda becomes a unicorn after $190M raise
+  source_domain: globenewswire.com
+  kind: news
+  event_type: funding
+  evidence_ids:
+  - ev-10a7d91e979af116
+  - ev-a57d089db58e42a3
+  - ev-6e730a5594f7ad61
+  - ev-c5181fa06b29b44e
+  - ev-0089dfe6b9871390
+- date: '2015-06-25'
+  headline_aliases:
+  - Integrated with the Librato platform
+  - BigPanda now integrated with Librato
+  source_domain: prnewswire.com
+  kind: launch
+  event_type: integration
+  evidence_ids:
+  - ev-3543ca5fa9b968cc

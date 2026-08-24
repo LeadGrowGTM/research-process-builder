@@ -1,0 +1,858 @@
+assertions:
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: identity
+  value: aPriori Technologies
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: description
+  value: 'About aPriori | Digital Transformation Manufacturing Partner Upcoming Webinar
+    Beyond a Tool: From Design for X to a New Engineering Mindset Register Now › MIC
+    Chicago From Design to Source — Measurable Impact at the Speed of AI Learn More
+    › US EN Login Why aPriori? Solutions Products Pricing About Resources Resources
+    Hub Blog Case Studies Cloud Security Documentation FAQs Glossary Guides Podcast
+    Webinars Videos Blog Articles Hot Trending Topics Artificial Intelligence Digital
+    Transformation Prod'
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: offers
+  value: product cost software
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: icp
+  value: manufacturers
+  visibility: message_safe
+- confidence: 0.8
+  evidence_ids:
+  - ev-fe752f58cb8e0b98
+  - ev-3d93e43e256e02c1
+  - ev-1494a4907e1a3dc9
+  field: personas
+  value: manufacturers
+  visibility: message_safe
+company_id: saas-04
+corrections: []
+evidence:
+- content_hash: fe752f58cb8e0b98a01f0881279fa708d0e108813c408746804531793d415e69
+  evidence_id: ev-fe752f58cb8e0b98
+  excerpt: 'About aPriori | Digital Transformation Manufacturing Partner Upcoming
+    Webinar Beyond a Tool: From Design for X to a New Engineering Mindset Register
+    Now › MIC Chicago From Design to Source — Measurable Impact at the Speed of AI
+    Learn More › US EN Login Why aPriori? Solutions Products Pricing About Resources
+    Resources Hub Blog Case Studies Cloud Security Documentation FAQs Glossary Guides
+    Podcast Webinars Videos Blog Articles Hot Trending Topics Artificial Intelligence
+    Digital Transformation Product Lifecycle Intelligence Supply Chain Disruption
+    Business Goals Accelerate Product Development Reduce Costs & Increase Profit Win
+    More Profitable Business Product & Technology Design for Manufacturability Project
+    & Task Management Should Cost Sustainability Workflow Automation Department Cost
+    & Value Engineering Design Engineering Divisional GM & C-Suite IT Manufacturing
+    Engineering Quoting & Estimating Sourcing & Procurement Featured Resources Video:
+    aPriori & CNH Success Stories Profitability through DTC at Scale Webinar Replay: 
+    Quantified Design for Manufacture (DFM) with aPriori Request Demo aPriori Technologies
+    Transforming the Manufacturing Industry Since 2003 “aPriori is disrupting the
+    industry’s status quo” Founded in 2003, aPriori is disrupting the industry’s status
+    quo with groundbreaking work helping manufacturers digitally transform their businesses.
+    Through our unique, patented, intellectual property, we enable manufacturers to
+    accelerate product design, and bring products to markets faster while providing
+    visibility to the sustainability of their design and manufacturing choices. Our
+    impact is profound - our customers save millions of dollars each year, accelerate
+    time to market, all while creating a better world for future generations. Though
+    we are an established software firm, through our continued growth, we have maintained
+    the dynamic, collaborative nature of a start-up. With a global presence, including
+    North America, Europe, Asia, and India, we encoura'
+  retrieved_at: '2026-08-12T21:00:21.263165+00:00'
+  url: https://www.apriori.com/about/
+- content_hash: 3d93e43e256e02c1fd8b6c87897bbd2c234ef2bfc4d659b03cdbac08cfbf3203
+  evidence_id: ev-3d93e43e256e02c1
+  excerpt: aPriori Technologies | LinkedIn Skip to main content LinkedIn Top Content
+    People Learning Jobs Games Sign in Join now aPriori Technologies Software Development
+    Concord, MA 12,815 followers AI from Design to Source to Make See jobs Follow
+    View all 275 employees Report this company About us aPriori provides AI-powered
+    product intelligence that helps manufacturers make faster, more profitable decisions
+    from design through sourcing to production. Built on proprietary simulation engines
+    and deep manufacturing data, aPriori Intelligence delivers real-time insight into
+    product cost, manufacturability, and carbon footprint — enabling teams to reduce
+    time-to-market, improve margins, and meet environmental targets. According to
+    a Forrester Total Economic Impact™ study, aPriori customers achieve approximately
+    600% ROI within three years and payback in under six months. To learn more, visit
+    www.apriori.com. Website https://www.apriori.com External link for aPriori Technologies
+    Industry Software Development Company size 201-500 employees Headquarters Concord,
+    MA Type Privately Held Founded 2003 Specialties Digital Manufacturing Simulation,
+    Manufacturing Cost Models, Digital Factories, Design for Manufacturability, Design
+    to Margin, Source to Margin, Supply Chain Management, Manufacturing Automation,
+    Design to Cost, Make vs. Buy Analysis, Capital Asset Justification, Post-Launch
+    Product Costs Reduction (VA/VE), NPI Lifecycle Reduction, Cost Estimation , Spend
+    Analytics, Concept Costing, Digital Manufacturing, Manufacturing Intelligence,
+    Discrete Manufacturing, Digital Transformation, and Sustainability Products No
+    more previous content aP Analytics, Business Intelligence (BI) Software aP Analytics
+    Business Intelligence (BI) Software aP Design, Simulation Software aP Design Simulation
+    Software aP Generate, Simulation Software aP Generate Simulation Software aP Pro,
+    Computer-Aided Engineering (CAE) Software aP Pro Computer-Aided Engineering (CAE)
+    Software aP Workspace, Simulation S
+  retrieved_at: '2026-08-12T21:00:22.027996+00:00'
+  url: https://www.linkedin.com/company/apriori
+- content_hash: 1494a4907e1a3dc96e2a4a16584239cd25e34455ccfabdebd219ea1696104adb
+  evidence_id: ev-1494a4907e1a3dc9
+  excerpt: 'aPriori Receives Growth Investment From Vista Credit Partners for Its
+    Manufacturing Insights Platform - Vista Equity Partners Search Site… ✕ About About
+    25 years at the forefront of enterprise software investing. Firm About Vista Team
+    Sustainability Portfolio Value Creation Companies Opportunities Careers Strategies
+    Strategies Investing across the software lifecycle with tailored equity and credit
+    solutions. Private Equity Credit White Paper Investing in Enterprise Software
+    Learn from Robert F. Smith why enterprise software remains a compelling opportunity
+    for value creation White Paper Demystifying Generative AI Explore how Gen AI is
+    redefining industries News + Insights News + Insights Vista’s latest news and
+    insights from the forefront of enterprise software and AI investing. News Insights
+    by Vista Forefront Investing in AI Outlook Software’s Transition to Agentic Enterprise
+    AI Video Software’s Next Chapter: Robert F. Smith on The Next Era of Enterprise
+    Platforms Wealth Professionals Wealth Professionals A differentiated investment
+    partner for advisors and their clients. Overview Insights by Vista Forefront Strategies
+    Evergreen Private Equity Evergreen Credit White Paper Understanding Inference
+    and the Economics of Enterprise AI Chartbook Agentic AI Is Here - What Investors
+    Need to Know Unpacking the investor opportunity in Agentic AI Investor Login Back
+    All News and Press Releases Press Release October 19, 2023 aPriori Receives Growth
+    Investment From Vista Credit Partners for Its Manufacturing Insights Platform
+    CONCORD, Mass. — ( BUSINESS WIRE ) — aPriori today announced a growth investment
+    from Vista Credit Partners , a subsidiary of Vista Equity Partners and strategic
+    financing partner focused on the enterprise software, data, and technology markets.
+    The funding will be used to support continued innovation and meet growing demand
+    for aPriori’s cloud-based solution, which empowers manufacturers and product designers
+    to accurately estimate, manage, and optimize '
+  retrieved_at: '2026-08-12T21:00:22.524197+00:00'
+  url: https://www.vistaequitypartners.com/news/apriori-receives-growth-investment-from-vista-credit-partners-for-its-manufacturing-insights-platform/
+- content_hash: 40e55ca5983887bd15024f8ed12b3e22760dfc1645c436c79f9e313903727fa3
+  evidence_id: ev-40e55ca5983887bd
+  excerpt: 'Title: aPriori Technologies Launches aiSource, Giving Procurement Teams
+    the Manufacturing Product Intelligence to Negotiate on Equal Terms with Suppliers
+
+    Source: morningstar.com
+
+    Snippet: aPriori Technologies Launches aiSource, Giving Procurement Teams the
+    Manufacturing Product Intelligence to Negotiate on Equal Terms with'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.morningstar.com/news/business-wire/20260812970314/apriori-technologies-launches-aisource-giving-procurement-teams-the-manufacturing-product-intelligence-to-negotiate-on-equal-terms-with-suppliers
+- content_hash: 8e031f9f00c9d6830c94f9664af4a479d9048af45e67969b3404fb8714906b4f
+  evidence_id: ev-8e031f9f00c9d683
+  excerpt: 'Title: aPriori Release 2020 Now Available
+
+    Source: apriori.com
+
+    Snippet: aPriori, the leading provider of digital manufacturing simulation software,
+    today announces that aPriori 2020 Release 1 is now generally'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.apriori.com/press-release/apriori-release-2020-now-available/
+- content_hash: 248e7f37e0957202c12ec23e2c9374e44b502dea42fb5cfcfa239f3c6e143c69
+  evidence_id: ev-248e7f37e0957202
+  excerpt: 'Title: aPriori Appoints Three Executives to Support Global Growth for
+    its Digital Manufacturing Intelligence Solutions
+
+    Source: apriori.com
+
+    Snippet: aPriori is supporting global growth by appointing a Chief Customer Officer,
+    a Chief Information Officer, and a Chief Marketing Officer.'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.apriori.com/press-release/apriori-appoints-three-executives-supports-global-manufacturing-intelligence-growth/
+- content_hash: 574e6db06a8b96d533c0b46b25f4b8ce1b07bccacc40a5816550a3d2b69421d0
+  evidence_id: ev-574e6db06a8b96d5
+  excerpt: 'Title: aPriori Launches aiSource, an AI Sourcing Solution Giving Procurement
+    Teams the Manufacturing and Cost Intelligence to Win More Supplier Negotiations
+
+    Source: businesswire.com
+
+    Snippet: # **aPriori Launches aiSource, an AI Sourcing Solution Giving Procurement
+    Teams the Manufacturing and Cost Intelligence to Win More Supplier Negotiations**
+    ## Contacts ### aPriori Technologies Release Summary aPriori launches aiSource,
+    an AI-powered sourcing solution that gives procurement teams manufacturing cost
+    intelligence to win supplier negotiations. Release Versions ... ## Frost & Sullivan
+    Names aPriori the Leading Digital Manufacturing Solution for the Second Consecutive
+    Year ORLANDO, Fla.--( [BUSINESS WIRE](https://www.businesswire.com) )--aPriori
+    Manufacturing Insights Conference--aPriori today announced that it has received
+    Frost & Sullivan’s Global Digital Manufacturing Solutions Product Leadership'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: http://businesswire.com/news/home/20260526130779/en/aPriori-Launches-aiSource-an-AI-Sourcing-Solution-Giving-Procurement-Teams-the-Manufacturing-and-Cost-Intelligence-to-Win-More-Supplier-Negotiations
+- content_hash: d887b659a6ee870f4a7995a383ed5df4027e49bee00a4c0cf13dffa65dedfb42
+  evidence_id: ev-d887b659a6ee870f
+  excerpt: 'Title: aPriori (@aPriori_Inc) / Posts / X
+
+    Source: x.com
+
+    Snippet: aPriori is changing that with aiSourceTM . It puts product manufacturing
+    intelligence, such as product cost, cycle time, and more,'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://x.com/aPriori_Inc
+- content_hash: 1b84b2f2d17d8d92d5c7ad402c30d17dff328a8e02bb315a38c38b890b5b1bac
+  evidence_id: ev-1b84b2f2d17d8d92
+  excerpt: 'Title: aPriori - Overview, News & Similar companies
+
+    Source: zoominfo.com
+
+    Snippet: 2 ngày trước — Apriori Bio, a Boston, MA-based biotechnology company
+    providing innovations against viral threats, raised US $1.1M in funding . CEPI
+    made the investment. The'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.zoominfo.com/c/apriori-inc/7230360
+- content_hash: 791e7c3519c1c79e115f0cb4f399179f4520c372442237872590d6f2eadd108c
+  evidence_id: ev-791e7c3519c1c79e
+  excerpt: 'Title: aPriori Technologies - Crunchbase Company Profile & ...
+
+    Source: crunchbase.com
+
+    Snippet: 4 thg 11, 2025 — ... news and press, from product launches to leadership
+    changes. obfuscated ... aPriori Technologies has 9 investors including PBJ Capital
+    and Omega Venture Partners'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.crunchbase.com/organization/apriori-technologies
+- content_hash: a3e312e5dd3ed6c313081b266f9da674cb4a95e9c6f3fd6b4d4ef409b1149f62
+  evidence_id: ev-a3e312e5dd3ed6c3
+  excerpt: 'Detected date: 2025-12-22
+
+    Title: News and Press Releases
+
+    Date: 2025-12-22
+
+    Source: vistaequitypartners.com
+
+    Snippet: 22 dec. 2025 — aPriori Receives Growth Investment From Vista Credit Partners
+    for Its Manufacturing Insights Platform. PRESS RELEASE. Oct 19, 2023 4 MIN. aPriori
+    Receives'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.vistaequitypartners.com/news/
+- content_hash: 5547346e33818868e724210b9ab10e325c4296764b6b20873406aa3e67ef5890
+  evidence_id: ev-5547346e33818868
+  excerpt: 'Query: apriori.com news
+
+    1. https://www.morningstar.com/news/business-wire/20260812970314/apriori-technologies-launches-aisource-giving-procurement-teams-the-manufacturing-product-intelligence-to-negotiate-on-equal-terms-with-suppliers
+
+    Title: aPriori Technologies Launches aiSource, Giving Procurement Teams the Manufacturing
+    Product Intelligence to Negotiate on Equal Terms with Suppliers
+
+    Source: morningstar.com
+
+    Snippet: aPriori Technologies Launches aiSource, Giving Procurement Teams the
+    Manufacturing Product Intelligence to Negotiate on Equal Terms with
+
+    2. https://www.apriori.com/press-release/apriori-release-2020-now-available/
+
+    Title: aPriori Release 2020 Now Available
+
+    Source: apriori.com
+
+    Snippet: aPriori, the leading provider of digital manufacturing simulation software,
+    today announces that aPriori 2020 Release 1 is now generally
+
+    3. https://www.apriori.com/press-release/apriori-appoints-three-executives-supports-global-manufacturing-intelligence-growth/
+
+    Title: aPriori Appoints Three Executives to Support Global Growth for its Digital
+    Manufacturing Intelligence Solutions
+
+    Source: apriori.com
+
+    Snippet: aPriori is supporting global growth by appointing a Chief Customer Officer,
+    a Chief Information Officer, and a Chief Marketing Officer.
+
+    4. http://businesswire.com/news/home/20260526130779/en/aPriori-Launches-aiSource-an-AI-Sourcing-Solution-Giving-Procurement-Teams-the-Manufacturing-and-Cost-Intelligence-to-Win-More-Supplier-Negotiations
+
+    Title: aPriori Launches aiSource, an AI So'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.google.com/search?q=apriori.com+news&tbm=nws
+- content_hash: b579796a3f08d2a4f3de3a89d20c9a82eae804d4bfddad6229922d5bb86bf156
+  evidence_id: ev-b579796a3f08d2a4
+  excerpt: 'Detected date: 2026-08-19
+
+    Title: aPriori Technologies Launches aiSource, Giving Procurement Teams the Manufacturing
+    Product Intelligence to Negotiate on Equal Terms with Suppliers
+
+    Date: 2026-08-19
+
+    Source: streetinsider.com
+
+    Snippet: Early adopters demonstrate faster negotiation preparation, accelerated
+    negotiation cycles, and a fundamental shift in how procurement teams'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.streetinsider.com/Business+Wire/aPriori+Technologies+Launches+aiSource%2C+Giving+Procurement+Teams+the+Manufacturing+Product+Intelligence+to+Negotiate+on+Equal+Terms+with+Suppliers/26948410.html
+- content_hash: 045da76161b810841dc198b7e16b7d9245cc03b4022e9f8c59aad0797f88528a
+  evidence_id: ev-045da76161b81084
+  excerpt: 'Detected date: 2026-06-20
+
+    Title: aPriori Launches aiSource, an AI Sourcing Solution Giving Procurement Teams
+    the Manufacturing and Cost Intelligence to Win More Supplier Negotiations
+
+    Date: 2026-06-20
+
+    Source: businesswire.com
+
+    Snippet: CONCORD, Mass.--(BUSINESS WIRE)--aPriori Technologies today announced
+    the launch of aiSource™, an AI-powered sourcing and negotiation'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.businesswire.com/news/home/20260526130779/en/aPriori-Launches-aiSource-an-AI-Sourcing-Solution-Giving-Procurement-Teams-the-Manufacturing-and-Cost-Intelligence-to-Win-More-Supplier-Negotiations
+- content_hash: cc13087d3c76a16a68365e861fef9fb3f0614f45784b7dd0d492db61abdbbe83
+  evidence_id: ev-cc13087d3c76a16a
+  excerpt: 'Detected date: 2025-09-15
+
+    Title: aPriori Raises $20M to Bring High-Frequency Trading to DeFi
+
+    Date: 2025-09-15
+
+    Source: ventureburn.com
+
+    Snippet: # Jump Trading Alums Raise $20M for aPriori to Bring High-Frequency Trading
+    Tools On-Chain Staff Reporter By [Staff Reporter](https://ventureburn.com/author/staff-reporter/)
+    15 September 2025 [google-news](https://news.google.com/publications/CAAqKggKIiRDQklTRlFnTWFoRUtEM1psYm5SMWNtVmlkWEp1TG1OdmJTZ0FQAQ?ceid=US:en&oc=3)
+    apriori ## **Key Takeaways** * aPriori raised $20M, bringing total funding to
+    $30M. * The startup applies high-frequency trading methods to decentralized finance
+    (DeFi). * Funding will scale hiring, product rollouts, and ecosystem partnerships.
+    ... ## **Next Steps for aPriori After $20M Raise** With new capital, aPriori plans
+    to: * Expand hiring across engineering, product, and operations teams. * Accelerate
+    the launch of its execution layer and trading tools. * Strengthen partnerships
+    with liquidity providers, stakers, and DeFi protocols.'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://ventureburn.com/jump-trading-alums-raise-20m-for-apriori
+- content_hash: 16696fc3ea783e81210ee2c00d9ad107523d86086cc45c7229261ce626848df7
+  evidence_id: ev-16696fc3ea783e81
+  excerpt: 'Detected date: 2025-11-18
+
+    Title: Apriori Bio and A*STAR Infectious Diseases Labs Announce Strategic Partnership
+    to Advance Next Generation Influenza Vaccines
+
+    Date: 2025-11-18
+
+    Source: prnewswire.com
+
+    Snippet: # Apriori Bio and A*STAR Infectious Diseases Labs Announce Strategic
+    Partnership to Advance Next Generation Influenza Vaccines ## News provided by
+    **Apriori Bio** Nov 18, 2025, 03:00 ET ... ## Share this article 18, 2025 /PRNewswire/
+    -- Apriori Bio, a Flagship Pioneering company focused on developing prospective,
+    variant-resilient vaccines, and the Agency for Science, Technology and Research
+    Infectious Diseases Labs (A*STAR IDL) announced a strategic research partnership
+    to co-develop and evaluate next generation ... A*STAR is excited to partner with
+    another Flagship portfolio company with cutting-edge technologies to advance novel
+    solutions for human health."'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.prnewswire.com/news-releases/apriori-bio-and-astar-infectious-diseases-labs-announce-strategic-partnership-to-advance-next-generation-influenza-vaccines-302617550.html
+- content_hash: 8f624cbe54702f8a6f7d236ded222647fe6a36f5455bc07b6bbc30cc1b3d9f83
+  evidence_id: ev-8f624cbe54702f8a
+  excerpt: 'Detected date: Dec 22, 2025
+
+    Title: aPriori Technologies Revenue 2025: $30.3M Est. ARR
+
+    Source: getlatka.com
+
+    Snippet: Dec 22, 2025 — aPriori Technologies Employees & Team Size. aPriori Technologies
+    employs approximately 275 people as of 2026. aPriori Technologies Team Growth
+    Reported $30.3M(Est.) Funding $0 Team 275 Founded 2003 aPriori Technologies Revenue
+    & Valuation (2025) Why aPriori? aPriori provides unique AI-Powered Design & Sourcing
+    Insights that unlock and identify new opportunities rapidly for reducing product
+    cost & carbon footprint, optimizing manufacturing & supply chain risk, and improving
+    design engineering & sourcing teams'' productivity. According to Forrester, aPriori
+    customers achieve a \~600% ROI within three years and payback within six months
+    of adopting our Enterprise AI software. Leading manufacturers use our automated
+    Insights Platform to reduce time to market, meet sustainability targets, accelerate
+    revenue growth, and increase profitability, all contributing to creating cash
+    faster. To learn more about aPriori''s cloud and on-premise solutions, visit www.apriori.com.
+    Read moreShow less Last updated Dec 22, 2025 aPriori Technologies Revenue In 2025,
+    275'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: http://getlatka.com/companies/apriori.com
+- content_hash: 62c14d3cc74a664c16303e3d37b94d157898c94ae61fe9db85208f8255c3eac2
+  evidence_id: ev-62c14d3cc74a664c
+  excerpt: 'Detected date: 2026-08-13
+
+    Title: APR Price Jumps as aPriori Rebrands to Capricorn Token
+
+    Date: 2026-08-13
+
+    Source: coindcx.com
+
+    Snippet: 6 days ago — APR price is up over 96% to $0.4844 after aPriori rebranded
+    to Capricorn and repurchased 5.3% of token supply from early investors.'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://coindcx.com/blog/crypto-news-global/apr-price-jumps-over-100-as-apriori-rebrands-to-capricorn/
+- content_hash: 57fe880c154ac4602601d5ead84b845932148d9ad6380fe08f2ae15ad0ed4ba6
+  evidence_id: ev-57fe880c154ac460
+  excerpt: 'Detected date: May 26, 2026
+
+    Title: aPriori Technologies - Crunchbase Company Profile & Funding
+
+    Source: crunchbase.com
+
+    Snippet: # Company Performance Metrics ## News and Press News • May 26, 2026 obfuscated
+    obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated
+    obfuscated News • May 26, 2026 obfuscated obfuscated obfuscated obfuscated obfuscated
+    obfuscated obfuscated obfuscated obfuscated obfuscated News • Jul 11, 2024 obfuscated
+    obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated obfuscated
+    obfuscated News • Jul 1, 2024 obfuscated obfuscated obfuscated obfuscated obfuscated
+    obfuscated obfuscated obfuscated obfuscated obfuscated Access a complete feed
+    of recent news and press, from product launches to leadership changes. ... ##
+    Lists Featuring This Company obfuscation from a Series E round. Who are aPriori
+    Technologies ''s competitors? Alternatives and possible competitors to aPriori
+    Technologies may include Siemens , Dassault Systemes , and Autodesk . How much
+    funding has aPriori Technologies raised to date? aPriori Technologies has raised
+    obfuscated'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.crunchbase.com/organization/apriori-technologies
+- content_hash: cd8897ea99a81f39dc7adefdea49b52ff22b7fb31107397d9b73118ffa4a9f48
+  evidence_id: ev-cd8897ea99a81f39
+  excerpt: 'Detected date: 2025-10-09
+
+    Title: Accelerating Profitable Product Development with PTC & ...
+
+    Date: 2025-10-09
+
+    Source: ptc.com
+
+    Snippet: 9 Oct 2025 — The PTC- aPriori partnership provides manufacturers with
+    real-time data on cost, manufacturability, and sustainability to speed up product
+    development.'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.ptc.com/en/blogs/industrials/accelerating-profitable-product-development-with-ptc-apriori?srsltid=AfmBOoopWeDcLDCzt8-Avi9aSiSGrAD7m7RtS2HgOmAsqtNwDiIrOCAk
+- content_hash: 350b659a6b8b569f02621b67904f713b003e859b48e5925e40b7256ff93429bf
+  evidence_id: ev-350b659a6b8b569f
+  excerpt: 'Detected date: November 25, 2025
+
+    Title: News & Events - aPriori
+
+    Source: apriori.com
+
+    Snippet: # News & Events ## [Event] Manufacturing Insights Cologne 2026 aPriori](https://www.apriori.com/announcement/e8-billion-tier-one-supplier-in-europe-engages-apriori/)
+    [Announcement November 25, 2025 Global Leader in Drivetrain Motion and Propulsion
+    Technologies Engages aPriori](https://www.apriori.com/announcement/global-leader-in-drivetrain-motion-and-propulsion-technologies-engages-apriori/)
+    [Announcement November 18, 2025 Japanese Office Automation Equipment Solutions
+    Company Engages aPriori](https://www.apriori.com/announcement/japanese-office-automation-equipment-solutions-company-engages-apriori/)
+    [Announcement August 27, 2025 US-Based Space Technology Company Expands Engagement
+    with aPriori, Extending It To A Multi-Million Dollar Three-Year'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.apriori.com/news-events
+- content_hash: a5d4cd86e35711cda755c8403763b4e28ebba487fb0214b0a0bdfed6dd7d9fb6
+  evidence_id: ev-a5d4cd86e35711cd
+  excerpt: 'Detected date: 2025-08-28
+
+    Title: Jump Trading Alums Raise $20M for aPriori to Bring High- ...
+
+    Date: 2025-08-28
+
+    Source: coindesk.com
+
+    Snippet: Aug 28, 2025 — The $20 million round brings aPriori''s total funding
+    to $30 million, with investors including Pantera Capital, HashKey Capital and
+    IMC Trading.'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.coindesk.com/business/2025/08/28/jump-trading-alums-raise-usd20m-for-apriori-to-bring-high-frequency-trading-tools-on-chain
+- content_hash: ec7a3ea0336e7f69dc96f9e984b702772b65b44fed28bb65ab59d1dc1b8cf44d
+  evidence_id: ev-ec7a3ea0336e7f69
+  excerpt: 'Query: aPriori Technologies "press release" OR "announces" OR "newsroom"
+
+    1. https://www.streetinsider.com/Business+Wire/aPriori+Technologies+Launches+aiSource%2C+Giving+Procurement+Teams+the+Manufacturing+Product+Intelligence+to+Negotiate+on+Equal+Terms+with+Suppliers/26948410.html
+
+    Title: aPriori Technologies Launches aiSource, Giving Procurement Teams the Manufacturing
+    Product Intelligence to Negotiate on Equal Terms with Suppliers
+
+    Date: 2026-08-19
+
+    Source: streetinsider.com
+
+    Snippet: Early adopters demonstrate faster negotiation preparation, accelerated
+    negotiation cycles, and a fundamental shift in how procurement teams
+
+    2. https://www.businesswire.com/news/home/20260526130779/en/aPriori-Launches-aiSource-an-AI-Sourcing-Solution-Giving-Procurement-Teams-the-Manufacturing-and-Cost-Intelligence-to-Win-More-Supplier-Negotiations
+
+    Title: aPriori Launches aiSource, an AI Sourcing Solution Giving Procurement Teams
+    the Manufacturing and Cost Intelligence to Win More Supplier Negotiations
+
+    Date: 2026-06-20
+
+    Source: businesswire.com
+
+    Snippet: CONCORD, Mass.--(BUSINESS WIRE)--aPriori Technologies today announced
+    the launch of aiSource™, an AI-powered sourcing and negotiation
+
+    3. https://ventureburn.com/jump-trading-alums-raise-20m-for-apriori
+
+    Title: aPriori Raises $20M to Bring High-Frequency Trading to DeFi
+
+    Date: 2025-09-15
+
+    Source: ventureburn.com
+
+    Snippet: # Jump Trading Alums Raise $20M for aPriori to Bring High-Frequency Trading
+    Tools On-Chain Staff Reporter By [Staff Reporter](https://v'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.google.com/search?q=aPriori+Technologies+%22press+release%22+OR+%22announces%22+OR+%22newsroom%22&tbs=qdr%3Ay
+- content_hash: 54329b605a823783d6b0fff0c37be6090027bd5594b53b1b398f7ed8f871dbc2
+  evidence_id: ev-54329b605a823783
+  excerpt: 'Detected date: 2026-08-19
+
+    Title: aPriori Technologies Launches aiSource, Giving Procurement Teams the Manufacturing
+    Product Intelligence to Negotiate on Equal Terms with Suppliers
+
+    Date: 2026-08-19
+
+    Source: rutlandherald.com
+
+    Snippet: # aPriori Technologies Launches aiSource, Giving Procurement Teams the
+    Manufacturing Product Intelligence to Negotiate on Equal Terms with Suppliers
+    Introducing aiSource, the sourcing solution that brings aPriori Intelligence and
+    AI together to help sourcing teams act faster, align easily, and consistently
+    deliver more savings. Business Wire ... CONCORD, Mass.--(BUSINESS WIRE)--Aug 19,
+    2026-- ... SOURCE: aPriori Technologies Copyright Business Wire 2026. PUB: 08/19/2026
+    10:20 AM/DISC: 08/19/2026 10:20 AM http://www.businesswire.com/news/home/20260812970314/en'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.rutlandherald.com/news/business/apriori-technologies-launches-aisource-giving-procurement-teams-the-manufacturing-product-intelligence-to-negotiate-on-equal/article_6914b43e-e3a3-52be-865f-72ea87a87cdb.html
+- content_hash: 65951a10840bec15fdc5c9be7ee28d9c5451983c071cf67d1177d50bc9d65903
+  evidence_id: ev-65951a10840bec15
+  excerpt: 'Detected date: 2026-08-19
+
+    Title: aPriori Technologies Launches aiSource, Giving Procurement Teams the Manufacturing
+    Product Intelligence to Negotiate on Equal Terms with Suppliers
+
+    Date: 2026-08-19
+
+    Source: eagletribune.com
+
+    Snippet: # aPriori Technologies Launches aiSource, Giving Procurement Teams the
+    Manufacturing Product Intelligence to Negotiate on Equal Terms with Suppliers
+    * Business Wire * Aug 19, 2026 * 1 hr ago MA-APRIORI-TECHNOLOGIES Introducing
+    aiSource, the sourcing solution that brings aPriori Intelligence and AI together
+    to help sourcing teams act faster, align easily, and consistently deliver more
+    savings. Business Wire ... CONCORD, Mass.--(BUSINESS WIRE)--Aug 19, 2026-- ...
+    b81f34dcb91130362f420adc6f80b) today announced the general availability of aiSource™,
+    its AI sourcing and negotiation solution that gives direct materials sourcing
+    teams the manufacturing'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.eagletribune.com/region/apriori-technologies-launches-aisource-giving-procurement-teams-the-manufacturing-product-intelligence-to-negotiate-on-equal/article_10c151ad-8681-5794-ae9c-636498d9346e.html
+- content_hash: 3b743a759e6a6d5f6f076b2c1660e99be6791c7298ce1af4d6b08d3b3120df6f
+  evidence_id: ev-3b743a759e6a6d5f
+  excerpt: 'Title: MA-APRIORI-TECHNOLOGIES
+
+    Source: thefacts.com
+
+    Snippet: Introducing aiSource, the sourcing solution that brings aPriori Intelligence
+    and AI together to help sourcing teams act faster, align easily'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://thefacts.com/ap_news/ma-apriori-technologies/image_b4f18061-27cd-561b-8c47-bcb7ad3188f2.html
+- content_hash: c2f609956466dd0d431b88ea703a5bf964609705fe30d8dad594feaf58d534fd
+  evidence_id: ev-c2f609956466dd0d
+  excerpt: 'Detected date: 2026-08-04
+
+    Title: New AI Sourcing Solution: Supplier Cost Data=Better Negotiations
+
+    Date: 2026-08-04
+
+    Source: apriori.com
+
+    Snippet: # Suppliers Know What Your Parts Cost to Make. aiSource Does Too. Introducing
+    aPriori’s New AI Sourcing Solution April Guenet — May 28, 2026 [Learn How aiSource
+    Gives You Fact-Based Cost Intelligence To Negotiate With Suppliers Better](https://www.apriori.com/solutions/products/aisource/)
+     Listen to this Article 1× Audio progress ... ## From Price Pressure to Cost
+    Truth For teams pursuing the highest levels of sourcing maturity, aPriori’s “Zero
+    RFQ” approach provides should-cost models and access to regional data libraries
+    for rapid global sourcing comparisons. It enables teams to identify optimal suppliers
+    and production routes without waiting on lengthy quoting cycles. ... ## Subscribe
+    to the aPriori Blog! ### More Resources: * [Unique Platform Features](https://www.apriori.com/technology-differentiators/)'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.apriori.com/blog/suppliers-know-what-your-parts-cost-to-make-aisource-does-too-introducing-aprioris-new-ai-sourcing-solution
+- content_hash: 54acfd2fce85d867524a2a9e744468a5f75ed2f9069b13304166af69257f718c
+  evidence_id: ev-54acfd2fce85d867
+  excerpt: 'Detected date: 2026-05-26
+
+    Title: aPriori Launches aiSource, an AI Sourcing Solution Giving Procurement Teams
+    the Manufacturing and Cost Intelligence to Win More Supplier Negotiations
+
+    Date: 2026-05-26
+
+    Source: businesswire.com
+
+    Snippet: that suppliers bring to every negotiation. aiSource is currently in beta
+    with select global manufacturing customers and is expected to be generally available
+    later this year. Contacts aPriori Media Chris Jeznach Sr. Director of Product
+    Marketing, aPriori cjeznach@apriori.com Industry: Hardware Oil/Gas Electronic
+    Design Automation Semiconductor Automotive Manufacturing Aerospace Energy Manufacturing
+    Consumer Electronics Technology Artificial Intelligence Steel Networks Utilities
+    Engineering aPriori Technologies Logo aPriori Technologies Release Summary aPriori
+    launches aiSource, an AI-powered sourcing solution that gives procurement teams
+    manufacturing cost intelligence to win supplier negotiations. Release Versions
+    English Hashtags #AI #Manufacturing #Procurement #aPriori #aiSource Release Summary
+    aPriori launches aiSource, an AI-powered sourcing solution that gives procurement
+    teams manufacturing cost intelligence to win supplier negotiations. Release Versions
+    English Hashtags #AI #Manufacturing #Procurement #aPriori #aiSource Contacts aPriori
+    Media Chris Jeznach Sr. Director of Product Marketing, aPriori cjeznach@apriori.com
+    Social Media Profiles aPriori LinkedIn Wish your news had this kind of reach?
+    Sign Up Learn About Business Wire Built on aPriori''s should-cost mode'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.businesswire.com/news/home/20260526130779/en/aPriori-Launches-aiSource-an-AI-Sourcing-Solution-Giving-Procurement-Teams-the-Manufacturing-and-Cost-Intelligence-to-Win-More-Supplier-Negotiations
+- content_hash: 8531fd59a69e9593b1b32471d4c797359bd9b5f06629ccaf234714ae1b82a489
+  evidence_id: ev-8531fd59a69e9593
+  excerpt: 'Detected date: Aug 29, 2025
+
+    Title: Jump Trading Alums Raise $20M for aPriori to Bring High- ...
+
+    Source: coindesk.com
+
+    Snippet: # Jump Trading Alums Raise $20M for aPriori to Bring High-Frequency Trading
+    Tools On-Chain ## The San Francisco-based startup has secured $20 million in new
+    funding, bringing total capital raised to $30 million. By Oliver Knight | Edited
+    by Sheldon Reback Updated Aug 29, 2025, 12:43 p.m. ET Published Aug 28, 2025,
+    9:00 a.m. ET 1min read [Make preferred on](https://www.google.com/preferences/source?q=coindesk.com)
+    Share ... * The firm has launched a liquid-staking platform and Swapr, an AI-powered
+    DEX aggregator, and plans to use the new capital to scale products and hiring.
+    ... The company plans to use the new funds to expand hiring, accelerate product
+    rollouts and deepen partnerships across the trading and staking ecosystem.'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: http://coindesk.com/business/2025/08/28/jump-trading-alums-raise-usd20m-for-apriori-to-bring-high-frequency-trading-tools-on-chain
+- content_hash: aea63acb6c6876275bcbc149cce4c55df27727a8ca1212d649094fc1b2c6988d
+  evidence_id: ev-aea63acb6c687627
+  excerpt: 'Detected date: 2025-10-09
+
+    Title: Accelerating Profitable Product Development with PTC & ...
+
+    Date: 2025-10-09
+
+    Source: ptc.com
+
+    Snippet: 9 Oct 2025 — The PTC- aPriori partnership provides manufacturers with
+    real-time data on cost, manufacturability, and sustainability to speed up product
+    development.'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.ptc.com/en/blogs/industrials/accelerating-profitable-product-development-with-ptc-apriori?srsltid=AfmBOoqGhkNOSLLCEQpOfIsp_3wm8y22I-Gv85MbcL-2Mx10GelNbOgn
+- content_hash: 74532a2a7b0dd31aaf19463a9fdf78bda3343712b05d0e37d7344042b5a6ed3c
+  evidence_id: ev-74532a2a7b0dd31a
+  excerpt: 'Title: aPriori Technologies - Crunchbase Company Profile & Funding
+
+    Source: crunchbase.com
+
+    Snippet: aPriori Technologies - Crunchbase Company Profile & Funding Funding Rounds
+    Series … has 10 investors including Vista Credit Partners and PBJ Capital . aPriori
+    Technologies closed its last funding round on obfuscated'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.crunchbase.com/organization/apriori-technologies
+- content_hash: 5b43de8543bf09ad2fe6c7613c9f2f5a8213646b70a0967b3a25c16964b264a5
+  evidence_id: ev-5b43de8543bf09ad
+  excerpt: 'Detected date: 2026-08-04
+
+    Title: aPriori Launches aiSource, an AI Sourcing Solution
+
+    Date: 2026-08-04
+
+    Source: apriori.com
+
+    Snippet: # aPriori Launches aiSource, an AI Sourcing Solution Giving Procurement
+    Teams the Manufacturing and Cost Intelligence to Win More Supplier Negotiations
+    **CONCORD, Mass., May 26, 2026** — aPriori Technologies today announced the launch
+    of aiSource™, an AI-powered sourcing and negotiation solution that gives procurement
+    and commodity ... Introducing aiSource, the procurement and sourcing solution
+    that brings aPriori Intelligence and AI together to help sourcing teams act faster,
+    align easily, and consistently deliver more ... Chief Executive Officer of aPriori
+    Technologies. “aiSource hands the buyer the manufacturing and cost insights, in
+    plain language, in real time. That is the change.'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.apriori.com/press-release/apriori-launches-aisource-an-ai-sourcing-solution-giving-procurement-teams-the-manufacturing-and-cost-intelligence-to-win-more-supplier-negotiations/
+- content_hash: 19275db834031db7096fc6c98a9eaa3039332cbc1c9aba4d3f7f647af8a4487a
+  evidence_id: ev-19275db834031db7
+  excerpt: 'Query: aPriori Technologies launches OR "new feature" OR "introducing"
+    OR "now available"
+
+    1. https://www.rutlandherald.com/news/business/apriori-technologies-launches-aisource-giving-procurement-teams-the-manufacturing-product-intelligence-to-negotiate-on-equal/article_6914b43e-e3a3-52be-865f-72ea87a87cdb.html
+
+    Title: aPriori Technologies Launches aiSource, Giving Procurement Teams the Manufacturing
+    Product Intelligence to Negotiate on Equal Terms with Suppliers
+
+    Date: 2026-08-19
+
+    Source: rutlandherald.com
+
+    Snippet: # aPriori Technologies Launches aiSource, Giving Procurement Teams the
+    Manufacturing Product Intelligence to Negotiate on Equal Terms with Suppliers
+    Introducing aiSource, the sourcing solution that brings aPriori Intelligence and
+    AI together to help sourcing teams act faster, align easily, and consistently
+    deliver more savings. Business Wire ... CONCORD, Mass.--(BUSINESS WIRE)--Aug 19,
+    2026-- ... SOURCE: aPriori Technologies Copyright Business Wire 2026. PUB: 08/19/2026
+    10:20 AM/DISC: 08/19/2026 10:20 AM http://www.businesswire.com/news/home/20260812970314/en
+
+    2. https://www.eagletribune.com/region/apriori-technologies-launches-aisource-giving-procurement-teams-the-manufacturing-product-intelligence-to-negotiate-on-equal/article_10c151ad-8681-5794-ae9c-636498d9346e.html
+
+    Title: aPriori Technologies Launches aiSource, Giving Procurement Teams the Manufacturing
+    Product Intelligence to Negotiate on Equal Terms with Suppliers
+
+    Date: 2026-08-19
+
+    Source: eagletribune.com
+
+    Snippe'
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.google.com/search?q=aPriori+Technologies+launches+OR+%22new+feature%22+OR+%22introducing%22+OR+%22now+available%22&tbs=qdr%3Ay
+- content_hash: fed25b49554a83d011770828667475fa8192bb556d1cb2500e2f60d02f8d53a4
+  evidence_id: ev-fed25b49554a83d0
+  excerpt: "Detected date: Aug 19, 2026\nTitle: aPriori Technologies Launches aiSource,\
+    \ Giving Procurement Teams the Manufacturing Product Intelligence to Negotiate\
+    \ on Equal Terms with Suppliers | Morningstar\nMorningstar brands and products\
+    \ \n\nCompany \n\n[](/)\n\n[ ](/login?destination=https://www.morningstar.com/news/business-wire/20260812970314/apriori-technologies-launches-aisource-giving-procurement-teams-the-manufacturing-product-intelligence-to-negotiate-on-equal-terms-with-suppliers)\n\
+    \n  * [ Portfolio ](/tools/portfolio)\n  * Tools\n\n\n\n\n  * Sections\n\n  *\
+    \ Markets\n\n  * [ Funds ](/funds)\n  * [ ETFs ](/topics/etfs)\n  * [ Stocks ](/stocks)\n\
+    \  * [ Bonds ](/bonds)\n\n\n\n  * Investing Ideas\n\n\n\n\n  * [ For Advisors\
+    \ ](/financial-advisors)\n\n\n\n  * [ Home ](/)\n\n\n\n  * Tools\n\n    * [ Portfolio\
+    \ ](/tools/portfolio)\n    * [ Watchlists ](/tools/watchlists)\n    * [ Screener\
+    \ ](/tools/screener)\n    * [ Compare ](/tools/compare)\n    * [ Chart ](/tools/chart)\n\
+    \    * [ Rating Changes ](/tools/rating-changes)\n\n\n\n\n  * Sections\n\n  *\
+    \ Markets\n\n  * [ Funds ](/funds)\n  * [ ETFs ](/topics/etfs)\n  * [ Stocks ](/stocks)\n\
+    \  * [ Bonds ](/bonds)\n\n\n\n  * Investing Ideas\n\n\n\n\n  * [ For Advisors\
+    \ ](/financial-advisors)\n\n\n\n  * Media\n\n\n\n\n  * [ Help ](/help-center)\n\
+    \  * [ What’s New ](/whats-new)\n  * [ Notifications  ](/notifications)\n\n\n\n\
+    \  * Products for Investors\n\n  * [ All Products and Services  ](/business)\n\
+    \n\n\n  1. [ Home](/)\n  2. [ News](/news)\n  3. [ Business Wire](/news/business-wire)\n\
+    \  4. aPriori Technologies Launches aiSource, Giving Procurement Teams the Manufa"
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.morningstar.com/news/business-wire/20260812970314/apriori-technologies-launches-aisource-giving-procurement-teams-the-manufacturing-product-intelligence-to-negotiate-on-equal-terms-with-suppliers
+- content_hash: ad1d5133f4e237470828132c5c64bb22d4b4779a9fa402b6acd53353d4b7f572
+  evidence_id: ev-ad1d5133f4e23747
+  excerpt: "Title: aPriori Release 2020 Now Available | aPriori\n____\n\nUpcoming\
+    \ Webinar\n\nBeyond a Tool: From Design for X to a New Engineering Mindset\n\n\
+    [**Register Now ›**](https://www.apriori.com/resources/webinar/beyond-a-tool-from-design-for-x-to-a-new-engineering-mindset/)\n\
+    \nMIC Chicago\n\nSep 22-23 • From Design to Source — Measurable Impact at the\
+    \ Speed of AI\n\n[**Learn More ›**](/manufacturing-insights-chicago-2026/)\n\n\
+    MIC Cologne\n\n13-14 Oct • From Design to Source — Measurable Impact at the Speed\
+    \ of AI\n\n[**Learn More ›**](/manufacturing-insights-cologne-2026/)\n\n ____\n\
+    \n__\n\nUS  \nEN\n\n[ __Login](https://cloud.apriori.net/)\n\n[](/)\n\n[Why aPriori?](/why-apriori/)\n\
+    \nSolutions\n\n[Products](/solutions/products/)\n\n[Pricing](/pricing/)\n\n[About](/about/)\n\
+    \nResources \n\n[Resources Hub ](/resources/)\n\n  * [Blog __](https://www.apriori.com/blog/)\n\
+    \  * [Case Studies __](https://www.apriori.com/resources/?type=case-study)\n \
+    \ * [Cloud Security __](https://www.apriori.com/security/)\n  * [Documentation\
+    \ __](https://docs.apriori.com/)\n  * [FAQs __](https://www.apriori.com/faqs/)\n\
+    \  * [Glossary __](/glossary/)\n  * [Guides __](https://www.apriori.com/manufacturing-guides/)\n\
+    \  * [Podcast __](/podcast/)\n  * [Webinars __](/resources/?type=webinar)\n  *\
+    \ [Videos __](https://www.apriori.com/resources/?type=video)\n\n\n\n[Blog Articles\
+    \ ](/blog/)\n\nHot Trending Topics\n\n  * [ Artificial Intelligence ](https://www.apriori.com/blog/?hot_trending_topics=artificial-intelligence)\n\
+    \  * [ Digital Transformation ](https://www.apriori.com/blo"
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.apriori.com/press-release/apriori-release-2020-now-available/
+- content_hash: 416f8d7522828bc6fc8e6de219041764c0e547cd19c8e0fb9379daa8efb31824
+  evidence_id: ev-416f8d7522828bc6
+  excerpt: "Title: Three Executives Appointed Amid aPriori&#039;s Global Growth\n\
+    ____\n\nUpcoming Webinar\n\nBeyond a Tool: From Design for X to a New Engineering\
+    \ Mindset\n\n[**Register Now ›**](https://www.apriori.com/resources/webinar/beyond-a-tool-from-design-for-x-to-a-new-engineering-mindset/)\n\
+    \nMIC Chicago\n\nSep 22-23 • From Design to Source — Measurable Impact at the\
+    \ Speed of AI\n\n[**Learn More ›**](/manufacturing-insights-chicago-2026/)\n\n\
+    MIC Cologne\n\n13-14 Oct • From Design to Source — Measurable Impact at the Speed\
+    \ of AI\n\n[**Learn More ›**](/manufacturing-insights-cologne-2026/)\n\n ____\n\
+    \n__\n\nUS  \nEN\n\n[ __Login](https://cloud.apriori.net/)\n\n[](/)\n\n[Why aPriori?](/why-apriori/)\n\
+    \nSolutions\n\n[Products](/solutions/products/)\n\n[Pricing](/pricing/)\n\n[About](/about/)\n\
+    \nResources \n\n[Resources Hub ](/resources/)\n\n  * [Blog __](https://www.apriori.com/blog/)\n\
+    \  * [Case Studies __](https://www.apriori.com/resources/?type=case-study)\n \
+    \ * [Cloud Security __](https://www.apriori.com/security/)\n  * [Documentation\
+    \ __](https://docs.apriori.com/)\n  * [FAQs __](https://www.apriori.com/faqs/)\n\
+    \  * [Glossary __](/glossary/)\n  * [Guides __](https://www.apriori.com/manufacturing-guides/)\n\
+    \  * [Podcast __](/podcast/)\n  * [Webinars __](/resources/?type=webinar)\n  *\
+    \ [Videos __](https://www.apriori.com/resources/?type=video)\n\n\n\n[Blog Articles\
+    \ ](/blog/)\n\nHot Trending Topics\n\n  * [ Artificial Intelligence ](https://www.apriori.com/blog/?hot_trending_topics=artificial-intelligence)\n\
+    \  * [ Digital Transformation ](https://www"
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.apriori.com/press-release/apriori-appoints-three-executives-supports-global-manufacturing-intelligence-growth/
+- content_hash: 50a61031132dbb5eb02a18c9eb1a2f8363353f01ef2b00f42b33cf2bbd2e1dfb
+  evidence_id: ev-50a61031132dbb5e
+  excerpt: "Title: aPriori Raises $20M to Bring High-Frequency Trading to DeFi\n[\
+    \ ](https://ventureburn.com/)\n\n  * [News](https://ventureburn.com/category/news/startup/)\n\
+    \    * [Startup](https://ventureburn.com/category/news/startup/)\n    * [Cryptocurrency](https://ventureburn.com/category/news/cryptocurrency/)\n\
+    \    * [AI](https://ventureburn.com/category/news/ai/)\n    * [Venture Capital](https://ventureburn.com/category/news/venture-capital/)\n\
+    \  * [Trade Crypto](https://ventureburn.com/category/trade-crypto/)\n    * [Lowest\
+    \ Fee Exchanges](https://ventureburn.com/crypto-exchange-with-lowest-fees/)\n\
+    \    * [Mexc Review](https://ventureburn.com/mexc-review/)\n  * [Referral Codes](https://ventureburn.com/category/trade-crypto/referral-codes/)\n\
+    \    * [Crypto Sign Up Bonus](https://ventureburn.com/crypto-sign-up-bonus/)\n\
+    \    * [Binance Referral Code](https://ventureburn.com/binance-referral-code/)\n\
+    \    * [Mexc Referral Code](https://ventureburn.com/mexc-referral-code/)\n   \
+    \ * [Bybit Referral Code](https://ventureburn.com/bybit-referral-code/)\n    *\
+    \ [Bitget Referral Code](https://ventureburn.com/bitget-referral-code/)\n    *\
+    \ [Nansen Referral Code](https://ventureburn.com/nansen-promo-code/)\n    * [Crypto.com\
+    \ Referral Code](https://ventureburn.com/crypto-com-referral-code/)\n    * [BingX\
+    \ Referral Code](https://ventureburn.com/bingx-referral-code/)\n    * [OKX Referral\
+    \ Code](https://ventureburn.com/okx-referral-code/)\n    * [Pionex Referral Code](https://ventureburn.com/pionex-referral-code/)\n\
+    \  * [Contact us]("
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://ventureburn.com/jump-trading-alums-raise-20m-for-apriori/
+- content_hash: 090f19b333e3abe55cacf7e64c06320864449e7944bc0cbec5a57f73de8da92c
+  evidence_id: ev-090f19b333e3abe5
+  excerpt: "Title: Digital Manufacturing Simulation | the aPriori Blog\n____\n\nUpcoming\
+    \ Webinar\n\nBeyond a Tool: From Design for X to a New Engineering Mindset\n\n\
+    [**Register Now ›**](https://www.apriori.com/resources/webinar/beyond-a-tool-from-design-for-x-to-a-new-engineering-mindset/)\n\
+    \nMIC Chicago\n\nSep 22-23 • From Design to Source — Measurable Impact at the\
+    \ Speed of AI\n\n[**Learn More ›**](/manufacturing-insights-chicago-2026/)\n\n\
+    MIC Cologne\n\n13-14 Oct • From Design to Source — Measurable Impact at the Speed\
+    \ of AI\n\n[**Learn More ›**](/manufacturing-insights-cologne-2026/)\n\n ____\n\
+    \n__\n\nUS  \nEN\n\n[ __Login](https://cloud.apriori.net/)\n\n[](/)\n\n[Why aPriori?](/why-apriori/)\n\
+    \nSolutions\n\n[Products](/solutions/products/)\n\n[Pricing](/pricing/)\n\n[About](/about/)\n\
+    \nResources \n\n[Resources Hub ](/resources/)\n\n  * [Blog __](https://www.apriori.com/blog/)\n\
+    \  * [Case Studies __](https://www.apriori.com/resources/?type=case-study)\n \
+    \ * [Cloud Security __](https://www.apriori.com/security/)\n  * [Documentation\
+    \ __](https://docs.apriori.com/)\n  * [FAQs __](https://www.apriori.com/faqs/)\n\
+    \  * [Glossary __](/glossary/)\n  * [Guides __](https://www.apriori.com/manufacturing-guides/)\n\
+    \  * [Podcast __](/podcast/)\n  * [Webinars __](/resources/?type=webinar)\n  *\
+    \ [Videos __](https://www.apriori.com/resources/?type=video)\n\n\n\n[Blog Articles\
+    \ ](/blog/)\n\nHot Trending Topics\n\n  * [ Artificial Intelligence ](https://www.apriori.com/blog/?hot_trending_topics=artificial-intelligence)\n\
+    \  * [ Digital Transformation ](https://www.apriori."
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.apriori.com/blog/
+- content_hash: ceb690ae1c940fc5783ec2158ccc7158358e57ccda7b269782e833f438a2349b
+  evidence_id: ev-ceb690ae1c940fc5
+  excerpt: "Title: aPriori | News &amp; Events\n____\n\nUpcoming Webinar\n\nBeyond\
+    \ a Tool: From Design for X to a New Engineering Mindset\n\n[**Register Now ›**](https://www.apriori.com/resources/webinar/beyond-a-tool-from-design-for-x-to-a-new-engineering-mindset/)\n\
+    \nMIC Chicago\n\nSep 22-23 • From Design to Source — Measurable Impact at the\
+    \ Speed of AI\n\n[**Learn More ›**](/manufacturing-insights-chicago-2026/)\n\n\
+    MIC Cologne\n\n13-14 Oct • From Design to Source — Measurable Impact at the Speed\
+    \ of AI\n\n[**Learn More ›**](/manufacturing-insights-cologne-2026/)\n\n ____\n\
+    \n__\n\nUS  \nEN\n\n[ __Login](https://cloud.apriori.net/)\n\n[](/)\n\n[Why aPriori?](/why-apriori/)\n\
+    \nSolutions\n\n[Products](/solutions/products/)\n\n[Pricing](/pricing/)\n\n[About](/about/)\n\
+    \nResources \n\n[Resources Hub ](/resources/)\n\n  * [Blog __](https://www.apriori.com/blog/)\n\
+    \  * [Case Studies __](https://www.apriori.com/resources/?type=case-study)\n \
+    \ * [Cloud Security __](https://www.apriori.com/security/)\n  * [Documentation\
+    \ __](https://docs.apriori.com/)\n  * [FAQs __](https://www.apriori.com/faqs/)\n\
+    \  * [Glossary __](/glossary/)\n  * [Guides __](https://www.apriori.com/manufacturing-guides/)\n\
+    \  * [Podcast __](/podcast/)\n  * [Webinars __](/resources/?type=webinar)\n  *\
+    \ [Videos __](https://www.apriori.com/resources/?type=video)\n\n\n\n[Blog Articles\
+    \ ](/blog/)\n\nHot Trending Topics\n\n  * [ Artificial Intelligence ](https://www.apriori.com/blog/?hot_trending_topics=artificial-intelligence)\n\
+    \  * [ Digital Transformation ](https://www.apriori.com/blog/?hot_trending_t"
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.apriori.com/news-events/
+- content_hash: 8edcc9a9b43e1998f8f18fc416a91cf51b8a8962e73a03ddd0c12ea98e8950dd
+  evidence_id: ev-8edcc9a9b43e1998
+  excerpt: "Detected date: December 2024\nTitle: What’s New in aP Design - December\
+    \ 2024\n____\n\nUpcoming Webinar\n\nBeyond a Tool: From Design for X to a New\
+    \ Engineering Mindset\n\n[**Register Now ›**](https://www.apriori.com/resources/webinar/beyond-a-tool-from-design-for-x-to-a-new-engineering-mindset/)\n\
+    \nMIC Chicago\n\nSep 22-23 • From Design to Source — Measurable Impact at the\
+    \ Speed of AI\n\n[**Learn More ›**](/manufacturing-insights-chicago-2026/)\n\n\
+    MIC Cologne\n\n13-14 Oct • From Design to Source — Measurable Impact at the Speed\
+    \ of AI\n\n[**Learn More ›**](/manufacturing-insights-cologne-2026/)\n\n ____\n\
+    \n__\n\nUS  \nEN\n\n[ __Login](https://cloud.apriori.net/)\n\n[](/)\n\n[Why aPriori?](/why-apriori/)\n\
+    \nSolutions\n\n[Products](/solutions/products/)\n\n[Pricing](/pricing/)\n\n[About](/about/)\n\
+    \nResources \n\n[Resources Hub ](/resources/)\n\n  * [Blog __](https://www.apriori.com/blog/)\n\
+    \  * [Case Studies __](https://www.apriori.com/resources/?type=case-study)\n \
+    \ * [Cloud Security __](https://www.apriori.com/security/)\n  * [Documentation\
+    \ __](https://docs.apriori.com/)\n  * [FAQs __](https://www.apriori.com/faqs/)\n\
+    \  * [Glossary __](/glossary/)\n  * [Guides __](https://www.apriori.com/manufacturing-guides/)\n\
+    \  * [Podcast __](/podcast/)\n  * [Webinars __](/resources/?type=webinar)\n  *\
+    \ [Videos __](https://www.apriori.com/resources/?type=video)\n\n\n\n[Blog Articles\
+    \ ](/blog/)\n\nHot Trending Topics\n\n  * [ Artificial Intelligence ](https://www.apriori.com/blog/?hot_trending_topics=artificial-intelligence)\n\
+    \  * [ Digital Transformation ](https://www.apriori.com/blog/?ho"
+  retrieved_at: '2026-08-19T12:24:17.007460-04:00'
+  url: https://www.apriori.com/blog/whats-new-in-ap-design-december-2024/
+schema_version: '1.0'
+unknowns:
+- pricing
+- technology
+- competitors
+- growth
+- hiring
+- news
+- launches
+- ads

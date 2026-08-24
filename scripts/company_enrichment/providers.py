@@ -34,9 +34,14 @@ class SourceObservation:
 @dataclass(frozen=True, slots=True)
 class SearchRequest:
     query: str
+    # Natural-language intent for objective-driven providers (Parallel);
+    # keyword SERP providers (Serper) ignore it.
+    objective: str | None = None
 
     def __post_init__(self) -> None:
         _text("query", self.query)
+        if self.objective is not None:
+            _text("objective", self.objective)
 
 
 @dataclass(frozen=True, slots=True)

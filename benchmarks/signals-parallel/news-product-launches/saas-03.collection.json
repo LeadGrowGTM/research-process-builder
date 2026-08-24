@@ -1,0 +1,149 @@
+{
+  "collected_at": "2026-08-19T11:43:11.976647-04:00",
+  "company_id": "saas-03",
+  "enrichment_id": "news-product-launches",
+  "entries": [
+    {
+      "category": "digital sales room",
+      "company_name": "Aligned",
+      "domain": "alignedup.com",
+      "status": "ok",
+      "step": "facts"
+    },
+    {
+      "dropped_off_subject": 1,
+      "fallbacks": [],
+      "mode": "news",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "alignedup.com news",
+      "tbs": null
+    },
+    {
+      "dropped_off_subject": 6,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 10,
+      "status": "ok",
+      "step": "search",
+      "target": "Aligned \"press release\" OR \"announces\" OR \"newsroom\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "dropped_off_subject": 3,
+      "fallbacks": [],
+      "mode": "web",
+      "paid_cost_usd": "0.005",
+      "provider": "parallel",
+      "results": 9,
+      "status": "ok",
+      "step": "search",
+      "target": "Aligned launches OR \"new feature\" OR \"introducing\" OR \"now available\"",
+      "tbs": "qdr:y"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://alignedup.com/blog/aligneds-8m-series-a-announcement-paving-the-way-for-buyer-enablement",
+      "waterfall_level": 2
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.globenewswire.com/news-release/2026/07/01/3320495/0/en/aligned-closes-60m-series-b-to-solidify-leadership-position-as-the-system-of-action-for-b2b-sales.html: ReadTimeout",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.globenewswire.com/news-release/2026/07/01/3320495/0/en/aligned-closes-60m-series-b-to-solidify-leadership-position-as-the-system-of-action-for-b2b-sales.html"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://alignedup.com/category/articles/",
+      "waterfall_level": 2
+    },
+    {
+      "kind": "retryable",
+      "message": "waterfall level 1 failed for https://www.globenewswire.com/news-release/2026/08/13/3344772/0/en/aligned-marketplace-raises-20-million-achieves-measurable-outcomes-with-large-employers.html: ReadTimeout",
+      "status": "failed",
+      "step": "scrape",
+      "target": "https://www.globenewswire.com/news-release/2026/08/13/3344772/0/en/aligned-marketplace-raises-20-million-achieves-measurable-outcomes-with-large-employers.html"
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://ir.alignmenthealth.com/news-releases/news-release-details/alignment-healthcare-shows-how-earlier-coordinated-care-leads",
+      "waterfall_level": 1
+    },
+    {
+      "records": 1,
+      "status": "ok",
+      "step": "scrape",
+      "target": "https://aligneddc.com/press-release/ai-infrastructure-partnership-aip-mgx-and-blackrocks-global-infrastructure-partners-gip-to-acquire-all-equity-in-aligned-data-centers",
+      "waterfall_level": 1
+    },
+    {
+      "kind": "budget_exhausted",
+      "message": "paid scrape reservation refused (0.01 USD): gtm-waterfall:3:https://alignedup.com/blog",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://alignedup.com/blog"
+    },
+    {
+      "kind": "budget_exhausted",
+      "message": "paid scrape reservation refused (0.01 USD): gtm-waterfall:3:https://alignedup.com/news",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://alignedup.com/news"
+    },
+    {
+      "kind": "budget_exhausted",
+      "message": "paid scrape reservation refused (0.01 USD): gtm-waterfall:3:https://alignedup.com/newsroom",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://alignedup.com/newsroom"
+    },
+    {
+      "kind": "budget_exhausted",
+      "message": "paid scrape reservation refused (0.01 USD): gtm-waterfall:3:https://alignedup.com/press",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://alignedup.com/press"
+    },
+    {
+      "kind": "budget_exhausted",
+      "message": "paid scrape reservation refused (0.01 USD): gtm-waterfall:3:https://alignedup.com/changelog",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://alignedup.com/changelog"
+    },
+    {
+      "kind": "budget_exhausted",
+      "message": "paid scrape reservation refused (0.01 USD): gtm-waterfall:3:https://alignedup.com/product-updates",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://alignedup.com/product-updates"
+    },
+    {
+      "kind": "budget_exhausted",
+      "message": "paid scrape reservation refused (0.01 USD): gtm-waterfall:3:https://alignedup.com/whats-new",
+      "status": "failed",
+      "step": "first_party",
+      "target": "https://alignedup.com/whats-new"
+    },
+    {
+      "base_evidence": 3,
+      "signal_evidence": 25,
+      "status": "ok",
+      "step": "merge"
+    }
+  ],
+  "paid_cost_usd": "0.015",
+  "signal_evidence": 28
+}

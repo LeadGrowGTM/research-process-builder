@@ -1,0 +1,69 @@
+company_id: saas-05
+evidence_ids:
+- ev-8f113f48b07cce21
+- ev-baf745aee8d8be18
+- ev-16e688fd37f2399e
+- ev-4e00b49c90182cec
+- ev-d0644a9ba97b06ff
+- ev-de51373ea57d5593
+- ev-0bb70966ceb5cfb7
+- ev-aaeba31b2ebb16e4
+- ev-d8200f247a1956b1
+- ev-3a23b6c5e7b503d5
+- ev-ea2090665f902e93
+- ev-eaccb23e98b43975
+- ev-5a6753c9d8e7dc4b
+- ev-3d545b6c807fa1c6
+named:
+- name: Google Vault
+  aliases: [Google Workspace Vault]
+  domain: null
+- name: Arctera Enterprise Vault
+  aliases: [Enterprise Vault, Veritas Enterprise Vault, Arctera, EV.Cloud]
+  domain: null
+- name: Proofpoint
+  aliases: [Proofpoint Archive, Proofpoint Enterprise Archive]
+  domain: null
+- name: Barracuda Message Archiver
+  aliases: [Barracuda]
+  domain: null
+- name: Smarsh
+  aliases: []
+  domain: null
+- name: Archon
+  aliases: [Archon Data Store, Platform 3 Solutions]
+  domain: archondatastore.com
+- name: Mimecast
+  aliases: [Mimecast Cloud Archive, Cloud Archive]
+  domain: null
+- name: ArcTitan
+  aliases: [Arc Titan]
+  domain: null
+- name: Intradyn
+  aliases: []
+  domain: null
+- name: Aid4Mail
+  aliases: []
+  domain: null
+- name: ArchiverFS
+  aliases: []
+  domain: null
+- name: OneVault
+  aliases: []
+  domain: null
+- name: Onna
+  aliases: []
+  domain: null
+- name: MessageSolution
+  aliases: [Message Solution]
+  domain: null
+- name: SAS Data Management
+  aliases: [SAS]
+  domain: null
+- name: TransVault
+  aliases: [Transvault]
+  domain: null
+inferred:
+- name: ZL Unified Archive
+  aliases: [ZL, ZL Technologies]
+  domain: null

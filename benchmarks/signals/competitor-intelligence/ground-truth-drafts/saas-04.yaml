@@ -1,0 +1,100 @@
+# DRAFT ground truth - TODO_HUMAN: review every entry, then move this file to
+# ../ground-truth/ only after a human seals it. Generated from the signal dossier;
+# nothing here is validated. Delete candidates that are not real, fix dates and
+# kinds, keep evidence_ids pointing at the Evidence that proves the entry.
+# subject: aPriori Technologies (apriori.com); as_of 2026-08-18
+# every 'named' entry is a candidate token; strip the TODO_HUMAN prefix to keep,
+# move to 'inferred' when no Evidence compares it with the subject, or delete.
+# candidate evidence: {"technologies": ["ev-222febfbb7b05363", "ev-28bdc6fb6297803e", "ev-3d93e43e256e02c1", "ev-5aa35acbe77974f5"], "skip": ["ev-3d93e43e256e02c1"], "contentpeople": ["ev-3d93e43e256e02c1"], "learningjobs": ["ev-3d93e43e256e02c1"], "gamessign": ["ev-3d93e43e256e02c1"], "join": ["ev-3d93e43e256e02c1"], "developmentconcord": ["ev-3d93e43e256e02c1"], "design": ["ev-3d93e43e256e02c1", "ev-930f4e01d9f9d2b1", "ev-950f15e47ba63edf"], "make": ["ev-3d93e43e256e02c1"], "followview": ["ev-3d93e43e256e02c1"], "built": ["ev-3d93e43e256e02c1"], "intelligence": ["ev-3d93e43e256e02c1"], "according": ["ev-3d93e43e256e02c1"], "forrestertotal": ["ev-3d93e43e256e02c1"], "economicimpact": ["ev-3d93e43e256e02c1"], "roi": ["ev-3d93e43e256e02c1"], "external": ["ev-3d93e43e256e02c1"], "technologiesindustry": ["ev-3d93e43e256e02c1"], "development": ["ev-3d93e43e256e02c1"], "headquartersconcord": ["ev-3d93e43e256e02c1"], "typeprivately": ["ev-3d93e43e256e02c1"], "heldfounded": ["ev-3d93e43e256e02c1"], "specialties": ["ev-3d93e43e256e02c1"], "manufacturingsimulation": ["ev-3d93e43e256e02c1"], "manufacturingcost": ["ev-3d93e43e256e02c1"], "models": ["ev-3d93e43e256e02c1"], "factories": ["ev-3d93e43e256e02c1"], "manufacturability": ["ev-3d93e43e256e02c1"], "margin": ["ev-3d93e43e256e02c1"], "supplychain": ["ev-3d93e43e256e02c1"], "management": ["ev-3d93e43e256e02c1"], "manufacturingautomation": ["ev-3d93e43e256e02c1"], "cost": ["ev-3d93e43e256e02c1", "ev-9c49c92ff266dbcd"], "buyanalysis": ["ev-3d93e43e256e02c1
+company_id: saas-04
+evidence_ids:
+- ev-fe752f58cb8e0b98
+inferred: []
+named:
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Technologies
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Design
+- aliases: []
+  domain: null
+  name: TODO_HUMAN DFMA
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Costing
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Jun
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Sumble
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Intelligence
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Simulation
+- aliases: []
+  domain: null
+  name: TODO_HUMAN DFMA Should
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Complementary Techs
+- aliases: []
+  domain: null
+  name: TODO_HUMAN SOLIDWORKS
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Cost Management
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Make
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Margin
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Cost
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Aided Engineering
+- aliases: []
+  domain: null
+  name: TODO_HUMAN CAE
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Aug
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Costimator
+- aliases: []
+  domain: null
+  name: TODO_HUMAN EasyKost
+- aliases: []
+  domain: null
+  name: TODO_HUMAN All
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Explore
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Login
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Skip
+- aliases: []
+  domain: null
+  name: TODO_HUMAN Content People
+- aliases: []
+  domain: cbinsights.com
+  name: TODO_HUMAN cbinsights.com
+- aliases: []
+  domain: dfma.com
+  name: TODO_HUMAN dfma.com
+- aliases: []
+  domain: sumble.com
+  name: TODO_HUMAN sumble.com
+- aliases: []
+  domain: docs.sumble.com
+  name: TODO_HUMAN docs.sumble.com
