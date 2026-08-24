@@ -36,6 +36,9 @@ Choose exactly one relationship:
 - Use one natural noun phrase containing two to five words.
 - Use the buyer's plain language rather than the vendor's marketing language.
 - Use at most one descriptive modifier before the outcome's main noun.
+- Name the concrete thing the Evidence says the buyer struggles with. Never
+  substitute a broader business benefit such as retention, revenue, or growth
+  unless the Evidence states it as the buyer's own problem.
 
 ## Never do this
 
@@ -57,4 +60,6 @@ Wrong: `Executives and architecture teams looking for Operational AI governance`
 Right: `Enterprise IT teams looking for reliable AI operations`
 Wrong: `Marketers who need know what marketing works`
 Right: `Marketers who need clear campaign performance`
+Wrong: `Marketing agencies looking for client retention` (generic benefit; the Evidence problem is reporting effort)
+Right: `Marketing agencies looking for faster client reporting`
 Add a secondary only when Evidence names a genuinely different buyer with a genuinely different outcome. Otherwise return none.

@@ -2,6 +2,11 @@
 
 from __future__ import annotations
 
+import sys
+from pathlib import Path as _Path
+
+sys.path.insert(0, str(_Path(__file__).resolve().parents[1]))
+
 import argparse
 from dataclasses import dataclass
 from datetime import datetime
@@ -308,12 +313,37 @@ def score_payload(
     return CaseScore(record.company_id, components, score, tuple(dict.fromkeys(failures)))
 
 
+def _normalized_casing(text: str) -> str:
+    """Deterministically lowercase a spurious leading capital.
+
+    Models sometimes emit mid-sentence capitals ("looking for Client
+    retention"). The first character is lowercased only when the rest of the
+    first word is lowercase, which preserves acronyms (AI, HR) and mixed-case
+    proper nouns (SharePoint). Reviewer feedback, Mitch 2026-08-24.
+    """
+    first, _, _ = text.partition(" ")
+    if len(first) > 1 and first[0].isupper() and first[1:].islower():
+        return text[0].lower() + text[1:]
+    if len(first) == 1 and first.isupper():
+        return text[0].lower() + text[1:]
+    return text
+
+
 def _payload_from_execution(execution) -> dict[str, Any]:
     values = {item.field: _primitive(item.value) for item in execution.assertions}
-    return {
+    payload = {
         **values["icp"],
         **values["personas"],
     }
+    for segment in (payload.get("primary_icp"), *payload.get("secondary_icps", ())):
+        if not isinstance(segment, dict):
+            continue
+        if isinstance(segment.get("outcome"), str):
+            segment["outcome"] = _normalized_casing(segment["outcome"])
+        buyer = segment.get("buyer")
+        if isinstance(buyer, str) and buyer and buyer[0].islower():
+            segment["buyer"] = buyer[0].upper() + buyer[1:]
+    return payload
 
 
 def _reserve_cost(path: Path, attempt_id: str, estimate: Decimal) -> None:
