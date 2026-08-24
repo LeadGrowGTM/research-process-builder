@@ -42,7 +42,7 @@ def test_blind_ids_are_not_enumerable_matrix_hashes_and_order_is_persisted(
     )
 
     assert not (set(ids) & enumerable)
-    assert len(ids) == len(set(ids)) == 18
+    assert len(ids) == len(set(ids)) == 24
     assert tuple(resumed.blind_outputs) == tuple(first.blind_outputs)
     assert mapping.read_bytes() == original
     serialized = json.dumps(first.blind_outputs)

@@ -2,12 +2,13 @@
 
 ## In flight
 - [ ] running-ads-free-scraper - Running ads enrichment via free Google Ads Transparency + Meta Ad Library scrapers; lineage ads-v3 1.00/1.00, halted for human review (since 2026-08-18)
-- [ ] news-product-launches-loop - News/launches enrichment collect + prompt loop; news-v5 dev 0.709 / holdout 0.708, anneal pending (since 2026-08-18)
-- [ ] competitor-intelligence-loop - Competitor enrichment collect + prompt loop; comp-v5 dev 0.678 / holdout 0.668, anneal pending (since 2026-08-18)
-  All three: docs/reports/signal-enrichments-live-run.md, branch wt/signal-enrichments.
+  See docs/reports/signal-enrichments-live-run.md, branch wt/signal-enrichments.
 - [x] repo-cleanup-full-update - Checker PASS (4.71/5); sanitized local export fallback recorded; authoritative worktree C:\Users\mitch\Everything_CC\tools\data\research-process-builder\.worktrees\repo-cleanup-full-update (since 2026-08-10)
 ## Queued
 ## Done
+- [x] icp-persona-native-loop - ICP/persona enrichment approved at icp-persona-live-v26-luna: dev 1.00 / holdout 1.00, zero hard failures, gpt-5.6-luna at ~USD 0.0014/company. Twenty gpt-4.1-mini lineages stalled 0.78-0.81; luna cleared on first real run after the 2026-08-20 repricing (v1's luna attempt was cap-blocked by the stale price table). Casing normalized in code, specificity rule added from review. See docs/reports/icp-persona-anneal.md (done 2026-08-24)
+- [x] news-product-launches-loop - Annealed to news-v11-luna 0.974/0.997, approved and graduated 2026-08-21; canonical prompt in prompts/company-enrichment/. See docs/reports/signal-enrichments-anneal.md (done 2026-08-21)
+- [x] competitor-intelligence-loop - Annealed to comp-v11-luna 0.933/0.960, approved and graduated 2026-08-21; canonical prompt in prompts/company-enrichment/. See docs/reports/signal-enrichments-anneal.md (done 2026-08-21)
 - [x] parallel-search-task-api - Parallel Search API transport + budget-guarded Task API client (base tier max, $1 ceiling); Serper-vs-Parallel A/B on news + competitor signals: Serper wins decisively (news events 0.976/1.000 vs 0.306/0.516; comp named_set 0.878/0.943 vs 0.272/0.546) at 1/5 the query price. Serper stays primary, Parallel is a live fallback. See docs/reports/serper-vs-parallel.md (done 2026-08-19)
 - [x] anneal-news-competitor-signals - Anneal news and competitor signal enrichments to >=0.90 (done 2026-08-18)
 - [x] research-company-enrichment-lib - Build and benchmark company enrichment library (done 2026-08-13)

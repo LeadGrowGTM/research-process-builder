@@ -8,6 +8,7 @@ from .contracts import EvidenceRef, FieldAssertion, SellerContext, Visibility
 
 P0_ENRICHMENTS: Mapping[str, tuple[str, ...]] = {
     'analogy-value-translator': ('pricing', 'technology'),
+    'buying-trigger-analysis': ('campaign_idea_1', 'campaign_idea_2'),
     'company-description': ('identity', 'description', 'offers'),
     'competitor-intelligence': ('competitors',),
     'growth-signals': ('growth',),

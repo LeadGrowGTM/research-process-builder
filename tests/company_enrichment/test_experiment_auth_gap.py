@@ -37,7 +37,7 @@ def test_missing_model_client_records_auth_gaps_without_fake_outputs(
     assert summary.status == "experiment"
     assert summary.completed_cases == 0
     assert summary.authentication_gap
-    assert len(events) == 18
+    assert len(events) == 24
     assert {event["status"] for event in events} == {"not_executed"}
     assert {event["failure"] for event in events} == {"authentication_required"}
     assert {event["resolved_model_id"] for event in events} == {None}

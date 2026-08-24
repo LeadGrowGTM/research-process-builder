@@ -38,6 +38,10 @@ _SECRET_PATTERN = re.compile(
 class ModelPrice:
     input_per_million: Decimal
     cached_input_per_million: Decimal
+    # Cache-write tokens are billed on the synchronous track only (Batch API
+    # requests do not hit the prompt cache). Models without a published write
+    # surcharge use their plain input rate.
+    cache_write_input_per_million: Decimal
     output_per_million: Decimal
     batch_input_per_million: Decimal
     batch_cached_input_per_million: Decimal
@@ -48,20 +52,29 @@ class ModelPrice:
 # standard rate. Decimal literals keep the budget ledger free of float drift.
 # Only these models may run (workspace policy, Mitch 2026-08-18): gpt-4.1-mini,
 # gpt-5-nano, and the flagship gpt-5.6-luna. The full gpt-4.1 tier and the
-# gpt-4o family are never used and are deliberately absent, so a request for
-# them fails validation before any spend. Do not add models without approval.
+# rest of the gpt-4o family are never used and are deliberately absent, so a
+# request for them fails validation before any spend. Do not add models
+# without approval. Exceptions and updates:
+# - gpt-5.6-luna repriced to current list rates (Mitch, 2026-08-20):
+#   0.20 in / 0.02 cache read / 0.25 cache write / 1.20 out.
+# - gpt-4o-mini approved as a standing benchmark model (Mitch, 2026-08-20),
+#   the cheap-tier floor in the experiment matrix; not for production use.
 MODEL_PRICES: Mapping[str, ModelPrice] = {
     "gpt-5-nano": ModelPrice(
-        Decimal("0.05"), Decimal("0.005"), Decimal("0.40"),
+        Decimal("0.05"), Decimal("0.005"), Decimal("0.05"), Decimal("0.40"),
         Decimal("0.025"), Decimal("0.0025"), Decimal("0.20"),
     ),
     "gpt-4.1-mini": ModelPrice(
-        Decimal("0.40"), Decimal("0.10"), Decimal("1.60"),
+        Decimal("0.40"), Decimal("0.10"), Decimal("0.40"), Decimal("1.60"),
         Decimal("0.20"), Decimal("0.05"), Decimal("0.80"),
     ),
     "gpt-5.6-luna": ModelPrice(
-        Decimal("1.00"), Decimal("0.10"), Decimal("6.00"),
-        Decimal("0.50"), Decimal("0.05"), Decimal("3.00"),
+        Decimal("0.20"), Decimal("0.02"), Decimal("0.25"), Decimal("1.20"),
+        Decimal("0.10"), Decimal("0.01"), Decimal("0.60"),
+    ),
+    "gpt-4o-mini": ModelPrice(
+        Decimal("0.15"), Decimal("0.075"), Decimal("0.15"), Decimal("0.60"),
+        Decimal("0.075"), Decimal("0.0375"), Decimal("0.30"),
     ),
 }
 
@@ -178,6 +191,14 @@ class OpenAIModelClient:
         input_rate, _cached_rate, output_rate = self._price(
             requests[0].requested_model_id, track,
         )
+        if track is ExecutionTrack.SYNCHRONOUS:
+            # First-seen prompts bill as cache writes, which can cost more
+            # than plain input (e.g. gpt-5.6-luna); reserve at the higher rate.
+            input_rate = max(
+                input_rate,
+                MODEL_PRICES[requests[0].requested_model_id]
+                .cache_write_input_per_million,
+            )
         # UTF-8 bytes conservatively bound tokens for the full submitted body,
         # including the structured-output schema. A fixed per-request allowance
         # covers provider framing that is not represented in the JSON payload.
@@ -508,14 +529,25 @@ class OpenAIModelClient:
             raise ValueError("provider usage tokens must be non-negative")
         details = _attribute(usage, "input_tokens_details", {}) or {}
         cached_tokens = int(_attribute(details, "cached_tokens", 0) or 0)
-        if cached_tokens < 0 or cached_tokens > input_tokens:
+        cache_write_tokens = int(_attribute(details, "cache_write_tokens", 0) or 0)
+        if cached_tokens < 0 or cache_write_tokens < 0:
+            raise ValueError("provider cached usage tokens are invalid")
+        if cached_tokens + cache_write_tokens > input_tokens:
             raise ValueError("provider cached usage tokens are invalid")
         input_rate, cached_rate, output_rate = self._price(
             request.requested_model_id, track,
         )
+        # Cache writes only occur on the synchronous track; a Batch request
+        # never reports cache_write_tokens, so the batch rates stay a pair.
+        cache_write_rate = (
+            MODEL_PRICES[request.requested_model_id].cache_write_input_per_million
+            if track is ExecutionTrack.SYNCHRONOUS else input_rate
+        )
         cost = (
-            Decimal(input_tokens - cached_tokens) * input_rate / _MILLION
+            Decimal(input_tokens - cached_tokens - cache_write_tokens)
+            * input_rate / _MILLION
             + Decimal(cached_tokens) * cached_rate / _MILLION
+            + Decimal(cache_write_tokens) * cache_write_rate / _MILLION
             + Decimal(output_tokens) * output_rate / _MILLION
         )
         resolved = _attribute(response, "model")
@@ -588,6 +620,54 @@ class OpenAIModelClient:
             raise ValueError("nested output contract requires ICP/persona enrichment")
         if not isinstance(output, dict):
             raise ValueError("structured ICP output must be an object")
+        segment_properties = (
+            request.output_contract.get("properties", {})
+            .get("primary_icp", {})
+            .get("properties", {})
+        )
+        if "outcome" in segment_properties:
+            retained = {item.evidence_id for item in request.dossier.evidence}
+            icp_ids: list[str] = []
+            for component in (
+                output.get("primary_icp"), *output.get("secondary_icps", ()),
+                *output.get("outcomes", ()),
+            ):
+                if not isinstance(component, dict):
+                    raise ValueError("structured ICP component must be an object")
+                ids = component.get("evidence_ids")
+                if not isinstance(ids, list) or not ids or not set(ids) <= retained:
+                    raise ValueError("structured ICP output cites Evidence outside the dossier")
+                icp_ids.extend(ids)
+            persona_ids: list[str] = []
+            for key, id_key in (
+                ("observed_personas", "evidence_ids"),
+                ("inferred_personas", "based_on_evidence_ids"),
+            ):
+                for component in output.get(key, ()):
+                    if not isinstance(component, dict):
+                        raise ValueError("structured persona component must be an object")
+                    ids = component.get(id_key)
+                    if not isinstance(ids, list) or not ids or not set(ids) <= retained:
+                        raise ValueError("structured persona output cites Evidence outside the dossier")
+                    persona_ids.extend(ids)
+            return (
+                (
+                    FieldAssertion(
+                        "icp", {
+                            "primary_icp": output["primary_icp"],
+                            "secondary_icps": output.get("secondary_icps", []),
+                            "outcomes": output.get("outcomes", []),
+                        }, tuple(dict.fromkeys(icp_ids)), 1.0, Visibility.MESSAGE_SAFE,
+                    ),
+                    FieldAssertion(
+                        "personas", {
+                            "observed_personas": output.get("observed_personas", []),
+                            "inferred_personas": output.get("inferred_personas", []),
+                        }, tuple(dict.fromkeys(persona_ids)), 1.0, Visibility.MESSAGE_SAFE,
+                    ),
+                ),
+                (),
+            )
         parsed = parse_icp_output(
             output, {item.evidence_id for item in request.dossier.evidence},
         )

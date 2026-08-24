@@ -165,6 +165,61 @@ When ground truth variables are provided, the build loop gains a measurable accu
 
 This is the key differentiator. Without ground truth, accuracy is "Claude thinks these results look good." With ground truth, accuracy is "the process found 4/5 things we KNOW exist." The latter is what makes a process worth shipping.
 
+## Prompt Output Review Loop
+
+Before building or annealing an LLM prompt, read
+[references/prompt-annealing.md](references/prompt-annealing.md). It defines the
+controlled experiment, negative-boundary design, live validation, reporting,
+and graduation rules.
+
+Use this loop whenever the Research Flow includes an LLM prompt:
+
+1. **Declare the goal output first.** Show the exact structured schema and its
+   human-readable rendering before writing prompt candidates.
+2. **Make one prompt hypothesis.** State what wording or instruction changed
+   and which observed failure it should fix.
+3. **Run fixed development examples.** Send only the candidate prompt, normal
+   inputs, and retained Evidence to the model. Keep ground-truth answers local
+   to the scorer; never include them in provider prompt context.
+4. **Show outputs, not just scores.** Present every resulting output in the
+   declared human-readable format, including secondary outputs and omissions.
+   Then show per-example misses, score delta, and cost.
+5. **Get human feedback.** Pause before the next mutation. Turn the reviewer's
+   concrete reactions into a general prompt rule rather than a company-specific
+   answer.
+6. **Repeat.** Keep the same development set so deltas are comparable. Run the
+   sealed holdout only after selecting the development winner.
+
+### Required iteration handoff
+
+Every loop handoff contains:
+
+- exact prompt change;
+- exact requested and resolved model;
+- prompt word and character count;
+- exact output for every sample;
+- secondary outputs or explicit none;
+- score and delta from the prior iteration;
+- specific failure pattern;
+- cumulative model/source cost;
+- one direct request for reviewer feedback.
+
+An aggregate score without the underlying outputs is not a completed prompt
+iteration.
+
+### Plain-language gate
+
+Research outputs should sound like the intended buyer, not the vendor's product
+marketing. Use conversational language at about an eighth-grade reading level.
+Prefer short, concrete, familiar words. Remove jargon, slogans, acronyms,
+stacked abstractions, and product-category labels unless removing them would
+change the meaning. When Evidence names the target buyer archetype, use that
+label rather than inventing a synonym.
+
+Ask of every field: **Would the intended buyer naturally say this?** If not,
+rewrite it. For example, prefer "automated loan administration" over
+"AI-native workflow orchestration for construction finance enablement."
+
 ---
 
 ## Example Processes (built with this methodology)
@@ -419,6 +474,10 @@ Before calling a process "done":
 - [ ] Ungated platform coverage checked (ZoomInfo, RocketReach, Crunchbase, LinkedIn, Wellfound)
 - [ ] Each step has a `**stop if:**` condition where applicable
 - [ ] "No data found" is explicitly handled as a valid output for T3 companies
+- [ ] Each prompt iteration showed every actual output before the next mutation
+- [ ] Reviewer feedback was converted into a general prompt rule
+- [ ] Ground-truth answers stayed local and were not sent as prompt context
+- [ ] Output passed the plain-language gate and avoids unnecessary jargon
 
 ---
 
