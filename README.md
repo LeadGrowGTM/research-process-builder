@@ -12,7 +12,7 @@ the repo has two layers that share the methodology:
 
 ### layer 1: company enrichment loops (code-graded, per-company signals)
 
-`scripts/company_enrichment/` runs collect -> extract -> ground -> score loops that produce structured, cited signals for a company (news and product launches, competitors, running ads / offer intelligence). each enrichment is specified in `enrichments/p0/*.yaml`, prompted from `prompts/company-enrichment/`, and evaluated against sealed corpora in `benchmarks/`.
+`scripts/company_enrichment/` runs collect -> extract -> ground -> score loops that produce structured, cited signals for a company (news and product launches, competitors, running ads / offer intelligence, ICP/persona). each enrichment is specified in `enrichments/p0/*.yaml`, prompted from `prompts/company-enrichment/`, and evaluated against sealed corpora in `benchmarks/`.
 
 what makes the loop trustworthy:
 
@@ -30,6 +30,7 @@ py scripts/company_enrichment_cli.py --help
 py scripts/company_enrichment_news_loop.py --help
 py scripts/company_enrichment_competitor_loop.py --help
 py scripts/company_enrichment_ads_loop.py --help
+py scripts/company_enrichment_icp_loop.py --help
 ```
 
 ### layer 2: the process factory (portable search-pattern prompts)

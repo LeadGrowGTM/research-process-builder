@@ -26,23 +26,18 @@ from scripts.company_enrichment.contracts import (
 )
 from scripts.company_enrichment.experiment_runner import ExperimentInput, ModelClient
 from scripts.company_enrichment.icp_persona_contracts import (
-    IcpPersonaOutput, parse_icp_output, render_segment,
+    parse_icp_output, render_segment,
 )
 from scripts.company_enrichment.icp_persona_ground_truth import (
     IcpGroundTruthRecord, issue_evaluator_dataset_capability, load_icp_dataset,
     load_icp_dataset_for_evaluator,
 )
 from scripts.company_enrichment.openai_model_client import build_openai_model_client
-from scripts.research_orchestration.artifacts import ArtifactStore
-from scripts.research_orchestration.budgets import BudgetExceeded, BudgetLimits
+from scripts.research_orchestration.budgets import BudgetExceeded
 from scripts.research_orchestration.contracts import (
-    BudgetCharge, CheckerResult, EvaluationResult, Evidence, Experiment,
-    Role, RunRequest, SCHEMA_VERSION,
+    CheckerResult, EvaluationResult, Evidence, Experiment, SCHEMA_VERSION,
 )
 from scripts.research_orchestration.gate import GateInput, decide_gate
-from scripts.research_orchestration.orchestrator import (
-    AutoresearchOrchestrator, RoleRunners,
-)
 
 
 MODEL_ID = os.environ.get("ICP_LOOP_MODEL", "gpt-4.1-mini")
@@ -268,7 +263,6 @@ def score_payload(
                          Decimal("0"), (reason,))
 
     primary = output.primary_icp
-    expected = record.primary_icp
     aliases = record.acceptable_aliases
     components = {
         "buyer": Decimal(_matches(primary.buyer, aliases["primary.buyer"])),
@@ -501,23 +495,6 @@ def _run_attempt(
         return EvaluationResult(SCHEMA_VERSION, not failures, float(mean),
                                 "scored" if not failures else "hard_failure")
 
-    zero = BudgetCharge()
-    roles = RoleRunners(
-        inventor, checker("in_bounds"), checker("novelty"), executor, evaluator,
-        {Role.INVENTOR: zero, Role.IN_BOUNDS_CHECKER: zero,
-         Role.NOVELTY_CHECKER: zero,
-         Role.EXECUTOR: BudgetCharge(calls=1, llm_calls=len(ids), cost=float(estimate)),
-         Role.EVALUATOR: zero},
-    )
-    request = RunRequest(
-        SCHEMA_VERSION, attempt_id, f"ICP/persona {split} prompt attempt",
-        ("cached_dossier_evidence_only", "zero_source_purchases", "sync_only"), {},
-        BudgetLimits(max_calls=1, max_llm_calls=len(ids), max_cost=float(CAP_USD)),
-        .90,
-        execution_inputs={"company_ids": tuple(ids), "dataset_hash": dataset_hash,
-                          "prompt_hash": candidate.prompt_hash, "split": split},
-        rubric="buyer:.25,need:.20,object:.20,citation:.20,persona:.10,readability:.05",
-    )
     executor(None)
     evaluator(None)
     return _read_json(score_path)

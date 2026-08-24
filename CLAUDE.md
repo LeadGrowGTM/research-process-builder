@@ -18,19 +18,21 @@ canonical domain language is [CONTEXT.md](CONTEXT.md): use **Research Flow**,
   planned orchestration seam. `trigger/` is the separately documented scheduled
   pipeline; see [trigger/README.md](trigger/README.md).
 - `scripts/company_enrichment/` is the company-enrichment and signal (news,
-  competitor) collect/evaluate/anneal pipeline: provider adapters under
-  `adapters/` (Serper, Parallel search, the Parallel Task API client, ads
-  platforms), the budget ledger (`budgets.py`), and the CLI (`cli.py`). Thin
-  root-level wrappers (`scripts/company_enrichment_cli.py`,
+  competitor, ICP/persona) collect/evaluate/anneal pipeline: provider adapters
+  under `adapters/` (Serper, Parallel search, the Parallel Task API client,
+  ads platforms), the budget ledger (`budgets.py`), and the CLI (`cli.py`).
+  Thin root-level wrappers (`scripts/company_enrichment_cli.py`,
   `scripts/company_enrichment_news_loop.py`,
   `scripts/company_enrichment_competitor_loop.py`,
-  `scripts/company_enrichment_ads_loop.py`) are the entrypoints. Prompts live
+  `scripts/company_enrichment_ads_loop.py`,
+  `scripts/company_enrichment_icp_loop.py`) are the entrypoints. Prompts live
   in `prompts/company-enrichment/`; benchmark corpora and ground truth live in
   `benchmarks/` (the sealed Serper corpus in `benchmarks/signals/` is
   immutable - see [docs/reports/serper-vs-parallel.md](docs/reports/serper-vs-parallel.md)
   for the Serper-vs-Parallel provider decision and
   [docs/reports/signal-enrichments-anneal.md](docs/reports/signal-enrichments-anneal.md)
-  for the approved-model policy).
+  for the approved-model policy; ICP/persona gate and approval are recorded in
+  [docs/reports/icp-persona-anneal.md](docs/reports/icp-persona-anneal.md)).
 
 ## Verified local commands
 
@@ -45,6 +47,7 @@ py scripts/autoresearch.py --help
 py scripts/company_enrichment_cli.py --help
 py scripts/company_enrichment_news_loop.py --help
 py scripts/company_enrichment_competitor_loop.py --help
+py scripts/company_enrichment_icp_loop.py --help
 py -m pytest tests/test_repository_policy.py -q
 ```
 
