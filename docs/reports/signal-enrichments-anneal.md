@@ -186,3 +186,54 @@ lg run --env prod py <worktree>\scripts\company_enrichment_competitor_loop.py --
 3. When the prompts graduate, fold the winning candidate into
    `prompts/company-enrichment/<enrichment>.md` and retire the candidate
    files (kept for now so lineage prompt hashes stay reproducible).
+
+## Addendum 2026-08-20: repricing and the gpt-4o-mini benchmark
+
+**Repricing.** gpt-5.6-luna list rates dropped to 0.20 in / 0.02 cache read /
+0.25 cache write / 1.20 out per 1M tokens (Mitch, 2026-08-20). `MODEL_PRICES`
+was updated and the client now bills cache-write tokens at the model's write
+rate on the synchronous track (96% of these runs' input tokens were cache
+writes). Costs recorded above for luna lineages were computed at the stale
+1.00/6.00 table and overstate spend ~4.3x; repriced from the run ledgers:
+
+| Lineage | Recorded | At current rates | Per company |
+|---|---|---|---|
+| news-v11-luna | 0.208 | 0.048 | ~0.005 |
+| comp-v11-luna | 0.292 | 0.065 | ~0.006 |
+
+At current rates luna is cheaper per token than gpt-4.1-mini and remains the
+only model clearing the gate.
+
+**gpt-4o-mini benchmark (Mitch, 2026-08-20).** gpt-4o-mini was priced
+(0.15/0.075/0.60) and run on the frozen v3 prompts over the same dossiers;
+it is now a standing benchmark model (the cheap-tier floor of the experiment
+matrix), while the rest of the gpt-4o family stays banned:
+
+| Lineage | Model | Dev | Holdout | Hard failures | Cost |
+|---|---|---|---|---|---|
+| news-v12-4omini | gpt-4o-mini | 0.779 | 0.764 | none | 0.024 |
+| comp-v12-4omini | gpt-4o-mini | 0.804 | 0.879 | none | 0.025 |
+
+Well below the 0.90 gate on both enrichments (news drops to 0.35-0.38 on two
+companies). No hard failures, but not usable for production. It stays priced
+in `MODEL_PRICES` and sits in `EXPERIMENT_MODELS` for benchmarking only
+(matrix now 4 models x 2 tracks); it is not approved for production runs.
+
+**Cost per 1k companies, news + competitors combined, at current rates:**
+luna ~USD 11 synchronous / ~6 batch; gpt-4.1-mini ~17 (below gate);
+gpt-4o-mini ~5 (far below gate). Luna recommendation unchanged and now also
+the near-cheapest option.
+
+## Addendum 2026-08-21: approval and graduation
+
+Mitch approved news-v11-luna and comp-v11-luna as-is (review sheet
+`docs/reports/luna-signals-review-sheet.md`, Decision section). Both
+Experiments are now Approvals. The winning candidates were folded into the
+canonical prompts - `prompts/company-enrichment/news-product-launches.md` is
+now the news-v3-kind-rules text and
+`prompts/company-enrichment/competitor-intelligence.md` the
+comp-v3-category-sanity text - so the baseline loop runs the graduated
+prompts with no --prompt flag. The candidate files moved to
+`archive/2026-08-21-graduated-signal-prompt-candidates/` (content unchanged,
+so lineage prompt hashes remain reproducible). Next steps 1 and 3 above are
+done; step 2 (n-sample median for mini) is moot at current luna pricing.

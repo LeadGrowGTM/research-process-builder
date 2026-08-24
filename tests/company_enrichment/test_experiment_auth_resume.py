@@ -29,5 +29,5 @@ def test_authentication_blocked_resume_does_not_duplicate_attempts(
     resumed = runner.run("company-description", resume=True)
 
     assert journal.read_bytes() == first
-    assert len(first.splitlines()) == 18
+    assert len(first.splitlines()) == 24
     assert resumed.authentication_gap
