@@ -1,4 +1,4 @@
-# ICP/persona anneal: approved at v26-luna
+# ICP/persona anneal: approved at v26-luna, shipping v27-luna
 
 **Date:** 2026-08-24
 **Branch:** `wt/icp-persona-loop` (worktree `.worktrees/icp-persona-loop`)
