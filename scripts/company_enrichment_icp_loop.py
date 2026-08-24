@@ -56,6 +56,10 @@ _WEIGHTS = {
     "grammar": Decimal(".20"), "citation": Decimal(".20"),
     "buyer": Decimal(".10"), "plain_language": Decimal(".05"),
 }
+_LEGACY_WEIGHTS = {
+    "buyer": Decimal(".15"), "need": Decimal(".15"), "object": Decimal(".15"),
+    "citation": Decimal(".20"), "persona": Decimal(".20"), "readability": Decimal(".15"),
+}
 
 
 @dataclass(frozen=True, slots=True)
@@ -258,7 +262,7 @@ def score_payload(
             "evidence_outside_retained_dossier"
             if "retained Evidence" in str(error) else "contract_invalid"
         )
-        return CaseScore(record.company_id, {key: Decimal("0") for key in _WEIGHTS},
+        return CaseScore(record.company_id, {key: Decimal("0") for key in _LEGACY_WEIGHTS},
                          Decimal("0"), (reason,))
 
     primary = output.primary_icp
@@ -307,7 +311,7 @@ def score_payload(
         failures.append("unsupported_observed_persona")
     if any(_tokens(item.role) not in expected_inferred for item in output.inferred_personas):
         failures.append("unsupported_inferred_persona")
-    score = sum((_WEIGHTS[key] * components[key] for key in _WEIGHTS), Decimal("0"))
+    score = sum((_LEGACY_WEIGHTS[key] * components[key] for key in _LEGACY_WEIGHTS), Decimal("0"))
     if failures:
         score = Decimal("0")
     return CaseScore(record.company_id, components, score, tuple(dict.fromkeys(failures)))
