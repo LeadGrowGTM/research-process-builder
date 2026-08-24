@@ -1,103 +1,60 @@
 # ICP and persona analysis
 
-Return a structured ICP and persona analysis using only the supplied Evidence.
-Every factual component must cite one or more supplied `evidence_id` values.
-Do not use general knowledge, stereotypes, or plausible guesses to fill gaps.
+## Goal
 
-## ICP segments
+Define who this company TARGETS and the single biggest OUTCOME its target BUYER
+NEEDS based on the main problem the company solves.
+Use only supplied Evidence and cite every claim.
+Follow the process silently and return only the schema output.
 
-Each segment has exactly three meaningfully distinct components:
+## Required sentence
+Write one primary ICP as:
+`{buyer} {relationship} {outcome}`
+Choose exactly one relationship:
+- `looking for`
+- `who need`
+- `in the market for`
 
-- `buyer`: the specific customer group supported by Evidence;
-- `need`: the job or problem that group needs addressed;
-- `object`: the concrete workflow, asset, or use case the need applies to.
+## Process
 
-The deterministic human-readable form is:
+1. Find the single main buyer problem stated or clearly supported by Evidence.
+2. Choose the one buyer archetype most directly affected by that problem.
+3. Translate the problem into the one concrete result that buyer wants.
+4. Choose the relationship only after drafting the buyer and outcome.
+5. Read the sentence aloud. If any rule fails, return to Step 1.
 
-`{buyer} that need {need} for {object}`
+## Buyer rules
 
-Keep outcomes separate from the segment. An outcome explains why the buyer
-cares, but it is not a substitute for a specific buyer, need, or object.
+- Use one plural company, team, or persona archetype.
+- Prefer the company or team type explicitly named by the target.
+- Use one named persona only when the company type is vague or unhelpful.
+- Keep the buyer to one to four words when possible.
 
-Return exactly one primary ICP. Return zero, one, or two secondary ICPs. A
-secondary ICP is valid only when the Evidence explicitly supports both a
-distinct buyer group and its use case. A product capability alone does not
-support a secondary segment. Never fill the secondary list merely to reach two.
+## Outcome rules
 
-## Outcomes
+- State one result or improved state rather than the product being purchased.
+- Use one natural noun phrase containing two to five words.
+- Use the buyer's plain language rather than the vendor's marketing language.
+- Use at most one descriptive modifier before the outcome's main noun.
 
-Return outcomes only when the Evidence explicitly states or directly supports
-them. Cite each outcome independently. Do not fold outcome language such as
-"grow revenue" or "save time" into the deterministic segment sentence.
+## Never do this
 
-## Personas
+- Never use a comma or the word `and` anywhere in the rendered sentence.
+- Never list or combine multiple buyers.
+- Never combine multiple outcomes.
+- Never begin the outcome with a bare verb such as save, know, prove, or prevent.
+- Never begin the outcome with a verb ending in `-ing`.
+- Never name a product, platform, workspace, workflow, feature, or solution.
+- Never use vendor jargon or stack synonyms such as resilient plus exception-resistant.
+- Never repeat a buyer word inside the outcome.
+- Never copy a grammar-check phrase such as `They need` into the output.
+- Compare each secondary buyer to the primary and delete it when they are the same.
 
-Use `observed_personas` only for roles directly named or unambiguously observed
-in the Evidence, and cite that direct Evidence with `evidence_ids`.
+## Examples
 
-Use `inferred_personas` only for a role inferred from an evidence-backed segment
-or responsibility. Keep it explicitly in the inferred collection and cite the
-Evidence supporting the inference with `based_on_evidence_ids`. Never present an
-inferred role as observed.
-
-## Missing support
-
-Omit unsupported optional items by returning an empty collection. Empty
-secondary, outcome, observed-persona, or inferred-persona collections are
-correct when Evidence is insufficient. Do not invent specificity. If Evidence
-cannot support the required primary buyer, need, and object, do not substitute a
-generic buyer or capability.
-
-## Complete good example
-
-```json
-{
-  "primary_icp": {
-    "buyer": "Marketing agencies",
-    "need": "automated reporting",
-    "object": "multi-channel client campaigns",
-    "evidence_ids": ["evidence-001"]
-  },
-  "secondary_icps": [
-    {
-      "buyer": "SEO agencies",
-      "need": "automated reporting",
-      "object": "organic-search performance across client accounts",
-      "evidence_ids": ["evidence-002"]
-    }
-  ],
-  "outcomes": [
-    {
-      "text": "save reporting time",
-      "evidence_ids": ["evidence-001"]
-    }
-  ],
-  "observed_personas": [
-    {
-      "role": "Agency owner",
-      "evidence_ids": ["evidence-003"]
-    }
-  ],
-  "inferred_personas": [
-    {
-      "role": "Client reporting lead",
-      "based_on_evidence_ids": ["evidence-001", "evidence-002"]
-    }
-  ]
-}
-```
-
-The primary segment renders exactly as: `Marketing agencies that need automated
-reporting for multi-channel client campaigns`.
-
-## Bad examples
-
-- Generic buyer: `Businesses that need efficiency for growth`. "Businesses" is
-  not a specific evidence-backed buyer, and the need and object are vague.
-- Unsupported secondary: adding "Enterprise sales teams" because the product
-  has dashboards, when no Evidence names that buyer and use case.
-- Unlabeled inference: placing "Client reporting lead" in
-  `observed_personas` when no Evidence directly names that role. It must remain
-  in `inferred_personas` with `based_on_evidence_ids`, or be omitted.
-
-Return only the structured output required by the supplied schema.
+Priority: `Manufacturers looking for high-velocity product development`
+Wrong: `Executives and architecture teams looking for Operational AI governance`
+Right: `Enterprise IT teams looking for reliable AI operations`
+Wrong: `Marketers who need know what marketing works`
+Right: `Marketers who need clear campaign performance`
+Add a secondary only when Evidence names a genuinely different buyer with a genuinely different outcome. Otherwise return none.

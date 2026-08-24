@@ -59,3 +59,35 @@ at **>= 90%**, followed by explicit human review. Treat the programmed result as
 evidence, not automatic promotion: a reviewer must check source attribution,
 scope, safety, and intended destination before approving a reusable Research
 Flow or scheduled change.
+
+## Prompt improvement review loop
+
+Use [references/prompt-annealing.md](references/prompt-annealing.md) as the
+canonical prompt-building and annealing procedure.
+
+Prompt work is an output-review loop, not an infrastructure project. Before the
+first run, state the exact goal output and show its human-readable shape.
+
+For every iteration:
+
+1. Change the prompt for one explicit hypothesis.
+2. Run the same fixed development examples using only their normal inputs and
+   Evidence. Ground-truth answers remain local to the scorer and are never sent
+   to the model as prompt context.
+3. Show the human reviewer the exact prompt change and every resulting output,
+   rendered in the goal-output format. Do not report only an aggregate score.
+4. Show the exact requested and resolved model, prompt word/character count,
+   secondary outputs, omissions, per-example misses, score delta, and cost.
+5. Pause for reviewer feedback. Convert that feedback into a general prompt
+   rule, then run the next iteration.
+
+Keep the holdout sealed while choosing prompt variants. Use it only after a
+development winner is selected. An iteration is not complete until the reviewer
+has seen the actual outputs.
+
+Prefer conversational buyer language at about an eighth-grade reading level.
+Remove jargon, product-category slogans, acronyms, and abstract phrases unless
+they are necessary to preserve meaning and are used by the intended buyer. If
+the Evidence names the target buyer archetype, reuse that label rather than
+inventing a synonym. A useful check is: "Would the buyer naturally say this?"
+If not, rewrite it in short, concrete words.

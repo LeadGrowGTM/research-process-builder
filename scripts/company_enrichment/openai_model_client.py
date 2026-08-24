@@ -543,6 +543,54 @@ class OpenAIModelClient:
             raise ValueError("nested output contract requires ICP/persona enrichment")
         if not isinstance(output, dict):
             raise ValueError("structured ICP output must be an object")
+        segment_properties = (
+            request.output_contract.get("properties", {})
+            .get("primary_icp", {})
+            .get("properties", {})
+        )
+        if "outcome" in segment_properties:
+            retained = {item.evidence_id for item in request.dossier.evidence}
+            icp_ids: list[str] = []
+            for component in (
+                output.get("primary_icp"), *output.get("secondary_icps", ()),
+                *output.get("outcomes", ()),
+            ):
+                if not isinstance(component, dict):
+                    raise ValueError("structured ICP component must be an object")
+                ids = component.get("evidence_ids")
+                if not isinstance(ids, list) or not ids or not set(ids) <= retained:
+                    raise ValueError("structured ICP output cites Evidence outside the dossier")
+                icp_ids.extend(ids)
+            persona_ids: list[str] = []
+            for key, id_key in (
+                ("observed_personas", "evidence_ids"),
+                ("inferred_personas", "based_on_evidence_ids"),
+            ):
+                for component in output.get(key, ()):
+                    if not isinstance(component, dict):
+                        raise ValueError("structured persona component must be an object")
+                    ids = component.get(id_key)
+                    if not isinstance(ids, list) or not ids or not set(ids) <= retained:
+                        raise ValueError("structured persona output cites Evidence outside the dossier")
+                    persona_ids.extend(ids)
+            return (
+                (
+                    FieldAssertion(
+                        "icp", {
+                            "primary_icp": output["primary_icp"],
+                            "secondary_icps": output.get("secondary_icps", []),
+                            "outcomes": output.get("outcomes", []),
+                        }, tuple(dict.fromkeys(icp_ids)), 1.0, Visibility.MESSAGE_SAFE,
+                    ),
+                    FieldAssertion(
+                        "personas", {
+                            "observed_personas": output.get("observed_personas", []),
+                            "inferred_personas": output.get("inferred_personas", []),
+                        }, tuple(dict.fromkeys(persona_ids)), 1.0, Visibility.MESSAGE_SAFE,
+                    ),
+                ),
+                (),
+            )
         parsed = parse_icp_output(
             output, {item.evidence_id for item in request.dossier.evidence},
         )
