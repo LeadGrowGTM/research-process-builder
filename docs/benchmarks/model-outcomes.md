@@ -1,6 +1,7 @@
 # Model outcomes across enrichments
 
-**Updated:** 2026-08-25. Consolidated view of every model tried per
+**Updated:** 2026-08-25 (luna rerun for description/growth; both benchmarks
+found invalid - see their sections). Consolidated view of every model tried per
 enrichment and where it landed. Detail lives in the per-track reports linked
 below; this page is the summary of record. Scores are dev / holdout mean
 against ground truth (gate >= 0.90 on both, plus human review) unless marked
@@ -57,26 +58,50 @@ so no luna attempt was needed.
 | gpt-5.6-luna | **accepted 2026-08-25 at v6-luna (prompt 0.5.0); production.** ~USD 0.0012/company |
 | gpt-4.1-mini | v1/v2 output rejected on review: generic, internal-state phrasing; Mitch switched to luna at v3 |
 
-### company-description - experiment, below gate
+### company-description - benchmark invalid, do not compare models on it
 
 | Model | Score | Outcome |
 |---|---|---|
-| gpt-4.1-mini | 0.774 | Experiment; below gate (company-corpus live matrix, docs/reports/company-corpus-live-run.md) |
-| gpt-5.6-luna | not yet run | queued: the obvious cheap retry given the ICP result |
+| 4-model matrix aggregate | 0.774 | case-weighted across all 4 models x 2 tracks (company-corpus live matrix, docs/reports/company-corpus-live-run.md) - NOT a per-model score |
+| gpt-5.6-luna | 0.75 | luna-only rerun 2026-08-25 (`--model` flag), USD 0.0037; correctness 0.0 on all 6 cases, citations perfect |
 
-### growth-signals - experiment, below gate
+The 2026-08-25 luna rerun exposed why this track cannot clear the gate:
+`_correctness` in `scripts/company_enrichment/benchmark.py` requires an exact
+canonical-JSON string match between the model's free-text value and the
+dossier assertion. A paraphrase scores 0; only verbatim copying of dossier
+text scores. The score measures parroting, not description quality. Ceiling
+without verbatim copying is 0.75 (the three citation dimensions).
+**Do not anneal or compare models against this gate until the track gets a
+semantic scorer and real ground truth like the ICP loop had.**
+
+### growth-signals - benchmark invalid, do not compare models on it
 
 | Model | Score | Outcome |
 |---|---|---|
-| gpt-4.1-mini | 0.719 | Experiment; below gate (company-corpus live matrix) |
-| gpt-5.6-luna | not yet run | queued: same luna retry |
+| 4-model matrix aggregate | 0.719 | case-weighted across all 4 models x 2 tracks - NOT a per-model score |
+| gpt-5.6-luna | 0.50 | luna-only rerun 2026-08-25, USD 0.0027 |
+
+Worse than description: all three fixed dossiers (saas-01/04/07) list
+`growth` under `unknowns` - there is **zero growth ground truth** in the
+corpus. A model that asserts growth (wrong per GT) still scores 0.75 through
+the citation dimensions; a model that correctly answers `unknown` scores
+**0.0** because an assertion-free output zeroes every citation dimension.
+Luna's 0.50 reflects that it answered `unknown` for saas-07 (the correct
+answer) and was punished for it. The gate is inverted on this corpus.
+**Needs growth ground truth (dated, observable signals) before any model
+work.** The deterministic page-signals check (careers/blog presence) is the
+first source of real observable hiring/growth evidence for that GT.
 
 ## Pattern
 
-Every enrichment that stalled just under the gate on gpt-4.1-mini cleared it
-on gpt-5.6-luna with the same or near-same prompt (news 0.887 -> 0.974, comp
-0.885 -> 0.933, ICP 0.808 -> 1.00). At current rates luna is also the
-near-cheapest option: news + competitors combined ~USD 11/1k companies
-synchronous, ~6/1k batch; ICP ~1.4/1k; buying-trigger ~1.2/1k. gpt-5-nano has
-never come close to a gate (0.61-0.74) and produced hard failures on two of
-three scored tracks; it stays a pricing floor, not a candidate.
+Every enrichment with a **valid semantic scorer** that stalled just under the
+gate on gpt-4.1-mini cleared it on gpt-5.6-luna with the same or near-same
+prompt (news 0.887 -> 0.974, comp 0.885 -> 0.933, ICP 0.808 -> 1.00). At
+current rates luna is also the near-cheapest option: news + competitors
+combined ~USD 11/1k companies synchronous, ~6/1k batch; ICP ~1.4/1k;
+buying-trigger ~1.2/1k. gpt-5-nano has never come close to a gate (0.61-0.74)
+and produced hard failures on two of three scored tracks; it stays a pricing
+floor, not a candidate. company-description and growth-signals are excluded
+from the pattern: their benchmark is exact-string matching against dossier
+text (and for growth, no GT at all), so their sub-gate scores say nothing
+about any model.
