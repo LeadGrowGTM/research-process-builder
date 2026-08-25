@@ -1,6 +1,6 @@
 ---
 name: buying-trigger-analysis
-version: 0.3.0
+version: 0.4.0
 target_model: gpt-5.6-luna
 temperature: 0.2
 max_tokens: 700
@@ -28,7 +28,7 @@ goal_output:
     fallback_accuracy: 1.0
     semantic_accuracy: 0.9
 provisional: true
-provisional_reason: Third candidate; examples moved off benchmark companies after v3 parroting.
+provisional_reason: Fourth candidate; requires a specific buyer archetype in every signal.
 ---
 
 # Public buying signal analysis
@@ -59,7 +59,9 @@ changes acquisitions certifications location openings or product launches.
 
 - Return one assertion for campaign_idea_1 and one for campaign_idea_2.
 - Each value must name one public signal in 12 words or fewer.
-- Start with the buyer archetype when it improves clarity.
+- Start every signal with the specific buyer archetype from the Evidence.
+- Never use a bare generic buyer such as companies businesses organizations or
+  enterprises without a qualifier that narrows it to this offer's buyer.
 - Make the two signals meaningfully different rather than paraphrases.
 - Describe an observable event action posting page or announcement.
 - Use conversational language at an eighth-grade reading level.
@@ -81,5 +83,6 @@ Good: Freight carriers posting fleet maintenance roles
 Good: Retailers announcing expansion into new regions
 Bad: Restaurant groups struggling with payroll complexity
 Bad: Businesses undergoing digital transformation
+Bad: Companies announcing acquisitions
 
 Return only the requested structured output.
