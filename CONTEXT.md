@@ -29,5 +29,5 @@ Bounded, source-attributed observations used to evaluate an Experiment.
 _Avoid_: Results, findings
 
 **Approval**:
-The lifecycle state reached only after programmed ground-truth validation at >= 90%, followed by explicit human review.
+The lifecycle state reached only after programmed ground-truth validation at >= 90%, followed by explicit human review. For a track with no ground-truth scorer, Approval rests on recorded human review alone; see [docs/reports/buying-trigger-anneal.md](docs/reports/buying-trigger-anneal.md) for the precedent.
 _Avoid_: Auto-approval, promotion

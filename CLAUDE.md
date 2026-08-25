@@ -33,6 +33,10 @@ canonical domain language is [CONTEXT.md](CONTEXT.md): use **Research Flow**,
   [docs/reports/signal-enrichments-anneal.md](docs/reports/signal-enrichments-anneal.md)
   for the approved-model policy; ICP/persona gate and approval are recorded in
   [docs/reports/icp-persona-anneal.md](docs/reports/icp-persona-anneal.md)).
+  `scripts/company_enrichment_buying_trigger_loop.py` is a separate,
+  human-judged loop (no ground-truth scorer) over cached dossiers in
+  `benchmarks/dossiers/`; see
+  [docs/reports/buying-trigger-anneal.md](docs/reports/buying-trigger-anneal.md).
 
 ## Verified local commands
 
@@ -48,6 +52,7 @@ py scripts/company_enrichment_cli.py --help
 py scripts/company_enrichment_news_loop.py --help
 py scripts/company_enrichment_competitor_loop.py --help
 py scripts/company_enrichment_icp_loop.py --help
+py scripts/company_enrichment_buying_trigger_loop.py --help
 py -m pytest tests/test_repository_policy.py -q
 ```
 
@@ -78,7 +83,9 @@ An Experiment becomes an Approval only after programmed ground-truth validation
 at **>= 90%**, followed by explicit human review. Treat the programmed result as
 evidence, not automatic promotion: a reviewer must check source attribution,
 scope, safety, and intended destination before approving a reusable Research
-Flow or scheduled change.
+Flow or scheduled change. A track with no ground-truth scorer is the
+documented exception - Approval then rests on recorded human review alone; see
+[CONTEXT.md](CONTEXT.md) and [docs/reports/buying-trigger-anneal.md](docs/reports/buying-trigger-anneal.md).
 
 ## Prompt improvement review loop
 
