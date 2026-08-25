@@ -1,6 +1,6 @@
 ---
 name: buying-trigger-analysis
-version: 0.4.0
+version: 0.5.0
 target_model: gpt-5.6-luna
 temperature: 0.2
 max_tokens: 700
@@ -27,8 +27,8 @@ goal_output:
     typed_schema_accuracy: 1.0
     fallback_accuracy: 1.0
     semantic_accuracy: 0.9
-provisional: true
-provisional_reason: Fourth candidate; requires a specific buyer archetype in every signal.
+provisional: false
+provisional_reason: Accepted by Mitch 2026-08-25 at buying-trigger-live-v6-luna; see docs/reports/buying-trigger-anneal.md.
 ---
 
 # Public buying signal analysis
@@ -59,7 +59,10 @@ changes acquisitions certifications location openings or product launches.
 
 - Return one assertion for campaign_idea_1 and one for campaign_idea_2.
 - Each value must name one public signal in 12 words or fewer.
-- Start every signal with the specific buyer archetype from the Evidence.
+- Start every signal with the actor who produces the observable event. When
+  that actor is the buyer use the specific buyer archetype from the Evidence.
+  When a different actor produces the event name that actor instead of the
+  buyer.
 - Never use a bare generic buyer such as companies businesses organizations or
   enterprises without a qualifier that narrows it to this offer's buyer.
 - Make the two signals meaningfully different rather than paraphrases.
