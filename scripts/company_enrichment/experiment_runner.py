@@ -150,9 +150,22 @@ class ExperimentRunner:
         benchmark_runner: BenchmarkRunner,
         as_of: datetime,
         fault_hook=None,
+        models: Sequence[str] = EXPERIMENT_MODELS,
     ) -> None:
         if as_of.tzinfo is None:
             raise ValueError("as_of must include a timezone")
+        selected = tuple(models)
+        if not selected:
+            raise ValueError("experiment requires at least one model")
+        if len(set(selected)) != len(selected):
+            raise ValueError("experiment model selection contains duplicates")
+        unknown = set(selected) - set(EXPERIMENT_MODELS)
+        if unknown:
+            raise ValueError(
+                "experiment model selection outside the approved matrix: "
+                + ", ".join(sorted(unknown))
+            )
+        self._models = selected
         self._root = Path(artifact_root)
         self._dossiers = dict(dossiers)
         self._client = model_client
@@ -179,7 +192,7 @@ class ExperimentRunner:
         prior = self._read_outcomes(journal)
         expected_keys = tuple(
             self._case_key(enrichment_id, model, track, company_id)
-            for model in EXPERIMENT_MODELS
+            for model in self._models
             for track in EXPERIMENT_TRACKS
             for company_id in FIXED_SAAS_CORE
         )
@@ -243,7 +256,7 @@ class ExperimentRunner:
                 )
                 for company_id in FIXED_SAAS_CORE
             ))
-            for model in EXPERIMENT_MODELS for track in EXPERIMENT_TRACKS
+            for model in self._models for track in EXPERIMENT_TRACKS
             if group_needs_work(model, track)
         )
         grouped = tuple(item for item in grouped if item[2])
@@ -595,15 +608,14 @@ class ExperimentRunner:
             return {"mean_quality_score": float(direct)}
         raise ValueError("benchmark report cannot be serialized for gate evidence")
 
-    @classmethod
     def _aggregate_gate(
-        cls, experiment_dir: Path, enrichment_id: str,
+        self, experiment_dir: Path, enrichment_id: str,
     ) -> tuple[float | None, str | None]:
         entries = []
-        for model in EXPERIMENT_MODELS:
+        for model in self._models:
             for track in EXPERIMENT_TRACKS:
                 group_id = f"{enrichment_id}--{model}--{track.value}"
-                transaction = cls._read_transaction(
+                transaction = self._read_transaction(
                     experiment_dir / "transactions" / f"{group_id}.json"
                 )
                 if transaction is None or transaction["state"] != "completed":
@@ -648,7 +660,7 @@ class ExperimentRunner:
             if path.read_text(encoding="utf-8") != material:
                 raise ValueError("aggregate programmed gate manifest mismatch")
         else:
-            cls._write_transaction(path, manifest)
+            self._write_transaction(path, manifest)
         return score, str(path)
 
     def _failure_case(

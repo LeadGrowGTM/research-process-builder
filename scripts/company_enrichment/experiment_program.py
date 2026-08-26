@@ -17,6 +17,8 @@ from .cli import _rehydrate_dossier
 from .contracts import ReviewStatus, canonical_json
 from .experiment_runner import (
     EXPERIMENT_ENRICHMENTS,
+    EXPERIMENT_MODELS,
+    EXPERIMENT_TRACKS,
     FIXED_SAAS_CORE,
     ExperimentRunner,
     ExperimentSummary,
@@ -46,12 +48,14 @@ class ExperimentProgram:
         model_client: ModelClient | None,
         as_of: datetime,
         runner_factory: Callable[..., ExperimentRunner] = ExperimentRunner,
+        models: Sequence[str] = EXPERIMENT_MODELS,
     ) -> None:
         self._root = Path(artifact_root)
         self._dossier_root = Path(dossier_root)
         self._model_client = model_client
         self._as_of = as_of
         self._runner_factory = runner_factory
+        self._models = tuple(models)
 
     def run(
         self, enrichment_id: str, *, allow_paid: bool = False,
@@ -78,20 +82,26 @@ class ExperimentProgram:
             model_client=self._model_client,
             benchmark_runner=BenchmarkRunner(self._root),
             as_of=self._as_of,
+            models=self._models,
         )
         summary = runner.run(
             enrichment_id, allow_paid=allow_paid, resume=resume,
         )
+        expected_cases = (
+            len(self._models) * len(EXPERIMENT_TRACKS) * len(FIXED_SAAS_CORE)
+        )
+        expected_groups = len(self._models) * len(EXPERIMENT_TRACKS)
         if (
             summary.status == ReviewStatus.CANDIDATE.value
             and history.status is ReviewStatus.EXPERIMENT
             and summary.programmed_gate_score is not None
             and summary.programmed_gate_score >= summary.gate_threshold
             and summary.programmed_gate_score >= 0.90
-            and len(summary.blind_outputs) == summary.completed_cases == 24
+            and len(summary.blind_outputs) == summary.completed_cases
+            == expected_cases
             and len({
                 str(item.get("output_id")) for item in summary.blind_outputs
-            }) == 24
+            }) == expected_cases
         ):
             gate_path = summary.gate_artifact_path
             if not gate_path:
@@ -106,7 +116,7 @@ class ExperimentProgram:
                 != summary.programmed_gate_score
                 or gate_manifest.get("case_count") != summary.completed_cases
                 or not isinstance(groups, list)
-                or len(groups) != 8
+                or len(groups) != expected_groups
                 or any(
                     not isinstance(item.get("report_path"), str)
                     or not isinstance(item.get("report_hash"), str)
@@ -255,6 +265,13 @@ def main(
         "--allow-paid", action="store_true",
         help="Allow model API spend within the immutable USD 1 cap per enrichment.",
     )
+    parser.add_argument(
+        "--model", action="append", choices=EXPERIMENT_MODELS, dest="models",
+        help=(
+            "Restrict the matrix to this model (repeatable). "
+            "Default: every approved experiment model."
+        ),
+    )
     args = parser.parse_args(argv)
     enrichments = (
         EXPERIMENT_ENRICHMENTS if args.enrichment == "all"
@@ -274,6 +291,7 @@ def main(
         dossier_root=args.dossier_root,
         model_client=model_client,
         as_of=datetime(2026, 8, 12, 23, 59, 59, tzinfo=timezone.utc),
+        models=tuple(args.models) if args.models else EXPERIMENT_MODELS,
     )
     results = tuple(
         program.run(

@@ -37,6 +37,10 @@ canonical domain language is [CONTEXT.md](CONTEXT.md): use **Research Flow**,
   human-judged loop (no ground-truth scorer) over cached dossiers in
   `benchmarks/dossiers/`; see
   [docs/reports/buying-trigger-anneal.md](docs/reports/buying-trigger-anneal.md).
+  `scripts/company_enrichment_page_signals.py` is a deterministic, free
+  HTTP check (no model) for careers/blog page presence per company domain;
+  per-model outcomes across all enrichments are summarized in
+  [docs/benchmarks/model-outcomes.md](docs/benchmarks/model-outcomes.md).
 
 ## Verified local commands
 
@@ -53,6 +57,7 @@ py scripts/company_enrichment_news_loop.py --help
 py scripts/company_enrichment_competitor_loop.py --help
 py scripts/company_enrichment_icp_loop.py --help
 py scripts/company_enrichment_buying_trigger_loop.py --help
+py scripts/company_enrichment_page_signals.py --help
 py -m pytest tests/test_repository_policy.py -q
 ```
 
