@@ -1,7 +1,7 @@
 ---
 name: buying-trigger-analysis
-version: 0.2.0
-target_model: gpt-4.1-mini
+version: 0.5.0
+target_model: gpt-5.6-luna
 temperature: 0.2
 max_tokens: 700
 input_schema:
@@ -18,17 +18,17 @@ goal_output:
     Put an unsupported output field in unknowns rather than inventing a second
     public signal.
   good_output_example:
-    campaign_idea_1: Marketing agencies hiring client reporting specialists
-    campaign_idea_2: Marketing agencies launching new channel services
+    campaign_idea_1: Restaurant groups posting payroll manager roles
+    campaign_idea_2: Restaurant groups announcing new location openings
   unacceptable_output_example:
-    campaign_idea_1: Marketing agencies struggling with reporting capacity
-    campaign_idea_2: Marketing agencies needing better efficiency
+    campaign_idea_1: Restaurant groups struggling with payroll complexity
+    campaign_idea_2: Restaurant groups needing better efficiency
   acceptance_gates:
     typed_schema_accuracy: 1.0
     fallback_accuracy: 1.0
     semantic_accuracy: 0.9
-provisional: true
-provisional_reason: Second candidate in human-guided prompt annealing.
+provisional: false
+provisional_reason: Accepted by Mitch 2026-08-25 at buying-trigger-live-v6-luna; see docs/reports/buying-trigger-anneal.md.
 ---
 
 # Public buying signal analysis
@@ -59,7 +59,12 @@ changes acquisitions certifications location openings or product launches.
 
 - Return one assertion for campaign_idea_1 and one for campaign_idea_2.
 - Each value must name one public signal in 12 words or fewer.
-- Start with the buyer archetype when it improves clarity.
+- Start every signal with the actor who produces the observable event. When
+  that actor is the buyer use the specific buyer archetype from the Evidence.
+  When a different actor produces the event name that actor instead of the
+  buyer.
+- Never use a bare generic buyer such as companies businesses organizations or
+  enterprises without a qualifier that narrows it to this offer's buyer.
 - Make the two signals meaningfully different rather than paraphrases.
 - Describe an observable event action posting page or announcement.
 - Use conversational language at an eighth-grade reading level.
@@ -75,11 +80,12 @@ changes acquisitions certifications location openings or product launches.
 
 ## Examples
 
-Good: Marketing agencies hiring client reporting specialists
-Good: Marketing agencies launching new channel services
-Good: Manufacturers posting more cost engineering roles
-Good: Lenders announcing expansion into construction loans
-Bad: Marketing agencies struggling with reporting capacity
+Good: Restaurant groups posting payroll manager roles
+Good: Clinics announcing new patient scheduling systems
+Good: Freight carriers posting fleet maintenance roles
+Good: Retailers announcing expansion into new regions
+Bad: Restaurant groups struggling with payroll complexity
 Bad: Businesses undergoing digital transformation
+Bad: Companies announcing acquisitions
 
 Return only the requested structured output.

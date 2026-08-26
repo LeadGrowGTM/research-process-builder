@@ -6,7 +6,7 @@
 
 build validated web research through self-annealing loops. take a research goal, generate an approach, test it against real companies with sealed ground truth, score it deterministically, and iterate until it clears 90%+ - then a human reviews before anything is reused.
 
-**an Experiment becomes an Approval only after programmed validation at >= 90% AND explicit human review.** that gate applies to everything here.
+**an Experiment becomes an Approval only after programmed validation at >= 90% AND explicit human review.** that gate applies to everything here, except a track with no ground-truth scorer, where Approval rests on recorded human review alone (see [CONTEXT.md](CONTEXT.md)).
 
 the repo has two layers that share the methodology:
 
