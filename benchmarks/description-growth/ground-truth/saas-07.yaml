@@ -1,0 +1,45 @@
+company_id: saas-07
+as_of: '2026-08-25'
+description:
+  identity:
+    canonical: Betterworks
+    aliases: [Betterworks]
+    evidence_ids: [ev-dcc1a8c71d39505e, ev-48db0e5bbd86695c, ev-f2fb791a6cc68dcb]
+  offering:
+    canonical: performance management software
+    aliases: [performance management software, performance management platform,
+              employee performance management, continuous performance management,
+              performance intelligence solution, performance intelligence platform,
+              performance management and talent intelligence]
+    evidence_ids: [ev-dcc1a8c71d39505e, ev-48db0e5bbd86695c, ev-f2fb791a6cc68dcb]
+  audience:
+    canonical: HR and business leaders
+    aliases: [HR and business leaders, HR leaders, HR teams,
+              large and fast-growing organizations, enterprises]
+    evidence_ids: [ev-dcc1a8c71d39505e, ev-48db0e5bbd86695c]
+growth:
+  verdict: growth_signals
+  signals:
+    - kind: headcount
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-48db0e5bbd86695c]
+      quote: View all 224 employees
+    - kind: hiring
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-48db0e5bbd86695c]
+      quote: See jobs
+    - kind: hiring
+      source: page-signals-v1
+      observed_at: 2026-08-25
+      url: https://www.betterworks.com/careers
+    - kind: publishing
+      source: page-signals-v1
+      observed_at: 2026-08-25
+      url: https://www.betterworks.com/magazine
+    - kind: founded
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-48db0e5bbd86695c]
+      quote: Founded 2013

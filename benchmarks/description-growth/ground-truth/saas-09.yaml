@@ -1,0 +1,45 @@
+company_id: saas-09
+as_of: '2026-08-25'
+description:
+  identity:
+    canonical: Bitly
+    aliases: [Bitly]
+    evidence_ids: [ev-3702f99a90ca9db0, ev-772f852d326ccc26, ev-b424ca67d485f53b]
+  offering:
+    canonical: link and QR Code management platform
+    aliases: [link and QR Code management platform, link management platform,
+              link management and analytics, URL shortener,
+              branded links and QR Codes, connections platform]
+    evidence_ids: [ev-3702f99a90ca9db0, ev-772f852d326ccc26, ev-b424ca67d485f53b]
+  audience:
+    canonical: businesses of all sizes
+    aliases: [businesses of all sizes, marketers, marketing teams, brands,
+              global enterprises to growing businesses, businesses]
+    evidence_ids: [ev-3702f99a90ca9db0, ev-772f852d326ccc26]
+growth:
+  verdict: growth_signals
+  signals:
+    - kind: headcount
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-772f852d326ccc26]
+      quote: Discover all 338 employees
+    - kind: customer_scale
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-772f852d326ccc26]
+      quote: More than 3M customers rely on Bitly to connect with their audiences
+    - kind: customer_scale
+      source: dossier
+      observed_at: 2022-12-31
+      evidence_ids: [ev-b424ca67d485f53b]
+      quote: Bitly Wraps 2022 Surpassing $100M in ARR and 500,000+ Global Customers
+    - kind: funding
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-b424ca67d485f53b]
+      quote: Bitly sells a majority stake to Spectrum Equity for $63M
+    - kind: publishing
+      source: page-signals-v1
+      observed_at: 2026-08-25
+      url: https://bitly.com/blog/

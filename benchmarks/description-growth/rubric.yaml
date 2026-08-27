@@ -1,0 +1,14 @@
+description:
+  weights:
+    identity: 0.25
+    offering: 0.25
+    audience: 0.20
+    citation: 0.20
+    readability: 0.10
+  threshold: 0.90
+growth:
+  weights:
+    verdict: 0.45
+    signals: 0.35
+    citation: 0.20
+  threshold: 0.90

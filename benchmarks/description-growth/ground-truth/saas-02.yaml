@@ -1,0 +1,41 @@
+company_id: saas-02
+as_of: '2026-08-25'
+description:
+  identity:
+    canonical: AgilePoint
+    aliases: [AgilePoint]
+    evidence_ids: [ev-a955bcab27663ac9, ev-e4360a941a821eeb, ev-a5a50f0d0b7f2637]
+  offering:
+    canonical: agentic AI orchestration platform
+    aliases: [agentic AI orchestration platform, agentic AI orchestration,
+              process automation platform, business process management,
+              low-code platform, workflow automation]
+    evidence_ids: [ev-a955bcab27663ac9, ev-e4360a941a821eeb]
+  audience:
+    canonical: enterprises and governments
+    aliases: [enterprises and governments, enterprises,
+              Fortune 5000 companies and governments, governments worldwide,
+              large organizations]
+    evidence_ids: [ev-a955bcab27663ac9, ev-e4360a941a821eeb]
+growth:
+  verdict: growth_signals
+  signals:
+    - kind: headcount
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-e4360a941a821eeb]
+      quote: View all 180 employees
+    - kind: hiring
+      source: page-signals-v1
+      observed_at: 2026-08-25
+      url: https://www.agilepoint.com/careers
+    - kind: publishing
+      source: page-signals-v1
+      observed_at: 2026-08-25
+      url: https://www.agilepoint.com/blog
+    - kind: founded
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-e4360a941a821eeb]
+      quote: Founded in 2003 and headquartered in Mountain View, California
+      note: Evidence states zero VC funding raised; a funding claim is fabricated.
