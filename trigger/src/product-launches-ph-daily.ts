@@ -1,5 +1,6 @@
 import { schedules, logger } from "@trigger.dev/sdk";
 import { runPhLaunchPipeline } from "./pipeline/product-launches-ph.js";
+import { workflowGate } from "./modules/workflow-gate.js";
 
 export const productLaunchesPhDaily = schedules.task({
   id: "product-launches-ph-daily",
@@ -26,6 +27,13 @@ export const productLaunchesPhDaily = schedules.task({
       scheduleId: payload?.scheduleId ?? "manual",
       lastRun: payload?.lastTimestamp?.toISOString() ?? "none",
     });
+
+    // Workflow gate check
+    const gate = await workflowGate("leadgrow", "product-launches");
+    if (!gate.active) {
+      logger.info("Product launches PH daily GATED - skipping", { reason: gate.reason });
+      return { skipped: true, reason: gate.reason };
+    }
 
     const result = await runPhLaunchPipeline({
       date: scheduledDate,

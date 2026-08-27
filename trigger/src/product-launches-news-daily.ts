@@ -1,5 +1,6 @@
 import { schedules, logger } from "@trigger.dev/sdk";
 import { runNewsLaunchPipeline } from "./pipeline/product-launches-news.js";
+import { workflowGate } from "./modules/workflow-gate.js";
 
 export const productLaunchesNewsDaily = schedules.task({
   id: "product-launches-news-daily",
@@ -24,6 +25,13 @@ export const productLaunchesNewsDaily = schedules.task({
       scheduleId: payload?.scheduleId ?? "manual",
       lastRun: payload?.lastTimestamp?.toISOString() ?? "none",
     });
+
+    // Workflow gate check
+    const gate = await workflowGate("leadgrow", "product-launches");
+    if (!gate.active) {
+      logger.info("Product launches news daily GATED - skipping", { reason: gate.reason });
+      return { skipped: true, reason: gate.reason };
+    }
 
     const result = await runNewsLaunchPipeline({
       date: scheduledDate,

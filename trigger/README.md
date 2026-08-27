@@ -6,6 +6,38 @@ This was built entirely with Claude Code. The whole system — scraping, classif
 
 ---
 
+## Trigger Scheduled Tasks + Signal Control Plane
+
+This project shares Trigger.dev `proj_vvsvdbeeoiaausrkdiqp` with 13 active signal-workflow schedules that run independently of the product-launch pipelines:
+
+**Company signals (funding/series stages, 07:00-08:00 ET on weekdays):**
+- `signal-bank-daily` - Funding discoveries classification
+- `series-a-daily`, `series-b-daily`, `series-c-daily` - Series stage signals
+- `series-a-weekly`, `series-b-weekly`, `series-c-weekly` - Weekly aggregations (Monday 08:00 ET)
+- `enrichment-retry-weekly` - Retry failed enrichments
+
+**Other signals (varying schedules):**
+- `jobs-weekly` (Mon/Thu 07:00 ET) - Job posting signals
+- `game-signals-weekly` (Monday 08:00 ET) - Game signal aggregation
+- `product-launches-ph-daily` (07:00 ET) - Product Hunt launches
+- `product-launches-news-daily` (07:00 ET) - News product launches
+- `raisingfi-ingest` (07:30 ET) - RaisingFi ingest
+
+Each signal task checks the control plane at run start via `signals/modules/workflow-gate.ts` (fail-open on registry outage) and can be paused/resumed without deploying:
+
+```bash
+cd ../trigger-workflows  # note: toggle command runs from gtm-orchestrator
+lg run --env prod node scripts/trigger/signals_toggle.mjs status
+lg run --env prod node scripts/trigger/signals_toggle.mjs off leadgrow funding-series-a "reason"
+lg run --env prod node scripts/trigger/signals_toggle.mjs on leadgrow funding-series-a
+```
+
+Registry: `lg_market_data.signal_workflows` (Supabase, shared with signals project `proj_qncjiykwdcrcsjnglyzz`). Schema: `client_slug`, `workflow`, `status`, `pause_reason`, cost model, catalog. Toggle takes effect at the next cron fire (no deploy needed).
+
+**Deploy protocol:** Always verify live sha is in HEAD before deploying — shared project means multiple branches may deploy. See DEPLOYING.md (in gtm-orchestrator/trigger-workflows) for the full protocol.
+
+---
+
 ## What It Does
 
 Every morning, two scheduled tasks fire:

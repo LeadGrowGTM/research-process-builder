@@ -22,6 +22,7 @@
  */
 
 import { schedules, logger } from "@trigger.dev/sdk";
+import { workflowGate } from "./modules/workflow-gate.js";
 
 // ── Supabase helpers ──────────────────────────────────────────────────────────
 
@@ -36,35 +37,44 @@ const SUPABASE_KEY =
   "";
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY ?? "";
 const FIRECRAWL_API_KEY = process.env.FIRECRAWL_API_KEY ?? "";
-const SCHEMA = "leadgrow_knowledge";
+const DEFAULT_SCHEMA = "leadgrow_knowledge";
+// Fix-forward: only process rows discovered today or later (no backfill of 3.5-month stall)
+const FIX_FORWARD_SINCE = "2026-08-27";
 
-function sbHeaders(write = false): Record<string, string> {
+function sbHeaders(write = false, schema: string = DEFAULT_SCHEMA): Record<string, string> {
   const h: Record<string, string> = {
     apikey: SUPABASE_KEY,
     Authorization: `Bearer ${SUPABASE_KEY}`,
     "Content-Type": "application/json",
-    "Accept-Profile": SCHEMA,
+    "Accept-Profile": schema,
   };
-  if (write) h["Content-Profile"] = SCHEMA;
+  if (write) h["Content-Profile"] = schema;
   return h;
 }
 
-async function sbGet(path: string, params: Record<string, string> = {}): Promise<unknown[]> {
+async function sbGet(path: string, params: Record<string, string> = {}, schema: string = DEFAULT_SCHEMA): Promise<unknown[]> {
   const qs = new URLSearchParams(params).toString();
   const url = `${SUPABASE_URL}/rest/v1/${path}${qs ? "?" + qs : ""}`;
-  const resp = await fetch(url, { headers: sbHeaders(), signal: AbortSignal.timeout(20_000) });
-  if (!resp.ok) return [];
+  const resp = await fetch(url, { headers: sbHeaders(false, schema), signal: AbortSignal.timeout(20_000) });
+  if (!resp.ok) {
+    const snippet = await resp.text().then(t => t.slice(0, 200)).catch(() => "");
+    logger.warn(`sbGet failed: ${resp.status} on ${path}`, { schema, snippet });
+    return [];
+  }
   const data = await resp.json();
   return Array.isArray(data) ? data : [];
 }
 
-async function sbUpsert(table: string, row: Record<string, unknown>): Promise<boolean> {
+async function sbUpsert(table: string, row: Record<string, unknown>, schema: string = DEFAULT_SCHEMA): Promise<boolean> {
   const resp = await fetch(`${SUPABASE_URL}/rest/v1/${table}?on_conflict=domain`, {
     method: "POST",
-    headers: { ...sbHeaders(true), Prefer: "resolution=merge-duplicates" },
+    headers: { ...sbHeaders(true, schema), Prefer: "resolution=merge-duplicates" },
     body: JSON.stringify([row]),
     signal: AbortSignal.timeout(15_000),
   });
+  if (!resp.ok) {
+    logger.warn(`sbUpsert failed: ${resp.status} on ${table}`, { schema });
+  }
   return resp.ok;
 }
 
@@ -198,8 +208,17 @@ export const signalBankDaily = schedules.task({
   },
 
   run: async (payload) => {
-    const date = payload.timestamp.toISOString().split("T")[0];
+    const date = payload?.timestamp
+      ? payload.timestamp.toISOString().split("T")[0]
+      : new Date().toISOString().split("T")[0];
     logger.info("signal-bank-daily starting", { date });
+
+    // Workflow gate check
+    const gate = await workflowGate("leadgrow", "funding-signal-bank");
+    if (!gate.active) {
+      logger.info("Signal-bank daily GATED - skipping", { reason: gate.reason });
+      return { skipped: true, reason: gate.reason };
+    }
 
     if (!SUPABASE_URL || !SUPABASE_KEY) {
       logger.error("Supabase not configured — skipping");
@@ -219,12 +238,13 @@ export const signalBankDaily = schedules.task({
 
     // ── Step 1: Find funding_discoveries not yet in signal_companies ──────────
     const MAX_PER_RUN = 50; // cost gate: ~$0.015 for 50 rows
+    // funding_discoveries is in schema "public", not leadgrow_knowledge
     const allFunding = await sbGet("funding_discoveries", {
       select: "company_name,company_domain,industry,round_type,amount_raised,location,discovered_date",
       company_domain: "not.is.null",
       order: "discovered_date.desc",
       limit: "500",
-    }) as Array<Record<string, string>>;
+    }, "public") as Array<Record<string, string>>;
 
     const existingDomains = new Set(
       (await sbGet("signal_companies", { select: "domain", limit: "2000" }) as Array<{ domain: string }>)
@@ -236,7 +256,8 @@ export const signalBankDaily = schedules.task({
         (r) =>
           r.company_domain &&
           !r.company_domain.includes("not_found") &&
-          !existingDomains.has(r.company_domain)
+          !existingDomains.has(r.company_domain) &&
+          r.discovered_date >= FIX_FORWARD_SINCE  // No backfill of 3.5-month stall; operator directive
       )
       .slice(0, MAX_PER_RUN);
 
@@ -326,7 +347,7 @@ export const signalBankDaily = schedules.task({
         `${SUPABASE_URL}/rest/v1/signal_companies?domain=eq.${encodeURIComponent(String(row.domain))}`,
         {
           method: "PATCH",
-          headers: sbHeaders(true),
+          headers: sbHeaders(true, DEFAULT_SCHEMA),
           body: JSON.stringify({
             target_market: tm.target_market,
             buyer_titles: tm.buyer_titles,

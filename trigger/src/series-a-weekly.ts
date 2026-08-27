@@ -1,6 +1,7 @@
 import { schedules, logger } from "@trigger.dev/sdk";
 import { runFundingPipeline } from "./pipeline/pipeline.js";
 import { SERIES_A_CONFIG } from "./pipeline/round-configs.js";
+import { workflowGate } from "./modules/workflow-gate.js";
 
 export const seriesAWeekly = schedules.task({
   id: "series-a-weekly",
@@ -23,6 +24,13 @@ export const seriesAWeekly = schedules.task({
       scheduleId: payload.scheduleId,
       lastRun: payload.lastTimestamp?.toISOString() ?? "none",
     });
+
+    // Workflow gate check
+    const gate = await workflowGate("leadgrow", "funding-series-a");
+    if (!gate.active) {
+      logger.info("Series A weekly GATED - skipping", { reason: gate.reason });
+      return { skipped: true, reason: gate.reason };
+    }
 
     const result = await runFundingPipeline({
       roundConfig: SERIES_A_CONFIG,
