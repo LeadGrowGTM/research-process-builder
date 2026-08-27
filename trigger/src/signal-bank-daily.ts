@@ -22,6 +22,7 @@
  */
 
 import { schedules, logger } from "@trigger.dev/sdk";
+import { workflowGate } from "./modules/workflow-gate.js";
 
 // ── Supabase helpers ──────────────────────────────────────────────────────────
 
@@ -211,6 +212,13 @@ export const signalBankDaily = schedules.task({
       ? payload.timestamp.toISOString().split("T")[0]
       : new Date().toISOString().split("T")[0];
     logger.info("signal-bank-daily starting", { date });
+
+    // Workflow gate check
+    const gate = await workflowGate("leadgrow", "funding-signal-bank");
+    if (!gate.active) {
+      logger.info("Signal-bank daily GATED - skipping", { reason: gate.reason });
+      return { skipped: true, reason: gate.reason };
+    }
 
     if (!SUPABASE_URL || !SUPABASE_KEY) {
       logger.error("Supabase not configured — skipping");
