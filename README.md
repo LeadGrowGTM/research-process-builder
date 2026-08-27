@@ -1,6 +1,6 @@
 # research process builder
 
-**→ For the scheduled pipeline (Product Hunt monitor, Supabase setup, SQL, deploy): [trigger/README.md](trigger/README.md)**
+**→ For the scheduled pipeline (Trigger.dev tasks, signal workflows, deploy, gate port): [trigger/README.md](trigger/README.md)**
 
 ---
 
