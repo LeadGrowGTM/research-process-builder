@@ -207,7 +207,9 @@ export const signalBankDaily = schedules.task({
   },
 
   run: async (payload) => {
-    const date = payload.timestamp.toISOString().split("T")[0];
+    const date = payload?.timestamp
+      ? payload.timestamp.toISOString().split("T")[0]
+      : new Date().toISOString().split("T")[0];
     logger.info("signal-bank-daily starting", { date });
 
     if (!SUPABASE_URL || !SUPABASE_KEY) {
