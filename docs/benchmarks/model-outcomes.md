@@ -1,7 +1,8 @@
 # Model outcomes across enrichments
 
-**Updated:** 2026-08-25 (luna rerun for description/growth; both benchmarks
-found invalid - see their sections). Consolidated view of every model tried per
+**Updated:** 2026-08-27 (description/growth: old exact-match gate retired,
+replaced by dated ground truth + a semantic scorer - see their sections and
+docs/reports/description-growth-gt.md). Consolidated view of every model tried per
 enrichment and where it landed. Detail lives in the per-track reports linked
 below; this page is the summary of record. Scores are dev / holdout mean
 against ground truth (gate >= 0.90 on both, plus human review) unless marked
@@ -58,7 +59,7 @@ so no luna attempt was needed.
 | gpt-5.6-luna | **accepted 2026-08-25 at v6-luna (prompt 0.5.0); production.** ~USD 0.0012/company |
 | gpt-4.1-mini | v1/v2 output rejected on review: generic, internal-state phrasing; Mitch switched to luna at v3 |
 
-### company-description - benchmark invalid, do not compare models on it
+### company-description - old exact-match gate retired, new scorer not yet graduated
 
 | Model | Score | Outcome |
 |---|---|---|
@@ -81,7 +82,7 @@ hard failure, paraphrases score on content). Model comparisons are valid
 against the new scorer; the old exact-match numbers above stay for history
 only.
 
-### growth-signals - benchmark invalid, do not compare models on it
+### growth-signals - old exact-match gate retired, new scorer not yet graduated
 
 | Model | Score | Outcome |
 |---|---|---|
@@ -118,6 +119,6 @@ combined ~USD 11/1k companies synchronous, ~6/1k batch; ICP ~1.4/1k;
 buying-trigger ~1.2/1k. gpt-5-nano has never come close to a gate (0.61-0.74)
 and produced hard failures on two of three scored tracks; it stays a pricing
 floor, not a candidate. company-description and growth-signals are excluded
-from the pattern: their benchmark is exact-string matching against dossier
-text (and for growth, no GT at all), so their sub-gate scores say nothing
-about any model.
+from the pattern: neither has cleared the 0.90 dev/holdout gate under the new
+semantic scorer yet (dev-only luna rerun: 0.911 / 0.638-0.667 - see their
+sections), so no model comparison there is graduation-ready.

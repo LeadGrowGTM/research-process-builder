@@ -24,13 +24,13 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from scripts.company_enrichment.cli import _rehydrate_dossier
-from scripts.company_enrichment.contracts import canonical_json
-from scripts.company_enrichment.description_growth_evaluator import (
+from scripts.company_enrichment.cli import _rehydrate_dossier  # noqa: E402
+from scripts.company_enrichment.contracts import canonical_json  # noqa: E402
+from scripts.company_enrichment.description_growth_evaluator import (  # noqa: E402
     score_description_payload,
     score_growth_payload,
 )
-from scripts.company_enrichment.description_growth_ground_truth import (
+from scripts.company_enrichment.description_growth_ground_truth import (  # noqa: E402
     load_description_growth_dataset,
 )
 
