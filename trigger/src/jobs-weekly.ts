@@ -1,5 +1,6 @@
 import { schedules, logger } from "@trigger.dev/sdk";
 import { runJobsPipeline } from "./pipeline/jobs-pipeline.js";
+import { workflowGate } from "./modules/workflow-gate.js";
 
 export const jobsWeekly = schedules.task({
   id: "jobs-weekly",
@@ -25,6 +26,13 @@ export const jobsWeekly = schedules.task({
       scheduleId: payload?.scheduleId ?? "manual",
       lastRun: payload?.lastTimestamp?.toISOString() ?? "none",
     });
+
+    // Workflow gate check
+    const gate = await workflowGate("motorica", "game-jobs");
+    if (!gate.active) {
+      logger.info("Jobs weekly GATED - skipping", { reason: gate.reason });
+      return { skipped: true, reason: gate.reason };
+    }
 
     const result = await runJobsPipeline({ dryRun: false, date });
 

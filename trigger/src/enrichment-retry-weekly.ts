@@ -1,5 +1,6 @@
 import { schedules, logger } from "@trigger.dev/sdk";
 import { runEnrichmentRetryPass } from "./pipeline/enrichment-retry.js";
+import { workflowGate } from "./modules/workflow-gate.js";
 
 export const enrichmentRetryWeekly = schedules.task({
   id: "enrichment-retry-weekly",
@@ -20,6 +21,13 @@ export const enrichmentRetryWeekly = schedules.task({
       scheduleId: payload.scheduleId,
       lastRun: payload.lastTimestamp?.toISOString() ?? "none",
     });
+
+    // Workflow gate check
+    const gate = await workflowGate("leadgrow", "rpb-enrichment-retry");
+    if (!gate.active) {
+      logger.info("Enrichment retry weekly GATED - skipping", { reason: gate.reason });
+      return { skipped: true, reason: gate.reason };
+    }
 
     const result = await runEnrichmentRetryPass();
 
