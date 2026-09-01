@@ -26,6 +26,7 @@ from urllib.parse import urlparse
 import yaml
 
 from .adapters.known_url_scrape import build_free_waterfall
+from .packages import resolve_prompt_path
 from .adapters.parallel import build_parallel_search
 from .adapters.serper import build_serper_search
 from .competitor_contracts import competitors_output_contract, normalize_name
@@ -118,6 +119,7 @@ _DRAFT_HEADER = (
 )
 
 
+_REPO_ROOT = Path(__file__).resolve().parents[2]
 _SEARCH_BUILDERS = {"serper": build_serper_search, "parallel": build_parallel_search}
 DEFAULT_SEARCH_PROVIDERS = "serper,parallel"
 
@@ -147,7 +149,7 @@ def build_news_spec() -> SignalSpec:
         load_ground_truth=dataset_loader(NEWS_ENRICHMENT_ID, NEWS_WEIGHTS, validate_news_record),
         score=score_news,
         postprocess=ground_news_payload,
-        prompt_path=Path("prompts/company-enrichment") / f"{NEWS_ENRICHMENT_ID}.md",
+        prompt_path=resolve_prompt_path(NEWS_ENRICHMENT_ID, _REPO_ROOT),
         weights=NEWS_WEIGHTS,
         collect=bind_collect(
             enrichment_id=NEWS_ENRICHMENT_ID, plan=NEWS_PLAN, search_factory=_search_factory,
@@ -167,7 +169,7 @@ def build_competitor_spec() -> SignalSpec:
         ),
         score=score_competitors,
         postprocess=ground_competitor_payload,
-        prompt_path=Path("prompts/company-enrichment") / f"{COMPETITOR_ENRICHMENT_ID}.md",
+        prompt_path=resolve_prompt_path(COMPETITOR_ENRICHMENT_ID, _REPO_ROOT),
         weights=COMPETITOR_WEIGHTS,
         collect=bind_collect(
             enrichment_id=COMPETITOR_ENRICHMENT_ID, plan=COMPETITOR_PLAN,

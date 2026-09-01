@@ -11,6 +11,7 @@ import yaml
 from scripts.company_enrichment.contracts import (
     CompanyDossier, EvidenceRef, FieldAssertion, Visibility,
 )
+from scripts.company_enrichment.packages import resolve_prompt_path
 from scripts.company_enrichment.signal_evidence import (
     load_signal_dossier, save_signal_dossier, signal_dossier,
 )
@@ -86,7 +87,9 @@ def build_signal_repo(
         "weights": {key: float(value) for key, value in weights.items()},
         "threshold": 0.90,
     }), encoding="utf-8")
-    prompt = root / "prompts" / "company-enrichment" / f"{enrichment_id}.md"
+    # Mirror the real layout: an enrichment that has migrated into a package
+    # is read from enrichments/<id>/, so the fixture repo must place it there.
+    prompt = root / resolve_prompt_path(enrichment_id, Path(__file__).resolve().parents[2])
     prompt.parent.mkdir(parents=True, exist_ok=True)
     prompt.write_text(PROMPT, encoding="utf-8")
     return signal_root

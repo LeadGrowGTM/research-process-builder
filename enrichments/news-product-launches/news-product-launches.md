@@ -1,3 +1,99 @@
+---
+id: news-product-launches
+name: News and product launches
+title: What this company announced recently, with dates and sources
+summary: >-
+  Dated, cited company events - funding, acquisitions, partnerships, leadership
+  moves, awards, product and feature launches - each tied to the Evidence that
+  proves it happened.
+description: >-
+  Reads collected first-party and wire Evidence for one company and returns two
+  typed collections: `news` (business events) and `launches` (shipped product
+  changes). Every event carries an ISO date, a headline, an event type, one line
+  on why it matters, a source URL, and the Evidence IDs backing it. The prompt
+  is evidence-closed: it may not use general knowledge, guess dates, or report a
+  same-named company on a different domain. Anything it cannot support goes to
+  `unknowns` rather than being invented. Use it for personalisation openers and
+  timing signals; do not use it as a funding database - it reports what the
+  supplied Evidence proves, not everything that is true.
+version: 1.0.0
+status: approved
+kind: lookup
+entity: company
+
+target_model: gpt-5.6-luna
+temperature: 0.2
+max_tokens: 900
+runner: run.py
+schema_module: schema.py
+
+inputs:
+  required:
+    company_name: Legal or trading name of the subject company
+    domain: Website host, used to reject same-named companies
+  optional:
+    as_of: ISO date the run is anchored to; defaults to run date
+outputs:
+  news:
+    type: array<event>
+    description: Business events - funding, acquisition, partnership, leadership, expansion, award, positioning, other
+  launches:
+    type: array<event>
+    description: Shipped product changes - product, feature, integration, release
+  unknowns:
+    type: array<field>
+    description: Fields the Evidence could not support, from news or launches
+  event:
+    fields: [date, headline, event_type, why_it_matters, source_url, evidence_ids]
+
+# Field names mirror gtm_orchestrator EnrichmentSpec so installation is a
+# mechanical diff against its CATALOG, not a translation. The orchestrator
+# catalog is static by ruling (registry.py D-02, R2): nothing here is loaded
+# dynamically over there.
+gtm:
+  slug: recent_news
+  provider: runtime
+  type: enrichment
+  enrichment_level: company
+  runtime_prompt_name: recent-news-summary
+  input_columns: [company_name, company_domain]
+  output_columns: [news_events_json, launch_events_json]
+  requires_tools: [web_search, scrape_url]
+  linkedin_safe: false
+  cost_per_100: 0.50
+  cost_estimate: "$0.50 per 100 rows"
+  tier: personalization
+  caps: {queries: 10, scrapes: 10, retries: 2, paid_cost_usd: 1.0}
+  freshness_days: 30
+  output_visibility: message_safe
+
+evaluation:
+  dataset: benchmarks/signals/news-product-launches
+  scorer: scripts.company_enrichment.news_evaluator:score_news
+  candidate: news-v11-luna
+  dev: 0.974
+  holdout: 0.997
+  gate: 0.90
+  approved_on: "2026-08-21"
+  report: docs/reports/signal-enrichments-anneal.md
+
+adaptation:
+  adaptable: true
+  safe_edits:
+    - Recency window wording in "What counts as an event"
+    - Event-type emphasis - which of the allowed types to prefer when trimming
+    - Subject framing for a vertical (add industry-specific examples)
+  locked:
+    - Evidence-citation rule (every event cites supplied evidence_id values)
+    - No-general-knowledge rule
+    - Date rules, including the `Detected date:` metadata caveat
+    - Different-entity rule (same name, different domain)
+  revalidate_when:
+    - a locked section is edited
+    - target_model changes
+    - output field names or event types change
+  revalidate_with: py -m scripts.company_enrichment.signal_loop --enrichment news-product-launches
+---
 # News and product launches
 
 Return dated, cited events about the subject company using only the supplied
