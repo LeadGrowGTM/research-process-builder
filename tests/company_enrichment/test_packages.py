@@ -71,6 +71,7 @@ inputs:
 outputs:
   events:
     type: array
+    description: extracted events
 gtm:
   slug: demo_slug
   provider: runtime
@@ -171,6 +172,21 @@ def test_missing_runner_file_is_rejected(tmp_path: Path) -> None:
         load_package(root)
 
 
+@pytest.mark.parametrize("approved_on", ("yesterday", " 2026-08-21 ", "2026-02-30"))
+def test_approval_date_must_be_a_canonical_calendar_date(
+    tmp_path: Path, approved_on: str,
+) -> None:
+    root = _package(
+        tmp_path,
+        edits=((
+            'approved_on: "2026-08-21"',
+            f'approved_on: "{approved_on}"',
+        ),),
+    )
+    with pytest.raises(PackageError, match="real YYYY-MM-DD calendar date"):
+        load_package(root)
+
+
 @pytest.mark.parametrize("field", ("scorer", "candidate", "report"))
 def test_approved_package_requires_complete_proof_provenance(
     tmp_path: Path, field: str,
@@ -208,6 +224,27 @@ def test_optional_inputs_must_be_a_mapping(tmp_path: Path) -> None:
 def test_input_descriptions_must_be_non_empty_text(tmp_path: Path) -> None:
     root = _package(tmp_path, edits=(("domain: the host", 'domain: ""'),))
     with pytest.raises(PackageError, match="names and descriptions"):
+        load_package(root)
+
+
+@pytest.mark.parametrize(
+    "outputs",
+    (
+        "outputs:\n  events: nope",
+        "outputs:\n  events:\n    type: array",
+    ),
+)
+def test_public_output_descriptors_require_type_and_description(
+    tmp_path: Path, outputs: str,
+) -> None:
+    root = _package(
+        tmp_path,
+        edits=((
+            "outputs:\n  events:\n    type: array\n    description: extracted events",
+            outputs,
+        ),),
+    )
+    with pytest.raises(PackageError, match=r"outputs\.events"):
         load_package(root)
 
 
@@ -505,6 +542,42 @@ def test_package_schema_rejects_unknown_top_level_output() -> None:
     spec.loader.exec_module(module)
     with pytest.raises(ValidationError):
         module.OutputModel(news=[], launches=[], unknowns=[], extra=[])
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    (
+        ("company_name", ""),
+        ("domain", " "),
+        ("as_of", "tomorrow"),
+        ("as_of", "2026-02-30"),
+    ),
+)
+def test_package_schema_rejects_invalid_subject_inputs(
+    field: str, value: str,
+) -> None:
+    spec = importlib.util.spec_from_file_location("_input_pkg_schema", NEWS / "schema.py")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    inputs = {"company_name": "Attio", "domain": "attio.com", "as_of": "2026-08-21"}
+    inputs[field] = value
+    with pytest.raises(ValidationError):
+        module.InputModel(**inputs)
+
+
+def test_package_schema_rejects_events_in_an_unknown_collection() -> None:
+    spec = importlib.util.spec_from_file_location("_unknown_pkg_schema", NEWS / "schema.py")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    event = {
+        "date": "2026-01-02", "headline": "Attio raises a round",
+        "why_it_matters": "budget", "source_url": "https://attio.test/a",
+        "evidence_ids": ["ev-1"], "event_type": "funding",
+    }
+    with pytest.raises(ValidationError):
+        module.OutputModel(news=[event], launches=[], unknowns=["news"])
 
 
 @pytest.mark.parametrize(

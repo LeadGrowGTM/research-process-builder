@@ -55,9 +55,9 @@ relative files inside the package and are checked at load time.
 ### Contract
 
 `inputs.required` and `inputs.optional` are mappings of name to description -
-the description is what a caller reads to know what to pass. `outputs` is a
-mapping of field name to a type and description, plus any shared shape the
-fields reuse.
+the description is what a caller reads to know what to pass. Each public
+`outputs` field declares a non-empty `type` and `description`; a shared shape
+may instead declare a non-empty `fields` list for the public fields to reuse.
 
 ### GTM block
 
@@ -77,10 +77,10 @@ non-empty strings. A wrong type fails at load, not at emit.
 ### Evaluation
 
 `dataset`, `scorer`, `candidate`, `dev`, `holdout`, `gate`, `approved_on`
-(quoted, so YAML does not turn it into a date object), and `report`. A package
-with `status: approved` must name all of them, use a gate of at least 0.90, and
-clear that gate on both `dev` and `holdout`, or it fails to load. Scores and the
-gate must be finite numbers from zero to one. This is the gate from CLAUDE.md
+(a quoted, real `YYYY-MM-DD` calendar date), and `report`. A package with
+`status: approved` must name all of them, use a gate of at least 0.90, and clear
+that gate on both `dev` and `holdout`, or it fails to load. Scores and the gate
+must be finite numbers from zero to one. This is the gate from CLAUDE.md
 expressed as data: programmed score at or above 0.90 plus the recorded human
 review.
 

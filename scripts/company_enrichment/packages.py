@@ -28,6 +28,7 @@ edited before a run without invalidating that proof.
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
+from datetime import date
 import json
 import math
 from pathlib import Path
@@ -234,8 +235,31 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
             raise PackageError(
                 f"inputs.{group} names and descriptions must be non-empty strings"
             )
-    if not isinstance(manifest["outputs"], dict) or not manifest["outputs"]:
+    outputs = manifest["outputs"]
+    if not isinstance(outputs, dict) or not outputs:
         raise PackageError("outputs must be a non-empty mapping")
+    for name, descriptor in outputs.items():
+        if not isinstance(name, str) or not name.strip():
+            raise PackageError("output names must be non-empty strings")
+        if not isinstance(descriptor, dict):
+            raise PackageError(f"outputs.{name} must be a descriptor mapping")
+        if set(descriptor) == {"fields"}:
+            fields = descriptor["fields"]
+            if not isinstance(fields, list) or not fields or any(
+                not isinstance(field, str) or not field.strip() for field in fields
+            ):
+                raise PackageError(
+                    f"outputs.{name}.fields must be a list of non-empty strings"
+                )
+            continue
+        if any(
+            not isinstance(descriptor.get(key), str)
+            or not descriptor[key].strip()
+            for key in ("type", "description")
+        ):
+            raise PackageError(
+                f"outputs.{name} must declare non-empty type and description"
+            )
     gtm = manifest["gtm"]
     if not isinstance(gtm, dict) or not gtm:
         raise PackageError("gtm must be a non-empty mapping")
@@ -292,6 +316,20 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
             raise PackageError(
                 "evaluation.approved_on must be quoted ISO text, not a YAML date"
             )
+        approved_on = evaluation["approved_on"].strip()
+        if (
+            approved_on != evaluation["approved_on"]
+            or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", approved_on)
+        ):
+            raise PackageError(
+                "evaluation.approved_on must be a real YYYY-MM-DD calendar date"
+            )
+        try:
+            date.fromisoformat(approved_on)
+        except ValueError as error:
+            raise PackageError(
+                "evaluation.approved_on must be a real YYYY-MM-DD calendar date"
+            ) from error
         for key in ("dataset", "scorer", "candidate", "report"):
             if not isinstance(evaluation[key], str) or not evaluation[key].strip():
                 raise PackageError(f"evaluation.{key} must be non-empty text")

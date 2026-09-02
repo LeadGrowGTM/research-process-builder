@@ -19,7 +19,7 @@ import re
 from typing import Literal, Optional
 from urllib.parse import urlsplit
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 NEWS_EVENT_TYPES = (
     "funding", "acquisition", "partnership", "leadership", "expansion", "award",
@@ -41,6 +41,28 @@ class InputModel(BaseModel):
     as_of: Optional[str] = Field(
         default=None, description="ISO date the run is anchored to; defaults to the run date"
     )
+
+    @field_validator("company_name", "domain")
+    @classmethod
+    def validate_subject_text(cls, value: str) -> str:
+        value = " ".join(value.split())
+        if not value:
+            raise ValueError("subject text must be non-empty")
+        return value
+
+    @field_validator("as_of")
+    @classmethod
+    def validate_as_of(cls, value: Optional[str]) -> Optional[str]:
+        if value is None:
+            return None
+        value = value.strip()
+        if not _FULL_DATE.fullmatch(value):
+            raise ValueError("as_of must be YYYY-MM-DD")
+        try:
+            calendar_date.fromisoformat(value)
+        except ValueError as error:
+            raise ValueError("as_of must be a real calendar date") from error
+        return value
 
 
 class _Event(BaseModel):
@@ -112,3 +134,12 @@ class OutputModel(BaseModel):
     news: list[NewsEvent]
     launches: list[LaunchEvent]
     unknowns: list[Literal["news", "launches"]]
+
+    @model_validator(mode="after")
+    def validate_unknowns(self) -> OutputModel:
+        for collection in self.unknowns:
+            if getattr(self, collection):
+                raise ValueError(
+                    f"{collection} cannot contain events when declared unknown"
+                )
+        return self
