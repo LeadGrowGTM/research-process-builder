@@ -22,6 +22,7 @@ edited before a run without invalidating that proof.
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
+import json
 from pathlib import Path
 import re
 from types import MappingProxyType
@@ -30,6 +31,7 @@ from typing import Any, Mapping
 import yaml
 
 from .definitions import SEMVER, _secret_key
+from .executors import P0_ENRICHMENTS
 
 LIFECYCLE = ("proposed", "experiment", "candidate", "approved", "rejected")
 KINDS = ("lookup", "monitoring")
@@ -231,12 +233,21 @@ def apply_variant(package: EnrichmentPackage, variant: str) -> EnrichmentPackage
     path = package.root / "variants" / f"{variant}.yaml"
     if not path.is_file():
         raise PackageError(f"unknown variant {variant!r}: {path} does not exist")
-    overlay = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    text = path.read_text(encoding="utf-8")
+    if "${" in text:
+        raise PackageError("environment interpolation is forbidden in a package")
+    try:
+        overlay = yaml.safe_load(text) or {}
+    except yaml.YAMLError as error:
+        raise PackageError(f"variant {variant} has invalid YAML: {error}") from error
     if not isinstance(overlay, dict):
         raise PackageError(f"variant {variant} must be a YAML mapping")
     unknown = sorted(set(overlay) - VARIANT_KEYS)
     if unknown:
         raise PackageError(f"variant {variant} may not override: {', '.join(unknown)}")
+    secret = _secret_key(overlay)
+    if secret:
+        raise PackageError(f"secret-bearing key is forbidden in a manifest: {secret}")
     if not overlay.get("prompt_append") and not set(overlay) & DESCRIPTIVE_KEYS:
         raise PackageError(f"variant {variant} changes nothing a reader would see")
     changes_proof = bool(
@@ -316,6 +327,15 @@ MATURITY_BY_STATUS = {
 }
 
 
+def _literal(value: Any) -> str:
+    """A manifest string as a Python source literal.
+
+    Manifest text is author-controlled prose: a quote, a backslash, or a folded
+    newline interpolated raw would emit source a reviewer cannot paste.
+    """
+    return json.dumps(str(value))
+
+
 def emit_registry_entry(package: EnrichmentPackage) -> str:
     """The gtm_orchestrator ``EnrichmentSpec`` this package installs as.
 
@@ -339,16 +359,20 @@ def emit_registry_entry(package: EnrichmentPackage) -> str:
         raise PackageError(
             "a variant does not install as its own catalog entry; install the parent"
         )
+    if package.status == "rejected":
+        raise PackageError(
+            "a rejected package does not install; it has no catalog entry"
+        )
     holdout = package.evaluation.get("holdout")
     lines = [
-        f'    "{gtm["slug"]}": EnrichmentSpec(',
-        f'        slug="{gtm["slug"]}",',
-        f'        name="{package.name}",',
-        f'        description="{package.summary.strip().rstrip(".")}.",',
-        f'        provider="{gtm["provider"]}",',
-        f'        type="{gtm["type"]}",',
-        f'        enrichment_level="{gtm["enrichment_level"]}",',
-        f'        cost_estimate="{gtm["cost_estimate"]}",',
+        f'    {_literal(gtm["slug"])}: EnrichmentSpec(',
+        f'        slug={_literal(gtm["slug"])},',
+        f'        name={_literal(package.name)},',
+        f'        description={_literal(package.summary.strip().rstrip(".") + ".")},',
+        f'        provider={_literal(gtm["provider"])},',
+        f'        type={_literal(gtm["type"])},',
+        f'        enrichment_level={_literal(gtm["enrichment_level"])},',
+        f'        cost_estimate={_literal(gtm["cost_estimate"])},',
         f'        input_columns={tuple(gtm["input_columns"])!r},',
         f'        output_columns={tuple(gtm["output_columns"])!r},',
         f'        linkedin_safe={bool(gtm["linkedin_safe"])},',
@@ -356,24 +380,62 @@ def emit_registry_entry(package: EnrichmentPackage) -> str:
     ]
     if gtm.get("requires_tools"):
         lines.append(f'        requires_tools={tuple(gtm["requires_tools"])!r},')
-    lines.append(f'        runtime_prompt_name="{gtm["runtime_prompt_name"]}",')
-    lines.append(f'        maturity="{MATURITY_BY_STATUS[package.status]}",')
+    lines.append(f'        runtime_prompt_name={_literal(gtm["runtime_prompt_name"])},')
+    lines.append(f'        maturity={_literal(MATURITY_BY_STATUS[package.status])},')
     if holdout is not None:
         lines.append(f"        accuracy_pct={round(float(holdout) * 100, 1)},")
     lines.append("    ),")
     return "\n".join(lines)
 
 
+UNKNOWN_UNTIL_RUN = "<assigned by the run>"
+EVIDENCE_UNTIL_RUN = "<collected at run time; not available before a run>"
+FIELDS_UNTIL_RUN = "<resolved from the enrichment id at run time>"
+
+
+def _subject_label(inputs: Mapping[str, Any]) -> str:
+    """The live ``Subject company:`` label: the name plus the bare domain host.
+
+    Mirrors ``OpenAIModelClient._subject_line``, which derives the host from the
+    first Evidence URL and drops credentials, port, and a leading ``www.``.
+    """
+    name = str(inputs.get("company_name", "")).strip()
+    host = str(inputs.get("domain", "")).strip().lower()
+    host = host.split("//")[-1].split("/")[0].split("@")[-1].split(":")[0]
+    host = host[4:] if host.startswith("www.") else host
+    if not name and not host:
+        return ""
+    return f"{name} ({host})" if name and host else (name or host)
+
+
 def render(package: EnrichmentPackage, inputs: Mapping[str, Any]) -> str:
-    """The prompt text as sent, with the subject stated ahead of the body."""
+    """The prompt as the model receives it, assembled the way the live path does.
+
+    ``OpenAIModelClient._prompt`` sends the prompt body first, then ``Company
+    ID``, ``Subject company``, ``Enrichment``, ``Requested fields``, and
+    ``Evidence``. This reproduces that order and those labels, so a prompt edit
+    is reviewed against the composition that is actually sent.
+
+    Two sections cannot be filled in before a run: the run assigns the company
+    id, and the Evidence is collected during the run. Both keep their header and
+    carry an explicit placeholder rather than being dropped. Declared inputs
+    other than ``company_name`` and ``domain`` do not appear because the live
+    assembly has no slot for them - it does not send them either.
+    """
     missing = [
         name for name in package.required_inputs if not str(inputs.get(name, "")).strip()
     ]
     if missing:
         raise PackageError(f"missing required inputs: {', '.join(missing)}")
-    stated = "\n".join(
-        f"- {name}: {inputs[name]}"
-        for name in (*package.required_inputs, *package.optional_inputs)
-        if str(inputs.get(name, "")).strip()
+    label = _subject_label(inputs)
+    subject = f"Subject company: {label}\n" if label else ""
+    fields = P0_ENRICHMENTS.get(package.id)
+    requested = json.dumps(list(fields)) if fields else FIELDS_UNTIL_RUN
+    return (
+        f"{package.body.rstrip()}\n\n"
+        f"Company ID: {UNKNOWN_UNTIL_RUN}\n"
+        f"{subject}"
+        f"Enrichment: {package.id}\n"
+        f"Requested fields: {requested}\n"
+        f"Evidence: {EVIDENCE_UNTIL_RUN}"
     )
-    return f"# Subject\n\n{stated}\n\n{package.body}"

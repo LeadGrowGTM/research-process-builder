@@ -92,7 +92,7 @@ adaptation:
     - a locked section is edited
     - target_model changes
     - output field names or event types change
-  revalidate_with: py -m scripts.company_enrichment.signal_loop --enrichment news-product-launches
+  revalidate_with: py scripts/company_enrichment_news_loop.py --evaluate --lineage <name> --allow-paid
 ---
 # News and product launches
 

@@ -90,15 +90,21 @@ The manifest exists so this is a bounded decision rather than a judgement call.
    it is reviewable on its own, and the loader decides whether it may inherit
    the parent's proof.
 3. **Render before you spend.** `py enrichments/<id>/run.py render --variant X
-   ...` prints the exact text that would be sent, subject block included. Read
-   it. A prompt edit that reads fine in the diff and wrong in the render is the
-   common failure.
+   --company-name X --domain x.com` prints the prompt assembled the way the live
+   client assembles it: the body, then `Company ID`, `Subject company`,
+   `Enrichment`, `Requested fields`, `Evidence`. The company id and the Evidence
+   are not known before a run, so those two lines carry an explicit placeholder
+   rather than being dropped. Read it. A prompt edit that reads fine in the diff
+   and wrong in the render is the common failure.
 4. **Never edit the frontmatter to keep a score.** Changing the model, the
    inputs, or the GTM contract sets `revalidation: required` and drops the
    package out of `approved`. That is the mechanism working, not an obstacle.
 5. **Revalidate with the command the package names.** `adaptation.revalidate_with`
    is the loop entry that produced the original score; use it, so the new number
-   is comparable to the old one.
+   is comparable to the old one. For the news package that is
+   `py scripts/company_enrichment_news_loop.py --evaluate --lineage <name>
+   --allow-paid`, which `py enrichments/news-product-launches/run.py execute
+   --lineage <name> --allow-paid` delegates to.
 6. **Bump `version` and record the new score** in `evaluation` before the
    package returns to `approved`.
 
@@ -113,9 +119,16 @@ A variant overlay may set `title`, `summary`, `description`, `name`,
 | description fields and `prompt_append` only | `inherited` | unchanged |
 | model, inputs, or GTM contract | `required` | `approved` becomes `candidate` |
 
-`run.py execute` refuses to run a variant marked `revalidation: required`, and
-`emit_registry_entry` refuses a variant entirely: variants do not become their
-own catalog entries.
+An overlay is held to the same safety checks as the manifest it overlays: no
+`${` environment interpolation, and no secret-bearing key anywhere in the
+mapping.
+
+`run.py execute` revalidates the parent package against its sealed benchmark
+corpus, so it refuses `--variant` along with the other subject flags; revalidate
+a variant with the command in `adaptation.revalidate_with`, pointing `--prompt`
+at the rendered variant. `emit_registry_entry` refuses a variant entirely:
+variants do not become their own catalog entries. It also refuses a package with
+`status: rejected` - a rejected enrichment has no catalog entry to install.
 
 ## Installing into the GTM orchestrator
 

@@ -2,13 +2,25 @@
 
 from __future__ import annotations
 
+import ast
+from datetime import datetime, timezone
 from pathlib import Path
 import subprocess
 import sys
 
 import pytest
 
+from scripts.company_enrichment.contracts import (
+    CompanyDossier,
+    EvidenceRef,
+    FieldAssertion,
+    Visibility,
+)
+from scripts.company_enrichment.experiment_runner import ExperimentInput
+from scripts.company_enrichment.openai_model_client import OpenAIModelClient
 from scripts.company_enrichment.packages import (
+    EVIDENCE_UNTIL_RUN,
+    UNKNOWN_UNTIL_RUN,
     PackageError,
     apply_variant,
     emit_registry_entry,
@@ -21,6 +33,9 @@ from scripts.company_enrichment.packages import (
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 NEWS = REPO_ROOT / "enrichments" / "news-product-launches"
+# The blob the news prompt body was scored on, pinned by object id: the path it
+# lived at moves in this change, and a branch name stops resolving after a merge.
+SCORED_PROMPT_BLOB = "1a8115f2b32e49afb5542583cdad7049a308be40"
 
 
 MANIFEST = """---
@@ -157,14 +172,61 @@ def test_variant_cannot_override_the_evaluation(tmp_path: Path) -> None:
         apply_variant(load_package(root), "cheat")
 
 
+def test_variant_may_not_smuggle_in_a_secret_key(tmp_path: Path) -> None:
+    root = _package(tmp_path)
+    (root / "variants" / "keyed.yaml").write_text(
+        "title: Keyed\ngtm:\n  auth:\n    api_key: sk-live-123\n", encoding="utf-8"
+    )
+    with pytest.raises(PackageError, match="secret-bearing key"):
+        apply_variant(load_package(root), "keyed")
+
+
+def test_variant_may_not_interpolate_the_environment(tmp_path: Path) -> None:
+    root = _package(tmp_path)
+    (root / "variants" / "env.yaml").write_text(
+        "title: Env\nprompt_append: Use ${OPENAI_API_KEY}.\n", encoding="utf-8"
+    )
+    with pytest.raises(PackageError, match="environment interpolation is forbidden"):
+        apply_variant(load_package(root), "env")
+
+
 def test_render_requires_declared_inputs(tmp_path: Path) -> None:
     package = load_package(_package(tmp_path))
     with pytest.raises(PackageError, match="missing required inputs: domain"):
         render(package, {})
     text = render(package, {"domain": "attio.com", "as_of": "2026-09-01"})
-    assert "- domain: attio.com" in text
-    assert "- as_of: 2026-09-01" in text
-    assert text.rstrip().endswith("Body text.")
+    assert text.startswith("Body text.\n\n")
+    assert "Subject company: attio.com" in text
+
+
+def test_render_places_the_unknowns_behind_their_own_headers(tmp_path: Path) -> None:
+    """A preview drops nothing silently: what a run supplies keeps its header."""
+    text = render(load_package(_package(tmp_path)), {"domain": "www.attio.com:443"})
+    assert f"Company ID: {UNKNOWN_UNTIL_RUN}" in text
+    assert f"Evidence: {EVIDENCE_UNTIL_RUN}" in text
+    assert "Subject company: attio.com" in text
+
+
+def test_render_reproduces_the_prompt_the_live_client_sends() -> None:
+    """The preview is the live assembly, not a second composition of its own."""
+    package = load_package(NEWS)
+    evidence = EvidenceRef(
+        "ev-1", "https://www.attio.com/blog/launch",
+        datetime(2026, 8, 1, tzinfo=timezone.utc), "c" * 64, "Attio ships X.",
+    )
+    identity = FieldAssertion("identity", "Attio", ("ev-1",), 1.0, Visibility.MESSAGE_SAFE)
+    dossier = CompanyDossier("saas-01", "1.0", (identity,), (evidence,))
+    request = ExperimentInput(
+        "news-product-launches", "saas-01", package.target_model, dossier, "baseline",
+        prompt_text(NEWS / "news-product-launches.md"),
+        {"type": "object", "properties": {"news": {"type": "array"}}},
+    )
+    live = OpenAIModelClient._prompt(request)
+    expected = live.replace(
+        f"Company ID: {request.company_id}", f"Company ID: {UNKNOWN_UNTIL_RUN}"
+    )
+    expected = expected[:expected.index("Evidence: ")] + f"Evidence: {EVIDENCE_UNTIL_RUN}"
+    assert render(package, {"company_name": "Attio", "domain": "attio.com"}) == expected
 
 
 def test_emit_renders_a_catalog_entry_from_the_proof(tmp_path: Path) -> None:
@@ -178,6 +240,25 @@ def test_emit_renders_a_catalog_entry_from_the_proof(tmp_path: Path) -> None:
 def test_experiment_status_emits_draft_maturity(tmp_path: Path) -> None:
     root = _package(tmp_path, status="experiment")
     assert 'maturity="draft",' in emit_registry_entry(load_package(root))
+
+
+def test_a_rejected_package_does_not_install(tmp_path: Path) -> None:
+    root = _package(tmp_path, status="rejected")
+    with pytest.raises(PackageError, match="rejected package does not install"):
+        emit_registry_entry(load_package(root))
+
+
+def test_emitted_entry_stays_valid_python_for_awkward_manifest_text(tmp_path: Path) -> None:
+    """Manifest text is prose; a quote or backslash must not break the paste."""
+    root = _package(tmp_path, edits=(
+        ("summary: One line.", 'summary: \'A "quoted" cost of 50\\100 rows\''),
+        ('cost_estimate: "$0.25 per 100 rows"', 'cost_estimate: "$0.25 \\"per\\" row"'),
+    ))
+    entry = emit_registry_entry(load_package(root))
+    call = ast.parse(f"CATALOG = {{\n{entry}\n}}").body[0].value.values[0]
+    fields = {keyword.arg: keyword.value for keyword in call.keywords}
+    assert ast.literal_eval(fields["description"]) == 'A "quoted" cost of 50\\100 rows.'
+    assert ast.literal_eval(fields["cost_estimate"]) == '$0.25 "per" row'
 
 
 def test_a_variant_does_not_install_as_its_own_entry(tmp_path: Path) -> None:
@@ -208,7 +289,7 @@ def test_prompt_path_resolves_to_the_package_when_it_exists() -> None:
 def test_packaging_did_not_change_the_scored_prompt_text() -> None:
     """The manifest is metadata: the model must see the same words it was scored on."""
     original = subprocess.run(
-        ["git", "show", "master:prompts/company-enrichment/news-product-launches.md"],
+        ["git", "show", SCORED_PROMPT_BLOB],
         capture_output=True, text=True, cwd=REPO_ROOT, check=True,
     ).stdout.strip()
     assert prompt_text(NEWS / "news-product-launches.md") == original
@@ -224,11 +305,46 @@ def test_shipped_news_package_describes_and_emits() -> None:
     assert '"recent_news": EnrichmentSpec(' in emit_registry_entry(package)
 
 
-def test_shipped_run_cli_refuses_to_spend_without_the_flag() -> None:
-    result = subprocess.run(
-        [sys.executable, str(NEWS / "run.py"), "execute",
-         "--company-name", "Attio", "--domain", "attio.com"],
+def _run_cli(*argv: str) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(
+        [sys.executable, str(NEWS / "run.py"), *argv],
         capture_output=True, text=True, cwd=REPO_ROOT,
     )
+
+
+def test_shipped_run_cli_refuses_to_spend_without_the_flag() -> None:
+    result = _run_cli("execute", "--lineage", "smoke")
     assert result.returncode == 3
     assert "refusing to spend without --allow-paid" in result.stderr
+
+
+def test_execute_refuses_subject_flags_it_cannot_honour() -> None:
+    """The delegated loop scores the sealed corpus; a per-company ask is not it."""
+    result = _run_cli(
+        "execute", "--lineage", "smoke", "--company-name", "Attio",
+        "--domain", "attio.com", "--allow-paid",
+    )
+    assert result.returncode == 2
+    assert "--company-name, --domain" in result.stderr
+    assert "sealed benchmark corpus" in result.stderr
+
+
+def test_execute_needs_a_lineage_to_label_its_artifacts() -> None:
+    result = _run_cli("execute")
+    assert result.returncode == 2
+    assert "--lineage" in result.stderr
+
+
+def test_execute_delegates_to_an_entry_point_that_runs() -> None:
+    """The printed command is a real CLI, not a module without a __main__ guard."""
+    printed = _run_cli("execute", "--lineage", "smoke").stdout.split()
+    assert printed[1:] == [
+        "scripts/company_enrichment_news_loop.py",
+        "--evaluate", "--lineage", "smoke", "--allow-paid",
+    ]
+    parsed = subprocess.run(
+        [sys.executable, *printed[1:-1], "--dry-run"],
+        capture_output=True, text=True, cwd=REPO_ROOT,
+    )
+    assert parsed.returncode == 0
+    assert '"enrichment_id":"news-product-launches"' in parsed.stdout

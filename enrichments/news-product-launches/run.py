@@ -6,14 +6,21 @@ importing this repository's internals:
     py enrichments/news-product-launches/run.py describe
     py enrichments/news-product-launches/run.py emit
     py enrichments/news-product-launches/run.py render --company-name X --domain x.com
-    py enrichments/news-product-launches/run.py execute --company-name X --domain x.com --allow-paid
+    py enrichments/news-product-launches/run.py execute --lineage <name> --allow-paid
 
 ``describe`` is the card a registry indexes; ``emit`` renders the
-gtm_orchestrator CATALOG entry this package installs as. ``render`` is the exact prompt text
-that would be sent, after any ``--variant`` overlay, so a prompt edit can be
-reviewed before it costs anything. ``execute`` refuses to spend money without
-``--allow-paid``; the live path stays the one vetted loop entry point rather
-than a second copy of the collect-and-call code.
+gtm_orchestrator CATALOG entry this package installs as. ``render`` composes the
+prompt the way the live client does, after any ``--variant`` overlay, so a
+prompt edit can be reviewed before it costs anything.
+
+``execute`` revalidates the package against its sealed benchmark corpus by
+delegating to the one vetted loop entry point rather than keeping a second copy
+of the collect-and-call code. That loop scores the whole corpus under a lineage
+name; it is not a per-company lookup, so ``execute`` refuses ``--company-name``,
+``--domain``, ``--as-of``, and ``--variant`` instead of accepting them and
+silently ignoring them. Per-company enrichment runs through the GTM orchestrator
+once the package is installed there. ``execute`` also refuses to spend without
+``--allow-paid``.
 """
 
 from __future__ import annotations
@@ -35,13 +42,20 @@ from scripts.company_enrichment.packages import (  # noqa: E402
     render,
 )
 
-LIVE_COMMAND = (
-    sys.executable,
-    "-m",
-    "scripts.company_enrichment.signal_loop",
-    "--enrichment",
-    "news-product-launches",
-)
+REVALIDATE_ENTRYPOINT = "scripts/company_enrichment_news_loop.py"
+SUBJECT_FLAGS = ("--company-name", "--domain", "--as-of", "--variant")
+
+
+def live_command(lineage: str) -> tuple[str, ...]:
+    """The vetted corpus revalidation run for this package under ``lineage``."""
+    return (
+        sys.executable,
+        REVALIDATE_ENTRYPOINT,
+        "--evaluate",
+        "--lineage",
+        lineage,
+        "--allow-paid",
+    )
 
 
 def _inputs(args: argparse.Namespace) -> dict[str, str]:
@@ -58,6 +72,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--domain")
     parser.add_argument("--as-of")
     parser.add_argument("--variant", help="name of a file in variants/")
+    parser.add_argument(
+        "--lineage", help="artifact lineage name that labels an execute run"
+    )
     parser.add_argument(
         "--allow-paid",
         action="store_true",
@@ -83,28 +100,41 @@ def main(argv: list[str] | None = None) -> int:
             return 2
         return 0
 
-    try:
-        prompt = render(package, _inputs(args))
-    except PackageError as error:
-        print(f"input error: {error}", file=sys.stderr)
-        return 2
-
     if args.mode == "render":
-        print(prompt)
+        try:
+            print(render(package, _inputs(args)))
+        except PackageError as error:
+            print(f"input error: {error}", file=sys.stderr)
+            return 2
         return 0
 
-    if package.revalidation == "required":
+    supplied = [
+        flag
+        for flag, value in zip(
+            SUBJECT_FLAGS, (args.company_name, args.domain, args.as_of, args.variant)
+        )
+        if value
+    ]
+    if supplied:
         print(
-            f"variant {package.variant!r} changes what was scored; "
-            f"rerun {package.adaptation.get('revalidate_with', 'the loop')} before a live run",
+            f"execute revalidates {package.id} against its sealed benchmark corpus "
+            f"under a lineage name; it cannot honour {', '.join(supplied)}. "
+            "Render the prompt for one company with 'render --company-name X "
+            "--domain x.com', and run per-company enrichment through the GTM "
+            "orchestrator once this package is installed there.",
             file=sys.stderr,
         )
-        return 3
+        return 2
+    if not args.lineage:
+        print("execute needs --lineage <name> to label its run artifacts", file=sys.stderr)
+        return 2
+
+    command = live_command(args.lineage)
     if not args.allow_paid:
-        print(" ".join(LIVE_COMMAND))
+        print(" ".join(command))
         print("refusing to spend without --allow-paid", file=sys.stderr)
         return 3
-    return subprocess.call(LIVE_COMMAND, cwd=REPO_ROOT)
+    return subprocess.call(command, cwd=REPO_ROOT)
 
 
 if __name__ == "__main__":
