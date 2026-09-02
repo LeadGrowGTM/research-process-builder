@@ -66,6 +66,12 @@ mechanical diff: `slug`, `provider`, `type`, `enrichment_level`,
 `linkedin_safe`, `cost_per_100`, `cost_estimate`. Repo-local policy travels
 alongside: `tier`, `caps`, `freshness_days`, `output_visibility`.
 
+The loader type-checks the mirrored keys because the emitted entry reads them
+straight through: `linkedin_safe` must be a YAML boolean (a quoted `"false"` is
+refused rather than silently coerced to true), `cost_per_100` a number, the
+column and tool lists real YAML lists of non-empty strings, and the text keys
+non-empty strings. A wrong type fails at load, not at emit.
+
 ### Evaluation
 
 `dataset`, `scorer`, `candidate`, `dev`, `holdout`, `gate`, `approved_on`
@@ -117,7 +123,9 @@ The manifest exists so this is a bounded decision rather than a judgement call.
 
 A variant overlay may set `title`, `summary`, `description`, `name`,
 `prompt_append`, `notes`, and - at the cost of revalidation - `target_model`,
-`inputs`, `gtm`. Anything else is refused.
+`inputs`, `gtm`. It may also declare `variant`, which must equal the file stem
+it is selected by; a mismatch is refused. Anything else is refused, as is an
+overlay that sets nothing beyond `variant` and `notes`.
 
 | Overlay touches | `revalidation` | `status` |
 |---|---|---|
