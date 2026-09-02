@@ -172,6 +172,36 @@ def test_variant_that_changes_the_model_forces_revalidation(tmp_path: Path) -> N
     assert package.target_model == "gpt-5-nano"
 
 
+def test_a_model_only_variant_is_accepted_and_forces_revalidation(tmp_path: Path) -> None:
+    """Changing what the enrichment runs on is a real change, not an empty overlay."""
+    root = _package(tmp_path)
+    (root / "variants" / "cheap.yaml").write_text(
+        "target_model: gpt-5-nano\n", encoding="utf-8"
+    )
+    package = apply_variant(load_package(root), "cheap")
+    assert package.revalidation == "required"
+    assert package.status == "candidate"
+    assert package.target_model == "gpt-5-nano"
+
+
+def test_an_overlay_that_changes_nothing_is_refused(tmp_path: Path) -> None:
+    root = _package(tmp_path)
+    (root / "variants" / "empty.yaml").write_text(
+        "variant: empty\nnotes: just a note\n", encoding="utf-8"
+    )
+    with pytest.raises(PackageError, match="changes nothing about the package"):
+        apply_variant(load_package(root), "empty")
+
+
+def test_a_variant_may_not_declare_a_name_other_than_its_own(tmp_path: Path) -> None:
+    root = _package(tmp_path)
+    (root / "variants" / "cheap.yaml").write_text(
+        "variant: expensive\ntitle: Cheap\n", encoding="utf-8"
+    )
+    with pytest.raises(PackageError, match="declares itself 'expensive'"):
+        apply_variant(load_package(root), "cheap")
+
+
 def test_variant_cannot_override_the_evaluation(tmp_path: Path) -> None:
     root = _package(tmp_path)
     (root / "variants" / "cheat.yaml").write_text(
@@ -198,6 +228,27 @@ def test_variant_may_not_replace_the_gtm_block_with_a_non_mapping(tmp_path: Path
     )
     with pytest.raises(PackageError, match="gtm must be a non-empty mapping"):
         apply_variant(load_package(root), "broken")
+
+
+def test_a_quoted_linkedin_safe_cannot_flip_the_safety_flag(tmp_path: Path) -> None:
+    """bool("false") is True; the emitted entry must never learn that the hard way."""
+    root = _package(tmp_path, edits=(("linkedin_safe: false", 'linkedin_safe: "false"'),))
+    with pytest.raises(PackageError, match="gtm.linkedin_safe must be a YAML boolean"):
+        load_package(root)
+
+
+def test_a_scalar_column_list_cannot_become_a_tuple_of_characters(tmp_path: Path) -> None:
+    root = _package(tmp_path, edits=(
+        ("input_columns: [company_domain]", "input_columns: company_domain"),
+    ))
+    with pytest.raises(PackageError, match="gtm.input_columns must be a list"):
+        load_package(root)
+
+
+def test_a_quoted_cost_per_100_is_refused(tmp_path: Path) -> None:
+    root = _package(tmp_path, edits=(("cost_per_100: 0.25", 'cost_per_100: "0.25"'),))
+    with pytest.raises(PackageError, match="gtm.cost_per_100 must be a number"):
+        load_package(root)
 
 
 def test_an_empty_gtm_block_fails_to_load_rather_than_crashing_later(tmp_path: Path) -> None:
@@ -386,6 +437,14 @@ def test_shipped_news_package_describes_and_emits() -> None:
     assert '"recent_news": EnrichmentSpec(' in emit_registry_entry(package)
 
 
+def _news_run_module():
+    """The shipped package CLI, imported as the module a consumer would run."""
+    spec = importlib.util.spec_from_file_location("_news_run", NEWS / "run.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def _run_cli(*argv: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
         [sys.executable, str(NEWS / "run.py"), *argv],
@@ -440,14 +499,27 @@ def test_execute_needs_a_lineage_to_label_its_artifacts() -> None:
 
 def test_execute_delegates_to_an_entry_point_that_runs() -> None:
     """The printed command is a real CLI, not a module without a __main__ guard."""
-    printed = _run_cli("execute", "--lineage", "smoke").stdout.split()
-    assert printed[1:] == [
-        "scripts/company_enrichment_news_loop.py",
-        "--evaluate", "--lineage", "smoke", "--allow-paid",
-    ]
+    module = _news_run_module()
+    command = module.live_command("smoke")
+    assert _run_cli("execute", "--lineage", "smoke").stdout.strip() == (
+        module.quote_command(command)
+    )
     parsed = subprocess.run(
-        [sys.executable, *printed[1:-1], "--dry-run"],
-        capture_output=True, text=True, cwd=REPO_ROOT,
+        [*command[:-1], "--dry-run"], capture_output=True, text=True, cwd=REPO_ROOT,
     )
     assert parsed.returncode == 0
     assert '"enrichment_id":"news-product-launches"' in parsed.stdout
+
+
+def test_printed_command_survives_a_spaced_path(tmp_path: Path) -> None:
+    """An operator pastes the printed line back into a shell; it has to run there."""
+    spaced = tmp_path / "a b"
+    spaced.mkdir()
+    script = spaced / "probe.py"
+    script.write_text("print('delegated-ok')\n", encoding="utf-8")
+    module = _news_run_module()
+    line = module.quote_command((sys.executable, str(script)))
+    assert " ".join((sys.executable, str(script))) != line
+    result = subprocess.run(line, shell=True, capture_output=True, text=True)
+    assert result.returncode == 0, result.stderr
+    assert "delegated-ok" in result.stdout

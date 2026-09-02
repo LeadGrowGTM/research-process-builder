@@ -151,8 +151,16 @@ install is four reviewed steps.
 
 1. `py enrichments/<id>/run.py emit` and paste the rendered `EnrichmentSpec`
    into `src/gtm_orchestrator/stages/enrichments/registry.py`.
-2. Copy `<id>.md` to
-   `components/auto-prompt-creator/library/<runtime_prompt_name>.md`.
+2. Copy `<id>.md` - the whole file, manifest frontmatter included - to
+   `components/auto-prompt-creator/library/<runtime_prompt_name>.md`. The
+   consumer strips the frontmatter itself:
+   `lg_runtime.prompts.frontmatter.parse_prompt_file` returns
+   `(frontmatter, body)` and `loader.load_prompt` builds the `Prompt` from the
+   body alone, so the manifest never reaches the model on that side either.
+   The loader rejects the `tool_use` and `conversation` frontmatter keys and
+   ignores every other key, which is why the rest of the manifest travels safely
+   in the same file. Do not paste a `body` render here - the file is copied
+   whole so the installed artifact and the package stay one reviewable object.
 3. Register the sidecar schema. Until
    `lg_runtime.prompts.loader._load_sidecar_schemas` accepts a `schema_module`
    frontmatter key, copy `schema.py` to

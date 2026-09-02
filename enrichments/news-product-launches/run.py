@@ -37,7 +37,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
+import shlex
 import subprocess
 import sys
 
@@ -66,6 +68,17 @@ def live_command(lineage: str) -> tuple[str, ...]:
         lineage,
         "--allow-paid",
     )
+
+
+def quote_command(command: tuple[str, ...]) -> str:
+    """``command`` as one line an operator can paste back into this shell.
+
+    ``sys.executable`` is routinely a spaced path on Windows, so a bare space
+    join hands back a line that does not run.
+    """
+    if os.name == "nt":
+        return subprocess.list2cmdline(command)
+    return shlex.join(command)
 
 
 def _inputs(args: argparse.Namespace) -> dict[str, str]:
@@ -147,7 +160,7 @@ def main(argv: list[str] | None = None) -> int:
 
     command = live_command(args.lineage)
     if not args.allow_paid:
-        print(" ".join(command))
+        print(quote_command(command))
         print("refusing to spend without --allow-paid", file=sys.stderr)
         return 3
     return subprocess.call(command, cwd=REPO_ROOT)

@@ -71,9 +71,15 @@ on, an `evaluation` block naming dataset, scores, gate, and approval date, a
 the prompt sections that may be edited, the ones that stay locked, and what
 forces revalidation.
 
-The manifest never reaches the model. `prompt_text` returns the body only, so
-packaging an already-approved prompt leaves the scored text byte-identical and
-its score intact.
+The manifest never reaches the model, on either side of the install. Here,
+`prompt_text` returns the body only. In the consumer,
+`lg_runtime.prompts.frontmatter.parse_prompt_file` splits the installed file
+into `(frontmatter, body)` and `loader.load_prompt` builds the `Prompt` from the
+body alone - it rejects the `tool_use` and `conversation` frontmatter keys and
+ignores the rest, so the remaining manifest keys ride along harmlessly. That is
+why the install copies `<id>.md` whole rather than a stripped body: packaging an
+already-approved prompt leaves the scored text byte-identical and its score
+intact at both ends.
 
 Adaptation is expressed as variants rather than forks. A variant overlay may
 restate the descriptive fields and append a section to the prompt; doing only

@@ -15,7 +15,9 @@ orchestrator's prompt loader resolves ``library_path/<runtime_prompt_name>.md``,
 and ``gtm.runtime_prompt_name`` is a catalog-side name that need not equal the
 id - ``news-product-launches`` installs as ``recent-news-summary`` - so an
 install copies the prompt to ``library/<runtime_prompt_name>.md`` rather than
-pointing the loader at this directory.
+pointing the loader at this directory. The file is copied whole, manifest
+included: the consumer's ``parse_prompt_file`` splits frontmatter from body and
+loads the body alone, so the manifest reaches no model on either side.
 
 The manifest answers, without reading the prompt body: what goes in, what comes
 out, what you get out of it in one line and in detail, which model it was proved
@@ -51,6 +53,16 @@ DESCRIPTIVE_KEYS = {"title", "summary", "description", "name"}
 VARIANT_KEYS = DESCRIPTIVE_KEYS | {
     "variant", "prompt_append", "inputs", "gtm", "target_model", "notes",
 }
+# Keys the emitted EnrichmentSpec reads straight through. They are optional in a
+# manifest - emit_registry_entry reports the missing ones - but a key that is
+# present must already hold the type the catalog expects, because emit coerces
+# and coercion is silent: bool("false") is True and tuple("a b") is a tuple of
+# characters.
+GTM_TEXT_KEYS = {
+    "slug", "provider", "type", "enrichment_level", "runtime_prompt_name",
+    "cost_estimate",
+}
+GTM_LIST_KEYS = {"input_columns", "output_columns", "requires_tools"}
 
 
 class PackageError(ValueError):
@@ -184,8 +196,26 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
         )
     if not isinstance(manifest["outputs"], dict) or not manifest["outputs"]:
         raise PackageError("outputs must be a non-empty mapping")
-    if not isinstance(manifest["gtm"], dict) or not manifest["gtm"]:
+    gtm = manifest["gtm"]
+    if not isinstance(gtm, dict) or not gtm:
         raise PackageError("gtm must be a non-empty mapping")
+    for key in GTM_TEXT_KEYS & set(gtm):
+        if not isinstance(gtm[key], str) or not gtm[key].strip():
+            raise PackageError(f"gtm.{key} must be non-empty text")
+    for key in GTM_LIST_KEYS & set(gtm):
+        if not isinstance(gtm[key], list) or not gtm[key] or any(
+            not isinstance(item, str) or not item.strip() for item in gtm[key]
+        ):
+            raise PackageError(
+                f"gtm.{key} must be a list of non-empty strings, not a bare scalar"
+            )
+    if "linkedin_safe" in gtm and not isinstance(gtm["linkedin_safe"], bool):
+        raise PackageError(
+            "gtm.linkedin_safe must be a YAML boolean; quoted text is always truthy"
+        )
+    cost = gtm.get("cost_per_100", 0)
+    if isinstance(cost, bool) or not isinstance(cost, (int, float)):
+        raise PackageError("gtm.cost_per_100 must be a number, not text")
     adaptation = manifest["adaptation"]
     if not isinstance(adaptation, dict) or "adaptable" not in adaptation:
         raise PackageError("adaptation must declare 'adaptable'")
@@ -263,8 +293,14 @@ def apply_variant(package: EnrichmentPackage, variant: str) -> EnrichmentPackage
     secret = _secret_key(overlay)
     if secret:
         raise PackageError(f"secret-bearing key is forbidden in a manifest: {secret}")
-    if not overlay.get("prompt_append") and not set(overlay) & DESCRIPTIVE_KEYS:
-        raise PackageError(f"variant {variant} changes nothing a reader would see")
+    declared = overlay.get("variant")
+    if declared is not None and declared != variant:
+        raise PackageError(
+            f"variant {variant} declares itself {declared!r}; the declared name "
+            "must equal the file name it is selected by"
+        )
+    if not set(overlay) - {"variant", "notes"}:
+        raise PackageError(f"variant {variant} changes nothing about the package")
     changes_proof = bool(
         set(overlay) - DESCRIPTIVE_KEYS - {"variant", "prompt_append", "notes"}
     )
