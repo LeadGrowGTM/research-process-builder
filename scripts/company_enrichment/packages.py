@@ -29,6 +29,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, replace
 import json
+import math
 from pathlib import Path
 import re
 from types import MappingProxyType
@@ -43,7 +44,7 @@ LIFECYCLE = ("proposed", "experiment", "candidate", "approved", "rejected")
 KINDS = ("lookup", "monitoring")
 REQUIRED_KEYS = {
     "id", "name", "title", "summary", "description", "version", "status", "kind",
-    "entity", "target_model", "temperature", "max_tokens", "runner",
+    "entity", "target_model", "proof_temperature", "proof_max_output_tokens", "runner",
     "schema_module", "inputs", "outputs", "gtm", "evaluation", "adaptation",
 }
 ID_PATTERN = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
@@ -63,6 +64,7 @@ GTM_TEXT_KEYS = {
     "cost_estimate",
 }
 GTM_LIST_KEYS = {"input_columns", "output_columns", "requires_tools"}
+APPROVAL_GATE = 0.90
 
 
 class PackageError(ValueError):
@@ -82,8 +84,8 @@ class EnrichmentPackage:
     kind: str
     entity: str
     target_model: str
-    temperature: float
-    max_tokens: int
+    proof_temperature: float | None
+    proof_max_output_tokens: int
     runner: str
     schema_module: str
     inputs: Mapping[str, Any]
@@ -179,21 +181,59 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
         raise PackageError(f"status must be one of {LIFECYCLE}")
     if manifest["kind"] not in KINDS:
         raise PackageError(f"kind must be one of {KINDS}")
+    for key in (
+        "name", "title", "summary", "description", "entity", "target_model",
+        "runner", "schema_module",
+    ):
+        if not isinstance(manifest[key], str) or not manifest[key].strip():
+            raise PackageError(f"{key} must be non-empty text")
+    temperature = manifest["proof_temperature"]
+    if temperature is not None and (
+        isinstance(temperature, bool)
+        or not isinstance(temperature, (int, float))
+        or not math.isfinite(temperature)
+    ):
+        raise PackageError("proof_temperature must be a finite number or null")
+    max_output_tokens = manifest["proof_max_output_tokens"]
+    if (
+        isinstance(max_output_tokens, bool)
+        or not isinstance(max_output_tokens, int)
+        or max_output_tokens <= 0
+    ):
+        raise PackageError("proof_max_output_tokens must be a positive integer")
     secret = _secret_key(dict(manifest))
     if secret:
         raise PackageError(f"secret-bearing key is forbidden in a manifest: {secret}")
     for key in ("runner", "schema_module"):
-        if not (root / str(manifest[key])).is_file():
+        reference = Path(manifest[key])
+        package_root = root.resolve()
+        candidate = (root / reference).resolve()
+        if reference.is_absolute() or not candidate.is_relative_to(package_root):
+            raise PackageError(f"{key} must be a relative file inside the package")
+        if not candidate.is_file():
             raise PackageError(f"{key} points at a missing file: {manifest[key]}")
     inputs = manifest["inputs"]
-    if (
-        not isinstance(inputs, dict)
-        or not isinstance(inputs.get("required"), dict)
-        or not inputs["required"]
-    ):
+    if not isinstance(inputs, dict):
+        raise PackageError("inputs must be a mapping")
+    required = inputs.get("required")
+    if not isinstance(required, dict) or not required:
         raise PackageError(
             "inputs.required must be a non-empty mapping of name to description"
         )
+    optional = inputs.get("optional")
+    if not isinstance(optional, dict):
+        raise PackageError("inputs.optional must be a mapping of name to description")
+    for group, values in (("required", required), ("optional", optional)):
+        if any(
+            not isinstance(name, str)
+            or not name.strip()
+            or not isinstance(description, str)
+            or not description.strip()
+            for name, description in values.items()
+        ):
+            raise PackageError(
+                f"inputs.{group} names and descriptions must be non-empty strings"
+            )
     if not isinstance(manifest["outputs"], dict) or not manifest["outputs"]:
         raise PackageError("outputs must be a non-empty mapping")
     gtm = manifest["gtm"]
@@ -214,7 +254,11 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
             "gtm.linkedin_safe must be a YAML boolean; quoted text is always truthy"
         )
     cost = gtm.get("cost_per_100", 0)
-    if isinstance(cost, bool) or not isinstance(cost, (int, float)):
+    if (
+        isinstance(cost, bool)
+        or not isinstance(cost, (int, float))
+        or not math.isfinite(cost)
+    ):
         raise PackageError("gtm.cost_per_100 must be a number, not text")
     adaptation = manifest["adaptation"]
     if not isinstance(adaptation, dict) or "adaptable" not in adaptation:
@@ -226,6 +270,17 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
     evaluation = manifest["evaluation"]
     if not isinstance(evaluation, dict):
         raise PackageError("evaluation must be a mapping")
+    for key in ("dev", "holdout", "gate"):
+        value = evaluation.get(key)
+        if value is None:
+            continue
+        if (
+            isinstance(value, bool)
+            or not isinstance(value, (int, float))
+            or not math.isfinite(value)
+            or not 0 <= value <= 1
+        ):
+            raise PackageError(f"evaluation.{key} must be a finite number from 0 to 1")
     if manifest["status"] == "approved":
         for key in ("dataset", "dev", "holdout", "gate", "approved_on"):
             if evaluation.get(key) in (None, ""):
@@ -234,8 +289,15 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
             raise PackageError(
                 "evaluation.approved_on must be quoted ISO text, not a YAML date"
             )
-        if float(evaluation["dev"]) < float(evaluation["gate"]):
-            raise PackageError("an approved package must meet its own gate on dev")
+        if evaluation["gate"] < APPROVAL_GATE:
+            raise PackageError(
+                f"an approved package gate must be at least {APPROVAL_GATE:.2f}"
+            )
+        for split in ("dev", "holdout"):
+            if evaluation[split] < evaluation["gate"]:
+                raise PackageError(
+                    f"an approved package must meet its own gate on {split}"
+                )
 
 
 def load_package(root: Path, *, variant: str | None = None) -> EnrichmentPackage:
@@ -275,6 +337,8 @@ def apply_variant(package: EnrichmentPackage, variant: str) -> EnrichmentPackage
     but marks it ``revalidation: required`` and drops it out of ``approved`` so
     no consumer can spend the parent's score on it.
     """
+    if not isinstance(variant, str) or not ID_PATTERN.fullmatch(variant):
+        raise PackageError("variant must be a safe lower-kebab-case file stem")
     path = package.root / "variants" / f"{variant}.yaml"
     if not path.is_file():
         raise PackageError(f"unknown variant {variant!r}: {path} does not exist")

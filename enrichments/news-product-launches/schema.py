@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from typing import Literal, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 NEWS_EVENT_TYPES = (
     "funding", "acquisition", "partnership", "leadership", "expansion", "award",
@@ -59,6 +59,8 @@ class LaunchEvent(_Event):
 class OutputModel(BaseModel):
     """Two typed collections plus explicit unknowns."""
 
-    news: list[NewsEvent] = Field(default_factory=list)
-    launches: list[LaunchEvent] = Field(default_factory=list)
-    unknowns: list[Literal["news", "launches"]] = Field(default_factory=list)
+    model_config = ConfigDict(extra="forbid")
+
+    news: list[NewsEvent]
+    launches: list[LaunchEvent]
+    unknowns: list[Literal["news", "launches"]]

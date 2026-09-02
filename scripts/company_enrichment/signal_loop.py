@@ -32,7 +32,7 @@ from .benchmark import ExecutionTrack
 from .contracts import CompanyDossier, canonical_json
 from .executors import P0_ENRICHMENTS
 from .experiment_runner import ExperimentInput, ModelClient
-from .openai_model_client import build_openai_model_client
+from .openai_model_client import MODEL_PRICES, build_openai_model_client
 from .packages import candidate_prompt_text
 from .signal_evidence import (
     load_cached_dossiers, load_signal_dossier, save_signal_dossier,
@@ -266,9 +266,10 @@ def _run_attempt(
     *, spec: SignalSpec, run_root: Path, attempt_id: str, split: str, ids: Sequence[str],
     candidate: PromptCandidate, records: Mapping[str, SignalGroundTruthRecord],
     dossiers: Mapping[str, CompanyDossier], dataset_hash: str, model_client: ModelClient,
+    model_id: str,
 ) -> dict[str, Any] | None:
     requests = tuple(ExperimentInput(
-        spec.enrichment_id, company_id, MODEL_ID, dossiers[company_id],
+        spec.enrichment_id, company_id, model_id, dossiers[company_id],
         candidate.candidate_id, candidate.text, spec.output_contract(dossiers[company_id]),
     ) for company_id in ids)
     estimate = Decimal(model_client.estimate(requests, ExecutionTrack.SYNCHRONOUS))
@@ -307,7 +308,7 @@ def _run_attempt(
                     "error_message": str(error)[:500],
                     "input_hash": input_hash(request.company_id),
                     "invalid_output": True,
-                    "requested_model": MODEL_ID,
+                    "requested_model": model_id,
                     "source_cache_reused": True,
                     "source_purchases": 0,
                 })
@@ -320,7 +321,7 @@ def _run_attempt(
                 "latency_ms": execution.latency_ms,
                 "model_cost_usd": execution.actual_cost_usd,
                 "output": payload,
-                "requested_model": MODEL_ID,
+                "requested_model": model_id,
                 "resolved_model": execution.resolved_model_id,
                 "source_cache_reused": True,
                 "source_purchases": 0,
@@ -399,7 +400,7 @@ def _write_inputs(spec: SignalSpec, repo_root: Path, run_root: Path, public: Sig
 
 def run_loop(
     spec: SignalSpec, *, repo_root: Path, run_root: Path, model_client: ModelClient,
-    resume: bool,
+    resume: bool, model_id: str = MODEL_ID,
 ) -> dict[str, Any]:
     if _started(run_root) and not resume:
         raise ValueError("lineage already exists; pass --resume")
@@ -422,7 +423,7 @@ def run_loop(
             spec=spec, run_root=run_root, attempt_id=f"dev-{index}-{candidate.candidate_id}",
             split="dev", ids=public.development_ids, candidate=candidate,
             records=public.records, dossiers=dossiers, dataset_hash=public.dataset_hash,
-            model_client=model_client,
+            model_client=model_client, model_id=model_id,
         )
         if score is None:
             break
@@ -432,7 +433,7 @@ def run_loop(
         gate = {"action": "halt_for_review", "approval": False,
                 "human_review_eligible": False, "reason_code": "budget_exhausted",
                 "threshold": str(THRESHOLD)}
-        result = {"enrichment_id": spec.enrichment_id, "gate": gate, "model": MODEL_ID,
+        result = {"enrichment_id": spec.enrichment_id, "gate": gate, "model": model_id,
                   "total_cost_usd": str(_total_cost(run_root / "cost.json"))}
         _atomic_json(run_root / "gate.json", gate)
         _atomic_json(run_root / "result.json", result)
@@ -452,6 +453,7 @@ def run_loop(
         split="holdout", ids=public.holdout_ids, candidate=winner,
         records=evaluator_dataset.records, dossiers=dossiers,
         dataset_hash=evaluator_dataset.public.dataset_hash, model_client=model_client,
+        model_id=model_id,
     )
     if holdout is None:
         mean, failures = Decimal("0"), ("budget_exhausted",)
@@ -470,7 +472,7 @@ def run_loop(
         "threshold": str(THRESHOLD),
     }
     result = {
-        "enrichment_id": spec.enrichment_id, "gate": gate, "model": MODEL_ID,
+        "enrichment_id": spec.enrichment_id, "gate": gate, "model": model_id,
         "source_purchases": 0, "total_cost_usd": str(_total_cost(run_root / "cost.json")),
         "winner": winner_value,
     }
@@ -479,7 +481,9 @@ def run_loop(
     return result
 
 
-def _dry_plan(spec: SignalSpec, lineage: str, repo_root: Path) -> dict[str, Any]:
+def _dry_plan(
+    spec: SignalSpec, lineage: str, repo_root: Path, model_id: str = MODEL_ID,
+) -> dict[str, Any]:
     return {
         "all_ids": list(ALL_IDS), "approval": False, "cached_only": True,
         "candidate_prompt_hashes": [
@@ -487,7 +491,7 @@ def _dry_plan(spec: SignalSpec, lineage: str, repo_root: Path) -> dict[str, Any]
         ],
         "cost_cap_usd": str(CAP_USD), "development_ids": list(DEVELOPMENT_IDS),
         "enrichment_id": spec.enrichment_id, "holdout_ids": list(HOLDOUT_IDS),
-        "lineage": lineage, "model": MODEL_ID, "source_purchases": 0,
+        "lineage": lineage, "model": model_id, "source_purchases": 0,
         "track": "synchronous",
     }
 
@@ -567,6 +571,7 @@ def main(
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--allow-paid", action="store_true")
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--model", choices=tuple(MODEL_PRICES), default=MODEL_ID)
     args = parser.parse_args(argv)
     root = Path(repo_root or Path(__file__).resolve().parents[2])
     if args.search_provider:
@@ -613,7 +618,7 @@ def main(
         dossiers = load_signal_dossiers(spec, root)
         public = spec.load_ground_truth(root, dossiers)
         _write_inputs(spec, root, run_root, public)
-        print(canonical_json(_dry_plan(spec, args.lineage, root)))
+        print(canonical_json(_dry_plan(spec, args.lineage, root, args.model)))
         return 0
     if not args.allow_paid:
         print(canonical_json({"approval": False, "error": "--allow-paid is required"}))
@@ -621,7 +626,7 @@ def main(
     client = model_client_factory(artifact_root=run_root)
     try:
         result = run_loop(spec, repo_root=root, run_root=run_root,
-                          model_client=client, resume=args.resume)
+                          model_client=client, resume=args.resume, model_id=args.model)
     except (BudgetExceeded, ValueError) as error:
         print(canonical_json({"approval": False, "error": type(error).__name__,
                               "message": str(error)}))

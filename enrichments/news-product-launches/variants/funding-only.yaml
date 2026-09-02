@@ -3,10 +3,10 @@
 # the inputs and the GTM contract are untouched, so this variant inherits the
 # parent's 0.974/0.997 proof rather than needing its own run.
 variant: funding-only
-title: What this company raised, when, and who led it
+title: Which funding events this company announced, and when
 summary: >-
-  The same dated, cited event extraction narrowed to funding rounds and the
-  investors named in the Evidence.
+  The same dated, cited event extraction narrowed to funding rounds and other
+  financing events supported by the Evidence.
 prompt_append: >-
   Report only funding events. A funding event is a round, an extension, a
   strategic investment, or a stated valuation change. Everything else that would

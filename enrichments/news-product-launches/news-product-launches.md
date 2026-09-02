@@ -22,8 +22,8 @@ kind: lookup
 entity: company
 
 target_model: gpt-5.6-luna
-temperature: 0.2
-max_tokens: 900
+proof_temperature: null
+proof_max_output_tokens: 4096
 runner: run.py
 schema_module: schema.py
 

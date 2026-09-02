@@ -13,6 +13,7 @@ import subprocess
 import sys
 
 import pytest
+from pydantic import ValidationError
 
 from scripts.company_enrichment.news_contracts import (
     LAUNCH_EVENT_TYPES,
@@ -58,8 +59,8 @@ status: {status}
 kind: lookup
 entity: company
 target_model: gpt-5.6-luna
-temperature: 0.2
-max_tokens: 500
+proof_temperature: 0.2
+proof_max_output_tokens: 500
 runner: run.py
 schema_module: schema.py
 inputs:
@@ -130,6 +131,24 @@ def test_approved_package_must_clear_its_own_gate(tmp_path: Path) -> None:
         load_package(root)
 
 
+def test_approved_package_must_clear_the_gate_on_holdout(tmp_path: Path) -> None:
+    root = _package(tmp_path, edits=(("  holdout: 0.93", "  holdout: 0.80"),))
+    with pytest.raises(PackageError, match="must meet its own gate on holdout"):
+        load_package(root)
+
+
+def test_approved_package_cannot_lower_the_repository_gate(tmp_path: Path) -> None:
+    root = _package(tmp_path, edits=(("  gate: 0.9", "  gate: 0.5"),))
+    with pytest.raises(PackageError, match="gate must be at least 0.90"):
+        load_package(root)
+
+
+def test_approval_scores_must_be_finite_numbers(tmp_path: Path) -> None:
+    root = _package(tmp_path, edits=(("  holdout: 0.93", "  holdout: .nan"),))
+    with pytest.raises(PackageError, match="evaluation.holdout must be a finite number"):
+        load_package(root)
+
+
 def test_unquoted_approval_date_is_rejected(tmp_path: Path) -> None:
     root = _package(tmp_path, edits=(('approved_on: "2026-08-21"', "approved_on: 2026-08-21"),))
     with pytest.raises(PackageError, match="quoted ISO text"):
@@ -146,6 +165,28 @@ def test_missing_runner_file_is_rejected(tmp_path: Path) -> None:
     root = _package(tmp_path)
     (root / "run.py").unlink()
     with pytest.raises(PackageError, match="runner points at a missing file"):
+        load_package(root)
+
+
+def test_package_file_references_cannot_escape_the_package(tmp_path: Path) -> None:
+    (tmp_path / "outside.py").write_text("", encoding="utf-8")
+    root = _package(tmp_path, edits=(("runner: run.py", "runner: ../outside.py"),))
+    with pytest.raises(PackageError, match="relative file inside the package"):
+        load_package(root)
+
+
+def test_optional_inputs_must_be_a_mapping(tmp_path: Path) -> None:
+    root = _package(
+        tmp_path,
+        edits=(("  optional:\n    as_of: anchor date", "  optional: as_of"),),
+    )
+    with pytest.raises(PackageError, match="inputs.optional must be a mapping"):
+        load_package(root)
+
+
+def test_input_descriptions_must_be_non_empty_text(tmp_path: Path) -> None:
+    root = _package(tmp_path, edits=(("domain: the host", 'domain: ""'),))
+    with pytest.raises(PackageError, match="names and descriptions"):
         load_package(root)
 
 
@@ -200,6 +241,20 @@ def test_a_variant_may_not_declare_a_name_other_than_its_own(tmp_path: Path) -> 
     )
     with pytest.raises(PackageError, match="declares itself 'expensive'"):
         apply_variant(load_package(root), "cheap")
+
+
+def test_a_variant_name_cannot_escape_the_variants_directory(tmp_path: Path) -> None:
+    with pytest.raises(PackageError, match="safe lower-kebab-case file stem"):
+        apply_variant(load_package(_package(tmp_path)), "../../other")
+
+
+def test_a_variant_target_model_must_remain_text(tmp_path: Path) -> None:
+    root = _package(tmp_path)
+    (root / "variants" / "broken.yaml").write_text(
+        "target_model:\n  name: gpt-5-nano\n", encoding="utf-8"
+    )
+    with pytest.raises(PackageError, match="target_model must be non-empty text"):
+        apply_variant(load_package(root), "broken")
 
 
 def test_variant_cannot_override_the_evaluation(tmp_path: Path) -> None:
@@ -389,7 +444,8 @@ def test_package_schema_imports_where_this_repository_does_not_exist(tmp_path: P
     }
     probe = (
         "import json, sys, schema;"
-        "sys.stdout.write(schema.OutputModel(news=[json.loads(sys.argv[1])])"
+        "sys.stdout.write(schema.OutputModel(news=[json.loads(sys.argv[1])],"
+        "launches=[],unknowns=[])"
         ".model_dump_json())"
     )
     result = subprocess.run(
@@ -398,6 +454,24 @@ def test_package_schema_imports_where_this_repository_does_not_exist(tmp_path: P
     )
     assert result.returncode == 0, result.stderr
     assert json.loads(result.stdout)["news"][0]["event_type"] == "funding"
+
+
+def test_package_schema_requires_every_top_level_output() -> None:
+    spec = importlib.util.spec_from_file_location("_required_pkg_schema", NEWS / "schema.py")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    with pytest.raises(ValidationError):
+        module.OutputModel(news=[], launches=[])
+
+
+def test_package_schema_rejects_unknown_top_level_output() -> None:
+    spec = importlib.util.spec_from_file_location("_strict_pkg_schema", NEWS / "schema.py")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    with pytest.raises(ValidationError):
+        module.OutputModel(news=[], launches=[], unknowns=[], extra=[])
 
 
 def test_package_schema_event_types_match_the_repo_contract() -> None:
@@ -431,6 +505,8 @@ def test_shipped_news_package_describes_and_emits() -> None:
     package = load_package(NEWS)
     assert package.status == "approved"
     assert package.target_model == "gpt-5.6-luna"
+    assert package.proof_temperature is None
+    assert package.proof_max_output_tokens == 4096
     card = package.card()
     assert card["evaluation"]["holdout"] == 0.997
     assert card["inputs"]["required"].keys() == {"company_name", "domain"}
@@ -500,7 +576,7 @@ def test_execute_needs_a_lineage_to_label_its_artifacts() -> None:
 def test_execute_delegates_to_an_entry_point_that_runs() -> None:
     """The printed command is a real CLI, not a module without a __main__ guard."""
     module = _news_run_module()
-    command = module.live_command("smoke")
+    command = module.live_command("smoke", "gpt-5.6-luna")
     assert _run_cli("execute", "--lineage", "smoke").stdout.strip() == (
         module.quote_command(command)
     )
@@ -509,6 +585,7 @@ def test_execute_delegates_to_an_entry_point_that_runs() -> None:
     )
     assert parsed.returncode == 0
     assert '"enrichment_id":"news-product-launches"' in parsed.stdout
+    assert '"model":"gpt-5.6-luna"' in parsed.stdout
 
 
 def test_printed_command_survives_a_spaced_path(tmp_path: Path) -> None:

@@ -65,9 +65,10 @@ catalog-side name that need not equal the id, so installing copies the prompt to
 
 The manifest is the contract: identity and lifecycle status, a `title` stating
 what a reader gets out of it, a `summary` and a longer `description`, declared
-`inputs` and `outputs`, the `target_model` and decoding settings it was proved
-on, an `evaluation` block naming dataset, scores, gate, and approval date, a
-`gtm` block whose keys mirror `EnrichmentSpec`, and an `adaptation` block naming
+`inputs` and `outputs`, the `target_model` and explicitly proof-prefixed decoding
+settings it earned its scores with, an `evaluation` block naming dataset, scores,
+gate, and approval date, a `gtm` block whose keys mirror `EnrichmentSpec`, and an
+`adaptation` block naming
 the prompt sections that may be edited, the ones that stay locked, and what
 forces revalidation.
 

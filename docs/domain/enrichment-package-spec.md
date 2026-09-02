@@ -46,9 +46,11 @@ will misread an empty result as "no funding".
 
 ### Runtime
 
-`target_model`, `temperature`, `max_tokens`, `runner` (the CLI file),
-`schema_module` (the sidecar file). Both file references are checked to exist at
-load time.
+`target_model`, `proof_temperature`, `proof_max_output_tokens`, `runner` (the
+CLI file), `schema_module` (the sidecar file). The proof-prefixed fields record
+the exact decoding configuration used to earn the evaluation scores; `null`
+means that setting was not sent to the model. Both file references must be
+relative files inside the package and are checked at load time.
 
 ### Contract
 
@@ -76,9 +78,11 @@ non-empty strings. A wrong type fails at load, not at emit.
 
 `dataset`, `scorer`, `candidate`, `dev`, `holdout`, `gate`, `approved_on`
 (quoted, so YAML does not turn it into a date object), and `report`. A package
-with `status: approved` must name all of them and must clear its own `gate` on
-`dev`, or it fails to load. This is the gate from CLAUDE.md expressed as data:
-programmed score at or above 0.90 plus the recorded human review.
+with `status: approved` must name all of them, use a gate of at least 0.90, and
+clear that gate on both `dev` and `holdout`, or it fails to load. Scores and the
+gate must be finite numbers from zero to one. This is the gate from CLAUDE.md
+expressed as data: programmed score at or above 0.90 plus the recorded human
+review.
 
 ### Adaptation
 

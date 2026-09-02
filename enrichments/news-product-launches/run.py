@@ -58,7 +58,7 @@ REVALIDATE_ENTRYPOINT = "scripts/company_enrichment_news_loop.py"
 SUBJECT_FLAGS = ("--company-name", "--domain", "--as-of", "--variant")
 
 
-def live_command(lineage: str) -> tuple[str, ...]:
+def live_command(lineage: str, model_id: str) -> tuple[str, ...]:
     """The vetted corpus revalidation run for this package under ``lineage``."""
     return (
         sys.executable,
@@ -66,6 +66,8 @@ def live_command(lineage: str) -> tuple[str, ...]:
         "--evaluate",
         "--lineage",
         lineage,
+        "--model",
+        model_id,
         "--allow-paid",
     )
 
@@ -158,7 +160,7 @@ def main(argv: list[str] | None = None) -> int:
         print("execute needs --lineage <name> to label its run artifacts", file=sys.stderr)
         return 2
 
-    command = live_command(args.lineage)
+    command = live_command(args.lineage, package.target_model)
     if not args.allow_paid:
         print(quote_command(command))
         print("refusing to spend without --allow-paid", file=sys.stderr)
