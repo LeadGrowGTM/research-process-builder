@@ -222,6 +222,31 @@ def test_resume_lineage_guard(repo: Path, capsys):
                             repo_root=repo, model_client_factory=factory) == 0
 
 
+def test_resume_rejects_a_different_model_before_any_paid_call(repo: Path) -> None:
+    class SimulatedCrash(BaseException):
+        pass
+
+    class CrashingClient(FakeModelClient):
+        def execute(self, requests, track):
+            raise SimulatedCrash
+
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "model-crash"
+    with pytest.raises(SimulatedCrash):
+        run_loop(
+            make_spec(), repo_root=repo, run_root=run_root,
+            model_client=CrashingClient(), resume=False, model_id="gpt-4.1-mini",
+        )
+
+    client = FakeModelClient()
+    with pytest.raises(ValueError, match="does not match lineage model"):
+        run_loop(
+            make_spec(), repo_root=repo, run_root=run_root,
+            model_client=client, resume=True, model_id="gpt-5-nano",
+        )
+    assert client.estimates == []
+    assert client.executed == []
+
+
 def test_lineage_name_is_validated(repo: Path):
     with pytest.raises(SystemExit):
         signal_loop.main(make_spec(), ["--evaluate", "--lineage", "../escape"], repo_root=repo)

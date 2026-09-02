@@ -279,7 +279,8 @@ def _run_attempt(
 
     def input_hash(company_id: str) -> str:
         return sha256(canonical_json({
-            "dossier": _primitive(dossiers[company_id]), "prompt_hash": candidate.prompt_hash,
+            "dossier": _primitive(dossiers[company_id]), "model_id": model_id,
+            "prompt_hash": candidate.prompt_hash,
         }).encode("utf-8")).hexdigest()
 
     def inventor(_envelope):
@@ -369,7 +370,8 @@ def _run_attempt(
         BudgetLimits(max_calls=1, max_llm_calls=len(ids), max_cost=float(CAP_USD)),
         .90,
         execution_inputs={"company_ids": tuple(ids), "dataset_hash": dataset_hash,
-                          "prompt_hash": candidate.prompt_hash, "split": split},
+                          "model_id": model_id, "prompt_hash": candidate.prompt_hash,
+                          "split": split},
         rubric=spec.rubric,
     )
     executor(None)
@@ -381,7 +383,10 @@ def _started(run_root: Path) -> bool:
     return any((run_root / name).exists() for name in _STARTED_MARKERS)
 
 
-def _write_inputs(spec: SignalSpec, repo_root: Path, run_root: Path, public: SignalDataset) -> None:
+def _write_inputs(
+    spec: SignalSpec, repo_root: Path, run_root: Path, public: SignalDataset,
+    model_id: str,
+) -> None:
     def digest(path: Path) -> str:
         return sha256(path.read_bytes()).hexdigest()
     _atomic_json(run_root / "inputs.json", {
@@ -391,7 +396,8 @@ def _write_inputs(spec: SignalSpec, repo_root: Path, run_root: Path, public: Sig
             repo_root / "benchmarks/dossiers" / f"{company_id}.yaml",
         ) for company_id in ALL_IDS},
         "enrichment_id": spec.enrichment_id,
-        "holdout_ids": list(public.holdout_ids), "source_purchases": 0,
+        "holdout_ids": list(public.holdout_ids), "model": model_id,
+        "source_purchases": 0,
         "signal_hashes": {company_id: digest(
             repo_root / spec.benchmark_dir / f"{company_id}.yaml",
         ) for company_id in ALL_IDS},
@@ -402,15 +408,23 @@ def run_loop(
     spec: SignalSpec, *, repo_root: Path, run_root: Path, model_client: ModelClient,
     resume: bool, model_id: str = MODEL_ID,
 ) -> dict[str, Any]:
-    if _started(run_root) and not resume:
+    started = _started(run_root)
+    if started and not resume:
         raise ValueError("lineage already exists; pass --resume")
+    if started:
+        prior_inputs = _read_json(run_root / "inputs.json")
+        prior_model = prior_inputs.get("model") if prior_inputs else None
+        if prior_model != model_id:
+            raise ValueError(
+                f"resume model {model_id!r} does not match lineage model {prior_model!r}"
+            )
     run_root.mkdir(parents=True, exist_ok=True)
     dossiers = load_signal_dossiers(spec, repo_root)
     public = spec.load_ground_truth(repo_root, dossiers)
     if not isinstance(public, SignalDataset):
         raise ValueError("load_ground_truth must return a public SignalDataset")
     candidates = prompt_candidates(spec, repo_root)
-    _write_inputs(spec, repo_root, run_root, public)
+    _write_inputs(spec, repo_root, run_root, public, model_id)
     _atomic_json(run_root / "candidates.json", {
         "candidates": [{"candidate_id": item.candidate_id, "prompt_hash": item.prompt_hash,
                         "prompt_text": item.text} for item in candidates],
@@ -617,7 +631,7 @@ def main(
     if args.dry_run:
         dossiers = load_signal_dossiers(spec, root)
         public = spec.load_ground_truth(root, dossiers)
-        _write_inputs(spec, root, run_root, public)
+        _write_inputs(spec, root, run_root, public, args.model)
         print(canonical_json(_dry_plan(spec, args.lineage, root, args.model)))
         return 0
     if not args.allow_paid:

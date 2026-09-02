@@ -129,7 +129,8 @@ A variant overlay may set `title`, `summary`, `description`, `name`,
 `prompt_append`, `notes`, and - at the cost of revalidation - `target_model`,
 `inputs`, `gtm`. It may also declare `variant`, which must equal the file stem
 it is selected by; a mismatch is refused. Anything else is refused, as is an
-overlay that sets nothing beyond `variant` and `notes`.
+overlay that sets nothing beyond `variant` and `notes`. `prompt_append` must be
+non-empty text; booleans, lists, mappings, and whitespace-only values are refused.
 
 | Overlay touches | `revalidation` | `status` |
 |---|---|---|

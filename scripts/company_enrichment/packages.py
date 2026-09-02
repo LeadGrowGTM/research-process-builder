@@ -282,13 +282,19 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
         ):
             raise PackageError(f"evaluation.{key} must be a finite number from 0 to 1")
     if manifest["status"] == "approved":
-        for key in ("dataset", "dev", "holdout", "gate", "approved_on"):
+        for key in (
+            "dataset", "scorer", "candidate", "dev", "holdout", "gate",
+            "approved_on", "report",
+        ):
             if evaluation.get(key) in (None, ""):
                 raise PackageError(f"an approved package needs evaluation.{key}")
         if not isinstance(evaluation["approved_on"], str):
             raise PackageError(
                 "evaluation.approved_on must be quoted ISO text, not a YAML date"
             )
+        for key in ("dataset", "scorer", "candidate", "report"):
+            if not isinstance(evaluation[key], str) or not evaluation[key].strip():
+                raise PackageError(f"evaluation.{key} must be non-empty text")
         if evaluation["gate"] < APPROVAL_GATE:
             raise PackageError(
                 f"an approved package gate must be at least {APPROVAL_GATE:.2f}"
@@ -363,14 +369,19 @@ def apply_variant(package: EnrichmentPackage, variant: str) -> EnrichmentPackage
             f"variant {variant} declares itself {declared!r}; the declared name "
             "must equal the file name it is selected by"
         )
+    if "prompt_append" in overlay and (
+        not isinstance(overlay["prompt_append"], str)
+        or not overlay["prompt_append"].strip()
+    ):
+        raise PackageError(f"variant {variant} prompt_append must be non-empty text")
     if not set(overlay) - {"variant", "notes"}:
         raise PackageError(f"variant {variant} changes nothing about the package")
     changes_proof = bool(
         set(overlay) - DESCRIPTIVE_KEYS - {"variant", "prompt_append", "notes"}
     )
     body = package.body
-    if overlay.get("prompt_append"):
-        appended = str(overlay["prompt_append"]).strip()
+    if "prompt_append" in overlay:
+        appended = overlay["prompt_append"].strip()
         body = f"{body.rstrip()}\n\n## Variant: {variant}\n\n{appended}\n"
     updates: dict[str, Any] = {
         key: overlay[key] for key in DESCRIPTIVE_KEYS if key in overlay

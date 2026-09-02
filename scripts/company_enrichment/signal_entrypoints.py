@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+from dataclasses import replace
 from datetime import date
 import json
 import os
@@ -119,7 +120,6 @@ _DRAFT_HEADER = (
 )
 
 
-_REPO_ROOT = Path(__file__).resolve().parents[2]
 _SEARCH_BUILDERS = {"serper": build_serper_search, "parallel": build_parallel_search}
 DEFAULT_SEARCH_PROVIDERS = "serper,parallel"
 
@@ -149,7 +149,7 @@ def build_news_spec() -> SignalSpec:
         load_ground_truth=dataset_loader(NEWS_ENRICHMENT_ID, NEWS_WEIGHTS, validate_news_record),
         score=score_news,
         postprocess=ground_news_payload,
-        prompt_path=resolve_prompt_path(NEWS_ENRICHMENT_ID, _REPO_ROOT),
+        prompt_path=Path("prompts/company-enrichment") / f"{NEWS_ENRICHMENT_ID}.md",
         weights=NEWS_WEIGHTS,
         collect=bind_collect(
             enrichment_id=NEWS_ENRICHMENT_ID, plan=NEWS_PLAN, search_factory=_search_factory,
@@ -169,7 +169,7 @@ def build_competitor_spec() -> SignalSpec:
         ),
         score=score_competitors,
         postprocess=ground_competitor_payload,
-        prompt_path=resolve_prompt_path(COMPETITOR_ENRICHMENT_ID, _REPO_ROOT),
+        prompt_path=Path("prompts/company-enrichment") / f"{COMPETITOR_ENRICHMENT_ID}.md",
         weights=COMPETITOR_WEIGHTS,
         collect=bind_collect(
             enrichment_id=COMPETITOR_ENRICHMENT_ID, plan=COMPETITOR_PLAN,
@@ -351,8 +351,12 @@ def run_entrypoint(
         import sys
 
         args = sys.argv[1:]
+    root = Path(repo_root or Path(__file__).resolve().parents[2])
     if "--draft-ground-truth" not in args:
-        return signal_main(spec, args, repo_root=repo_root, **loop_kwargs)
+        spec = replace(
+            spec, prompt_path=resolve_prompt_path(spec.enrichment_id, root),
+        )
+        return signal_main(spec, args, repo_root=root, **loop_kwargs)
     parser = argparse.ArgumentParser(
         description=f"{spec.enrichment_id} ground-truth drafts",
         usage="%(prog)s --draft-ground-truth [--company ID ...] [--overwrite] [--as-of YYYY-MM-DD]",
@@ -362,7 +366,6 @@ def run_entrypoint(
     parser.add_argument("--overwrite", action="store_true")
     parser.add_argument("--as-of", default=None)
     parsed = parser.parse_args(args)
-    root = Path(repo_root or Path(__file__).resolve().parents[2])
     try:
         as_of = date.fromisoformat(parsed.as_of) if parsed.as_of else date.today()
         result = write_ground_truth_drafts(

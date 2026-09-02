@@ -84,10 +84,13 @@ gtm:
   cost_estimate: "$0.25 per 100 rows"
 evaluation:
   dataset: benchmarks/demo
+  scorer: tests.company_enrichment.demo:score
+  candidate: demo-v1
   dev: 0.95
   holdout: 0.93
   gate: 0.9
   approved_on: "2026-08-21"
+  report: docs/reports/demo.md
 adaptation:
   adaptable: true
   locked:
@@ -168,6 +171,24 @@ def test_missing_runner_file_is_rejected(tmp_path: Path) -> None:
         load_package(root)
 
 
+@pytest.mark.parametrize("field", ("scorer", "candidate", "report"))
+def test_approved_package_requires_complete_proof_provenance(
+    tmp_path: Path, field: str,
+) -> None:
+    root = _package(tmp_path, edits=((f"  {field}: ", f"  omitted_{field}: "),))
+    with pytest.raises(PackageError, match=rf"needs evaluation\.{field}"):
+        load_package(root)
+
+
+def test_approved_package_provenance_must_be_text(tmp_path: Path) -> None:
+    root = _package(
+        tmp_path,
+        edits=(("  scorer: tests.company_enrichment.demo:score", "  scorer: [demo]"),),
+    )
+    with pytest.raises(PackageError, match="evaluation.scorer must be non-empty text"):
+        load_package(root)
+
+
 def test_package_file_references_cannot_escape_the_package(tmp_path: Path) -> None:
     (tmp_path / "outside.py").write_text("", encoding="utf-8")
     root = _package(tmp_path, edits=(("runner: run.py", "runner: ../outside.py"),))
@@ -232,6 +253,18 @@ def test_an_overlay_that_changes_nothing_is_refused(tmp_path: Path) -> None:
     )
     with pytest.raises(PackageError, match="changes nothing about the package"):
         apply_variant(load_package(root), "empty")
+
+
+@pytest.mark.parametrize("value", ("false", "[one, two]", "'   '"))
+def test_variant_prompt_append_must_be_non_empty_text(
+    tmp_path: Path, value: str,
+) -> None:
+    root = _package(tmp_path)
+    (root / "variants" / "broken.yaml").write_text(
+        f"prompt_append: {value}\n", encoding="utf-8"
+    )
+    with pytest.raises(PackageError, match="prompt_append must be non-empty text"):
+        apply_variant(load_package(root), "broken")
 
 
 def test_a_variant_may_not_declare_a_name_other_than_its_own(tmp_path: Path) -> None:
@@ -472,6 +505,45 @@ def test_package_schema_rejects_unknown_top_level_output() -> None:
     spec.loader.exec_module(module)
     with pytest.raises(ValidationError):
         module.OutputModel(news=[], launches=[], unknowns=[], extra=[])
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    (
+        ("date", "yesterday"),
+        ("date", "2026-02-30"),
+        ("headline", ""),
+        ("source_url", "not-a-url"),
+        ("evidence_ids", [""]),
+    ),
+)
+def test_package_schema_rejects_invalid_event_values(field: str, value: object) -> None:
+    spec = importlib.util.spec_from_file_location("_validated_pkg_schema", NEWS / "schema.py")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    event = {
+        "date": "2026-01-02", "headline": "Attio raises a round",
+        "why_it_matters": "budget", "source_url": "https://attio.test/a",
+        "evidence_ids": ["ev-1"], "event_type": "funding",
+    }
+    event[field] = value
+    with pytest.raises(ValidationError):
+        module.OutputModel(news=[event], launches=[], unknowns=[])
+
+
+def test_package_schema_rejects_unknown_event_fields() -> None:
+    spec = importlib.util.spec_from_file_location("_nested_strict_pkg_schema", NEWS / "schema.py")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    event = {
+        "date": "2026-01-02", "headline": "Attio raises a round",
+        "why_it_matters": "budget", "source_url": "https://attio.test/a",
+        "evidence_ids": ["ev-1"], "event_type": "funding", "extra": True,
+    }
+    with pytest.raises(ValidationError):
+        module.OutputModel(news=[event], launches=[], unknowns=[])
 
 
 def test_package_schema_event_types_match_the_repo_contract() -> None:

@@ -9,6 +9,7 @@ import pytest
 import yaml
 
 from scripts import company_enrichment_competitor_loop, company_enrichment_news_loop
+from scripts.company_enrichment.packages import resolve_prompt_path
 from scripts.company_enrichment.signal_collection import bind_collect
 from scripts.company_enrichment.signal_entrypoints import (
     COMPETITOR_PLAN, NEWS_PLAN, build_competitor_spec, build_news_spec,
@@ -58,7 +59,7 @@ def test_specs_are_wired_to_the_locked_corpus_and_plans():
     assert all(item.mode == "web" and item.tbs is None for item in COMPETITOR_PLAN.queries)
     assert COMPETITOR_PLAN.first_party_paths == ("/competitors", "/compare", "/alternatives")
     for spec in (news, competitors):
-        assert (REPO_ROOT / spec.prompt_path).is_file()
+        assert (REPO_ROOT / resolve_prompt_path(spec.enrichment_id, REPO_ROOT)).is_file()
         rubric = yaml.safe_load((REPO_ROOT / spec.benchmark_dir / "rubric.yaml").read_text())
         assert {key: str(value) for key, value in rubric["weights"].items()} == {
             key: str(float(value)) for key, value in spec.weights.items()
@@ -88,6 +89,8 @@ def test_evaluate_dry_run_for_both_loops(tmp_path: Path, capsys):
                       weights=build_news_spec().weights,
                       ground_truth=lambda company_id, _r: {
                           "company_id": company_id, "as_of": "2026-08-18", "events": []})
+    assert (news_root / "prompts/company-enrichment/news-product-launches.md").is_file()
+    assert not (news_root / "enrichments/news-product-launches/news-product-launches.md").exists()
     code = company_enrichment_news_loop.main(
         ["--evaluate", "--lineage", "dry-news", "--dry-run"], repo_root=news_root,
     )
