@@ -5,13 +5,23 @@ importing this repository's internals:
 
     py enrichments/news-product-launches/run.py describe
     py enrichments/news-product-launches/run.py emit
+    py enrichments/news-product-launches/run.py body [--variant X]
     py enrichments/news-product-launches/run.py render --company-name X --domain x.com
     py enrichments/news-product-launches/run.py execute --lineage <name> --allow-paid
 
 ``describe`` is the card a registry indexes; ``emit`` renders the
-gtm_orchestrator CATALOG entry this package installs as. ``render`` composes the
-prompt the way the live client does, after any ``--variant`` overlay, so a
-prompt edit can be reviewed before it costs anything.
+gtm_orchestrator CATALOG entry this package installs as.
+
+``body`` and ``render`` are the two prompt views and they are not
+interchangeable. ``body`` writes the prompt body alone, after any ``--variant``
+overlay - that is the file a revalidation run wants, so
+``run.py body --variant X > output/X.md`` then ``--prompt output/X.md`` on the
+loop is how a variant is materialised and scored. ``render`` is for reading: it
+composes the body the way the live client does, with the ``Company ID``,
+``Subject company``, ``Enrichment``, ``Requested fields``, and ``Evidence``
+sections the run appends, so a prompt edit can be reviewed before it costs
+anything. Feeding a ``render`` to ``--prompt`` would send those placeholder
+sections to the model alongside the real ones.
 
 ``execute`` revalidates the package against its sealed benchmark corpus by
 delegating to the one vetted loop entry point rather than keeping a second copy
@@ -67,7 +77,9 @@ def _inputs(args: argparse.Namespace) -> dict[str, str]:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=("describe", "emit", "render", "execute"))
+    parser.add_argument(
+        "mode", choices=("describe", "emit", "body", "render", "execute")
+    )
     parser.add_argument("--company-name")
     parser.add_argument("--domain")
     parser.add_argument("--as-of")
@@ -98,6 +110,10 @@ def main(argv: list[str] | None = None) -> int:
         except PackageError as error:
             print(f"emit error: {error}", file=sys.stderr)
             return 2
+        return 0
+
+    if args.mode == "body":
+        print(package.body.strip())
         return 0
 
     if args.mode == "render":

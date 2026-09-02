@@ -5,9 +5,11 @@ prompt loader binds ``InputModel``/``OutputModel`` from here via the
 ``schema_module`` frontmatter key rather than from a module hardcoded in
 ``lg_runtime.prompts.schemas``.
 
-The authority on the returned shape stays
-``scripts.company_enrichment.news_contracts``; these models are the transport
-declaration for consumers that cannot import this repository.
+``scripts.company_enrichment.news_contracts`` stays the repo-side authority on
+the returned shape, and it is what the scorer enforces. This file may not import
+it: the install copies this module into a consumer where
+``scripts.company_enrichment`` does not exist, so the event-type literals are
+restated here and a test asserts the two stay equal.
 """
 
 from __future__ import annotations
@@ -16,10 +18,11 @@ from typing import Literal, Optional
 
 from pydantic import BaseModel, Field
 
-from scripts.company_enrichment.news_contracts import (
-    LAUNCH_EVENT_TYPES,
-    NEWS_EVENT_TYPES,
+NEWS_EVENT_TYPES = (
+    "funding", "acquisition", "partnership", "leadership", "expansion", "award",
+    "positioning", "other",
 )
+LAUNCH_EVENT_TYPES = ("product", "feature", "integration", "release")
 
 NewsEventType = Literal[NEWS_EVENT_TYPES]  # type: ignore[valid-type]
 LaunchEventType = Literal[LAUNCH_EVENT_TYPES]  # type: ignore[valid-type]

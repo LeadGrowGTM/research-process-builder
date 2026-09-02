@@ -57,8 +57,11 @@ emit_registry_entry(package: EnrichmentPackage) -> str
 
 A package is `enrichments/<id>/` containing `<id>.md` (prompt body plus manifest
 frontmatter), `schema.py`, `run.py`, and optional `variants/*.yaml`. The prompt
-file is named after the id so the directory can be handed to
-`lg_runtime.prompts.load_prompt` as its `library_path` unchanged.
+file is named after the id so one package holds one prompt, found from the
+directory name alone. The consumer's loader resolves
+`library_path/<runtime_prompt_name>.md`, and the runtime prompt name is a
+catalog-side name that need not equal the id, so installing copies the prompt to
+`library/<runtime_prompt_name>.md`.
 
 The manifest is the contract: identity and lifecycle status, a `title` stating
 what a reader gets out of it, a `summary` and a longer `description`, declared

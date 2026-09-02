@@ -10,13 +10,17 @@ Reference implementation: `enrichments/news-product-launches/`.
 enrichments/<id>/
   <id>.md          manifest as YAML frontmatter, then the prompt body
   schema.py        pydantic InputModel / OutputModel
-  run.py           describe | emit | render | execute
+  run.py           describe | emit | body | render | execute
   variants/*.yaml  narrow overlays for adjacent use cases
 ```
 
-The prompt file is named after the id so the package directory can be passed to
-the GTM orchestrator's `lg_runtime.prompts.load_prompt` as its `library_path`
-with no path translation.
+The prompt file is named after the id: one package holds one prompt, and it is
+found from the directory name alone. That name is for this repository, not for
+the consumer's lookup - `lg_runtime.prompts.load_prompt` resolves
+`library_path/<runtime_prompt_name>.md`, and `gtm.runtime_prompt_name` is a
+catalog-side name that need not equal the id (`news-product-launches` installs
+as `recent-news-summary`), so install step 2 below copies the prompt to
+`library/<runtime_prompt_name>.md`.
 
 ## Manifest fields
 
@@ -95,7 +99,8 @@ The manifest exists so this is a bounded decision rather than a judgement call.
    `Enrichment`, `Requested fields`, `Evidence`. The company id and the Evidence
    are not known before a run, so those two lines carry an explicit placeholder
    rather than being dropped. Read it. A prompt edit that reads fine in the diff
-   and wrong in the render is the common failure.
+   and wrong in the render is the common failure. `render` is for reading only;
+   `body` is the mode whose output is safe to hand to a run as `--prompt`.
 4. **Never edit the frontmatter to keep a score.** Changing the model, the
    inputs, or the GTM contract sets `revalidation: required` and drops the
    package out of `approved`. That is the mechanism working, not an obstacle.
@@ -123,10 +128,19 @@ An overlay is held to the same safety checks as the manifest it overlays: no
 `${` environment interpolation, and no secret-bearing key anywhere in the
 mapping.
 
+An overlay must also merge into a manifest that would have loaded on its own -
+the loader re-runs the full manifest validation over the merged result, so an
+overlay cannot reach a state (an empty `inputs.required`, a non-mapping `gtm`)
+that a base manifest is refused for.
+
 `run.py execute` revalidates the parent package against its sealed benchmark
-corpus, so it refuses `--variant` along with the other subject flags; revalidate
-a variant with the command in `adaptation.revalidate_with`, pointing `--prompt`
-at the rendered variant. `emit_registry_entry` refuses a variant entirely:
+corpus, so it refuses `--variant` along with the other subject flags. Revalidate
+a variant by materialising it first: `py enrichments/<id>/run.py body --variant
+X > output/X.md`, then pass `--prompt output/X.md` to the command in
+`adaptation.revalidate_with`. Use `body`, not `render` - `render` includes the
+live-assembly sections the run appends for itself, and passing those as a prompt
+sends the model a second, placeholder-filled copy of them.
+`emit_registry_entry` refuses a variant entirely:
 variants do not become their own catalog entries. It also refuses a package with
 `status: rejected` - a rejected enrichment has no catalog entry to install.
 

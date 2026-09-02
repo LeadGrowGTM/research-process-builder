@@ -6,12 +6,16 @@ name is the enrichment id::
     enrichments/<id>/
       <id>.md          prompt body plus the package manifest as YAML frontmatter
       schema.py        sidecar pydantic InputModel / OutputModel
-      run.py           the package CLI (describe / render / execute)
+      run.py           the package CLI (describe / emit / body / render / execute)
       variants/*.yaml  narrow overlays for adjacent use cases
 
-The prompt file is named after the id so a consumer can point the GTM
-orchestrator's graduated-prompt loader straight at the package directory as its
-``library_path`` with no path translation.
+The prompt file is named after the id: one package, one prompt, found from the
+directory name alone. It is not named for the consumer's lookup. The GTM
+orchestrator's prompt loader resolves ``library_path/<runtime_prompt_name>.md``,
+and ``gtm.runtime_prompt_name`` is a catalog-side name that need not equal the
+id - ``news-product-launches`` installs as ``recent-news-summary`` - so an
+install copies the prompt to ``library/<runtime_prompt_name>.md`` rather than
+pointing the loader at this directory.
 
 The manifest answers, without reading the prompt body: what goes in, what comes
 out, what you get out of it in one line and in detail, which model it was proved
@@ -138,6 +142,15 @@ def _split_frontmatter(text: str, path: Path) -> tuple[dict[str, Any], str]:
     return manifest, body
 
 
+def _plain(value: Any) -> Any:
+    """A loaded field back as plain containers, so validation sees real dicts."""
+    if isinstance(value, Mapping):
+        return {key: _plain(item) for key, item in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_plain(item) for item in value]
+    return value
+
+
 def _validate(manifest: Mapping[str, Any], root: Path) -> None:
     missing = sorted(REQUIRED_KEYS - set(manifest))
     if missing:
@@ -171,6 +184,8 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
         )
     if not isinstance(manifest["outputs"], dict) or not manifest["outputs"]:
         raise PackageError("outputs must be a non-empty mapping")
+    if not isinstance(manifest["gtm"], dict) or not manifest["gtm"]:
+        raise PackageError("gtm must be a non-empty mapping")
     adaptation = manifest["adaptation"]
     if not isinstance(adaptation, dict) or "adaptable" not in adaptation:
         raise PackageError("adaptation must declare 'adaptable'")
@@ -270,6 +285,14 @@ def apply_variant(package: EnrichmentPackage, variant: str) -> EnrichmentPackage
             updates[key] = MappingProxyType(merged)
         else:
             updates[key] = overlay[key]
+    merged = {key: _plain(getattr(package, key)) for key in REQUIRED_KEYS}
+    merged.update({key: _plain(value) for key, value in updates.items()})
+    try:
+        _validate(merged, package.root)
+    except PackageError as error:
+        raise PackageError(
+            f"variant {variant} would produce an invalid package: {error}"
+        ) from error
     return replace(
         package,
         body=body,
@@ -303,6 +326,29 @@ def prompt_text(path: Path) -> str:
     if text.startswith("---"):
         return _split_frontmatter(text, Path(path))[1].strip()
     return text.strip()
+
+
+def is_package_prompt(path: Path) -> bool:
+    """True for ``enrichments/<id>/<id>.md`` - the only layout that owns a manifest."""
+    path = Path(path)
+    return path.suffix == ".md" and path.parent.name == path.stem and (
+        path.parent.parent.name == "enrichments"
+    )
+
+
+def candidate_prompt_text(path: Path) -> str:
+    """The prompt text a loop should score for ``path``.
+
+    A package prompt carries a manifest the model never sees, so it is stripped.
+    Every other file - an operator's candidate handed to ``--prompt`` or
+    ``--candidate`` - is read verbatim: a markdown thematic break opening a
+    hand-written prompt is not a frontmatter fence, and treating it as one would
+    silently score a truncated prompt under the candidate's id and hash.
+    """
+    path = Path(path)
+    if is_package_prompt(path):
+        return prompt_text(path)
+    return path.read_text(encoding="utf-8").strip()
 
 
 def load_registry(root: Path) -> dict[str, EnrichmentPackage]:

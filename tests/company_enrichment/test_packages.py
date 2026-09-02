@@ -4,12 +4,20 @@ from __future__ import annotations
 
 import ast
 from datetime import datetime, timezone
+import importlib.util
+import json
+import os
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 
 import pytest
 
+from scripts.company_enrichment.news_contracts import (
+    LAUNCH_EVENT_TYPES,
+    NEWS_EVENT_TYPES,
+)
 from scripts.company_enrichment.contracts import (
     CompanyDossier,
     EvidenceRef,
@@ -23,6 +31,7 @@ from scripts.company_enrichment.packages import (
     UNKNOWN_UNTIL_RUN,
     PackageError,
     apply_variant,
+    candidate_prompt_text,
     emit_registry_entry,
     load_package,
     load_registry,
@@ -172,6 +181,32 @@ def test_variant_cannot_override_the_evaluation(tmp_path: Path) -> None:
         apply_variant(load_package(root), "cheat")
 
 
+def test_variant_may_not_merge_into_a_manifest_that_would_be_refused(tmp_path: Path) -> None:
+    """An overlay cannot reach a state a base manifest is rejected for."""
+    root = _package(tmp_path)
+    (root / "variants" / "loose.yaml").write_text(
+        "title: Loose\ninputs:\n  required: {}\n", encoding="utf-8"
+    )
+    with pytest.raises(PackageError, match="inputs.required must be a non-empty mapping"):
+        apply_variant(load_package(root), "loose")
+
+
+def test_variant_may_not_replace_the_gtm_block_with_a_non_mapping(tmp_path: Path) -> None:
+    root = _package(tmp_path)
+    (root / "variants" / "broken.yaml").write_text(
+        "title: Broken\ngtm: not-a-mapping\n", encoding="utf-8"
+    )
+    with pytest.raises(PackageError, match="gtm must be a non-empty mapping"):
+        apply_variant(load_package(root), "broken")
+
+
+def test_an_empty_gtm_block_fails_to_load_rather_than_crashing_later(tmp_path: Path) -> None:
+    """A malformed block is a PackageError, not a TypeError out of card()."""
+    root = _package(tmp_path, edits=(("gtm:\n  slug: demo_slug", "gtm:\nx_unused:\n  slug: x"),))
+    with pytest.raises(PackageError, match="gtm must be a non-empty mapping"):
+        load_package(root)
+
+
 def test_variant_may_not_smuggle_in_a_secret_key(tmp_path: Path) -> None:
     root = _package(tmp_path)
     (root / "variants" / "keyed.yaml").write_text(
@@ -277,6 +312,52 @@ def test_registry_skips_directories_without_a_prompt(tmp_path: Path) -> None:
     assert sorted(load_registry(tmp_path)) == ["demo"]
 
 
+def test_an_operator_candidate_opening_with_a_rule_is_read_verbatim(tmp_path: Path) -> None:
+    """A thematic break in a hand-written prompt is not a manifest fence."""
+    candidate = tmp_path / "news-v12.md"
+    candidate.write_text(
+        "---\n\n# News v12\n\nReturn dated events.\n\n---\n\nCite every claim.\n",
+        encoding="utf-8",
+    )
+    assert candidate_prompt_text(candidate) == candidate.read_text(encoding="utf-8").strip()
+
+
+def test_a_package_prompt_still_has_its_manifest_stripped() -> None:
+    text = candidate_prompt_text(NEWS / "news-product-launches.md")
+    assert text == prompt_text(NEWS / "news-product-launches.md")
+    assert not text.startswith("---")
+
+
+def test_package_schema_imports_where_this_repository_does_not_exist(tmp_path: Path) -> None:
+    """The sidecar is copied into a consumer that cannot import scripts.*."""
+    shutil.copy(NEWS / "schema.py", tmp_path / "schema.py")
+    event = {
+        "date": "2026-01-02", "headline": "Attio raises a round",
+        "why_it_matters": "budget", "source_url": "https://attio.test/a",
+        "evidence_ids": ["ev-1"], "event_type": "funding",
+    }
+    probe = (
+        "import json, sys, schema;"
+        "sys.stdout.write(schema.OutputModel(news=[json.loads(sys.argv[1])])"
+        ".model_dump_json())"
+    )
+    result = subprocess.run(
+        [sys.executable, "-c", probe, json.dumps(event)],
+        capture_output=True, text=True, cwd=tmp_path, env={**os.environ, "PYTHONPATH": ""},
+    )
+    assert result.returncode == 0, result.stderr
+    assert json.loads(result.stdout)["news"][0]["event_type"] == "funding"
+
+
+def test_package_schema_event_types_match_the_repo_contract() -> None:
+    """The inlined copy is the transport declaration; news_contracts is authority."""
+    spec = importlib.util.spec_from_file_location("_pkg_schema", NEWS / "schema.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    assert module.NEWS_EVENT_TYPES == NEWS_EVENT_TYPES
+    assert module.LAUNCH_EVENT_TYPES == LAUNCH_EVENT_TYPES
+
+
 def test_prompt_path_resolves_to_the_package_when_it_exists() -> None:
     assert resolve_prompt_path("news-product-launches", REPO_ROOT) == Path(
         "enrichments/news-product-launches/news-product-launches.md"
@@ -310,6 +391,28 @@ def _run_cli(*argv: str) -> subprocess.CompletedProcess[str]:
         [sys.executable, str(NEWS / "run.py"), *argv],
         capture_output=True, text=True, cwd=REPO_ROOT,
     )
+
+
+def test_body_mode_emits_a_prompt_a_run_can_be_handed() -> None:
+    """`body` is what --prompt wants: no live-assembly sections to double up."""
+    result = _run_cli("body", "--variant", "funding-only")
+    assert result.returncode == 0
+    body = result.stdout.strip()
+    for label in (
+        "Company ID:", "Subject company:", "Enrichment:", "Requested fields:", "Evidence:",
+    ):
+        assert label not in body
+    assert "## Variant: funding-only" in body
+    assert body == apply_variant(load_package(NEWS), "funding-only").body.strip()
+
+
+def test_body_and_render_share_the_same_prompt_text() -> None:
+    body = _run_cli("body").stdout.strip()
+    rendered = _run_cli(
+        "render", "--company-name", "Attio", "--domain", "attio.com"
+    ).stdout.strip()
+    assert rendered.startswith(body)
+    assert rendered != body
 
 
 def test_shipped_run_cli_refuses_to_spend_without_the_flag() -> None:

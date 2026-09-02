@@ -33,7 +33,7 @@ from .contracts import CompanyDossier, canonical_json
 from .executors import P0_ENRICHMENTS
 from .experiment_runner import ExperimentInput, ModelClient
 from .openai_model_client import build_openai_model_client
-from .packages import prompt_text
+from .packages import candidate_prompt_text
 from .signal_evidence import (
     load_cached_dossiers, load_signal_dossier, save_signal_dossier,
 )
@@ -181,7 +181,7 @@ def prompt_candidates(spec: SignalSpec, repo_root: Path) -> tuple[PromptCandidat
         if candidate_id in seen or not _LINEAGE.match(candidate_id):
             raise ValueError(f"invalid or duplicate prompt candidate id: {candidate_id}")
         seen.add(candidate_id)
-        text = prompt_text(repo_root / path)
+        text = candidate_prompt_text(repo_root / path)
         candidates.append(PromptCandidate(
             candidate_id, text, sha256(text.encode("utf-8")).hexdigest(),
         ))
