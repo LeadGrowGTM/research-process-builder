@@ -400,14 +400,92 @@ def test_variant_cannot_override_the_evaluation(tmp_path: Path) -> None:
         apply_variant(load_package(root), "cheat")
 
 
-def test_variant_may_not_merge_into_a_manifest_that_would_be_refused(tmp_path: Path) -> None:
-    """An overlay cannot reach a state a base manifest is rejected for."""
+def test_variant_cannot_drop_an_input_name(tmp_path: Path) -> None:
     root = _package(tmp_path)
     (root / "variants" / "loose.yaml").write_text(
-        "title: Loose\ninputs:\n  required: {}\n", encoding="utf-8"
+        "inputs:\n"
+        "  required:\n"
+        "    company_name:\n"
+        "      description: the company\n"
+        "      consumer_column: company_name\n",
+        encoding="utf-8",
     )
-    with pytest.raises(PackageError, match="inputs.required must be a non-empty mapping"):
+    with pytest.raises(PackageError, match="different enrichment or a v2"):
         apply_variant(load_package(root), "loose")
+
+
+def test_variant_cannot_add_an_input_name(tmp_path: Path) -> None:
+    root = _package(tmp_path)
+    (root / "variants" / "contract-change.yaml").write_text(
+        "inputs:\n"
+        "  required:\n"
+        "    domain:\n"
+        "      description: the host\n"
+        "      consumer_column: company_domain\n"
+        "    company_name:\n"
+        "      description: the company\n"
+        "      consumer_column: company_name\n",
+        encoding="utf-8",
+    )
+    with pytest.raises(PackageError, match="different enrichment or a v2"):
+        apply_variant(load_package(root), "contract-change")
+
+
+def test_variant_cannot_move_an_input_between_groups(tmp_path: Path) -> None:
+    root = _package(
+        tmp_path,
+        edits=((
+            "      consumer_column: company_domain\n  optional: {}",
+            "      consumer_column: company_domain\n"
+            "    company_name:\n"
+            "      description: the company\n"
+            "      consumer_column: company_name\n"
+            "  optional: {}",
+        ),),
+    )
+    (root / "variants" / "contract-change.yaml").write_text(
+        "inputs:\n"
+        "  required:\n"
+        "    company_name:\n"
+        "      description: the company\n"
+        "      consumer_column: company_name\n"
+        "  optional:\n"
+        "    domain:\n"
+        "      description: the host\n"
+        "      consumer_column: company_domain\n",
+        encoding="utf-8",
+    )
+    with pytest.raises(PackageError, match="different enrichment or a v2"):
+        apply_variant(load_package(root), "contract-change")
+
+
+@pytest.mark.parametrize(
+    "description, consumer_column",
+    (
+        ("a normalized host", "company_domain"),
+        ("the host", "normalized_company_domain"),
+    ),
+)
+def test_variant_may_refine_an_input_descriptor(
+    tmp_path: Path, description: str, consumer_column: str,
+) -> None:
+    root = _package(tmp_path)
+    (root / "variants" / "refined.yaml").write_text(
+        "inputs:\n"
+        "  required:\n"
+        "    domain:\n"
+        f"      description: {description}\n"
+        f"      consumer_column: {consumer_column}\n",
+        encoding="utf-8",
+    )
+    package = apply_variant(load_package(root), "refined")
+    assert package.inputs["required"]["domain"] == {
+        "description": description,
+        "consumer_column": consumer_column,
+    }
+    assert package.input_columns == (consumer_column,)
+    assert package.revalidation == "required"
+    assert package.status == "candidate"
 
 
 def test_variant_may_not_replace_the_gtm_block_with_a_non_mapping(tmp_path: Path) -> None:
@@ -462,6 +540,26 @@ def test_an_empty_gtm_block_fails_to_load_rather_than_crashing_later(tmp_path: P
     root = _package(tmp_path, edits=(("gtm:\n  slug: demo_slug", "gtm:\nx_unused:\n  slug: x"),))
     with pytest.raises(PackageError, match="gtm must be a non-empty mapping"):
         load_package(root)
+
+
+def test_loaded_manifest_and_card_are_recursively_isolated(tmp_path: Path) -> None:
+    package = load_package(_package(tmp_path))
+    emitted = emit_registry_entry(package)
+
+    with pytest.raises(TypeError):
+        package.inputs["required"]["domain"]["consumer_column"] = "changed"
+    with pytest.raises(AttributeError):
+        package.adaptation["safe_edits"].append("changed")
+
+    card = package.card()
+    card["inputs"]["required"]["domain"]["consumer_column"] = "changed"
+    card["outputs"]["events"]["consumer_column"] = "changed"
+    card["evaluation"]["holdout"] = 0.0
+
+    assert emit_registry_entry(package) == emitted
+    assert package.input_columns == ("company_domain",)
+    assert package.output_columns == ("events_json",)
+    assert package.card()["evaluation"]["holdout"] == 0.93
 
 
 def test_variant_may_not_smuggle_in_a_secret_key(tmp_path: Path) -> None:

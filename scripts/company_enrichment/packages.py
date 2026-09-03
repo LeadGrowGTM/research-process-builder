@@ -138,13 +138,13 @@ class EnrichmentPackage:
             "summary": self.summary,
             "description": self.description,
             "inputs": {
-                "required": dict(self.inputs.get("required", {})),
-                "optional": dict(self.inputs.get("optional", {})),
+                "required": _plain(self.inputs.get("required", {})),
+                "optional": _plain(self.inputs.get("optional", {})),
             },
-            "outputs": dict(self.outputs),
+            "outputs": _plain(self.outputs),
             "target_model": self.target_model,
-            "gtm": dict(self.gtm),
-            "evaluation": dict(self.evaluation),
+            "gtm": _plain(self.gtm),
+            "evaluation": _plain(self.evaluation),
             "revalidation": self.revalidation,
         }
 
@@ -182,6 +182,16 @@ def _plain(value: Any) -> Any:
         return {key: _plain(item) for key, item in value.items()}
     if isinstance(value, (list, tuple)):
         return [_plain(item) for item in value]
+    return value
+
+
+def _freeze(value: Any) -> Any:
+    if isinstance(value, Mapping):
+        return MappingProxyType(
+            {key: _freeze(item) for key, item in value.items()}
+        )
+    if isinstance(value, (list, tuple)):
+        return tuple(_freeze(item) for item in value)
     return value
 
 
@@ -444,14 +454,7 @@ def load_package(root: Path, *, variant: str | None = None) -> EnrichmentPackage
     package = EnrichmentPackage(
         root=root,
         body=body,
-        **{
-            key: (
-                MappingProxyType(dict(manifest[key]))
-                if isinstance(manifest[key], dict)
-                else manifest[key]
-            )
-            for key in REQUIRED_KEYS
-        },
+        **{key: _freeze(manifest[key]) for key in REQUIRED_KEYS},
     )
     if variant is None:
         return package
@@ -517,7 +520,21 @@ def apply_variant(package: EnrichmentPackage, variant: str) -> EnrichmentPackage
         if isinstance(current, Mapping) and isinstance(overlay[key], Mapping):
             merged = dict(current)
             merged.update(overlay[key])
-            updates[key] = MappingProxyType(merged)
+            if key == "inputs":
+                for group in ("required", "optional"):
+                    current_group = current.get(group)
+                    merged_group = merged.get(group)
+                    if (
+                        isinstance(current_group, Mapping)
+                        and isinstance(merged_group, Mapping)
+                        and set(current_group) != set(merged_group)
+                    ):
+                        raise PackageError(
+                            f"variant {variant} may not add, remove, or move input "
+                            "names; a variant needing different inputs is a different "
+                            "enrichment or a v2 of the parent"
+                        )
+            updates[key] = merged
         else:
             updates[key] = overlay[key]
     merged = {key: _plain(getattr(package, key)) for key in REQUIRED_KEYS}
@@ -528,6 +545,7 @@ def apply_variant(package: EnrichmentPackage, variant: str) -> EnrichmentPackage
         raise PackageError(
             f"variant {variant} would produce an invalid package: {error}"
         ) from error
+    frozen_updates = {key: _freeze(value) for key, value in updates.items()}
     return replace(
         package,
         body=body,
@@ -538,7 +556,7 @@ def apply_variant(package: EnrichmentPackage, variant: str) -> EnrichmentPackage
             if changes_proof and package.status == "approved"
             else package.status
         ),
-        **updates,
+        **frozen_updates,
     )
 
 

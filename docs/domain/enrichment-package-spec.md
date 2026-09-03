@@ -161,6 +161,12 @@ the loader re-runs the full manifest validation over the merged result, so an
 overlay cannot reach a state (an empty `inputs.required`, a non-mapping `gtm`)
 that a base manifest is refused for.
 
+Every variant shares the package's single sidecar schema. An `inputs` overlay
+may refine descriptions or consumer-column mappings, but it must preserve the
+parent's required and optional input names without adding, removing, or moving
+them between groups. A use case that needs different inputs is a different
+enrichment or a v2 of the parent.
+
 `run.py execute` revalidates the parent package against its sealed benchmark
 corpus, so it refuses `--variant` along with the other subject flags. Revalidate
 a variant by materialising it first: `py enrichments/<id>/run.py body --variant
