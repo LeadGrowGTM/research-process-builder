@@ -58,6 +58,8 @@ relative files inside the package and are checked at load time.
 the description is what a caller reads to know what to pass. Each public
 `outputs` field declares a non-empty `type` and `description`; a shared shape
 may instead declare a non-empty `fields` list for the public fields to reuse.
+The package runner currently renders `company_name` and `domain`; declaring an
+input outside that executable boundary is refused rather than silently dropped.
 
 ### GTM block
 
@@ -86,9 +88,10 @@ review.
 
 ### Adaptation
 
-`adaptable`, `safe_edits`, `locked`, `revalidate_when`, `revalidate_with`. An
-adaptable package must name its locked sections - the loader rejects one that
-claims adaptability without saying what may not move.
+`adaptable`, `safe_edits`, `locked`, `revalidate_when`, `revalidate_with`. The
+loader requires all five, type-checks `adaptable` as a YAML boolean and the
+guidance fields as lists of text, and requires an adaptable package to name its
+locked sections and revalidation command.
 
 ## Editing a prompt before a run
 
@@ -118,8 +121,9 @@ The manifest exists so this is a bounded decision rather than a judgement call.
    is the loop entry that produced the original score; use it, so the new number
    is comparable to the old one. For the news package that is
    `py scripts/company_enrichment_news_loop.py --evaluate --lineage <name>
-   --allow-paid`, which `py enrichments/news-product-launches/run.py execute
-   --lineage <name> --allow-paid` delegates to.
+   --model gpt-5.6-luna --allow-paid`, which `py
+   enrichments/news-product-launches/run.py execute --lineage <name>
+   --allow-paid` delegates to.
 6. **Bump `version` and record the new score** in `evaluation` before the
    package returns to `approved`.
 

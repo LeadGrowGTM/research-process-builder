@@ -31,8 +31,7 @@ inputs:
   required:
     company_name: Legal or trading name of the subject company
     domain: Website host, used to reject same-named companies
-  optional:
-    as_of: ISO date the run is anchored to; defaults to run date
+  optional: {}
 outputs:
   news:
     type: array<event>
@@ -92,7 +91,7 @@ adaptation:
     - a locked section is edited
     - target_model changes
     - output field names or event types change
-  revalidate_with: py scripts/company_enrichment_news_loop.py --evaluate --lineage <name> --allow-paid
+  revalidate_with: py scripts/company_enrichment_news_loop.py --evaluate --lineage <name> --model gpt-5.6-luna --allow-paid
 ---
 # News and product launches
 

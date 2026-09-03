@@ -383,25 +383,41 @@ def _started(run_root: Path) -> bool:
     return any((run_root / name).exists() for name in _STARTED_MARKERS)
 
 
-def _write_inputs(
-    spec: SignalSpec, repo_root: Path, run_root: Path, public: SignalDataset,
+def _lineage_inputs(
+    spec: SignalSpec, repo_root: Path, public: SignalDataset,
+    dossiers: Mapping[str, CompanyDossier], candidates: Sequence[PromptCandidate],
     model_id: str,
-) -> None:
+) -> dict[str, Any]:
     def digest(path: Path) -> str:
         return sha256(path.read_bytes()).hexdigest()
-    _atomic_json(run_root / "inputs.json", {
+
+    inputs = {
         "all_ids": list(public.all_ids), "dataset_hash": public.dataset_hash,
+        "candidate_prompt_hashes": {
+            candidate.candidate_id: candidate.prompt_hash for candidate in candidates
+        },
         "development_ids": list(public.development_ids),
-        "dossier_hashes": {company_id: digest(
-            repo_root / "benchmarks/dossiers" / f"{company_id}.yaml",
-        ) for company_id in ALL_IDS},
+        "dossier_hashes": {
+            company_id: sha256(
+                canonical_json(_primitive(dossiers[company_id])).encode("utf-8")
+            ).hexdigest()
+            for company_id in public.all_ids
+        },
         "enrichment_id": spec.enrichment_id,
         "holdout_ids": list(public.holdout_ids), "model": model_id,
         "source_purchases": 0,
         "signal_hashes": {company_id: digest(
             repo_root / spec.benchmark_dir / f"{company_id}.yaml",
-        ) for company_id in ALL_IDS},
-    })
+        ) for company_id in public.all_ids},
+    }
+    inputs["lineage_fingerprint"] = sha256(
+        canonical_json(inputs).encode("utf-8")
+    ).hexdigest()
+    return inputs
+
+
+def _write_inputs(run_root: Path, inputs: Mapping[str, Any]) -> None:
+    _atomic_json(run_root / "inputs.json", inputs)
 
 
 def run_loop(
@@ -411,8 +427,8 @@ def run_loop(
     started = _started(run_root)
     if started and not resume:
         raise ValueError("lineage already exists; pass --resume")
+    prior_inputs = _read_json(run_root / "inputs.json") if started else None
     if started:
-        prior_inputs = _read_json(run_root / "inputs.json")
         prior_model = prior_inputs.get("model") if prior_inputs else None
         if prior_model != model_id:
             raise ValueError(
@@ -424,7 +440,13 @@ def run_loop(
     if not isinstance(public, SignalDataset):
         raise ValueError("load_ground_truth must return a public SignalDataset")
     candidates = prompt_candidates(spec, repo_root)
-    _write_inputs(spec, repo_root, run_root, public, model_id)
+    inputs = _lineage_inputs(spec, repo_root, public, dossiers, candidates, model_id)
+    if started and (
+        prior_inputs is None
+        or prior_inputs.get("lineage_fingerprint") != inputs["lineage_fingerprint"]
+    ):
+        raise ValueError("resume inputs do not match the existing lineage")
+    _write_inputs(run_root, inputs)
     _atomic_json(run_root / "candidates.json", {
         "candidates": [{"candidate_id": item.candidate_id, "prompt_hash": item.prompt_hash,
                         "prompt_text": item.text} for item in candidates],
@@ -631,7 +653,9 @@ def main(
     if args.dry_run:
         dossiers = load_signal_dossiers(spec, root)
         public = spec.load_ground_truth(root, dossiers)
-        _write_inputs(spec, root, run_root, public, args.model)
+        candidates = prompt_candidates(spec, root)
+        inputs = _lineage_inputs(spec, root, public, dossiers, candidates, args.model)
+        _write_inputs(run_root, inputs)
         print(canonical_json(_dry_plan(spec, args.lineage, root, args.model)))
         return 0
     if not args.allow_paid:

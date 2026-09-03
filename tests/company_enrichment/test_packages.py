@@ -8,6 +8,7 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+import shlex
 import shutil
 import subprocess
 import sys
@@ -66,8 +67,7 @@ schema_module: schema.py
 inputs:
   required:
     domain: the host
-  optional:
-    as_of: anchor date
+  optional: {{}}
 outputs:
   events:
     type: array
@@ -94,8 +94,13 @@ evaluation:
   report: docs/reports/demo.md
 adaptation:
   adaptable: true
+  safe_edits:
+    - wording
   locked:
     - the citation rule
+  revalidate_when:
+    - a locked section changes
+  revalidate_with: py demo_loop.py --evaluate --lineage <name> --model gpt-5.6-luna --allow-paid
 ---
 
 Body text.
@@ -118,7 +123,7 @@ def test_loads_manifest_and_body(tmp_path: Path) -> None:
     package = load_package(_package(tmp_path))
     assert package.id == "demo"
     assert package.required_inputs == ("domain",)
-    assert package.optional_inputs == ("as_of",)
+    assert package.optional_inputs == ()
     assert package.body.strip() == "Body text."
     assert package.revalidation == "not_required"
 
@@ -172,6 +177,50 @@ def test_missing_runner_file_is_rejected(tmp_path: Path) -> None:
         load_package(root)
 
 
+def test_adaptable_must_be_a_yaml_boolean(tmp_path: Path) -> None:
+    root = _package(tmp_path, edits=(("  adaptable: true", '  adaptable: "false"'),))
+    with pytest.raises(PackageError, match="adaptation.adaptable must be a YAML boolean"):
+        load_package(root)
+
+
+@pytest.mark.parametrize(
+    ("field", "block"),
+    (
+        ("safe_edits", "  safe_edits:\n    - wording"),
+        ("locked", "  locked:\n    - the citation rule"),
+        ("revalidate_when", "  revalidate_when:\n    - a locked section changes"),
+    ),
+)
+def test_adaptation_guidance_must_be_a_list(
+    tmp_path: Path, field: str, block: str,
+) -> None:
+    root = _package(tmp_path, edits=((block, f"  {field}: guidance"),))
+    with pytest.raises(PackageError, match=rf"adaptation\.{field} must be a list"):
+        load_package(root)
+
+
+@pytest.mark.parametrize(
+    "field", ("safe_edits", "locked", "revalidate_when", "revalidate_with"),
+)
+def test_adaptation_contract_requires_every_field(tmp_path: Path, field: str) -> None:
+    root = _package(tmp_path, edits=((f"  {field}:", f"  omitted_{field}:"),))
+    with pytest.raises(PackageError, match=rf"adaptation is missing fields:.*{field}"):
+        load_package(root)
+
+
+def test_adaptable_package_requires_a_revalidation_command(tmp_path: Path) -> None:
+    root = _package(
+        tmp_path,
+        edits=((
+            "  revalidate_with: py demo_loop.py --evaluate --lineage <name> "
+            "--model gpt-5.6-luna --allow-paid",
+            '  revalidate_with: ""',
+        ),),
+    )
+    with pytest.raises(PackageError, match="must provide adaptation.revalidate_with"):
+        load_package(root)
+
+
 @pytest.mark.parametrize("approved_on", ("yesterday", " 2026-08-21 ", "2026-02-30"))
 def test_approval_date_must_be_a_canonical_calendar_date(
     tmp_path: Path, approved_on: str,
@@ -215,9 +264,18 @@ def test_package_file_references_cannot_escape_the_package(tmp_path: Path) -> No
 def test_optional_inputs_must_be_a_mapping(tmp_path: Path) -> None:
     root = _package(
         tmp_path,
-        edits=(("  optional:\n    as_of: anchor date", "  optional: as_of"),),
+        edits=(("  optional: {}", "  optional: as_of"),),
     )
     with pytest.raises(PackageError, match="inputs.optional must be a mapping"):
+        load_package(root)
+
+
+def test_declared_inputs_must_be_supported_by_render(tmp_path: Path) -> None:
+    root = _package(
+        tmp_path,
+        edits=(("  optional: {}", "  optional:\n    as_of: anchor date"),),
+    )
+    with pytest.raises(PackageError, match="declared inputs cannot be rendered.*as_of"):
         load_package(root)
 
 
@@ -405,7 +463,7 @@ def test_render_requires_declared_inputs(tmp_path: Path) -> None:
     package = load_package(_package(tmp_path))
     with pytest.raises(PackageError, match="missing required inputs: domain"):
         render(package, {})
-    text = render(package, {"domain": "attio.com", "as_of": "2026-09-01"})
+    text = render(package, {"domain": "attio.com"})
     assert text.startswith("Body text.\n\n")
     assert "Subject company: attio.com" in text
 
@@ -549,8 +607,6 @@ def test_package_schema_rejects_unknown_top_level_output() -> None:
     (
         ("company_name", ""),
         ("domain", " "),
-        ("as_of", "tomorrow"),
-        ("as_of", "2026-02-30"),
     ),
 )
 def test_package_schema_rejects_invalid_subject_inputs(
@@ -560,10 +616,21 @@ def test_package_schema_rejects_invalid_subject_inputs(
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module
     spec.loader.exec_module(module)
-    inputs = {"company_name": "Attio", "domain": "attio.com", "as_of": "2026-08-21"}
+    inputs = {"company_name": "Attio", "domain": "attio.com"}
     inputs[field] = value
     with pytest.raises(ValidationError):
         module.InputModel(**inputs)
+
+
+def test_package_schema_rejects_removed_as_of_input() -> None:
+    spec = importlib.util.spec_from_file_location("_input_extra_pkg_schema", NEWS / "schema.py")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    with pytest.raises(ValidationError):
+        module.InputModel(
+            company_name="Attio", domain="attio.com", as_of="2026-08-21",
+        )
 
 
 def test_package_schema_rejects_events_in_an_unknown_collection() -> None:
@@ -722,6 +789,9 @@ def test_execute_delegates_to_an_entry_point_that_runs() -> None:
     """The printed command is a real CLI, not a module without a __main__ guard."""
     module = _news_run_module()
     command = module.live_command("smoke", "gpt-5.6-luna")
+    package_command = shlex.split(load_package(NEWS).adaptation["revalidate_with"])
+    package_command[package_command.index("<name>")] = "smoke"
+    assert package_command[1:] == list(command[1:])
     assert _run_cli("execute", "--lineage", "smoke").stdout.strip() == (
         module.quote_command(command)
     )

@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from datetime import date as calendar_date
 import re
-from typing import Literal, Optional
+from typing import Literal
 from urllib.parse import urlsplit
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
@@ -36,11 +36,10 @@ _MONTH_DATE = re.compile(r"^\d{4}-\d{2}$")
 class InputModel(BaseModel):
     """Per-company input the prompt reads."""
 
+    model_config = ConfigDict(extra="forbid")
+
     company_name: str = Field(..., description="Legal or trading name of the subject company")
     domain: str = Field(..., description="Website host, used to reject same-named companies")
-    as_of: Optional[str] = Field(
-        default=None, description="ISO date the run is anchored to; defaults to the run date"
-    )
 
     @field_validator("company_name", "domain")
     @classmethod
@@ -49,21 +48,6 @@ class InputModel(BaseModel):
         if not value:
             raise ValueError("subject text must be non-empty")
         return value
-
-    @field_validator("as_of")
-    @classmethod
-    def validate_as_of(cls, value: Optional[str]) -> Optional[str]:
-        if value is None:
-            return None
-        value = value.strip()
-        if not _FULL_DATE.fullmatch(value):
-            raise ValueError("as_of must be YYYY-MM-DD")
-        try:
-            calendar_date.fromisoformat(value)
-        except ValueError as error:
-            raise ValueError("as_of must be a real calendar date") from error
-        return value
-
 
 class _Event(BaseModel):
     """One dated, cited event."""

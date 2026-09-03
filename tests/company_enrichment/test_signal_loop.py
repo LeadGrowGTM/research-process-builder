@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import replace
 from decimal import Decimal
 import json
 from pathlib import Path
@@ -12,7 +13,9 @@ from scripts.company_enrichment.contracts import (
     CompanyDossier, FieldAssertion, Visibility,
 )
 from scripts.company_enrichment.experiment_runner import ExperimentInput, ModelExecution
-from scripts.company_enrichment.signal_evidence import load_signal_dossier, signal_dossier
+from scripts.company_enrichment.signal_evidence import (
+    load_signal_dossier, save_signal_dossier, signal_dossier,
+)
 from scripts.company_enrichment.signal_ground_truth import (
     ALL_IDS, DEVELOPMENT_IDS, HOLDOUT_IDS, SignalGroundTruthRecord, dataset_loader,
 )
@@ -132,6 +135,8 @@ def test_dry_run_writes_inputs_and_no_cost(repo: Path, capsys):
     assert inputs["holdout_ids"] == list(HOLDOUT_IDS)
     assert set(inputs["signal_hashes"]) == set(ALL_IDS)
     assert set(inputs["dossier_hashes"]) == set(ALL_IDS)
+    assert set(inputs["candidate_prompt_hashes"]) == {"baseline"}
+    assert inputs["lineage_fingerprint"]
     assert not (run_root / "cost.json").exists()
     assert not (run_root / "outputs").exists()
     plan = json.loads(capsys.readouterr().out)
@@ -242,6 +247,44 @@ def test_resume_rejects_a_different_model_before_any_paid_call(repo: Path) -> No
         run_loop(
             make_spec(), repo_root=repo, run_root=run_root,
             model_client=client, resume=True, model_id="gpt-5-nano",
+        )
+    assert client.estimates == []
+    assert client.executed == []
+
+
+@pytest.mark.parametrize("changed_input", ("prompt", "dossier"))
+def test_resume_rejects_changed_paid_inputs_before_any_call(
+    repo: Path, changed_input: str,
+) -> None:
+    class SimulatedCrash(BaseException):
+        pass
+
+    class CrashingClient(FakeModelClient):
+        def execute(self, requests, track):
+            raise SimulatedCrash
+
+    spec = make_spec()
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / f"{changed_input}-crash"
+    with pytest.raises(SimulatedCrash):
+        run_loop(
+            spec, repo_root=repo, run_root=run_root,
+            model_client=CrashingClient(), resume=False,
+        )
+
+    if changed_input == "prompt":
+        (repo / spec.prompt_path).write_text("Changed prompt.\n", encoding="utf-8")
+    else:
+        path = repo / spec.benchmark_dir / "saas-01.yaml"
+        dossier = load_signal_dossier(path)
+        save_signal_dossier(path, replace(
+            dossier, unknowns=(*dossier.unknowns, "changed-input"),
+        ))
+
+    client = FakeModelClient()
+    with pytest.raises(ValueError, match="resume inputs do not match"):
+        run_loop(
+            spec, repo_root=repo, run_root=run_root,
+            model_client=client, resume=True,
         )
     assert client.estimates == []
     assert client.executed == []

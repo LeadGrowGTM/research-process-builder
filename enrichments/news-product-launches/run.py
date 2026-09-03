@@ -27,7 +27,7 @@ sections to the model alongside the real ones.
 delegating to the one vetted loop entry point rather than keeping a second copy
 of the collect-and-call code. That loop scores the whole corpus under a lineage
 name; it is not a per-company lookup, so ``execute`` refuses ``--company-name``,
-``--domain``, ``--as-of``, and ``--variant`` instead of accepting them and
+``--domain``, and ``--variant`` instead of accepting them and
 silently ignoring them. Per-company enrichment runs through the GTM orchestrator
 once the package is installed there. ``execute`` also refuses to spend without
 ``--allow-paid``.
@@ -55,7 +55,7 @@ from scripts.company_enrichment.packages import (  # noqa: E402
 )
 
 REVALIDATE_ENTRYPOINT = "scripts/company_enrichment_news_loop.py"
-SUBJECT_FLAGS = ("--company-name", "--domain", "--as-of", "--variant")
+SUBJECT_FLAGS = ("--company-name", "--domain", "--variant")
 
 
 def live_command(lineage: str, model_id: str) -> tuple[str, ...]:
@@ -84,10 +84,7 @@ def quote_command(command: tuple[str, ...]) -> str:
 
 
 def _inputs(args: argparse.Namespace) -> dict[str, str]:
-    values = {"company_name": args.company_name or "", "domain": args.domain or ""}
-    if args.as_of:
-        values["as_of"] = args.as_of
-    return values
+    return {"company_name": args.company_name or "", "domain": args.domain or ""}
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -97,7 +94,6 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument("--company-name")
     parser.add_argument("--domain")
-    parser.add_argument("--as-of")
     parser.add_argument("--variant", help="name of a file in variants/")
     parser.add_argument(
         "--lineage", help="artifact lineage name that labels an execute run"
@@ -142,7 +138,7 @@ def main(argv: list[str] | None = None) -> int:
     supplied = [
         flag
         for flag, value in zip(
-            SUBJECT_FLAGS, (args.company_name, args.domain, args.as_of, args.variant)
+            SUBJECT_FLAGS, (args.company_name, args.domain, args.variant)
         )
         if value
     ]

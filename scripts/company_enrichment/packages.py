@@ -66,6 +66,8 @@ GTM_TEXT_KEYS = {
 }
 GTM_LIST_KEYS = {"input_columns", "output_columns", "requires_tools"}
 APPROVAL_GATE = 0.90
+RENDER_INPUTS = frozenset({"company_name", "domain"})
+ADAPTATION_LIST_KEYS = ("safe_edits", "locked", "revalidate_when")
 
 
 class PackageError(ValueError):
@@ -235,6 +237,12 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
             raise PackageError(
                 f"inputs.{group} names and descriptions must be non-empty strings"
             )
+    unsupported_inputs = sorted((set(required) | set(optional)) - RENDER_INPUTS)
+    if unsupported_inputs:
+        raise PackageError(
+            "declared inputs cannot be rendered by this package runner: "
+            f"{', '.join(unsupported_inputs)}"
+        )
     outputs = manifest["outputs"]
     if not isinstance(outputs, dict) or not outputs:
         raise PackageError("outputs must be a non-empty mapping")
@@ -285,11 +293,35 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
     ):
         raise PackageError("gtm.cost_per_100 must be a number, not text")
     adaptation = manifest["adaptation"]
-    if not isinstance(adaptation, dict) or "adaptable" not in adaptation:
-        raise PackageError("adaptation must declare 'adaptable'")
-    if adaptation["adaptable"] and not adaptation.get("locked"):
+    if not isinstance(adaptation, dict):
+        raise PackageError("adaptation must be a mapping")
+    missing_adaptation = sorted(
+        {"adaptable", *ADAPTATION_LIST_KEYS, "revalidate_with"} - set(adaptation)
+    )
+    if missing_adaptation:
+        raise PackageError(
+            "adaptation is missing fields: " + ", ".join(missing_adaptation)
+        )
+    if not isinstance(adaptation["adaptable"], bool):
+        raise PackageError("adaptation.adaptable must be a YAML boolean")
+    for key in ADAPTATION_LIST_KEYS:
+        value = adaptation[key]
+        if not isinstance(value, list) or any(
+            not isinstance(item, str) or not item.strip() for item in value
+        ):
+            raise PackageError(
+                f"adaptation.{key} must be a list of non-empty strings"
+            )
+    if adaptation["adaptable"] and not adaptation["locked"]:
         raise PackageError(
             "an adaptable package must list the prompt sections that stay locked"
+        )
+    if adaptation["adaptable"] and (
+        not isinstance(adaptation["revalidate_with"], str)
+        or not adaptation["revalidate_with"].strip()
+    ):
+        raise PackageError(
+            "an adaptable package must provide adaptation.revalidate_with"
         )
     evaluation = manifest["evaluation"]
     if not isinstance(evaluation, dict):
@@ -613,9 +645,9 @@ def render(package: EnrichmentPackage, inputs: Mapping[str, Any]) -> str:
 
     Two sections cannot be filled in before a run: the run assigns the company
     id, and the Evidence is collected during the run. Both keep their header and
-    carry an explicit placeholder rather than being dropped. Declared inputs
-    other than ``company_name`` and ``domain`` do not appear because the live
-    assembly has no slot for them - it does not send them either.
+    carry an explicit placeholder rather than being dropped. The manifest
+    validator rejects declared inputs other than ``company_name`` and ``domain``
+    because the live assembly has no slot for them.
     """
     missing = [
         name for name in package.required_inputs if not str(inputs.get(name, "")).strip()
