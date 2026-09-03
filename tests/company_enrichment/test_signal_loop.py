@@ -444,6 +444,61 @@ def test_changed_evaluator_refuses_cached_invalid_outputs(repo: Path) -> None:
     assert score_path.read_bytes() == original_score
 
 
+def test_resume_refuses_unscored_cached_invalid_outputs(
+    repo: Path, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    class InvalidOutputClient(FakeModelClient):
+        def execute(self, requests, track):
+            raise ValueError("the current parser rejected the provider payload")
+
+    def rejects_payload(_payload):
+        return False
+
+    def accepts_payload(_payload):
+        return True
+
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "unscored-invalid"
+    score_path = run_root / "scores/dev/baseline.json"
+    original_atomic_json = signal_loop._atomic_json
+
+    def interrupt_before_score(path, value):
+        if path == score_path:
+            raise RuntimeError("simulated interruption before score persistence")
+        original_atomic_json(path, value)
+
+    monkeypatch.setattr(signal_loop, "_atomic_json", interrupt_before_score)
+    initial_spec = make_spec(evaluation_dependencies=(rejects_payload,))
+    with pytest.raises(RuntimeError, match="before score persistence"):
+        run_loop(
+            initial_spec, repo_root=repo, run_root=run_root,
+            model_client=InvalidOutputClient(), resume=False,
+        )
+
+    monkeypatch.setattr(signal_loop, "_atomic_json", original_atomic_json)
+    assert not score_path.exists()
+    invalid_artifacts = tuple((run_root / "outputs/dev/baseline").glob("*.json"))
+    assert invalid_artifacts
+    assert all(
+        json.loads(path.read_text(encoding="utf-8"))["invalid_output"] is True
+        for path in invalid_artifacts
+    )
+
+    resumed_client = FakeModelClient()
+    with pytest.raises(
+        ValueError,
+        match="invalid output artifacts lack retained model output.*evaluator provenance",
+    ):
+        run_loop(
+            replace(initial_spec, evaluation_dependencies=(accepts_payload,)),
+            repo_root=repo, run_root=run_root,
+            model_client=resumed_client, resume=True,
+        )
+
+    assert resumed_client.estimates == []
+    assert resumed_client.executed == []
+    assert not score_path.exists()
+
+
 def test_evaluation_only_resume_refuses_missing_new_winner_holdout(
     repo: Path,
 ) -> None:

@@ -63,7 +63,10 @@ each one to the consumer's column namespace. An input name cannot appear in
 both the required and optional groups. Each public `outputs` field
 declares a non-empty `type` and `description` plus `consumer_column`; use `null`
 when a public field has no distinct consumer column. A shared shape may instead
-declare a non-empty `fields` list for the public fields to reuse.
+declare a non-empty `fields` list for the public fields to reuse. The sidecar
+`InputModel` must expose exactly the manifest's package-local input names with
+matching requiredness, and its `OutputModel` must expose exactly the public
+output names; shared shapes are definitions, not top-level output fields.
 The package runner currently renders `company_name` and `domain`; declaring an
 input outside that executable boundary is refused rather than silently dropped.
 The portable `OutputModel` enforces Evidence closure when the consumer calls

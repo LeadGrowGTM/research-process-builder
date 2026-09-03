@@ -116,8 +116,8 @@ def _package(tmp_path: Path, *, name: str = "demo", **fields: str) -> Path:
     )
     (root / "schema.py").write_text(
         "from pydantic import BaseModel\n\n"
-        "class InputModel(BaseModel):\n    pass\n\n"
-        "class OutputModel(BaseModel):\n    pass\n",
+        "class InputModel(BaseModel):\n    domain: str\n\n"
+        "class OutputModel(BaseModel):\n    events: list[dict[str, object]]\n",
         encoding="utf-8",
     )
     manifest = MANIFEST.format(id=fields.get("id", name), status=fields.get("status", "approved"))
@@ -210,6 +210,66 @@ def test_schema_module_must_export_both_pydantic_models(tmp_path: Path) -> None:
         encoding="utf-8",
     )
     with pytest.raises(PackageError, match="pydantic OutputModel"):
+        load_package(root)
+
+
+@pytest.mark.parametrize(
+    ("input_fields", "message"),
+    (
+        ("    pass", "missing domain"),
+        ("    domain: str\n    company_name: str", "unexpected company_name"),
+    ),
+)
+def test_schema_input_fields_must_match_manifest(
+    tmp_path: Path, input_fields: str, message: str,
+) -> None:
+    root = _package(tmp_path)
+    (root / "schema.py").write_text(
+        "from pydantic import BaseModel\n\n"
+        f"class InputModel(BaseModel):\n{input_fields}\n\n"
+        "class OutputModel(BaseModel):\n    events: list[dict[str, object]]\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(PackageError, match=message):
+        load_package(root)
+
+
+def test_schema_input_requiredness_must_match_manifest(tmp_path: Path) -> None:
+    root = _package(tmp_path)
+    (root / "schema.py").write_text(
+        "from pydantic import BaseModel\n\n"
+        "class InputModel(BaseModel):\n    domain: str | None = None\n\n"
+        "class OutputModel(BaseModel):\n    events: list[dict[str, object]]\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(PackageError, match="schema marks optional: domain"):
+        load_package(root)
+
+
+@pytest.mark.parametrize(
+    ("output_fields", "message"),
+    (
+        ("    pass", "missing events"),
+        (
+            "    events: list[dict[str, object]]\n    summary: str",
+            "unexpected summary",
+        ),
+    ),
+)
+def test_schema_output_fields_must_match_manifest(
+    tmp_path: Path, output_fields: str, message: str,
+) -> None:
+    root = _package(tmp_path)
+    (root / "schema.py").write_text(
+        "from pydantic import BaseModel\n\n"
+        "class InputModel(BaseModel):\n    domain: str\n\n"
+        f"class OutputModel(BaseModel):\n{output_fields}\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(PackageError, match=message):
         load_package(root)
 
 
@@ -491,7 +551,16 @@ def test_variant_cannot_move_an_input_between_groups(tmp_path: Path) -> None:
             "      description: the company\n"
             "      consumer_column: company_name\n"
             "  optional: {}",
-        ),),
+            ),),
+        )
+    (root / "schema.py").write_text(
+        "from pydantic import BaseModel\n\n"
+        "class InputModel(BaseModel):\n"
+        "    domain: str\n"
+        "    company_name: str\n\n"
+        "class OutputModel(BaseModel):\n"
+        "    events: list[dict[str, object]]\n",
+        encoding="utf-8",
     )
     (root / "variants" / "contract-change.yaml").write_text(
         "inputs:\n"

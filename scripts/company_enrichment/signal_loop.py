@@ -530,19 +530,24 @@ def _run_attempt(
             and stored_score.get("ground_truth_fingerprint")
             != ground_truth_fingerprint
         )
-        if evaluation_changed:
-            invalid_paths = [
-                str((output_dir / f"{company_id}.json").relative_to(run_root))
-                for company_id, artifact in artifacts.items()
-                if artifact.get("invalid_output") is True
-            ]
-            if invalid_paths:
-                raise ValueError(
-                    f"cannot re-evaluate cached {split} artifacts for candidate "
-                    f"{candidate.candidate_id}; invalid output artifacts lack retained "
-                    f"model output: {', '.join(invalid_paths)}; start a new lineage "
-                    "to run them deliberately"
-                )
+        invalid_paths = [
+            str((output_dir / f"{company_id}.json").relative_to(run_root))
+            for company_id, artifact in artifacts.items()
+            if artifact.get("invalid_output") is True
+        ]
+        invalid_score_reusable = bool(
+            stored_score is not None
+            and stored_score.get("evaluation_fingerprint")
+            == evaluation_fingerprint
+        )
+        if invalid_paths and not invalid_score_reusable:
+            raise ValueError(
+                f"cannot re-evaluate cached {split} artifacts for candidate "
+                f"{candidate.candidate_id}; invalid output artifacts lack retained "
+                "model output and a score with matching evaluator provenance: "
+                f"{', '.join(invalid_paths)}; start a new lineage to run them "
+                "deliberately"
+            )
         if stored_score is None or evaluation_changed or ground_truth_changed:
             refresh_outputs()
             evaluator(None)

@@ -278,6 +278,7 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
     secret = _secret_key(dict(manifest))
     if secret:
         raise PackageError(f"secret-bearing key is forbidden in a manifest: {secret}")
+    runtime_contents: dict[str, str] = {}
     for key in ("runner", "schema_module"):
         reference = Path(manifest[key])
         package_root = root.resolve()
@@ -292,9 +293,13 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
             raise PackageError(f"{key} must be a readable Python file") from error
         if not content.strip():
             raise PackageError(f"{key} must be a non-empty Python file")
+        runtime_contents[key] = content
     schema_path = root / manifest["schema_module"]
+    schema_hash = sha256(
+        runtime_contents["schema_module"].encode("utf-8")
+    ).hexdigest()
     module_spec = importlib.util.spec_from_file_location(
-        f"_enrichment_schema_{sha256(schema_path.read_bytes()).hexdigest()}",
+        f"_enrichment_schema_{schema_hash}",
         schema_path,
     )
     if module_spec is None or module_spec.loader is None:
@@ -304,12 +309,14 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
         module_spec.loader.exec_module(schema)
     except Exception as error:
         raise PackageError(f"schema_module could not be loaded: {error}") from error
+    schema_models: dict[str, type[BaseModel]] = {}
     for model_name in ("InputModel", "OutputModel"):
         model = getattr(schema, model_name, None)
         if not isinstance(model, type) or not issubclass(model, BaseModel):
             raise PackageError(
                 f"schema_module must export pydantic {model_name}"
             )
+        schema_models[model_name] = model
     inputs = manifest["inputs"]
     if not isinstance(inputs, dict):
         raise PackageError("inputs must be a mapping")
@@ -391,6 +398,62 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
         raise PackageError("outputs must map at least one field to a consumer_column")
     if len(output_columns) != len(set(output_columns)):
         raise PackageError("output consumer_column mappings must be unique")
+    try:
+        input_model_fields = schema_models["InputModel"].model_fields
+        manifest_input_names = set(required) | set(optional)
+        schema_input_names = set(input_model_fields)
+        if schema_input_names != manifest_input_names:
+            missing = sorted(manifest_input_names - schema_input_names)
+            unexpected = sorted(schema_input_names - manifest_input_names)
+            details = []
+            if missing:
+                details.append("missing " + ", ".join(missing))
+            if unexpected:
+                details.append("unexpected " + ", ".join(unexpected))
+            raise PackageError(
+                "schema InputModel fields do not match manifest inputs: "
+                + "; ".join(details)
+            )
+        schema_required_names = {
+            name for name, field_info in input_model_fields.items()
+            if field_info.is_required()
+        }
+        manifest_required_names = set(required)
+        if schema_required_names != manifest_required_names:
+            missing = sorted(manifest_required_names - schema_required_names)
+            unexpected = sorted(schema_required_names - manifest_required_names)
+            details = []
+            if missing:
+                details.append("schema marks optional: " + ", ".join(missing))
+            if unexpected:
+                details.append("schema marks required: " + ", ".join(unexpected))
+            raise PackageError(
+                "schema InputModel required fields do not match manifest inputs: "
+                + "; ".join(details)
+            )
+        manifest_output_names = {
+            name for name, descriptor in outputs.items()
+            if set(descriptor) != {"fields"}
+        }
+        schema_output_names = set(schema_models["OutputModel"].model_fields)
+        if schema_output_names != manifest_output_names:
+            missing = sorted(manifest_output_names - schema_output_names)
+            unexpected = sorted(schema_output_names - manifest_output_names)
+            details = []
+            if missing:
+                details.append("missing " + ", ".join(missing))
+            if unexpected:
+                details.append("unexpected " + ", ".join(unexpected))
+            raise PackageError(
+                "schema OutputModel fields do not match manifest outputs: "
+                + "; ".join(details)
+            )
+    except PackageError:
+        raise
+    except Exception as error:
+        raise PackageError(
+            f"schema_module contract could not be inspected: {error}"
+        ) from error
     gtm = manifest["gtm"]
     if not isinstance(gtm, dict) or not gtm:
         raise PackageError("gtm must be a non-empty mapping")
