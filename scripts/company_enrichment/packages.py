@@ -48,6 +48,7 @@ REQUIRED_KEYS = {
     "entity", "target_model", "proof_temperature", "proof_max_output_tokens", "runner",
     "schema_module", "inputs", "outputs", "gtm", "evaluation", "adaptation",
 }
+CONSUMER_RESERVED_KEYS = frozenset({"conversation", "tool_use"})
 ID_PATTERN = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 # A variant may restate how the enrichment is described and append guidance to
 # the prompt. Anything else changes what was proved, so it forces revalidation.
@@ -64,7 +65,7 @@ GTM_TEXT_KEYS = {
     "slug", "provider", "type", "enrichment_level", "runtime_prompt_name",
     "cost_estimate",
 }
-GTM_LIST_KEYS = {"input_columns", "output_columns", "requires_tools"}
+GTM_LIST_KEYS = {"requires_tools"}
 APPROVAL_GATE = 0.90
 RENDER_INPUTS = frozenset({"company_name", "domain"})
 ADAPTATION_LIST_KEYS = ("safe_edits", "locked", "revalidate_when")
@@ -107,6 +108,22 @@ class EnrichmentPackage:
     @property
     def optional_inputs(self) -> tuple[str, ...]:
         return tuple(self.inputs.get("optional", {}))
+
+    @property
+    def input_columns(self) -> tuple[str, ...]:
+        return tuple(
+            descriptor["consumer_column"]
+            for group in ("required", "optional")
+            for descriptor in self.inputs.get(group, {}).values()
+        )
+
+    @property
+    def output_columns(self) -> tuple[str, ...]:
+        return tuple(
+            descriptor["consumer_column"]
+            for descriptor in self.outputs.values()
+            if descriptor.get("consumer_column") is not None
+        )
 
     def card(self) -> dict[str, Any]:
         """The machine-readable summary a consumer registry indexes."""
@@ -169,6 +186,11 @@ def _plain(value: Any) -> Any:
 
 
 def _validate(manifest: Mapping[str, Any], root: Path) -> None:
+    reserved = sorted(CONSUMER_RESERVED_KEYS & set(manifest))
+    if reserved:
+        raise PackageError(
+            "consumer-reserved frontmatter keys are forbidden: " + ", ".join(reserved)
+        )
     missing = sorted(REQUIRED_KEYS - set(manifest))
     if missing:
         raise PackageError(f"{root.name} manifest is missing keys: {', '.join(missing)}")
@@ -221,22 +243,29 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
     required = inputs.get("required")
     if not isinstance(required, dict) or not required:
         raise PackageError(
-            "inputs.required must be a non-empty mapping of name to description"
+            "inputs.required must be a non-empty mapping of name to descriptor"
         )
     optional = inputs.get("optional")
     if not isinstance(optional, dict):
-        raise PackageError("inputs.optional must be a mapping of name to description")
+        raise PackageError("inputs.optional must be a mapping of name to descriptor")
+    input_columns: list[str] = []
     for group, values in (("required", required), ("optional", optional)):
-        if any(
-            not isinstance(name, str)
-            or not name.strip()
-            or not isinstance(description, str)
-            or not description.strip()
-            for name, description in values.items()
-        ):
-            raise PackageError(
-                f"inputs.{group} names and descriptions must be non-empty strings"
-            )
+        for name, descriptor in values.items():
+            if not isinstance(name, str) or not name.strip():
+                raise PackageError(f"inputs.{group} names must be non-empty strings")
+            if not isinstance(descriptor, dict) or set(descriptor) != {
+                "consumer_column", "description",
+            } or any(
+                not isinstance(descriptor[key], str) or not descriptor[key].strip()
+                for key in ("consumer_column", "description")
+            ):
+                raise PackageError(
+                    f"inputs.{group}.{name} must declare non-empty description and "
+                    "consumer_column"
+                )
+            input_columns.append(descriptor["consumer_column"])
+    if len(input_columns) != len(set(input_columns)):
+        raise PackageError("input consumer_column mappings must be unique")
     unsupported_inputs = sorted((set(required) | set(optional)) - RENDER_INPUTS)
     if unsupported_inputs:
         raise PackageError(
@@ -246,6 +275,7 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
     outputs = manifest["outputs"]
     if not isinstance(outputs, dict) or not outputs:
         raise PackageError("outputs must be a non-empty mapping")
+    output_columns: list[str] = []
     for name, descriptor in outputs.items():
         if not isinstance(name, str) or not name.strip():
             raise PackageError("output names must be non-empty strings")
@@ -260,6 +290,11 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
                     f"outputs.{name}.fields must be a list of non-empty strings"
                 )
             continue
+        if set(descriptor) != {"type", "description", "consumer_column"}:
+            raise PackageError(
+                f"outputs.{name} must declare exactly type, description, and "
+                "consumer_column"
+            )
         if any(
             not isinstance(descriptor.get(key), str)
             or not descriptor[key].strip()
@@ -268,9 +303,26 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
             raise PackageError(
                 f"outputs.{name} must declare non-empty type and description"
             )
+        consumer_column = descriptor["consumer_column"]
+        if consumer_column is not None:
+            if not isinstance(consumer_column, str) or not consumer_column.strip():
+                raise PackageError(
+                    f"outputs.{name}.consumer_column must be non-empty text when declared"
+                )
+            output_columns.append(consumer_column)
+    if not output_columns:
+        raise PackageError("outputs must map at least one field to a consumer_column")
+    if len(output_columns) != len(set(output_columns)):
+        raise PackageError("output consumer_column mappings must be unique")
     gtm = manifest["gtm"]
     if not isinstance(gtm, dict) or not gtm:
         raise PackageError("gtm must be a non-empty mapping")
+    derived_columns = sorted({"input_columns", "output_columns"} & set(gtm))
+    if derived_columns:
+        raise PackageError(
+            "gtm column lists are derived from field consumer_column mappings: "
+            + ", ".join(derived_columns)
+        )
     for key in GTM_TEXT_KEYS & set(gtm):
         if not isinstance(gtm[key], str) or not gtm[key].strip():
             raise PackageError(f"gtm.{key} must be non-empty text")
@@ -577,8 +629,7 @@ def emit_registry_entry(package: EnrichmentPackage) -> str:
     missing = [
         key for key in (
             "slug", "provider", "type", "enrichment_level", "runtime_prompt_name",
-            "input_columns", "output_columns", "linkedin_safe", "cost_per_100",
-            "cost_estimate",
+            "linkedin_safe", "cost_per_100", "cost_estimate",
         )
         if key not in gtm
     ]
@@ -602,8 +653,8 @@ def emit_registry_entry(package: EnrichmentPackage) -> str:
         f'        type={_literal(gtm["type"])},',
         f'        enrichment_level={_literal(gtm["enrichment_level"])},',
         f'        cost_estimate={_literal(gtm["cost_estimate"])},',
-        f'        input_columns={tuple(gtm["input_columns"])!r},',
-        f'        output_columns={tuple(gtm["output_columns"])!r},',
+        f'        input_columns={package.input_columns!r},',
+        f'        output_columns={package.output_columns!r},',
         f'        linkedin_safe={bool(gtm["linkedin_safe"])},',
         f'        cost_per_100={float(gtm["cost_per_100"])},',
     ]

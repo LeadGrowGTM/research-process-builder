@@ -55,6 +55,7 @@ from scripts.company_enrichment.packages import (  # noqa: E402
     load_package,
     render,
 )
+from scripts.company_enrichment.signal_loop import is_safe_lineage  # noqa: E402
 
 REVALIDATE_ENTRYPOINT = "scripts/company_enrichment_news_loop.py"
 SUBJECT_FLAGS = ("--company-name", "--domain", "--variant")
@@ -62,8 +63,10 @@ SUBJECT_FLAGS = ("--company-name", "--domain", "--variant")
 
 def live_command(lineage: str, model_id: str) -> tuple[str, ...]:
     """The vetted corpus revalidation run for this package under ``lineage``."""
+    if not is_safe_lineage(lineage):
+        raise ValueError("lineage must be a safe task-scoped name")
     return (
-        sys.executable,
+        "py",
         REVALIDATE_ENTRYPOINT,
         "--evaluate",
         "--lineage",
@@ -75,13 +78,15 @@ def live_command(lineage: str, model_id: str) -> tuple[str, ...]:
 
 
 def quote_command(command: tuple[str, ...]) -> str:
-    """``command`` as one line an operator can paste back into this shell.
+    """``command`` as one line an operator can paste into the documented shell.
 
-    ``sys.executable`` is routinely a spaced path on Windows, so a bare space
-    join hands back a line that does not run.
+    Windows repository commands target PowerShell; other platforms use their
+    POSIX shell syntax.
     """
     if os.name == "nt":
-        return subprocess.list2cmdline(command)
+        return "& " + " ".join(
+            "'" + argument.replace("'", "''") + "'" for argument in command
+        )
     return shlex.join(command)
 
 
@@ -154,8 +159,11 @@ def main(argv: list[str] | None = None) -> int:
             file=sys.stderr,
         )
         return 2
-    if not args.lineage:
-        print("execute needs --lineage <name> to label its run artifacts", file=sys.stderr)
+    if not is_safe_lineage(args.lineage):
+        print(
+            "execute needs --lineage <name> as a safe task-scoped name",
+            file=sys.stderr,
+        )
         return 2
 
     command = live_command(args.lineage, package.target_model)

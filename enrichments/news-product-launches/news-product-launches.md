@@ -29,19 +29,26 @@ schema_module: schema.py
 
 inputs:
   required:
-    company_name: Legal or trading name of the subject company
-    domain: Website host, used to reject same-named companies
+    company_name:
+      description: Legal or trading name of the subject company
+      consumer_column: company_name
+    domain:
+      description: Website host, used to reject same-named companies
+      consumer_column: company_domain
   optional: {}
 outputs:
   news:
     type: array<event>
     description: Business events - funding, acquisition, partnership, leadership, expansion, award, positioning, other
+    consumer_column: news_events_json
   launches:
     type: array<event>
     description: Shipped product changes - product, feature, integration, release
+    consumer_column: launch_events_json
   unknowns:
     type: array<field>
     description: Fields the Evidence could not support, from news or launches
+    consumer_column: null
   event:
     fields: [date, headline, event_type, why_it_matters, source_url, evidence_ids]
 
@@ -55,8 +62,6 @@ gtm:
   type: enrichment
   enrichment_level: company
   runtime_prompt_name: recent-news-summary
-  input_columns: [company_name, company_domain]
-  output_columns: [news_events_json, launch_events_json]
   requires_tools: [web_search, scrape_url]
   linkedin_safe: false
   cost_per_100: 0.50

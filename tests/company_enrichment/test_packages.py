@@ -66,20 +66,21 @@ runner: run.py
 schema_module: schema.py
 inputs:
   required:
-    domain: the host
+    domain:
+      description: the host
+      consumer_column: company_domain
   optional: {{}}
 outputs:
   events:
     type: array
     description: extracted events
+    consumer_column: events_json
 gtm:
   slug: demo_slug
   provider: runtime
   type: enrichment
   enrichment_level: company
   runtime_prompt_name: demo-prompt
-  input_columns: [company_domain]
-  output_columns: [events_json]
   linkedin_safe: false
   cost_per_100: 0.25
   cost_estimate: "$0.25 per 100 rows"
@@ -273,15 +274,19 @@ def test_optional_inputs_must_be_a_mapping(tmp_path: Path) -> None:
 def test_declared_inputs_must_be_supported_by_render(tmp_path: Path) -> None:
     root = _package(
         tmp_path,
-        edits=(("  optional: {}", "  optional:\n    as_of: anchor date"),),
+        edits=((
+            "  optional: {}",
+            "  optional:\n    as_of:\n      description: anchor date\n"
+            "      consumer_column: as_of",
+        ),),
     )
     with pytest.raises(PackageError, match="declared inputs cannot be rendered.*as_of"):
         load_package(root)
 
 
 def test_input_descriptions_must_be_non_empty_text(tmp_path: Path) -> None:
-    root = _package(tmp_path, edits=(("domain: the host", 'domain: ""'),))
-    with pytest.raises(PackageError, match="names and descriptions"):
+    root = _package(tmp_path, edits=(("description: the host", 'description: ""'),))
+    with pytest.raises(PackageError, match="description and consumer_column"):
         load_package(root)
 
 
@@ -298,7 +303,8 @@ def test_public_output_descriptors_require_type_and_description(
     root = _package(
         tmp_path,
         edits=((
-            "outputs:\n  events:\n    type: array\n    description: extracted events",
+            "outputs:\n  events:\n    type: array\n    description: extracted events\n"
+            "    consumer_column: events_json",
             outputs,
         ),),
     )
@@ -420,11 +426,22 @@ def test_a_quoted_linkedin_safe_cannot_flip_the_safety_flag(tmp_path: Path) -> N
         load_package(root)
 
 
-def test_a_scalar_column_list_cannot_become_a_tuple_of_characters(tmp_path: Path) -> None:
-    root = _package(tmp_path, edits=(
-        ("input_columns: [company_domain]", "input_columns: company_domain"),
-    ))
-    with pytest.raises(PackageError, match="gtm.input_columns must be a list"):
+@pytest.mark.parametrize("field", ("input_columns", "output_columns"))
+def test_gtm_column_lists_cannot_duplicate_field_mappings(
+    tmp_path: Path, field: str,
+) -> None:
+    root = _package(tmp_path, edits=((
+        "  runtime_prompt_name: demo-prompt",
+        f"  runtime_prompt_name: demo-prompt\n  {field}: [duplicate]",
+    ),))
+    with pytest.raises(PackageError, match="derived from field consumer_column mappings"):
+        load_package(root)
+
+
+@pytest.mark.parametrize("field", ("tool_use", "conversation"))
+def test_consumer_reserved_frontmatter_is_rejected(tmp_path: Path, field: str) -> None:
+    root = _package(tmp_path, edits=(("inputs:\n", f"{field}: true\ninputs:\n"),))
+    with pytest.raises(PackageError, match="consumer-reserved frontmatter"):
         load_package(root)
 
 
@@ -508,6 +525,8 @@ def test_emit_renders_a_catalog_entry_from_the_proof(tmp_path: Path) -> None:
     entry = emit_registry_entry(load_package(_package(tmp_path)))
     assert '"demo_slug": EnrichmentSpec(' in entry
     assert 'runtime_prompt_name="demo-prompt",' in entry
+    assert "input_columns=('company_domain',)," in entry
+    assert "output_columns=('events_json',)," in entry
     assert 'maturity="graduated",' in entry
     assert "accuracy_pct=93.0," in entry
 
@@ -752,6 +771,8 @@ def test_shipped_news_package_describes_and_emits() -> None:
     card = package.card()
     assert card["evaluation"]["holdout"] == 0.997
     assert card["inputs"]["required"].keys() == {"company_name", "domain"}
+    assert package.input_columns == ("company_name", "company_domain")
+    assert package.output_columns == ("news_events_json", "launch_events_json")
     assert '"recent_news": EnrichmentSpec(' in emit_registry_entry(package)
 
 
@@ -815,6 +836,30 @@ def test_execute_needs_a_lineage_to_label_its_artifacts() -> None:
     assert "--lineage" in result.stderr
 
 
+def test_execute_rejects_an_unsafe_lineage_before_printing() -> None:
+    result = _run_cli("execute", "--lineage", "smoke&calc")
+    assert result.returncode == 2
+    assert result.stdout == ""
+    assert "safe task-scoped name" in result.stderr
+
+
+def test_execute_rejects_an_unsafe_lineage_before_delegating(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str],
+) -> None:
+    module = _news_run_module()
+    monkeypatch.setattr(
+        module.subprocess,
+        "call",
+        lambda *_args, **_kwargs: pytest.fail("unsafe lineage was delegated"),
+    )
+    assert module.main([
+        "execute", "--lineage", "smoke&calc", "--allow-paid",
+    ]) == 2
+    captured = capsys.readouterr()
+    assert captured.out == ""
+    assert "safe task-scoped name" in captured.err
+
+
 def test_execute_delegates_to_an_entry_point_that_runs() -> None:
     """The printed command is a real CLI, not a module without a __main__ guard."""
     module = _news_run_module()
@@ -833,15 +878,22 @@ def test_execute_delegates_to_an_entry_point_that_runs() -> None:
     assert '"model":"gpt-5.6-luna"' in parsed.stdout
 
 
+@pytest.mark.skipif(os.name != "nt", reason="PowerShell handoff is Windows-specific")
 def test_printed_command_survives_a_spaced_path(tmp_path: Path) -> None:
     """An operator pastes the printed line back into a shell; it has to run there."""
     spaced = tmp_path / "a b"
     spaced.mkdir()
     script = spaced / "probe.py"
     script.write_text("print('delegated-ok')\n", encoding="utf-8")
+    launcher = spaced / "python launcher.cmd"
+    launcher.write_text(f'@echo off\n"{sys.executable}" %*\n', encoding="utf-8")
     module = _news_run_module()
-    line = module.quote_command((sys.executable, str(script)))
-    assert " ".join((sys.executable, str(script))) != line
-    result = subprocess.run(line, shell=True, capture_output=True, text=True)
+    command = (str(launcher), str(script))
+    line = module.quote_command(command)
+    assert " ".join(command) != line
+    result = subprocess.run(
+        ["powershell.exe", "-NoProfile", "-NonInteractive", "-Command", line],
+        capture_output=True, text=True,
+    )
     assert result.returncode == 0, result.stderr
     assert "delegated-ok" in result.stdout

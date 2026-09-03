@@ -63,6 +63,10 @@ SEARCH_PROVIDER_ENV = "SIGNAL_SEARCH_PROVIDER"
 _STARTED_MARKERS = ("cost.json", "outputs", "scores", "gate.json", "result.json")
 
 
+def is_safe_lineage(value: Any) -> bool:
+    return isinstance(value, str) and _LINEAGE.fullmatch(value) is not None
+
+
 @dataclass(frozen=True, slots=True)
 class PromptCandidate:
     candidate_id: str
@@ -888,7 +892,7 @@ def main(
         print(canonical_json(result))
         return 0
 
-    if not args.lineage or not _LINEAGE.fullmatch(args.lineage):
+    if not is_safe_lineage(args.lineage):
         parser.error("--evaluate requires --lineage as a safe task-scoped name")
     base = Path(artifact_root or root / "runs/company-enrichment" / spec.enrichment_id)
     run_root = base / args.lineage

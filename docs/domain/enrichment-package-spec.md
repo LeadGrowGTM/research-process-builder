@@ -54,10 +54,13 @@ relative files inside the package and are checked at load time.
 
 ### Contract
 
-`inputs.required` and `inputs.optional` are mappings of name to description -
-the description is what a caller reads to know what to pass. Each public
-`outputs` field declares a non-empty `type` and `description`; a shared shape
-may instead declare a non-empty `fields` list for the public fields to reuse.
+`inputs.required` and `inputs.optional` are mappings of package-local names to
+descriptors containing `description` and `consumer_column`. Package input names
+belong to the package's prompt and runner; `consumer_column` explicitly maps
+each one to the consumer's column namespace. Each public `outputs` field
+declares a non-empty `type` and `description` plus `consumer_column`; use `null`
+when a public field has no distinct consumer column. A shared shape may instead
+declare a non-empty `fields` list for the public fields to reuse.
 The package runner currently renders `company_name` and `domain`; declaring an
 input outside that executable boundary is refused rather than silently dropped.
 The portable `OutputModel` enforces Evidence closure when the consumer calls
@@ -71,15 +74,18 @@ Evidence-closure guarantee.
 Field names mirror `EnrichmentSpec` in
 `src/gtm_orchestrator/stages/enrichments/registry.py` so installation is a
 mechanical diff: `slug`, `provider`, `type`, `enrichment_level`,
-`runtime_prompt_name`, `input_columns`, `output_columns`, `requires_tools`,
+`runtime_prompt_name`, `requires_tools`,
 `linkedin_safe`, `cost_per_100`, `cost_estimate`. Repo-local policy travels
 alongside: `tier`, `caps`, `freshness_days`, `output_visibility`.
 
 The loader type-checks the mirrored keys because the emitted entry reads them
 straight through: `linkedin_safe` must be a YAML boolean (a quoted `"false"` is
 refused rather than silently coerced to true), `cost_per_100` a non-negative
-number, the column and tool lists real YAML lists of non-empty strings, and the
-text keys non-empty strings. A wrong type fails at load, not at emit.
+number, the tool list a real YAML list of non-empty strings, and the text keys
+non-empty strings. `input_columns` and `output_columns` are emitted in manifest
+order from the field-level `consumer_column` mappings; hand-written copies in
+the GTM block are refused, so package and consumer names cannot drift. A wrong
+type fails at load, not at emit.
 
 ### Evaluation
 
@@ -183,9 +189,10 @@ install is four reviewed steps.
    `lg_runtime.prompts.frontmatter.parse_prompt_file` returns
    `(frontmatter, body)` and `loader.load_prompt` builds the `Prompt` from the
    body alone, so the manifest never reaches the model on that side either.
-   The loader rejects the `tool_use` and `conversation` frontmatter keys and
-   ignores every other key, which is why the rest of the manifest travels safely
-   in the same file. Do not paste a `body` render here - the file is copied
+   The consumer loader reserves `tool_use` and `conversation`; package loading
+   rejects those keys before installation and the consumer ignores every other
+   manifest key, which is why the rest of the manifest travels safely in the
+   same file. Do not paste a `body` render here - the file is copied
    whole so the installed artifact and the package stay one reviewable object.
 3. Register the sidecar schema. Until
    `lg_runtime.prompts.loader._load_sidecar_schemas` accepts a `schema_module`
