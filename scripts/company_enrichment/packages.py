@@ -195,6 +195,42 @@ def _freeze(value: Any) -> Any:
     return value
 
 
+def _merge_variant_inputs(
+    current: Mapping[str, Any], overlay: Mapping[str, Any], variant: str,
+) -> dict[str, Any]:
+    merged = _plain(current)
+    for key, value in overlay.items():
+        if key not in ("required", "optional"):
+            merged[key] = _plain(value)
+    for group in ("required", "optional"):
+        if group not in overlay:
+            continue
+        current_group = current.get(group)
+        overlay_group = overlay[group]
+        if not isinstance(current_group, Mapping) or not isinstance(
+            overlay_group, Mapping
+        ):
+            merged[group] = _plain(overlay_group)
+            continue
+        if set(overlay_group) - set(current_group):
+            raise PackageError(
+                f"variant {variant} may not add, remove, or move input names; "
+                "a variant needing different inputs is a different enrichment "
+                "or a v2 of the parent"
+            )
+        merged_group = _plain(current_group)
+        for name, value in overlay_group.items():
+            current_descriptor = current_group[name]
+            if isinstance(current_descriptor, Mapping) and isinstance(value, Mapping):
+                descriptor = _plain(current_descriptor)
+                descriptor.update(_plain(value))
+                merged_group[name] = descriptor
+            else:
+                merged_group[name] = _plain(value)
+        merged[group] = merged_group
+    return merged
+
+
 def _validate(manifest: Mapping[str, Any], root: Path) -> None:
     reserved = sorted(CONSUMER_RESERVED_KEYS & set(manifest))
     if reserved:
@@ -258,6 +294,10 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
     optional = inputs.get("optional")
     if not isinstance(optional, dict):
         raise PackageError("inputs.optional must be a mapping of name to descriptor")
+    overlapping_inputs = set(required) & set(optional)
+    if overlapping_inputs:
+        names = ", ".join(sorted((str(name) for name in overlapping_inputs)))
+        raise PackageError(f"input names cannot be both required and optional: {names}")
     input_columns: list[str] = []
     for group, values in (("required", required), ("optional", optional)):
         for name, descriptor in values.items():
@@ -518,22 +558,11 @@ def apply_variant(package: EnrichmentPackage, variant: str) -> EnrichmentPackage
             continue
         current = getattr(package, key)
         if isinstance(current, Mapping) and isinstance(overlay[key], Mapping):
-            merged = dict(current)
-            merged.update(overlay[key])
             if key == "inputs":
-                for group in ("required", "optional"):
-                    current_group = current.get(group)
-                    merged_group = merged.get(group)
-                    if (
-                        isinstance(current_group, Mapping)
-                        and isinstance(merged_group, Mapping)
-                        and set(current_group) != set(merged_group)
-                    ):
-                        raise PackageError(
-                            f"variant {variant} may not add, remove, or move input "
-                            "names; a variant needing different inputs is a different "
-                            "enrichment or a v2 of the parent"
-                        )
+                merged = _merge_variant_inputs(current, overlay[key], variant)
+            else:
+                merged = dict(current)
+                merged.update(overlay[key])
             updates[key] = merged
         else:
             updates[key] = overlay[key]

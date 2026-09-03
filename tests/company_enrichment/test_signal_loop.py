@@ -169,6 +169,39 @@ def test_dry_run_writes_inputs_and_no_cost(repo: Path, capsys):
     assert plan["enrichment_id"] == ENRICHMENT and plan["cost_cap_usd"] == "1.00"
 
 
+def test_dry_run_cannot_overwrite_a_started_lineage(repo: Path, capsys) -> None:
+    spec = make_spec()
+    lineage = "paid-before-dry-run"
+    paid_args = ["--evaluate", "--lineage", lineage, "--allow-paid"]
+    first_client = FakeModelClient()
+    assert signal_loop.main(
+        spec, paid_args, repo_root=repo,
+        model_client_factory=lambda **_: first_client,
+    ) == 0
+    capsys.readouterr()
+
+    inputs_path = (
+        repo / "runs/company-enrichment" / ENRICHMENT / lineage / "inputs.json"
+    )
+    original_inputs = inputs_path.read_bytes()
+    assert signal_loop.main(
+        spec, ["--evaluate", "--lineage", lineage, "--dry-run"], repo_root=repo,
+        model_client_factory=lambda **_: pytest.fail("dry-run created a model client"),
+    ) == 2
+    error = json.loads(capsys.readouterr().out)
+    assert error["error"] == "ValueError"
+    assert "cannot dry-run a started lineage" in error["message"]
+    assert inputs_path.read_bytes() == original_inputs
+
+    resumed_client = FakeModelClient()
+    assert signal_loop.main(
+        spec, [*paid_args, "--resume"], repo_root=repo,
+        model_client_factory=lambda **_: resumed_client,
+    ) == 0
+    assert resumed_client.estimates == []
+    assert resumed_client.executed == []
+
+
 def test_evaluate_requires_allow_paid(repo: Path, capsys):
     code = signal_loop.main(make_spec(), ["--evaluate", "--lineage", "x"], repo_root=repo)
     assert code == 2

@@ -57,7 +57,8 @@ relative files inside the package and are checked at load time.
 `inputs.required` and `inputs.optional` are mappings of package-local names to
 descriptors containing `description` and `consumer_column`. Package input names
 belong to the package's prompt and runner; `consumer_column` explicitly maps
-each one to the consumer's column namespace. Each public `outputs` field
+each one to the consumer's column namespace. An input name cannot appear in
+both the required and optional groups. Each public `outputs` field
 declares a non-empty `type` and `description` plus `consumer_column`; use `null`
 when a public field has no distinct consumer column. A shared shape may instead
 declare a non-empty `fields` list for the public fields to reuse.
@@ -164,8 +165,10 @@ that a base manifest is refused for.
 Every variant shares the package's single sidecar schema. An `inputs` overlay
 may refine descriptions or consumer-column mappings, but it must preserve the
 parent's required and optional input names without adding, removing, or moving
-them between groups. A use case that needs different inputs is a different
-enrichment or a v2 of the parent.
+them between groups. Input descriptors are merged field by field, so a variant
+may name only the input and descriptor field it refines; sibling inputs and
+unchanged descriptor fields remain inherited. A use case that needs different
+inputs is a different enrichment or a v2 of the parent.
 
 `run.py execute` revalidates the parent package against its sealed benchmark
 corpus, so it refuses `--variant` along with the other subject flags. Revalidate

@@ -271,6 +271,21 @@ def test_optional_inputs_must_be_a_mapping(tmp_path: Path) -> None:
         load_package(root)
 
 
+def test_input_name_cannot_be_both_required_and_optional(tmp_path: Path) -> None:
+    root = _package(
+        tmp_path,
+        edits=((
+            "  optional: {}",
+            "  optional:\n"
+            "    domain:\n"
+            "      description: an optional host\n"
+            "      consumer_column: optional_company_domain",
+        ),),
+    )
+    with pytest.raises(PackageError, match="both required and optional: domain"):
+        load_package(root)
+
+
 def test_declared_inputs_must_be_supported_by_render(tmp_path: Path) -> None:
     root = _package(
         tmp_path,
@@ -486,6 +501,26 @@ def test_variant_may_refine_an_input_descriptor(
     assert package.input_columns == (consumer_column,)
     assert package.revalidation == "required"
     assert package.status == "candidate"
+
+
+def test_variant_may_partially_refine_one_shipped_input(tmp_path: Path) -> None:
+    root = tmp_path / NEWS.name
+    shutil.copytree(NEWS, root)
+    (root / "variants" / "domain-wording.yaml").write_text(
+        "inputs:\n"
+        "  required:\n"
+        "    domain:\n"
+        "      description: the normalized company host\n",
+        encoding="utf-8",
+    )
+
+    package = apply_variant(load_package(root), "domain-wording")
+
+    assert package.required_inputs == ("company_name", "domain")
+    assert package.inputs["required"]["domain"] == {
+        "description": "the normalized company host",
+        "consumer_column": "company_domain",
+    }
 
 
 def test_variant_may_not_replace_the_gtm_block_with_a_non_mapping(tmp_path: Path) -> None:

@@ -897,6 +897,16 @@ def main(
     base = Path(artifact_root or root / "runs/company-enrichment" / spec.enrichment_id)
     run_root = base / args.lineage
     if args.dry_run:
+        if _started(run_root):
+            print(canonical_json({
+                "approval": False,
+                "error": "ValueError",
+                "message": (
+                    "cannot dry-run a started lineage; use a new lineage name "
+                    "for a plan preview"
+                ),
+            }))
+            return 2
         dossiers = load_signal_dossiers(spec, root)
         public = spec.load_ground_truth(root, dossiers)
         candidates = prompt_candidates(spec, root)
