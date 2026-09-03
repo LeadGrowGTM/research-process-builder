@@ -67,6 +67,8 @@ declare a non-empty `fields` list for the public fields to reuse. The sidecar
 `InputModel` must expose exactly the manifest's package-local input names with
 matching requiredness, and its `OutputModel` must expose exactly the public
 output names; shared shapes are definitions, not top-level output fields.
+Sidecar field aliases are refused because manifest names are the public wire
+names for both validation and serialization.
 The package runner currently renders `company_name` and `domain`; declaring an
 input outside that executable boundary is refused rather than silently dropped.
 The portable `OutputModel` enforces Evidence closure when the consumer calls
@@ -140,7 +142,10 @@ The manifest exists so this is a bounded decision rather than a judgement call.
    `py scripts/company_enrichment_news_loop.py --evaluate --lineage <name>
    --model gpt-5.6-luna --allow-paid`, which `py
    enrichments/news-product-launches/run.py execute --lineage <name>
-   --allow-paid` delegates to.
+   --allow-paid` delegates to. A resume reuses only provider responses whose
+   complete request fingerprints match, then runs the current decoder,
+   postprocessor, ground truth, and scorer locally again. Local evaluation
+   changes therefore never preserve stale scores or cause another provider call.
 6. **Bump `version` and record the new score** in `evaluation` before the
    package returns to `approved`.
 

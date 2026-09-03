@@ -47,22 +47,35 @@ class _SyncResponses:
 
     def create(self, **kwargs):
         self.calls.append(kwargs)
-        return SimpleNamespace(
+        output_text = (
+            '{"assertions":[{"field":"description","value":"Reporting '
+            'software","evidence_ids":["ev-1"],"confidence":0.9,'
+            '"visibility":"message_safe"}],"unknowns":["identity","offers"]}'
+        )
+        response = SimpleNamespace(
             id="resp_123",
             model="gpt-4.1-mini-2025-04-14",
-            output_text=(
-                '{"assertions":[{"field":"description","value":"Reporting '
-                'software","evidence_ids":["ev-1"],"confidence":0.9,'
-                '"visibility":"message_safe"}],"unknowns":["identity","offers"]}'
-            ),
+            output_text=output_text,
             usage=SimpleNamespace(input_tokens=1000, output_tokens=100),
-            model_dump=lambda mode="json": {
-                "id": "resp_123",
-                "model": "gpt-4.1-mini-2025-04-14",
-                "output_text": "persisted raw response",
-                "usage": {"input_tokens": 1000, "output_tokens": 100},
-            },
         )
+
+        def model_dump(mode="json"):
+            details = getattr(response.usage, "input_tokens_details", None)
+            usage = {
+                "input_tokens": response.usage.input_tokens,
+                "output_tokens": response.usage.output_tokens,
+            }
+            if details is not None:
+                usage["input_tokens_details"] = vars(details)
+            return {
+                "id": "resp_123",
+                "model": response.model,
+                "output_text": response.output_text,
+                "usage": usage,
+            }
+
+        response.model_dump = model_dump
+        return response
 
 
 def test_sync_uses_evidence_only_structured_responses_and_is_idempotent(
@@ -94,7 +107,7 @@ def test_sync_uses_evidence_only_structured_responses_and_is_idempotent(
     assert len(state_files) == 1
     state = state_files[0].read_text(encoding="utf-8")
     assert "resp_123" in state
-    assert "persisted raw response" in state
+    assert "Reporting software" in state
 
 
 def test_price_table_estimate_and_cached_usage_use_decimal_rates(
@@ -276,16 +289,36 @@ def test_response_is_persisted_before_decode_failure(tmp_path: Path) -> None:
         else:
             raise AssertionError("invalid provider JSON must fail decoding")
 
-    assert len(responses.calls) == 2
-    assert len({
-        call["extra_headers"]["Idempotency-Key"] for call in responses.calls
-    }) == 2
+    assert len(responses.calls) == 1
     state = json.loads(next(
         (tmp_path / "openai" / "sync").glob("*.json")
     ).read_text(encoding="utf-8"))
-    assert state["status"] == "terminal"
-    assert state["attempt_index"] == 1
-    assert len(state["attempt_history"]) == 1
+    assert state["status"] == "received"
+    assert state["attempt_index"] == 0
+    assert state["attempt_history"] == []
+
+
+def test_acquired_response_can_be_decoded_repeatedly_without_provider_calls(
+    tmp_path: Path,
+) -> None:
+    responses = _SyncResponses()
+    request = _request()
+    client = OpenAIModelClient(
+        artifact_root=tmp_path, sdk_client=SimpleNamespace(responses=responses),
+    )
+
+    acquired = client.acquire_responses(
+        (request,), ExecutionTrack.SYNCHRONOUS,
+    )[0]
+    first = client.decode_response(request, acquired, ExecutionTrack.SYNCHRONOUS)
+    second = client.decode_response(request, acquired, ExecutionTrack.SYNCHRONOUS)
+    reacquired = client.acquire_responses(
+        (request,), ExecutionTrack.SYNCHRONOUS,
+    )[0]
+
+    assert first == second
+    assert reacquired == acquired
+    assert len(responses.calls) == 1
 
 
 def test_request_reserves_four_thousand_output_tokens(tmp_path: Path) -> None:
@@ -574,17 +607,14 @@ def test_batch_output_is_persisted_before_decode_failure(tmp_path: Path) -> None
         else:
             raise AssertionError("invalid Batch JSON must fail decoding")
 
-    assert files.content_calls == 2
-    assert len(batches.created) == 2
-    assert len({
-        call["extra_headers"]["Idempotency-Key"] for call in batches.created
-    }) == 2
+    assert files.content_calls == 1
+    assert len(batches.created) == 1
     state = json.loads(next(
         (tmp_path / "openai" / "batch").glob("*.json")
     ).read_text(encoding="utf-8"))
-    assert state["status"] == "terminal"
-    assert state["attempt_index"] == 1
-    assert len(state["attempt_history"]) == 1
+    assert state["status"] == "received"
+    assert state["attempt_index"] == 0
+    assert state["attempt_history"] == []
 
 def test_legacy_request_body_is_byte_for_byte_compatible(tmp_path: Path) -> None:
     client = OpenAIModelClient(

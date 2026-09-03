@@ -55,9 +55,6 @@ from .signal_loop import CaseScore
 
 NEWS_ENRICHMENT_ID = "news-product-launches"
 NEWS_WEIGHTS = {"events": Decimal(".60"), "citation": Decimal(".25"), "kind": Decimal(".15")}
-NEWS_EVALUATION_DEPENDENCIES = (
-    normalize_event_date, parse_news_event, parse_news_output,
-)
 DEFAULT_RECENT_WINDOW_DAYS = 180
 DATE_TOLERANCE_DAYS = 3
 GT_KINDS = {"news": "news", "launch": "launches"}

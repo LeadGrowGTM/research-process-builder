@@ -56,9 +56,6 @@ COMPETITOR_ENRICHMENT_ID = "competitor-intelligence"
 COMPETITOR_WEIGHTS = {
     "named_set": Decimal(".50"), "citation": Decimal(".30"), "labeling": Decimal(".20"),
 }
-COMPETITOR_EVALUATION_DEPENDENCIES = (
-    normalize_domain, normalize_name, parse_competitors_output,
-)
 _PREFIX_MATCH_MIN = 5
 
 

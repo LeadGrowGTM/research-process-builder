@@ -400,6 +400,23 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
         raise PackageError("output consumer_column mappings must be unique")
     try:
         input_model_fields = schema_models["InputModel"].model_fields
+        for model_name, model_fields in (
+            ("InputModel", input_model_fields),
+            ("OutputModel", schema_models["OutputModel"].model_fields),
+        ):
+            aliased = sorted(
+                name for name, field_info in model_fields.items()
+                if any((
+                    field_info.alias is not None,
+                    field_info.validation_alias is not None,
+                    field_info.serialization_alias is not None,
+                ))
+            )
+            if aliased:
+                raise PackageError(
+                    f"schema {model_name} fields may not declare aliases: "
+                    + ", ".join(aliased)
+                )
         manifest_input_names = set(required) | set(optional)
         schema_input_names = set(input_model_fields)
         if schema_input_names != manifest_input_names:

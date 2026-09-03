@@ -273,6 +273,41 @@ def test_schema_output_fields_must_match_manifest(
         load_package(root)
 
 
+@pytest.mark.parametrize(
+    ("model_name", "field_name", "field_definition"),
+    (
+        ("InputModel", "domain", 'domain: str = Field(alias="website")'),
+        (
+            "OutputModel",
+            "events",
+            'events: list[dict[str, object]] = Field(alias="results")',
+        ),
+    ),
+)
+def test_schema_fields_may_not_change_manifest_wire_names(
+    tmp_path: Path, model_name: str, field_name: str, field_definition: str,
+) -> None:
+    root = _package(tmp_path)
+    input_field = field_definition if model_name == "InputModel" else "domain: str"
+    output_field = (
+        field_definition
+        if model_name == "OutputModel"
+        else "events: list[dict[str, object]]"
+    )
+    (root / "schema.py").write_text(
+        "from pydantic import BaseModel, Field\n\n"
+        f"class InputModel(BaseModel):\n    {input_field}\n\n"
+        f"class OutputModel(BaseModel):\n    {output_field}\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(
+        PackageError,
+        match=rf"schema {model_name} fields may not declare aliases: {field_name}",
+    ):
+        load_package(root)
+
+
 def test_adaptable_must_be_a_yaml_boolean(tmp_path: Path) -> None:
     root = _package(tmp_path, edits=(("  adaptable: true", '  adaptable: "false"'),))
     with pytest.raises(PackageError, match="adaptation.adaptable must be a YAML boolean"):

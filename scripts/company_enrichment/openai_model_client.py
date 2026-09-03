@@ -15,7 +15,7 @@ from typing import Any, Mapping, Sequence
 from .benchmark import ExecutionTrack
 from .contracts import FieldAssertion, Visibility, canonical_json
 from .executors import P0_ENRICHMENTS
-from .experiment_runner import ExperimentInput, ModelExecution
+from .experiment_runner import ExperimentInput, ModelExecution, ProviderResponse
 from .icp_persona_contracts import parse_icp_output
 
 
@@ -218,12 +218,42 @@ class OpenAIModelClient:
     def execute(
         self, requests: Sequence[ExperimentInput], track: ExecutionTrack,
     ) -> tuple[ModelExecution, ...]:
+        values = self._validated_requests(requests)
+        responses = self.acquire_responses(values, track)
+        executions = tuple(
+            self.decode_response(request, response, track)
+            for request, response in zip(values, responses, strict=True)
+        )
+        self._record_executions(values, executions, track)
+        return executions
+
+    def acquire_responses(
+        self, requests: Sequence[ExperimentInput], track: ExecutionTrack,
+    ) -> tuple[ProviderResponse, ...]:
         requests = self._validated_requests(requests)
         if track is ExecutionTrack.SYNCHRONOUS:
-            return tuple(self._execute_sync(request) for request in requests)
+            return tuple(self._acquire_sync(request) for request in requests)
         if track is ExecutionTrack.BATCH:
-            return self._execute_batch(requests)
+            return self._acquire_batch(requests)
         raise ValueError("unsupported execution track")
+
+    def decode_response(
+        self,
+        request: ExperimentInput,
+        response: ProviderResponse,
+        track: ExecutionTrack,
+    ) -> ModelExecution:
+        if not isinstance(request, ExperimentInput):
+            raise ValueError("request must be an ExperimentInput")
+        if not isinstance(response, ProviderResponse):
+            raise ValueError("response must be a ProviderResponse")
+        if response.company_id != request.company_id:
+            raise ValueError("provider response company ID does not match request")
+        if track not in {ExecutionTrack.SYNCHRONOUS, ExecutionTrack.BATCH}:
+            raise ValueError("unsupported execution track")
+        return self._execution_from_response(
+            request, response.payload, track, response.latency_ms,
+        )
 
     def has_pending(
         self, requests: Sequence[ExperimentInput], track: ExecutionTrack,
@@ -441,66 +471,51 @@ class OpenAIModelClient:
     def request_fingerprint(self, request: ExperimentInput) -> str:
         return self._request_digest(request)
 
-    def _execute_sync(self, request: ExperimentInput) -> ModelExecution:
+    def _acquire_sync(self, request: ExperimentInput) -> ProviderResponse:
         digest = self._request_digest(request)
         path = self._root / "sync" / f"{digest}.json"
         state = _read_json(path)
         attempt_history: list[Mapping[str, Any]] = []
+        if state is not None and "provider_response" in state:
+            return ProviderResponse(
+                request.company_id,
+                state["provider_response"],
+                int(state["latency_ms"]),
+            )
         if state is not None and state.get("status") == "terminal":
             attempt_history = list(state.get("attempt_history", ()))
             prior = dict(state)
             prior.pop("attempt_history", None)
             attempt_history.append(prior)
             state = None
-        if state is not None and state.get("status") == "completed":
-            return self._execution_from_payload(state["execution"])
-        if state is not None and state.get("status") == "received":
-            response = state["provider_response"]
-            latency_ms = int(state["latency_ms"])
-        else:
-            started = self._monotonic()
-            attempt_index = len(attempt_history)
-            idempotency_key = (
-                f"company-enrichment-{digest}-attempt-{attempt_index}"
-            )
-            try:
-                response = self._sdk.responses.create(
-                    **self._body(request),
-                    extra_headers={"Idempotency-Key": idempotency_key},
-                )
-            except Exception as error:
-                raise self._provider_error("Responses create", error) from None
-            latency_ms = max(0, round((self._monotonic() - started) * 1000))
-            state = {
-                "attempt_history": attempt_history,
-                "attempt_index": attempt_index,
-                "company_id": request.company_id,
-                "enrichment_id": request.enrichment_id,
-                "idempotency_key": idempotency_key,
-                "latency_ms": latency_ms,
-                "provider_response": _response_payload(response),
-                "request_sha256": digest,
-                "status": "received",
-                **self._request_metadata(request),
-            }
-            _atomic_json(path, state)
+        started = self._monotonic()
+        attempt_index = len(attempt_history)
+        idempotency_key = f"company-enrichment-{digest}-attempt-{attempt_index}"
         try:
-            execution = self._execution_from_response(
-                request, response, ExecutionTrack.SYNCHRONOUS, latency_ms,
+            response = self._sdk.responses.create(
+                **self._body(request),
+                extra_headers={"Idempotency-Key": idempotency_key},
             )
-        except ValueError:
-            _atomic_json(path, {
-                **state,
-                "provider_status": "invalid_output",
-                "status": "terminal",
-            })
-            raise
-        _atomic_json(path, {
-            **state,
-            "execution": self._execution_payload(execution),
-            "status": "completed",
-        })
-        return execution
+        except Exception as error:
+            raise self._provider_error("Responses create", error) from None
+        latency_ms = max(0, round((self._monotonic() - started) * 1000))
+        payload = _response_payload(response)
+        state = {
+            "attempt_history": attempt_history,
+            "attempt_index": attempt_index,
+            "company_id": request.company_id,
+            "enrichment_id": request.enrichment_id,
+            "idempotency_key": idempotency_key,
+            "latency_ms": latency_ms,
+            "provider_response": payload,
+            "request_sha256": digest,
+            "status": "received",
+            **self._request_metadata(request),
+        }
+        _atomic_json(path, state)
+        return ProviderResponse(
+            request.company_id, payload, latency_ms,
+        )
 
     @staticmethod
     def _provider_error(operation: str, error: Exception) -> OpenAIProviderError:
@@ -816,25 +831,36 @@ class OpenAIModelClient:
             str(value["actual_cost_usd"]),
         )
 
-    def _execute_batch(
+    def _acquire_batch(
         self, requests: tuple[ExperimentInput, ...],
-    ) -> tuple[ModelExecution, ...]:
+    ) -> tuple[ProviderResponse, ...]:
         path = self._batch_path(requests)
         digest = path.stem
         state = _read_json(path)
         started = self._monotonic()
         attempt_history: list[Mapping[str, Any]] = []
+        if state is not None and state.get("provider_output") is not None:
+            safe_rows = state["provider_output"]
+            latency_ms = int(state.get("latency_ms", 0))
+            expected = {request.company_id for request in requests}
+            try:
+                by_id = self._validated_batch_bodies(safe_rows, expected)
+            except (OpenAIProviderError, ValueError):
+                if state.get("status") != "terminal":
+                    raise
+            else:
+                return tuple(
+                    ProviderResponse(
+                        request.company_id, by_id[request.company_id], latency_ms,
+                    )
+                    for request in requests
+                )
         if state is not None and state.get("status") == "terminal":
             attempt_history = list(state.get("attempt_history", ()))
             prior = dict(state)
             prior.pop("attempt_history", None)
             attempt_history.append(prior)
             state = None
-        if state is not None and state.get("status") == "completed":
-            return tuple(
-                self._execution_from_payload(item)
-                for item in state["executions"]
-            )
         if state is None:
             lines = tuple(
                 {
@@ -955,6 +981,9 @@ class OpenAIModelClient:
                 safe_rows.append(_safe_provider_value(value))
             state = {
                 **state,
+                "latency_ms": max(
+                    0, round((self._monotonic() - started) * 1000),
+                ),
                 "output_file_id": output_file_id,
                 "provider_output": safe_rows,
                 "provider_status": "completed",
@@ -971,31 +1000,47 @@ class OpenAIModelClient:
                 "status": "terminal",
             })
             raise
-        latency_ms = max(0, round((self._monotonic() - started) * 1000))
-        try:
-            executions = tuple(
-                self._execution_from_response(
-                    request, by_id[request.company_id], ExecutionTrack.BATCH,
-                    latency_ms,
-                )
-                for request in requests
+        latency_ms = int(state.get("latency_ms", 0))
+        return tuple(
+            ProviderResponse(
+                request.company_id, by_id[request.company_id], latency_ms,
             )
-        except ValueError:
+            for request in requests
+        )
+
+    def _record_executions(
+        self,
+        requests: tuple[ExperimentInput, ...],
+        executions: tuple[ModelExecution, ...],
+        track: ExecutionTrack,
+    ) -> None:
+        if track is ExecutionTrack.SYNCHRONOUS:
+            for request, execution in zip(requests, executions, strict=True):
+                path = self._root / "sync" / f"{self._request_digest(request)}.json"
+                state = _read_json(path)
+                if state is None:
+                    raise RuntimeError("provider response state is missing")
+                _atomic_json(path, {
+                    **state,
+                    "execution": self._execution_payload(execution),
+                    "status": "completed",
+                })
+            return
+        if track is ExecutionTrack.BATCH:
+            path = self._batch_path(requests)
+            state = _read_json(path)
+            if state is None:
+                raise RuntimeError("provider response state is missing")
             _atomic_json(path, {
                 **state,
-                "provider_status": "invalid_output",
-                "status": "terminal",
+                "executions": [
+                    self._execution_payload(item) for item in executions
+                ],
+                "provider_status": "completed",
+                "status": "completed",
             })
-            raise
-        _atomic_json(path, {
-            **state,
-            "executions": [
-                self._execution_payload(item) for item in executions
-            ],
-            "provider_status": "completed",
-            "status": "completed",
-        })
-        return executions
+            return
+        raise ValueError("unsupported execution track")
 
     @staticmethod
     def _validated_batch_bodies(

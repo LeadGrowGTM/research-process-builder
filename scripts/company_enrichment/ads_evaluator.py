@@ -48,7 +48,6 @@ from .signal_loop import CaseScore
 WEIGHTS: Mapping[str, Decimal] = {
     "status": Decimal(".6"), "landing_page": Decimal(".2"), "offer": Decimal(".2"),
 }
-ADS_EVALUATION_DEPENDENCIES = (ad_library_channel, parse_ads_output)
 OFFER_OVERLAP_THRESHOLD = Decimal(".5")
 _QUANTUM = Decimal("0.0001")
 _TOKEN = re.compile(r"[a-z0-9]+")

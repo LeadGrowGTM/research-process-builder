@@ -22,9 +22,7 @@ from dataclasses import dataclass, field, replace
 from decimal import Decimal
 from functools import partial
 from hashlib import sha256
-import inspect
 import json
-import marshal
 import os
 from pathlib import Path
 import re
@@ -33,7 +31,9 @@ from typing import Any, Callable, Mapping, Sequence
 from .benchmark import ExecutionTrack
 from .contracts import CompanyDossier, canonical_json
 from .executors import P0_ENRICHMENTS
-from .experiment_runner import ExperimentInput, ModelClient
+from .experiment_runner import (
+    ExperimentInput, ProviderResponse, ReplayableModelClient,
+)
 from .openai_model_client import MODEL_PRICES, build_openai_model_client
 from .packages import candidate_prompt_text, resolve_prompt_path
 from .signal_evidence import (
@@ -121,7 +121,6 @@ class SignalSpec:
     collect: CollectFn | None = None
     candidate_id: str = field(default="baseline")
     postprocess: PostprocessFn | None = None
-    evaluation_dependencies: tuple[Callable[..., Any], ...] = ()
     resolve_prompt_layout: bool = True
     # Extra prompt files evaluated as candidates alongside ``prompt_path``;
     # each candidate is identified by its file stem.
@@ -145,10 +144,6 @@ class SignalSpec:
             raise ValueError("collect must be callable or None")
         if self.postprocess is not None and not callable(self.postprocess):
             raise ValueError("postprocess must be callable or None")
-        evaluation_dependencies = tuple(self.evaluation_dependencies)
-        if not all(callable(item) for item in evaluation_dependencies):
-            raise ValueError("evaluation_dependencies must contain only callables")
-        object.__setattr__(self, "evaluation_dependencies", evaluation_dependencies)
         if not isinstance(self.resolve_prompt_layout, bool):
             raise ValueError("resolve_prompt_layout must be boolean")
         candidate_paths = tuple(Path(item) for item in self.candidate_paths)
@@ -182,61 +177,6 @@ def _read_json(path: Path) -> dict[str, Any] | None:
 
 def _primitive(value: Any) -> Any:
     return json.loads(canonical_json(value))
-
-
-def _callable_fingerprint(value: Callable[..., Any] | None) -> str | None:
-    if value is None:
-        return None
-    code = getattr(value, "__code__", None)
-    if code is None:
-        raise ValueError("evaluation callable cannot be deterministically fingerprinted")
-    try:
-        closure = [
-            _primitive(cell.cell_contents) for cell in (value.__closure__ or ())
-        ]
-        defaults = _primitive(value.__defaults__ or ())
-        keyword_defaults = _primitive(value.__kwdefaults__ or {})
-    except (TypeError, ValueError) as error:
-        raise ValueError(
-            "evaluation callable closes over a non-deterministic value"
-        ) from error
-    source_file = inspect.getsourcefile(value)
-    source_hash = (
-        sha256(Path(source_file).read_bytes()).hexdigest()
-        if source_file and Path(source_file).is_file()
-        else None
-    )
-    material = {
-        "closure": closure,
-        "code_hash": sha256(marshal.dumps(code)).hexdigest(),
-        "defaults": defaults,
-        "keyword_defaults": keyword_defaults,
-        "module": getattr(value, "__module__", None),
-        "qualname": getattr(value, "__qualname__", None),
-        "source_hash": source_hash,
-    }
-    return sha256(canonical_json(material).encode("utf-8")).hexdigest()
-
-
-def _evaluation_fingerprint(spec: SignalSpec) -> str:
-    return sha256(canonical_json({
-        "dependencies": [
-            _callable_fingerprint(item) for item in spec.evaluation_dependencies
-        ],
-        "postprocess": _callable_fingerprint(spec.postprocess),
-        "rubric": spec.rubric,
-        "score": _callable_fingerprint(spec.score),
-    }).encode("utf-8")).hexdigest()
-
-
-def _ground_truth_fingerprint(
-    ids: Sequence[str], records: Mapping[str, SignalGroundTruthRecord],
-) -> str:
-    material = [
-        {"company_id": company_id, "record": _primitive(records[company_id])}
-        for company_id in ids
-    ]
-    return sha256(canonical_json(material).encode("utf-8")).hexdigest()
 
 
 def prompt_candidates(spec: SignalSpec, repo_root: Path) -> tuple[PromptCandidate, ...]:
@@ -369,14 +309,14 @@ def _score_attempt(
 def _run_attempt(
     *, spec: SignalSpec, run_root: Path, attempt_id: str, split: str, ids: Sequence[str],
     candidate: PromptCandidate, records: Mapping[str, SignalGroundTruthRecord],
-    dossiers: Mapping[str, CompanyDossier], dataset_hash: str, model_client: ModelClient,
+    dossiers: Mapping[str, CompanyDossier], dataset_hash: str,
+    model_client: ReplayableModelClient,
     model_id: str, requests_by_company: Mapping[str, ExperimentInput],
-    evaluation_fingerprint: str, allow_provider_execution: bool,
+    allow_provider_execution: bool,
 ) -> dict[str, Any] | None:
     output_dir = run_root / "outputs" / split / candidate.candidate_id
     score_path = run_root / "scores" / split / f"{candidate.candidate_id}.json"
     cost_path = run_root / "cost.json"
-    ground_truth_fingerprint = _ground_truth_fingerprint(ids, records)
 
     def input_hash(company_id: str) -> str:
         return sha256(canonical_json({
@@ -392,49 +332,109 @@ def _run_attempt(
     def checker(name):
         return lambda _envelope: CheckerResult(SCHEMA_VERSION, name, True, "bounded")
 
+    def request_fingerprint(company_id: str) -> str:
+        return model_client.request_fingerprint(requests_by_company[company_id])
+
+    def decode_artifact(
+        company_id: str, artifact: Mapping[str, Any],
+    ) -> dict[str, Any]:
+        response = ProviderResponse(
+            company_id,
+            artifact["provider_response"],
+            int(artifact["latency_ms"]),
+        )
+        base = {
+            "company_id": company_id,
+            "input_hash": input_hash(company_id),
+            "latency_ms": response.latency_ms,
+            "provider_request_fingerprint": request_fingerprint(company_id),
+            "provider_response": _primitive(response.payload),
+            "requested_model": model_id,
+            "source_cache_reused": True,
+            "source_purchases": 0,
+        }
+        try:
+            execution = model_client.decode_response(
+                requests_by_company[company_id], response,
+                ExecutionTrack.SYNCHRONOUS,
+            )
+        except ValueError as error:
+            decoded = {
+                **base,
+                "error": type(error).__name__,
+                "error_message": str(error)[:500],
+                "invalid_output": True,
+            }
+        else:
+            if execution.company_id != company_id:
+                raise ValueError("decoded response company does not match its request")
+            payload = _payload_from_execution(execution)
+            decoded = {
+                **base,
+                "model_cost_usd": execution.actual_cost_usd,
+                "output": payload,
+                "resolved_model": execution.resolved_model_id,
+            }
+            if spec.postprocess is not None:
+                grounded, report = spec.postprocess(payload, dossiers[company_id])
+                decoded.update({
+                    "model_output": payload,
+                    "output": grounded,
+                    "postprocess": report,
+                })
+        _atomic_json(output_dir / f"{company_id}.json", decoded)
+        return decoded
+
+    def replay_stored_outputs(
+        artifacts: Mapping[str, dict[str, Any] | None],
+    ) -> dict[str, dict[str, Any] | None]:
+        replayed: dict[str, dict[str, Any] | None] = {}
+        for company_id, artifact in artifacts.items():
+            if artifact is None or "provider_response" not in artifact:
+                replayed[company_id] = artifact
+                continue
+            expected = request_fingerprint(company_id)
+            if artifact.get("provider_request_fingerprint") != expected:
+                raise ValueError(
+                    f"stored provider response does not match request for {company_id}"
+                )
+            replayed[company_id] = decode_artifact(company_id, artifact)
+        return replayed
+
     def executor(_envelope):
         _reserve_cost(cost_path, reservation_id, estimate, pending_ids)
         executions = []
         invalid_ids: list[str] = []
         for request in requests:
-            try:
-                execution = model_client.execute((request,), ExecutionTrack.SYNCHRONOUS)[0]
-            except Exception as error:
-                invalid_ids.append(request.company_id)
-                _atomic_json(output_dir / f"{request.company_id}.json", {
-                    "company_id": request.company_id,
-                    "error": type(error).__name__,
-                    # The message never contains prompt text or secrets; it is
-                    # the validator/provider reason, kept so a failed case can
-                    # be diagnosed without re-running the model.
-                    "error_message": str(error)[:500],
-                    "input_hash": input_hash(request.company_id),
-                    "invalid_output": True,
-                    "requested_model": model_id,
-                    "source_cache_reused": True,
-                    "source_purchases": 0,
-                })
-                continue
-            executions.append(execution)
-            payload = _payload_from_execution(execution)
-            artifact = {
-                "company_id": execution.company_id,
-                "input_hash": input_hash(execution.company_id),
-                "latency_ms": execution.latency_ms,
-                "model_cost_usd": execution.actual_cost_usd,
-                "output": payload,
+            responses = model_client.acquire_responses(
+                (request,), ExecutionTrack.SYNCHRONOUS,
+            )
+            if (
+                len(responses) != 1
+                or not isinstance(responses[0], ProviderResponse)
+                or responses[0].company_id != request.company_id
+            ):
+                raise ValueError("model client returned the wrong provider response")
+            response = responses[0]
+            raw_artifact = {
+                "company_id": request.company_id,
+                "input_hash": input_hash(request.company_id),
+                "latency_ms": response.latency_ms,
+                "provider_request_fingerprint": request_fingerprint(request.company_id),
+                "provider_response": _primitive(response.payload),
                 "requested_model": model_id,
-                "resolved_model": execution.resolved_model_id,
                 "source_cache_reused": True,
                 "source_purchases": 0,
             }
-            if spec.postprocess is not None:
-                grounded, report = spec.postprocess(payload, dossiers[execution.company_id])
-                artifact.update({
-                    "model_output": payload, "output": grounded, "postprocess": report,
-                })
-            _atomic_json(output_dir / f"{execution.company_id}.json", artifact)
-        actual = sum((Decimal(item.actual_cost_usd) for item in executions), Decimal("0"))
+            _atomic_json(output_dir / f"{request.company_id}.json", raw_artifact)
+            artifact = decode_artifact(request.company_id, raw_artifact)
+            if artifact.get("invalid_output") is True:
+                invalid_ids.append(request.company_id)
+                continue
+            executions.append(artifact)
+        actual = sum(
+            (Decimal(item["model_cost_usd"]) for item in executions), Decimal("0")
+        )
         _reconcile_cost(cost_path, reservation_id, estimate if invalid_ids else actual)
         return tuple(Evidence(
             SCHEMA_VERSION, dossiers[company_id].evidence[0].url,
@@ -443,25 +443,6 @@ def _run_attempt(
                 "company_id": company_id,
             }), dossiers[company_id].evidence[0].retrieved_at.isoformat(),
         ) for company_id in ids)
-
-    def refresh_outputs() -> None:
-        for company_id in ids:
-            path = output_dir / f"{company_id}.json"
-            artifact = _read_json(path)
-            if artifact is None or artifact.get("invalid_output") is True:
-                continue
-            model_output = artifact.get("model_output", artifact["output"])
-            if spec.postprocess is None:
-                artifact["output"] = model_output
-                artifact.pop("model_output", None)
-                artifact.pop("postprocess", None)
-            else:
-                grounded, report = spec.postprocess(model_output, dossiers[company_id])
-                artifact.update({
-                    "model_output": model_output, "output": grounded,
-                    "postprocess": report,
-                })
-            _atomic_json(path, artifact)
 
     def evaluator(_envelope):
         cases, mean, failures = _score_attempt(spec, output_dir, ids, records, dossiers)
@@ -472,8 +453,6 @@ def _run_attempt(
                 "component_scores": {key: str(value) for key, value in item.components.items()},
                 "hard_failures": list(item.hard_failures), "score": str(item.score),
             } for item in cases],
-            "evaluation_fingerprint": evaluation_fingerprint,
-            "ground_truth_fingerprint": ground_truth_fingerprint,
             "hard_failures": list(failures), "mean_score": str(mean), "split": split,
         })
         return EvaluationResult(SCHEMA_VERSION, not failures, float(mean),
@@ -483,10 +462,9 @@ def _run_attempt(
         company_id: _read_json(output_dir / f"{company_id}.json")
         for company_id in ids
     }
+    artifacts = replay_stored_outputs(artifacts)
     complete_outputs = all(
-        artifact is not None and (
-            artifact.get("invalid_output") is True or "output" in artifact
-        )
+        artifact is not None and "provider_response" in artifact
         for artifact in artifacts.values()
     )
     existing_reservations = _reservation_ids(cost_path, attempt_id)
@@ -520,44 +498,12 @@ def _run_attempt(
                 )
             )
             _reconcile_cost(cost_path, reservation_id, actual)
-        stored_score = _read_json(score_path)
-        evaluation_changed = bool(
-            stored_score is not None
-            and stored_score.get("evaluation_fingerprint") != evaluation_fingerprint
-        )
-        ground_truth_changed = bool(
-            stored_score is not None
-            and stored_score.get("ground_truth_fingerprint")
-            != ground_truth_fingerprint
-        )
-        invalid_paths = [
-            str((output_dir / f"{company_id}.json").relative_to(run_root))
-            for company_id, artifact in artifacts.items()
-            if artifact.get("invalid_output") is True
-        ]
-        invalid_score_reusable = bool(
-            stored_score is not None
-            and stored_score.get("evaluation_fingerprint")
-            == evaluation_fingerprint
-        )
-        if invalid_paths and not invalid_score_reusable:
-            raise ValueError(
-                f"cannot re-evaluate cached {split} artifacts for candidate "
-                f"{candidate.candidate_id}; invalid output artifacts lack retained "
-                "model output and a score with matching evaluator provenance: "
-                f"{', '.join(invalid_paths)}; start a new lineage to run them "
-                "deliberately"
-            )
-        if stored_score is None or evaluation_changed or ground_truth_changed:
-            refresh_outputs()
-            evaluator(None)
+        evaluator(None)
         return _read_json(score_path)
 
     pending_ids = tuple(
         company_id for company_id, artifact in artifacts.items()
-        if artifact is None or (
-            artifact.get("invalid_output") is not True and "output" not in artifact
-        )
+        if artifact is None or "provider_response" not in artifact
     )
     if not allow_provider_execution:
         missing = ", ".join(
@@ -602,7 +548,7 @@ def _started(run_root: Path) -> bool:
 def _lineage_inputs(
     spec: SignalSpec, repo_root: Path, public: SignalDataset,
     dossiers: Mapping[str, CompanyDossier], candidates: Sequence[PromptCandidate],
-    model_id: str, *, model_client: ModelClient | None = None,
+    model_id: str, *, model_client: ReplayableModelClient | None = None,
     requests: Mapping[str, Mapping[str, ExperimentInput]] | None = None,
 ) -> dict[str, Any]:
     def digest(path: Path) -> str:
@@ -621,10 +567,6 @@ def _lineage_inputs(
             for company_id in public.all_ids
         },
         "enrichment_id": spec.enrichment_id,
-        "evaluation_fingerprint": _evaluation_fingerprint(spec),
-        "development_ground_truth_fingerprint": _ground_truth_fingerprint(
-            public.development_ids, public.records,
-        ),
         "holdout_ids": list(public.holdout_ids), "model": model_id,
         "source_purchases": 0,
         "signal_hashes": {company_id: digest(
@@ -633,6 +575,11 @@ def _lineage_inputs(
     }
     if model_client is None and requests is None:
         return inputs
+    if model_client is None or any(
+        not callable(getattr(model_client, name, None))
+        for name in ("acquire_responses", "decode_response")
+    ):
+        raise ValueError("model client cannot persist and replay provider responses")
     fingerprint_request = getattr(model_client, "request_fingerprint", None)
     if not callable(fingerprint_request) or requests is None:
         raise ValueError("model client cannot deterministically fingerprint requests")
@@ -654,12 +601,9 @@ def _lineage_inputs(
             "requests": candidate_requests,
         })
     inputs["provider_requests"] = provider_requests
-    inputs["lineage_fingerprint"] = sha256(canonical_json({
-        "dataset_hash": public.dataset_hash,
-        "development_ids": list(public.development_ids),
-        "holdout_ids": list(public.holdout_ids),
-        "provider_requests": provider_requests,
-    }).encode("utf-8")).hexdigest()
+    inputs["lineage_fingerprint"] = sha256(
+        canonical_json(provider_requests).encode("utf-8")
+    ).hexdigest()
     return inputs
 
 
@@ -685,7 +629,8 @@ def _write_inputs(run_root: Path, inputs: Mapping[str, Any]) -> None:
 
 
 def run_loop(
-    spec: SignalSpec, *, repo_root: Path, run_root: Path, model_client: ModelClient,
+    spec: SignalSpec, *, repo_root: Path, run_root: Path,
+    model_client: ReplayableModelClient,
     resume: bool, model_id: str = MODEL_ID,
 ) -> dict[str, Any]:
     started = _started(run_root)
@@ -716,17 +661,8 @@ def run_loop(
         or prior_inputs.get("lineage_fingerprint") != inputs["lineage_fingerprint"]
     ):
         raise ValueError("resume inputs do not match the existing lineage")
-    evaluation_only_resume = bool(
-        started
-        and prior_inputs is not None
-        and (
-            prior_inputs.get("evaluation_fingerprint")
-            != inputs["evaluation_fingerprint"]
-            or prior_inputs.get("development_ground_truth_fingerprint")
-            != inputs["development_ground_truth_fingerprint"]
-        )
-    )
-    if not evaluation_only_resume:
+    completed_resume = started and (run_root / "result.json").is_file()
+    if not started:
         _write_inputs(run_root, inputs)
     _atomic_json(run_root / "candidates.json", {
         "candidates": [{"candidate_id": item.candidate_id, "prompt_hash": item.prompt_hash,
@@ -742,8 +678,7 @@ def run_loop(
             records=public.records, dossiers=dossiers, dataset_hash=public.dataset_hash,
             model_client=model_client, model_id=model_id,
             requests_by_company=requests[candidate.candidate_id],
-            evaluation_fingerprint=inputs["evaluation_fingerprint"],
-            allow_provider_execution=not evaluation_only_resume,
+            allow_provider_execution=not completed_resume,
         )
         if score is None:
             break
@@ -774,8 +709,7 @@ def run_loop(
         records=evaluator_dataset.records, dossiers=dossiers,
         dataset_hash=evaluator_dataset.public.dataset_hash, model_client=model_client,
         model_id=model_id, requests_by_company=requests[winner.candidate_id],
-        evaluation_fingerprint=inputs["evaluation_fingerprint"],
-        allow_provider_execution=not evaluation_only_resume,
+        allow_provider_execution=not completed_resume,
     )
     if holdout is None:
         mean, failures = Decimal("0"), ("budget_exhausted",)
