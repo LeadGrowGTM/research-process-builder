@@ -10,6 +10,12 @@ the returned shape, and it is what the scorer enforces. This file may not import
 it: the install copies this module into a consumer where
 ``scripts.company_enrichment`` does not exist, so the event-type literals are
 restated here and a test asserts the two stay equal.
+
+Evidence closure is context-dependent. Consumers get retained IDs from the
+Evidence records supplied to the model and validate with
+``OutputModel.model_validate(payload, context={"retained_evidence_ids": ids})``.
+Without that context, ``OutputModel`` validates shape only and does not provide
+the Evidence-closure guarantee.
 """
 
 from __future__ import annotations
@@ -19,7 +25,9 @@ import re
 from typing import Literal
 from urllib.parse import urlsplit
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import (
+    BaseModel, ConfigDict, Field, ValidationInfo, field_validator, model_validator,
+)
 
 NEWS_EVENT_TYPES = (
     "funding", "acquisition", "partnership", "leadership", "expansion", "award",
@@ -93,12 +101,27 @@ class _Event(BaseModel):
 
     @field_validator("evidence_ids")
     @classmethod
-    def validate_evidence_ids(cls, value: list[str]) -> list[str]:
+    def validate_evidence_ids(
+        cls, value: list[str], info: ValidationInfo,
+    ) -> list[str]:
         normalized = [item.strip() for item in value]
         if any(not item for item in normalized):
             raise ValueError("evidence_ids must contain non-empty IDs")
         if len(set(normalized)) != len(normalized):
             raise ValueError("evidence_ids must contain unique IDs")
+        if info.context is not None and "retained_evidence_ids" in info.context:
+            retained = info.context["retained_evidence_ids"]
+            if isinstance(retained, (str, bytes)) or not isinstance(
+                retained, (list, tuple, set, frozenset)
+            ):
+                raise ValueError("retained_evidence_ids context must be a collection")
+            if any(
+                not isinstance(item, str) or not item.strip() for item in retained
+            ):
+                raise ValueError("retained_evidence_ids must contain non-empty text IDs")
+            retained_ids = set(retained)
+            if not set(normalized) <= retained_ids:
+                raise ValueError("all events must reference retained Evidence IDs")
         return normalized
 
 

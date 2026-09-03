@@ -104,6 +104,8 @@ class ModelExecution:
 
 
 class ModelClient(Protocol):
+    def request_fingerprint(self, request: ExperimentInput) -> str: ...
+
     def estimate(
         self, requests: Sequence[ExperimentInput], track: ExecutionTrack,
     ) -> str: ...

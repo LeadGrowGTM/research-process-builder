@@ -292,6 +292,8 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
         or not math.isfinite(cost)
     ):
         raise PackageError("gtm.cost_per_100 must be a number, not text")
+    if cost < 0:
+        raise PackageError("gtm.cost_per_100 must be non-negative")
     adaptation = manifest["adaptation"]
     if not isinstance(adaptation, dict):
         raise PackageError("adaptation must be a mapping")

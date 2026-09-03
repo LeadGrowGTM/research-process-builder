@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import replace
 from decimal import Decimal
+from hashlib import sha256
 import json
 from pathlib import Path
 from typing import Any, Mapping
@@ -10,7 +11,7 @@ import pytest
 
 from scripts.company_enrichment.benchmark import ExecutionTrack
 from scripts.company_enrichment.contracts import (
-    CompanyDossier, FieldAssertion, Visibility,
+    CompanyDossier, FieldAssertion, Visibility, canonical_json,
 )
 from scripts.company_enrichment.experiment_runner import ExperimentInput, ModelExecution
 from scripts.company_enrichment.signal_evidence import (
@@ -75,6 +76,9 @@ class FakeModelClient:
         self.executed: list[str] = []
         self.estimates: list[tuple[str, ...]] = []
 
+    def request_fingerprint(self, request: ExperimentInput) -> str:
+        return sha256(canonical_json(request).encode("utf-8")).hexdigest()
+
     def estimate(self, requests, track) -> str:
         assert track is ExecutionTrack.SYNCHRONOUS
         self.estimates.append(tuple(item.company_id for item in requests))
@@ -136,7 +140,7 @@ def test_dry_run_writes_inputs_and_no_cost(repo: Path, capsys):
     assert set(inputs["signal_hashes"]) == set(ALL_IDS)
     assert set(inputs["dossier_hashes"]) == set(ALL_IDS)
     assert set(inputs["candidate_prompt_hashes"]) == {"baseline"}
-    assert inputs["lineage_fingerprint"]
+    assert "lineage_fingerprint" not in inputs
     assert not (run_root / "cost.json").exists()
     assert not (run_root / "outputs").exists()
     plan = json.loads(capsys.readouterr().out)
@@ -252,7 +256,21 @@ def test_resume_rejects_a_different_model_before_any_paid_call(repo: Path) -> No
     assert client.executed == []
 
 
-@pytest.mark.parametrize("changed_input", ("prompt", "dossier"))
+def test_paid_run_rejects_a_client_without_request_fingerprinting(repo: Path) -> None:
+    class UnfingerprintableClient(FakeModelClient):
+        request_fingerprint = None
+
+    client = UnfingerprintableClient()
+    with pytest.raises(ValueError, match="cannot deterministically fingerprint"):
+        run_loop(
+            make_spec(), repo_root=repo, run_root=repo / "run",
+            model_client=client, resume=False,
+        )
+    assert client.estimates == []
+    assert client.executed == []
+
+
+@pytest.mark.parametrize("changed_input", ("prompt", "dossier", "output_contract"))
 def test_resume_rejects_changed_paid_inputs_before_any_call(
     repo: Path, changed_input: str,
 ) -> None:
@@ -273,12 +291,19 @@ def test_resume_rejects_changed_paid_inputs_before_any_call(
 
     if changed_input == "prompt":
         (repo / spec.prompt_path).write_text("Changed prompt.\n", encoding="utf-8")
-    else:
+    elif changed_input == "dossier":
         path = repo / spec.benchmark_dir / "saas-01.yaml"
         dossier = load_signal_dossier(path)
         save_signal_dossier(path, replace(
             dossier, unknowns=(*dossier.unknowns, "changed-input"),
         ))
+    else:
+        def changed_contract(dossier: CompanyDossier) -> dict[str, Any]:
+            contract = _output_contract(dossier)
+            contract["description"] = "changed output contract"
+            return contract
+
+        spec = replace(spec, output_contract=changed_contract)
 
     client = FakeModelClient()
     with pytest.raises(ValueError, match="resume inputs do not match"):

@@ -434,6 +434,12 @@ def test_a_quoted_cost_per_100_is_refused(tmp_path: Path) -> None:
         load_package(root)
 
 
+def test_a_negative_cost_per_100_is_refused(tmp_path: Path) -> None:
+    root = _package(tmp_path, edits=(("cost_per_100: 0.25", "cost_per_100: -0.25"),))
+    with pytest.raises(PackageError, match="gtm.cost_per_100 must be non-negative"):
+        load_package(root)
+
+
 def test_an_empty_gtm_block_fails_to_load_rather_than_crashing_later(tmp_path: Path) -> None:
     """A malformed block is a PackageError, not a TypeError out of card()."""
     root = _package(tmp_path, edits=(("gtm:\n  slug: demo_slug", "gtm:\nx_unused:\n  slug: x"),))
@@ -645,6 +651,30 @@ def test_package_schema_rejects_events_in_an_unknown_collection() -> None:
     }
     with pytest.raises(ValidationError):
         module.OutputModel(news=[event], launches=[], unknowns=["news"])
+
+
+def test_package_schema_enforces_evidence_closure_when_context_is_supplied() -> None:
+    spec = importlib.util.spec_from_file_location("_evidence_pkg_schema", NEWS / "schema.py")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    event = {
+        "date": "2026-01-02", "headline": "Attio raises a round",
+        "why_it_matters": "budget", "source_url": "https://attio.test/a",
+        "evidence_ids": ["ev-1"], "event_type": "funding",
+    }
+    payload = {"news": [event], "launches": [], "unknowns": []}
+    validated = module.OutputModel.model_validate(
+        payload, context={"retained_evidence_ids": {"ev-1"}},
+    )
+    assert validated.news[0].evidence_ids == ["ev-1"]
+
+    event["evidence_ids"] = ["fabricated-id"]
+    module.OutputModel.model_validate(payload)
+    with pytest.raises(ValidationError, match="retained Evidence IDs"):
+        module.OutputModel.model_validate(
+            payload, context={"retained_evidence_ids": {"ev-1"}},
+        )
 
 
 @pytest.mark.parametrize(

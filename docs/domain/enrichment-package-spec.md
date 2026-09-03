@@ -60,6 +60,11 @@ the description is what a caller reads to know what to pass. Each public
 may instead declare a non-empty `fields` list for the public fields to reuse.
 The package runner currently renders `company_name` and `domain`; declaring an
 input outside that executable boundary is refused rather than silently dropped.
+The portable `OutputModel` enforces Evidence closure when the consumer calls
+`model_validate(..., context={"retained_evidence_ids": ids})`, where `ids` come
+from the retained Evidence records supplied to the model for that run. Without
+that context the sidecar validates shape only; it does not provide the
+Evidence-closure guarantee.
 
 ### GTM block
 
@@ -72,9 +77,9 @@ alongside: `tier`, `caps`, `freshness_days`, `output_visibility`.
 
 The loader type-checks the mirrored keys because the emitted entry reads them
 straight through: `linkedin_safe` must be a YAML boolean (a quoted `"false"` is
-refused rather than silently coerced to true), `cost_per_100` a number, the
-column and tool lists real YAML lists of non-empty strings, and the text keys
-non-empty strings. A wrong type fails at load, not at emit.
+refused rather than silently coerced to true), `cost_per_100` a non-negative
+number, the column and tool lists real YAML lists of non-empty strings, and the
+text keys non-empty strings. A wrong type fails at load, not at emit.
 
 ### Evaluation
 

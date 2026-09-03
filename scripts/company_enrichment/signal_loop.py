@@ -266,12 +266,9 @@ def _run_attempt(
     *, spec: SignalSpec, run_root: Path, attempt_id: str, split: str, ids: Sequence[str],
     candidate: PromptCandidate, records: Mapping[str, SignalGroundTruthRecord],
     dossiers: Mapping[str, CompanyDossier], dataset_hash: str, model_client: ModelClient,
-    model_id: str,
+    model_id: str, requests_by_company: Mapping[str, ExperimentInput],
 ) -> dict[str, Any] | None:
-    requests = tuple(ExperimentInput(
-        spec.enrichment_id, company_id, model_id, dossiers[company_id],
-        candidate.candidate_id, candidate.text, spec.output_contract(dossiers[company_id]),
-    ) for company_id in ids)
+    requests = tuple(requests_by_company[company_id] for company_id in ids)
     estimate = Decimal(model_client.estimate(requests, ExecutionTrack.SYNCHRONOUS))
     output_dir = run_root / "outputs" / split / candidate.candidate_id
     score_path = run_root / "scores" / split / f"{candidate.candidate_id}.json"
@@ -386,7 +383,8 @@ def _started(run_root: Path) -> bool:
 def _lineage_inputs(
     spec: SignalSpec, repo_root: Path, public: SignalDataset,
     dossiers: Mapping[str, CompanyDossier], candidates: Sequence[PromptCandidate],
-    model_id: str,
+    model_id: str, *, model_client: ModelClient | None = None,
+    requests: Mapping[str, Mapping[str, ExperimentInput]] | None = None,
 ) -> dict[str, Any]:
     def digest(path: Path) -> str:
         return sha256(path.read_bytes()).hexdigest()
@@ -410,10 +408,53 @@ def _lineage_inputs(
             repo_root / spec.benchmark_dir / f"{company_id}.yaml",
         ) for company_id in public.all_ids},
     }
-    inputs["lineage_fingerprint"] = sha256(
-        canonical_json(inputs).encode("utf-8")
-    ).hexdigest()
+    if model_client is None and requests is None:
+        return inputs
+    fingerprint_request = getattr(model_client, "request_fingerprint", None)
+    if not callable(fingerprint_request) or requests is None:
+        raise ValueError("model client cannot deterministically fingerprint requests")
+    provider_requests = []
+    for candidate in candidates:
+        candidate_requests = []
+        for company_id in public.all_ids:
+            fingerprint = fingerprint_request(requests[candidate.candidate_id][company_id])
+            if not isinstance(fingerprint, str) or not re.fullmatch(
+                r"[0-9a-f]{64}", fingerprint
+            ):
+                raise ValueError("model client returned an invalid request fingerprint")
+            candidate_requests.append({
+                "company_id": company_id,
+                "fingerprint": fingerprint,
+            })
+        provider_requests.append({
+            "candidate_id": candidate.candidate_id,
+            "requests": candidate_requests,
+        })
+    inputs["provider_requests"] = provider_requests
+    inputs["lineage_fingerprint"] = sha256(canonical_json({
+        "dataset_hash": public.dataset_hash,
+        "development_ids": list(public.development_ids),
+        "holdout_ids": list(public.holdout_ids),
+        "provider_requests": provider_requests,
+    }).encode("utf-8")).hexdigest()
     return inputs
+
+
+def _provider_requests(
+    spec: SignalSpec, candidates: Sequence[PromptCandidate],
+    dossiers: Mapping[str, CompanyDossier], company_ids: Sequence[str], model_id: str,
+) -> dict[str, dict[str, ExperimentInput]]:
+    return {
+        candidate.candidate_id: {
+            company_id: ExperimentInput(
+                spec.enrichment_id, company_id, model_id, dossiers[company_id],
+                candidate.candidate_id, candidate.text,
+                spec.output_contract(dossiers[company_id]),
+            )
+            for company_id in company_ids
+        }
+        for candidate in candidates
+    }
 
 
 def _write_inputs(run_root: Path, inputs: Mapping[str, Any]) -> None:
@@ -440,7 +481,13 @@ def run_loop(
     if not isinstance(public, SignalDataset):
         raise ValueError("load_ground_truth must return a public SignalDataset")
     candidates = prompt_candidates(spec, repo_root)
-    inputs = _lineage_inputs(spec, repo_root, public, dossiers, candidates, model_id)
+    requests = _provider_requests(
+        spec, candidates, dossiers, public.all_ids, model_id,
+    )
+    inputs = _lineage_inputs(
+        spec, repo_root, public, dossiers, candidates, model_id,
+        model_client=model_client, requests=requests,
+    )
     if started and (
         prior_inputs is None
         or prior_inputs.get("lineage_fingerprint") != inputs["lineage_fingerprint"]
@@ -460,6 +507,7 @@ def run_loop(
             split="dev", ids=public.development_ids, candidate=candidate,
             records=public.records, dossiers=dossiers, dataset_hash=public.dataset_hash,
             model_client=model_client, model_id=model_id,
+            requests_by_company=requests[candidate.candidate_id],
         )
         if score is None:
             break
@@ -489,7 +537,7 @@ def run_loop(
         split="holdout", ids=public.holdout_ids, candidate=winner,
         records=evaluator_dataset.records, dossiers=dossiers,
         dataset_hash=evaluator_dataset.public.dataset_hash, model_client=model_client,
-        model_id=model_id,
+        model_id=model_id, requests_by_company=requests[winner.candidate_id],
     )
     if holdout is None:
         mean, failures = Decimal("0"), ("budget_exhausted",)

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from datetime import date
 from decimal import Decimal
+from hashlib import sha256
 import json
 from pathlib import Path
 
@@ -12,8 +13,10 @@ from scripts.company_enrichment.ads_ground_truth_draft import (
 )
 from scripts.company_enrichment.ads_loop import BENCHMARK_DIR, ENRICHMENT_ID, build_spec, main
 from scripts.company_enrichment.benchmark import ExecutionTrack
-from scripts.company_enrichment.contracts import EvidenceRef, FieldAssertion, Visibility
-from scripts.company_enrichment.experiment_runner import ModelExecution
+from scripts.company_enrichment.contracts import (
+    EvidenceRef, FieldAssertion, Visibility, canonical_json,
+)
+from scripts.company_enrichment.experiment_runner import ExperimentInput, ModelExecution
 from scripts.company_enrichment.signal_evidence import (
     load_signal_dossier, save_signal_dossier, signal_dossier, signal_dossier_path,
 )
@@ -104,6 +107,9 @@ def test_draft_flag_writes_to_drafts_dir_only(tmp_path: Path, capsys):
 
 
 class FakeAdsClient:
+    def request_fingerprint(self, request: ExperimentInput) -> str:
+        return sha256(canonical_json(request).encode("utf-8")).hexdigest()
+
     def estimate(self, requests, track) -> str:
         assert track is ExecutionTrack.SYNCHRONOUS
         return str(Decimal("0.001") * len(requests))

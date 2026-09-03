@@ -438,6 +438,9 @@ class OpenAIModelClient:
             material["prompt_metadata"] = metadata
         return sha256(canonical_json(material).encode("utf-8")).hexdigest()
 
+    def request_fingerprint(self, request: ExperimentInput) -> str:
+        return self._request_digest(request)
+
     def _execute_sync(self, request: ExperimentInput) -> ModelExecution:
         digest = self._request_digest(request)
         path = self._root / "sync" / f"{digest}.json"

@@ -655,7 +655,7 @@ def test_legacy_request_body_is_byte_for_byte_compatible(tmp_path: Path) -> None
     }
 
     request = _request()
-    assert client._request_digest(request) == (
+    assert client.request_fingerprint(request) == (
         "dce793046fd3aed2d5817a7ba80f8e08d4451f951a5e1bfc128963a6abaacad3"
     )
     assert client._batch_path((request,)).name == (
