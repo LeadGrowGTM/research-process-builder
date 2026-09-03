@@ -117,6 +117,7 @@ class SignalSpec:
     collect: CollectFn | None = None
     candidate_id: str = field(default="baseline")
     postprocess: PostprocessFn | None = None
+    evaluation_dependencies: tuple[Callable[..., Any], ...] = ()
     resolve_prompt_layout: bool = True
     # Extra prompt files evaluated as candidates alongside ``prompt_path``;
     # each candidate is identified by its file stem.
@@ -140,6 +141,10 @@ class SignalSpec:
             raise ValueError("collect must be callable or None")
         if self.postprocess is not None and not callable(self.postprocess):
             raise ValueError("postprocess must be callable or None")
+        evaluation_dependencies = tuple(self.evaluation_dependencies)
+        if not all(callable(item) for item in evaluation_dependencies):
+            raise ValueError("evaluation_dependencies must contain only callables")
+        object.__setattr__(self, "evaluation_dependencies", evaluation_dependencies)
         if not isinstance(self.resolve_prompt_layout, bool):
             raise ValueError("resolve_prompt_layout must be boolean")
         candidate_paths = tuple(Path(item) for item in self.candidate_paths)
@@ -211,6 +216,9 @@ def _callable_fingerprint(value: Callable[..., Any] | None) -> str | None:
 
 def _evaluation_fingerprint(spec: SignalSpec) -> str:
     return sha256(canonical_json({
+        "dependencies": [
+            _callable_fingerprint(item) for item in spec.evaluation_dependencies
+        ],
         "postprocess": _callable_fingerprint(spec.postprocess),
         "rubric": spec.rubric,
         "score": _callable_fingerprint(spec.score),
@@ -349,7 +357,7 @@ def _run_attempt(
     candidate: PromptCandidate, records: Mapping[str, SignalGroundTruthRecord],
     dossiers: Mapping[str, CompanyDossier], dataset_hash: str, model_client: ModelClient,
     model_id: str, requests_by_company: Mapping[str, ExperimentInput],
-    evaluation_fingerprint: str,
+    evaluation_fingerprint: str, allow_provider_execution: bool,
 ) -> dict[str, Any] | None:
     output_dir = run_root / "outputs" / split / candidate.candidate_id
     score_path = run_root / "scores" / split / f"{candidate.candidate_id}.json"
@@ -511,6 +519,16 @@ def _run_attempt(
             artifact.get("invalid_output") is not True and "output" not in artifact
         )
     )
+    if not allow_provider_execution:
+        missing = ", ".join(
+            str((output_dir / f"{company_id}.json").relative_to(run_root))
+            for company_id in pending_ids
+        )
+        raise ValueError(
+            f"evaluation-only resume is missing stored {split} artifacts for candidate "
+            f"{candidate.candidate_id}: {missing}; run the {split} for that candidate "
+            "deliberately"
+        )
     requests = tuple(requests_by_company[company_id] for company_id in pending_ids)
     estimate = Decimal(model_client.estimate(requests, ExecutionTrack.SYNCHRONOUS))
     reservation_id = _next_reservation_id(cost_path, attempt_id)
@@ -655,7 +673,13 @@ def run_loop(
         or prior_inputs.get("lineage_fingerprint") != inputs["lineage_fingerprint"]
     ):
         raise ValueError("resume inputs do not match the existing lineage")
-    _write_inputs(run_root, inputs)
+    evaluation_only_resume = bool(
+        started
+        and prior_inputs is not None
+        and prior_inputs.get("evaluation_fingerprint") != inputs["evaluation_fingerprint"]
+    )
+    if not evaluation_only_resume:
+        _write_inputs(run_root, inputs)
     _atomic_json(run_root / "candidates.json", {
         "candidates": [{"candidate_id": item.candidate_id, "prompt_hash": item.prompt_hash,
                         "prompt_text": item.text} for item in candidates],
@@ -671,6 +695,7 @@ def run_loop(
             model_client=model_client, model_id=model_id,
             requests_by_company=requests[candidate.candidate_id],
             evaluation_fingerprint=inputs["evaluation_fingerprint"],
+            allow_provider_execution=not evaluation_only_resume,
         )
         if score is None:
             break
@@ -702,6 +727,7 @@ def run_loop(
         dataset_hash=evaluator_dataset.public.dataset_hash, model_client=model_client,
         model_id=model_id, requests_by_company=requests[winner.candidate_id],
         evaluation_fingerprint=inputs["evaluation_fingerprint"],
+        allow_provider_execution=not evaluation_only_resume,
     )
     if holdout is None:
         mean, failures = Decimal("0"), ("budget_exhausted",)
@@ -726,6 +752,7 @@ def run_loop(
     }
     _atomic_json(run_root / "gate.json", gate)
     _atomic_json(run_root / "result.json", result)
+    _write_inputs(run_root, inputs)
     return result
 
 

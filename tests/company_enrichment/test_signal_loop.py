@@ -55,6 +55,27 @@ def _score(payload: Mapping[str, Any], record: SignalGroundTruthRecord,
     return CaseScore(record.company_id, components, score, failures)
 
 
+def _accept_output(_payload: Mapping[str, Any]) -> bool:
+    return True
+
+
+def _reject_output(_payload: Mapping[str, Any]) -> bool:
+    return False
+
+
+_DECLARED_OUTPUT_CHECK = _accept_output
+
+
+def _score_with_declared_dependency(
+    payload: Mapping[str, Any], record: SignalGroundTruthRecord,
+    dossier: CompanyDossier,
+) -> CaseScore:
+    original = _score(payload, record, dossier)
+    if _DECLARED_OUTPUT_CHECK(payload):
+        return original
+    return replace(original, score=Decimal("0"), hard_failures=("dependency_rejected",))
+
+
 def make_spec(collect=None, **overrides) -> SignalSpec:
     values = {
         "enrichment_id": ENRICHMENT, "fields": ("ads",),
@@ -278,6 +299,98 @@ def test_resume_rescores_completed_outputs_when_the_scorer_changes(repo: Path) -
     assert dev["mean_score"] == "0"
     assert holdout["mean_score"] == "0"
     assert result["gate"]["human_review_eligible"] is False
+
+
+def test_resume_rescores_when_a_declared_evaluator_dependency_changes(
+    repo: Path, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "changed-dependency"
+    run_loop(
+        make_spec(
+            score=_score_with_declared_dependency,
+            evaluation_dependencies=(_accept_output,),
+        ),
+        repo_root=repo, run_root=run_root, model_client=FakeModelClient(), resume=False,
+    )
+
+    monkeypatch.setitem(
+        _score_with_declared_dependency.__globals__,
+        "_DECLARED_OUTPUT_CHECK",
+        _reject_output,
+    )
+    resumed_client = FakeModelClient()
+    result = run_loop(
+        make_spec(
+            score=_score_with_declared_dependency,
+            evaluation_dependencies=(_reject_output,),
+        ),
+        repo_root=repo, run_root=run_root, model_client=resumed_client, resume=True,
+    )
+
+    dev = json.loads((run_root / "scores/dev/baseline.json").read_text(encoding="utf-8"))
+    assert resumed_client.estimates == []
+    assert resumed_client.executed == []
+    assert dev["mean_score"] == "0"
+    assert result["gate"]["human_review_eligible"] is False
+
+
+def test_evaluation_only_resume_refuses_missing_new_winner_holdout(
+    repo: Path,
+) -> None:
+    prompts = repo / "prompts/company-enrichment/candidates"
+    prompts.mkdir(parents=True)
+    candidate_path = prompts / "v2-tighter.md"
+    candidate_path.write_text("Tighter prompt.\n", encoding="utf-8")
+
+    class ScoreByPrompt(FakeModelClient):
+        def execute(self, requests, track):
+            self.status = "inactive" if "Tighter" in requests[0].prompt_text else "active"
+            return super().execute(requests, track)
+
+    def prefer_inactive(
+        payload: Mapping[str, Any], record: SignalGroundTruthRecord,
+        _dossier: CompanyDossier,
+    ) -> CaseScore:
+        inactive = Decimal(payload["ads"]["google"]["status"] == "inactive")
+        components = {"status": inactive, "landing_page": inactive, "offer": inactive}
+        failures = () if inactive else ("not_inactive",)
+        return CaseScore(record.company_id, components, inactive, failures)
+
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "new-winner-no-holdout"
+    candidate_paths = (Path("prompts/company-enrichment/candidates/v2-tighter.md"),)
+    initial = run_loop(
+        make_spec(candidate_paths=candidate_paths), repo_root=repo, run_root=run_root,
+        model_client=ScoreByPrompt(), resume=False,
+    )
+    assert initial["winner"]["candidate_id"] == "baseline"
+    original_inputs = json.loads((run_root / "inputs.json").read_text(encoding="utf-8"))
+
+    resumed_client = FakeModelClient()
+    with pytest.raises(
+        ValueError,
+        match=(
+            "evaluation-only resume is missing stored holdout artifacts for candidate "
+            "v2-tighter.*run the holdout for that candidate deliberately"
+        ),
+    ):
+        run_loop(
+            make_spec(score=prefer_inactive, candidate_paths=candidate_paths),
+            repo_root=repo, run_root=run_root, model_client=resumed_client, resume=True,
+        )
+
+    assert resumed_client.estimates == []
+    assert resumed_client.executed == []
+    stored_inputs = json.loads((run_root / "inputs.json").read_text(encoding="utf-8"))
+    assert stored_inputs == original_inputs
+
+    repeated_client = FakeModelClient()
+    with pytest.raises(ValueError, match="evaluation-only resume is missing stored holdout"):
+        run_loop(
+            make_spec(score=prefer_inactive, candidate_paths=candidate_paths),
+            repo_root=repo, run_root=run_root, model_client=repeated_client, resume=True,
+        )
+    assert repeated_client.estimates == []
+    assert repeated_client.executed == []
 
 
 def test_resume_retry_gets_a_new_reservation_and_accumulates_cost(repo: Path) -> None:

@@ -9,6 +9,10 @@ import pytest
 import yaml
 
 from scripts import company_enrichment_competitor_loop, company_enrichment_news_loop
+from scripts.company_enrichment.competitor_evaluator import (
+    COMPETITOR_EVALUATION_DEPENDENCIES,
+)
+from scripts.company_enrichment.news_evaluator import NEWS_EVALUATION_DEPENDENCIES
 from scripts.company_enrichment.packages import resolve_prompt_path
 from scripts.company_enrichment.signal_collection import bind_collect
 from scripts.company_enrichment.signal_entrypoints import (
@@ -39,6 +43,7 @@ def test_specs_are_wired_to_the_locked_corpus_and_plans():
     news = build_news_spec()
     assert news.enrichment_id == "news-product-launches" and news.fields == ("news", "launches")
     assert news.rubric == "events:0.60,citation:0.25,kind:0.15"
+    assert news.evaluation_dependencies == NEWS_EVALUATION_DEPENDENCIES
     assert [item.template for item in NEWS_PLAN.queries] == [
         "{{domain}} news",
         '{{company_name}} "press release" OR "announces" OR "newsroom"',
@@ -53,6 +58,7 @@ def test_specs_are_wired_to_the_locked_corpus_and_plans():
     competitors = build_competitor_spec()
     assert competitors.enrichment_id == "competitor-intelligence"
     assert competitors.rubric == "named_set:0.50,citation:0.30,labeling:0.20"
+    assert competitors.evaluation_dependencies == COMPETITOR_EVALUATION_DEPENDENCIES
     assert [item.template for item in COMPETITOR_PLAN.queries] == [
         '{{company_name}} {{category}} alternatives OR competitors OR "vs" OR "compared to"',
         "{{company_name}} alternatives", "{{company_name}} vs",

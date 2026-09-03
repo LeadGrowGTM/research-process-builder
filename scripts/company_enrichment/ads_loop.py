@@ -16,7 +16,9 @@ from typing import Sequence
 
 from .ads_collect import ENRICHMENT_ID, collect_ads
 from .ads_contracts import ads_output_contract
-from .ads_evaluator import WEIGHTS, score_ads, validate_ads_record
+from .ads_evaluator import (
+    ADS_EVALUATION_DEPENDENCIES, WEIGHTS, score_ads, validate_ads_record,
+)
 from .ads_ground_truth_draft import write_ads_ground_truth_draft
 from .contracts import canonical_json
 from .openai_model_client import build_openai_model_client
@@ -39,6 +41,7 @@ def build_spec() -> SignalSpec:
         output_contract=ads_output_contract,
         load_ground_truth=dataset_loader(ENRICHMENT_ID, WEIGHTS, validate_ads_record),
         score=score_ads,
+        evaluation_dependencies=ADS_EVALUATION_DEPENDENCIES,
         prompt_path=PROMPT_PATH,
         weights=WEIGHTS,
         collect=collect_ads,
