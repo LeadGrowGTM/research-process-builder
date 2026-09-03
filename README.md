@@ -12,7 +12,7 @@ the repo has two layers that share the methodology:
 
 ### layer 1: company enrichment loops (code-graded, per-company signals)
 
-`scripts/company_enrichment/` runs collect -> extract -> ground -> score loops that produce structured, cited signals for a company (news and product launches, competitors, running ads / offer intelligence, ICP/persona). each enrichment is specified in `enrichments/p0/*.yaml`, prompted from `prompts/company-enrichment/`, and evaluated against sealed corpora in `benchmarks/`.
+`scripts/company_enrichment/` runs collect -> extract -> ground -> score loops that produce structured, cited signals for a company (news and product launches, competitors, running ads / offer intelligence, ICP/persona). each enrichment is specified in `enrichments/p0/*.yaml`, prompted from `prompts/company-enrichment/` (or an installable package under `enrichments/<id>/`, see [docs/domain/enrichment-package-spec.md](docs/domain/enrichment-package-spec.md)), and evaluated against sealed corpora in `benchmarks/`.
 
 what makes the loop trustworthy:
 
@@ -43,6 +43,7 @@ the original layer: a self-annealing loop that produces portable `.md` process f
 ├── SKILL.md                          # the methodology — how to build research processes
 ├── enrichments/p0/                   # enrichment specs (inputs, caps, gates, providers)
 ├── prompts/company-enrichment/       # graduated + candidate enrichment prompts
+├── enrichments/<id>/                 # installable enrichment packages (manifest+prompt, schema.py, run.py, variants/)
 ├── scripts/company_enrichment/       # collect/evaluate/anneal pipeline + adapters + budget ledger
 ├── benchmarks/                       # sealed corpora + ground truth (immutable)
 ├── docs/reports/                     # anneal reports, provider A/Bs, review sheets

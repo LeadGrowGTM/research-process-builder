@@ -146,6 +146,11 @@ The manifest exists so this is a bounded decision rather than a judgement call.
    complete request fingerprints match, then runs the current decoder,
    postprocessor, ground truth, and scorer locally again. Local evaluation
    changes therefore never preserve stale scores or cause another provider call.
+   The one exception is provider garbage: a stored response the current decoder
+   has rejected twice (`DECODE_REJECTION_LIMIT` in
+   `scripts/company_enrichment/openai_model_client.py`) is re-acquired as a new
+   billable attempt on the next run, so a resume that still needs `--allow-paid`
+   is not a bug when that happens.
 6. **Bump `version` and record the new score** in `evaluation` before the
    package returns to `approved`.
 

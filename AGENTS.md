@@ -25,7 +25,10 @@ canonical domain language is [CONTEXT.md](CONTEXT.md): use **Research Flow**,
   `scripts/company_enrichment_news_loop.py`,
   `scripts/company_enrichment_competitor_loop.py`,
   `scripts/company_enrichment_ads_loop.py`) are the entrypoints. Prompts live
-  in `prompts/company-enrichment/`; benchmark corpora and ground truth live in
+  in `prompts/company-enrichment/` or, once migrated, in enrichment packages
+  under `enrichments/<id>/` (see
+  [docs/domain/enrichment-package-spec.md](docs/domain/enrichment-package-spec.md));
+  benchmark corpora and ground truth live in
   `benchmarks/` (the sealed Serper corpus in `benchmarks/signals/` is
   immutable - see [docs/reports/serper-vs-parallel.md](docs/reports/serper-vs-parallel.md)
   for the Serper-vs-Parallel provider decision and
