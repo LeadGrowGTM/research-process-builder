@@ -231,6 +231,54 @@ def test_resume_lineage_guard(repo: Path, capsys):
                             repo_root=repo, model_client_factory=factory) == 0
 
 
+def test_completed_resume_reuses_artifacts_without_provider_calls(repo: Path) -> None:
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "completed-resume"
+    first = FakeModelClient()
+    initial = run_loop(
+        make_spec(), repo_root=repo, run_root=run_root,
+        model_client=first, resume=False,
+    )
+    resumed_client = FakeModelClient()
+    resumed = run_loop(
+        make_spec(), repo_root=repo, run_root=run_root,
+        model_client=resumed_client, resume=True,
+    )
+
+    assert resumed_client.estimates == []
+    assert resumed_client.executed == []
+    assert resumed == initial
+
+
+def test_resume_retry_gets_a_new_reservation_and_accumulates_cost(repo: Path) -> None:
+    class SimulatedCrash(BaseException):
+        pass
+
+    class CrashingClient(FakeModelClient):
+        def execute(self, requests, track):
+            raise SimulatedCrash
+
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "retry-reservation"
+    with pytest.raises(SimulatedCrash):
+        run_loop(
+            make_spec(), repo_root=repo, run_root=run_root,
+            model_client=CrashingClient(cost="0.05"), resume=False,
+        )
+
+    resumed_client = FakeModelClient(cost="0.05")
+    result = run_loop(
+        make_spec(), repo_root=repo, run_root=run_root,
+        model_client=resumed_client, resume=True,
+    )
+    cost = json.loads((run_root / "cost.json").read_text(encoding="utf-8"))
+
+    assert set(cost["reservations"]) == {
+        "dev-0-baseline", "dev-0-baseline-retry-1", "holdout-baseline",
+    }
+    assert cost["reservations"]["dev-0-baseline"]["status"] == "reserved"
+    assert cost["reservations"]["dev-0-baseline-retry-1"]["actual_usd"] == "0.30"
+    assert result["total_cost_usd"] == "0.80"
+
+
 def test_resume_rejects_a_different_model_before_any_paid_call(repo: Path) -> None:
     class SimulatedCrash(BaseException):
         pass

@@ -33,7 +33,7 @@ from .contracts import CompanyDossier, canonical_json
 from .executors import P0_ENRICHMENTS
 from .experiment_runner import ExperimentInput, ModelClient
 from .openai_model_client import MODEL_PRICES, build_openai_model_client
-from .packages import candidate_prompt_text
+from .packages import candidate_prompt_text, resolve_prompt_path
 from .signal_evidence import (
     load_cached_dossiers, load_signal_dossier, save_signal_dossier,
 )
@@ -174,8 +174,14 @@ def prompt_candidates(spec: SignalSpec, repo_root: Path) -> tuple[PromptCandidat
     """The baseline prompt plus every ``candidate_paths`` file, keyed by stem."""
     candidates: list[PromptCandidate] = []
     seen: set[str] = set()
+    conventional = Path("prompts/company-enrichment") / f"{spec.enrichment_id}.md"
+    baseline_path = (
+        resolve_prompt_path(spec.enrichment_id, repo_root)
+        if spec.prompt_path == conventional and spec.candidate_id == "baseline"
+        else spec.prompt_path
+    )
     for candidate_id, path in (
-        (spec.candidate_id, spec.prompt_path),
+        (spec.candidate_id, baseline_path),
         *((item.stem, item) for item in spec.candidate_paths),
     ):
         if candidate_id in seen or not _LINEAGE.match(candidate_id):
@@ -201,11 +207,14 @@ def _payload_from_execution(execution) -> dict[str, Any]:
     return payload
 
 
-def _reserve_cost(path: Path, attempt_id: str, estimate: Decimal, cap: Decimal = CAP_USD) -> None:
+def _reserve_cost(
+    path: Path, attempt_id: str, estimate: Decimal, company_ids: Sequence[str],
+    cap: Decimal = CAP_USD,
+) -> None:
     state = _read_json(path) or {"cap_usd": str(cap), "reservations": {}}
     reservations = state["reservations"]
     if attempt_id in reservations:
-        return
+        raise ValueError(f"cost reservation already exists: {attempt_id}")
     committed = sum((Decimal(item.get("actual_usd", item["estimate_usd"]))
                      for item in reservations.values()), Decimal("0"))
     if committed + estimate > cap:
@@ -214,7 +223,10 @@ def _reserve_cost(path: Path, attempt_id: str, estimate: Decimal, cap: Decimal =
             "estimate_usd": str(estimate), "cap_usd": str(cap),
         })
         raise BudgetExceeded("aggregate signal loop cap exhausted")
-    reservations[attempt_id] = {"estimate_usd": str(estimate), "status": "reserved"}
+    reservations[attempt_id] = {
+        "company_ids": list(company_ids), "estimate_usd": str(estimate),
+        "status": "reserved",
+    }
     _atomic_json(path, state)
 
 
@@ -235,8 +247,31 @@ def _reconcile_cost(path: Path, attempt_id: str, actual: Decimal, cap: Decimal =
 
 def _total_cost(path: Path) -> Decimal:
     state = _read_json(path) or {"reservations": {}}
-    return sum((Decimal(item.get("actual_usd", "0"))
+    return sum((Decimal(item.get("actual_usd", item["estimate_usd"]))
                 for item in state["reservations"].values()), Decimal("0"))
+
+
+def _reservation_ids(path: Path, attempt_id: str) -> tuple[str, ...]:
+    state = _read_json(path) or {"reservations": {}}
+    prefix = f"{attempt_id}-retry-"
+    matching = (
+        key for key in state["reservations"]
+        if key == attempt_id or key.startswith(prefix)
+    )
+    return tuple(sorted(
+        matching,
+        key=lambda key: 0 if key == attempt_id else int(key.removeprefix(prefix)),
+    ))
+
+
+def _next_reservation_id(path: Path, attempt_id: str) -> str:
+    existing = set(_reservation_ids(path, attempt_id))
+    if attempt_id not in existing:
+        return attempt_id
+    retry = 1
+    while f"{attempt_id}-retry-{retry}" in existing:
+        retry += 1
+    return f"{attempt_id}-retry-{retry}"
 
 
 def _score_attempt(
@@ -268,8 +303,6 @@ def _run_attempt(
     dossiers: Mapping[str, CompanyDossier], dataset_hash: str, model_client: ModelClient,
     model_id: str, requests_by_company: Mapping[str, ExperimentInput],
 ) -> dict[str, Any] | None:
-    requests = tuple(requests_by_company[company_id] for company_id in ids)
-    estimate = Decimal(model_client.estimate(requests, ExecutionTrack.SYNCHRONOUS))
     output_dir = run_root / "outputs" / split / candidate.candidate_id
     score_path = run_root / "scores" / split / f"{candidate.candidate_id}.json"
     cost_path = run_root / "cost.json"
@@ -289,7 +322,7 @@ def _run_attempt(
         return lambda _envelope: CheckerResult(SCHEMA_VERSION, name, True, "bounded")
 
     def executor(_envelope):
-        _reserve_cost(cost_path, attempt_id, estimate)
+        _reserve_cost(cost_path, reservation_id, estimate, pending_ids)
         executions = []
         invalid_ids: list[str] = []
         for request in requests:
@@ -331,7 +364,7 @@ def _run_attempt(
                 })
             _atomic_json(output_dir / f"{execution.company_id}.json", artifact)
         actual = sum((Decimal(item.actual_cost_usd) for item in executions), Decimal("0"))
-        _reconcile_cost(cost_path, attempt_id, estimate if invalid_ids else actual)
+        _reconcile_cost(cost_path, reservation_id, estimate if invalid_ids else actual)
         return tuple(Evidence(
             SCHEMA_VERSION, dossiers[company_id].evidence[0].url,
             canonical_json({
@@ -354,19 +387,74 @@ def _run_attempt(
         return EvaluationResult(SCHEMA_VERSION, not failures, float(mean),
                                 "scored" if not failures else "hard_failure")
 
+    artifacts = {
+        company_id: _read_json(output_dir / f"{company_id}.json")
+        for company_id in ids
+    }
+    complete_outputs = all(
+        artifact is not None and (
+            artifact.get("invalid_output") is True or "output" in artifact
+        )
+        for artifact in artifacts.values()
+    )
+    existing_reservations = _reservation_ids(cost_path, attempt_id)
+    if complete_outputs:
+        if not existing_reservations:
+            raise ValueError(f"completed outputs lack a cost reservation: {attempt_id}")
+        state = _read_json(cost_path)
+        reservations = state["reservations"]
+        completed = [
+            key for key in existing_reservations
+            if reservations[key].get("status") == "completed"
+        ]
+        if not completed:
+            reservation_id = existing_reservations[-1]
+            reservation_company_ids = tuple(
+                reservations[reservation_id].get("company_ids", ids)
+            )
+            invalid = any(
+                artifacts[company_id].get("invalid_output") is True
+                for company_id in reservation_company_ids
+            )
+            actual = (
+                Decimal(reservations[reservation_id]["estimate_usd"])
+                if invalid
+                else sum(
+                    (
+                        Decimal(artifacts[company_id]["model_cost_usd"])
+                        for company_id in reservation_company_ids
+                    ),
+                    Decimal("0"),
+                )
+            )
+            _reconcile_cost(cost_path, reservation_id, actual)
+        if _read_json(score_path) is None:
+            evaluator(None)
+        return _read_json(score_path)
+
+    pending_ids = tuple(
+        company_id for company_id, artifact in artifacts.items()
+        if artifact is None or (
+            artifact.get("invalid_output") is not True and "output" not in artifact
+        )
+    )
+    requests = tuple(requests_by_company[company_id] for company_id in pending_ids)
+    estimate = Decimal(model_client.estimate(requests, ExecutionTrack.SYNCHRONOUS))
+    reservation_id = _next_reservation_id(cost_path, attempt_id)
+
     zero = BudgetCharge()
     RoleRunners(
         inventor, checker("in_bounds"), checker("novelty"), executor, evaluator,
         {Role.INVENTOR: zero, Role.IN_BOUNDS_CHECKER: zero, Role.NOVELTY_CHECKER: zero,
-         Role.EXECUTOR: BudgetCharge(calls=1, llm_calls=len(ids), cost=float(estimate)),
+         Role.EXECUTOR: BudgetCharge(calls=1, llm_calls=len(requests), cost=float(estimate)),
          Role.EVALUATOR: zero},
     )
     RunRequest(
-        SCHEMA_VERSION, attempt_id, f"{spec.enrichment_id} {split} prompt attempt",
+        SCHEMA_VERSION, reservation_id, f"{spec.enrichment_id} {split} prompt attempt",
         ("cached_dossier_evidence_only", "zero_source_purchases", "sync_only"), {},
-        BudgetLimits(max_calls=1, max_llm_calls=len(ids), max_cost=float(CAP_USD)),
+        BudgetLimits(max_calls=1, max_llm_calls=len(requests), max_cost=float(CAP_USD)),
         .90,
-        execution_inputs={"company_ids": tuple(ids), "dataset_hash": dataset_hash,
+        execution_inputs={"company_ids": pending_ids, "dataset_hash": dataset_hash,
                           "model_id": model_id, "prompt_hash": candidate.prompt_hash,
                           "split": split},
         rubric=spec.rubric,

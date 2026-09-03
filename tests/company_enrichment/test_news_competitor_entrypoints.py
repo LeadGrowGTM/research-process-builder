@@ -16,6 +16,7 @@ from scripts.company_enrichment.signal_entrypoints import (
     draft_competitor_ground_truth, draft_news_ground_truth, parse_date_text, run_entrypoint,
 )
 from scripts.company_enrichment.signal_ground_truth import ALL_IDS, DEVELOPMENT_IDS, HOLDOUT_IDS
+from scripts.company_enrichment.signal_loop import prompt_candidates
 from tests.company_enrichment.test_signal_collection import (
     COMPANIES, NEWS_RESULTS, PAGES, FakeScrape, FakeSearch, NOW,
 )
@@ -66,6 +67,21 @@ def test_specs_are_wired_to_the_locked_corpus_and_plans():
         }
         split = yaml.safe_load((REPO_ROOT / spec.benchmark_dir / "split.yaml").read_text())
         assert split == {"development": list(DEVELOPMENT_IDS), "holdout": list(HOLDOUT_IDS)}
+
+
+def test_direct_news_spec_consumes_the_packaged_prompt_from_the_run_root(
+    tmp_path: Path,
+) -> None:
+    prompt = tmp_path / "enrichments/news-product-launches/news-product-launches.md"
+    prompt.parent.mkdir(parents=True)
+    prompt.write_text(
+        "---\nid: news-product-launches\n---\nPackaged prompt.\n", encoding="utf-8",
+    )
+
+    candidates = prompt_candidates(build_news_spec(), tmp_path)
+
+    assert len(candidates) == 1
+    assert candidates[0].text == "Packaged prompt."
 
 
 @pytest.mark.parametrize("module", [company_enrichment_news_loop, company_enrichment_competitor_loop])
