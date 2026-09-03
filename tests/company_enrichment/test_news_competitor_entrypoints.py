@@ -69,8 +69,9 @@ def test_specs_are_wired_to_the_locked_corpus_and_plans():
         assert split == {"development": list(DEVELOPMENT_IDS), "holdout": list(HOLDOUT_IDS)}
 
 
+@pytest.mark.parametrize("candidate_id", ("baseline", "news-v11"))
 def test_direct_news_spec_consumes_the_packaged_prompt_from_the_run_root(
-    tmp_path: Path,
+    tmp_path: Path, candidate_id: str,
 ) -> None:
     prompt = tmp_path / "enrichments/news-product-launches/news-product-launches.md"
     prompt.parent.mkdir(parents=True)
@@ -78,9 +79,12 @@ def test_direct_news_spec_consumes_the_packaged_prompt_from_the_run_root(
         "---\nid: news-product-launches\n---\nPackaged prompt.\n", encoding="utf-8",
     )
 
-    candidates = prompt_candidates(build_news_spec(), tmp_path)
+    candidates = prompt_candidates(
+        replace(build_news_spec(), candidate_id=candidate_id), tmp_path,
+    )
 
     assert len(candidates) == 1
+    assert candidates[0].candidate_id == candidate_id
     assert candidates[0].text == "Packaged prompt."
 
 

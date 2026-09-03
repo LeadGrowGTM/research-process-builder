@@ -22,7 +22,9 @@ from dataclasses import dataclass, field, replace
 from decimal import Decimal
 from functools import partial
 from hashlib import sha256
+import inspect
 import json
+import marshal
 import os
 from pathlib import Path
 import re
@@ -115,6 +117,7 @@ class SignalSpec:
     collect: CollectFn | None = None
     candidate_id: str = field(default="baseline")
     postprocess: PostprocessFn | None = None
+    resolve_prompt_layout: bool = True
     # Extra prompt files evaluated as candidates alongside ``prompt_path``;
     # each candidate is identified by its file stem.
     candidate_paths: tuple[Path, ...] = ()
@@ -137,6 +140,8 @@ class SignalSpec:
             raise ValueError("collect must be callable or None")
         if self.postprocess is not None and not callable(self.postprocess):
             raise ValueError("postprocess must be callable or None")
+        if not isinstance(self.resolve_prompt_layout, bool):
+            raise ValueError("resolve_prompt_layout must be boolean")
         candidate_paths = tuple(Path(item) for item in self.candidate_paths)
         for item in candidate_paths:
             _require_repo_relative(item, "candidate_paths")
@@ -170,6 +175,48 @@ def _primitive(value: Any) -> Any:
     return json.loads(canonical_json(value))
 
 
+def _callable_fingerprint(value: Callable[..., Any] | None) -> str | None:
+    if value is None:
+        return None
+    code = getattr(value, "__code__", None)
+    if code is None:
+        raise ValueError("evaluation callable cannot be deterministically fingerprinted")
+    try:
+        closure = [
+            _primitive(cell.cell_contents) for cell in (value.__closure__ or ())
+        ]
+        defaults = _primitive(value.__defaults__ or ())
+        keyword_defaults = _primitive(value.__kwdefaults__ or {})
+    except (TypeError, ValueError) as error:
+        raise ValueError(
+            "evaluation callable closes over a non-deterministic value"
+        ) from error
+    source_file = inspect.getsourcefile(value)
+    source_hash = (
+        sha256(Path(source_file).read_bytes()).hexdigest()
+        if source_file and Path(source_file).is_file()
+        else None
+    )
+    material = {
+        "closure": closure,
+        "code_hash": sha256(marshal.dumps(code)).hexdigest(),
+        "defaults": defaults,
+        "keyword_defaults": keyword_defaults,
+        "module": getattr(value, "__module__", None),
+        "qualname": getattr(value, "__qualname__", None),
+        "source_hash": source_hash,
+    }
+    return sha256(canonical_json(material).encode("utf-8")).hexdigest()
+
+
+def _evaluation_fingerprint(spec: SignalSpec) -> str:
+    return sha256(canonical_json({
+        "postprocess": _callable_fingerprint(spec.postprocess),
+        "rubric": spec.rubric,
+        "score": _callable_fingerprint(spec.score),
+    }).encode("utf-8")).hexdigest()
+
+
 def prompt_candidates(spec: SignalSpec, repo_root: Path) -> tuple[PromptCandidate, ...]:
     """The baseline prompt plus every ``candidate_paths`` file, keyed by stem."""
     candidates: list[PromptCandidate] = []
@@ -177,7 +224,7 @@ def prompt_candidates(spec: SignalSpec, repo_root: Path) -> tuple[PromptCandidat
     conventional = Path("prompts/company-enrichment") / f"{spec.enrichment_id}.md"
     baseline_path = (
         resolve_prompt_path(spec.enrichment_id, repo_root)
-        if spec.prompt_path == conventional and spec.candidate_id == "baseline"
+        if spec.resolve_prompt_layout and spec.prompt_path == conventional
         else spec.prompt_path
     )
     for candidate_id, path in (
@@ -302,6 +349,7 @@ def _run_attempt(
     candidate: PromptCandidate, records: Mapping[str, SignalGroundTruthRecord],
     dossiers: Mapping[str, CompanyDossier], dataset_hash: str, model_client: ModelClient,
     model_id: str, requests_by_company: Mapping[str, ExperimentInput],
+    evaluation_fingerprint: str,
 ) -> dict[str, Any] | None:
     output_dir = run_root / "outputs" / split / candidate.candidate_id
     score_path = run_root / "scores" / split / f"{candidate.candidate_id}.json"
@@ -373,6 +421,25 @@ def _run_attempt(
             }), dossiers[company_id].evidence[0].retrieved_at.isoformat(),
         ) for company_id in ids)
 
+    def refresh_outputs() -> None:
+        for company_id in ids:
+            path = output_dir / f"{company_id}.json"
+            artifact = _read_json(path)
+            if artifact is None or artifact.get("invalid_output") is True:
+                continue
+            model_output = artifact.get("model_output", artifact["output"])
+            if spec.postprocess is None:
+                artifact["output"] = model_output
+                artifact.pop("model_output", None)
+                artifact.pop("postprocess", None)
+            else:
+                grounded, report = spec.postprocess(model_output, dossiers[company_id])
+                artifact.update({
+                    "model_output": model_output, "output": grounded,
+                    "postprocess": report,
+                })
+            _atomic_json(path, artifact)
+
     def evaluator(_envelope):
         cases, mean, failures = _score_attempt(spec, output_dir, ids, records, dossiers)
         _atomic_json(score_path, {
@@ -382,6 +449,7 @@ def _run_attempt(
                 "component_scores": {key: str(value) for key, value in item.components.items()},
                 "hard_failures": list(item.hard_failures), "score": str(item.score),
             } for item in cases],
+            "evaluation_fingerprint": evaluation_fingerprint,
             "hard_failures": list(failures), "mean_score": str(mean), "split": split,
         })
         return EvaluationResult(SCHEMA_VERSION, not failures, float(mean),
@@ -428,7 +496,12 @@ def _run_attempt(
                 )
             )
             _reconcile_cost(cost_path, reservation_id, actual)
-        if _read_json(score_path) is None:
+        stored_score = _read_json(score_path)
+        if (
+            stored_score is None
+            or stored_score.get("evaluation_fingerprint") != evaluation_fingerprint
+        ):
+            refresh_outputs()
             evaluator(None)
         return _read_json(score_path)
 
@@ -490,6 +563,7 @@ def _lineage_inputs(
             for company_id in public.all_ids
         },
         "enrichment_id": spec.enrichment_id,
+        "evaluation_fingerprint": _evaluation_fingerprint(spec),
         "holdout_ids": list(public.holdout_ids), "model": model_id,
         "source_purchases": 0,
         "signal_hashes": {company_id: digest(
@@ -596,6 +670,7 @@ def run_loop(
             records=public.records, dossiers=dossiers, dataset_hash=public.dataset_hash,
             model_client=model_client, model_id=model_id,
             requests_by_company=requests[candidate.candidate_id],
+            evaluation_fingerprint=inputs["evaluation_fingerprint"],
         )
         if score is None:
             break
@@ -626,6 +701,7 @@ def run_loop(
         records=evaluator_dataset.records, dossiers=dossiers,
         dataset_hash=evaluator_dataset.public.dataset_hash, model_client=model_client,
         model_id=model_id, requests_by_company=requests[winner.candidate_id],
+        evaluation_fingerprint=inputs["evaluation_fingerprint"],
     )
     if holdout is None:
         mean, failures = Decimal("0"), ("budget_exhausted",)
@@ -751,7 +827,10 @@ def main(
     if args.prompt or args.candidate or args.benchmark_dir:
         overrides: dict[str, Any] = {}
         if args.prompt:
-            overrides.update(prompt_path=Path(args.prompt), candidate_id=Path(args.prompt).stem)
+            overrides.update(
+                prompt_path=Path(args.prompt), candidate_id=Path(args.prompt).stem,
+                resolve_prompt_layout=False,
+            )
         if args.candidate:
             overrides["candidate_paths"] = (
                 *spec.candidate_paths, *(Path(item) for item in args.candidate),

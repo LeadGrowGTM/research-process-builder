@@ -249,6 +249,37 @@ def test_completed_resume_reuses_artifacts_without_provider_calls(repo: Path) ->
     assert resumed == initial
 
 
+def test_resume_rescores_completed_outputs_when_the_scorer_changes(repo: Path) -> None:
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "changed-scorer"
+    run_loop(
+        make_spec(), repo_root=repo, run_root=run_root,
+        model_client=FakeModelClient(), resume=False,
+    )
+
+    def zero_score(
+        payload: Mapping[str, Any], record: SignalGroundTruthRecord,
+        dossier: CompanyDossier,
+    ) -> CaseScore:
+        original = _score(payload, record, dossier)
+        return replace(original, score=Decimal("0"))
+
+    resumed_client = FakeModelClient()
+    result = run_loop(
+        make_spec(score=zero_score), repo_root=repo, run_root=run_root,
+        model_client=resumed_client, resume=True,
+    )
+    dev = json.loads((run_root / "scores/dev/baseline.json").read_text(encoding="utf-8"))
+    holdout = json.loads(
+        (run_root / "scores/holdout/baseline.json").read_text(encoding="utf-8")
+    )
+
+    assert resumed_client.estimates == []
+    assert resumed_client.executed == []
+    assert dev["mean_score"] == "0"
+    assert holdout["mean_score"] == "0"
+    assert result["gate"]["human_review_eligible"] is False
+
+
 def test_resume_retry_gets_a_new_reservation_and_accumulates_cost(repo: Path) -> None:
     class SimulatedCrash(BaseException):
         pass
@@ -509,6 +540,28 @@ def test_prompt_flag_replaces_the_baseline_prompt(repo: Path, capsys):
     )
     assert result["winner"]["candidate_id"] == "v3-only"
     assert (run_root / "scores/holdout/v3-only.json").exists()
+
+
+def test_prompt_flag_keeps_a_conventional_path_verbatim(repo: Path, capsys) -> None:
+    legacy = repo / "prompts/company-enrichment" / f"{ENRICHMENT}.md"
+    legacy.write_text("Explicit legacy prompt.\n", encoding="utf-8")
+    packaged = repo / "enrichments" / ENRICHMENT / f"{ENRICHMENT}.md"
+    packaged.parent.mkdir(parents=True)
+    packaged.write_text("Packaged prompt.\n", encoding="utf-8")
+
+    code = signal_loop.main(
+        make_spec(), [
+            "--evaluate", "--lineage", "explicit-conventional", "--dry-run",
+            "--prompt", f"prompts/company-enrichment/{ENRICHMENT}.md",
+        ],
+        repo_root=repo, model_client_factory=lambda **_: pytest.fail("no client"),
+    )
+
+    assert code == 0
+    plan = json.loads(capsys.readouterr().out)
+    assert plan["candidate_prompt_hashes"] == [
+        sha256(b"Explicit legacy prompt.").hexdigest()
+    ]
 
 
 def test_collect_benchmark_dir_override_writes_beside_sealed_corpus(repo: Path, capsys):

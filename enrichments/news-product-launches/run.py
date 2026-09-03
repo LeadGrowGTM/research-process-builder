@@ -16,8 +16,10 @@ gtm_orchestrator CATALOG entry this package installs as.
 interchangeable. ``body`` writes the prompt body alone, after any ``--variant``
 overlay - that is the file a revalidation run wants, so
 ``run.py body --variant X > output/X.md`` then ``--prompt output/X.md`` on the
-loop is how a variant is materialised and scored. ``render`` is for reading: it
-composes the body the way the live client does, with the ``Company ID``,
+loop is how a variant is materialised and scored. Replace the inherited
+revalidation command's ``--model`` value with the effective ``target_model``
+shown by ``run.py describe --variant X``. ``render`` is for reading: it composes
+the body the way the live client does, with the ``Company ID``,
 ``Subject company``, ``Enrichment``, ``Requested fields``, and ``Evidence``
 sections the run appends, so a prompt edit can be reviewed before it costs
 anything. Feeding a ``render`` to ``--prompt`` would send those placeholder

@@ -159,9 +159,13 @@ that a base manifest is refused for.
 corpus, so it refuses `--variant` along with the other subject flags. Revalidate
 a variant by materialising it first: `py enrichments/<id>/run.py body --variant
 X > output/X.md`, then pass `--prompt output/X.md` to the command in
-`adaptation.revalidate_with`. Use `body`, not `render` - `render` includes the
-live-assembly sections the run appends for itself, and passing those as a prompt
-sends the model a second, placeholder-filled copy of them.
+`adaptation.revalidate_with`. Read the variant's effective `target_model` from
+`run.py describe --variant X` and replace the command's `--model` value with
+that model; the inherited command names the parent's proof model and must not be
+used unchanged for a model-changing variant. Use `body`, not `render` -
+`render` includes the live-assembly sections the run appends for itself, and
+passing those as a prompt sends the model a second, placeholder-filled copy of
+them.
 `emit_registry_entry` refuses a variant entirely:
 variants do not become their own catalog entries. It also refuses a package with
 `status: rejected` - a rejected enrichment has no catalog entry to install.
