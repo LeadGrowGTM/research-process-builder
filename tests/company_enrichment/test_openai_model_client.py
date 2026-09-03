@@ -15,7 +15,11 @@ from scripts.company_enrichment.contracts import (
     Visibility,
 )
 from scripts.company_enrichment.experiment_runner import ExperimentInput
-from scripts.company_enrichment.openai_model_client import MODEL_PRICES, OpenAIModelClient
+from scripts.company_enrichment.openai_model_client import (
+    DECODE_REJECTION_LIMIT,
+    MODEL_PRICES,
+    OpenAIModelClient,
+)
 
 
 NOW = datetime(2026, 8, 13, tzinfo=timezone.utc)
@@ -263,31 +267,42 @@ def test_model_mistakes_are_preserved_for_benchmark_scoring(tmp_path: Path) -> N
     assert execution.unknowns == ("identity", "description", "offers")
 
 
-def test_response_is_persisted_before_decode_failure(tmp_path: Path) -> None:
-    responses = _SyncResponses()
-    original = responses.create
+class _TruncatedThenValidResponses(_SyncResponses):
+    """Returns a truncated body for the first N calls, then valid output."""
 
-    def invalid_output(**kwargs):
-        response = original(**kwargs)
-        response.output_text = "not-json"
-        response.model_dump = lambda mode="json": {
-            "model": response.model, "output_text": "not-json",
-            "usage": {"input_tokens": 10, "output_tokens": 2},
-        }
+    def __init__(self, truncated_calls: int = 1) -> None:
+        super().__init__()
+        self.truncated_calls = truncated_calls
+
+    def create(self, **kwargs):
+        response = super().create(**kwargs)
+        if len(self.calls) <= self.truncated_calls:
+            response.output_text = '{"assertions":[{"field":"descr'
+            response.model_dump = lambda mode="json": {
+                "model": response.model,
+                "output_text": '{"assertions":[{"field":"descr',
+                "usage": {"input_tokens": 10, "output_tokens": 2},
+            }
         return response
 
-    responses.create = invalid_output
+
+def _execute_expecting_decode_failure(client, track) -> None:
+    try:
+        client.execute((_request(),), track)
+    except ValueError as error:
+        assert "invalid structured JSON" in str(error)
+    else:
+        raise AssertionError("invalid provider JSON must fail decoding")
+
+
+def test_response_is_persisted_before_decode_failure(tmp_path: Path) -> None:
+    responses = _TruncatedThenValidResponses(truncated_calls=99)
     client = OpenAIModelClient(
         artifact_root=tmp_path, sdk_client=SimpleNamespace(responses=responses),
     )
 
     for _attempt in range(2):
-        try:
-            client.execute((_request(),), ExecutionTrack.SYNCHRONOUS)
-        except ValueError as error:
-            assert "invalid structured JSON" in str(error)
-        else:
-            raise AssertionError("invalid provider JSON must fail decoding")
+        _execute_expecting_decode_failure(client, ExecutionTrack.SYNCHRONOUS)
 
     assert len(responses.calls) == 1
     state = json.loads(next(
@@ -296,6 +311,84 @@ def test_response_is_persisted_before_decode_failure(tmp_path: Path) -> None:
     assert state["status"] == "received"
     assert state["attempt_index"] == 0
     assert state["attempt_history"] == []
+    assert [item["error_type"] for item in state["decode_rejections"]] == [
+        "ValueError", "ValueError",
+    ]
+
+
+def test_truncated_body_is_reacquired_after_repeated_rejections(
+    tmp_path: Path,
+) -> None:
+    responses = _TruncatedThenValidResponses(truncated_calls=1)
+    client = OpenAIModelClient(
+        artifact_root=tmp_path, sdk_client=SimpleNamespace(responses=responses),
+    )
+
+    for _attempt in range(DECODE_REJECTION_LIMIT):
+        _execute_expecting_decode_failure(client, ExecutionTrack.SYNCHRONOUS)
+    assert len(responses.calls) == 1
+
+    executions = client.execute((_request(),), ExecutionTrack.SYNCHRONOUS)
+    replayed = client.execute((_request(),), ExecutionTrack.SYNCHRONOUS)
+
+    assert len(responses.calls) == 2
+    keys = [call["extra_headers"]["Idempotency-Key"] for call in responses.calls]
+    assert keys[0].endswith("-attempt-0")
+    assert keys[1].endswith("-attempt-1")
+    assert keys[0][: -len("-attempt-0")] == keys[1][: -len("-attempt-1")]
+    assert executions == replayed
+    assert executions[0].actual_cost_usd == str(
+        Decimal("1000") * Decimal("0.40") / Decimal("1000000")
+        + Decimal("100") * Decimal("1.60") / Decimal("1000000")
+    )
+    state = json.loads(next(
+        (tmp_path / "openai" / "sync").glob("*.json")
+    ).read_text(encoding="utf-8"))
+    assert state["status"] == "completed"
+    assert state["attempt_index"] == 1
+    assert state["decode_rejections"] == []
+    assert len(state["attempt_history"]) == 1
+    archived = state["attempt_history"][0]
+    assert archived["status"] == "rejected"
+    assert archived["attempt_index"] == 0
+    assert len(archived["decode_rejections"]) == DECODE_REJECTION_LIMIT
+    assert archived["provider_response"]["output_text"].startswith(
+        '{"assertions":[{"field":"descr'
+    )
+
+
+def test_caller_can_request_reacquire_before_rejection_limit(
+    tmp_path: Path,
+) -> None:
+    responses = _TruncatedThenValidResponses(truncated_calls=1)
+    client = OpenAIModelClient(
+        artifact_root=tmp_path, sdk_client=SimpleNamespace(responses=responses),
+    )
+
+    _execute_expecting_decode_failure(client, ExecutionTrack.SYNCHRONOUS)
+    executions = client.execute(
+        (_request(),), ExecutionTrack.SYNCHRONOUS, reacquire=True,
+    )
+
+    assert len(responses.calls) == 2
+    assert responses.calls[1]["extra_headers"]["Idempotency-Key"].endswith(
+        "-attempt-1"
+    )
+    assert executions[0].resolved_model_id == "gpt-4.1-mini-2025-04-14"
+
+
+def test_reacquire_is_not_requested_for_a_decodable_stored_response(
+    tmp_path: Path,
+) -> None:
+    responses = _SyncResponses()
+    client = OpenAIModelClient(
+        artifact_root=tmp_path, sdk_client=SimpleNamespace(responses=responses),
+    )
+
+    for _attempt in range(DECODE_REJECTION_LIMIT + 1):
+        client.execute((_request(),), ExecutionTrack.SYNCHRONOUS)
+
+    assert len(responses.calls) == 1
 
 
 def test_acquired_response_can_be_decoded_repeatedly_without_provider_calls(
@@ -609,12 +702,34 @@ def test_batch_output_is_persisted_before_decode_failure(tmp_path: Path) -> None
 
     assert files.content_calls == 1
     assert len(batches.created) == 1
-    state = json.loads(next(
-        (tmp_path / "openai" / "batch").glob("*.json")
-    ).read_text(encoding="utf-8"))
+    state_path = next((tmp_path / "openai" / "batch").glob("*.json"))
+    state = json.loads(state_path.read_text(encoding="utf-8"))
     assert state["status"] == "received"
     assert state["attempt_index"] == 0
     assert state["attempt_history"] == []
+    assert len(state["decode_rejections"]) == 2
+
+    resumed_files = _BatchFiles(_batch_rows)
+    resumed_jobs = _BatchJobs()
+    resumed = OpenAIModelClient(
+        artifact_root=tmp_path,
+        sdk_client=SimpleNamespace(files=resumed_files, batches=resumed_jobs),
+        poll_interval_seconds=0,
+    )
+    result = resumed.execute((_request(),), ExecutionTrack.BATCH)
+
+    assert len(resumed_files.created) == 1
+    assert len(resumed_jobs.created) == 1
+    assert resumed_jobs.created[0]["extra_headers"]["Idempotency-Key"].endswith(
+        "-attempt-1"
+    )
+    assert result[0].company_id == "saas-01"
+    completed = json.loads(state_path.read_text(encoding="utf-8"))
+    assert completed["status"] == "completed"
+    assert completed["attempt_index"] == 1
+    assert completed["decode_rejections"] == []
+    assert completed["attempt_history"][0]["status"] == "rejected"
+    assert len(completed["attempt_history"][0]["decode_rejections"]) == 2
 
 def test_legacy_request_body_is_byte_for_byte_compatible(tmp_path: Path) -> None:
     client = OpenAIModelClient(

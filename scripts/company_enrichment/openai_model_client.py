@@ -79,6 +79,13 @@ MODEL_PRICES: Mapping[str, ModelPrice] = {
 }
 
 
+# A stored provider response is replayed so a corrected decoder can rescore
+# paid output without new spend. Once the current decoder has rejected the
+# same response this many times, the payload is treated as provider garbage
+# and the next execute() re-acquires it under the next Idempotency-Key.
+DECODE_REJECTION_LIMIT = 2
+
+
 class OpenAIProviderError(RuntimeError):
     """A provider failure whose message is safe to persist or display."""
 
@@ -216,25 +223,39 @@ class OpenAIModelClient:
         )
 
     def execute(
-        self, requests: Sequence[ExperimentInput], track: ExecutionTrack,
+        self,
+        requests: Sequence[ExperimentInput],
+        track: ExecutionTrack,
+        *,
+        reacquire: bool = False,
     ) -> tuple[ModelExecution, ...]:
         values = self._validated_requests(requests)
-        responses = self.acquire_responses(values, track)
-        executions = tuple(
-            self.decode_response(request, response, track)
-            for request, response in zip(values, responses, strict=True)
-        )
-        self._record_executions(values, executions, track)
-        return executions
+        responses = self.acquire_responses(values, track, reacquire=reacquire)
+        executions: list[ModelExecution] = []
+        for request, response in zip(values, responses, strict=True):
+            try:
+                executions.append(self.decode_response(request, response, track))
+            except ValueError as error:
+                self._record_rejection(values, request, track, error)
+                raise
+        self._record_executions(values, tuple(executions), track)
+        return tuple(executions)
 
     def acquire_responses(
-        self, requests: Sequence[ExperimentInput], track: ExecutionTrack,
+        self,
+        requests: Sequence[ExperimentInput],
+        track: ExecutionTrack,
+        *,
+        reacquire: bool = False,
     ) -> tuple[ProviderResponse, ...]:
         requests = self._validated_requests(requests)
         if track is ExecutionTrack.SYNCHRONOUS:
-            return tuple(self._acquire_sync(request) for request in requests)
+            return tuple(
+                self._acquire_sync(request, reacquire=reacquire)
+                for request in requests
+            )
         if track is ExecutionTrack.BATCH:
-            return self._acquire_batch(requests)
+            return self._acquire_batch(requests, reacquire=reacquire)
         raise ValueError("unsupported execution track")
 
     def decode_response(
@@ -471,22 +492,41 @@ class OpenAIModelClient:
     def request_fingerprint(self, request: ExperimentInput) -> str:
         return self._request_digest(request)
 
-    def _acquire_sync(self, request: ExperimentInput) -> ProviderResponse:
+    @staticmethod
+    def _stored_response_rejected(
+        state: Mapping[str, Any], *, reacquire: bool,
+    ) -> bool:
+        rejections = state.get("decode_rejections", ())
+        return reacquire or len(rejections) >= DECODE_REJECTION_LIMIT
+
+    @staticmethod
+    def _archived_attempts(state: Mapping[str, Any]) -> list[Mapping[str, Any]]:
+        attempt_history = list(state.get("attempt_history", ()))
+        prior = dict(state)
+        prior.pop("attempt_history", None)
+        if prior.get("decode_rejections"):
+            prior["status"] = "rejected"
+        attempt_history.append(prior)
+        return attempt_history
+
+    def _acquire_sync(
+        self, request: ExperimentInput, *, reacquire: bool = False,
+    ) -> ProviderResponse:
         digest = self._request_digest(request)
         path = self._root / "sync" / f"{digest}.json"
         state = _read_json(path)
         attempt_history: list[Mapping[str, Any]] = []
-        if state is not None and "provider_response" in state:
-            return ProviderResponse(
-                request.company_id,
-                state["provider_response"],
-                int(state["latency_ms"]),
-            )
-        if state is not None and state.get("status") == "terminal":
-            attempt_history = list(state.get("attempt_history", ()))
-            prior = dict(state)
-            prior.pop("attempt_history", None)
-            attempt_history.append(prior)
+        if state is not None:
+            if (
+                "provider_response" in state
+                and not self._stored_response_rejected(state, reacquire=reacquire)
+            ):
+                return ProviderResponse(
+                    request.company_id,
+                    state["provider_response"],
+                    int(state["latency_ms"]),
+                )
+            attempt_history = self._archived_attempts(state)
             state = None
         started = self._monotonic()
         attempt_index = len(attempt_history)
@@ -504,6 +544,7 @@ class OpenAIModelClient:
             "attempt_history": attempt_history,
             "attempt_index": attempt_index,
             "company_id": request.company_id,
+            "decode_rejections": [],
             "enrichment_id": request.enrichment_id,
             "idempotency_key": idempotency_key,
             "latency_ms": latency_ms,
@@ -832,34 +873,34 @@ class OpenAIModelClient:
         )
 
     def _acquire_batch(
-        self, requests: tuple[ExperimentInput, ...],
+        self, requests: tuple[ExperimentInput, ...], *, reacquire: bool = False,
     ) -> tuple[ProviderResponse, ...]:
         path = self._batch_path(requests)
         digest = path.stem
         state = _read_json(path)
         started = self._monotonic()
         attempt_history: list[Mapping[str, Any]] = []
+        rejected = False
         if state is not None and state.get("provider_output") is not None:
-            safe_rows = state["provider_output"]
-            latency_ms = int(state.get("latency_ms", 0))
-            expected = {request.company_id for request in requests}
-            try:
-                by_id = self._validated_batch_bodies(safe_rows, expected)
-            except (OpenAIProviderError, ValueError):
-                if state.get("status") != "terminal":
-                    raise
-            else:
-                return tuple(
-                    ProviderResponse(
-                        request.company_id, by_id[request.company_id], latency_ms,
+            rejected = self._stored_response_rejected(state, reacquire=reacquire)
+            if not rejected:
+                safe_rows = state["provider_output"]
+                latency_ms = int(state.get("latency_ms", 0))
+                expected = {request.company_id for request in requests}
+                try:
+                    by_id = self._validated_batch_bodies(safe_rows, expected)
+                except (OpenAIProviderError, ValueError):
+                    if state.get("status") != "terminal":
+                        raise
+                else:
+                    return tuple(
+                        ProviderResponse(
+                            request.company_id, by_id[request.company_id], latency_ms,
+                        )
+                        for request in requests
                     )
-                    for request in requests
-                )
-        if state is not None and state.get("status") == "terminal":
-            attempt_history = list(state.get("attempt_history", ()))
-            prior = dict(state)
-            prior.pop("attempt_history", None)
-            attempt_history.append(prior)
+        if state is not None and (rejected or state.get("status") == "terminal"):
+            attempt_history = self._archived_attempts(state)
             state = None
         if state is None:
             lines = tuple(
@@ -887,6 +928,7 @@ class OpenAIModelClient:
             state = {
                 "attempt_history": attempt_history,
                 "attempt_index": len(attempt_history),
+                "decode_rejections": [],
                 "input_file_id": input_file_id,
                 "request_sha256": digest,
                 "status": "uploaded",
@@ -1007,6 +1049,30 @@ class OpenAIModelClient:
             )
             for request in requests
         )
+
+    def _record_rejection(
+        self,
+        requests: tuple[ExperimentInput, ...],
+        request: ExperimentInput,
+        track: ExecutionTrack,
+        error: Exception,
+    ) -> None:
+        if track is ExecutionTrack.SYNCHRONOUS:
+            path = self._root / "sync" / f"{self._request_digest(request)}.json"
+        elif track is ExecutionTrack.BATCH:
+            path = self._batch_path(requests)
+        else:
+            raise ValueError("unsupported execution track")
+        state = _read_json(path)
+        if state is None:
+            raise RuntimeError("provider response state is missing")
+        rejections = list(state.get("decode_rejections", ()))
+        rejections.append({
+            "company_id": request.company_id,
+            "error_message": str(error)[:500],
+            "error_type": type(error).__name__,
+        })
+        _atomic_json(path, {**state, "decode_rejections": rejections})
 
     def _record_executions(
         self,
