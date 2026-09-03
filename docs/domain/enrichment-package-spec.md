@@ -50,7 +50,9 @@ will misread an empty result as "no funding".
 CLI file), `schema_module` (the sidecar file). The proof-prefixed fields record
 the exact decoding configuration used to earn the evaluation scores; `null`
 means that setting was not sent to the model. Both file references must be
-relative files inside the package and are checked at load time.
+relative files inside the package and are checked at load time. The prompt body
+and runner must be non-empty, and the importable schema module must export
+Pydantic `InputModel` and `OutputModel` classes.
 
 ### Contract
 

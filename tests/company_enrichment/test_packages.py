@@ -111,8 +111,15 @@ Body text.
 def _package(tmp_path: Path, *, name: str = "demo", **fields: str) -> Path:
     root = tmp_path / name
     (root / "variants").mkdir(parents=True)
-    (root / "run.py").write_text("", encoding="utf-8")
-    (root / "schema.py").write_text("", encoding="utf-8")
+    (root / "run.py").write_text(
+        "def main():\n    return 0\n", encoding="utf-8",
+    )
+    (root / "schema.py").write_text(
+        "from pydantic import BaseModel\n\n"
+        "class InputModel(BaseModel):\n    pass\n\n"
+        "class OutputModel(BaseModel):\n    pass\n",
+        encoding="utf-8",
+    )
     manifest = MANIFEST.format(id=fields.get("id", name), status=fields.get("status", "approved"))
     for old, new in fields.get("edits", ()):
         manifest = manifest.replace(old, new)
@@ -175,6 +182,34 @@ def test_missing_runner_file_is_rejected(tmp_path: Path) -> None:
     root = _package(tmp_path)
     (root / "run.py").unlink()
     with pytest.raises(PackageError, match="runner points at a missing file"):
+        load_package(root)
+
+
+def test_blank_prompt_body_is_rejected(tmp_path: Path) -> None:
+    root = _package(tmp_path, edits=(("Body text.", "   "),))
+    with pytest.raises(PackageError, match="prompt body must be non-empty"):
+        load_package(root)
+
+
+@pytest.mark.parametrize("artifact", ("runner", "schema_module"))
+def test_runtime_artifacts_must_be_non_empty(
+    tmp_path: Path, artifact: str,
+) -> None:
+    root = _package(tmp_path)
+    path = root / ("run.py" if artifact == "runner" else "schema.py")
+    path.write_text("", encoding="utf-8")
+    with pytest.raises(PackageError, match=rf"{artifact} must be a non-empty Python file"):
+        load_package(root)
+
+
+def test_schema_module_must_export_both_pydantic_models(tmp_path: Path) -> None:
+    root = _package(tmp_path)
+    (root / "schema.py").write_text(
+        "from pydantic import BaseModel\n\n"
+        "class InputModel(BaseModel):\n    pass\n",
+        encoding="utf-8",
+    )
+    with pytest.raises(PackageError, match="pydantic OutputModel"):
         load_package(root)
 
 

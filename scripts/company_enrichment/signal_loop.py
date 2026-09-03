@@ -229,6 +229,16 @@ def _evaluation_fingerprint(spec: SignalSpec) -> str:
     }).encode("utf-8")).hexdigest()
 
 
+def _ground_truth_fingerprint(
+    ids: Sequence[str], records: Mapping[str, SignalGroundTruthRecord],
+) -> str:
+    material = [
+        {"company_id": company_id, "record": _primitive(records[company_id])}
+        for company_id in ids
+    ]
+    return sha256(canonical_json(material).encode("utf-8")).hexdigest()
+
+
 def prompt_candidates(spec: SignalSpec, repo_root: Path) -> tuple[PromptCandidate, ...]:
     """The baseline prompt plus every ``candidate_paths`` file, keyed by stem."""
     candidates: list[PromptCandidate] = []
@@ -366,6 +376,7 @@ def _run_attempt(
     output_dir = run_root / "outputs" / split / candidate.candidate_id
     score_path = run_root / "scores" / split / f"{candidate.candidate_id}.json"
     cost_path = run_root / "cost.json"
+    ground_truth_fingerprint = _ground_truth_fingerprint(ids, records)
 
     def input_hash(company_id: str) -> str:
         return sha256(canonical_json({
@@ -462,6 +473,7 @@ def _run_attempt(
                 "hard_failures": list(item.hard_failures), "score": str(item.score),
             } for item in cases],
             "evaluation_fingerprint": evaluation_fingerprint,
+            "ground_truth_fingerprint": ground_truth_fingerprint,
             "hard_failures": list(failures), "mean_score": str(mean), "split": split,
         })
         return EvaluationResult(SCHEMA_VERSION, not failures, float(mean),
@@ -509,10 +521,29 @@ def _run_attempt(
             )
             _reconcile_cost(cost_path, reservation_id, actual)
         stored_score = _read_json(score_path)
-        if (
-            stored_score is None
-            or stored_score.get("evaluation_fingerprint") != evaluation_fingerprint
-        ):
+        evaluation_changed = bool(
+            stored_score is not None
+            and stored_score.get("evaluation_fingerprint") != evaluation_fingerprint
+        )
+        ground_truth_changed = bool(
+            stored_score is not None
+            and stored_score.get("ground_truth_fingerprint")
+            != ground_truth_fingerprint
+        )
+        if evaluation_changed:
+            invalid_paths = [
+                str((output_dir / f"{company_id}.json").relative_to(run_root))
+                for company_id, artifact in artifacts.items()
+                if artifact.get("invalid_output") is True
+            ]
+            if invalid_paths:
+                raise ValueError(
+                    f"cannot re-evaluate cached {split} artifacts for candidate "
+                    f"{candidate.candidate_id}; invalid output artifacts lack retained "
+                    f"model output: {', '.join(invalid_paths)}; start a new lineage "
+                    "to run them deliberately"
+                )
+        if stored_score is None or evaluation_changed or ground_truth_changed:
             refresh_outputs()
             evaluator(None)
         return _read_json(score_path)
@@ -586,6 +617,9 @@ def _lineage_inputs(
         },
         "enrichment_id": spec.enrichment_id,
         "evaluation_fingerprint": _evaluation_fingerprint(spec),
+        "development_ground_truth_fingerprint": _ground_truth_fingerprint(
+            public.development_ids, public.records,
+        ),
         "holdout_ids": list(public.holdout_ids), "model": model_id,
         "source_purchases": 0,
         "signal_hashes": {company_id: digest(
@@ -680,7 +714,12 @@ def run_loop(
     evaluation_only_resume = bool(
         started
         and prior_inputs is not None
-        and prior_inputs.get("evaluation_fingerprint") != inputs["evaluation_fingerprint"]
+        and (
+            prior_inputs.get("evaluation_fingerprint")
+            != inputs["evaluation_fingerprint"]
+            or prior_inputs.get("development_ground_truth_fingerprint")
+            != inputs["development_ground_truth_fingerprint"]
+        )
     )
     if not evaluation_only_resume:
         _write_inputs(run_root, inputs)

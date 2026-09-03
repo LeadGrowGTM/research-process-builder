@@ -18,7 +18,8 @@ from scripts.company_enrichment.signal_evidence import (
     load_signal_dossier, save_signal_dossier, signal_dossier,
 )
 from scripts.company_enrichment.signal_ground_truth import (
-    ALL_IDS, DEVELOPMENT_IDS, HOLDOUT_IDS, SignalGroundTruthRecord, dataset_loader,
+    ALL_IDS, DEVELOPMENT_IDS, HOLDOUT_IDS, EvaluatorSignalDataset, SignalDataset,
+    SignalGroundTruthRecord, dataset_loader,
 )
 from scripts.company_enrichment import signal_loop
 from scripts.company_enrichment.signal_loop import (
@@ -365,6 +366,82 @@ def test_resume_rescores_when_a_declared_evaluator_dependency_changes(
     assert resumed_client.executed == []
     assert dev["mean_score"] == "0"
     assert result["gate"]["human_review_eligible"] is False
+
+
+def test_resume_rescores_when_holdout_records_change_under_the_same_hash(
+    repo: Path,
+) -> None:
+    spec = make_spec()
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "changed-records"
+    run_loop(
+        spec, repo_root=repo, run_root=run_root,
+        model_client=FakeModelClient(), resume=False,
+    )
+    score_path = run_root / "scores/holdout/baseline.json"
+    original_score = json.loads(score_path.read_text(encoding="utf-8"))
+    original_loader = spec.load_ground_truth
+
+    def changed_loader(root, dossiers, *, capability=None):
+        loaded = original_loader(root, dossiers, capability=capability)
+        if isinstance(loaded, SignalDataset):
+            return loaded
+        records = dict(loaded.records)
+        record = records[HOLDOUT_IDS[0]]
+        body = json.loads(canonical_json(record.body))
+        body["channels"]["google"]["status"] = "inactive"
+        records[record.company_id] = SignalGroundTruthRecord(record.company_id, body)
+        return EvaluatorSignalDataset(loaded.public, records)
+
+    resumed_client = FakeModelClient()
+    result = run_loop(
+        replace(spec, load_ground_truth=changed_loader), repo_root=repo,
+        run_root=run_root, model_client=resumed_client, resume=True,
+    )
+    rescored = json.loads(score_path.read_text(encoding="utf-8"))
+
+    assert resumed_client.estimates == []
+    assert resumed_client.executed == []
+    assert rescored["ground_truth_fingerprint"] != original_score[
+        "ground_truth_fingerprint"
+    ]
+    assert f"{HOLDOUT_IDS[0]}:status_mismatch" in rescored["hard_failures"]
+    assert result["gate"]["human_review_eligible"] is False
+
+
+def test_changed_evaluator_refuses_cached_invalid_outputs(repo: Path) -> None:
+    class InvalidOutputClient(FakeModelClient):
+        def execute(self, requests, track):
+            raise ValueError("the current parser rejected the provider payload")
+
+    def rejects_payload(_payload):
+        return False
+
+    def accepts_payload(_payload):
+        return True
+
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "invalid-rescore"
+    initial_spec = make_spec(evaluation_dependencies=(rejects_payload,))
+    run_loop(
+        initial_spec, repo_root=repo, run_root=run_root,
+        model_client=InvalidOutputClient(), resume=False,
+    )
+    score_path = run_root / "scores/dev/baseline.json"
+    original_score = score_path.read_bytes()
+
+    resumed_client = FakeModelClient()
+    with pytest.raises(
+        ValueError,
+        match="invalid output artifacts lack retained model output.*new lineage",
+    ):
+        run_loop(
+            replace(initial_spec, evaluation_dependencies=(accepts_payload,)),
+            repo_root=repo, run_root=run_root,
+            model_client=resumed_client, resume=True,
+        )
+
+    assert resumed_client.estimates == []
+    assert resumed_client.executed == []
+    assert score_path.read_bytes() == original_score
 
 
 def test_evaluation_only_resume_refuses_missing_new_winner_holdout(

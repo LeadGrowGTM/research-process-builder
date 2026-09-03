@@ -29,6 +29,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass, replace
 from datetime import date
+from hashlib import sha256
+import importlib.util
 import json
 import math
 from pathlib import Path
@@ -37,6 +39,7 @@ from types import MappingProxyType
 from typing import Any, Mapping
 
 import yaml
+from pydantic import BaseModel
 
 from .definitions import SEMVER, _secret_key
 from .executors import P0_ENRICHMENTS
@@ -283,6 +286,30 @@ def _validate(manifest: Mapping[str, Any], root: Path) -> None:
             raise PackageError(f"{key} must be a relative file inside the package")
         if not candidate.is_file():
             raise PackageError(f"{key} points at a missing file: {manifest[key]}")
+        try:
+            content = candidate.read_text(encoding="utf-8")
+        except (OSError, UnicodeError) as error:
+            raise PackageError(f"{key} must be a readable Python file") from error
+        if not content.strip():
+            raise PackageError(f"{key} must be a non-empty Python file")
+    schema_path = root / manifest["schema_module"]
+    module_spec = importlib.util.spec_from_file_location(
+        f"_enrichment_schema_{sha256(schema_path.read_bytes()).hexdigest()}",
+        schema_path,
+    )
+    if module_spec is None or module_spec.loader is None:
+        raise PackageError("schema_module could not be loaded")
+    schema = importlib.util.module_from_spec(module_spec)
+    try:
+        module_spec.loader.exec_module(schema)
+    except Exception as error:
+        raise PackageError(f"schema_module could not be loaded: {error}") from error
+    for model_name in ("InputModel", "OutputModel"):
+        model = getattr(schema, model_name, None)
+        if not isinstance(model, type) or not issubclass(model, BaseModel):
+            raise PackageError(
+                f"schema_module must export pydantic {model_name}"
+            )
     inputs = manifest["inputs"]
     if not isinstance(inputs, dict):
         raise PackageError("inputs must be a mapping")
@@ -490,6 +517,8 @@ def load_package(root: Path, *, variant: str | None = None) -> EnrichmentPackage
     if "${" in text:
         raise PackageError("environment interpolation is forbidden in a package")
     manifest, body = _split_frontmatter(text, prompt_path)
+    if not body.strip():
+        raise PackageError("prompt body must be non-empty")
     _validate(manifest, root)
     package = EnrichmentPackage(
         root=root,
