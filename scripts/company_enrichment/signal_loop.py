@@ -31,8 +31,11 @@ from typing import Any, Callable, Mapping, Sequence
 from .benchmark import ExecutionTrack
 from .contracts import CompanyDossier, canonical_json
 from .executors import P0_ENRICHMENTS
-from .experiment_runner import ExperimentInput, ModelClient
-from .openai_model_client import build_openai_model_client
+from .experiment_runner import (
+    ExperimentInput, ProviderResponse, ReplayableModelClient,
+)
+from .openai_model_client import MODEL_PRICES, build_openai_model_client
+from .packages import candidate_prompt_text, resolve_prompt_path
 from .signal_evidence import (
     load_cached_dossiers, load_signal_dossier, save_signal_dossier,
 )
@@ -58,6 +61,10 @@ _LINEAGE = re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9._-]{0,79}$")
 # search factory (for example "parallel" or "serper,parallel").
 SEARCH_PROVIDER_ENV = "SIGNAL_SEARCH_PROVIDER"
 _STARTED_MARKERS = ("cost.json", "outputs", "scores", "gate.json", "result.json")
+
+
+def is_safe_lineage(value: Any) -> bool:
+    return isinstance(value, str) and _LINEAGE.fullmatch(value) is not None
 
 
 @dataclass(frozen=True, slots=True)
@@ -114,6 +121,7 @@ class SignalSpec:
     collect: CollectFn | None = None
     candidate_id: str = field(default="baseline")
     postprocess: PostprocessFn | None = None
+    resolve_prompt_layout: bool = True
     # Extra prompt files evaluated as candidates alongside ``prompt_path``;
     # each candidate is identified by its file stem.
     candidate_paths: tuple[Path, ...] = ()
@@ -136,6 +144,8 @@ class SignalSpec:
             raise ValueError("collect must be callable or None")
         if self.postprocess is not None and not callable(self.postprocess):
             raise ValueError("postprocess must be callable or None")
+        if not isinstance(self.resolve_prompt_layout, bool):
+            raise ValueError("resolve_prompt_layout must be boolean")
         candidate_paths = tuple(Path(item) for item in self.candidate_paths)
         for item in candidate_paths:
             _require_repo_relative(item, "candidate_paths")
@@ -173,14 +183,20 @@ def prompt_candidates(spec: SignalSpec, repo_root: Path) -> tuple[PromptCandidat
     """The baseline prompt plus every ``candidate_paths`` file, keyed by stem."""
     candidates: list[PromptCandidate] = []
     seen: set[str] = set()
+    conventional = Path("prompts/company-enrichment") / f"{spec.enrichment_id}.md"
+    baseline_path = (
+        resolve_prompt_path(spec.enrichment_id, repo_root)
+        if spec.resolve_prompt_layout and spec.prompt_path == conventional
+        else spec.prompt_path
+    )
     for candidate_id, path in (
-        (spec.candidate_id, spec.prompt_path),
+        (spec.candidate_id, baseline_path),
         *((item.stem, item) for item in spec.candidate_paths),
     ):
         if candidate_id in seen or not _LINEAGE.match(candidate_id):
             raise ValueError(f"invalid or duplicate prompt candidate id: {candidate_id}")
         seen.add(candidate_id)
-        text = (repo_root / path).read_text(encoding="utf-8").strip()
+        text = candidate_prompt_text(repo_root / path)
         candidates.append(PromptCandidate(
             candidate_id, text, sha256(text.encode("utf-8")).hexdigest(),
         ))
@@ -200,11 +216,14 @@ def _payload_from_execution(execution) -> dict[str, Any]:
     return payload
 
 
-def _reserve_cost(path: Path, attempt_id: str, estimate: Decimal, cap: Decimal = CAP_USD) -> None:
+def _reserve_cost(
+    path: Path, attempt_id: str, estimate: Decimal, company_ids: Sequence[str],
+    cap: Decimal = CAP_USD,
+) -> None:
     state = _read_json(path) or {"cap_usd": str(cap), "reservations": {}}
     reservations = state["reservations"]
     if attempt_id in reservations:
-        return
+        raise ValueError(f"cost reservation already exists: {attempt_id}")
     committed = sum((Decimal(item.get("actual_usd", item["estimate_usd"]))
                      for item in reservations.values()), Decimal("0"))
     if committed + estimate > cap:
@@ -213,7 +232,10 @@ def _reserve_cost(path: Path, attempt_id: str, estimate: Decimal, cap: Decimal =
             "estimate_usd": str(estimate), "cap_usd": str(cap),
         })
         raise BudgetExceeded("aggregate signal loop cap exhausted")
-    reservations[attempt_id] = {"estimate_usd": str(estimate), "status": "reserved"}
+    reservations[attempt_id] = {
+        "company_ids": list(company_ids), "estimate_usd": str(estimate),
+        "status": "reserved",
+    }
     _atomic_json(path, state)
 
 
@@ -234,8 +256,31 @@ def _reconcile_cost(path: Path, attempt_id: str, actual: Decimal, cap: Decimal =
 
 def _total_cost(path: Path) -> Decimal:
     state = _read_json(path) or {"reservations": {}}
-    return sum((Decimal(item.get("actual_usd", "0"))
+    return sum((Decimal(item.get("actual_usd", item["estimate_usd"]))
                 for item in state["reservations"].values()), Decimal("0"))
+
+
+def _reservation_ids(path: Path, attempt_id: str) -> tuple[str, ...]:
+    state = _read_json(path) or {"reservations": {}}
+    prefix = f"{attempt_id}-retry-"
+    matching = (
+        key for key in state["reservations"]
+        if key == attempt_id or key.startswith(prefix)
+    )
+    return tuple(sorted(
+        matching,
+        key=lambda key: 0 if key == attempt_id else int(key.removeprefix(prefix)),
+    ))
+
+
+def _next_reservation_id(path: Path, attempt_id: str) -> str:
+    existing = set(_reservation_ids(path, attempt_id))
+    if attempt_id not in existing:
+        return attempt_id
+    retry = 1
+    while f"{attempt_id}-retry-{retry}" in existing:
+        retry += 1
+    return f"{attempt_id}-retry-{retry}"
 
 
 def _score_attempt(
@@ -264,20 +309,19 @@ def _score_attempt(
 def _run_attempt(
     *, spec: SignalSpec, run_root: Path, attempt_id: str, split: str, ids: Sequence[str],
     candidate: PromptCandidate, records: Mapping[str, SignalGroundTruthRecord],
-    dossiers: Mapping[str, CompanyDossier], dataset_hash: str, model_client: ModelClient,
+    dossiers: Mapping[str, CompanyDossier], dataset_hash: str,
+    model_client: ReplayableModelClient,
+    model_id: str, requests_by_company: Mapping[str, ExperimentInput],
+    allow_provider_execution: bool,
 ) -> dict[str, Any] | None:
-    requests = tuple(ExperimentInput(
-        spec.enrichment_id, company_id, MODEL_ID, dossiers[company_id],
-        candidate.candidate_id, candidate.text, spec.output_contract(dossiers[company_id]),
-    ) for company_id in ids)
-    estimate = Decimal(model_client.estimate(requests, ExecutionTrack.SYNCHRONOUS))
     output_dir = run_root / "outputs" / split / candidate.candidate_id
     score_path = run_root / "scores" / split / f"{candidate.candidate_id}.json"
     cost_path = run_root / "cost.json"
 
     def input_hash(company_id: str) -> str:
         return sha256(canonical_json({
-            "dossier": _primitive(dossiers[company_id]), "prompt_hash": candidate.prompt_hash,
+            "dossier": _primitive(dossiers[company_id]), "model_id": model_id,
+            "prompt_hash": candidate.prompt_hash,
         }).encode("utf-8")).hexdigest()
 
     def inventor(_envelope):
@@ -288,50 +332,110 @@ def _run_attempt(
     def checker(name):
         return lambda _envelope: CheckerResult(SCHEMA_VERSION, name, True, "bounded")
 
+    def request_fingerprint(company_id: str) -> str:
+        return model_client.request_fingerprint(requests_by_company[company_id])
+
+    def decode_artifact(
+        company_id: str, artifact: Mapping[str, Any],
+    ) -> dict[str, Any]:
+        response = ProviderResponse(
+            company_id,
+            artifact["provider_response"],
+            int(artifact["latency_ms"]),
+        )
+        base = {
+            "company_id": company_id,
+            "input_hash": input_hash(company_id),
+            "latency_ms": response.latency_ms,
+            "provider_request_fingerprint": request_fingerprint(company_id),
+            "provider_response": _primitive(response.payload),
+            "requested_model": model_id,
+            "source_cache_reused": True,
+            "source_purchases": 0,
+        }
+        try:
+            execution = model_client.decode_response(
+                requests_by_company[company_id], response,
+                ExecutionTrack.SYNCHRONOUS,
+            )
+        except ValueError as error:
+            decoded = {
+                **base,
+                "error": type(error).__name__,
+                "error_message": str(error)[:500],
+                "invalid_output": True,
+            }
+        else:
+            if execution.company_id != company_id:
+                raise ValueError("decoded response company does not match its request")
+            payload = _payload_from_execution(execution)
+            decoded = {
+                **base,
+                "model_cost_usd": execution.actual_cost_usd,
+                "output": payload,
+                "resolved_model": execution.resolved_model_id,
+            }
+            if spec.postprocess is not None:
+                grounded, report = spec.postprocess(payload, dossiers[company_id])
+                decoded.update({
+                    "model_output": payload,
+                    "output": grounded,
+                    "postprocess": report,
+                })
+        _atomic_json(output_dir / f"{company_id}.json", decoded)
+        return decoded
+
+    def replay_stored_outputs(
+        artifacts: Mapping[str, dict[str, Any] | None],
+    ) -> dict[str, dict[str, Any] | None]:
+        replayed: dict[str, dict[str, Any] | None] = {}
+        for company_id, artifact in artifacts.items():
+            if artifact is None or "provider_response" not in artifact:
+                replayed[company_id] = artifact
+                continue
+            expected = request_fingerprint(company_id)
+            if artifact.get("provider_request_fingerprint") != expected:
+                raise ValueError(
+                    f"stored provider response does not match request for {company_id}"
+                )
+            replayed[company_id] = decode_artifact(company_id, artifact)
+        return replayed
+
     def executor(_envelope):
-        _reserve_cost(cost_path, attempt_id, estimate)
+        _reserve_cost(cost_path, reservation_id, estimate, pending_ids)
         executions = []
         invalid_ids: list[str] = []
         for request in requests:
-            try:
-                execution = model_client.execute((request,), ExecutionTrack.SYNCHRONOUS)[0]
-            except Exception as error:
-                invalid_ids.append(request.company_id)
-                _atomic_json(output_dir / f"{request.company_id}.json", {
-                    "company_id": request.company_id,
-                    "error": type(error).__name__,
-                    # The message never contains prompt text or secrets; it is
-                    # the validator/provider reason, kept so a failed case can
-                    # be diagnosed without re-running the model.
-                    "error_message": str(error)[:500],
-                    "input_hash": input_hash(request.company_id),
-                    "invalid_output": True,
-                    "requested_model": MODEL_ID,
-                    "source_cache_reused": True,
-                    "source_purchases": 0,
-                })
-                continue
-            executions.append(execution)
-            payload = _payload_from_execution(execution)
-            artifact = {
-                "company_id": execution.company_id,
-                "input_hash": input_hash(execution.company_id),
-                "latency_ms": execution.latency_ms,
-                "model_cost_usd": execution.actual_cost_usd,
-                "output": payload,
-                "requested_model": MODEL_ID,
-                "resolved_model": execution.resolved_model_id,
+            responses = model_client.acquire_responses(
+                (request,), ExecutionTrack.SYNCHRONOUS,
+            )
+            if (
+                len(responses) != 1
+                or not isinstance(responses[0], ProviderResponse)
+                or responses[0].company_id != request.company_id
+            ):
+                raise ValueError("model client returned the wrong provider response")
+            response = responses[0]
+            raw_artifact = {
+                "company_id": request.company_id,
+                "input_hash": input_hash(request.company_id),
+                "latency_ms": response.latency_ms,
+                "provider_request_fingerprint": request_fingerprint(request.company_id),
+                "provider_response": _primitive(response.payload),
+                "requested_model": model_id,
                 "source_cache_reused": True,
                 "source_purchases": 0,
             }
-            if spec.postprocess is not None:
-                grounded, report = spec.postprocess(payload, dossiers[execution.company_id])
-                artifact.update({
-                    "model_output": payload, "output": grounded, "postprocess": report,
-                })
-            _atomic_json(output_dir / f"{execution.company_id}.json", artifact)
-        actual = sum((Decimal(item.actual_cost_usd) for item in executions), Decimal("0"))
-        _reconcile_cost(cost_path, attempt_id, estimate if invalid_ids else actual)
+            _atomic_json(output_dir / f"{request.company_id}.json", raw_artifact)
+            artifact = decode_artifact(request.company_id, raw_artifact)
+            if artifact.get("invalid_output") is True:
+                invalid_ids.append(request.company_id)
+                continue
+            executions.append(artifact)
+        actual = sum(
+            (Decimal(item["model_cost_usd"]) for item in executions), Decimal("0")
+        )
+        _reconcile_cost(cost_path, reservation_id, estimate if invalid_ids else actual)
         return tuple(Evidence(
             SCHEMA_VERSION, dossiers[company_id].evidence[0].url,
             canonical_json({
@@ -354,20 +458,82 @@ def _run_attempt(
         return EvaluationResult(SCHEMA_VERSION, not failures, float(mean),
                                 "scored" if not failures else "hard_failure")
 
+    artifacts = {
+        company_id: _read_json(output_dir / f"{company_id}.json")
+        for company_id in ids
+    }
+    artifacts = replay_stored_outputs(artifacts)
+    complete_outputs = all(
+        artifact is not None and "provider_response" in artifact
+        for artifact in artifacts.values()
+    )
+    existing_reservations = _reservation_ids(cost_path, attempt_id)
+    if complete_outputs:
+        if not existing_reservations:
+            raise ValueError(f"completed outputs lack a cost reservation: {attempt_id}")
+        state = _read_json(cost_path)
+        reservations = state["reservations"]
+        completed = [
+            key for key in existing_reservations
+            if reservations[key].get("status") == "completed"
+        ]
+        if not completed:
+            reservation_id = existing_reservations[-1]
+            reservation_company_ids = tuple(
+                reservations[reservation_id].get("company_ids", ids)
+            )
+            invalid = any(
+                artifacts[company_id].get("invalid_output") is True
+                for company_id in reservation_company_ids
+            )
+            actual = (
+                Decimal(reservations[reservation_id]["estimate_usd"])
+                if invalid
+                else sum(
+                    (
+                        Decimal(artifacts[company_id]["model_cost_usd"])
+                        for company_id in reservation_company_ids
+                    ),
+                    Decimal("0"),
+                )
+            )
+            _reconcile_cost(cost_path, reservation_id, actual)
+        evaluator(None)
+        return _read_json(score_path)
+
+    pending_ids = tuple(
+        company_id for company_id, artifact in artifacts.items()
+        if artifact is None or "provider_response" not in artifact
+    )
+    if not allow_provider_execution:
+        missing = ", ".join(
+            str((output_dir / f"{company_id}.json").relative_to(run_root))
+            for company_id in pending_ids
+        )
+        raise ValueError(
+            f"evaluation-only resume is missing stored {split} artifacts for candidate "
+            f"{candidate.candidate_id}: {missing}; run the {split} for that candidate "
+            "deliberately"
+        )
+    requests = tuple(requests_by_company[company_id] for company_id in pending_ids)
+    estimate = Decimal(model_client.estimate(requests, ExecutionTrack.SYNCHRONOUS))
+    reservation_id = _next_reservation_id(cost_path, attempt_id)
+
     zero = BudgetCharge()
     RoleRunners(
         inventor, checker("in_bounds"), checker("novelty"), executor, evaluator,
         {Role.INVENTOR: zero, Role.IN_BOUNDS_CHECKER: zero, Role.NOVELTY_CHECKER: zero,
-         Role.EXECUTOR: BudgetCharge(calls=1, llm_calls=len(ids), cost=float(estimate)),
+         Role.EXECUTOR: BudgetCharge(calls=1, llm_calls=len(requests), cost=float(estimate)),
          Role.EVALUATOR: zero},
     )
     RunRequest(
-        SCHEMA_VERSION, attempt_id, f"{spec.enrichment_id} {split} prompt attempt",
+        SCHEMA_VERSION, reservation_id, f"{spec.enrichment_id} {split} prompt attempt",
         ("cached_dossier_evidence_only", "zero_source_purchases", "sync_only"), {},
-        BudgetLimits(max_calls=1, max_llm_calls=len(ids), max_cost=float(CAP_USD)),
+        BudgetLimits(max_calls=1, max_llm_calls=len(requests), max_cost=float(CAP_USD)),
         .90,
-        execution_inputs={"company_ids": tuple(ids), "dataset_hash": dataset_hash,
-                          "prompt_hash": candidate.prompt_hash, "split": split},
+        execution_inputs={"company_ids": pending_ids, "dataset_hash": dataset_hash,
+                          "model_id": model_id, "prompt_hash": candidate.prompt_hash,
+                          "split": split},
         rubric=spec.rubric,
     )
     executor(None)
@@ -379,36 +545,125 @@ def _started(run_root: Path) -> bool:
     return any((run_root / name).exists() for name in _STARTED_MARKERS)
 
 
-def _write_inputs(spec: SignalSpec, repo_root: Path, run_root: Path, public: SignalDataset) -> None:
+def _lineage_inputs(
+    spec: SignalSpec, repo_root: Path, public: SignalDataset,
+    dossiers: Mapping[str, CompanyDossier], candidates: Sequence[PromptCandidate],
+    model_id: str, *, model_client: ReplayableModelClient | None = None,
+    requests: Mapping[str, Mapping[str, ExperimentInput]] | None = None,
+) -> dict[str, Any]:
     def digest(path: Path) -> str:
         return sha256(path.read_bytes()).hexdigest()
-    _atomic_json(run_root / "inputs.json", {
+
+    inputs = {
         "all_ids": list(public.all_ids), "dataset_hash": public.dataset_hash,
+        "candidate_prompt_hashes": {
+            candidate.candidate_id: candidate.prompt_hash for candidate in candidates
+        },
         "development_ids": list(public.development_ids),
-        "dossier_hashes": {company_id: digest(
-            repo_root / "benchmarks/dossiers" / f"{company_id}.yaml",
-        ) for company_id in ALL_IDS},
+        "dossier_hashes": {
+            company_id: sha256(
+                canonical_json(_primitive(dossiers[company_id])).encode("utf-8")
+            ).hexdigest()
+            for company_id in public.all_ids
+        },
         "enrichment_id": spec.enrichment_id,
-        "holdout_ids": list(public.holdout_ids), "source_purchases": 0,
+        "holdout_ids": list(public.holdout_ids), "model": model_id,
+        "source_purchases": 0,
         "signal_hashes": {company_id: digest(
             repo_root / spec.benchmark_dir / f"{company_id}.yaml",
-        ) for company_id in ALL_IDS},
-    })
+        ) for company_id in public.all_ids},
+    }
+    if model_client is None and requests is None:
+        return inputs
+    if model_client is None or any(
+        not callable(getattr(model_client, name, None))
+        for name in ("acquire_responses", "decode_response")
+    ):
+        raise ValueError("model client cannot persist and replay provider responses")
+    fingerprint_request = getattr(model_client, "request_fingerprint", None)
+    if not callable(fingerprint_request) or requests is None:
+        raise ValueError("model client cannot deterministically fingerprint requests")
+    provider_requests = []
+    for candidate in candidates:
+        candidate_requests = []
+        for company_id in public.all_ids:
+            fingerprint = fingerprint_request(requests[candidate.candidate_id][company_id])
+            if not isinstance(fingerprint, str) or not re.fullmatch(
+                r"[0-9a-f]{64}", fingerprint
+            ):
+                raise ValueError("model client returned an invalid request fingerprint")
+            candidate_requests.append({
+                "company_id": company_id,
+                "fingerprint": fingerprint,
+            })
+        provider_requests.append({
+            "candidate_id": candidate.candidate_id,
+            "requests": candidate_requests,
+        })
+    inputs["provider_requests"] = provider_requests
+    inputs["lineage_fingerprint"] = sha256(
+        canonical_json(provider_requests).encode("utf-8")
+    ).hexdigest()
+    return inputs
+
+
+def _provider_requests(
+    spec: SignalSpec, candidates: Sequence[PromptCandidate],
+    dossiers: Mapping[str, CompanyDossier], company_ids: Sequence[str], model_id: str,
+) -> dict[str, dict[str, ExperimentInput]]:
+    return {
+        candidate.candidate_id: {
+            company_id: ExperimentInput(
+                spec.enrichment_id, company_id, model_id, dossiers[company_id],
+                candidate.candidate_id, candidate.text,
+                spec.output_contract(dossiers[company_id]),
+            )
+            for company_id in company_ids
+        }
+        for candidate in candidates
+    }
+
+
+def _write_inputs(run_root: Path, inputs: Mapping[str, Any]) -> None:
+    _atomic_json(run_root / "inputs.json", inputs)
 
 
 def run_loop(
-    spec: SignalSpec, *, repo_root: Path, run_root: Path, model_client: ModelClient,
-    resume: bool,
+    spec: SignalSpec, *, repo_root: Path, run_root: Path,
+    model_client: ReplayableModelClient,
+    resume: bool, model_id: str = MODEL_ID,
 ) -> dict[str, Any]:
-    if _started(run_root) and not resume:
+    started = _started(run_root)
+    if started and not resume:
         raise ValueError("lineage already exists; pass --resume")
+    prior_inputs = _read_json(run_root / "inputs.json") if started else None
+    if started:
+        prior_model = prior_inputs.get("model") if prior_inputs else None
+        if prior_model != model_id:
+            raise ValueError(
+                f"resume model {model_id!r} does not match lineage model {prior_model!r}"
+            )
     run_root.mkdir(parents=True, exist_ok=True)
     dossiers = load_signal_dossiers(spec, repo_root)
     public = spec.load_ground_truth(repo_root, dossiers)
     if not isinstance(public, SignalDataset):
         raise ValueError("load_ground_truth must return a public SignalDataset")
     candidates = prompt_candidates(spec, repo_root)
-    _write_inputs(spec, repo_root, run_root, public)
+    requests = _provider_requests(
+        spec, candidates, dossiers, public.all_ids, model_id,
+    )
+    inputs = _lineage_inputs(
+        spec, repo_root, public, dossiers, candidates, model_id,
+        model_client=model_client, requests=requests,
+    )
+    if started and (
+        prior_inputs is None
+        or prior_inputs.get("lineage_fingerprint") != inputs["lineage_fingerprint"]
+    ):
+        raise ValueError("resume inputs do not match the existing lineage")
+    completed_resume = started and (run_root / "result.json").is_file()
+    if not started:
+        _write_inputs(run_root, inputs)
     _atomic_json(run_root / "candidates.json", {
         "candidates": [{"candidate_id": item.candidate_id, "prompt_hash": item.prompt_hash,
                         "prompt_text": item.text} for item in candidates],
@@ -421,7 +676,9 @@ def run_loop(
             spec=spec, run_root=run_root, attempt_id=f"dev-{index}-{candidate.candidate_id}",
             split="dev", ids=public.development_ids, candidate=candidate,
             records=public.records, dossiers=dossiers, dataset_hash=public.dataset_hash,
-            model_client=model_client,
+            model_client=model_client, model_id=model_id,
+            requests_by_company=requests[candidate.candidate_id],
+            allow_provider_execution=not completed_resume,
         )
         if score is None:
             break
@@ -431,7 +688,7 @@ def run_loop(
         gate = {"action": "halt_for_review", "approval": False,
                 "human_review_eligible": False, "reason_code": "budget_exhausted",
                 "threshold": str(THRESHOLD)}
-        result = {"enrichment_id": spec.enrichment_id, "gate": gate, "model": MODEL_ID,
+        result = {"enrichment_id": spec.enrichment_id, "gate": gate, "model": model_id,
                   "total_cost_usd": str(_total_cost(run_root / "cost.json"))}
         _atomic_json(run_root / "gate.json", gate)
         _atomic_json(run_root / "result.json", result)
@@ -451,6 +708,8 @@ def run_loop(
         split="holdout", ids=public.holdout_ids, candidate=winner,
         records=evaluator_dataset.records, dossiers=dossiers,
         dataset_hash=evaluator_dataset.public.dataset_hash, model_client=model_client,
+        model_id=model_id, requests_by_company=requests[winner.candidate_id],
+        allow_provider_execution=not completed_resume,
     )
     if holdout is None:
         mean, failures = Decimal("0"), ("budget_exhausted",)
@@ -469,16 +728,19 @@ def run_loop(
         "threshold": str(THRESHOLD),
     }
     result = {
-        "enrichment_id": spec.enrichment_id, "gate": gate, "model": MODEL_ID,
+        "enrichment_id": spec.enrichment_id, "gate": gate, "model": model_id,
         "source_purchases": 0, "total_cost_usd": str(_total_cost(run_root / "cost.json")),
         "winner": winner_value,
     }
     _atomic_json(run_root / "gate.json", gate)
     _atomic_json(run_root / "result.json", result)
+    _write_inputs(run_root, inputs)
     return result
 
 
-def _dry_plan(spec: SignalSpec, lineage: str, repo_root: Path) -> dict[str, Any]:
+def _dry_plan(
+    spec: SignalSpec, lineage: str, repo_root: Path, model_id: str = MODEL_ID,
+) -> dict[str, Any]:
     return {
         "all_ids": list(ALL_IDS), "approval": False, "cached_only": True,
         "candidate_prompt_hashes": [
@@ -486,7 +748,7 @@ def _dry_plan(spec: SignalSpec, lineage: str, repo_root: Path) -> dict[str, Any]
         ],
         "cost_cap_usd": str(CAP_USD), "development_ids": list(DEVELOPMENT_IDS),
         "enrichment_id": spec.enrichment_id, "holdout_ids": list(HOLDOUT_IDS),
-        "lineage": lineage, "model": MODEL_ID, "source_purchases": 0,
+        "lineage": lineage, "model": model_id, "source_purchases": 0,
         "track": "synchronous",
     }
 
@@ -566,6 +828,7 @@ def main(
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--allow-paid", action="store_true")
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--model", choices=tuple(MODEL_PRICES), default=MODEL_ID)
     args = parser.parse_args(argv)
     root = Path(repo_root or Path(__file__).resolve().parents[2])
     if args.search_provider:
@@ -573,7 +836,10 @@ def main(
     if args.prompt or args.candidate or args.benchmark_dir:
         overrides: dict[str, Any] = {}
         if args.prompt:
-            overrides.update(prompt_path=Path(args.prompt), candidate_id=Path(args.prompt).stem)
+            overrides.update(
+                prompt_path=Path(args.prompt), candidate_id=Path(args.prompt).stem,
+                resolve_prompt_layout=False,
+            )
         if args.candidate:
             overrides["candidate_paths"] = (
                 *spec.candidate_paths, *(Path(item) for item in args.candidate),
@@ -604,15 +870,27 @@ def main(
         print(canonical_json(result))
         return 0
 
-    if not args.lineage or not _LINEAGE.fullmatch(args.lineage):
+    if not is_safe_lineage(args.lineage):
         parser.error("--evaluate requires --lineage as a safe task-scoped name")
     base = Path(artifact_root or root / "runs/company-enrichment" / spec.enrichment_id)
     run_root = base / args.lineage
     if args.dry_run:
+        if _started(run_root):
+            print(canonical_json({
+                "approval": False,
+                "error": "ValueError",
+                "message": (
+                    "cannot dry-run a started lineage; use a new lineage name "
+                    "for a plan preview"
+                ),
+            }))
+            return 2
         dossiers = load_signal_dossiers(spec, root)
         public = spec.load_ground_truth(root, dossiers)
-        _write_inputs(spec, root, run_root, public)
-        print(canonical_json(_dry_plan(spec, args.lineage, root)))
+        candidates = prompt_candidates(spec, root)
+        inputs = _lineage_inputs(spec, root, public, dossiers, candidates, args.model)
+        _write_inputs(run_root, inputs)
+        print(canonical_json(_dry_plan(spec, args.lineage, root, args.model)))
         return 0
     if not args.allow_paid:
         print(canonical_json({"approval": False, "error": "--allow-paid is required"}))
@@ -620,7 +898,7 @@ def main(
     client = model_client_factory(artifact_root=run_root)
     try:
         result = run_loop(spec, repo_root=root, run_root=run_root,
-                          model_client=client, resume=args.resume)
+                          model_client=client, resume=args.resume, model_id=args.model)
     except (BudgetExceeded, ValueError) as error:
         print(canonical_json({"approval": False, "error": type(error).__name__,
                               "message": str(error)}))

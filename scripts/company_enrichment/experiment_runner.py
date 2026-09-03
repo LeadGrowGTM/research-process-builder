@@ -9,7 +9,7 @@ import os
 from pathlib import Path
 import secrets
 from types import MappingProxyType
-from typing import Mapping, Protocol, Sequence
+from typing import Mapping, Protocol, Sequence, runtime_checkable
 
 from ._locking import file_lock
 from .benchmark import (
@@ -103,7 +103,54 @@ class ModelExecution:
             raise ValueError("actual model cost must be finite and non-negative")
 
 
+@dataclass(frozen=True, slots=True)
+class ProviderResponse:
+    company_id: str
+    payload: Mapping[str, object]
+    latency_ms: int
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.company_id, str) or not self.company_id:
+            raise ValueError("provider response company ID must be non-empty text")
+        if not isinstance(self.payload, Mapping):
+            raise ValueError("provider response payload must be a mapping")
+        if (
+            isinstance(self.latency_ms, bool)
+            or not isinstance(self.latency_ms, int)
+            or self.latency_ms < 0
+        ):
+            raise ValueError("provider response latency must be non-negative")
+        canonical_json(self.payload)
+        object.__setattr__(self, "payload", ExperimentInput._freeze(self.payload))
+
+    def to_dict(self) -> dict[str, object]:
+        return {
+            "company_id": self.company_id,
+            "latency_ms": self.latency_ms,
+            "payload": json.loads(canonical_json(self.payload)),
+        }
+
+    @classmethod
+    def from_dict(cls, value: Mapping[str, object]) -> ProviderResponse:
+        company_id = value["company_id"]
+        payload = value["payload"]
+        latency_ms = value["latency_ms"]
+        if not isinstance(company_id, str):
+            raise ValueError("provider response company ID must be text")
+        if not isinstance(payload, Mapping):
+            raise ValueError("provider response payload must be a mapping")
+        if isinstance(latency_ms, bool) or not isinstance(latency_ms, int):
+            raise ValueError("provider response latency must be an integer")
+        return cls(
+            company_id=company_id,
+            payload=payload,
+            latency_ms=latency_ms,
+        )
+
+
 class ModelClient(Protocol):
+    def request_fingerprint(self, request: ExperimentInput) -> str: ...
+
     def estimate(
         self, requests: Sequence[ExperimentInput], track: ExecutionTrack,
     ) -> str: ...
@@ -111,6 +158,20 @@ class ModelClient(Protocol):
     def execute(
         self, requests: Sequence[ExperimentInput], track: ExecutionTrack,
     ) -> tuple[ModelExecution, ...]: ...
+
+
+@runtime_checkable
+class ReplayableModelClient(ModelClient, Protocol):
+    def acquire_responses(
+        self, requests: Sequence[ExperimentInput], track: ExecutionTrack,
+    ) -> tuple[ProviderResponse, ...]: ...
+
+    def decode_response(
+        self,
+        request: ExperimentInput,
+        response: ProviderResponse,
+        track: ExecutionTrack,
+    ) -> ModelExecution: ...
 
 
 class PendingModelClient(ModelClient, Protocol):

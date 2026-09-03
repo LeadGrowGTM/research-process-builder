@@ -46,3 +46,6 @@ Thumbs.db
 htmlcov/
 runs/
 .artifacts/
+
+# Local review artifacts served by lavish-axi
+.lavish/

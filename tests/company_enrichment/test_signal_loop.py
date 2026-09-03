@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+from dataclasses import replace
 from decimal import Decimal
+from hashlib import sha256
 import json
 from pathlib import Path
 from typing import Any, Mapping
@@ -9,12 +11,17 @@ import pytest
 
 from scripts.company_enrichment.benchmark import ExecutionTrack
 from scripts.company_enrichment.contracts import (
-    CompanyDossier, FieldAssertion, Visibility,
+    CompanyDossier, FieldAssertion, Visibility, canonical_json,
 )
-from scripts.company_enrichment.experiment_runner import ExperimentInput, ModelExecution
-from scripts.company_enrichment.signal_evidence import load_signal_dossier, signal_dossier
+from scripts.company_enrichment.experiment_runner import (
+    ExperimentInput, ModelExecution, ProviderResponse,
+)
+from scripts.company_enrichment.signal_evidence import (
+    load_signal_dossier, save_signal_dossier, signal_dossier,
+)
 from scripts.company_enrichment.signal_ground_truth import (
-    ALL_IDS, DEVELOPMENT_IDS, HOLDOUT_IDS, SignalGroundTruthRecord, dataset_loader,
+    ALL_IDS, DEVELOPMENT_IDS, HOLDOUT_IDS, EvaluatorSignalDataset, SignalDataset,
+    SignalGroundTruthRecord, dataset_loader,
 )
 from scripts.company_enrichment import signal_loop
 from scripts.company_enrichment.signal_loop import (
@@ -71,13 +78,17 @@ class FakeModelClient:
         self.cost = cost
         self.executed: list[str] = []
         self.estimates: list[tuple[str, ...]] = []
+        self.decoded: list[str] = []
+
+    def request_fingerprint(self, request: ExperimentInput) -> str:
+        return sha256(canonical_json(request).encode("utf-8")).hexdigest()
 
     def estimate(self, requests, track) -> str:
         assert track is ExecutionTrack.SYNCHRONOUS
         self.estimates.append(tuple(item.company_id for item in requests))
         return str(Decimal(self.cost) * len(requests))
 
-    def execute(self, requests, track) -> tuple[ModelExecution, ...]:
+    def acquire_responses(self, requests, track) -> tuple[ProviderResponse, ...]:
         assert track is ExecutionTrack.SYNCHRONOUS
         results = []
         for request in requests:
@@ -87,15 +98,42 @@ class FakeModelClient:
             evidence_id = f"ev-{request.company_id}-google"
             assert evidence_id in {item.evidence_id for item in request.dossier.evidence}
             self.executed.append(request.company_id)
-            results.append(ModelExecution(
+            results.append(ProviderResponse(
                 request.company_id,
-                (FieldAssertion(
-                    "ads", {"google": {"status": self.status, "evidence_ids": [evidence_id]}},
-                    (evidence_id,), 1.0, Visibility.MESSAGE_SAFE,
-                ),),
-                (), "gpt-4.1-mini-2025-04-14", 12, self.cost,
+                {
+                    "cost": self.cost,
+                    "evidence_id": evidence_id,
+                    "resolved_model_id": "gpt-4.1-mini-2025-04-14",
+                    "status": self.status,
+                },
+                12,
             ))
         return tuple(results)
+
+    def decode_response(self, request, response, track) -> ModelExecution:
+        assert track is ExecutionTrack.SYNCHRONOUS
+        self.decoded.append(request.company_id)
+        evidence_id = response.payload["evidence_id"]
+        return ModelExecution(
+            request.company_id,
+            (FieldAssertion(
+                "ads",
+                {"google": {
+                    "status": response.payload["status"],
+                    "evidence_ids": [evidence_id],
+                }},
+                (evidence_id,), 1.0, Visibility.MESSAGE_SAFE,
+            ),),
+            (), response.payload["resolved_model_id"], response.latency_ms,
+            response.payload["cost"],
+        )
+
+    def execute(self, requests, track) -> tuple[ModelExecution, ...]:
+        responses = self.acquire_responses(requests, track)
+        return tuple(
+            self.decode_response(request, response, track)
+            for request, response in zip(requests, responses, strict=True)
+        )
 
 
 @pytest.fixture
@@ -132,11 +170,46 @@ def test_dry_run_writes_inputs_and_no_cost(repo: Path, capsys):
     assert inputs["holdout_ids"] == list(HOLDOUT_IDS)
     assert set(inputs["signal_hashes"]) == set(ALL_IDS)
     assert set(inputs["dossier_hashes"]) == set(ALL_IDS)
+    assert set(inputs["candidate_prompt_hashes"]) == {"baseline"}
+    assert "lineage_fingerprint" not in inputs
     assert not (run_root / "cost.json").exists()
     assert not (run_root / "outputs").exists()
     plan = json.loads(capsys.readouterr().out)
     assert plan["cached_only"] is True and plan["source_purchases"] == 0
     assert plan["enrichment_id"] == ENRICHMENT and plan["cost_cap_usd"] == "1.00"
+
+
+def test_dry_run_cannot_overwrite_a_started_lineage(repo: Path, capsys) -> None:
+    spec = make_spec()
+    lineage = "paid-before-dry-run"
+    paid_args = ["--evaluate", "--lineage", lineage, "--allow-paid"]
+    first_client = FakeModelClient()
+    assert signal_loop.main(
+        spec, paid_args, repo_root=repo,
+        model_client_factory=lambda **_: first_client,
+    ) == 0
+    capsys.readouterr()
+
+    inputs_path = (
+        repo / "runs/company-enrichment" / ENRICHMENT / lineage / "inputs.json"
+    )
+    original_inputs = inputs_path.read_bytes()
+    assert signal_loop.main(
+        spec, ["--evaluate", "--lineage", lineage, "--dry-run"], repo_root=repo,
+        model_client_factory=lambda **_: pytest.fail("dry-run created a model client"),
+    ) == 2
+    error = json.loads(capsys.readouterr().out)
+    assert error["error"] == "ValueError"
+    assert "cannot dry-run a started lineage" in error["message"]
+    assert inputs_path.read_bytes() == original_inputs
+
+    resumed_client = FakeModelClient()
+    assert signal_loop.main(
+        spec, [*paid_args, "--resume"], repo_root=repo,
+        model_client_factory=lambda **_: resumed_client,
+    ) == 0
+    assert resumed_client.estimates == []
+    assert resumed_client.executed == []
 
 
 def test_evaluate_requires_allow_paid(repo: Path, capsys):
@@ -220,6 +293,328 @@ def test_resume_lineage_guard(repo: Path, capsys):
     capsys.readouterr()
     assert signal_loop.main(spec, ["--evaluate", "--lineage", "lineage-3", "--allow-paid"],
                             repo_root=repo, model_client_factory=factory) == 0
+
+
+def test_completed_resume_reuses_artifacts_without_provider_calls(repo: Path) -> None:
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "completed-resume"
+    first = FakeModelClient()
+    initial = run_loop(
+        make_spec(), repo_root=repo, run_root=run_root,
+        model_client=first, resume=False,
+    )
+    resumed_client = FakeModelClient()
+    resumed = run_loop(
+        make_spec(), repo_root=repo, run_root=run_root,
+        model_client=resumed_client, resume=True,
+    )
+
+    assert resumed_client.estimates == []
+    assert resumed_client.executed == []
+    assert resumed == initial
+
+
+def test_resume_rescores_completed_outputs_when_the_scorer_changes(repo: Path) -> None:
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "changed-scorer"
+    run_loop(
+        make_spec(), repo_root=repo, run_root=run_root,
+        model_client=FakeModelClient(), resume=False,
+    )
+
+    def zero_score(
+        payload: Mapping[str, Any], record: SignalGroundTruthRecord,
+        dossier: CompanyDossier,
+    ) -> CaseScore:
+        original = _score(payload, record, dossier)
+        return replace(original, score=Decimal("0"))
+
+    resumed_client = FakeModelClient()
+    result = run_loop(
+        make_spec(score=zero_score), repo_root=repo, run_root=run_root,
+        model_client=resumed_client, resume=True,
+    )
+    dev = json.loads((run_root / "scores/dev/baseline.json").read_text(encoding="utf-8"))
+    holdout = json.loads(
+        (run_root / "scores/holdout/baseline.json").read_text(encoding="utf-8")
+    )
+
+    assert resumed_client.estimates == []
+    assert resumed_client.executed == []
+    assert dev["mean_score"] == "0"
+    assert holdout["mean_score"] == "0"
+    assert result["gate"]["human_review_eligible"] is False
+
+
+def test_resume_rescores_when_the_shared_scoring_engine_changes(
+    repo: Path, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "changed-engine"
+    run_loop(
+        make_spec(),
+        repo_root=repo, run_root=run_root, model_client=FakeModelClient(), resume=False,
+    )
+
+    original_score_attempt = signal_loop._score_attempt
+
+    def zero_mean(*args, **kwargs):
+        cases, _mean, failures = original_score_attempt(*args, **kwargs)
+        return cases, Decimal("0"), failures
+
+    monkeypatch.setattr(signal_loop, "_score_attempt", zero_mean)
+    resumed_client = FakeModelClient()
+    result = run_loop(
+        make_spec(),
+        repo_root=repo, run_root=run_root, model_client=resumed_client, resume=True,
+    )
+
+    dev = json.loads((run_root / "scores/dev/baseline.json").read_text(encoding="utf-8"))
+    assert resumed_client.estimates == []
+    assert resumed_client.executed == []
+    assert dev["mean_score"] == "0"
+    assert result["gate"]["human_review_eligible"] is False
+
+
+def test_resume_rescores_when_holdout_records_change_under_the_same_hash(
+    repo: Path,
+) -> None:
+    spec = make_spec()
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "changed-records"
+    run_loop(
+        spec, repo_root=repo, run_root=run_root,
+        model_client=FakeModelClient(), resume=False,
+    )
+    score_path = run_root / "scores/holdout/baseline.json"
+    original_loader = spec.load_ground_truth
+
+    def changed_loader(root, dossiers, *, capability=None):
+        loaded = original_loader(root, dossiers, capability=capability)
+        if isinstance(loaded, SignalDataset):
+            return loaded
+        records = dict(loaded.records)
+        record = records[HOLDOUT_IDS[0]]
+        body = json.loads(canonical_json(record.body))
+        body["channels"]["google"]["status"] = "inactive"
+        records[record.company_id] = SignalGroundTruthRecord(record.company_id, body)
+        return EvaluatorSignalDataset(loaded.public, records)
+
+    resumed_client = FakeModelClient()
+    result = run_loop(
+        replace(spec, load_ground_truth=changed_loader), repo_root=repo,
+        run_root=run_root, model_client=resumed_client, resume=True,
+    )
+    rescored = json.loads(score_path.read_text(encoding="utf-8"))
+
+    assert resumed_client.estimates == []
+    assert resumed_client.executed == []
+    assert f"{HOLDOUT_IDS[0]}:status_mismatch" in rescored["hard_failures"]
+    assert result["gate"]["human_review_eligible"] is False
+
+
+def test_resume_redecodes_previously_rejected_provider_responses(repo: Path) -> None:
+    class RejectingDecoder(FakeModelClient):
+        def decode_response(self, request, response, track):
+            self.decoded.append(request.company_id)
+            raise ValueError("the current decoder rejected the provider payload")
+
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "decoder-replay"
+    run_loop(
+        make_spec(), repo_root=repo, run_root=run_root,
+        model_client=RejectingDecoder(), resume=False,
+    )
+    score_path = run_root / "scores/dev/baseline.json"
+    initial_score = json.loads(score_path.read_text(encoding="utf-8"))
+    artifact_path = run_root / "outputs/dev/baseline" / f"{DEVELOPMENT_IDS[0]}.json"
+    initial_artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+    assert initial_score["mean_score"] == "0"
+    assert initial_artifact["invalid_output"] is True
+    assert initial_artifact["provider_response"]["status"] == "active"
+
+    resumed_client = FakeModelClient()
+    result = run_loop(
+        make_spec(), repo_root=repo, run_root=run_root,
+        model_client=resumed_client, resume=True,
+    )
+    rescored = json.loads(score_path.read_text(encoding="utf-8"))
+    replayed_artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+
+    assert resumed_client.estimates == []
+    assert resumed_client.executed == []
+    assert rescored["mean_score"] == "1.0"
+    assert "invalid_output" not in replayed_artifact
+    assert replayed_artifact["provider_response"] == initial_artifact["provider_response"]
+    assert result["gate"]["human_review_eligible"] is True
+
+
+def test_evaluation_only_resume_refuses_missing_new_winner_holdout(
+    repo: Path,
+) -> None:
+    prompts = repo / "prompts/company-enrichment/candidates"
+    prompts.mkdir(parents=True)
+    candidate_path = prompts / "v2-tighter.md"
+    candidate_path.write_text("Tighter prompt.\n", encoding="utf-8")
+
+    class ScoreByPrompt(FakeModelClient):
+        def acquire_responses(self, requests, track):
+            self.status = "inactive" if "Tighter" in requests[0].prompt_text else "active"
+            return super().acquire_responses(requests, track)
+
+    def prefer_inactive(
+        payload: Mapping[str, Any], record: SignalGroundTruthRecord,
+        _dossier: CompanyDossier,
+    ) -> CaseScore:
+        inactive = Decimal(payload["ads"]["google"]["status"] == "inactive")
+        components = {"status": inactive, "landing_page": inactive, "offer": inactive}
+        failures = () if inactive else ("not_inactive",)
+        return CaseScore(record.company_id, components, inactive, failures)
+
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "new-winner-no-holdout"
+    candidate_paths = (Path("prompts/company-enrichment/candidates/v2-tighter.md"),)
+    initial = run_loop(
+        make_spec(candidate_paths=candidate_paths), repo_root=repo, run_root=run_root,
+        model_client=ScoreByPrompt(), resume=False,
+    )
+    assert initial["winner"]["candidate_id"] == "baseline"
+    original_inputs = json.loads((run_root / "inputs.json").read_text(encoding="utf-8"))
+
+    resumed_client = FakeModelClient()
+    with pytest.raises(
+        ValueError,
+        match=(
+            "evaluation-only resume is missing stored holdout artifacts for candidate "
+            "v2-tighter.*run the holdout for that candidate deliberately"
+        ),
+    ):
+        run_loop(
+            make_spec(score=prefer_inactive, candidate_paths=candidate_paths),
+            repo_root=repo, run_root=run_root, model_client=resumed_client, resume=True,
+        )
+
+    assert resumed_client.estimates == []
+    assert resumed_client.executed == []
+    stored_inputs = json.loads((run_root / "inputs.json").read_text(encoding="utf-8"))
+    assert stored_inputs == original_inputs
+
+    repeated_client = FakeModelClient()
+    with pytest.raises(ValueError, match="evaluation-only resume is missing stored holdout"):
+        run_loop(
+            make_spec(score=prefer_inactive, candidate_paths=candidate_paths),
+            repo_root=repo, run_root=run_root, model_client=repeated_client, resume=True,
+        )
+    assert repeated_client.estimates == []
+    assert repeated_client.executed == []
+
+
+def test_resume_retry_gets_a_new_reservation_and_accumulates_cost(repo: Path) -> None:
+    class SimulatedCrash(BaseException):
+        pass
+
+    class CrashingClient(FakeModelClient):
+        def acquire_responses(self, requests, track):
+            raise SimulatedCrash
+
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "retry-reservation"
+    with pytest.raises(SimulatedCrash):
+        run_loop(
+            make_spec(), repo_root=repo, run_root=run_root,
+            model_client=CrashingClient(cost="0.05"), resume=False,
+        )
+
+    resumed_client = FakeModelClient(cost="0.05")
+    result = run_loop(
+        make_spec(), repo_root=repo, run_root=run_root,
+        model_client=resumed_client, resume=True,
+    )
+    cost = json.loads((run_root / "cost.json").read_text(encoding="utf-8"))
+
+    assert set(cost["reservations"]) == {
+        "dev-0-baseline", "dev-0-baseline-retry-1", "holdout-baseline",
+    }
+    assert cost["reservations"]["dev-0-baseline"]["status"] == "reserved"
+    assert cost["reservations"]["dev-0-baseline-retry-1"]["actual_usd"] == "0.30"
+    assert result["total_cost_usd"] == "0.80"
+
+
+def test_resume_rejects_a_different_model_before_any_paid_call(repo: Path) -> None:
+    class SimulatedCrash(BaseException):
+        pass
+
+    class CrashingClient(FakeModelClient):
+        def acquire_responses(self, requests, track):
+            raise SimulatedCrash
+
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / "model-crash"
+    with pytest.raises(SimulatedCrash):
+        run_loop(
+            make_spec(), repo_root=repo, run_root=run_root,
+            model_client=CrashingClient(), resume=False, model_id="gpt-4.1-mini",
+        )
+
+    client = FakeModelClient()
+    with pytest.raises(ValueError, match="does not match lineage model"):
+        run_loop(
+            make_spec(), repo_root=repo, run_root=run_root,
+            model_client=client, resume=True, model_id="gpt-5-nano",
+        )
+    assert client.estimates == []
+    assert client.executed == []
+
+
+def test_paid_run_rejects_a_client_without_request_fingerprinting(repo: Path) -> None:
+    class UnfingerprintableClient(FakeModelClient):
+        request_fingerprint = None
+
+    client = UnfingerprintableClient()
+    with pytest.raises(ValueError, match="cannot deterministically fingerprint"):
+        run_loop(
+            make_spec(), repo_root=repo, run_root=repo / "run",
+            model_client=client, resume=False,
+        )
+    assert client.estimates == []
+    assert client.executed == []
+
+
+@pytest.mark.parametrize("changed_input", ("prompt", "dossier", "output_contract"))
+def test_resume_rejects_changed_paid_inputs_before_any_call(
+    repo: Path, changed_input: str,
+) -> None:
+    class SimulatedCrash(BaseException):
+        pass
+
+    class CrashingClient(FakeModelClient):
+        def acquire_responses(self, requests, track):
+            raise SimulatedCrash
+
+    spec = make_spec()
+    run_root = repo / "runs/company-enrichment" / ENRICHMENT / f"{changed_input}-crash"
+    with pytest.raises(SimulatedCrash):
+        run_loop(
+            spec, repo_root=repo, run_root=run_root,
+            model_client=CrashingClient(), resume=False,
+        )
+
+    if changed_input == "prompt":
+        (repo / spec.prompt_path).write_text("Changed prompt.\n", encoding="utf-8")
+    elif changed_input == "dossier":
+        path = repo / spec.benchmark_dir / "saas-01.yaml"
+        dossier = load_signal_dossier(path)
+        save_signal_dossier(path, replace(
+            dossier, unknowns=(*dossier.unknowns, "changed-input"),
+        ))
+    else:
+        def changed_contract(dossier: CompanyDossier) -> dict[str, Any]:
+            contract = _output_contract(dossier)
+            contract["description"] = "changed output contract"
+            return contract
+
+        spec = replace(spec, output_contract=changed_contract)
+
+    client = FakeModelClient()
+    with pytest.raises(ValueError, match="resume inputs do not match"):
+        run_loop(
+            spec, repo_root=repo, run_root=run_root,
+            model_client=client, resume=True,
+        )
+    assert client.estimates == []
+    assert client.executed == []
 
 
 def test_lineage_name_is_validated(repo: Path):
@@ -308,9 +703,9 @@ def test_extra_prompt_candidates_are_evaluated_and_the_best_wins(repo: Path):
     (prompts / "v2-tighter.md").write_text("Tighter prompt.\n", encoding="utf-8")
 
     class ScoreByPrompt(FakeModelClient):
-        def execute(self, requests, track):
+        def acquire_responses(self, requests, track):
             self.status = "active" if "Tighter" in requests[0].prompt_text else "inactive"
-            return super().execute(requests, track)
+            return super().acquire_responses(requests, track)
 
     client = ScoreByPrompt()
     run_root = repo / "runs/company-enrichment" / ENRICHMENT / "lineage-cands"
@@ -368,6 +763,28 @@ def test_prompt_flag_replaces_the_baseline_prompt(repo: Path, capsys):
     )
     assert result["winner"]["candidate_id"] == "v3-only"
     assert (run_root / "scores/holdout/v3-only.json").exists()
+
+
+def test_prompt_flag_keeps_a_conventional_path_verbatim(repo: Path, capsys) -> None:
+    legacy = repo / "prompts/company-enrichment" / f"{ENRICHMENT}.md"
+    legacy.write_text("Explicit legacy prompt.\n", encoding="utf-8")
+    packaged = repo / "enrichments" / ENRICHMENT / f"{ENRICHMENT}.md"
+    packaged.parent.mkdir(parents=True)
+    packaged.write_text("Packaged prompt.\n", encoding="utf-8")
+
+    code = signal_loop.main(
+        make_spec(), [
+            "--evaluate", "--lineage", "explicit-conventional", "--dry-run",
+            "--prompt", f"prompts/company-enrichment/{ENRICHMENT}.md",
+        ],
+        repo_root=repo, model_client_factory=lambda **_: pytest.fail("no client"),
+    )
+
+    assert code == 0
+    plan = json.loads(capsys.readouterr().out)
+    assert plan["candidate_prompt_hashes"] == [
+        sha256(b"Explicit legacy prompt.").hexdigest()
+    ]
 
 
 def test_collect_benchmark_dir_override_writes_beside_sealed_corpus(repo: Path, capsys):

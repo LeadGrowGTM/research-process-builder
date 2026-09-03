@@ -1,0 +1,19 @@
+# Narrows the same proved prompt to funding events for a raise-timing play.
+# Only descriptive fields plus an appended section: the locked rules, the model,
+# the inputs and the GTM contract are untouched, so this variant inherits the
+# parent's 0.974/0.997 proof rather than needing its own run.
+variant: funding-only
+title: Which funding events this company announced, and when
+summary: >-
+  The same dated, cited event extraction narrowed to funding rounds and other
+  financing events supported by the Evidence.
+prompt_append: >-
+  Report only funding events. A funding event is a round, an extension, a
+  strategic investment, or a stated valuation change. Everything else that would
+  normally qualify as news is out of scope for this run: omit it rather than
+  reclassifying it. All date, citation, and different-entity rules above still
+  apply unchanged. If the Evidence proves no funding event, return an empty
+  `news` list and put `news` in `unknowns`.
+notes: >-
+  Built for the raise-timing campaign. Do not use it to conclude a company has
+  not raised - it reports what the supplied Evidence proves.

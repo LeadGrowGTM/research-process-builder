@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+from dataclasses import replace
 from datetime import date
 import json
 import os
@@ -26,6 +27,7 @@ from urllib.parse import urlparse
 import yaml
 
 from .adapters.known_url_scrape import build_free_waterfall
+from .packages import resolve_prompt_path
 from .adapters.parallel import build_parallel_search
 from .adapters.serper import build_serper_search
 from .competitor_contracts import competitors_output_contract, normalize_name
@@ -36,8 +38,8 @@ from .competitor_evaluator import (
 from .contracts import CompanyDossier, canonical_json
 from .news_contracts import news_output_contract
 from .news_evaluator import (
-    DEFAULT_RECENT_WINDOW_DAYS, NEWS_ENRICHMENT_ID, NEWS_WEIGHTS, ground_news_payload,
-    score_news, validate_news_record,
+    DEFAULT_RECENT_WINDOW_DAYS, NEWS_ENRICHMENT_ID, NEWS_WEIGHTS,
+    ground_news_payload, score_news, validate_news_record,
 )
 from .signal_collection import (
     DATE_PATTERN, FallbackSearch, QueryTemplate, SearchPlan, bind_collect, company_facts,
@@ -349,8 +351,12 @@ def run_entrypoint(
         import sys
 
         args = sys.argv[1:]
+    root = Path(repo_root or Path(__file__).resolve().parents[2])
     if "--draft-ground-truth" not in args:
-        return signal_main(spec, args, repo_root=repo_root, **loop_kwargs)
+        spec = replace(
+            spec, prompt_path=resolve_prompt_path(spec.enrichment_id, root),
+        )
+        return signal_main(spec, args, repo_root=root, **loop_kwargs)
     parser = argparse.ArgumentParser(
         description=f"{spec.enrichment_id} ground-truth drafts",
         usage="%(prog)s --draft-ground-truth [--company ID ...] [--overwrite] [--as-of YYYY-MM-DD]",
@@ -360,7 +366,6 @@ def run_entrypoint(
     parser.add_argument("--overwrite", action="store_true")
     parser.add_argument("--as-of", default=None)
     parsed = parser.parse_args(args)
-    root = Path(repo_root or Path(__file__).resolve().parents[2])
     try:
         as_of = date.fromisoformat(parsed.as_of) if parsed.as_of else date.today()
         result = write_ground_truth_drafts(

@@ -229,7 +229,8 @@ the near-cheapest option.
 Mitch approved news-v11-luna and comp-v11-luna as-is (review sheet
 `docs/reports/luna-signals-review-sheet.md`, Decision section). Both
 Experiments are now Approvals. The winning candidates were folded into the
-canonical prompts - `prompts/company-enrichment/news-product-launches.md` is
+canonical prompts - `prompts/company-enrichment/news-product-launches.md`
+(moved to `enrichments/news-product-launches/news-product-launches.md`) is
 now the news-v3-kind-rules text and
 `prompts/company-enrichment/competitor-intelligence.md` the
 comp-v3-category-sanity text - so the baseline loop runs the graduated

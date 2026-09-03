@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from datetime import date
 from decimal import Decimal
+from hashlib import sha256
 import json
 from pathlib import Path
 
@@ -12,8 +13,12 @@ from scripts.company_enrichment.ads_ground_truth_draft import (
 )
 from scripts.company_enrichment.ads_loop import BENCHMARK_DIR, ENRICHMENT_ID, build_spec, main
 from scripts.company_enrichment.benchmark import ExecutionTrack
-from scripts.company_enrichment.contracts import EvidenceRef, FieldAssertion, Visibility
-from scripts.company_enrichment.experiment_runner import ModelExecution
+from scripts.company_enrichment.contracts import (
+    EvidenceRef, FieldAssertion, Visibility, canonical_json,
+)
+from scripts.company_enrichment.experiment_runner import (
+    ExperimentInput, ModelExecution, ProviderResponse,
+)
 from scripts.company_enrichment.signal_evidence import (
     load_signal_dossier, save_signal_dossier, signal_dossier, signal_dossier_path,
 )
@@ -104,11 +109,14 @@ def test_draft_flag_writes_to_drafts_dir_only(tmp_path: Path, capsys):
 
 
 class FakeAdsClient:
+    def request_fingerprint(self, request: ExperimentInput) -> str:
+        return sha256(canonical_json(request).encode("utf-8")).hexdigest()
+
     def estimate(self, requests, track) -> str:
         assert track is ExecutionTrack.SYNCHRONOUS
         return str(Decimal("0.001") * len(requests))
 
-    def execute(self, requests, track) -> tuple[ModelExecution, ...]:
+    def acquire_responses(self, requests, track) -> tuple[ProviderResponse, ...]:
         results = []
         for request in requests:
             schema = request.output_contract
@@ -116,16 +124,22 @@ class FakeAdsClient:
             evidence_id = f"ev-{request.company_id}-google"
             assert evidence_id in schema["properties"]["ads"]["properties"]["channels"]["items"][
                 "properties"]["evidence_ids"]["items"]["enum"]
-            value = {"channels": [{
-                "channel": "google", "status": "active", "angle": None, "offer": None,
-                "call_to_action": None, "landing_page": None, "evidence_ids": [evidence_id],
-            }]}
-            results.append(ModelExecution(
-                request.company_id,
-                (FieldAssertion("ads", value, (evidence_id,), 1.0, Visibility.MESSAGE_SAFE),),
-                (), "gpt-4.1-mini-2025-04-14", 10, "0.001",
+            results.append(ProviderResponse(
+                request.company_id, {"evidence_id": evidence_id}, 10,
             ))
         return tuple(results)
+
+    def decode_response(self, request, response, track) -> ModelExecution:
+        evidence_id = response.payload["evidence_id"]
+        value = {"channels": [{
+            "channel": "google", "status": "active", "angle": None, "offer": None,
+            "call_to_action": None, "landing_page": None, "evidence_ids": [evidence_id],
+        }]}
+        return ModelExecution(
+            request.company_id,
+            (FieldAssertion("ads", value, (evidence_id,), 1.0, Visibility.MESSAGE_SAFE),),
+            (), "gpt-4.1-mini-2025-04-14", response.latency_ms, "0.001",
+        )
 
 
 def test_evaluate_runs_the_ads_spec_end_to_end(tmp_path: Path, capsys):

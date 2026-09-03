@@ -19,7 +19,8 @@
   0.90 gate, not production-approved. Rest of gpt-4o family stays banned.
 - **Signal prompts graduated** (Mitch approved 2026-08-21): news-v11-luna
   0.974/0.997 and comp-v11-luna 0.933/0.960; winning candidates are now the
-  canonical `prompts/company-enrichment/news-product-launches.md` and
+  canonical `prompts/company-enrichment/news-product-launches.md` (moved to
+  `enrichments/news-product-launches/news-product-launches.md`) and
   `competitor-intelligence.md`; candidates archived under
   `archive/2026-08-21-graduated-signal-prompt-candidates/`.
 - **ICP/persona enrichment approved** (Mitch, 2026-08-24): shipping lineage

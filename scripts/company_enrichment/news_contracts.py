@@ -1,6 +1,6 @@
 """Immutable, evidence-closed output contract for news and product launches.
 
-Mirrors ``prompts/company-enrichment/news-product-launches.md``: two
+Mirrors ``enrichments/news-product-launches/news-product-launches.md``: two
 collections (``news`` and ``launches``) of dated, cited events plus an
 optional top-level ``unknowns`` list. ``news_output_contract`` renders the
 strict JSON schema the model client sends; ``parse_news_output`` validates a
