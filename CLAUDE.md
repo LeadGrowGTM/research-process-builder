@@ -46,6 +46,10 @@ canonical domain language is [CONTEXT.md](CONTEXT.md): use **Research Flow**,
   HTTP check (no model) for careers/blog page presence per company domain;
   per-model outcomes across all enrichments are summarized in
   [docs/benchmarks/model-outcomes.md](docs/benchmarks/model-outcomes.md).
+  `scripts/company_enrichment_description_growth_eval.py` scores stored
+  company-description / growth-signals outputs offline against the dated
+  observable ground truth in `benchmarks/description-growth/`; see
+  [docs/reports/description-growth-gt.md](docs/reports/description-growth-gt.md).
 
 ## Verified local commands
 
@@ -63,6 +67,7 @@ py scripts/company_enrichment_competitor_loop.py --help
 py scripts/company_enrichment_icp_loop.py --help
 py scripts/company_enrichment_buying_trigger_loop.py --help
 py scripts/company_enrichment_page_signals.py --help
+py scripts/company_enrichment_description_growth_eval.py --help
 py -m pytest tests/test_repository_policy.py -q
 ```
 

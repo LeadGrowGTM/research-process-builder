@@ -1,0 +1,54 @@
+company_id: saas-08
+as_of: '2026-08-25'
+description:
+  identity:
+    canonical: BigPanda
+    aliases: [BigPanda]
+    evidence_ids: [ev-8d10c83bbc00a2c9, ev-09e959f239942a36, ev-73b6e24a7ac9c3a5]
+  offering:
+    canonical: IT operations incident management platform
+    aliases: [IT operations incident management platform, AIOps platform,
+              agentic ITOps platform, IT incident management software,
+              incident response automation]
+    evidence_ids: [ev-8d10c83bbc00a2c9, ev-09e959f239942a36, ev-73b6e24a7ac9c3a5]
+  audience:
+    canonical: IT operations teams
+    aliases: [IT operations teams, ITOps teams, incident management teams,
+              incident response teams, site reliability engineering teams]
+    evidence_ids: [ev-8d10c83bbc00a2c9, ev-09e959f239942a36]
+growth:
+  verdict: growth_signals
+  signals:
+    - kind: headcount
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-09e959f239942a36]
+      quote: Discover all 332 employees
+    - kind: hiring
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-09e959f239942a36]
+      quote: See jobs
+    - kind: funding
+      source: dossier
+      observed_at: 2022-08-17
+      evidence_ids: [ev-73b6e24a7ac9c3a5]
+      quote: raised $20 million in an extension of its Series E round
+    - kind: funding
+      source: dossier
+      observed_at: 2022-08-17
+      evidence_ids: [ev-73b6e24a7ac9c3a5]
+      quote: total raised to $340 million
+    - kind: hiring
+      source: page-signals-v1
+      observed_at: 2026-08-25
+      url: https://www.bigpanda.io/company/panda-way/
+    - kind: publishing
+      source: page-signals-v1
+      observed_at: 2026-08-25
+      url: https://www.bigpanda.io/blog/
+    - kind: founded
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-09e959f239942a36]
+      quote: Founded 2012

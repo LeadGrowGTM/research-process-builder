@@ -1,0 +1,49 @@
+company_id: saas-06
+as_of: '2026-08-25'
+description:
+  identity:
+    canonical: Arkestro
+    aliases: [Arkestro]
+    evidence_ids: [ev-6324c3add32674d3, ev-da4b109ddeb08af9, ev-98ca84b4107ee477]
+  offering:
+    canonical: predictive procurement platform
+    aliases: [predictive procurement platform, predictive procurement software,
+              procurement automation platform, procurement orchestration,
+              supplier negotiation automation]
+    evidence_ids: [ev-6324c3add32674d3, ev-da4b109ddeb08af9, ev-98ca84b4107ee477]
+  audience:
+    canonical: procurement teams
+    aliases: [procurement teams, procurement and supply chain leaders,
+              enterprise procurement teams, procurement leaders]
+    evidence_ids: [ev-6324c3add32674d3, ev-da4b109ddeb08af9, ev-98ca84b4107ee477]
+growth:
+  verdict: growth_signals
+  signals:
+    - kind: headcount
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-da4b109ddeb08af9]
+      quote: Discover all 130 employees
+    - kind: funding
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-98ca84b4107ee477]
+      quote: Total Raised $78.29M
+    - kind: funding
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-98ca84b4107ee477]
+      quote: Last Raised $36M | 1 yr ago
+    - kind: hiring
+      source: page-signals-v1
+      observed_at: 2026-08-25
+      url: https://arkestro.com/careers/
+    - kind: publishing
+      source: page-signals-v1
+      observed_at: 2026-08-25
+      url: https://arkestro.com/blog/
+    - kind: founded
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-98ca84b4107ee477]
+      quote: It was founded in 2017 and is based in San Francisco, California.

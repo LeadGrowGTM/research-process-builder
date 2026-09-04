@@ -1,0 +1,45 @@
+company_id: saas-05
+as_of: '2026-08-25'
+description:
+  identity:
+    canonical: Archive360
+    aliases: [Archive360]
+    evidence_ids: [ev-0c8cabd1fc6337a7, ev-026452c8b94e5acd, ev-67663586c7a2110a]
+  offering:
+    canonical: data archiving and governance platform
+    aliases: [data archiving and governance platform, data governance platform,
+              modern data archiving, cloud archiving, AI-ready data management,
+              data and AI governance]
+    evidence_ids: [ev-0c8cabd1fc6337a7, ev-026452c8b94e5acd]
+  audience:
+    canonical: regulated organizations
+    aliases: [regulated organizations, regulated enterprises, public sector,
+              regulated industries]
+    evidence_ids: [ev-0c8cabd1fc6337a7, ev-026452c8b94e5acd, ev-67663586c7a2110a]
+growth:
+  verdict: growth_signals
+  signals:
+    - kind: headcount
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-026452c8b94e5acd]
+      quote: View all 135 employees
+    - kind: expansion
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-0c8cabd1fc6337a7]
+      quote: named to Inc. 5000 list of fastest-growing companies for the 2nd consecutive year.
+      note: Inc. 5000 fastest-growing listing, two consecutive years.
+    - kind: hiring
+      source: page-signals-v1
+      observed_at: 2026-08-25
+      url: https://www.archive360.com/careers
+    - kind: publishing
+      source: page-signals-v1
+      observed_at: 2026-08-25
+      url: https://www.archive360.com/blog
+    - kind: founded
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-026452c8b94e5acd]
+      quote: Founded 2011

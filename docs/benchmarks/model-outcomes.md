@@ -1,7 +1,8 @@
 # Model outcomes across enrichments
 
-**Updated:** 2026-08-25 (luna rerun for description/growth; both benchmarks
-found invalid - see their sections). Consolidated view of every model tried per
+**Updated:** 2026-08-27 (description/growth: old exact-match gate retired,
+replaced by dated ground truth + a semantic scorer - see their sections and
+docs/reports/description-growth-gt.md). Consolidated view of every model tried per
 enrichment and where it landed. Detail lives in the per-track reports linked
 below; this page is the summary of record. Scores are dev / holdout mean
 against ground truth (gate >= 0.90 on both, plus human review) unless marked
@@ -58,7 +59,7 @@ so no luna attempt was needed.
 | gpt-5.6-luna | **accepted 2026-08-25 at v6-luna (prompt 0.5.0); production.** ~USD 0.0012/company |
 | gpt-4.1-mini | v1/v2 output rejected on review: generic, internal-state phrasing; Mitch switched to luna at v3 |
 
-### company-description - benchmark invalid, do not compare models on it
+### company-description - old exact-match gate retired, new scorer not yet graduated
 
 | Model | Score | Outcome |
 |---|---|---|
@@ -71,10 +72,17 @@ canonical-JSON string match between the model's free-text value and the
 dossier assertion. A paraphrase scores 0; only verbatim copying of dossier
 text scores. The score measures parroting, not description quality. Ceiling
 without verbatim copying is 0.75 (the three citation dimensions).
-**Do not anneal or compare models against this gate until the track gets a
-semantic scorer and real ground truth like the ICP loop had.**
 
-### growth-signals - benchmark invalid, do not compare models on it
+**Update 2026-08-27:** the track now has real ground truth and a semantic
+scorer - `benchmarks/description-growth/` plus
+`scripts/company_enrichment/description_growth_evaluator.py` (report:
+docs/reports/description-growth-gt.md). Rescoring the stored luna rerun with
+it: dev 0.911 both tracks, zero hard failures (verbatim parroting is now a
+hard failure, paraphrases score on content). Model comparisons are valid
+against the new scorer; the old exact-match numbers above stay for history
+only.
+
+### growth-signals - old exact-match gate retired, new scorer not yet graduated
 
 | Model | Score | Outcome |
 |---|---|---|
@@ -87,10 +95,19 @@ corpus. A model that asserts growth (wrong per GT) still scores 0.75 through
 the citation dimensions; a model that correctly answers `unknown` scores
 **0.0** because an assertion-free output zeroes every citation dimension.
 Luna's 0.50 reflects that it answered `unknown` for saas-07 (the correct
-answer) and was punished for it. The gate is inverted on this corpus.
-**Needs growth ground truth (dated, observable signals) before any model
-work.** The deterministic page-signals check (careers/blog presence) is the
-first source of real observable hiring/growth evidence for that GT.
+answer under that ground truth) and was punished for it. The gate was
+inverted on this corpus.
+
+**Update 2026-08-27:** growth now has dated observable ground truth in
+`benchmarks/description-growth/` (dossier Evidence quotes plus page-signals
+v1 careers/blog observations, all dated) and a semantic scorer with the
+inversion fixed - a correct `unknown` on a no-signal company scores 1.0, and
+unsupported growth claims are hard failures. Rescoring the stored luna rerun:
+dev 0.638 sync / 0.667 batch - saas-01/04 grounded assertions score
+0.91-1.0, saas-07 scores 0.0 because its Evidence does contain observable
+hiring/headcount signals luna declined to assert. That is now a prompt gap
+to anneal, not a benchmark defect. Report:
+docs/reports/description-growth-gt.md.
 
 ## Pattern
 
@@ -102,6 +119,6 @@ combined ~USD 11/1k companies synchronous, ~6/1k batch; ICP ~1.4/1k;
 buying-trigger ~1.2/1k. gpt-5-nano has never come close to a gate (0.61-0.74)
 and produced hard failures on two of three scored tracks; it stays a pricing
 floor, not a candidate. company-description and growth-signals are excluded
-from the pattern: their benchmark is exact-string matching against dossier
-text (and for growth, no GT at all), so their sub-gate scores say nothing
-about any model.
+from the pattern: neither has cleared the 0.90 dev/holdout gate under the new
+semantic scorer yet (dev-only luna rerun: 0.911 / 0.638-0.667 - see their
+sections), so no model comparison there is graduation-ready.
