@@ -1,0 +1,54 @@
+company_id: saas-10
+as_of: '2026-08-25'
+description:
+  identity:
+    canonical: Built
+    aliases: [Built, Built Technologies]
+    evidence_ids: [ev-ce4724cc20ef689e, ev-be44ff703241ffbe, ev-d109a2df75fb122e]
+  offering:
+    canonical: construction finance software
+    aliases: [construction finance software, construction finance platform,
+              construction finance technology, construction loan administration,
+              construction lending software, draw management software]
+    evidence_ids: [ev-ce4724cc20ef689e, ev-be44ff703241ffbe, ev-d109a2df75fb122e]
+  audience:
+    canonical: construction lenders
+    aliases: [construction lenders, lenders, lenders and developers,
+              owners and developers, builders]
+    evidence_ids: [ev-ce4724cc20ef689e, ev-be44ff703241ffbe, ev-d109a2df75fb122e]
+growth:
+  verdict: growth_signals
+  signals:
+    - kind: headcount
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-be44ff703241ffbe]
+      quote: 260 Total Employees
+    - kind: hiring
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-be44ff703241ffbe]
+      quote: Recently Posted Jobs at Built Technologies
+    - kind: funding
+      source: dossier
+      observed_at: 2021-09-30
+      evidence_ids: [ev-d109a2df75fb122e]
+      quote: Built Technologies Announces $125M Series D Financing Round
+    - kind: customer_scale
+      source: dossier
+      observed_at: 2021-12-31
+      evidence_ids: [ev-d109a2df75fb122e]
+      quote: Achieved $1.5B Valuation and Unicorn Status in 2021
+    - kind: hiring
+      source: page-signals-v1
+      observed_at: 2026-08-25
+      url: https://getbuilt.com/careers/
+    - kind: publishing
+      source: page-signals-v1
+      observed_at: 2026-08-25
+      url: https://getbuilt.com/blog/
+    - kind: founded
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-be44ff703241ffbe]
+      quote: 'Year Founded: 2014'

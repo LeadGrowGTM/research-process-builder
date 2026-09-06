@@ -1,0 +1,53 @@
+company_id: saas-03
+as_of: '2026-08-25'
+description:
+  identity:
+    canonical: Aligned
+    aliases: [Aligned]
+    evidence_ids: [ev-05398a2ef65666fa, ev-22d60eecc23e228a, ev-01e046900b8496ac]
+  offering:
+    canonical: digital sales room software
+    aliases: [digital sales room software, digital sales room, deal workspace,
+              shared workspace for deals, virtual sales room]
+    evidence_ids: [ev-05398a2ef65666fa, ev-22d60eecc23e228a, ev-01e046900b8496ac]
+  audience:
+    canonical: B2B revenue teams
+    aliases: [B2B revenue teams, sales teams, sales and CS teams,
+              software sales teams, revenue teams]
+    evidence_ids: [ev-05398a2ef65666fa, ev-22d60eecc23e228a, ev-01e046900b8496ac]
+growth:
+  verdict: growth_signals
+  signals:
+    - kind: funding
+      source: dossier
+      observed_at: 2023-05-01
+      evidence_ids: [ev-01e046900b8496ac]
+      quote: recently announced their $5.8M Seed round co-led by NFX and Hetz Ventures
+    - kind: customer_scale
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-05398a2ef65666fa]
+      quote: 50,000+ Sales & CS Teams Run Their Deals in Aligned
+    - kind: headcount
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-22d60eecc23e228a]
+      quote: View all 76 employees
+    - kind: hiring
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-22d60eecc23e228a]
+      quote: We are growing at a fast pace and looking for top talents to join our core team.
+    - kind: hiring
+      source: page-signals-v1
+      observed_at: 2026-08-25
+      url: https://alignedup.com/careers/
+    - kind: publishing
+      source: page-signals-v1
+      observed_at: 2026-08-25
+      url: https://alignedup.com/newsletter/
+    - kind: founded
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-22d60eecc23e228a]
+      quote: Founded 2021

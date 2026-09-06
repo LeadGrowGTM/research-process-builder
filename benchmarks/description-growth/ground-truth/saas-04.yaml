@@ -1,0 +1,50 @@
+company_id: saas-04
+as_of: '2026-08-25'
+description:
+  identity:
+    canonical: aPriori
+    aliases: [aPriori, aPriori Technologies]
+    evidence_ids: [ev-fe752f58cb8e0b98, ev-3d93e43e256e02c1, ev-1494a4907e1a3dc9]
+  offering:
+    canonical: manufacturing cost and product intelligence software
+    aliases: [manufacturing cost and product intelligence software,
+              AI-powered product intelligence, manufacturing insights platform,
+              manufacturing cost simulation, digital manufacturing simulation,
+              product cost management software]
+    evidence_ids: [ev-3d93e43e256e02c1, ev-1494a4907e1a3dc9]
+  audience:
+    canonical: manufacturers
+    aliases: [manufacturers, manufacturers and product designers,
+              manufacturing companies]
+    evidence_ids: [ev-fe752f58cb8e0b98, ev-3d93e43e256e02c1, ev-1494a4907e1a3dc9]
+growth:
+  verdict: growth_signals
+  signals:
+    - kind: headcount
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-3d93e43e256e02c1]
+      quote: View all 275 employees
+    - kind: funding
+      source: dossier
+      observed_at: 2023-10-19
+      evidence_ids: [ev-1494a4907e1a3dc9]
+      quote: aPriori Receives Growth Investment From Vista Credit Partners for Its Manufacturing Insights Platform
+    - kind: expansion
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-fe752f58cb8e0b98]
+      quote: With a global presence, including North America, Europe, Asia, and India
+    - kind: hiring
+      source: page-signals-v1
+      observed_at: 2026-08-25
+      url: https://www.apriori.com/careers/
+    - kind: publishing
+      source: page-signals-v1
+      observed_at: 2026-08-25
+      url: https://www.apriori.com/blog/
+    - kind: founded
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-fe752f58cb8e0b98]
+      quote: Founded in 2003

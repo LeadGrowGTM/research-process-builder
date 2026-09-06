@@ -1,0 +1,48 @@
+company_id: saas-01
+as_of: '2026-08-25'
+description:
+  identity:
+    canonical: AgencyAnalytics
+    aliases: [AgencyAnalytics]
+    evidence_ids: [ev-b852e22ac88f1aad, ev-f4256ff7de9e092b, ev-b5979e5e51835014]
+  offering:
+    canonical: client reporting software
+    aliases: [client reporting software, automated reporting solution,
+              reporting and insights platform, client reporting solutions,
+              reporting platform, automated reports and custom dashboards]
+    evidence_ids: [ev-b852e22ac88f1aad, ev-f4256ff7de9e092b]
+  audience:
+    canonical: marketing agencies
+    aliases: [marketing agencies, growth-oriented marketing agencies, agencies]
+    evidence_ids: [ev-b852e22ac88f1aad, ev-f4256ff7de9e092b]
+growth:
+  verdict: growth_signals
+  signals:
+    - kind: headcount
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-f4256ff7de9e092b]
+      quote: View all 123 employees
+    - kind: customer_scale
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-f4256ff7de9e092b]
+      quote: Trusted by 7,000+ marketing agencies.
+    - kind: hiring
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-f4256ff7de9e092b]
+      quote: See jobs
+    - kind: hiring
+      source: page-signals-v1
+      observed_at: 2026-08-25
+      url: https://agencyanalytics.com/company/careers
+    - kind: publishing
+      source: page-signals-v1
+      observed_at: 2026-08-25
+      url: https://agencyanalytics.com/blog
+    - kind: founded
+      source: dossier
+      observed_at: 2026-08-12
+      evidence_ids: [ev-f4256ff7de9e092b]
+      quote: Founded 2010
