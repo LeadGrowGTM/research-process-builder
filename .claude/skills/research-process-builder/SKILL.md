@@ -7,7 +7,7 @@ description: Build validated web research processes through self-annealing loops
 
 Factory that produces validated, step-by-step web research processes through iterative testing. Takes any research goal, generates search patterns, tests against real companies, scores accuracy, and loops until 90%+ reliability.
 
-Output: portable `.md` process files any agent (Claude Code, Clay, custom GPT, browser agent) can follow.
+Output: portable `.md` process files any agent (Clay, custom GPT, browser agent, coding agent) can follow.
 
 ## When To Use
 
