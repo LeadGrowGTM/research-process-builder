@@ -101,9 +101,23 @@ def test_documented_python_entry_points_exist_and_offer_help() -> None:
         assert "usage:" in result.stdout.lower(), relative_path
 
 
-def test_claude_guidance_links_canonical_context_and_review_lifecycle() -> None:
-    text = (ROOT / "CLAUDE.md").read_text(encoding="utf-8")
+def test_agent_guidance_links_canonical_context_and_review_lifecycle() -> None:
+    text = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
 
     assert "[CONTEXT.md](CONTEXT.md)" in text
     assert re.search(r"programmed ground-truth validation.*>=\s*90%", text, re.IGNORECASE | re.DOTALL)
     assert re.search(r">=\s*90%.*explicit human review", text, re.IGNORECASE | re.DOTALL)
+
+
+def test_claude_guidance_defers_to_the_single_agent_guide() -> None:
+    """CLAUDE.md must import AGENTS.md rather than restate it.
+
+    Two full copies of the operator guide silently drift: before this was
+    enforced, AGENTS.md had fallen 49 lines behind CLAUDE.md and non-Claude
+    agents were reading a guide missing several pipelines and the whole prompt
+    annealing procedure.
+    """
+    text = (ROOT / "CLAUDE.md").read_text(encoding="utf-8")
+
+    assert "@AGENTS.md" in text
+    assert "[CONTEXT.md](CONTEXT.md)" not in text

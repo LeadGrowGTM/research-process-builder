@@ -101,7 +101,7 @@ type fails at load, not at emit.
 (a quoted, real `YYYY-MM-DD` calendar date), and `report`. A package with
 `status: approved` must name all of them, use a gate of at least 0.90, and clear
 that gate on both `dev` and `holdout`, or it fails to load. Scores and the gate
-must be finite numbers from zero to one. This is the gate from CLAUDE.md
+must be finite numbers from zero to one. This is the gate from AGENTS.md
 expressed as data: programmed score at or above 0.90 plus the recorded human
 review.
 
