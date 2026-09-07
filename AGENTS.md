@@ -52,10 +52,14 @@ canonical domain language is [CONTEXT.md](CONTEXT.md): use **Research Flow**,
   [docs/reports/description-growth-gt.md](docs/reports/description-growth-gt.md).
 - This file is the single operator guide for every agent. `CLAUDE.md` imports it
   and holds no content of its own; edit `AGENTS.md` and both agents stay in
-  sync. `.claude/skills/` and `.claude/rules/` are likewise the one skills and
-  rules tree for all agents - read them regardless of which agent you are. Do
-  not add a parallel `.agents/skills/` copy: a second tree drifts from this one
-  instead of serving another agent.
+  sync. `.claude/skills/` and `.claude/rules/` remain the one real, git-tracked
+  skills and rules tree - read them regardless of which agent you are, and add
+  or edit skills and rules only there. `.agents/skills/` exists as an
+  untracked NTFS junction pointing at `.claude/skills/` (see `.gitignore`) so
+  agents that look under `.agents/` resolve the same files; it is a link, not
+  a second copy, holds nothing of its own, and cannot drift. Never replace it
+  with a real directory - that would recreate the parallel tree this rule
+  exists to prevent.
 
 ## Verified local commands
 

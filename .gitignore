@@ -49,3 +49,4 @@ runs/
 
 # Local review artifacts served by lavish-axi
 .lavish/
+.agents/skills/
