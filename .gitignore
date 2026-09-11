@@ -49,4 +49,6 @@ runs/
 
 # Local review artifacts served by lavish-axi
 .lavish/
-.agents/skills/
+# Agent skills live in .agents/skills/ (real, tracked, harness-agnostic).
+# .claude/skills is a local junction to it, created per-clone - never tracked.
+.claude/skills/

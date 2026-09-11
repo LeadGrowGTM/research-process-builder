@@ -2,7 +2,7 @@
   "memoryFiles": [
     "AGENTS.md"
   ],
-  "skillsDir": ".claude/skills",
+  "skillsDir": ".agents/skills",
   "budgetTokens": 5000,
   "minGapEvidence": 2,
   "discovery": {

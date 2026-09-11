@@ -52,14 +52,20 @@ canonical domain language is [CONTEXT.md](CONTEXT.md): use **Research Flow**,
   [docs/reports/description-growth-gt.md](docs/reports/description-growth-gt.md).
 - This file is the single operator guide for every agent. `CLAUDE.md` imports it
   and holds no content of its own; edit `AGENTS.md` and both agents stay in
-  sync. `.claude/skills/` and `.claude/rules/` remain the one real, git-tracked
-  skills and rules tree - read them regardless of which agent you are, and add
-  or edit skills and rules only there. `.agents/skills/` exists as an
-  untracked NTFS junction pointing at `.claude/skills/` (see `.gitignore`) so
-  agents that look under `.agents/` resolve the same files; it is a link, not
-  a second copy, holds nothing of its own, and cannot drift. Never replace it
-  with a real directory - that would recreate the parallel tree this rule
-  exists to prevent.
+  sync. Skills follow the same rule with the same direction: `.agents/skills/`
+  is the one real, git-tracked skills tree, because `.agents/` is the
+  harness-agnostic location every agent can read. Add or edit skills only
+  there. `.claude/skills` is a local NTFS junction pointing at it, created per
+  clone and never tracked (see `.gitignore`); it is a link, not a second copy,
+  and cannot drift. Never replace it with a real directory - that recreates the
+  parallel tree this rule exists to prevent. Recreate it after a fresh clone
+  with:
+
+  ```powershell
+  cmd /c mklink /J .claude\skills .agents\skills
+  ```
+
+  `.claude/rules/` is unaffected and stays a real tracked directory.
 
 ## Verified local commands
 

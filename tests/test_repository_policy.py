@@ -121,3 +121,33 @@ def test_claude_guidance_defers_to_the_single_agent_guide() -> None:
 
     assert "@AGENTS.md" in text
     assert "[CONTEXT.md](CONTEXT.md)" not in text
+
+
+def _tracked_paths_under(prefix: str) -> list[str]:
+    result = subprocess.run(
+        ["git", "ls-files", "--", prefix],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=True,
+    )
+    return [line for line in result.stdout.splitlines() if line.strip()]
+
+
+def test_skills_are_tracked_only_under_the_harness_agnostic_path() -> None:
+    """`.agents/skills/` is the one real skills tree; `.claude/skills` is a local link.
+
+    A tool re-pointing the junction the other way silently stages every tracked
+    skill file for deletion while the real content sits in an ignored directory.
+    Pinning which path git tracks turns that into a visible failure.
+    """
+    agents_tracked = _tracked_paths_under(".agents/skills")
+    claude_tracked = _tracked_paths_under(".claude/skills")
+
+    assert agents_tracked, "no skills tracked under .agents/skills/"
+    assert not claude_tracked, (
+        ".claude/skills must stay an untracked local junction, but git tracks: "
+        f"{claude_tracked}"
+    )
+    assert all(path.endswith(".md") for path in agents_tracked)
+
