@@ -20,6 +20,7 @@ Usage:
     py scripts/series_a_pipeline.py --date 2026-04-20    # run for specific date
 """
 
+import os
 import re
 
 from pipeline_base import ResearchPipeline
@@ -116,8 +117,9 @@ class SeriesAPipeline(ResearchPipeline):
     SUPABASE_TABLE = "funding_discoveries"
     OUTPUT_PREFIX = "series-a"
     QUERIES = AGENT_A_QUERIES + AGENT_B_QUERIES
-    WEBHOOK_URL = "https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-d1b53ce2-fe64-40e4-a86c-faef265c5a63"
-    WEBHOOK_AUTH_TOKEN = "0be318b702699f40b68f"
+    # Clay webhook credentials come from the environment (Infisical), never source.
+    WEBHOOK_URL = os.environ.get("CLAY_SERIES_A_WEBHOOK_URL", "")
+    WEBHOOK_AUTH_TOKEN = os.environ.get("CLAY_SERIES_A_WEBHOOK_TOKEN", "")
     OUTPUT_FIELDNAMES = [
         "date", "company_name", "company_domain", "amount_raised", "round_type",
         "source_url", "lead_investors", "round_reasoning", "discovered_by", "source_count", "score"

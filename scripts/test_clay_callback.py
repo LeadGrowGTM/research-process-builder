@@ -3,11 +3,15 @@ Test Clay webhook + callback roundtrip.
 POSTs a real gaming studio to Clay, then polls Worker logs via wrangler tail (run separately).
 """
 import json
+import os
+import sys
 import requests
 import uuid
 import time
 
-CLAY_WEBHOOK_URL = "https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-1bea419a-3bb6-4442-9893-0fb7e8c85e62"
+CLAY_WEBHOOK_URL = os.environ.get("CLAY_COMPANY_ENRICH_WEBHOOK_URL") or sys.exit(
+    "Set CLAY_COMPANY_ENRICH_WEBHOOK_URL (run under: lg run python <script>)"
+)
 CALLBACK_URL = "https://clay-game-callback.leadgrowai.workers.dev"
 
 TEST_COMPANY = {

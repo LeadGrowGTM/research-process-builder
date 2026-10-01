@@ -10,7 +10,7 @@
 - **Table:** `t_0tcxgijYsmrT5seFVrr`
 - **Workbook:** `wb_0tcxgeiA3FpxSDubNtw`
 - **Clay URL:** https://app.clay.com/workspaces/206846/workbooks/wb_0tcxgeiA3FpxSDubNtw/tables/t_0tcxgijYsmrT5seFVrr/views/gv_0tcxgijrpk2qFbWgWsk
-- **Webhook URL:** `https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-1bea419a-3bb6-4442-9893-0fb7e8c85e62`
+- **Webhook URL:** env `CLAY_COMPANY_ENRICH_WEBHOOK_URL` (Infisical, research-process-builder prod; never commit the URL)
 - **CLI slug:** `missing-company-info` (registered in local webhooks)
 - **Registry:** promoted to **tier 1** in `api-registry.ts`
 
@@ -98,7 +98,7 @@ const enrichedData = await response;
 ### Required Env Vars for Trigger.dev
 | Var | Value | Why |
 |-----|-------|-----|
-| `CLAY_COMPANY_ENRICH_WEBHOOK` | `https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-1bea419a-3bb6-4442-9893-0fb7e8c85e62` | POST company data here |
+| `CLAY_COMPANY_ENRICH_WEBHOOK` | env `CLAY_COMPANY_ENRICH_WEBHOOK_URL` (Infisical, research-process-builder prod; never commit the URL) | POST company data here |
 
 No Clay login/session needed — webhook URL is the only credential.
 
