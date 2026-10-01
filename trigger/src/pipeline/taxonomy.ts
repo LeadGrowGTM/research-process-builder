@@ -74,6 +74,8 @@ export function normalizeOptionalText(raw: unknown): string | null {
   const t = raw.trim();
   if (!t) return null;
   if (NULL_SENTINELS.has(t.toLowerCase())) return null;
+  // Paywall placeholders such as raisingfi's "🔒 Get Pro" are not data.
+  if (t.startsWith("🔒")) return null;
   return t;
 }
 

@@ -6,9 +6,18 @@ import {
   signalTypeForRound,
   logoUrlForDomain,
   sourceNameForUrl,
+  normalizeOptionalText,
   INDUSTRIES,
   ROUND_TYPES,
 } from "./taxonomy.js";
+
+describe("normalizeOptionalText", () => {
+  it("nulls sentinels and paywall placeholders", () => {
+    expect(normalizeOptionalText(" n/a ")).toBeNull();
+    expect(normalizeOptionalText("🔒 Get Pro")).toBeNull();
+    expect(normalizeOptionalText(" San Francisco ")).toBe("San Francisco");
+  });
+});
 
 describe("normalizeRoundType", () => {
   it("maps series variants to canonical labels", () => {

@@ -1,18 +1,19 @@
 import { schedules, logger } from "@trigger.dev/sdk";
 import { logoUrlForDomain, normalizeOptionalText, normalizeRoundType, sourceNameForUrl } from "./pipeline/taxonomy.js";
+import { findCompanyPeople, type PeopleWaterfallConfig } from "./pipeline/legion-people.js";
 
 const WINDOW_DAYS = 60;
 const LIMIT = 500;
 const CHUNK_SIZE = 50;
+// New companies enriched per run; the 30-minute schedule clears a 447-company backlog in about 5 hours.
+const ENRICH_PER_RUN = 40;
+const PROFILE_SELECT = "domain,hq,employees,founders";
 const CORE_SELECT = "company_name,company_domain,amount_raised,round_type,lead_investors,discovered_date,source_url,industry";
 const FULL_SELECT = `${CORE_SELECT},amount_raised_usd,employee_count,employee_range,location,hq_location,company_description,products,founded_year,logo_url,source_name`;
 const COMPANY_SELECT = "domain,industry_label";
-// This view is intentionally queried with an explicit public-safe allowlist.
-const FOUNDER_SELECT = "company_domain,full_name,title,linkedin_url";
 
 type FundingDiscovery = Record<string, unknown>;
 type CompanyProfile = Record<string, unknown>;
-type Founder = Record<string, unknown>;
 
 export type FundingFeedRow = {
   company: string;
@@ -71,7 +72,7 @@ function optionalAmount(value: unknown): number | null {
 export function buildFundingFeedRows(
   funding: Array<FundingDiscovery | null> | null | undefined,
   companies: Array<CompanyProfile | null> | null | undefined,
-  founders: Array<Founder | null> | null | undefined,
+  people: Array<CompanyProfile | null> | null | undefined,
 ): FundingFeedRow[] {
   const companyByDomain = new Map<string, CompanyProfile>();
   for (const company of companies ?? []) {
@@ -80,15 +81,20 @@ export function buildFundingFeedRows(
     if (domain && !companyByDomain.has(domain)) companyByDomain.set(domain, company);
   }
 
-  const foundersByDomain = new Map<string, FundingFeedRow["founders"]>();
-  for (const founder of founders ?? []) {
-    if (!founder) continue;
-    const domain = normalizedDomain(founder.company_domain);
-    if (!domain) continue;
-    const entries = foundersByDomain.get(domain) ?? [];
-    if (entries.length >= 3) continue;
-    entries.push({ name: text(founder.full_name), title: text(founder.title), linkedin: safeUrl(founder.linkedin_url) });
-    foundersByDomain.set(domain, entries);
+  const peopleByDomain = new Map<string, CompanyProfile>();
+  for (const profile of people ?? []) {
+    const domain = profile ? normalizedDomain(profile.domain) : "";
+    if (profile && domain) peopleByDomain.set(domain, profile);
+  }
+
+  // Only name, title and https LinkedIn reach the public feed.
+  function publicFounders(raw: unknown): FundingFeedRow["founders"] {
+    if (!Array.isArray(raw)) return [];
+    return raw
+      .filter((f): f is Record<string, unknown> => !!f && typeof f === "object")
+      .map((f) => ({ name: text(f.name), title: text(f.title), linkedin: safeUrl(f.linkedin) }))
+      .filter((f) => f.name)
+      .slice(0, 3);
   }
 
   const seen = new Set<string>();
@@ -102,6 +108,7 @@ export function buildFundingFeedRows(
     if (seen.has(key)) continue;
     seen.add(key);
     const profile = companyByDomain.get(normalizedDomain(domain));
+    const people = peopleByDomain.get(normalizedDomain(domain));
     const sourceUrl = safeUrl(item.source_url);
     const profileDescription = text(item.company_description) || text(item.products);
     rows.push({
@@ -114,10 +121,10 @@ export function buildFundingFeedRows(
       investors: text(item.lead_investors) || null,
       industry: text(profile?.industry_label) || text(item.industry),
       description: profileDescription.slice(0, 280),
-      employees: optionalNumber(item.employee_count) ?? (text(item.employee_range) || null),
-      hq: text(item.hq_location) || text(item.location),
+      employees: optionalNumber(item.employee_count) ?? (text(item.employee_range) || text(people?.employees) || null),
+      hq: text(item.hq_location) || text(people?.hq) || text(item.location),
       founded: optionalNumber(item.founded_year),
-      founders: foundersByDomain.get(normalizedDomain(domain)) ?? [],
+      founders: publicFounders(people?.founders),
       date: text(item.discovered_date),
       source: text(item.source_name) || sourceNameForUrl(sourceUrl),
       sourceUrl,
@@ -127,7 +134,14 @@ export function buildFundingFeedRows(
 }
 
 type FetchLike = (input: string, init?: RequestInit) => Promise<Response>;
-export type FundingFeedConfig = { url: string; key: string; fetchImpl?: FetchLike; now?: Date };
+export type FundingFeedConfig = {
+  url: string;
+  key: string;
+  legionKv?: { accountId: string; namespaceId: string; token: string };
+  enrichment?: PeopleWaterfallConfig;
+  fetchImpl?: FetchLike;
+  now?: Date;
+};
 
 function headers(key: string, extra: HeadersInit = {}): HeadersInit {
   return { apikey: key, Authorization: `Bearer ${key}`, ...extra };
@@ -163,18 +177,18 @@ async function fetchFunding(config: FundingFeedConfig): Promise<FundingDiscovery
 async function fetchOptional(
   config: FundingFeedConfig,
   domains: string[],
-  table: "signal_companies" | "founder_contacts_public",
+  table: "signal_companies",
 ): Promise<Record<string, unknown>[]> {
   const fetchImpl = config.fetchImpl ?? fetch;
-  const select = table === "signal_companies" ? COMPANY_SELECT : FOUNDER_SELECT;
+  const select = COMPANY_SELECT;
   const rows: Record<string, unknown>[] = [];
   for (let start = 0; start < domains.length; start += CHUNK_SIZE) {
     const chunk = domains.slice(start, start + CHUNK_SIZE);
-    const schemaHeaders: Record<string, string> = { "Accept-Profile": table === "signal_companies" ? "leadgrow_knowledge" : "public" };
+    const schemaHeaders: Record<string, string> = { "Accept-Profile": "leadgrow_knowledge" };
     try {
       const response = await fetchJson(
         fetchImpl,
-        `${config.url.replace(/\/+$/, "")}/rest/v1/${table}?select=${select}&${table === "signal_companies" ? "domain" : "company_domain"}=${inFilter(chunk)}`,
+        `${config.url.replace(/\/+$/, "")}/rest/v1/${table}?select=${select}&domain=${inFilter(chunk)}`,
         headers(config.key, schemaHeaders),
       );
       if (response.ok) {
@@ -188,62 +202,102 @@ async function fetchOptional(
   return rows;
 }
 
-export async function ensurePublicFeedsBucket(config: FundingFeedConfig): Promise<void> {
-  const fetchImpl = config.fetchImpl ?? fetch;
-  const base = config.url.replace(/\/+$/, "");
-  const getResponse = await fetchImpl(`${base}/storage/v1/bucket/public-feeds`, {
-    headers: headers(config.key),
-    signal: AbortSignal.timeout(15_000),
-  });
-  if (getResponse.ok) return;
-  if (getResponse.status !== 404) throw new Error(`public-feeds bucket check failed with HTTP ${getResponse.status}`);
-  const createResponse = await fetchImpl(`${base}/storage/v1/bucket`, {
-    method: "POST",
-    headers: headers(config.key, { "Content-Type": "application/json" }),
-    body: JSON.stringify({ id: "public-feeds", name: "public-feeds", public: true }),
-    signal: AbortSignal.timeout(15_000),
-  });
-  if (!createResponse.ok && createResponse.status !== 409) {
-    throw new Error(`public-feeds bucket create failed with HTTP ${createResponse.status}`);
-  }
-}
-
+/** Writes the feed to Legion's FUNDING_FEED KV namespace, served by the Legion site at /data/funding.json. */
 async function uploadFeed(config: FundingFeedConfig, feed: FundingFeed): Promise<void> {
+  const kv = config.legionKv;
+  if (!kv?.accountId || !kv.namespaceId || !kv.token) throw new Error("Legion feed KV is not configured");
   const response = await (config.fetchImpl ?? fetch)(
-    `${config.url.replace(/\/+$/, "")}/storage/v1/object/public-feeds/funding/feed.json`,
+    `https://api.cloudflare.com/client/v4/accounts/${kv.accountId}/storage/kv/namespaces/${kv.namespaceId}/values/feed.json`,
     {
-      method: "POST",
-      headers: headers(config.key, { "Content-Type": "application/json", "Cache-Control": "max-age=900", "x-upsert": "true" }),
+      method: "PUT",
+      headers: { Authorization: `Bearer ${kv.token}`, "Content-Type": "application/json" },
       body: JSON.stringify(feed),
       signal: AbortSignal.timeout(15_000),
     },
   );
-  if (!response.ok) throw new Error(`funding feed upload failed with HTTP ${response.status}`);
+  if (!response.ok) throw new Error(`Legion feed KV write failed with HTTP ${response.status}`);
 }
 
-export async function refreshFundingFeed(config: FundingFeedConfig): Promise<FundingFeed> {
+async function fetchProfiles(config: FundingFeedConfig, domains: string[]): Promise<CompanyProfile[]> {
+  const fetchImpl = config.fetchImpl ?? fetch;
+  const rows: CompanyProfile[] = [];
+  for (let start = 0; start < domains.length; start += CHUNK_SIZE) {
+    const response = await fetchJson(
+      fetchImpl,
+      `${config.url.replace(/\/+$/, "")}/rest/v1/legion_company_profiles?select=${PROFILE_SELECT}&domain=${inFilter(domains.slice(start, start + CHUNK_SIZE))}`,
+      headers(config.key, { "Accept-Profile": "leadgrow_knowledge" }),
+    );
+    if (!response.ok) throw new Error(`legion_company_profiles read failed with HTTP ${response.status}`);
+    const data: unknown = await response.json();
+    if (Array.isArray(data)) rows.push(...data);
+  }
+  return rows;
+}
+
+async function postRows(config: FundingFeedConfig, path: string, profile: string, rows: unknown[], extra: Record<string, string> = {}): Promise<void> {
+  if (rows.length === 0) return;
+  const response = await (config.fetchImpl ?? fetch)(`${config.url.replace(/\/+$/, "")}/rest/v1/${path}`, {
+    method: "POST",
+    headers: headers(config.key, { "Content-Type": "application/json", "Content-Profile": profile, ...extra }),
+    body: JSON.stringify(rows),
+    signal: AbortSignal.timeout(15_000),
+  });
+  if (!response.ok) throw new Error(`${path} write failed with HTTP ${response.status}`);
+}
+
+/** Runs the find-people waterfall for domains with no cached profile, caps spend per run, records costs. */
+async function enrichMissing(config: FundingFeedConfig, domains: string[], profiles: CompanyProfile[]): Promise<{ enriched: number; costUsd: number }> {
+  if (!config.enrichment) return { enriched: 0, costUsd: 0 };
+  const done = new Set(profiles.map((p) => normalizedDomain(p.domain)));
+  const todo = domains.filter((d) => !done.has(d)).slice(0, ENRICH_PER_RUN);
+  let costUsd = 0;
+  for (const domain of todo) {
+    const found = await findCompanyPeople(domain, config.enrichment);
+    const cost = found.calls.reduce((sum, call) => sum + call.costUsd, 0);
+    costUsd += cost;
+    const row = { domain, hq: found.hq, employees: found.employees, founders: found.founders, sources: found.sources, cost_usd: cost };
+    await postRows(config, "legion_company_profiles", "leadgrow_knowledge", [row], { Prefer: "resolution=merge-duplicates" });
+    await postRows(config, "cost_ledger", "enrichment", found.calls.map((call) => ({
+      cost_type: "legion_funding_people", provider: call.provider, amount: call.costUsd, units: call.units, metadata: { domain },
+    })));
+    profiles.push(row);
+  }
+  return { enriched: todo.length, costUsd };
+}
+
+export async function refreshFundingFeed(config: FundingFeedConfig): Promise<FundingFeed & { enriched: number; costUsd: number }> {
   if (!config.url || !config.key) throw new Error("Supabase is not configured for legion funding feed");
   const funding = await fetchFunding(config);
   const domains = domainsFrom(funding);
-  const [companies, founders] = await Promise.all([
+  const [companies, profiles] = await Promise.all([
     fetchOptional(config, domains, "signal_companies"),
-    fetchOptional(config, domains, "founder_contacts_public"),
+    fetchProfiles(config, domains),
   ]);
+  const { enriched, costUsd } = await enrichMissing(config, domains, profiles);
   const feed: FundingFeed = {
     updatedAt: (config.now ?? new Date()).toISOString(),
     count: 0,
-    rows: buildFundingFeedRows(funding, companies, founders),
+    rows: buildFundingFeedRows(funding, companies, profiles),
   };
   feed.count = feed.rows.length;
-  await ensurePublicFeedsBucket(config);
   await uploadFeed(config, feed);
-  return feed;
+  return { ...feed, enriched, costUsd };
 }
 
 function runtimeConfig(): FundingFeedConfig {
   return {
     url: process.env.SUPABASE_PROJECT_URL ?? process.env.SUPABASE_URL ?? "",
     key: process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.SUPABASE_KEY ?? "",
+    legionKv: {
+      accountId: process.env.LEGION_CF_ACCOUNT_ID ?? "",
+      namespaceId: process.env.LEGION_FUNDING_KV_ID ?? "",
+      token: process.env.LEGION_CF_API_TOKEN ?? "",
+    },
+    enrichment: {
+      quickEnrichKey: process.env.QUICKENRICH_API_KEY ?? "",
+      aiArkKey: process.env.AI_ARK_API_KEY ?? "",
+      quickEnrichUsdPerCredit: Number(process.env.QUICKENRICH_USD_PER_CREDIT ?? 0) || 0,
+    },
   };
 }
 
@@ -252,7 +306,7 @@ export const legionFundingFeed = schedules.task({
   cron: { pattern: "*/30 * * * *", timezone: "America/New_York" },
   run: async () => {
     const feed = await refreshFundingFeed(runtimeConfig());
-    logger.info("Legion funding feed uploaded", { count: feed.count });
-    return { count: feed.count, updatedAt: feed.updatedAt };
+    logger.info("Legion funding feed published", { count: feed.count, enriched: feed.enriched, costUsd: feed.costUsd });
+    return { count: feed.count, enriched: feed.enriched, costUsd: feed.costUsd, updatedAt: feed.updatedAt };
   },
 });
