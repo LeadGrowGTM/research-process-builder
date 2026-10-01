@@ -1,5 +1,8 @@
 # Find Local Business Website
 
+model: gpt-6-luna
+service_tier: flex
+
 **Accuracy:** 93% validated across 15 companies (3 tiers)
 **Built:** 2026-04-26
 **Methodology:** research-process-builder, 3 iteration runs, 45 total tests

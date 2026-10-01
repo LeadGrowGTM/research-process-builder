@@ -1,5 +1,8 @@
 # find c-suite executives (technical and commercial)
 
+model: gpt-6-luna
+service_tier: flex
+
 find the c-suite leadership of a company across both technical roles (CTO, CPO, CISO) and commercial roles (CMO, CRO, COO, CFO).
 
 ## inputs

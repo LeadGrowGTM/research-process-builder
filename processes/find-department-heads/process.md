@@ -1,5 +1,8 @@
 # find department heads and sales operations leads
 
+model: gpt-6-luna
+service_tier: flex
+
 find "Head of" roles across growth, operations, partnerships, and customer success, plus RevOps/Sales Operations leaders.
 
 ## inputs

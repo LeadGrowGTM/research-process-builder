@@ -1,5 +1,8 @@
 # find specialist roles: HR/people, finance/legal, and technical leads
 
+model: gpt-6-luna
+service_tier: flex
+
 find specialist leadership across HR/people/talent, finance/legal/ops, and senior technical individual contributors (staff engineers, architects).
 
 ## inputs

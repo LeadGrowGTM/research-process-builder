@@ -1,5 +1,8 @@
 # find director-level leaders across sales, marketing, and engineering
 
+model: gpt-6-luna
+service_tier: flex
+
 find Director-level and senior manager-level people across sales/BD, marketing/content, and engineering/product functions.
 
 ## inputs

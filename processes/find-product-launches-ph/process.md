@@ -1,5 +1,8 @@
 # find Product Hunt daily launches — monitoring sweep
 
+model: gpt-6-luna
+service_tier: flex
+
 > **validated:** pending — GT built 2026-05-04, awaiting first anneal run.
 > **type:** monitoring process (date-in → product list out). date-parameterized URL, no `tbs` time filter needed.
 > **target deployment:** TriggerDev cron (daily, after PH leaderboard closes ~midnight PT)

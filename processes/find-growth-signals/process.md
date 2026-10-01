@@ -1,5 +1,8 @@
 # find growth and marketing investment signals
 
+model: gpt-6-luna
+service_tier: flex
+
 > **validated:** 25 companies across 4 tiers (3,357 searches). covers 12 categories. per-category accuracy:
 > - growth_marketing: combo_name_blog PRIMARY Q4.0
 > - content_blog: combo_domain_blog PRIMARY Q4.0

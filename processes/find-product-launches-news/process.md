@@ -1,5 +1,8 @@
 # find product launches from news — daily monitoring sweep
 
+model: gpt-6-luna
+service_tier: flex
+
 > **validated:** pending — GT built 2026-05-04, awaiting first anneal run.
 > **type:** monitoring process (date-in → product list out). fundamentally different from lookup processes (company-in → data out).
 > **target deployment:** TriggerDev cron (daily 7am ET)

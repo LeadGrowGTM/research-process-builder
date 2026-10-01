@@ -1,5 +1,8 @@
 # find founders, CEO, and president
 
+model: gpt-6-luna
+service_tier: flex
+
 find the founders and top executive (CEO/president) of a company using media mentions, founding attributions, and LinkedIn profiles.
 
 ## inputs

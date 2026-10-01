@@ -1,5 +1,8 @@
 # find customer complaints and negative sentiment
 
+model: gpt-6-luna
+service_tier: flex
+
 > **validated:** 25 companies across 4 tiers (3,357 searches). FALLBACK at Q3.4. T1:Q4.0, T2:Q3.4, T3:Q3.5, T4:Q2.8. structurally limited: micro companies rarely have indexed complaints. all combo patterns (reddit, negative review) scored KILL. the current approach is the best available.
 
 surface recent complaints, negative reviews, and controversy about a company from their customer base. this tells you what pain points exist, how severe they are, and whether the negativity is recent or historical.

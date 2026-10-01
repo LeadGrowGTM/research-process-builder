@@ -1,5 +1,8 @@
 # find VP-level leadership across sales, marketing, and engineering
 
+model: gpt-6-luna
+service_tier: flex
+
 find Vice President-level leaders across the three core functions: sales/revenue, marketing/growth, and engineering/product.
 
 ## inputs

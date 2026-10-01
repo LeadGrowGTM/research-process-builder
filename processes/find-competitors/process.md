@@ -1,5 +1,8 @@
 # find competitors and competitive positioning
 
+model: gpt-6-luna
+service_tier: flex
+
 > **validated:** 25 companies across 4 tiers (3,357 searches). PRIMARY at Q4.0. T1:Q4.0, T2:Q4.0, T3:Q4.0, T4:Q4.0. Rock solid across all tiers.
 
 find the direct competitors of a company and explain why each one competes.

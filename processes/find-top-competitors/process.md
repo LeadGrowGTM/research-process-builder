@@ -1,5 +1,8 @@
 # find top competitors (lean output)
 
+model: gpt-6-luna
+service_tier: flex
+
 > uses the same search depth as find-competitors but outputs only the top 3 direct competitors. lean output for enrichment pipelines.
 
 find the top 3 direct competitors of a company. output only names, sources, and confidence. no positioning analysis.

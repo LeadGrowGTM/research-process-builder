@@ -1,5 +1,8 @@
 # find-game-signals — daily monitoring sweep
 
+model: gpt-6-luna
+service_tier: flex
+
 > **validated:** 2026-05-05. SerperDev Search + `tbs:qdr:m` test across 24 queries.
 > Stream A (game announces): ~85% recall. Stream B (studio funding): ~90% recall.
 > **type:** monitoring process (date-in → signals list out)
