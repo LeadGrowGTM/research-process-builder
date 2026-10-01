@@ -1,0 +1,258 @@
+import { schedules, logger } from "@trigger.dev/sdk";
+import { logoUrlForDomain, normalizeOptionalText, normalizeRoundType, sourceNameForUrl } from "./pipeline/taxonomy.js";
+
+const WINDOW_DAYS = 60;
+const LIMIT = 500;
+const CHUNK_SIZE = 50;
+const CORE_SELECT = "company_name,company_domain,amount_raised,round_type,lead_investors,discovered_date,source_url,industry";
+const FULL_SELECT = `${CORE_SELECT},amount_raised_usd,employee_count,employee_range,location,hq_location,company_description,products,founded_year,logo_url,source_name`;
+const COMPANY_SELECT = "domain,industry_label";
+// This view is intentionally queried with an explicit public-safe allowlist.
+const FOUNDER_SELECT = "company_domain,full_name,title,linkedin_url";
+
+type FundingDiscovery = Record<string, unknown>;
+type CompanyProfile = Record<string, unknown>;
+type Founder = Record<string, unknown>;
+
+export type FundingFeedRow = {
+  company: string;
+  domain: string;
+  logo: string | null;
+  round: string;
+  amount: string | null;
+  amountUsd: number | null;
+  investors: string | null;
+  industry: string;
+  description: string;
+  employees: number | string | null;
+  hq: string;
+  founded: number | null;
+  founders: Array<{ name: string; title: string; linkedin: string }>;
+  date: string;
+  source: string | null;
+  sourceUrl: string;
+};
+
+export type FundingFeed = { updatedAt: string; count: number; rows: FundingFeedRow[] };
+
+function text(value: unknown): string {
+  return normalizeOptionalText(value) ?? "";
+}
+
+function normalizedDomain(value: unknown): string {
+  return text(value).toLowerCase();
+}
+
+function safeUrl(value: unknown): string {
+  const candidate = text(value);
+  try {
+    const url = new URL(candidate);
+    if (url.protocol !== "https:" || url.username || url.password) return "";
+    for (const key of url.searchParams.keys()) {
+      if (/token|api.?key|secret|password|auth/i.test(key)) return "";
+    }
+    return candidate;
+  } catch {
+    return "";
+  }
+}
+
+function optionalNumber(value: unknown): number | null {
+  return typeof value === "number" && Number.isFinite(value) ? value : null;
+}
+
+function optionalAmount(value: unknown): number | null {
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+  if (typeof value === "string" && value.trim() !== "" && Number.isFinite(Number(value))) return Number(value);
+  return null;
+}
+
+/** Builds public feed rows without any I/O. */
+export function buildFundingFeedRows(
+  funding: Array<FundingDiscovery | null> | null | undefined,
+  companies: Array<CompanyProfile | null> | null | undefined,
+  founders: Array<Founder | null> | null | undefined,
+): FundingFeedRow[] {
+  const companyByDomain = new Map<string, CompanyProfile>();
+  for (const company of companies ?? []) {
+    if (!company) continue;
+    const domain = normalizedDomain(company.domain);
+    if (domain && !companyByDomain.has(domain)) companyByDomain.set(domain, company);
+  }
+
+  const foundersByDomain = new Map<string, FundingFeedRow["founders"]>();
+  for (const founder of founders ?? []) {
+    if (!founder) continue;
+    const domain = normalizedDomain(founder.company_domain);
+    if (!domain) continue;
+    const entries = foundersByDomain.get(domain) ?? [];
+    if (entries.length >= 3) continue;
+    entries.push({ name: text(founder.full_name), title: text(founder.title), linkedin: safeUrl(founder.linkedin_url) });
+    foundersByDomain.set(domain, entries);
+  }
+
+  const seen = new Set<string>();
+  const rows: FundingFeedRow[] = [];
+  for (const item of funding ?? []) {
+    if (!item) continue;
+    const company = text(item.company_name);
+    if (!company) continue;
+    const domain = text(item.company_domain);
+    const key = normalizedDomain(domain) || company.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    const profile = companyByDomain.get(normalizedDomain(domain));
+    const sourceUrl = safeUrl(item.source_url);
+    const profileDescription = text(item.company_description) || text(item.products);
+    rows.push({
+      company,
+      domain,
+      logo: safeUrl(item.logo_url) || logoUrlForDomain(domain),
+      round: normalizeRoundType(item.round_type) ?? "Unknown",
+      amount: text(item.amount_raised) || null,
+      amountUsd: optionalAmount(item.amount_raised_usd),
+      investors: text(item.lead_investors) || null,
+      industry: text(profile?.industry_label) || text(item.industry),
+      description: profileDescription.slice(0, 280),
+      employees: optionalNumber(item.employee_count) ?? (text(item.employee_range) || null),
+      hq: text(item.hq_location) || text(item.location),
+      founded: optionalNumber(item.founded_year),
+      founders: foundersByDomain.get(normalizedDomain(domain)) ?? [],
+      date: text(item.discovered_date),
+      source: text(item.source_name) || sourceNameForUrl(sourceUrl),
+      sourceUrl,
+    });
+  }
+  return rows;
+}
+
+type FetchLike = (input: string, init?: RequestInit) => Promise<Response>;
+export type FundingFeedConfig = { url: string; key: string; fetchImpl?: FetchLike; now?: Date };
+
+function headers(key: string, extra: HeadersInit = {}): HeadersInit {
+  return { apikey: key, Authorization: `Bearer ${key}`, ...extra };
+}
+
+function domainsFrom(rows: FundingDiscovery[]): string[] {
+  return [...new Set(rows.map((row) => normalizedDomain(row.company_domain)).filter(Boolean))];
+}
+
+function inFilter(domains: string[]): string {
+  return `in.(${domains.map(encodeURIComponent).join(",")})`;
+}
+
+async function fetchJson(fetchImpl: FetchLike, url: string, headersValue: HeadersInit): Promise<Response> {
+  return fetchImpl(url, { headers: headersValue, signal: AbortSignal.timeout(15_000) });
+}
+
+async function fetchFunding(config: FundingFeedConfig): Promise<FundingDiscovery[]> {
+  const fetchImpl = config.fetchImpl ?? fetch;
+  const since = new Date((config.now ?? new Date()).getTime() - WINDOW_DAYS * 86_400_000).toISOString().slice(0, 10);
+  const base = `${config.url.replace(/\/+$/, "")}/rest/v1/funding_discoveries?discovered_date=gte.${since}&order=discovered_date.desc&limit=${LIMIT}`;
+  const readHeaders = headers(config.key, { "Accept-Profile": "public" });
+  let response = await fetchJson(fetchImpl, `${base}&select=${FULL_SELECT}`, readHeaders);
+  if (!response.ok && response.status === 400) {
+    response = await fetchJson(fetchImpl, `${base}&select=${CORE_SELECT}`, readHeaders);
+  }
+  if (!response.ok) throw new Error(`funding_discoveries read failed with HTTP ${response.status}`);
+  const rows: unknown = await response.json();
+  if (!Array.isArray(rows)) throw new Error("funding_discoveries returned an invalid core response");
+  return rows;
+}
+
+async function fetchOptional(
+  config: FundingFeedConfig,
+  domains: string[],
+  table: "signal_companies" | "founder_contacts_public",
+): Promise<Record<string, unknown>[]> {
+  const fetchImpl = config.fetchImpl ?? fetch;
+  const select = table === "signal_companies" ? COMPANY_SELECT : FOUNDER_SELECT;
+  const rows: Record<string, unknown>[] = [];
+  for (let start = 0; start < domains.length; start += CHUNK_SIZE) {
+    const chunk = domains.slice(start, start + CHUNK_SIZE);
+    const schemaHeaders: Record<string, string> = { "Accept-Profile": table === "signal_companies" ? "leadgrow_knowledge" : "public" };
+    try {
+      const response = await fetchJson(
+        fetchImpl,
+        `${config.url.replace(/\/+$/, "")}/rest/v1/${table}?select=${select}&${table === "signal_companies" ? "domain" : "company_domain"}=${inFilter(chunk)}`,
+        headers(config.key, schemaHeaders),
+      );
+      if (response.ok) {
+        const data: unknown = await response.json();
+        if (Array.isArray(data)) rows.push(...data.filter(row => row && typeof row === "object"));
+      }
+    } catch {
+      // Profiles are optional. A core feed can still be published without them.
+    }
+  }
+  return rows;
+}
+
+export async function ensurePublicFeedsBucket(config: FundingFeedConfig): Promise<void> {
+  const fetchImpl = config.fetchImpl ?? fetch;
+  const base = config.url.replace(/\/+$/, "");
+  const getResponse = await fetchImpl(`${base}/storage/v1/bucket/public-feeds`, {
+    headers: headers(config.key),
+    signal: AbortSignal.timeout(15_000),
+  });
+  if (getResponse.ok) return;
+  if (getResponse.status !== 404) throw new Error(`public-feeds bucket check failed with HTTP ${getResponse.status}`);
+  const createResponse = await fetchImpl(`${base}/storage/v1/bucket`, {
+    method: "POST",
+    headers: headers(config.key, { "Content-Type": "application/json" }),
+    body: JSON.stringify({ id: "public-feeds", name: "public-feeds", public: true }),
+    signal: AbortSignal.timeout(15_000),
+  });
+  if (!createResponse.ok && createResponse.status !== 409) {
+    throw new Error(`public-feeds bucket create failed with HTTP ${createResponse.status}`);
+  }
+}
+
+async function uploadFeed(config: FundingFeedConfig, feed: FundingFeed): Promise<void> {
+  const response = await (config.fetchImpl ?? fetch)(
+    `${config.url.replace(/\/+$/, "")}/storage/v1/object/public-feeds/funding/feed.json`,
+    {
+      method: "POST",
+      headers: headers(config.key, { "Content-Type": "application/json", "Cache-Control": "max-age=900", "x-upsert": "true" }),
+      body: JSON.stringify(feed),
+      signal: AbortSignal.timeout(15_000),
+    },
+  );
+  if (!response.ok) throw new Error(`funding feed upload failed with HTTP ${response.status}`);
+}
+
+export async function refreshFundingFeed(config: FundingFeedConfig): Promise<FundingFeed> {
+  if (!config.url || !config.key) throw new Error("Supabase is not configured for legion funding feed");
+  const funding = await fetchFunding(config);
+  const domains = domainsFrom(funding);
+  const [companies, founders] = await Promise.all([
+    fetchOptional(config, domains, "signal_companies"),
+    fetchOptional(config, domains, "founder_contacts_public"),
+  ]);
+  const feed: FundingFeed = {
+    updatedAt: (config.now ?? new Date()).toISOString(),
+    count: 0,
+    rows: buildFundingFeedRows(funding, companies, founders),
+  };
+  feed.count = feed.rows.length;
+  await ensurePublicFeedsBucket(config);
+  await uploadFeed(config, feed);
+  return feed;
+}
+
+function runtimeConfig(): FundingFeedConfig {
+  return {
+    url: process.env.SUPABASE_PROJECT_URL ?? process.env.SUPABASE_URL ?? "",
+    key: process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.SUPABASE_KEY ?? "",
+  };
+}
+
+export const legionFundingFeed = schedules.task({
+  id: "legion-funding-feed",
+  cron: { pattern: "*/30 * * * *", timezone: "America/New_York" },
+  run: async () => {
+    const feed = await refreshFundingFeed(runtimeConfig());
+    logger.info("Legion funding feed uploaded", { count: feed.count });
+    return { count: feed.count, updatedAt: feed.updatedAt };
+  },
+});

@@ -4,18 +4,19 @@ import { blitzEnrichLinkedin, blitzHqString } from "./blitz.js";
 import { isDomainBlocked } from "./domain-lookup.js";
 import { normalizeDomain, enrichDomainWaterfall } from "./enrich-company.js";
 import { patchRowBySourceUrl } from "./supabase.js";
+import { normalizeIndustry } from "./taxonomy.js";
 
 const SUPABASE_URL = (() => {
   const url = process.env.SUPABASE_PROJECT_URL ?? process.env.SUPABASE_URL ?? "";
   return url.startsWith("http") ? url : "";
 })();
 const SUPABASE_KEY =
-  process.env.SUPABASE_KEY ??
   process.env.SUPABASE_SERVICE_ROLE_KEY ??
+  process.env.SUPABASE_KEY ??
   process.env.SUPABASE_ANON_KEY ??
   "";
 
-// DiscoLike is ~$0.18/query — 50 rows/table = ~$9 worst case per table.
+// DiscoLike is ~$0.18/query - 50 rows/table = ~$9 worst case per table.
 // Usage gate re-checked before each table, so total run overshoot is bounded.
 const MAX_ROWS_PER_TABLE = 50;
 
@@ -48,9 +49,7 @@ async function fetchRetryRows(
     signal: AbortSignal.timeout(15_000),
   });
   if (!res.ok) {
-    logger.error(`Retry-pass fetch failed: ${table} → ${res.status}`, {
-      body: (await res.text()).slice(0, 200),
-    });
+    logger.error(`Retry-pass fetch failed: ${table} -> ${res.status}`);
     return { rows: [], junk: [] };
   }
   const raw = (await res.json()) as Record<string, string>[];
@@ -66,7 +65,7 @@ async function fetchRetryRows(
 /**
  * Delayed enrichment pass. Day-0 Blitz misses sit with enriched_at NULL until
  * the row is old enough for DiscoLike's index (~30 days for tiny startups,
- * less for funded companies). Every row gets exactly ONE DiscoLike attempt —
+ * less for funded companies). Every row gets exactly ONE DiscoLike attempt -
  * hit or miss, enriched_at is stamped so the next run skips it.
  * When DiscoLike surfaces a linkedin_url, chain into Blitz (free) for
  * followers / employee range / founded year.
@@ -78,7 +77,7 @@ export async function runEnrichmentRetryPass(): Promise<{
   const result = { funding: { scanned: 0, enriched: 0 }, ph: { scanned: 0, enriched: 0 } };
 
   if (!discolikeConfigured()) {
-    logger.warn("DiscoLike not configured — skipping retry pass");
+    logger.warn("DiscoLike not configured - skipping retry pass");
     return result;
   }
   const tables = [
@@ -87,9 +86,9 @@ export async function runEnrichmentRetryPass(): Promise<{
   ];
 
   for (const t of tables) {
-    // Re-check spend before every table — one table can burn ~$9 on its own
+    // Re-check spend before every table - one table can burn ~$9 on its own
     if (!(await discolikeUsageOk())) {
-      logger.warn(`DiscoLike spend near max — skipping ${t.table} retry pass`);
+      logger.warn(`DiscoLike spend near max - skipping ${t.table} retry pass`);
       continue;
     }
 
@@ -106,7 +105,7 @@ export async function runEnrichmentRetryPass(): Promise<{
     }
 
     for (const row of rows) {
-      // Free waterfall first (lg-free + Blitz) — day-0 may have missed on a
+      // Free waterfall first (lg-free + Blitz) - day-0 may have missed on a
       // transient failure, or the company's LinkedIn page appeared since.
       const free = await enrichDomainWaterfall(t.table, {
         companyName: row.company_name,
@@ -126,10 +125,10 @@ export async function runEnrichmentRetryPass(): Promise<{
       let profile: DiscoProfile | null;
       try {
         profile = await discolikeProfile(row.domain);
-      } catch (e) {
-        // Transient network/timeout error — NOT a DiscoLike miss. Leave the row
+      } catch {
+        // Transient network/timeout error - NOT a DiscoLike miss. Leave the row
         // unstamped so next week retries it, and don't kill the rest of the run.
-        logger.warn(`DiscoLike error for ${row.domain}: ${e instanceof Error ? e.message : String(e)}`);
+        logger.warn("DiscoLike transport or response failure", { domain: row.domain });
         continue;
       }
 
@@ -143,12 +142,14 @@ export async function runEnrichmentRetryPass(): Promise<{
       }
 
       const blitz = profile.linkedin_url ? await blitzEnrichLinkedin(profile.linkedin_url) : null;
+      const hqLocation = (blitz && blitzHqString(blitz)) ?? profile.location;
 
       const patch: Record<string, unknown> =
         t.table === "funding_discoveries"
           ? {
-              industry: blitz?.industry ?? profile.industry,
-              location: (blitz && blitzHqString(blitz)) ?? profile.location,
+              industry: normalizeIndustry(blitz?.industry ?? profile.industry),
+              location: hqLocation,
+              hq_location: hqLocation,
               linkedin_url: profile.linkedin_url,
               employee_count: blitz?.employees_on_linkedin ?? profile.employees,
               employee_range: blitz?.size ?? null,

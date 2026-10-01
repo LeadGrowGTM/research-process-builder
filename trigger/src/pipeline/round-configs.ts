@@ -3,18 +3,18 @@ import type { RoundConfig } from "./types.js";
 function buildExtractionPrompt(roundLabel: string, sentinel: string): string {
   return `Extract ${roundLabel} funding data from this article.
 
-Return exactly this JSON:
-{"company_name": "...", "company_domain": "...", "amount_raised": "...", "lead_investors": "...", "round_reasoning": "...", "industry": "...", "location": "...", "funding_date": "YYYY-MM-DD"}
+Return the requested structured fields. Use JSON null for any absent value. Never emit "not_stated" or an empty string.
 
 Rules:
 - company_name = the company that RAISED money (NOT the investor/VC)
-- company_domain = their official website domain (e.g. mosaic.pe, zenskar.com). Look carefully in: the "About [Company]" section near the bottom, "Learn more at" or "visit" links, contact email addresses (press@mosaic.pe → mosaic.pe), and any inline URLs. PR articles almost always contain this. Do NOT return the PR wire domain (prnewswire.com, businesswire.com). "not_stated" ONLY if truly absent after checking all sections
+- company_domain = their official website domain (e.g. mosaic.pe, zenskar.com). Check the About section, learn-more links, contact email domains, and inline URLs. Do NOT return the PR wire domain. Return null if truly absent
 - amount_raised = exact amount with currency symbol (e.g. "$15M", "EUR10M", "KRW 90B")
-- lead_investors = who led the round, comma-separated. "not_stated" if unknown
-- round_reasoning = why they raised / what funds are for, 1-2 sentences. "not_stated" if unknown
-- industry = primary industry/vertical (e.g. "AI", "fintech", "healthtech", "cybersecurity", "SaaS"). "not_stated" if unclear
-- location = company HQ city and country (e.g. "San Francisco, US", "London, UK", "Tel Aviv, Israel"). "not_stated" if unknown
-- funding_date = date the funding was announced, YYYY-MM-DD format. Look for explicit dates in the article. "not_stated" if no date found
+- round_type = the stated round, using an allowed taxonomy value, or null if absent
+- lead_investors = who led the round, comma-separated, or null if absent
+- round_reasoning = why they raised / what funds are for, 1-2 sentences, or null if absent
+- industry = choose the closest allowed taxonomy value, or null if unclear
+- location = company HQ city and country, or null if absent
+- funding_date = date the funding was announced in YYYY-MM-DD format, or null if absent
 - If this is NOT actually a ${roundLabel} funding announcement, set company_name to "${sentinel}"
 
 ---
@@ -48,9 +48,8 @@ export const SERIES_A_CONFIG: RoundConfig = {
     { id: "q8", query: '"Series A" startup funding site:eu-startups.com OR site:tech.eu OR site:techround.co.uk', num: 10, desc: "European" },
   ],
   supabaseTable: "funding_discoveries",
-  webhookUrl:
-    "https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-d1b53ce2-fe64-40e4-a86c-faef265c5a63",
-  webhookAuthToken: "0be318b702699f40b68f",
+  webhookUrl: process.env.FUNDING_WEBHOOK_URL ?? "",
+  webhookAuthToken: process.env.FUNDING_WEBHOOK_AUTH_TOKEN ?? "",
   extractionPrompt: buildExtractionPrompt("Series A", "NOT_SERIES_A"),
 };
 
@@ -75,9 +74,8 @@ export const SERIES_B_CONFIG: RoundConfig = {
     { id: "bq8", query: '"Series B" startup funding site:eu-startups.com OR site:tech.eu OR site:techround.co.uk', num: 10, desc: "European" },
   ],
   supabaseTable: "funding_discoveries",
-  webhookUrl:
-    "https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-d1b53ce2-fe64-40e4-a86c-faef265c5a63",
-  webhookAuthToken: "0be318b702699f40b68f",
+  webhookUrl: process.env.FUNDING_WEBHOOK_URL ?? "",
+  webhookAuthToken: process.env.FUNDING_WEBHOOK_AUTH_TOKEN ?? "",
   extractionPrompt: buildExtractionPrompt("Series B", "NOT_SERIES_B"),
 };
 
@@ -102,8 +100,7 @@ export const SERIES_C_CONFIG: RoundConfig = {
     { id: "cq8", query: '"Series C" startup funding site:eu-startups.com OR site:tech.eu OR site:techround.co.uk', num: 10, desc: "European" },
   ],
   supabaseTable: "funding_discoveries",
-  webhookUrl:
-    "https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-d1b53ce2-fe64-40e4-a86c-faef265c5a63",
-  webhookAuthToken: "0be318b702699f40b68f",
+  webhookUrl: process.env.FUNDING_WEBHOOK_URL ?? "",
+  webhookAuthToken: process.env.FUNDING_WEBHOOK_AUTH_TOKEN ?? "",
   extractionPrompt: buildExtractionPrompt("Series C", "NOT_SERIES_C"),
 };

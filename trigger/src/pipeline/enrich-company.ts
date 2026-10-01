@@ -5,6 +5,7 @@ import { lgenrichDomain, lgHqString, lgenrichConfigured } from "./lgenrich.js";
 import type { LgFirmographics } from "./lgenrich.js";
 import { isDomainBlocked } from "./domain-lookup.js";
 import { patchRowBySourceUrl } from "./supabase.js";
+import { normalizeIndustry, normalizeOptionalInteger, normalizeOptionalText } from "./taxonomy.js";
 
 export function normalizeDomain(raw: string): string {
   return raw
@@ -15,15 +16,17 @@ export function normalizeDomain(raw: string): string {
 }
 
 export function fundingPatchFromBlitz(linkedinUrl: string, c: BlitzCompany): Record<string, unknown> {
+  const hqLocation = blitzHqString(c);
   return {
-    industry: c.industry ?? null,
-    location: blitzHqString(c),
+    industry: normalizeIndustry(c.industry),
+    location: hqLocation,
+    hq_location: hqLocation,
     linkedin_url: linkedinUrl,
-    employee_count: c.employees_on_linkedin ?? null,
-    employee_range: c.size ?? null,
+    employee_count: normalizeOptionalInteger(c.employees_on_linkedin),
+    employee_range: normalizeOptionalText(c.size),
     linkedin_followers: c.followers ?? null,
     company_description: c.about ?? null,
-    founded_year: c.founded_year ?? null,
+    founded_year: normalizeOptionalInteger(c.founded_year),
     company_type: c.type ?? null,
   };
 }
@@ -40,15 +43,17 @@ export function phPatchFromBlitz(linkedinUrl: string, c: BlitzCompany): Record<s
 }
 
 export function fundingPatchFromLg(linkedinUrl: string, f: LgFirmographics): Record<string, unknown> {
+  const hqLocation = lgHqString(f);
   return {
-    industry: f.industry ?? null,
-    location: lgHqString(f),
+    industry: normalizeIndustry(f.industry),
+    location: hqLocation,
+    hq_location: hqLocation,
     linkedin_url: linkedinUrl,
-    employee_count: f.employee_count ?? null,
-    employee_range: f.employee_count_range ?? null,
+    employee_count: normalizeOptionalInteger(f.employee_count),
+    employee_range: normalizeOptionalText(f.employee_count_range),
     linkedin_followers: f.follower_count ?? null,
     company_description: f.description ?? null,
-    founded_year: f.founded_year ?? null,
+    founded_year: normalizeOptionalInteger(f.founded_year),
     company_type: f.company_type ?? null,
   };
 }
@@ -66,7 +71,7 @@ export function phPatchFromLg(linkedinUrl: string, f: LgFirmographics): Record<s
 
 export interface Day0Target {
   companyName: string;
-  domain: string; // raw — normalized internally
+  domain: string; // raw - normalized internally
   sourceUrl: string; // row key for PATCH
   knownLinkedin?: string | null;
 }
@@ -78,7 +83,7 @@ export interface WaterfallHit {
 
 /**
  * Provider waterfall for one domain:
- * 1. lg-free-enrichments (free, internal, live-scrape — no index lag,
+ * 1. lg-free-enrichments (free, internal, live-scrape - no index lag,
  *    domain_verified trust signal kills the wrong-match problem)
  * 2. Blitz domain path (free, but name-match guard required)
  * lgenrich hits with a trusted linkedin_url but thin firmographics chain
@@ -95,13 +100,13 @@ export async function enrichDomainWaterfall(
     const lg = await lgenrichDomain(domain);
     if (lg) {
       const f = lg.firmographics;
-      if (f && (f.employee_count != null || f.description)) {
+      if (f && (f.employee_count != null || f.description || (isFunding && (f.employee_count_range || f.founded_year != null || lgHqString(f))))) {
         return {
           patch: isFunding ? fundingPatchFromLg(lg.linkedin_url, f) : phPatchFromLg(lg.linkedin_url, f),
           provider: "lgenrich",
         };
       }
-      // Trusted LinkedIn URL but thin scrape — let Blitz fill the profile
+      // Trusted LinkedIn URL but thin scrape - let Blitz fill the profile
       const blitz = await blitzEnrichLinkedin(lg.linkedin_url);
       if (blitz) {
         return {
@@ -109,7 +114,7 @@ export async function enrichDomainWaterfall(
           provider: "lgenrich+blitz",
         };
       }
-      return null;
+      return isFunding ? { patch: { linkedin_url: lg.linkedin_url }, provider: "lgenrich" } : null;
     }
   }
 
@@ -117,7 +122,7 @@ export async function enrichDomainWaterfall(
   const hit = await blitzEnrichDomain(domain, t.knownLinkedin);
   if (!hit) return null;
   if (!nameMatches(t.companyName, hit.company.name)) {
-    logger.warn("Blitz name mismatch — skipping", {
+    logger.warn("Blitz name mismatch - skipping", {
       ours: t.companyName,
       theirs: hit.company.name,
       domain,
@@ -140,7 +145,7 @@ export async function day0BlitzEnrich(
   targets: Day0Target[]
 ): Promise<{ attempted: number; enriched: number }> {
   if (!lgenrichConfigured() && !blitzConfigured()) {
-    logger.warn("No enrichment provider configured — skipping day-0 enrichment");
+    logger.warn("No enrichment provider configured - skipping day-0 enrichment");
     return { attempted: 0, enriched: 0 };
   }
 

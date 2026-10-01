@@ -97,8 +97,9 @@ def test_auth_blocked_program_stays_experiment_and_resume_is_append_only(
 
 
 def test_cli_records_all_three_auth_gaps_without_live_clients(
-    tmp_path: Path, capsys,
+    tmp_path: Path, capsys, monkeypatch,
 ) -> None:
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
     code = main(["--artifact-root", str(tmp_path)])
     payload = json.loads(capsys.readouterr().out)
 
