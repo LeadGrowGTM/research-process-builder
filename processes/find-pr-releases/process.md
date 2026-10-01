@@ -1,5 +1,8 @@
 # find press releases and official announcements
 
+model: gpt-6-luna
+service_tier: flex
+
 > **validated:** 25 companies across 4 tiers (3,357 searches). PRIMARY at Q3.9. T1:Q4.0, T2:Q4.0, T3:Q4.0, T4:Q3.5. solid across all tiers, slight drop for micro companies.
 
 surface official company communications: press releases, blog announcements, wire service distributions.

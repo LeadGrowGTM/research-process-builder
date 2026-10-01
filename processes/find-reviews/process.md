@@ -1,5 +1,8 @@
 # find customer and employee reviews
 
+model: gpt-6-luna
+service_tier: flex
+
 > **validated:** 25 companies across 4 tiers (3,357 searches). PRIMARY at Q4.0 all tiers. `{{company_name}} review` is the strongest single pattern. site: combos (G2/Trustpilot/Capterra) scored ENRICHMENT Q3.7.
 
 surface customer and employee reviews for a company. each review is its own item, tagged positive or negative.

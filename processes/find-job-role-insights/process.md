@@ -1,5 +1,8 @@
 # find job role insights and strategic signals
 
+model: gpt-6-luna
+service_tier: flex
+
 > **validated:** 25 companies across 4 tiers (3,357 searches). hiring_signals PRIMARY Q4.0 across all tiers. role-specific JD extraction patterns confirmed reliable for ATS-hosted and company-hosted JDs.
 
 companion to find-hiring. takes a specific role title and extracts what the job description reveals about the company's priorities, tech stack, pain points, and growth trajectory. run find-hiring first to identify which roles exist, then use this process to go deep on the ones that matter.

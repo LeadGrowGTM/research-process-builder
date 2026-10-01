@@ -1,5 +1,8 @@
 # find Series A announcements — daily monitoring sweep
 
+model: gpt-6-luna
+service_tier: flex
+
 > **validated:** 2026-04-20. SerperDev Search + `tbs:qdr:d` = **7/8 (88%) GT hit rate** across 10 queries at $0.01/run. News endpoint 5/8 (62%). WebSearch (no time filter) ~4/8 (50%). Search endpoint is the winner.
 > **type:** monitoring process (date-in → company list out). fundamentally different from lookup processes (company-in → data out).
 > **target deployment:** TriggerDev cron (daily 7am ET)

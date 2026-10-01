@@ -1,5 +1,8 @@
 # find recent news and company events
 
+model: gpt-6-luna
+service_tier: flex
+
 > **validated:** 25 companies across 4 tiers (3,357 searches). ENRICHMENT at Q3.6. T1:Q4.0, T2:Q3.8, T3:Q4.0, T4:Q2.2. T4 micro companies have inherently thin news coverage. accept this limitation.
 
 surface everything newsworthy about a company in the last 6-12 months. partnerships, funding, acquisitions, product launches, expansions, leadership changes, controversies.

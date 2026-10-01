@@ -1,5 +1,8 @@
 # find company website
 
+model: gpt-6-luna
+service_tier: flex
+
 > **status:** draft, needs validation against ground truth
 > **type:** lookup process (company-in → domain out). used as sub-step in monitoring pipelines (Series A/B/C discovery) and enrichment workflows.
 

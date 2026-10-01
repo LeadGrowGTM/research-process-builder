@@ -1,5 +1,8 @@
 # find hiring activity
 
+model: gpt-6-luna
+service_tier: flex
+
 > **validated:** 25 companies across 4 tiers (3,357 searches). PRIMARY at Q4.0. T1:Q4.0, T2:Q4.0, T3:Q3.8, T4:Q4.0. `{{company_name}} careers` is the strongest single pattern.
 
 surface who a company is currently hiring for — roles, departments, seniority levels, and hiring velocity.

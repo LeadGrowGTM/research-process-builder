@@ -1,5 +1,8 @@
 # find funding announcements
 
+model: gpt-6-luna
+service_tier: flex
+
 > **validated:** 16 companies across 3 tiers (45 searches, 3 batches). PRIMARY stack (steps 1–3): 14/16 = 87.5%. Full stack with step 4 company blog: 16/16 = 100%. Basecamp correctly outputs "no recent funding" — valid result, not a miss.
 
 surface the most recent funding round for a company. extract round type, amount, date, lead investors, and stated use of funds.

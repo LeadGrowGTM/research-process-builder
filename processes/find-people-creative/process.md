@@ -1,5 +1,8 @@
 # find people via media appearances, platforms, and content
 
+model: gpt-6-luna
+service_tier: flex
+
 find company people through non-traditional channels: podcast/media appearances, data platforms (ZoomInfo, RocketReach, WellFound, TheOrg), and authored content (blogs, Medium, Substack).
 
 ## inputs

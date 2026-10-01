@@ -1,5 +1,8 @@
 # find portfolio company count for PE / investment firms
 
+model: gpt-6-luna
+service_tier: flex
+
 determine how many portfolio companies a PE firm, roll-up, holding company, or investment entity currently owns. optimized for acquisition-heavy firms. correctly filters out non-investment entities.
 
 ## inputs

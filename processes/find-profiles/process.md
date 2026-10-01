@@ -1,5 +1,8 @@
 # find company profile and funding data
 
+model: gpt-6-luna
+service_tier: flex
+
 > **validated:** 25 companies across 4 tiers (3,357 searches). company_profile: multi-platform site: queries ENRICHMENT Q3.8 (T3-T4 actually strong at Q3.8-4.0). funding_financial: `{{company_name}} {{category}} funding` PRIMARY Q4.0 all tiers.
 
 build a company fact sheet from structured data platforms. this should run first because it feeds context (category, size, funding) to every other research process.
