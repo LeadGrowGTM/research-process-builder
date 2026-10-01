@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { buildFundingFeedRows, refreshFundingFeed } from "./legion-funding-feed.js";
+import { buildFundingFeedRows, compactUsd, fundingSignal, refreshFundingFeed } from "./legion-funding-feed.js";
 
 const config = {
   url: "https://example.supabase.co",
@@ -7,7 +7,7 @@ const config = {
   legionKv: { accountId: "acct", namespaceId: "ns", token: "cf-token" },
   now: new Date("2026-09-30T12:00:00.000Z"),
 };
-const KV_PATH = "/accounts/acct/storage/kv/namespaces/ns/values/feed.json";
+const KV_PATH = "/accounts/acct/storage/kv/namespaces/ns/values/signals.json";
 
 function reply(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json" } });
@@ -69,6 +69,27 @@ describe("buildFundingFeedRows", () => {
   });
 });
 
+describe("fundingSignal", () => {
+  const base = buildFundingFeedRows([{ company_name: "Acme", company_domain: "acme.com", round_type: "series a", amount_raised: "$12 Million", amount_raised_usd: 12_000_000, industry: "Fintech", discovered_date: "2026-09-29", source_url: "https://techcrunch.com/acme" }], [], [])[0];
+
+  it("maps a funding row to the shared signal shape", () => {
+    expect(fundingSignal(base)).toMatchObject({
+      type: "funding", company: "Acme", domain: "acme.com", headline: "Series A round of $12M",
+      metric: { label: "Raised", value: "$12M", sort: 12_000_000 }, tags: ["Series A", "Fintech"], date: "2026-09-29", source: "TechCrunch",
+    });
+  });
+
+  it("falls back to the raw amount text and a generic headline", () => {
+    const signal = fundingSignal({ ...base, round: "Unknown", amountUsd: null, amount: "undisclosed" });
+    expect(signal).toMatchObject({ headline: "Funding round of undisclosed", metric: { value: "undisclosed", sort: null }, tags: ["Fintech"] });
+    expect(fundingSignal({ ...base, amountUsd: null, amount: null }).metric).toBeNull();
+  });
+
+  it("formats compact dollar amounts", () => {
+    expect([compactUsd(750_000), compactUsd(1_200_000), compactUsd(12_000_000), compactUsd(1_500_000_000), compactUsd(500)]).toEqual(["$750K", "$1.2M", "$12M", "$1.5B", "$500"]);
+  });
+});
+
 describe("refreshFundingFeed", () => {
   it("retries missing optional funding columns with core projection", async () => {
     const fetchImpl = vi.fn().mockResolvedValueOnce(reply({ code: "42703" }, 400)).mockResolvedValueOnce(reply([])).mockResolvedValue(reply({}));
@@ -124,8 +145,9 @@ describe("refreshFundingFeed", () => {
         expect(init?.headers).toMatchObject({ Authorization: "Bearer cf-token" });
         const payload = JSON.parse(String(init?.body));
         expect(payload).toEqual(expect.objectContaining({ updatedAt: config.now.toISOString(), count: 1 }));
-        expect(payload.rows[0]).toMatchObject({ hq: "Austin, TX, US", employees: "20 - 99", industry: "DevTools", description: "A tool" });
-        expect(payload.rows[0].founders).toEqual([{ name: "Ada", title: "Founder", linkedin: "https://www.linkedin.com/in/ada" }]);
+        expect(payload.signals[0]).toMatchObject({ type: "funding", location: "Austin, TX, US", summary: "A tool", tags: ["Seed", "DevTools"], details: { employees: "20 - 99" } });
+        expect(payload.signals[0].people).toEqual([{ name: "Ada", title: "Founder", linkedin: "https://www.linkedin.com/in/ada" }]);
+        expect(payload).not.toHaveProperty("rows");
         expect(String(init?.body)).not.toContain("ada@acme.com");
         return reply({ success: true });
       }
@@ -147,7 +169,7 @@ describe("refreshFundingFeed", () => {
         return reply([], 201);
       }
       if (url.includes(KV_PATH)) {
-        expect(JSON.parse(String(init?.body)).rows[0].founders).toEqual([{ name: "Ada Doe", title: "Co-Founder", linkedin: "https://www.linkedin.com/in/ada" }]);
+        expect(JSON.parse(String(init?.body)).signals[0].people).toEqual([{ name: "Ada Doe", title: "Co-Founder", linkedin: "https://www.linkedin.com/in/ada" }]);
         return reply({ success: true });
       }
       return reply([]);

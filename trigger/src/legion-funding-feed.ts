@@ -36,6 +36,61 @@ export type FundingFeedRow = {
 
 export type FundingFeed = { updatedAt: string; count: number; rows: FundingFeedRow[] };
 
+/**
+ * One market signal on the Legion /signals page. Every signal type (funding today;
+ * hiring activity, new locations later) fills the same fields so the page needs no
+ * per-type code beyond a label. Type-specific extras go in `details`.
+ */
+export type Signal = {
+  type: string;
+  company: string;
+  domain: string;
+  logo: string | null;
+  headline: string;
+  metric: { label: string; value: string; sort: number | null } | null;
+  summary: string;
+  tags: string[];
+  location: string;
+  people: Array<{ name: string; title: string; linkedin: string }>;
+  date: string;
+  source: string | null;
+  sourceUrl: string;
+  details: Record<string, string | number | null>;
+};
+
+export type SignalsFeed = { updatedAt: string; count: number; signals: Signal[] };
+
+/** $12M, $750K, $1.2B. */
+export function compactUsd(usd: number): string {
+  const units: Array<[number, string]> = [[1e9, "B"], [1e6, "M"], [1e3, "K"]];
+  for (const [size, suffix] of units) {
+    if (usd >= size) return `$${Number((usd / size).toFixed(usd >= size * 10 ? 0 : 1))}${suffix}`;
+  }
+  return `$${Math.round(usd)}`;
+}
+
+/** Maps a funding feed row to the shared signal shape. */
+export function fundingSignal(row: FundingFeedRow): Signal {
+  const value = row.amountUsd !== null ? compactUsd(row.amountUsd) : row.amount ?? "";
+  const round = row.round === "Unknown" ? "" : row.round;
+  return {
+    type: "funding",
+    company: row.company,
+    domain: row.domain,
+    logo: row.logo,
+    headline: [round ? `${round} round` : "Funding round", value ? `of ${value}` : ""].filter(Boolean).join(" "),
+    metric: value ? { label: "Raised", value, sort: row.amountUsd } : null,
+    summary: row.description,
+    tags: [round, row.industry].filter(Boolean),
+    location: row.hq,
+    people: row.founders,
+    date: row.date,
+    source: row.source,
+    sourceUrl: row.sourceUrl,
+    details: { investors: row.investors, employees: row.employees, founded: row.founded },
+  };
+}
+
 function text(value: unknown): string {
   return normalizeOptionalText(value) ?? "";
 }
@@ -202,12 +257,12 @@ async function fetchOptional(
   return rows;
 }
 
-/** Writes the feed to Legion's FUNDING_FEED KV namespace, served by the Legion site at /data/funding.json. */
-async function uploadFeed(config: FundingFeedConfig, feed: FundingFeed): Promise<void> {
+/** Writes the signals feed to Legion's FUNDING_FEED KV namespace, served by the Legion site at /data/signals.json. */
+async function uploadFeed(config: FundingFeedConfig, feed: SignalsFeed): Promise<void> {
   const kv = config.legionKv;
   if (!kv?.accountId || !kv.namespaceId || !kv.token) throw new Error("Legion feed KV is not configured");
   const response = await (config.fetchImpl ?? fetch)(
-    `https://api.cloudflare.com/client/v4/accounts/${kv.accountId}/storage/kv/namespaces/${kv.namespaceId}/values/feed.json`,
+    `https://api.cloudflare.com/client/v4/accounts/${kv.accountId}/storage/kv/namespaces/${kv.namespaceId}/values/signals.json`,
     {
       method: "PUT",
       headers: { Authorization: `Bearer ${kv.token}`, "Content-Type": "application/json" },
@@ -276,7 +331,8 @@ export async function refreshFundingFeed(config: FundingFeedConfig): Promise<Fun
     rows: buildFundingFeedRows(funding, companies, profiles),
   };
   feed.count = feed.rows.length;
-  await uploadFeed(config, feed);
+  const signals = feed.rows.map(fundingSignal);
+  await uploadFeed(config, { updatedAt: feed.updatedAt, count: signals.length, signals });
   return { ...feed, enriched, costUsd };
 }
 
