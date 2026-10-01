@@ -66,13 +66,14 @@ export interface Stage2Result {
 
 export interface ExtractedData {
   company_name: string;
-  company_domain: string;
-  amount_raised: string;
-  lead_investors: string;
-  round_reasoning: string;
-  industry?: string;
-  location?: string;
-  funding_date?: string;
+  company_domain: string | null;
+  amount_raised: string | null;
+  round_type: string | null;
+  lead_investors: string | null;
+  round_reasoning: string | null;
+  industry: string | null;
+  location: string | null;
+  funding_date: string | null;
 }
 
 export interface EnrichedRecord {
@@ -81,8 +82,10 @@ export interface EnrichedRecord {
   amount_raised: string;
   round_type: string;
   source_url: string;
-  lead_investors: string;
-  round_reasoning: string;
+  lead_investors: string | null;
+  round_reasoning: string | null;
+  industry?: string | null;
+  location?: string | null;
   article_text: string | null;
   source_count: number;
   score: number;

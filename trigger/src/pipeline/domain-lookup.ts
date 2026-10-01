@@ -1,4 +1,5 @@
 import { searchSerper } from "./serper.js";
+import { isLunaConfigured, lunaChat, type LunaToolDef } from "./luna.js";
 
 const DISQUALIFIED_DOMAINS = new Set([
   "linkedin.com",
@@ -198,60 +199,56 @@ export interface ContextClues {
   founderName?: string;
 }
 
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY ?? "";
 const MAX_SEARCH_ROUNDS = 3;
 
-const SEARCH_TOOL = {
-  type: "function" as const,
-  function: {
-    name: "web_search",
-    description: "Search Google via Serper. Use regular web search (not news). Returns titles, URLs, and meta description snippets. Use industry + company name + 'website' as your primary query pattern. Use location to disambiguate common names.",
-    parameters: {
-      type: "object",
-      properties: {
-        query: {
-          type: "string",
-          description: "The search query. Use industry context to disambiguate. Example: 'fintech Hata website' or 'AI legal Harvey company website'",
-        },
+const SEARCH_TOOL: LunaToolDef = {
+  name: "web_search",
+  description: "Search Google via Serper. Use regular web search (not news). Returns titles, URLs, and meta description snippets. Use industry + company name + 'website' as your primary query pattern. Use location to disambiguate common names.",
+  parameters: {
+    type: "object",
+    properties: {
+      query: {
+        type: "string",
+        description: "The search query. Use industry context to disambiguate. Example: 'fintech Hata website' or 'AI legal Harvey company website'",
       },
-      required: ["query"],
     },
+    required: ["query"],
+    additionalProperties: false,
   },
+};
+
+const DOMAIN_RESOLVE_SCHEMA = {
+  type: "object",
+  properties: {
+    domain: { type: "string" },
+    confidence: { type: "string", enum: ["high", "medium", "low"] },
+    evidence: { type: "string" },
+  },
+  required: ["domain", "confidence", "evidence"],
+  additionalProperties: false,
 };
 
 const DOMAIN_RESOLVE_SYSTEM = `You find the official website domain for a startup that recently raised funding. You have a web search tool.
 
 SEARCH STRATEGY (in order):
 1. Primary: "{company_name}" {industry} website
-2. If ambiguous: site:crunchbase.com "{company_name}" — Crunchbase snippets often contain the actual domain in text like "Company (domain.com) raised..."
+2. If ambiguous: site:crunchbase.com "{company_name}" - Crunchbase snippets often contain the actual domain in text like "Company (domain.com) raised..."
 3. If still ambiguous: add location to disambiguate
-4. If common-word name (Keep, Clay, Era): search "{company_name}" {industry} startup funding — funding articles link to the actual company
+4. If common-word name (Keep, Clay, Era): search "{company_name}" {industry} startup funding - funding articles link to the actual company
 
 IMPORTANT:
 - These are STARTUPS that raised venture funding. Not large enterprises or legacy companies.
-- The domain often does NOT match the company name. Examples: Keep -> trykeep.com, Gong -> gong.io, Plaid -> plaid.com. Don't assume {name}.com is correct — verify from search results.
+- The domain often does NOT match the company name. Examples: Keep -> trykeep.com, Gong -> gong.io, Plaid -> plaid.com. Don't assume {name}.com is correct - verify from search results.
 - Crunchbase snippets are your best friend for obscure startups. The snippet text often contains the domain directly.
 - Look at SERP snippet descriptions to verify the domain matches the RIGHT company in the RIGHT industry
 - NEVER return social media, news/media, investor, or directory domains (linkedin, crunchbase, pitchbook, techcrunch, etc.)
 - NEVER return the source article domain
-- Return ONLY the bare domain (e.g. "hata.io", "mosaic.pe") — no protocol, no www, no path
+- Return ONLY the bare domain (e.g. "hata.io", "mosaic.pe") - no protocol, no www, no path
 - If confident, return after 1 search. If ambiguous, refine (max 3 searches)
 - If you cannot determine the domain, return "not_found"
 
 RESPONSE FORMAT (when done searching):
 {"domain": "example.com", "confidence": "high|medium|low", "evidence": "brief reason"}`;
-
-interface ToolCallResult {
-  id: string;
-  function: { name: string; arguments: string };
-}
-
-interface ChatMessage {
-  role: "system" | "user" | "assistant" | "tool";
-  content: string | null;
-  tool_calls?: ToolCallResult[];
-  tool_call_id?: string;
-}
 
 async function executeSearchTool(query: string): Promise<string> {
   const items = await searchSerper(query, 5, "");
@@ -259,9 +256,9 @@ async function executeSearchTool(query: string): Promise<string> {
 
   return items
     .map((item, i) => {
-      const link = item.link ?? "";
-      const title = item.title ?? "";
-      const snippet = item.snippet ?? "";
+      const link = (item.link ?? "").slice(0, 500);
+      const title = (item.title ?? "").slice(0, 200);
+      const snippet = (item.snippet ?? "").slice(0, 1000);
       return `[${i + 1}] ${title}\n    URL: ${link}\n    ${snippet}`;
     })
     .join("\n\n");
@@ -270,15 +267,15 @@ async function executeSearchTool(query: string): Promise<string> {
 export async function lookupDomainMultiSignal(
   companyName: string,
   clues: ContextClues,
-  sourceUrl?: string
+  sourceUrl?: string,
+  deadlineAt?: number
 ): Promise<DomainResult> {
-  if (!OPENAI_API_KEY) {
+  if (!isLunaConfigured()) {
     return { domain: "not_found", confidence: "low", source: "search_only", evidence: "no OPENAI_API_KEY" };
   }
 
-  const sourceDomain = sourceUrl
-    ? new URL(sourceUrl).hostname.replace(/^www\./, "")
-    : "";
+  let sourceDomain = "";
+  try { sourceDomain = sourceUrl ? new URL(sourceUrl).hostname.replace(/^www\./, "") : ""; } catch { /* No usable source hostname. */ }
 
   const contextParts: string[] = [`Company: ${companyName}`];
   if (clues.industry) contextParts.push(`Industry: ${clues.industry}`);
@@ -287,57 +284,57 @@ export async function lookupDomainMultiSignal(
   if (clues.founderName) contextParts.push(`Founder: ${clues.founderName}`);
   if (sourceDomain) contextParts.push(`Source article domain (DO NOT return this): ${sourceDomain}`);
 
-  const messages: ChatMessage[] = [
+  const messages: Array<Record<string, unknown>> = [
     { role: "system", content: DOMAIN_RESOLVE_SYSTEM },
     { role: "user", content: contextParts.join("\n") },
   ];
 
   let searchCount = 0;
+  let hasSearchEvidence = false;
 
   for (let round = 0; round < MAX_SEARCH_ROUNDS + 1; round++) {
+    if (deadlineAt !== undefined && Date.now() >= deadlineAt) break;
     try {
-      const resp = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${OPENAI_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "gpt-4.1-mini",
-          temperature: 0,
-          max_tokens: 300,
-          messages,
-          tools: [SEARCH_TOOL],
-          tool_choice: round < MAX_SEARCH_ROUNDS ? "auto" : "none",
-        }),
-        signal: AbortSignal.timeout(30_000),
+      const chat = await lunaChat({
+        name: "funding_domain_resolution",
+        schema: DOMAIN_RESOLVE_SCHEMA,
+        messages,
+        tools: [SEARCH_TOOL],
+        toolChoice: searchCount < MAX_SEARCH_ROUNDS && round < MAX_SEARCH_ROUNDS ? "auto" : "none",
+        maxTokens: 300,
+        timeoutMs: 30_000,
+        deadlineAt,
       });
 
-      if (!resp.ok) {
-        return { domain: "not_found", confidence: "low", source: "search_only", evidence: `openai ${resp.status}` };
+      if (!chat) {
+        return { domain: "not_found", confidence: "low", source: "search_only", evidence: "luna unavailable" };
       }
 
-      const data = (await resp.json()) as {
-        choices: [{
-          message: {
-            content: string | null;
-            tool_calls?: ToolCallResult[];
-          };
-          finish_reason: string;
-        }];
-      };
+      if (chat.toolCalls.length > 0) {
+        messages.push({
+          role: "assistant",
+          content: chat.content,
+          tool_calls: chat.toolCalls.map((tc) => ({
+            id: tc.id,
+            type: "function",
+            function: { name: tc.name, arguments: tc.args },
+          })),
+        });
 
-      const choice = data.choices[0];
-      const msg = choice.message;
-
-      if (msg.tool_calls && msg.tool_calls.length > 0) {
-        messages.push({ role: "assistant", content: msg.content, tool_calls: msg.tool_calls });
-
-        for (const tc of msg.tool_calls) {
-          const args = JSON.parse(tc.function.arguments);
-          const query = args.query ?? "";
-          searchCount++;
-          const searchResult = await executeSearchTool(query);
+        for (const tc of chat.toolCalls) {
+          let query = "";
+          try {
+            query = (JSON.parse(tc.args) as { query?: string }).query ?? "";
+          } catch {
+            query = "";
+          }
+          const allowed = tc.name === "web_search" && typeof query === "string" && query.trim() && searchCount < MAX_SEARCH_ROUNDS;
+          let searchResult = "Search unavailable or search budget reached.";
+          if (allowed) {
+            searchCount++;
+            searchResult = await executeSearchTool(query.slice(0, 500));
+            if (searchResult !== "No results found.") hasSearchEvidence = true;
+          }
           messages.push({
             role: "tool",
             tool_call_id: tc.id,
@@ -347,25 +344,22 @@ export async function lookupDomainMultiSignal(
         continue;
       }
 
-      const content = msg.content?.trim() ?? "";
+      const content = (chat.content ?? "").trim();
       let parsed: { domain?: string; confidence?: string; evidence?: string } = {};
       try {
-        const jsonMatch = content.match(/\{[\s\S]*\}/);
-        if (jsonMatch) {
-          parsed = JSON.parse(jsonMatch[0]);
-        }
+        parsed = JSON.parse(content) as typeof parsed;
       } catch {
         // fall through
       }
 
-      const rawDomain = (parsed.domain ?? "").replace(/^(https?:\/\/|www\.)/, "").split("/")[0].toLowerCase();
+      const rawDomain = (parsed.domain ?? "").trim().toLowerCase().replace(/^https?:\/\//, "").replace(/^www\./, "").split(/[/?#]/)[0];
 
-      if (!rawDomain || rawDomain === "not_found" || isDomainBlocked(rawDomain) || rawDomain === sourceDomain) {
+      if (!hasSearchEvidence || !/^(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$/.test(rawDomain) || isDomainBlocked(rawDomain) || rawDomain === sourceDomain) {
         return {
           domain: "not_found",
           confidence: "low",
           source: "search_only",
-          evidence: `${searchCount} searches, agent returned: ${rawDomain || "empty"} — ${parsed.evidence ?? "no evidence"}`,
+          evidence: `${searchCount} searches, agent returned: ${rawDomain || "empty"} - ${parsed.evidence ?? "no evidence"}`,
         };
       }
 
@@ -377,7 +371,7 @@ export async function lookupDomainMultiSignal(
         domain: rawDomain,
         confidence,
         source: "search_validated",
-        evidence: `${searchCount} searches — ${parsed.evidence ?? "agent resolved"}`,
+        evidence: `${searchCount} searches - ${parsed.evidence ?? "agent resolved"}`,
       };
     } catch {
       break;

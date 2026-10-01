@@ -1,6 +1,7 @@
 import { logger } from "@trigger.dev/sdk";
 import type {
   Candidate,
+  ExtractedData,
   EnrichedRecord,
   PipelineConfig,
   PipelineResult,
@@ -115,7 +116,7 @@ function extractDomainFromArticle(articleText: string, companyName: string, sour
 }
 
 function extractContextClues(
-  extracted: { round_reasoning?: string; lead_investors?: string; industry?: string; location?: string } | null,
+  extracted: Pick<ExtractedData, "round_reasoning" | "lead_investors" | "industry" | "location"> | null,
   articleTitle: string
 ): ContextClues {
   const clues: ContextClues = {};
@@ -159,7 +160,7 @@ function extractContextClues(
 
 function buildEnrichedRecord(
   company: Candidate,
-  extracted: { company_name?: string; company_domain?: string; amount_raised?: string; lead_investors?: string; round_reasoning?: string; funding_date?: string } | null,
+  extracted: ExtractedData | null,
   domain: string,
   sourceUrl: string,
   roundLabel: string,
@@ -175,11 +176,13 @@ function buildEnrichedRecord(
     amount_raised: amountRaw,
     amount_raised_usd: norm?.value_usd ?? null,
     amount_raised_currency: norm?.currency ?? null,
-    funding_date: extractDateFromUrl(sourceUrl) ?? (extracted?.funding_date && extracted.funding_date !== "not_stated" ? extracted.funding_date : null),
-    round_type: company.round_type ?? roundLabel,
+    funding_date: extractDateFromUrl(sourceUrl) ?? extracted?.funding_date ?? null,
+    round_type: extracted?.round_type ?? company.round_type ?? roundLabel,
     source_url: sourceUrl,
-    lead_investors: extracted?.lead_investors ?? "not_stated",
-    round_reasoning: extracted?.round_reasoning ?? "not_stated",
+    lead_investors: extracted?.lead_investors ?? null,
+    round_reasoning: extracted?.round_reasoning ?? null,
+    industry: extracted?.industry ?? null,
+    location: extracted?.location ?? null,
     article_text: articleText,
     source_count: company.sources.length,
     score: company.best_score,
@@ -202,8 +205,10 @@ function buildSkipEnrichRecord(company: Candidate, roundLabel: string, pipelineI
     funding_date: extractDateFromUrl(company.best_source_url),
     round_type: company.round_type ?? roundLabel,
     source_url: company.best_source_url,
-    lead_investors: "not_enriched",
-    round_reasoning: "not_enriched",
+    lead_investors: null,
+    round_reasoning: null,
+    industry: null,
+    location: null,
     article_text: null,
     source_count: company.sources.length,
     score: company.best_score,
@@ -283,19 +288,19 @@ async function enrichOneCompany(
     if (vstatus === "Wrong") {
       const corrected = vresult.correctDomain?.trim() ?? "";
       if (corrected && corrected !== "not_found" && corrected !== "not_stated" && !isDomainBlocked(corrected)) {
-        logger.info(`Semantic: corrected ${domain} -> ${corrected} (${vresult.reason})`);
+        logger.info(`Semantic: corrected ${domain} -> ${corrected}`);
         domain = corrected;
         domainSource = "semantic_validation";
         if (vresult.correctCompanyName && vresult.correctCompanyName !== company.company_name) {
           company = { ...company, company_name: vresult.correctCompanyName };
         }
       } else {
-        logger.info(`Semantic: rejected ${domain}, no valid correction (${vresult.reason})`);
+        logger.info(`Semantic: rejected ${domain}, no valid correction`);
         domain = "not_found";
         domainSource = "semantic_rejected";
       }
     } else if (vstatus === "Unclear") {
-      logger.info(`Semantic: unclear (${vresult.reason}) — demoting confidence`);
+      logger.info("Semantic: unclear - demoting confidence");
       company = { ...company, confidence: "low" };
     } else {
       logger.info(`Semantic: correct`);
@@ -393,7 +398,7 @@ export async function runFundingPipeline(
 
   logger.info("Stage 4: Output");
 
-  // Confidence gate — drop LOW, flag MEDIUM for review
+  // Confidence gate - drop LOW, flag MEDIUM for review
   const highMedium = enriched.filter((r) => r.confidence !== "low");
   const dropped = enriched.filter((r) => r.confidence === "low");
   if (dropped.length > 0) {
@@ -407,7 +412,7 @@ export async function runFundingPipeline(
   }
 
   if (config.dryRun) {
-    logger.info("Dry run — skipping Supabase and webhook output");
+    logger.info("Dry run - skipping Supabase and webhook output");
   } else {
     if (isSupabaseConfigured()) {
       const tableExists = await checkTable(rc.supabaseTable);

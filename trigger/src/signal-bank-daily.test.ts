@@ -4,6 +4,91 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
+import { resolveDiscoveryProfilePatch, resolveFounderCap } from "./signal-bank-daily.js";
+
+vi.mock("@trigger.dev/sdk", () => ({ schedules: { task: (config: unknown) => config }, logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn() } }));
+vi.mock("./modules/workflow-gate.js", () => ({ workflowGate: async () => ({ active: true }) }));
+vi.mock("./pipeline/luna.js", () => ({ lunaJson: vi.fn() }));
+vi.mock("./pipeline/founders.js", () => ({ isFoundersConfigured: () => false, runFoundersForCompany: vi.fn(), logCostRecorder: () => ({ record: () => {} }), MAX_FOUNDER_PROVIDER_CALLS_PER_RUN: 500 }));
+
+afterEach(() => { vi.resetAllMocks(); vi.unstubAllEnvs(); vi.unstubAllGlobals(); });
+
+describe("resolveFounderCap", () => {
+  it("defaults to 50 and bounds per-run overrides", () => {
+    expect(resolveFounderCap(undefined, undefined)).toBe(50);
+    expect(resolveFounderCap("12", "40")).toBe(12);
+    expect(resolveFounderCap(100, undefined)).toBe(50);
+    expect(resolveFounderCap(-3, undefined)).toBe(0);
+    expect(resolveFounderCap("bad", undefined)).toBe(50);
+  });
+});
+
+describe("resolveDiscoveryProfilePatch", () => {
+  it("includes non-empty values for all matching discoveries", () => {
+    expect(
+      resolveDiscoveryProfilePatch(
+        { company_description: "Builds tools", products: "A widget" }
+      )
+    ).toEqual({ company_description: "Builds tools", products: "A widget" });
+  });
+
+  it("omits empty values so existing discovery values are preserved", () => {
+    expect(
+      resolveDiscoveryProfilePatch(
+        { company_description: "New text", products: "   " }
+      )
+    ).toEqual({ company_description: "New text" });
+  });
+
+  it("includes non-empty replacement values", () => {
+    expect(
+      resolveDiscoveryProfilePatch(
+        { company_description: "Other", products: "Other" }
+      )
+    ).toEqual({ company_description: "Other", products: "Other" });
+  });
+
+  it("returns an empty patch when there is nothing new", () => {
+    expect(
+      resolveDiscoveryProfilePatch(
+        { company_description: null, products: " " }
+      )
+    ).toEqual({});
+  });
+});
+
+describe("signal bank profile writes", () => {
+  it.each(["Payment software", null])("updates discoveries by domain without empty fields (products: %s)", async (products) => {
+    vi.resetModules();
+    vi.stubEnv("SUPABASE_PROJECT_URL", "https://project.test");
+    vi.stubEnv("SUPABASE_SERVICE_ROLE_KEY", "fixture-key");
+    vi.stubEnv("OPENAI_API_KEY", "fixture-key");
+    vi.stubEnv("FIRECRAWL_API_KEY", "");
+    const { signalBankDaily } = await import("./signal-bank-daily.js");
+    const { lunaJson } = await import("./pipeline/luna.js");
+    vi.mocked(lunaJson).mockImplementation(async (options) => ({ data: options.name === "company_profile" ? { company_description: null, products } : { industry: "Fintech", icp_fit: "strong", company_size: "SMB", reasoning: "B2B software", decision_makers: [], pain_points: [] }, usage: { inputTokens: 0, cachedInputTokens: 0, outputTokens: 0 }, serviceTier: "flex", costUsd: 0 }));
+    const discovery = { company_name: "Acme", company_domain: "acme.com", industry: "Fintech", round_type: "Series A", discovered_date: "2026-09-30", company_description: "Acme makes payment software." };
+    const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
+      if (init?.method === "PATCH" || init?.method === "POST") return new Response(null, { status: 204 });
+      if (url.includes("funding_discoveries")) return new Response(JSON.stringify([discovery, { ...discovery, company_description: null, products: "Existing product" }]));
+      return new Response("[]");
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const runTask = signalBankDaily as unknown as { run: (payload: { timestamp: Date }) => Promise<unknown> };
+    await runTask.run({ timestamp: new Date("2026-09-30T00:00:00Z") });
+    const writes = fetchMock.mock.calls.filter(([, init]) => init?.method === "POST");
+    expect(writes).toHaveLength(1);
+    const company = JSON.parse(String(writes[0][1]?.body))[0];
+    expect(company).toMatchObject({ domain: "acme.com", icp_fit: "strong" });
+    expect(company).not.toHaveProperty("company_description");
+    expect(company).not.toHaveProperty("products");
+    const patches = fetchMock.mock.calls.filter(([, init]) => init?.method === "PATCH");
+    expect(patches).toHaveLength(1);
+    expect(patches[0][0]).toBe("https://project.test/rest/v1/funding_discoveries?company_domain=eq.acme.com");
+    expect(patches[0][1]?.headers).toMatchObject({ "Accept-Profile": "public", "Content-Profile": "public" });
+    expect(JSON.parse(String(patches[0][1]?.body))).toEqual({ company_description: discovery.company_description, ...(products ? { products } : {}) });
+  });
+});
 
 describe("signal-bank-daily selection logic", () => {
   const mockRows = [
