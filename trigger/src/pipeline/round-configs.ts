@@ -1,5 +1,18 @@
 import type { RoundConfig } from "./types.js";
 
+/**
+ * Clay webhook URLs and tokens are credentials, so they come from the environment
+ * (Infisical -> Trigger.dev env vars), never from source. Read lazily so a missing
+ * value fails the run that needs it, with the variable name in the error.
+ */
+export function requireEnv(name: string): string {
+  const value = process.env[name]?.trim();
+  if (!value) {
+    throw new Error(`Missing required env var ${name}: set it on the Trigger.dev environment (source of truth: Infisical project research-process-builder).`);
+  }
+  return value;
+}
+
 function buildExtractionPrompt(roundLabel: string, sentinel: string): string {
   return `Extract ${roundLabel} funding data from this article.
 
@@ -48,9 +61,12 @@ export const SERIES_A_CONFIG: RoundConfig = {
     { id: "q8", query: '"Series A" startup funding site:eu-startups.com OR site:tech.eu OR site:techround.co.uk', num: 10, desc: "European" },
   ],
   supabaseTable: "funding_discoveries",
-  webhookUrl:
-    "https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-d1b53ce2-fe64-40e4-a86c-faef265c5a63",
-  webhookAuthToken: "0be318b702699f40b68f",
+  get webhookUrl() {
+    return requireEnv("CLAY_SERIES_A_WEBHOOK_URL");
+  },
+  get webhookAuthToken() {
+    return requireEnv("CLAY_SERIES_A_WEBHOOK_TOKEN");
+  },
   extractionPrompt: buildExtractionPrompt("Series A", "NOT_SERIES_A"),
 };
 
@@ -75,9 +91,12 @@ export const SERIES_B_CONFIG: RoundConfig = {
     { id: "bq8", query: '"Series B" startup funding site:eu-startups.com OR site:tech.eu OR site:techround.co.uk', num: 10, desc: "European" },
   ],
   supabaseTable: "funding_discoveries",
-  webhookUrl:
-    "https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-d1b53ce2-fe64-40e4-a86c-faef265c5a63",
-  webhookAuthToken: "0be318b702699f40b68f",
+  get webhookUrl() {
+    return requireEnv("CLAY_SERIES_B_WEBHOOK_URL");
+  },
+  get webhookAuthToken() {
+    return requireEnv("CLAY_SERIES_B_WEBHOOK_TOKEN");
+  },
   extractionPrompt: buildExtractionPrompt("Series B", "NOT_SERIES_B"),
 };
 
@@ -102,8 +121,11 @@ export const SERIES_C_CONFIG: RoundConfig = {
     { id: "cq8", query: '"Series C" startup funding site:eu-startups.com OR site:tech.eu OR site:techround.co.uk', num: 10, desc: "European" },
   ],
   supabaseTable: "funding_discoveries",
-  webhookUrl:
-    "https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-d1b53ce2-fe64-40e4-a86c-faef265c5a63",
-  webhookAuthToken: "0be318b702699f40b68f",
+  get webhookUrl() {
+    return requireEnv("CLAY_SERIES_C_WEBHOOK_URL");
+  },
+  get webhookAuthToken() {
+    return requireEnv("CLAY_SERIES_C_WEBHOOK_TOKEN");
+  },
   extractionPrompt: buildExtractionPrompt("Series C", "NOT_SERIES_C"),
 };

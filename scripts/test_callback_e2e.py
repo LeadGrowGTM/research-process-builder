@@ -3,10 +3,12 @@ E2E callback proof — two parts:
   Part 1: Simulate Clay calling the Worker. Confirms Worker → Trigger.dev path.
   Part 2: Fire real Clay webhook, then poll Worker logs (run wrangler tail separately).
 """
-import json, uuid, requests, time, sys
+import json, os, uuid, requests, time, sys
 
 WORKER_URL = "https://clay-game-callback.leadgrowai.workers.dev"
-CLAY_WEBHOOK_URL = "https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-1bea419a-3bb6-4442-9893-0fb7e8c85e62"
+CLAY_WEBHOOK_URL = os.environ.get("CLAY_COMPANY_ENRICH_WEBHOOK_URL") or sys.exit(
+    "Set CLAY_COMPANY_ENRICH_WEBHOOK_URL (run under: lg run python <script>)"
+)
 
 # ── Part 1: Fake Clay → Worker ────────────────────────────────────────────────
 print("=" * 60)

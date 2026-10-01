@@ -341,6 +341,8 @@ export async function runFundingPipeline(
 ): Promise<PipelineResult> {
   const start = Date.now();
   const rc = config.roundConfig;
+  // Fail closed before any work: a live run needs its Clay webhook credentials.
+  const webhook = config.dryRun ? null : { url: rc.webhookUrl, token: rc.webhookAuthToken };
 
   logger.info(`${rc.roundLabel} pipeline starting`, {
     date: config.date,
@@ -430,7 +432,7 @@ export async function runFundingPipeline(
       }
     }
 
-    const webhookSent = await pushToWebhook(highMedium, config.date, rc.webhookUrl, rc.webhookAuthToken);
+    const webhookSent = await pushToWebhook(highMedium, config.date, webhook!.url, webhook!.token);
     if (webhookSent > 0) {
       logger.info(`Webhook: ${webhookSent}/${highMedium.length} sent`);
     }

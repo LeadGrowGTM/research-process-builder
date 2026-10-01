@@ -29,7 +29,7 @@ OPENAI_API_KEY = _env.get("OPEN_AI_API") or _env.get("OPENAI_API_KEY", "")
 TRIGGER_SECRET_KEY = _env.get("TRIGGER_SECRET_KEY") or _env.get("TRIGGER_ACCESS_TOKEN", "")
 CLAY_WEBHOOK_URL = (
     _env.get("CLAY_GAME_SIGNALS_WEBHOOK")
-    or "https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-1bea419a-3bb6-4442-9893-0fb7e8c85e62"
+    or _env.get("CLAY_COMPANY_ENRICH_WEBHOOK_URL", "")
 )
 WORKER_URL = "https://clay-game-callback.leadgrowai.workers.dev"
 
