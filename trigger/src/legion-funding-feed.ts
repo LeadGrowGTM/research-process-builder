@@ -91,8 +91,19 @@ export function fundingSignal(row: FundingFeedRow): Signal {
   };
 }
 
+const ENTITIES: Record<string, string> = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", "#39": "'", nbsp: " " };
+
+// Source text sometimes arrives HTML-escaped ("Software &amp; SaaS"); the page escapes on render.
 function text(value: unknown): string {
-  return normalizeOptionalText(value) ?? "";
+  return (normalizeOptionalText(value) ?? "").replace(/&(amp|lt|gt|quot|apos|#39|nbsp);/g, (_, name: string) => ENTITIES[name]);
+}
+
+// Link shorteners and social hosts that ingestion sometimes stores as the company's domain.
+const NON_COMPANY_DOMAINS = new Set(["t.co", "x.com", "twitter.com", "bit.ly", "lnkd.in", "linkedin.com", "buff.ly", "ow.ly", "tinyurl.com", "youtube.com", "youtu.be"]);
+
+function companyDomain(value: unknown): string {
+  const domain = text(value);
+  return NON_COMPANY_DOMAINS.has(domain.toLowerCase().replace(/^www\./, "")) ? "" : domain;
 }
 
 function normalizedDomain(value: unknown): string {
@@ -158,7 +169,7 @@ export function buildFundingFeedRows(
     if (!item) continue;
     const company = text(item.company_name);
     if (!company) continue;
-    const domain = text(item.company_domain);
+    const domain = companyDomain(item.company_domain);
     const key = normalizedDomain(domain) || company.toLowerCase();
     if (seen.has(key)) continue;
     seen.add(key);
@@ -169,7 +180,8 @@ export function buildFundingFeedRows(
     rows.push({
       company,
       domain,
-      logo: safeUrl(item.logo_url) || logoUrlForDomain(domain),
+      // A stored logo for a link-shortener domain is that shortener's favicon, so it goes too.
+      logo: domain ? safeUrl(item.logo_url) || logoUrlForDomain(domain) : null,
       round: normalizeRoundType(item.round_type) ?? "Unknown",
       amount: text(item.amount_raised) || null,
       amountUsd: optionalAmount(item.amount_raised_usd),
@@ -203,7 +215,7 @@ function headers(key: string, extra: HeadersInit = {}): HeadersInit {
 }
 
 function domainsFrom(rows: FundingDiscovery[]): string[] {
-  return [...new Set(rows.map((row) => normalizedDomain(row.company_domain)).filter(Boolean))];
+  return [...new Set(rows.map((row) => companyDomain(row.company_domain).toLowerCase()).filter(Boolean))];
 }
 
 function inFilter(domains: string[]): string {

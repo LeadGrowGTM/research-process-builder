@@ -69,6 +69,18 @@ describe("buildFundingFeedRows", () => {
   });
 });
 
+describe("feed text cleanup", () => {
+  it("decodes HTML entities from source text", () => {
+    const [row] = buildFundingFeedRows([{ company_name: "Acme &amp; Co", company_domain: "acme.com", industry: "AI, Software &amp; SaaS" }], [], []);
+    expect(row).toMatchObject({ company: "Acme & Co", industry: "AI, Software & SaaS" });
+  });
+
+  it("drops link-shortener domains and their logos", () => {
+    const [row] = buildFundingFeedRows([{ company_name: "Reflection AI", company_domain: "t.co", logo_url: "https://www.google.com/s2/favicons?domain=t.co&sz=128" }], [], []);
+    expect(row).toMatchObject({ domain: "", logo: null });
+  });
+});
+
 describe("fundingSignal", () => {
   const base = buildFundingFeedRows([{ company_name: "Acme", company_domain: "acme.com", round_type: "series a", amount_raised: "$12 Million", amount_raised_usd: 12_000_000, industry: "Fintech", discovered_date: "2026-09-29", source_url: "https://techcrunch.com/acme" }], [], [])[0];
 
