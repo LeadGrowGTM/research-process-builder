@@ -137,6 +137,31 @@ describe("refreshFundingFeed", () => {
     expect(fetchImpl.mock.calls.map(([url]) => String(url)).join(" ")).not.toContain("/storage/v1/");
   });
 
+  it("enriches an uncached company, stores its spend, and publishes the founder", async () => {
+    const upserts: Array<Record<string, unknown>> = [];
+    const fetchImpl = vi.fn(async (url: string, init?: RequestInit) => {
+      if (url.includes("funding_discoveries")) return reply([{ company_name: "Acme", company_domain: "acme.com" }]);
+      if (url.includes("legion_company_profiles") && init?.method === "POST") {
+        expect(init.headers).toMatchObject({ "Content-Profile": "leadgrow_knowledge", Prefer: "resolution=merge-duplicates" });
+        upserts.push(...JSON.parse(String(init.body)));
+        return reply([], 201);
+      }
+      if (url.includes(KV_PATH)) {
+        expect(JSON.parse(String(init?.body)).rows[0].founders).toEqual([{ name: "Ada Doe", title: "Co-Founder", linkedin: "https://www.linkedin.com/in/ada" }]);
+        return reply({ success: true });
+      }
+      return reply([]);
+    });
+    const qe = vi.fn(async () => reply({ data: [{ first_name: "Ada", last_name: "Doe", title: "Co-Founder", email: "ada@acme.com", employee_phone: "6505550100", employee_linkedin: "https://www.linkedin.com/in/ada", city: "Austin", region_code: "TX", country_code: "US" }] }));
+    vi.stubGlobal("fetch", qe);
+    const feed = await refreshFundingFeed({ ...config, fetchImpl, enrichment: { quickEnrichKey: "qe", aiArkKey: "ark", quickEnrichUsdPerCredit: 0.001 } });
+    vi.unstubAllGlobals();
+    expect(feed).toMatchObject({ enriched: 1, costUsd: 0.001 });
+    expect(upserts).toHaveLength(1);
+    expect(upserts[0]).toMatchObject({ domain: "acme.com", hq: "Austin, TX, US", cost_usd: 0.001, calls: [{ provider: "quickenrich", units: 1, costUsd: 0.001 }] });
+    expect(JSON.stringify(upserts)).not.toMatch(/ada@acme\.com|6505550100/);
+  });
+
   it("reports KV write failures", async () => {
     const fetchImpl = vi.fn(async (url: string) => url.includes("funding_discoveries") ? reply([{ company_name: "Acme", company_domain: "acme.com" }]) : url.includes(KV_PATH) ? reply({}, 500) : reply([]));
     await expect(refreshFundingFeed({ ...config, fetchImpl })).rejects.toThrow("KV write failed with HTTP 500");

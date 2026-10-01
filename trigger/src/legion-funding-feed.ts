@@ -234,18 +234,17 @@ async function fetchProfiles(config: FundingFeedConfig, domains: string[]): Prom
   return rows;
 }
 
-async function postRows(config: FundingFeedConfig, path: string, profile: string, rows: unknown[], extra: Record<string, string> = {}): Promise<void> {
-  if (rows.length === 0) return;
-  const response = await (config.fetchImpl ?? fetch)(`${config.url.replace(/\/+$/, "")}/rest/v1/${path}`, {
+async function upsertProfile(config: FundingFeedConfig, row: CompanyProfile): Promise<void> {
+  const response = await (config.fetchImpl ?? fetch)(`${config.url.replace(/\/+$/, "")}/rest/v1/legion_company_profiles`, {
     method: "POST",
-    headers: headers(config.key, { "Content-Type": "application/json", "Content-Profile": profile, ...extra }),
-    body: JSON.stringify(rows),
+    headers: headers(config.key, { "Content-Type": "application/json", "Content-Profile": "leadgrow_knowledge", Prefer: "resolution=merge-duplicates" }),
+    body: JSON.stringify([row]),
     signal: AbortSignal.timeout(15_000),
   });
-  if (!response.ok) throw new Error(`${path} write failed with HTTP ${response.status}`);
+  if (!response.ok) throw new Error(`legion_company_profiles write failed with HTTP ${response.status}`);
 }
 
-/** Runs the find-people waterfall for domains with no cached profile, caps spend per run, records costs. */
+/** Runs the find-people waterfall for domains with no cached profile, caps spend per run, stores spend per company. */
 async function enrichMissing(config: FundingFeedConfig, domains: string[], profiles: CompanyProfile[]): Promise<{ enriched: number; costUsd: number }> {
   if (!config.enrichment) return { enriched: 0, costUsd: 0 };
   const done = new Set(profiles.map((p) => normalizedDomain(p.domain)));
@@ -255,11 +254,8 @@ async function enrichMissing(config: FundingFeedConfig, domains: string[], profi
     const found = await findCompanyPeople(domain, config.enrichment);
     const cost = found.calls.reduce((sum, call) => sum + call.costUsd, 0);
     costUsd += cost;
-    const row = { domain, hq: found.hq, employees: found.employees, founders: found.founders, sources: found.sources, cost_usd: cost };
-    await postRows(config, "legion_company_profiles", "leadgrow_knowledge", [row], { Prefer: "resolution=merge-duplicates" });
-    await postRows(config, "cost_ledger", "enrichment", found.calls.map((call) => ({
-      cost_type: "legion_funding_people", provider: call.provider, amount: call.costUsd, units: call.units, metadata: { domain },
-    })));
+    const row = { domain, hq: found.hq, employees: found.employees, founders: found.founders, sources: found.sources, cost_usd: cost, calls: found.calls };
+    await upsertProfile(config, row);
     profiles.push(row);
   }
   return { enriched: todo.length, costUsd };
