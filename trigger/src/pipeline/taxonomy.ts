@@ -212,6 +212,40 @@ const SOURCE_NAMES: Record<string, string> = {
   "venturebeat.com": "VentureBeat",
 };
 
+const SECRET_QUERY_SEGMENT = /^(?:token|secret|password|passwd|pwd|auth|authentication|authorization|credential|credentials|apikey|oauth)\d*$/;
+
+/** Secret-bearing query names. "auth" does not match a longer word such as "author". */
+function isSecretQueryKey(key: string): boolean {
+  const segments = key
+    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter(Boolean);
+  if (segments.some((segment) => SECRET_QUERY_SEGMENT.test(segment))) return true;
+  for (let i = 0; i < segments.length - 1; i++) {
+    if (segments[i] === "api" && /^key\d*$/.test(segments[i + 1])) return true;
+  }
+  return false;
+}
+
+/**
+ * True when a URL can be shown on a public signal. Requires https, no
+ * embedded credentials, and no query key that carries a secret.
+ */
+export function isPublicHttpsUrl(value: string | null | undefined): boolean {
+  if (!value) return false;
+  try {
+    const url = new URL(value);
+    if (url.protocol !== "https:" || url.username || url.password) return false;
+    for (const key of url.searchParams.keys()) {
+      if (isSecretQueryKey(key)) return false;
+    }
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 /** Human-readable publisher label derived only from the source URL. */
 export function sourceNameForUrl(sourceUrl: string | null | undefined): string | null {
   if (!sourceUrl) return null;

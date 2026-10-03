@@ -61,5 +61,47 @@ describe("findCompanyPeople", () => {
     expect(out.sources).toEqual(["quickenrich", "aiark"]);
     expect(out.calls.map((c) => c.provider)).toEqual(["quickenrich", "quickenrich", "aiark"]);
     expect(out.calls[2].costUsd).toBe(AI_ARK_COST_USD);
+    expect(out.coverage).toEqual({ hq: "present", employees: "present", founders: "present" });
+  });
+
+  it("keeps an employee range and records QuickEnrich when size is the only company field", async () => {
+    const fetchMock = vi.fn(async (url: string) => {
+      if (url.includes("title=")) return reply({ data: [] });
+      return reply({ data: [{ title: "Engineer", employee_count: "10001-10005", city: "N/A", email: "sam@acme.com" }] });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const out = await findCompanyPeople("acme.com", { ...cfg, aiArkKey: "" });
+    expect(out.employees).toBe("10001-10005");
+    expect(out.hq).toBeNull();
+    expect(out.sources).toEqual(["quickenrich"]);
+    expect(out.calls.map((call) => call.provider)).toEqual(["quickenrich", "quickenrich"]);
+    expect(out.coverage).toEqual({ hq: "absent", employees: "present", founders: "unavailable" });
+    expect(JSON.stringify(out)).not.toMatch(/sam@acme\.com/);
+  });
+
+  it("does not treat an empty QuickEnrich page as proof that founders are absent", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => reply({ data: [] })));
+    const out = await findCompanyPeople("acme.com", { ...cfg, aiArkKey: "" });
+    expect(out.founders).toEqual([]);
+    expect(out.coverage).toEqual({ hq: "absent", employees: "absent", founders: "unavailable" });
+  });
+
+  it("marks founders absent only after AI Ark returns an empty page", async () => {
+    const fetchMock = vi.fn(async (url: string) => url.includes("quickenrich") ? reply({ data: [] }) : reply({ content: [] }));
+    vi.stubGlobal("fetch", fetchMock);
+    const out = await findCompanyPeople("acme.com", cfg);
+    expect(out.coverage.founders).toBe("absent");
+    expect(out.calls[2]).toEqual({ provider: "aiark", units: 1, costUsd: AI_ARK_COST_USD });
+  });
+
+  it("keeps every field unavailable when both reads fail", async () => {
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => reply({ error: "down" }, url.includes("quickenrich") ? 500 : 503)));
+    const out = await findCompanyPeople("acme.com", cfg);
+    expect(out.founders).toEqual([]);
+    expect(out.hq).toBeNull();
+    expect(out.employees).toBeNull();
+    expect(out.sources).toEqual([]);
+    expect(out.coverage).toEqual({ hq: "unavailable", employees: "unavailable", founders: "unavailable" });
+    expect(out.calls.map((call) => call.provider)).toEqual(["quickenrich", "quickenrich", "aiark"]);
   });
 });

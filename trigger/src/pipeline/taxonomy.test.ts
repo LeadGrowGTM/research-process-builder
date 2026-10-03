@@ -6,6 +6,7 @@ import {
   signalTypeForRound,
   logoUrlForDomain,
   sourceNameForUrl,
+  isPublicHttpsUrl,
   normalizeOptionalText,
   INDUSTRIES,
   ROUND_TYPES,
@@ -114,6 +115,26 @@ describe("logoUrlForDomain", () => {
     expect(logoUrlForDomain("not_found")).toBeNull();
     expect(logoUrlForDomain("not_stated")).toBeNull();
     expect(logoUrlForDomain("localhost")).toBeNull();
+  });
+});
+
+describe("isPublicHttpsUrl", () => {
+  it("allows ordinary https links and rejects credentials, insecure protocols, and secret query keys", () => {
+    expect(isPublicHttpsUrl("https://www.techcrunch.com/acme")).toBe(true);
+    expect(isPublicHttpsUrl("https://techcrunch.com/acme?utm_source=x")).toBe(true);
+    expect(isPublicHttpsUrl("http://www.techcrunch.com/acme")).toBe(false);
+    expect(isPublicHttpsUrl("javascript:alert(1)")).toBe(false);
+    expect(isPublicHttpsUrl("https://user:pass@techcrunch.com/acme")).toBe(false);
+    expect(isPublicHttpsUrl("https://techcrunch.com/acme?token=secret")).toBe(false);
+    expect(isPublicHttpsUrl("https://techcrunch.com/acme?api_key=secret")).toBe(false);
+    expect(isPublicHttpsUrl("https://news.example/round?author=editor")).toBe(true);
+    expect(isPublicHttpsUrl("https://news.example/round?author=editor&utm_medium=social")).toBe(true);
+    expect(isPublicHttpsUrl("https://news.example/round?auth=1")).toBe(false);
+    expect(isPublicHttpsUrl("https://news.example/round?access_token=abc")).toBe(false);
+    expect(isPublicHttpsUrl("https://news.example/round?author=editor&token=abc")).toBe(false);
+    expect(isPublicHttpsUrl("https://news.example/round?apiKey=abc")).toBe(false);
+    expect(isPublicHttpsUrl("https://news.example/round?password=secret")).toBe(false);
+    expect(isPublicHttpsUrl("not a url")).toBe(false);
   });
 });
 

@@ -64,6 +64,49 @@ const DEFAULT_FOUNDER_CAP = 50;
 const MAX_FOUNDER_CAP = 50;
 const WORK_BUDGET_MS = 8 * 60 * 1000;
 
+function withoutContacts(value: string): string {
+  return value
+    .replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, " ")
+    .replace(/(?:\+|00)?\d[\d\s().-]{8,}\d/g, " ")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
+/** Public sentence. Sentinels, emails, and phone numbers are omitted, never stored as data. */
+export function publicSentence(raw: unknown, max?: number): string | null {
+  const text = normalizeOptionalText(raw);
+  if (!text) return null;
+  const cleaned = normalizeOptionalText(withoutContacts(text));
+  if (!cleaned) return null;
+  return max ? cleaned.slice(0, max) : cleaned;
+}
+
+export type ProfileFieldState = "present" | "absent" | "unavailable";
+
+export function buildIcpUserPrompt(company: {
+  company_name?: string;
+  company_domain?: string;
+  industry?: string;
+  round_type?: string;
+  amount_raised?: string;
+  location?: string;
+  homepage_content?: string;
+}): string {
+  const parts: string[] = [];
+  const industry = normalizeOptionalText(company.industry);
+  const round = normalizeOptionalText(company.round_type);
+  const amount = normalizeOptionalText(company.amount_raised);
+  const location = normalizeOptionalText(company.location);
+  if (industry) parts.push(industry);
+  if (round) parts.push(`${round} funded`);
+  if (amount) parts.push(`raised ${amount}`);
+  if (location) parts.push(`based in ${location}`);
+  const homepage = publicSentence(company.homepage_content);
+  if (homepage) parts.push(`\nHomepage: ${homepage.slice(0, 1000)}`);
+  const description = parts.length ? parts.join(". ") : "unknown";
+  return `Company: ${company.company_name ?? company.company_domain ?? "Unknown"}\nDomain: ${company.company_domain ?? ""}\nDescription: ${description}`;
+}
+
 export function resolveDiscoveryProfilePatch(
   next: { company_description?: unknown; products?: unknown }
 ): Record<string, string> {
@@ -175,15 +218,7 @@ async function classifyICP(company: {
   location?: string;
   homepage_content?: string;
 }, deadlineAt: number): Promise<IcpResult | null> {
-  const parts: string[] = [];
-  if (company.industry) parts.push(company.industry);
-  if (company.round_type) parts.push(`${company.round_type} funded`);
-  if (company.amount_raised) parts.push(`raised ${company.amount_raised}`);
-  if (company.location) parts.push(`based in ${company.location}`);
-  if (company.homepage_content) parts.push(`\nHomepage: ${company.homepage_content.slice(0, 1000)}`);
-  const description = parts.join(". ") || `Recently funded company (${company.round_type ?? "unknown round"})`;
-
-  const userPrompt = `Company: ${company.company_name ?? company.company_domain ?? "Unknown"}\nDomain: ${company.company_domain ?? ""}\nDescription: ${description}`;
+  const userPrompt = buildIcpUserPrompt(company);
   const result = await lunaJson<IcpResult>({
     name: "icp_classification",
     schema: ICP_SCHEMA,
@@ -262,22 +297,21 @@ async function describeCompany(
   homepageContent: string,
   deadlineAt: number
 ): Promise<CompanyProfile | null> {
+  const evidence = publicSentence(homepageContent);
+  if (!evidence) return { company_description: null, products: null };
   const result = await lunaJson<CompanyProfile>({
     name: "company_profile",
     schema: PROFILE_SCHEMA,
     systemPrompt: PROFILE_SYSTEM,
-    userPrompt: `Company: ${companyName}\nEvidence:\n${homepageContent.slice(0, 4000)}`,
+    userPrompt: `Company: ${companyName}\nEvidence:\n${evidence.slice(0, 4000)}`,
     maxTokens: 300,
     timeoutMs: 30_000,
     deadlineAt,
   });
   if (!result) return null;
-  const description = normalizeOptionalText(result.data.company_description)?.slice(0, 280) ?? null;
-  const products = normalizeOptionalText(result.data.products);
-  if (!description && !products) return null;
   return {
-    company_description: description,
-    products,
+    company_description: publicSentence(result.data.company_description, 280),
+    products: publicSentence(result.data.products),
   };
 }
 
@@ -328,7 +362,7 @@ export const signalBankDaily = schedules.task({
     const MAX_PER_RUN = 50; // cost gate: ~$0.015 for 50 rows
     // funding_discoveries is in schema "public", not leadgrow_knowledge
     const allFundingResult = await sbGet("funding_discoveries", {
-      select: "company_name,company_domain,industry,round_type,amount_raised,location,company_description,discovered_date",
+      select: "company_name,company_domain,industry,round_type,amount_raised,location,company_description,products,discovered_date",
       company_domain: "not.is.null",
       order: "discovered_date.desc",
       limit: "500",
@@ -372,6 +406,10 @@ export const signalBankDaily = schedules.task({
     });
 
     let classified = 0;
+    const profileCoverage = {
+      description: { present: 0, absent: 0, unavailable: 0 },
+      products: { present: 0, absent: 0, unavailable: 0 },
+    };
     let scraped = 0;
     let targetMarketsSet = 0;
     let foundersFound = 0;
@@ -394,6 +432,9 @@ export const signalBankDaily = schedules.task({
         if (homepageContent) scraped++;
       }
 
+      const storedDescription = publicSentence(row.company_description, 280);
+      const storedProducts = publicSentence(row.products);
+      const homepageEvidence = publicSentence(homepageContent);
       const result = await classifyICP({
         company_name: row.company_name,
         company_domain: domain,
@@ -401,7 +442,7 @@ export const signalBankDaily = schedules.task({
         round_type: row.round_type,
         amount_raised: row.amount_raised,
         location: row.location,
-        homepage_content: homepageContent ?? row.company_description ?? undefined,
+        homepage_content: homepageEvidence ?? storedDescription ?? undefined,
       }, deadlineAt);
 
       if (!result) continue;
@@ -411,14 +452,18 @@ export const signalBankDaily = schedules.task({
       const signal_type = signalTypeForRound(round);
       const industryLabel = normalizeIndustry(result.industry);
 
-      let company_description = row.company_description?.trim().slice(0, 280) || null;
-      let products: string | null = null;
-      const profileEvidence = homepageContent ?? row.company_description;
+      let company_description = storedDescription;
+      let products = storedProducts;
+      let descriptionState: ProfileFieldState = company_description ? "present" : "unavailable";
+      let productsState: ProfileFieldState = products ? "present" : "unavailable";
+      const profileEvidence = homepageEvidence ?? company_description;
       if (profileEvidence) {
         const profile = await describeCompany(row.company_name, profileEvidence, deadlineAt);
         if (profile) {
-          company_description = company_description ?? profile.company_description;
-          products = profile.products || null;
+          if (!company_description && profile.company_description) company_description = profile.company_description;
+          if (!products && profile.products) products = profile.products;
+          descriptionState = company_description ? "present" : "absent";
+          productsState = products ? "present" : "absent";
         }
       }
 
@@ -435,8 +480,8 @@ export const signalBankDaily = schedules.task({
         company_size: String(result.company_size ?? ""),
         decision_makers: result.decision_makers ?? [],
         pain_points: result.pain_points ?? [],
-        homepage_analysis: homepageContent
-          ? { homepage_summary: homepageContent.slice(0, 500) }
+        homepage_analysis: homepageEvidence
+          ? { homepage_summary: homepageEvidence.slice(0, 500) }
           : null,
         homepage_scraped: homepageContent !== null,
         source: "funding_discoveries",
@@ -463,6 +508,8 @@ export const signalBankDaily = schedules.task({
       }
 
       classified++;
+      profileCoverage.description[descriptionState]++;
+      profileCoverage.products[productsState]++;
     }
 
     // ── Step 4: Target markets for new strong/moderate rows ──────────────────
@@ -544,6 +591,7 @@ export const signalBankDaily = schedules.task({
       targetMarketsSet,
       foundersFound,
       founderCompanies,
+      profileCoverage,
     };
 
     logger.info("signal-bank-daily complete", summary);

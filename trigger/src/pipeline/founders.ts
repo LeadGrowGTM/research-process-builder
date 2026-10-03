@@ -114,13 +114,37 @@ export interface FounderCandidate {
   linkedin_url: string | null;
 }
 
-export async function aiArkSearchPeople(
+export interface PeopleSearchOutcome {
+  people: FounderCandidate[];
+  /** Set only after a request was sent. A missing key is not a call and not proof that nobody exists. */
+  failure: ProviderFailure | null;
+  called: boolean;
+}
+
+function withoutContacts(value: string): string {
+  return value
+    .replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, " ")
+    .replace(/(?:\+|00)?\d[\d\s().-]{8,}\d/g, " ")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
+/** Public name or title. Emails and phone numbers never leave this module on those fields. */
+function publicLabel(raw: unknown): string {
+  if (typeof raw !== "string") return "";
+  const cleaned = withoutContacts(raw).trim();
+  if (!cleaned || /^(n\/a|none|null|unknown|undefined|not_stated|not_found|unclear)$/i.test(cleaned)) return "";
+  if (cleaned.startsWith("🔒")) return "";
+  return cleaned;
+}
+
+export async function aiArkSearchPeopleOutcome(
   domain: string,
   titles: string[] = FOUNDER_TITLES,
   apiKey: string = process.env.AI_ARK_API_KEY ?? "",
   cost?: CostRecorder
-): Promise<FounderCandidate[]> {
-  if (!apiKey || !domain) return [];
+): Promise<PeopleSearchOutcome> {
+  if (!apiKey || !domain) return { people: [], failure: null, called: false };
   const body = {
     page: 0,
     size: 25,
@@ -135,7 +159,7 @@ export async function aiArkSearchPeople(
       },
     },
   };
-  const { res } = await fetchProvider(`${AIARK_BASE}/people`, {
+  const { res, failure } = await fetchProvider(`${AIARK_BASE}/people`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -145,7 +169,7 @@ export async function aiArkSearchPeople(
     body: JSON.stringify(body),
     signal: AbortSignal.timeout(30_000),
   }, cost);
-  if (!res || !res.ok) return [];
+  if (!res || !res.ok) return { people: [], failure: failure ?? "transient", called: true };
   const data = (await res.json().catch(() => null)) as {
     content?: Array<Record<string, unknown>>;
   } | null;
@@ -155,10 +179,10 @@ export async function aiArkSearchPeople(
   for (const row of rows) {
     const prof = (row.profile ?? {}) as Record<string, unknown>;
     const link = (row.link ?? {}) as Record<string, unknown>;
-    const first = String(prof.first_name ?? "").trim();
-    const last = String(prof.last_name ?? "").trim();
+    const first = publicLabel(prof.first_name);
+    const last = publicLabel(prof.last_name);
     const linkedinUrl = normalizeFounderLinkedin(link.linkedin);
-    const title = String(prof.title ?? "").trim();
+    const title = publicLabel(prof.title);
     if (!first || !last || !linkedinUrl || seen.has(linkedinUrl) || !/\bfounder\b/i.test(title)) continue;
     seen.add(linkedinUrl);
     out.push({
@@ -169,7 +193,16 @@ export async function aiArkSearchPeople(
     });
     if (out.length >= MAX_FOUNDERS_PER_COMPANY) break;
   }
-  return out;
+  return { people: out, failure: null, called: true };
+}
+
+export async function aiArkSearchPeople(
+  domain: string,
+  titles: string[] = FOUNDER_TITLES,
+  apiKey: string = process.env.AI_ARK_API_KEY ?? "",
+  cost?: CostRecorder
+): Promise<FounderCandidate[]> {
+  return (await aiArkSearchPeopleOutcome(domain, titles, apiKey, cost)).people;
 }
 
 function normalizeFounderLinkedin(raw: unknown): string | null {

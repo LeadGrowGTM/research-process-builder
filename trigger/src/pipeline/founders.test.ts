@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import {
   aiArkSearchPeople,
+  aiArkSearchPeopleOutcome,
   persistFounderContacts,
   runFounderWaterfall,
   classifyStatus,
@@ -214,6 +215,36 @@ describe("founder discovery and persistence", () => {
       { profile: { first_name: "Bad", last_name: "Link", title: "Founder" }, link: { linkedin: "https://untrusted.test/in/bad" } },
     ] })));
     expect(await aiArkSearchPeople("acme.com", undefined, "ark")).toHaveLength(1);
+  });
+
+  it("drops a public name that is only an email and strips a phone from the title", async () => {
+    vi.mocked(fetch).mockResolvedValue(new Response(JSON.stringify({ content: [
+      { profile: { first_name: "jane@acme.com", last_name: "6505550100", title: "Founder" }, link: { linkedin: "https://linkedin.com/in/jane" } },
+      { profile: { first_name: "Jane jane@acme.com", last_name: "Doe", title: "Founder 6505550199" }, link: { linkedin: "https://linkedin.com/in/jane-doe" } },
+    ] })));
+    const founders = await aiArkSearchPeople("acme.com", undefined, "ark");
+    expect(founders).toEqual([{
+      first_name: "Jane",
+      last_name: "Doe",
+      title: "Founder",
+      linkedin_url: "https://linkedin.com/in/jane-doe",
+    }]);
+    expect(JSON.stringify(founders)).not.toMatch(/@acme\.com|6505550199/);
+  });
+
+  it("reports a failed people search separately from a confirmed empty page", async () => {
+    expect(await aiArkSearchPeopleOutcome("acme.com", undefined, "")).toEqual({ people: [], failure: null, called: false });
+    vi.mocked(fetch).mockResolvedValue(new Response(JSON.stringify({ content: [] }), { status: 200 }));
+    const empty = await aiArkSearchPeopleOutcome("acme.com", undefined, "ark");
+    expect(empty.called).toBe(true);
+    expect(empty.failure).toBeNull();
+    expect(empty.people).toEqual([]);
+    vi.mocked(fetch).mockResolvedValue(new Response("no", { status: 503 }));
+    const failed = await aiArkSearchPeopleOutcome("acme.com", undefined, "ark");
+    expect(failed.called).toBe(true);
+    expect(failed.failure).toBeTruthy();
+    expect(failed.people).toEqual([]);
+    expect(await aiArkSearchPeople("acme.com", undefined, "ark")).toEqual([]);
   });
 
   it("stops provider calls at the shared run budget and logs no contact details", async () => {
