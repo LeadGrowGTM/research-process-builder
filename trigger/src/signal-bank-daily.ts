@@ -588,8 +588,8 @@ export const signalBankDaily = schedules.task({
         limit: "500",
       });
       const candidateDomains = (candidates ?? []) as Array<{ domain: string }>;
-      // A company can have several founder rows; 10 per domain leaves headroom over the old 3-per-domain limit.
-      const contacts = await sbGetIn("founder_contacts", { select: "company_domain" }, "company_domain", candidateDomains.map(row => row.domain), 10);
+      // At most MAX_FOUNDERS_PER_COMPANY (2) rows per company; 3 covers rows written under the old cap of 3.
+      const contacts = await sbGetIn("founder_contacts", { select: "company_domain" }, "company_domain", candidateDomains.map(row => row.domain), 3);
       if (candidates === null || contacts === null) throw new Error("Founder eligibility read failed");
       const completed = new Set((contacts as Array<{ company_domain: string }>).map(row => row.company_domain));
       const eligible = (candidates as Array<{ domain: string }>).filter(row => !completed.has(row.domain) && /^[a-z0-9.-]+\.[a-z]{2,}$/.test(row.domain)).slice(0, founderCap);

@@ -17,7 +17,7 @@
  */
 
 export const FOUNDER_TITLES = ["Founder", "Co-Founder"];
-export const MAX_FOUNDERS_PER_COMPANY = 3;
+export const MAX_FOUNDERS_PER_COMPANY = 2;
 
 const AIARK_BASE = "https://api.ai-ark.com/api/developer-portal/v1";
 const UA =
