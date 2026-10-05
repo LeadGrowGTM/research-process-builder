@@ -125,6 +125,8 @@ export interface PipelineConfig {
   skipKnownCompanies?: boolean;
   skipKnownDays?: number;
   stage?: number;
+  /** Epoch ms by which the run must finish; enrichment stops early to leave time for delivery. */
+  deadlineAt?: number;
 }
 
 export interface PipelineResult {

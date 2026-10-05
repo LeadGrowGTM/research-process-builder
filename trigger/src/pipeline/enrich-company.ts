@@ -273,7 +273,8 @@ export async function enrichDomainWaterfall(
  */
 export async function day0BlitzEnrich(
   table: "funding_discoveries" | "product_launches",
-  targets: Day0Target[]
+  targets: Day0Target[],
+  concurrency = 1
 ): Promise<{ attempted: number; enriched: number; providers: "available" | "unavailable"; coverage: FieldCoverage }> {
   const coverage = emptyFieldCoverage();
   if (!lgenrichConfigured() && !blitzConfigured()) {
@@ -284,10 +285,10 @@ export async function day0BlitzEnrich(
   let attempted = 0;
   let enriched = 0;
 
-  for (const t of targets) {
+  const enrichOne = async (t: Day0Target) => {
     const domain = normalizeDomain(t.domain);
     // "not_enriched" placeholder and other non-domains have no dot
-    if (!domain || !domain.includes(".") || isDomainBlocked(domain)) continue;
+    if (!domain || !domain.includes(".") || isDomainBlocked(domain)) return;
     attempted++;
     coverage.recordsAttempted++;
 
@@ -297,7 +298,7 @@ export async function day0BlitzEnrich(
       if (present.has(field)) coverage.present[field]++;
       else coverage.omitted[field]++;
     }
-    if (!hit) continue;
+    if (!hit) return;
 
     const ok = await patchRowBySourceUrl(table, t.sourceUrl, {
       ...hit.patch,
@@ -308,6 +309,10 @@ export async function day0BlitzEnrich(
       enriched++;
       coverage.recordsWritten++;
     }
+  };
+
+  for (let i = 0; i < targets.length; i += concurrency) {
+    await Promise.all(targets.slice(i, i + concurrency).map(enrichOne));
   }
 
   logger.info(`Day-0 enrichment complete`, { table, attempted, enriched, coverage });

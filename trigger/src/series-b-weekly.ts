@@ -6,7 +6,7 @@ import { workflowGate } from "./modules/workflow-gate.js";
 export const seriesBWeekly = schedules.task({
   id: "series-b-weekly",
   cron: {
-    pattern: "0 8 * * 1",
+    pattern: "5 8 * * 1",
     timezone: "America/New_York",
   },
   retry: {

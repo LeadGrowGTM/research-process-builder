@@ -19,6 +19,10 @@ const SOCIAL_DOMAINS = new Set([
   "tiktok.com", "snapchat.com",
 ]);
 
+// Job boards, company-profile directories and event pages repeat old rounds with no news date.
+const NON_NEWS_SOURCE =
+  /(?:^|\.)(?:yespress\.io|preqin\.com|bebee\.com|remotesource\.com|jobaaj\.com|himalayas\.app|securities\.io|wikitia\.com|multiples\.vc|eventbrite\.[a-z.]+|glassdoor\.[a-z.]+|jooble\.org|jobgrin\.co\.in|jobs\.biospace\.com)$/i;
+
 const TIER_S_DOMAINS = new Set([
   "thesaasnews.com",
   "finsmes.com",
@@ -82,9 +86,38 @@ function areFuzzyMatch(a: string, b: string): boolean {
   return levenshtein(sa, sb) <= threshold;
 }
 
+const RAISE_VERB = /^(?:has\s+)?(?:raises?|raised|secures?|secured|closes?|closed|lands?|landed|nabs?|bags?|gets?|receives?|completes?)\b/i;
+const PLACE_BASED_PREFIX = /^\S+-based\s+(?:\S+\s+){0,4}?(?:startup|start-up|firm|company|platform)\s+/i;
+const DESCRIPTOR_PREFIX = /^(?:\S+\s+){2,5}?(?:startup|start-up|firm|platform)\s+/i;
+
+/** True when text starts with a capitalized name of 1-4 words followed by a raise verb. */
+function startsWithNameThenRaise(text: string): boolean {
+  const words = text.split(/\s+/);
+  for (let n = 1; n <= 4 && n < words.length; n++) {
+    if (!/^[A-Z]/.test(words[n - 1])) return false;
+    if (RAISE_VERB.test(words.slice(n).join(" "))) return true;
+  }
+  return false;
+}
+
+/**
+ * Removes editorial lead-ins so the title starts at the company name:
+ * "Exclusive: ...", "Mumbai-based lending-tech startup Rezolv ...", and
+ * "Singapore fintech firm IPID raises ...". A descriptor needs two words in front of it and a
+ * raise verb after the name, so names like "The Company Store" or "Open Platform Labs" survive.
+ */
+export function stripEditorialPrefix(title: string): string {
+  const t = title.replace(/^exclusive:\s*/i, "");
+  const based = t.match(PLACE_BASED_PREFIX);
+  if (based && /^[A-Z]/.test(t.slice(based[0].length))) return t.slice(based[0].length);
+  const descriptor = t.match(DESCRIPTOR_PREFIX);
+  if (descriptor && startsWithNameThenRaise(t.slice(descriptor[0].length))) return t.slice(descriptor[0].length);
+  return t;
+}
+
 function extractCompanyNameFromTitle(title: string): string {
   const m1 = title.match(
-    /^([A-Z][\w\s.&'-]{1,40}?)\s+(?:raises?|secures?|closes?|announces?|gets?|lands?|nabs?|bags?|receives?|completes?)\b/i
+    /^([A-Z][\w\s.&'-]{1,40}?)\s+(?:has\s+)?(?:raises?|raised|secures?|secured|closes?|closed|announces?|gets?|lands?|landed|nabs?|bags?|receives?|completes?)\b/i
   );
   if (m1) {
     const name = m1[1].trim();
@@ -118,7 +151,16 @@ export function scoreAndFilter(rawResults: RawResult[], config: RoundConfig): St
     const snippet = r.snippet ?? "";
     const combined = `${title} ${snippet}`;
     const url = r.source_url ?? "";
-    const domain = r.source_domain ?? "";
+    const domain = (r.source_domain ?? "").replace(/^www\./, "");
+
+    if (NON_NEWS_SOURCE.test(domain)) {
+      filteredOut.push({
+        title: title.slice(0, 80),
+        reason: "non-news source (job board/profile/event page)",
+        url,
+      });
+      continue;
+    }
 
     if (config.noisePatterns.test(title)) {
       filteredOut.push({
@@ -173,9 +215,10 @@ export function scoreAndFilter(rawResults: RawResult[], config: RoundConfig): St
       }
     }
 
-    let company = extractCompanyNameFromTitle(title);
+    const nameTitle = stripEditorialPrefix(title);
+    let company = extractCompanyNameFromTitle(nameTitle);
     if (!company) {
-      const fallback = title.split(" - ")[0].split(" | ")[0];
+      const fallback = nameTitle.split(" - ")[0].split(" | ")[0];
       const parts = fallback.split(
         /\s+(?:Raises?|Secures?|Closes?|Announces?)\b/i
       );

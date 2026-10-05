@@ -9,6 +9,16 @@ const GOOGLE_URL = "https://google-search74.p.rapidapi.com/";
 const GOOGLE_HOST = "google-search74.p.rapidapi.com";
 // Fallback: treg's Google SERP route, ~$0.0009 a call. Brave on RapidAPI was dropped: it answers 200 with an empty list.
 const TREG_URL = "https://treg.to/call/treg.google.serp.organic";
+// google-search74 allows 5 requests a second and the key is shared with Smart Enrich, so Google
+// calls from one process start at least GOOGLE_SPACING_MS apart.
+export const GOOGLE_SPACING_MS = 250;
+let googleQueue: Promise<void> = Promise.resolve();
+
+function googleSlot(): Promise<void> {
+  const ready = googleQueue;
+  googleQueue = ready.then(() => new Promise((resolve) => setTimeout(resolve, GOOGLE_SPACING_MS)));
+  return ready;
+}
 
 function mapResults(items: unknown[], url: string, snippet: string): WebSearchResult[] {
   return items.filter((item): item is Record<string, unknown> => !!item && typeof item === "object")
@@ -32,11 +42,13 @@ async function searchTreg(q: string, limit: number, token: string): Promise<WebS
 
 /** Google first; treg only when Google fails (not when it finds nothing). Undefined means every provider failed. */
 export async function webSearch(query: string, options: WebSearchOptions): Promise<WebSearchResponse | undefined> {
-  const limit = Math.min(30, Math.max(1, Math.floor(options.limit)));
+  // google-search74 returns up to 100 results in one request; treg keeps its 30 cap.
+  const limit = Math.min(100, Math.max(1, Math.floor(options.limit)));
   const after = options.after instanceof Date ? options.after.toISOString().slice(0, 10) : options.after;
   const q = `${query}${after ? ` after:${after}` : ""}`;
   const googleParams = new URLSearchParams({ query: q, limit: String(limit), related_keywords: "false" });
   try {
+    await googleSlot();
     const { res } = await fetchProvider(`${GOOGLE_URL}?${googleParams}`, {
       method: "GET",
       headers: { "x-rapidapi-key": options.apiKey, "x-rapidapi-host": GOOGLE_HOST },
@@ -49,5 +61,5 @@ export async function webSearch(query: string, options: WebSearchOptions): Promi
   } catch { /* Try the fallback. */ }
   if (options.fallback === false) return undefined;
   const token = options.tregToken ?? process.env.TREG_TOKEN ?? "";
-  return token ? searchTreg(q, limit, token) : undefined;
+  return token ? searchTreg(q, Math.min(30, limit), token) : undefined;
 }

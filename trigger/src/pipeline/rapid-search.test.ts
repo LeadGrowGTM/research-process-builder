@@ -9,6 +9,24 @@ function json(body: unknown, status = 200): Response {
 afterEach(() => { vi.unstubAllGlobals(); vi.useRealTimers(); vi.unstubAllEnvs(); });
 
 describe("webSearch", () => {
+  // Runs first so the module-level Google queue starts empty.
+  it("starts Google calls at least 250 ms apart", async () => {
+    vi.useFakeTimers();
+    const fetchMock = vi.fn(async (_url: string | URL) => json({ results: [] }));
+    vi.stubGlobal("fetch", fetchMock);
+    const calls = [webSearch("a", { limit: 5, apiKey: "key" }), webSearch("b", { limit: 5, apiKey: "key" }), webSearch("c", { limit: 5, apiKey: "key" })];
+    await vi.advanceTimersByTimeAsync(0);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    await vi.advanceTimersByTimeAsync(249);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    await vi.advanceTimersByTimeAsync(1);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    await vi.advanceTimersByTimeAsync(250);
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+    await Promise.all(calls);
+    await vi.runAllTimersAsync(); // drain the queue so later real-timer tests do not wait on a fake timer
+  });
+
   it("returns Google results", async () => {
     vi.stubGlobal("fetch", vi.fn(async (_url: string | URL) => json({ results: [{ url: "https://a.test", title: "A", description: "desc" }] })));
     expect(await webSearch("hello", { limit: 5, apiKey: "key" })).toEqual({ results: [{ url: "https://a.test", title: "A", snippet: "desc" }], provider: "google" });
@@ -43,6 +61,15 @@ describe("webSearch", () => {
   it("returns undefined when both providers fail", async () => {
     vi.stubGlobal("fetch", vi.fn(async (_url: string | URL) => json({}, 503)));
     expect(await webSearch("hello", { limit: 5, apiKey: "key", tregToken: "treg" })).toBeUndefined();
+  });
+
+  it("asks Google for up to 100 results but keeps treg at 30", async () => {
+    const fetchMock = vi.fn(async (url: string | URL, _init?: RequestInit) => new URL(String(url)).hostname.startsWith("google-")
+      ? json({}, 429) : json({ output: { results: [] } }));
+    vi.stubGlobal("fetch", fetchMock);
+    await webSearch("hello", { limit: 250, apiKey: "key", tregToken: "treg" });
+    expect(new URL(String(fetchMock.mock.calls[0][0])).searchParams.get("limit")).toBe("100");
+    expect(JSON.parse(String(fetchMock.mock.calls[1][1]?.body))).toEqual({ q: "hello", limit: 30 });
   });
 
   it("appends after to the query", async () => {
