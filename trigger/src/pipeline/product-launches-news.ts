@@ -509,9 +509,7 @@ interface ProductLaunchRow {
   is_ai: boolean;
   source: "news";
   source_url: string;
-  source_domain: string;
-  query_source: string;
-  snippet: string | null;
+  description: string | null;
   pipeline_version: string;
 }
 
@@ -524,9 +522,7 @@ function toRow(launch: ClassifiedLaunch, dateStr: string): ProductLaunchRow {
     is_ai: launch.is_ai,
     source: "news",
     source_url: launch.source_url,
-    source_domain: launch.source_domain,
-    query_source: launch.query_source,
-    snippet: launch.snippet || null,
+    description: launch.snippet || null,
     pipeline_version: "1.0-ts",
   };
 }
