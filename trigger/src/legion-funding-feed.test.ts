@@ -370,12 +370,12 @@ describe("refreshFundingFeed", () => {
       if (url.includes(KV_CURRENT)) return init?.method === "PUT" ? reply({ success: true }) : reply({}, 404);
       return fallback(url, init);
     });
-    vi.stubGlobal("fetch", vi.fn(async () => reply({ news: { results: [{ url: "https://www.axios.com/acme-series-a", title: "Acme raises $20M Series A" }] } })));
-    const result = await refreshFundingFeed({ ...config, fetchImpl, brave: { apiKey: "brave", perRun: 10, usdPerQuery: 0.005 } });
+    vi.stubGlobal("fetch", vi.fn(async () => reply({ results: [{ url: "https://www.axios.com/acme-series-a", title: "Acme raises $20M Series A", description: "Acme raised $20M in a Series A." }] })));
+    const result = await refreshFundingFeed({ ...config, fetchImpl, google: { apiKey: "rapid-key", perRun: 10, usdPerQuery: 0.005 } });
     vi.unstubAllGlobals();
 
     expect(result).toMatchObject({
-      count: 2, rounds: 3, raisedAgain: 1, braveLookups: 1, braveFound: 1, pages: 1,
+      count: 2, rounds: 3, raisedAgain: 1, searchLookups: 1, searchFound: 1, pages: 1,
       coverage: { sourceRows: 3, duplicateRows: 0, excludedNoCompany: 0, excludedUndated: 0, mergedReports: 3, distinctRounds: 3, companySignals: 2, publishedSignals: 2 },
     });
     expect(patches).toHaveLength(1);
@@ -425,7 +425,6 @@ describe("refreshFundingFeed", () => {
     const result = await refreshFundingFeed({
       ...config,
       fetchImpl,
-      brave: { apiKey: "brave", perRun: 10, usdPerQuery: 0.005 },
       google: { apiKey: "rapid-key", perRun: 10, usdPerQuery: 0 },
     });
     vi.unstubAllGlobals();

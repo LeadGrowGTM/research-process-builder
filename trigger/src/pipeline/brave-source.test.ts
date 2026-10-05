@@ -95,15 +95,14 @@ describe("pickSecondarySource", () => {
 describe("findSecondarySource", () => {
   it("queries Brave with the subscription token and reads news then web results", async () => {
     const fetchMock = vi.fn(async (_url: string, _init?: RequestInit) => new Response(JSON.stringify({
-      news: { results: [{ url: "https://techcrunch.com/rig-security", title: "Rig Security raises $12M seed round" }] },
-      web: { results: [] },
+      results: [{ url: "https://techcrunch.com/rig-security", title: "Rig Security raises $12M seed round", description: "Funding news" }],
     }), { status: 200 }));
     vi.stubGlobal("fetch", fetchMock);
     const found = await findSecondarySource(round, "brave-key");
     expect(found?.url).toBe("https://techcrunch.com/rig-security");
     const [url, init] = fetchMock.mock.calls[0];
-    expect(new URL(url).hostname).toBe("api.search.brave.com");
-    expect(init?.headers).toMatchObject({ "X-Subscription-Token": "brave-key" });
+    expect(new URL(url).hostname).toBe("google-search74.p.rapidapi.com");
+    expect(init?.headers).toMatchObject({ "x-rapidapi-key": "brave-key" });
   });
 
   it("returns undefined on provider failure so the round is retried later", async () => {
@@ -112,11 +111,11 @@ describe("findSecondarySource", () => {
   });
 
   it("returns null for an explicit empty result and undefined when the payload has no result list", async () => {
-    vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ web: { results: [] }, news: { results: [] } }), { status: 200 })));
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ results: [] }), { status: 200 })));
     expect(await findSecondarySource(round, "brave-key")).toBeNull();
     vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ message: "unavailable" }), { status: 200 })));
     expect(await findSecondarySource(round, "brave-key")).toBeUndefined();
-    vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ web: { results: {} } }), { status: 200 })));
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ results: {} }), { status: 200 })));
     expect(await findSecondarySource(round, "brave-key")).toBeUndefined();
   });
 });

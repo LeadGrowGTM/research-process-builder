@@ -1,7 +1,6 @@
 import type { QueryDef, RawResult } from "./types.js";
-
-const SERPER_API_KEY = process.env.SERPER_API_KEY ?? "";
-const SERPER_URL = "https://google.serper.dev/search";
+import { webSearch } from "./rapid-search.js";
+import { fetchProvider } from "./founders.js";
 
 interface SerperOrganic {
   title?: string;
@@ -14,21 +13,18 @@ export async function searchSerper(
   num: number,
   tbs: string
 ): Promise<SerperOrganic[]> {
-  const resp = await fetch(SERPER_URL, {
-    method: "POST",
-    headers: {
-      "X-API-KEY": SERPER_API_KEY,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ q: query, num, tbs }),
-  });
+  const response = await webSearch(query, { limit: num, after: freshnessDate(tbs), apiKey: process.env.RAPID_API_KEY ?? "" });
+  if (!response) throw new Error("RapidAPI Google and Brave searches failed");
+  return response.results.map(({ url, title, snippet }) => ({ link: url, title, snippet }));
+}
 
-  if (!resp.ok) {
-    throw new Error(`Serper ${resp.status}: ${await resp.text()}`);
-  }
-
-  const data = (await resp.json()) as { organic?: SerperOrganic[] };
-  return data.organic ?? [];
+function freshnessDate(tbs: string, now = new Date()): string | undefined {
+  const match = tbs.match(/qdr:(d|w|m|y)/i);
+  if (!match) return undefined;
+  const days = ({ d: 1, w: 7, m: 30, y: 365 } as const)[match[1].toLowerCase() as "d" | "w" | "m" | "y"];
+  const date = new Date(now);
+  date.setUTCDate(date.getUTCDate() - days);
+  return date.toISOString().slice(0, 10);
 }
 
 export async function runSingleQuery(

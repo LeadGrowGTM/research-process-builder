@@ -3,14 +3,10 @@
  * (google-search74). Quoted company query, then the company's own site when it has a domain.
  * Stops at the first qualifying hit. X and raisingfi links are rejected by pickSecondarySource.
  */
-import { fetchProvider } from "./founders.js";
+import { webSearch } from "./rapid-search.js";
 import { pickSecondarySource, secondaryQuery } from "./brave-source.js";
 import type { FundingRound, RoundSource } from "./funding-rounds.js";
 
-const GOOGLE_SEARCH_URL = "https://google-search74.p.rapidapi.com/";
-const GOOGLE_SEARCH_HOST = "google-search74.p.rapidapi.com";
-
-type GoogleItem = { url?: string; title?: string; description?: string };
 type MappedResult = { url?: string; title?: string; description?: string };
 
 export type GoogleSourceLookup = {
@@ -25,28 +21,10 @@ function siteQuery(domain: string): string | null {
   return `site:${root} (raises OR funding OR announces)`;
 }
 
-function mappedResults(items: unknown[]): MappedResult[] {
-  const results: MappedResult[] = [];
-  for (const item of items) {
-    if (!item || typeof item !== "object") continue;
-    const row = item as GoogleItem;
-    results.push({ url: row.url, title: row.title, description: row.description });
-  }
-  return results;
-}
-
-/** One Google Search call. Undefined means non-2xx, 429, or a payload with no results array. An empty array is a miss. */
+/** One Google search, no Brave fallback: an empty Brave page would read as a miss and mark the round checked. Undefined means Google failed (retry next run). */
 async function googleResults(query: string, apiKey: string): Promise<MappedResult[] | undefined> {
-  const params = new URLSearchParams({ query, limit: "10", related_keywords: "false" });
-  const { res } = await fetchProvider(`${GOOGLE_SEARCH_URL}?${params}`, {
-    method: "GET",
-    headers: { "x-rapidapi-key": apiKey, "x-rapidapi-host": GOOGLE_SEARCH_HOST },
-  });
-  if (!res || !res.ok) return undefined;
-  const body = (await res.json().catch(() => null)) as { results?: unknown } | null;
-  if (!body || typeof body !== "object" || Array.isArray(body)) return undefined;
-  if (!Array.isArray(body.results)) return undefined;
-  return mappedResults(body.results);
+  const response = await webSearch(query, { limit: 10, apiKey, fallback: false });
+  return response ? response.results.map((item) => ({ url: item.url, title: item.title, description: item.snippet })) : undefined;
 }
 
 /**

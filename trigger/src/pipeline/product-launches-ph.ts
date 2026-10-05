@@ -2,12 +2,13 @@ import { logger } from "@trigger.dev/sdk";
 import type { ProductLaunch, ProductLaunchPipelineResult } from "./product-launch-types.js";
 import { fetchUrl } from "./firecrawl.js";
 import { day0BlitzEnrich } from "./enrich-company.js";
+import { webSearch } from "./rapid-search.js";
 
 // ---------------------------------------------------------------------------
 // Env
 // ---------------------------------------------------------------------------
 
-const SERPER_API_KEY = process.env.SERPER_API_KEY ?? "";
+const RAPID_API_KEY = process.env.RAPID_API_KEY ?? "";
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY ?? "";
 const SUPABASE_URL = (() => {
   const url = process.env.SUPABASE_PROJECT_URL ?? process.env.SUPABASE_URL ?? "";
@@ -153,7 +154,7 @@ async function extractProductsFromContent(pageContent: string): Promise<{ produc
 }
 
 async function serperSupplementFetch(dateStr: string): Promise<PhProduct[]> {
-  if (!SERPER_API_KEY) return [];
+  if (!RAPID_API_KEY) return [];
 
   const d = new Date(dateStr + "T12:00:00Z");
   const month = d.toLocaleString("en-US", { month: "long", timeZone: "UTC" });
@@ -164,19 +165,12 @@ async function serperSupplementFetch(dateStr: string): Promise<PhProduct[]> {
   logger.info("Serper supplement: searching for PH posts", { query });
 
   try {
-    const resp = await fetch("https://google.serper.dev/search", {
-      method: "POST",
-      headers: { "X-API-KEY": SERPER_API_KEY, "Content-Type": "application/json" },
-      body: JSON.stringify({ q: query, num: 30 }),
-      signal: AbortSignal.timeout(15_000),
-    });
-    if (!resp.ok) {
-      logger.warn("Serper supplement failed", { status: resp.status });
+    const response = await webSearch(query, { limit: 30, after: dateStr, apiKey: RAPID_API_KEY });
+    if (!response) {
+      logger.warn("RapidAPI supplement failed");
       return [];
     }
-
-    const data = (await resp.json()) as { organic?: { title?: string; link?: string; snippet?: string }[] };
-    const results = data.organic ?? [];
+    const results = response.results.map(({ title, url, snippet }) => ({ title, link: url, snippet }));
     logger.info("Serper supplement results", { count: results.length });
 
     const products: PhProduct[] = [];
@@ -377,19 +371,13 @@ async function postsCountFromSlug(slug: string): Promise<number | null> {
 }
 
 async function serperFindProductSlug(productName: string): Promise<string | null> {
-  if (!SERPER_API_KEY) return null;
+  if (!RAPID_API_KEY) return null;
   const query = `site:producthunt.com/products "${productName}"`;
   try {
-    const resp = await fetch("https://google.serper.dev/search", {
-      method: "POST",
-      headers: { "X-API-KEY": SERPER_API_KEY, "Content-Type": "application/json" },
-      body: JSON.stringify({ q: query, num: 3 }),
-      signal: AbortSignal.timeout(15_000),
-    });
-    if (!resp.ok) return null;
-    const data = (await resp.json()) as { organic?: { link?: string }[] };
-    for (const r of data.organic ?? []) {
-      const link = r.link ?? "";
+    const response = await webSearch(query, { limit: 3, apiKey: RAPID_API_KEY });
+    if (!response) return null;
+    for (const r of response.results) {
+      const link = r.url ?? "";
       const m = link.match(/https:\/\/www\.producthunt\.com\/products\/([^/?#]+)/);
       if (m) return m[1];
     }
