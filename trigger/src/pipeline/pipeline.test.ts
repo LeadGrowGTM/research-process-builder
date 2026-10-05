@@ -152,6 +152,86 @@ describe("runFundingPipeline freshness gate", () => {
   });
 });
 
+describe("runFundingPipeline extraction gate", () => {
+  it("does not deliver a candidate when every source has no article text", async () => {
+    const candidate = raw("Alpha");
+    const fallback = { ...candidate, source_url: `${candidate.source_url}?fallback=1` };
+    vi.mocked(runDiscovery).mockResolvedValue([candidate, fallback]);
+    vi.mocked(fetchUrl).mockResolvedValue(null);
+
+    const result = await runFundingPipeline(config({ dryRun: false }));
+
+    expect(result.companyCount).toBe(0);
+    expect(fetchUrl).toHaveBeenCalledTimes(2);
+    expect(extractWithOpenAI).not.toHaveBeenCalled();
+    expect(pushToSupabase).not.toHaveBeenCalled();
+    expect(pushToWebhook).not.toHaveBeenCalled();
+    expect(logger.info).toHaveBeenCalledWith("Not shipped (no extraction): Alpha (no article text)");
+  });
+
+  it("does not deliver a candidate when extraction fails", async () => {
+    vi.mocked(runDiscovery).mockResolvedValue([raw("Alpha")]);
+    vi.mocked(extractWithOpenAI).mockResolvedValue(null);
+
+    const result = await runFundingPipeline(config({ dryRun: false }));
+
+    expect(result.companyCount).toBe(0);
+    expect(pushToSupabase).not.toHaveBeenCalled();
+    expect(pushToWebhook).not.toHaveBeenCalled();
+    expect(logger.info).toHaveBeenCalledWith("Not shipped (no extraction): Alpha (extraction failed)");
+  });
+
+  it("does not deliver an extraction with a blank company name", async () => {
+    vi.mocked(runDiscovery).mockResolvedValue([raw("Alpha")]);
+    vi.mocked(extractWithOpenAI).mockResolvedValue(extracted("  ", RUN_DATE));
+
+    const result = await runFundingPipeline(config({ dryRun: false }));
+
+    expect(result.companyCount).toBe(0);
+    expect(pushToSupabase).not.toHaveBeenCalled();
+    expect(pushToWebhook).not.toHaveBeenCalled();
+  });
+
+  it("retries a candidate on the next run after extraction fails", async () => {
+    vi.mocked(runDiscovery).mockResolvedValue([raw("Alpha")]);
+    vi.mocked(extractWithOpenAI)
+      .mockResolvedValueOnce(null)
+      .mockResolvedValueOnce(extracted("Alpha", RUN_DATE));
+    vi.mocked(getRecentCompanyNames).mockResolvedValue(new Set<string>());
+
+    await runFundingPipeline(config({ dryRun: false, skipKnownCompanies: true }));
+    const second = await runFundingPipeline(config({ dryRun: false, skipKnownCompanies: true }));
+
+    expect(extractWithOpenAI).toHaveBeenCalledTimes(2);
+    expect(second.companyCount).toBe(1);
+    expect(pushToSupabase).toHaveBeenCalledTimes(1);
+    expect(pushToWebhook).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not deliver a post-extraction sentinel", async () => {
+    vi.mocked(runDiscovery).mockResolvedValue([raw("Alpha")]);
+    vi.mocked(extractWithOpenAI).mockResolvedValue(extracted(SERIES_A_CONFIG.notRoundSentinel, RUN_DATE));
+
+    const result = await runFundingPipeline(config({ dryRun: false }));
+
+    expect(result.companyCount).toBe(0);
+    expect(pushToSupabase).not.toHaveBeenCalled();
+    expect(pushToWebhook).not.toHaveBeenCalled();
+    expect(logger.info).toHaveBeenCalledWith("Filtered post-extraction: Alpha");
+  });
+
+  it("delivers the extracted company name", async () => {
+    vi.mocked(runDiscovery).mockResolvedValue([raw("Search Result Name")]);
+    vi.mocked(extractWithOpenAI).mockResolvedValue(extracted("Primer", RUN_DATE));
+
+    const result = await runFundingPipeline(config({ dryRun: false }));
+
+    expect(result.companies.map((company) => company.company_name)).toEqual(["Primer"]);
+    expect(vi.mocked(pushToSupabase).mock.calls[0][0][0].company_name).toBe("Primer");
+    expect(vi.mocked(pushToWebhook).mock.calls[0][0][0].company_name).toBe("Primer");
+  });
+});
+
 describe("runFundingPipeline enrichment deadline", () => {
   it("stops stalled multi-source fetches at the enrichment deadline and preserves delivery reserve", async () => {
     vi.useFakeTimers();
