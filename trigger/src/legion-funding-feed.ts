@@ -2,7 +2,6 @@ import { schedules, logger } from "@trigger.dev/sdk";
 import { decodeHtmlEntities, isPublicHttpsUrl, logoUrlForDomain, normalizeOptionalText, normalizeRoundType, sourceNameForUrl } from "./pipeline/taxonomy.js";
 import { findCompanyPeople, type CompanyPeopleProfile, type PeopleWaterfallConfig } from "./pipeline/legion-people.js";
 import { buildRounds, companyKeyOf, displaySource, needsSecondarySource, type CompanyRounds, type FundingRound, type RoundSource } from "./pipeline/funding-rounds.js";
-import { findSecondarySource } from "./pipeline/brave-source.js";
 import { findGoogleSource } from "./pipeline/google-source.js";
 import { ADDITIONAL_SIGNAL_ORDER, ADDITIONAL_SIGNAL_SELECT, projectAdditionalSignals, type AdditionalFamilyCoverage } from "./pipeline/additional-signals.js";
 import { createHash } from "node:crypto";
@@ -303,7 +302,6 @@ export type FundingFeedConfig = {
   };
   legionKv?: { accountId: string; namespaceId: string; token: string };
   enrichment?: PeopleWaterfallConfig;
-  brave?: { apiKey: string; perRun: number; usdPerQuery: number };
   google?: { apiKey: string; perRun: number; usdPerQuery: number };
   fetchImpl?: FetchLike;
   now?: Date;
@@ -859,30 +857,22 @@ type SecondarySearchStats = {
   costUsd: number;
 };
 
-/** Google Search when configured, otherwise Brave. Budget counts queries. Newest raisingfi-only rounds first. */
+/** RapidAPI Google Search with Brave fallback. Budget counts queries. Newest raisingfi-only rounds first. */
 async function findSecondarySources(config: FundingFeedConfig, companies: CompanyRounds[], cache: RoundCache, now: string): Promise<SecondarySearchStats> {
   const none: SecondarySearchStats = { braveLookups: 0, braveFound: 0, searchLookups: 0, searchFound: 0, costUsd: 0 };
   const googleKey = config.google?.apiKey ?? "";
-  const braveKey = config.brave?.apiKey ?? "";
-  const mode = googleKey ? "google" : braveKey ? "brave" : null;
-  if (!mode) return none;
-  const provider = mode === "google" ? config.google! : config.brave!;
+  if (!googleKey) return none;
+  const provider = config.google!;
   if (!(provider.perRun > 0)) return none;
-  const apiKey = mode === "google" ? googleKey : braveKey;
   const todo = companies.flatMap((c) => [c.latest, ...c.earlier]).filter((r) => needsSecondarySource(r) && secondaryUnchecked(cache.get(r.key)));
   let found = 0;
   let lookups = 0;
   for (const round of todo) {
     if (lookups >= provider.perRun) break;
     let source: RoundSource | null | undefined;
-    if (mode === "google") {
-      const result = await findGoogleSource(round, apiKey);
-      lookups += result.queries.length;
-      source = result.source;
-    } else {
-      source = await findSecondarySource(round, apiKey);
-      lookups += 1;
-    }
+    const result = await findGoogleSource(round, googleKey);
+    lookups += result.queries.length;
+    source = result.source;
     // Provider failure (bad key, quota, outage): stop for this run, leave the round unchecked, retry next run.
     if (source === undefined) break;
     if (source) found++;
@@ -893,8 +883,7 @@ async function findSecondarySources(config: FundingFeedConfig, companies: Compan
     });
   }
   const costUsd = lookups * provider.usdPerQuery;
-  if (mode === "google") return { ...none, searchLookups: lookups, searchFound: found, costUsd };
-  return { ...none, braveLookups: lookups, braveFound: found, costUsd };
+  return { ...none, searchLookups: lookups, searchFound: found, costUsd };
 }
 
 async function fetchProfiles(config: FundingFeedConfig, domains: string[]): Promise<CompanyProfile[]> {
@@ -1163,11 +1152,6 @@ function runtimeConfig(): FundingFeedConfig {
       quickEnrichKey: process.env.QUICKENRICH_API_KEY ?? "",
       aiArkKey: process.env.AI_ARK_API_KEY ?? "",
       quickEnrichUsdPerCredit: Number(process.env.QUICKENRICH_USD_PER_CREDIT ?? 0) || 0,
-    },
-    brave: {
-      apiKey: process.env.BRAVE_SEARCH_API_KEY ?? "",
-      perRun: Number(process.env.LEGION_BRAVE_PER_RUN ?? BRAVE_PER_RUN_DEFAULT),
-      usdPerQuery: Number(process.env.BRAVE_USD_PER_QUERY ?? 0) || 0,
     },
     google: {
       apiKey: process.env.RAPID_API_KEY ?? "",

@@ -1,12 +1,11 @@
 /**
  * Finds a secondary source (a news article or press release) for a funding round that
- * was only reported by raisingfi on X, using the Brave Search API.
+ * was only reported by raisingfi on X, using the shared RapidAPI search flow.
  */
-import { fetchProvider } from "./founders.js";
+import { webSearch } from "./rapid-search.js";
 import { isPublicHttpsUrl, sourceNameForUrl } from "./taxonomy.js";
 import type { FundingRound, RoundSource } from "./funding-rounds.js";
 
-const BRAVE_URL = "https://api.search.brave.com/res/v1/web/search";
 
 // Hosts that are not an independent report of the round.
 const SKIP_HOST = /(^|\.)(x\.com|twitter\.com|t\.co|linkedin\.com|facebook\.com|instagram\.com|youtube\.com|reddit\.com|threads\.net|tiktok\.com|raisingfi\.[a-z]+)$/i;
@@ -152,16 +151,6 @@ function resultList(value: unknown): BraveResult[] | undefined {
 
 /** One Brave query per call. Returns null when nothing qualifies (a definite miss) and undefined on provider failure (retry later). */
 export async function findSecondarySource(round: FundingRound, apiKey: string): Promise<RoundSource | null | undefined> {
-  const params = new URLSearchParams({ q: secondaryQuery(round), count: "10", search_lang: "en", safesearch: "off" });
-  const { res } = await fetchProvider(`${BRAVE_URL}?${params}`, {
-    headers: { Accept: "application/json", "X-Subscription-Token": apiKey },
-  });
-  if (!res || !res.ok) return undefined;
-  const body = (await res.json().catch(() => null)) as { web?: { results?: unknown }; news?: { results?: unknown } } | null;
-  if (!body || typeof body !== "object") return undefined;
-  const news = resultList(body.news?.results);
-  const web = resultList(body.web?.results);
-  // A 200 without a result list is an unreadable payload, not proof that no article exists.
-  if (!news && !web) return undefined;
-  return pickSecondarySource(round, [...(news ?? []), ...(web ?? [])]);
+  const response = await webSearch(secondaryQuery(round), { limit: 10, apiKey, fallback: false });
+  return response ? pickSecondarySource(round, response.results.map(({ url, title, snippet }) => ({ url, title, description: snippet }))) : undefined;
 }
