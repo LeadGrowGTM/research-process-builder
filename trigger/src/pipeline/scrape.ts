@@ -20,11 +20,16 @@ interface ScrapeResult {
 
 export function htmlToText(html: string, baseUrl?: string): string {
   const entities: Record<string, string> = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " " };
-  return html
+  const decodeEntities = (text: string) => text.replace(/&(#x[0-9a-f]+|#\d+|amp|lt|gt|quot|apos|nbsp);/gi, (entity, name: string) => {
+    if (!name.startsWith("#")) return entities[name.toLowerCase()];
+    const code = name[1].toLowerCase() === "x" ? parseInt(name.slice(2), 16) : Number(name.slice(1));
+    return code > 0 && code <= 0x10ffff && !(code >= 0xd800 && code <= 0xdfff) ? String.fromCodePoint(code) : entity;
+  });
+  return decodeEntities(html
     .replace(/<!--[\s\S]*?-->/g, "")
     .replace(/<(script|style|noscript|svg|template)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, "\n")
     .replace(/<a\b[^>]*\shref\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))[^>]*>([\s\S]*?)<\/a\s*>/gi, (_tag, double: string | undefined, single: string | undefined, unquoted: string | undefined, label: string) => {
-      const href = double ?? single ?? unquoted;
+      const href = decodeEntities(double ?? single ?? unquoted ?? "");
       if (!href || href.startsWith("#")) return label;
       try {
         const resolved = new URL(href, baseUrl);
@@ -34,12 +39,7 @@ export function htmlToText(html: string, baseUrl?: string): string {
       }
     })
     .replace(/<\/?(?:title|p|div|main|article|section|nav|header|footer|aside|h[1-6]|li|ul|ol|br|hr|table|tr|td|th|dl|dt|dd|pre|blockquote)\b[^>]*>/gi, "\n")
-    .replace(/<[^>]*>/g, "")
-    .replace(/&(#x[0-9a-f]+|#\d+|amp|lt|gt|quot|apos|nbsp);/gi, (entity, name: string) => {
-      if (!name.startsWith("#")) return entities[name.toLowerCase()];
-      const code = name[1].toLowerCase() === "x" ? parseInt(name.slice(2), 16) : Number(name.slice(1));
-      return code > 0 && code <= 0x10ffff && !(code >= 0xd800 && code <= 0xdfff) ? String.fromCodePoint(code) : entity;
-    })
+    .replace(/<[^>]*>/g, ""))
     .replace(/[^\S\n]+/g, " ")
     .replace(/ *\n */g, "\n")
     .replace(/\n{2,}/g, "\n")
@@ -84,7 +84,7 @@ export async function scrapePage(url: string, options: ScrapeOptions = {}): Prom
         // A real 404/410 is a missing page, not bot protection: stop instead of paying Spider for it.
         if (resp.status === 404 || resp.status === 410) return null;
         if (!resp.ok || resp.headers.get("content-type")?.split(";")[0].trim().toLowerCase() !== "text/html") continue;
-        content = htmlToText(await resp.text(), url);
+        content = htmlToText(await resp.text(), resp.url || url);
       } else {
         const resp = await fetch(provider === "spider-unblocker" ? "https://api.spider.cloud/unblocker" : "https://api.spider.cloud/scrape", {
           method: "POST",

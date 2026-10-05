@@ -39,8 +39,11 @@ function isExtractedDomainSuspect(domain: string, sourceUrl: string): boolean {
   if (SUSPECT_DOMAIN_PATTERNS.some(p => p.test(domain))) return true;
   if (isDomainBlocked(domain)) return true;
   try {
-    const sourceDomain = new URL(sourceUrl).hostname.replace(/^www\./, "");
-    if (domain === sourceDomain) return true;
+    const sourceHost = new URL(sourceUrl).hostname.replace(/\.$/, "");
+    // Common country-code suffixes keep the publisher label (e.g. publisher.co.uk).
+    const suffixLabels = /\.(?:ac|co|com|edu|gov|net|org)\.[a-z]{2}$/.test(sourceHost) ? 3 : 2;
+    const sourceDomain = sourceHost.split(".").slice(-suffixLabels).join(".");
+    if (domain === sourceDomain || domain.endsWith(`.${sourceDomain}`)) return true;
   } catch { /* ignore */ }
   return false;
 }
@@ -62,19 +65,6 @@ function sanitizeDomain(domain: string): string {
 }
 
 export function extractDomainFromArticle(articleText: string, companyName: string, sourceUrl: string): string | null {
-  const domainText = articleText.replace(/https?:\/\/[^\s)]+/gi, (rawUrl) => {
-    try {
-      const parsed = new URL(rawUrl);
-      return `${parsed.protocol}//${parsed.hostname}`;
-    } catch {
-      return rawUrl;
-    }
-  });
-  const sourceDomain = (() => {
-    try { return new URL(sourceUrl).hostname.replace(/^www\./, ""); }
-    catch { return ""; }
-  })();
-
   const companyNames: string[] = [];
   const dbaMatch = companyName.match(/\bdba\s+([^)]+)/i);
   if (dbaMatch) companyNames.push(dbaMatch[1].replace(/[™®©]/g, "").trim().toLowerCase().replace(/[^a-z0-9]/g, ""));
@@ -83,32 +73,47 @@ export function extractDomainFromArticle(articleText: string, companyName: strin
   const uniqueNames = [...new Set(companyNames.filter(n => n.length >= 3))];
 
   const patterns = [
-    /(?:visit|learn more|more (?:info|information|at)|about us|website)\s*(?:at\s*)?[:.]?\s*(?:https?:\/\/)?(?:www\.)?([a-z0-9][-a-z0-9]*\.[a-z]{2,}(?:\.[a-z]{2,})?)/gi,
-    /(?:https?:\/\/)?(?:www\.)?([a-z0-9][-a-z0-9]*\.(?:com|io|ai|co|dev|app|tech|health|bio))\b/gi,
-    /[\w.+-]+@([a-z0-9][-a-z0-9]*\.[a-z]{2,}(?:\.[a-z]{2,})?)/gi,
+    /(?:visit|learn more|more (?:info|information|at)|about us|website)\s*(?:at\s*)?[:.]?\s*((?:[a-z0-9][-a-z0-9]*\.)+[a-z]{2,})\b/gi,
+    /(?<![a-z0-9@./-])((?:[a-z0-9][-a-z0-9]*\.)+(?:com|io|ai|co|dev|app|tech|health|bio)(?:\.[a-z]{2})?)(?![a-z0-9-]|\.[a-z0-9])/gi,
+    /[\w.+-]+@((?:[a-z0-9][-a-z0-9]*\.)+[a-z]{2,})/gi,
   ];
 
   const candidates = new Map<string, number>();
 
+  function addCandidate(rawDomain: string): void {
+    const domain = rawDomain.toLowerCase().replace(/^www\./, "").replace(/\.$/, "");
+    if (isExtractedDomainSuspect(domain, sourceUrl) || domain.length < 4 || !domain.includes(".")) return;
+
+    const normDomain = domain.split(".")[0].replace(/[^a-z0-9]/g, "");
+    let score = candidates.get(domain) ?? 0;
+
+    for (const name of uniqueNames) {
+      if (normDomain.includes(name) || name.includes(normDomain)) {
+        score += 10;
+        break;
+      }
+    }
+    score += 1;
+    candidates.set(domain, score);
+  }
+
+  const domainText = articleText.replace(/\b[a-z][a-z0-9+.-]*:\/\/[^\s<>"')\]]+/gi, (rawUrl: string, offset: number) => {
+    try {
+      const parsed = new URL(rawUrl);
+      if (/^https?:$/.test(parsed.protocol)) {
+        addCandidate(parsed.hostname);
+        if (/(?:visit|learn more|more (?:info|information|at)|about us|website)\s*(?:at\s*)?[:.]?\s*$/i.test(articleText.slice(0, offset))) {
+          addCandidate(parsed.hostname);
+        }
+      }
+    } catch { /* ignore invalid URLs */ }
+    return " ";
+  }).replace(/\S*\/\S*/g, " ");
+
   for (const pattern of patterns) {
     let match;
     while ((match = pattern.exec(domainText)) !== null) {
-      const domain = match[1].toLowerCase().replace(/^www\./, "");
-      if (isExtractedDomainSuspect(domain, sourceUrl)) continue;
-      if (domain === sourceDomain) continue;
-      if (domain.length < 4) continue;
-
-      const normDomain = domain.split(".")[0].replace(/[^a-z0-9]/g, "");
-      let score = candidates.get(domain) ?? 0;
-
-      for (const name of uniqueNames) {
-        if (normDomain.includes(name) || name.includes(normDomain)) {
-          score += 10;
-          break;
-        }
-      }
-      score += 1;
-      candidates.set(domain, score);
+      addCandidate(match[1]);
     }
   }
 

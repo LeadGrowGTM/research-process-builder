@@ -56,6 +56,26 @@ describe("htmlToText", () => {
   it("retains unquoted absolute hrefs", () => {
     expect(htmlToText("<a href=https://acme.com>Website</a>")).toBe("Website (https://acme.com/)");
   });
+
+  it.each(["&#47;company&#47;acme", "&#x2F;company&#x2F;acme"])("decodes encoded href separators before resolving (%s)", (href) => {
+    expect(htmlToText(`<a href="${href}">Profile</a>`, "https://publisher.com/news/story"))
+      .toBe("Profile (https://publisher.com/company/acme)");
+  });
+
+  it("decodes href query entities before URL encoding", () => {
+    expect(htmlToText('<a href="/company/acme?ref=&#47;news&amp;label=&quot;Acme&quot;">Profile</a>', "https://publisher.com/news/story"))
+      .toBe("Profile (https://publisher.com/company/acme?ref=/news&label=%22Acme%22)");
+  });
+
+  it("decodes an absolute href before parsing its hostname", () => {
+    expect(htmlToText('<a href="https:&#47;&#x2F;acme.com/about">Website</a>', "https://publisher.com/news/story"))
+      .toBe("Website (https://acme.com/about)");
+  });
+
+  it("filters encoded non-HTTP schemes and fragments after decoding", () => {
+    expect(htmlToText('<a href="javascript&#58;alert(1)">Menu</a> <a href="&#35;section">Section</a>', "https://publisher.com/story"))
+      .toBe("Menu Section");
+  });
 });
 
 describe("usable content", () => {
@@ -214,6 +234,16 @@ describe("scrapePage waterfall", () => {
     vi.stubEnv("SPIDER_API_KEY", "");
     fetchMock.mockResolvedValueOnce(htmlResponse(`<main>${CONTENT} <a href="/company/acme.com">Profile</a> <a href=https://acme.com>Website</a></main>`));
     expect((await scrapePage(URL))?.content).toContain("Profile (https://company.test/company/acme.com) Website (https://acme.com/)");
+  });
+
+  it("resolves direct page links against the final URL after a redirect", async () => {
+    const response = htmlResponse(`<main>${CONTENT} <a href="../company/acme">Profile</a></main>`);
+    Object.defineProperty(response, "url", { value: "https://publisher.com/news/2026/story" });
+    fetchMock.mockResolvedValueOnce(response);
+    expect(await scrapePage(URL)).toEqual({
+      content: `${CONTENT} Profile (https://publisher.com/news/company/acme)`, provider: "direct", costUsd: 0,
+    });
+    expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
   it("escalates a thrown direct request", async () => {
