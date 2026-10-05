@@ -32,12 +32,12 @@ async function blitzPost(path: string, body: unknown, retried = false): Promise<
     signal: AbortSignal.timeout(30_000),
   });
   if (res.status === 429 && !retried) {
-    logger.warn("Blitz 429 — waiting 60s once");
+    logger.warn("Blitz 429 - waiting 60s once");
     await sleep(60_000);
     return blitzPost(path, body, true);
   }
   if (!res.ok) {
-    logger.warn(`Blitz ${path} → HTTP ${res.status}`, { body: (await res.text()).slice(0, 200) });
+    logger.warn(`Blitz ${path} -> HTTP ${res.status}`);
     return null;
   }
   return res.json();

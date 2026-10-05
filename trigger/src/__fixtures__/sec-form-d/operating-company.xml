@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edgarSubmission>
+  <submissionType>D</submissionType>
+  <primaryIssuer>
+    <cik>0000000001</cik>
+    <entityName>Acme Labs</entityName>
+    <issuerAddress><city>Toronto</city><stateOrCountry>ON</stateOrCountry></issuerAddress>
+    <entityType>Corporation</entityType>
+    <yearOfInc><value>2024</value></yearOfInc>
+  </primaryIssuer>
+  <relatedPersonsList>
+    <relatedPersonInfo>
+      <relatedPersonName><firstName>Fixture</firstName><lastName>Person</lastName></relatedPersonName>
+      <relatedPersonAddress><city>Different City</city></relatedPersonAddress>
+    </relatedPersonInfo>
+  </relatedPersonsList>
+  <offeringData>
+    <industryGroup><industryGroupType>Other Technology</industryGroupType></industryGroup>
+    <issuerSize><revenueRange>Decline to Disclose</revenueRange></issuerSize>
+    <typeOfFiling><newOrAmendment><isAmendment>false</isAmendment></newOrAmendment><dateOfFirstSale><value>2026-09-28</value></dateOfFirstSale></typeOfFiling>
+    <typesOfSecuritiesOffered><isEquityType>true</isEquityType></typesOfSecuritiesOffered>
+    <offeringSalesAmounts><totalOfferingAmount>2000000</totalOfferingAmount><totalAmountSold>1500000</totalAmountSold></offeringSalesAmounts>
+  </offeringData>
+</edgarSubmission>

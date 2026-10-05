@@ -117,14 +117,27 @@ describe("workflowGate", () => {
   });
 
   it("should fail-open when Supabase is not configured", async () => {
-    delete process.env.SUPABASE_PROJECT_URL;
-    delete process.env.SUPABASE_KEY;
-
-    const result = await workflowGate(clientSlug, workflow);
-
-    expect(result.active).toBe(true);
-    expect(result.reason).toContain("fail-open");
-    expect(result.reason).toContain("not configured");
+    const names = ["SUPABASE_PROJECT_URL", "SUPABASE_URL", "SUPABASE_KEY", "SUPABASE_SERVICE_ROLE_KEY", "SUPABASE_ANON_KEY"] as const;
+    const saved = new Map<string, string | undefined>();
+    for (const name of names) {
+      saved.set(name, process.env[name]);
+      delete process.env[name];
+    }
+    const previousFetch = global.fetch;
+    global.fetch = vi.fn(() => Promise.reject(new Error("should not fetch"))) as typeof fetch;
+    try {
+      const result = await workflowGate(clientSlug, workflow);
+      expect(result.active).toBe(true);
+      expect(result.reason).toContain("fail-open");
+      expect(result.reason).toContain("not configured");
+    } finally {
+      for (const name of names) {
+        const value = saved.get(name);
+        if (value === undefined) delete process.env[name];
+        else process.env[name] = value;
+      }
+      global.fetch = previousFetch;
+    }
   });
 
   it("should log info when paused with reason", async () => {

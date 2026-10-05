@@ -1,6 +1,6 @@
 import { logger } from "@trigger.dev/sdk";
 
-// lg-free-enrichments — internal Cloud Run service (free). Live homepage-scrape
+// lg-free-enrichments - internal Cloud Run service (free). Live homepage-scrape
 // → LinkedIn extract, so no index lag on brand-new companies.
 // Spec: https://gist.github.com/charlesdr13/1f5f7c70c9d757685957a880941e77a2
 const LGENRICH_BASE = "https://lg-linkedin-enrich-l6qeugwwca-uc.a.run.app";
@@ -39,7 +39,7 @@ export function lgHqString(f: LgFirmographics): string | null {
 /**
  * domain → LinkedIn URL + firmographics. `trusted` is the service's own
  * verification (LinkedIn link found on the company's homepage, or the
- * LinkedIn page links back to the domain) — only trust data when true.
+ * LinkedIn page links back to the domain) - only trust data when true.
  * Returns null on miss, untrusted resolution, or API failure.
  */
 export async function lgenrichDomain(domain: string): Promise<LgEnrichResult | null> {
@@ -49,7 +49,7 @@ export async function lgenrichDomain(domain: string): Promise<LgEnrichResult | n
       method: "POST",
       headers: { "x-api-key": LGENRICH_KEY, "content-type": "application/json" },
       body: JSON.stringify({ domain }),
-      signal: AbortSignal.timeout(90_000), // live scrape — can be slow
+      signal: AbortSignal.timeout(90_000), // live scrape - can be slow
     });
     if (!res.ok) {
       logger.warn(`lgenrich → HTTP ${res.status}`, { domain });
@@ -65,7 +65,7 @@ export async function lgenrichDomain(domain: string): Promise<LgEnrichResult | n
     if (d.error || !d.linkedin_url) return null;
     const trusted = d.domain_verified === true || d.resolution_method === "homepage_link";
     if (!trusted) {
-      logger.warn("lgenrich resolution untrusted — skipping", {
+      logger.warn("lgenrich resolution untrusted - skipping", {
         domain,
         resolution_method: d.resolution_method,
       });
@@ -76,8 +76,8 @@ export async function lgenrichDomain(domain: string): Promise<LgEnrichResult | n
       trusted,
       firmographics: d.firmographics ?? null,
     };
-  } catch (e) {
-    logger.warn(`lgenrich error: ${e instanceof Error ? e.message : String(e)}`, { domain });
+  } catch {
+    logger.warn("lgenrich transport or response failure", { domain });
     return null;
   }
 }

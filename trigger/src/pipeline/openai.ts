@@ -1,4 +1,6 @@
 import type { ExtractedData, RoundConfig } from "./types.js";
+import { lunaJson } from "./luna.js";
+import { INDUSTRIES, ROUND_TYPES } from "./taxonomy.js";
 
 export interface SemanticValidationResult {
   correctCompanyName: string;
@@ -7,7 +9,32 @@ export interface SemanticValidationResult {
   reason: string;
 }
 
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY ?? "";
+const EXTRACTION_SCHEMA = {
+  type: "object",
+  properties: {
+    company_name: { type: "string" },
+    company_domain: { type: ["string", "null"] },
+    amount_raised: { type: ["string", "null"] },
+    round_type: { anyOf: [{ type: "string", enum: [...ROUND_TYPES] }, { type: "null" }] },
+    lead_investors: { type: ["string", "null"] },
+    round_reasoning: { type: ["string", "null"] },
+    industry: { anyOf: [{ type: "string", enum: [...INDUSTRIES] }, { type: "null" }] },
+    location: { type: ["string", "null"] },
+    funding_date: { type: ["string", "null"] },
+  },
+  required: [
+    "company_name",
+    "company_domain",
+    "amount_raised",
+    "round_type",
+    "lead_investors",
+    "round_reasoning",
+    "industry",
+    "location",
+    "funding_date",
+  ],
+  additionalProperties: false,
+};
 
 export async function extractWithOpenAI(
   articleText: string,
@@ -15,68 +42,34 @@ export async function extractWithOpenAI(
   amountHint: string,
   config: RoundConfig
 ): Promise<ExtractedData | null> {
-  if (!OPENAI_API_KEY) return null;
-
   const prompt = config.extractionPrompt
     .replace("{{companyHint}}", companyHint)
     .replace("{{amountHint}}", amountHint)
     .replace("{{articleText}}", articleText.slice(0, 8000));
 
-  const messages = [
-    {
-      role: "system" as const,
-      content:
-        "You extract structured funding data from articles. Return valid JSON only, no markdown fences, no explanation.",
-    },
-    {
-      role: "user" as const,
-      content: prompt,
-    },
-  ];
+  const result = await lunaJson<ExtractedData>({
+    name: "funding_extraction",
+    schema: EXTRACTION_SCHEMA,
+    systemPrompt:
+      "You extract structured funding data from articles. Return valid JSON only, no markdown fences, no explanation.",
+    userPrompt: prompt,
+    maxTokens: 500,
+    timeoutMs: 30_000,
+  });
 
-  try {
-    const resp = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${OPENAI_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "gpt-4.1-mini",
-        temperature: 0,
-        max_tokens: 500,
-        messages,
-      }),
-      signal: AbortSignal.timeout(30_000),
-    });
-
-    if (!resp.ok) return null;
-
-    const data = (await resp.json()) as {
-      choices: { message: { content: string } }[];
-    };
-
-    let content = data.choices[0]?.message?.content?.trim() ?? "";
-    if (content.startsWith("```")) {
-      content = content.replace(/^```(?:json)?\s*/, "").replace(/\s*```$/, "");
-    }
-
-    return JSON.parse(content) as ExtractedData;
-  } catch {
-    return null;
-  }
+  return result?.data ?? null;
 }
 
-const SEMANTIC_VALIDATION_SYSTEM = `You are a company domain verification agent. You are given a CANDIDATE domain to verify — it may be correct or wrong. Your job: find the TRUE domain, then compare.
+const SEMANTIC_VALIDATION_SYSTEM = `You are a company domain verification agent. You are given a CANDIDATE domain to verify - it may be correct or wrong. Your job: find the TRUE domain, then compare.
 
-Step 1 — Find the true domain from the article:
+Step 1 - Find the true domain from the article:
   a) Is the company name a markdown hyperlink like [Company](https://example.com)?
      YES → that hyperlinked URL is the true domain. Stop here.
   b) Is there a URL in the article that belongs to the company itself (not a news site, not social media)?
      YES → that is the true domain.
   c) Neither → the article does not contain a verifiable domain.
 
-Step 2 — Validate the CANDIDATE domain from the article context:
+Step 2 - Validate the CANDIDATE domain from the article context:
   A candidate is VALID only if ALL of these hold:
   - Belongs to the company that raised funding (not a news site, CDN, investor, or social platform)
   - Product/service described on that site matches the article
@@ -84,7 +77,7 @@ Step 2 — Validate the CANDIDATE domain from the article context:
   - Geography matches (if stated)
   NEVER accept a news/media domain as the company's domain.
 
-Step 3 — Set status:
+Step 3 - Set status:
   - If true domain found AND it EXACTLY matches the candidate → status = "Correct"
   - If true domain found AND it DIFFERS from the candidate → status = "Wrong", set correctDomain
   - If no true domain found in article AND candidate passes Step 2 validation → status = "Correct"
@@ -96,10 +89,19 @@ Rules:
   - NEVER default to company-name.com as a guess
   - News/media sites (techcrunch.com, finsmes.com, etc.) are NEVER the company domain
 
-Output ONLY valid JSON:
-{"correctCompanyName": "", "correctDomain": "", "status": "Correct / Wrong / Unclear", "reason": ""}
-
 reason: max 2 short sentences explaining your decision.`;
+
+const SEMANTIC_VALIDATION_SCHEMA = {
+  type: "object",
+  properties: {
+    correctCompanyName: { type: "string" },
+    correctDomain: { type: "string" },
+    status: { type: "string", enum: ["Correct", "Wrong", "Unclear"] },
+    reason: { type: "string" },
+  },
+  required: ["correctCompanyName", "correctDomain", "status", "reason"],
+  additionalProperties: false,
+};
 
 function normalizeDomain(raw: string): string {
   return raw
@@ -123,7 +125,7 @@ export async function validateDomainSemantic(
     reason: "validation skipped",
   };
 
-  if (!OPENAI_API_KEY || !rawArticleText) return fallback;
+  if (!rawArticleText) return fallback;
 
   const userMsg = [
     `source_url: ${sourceUrl}`,
@@ -133,38 +135,20 @@ export async function validateDomainSemantic(
     `Article text:\n${rawArticleText.slice(0, 8000)}`,
   ].join("\n");
 
-  try {
-    const resp = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${OPENAI_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "gpt-4.1-mini",
-        temperature: 0,
-        max_tokens: 200,
-        messages: [
-          { role: "system", content: SEMANTIC_VALIDATION_SYSTEM },
-          { role: "user", content: userMsg },
-        ],
-      }),
-      signal: AbortSignal.timeout(25_000),
-    });
+  const result = await lunaJson<SemanticValidationResult>({
+    name: "domain_validation",
+    schema: SEMANTIC_VALIDATION_SCHEMA,
+    systemPrompt: SEMANTIC_VALIDATION_SYSTEM,
+    userPrompt: userMsg,
+    maxTokens: 200,
+    timeoutMs: 25_000,
+  });
 
-    if (!resp.ok) return fallback;
+  if (!result) return fallback;
 
-    const data = (await resp.json()) as { choices: { message: { content: string } }[] };
-    const content = data.choices[0]?.message?.content?.trim() ?? "";
-    const jsonMatch = content.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) return fallback;
-
-    const parsed = JSON.parse(jsonMatch[0]) as SemanticValidationResult;
-    if (parsed.correctDomain) {
-      parsed.correctDomain = normalizeDomain(parsed.correctDomain);
-    }
-    return parsed;
-  } catch {
-    return fallback;
+  const parsed = result.data;
+  if (parsed.correctDomain) {
+    parsed.correctDomain = normalizeDomain(parsed.correctDomain);
   }
+  return parsed;
 }

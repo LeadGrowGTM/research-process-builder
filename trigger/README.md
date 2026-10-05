@@ -522,3 +522,48 @@ Every file in this repo was written by Claude Code. The SQL, the TypeScript, the
 - **Spider rate limits** — heavy days (30+ products) may hit limits. Pipeline uses 500ms delays between fetches.
 - **News dedup** — same launch covered by TC + VB + HN creates 3 raw items. The dedup picks the best source, but if company/product names differ across articles, duplicates can slip through.
 - **HN front page** — requires login for `/front?day=` historical access. Current-day `/show` works without auth.
+
+---
+
+## Legion funding feed
+
+`legion-funding-feed` publishes one snapshot on the shared Signal shape. Release 1 is funding: one signal per company, type `funding`. Release 2 adds the families already stored by the product, game, and game-job writers: `product-launch`, `gaming`, and `hiring`. Hiring is the gaming and animation jobs in `game_job_signals`. This task connects both releases in one publisher. That connection is not a production cutover, and it does not switch the live Mercury page onto these keys.
+
+### Funding read
+
+Each `funding_discoveries` request asks for 1000 rows with `Prefer: count=exact`, ordered by `discovered_date` then `id`. The next offset is the Content-Range end plus one, or the number of rows actually returned. It does not jump forward by the requested page size, so a smaller server page is not the end of the table and does not skip rows. A short page ends the read only when Content-Range names a total and the cursor has reached it. A missing Content-Range on a short non-empty page is not that proof: the read continues until an empty page. An empty body that is not Content-Range `*/0` throws before any upsert, KV write, or round delete.
+
+These funding reads throw before any upsert, KV write, or round delete:
+
+- An empty body whose Content-Range is not `*/0`. A broken or unproven empty read stays unavailable. It is not published as a live feed with count 0.
+- A later page that ends before the announced total.
+- A later page whose range start is not the requested offset.
+- A later page that adds no new source identity.
+
+### Funding identity, exclusions, rounds
+
+A source identity is the discovery `id` when present. Otherwise it is a fingerprint of company, domain, round, date, source URL, and amounts. The public signal does not include that id. The funding read keeps the first row for an identity. Extra copies are `duplicateRows` and are not merged again.
+
+Blank company names are excluded. Dates that are not `YYYY-MM-DD` are excluded and are not turned into rounds. Dated reports then merge through `funding-rounds.ts`: same company, within 60 days, and the same round, an unknown round, or the same amount. The company signal shows the latest round. Earlier rounds stay on `earlier`. SEC Form D remains the source label of an offering filing. It is not a separate signal type and it is not treated as proof that a round closed.
+
+`coverage` keeps source rows, duplicate rows, excluded blank companies, excluded undated rows, merged reports, distinct rounds, company signals, and published signals separate. `coverage.companySignals` is the funding company count. `coverage.publishedSignals` and page 1 `count` are every signal in the snapshot.
+
+### Additional families
+
+`product_launches`, `game_signals`, and `game_job_signals` are required reads. A failed read does not upsert rounds, write the manifest, or prune. A missing writer client throws before any read. Proven Content-Range `*/0` is a real zero. There is no empty substitute and no column fallback. The select lists writer columns only. `classification_reasoning` and `query_source` are not selected. Order is the writer conflict key: `source_url` for products and games, `job_id` for jobs. Paging follows the rows actually returned, the same rule as funding. Additional reads keep later copies of an identity because that order is the unique key, not the source date. The mapper then keeps the later known source date.
+
+Each family uses its own client, resolved the way that family's writer authenticates. `product-launches-news.ts`, `product-launches-ph.ts`, `game-signals-pipeline.ts`, and `jobs-pipeline.ts` use the same names: URL is `SUPABASE_PROJECT_URL`, else `SUPABASE_URL`, and only when the value starts with `http`. The key is `SUPABASE_KEY`, else `SUPABASE_SERVICE_ROLE_KEY`, else `SUPABASE_ANON_KEY`. Funding discoveries, rounds, and profiles stay on a separate client: `SUPABASE_PROJECT_URL` else `SUPABASE_URL`, and `SUPABASE_SERVICE_ROLE_KEY` else `SUPABASE_KEY`. That funding client does not use `SUPABASE_ANON_KEY` and does not apply the http gate. The four writers share those names today. The feed still keeps three clients so a later split is not given the funding service role.
+
+`game_signals` and `game_job_signals` have no CREATE TABLE in migrations 001 through 007. `product_launches` is unique on `source_url` in migration 003. The game writers conflict on `source_url` and `job_id`. If a live column or key differs, PostgREST fails the read and the run does not publish.
+
+Each family on the task result counts `sourceRows`, `duplicateRows`, `excluded`, `merged`, and `published`. `sourceRows` equals excluded plus merged plus published. `duplicateRows` is an annotation. A repeated identity that cannot be mapped is excluded. On the funding family, `merged` is the extra dated reports beyond one signal per company. That number is separate from `coverage.mergedReports`.
+
+### KV publication
+
+The public preview at `https://mercury.legion-cofounder.pages.dev/signals` still fetches `GET /data/signals.json` once. The observed body is a flat `{updatedAt, count, signals}` list. It does not read versioned page keys or `signals/current.json`. This task does not claim that page has moved.
+
+Pages are immutable keys `signals/<version>/pN.json`, 500 signals per page. `version` is the lowercase SHA-256 of the canonical public content and schema. The scan timestamp is not part of the hash. Page 1 stores the snapshot header, including its creation `updatedAt`, plus `page` and `signals`. Later pages are `{version, page, pages, signals}`. The active manifest `signals/current.json` is `{version, updatedAt, count, pageSize, pages, types}` and is written only after every page of that version is present. `signals/meta.json` is the legacy head. This publisher does not read it, write it, or delete it, and it does not copy the new manifest onto that key.
+
+An unchanged current version does not rewrite pages. A newer scan updates `updatedAt` on `signals/current.json` only, so the page 1 creation header stays. When a version is not the current manifest, each of its pages is read first. Matching pages stay as stored, including that creation header. A malformed page, a content mismatch, or a KV read that is not 404 throws before any write. Missing pages are written from the last page down to page 1, then the current head. Older version keys stay in place. Nothing in KV is deleted. A failed page or current-head write does not prune rounds and leaves the previous `signals/current.json` and its immutable pages in place. Round deletes run only after the current-head write succeeds. Rounds are still upserted before Brave lookups and before the KV writes, because Brave can change the public source URL that enters the version.
+
+Enrichment stays capped at 150 companies per run. Brave stays capped at 60 lookups per run unless `LEGION_BRAVE_PER_RUN` is set.
