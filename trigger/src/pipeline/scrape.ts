@@ -18,14 +18,20 @@ interface ScrapeResult {
   costUsd: number;
 }
 
-export function htmlToText(html: string): string {
+export function htmlToText(html: string, baseUrl?: string): string {
   const entities: Record<string, string> = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " " };
   return html
     .replace(/<!--[\s\S]*?-->/g, "")
     .replace(/<(script|style|noscript|svg|template)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, "\n")
-    .replace(/<a\b[^>]*\shref\s*=\s*(?:"([^"]*)"|'([^']*)')[^>]*>([\s\S]*?)<\/a\s*>/gi, (_tag, double: string | undefined, single: string | undefined, label: string) => {
-      const href = double ?? single;
-      return href && /^(?:https?:\/\/|\/)/i.test(href) ? `${label} (${href})` : label;
+    .replace(/<a\b[^>]*\shref\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))[^>]*>([\s\S]*?)<\/a\s*>/gi, (_tag, double: string | undefined, single: string | undefined, unquoted: string | undefined, label: string) => {
+      const href = double ?? single ?? unquoted;
+      if (!href || href.startsWith("#")) return label;
+      try {
+        const resolved = new URL(href, baseUrl);
+        return /^https?:$/.test(resolved.protocol) ? `${label} (${resolved.href})` : label;
+      } catch {
+        return label;
+      }
     })
     .replace(/<\/?(?:title|p|div|main|article|section|nav|header|footer|aside|h[1-6]|li|ul|ol|br|hr|table|tr|td|th|dl|dt|dd|pre|blockquote)\b[^>]*>/gi, "\n")
     .replace(/<[^>]*>/g, "")
@@ -55,7 +61,7 @@ function pickNumber(value: unknown): number | null {
 
 export async function scrapePage(url: string, options: ScrapeOptions = {}): Promise<ScrapeResult | null> {
   let costUsd = 0;
-  const first = Math.max(0, STEPS.findIndex((s) => s.provider === (options.startAt ?? "direct")));
+  const first = Math.max(0, STEPS.findIndex((s) => s.provider === (process.env.SPIDER_API_KEY ? options.startAt ?? "direct" : "direct")));
   for (const { provider, timeoutMs } of STEPS.slice(first)) {
     const remainingMs = options.deadlineAt === undefined ? timeoutMs : options.deadlineAt - Date.now();
     if (remainingMs <= 0) return null;
@@ -78,7 +84,7 @@ export async function scrapePage(url: string, options: ScrapeOptions = {}): Prom
         // A real 404/410 is a missing page, not bot protection: stop instead of paying Spider for it.
         if (resp.status === 404 || resp.status === 410) return null;
         if (!resp.ok || resp.headers.get("content-type")?.split(";")[0].trim().toLowerCase() !== "text/html") continue;
-        content = htmlToText(await resp.text());
+        content = htmlToText(await resp.text(), url);
       } else {
         const resp = await fetch(provider === "spider-unblocker" ? "https://api.spider.cloud/unblocker" : "https://api.spider.cloud/scrape", {
           method: "POST",

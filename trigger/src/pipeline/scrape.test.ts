@@ -43,8 +43,18 @@ describe("htmlToText", () => {
   });
 
   it("retains link destinations used for Product Hunt and company domain extraction", () => {
-    expect(htmlToText('<p><a href="https://acme.com?ref=producthunt&amp;utm_source=ph"><strong>Website</strong></a> <a href=\'/posts/acme\'>Acme</a> <a href="javascript:void(0)">Menu</a></p>'))
-      .toBe("Website (https://acme.com?ref=producthunt&utm_source=ph) Acme (/posts/acme) Menu");
+    expect(htmlToText('<p><a href="https://acme.com?ref=producthunt&amp;utm_source=ph"><strong>Website</strong></a> <a href=\'/posts/acme\'>Acme</a> <a href="javascript:void(0)">Menu</a></p>', "https://producthunt.com/news"))
+      .toBe("Website (https://acme.com/?ref=producthunt&utm_source=ph) Acme (https://producthunt.com/posts/acme) Menu");
+  });
+
+  it("resolves relative links and drops unsafe or unresolvable destinations", () => {
+    expect(htmlToText('<a href="/company/acme.com">Profile</a> <a href="../about">About</a> <a href="mailto:hi@acme.com">Email</a> <a href="#section">Section</a> <a href="https://[bad">Bad</a>', "https://publisher.com/news/story"))
+      .toBe("Profile (https://publisher.com/company/acme.com) About (https://publisher.com/about) Email Section Bad");
+    expect(htmlToText('<a href="/company/acme.com">Profile</a>')).toBe("Profile");
+  });
+
+  it("retains unquoted absolute hrefs", () => {
+    expect(htmlToText("<a href=https://acme.com>Website</a>")).toBe("Website (https://acme.com/)");
   });
 });
 
@@ -190,6 +200,20 @@ describe("scrapePage waterfall", () => {
     expect(await fetchUrl(URL, { startAt: "spider-chrome" })).toBe(CONTENT);
     expect(fetchMock.mock.calls.map(([url]) => url)).toEqual([SPIDER_URL, SPIDER_URL]);
     expect(JSON.parse(String(fetchMock.mock.calls[0][1]?.body)).request).toBe("chrome");
+  });
+
+  it("falls back to direct for scrapePage and fetchUrl when Spider has no key", async () => {
+    vi.stubEnv("SPIDER_API_KEY", "");
+    fetchMock.mockImplementation(async () => htmlResponse(`<main>${CONTENT}</main>`));
+    expect(await scrapePage(URL, { startAt: "spider-chrome" })).toEqual({ content: CONTENT, provider: "direct", costUsd: 0 });
+    expect(await fetchUrl(URL, { startAt: "spider-chrome" })).toBe(CONTENT);
+    expect(fetchMock.mock.calls.map(([url]) => url)).toEqual([URL, URL]);
+  });
+
+  it("resolves direct page links against the fetched URL", async () => {
+    vi.stubEnv("SPIDER_API_KEY", "");
+    fetchMock.mockResolvedValueOnce(htmlResponse(`<main>${CONTENT} <a href="/company/acme.com">Profile</a> <a href=https://acme.com>Website</a></main>`));
+    expect((await scrapePage(URL))?.content).toContain("Profile (https://company.test/company/acme.com) Website (https://acme.com/)");
   });
 
   it("escalates a thrown direct request", async () => {

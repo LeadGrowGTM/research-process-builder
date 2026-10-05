@@ -61,7 +61,15 @@ function sanitizeDomain(domain: string): string {
     .replace(/\/+$/, "");
 }
 
-function extractDomainFromArticle(articleText: string, companyName: string, sourceUrl: string): string | null {
+export function extractDomainFromArticle(articleText: string, companyName: string, sourceUrl: string): string | null {
+  const domainText = articleText.replace(/https?:\/\/[^\s)]+/gi, (rawUrl) => {
+    try {
+      const parsed = new URL(rawUrl);
+      return `${parsed.protocol}//${parsed.hostname}`;
+    } catch {
+      return rawUrl;
+    }
+  });
   const sourceDomain = (() => {
     try { return new URL(sourceUrl).hostname.replace(/^www\./, ""); }
     catch { return ""; }
@@ -84,7 +92,7 @@ function extractDomainFromArticle(articleText: string, companyName: string, sour
 
   for (const pattern of patterns) {
     let match;
-    while ((match = pattern.exec(articleText)) !== null) {
+    while ((match = pattern.exec(domainText)) !== null) {
       const domain = match[1].toLowerCase().replace(/^www\./, "");
       if (isExtractedDomainSuspect(domain, sourceUrl)) continue;
       if (domain === sourceDomain) continue;
