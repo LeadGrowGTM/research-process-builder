@@ -362,6 +362,11 @@ describe("runNewsLaunchPipeline", () => {
     expect(result.launchCount).toBe(126);
     expect(writes.map((rows) => rows.length)).toEqual([50, 50, 26]);
     expect(writes.flat().every((row) => row.discovered_date === DATE)).toBe(true);
+    // PostgREST rejects the whole batch (PGRST204) for a column product_launches does not have (migration 003).
+    expect(Object.keys(writes.flat()[0]).sort()).toEqual([
+      "company_name", "description", "discovered_date", "is_ai", "launch_type",
+      "pipeline_version", "product_name", "source", "source_url",
+    ]);
     expect(fetchMock.mock.calls.filter(([, init]) => init?.method === "POST").map(([, init]) => init?.headers)).toEqual([
       expect.objectContaining({ Prefer: "resolution=merge-duplicates" }),
       expect.objectContaining({ Prefer: "resolution=merge-duplicates" }),
