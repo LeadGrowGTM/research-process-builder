@@ -2,6 +2,9 @@ import { logger } from "@trigger.dev/sdk";
 import { searchSerper } from "./serper.js";
 import { isLunaConfigured, lunaJson } from "./luna.js";
 import type { ProductLaunchRaw, ProductLaunchPipelineResult } from "./product-launch-types.js";
+import { hasTime, LAUNCH_RUN_BUDGET_MS, LAUNCH_WRITE_BATCH_SIZE, LAUNCH_WRITE_TIMEOUT_MS, persistenceReserveMs } from "./launch-budget.js";
+
+const SEARCH_BUDGET_MS = 31_000;
 
 const SUPABASE_URL = (() => {
   const url = process.env.SUPABASE_PROJECT_URL ?? process.env.SUPABASE_URL ?? "";
@@ -38,7 +41,7 @@ function q(id: string, query: string, desc = id): SerperQuery {
   return { id, desc, query, num: 30 };
 }
 
-// Measured 2026-10-05 with scripts/launches-eval.ts: every query here added launches no other query found.
+// Measured 2026-10-05 with scripts/launches-eval.ts: all 17 shipped queries added launches no other query found.
 // Dropped as noise: generic "launches" queries (social posts, local news), betalist, the VentureBeat and Verge
 // site queries (0-1 results a day), and the TechCrunch site query (the TC date page already covers it).
 export const SERPER_QUERIES: SerperQuery[] = [
@@ -95,7 +98,8 @@ function domainFromUrl(url: string): string {
 // Stage 1A: Direct source fetches
 // ---------------------------------------------------------------------------
 
-async function fetchTCDatePage(dateStr: string): Promise<ProductLaunchRaw[]> {
+async function fetchTCDatePage(dateStr: string, deadlineAt?: number): Promise<ProductLaunchRaw[]> {
+  if (!hasTime(deadlineAt, 20_000)) return [];
   const [year, month, day] = dateStr.split("-");
   const url = `https://techcrunch.com/${year}/${month}/${day}/`;
   try {
@@ -134,7 +138,8 @@ interface AlgoliaHit {
  * HN via the Algolia API. The hn.algolia.com JSON is stable; the news.ycombinator.com HTML answers
  * 419 "Sorry." to cloud IPs, which is why the scraped Show HN and front pages produced nothing.
  */
-export async function fetchHNAlgolia(tag: "show_hn" | "front_page", queryId: string, minPoints: number, windowHours: number): Promise<ProductLaunchRaw[]> {
+export async function fetchHNAlgolia(tag: "show_hn" | "front_page", queryId: string, minPoints: number, windowHours: number, deadlineAt?: number): Promise<ProductLaunchRaw[]> {
+  if (!hasTime(deadlineAt, 20_000)) return [];
   const since = Math.floor(Date.now() / 1000) - windowHours * 3600;
   const url = `https://hn.algolia.com/api/v1/search_by_date?tags=${tag}&numericFilters=${encodeURIComponent(`created_at_i>${since},points>=${minPoints}`)}&hitsPerPage=100`;
   try {
@@ -161,16 +166,16 @@ export async function fetchHNAlgolia(tag: "show_hn" | "front_page", queryId: str
   }
 }
 
-export async function runDirectFetches(dateStr: string): Promise<ProductLaunchRaw[]> {
+export async function runDirectFetches(dateStr: string, deadlineAt?: number): Promise<ProductLaunchRaw[]> {
   const yesterday = new Date(dateStr);
   yesterday.setDate(yesterday.getDate() - 1);
   const yesterdayStr = yesterday.toISOString().split("T")[0];
 
   const [tc1, tc2, hnShow, hnFront] = await Promise.all([
-    fetchTCDatePage(dateStr),
-    fetchTCDatePage(yesterdayStr),
-    fetchHNAlgolia("show_hn", "hn_show", HN_MIN_POINTS, 36),
-    fetchHNAlgolia("front_page", `hn_front_${dateStr}`, 0, 36),
+    fetchTCDatePage(dateStr, deadlineAt),
+    fetchTCDatePage(yesterdayStr, deadlineAt),
+    fetchHNAlgolia("show_hn", "hn_show", HN_MIN_POINTS, 36, deadlineAt),
+    fetchHNAlgolia("front_page", `hn_front_${dateStr}`, 0, 36, deadlineAt),
   ]);
 
   const all = [...tc1, ...tc2, ...hnShow, ...hnFront];
@@ -182,10 +187,17 @@ export async function runDirectFetches(dateStr: string): Promise<ProductLaunchRa
 // Stage 1B: Serper supplement
 // ---------------------------------------------------------------------------
 
-export async function runSerperQueries(tbs: string, queries: SerperQuery[] = SERPER_QUERIES): Promise<ProductLaunchRaw[]> {
+export async function runSerperQueries(tbs: string, queries: SerperQuery[] = SERPER_QUERIES, deadlineAt?: number): Promise<ProductLaunchRaw[]> {
   const all: ProductLaunchRaw[] = [];
   // Sequential: a burst of ~20 parallel calls trips the RapidAPI per-second limit and spills to the paid fallback.
-  for (const query of queries) {
+  for (let index = 0; index < queries.length; index++) {
+    const query = queries[index];
+    const workDeadlineAt = deadlineAt === undefined ? undefined : deadlineAt - persistenceReserveMs(all.length);
+    if (!hasTime(workDeadlineAt, SEARCH_BUDGET_MS + (index > 0 ? 250 : 0))) {
+      logger.warn("News search deadline exhausted", { remaining: queries.length - index });
+      break;
+    }
+    if (index > 0) await new Promise((resolve) => setTimeout(resolve, 250));
     try {
       const items = await searchSerper(query.query, query.num, tbs);
       logger.info(`Search [${query.id}] ${query.desc}: ${items.length} results`);
@@ -202,7 +214,6 @@ export async function runSerperQueries(tbs: string, queries: SerperQuery[] = SER
     } catch (err) {
       logger.warn(`Search [${query.id}] failed: ${err instanceof Error ? err.message : String(err)}`);
     }
-    await new Promise((resolve) => setTimeout(resolve, 250));
   }
   logger.info(`Stage 1B search: ${all.length} raw items`);
   return all;
@@ -348,7 +359,7 @@ const CLASSIFY_SCHEMA = {
 /** Running Luna cost of classification in this process; the eval script reads it. */
 export const classifySpend = { usd: 0 };
 
-async function classifyBatch(items: RawItemWithIdx[]): Promise<ClassifiedLaunch[]> {
+async function classifyBatch(items: RawItemWithIdx[], deadlineAt?: number): Promise<ClassifiedLaunch[]> {
   if (!isLunaConfigured()) {
     logger.warn("OPENAI_API_KEY missing -- classify skipped");
     return [];
@@ -358,6 +369,10 @@ async function classifyBatch(items: RawItemWithIdx[]): Promise<ClassifiedLaunch[
   const resultsMap = new Map<number, ClassifiedLaunch>();
 
   for (let start = 0; start < items.length; start += BATCH_SIZE) {
+    if (!hasTime(deadlineAt, 5_000)) {
+      logger.warn("News classification deadline exhausted", { remaining: items.length - start });
+      break;
+    }
     const batch = items.slice(start, start + BATCH_SIZE);
     const lines = batch.map((it, localI) => {
       const title = (it.title ?? "").replace(/\n/g, " ").trim();
@@ -377,6 +392,7 @@ async function classifyBatch(items: RawItemWithIdx[]): Promise<ClassifiedLaunch[
         userPrompt: userMsg,
         maxTokens: 8000,
         timeoutMs: 90_000,
+        deadlineAt,
       });
       if (!result) {
         logger.warn("Luna classify batch failed");
@@ -389,6 +405,8 @@ async function classifyBatch(items: RawItemWithIdx[]): Promise<ClassifiedLaunch[
         const localIdx = r.idx;
         if (!localIdx || localIdx < 1 || localIdx > batch.length) continue;
         if (!r.is_launch) continue;
+        const companyName = r.company_name?.trim();
+        if (!companyName || PLACEHOLDER_COMPANY_RE.test(companyName)) continue;
         const globalIdx = batch[localIdx - 1].idx;
         const raw = batch[localIdx - 1];
         resultsMap.set(globalIdx, {
@@ -396,8 +414,8 @@ async function classifyBatch(items: RawItemWithIdx[]): Promise<ClassifiedLaunch[
           is_launch: true,
           launch_type: r.launch_type ?? "new_product",
           is_ai: r.is_ai ?? false,
-          company_name: r.company_name || raw.source_domain,
-          product_name: r.product_name || raw.title.slice(0, 60),
+          company_name: companyName,
+          product_name: r.product_name?.trim() || raw.title.slice(0, 60),
           idx: globalIdx,
         });
       }
@@ -446,7 +464,7 @@ function dedupLaunches(launches: ClassifiedLaunch[]): ClassifiedLaunch[] {
   return out;
 }
 
-export async function runClassify(rawResults: ProductLaunchRaw[]): Promise<ClassifiedLaunch[]> {
+export async function runClassify(rawResults: ProductLaunchRaw[], deadlineAt?: number): Promise<ClassifiedLaunch[]> {
   // Dedup by URL and strip pagination/tag pages
   const seenUrls = new Set<string>();
   const filtered: RawItemWithIdx[] = [];
@@ -466,7 +484,8 @@ export async function runClassify(rawResults: ProductLaunchRaw[]): Promise<Class
 
   logger.info(`Stage 2 input: ${rawResults.length} raw -> ${filtered.length} after dedup+filter (${skippedPages} pagination skipped)`);
 
-  const launches = await classifyBatch(filtered);
+  const workDeadlineAt = deadlineAt === undefined ? undefined : deadlineAt - persistenceReserveMs(filtered.length);
+  const launches = await classifyBatch(filtered, workDeadlineAt);
   logger.info(`Luna classified ${launches.length} launches from ${filtered.length} items`);
 
   const named = launches.filter((l) => !PLACEHOLDER_COMPANY_RE.test(l.company_name.trim()));
@@ -512,7 +531,7 @@ function toRow(launch: ClassifiedLaunch, dateStr: string): ProductLaunchRow {
   };
 }
 
-async function pushToSupabase(launches: ClassifiedLaunch[], dateStr: string): Promise<number> {
+async function pushToSupabase(launches: ClassifiedLaunch[], dateStr: string, deadlineAt: number): Promise<number> {
   if (!SUPABASE_URL || !SUPABASE_KEY) {
     logger.warn("Supabase not configured -- skipping push");
     return 0;
@@ -526,17 +545,21 @@ async function pushToSupabase(launches: ClassifiedLaunch[], dateStr: string): Pr
   };
 
   let upserted = 0;
-  for (const launch of launches) {
-    const row = toRow(launch, dateStr);
+  for (let start = 0; start < launches.length; start += LAUNCH_WRITE_BATCH_SIZE) {
+    if (!hasTime(deadlineAt, LAUNCH_WRITE_TIMEOUT_MS)) {
+      logger.warn("News persistence deadline exhausted", { remaining: launches.length - start });
+      break;
+    }
+    const rows = launches.slice(start, start + LAUNCH_WRITE_BATCH_SIZE).map((launch) => toRow(launch, dateStr));
     try {
       const resp = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE}?on_conflict=source_url`, {
         method: "POST",
         headers: h,
-        body: JSON.stringify([row]),
-        signal: AbortSignal.timeout(15_000),
+        body: JSON.stringify(rows),
+        signal: AbortSignal.timeout(LAUNCH_WRITE_TIMEOUT_MS),
       });
       if (resp.ok) {
-        upserted++;
+        upserted += rows.length;
       } else {
         const err = await resp.text().catch(() => "");
         logger.error(`Supabase upsert failed: ${resp.status} ${err.slice(0, 200)}`);
@@ -560,6 +583,7 @@ export async function runNewsLaunchPipeline(options: {
 }): Promise<ProductLaunchPipelineResult> {
   const { date, tbs = "qdr:d", skipSerper = false, dryRun = false } = options;
   const startMs = Date.now();
+  const deadlineAt = startMs + LAUNCH_RUN_BUDGET_MS;
 
   logger.info("News launch pipeline starting", { date, tbs, skipSerper, dryRun });
 
@@ -579,19 +603,19 @@ export async function runNewsLaunchPipeline(options: {
   }
 
   // Stage 1A: Direct fetches
-  const direct = await runDirectFetches(date);
+  const direct = await runDirectFetches(date, deadlineAt - persistenceReserveMs(0) - 30_000);
 
   // Stage 1B: Serper supplement
-  const serper = skipSerper ? [] : await runSerperQueries(tbs);
+  const serper = skipSerper ? [] : await runSerperQueries(tbs, SERPER_QUERIES, deadlineAt - 30_000 - persistenceReserveMs(direct.length));
 
   const rawResults = [...direct, ...serper];
   logger.info(`Stage 1 total: ${rawResults.length} raw items (${direct.length} direct + ${serper.length} Serper)`);
 
   // Stage 2: Classify
-  const launches = await runClassify(rawResults);
+  const launches = await runClassify(rawResults, deadlineAt);
 
   // Stage 3: Push to Supabase
-  const pushed = await pushToSupabase(launches, date);
+  const pushed = await pushToSupabase(launches, date, deadlineAt);
   logger.info(`Stage 3: pushed ${pushed} rows to ${TABLE}`);
 
   const durationMs = Date.now() - startMs;

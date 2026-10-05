@@ -6,6 +6,11 @@ import type { LgFirmographics } from "./lgenrich.js";
 import { isDomainBlocked } from "./domain-lookup.js";
 import { patchRowBySourceUrl } from "./supabase.js";
 import { normalizeIndustry, normalizeOptionalInteger, normalizeOptionalText } from "./taxonomy.js";
+import { hasTime } from "./launch-budget.js";
+
+// Include Blitz's one 60s retry and 250ms spacing in the full call budget.
+const BLITZ_CALL_BUDGET_MS = 120_500;
+const ENRICH_PATCH_BUDGET_MS = 15_000;
 
 export function normalizeDomain(raw: string): string {
   return raw
@@ -218,7 +223,8 @@ export interface WaterfallHit {
 export async function enrichDomainWaterfall(
   table: "funding_discoveries" | "product_launches",
   t: Day0Target,
-  domain: string
+  domain: string,
+  deadlineAt?: number
 ): Promise<WaterfallHit | null> {
   const isFunding = table === "funding_discoveries";
 
@@ -228,7 +234,7 @@ export async function enrichDomainWaterfall(
     return { patch, provider, present: coverage.present, omitted: coverage.omitted };
   };
 
-  if (lgenrichConfigured()) {
+  if (lgenrichConfigured() && hasTime(deadlineAt, 90_000)) {
     const lg = await lgenrichDomain(domain);
     if (lg) {
       const linkedin = canonicalCompanyLinkedin(lg.linkedin_url);
@@ -237,7 +243,7 @@ export async function enrichDomainWaterfall(
         return asHit(isFunding ? fundingPatchFromLg(lg.linkedin_url, f) : phPatchFromLg(lg.linkedin_url, f), "lgenrich");
       }
       // Trusted LinkedIn URL but no usable firmographics. Blitz may fill the profile.
-      const blitz = linkedin ? await blitzEnrichLinkedin(linkedin) : null;
+      const blitz = linkedin && hasTime(deadlineAt, BLITZ_CALL_BUDGET_MS) ? await blitzEnrichLinkedin(linkedin) : null;
       if (blitz && linkedin) {
         const patch = isFunding ? fundingPatchFromBlitz(linkedin, blitz) : phPatchFromBlitz(linkedin, blitz);
         const hit = asHit(patch, "lgenrich+blitz");
@@ -249,7 +255,8 @@ export async function enrichDomainWaterfall(
     }
   }
 
-  if (!blitzConfigured()) return null;
+  const blitzBudgetMs = t.knownLinkedin ? BLITZ_CALL_BUDGET_MS : 2 * BLITZ_CALL_BUDGET_MS;
+  if (!blitzConfigured() || !hasTime(deadlineAt, blitzBudgetMs)) return null;
   const hit = await blitzEnrichDomain(domain, t.knownLinkedin);
   if (!hit) return null;
   if (!nameMatches(t.companyName, hit.company.name)) {
@@ -273,7 +280,8 @@ export async function enrichDomainWaterfall(
  */
 export async function day0BlitzEnrich(
   table: "funding_discoveries" | "product_launches",
-  targets: Day0Target[]
+  targets: Day0Target[],
+  deadlineAt?: number
 ): Promise<{ attempted: number; enriched: number; providers: "available" | "unavailable"; coverage: FieldCoverage }> {
   const coverage = emptyFieldCoverage();
   if (!lgenrichConfigured() && !blitzConfigured()) {
@@ -285,19 +293,22 @@ export async function day0BlitzEnrich(
   let enriched = 0;
 
   for (const t of targets) {
+    if (!hasTime(deadlineAt, ENRICH_PATCH_BUDGET_MS)) break;
     const domain = normalizeDomain(t.domain);
     // "not_enriched" placeholder and other non-domains have no dot
     if (!domain || !domain.includes(".") || isDomainBlocked(domain)) continue;
     attempted++;
     coverage.recordsAttempted++;
 
-    const hit = await enrichDomainWaterfall(table, t, domain);
+    const providerDeadlineAt = deadlineAt === undefined ? undefined : deadlineAt - ENRICH_PATCH_BUDGET_MS;
+    const hit = await enrichDomainWaterfall(table, t, domain, providerDeadlineAt);
     const present = new Set(hit?.present ?? []);
     for (const field of PROFILE_FIELDS) {
       if (present.has(field)) coverage.present[field]++;
       else coverage.omitted[field]++;
     }
     if (!hit) continue;
+    if (!hasTime(deadlineAt, ENRICH_PATCH_BUDGET_MS)) break;
 
     const ok = await patchRowBySourceUrl(table, t.sourceUrl, {
       ...hit.patch,

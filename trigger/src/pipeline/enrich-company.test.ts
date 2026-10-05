@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("@trigger.dev/sdk", () => ({
   logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn() },
@@ -74,6 +74,8 @@ beforeEach(() => {
   vi.mocked(blitzEnrichLinkedin).mockResolvedValue(null);
   vi.mocked(patchRowBySourceUrl).mockResolvedValue(true);
 });
+
+afterEach(() => { vi.useRealTimers(); });
 
 describe("funding firmographic patches", () => {
   it("maps every available Blitz firmographic without another provider call", () => {
@@ -222,6 +224,55 @@ describe("firmographic waterfall", () => {
 });
 
 describe("day0 coverage", () => {
+  it("does not start enrichment when the deadline cannot fit a provider and its patch", async () => {
+    vi.useFakeTimers();
+    vi.mocked(lgenrichConfigured).mockReturnValue(true);
+    vi.mocked(blitzConfigured).mockReturnValue(true);
+    const out = await day0BlitzEnrich("product_launches", [target], Date.now() + 104_999);
+    expect(out.enriched).toBe(0);
+    expect(lgenrichDomain).not.toHaveBeenCalled();
+    expect(blitzEnrichDomain).not.toHaveBeenCalled();
+    expect(patchRowBySourceUrl).not.toHaveBeenCalled();
+  });
+
+  it("reserves the patch after a slow enrichment and skips the next target", async () => {
+    vi.useFakeTimers();
+    vi.mocked(lgenrichConfigured).mockReturnValue(true);
+    vi.mocked(lgenrichDomain).mockImplementation(async () => {
+      await new Promise((resolve) => setTimeout(resolve, 90_000));
+      return {
+        linkedin_url: "https://linkedin.com/company/acme", trusted: true,
+        firmographics: emptyFirm({ employee_count: 12 }),
+      };
+    });
+    vi.mocked(patchRowBySourceUrl).mockImplementation(async () => {
+      await new Promise((resolve) => setTimeout(resolve, 14_000));
+      return true;
+    });
+    const start = Date.now();
+    const pending = day0BlitzEnrich("product_launches", [target, { ...target, domain: "second.com" }], start + 105_000);
+    await vi.runAllTimersAsync();
+    expect(await pending).toMatchObject({ attempted: 1, enriched: 1 });
+    expect(Date.now() - start).toBe(104_000);
+    expect(lgenrichDomain).toHaveBeenCalledTimes(1);
+    expect(patchRowBySourceUrl).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not start Blitz's fallback when the same enrichment deadline has too little time", async () => {
+    vi.useFakeTimers();
+    vi.mocked(lgenrichConfigured).mockReturnValue(true);
+    vi.mocked(blitzConfigured).mockReturnValue(true);
+    vi.mocked(lgenrichDomain).mockImplementation(async () => {
+      await new Promise((resolve) => setTimeout(resolve, 90_000));
+      return null;
+    });
+    const pending = day0BlitzEnrich("product_launches", [target], Date.now() + 200_000);
+    await vi.runAllTimersAsync();
+    expect((await pending).enriched).toBe(0);
+    expect(blitzEnrichDomain).not.toHaveBeenCalled();
+    expect(patchRowBySourceUrl).not.toHaveBeenCalled();
+  });
+
   it("reports providers unavailable and does not mark fields omitted when nothing was attempted", async () => {
     const out = await day0BlitzEnrich("funding_discoveries", [target]);
     expect(out).toMatchObject({ attempted: 0, enriched: 0, providers: "unavailable" });

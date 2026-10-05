@@ -1,9 +1,18 @@
 import { logger } from "@trigger.dev/sdk";
-import type { ProductLaunch, ProductLaunchPipelineResult } from "./product-launch-types.js";
+import type { ProductLaunchPipelineResult } from "./product-launch-types.js";
 import { fetchUrl } from "./firecrawl.js";
 import { day0BlitzEnrich } from "./enrich-company.js";
 import { webSearch } from "./rapid-search.js";
 import { lunaJson } from "./luna.js";
+import { hasTime, LAUNCH_RUN_BUDGET_MS, LAUNCH_WRITE_BATCH_SIZE, LAUNCH_WRITE_TIMEOUT_MS, persistenceReserveMs } from "./launch-budget.js";
+
+// fetchUrl has no deadline option: allow all three bounded provider attempts (30s + 60s + 15s).
+const PAGE_FETCH_BUDGET_MS = 105_000;
+const CLASSIFY_RESERVE_MS = 30_000;
+const SEARCH_BUDGET_MS = 31_000;
+
+/** Running Luna usage and cost, including leaderboard extraction. */
+export const phSpend = { usd: 0, inputTokens: 0, cachedInputTokens: 0, outputTokens: 0 };
 
 // ---------------------------------------------------------------------------
 // Env
@@ -95,10 +104,16 @@ async function lunaObject<T>(
   system: string,
   user: string,
   maxTokens: number,
-  timeoutMs: number
+  timeoutMs: number,
+  deadlineAt?: number
 ): Promise<T> {
-  const result = await lunaJson<T>({ name, schema, systemPrompt: system, userPrompt: user, maxTokens, timeoutMs });
+  if (!hasTime(deadlineAt, 5_000)) throw new Error(`Luna ${name} deadline exhausted`);
+  const result = await lunaJson<T>({ name, schema, systemPrompt: system, userPrompt: user, maxTokens, timeoutMs, deadlineAt });
   if (!result) throw new Error(`Luna ${name} call failed`);
+  phSpend.usd += result.costUsd;
+  phSpend.inputTokens += result.usage.inputTokens;
+  phSpend.cachedInputTokens += result.usage.cachedInputTokens;
+  phSpend.outputTokens += result.usage.outputTokens;
   return result.data;
 }
 
@@ -170,7 +185,7 @@ export function cleanLeaderboard(markdown: string): string {
 // Stage 1: Fetch PH leaderboard
 // ---------------------------------------------------------------------------
 
-export async function extractProductsFromContent(pageContent: string): Promise<{ products: PhProduct[]; error?: string }> {
+export async function extractProductsFromContent(pageContent: string, deadlineAt?: number): Promise<{ products: PhProduct[]; error?: string }> {
   const parsed = await lunaObject<{ products: (PhProduct & { company_name: string | null })[]; error: string | null }>("ph_leaderboard", EXTRACT_SCHEMA,
         "You are extracting structured product data from a Product Hunt leaderboard page. " +
         "Extract every ranked product. Return JSON only -- no commentary.",
@@ -183,7 +198,8 @@ ${pageContent}
         "ph_url (the full PH URL), categories, and maker_website (URL or null). " +
         'If the leaderboard has not posted yet, return no products and error "leaderboard_not_posted".',
     16_000,
-    120_000
+    120_000,
+    deadlineAt
   );
 
   const products = (parsed.products ?? []).map((p) => ({
@@ -200,13 +216,14 @@ const LEADERBOARD_ATTEMPTS = 3;
  * Fetch and extract one day's leaderboard. A single transient fetch or extraction failure used to end the
  * run with zero launches (~2s runtime), so retry with backoff before giving up.
  */
-export async function fetchLeaderboard(dateStr: string): Promise<PhProduct[]> {
+export async function fetchLeaderboard(dateStr: string, deadlineAt?: number): Promise<PhProduct[]> {
   const url = buildPhUrl(dateStr);
   for (let attempt = 1; attempt <= LEADERBOARD_ATTEMPTS; attempt++) {
+    if (!hasTime(deadlineAt, PAGE_FETCH_BUDGET_MS + 5_000)) break;
     try {
-      const pageContent = await fetchUrl(url, { renderJs: true, waitForSecs: 3, maxChars: 200_000 });
+      const pageContent = await fetchUrl(url, { maxChars: 200_000 });
       if (pageContent) {
-        const extracted = await extractProductsFromContent(cleanLeaderboard(pageContent).slice(0, 60_000));
+        const extracted = await extractProductsFromContent(cleanLeaderboard(pageContent).slice(0, 60_000), deadlineAt);
         logger.info("Leaderboard extraction", { dateStr, attempt, count: extracted.products.length, error: extracted.error });
         if (extracted.products.length > 0) return extracted.products;
       } else {
@@ -215,31 +232,37 @@ export async function fetchLeaderboard(dateStr: string): Promise<PhProduct[]> {
     } catch (e) {
       logger.warn("Leaderboard attempt error", { dateStr, attempt, error: e instanceof Error ? e.message : String(e) });
     }
-    if (attempt < LEADERBOARD_ATTEMPTS) await new Promise((resolve) => setTimeout(resolve, 5_000 * attempt));
+    if (attempt < LEADERBOARD_ATTEMPTS) {
+      const delayMs = 5_000 * attempt;
+      if (!hasTime(deadlineAt, delayMs + PAGE_FETCH_BUDGET_MS + 5_000)) break;
+      await new Promise((resolve) => setTimeout(resolve, delayMs));
+    }
   }
   return [];
 }
 
 /** Products whose ph_url is already in product_launches; the previous-day pass only needs the rest. */
-async function knownPhUrls(urls: string[]): Promise<Set<string>> {
-  if (!SUPABASE_URL || !SUPABASE_KEY || urls.length === 0) return new Set();
+async function knownPhUrls(urls: string[], deadlineAt: number): Promise<Set<string> | null> {
+  if (urls.length === 0) return new Set();
+  if (!SUPABASE_URL || !SUPABASE_KEY || !hasTime(deadlineAt, 15_000)) return null;
   try {
     const list = urls.map((u) => `"${u}"`).join(",");
     const resp = await fetch(
       `${SUPABASE_URL}/rest/v1/product_launches?select=source_url&source_url=in.(${encodeURIComponent(list)})`,
       { headers: supabaseHeaders(), signal: AbortSignal.timeout(15_000) }
     );
-    if (!resp.ok) return new Set();
+    if (!resp.ok) return null;
     return new Set(((await resp.json()) as { source_url: string }[]).map((r) => r.source_url));
   } catch {
-    return new Set();
+    return null;
   }
 }
 
-async function stage1Fetch(dateStr: string, onlyNew: boolean): Promise<PhProduct[]> {
+async function stage1Fetch(dateStr: string, onlyNew: boolean, deadlineAt: number, todayUrls: Set<string>): Promise<PhProduct[]> {
   logger.info("Stage 1: fetching PH leaderboard", { url: buildPhUrl(dateStr), onlyNew });
 
-  const products = await fetchLeaderboard(dateStr);
+  const products = await fetchLeaderboard(dateStr, deadlineAt - persistenceReserveMs(0) - CLASSIFY_RESERVE_MS);
+  if (!onlyNew) for (const product of products) todayUrls.add(product.ph_url);
   if (products.length === 0) {
     logger.warn("No products from leaderboard", { dateStr });
     return [];
@@ -253,7 +276,9 @@ async function stage1Fetch(dateStr: string, onlyNew: boolean): Promise<PhProduct
   }
 
   if (onlyNew) {
-    const known = await knownPhUrls(filtered.map((p) => p.ph_url));
+    filtered = filtered.filter((p) => !todayUrls.has(p.ph_url));
+    const known = await knownPhUrls(filtered.map((p) => p.ph_url), deadlineAt - persistenceReserveMs(filtered.length) - CLASSIFY_RESERVE_MS);
+    if (known === null) throw new Error("Stored PH URL lookup failed; previous-day pass skipped");
     filtered = filtered.filter((p) => !known.has(p.ph_url));
     logger.info("Previous-day leaderboard: products not captured yesterday", { dateStr, new: filtered.length, known: known.size });
   }
@@ -261,16 +286,18 @@ async function stage1Fetch(dateStr: string, onlyNew: boolean): Promise<PhProduct
   // Stage 1b: fetch individual product pages to extract maker_website
   // Leaderboard page doesn't include external links — only product pages have them
   const needsWebsite = filtered.filter((p) => !p.maker_website);
+  const pageDeadlineAt = deadlineAt - persistenceReserveMs(filtered.length) - CLASSIFY_RESERVE_MS;
   if (needsWebsite.length > 0) {
     logger.info("Stage 1b: fetching product pages for maker_website", { count: needsWebsite.length });
 
     for (let i = 0; i < needsWebsite.length; i++) {
+      if (!hasTime(pageDeadlineAt, PAGE_FETCH_BUDGET_MS)) break;
       const product = needsWebsite[i];
       const postUrl = product.ph_url;
       if (!postUrl) continue;
 
       try {
-        const pageContent = await fetchUrl(postUrl, { renderJs: true, waitForSecs: 2 });
+        const pageContent = await fetchUrl(postUrl, { maxChars: 15_000 });
         if (pageContent) {
           // Extract maker_website from ?ref=producthunt link
           const urlMatch = pageContent.match(/https?:\/\/[^\s\)\]"']+\?ref=producthunt/);
@@ -293,7 +320,7 @@ async function stage1Fetch(dateStr: string, onlyNew: boolean): Promise<PhProduct
         logger.warn("Failed to fetch product page", { product: product.product_name });
       }
 
-      if (i < needsWebsite.length - 1) {
+      if (i < needsWebsite.length - 1 && hasTime(pageDeadlineAt, 500 + PAGE_FETCH_BUDGET_MS)) {
         await new Promise((resolve) => setTimeout(resolve, 500));
       }
     }
@@ -307,9 +334,10 @@ async function stage1Fetch(dateStr: string, onlyNew: boolean): Promise<PhProduct
   if (needsLinkedin.length > 0) {
     logger.info("Stage 1c: fetching maker homepages for LinkedIn URLs", { count: needsLinkedin.length });
     for (let i = 0; i < needsLinkedin.length; i++) {
+      if (!hasTime(pageDeadlineAt, PAGE_FETCH_BUDGET_MS)) break;
       const product = needsLinkedin[i];
       try {
-        const homepageContent = await fetchUrl(product.maker_website!, { renderJs: false, waitForSecs: 1 });
+        const homepageContent = await fetchUrl(product.maker_website!, { maxChars: 15_000 });
         if (homepageContent) {
           const linkedinMatch = homepageContent.match(/https?:\/\/(?:www\.)?linkedin\.com\/company\/([a-zA-Z0-9_-]+)/);
           if (linkedinMatch) {
@@ -320,7 +348,7 @@ async function stage1Fetch(dateStr: string, onlyNew: boolean): Promise<PhProduct
       } catch {
         logger.warn("Failed to fetch homepage for LinkedIn", { product: product.product_name });
       }
-      if (i < needsLinkedin.length - 1) {
+      if (i < needsLinkedin.length - 1 && hasTime(pageDeadlineAt, 300 + PAGE_FETCH_BUDGET_MS)) {
         await new Promise((resolve) => setTimeout(resolve, 300));
       }
     }
@@ -350,7 +378,8 @@ const PH_PAGE_HEADERS = {
   "Accept-Language": "en-US,en;q=0.5",
 };
 
-async function postsCountFromSlug(slug: string): Promise<number | null> {
+async function postsCountFromSlug(slug: string, deadlineAt: number): Promise<number | null> {
+  if (!hasTime(deadlineAt, 15_000)) return null;
   const url = `https://www.producthunt.com/products/${slug}`;
   try {
     const resp = await fetch(url, {
@@ -369,8 +398,8 @@ async function postsCountFromSlug(slug: string): Promise<number | null> {
   }
 }
 
-async function serperFindProductSlug(productName: string): Promise<string | null> {
-  if (!RAPID_API_KEY) return null;
+async function serperFindProductSlug(productName: string, deadlineAt: number): Promise<string | null> {
+  if (!RAPID_API_KEY || !hasTime(deadlineAt, SEARCH_BUDGET_MS)) return null;
   const query = `site:producthunt.com/products "${productName}"`;
   try {
     const response = await webSearch(query, { limit: 3, apiKey: RAPID_API_KEY });
@@ -386,7 +415,7 @@ async function serperFindProductSlug(productName: string): Promise<string | null
   }
 }
 
-async function fetchLaunchCount(product: PhProduct): Promise<number | null> {
+async function fetchLaunchCount(product: PhProduct, deadlineAt: number): Promise<number | null> {
   const phUrl = product.ph_url ?? "";
 
   let slug: string | null = null;
@@ -398,27 +427,27 @@ async function fetchLaunchCount(product: PhProduct): Promise<number | null> {
   if (!slug) return null;
 
   // Try 1: exact slug
-  let count = await postsCountFromSlug(slug);
+  let count = await postsCountFromSlug(slug, deadlineAt);
   if (count !== null) return count;
 
   // Try 2: strip trailing -N (e.g. flowly-9 -> flowly)
   const stripped = slug.replace(/-\d+$/, "");
   if (stripped !== slug) {
-    count = await postsCountFromSlug(stripped);
+    count = await postsCountFromSlug(stripped, deadlineAt);
     if (count !== null) return count;
   }
 
   // Try 3: strip -for-X suffix (e.g. sleek-analytics-for-ios -> sleek-analytics)
   const forStripped = slug.replace(/-for-[a-z]+$/, "");
   if (forStripped !== slug && forStripped !== stripped) {
-    count = await postsCountFromSlug(forStripped);
+    count = await postsCountFromSlug(forStripped, deadlineAt);
     if (count !== null) return count;
   }
 
   // Try 4: Serper search for canonical slug
-  const canonicalSlug = await serperFindProductSlug(product.product_name);
+  const canonicalSlug = await serperFindProductSlug(product.product_name, deadlineAt);
   if (canonicalSlug && canonicalSlug !== slug && canonicalSlug !== stripped && canonicalSlug !== forStripped) {
-    count = await postsCountFromSlug(canonicalSlug);
+    count = await postsCountFromSlug(canonicalSlug, deadlineAt);
     if (count !== null) return count;
   }
 
@@ -429,7 +458,7 @@ async function fetchLaunchCount(product: PhProduct): Promise<number | null> {
 // Stage 2: Classify
 // ---------------------------------------------------------------------------
 
-async function stage2Classify(products: PhProduct[]): Promise<ClassifiedProduct[]> {
+async function stage2Classify(products: PhProduct[], deadlineAt: number): Promise<ClassifiedProduct[]> {
   if (products.length === 0) return [];
 
   logger.info("Stage 2: classifying products via Luna batch", { count: products.length });
@@ -462,33 +491,36 @@ async function stage2Classify(products: PhProduct[]): Promise<ClassifiedProduct[
         '"Shadow 2.0" + domain_hint=Shadow Labs → "Shadow Labs"; ' +
         '"Lingo.dev v1" + no hint → "Lingo.dev"\n\n',
     8_000,
-    90_000
+    90_000,
+    deadlineAt
   );
 
   const clsByRank = new Map((parsed.classifications ?? []).map((c) => [c.rank, c]));
 
-  const classified: ClassifiedProduct[] = products.map((p) => {
+  const classified: ClassifiedProduct[] = products.flatMap((p) => {
     const cls = clsByRank.get(p.rank);
-    return {
+    if (!cls) return [];
+    return [{
       ...p,
-      company_name: cls?.company_name ?? p.company_name ?? null,
-      launch_type: (cls?.launch_type as "new_product" | "new_feature") ?? "new_product",
-      is_ai: cls?.is_ai ?? false,
-      classification_reasoning: cls?.classification_reasoning ?? "",
+      company_name: cls.company_name,
+      launch_type: cls.launch_type as "new_product" | "new_feature",
+      is_ai: cls.is_ai,
+      classification_reasoning: cls.classification_reasoning,
       launch_count: null,
-    };
+    }];
   });
 
   logger.info("Luna classification done, fetching product page launch counts...");
 
   // Stage 2b: fetch launch counts with rate limiting (sequential, small delay)
   for (let i = 0; i < classified.length; i++) {
+    if (!hasTime(deadlineAt, 15_000 + (i > 0 ? 500 : 0))) break;
     const product = classified[i];
     if (i > 0) {
       // Small delay between PH page fetches to avoid rate limiting
       await new Promise((resolve) => setTimeout(resolve, 500));
     }
-    const count = await fetchLaunchCount(product);
+    const count = await fetchLaunchCount(product, deadlineAt);
     product.launch_count = count;
 
     if (count !== null) {
@@ -538,7 +570,7 @@ function toSupabaseRow(product: ClassifiedProduct, dateStr: string): Record<stri
   };
 }
 
-async function stage3Push(products: ClassifiedProduct[], dateStr: string): Promise<number> {
+async function stage3Push(products: ClassifiedProduct[], dateStr: string, deadlineAt: number): Promise<number> {
   if (!SUPABASE_URL || !SUPABASE_KEY) {
     logger.warn("Supabase not configured -- skipping push");
     return 0;
@@ -551,30 +583,35 @@ async function stage3Push(products: ClassifiedProduct[], dateStr: string): Promi
   logger.info("Stage 3: pushing to Supabase", { table: TABLE, count: rows.length });
 
   let upserted = 0;
-  for (const row of rows) {
+  for (let start = 0; start < rows.length; start += LAUNCH_WRITE_BATCH_SIZE) {
+    if (!hasTime(deadlineAt, LAUNCH_WRITE_TIMEOUT_MS)) {
+      logger.warn("PH persistence deadline exhausted", { remaining: rows.length - start });
+      break;
+    }
+    const batch = rows.slice(start, start + LAUNCH_WRITE_BATCH_SIZE);
     try {
       const resp = await fetch(
         `${SUPABASE_URL}/rest/v1/${TABLE}?on_conflict=source_url`,
         {
           method: "POST",
           headers: supabaseHeaders("resolution=merge-duplicates"),
-          body: JSON.stringify([row]),
-          signal: AbortSignal.timeout(15_000),
+          body: JSON.stringify(batch),
+          signal: AbortSignal.timeout(LAUNCH_WRITE_TIMEOUT_MS),
         }
       );
       if (resp.ok) {
-        upserted++;
+        upserted += batch.length;
       } else {
         const errText = await resp.text().catch(() => "");
         logger.error("Supabase upsert failed", {
-          product: row["product_name"],
+          count: batch.length,
           status: resp.status,
           error: errText.slice(0, 200),
         });
       }
     } catch (e) {
       logger.error("Supabase upsert error", {
-        product: row["product_name"],
+        count: batch.length,
         error: e instanceof Error ? e.message : String(e),
       });
     }
@@ -588,7 +625,7 @@ async function stage3Push(products: ClassifiedProduct[], dateStr: string): Promi
 // Stage 4: Company enrichment (Blitz day-0 — misses retried later by DiscoLike)
 // ---------------------------------------------------------------------------
 
-async function stage4Enrich(products: ClassifiedProduct[]): Promise<number> {
+async function stage4Enrich(products: ClassifiedProduct[], deadlineAt: number): Promise<number> {
   const targets = products
     .filter((p) => p.maker_website)
     .map((p) => ({
@@ -598,13 +635,13 @@ async function stage4Enrich(products: ClassifiedProduct[]): Promise<number> {
       knownLinkedin: p.linkedin_url,
     }));
 
-  if (targets.length === 0) {
-    logger.info("No products with maker_website — skipping enrichment");
+  if (targets.length === 0 || !hasTime(deadlineAt, 15_000)) {
+    logger.info("Skipping PH enrichment", { targets: targets.length, deadlineAt });
     return 0;
   }
 
   logger.info("Stage 4: Blitz enrichment", { count: targets.length });
-  const { enriched } = await day0BlitzEnrich("product_launches", targets);
+  const { enriched } = await day0BlitzEnrich("product_launches", targets, deadlineAt);
   return enriched;
 }
 
@@ -617,6 +654,7 @@ export async function runPhLaunchPipeline(options: {
   dryRun?: boolean;
 }): Promise<ProductLaunchPipelineResult> {
   const start = Date.now();
+  const deadlineAt = start + LAUNCH_RUN_BUDGET_MS;
   const { date: dateStr, dryRun = false } = options;
 
   logger.info("PH launch pipeline starting", { dateStr, dryRun });
@@ -638,9 +676,10 @@ export async function runPhLaunchPipeline(options: {
   const previousDate = new Date(`${dateStr}T12:00:00Z`);
   previousDate.setUTCDate(previousDate.getUTCDate() - 1);
 
-  const today = await processLeaderboard(dateStr, false);
-  const previous = (Date.now() - start) < PREVIOUS_DAY_START_BUDGET_MS
-    ? await processLeaderboard(previousDate.toISOString().slice(0, 10), true)
+  const todayUrls = new Set<string>();
+  const today = await processLeaderboard(dateStr, false, deadlineAt, todayUrls);
+  const previous = hasTime(deadlineAt, PREVIOUS_DAY_MIN_REMAINING_MS)
+    ? await processLeaderboard(previousDate.toISOString().slice(0, 10), true, deadlineAt, todayUrls)
     : { raw: 0, classified: 0, upserted: 0, enriched: 0 };
 
   const durationMs = Date.now() - start;
@@ -659,15 +698,25 @@ export async function runPhLaunchPipeline(options: {
 }
 
 // Task maxDuration is 600s; skip the previous-day pass if today's took too long to finish it safely.
-const PREVIOUS_DAY_START_BUDGET_MS = 240_000;
+const PREVIOUS_DAY_MIN_REMAINING_MS = 300_000;
 
-async function processLeaderboard(dateStr: string, onlyNew: boolean) {
-  const rawProducts = await stage1Fetch(dateStr, onlyNew);
-  if (rawProducts.length === 0) {
-    return { raw: 0, classified: 0, upserted: 0, enriched: 0 };
+async function processLeaderboard(dateStr: string, onlyNew: boolean, deadlineAt: number, todayUrls: Set<string>) {
+  let raw = 0;
+  let classified = 0;
+  let upserted = 0;
+  let enriched = 0;
+  try {
+    const rawProducts = await stage1Fetch(dateStr, onlyNew, deadlineAt, todayUrls);
+    raw = rawProducts.length;
+    if (raw > 0) {
+      const products = await stage2Classify(rawProducts, deadlineAt - persistenceReserveMs(raw));
+      classified = products.length;
+      upserted = await stage3Push(products, dateStr, deadlineAt);
+      enriched = await stage4Enrich(products, deadlineAt);
+    }
+    logger.info("PH leaderboard day complete", { dateStr, status: "complete", raw, classified, upserted, enriched });
+  } catch (e) {
+    logger.warn("PH leaderboard day failed", { dateStr, status: "failed", error: e instanceof Error ? e.message : String(e) });
   }
-  const classified = await stage2Classify(rawProducts);
-  const upserted = await stage3Push(classified, dateStr);
-  const enriched = await stage4Enrich(classified);
-  return { raw: rawProducts.length, classified: classified.length, upserted, enriched };
+  return { raw, classified, upserted, enriched };
 }
