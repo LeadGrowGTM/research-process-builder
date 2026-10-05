@@ -419,15 +419,15 @@ async function enrichCompanies(
 }
 
 /**
- * Deliver in chunks of OUTPUT_CHUNK, each chunk to Clay first and then Supabase, within the
- * deadline. The next run's known-company dedup reads Supabase, so only Clay acknowledgments
- * can be marked known; rejected rounds stay eligible for the next run.
+ * Deliver in chunks of OUTPUT_CHUNK to Supabase and then optional Clay within the deadline.
+ * Clay acceptance does not gate Supabase. The next run's known-company dedup reads Supabase,
+ * so only confirmed Supabase writes are marked known; failed writes stay eligible.
  * Blitz day-0 enrichment runs last with the time left; misses go to enrichment-retry-weekly.
  */
 async function deliver(
   records: EnrichedRecord[],
   config: PipelineConfig,
-  webhook: { url: string; token: string },
+  webhook: { url: string; token: string } | null,
   deadlineAt: number
 ): Promise<void> {
   const rc = config.roundConfig;
@@ -449,31 +449,39 @@ async function deliver(
   let sent = 0;
   let upserted = 0;
   let delivered = 0;
-  const acknowledged: EnrichedRecord[] = [];
+  const written: EnrichedRecord[] = [];
   try {
     const supabase = isSupabaseConfigured() && await bounded(10_000, false, (signal) => checkTable(rc.supabaseTable, signal));
     if (isSupabaseConfigured() && !supabase) logger.warn(`Supabase table ${rc.supabaseTable} unavailable within delivery budget`);
 
     while (delivered < records.length && deadlineAt - Date.now() >= 10_000 && !controller.signal.aborted) {
       const chunk = records.slice(delivered, delivered + OUTPUT_CHUNK);
-      const results = await Promise.all(chunk.map((r) => bounded(10_000, 0,
-        (signal) => pushToWebhook([r], config.date, webhook.url, webhook.token, signal))));
-      const accepted = chunk.filter((_, i) => results[i] === 1);
-      const rejected = chunk.filter((_, i) => results[i] !== 1);
-      if (rejected.length) logger.warn("Clay rejected or timed out; rows not written", { names: rejected.map((r) => r.company_name) });
-      sent += accepted.length;
-      acknowledged.push(...accepted);
       delivered += chunk.length;
-      if (supabase && accepted.length) {
-        let confirmed = 0;
-        try {
-          const count = await bounded(15_000, 0, (signal) => pushToSupabase(accepted, config.date, rc.supabaseTable, signal,
-            (count) => { confirmed = count; }));
-          upserted += Math.max(count, confirmed);
-        } catch (error) {
-          upserted += Math.max(confirmed, error instanceof FundingWriteError ? error.upserted : 0);
-          throw error;
+      if (supabase) {
+        for (const record of chunk) {
+          let confirmed = 0;
+          try {
+            const count = await bounded(15_000, 0, (signal) => pushToSupabase([record], config.date, rc.supabaseTable, signal,
+              (count) => { confirmed = count; }));
+            if (Math.max(count, confirmed) > 0) {
+              upserted++;
+              written.push(record);
+            }
+          } catch (error) {
+            if (Math.max(confirmed, error instanceof FundingWriteError ? error.upserted : 0) > 0) {
+              upserted++;
+              written.push(record);
+            }
+            throw error;
+          }
         }
+      }
+      if (webhook) {
+        const results = await Promise.all(chunk.map((r) => bounded(10_000, 0,
+          (signal) => pushToWebhook([r], config.date, webhook.url, webhook.token, signal))));
+        const rejected = chunk.filter((_, i) => results[i] !== 1);
+        if (rejected.length) logger.warn("Clay rejected or timed out", { names: rejected.map((r) => r.company_name) });
+        sent += chunk.length - rejected.length;
       }
     }
     if (delivered < records.length) {
@@ -483,8 +491,8 @@ async function deliver(
     }
     if (!supabase) return;
 
-    // Day-0 company enrichment (Blitz, free) for acknowledged rows only.
-    const targets = acknowledged.filter((r) => r.company_domain)
+    // Day-0 company enrichment (Blitz, free) for confirmed Supabase rows only.
+    const targets = written.filter((r) => r.company_domain)
       .map((r) => ({ companyName: r.company_name, domain: r.company_domain, sourceUrl: r.source_url }));
     let done = 0;
     while (done < targets.length && deadlineAt - Date.now() >= 30_000 && !controller.signal.aborted) {
@@ -501,7 +509,7 @@ async function deliver(
   } finally {
     clearTimeout(deadlineTimer);
     controller.abort();
-    logger.info(`Webhook: ${sent}/${delivered} sent; Supabase: ${upserted}/${sent} upserted to ${rc.supabaseTable} (confirmed counts)`);
+    logger.info(`Webhook: ${sent}/${delivered} sent; Supabase: ${upserted}/${delivered} upserted to ${rc.supabaseTable} (confirmed counts${webhook ? "" : "; Clay: off"})`);
   }
 }
 
@@ -511,8 +519,10 @@ export async function runFundingPipeline(
   const start = Date.now();
   const deadlineAt = config.deadlineAt ?? Number.POSITIVE_INFINITY;
   const rc = config.roundConfig;
-  // Fail closed before any work: a live run needs its Clay webhook credentials.
-  const webhook = config.dryRun ? null : { url: rc.webhookUrl, token: rc.webhookAuthToken };
+  // A configured Clay URL requires its token before work; an absent URL disables Clay.
+  const webhookUrl = config.dryRun ? "" : rc.webhookUrl;
+  const webhook = webhookUrl ? { url: webhookUrl, token: rc.webhookAuthToken } : null;
+  if (!config.dryRun && !webhook) logger.info(`Clay delivery off for ${rc.roundLabel}`);
 
   logger.info(`${rc.roundLabel} pipeline starting`, {
     date: config.date,
@@ -593,7 +603,7 @@ export async function runFundingPipeline(
   if (config.dryRun) {
     logger.info("Dry run - skipping Supabase and webhook output");
   } else {
-    await deliver(highMedium, config, webhook!, deadlineAt);
+    await deliver(highMedium, config, webhook, deadlineAt);
   }
 
   const durationMs = Date.now() - start;

@@ -3,7 +3,8 @@ import type { QueryDef, RoundConfig } from "./types.js";
 /**
  * Clay webhook URLs and tokens are credentials, so they come from the environment
  * (Infisical -> Trigger.dev env vars), never from source. Read lazily so a missing
- * value fails the run that needs it, with the variable name in the error.
+ * token fails a run with a configured URL, with the variable name in the error.
+ * An absent URL disables Clay delivery for that round.
  */
 export function requireEnv(name: string): string {
   const value = process.env[name]?.trim();
@@ -85,7 +86,7 @@ export const SERIES_A_CONFIG: RoundConfig = {
   ],
   supabaseTable: "funding_discoveries",
   get webhookUrl() {
-    return requireEnv("CLAY_SERIES_A_WEBHOOK_URL");
+    return process.env.CLAY_SERIES_A_WEBHOOK_URL?.trim() ?? "";
   },
   get webhookAuthToken() {
     return requireEnv("CLAY_SERIES_A_WEBHOOK_TOKEN");
@@ -116,7 +117,7 @@ export const SERIES_B_CONFIG: RoundConfig = {
   ],
   supabaseTable: "funding_discoveries",
   get webhookUrl() {
-    return requireEnv("CLAY_SERIES_B_WEBHOOK_URL");
+    return process.env.CLAY_SERIES_B_WEBHOOK_URL?.trim() ?? "";
   },
   get webhookAuthToken() {
     return requireEnv("CLAY_SERIES_B_WEBHOOK_TOKEN");
@@ -147,7 +148,7 @@ export const SERIES_C_CONFIG: RoundConfig = {
   ],
   supabaseTable: "funding_discoveries",
   get webhookUrl() {
-    return requireEnv("CLAY_SERIES_C_WEBHOOK_URL");
+    return process.env.CLAY_SERIES_C_WEBHOOK_URL?.trim() ?? "";
   },
   get webhookAuthToken() {
     return requireEnv("CLAY_SERIES_C_WEBHOOK_TOKEN");
