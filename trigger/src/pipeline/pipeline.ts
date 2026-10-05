@@ -266,17 +266,20 @@ function buildSkipEnrichRecord(company: Candidate, roundLabel: string, pipelineI
 async function enrichOneCompany(
   company: Candidate,
   roundConfig: RoundConfig,
-  pipelineId: string
+  pipelineId: string,
+  enrichUntil: number
 ): Promise<EnrichedRecord | null> {
+  if (Date.now() >= enrichUntil) return null;
   let articleText: string | null = null;
   let sourceUrl = company.best_source_url;
 
   if (sourceUrl) {
-    articleText = await fetchUrl(sourceUrl, { maxChars: 20_000 });
+    articleText = await fetchUrl(sourceUrl, { maxChars: 20_000, deadlineAt: enrichUntil });
     if (!articleText) {
       for (const src of company.sources) {
+        if (Date.now() >= enrichUntil) break;
         if (src.url !== sourceUrl) {
-          articleText = await fetchUrl(src.url, { maxChars: 20_000 });
+          articleText = await fetchUrl(src.url, { maxChars: 20_000, deadlineAt: enrichUntil });
           if (articleText) {
             sourceUrl = src.url;
             break;
@@ -285,6 +288,7 @@ async function enrichOneCompany(
       }
     }
   }
+  if (Date.now() >= enrichUntil) return null;
 
   let extracted = null;
   if (articleText) {
@@ -292,8 +296,10 @@ async function enrichOneCompany(
       articleText,
       company.company_name,
       company.amount ?? "",
-      roundConfig
+      roundConfig,
+      enrichUntil
     );
+    if (Date.now() >= enrichUntil) return null;
     if (extracted?.company_name === roundConfig.notRoundSentinel) {
       logger.info(`Filtered post-extraction: ${company.company_name}`);
       return null;
@@ -321,13 +327,17 @@ async function enrichOneCompany(
 
   if (domain === "not_found") {
     const clues = extractContextClues(extracted, company.sources[0]?.title ?? "");
-    const result = await lookupDomainMultiSignal(company.company_name, clues, sourceUrl);
+    if (Date.now() >= enrichUntil) return null;
+    const result = await lookupDomainMultiSignal(company.company_name, clues, sourceUrl, enrichUntil);
+    if (Date.now() >= enrichUntil) return null;
     domain = result.domain;
     domainSource = result.source;
   }
 
   if (domain !== "not_found" && articleText) {
-    const vresult = await validateDomainSemantic(sourceUrl, company.company_name, domain, articleText);
+    if (Date.now() >= enrichUntil) return null;
+    const vresult = await validateDomainSemantic(sourceUrl, company.company_name, domain, articleText, enrichUntil);
+    if (Date.now() >= enrichUntil) return null;
     const vstatus = vresult.status;
 
     if (vstatus === "Wrong") {
@@ -383,14 +393,25 @@ async function enrichCompanies(
     const batch = toProcess.slice(batchStart, batchStart + ENRICH_CONCURRENCY);
     logger.info(`Enriching batch ${Math.floor(batchStart / ENRICH_CONCURRENCY) + 1}: ${batch.map(c => c.company_name).join(", ")}`);
 
-    const results = await Promise.allSettled(
-      batch.map((company) => enrichOneCompany(company, roundConfig, pipelineId))
-    );
-
-    for (const r of results) {
-      if (r.status === "fulfilled" && r.value) {
-        enriched.push(r.value);
+    let deadlineTimer: ReturnType<typeof setTimeout> | undefined;
+    const expired = new Promise<null>((resolve) => {
+      if (Number.isFinite(enrichUntil)) {
+        deadlineTimer = setTimeout(() => resolve(null), Math.max(0, enrichUntil - Date.now()));
       }
+    });
+    try {
+      // Race as well as passing deadlines: a stalled client must not consume the delivery reserve.
+      const results = await Promise.allSettled(
+        batch.map((company) => Promise.race([enrichOneCompany(company, roundConfig, pipelineId, enrichUntil), expired]))
+      );
+
+      for (const r of results) {
+        if (r.status === "fulfilled" && r.value) {
+          enriched.push(r.value);
+        }
+      }
+    } finally {
+      clearTimeout(deadlineTimer);
     }
   }
 

@@ -1,15 +1,16 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { extractDomainFromArticle, isStaleRound, runFundingPipeline } from "./pipeline.js";
+import { extractDomainFromArticle, isStaleRound, OUTPUT_RESERVE_MS, runFundingPipeline } from "./pipeline.js";
 import { SERIES_A_CONFIG } from "./round-configs.js";
 import type { ExtractedData, PipelineConfig, RawResult } from "./types.js";
 import { runDiscovery } from "./serper.js";
-import { extractWithOpenAI } from "./openai.js";
+import { extractWithOpenAI, validateDomainSemantic } from "./openai.js";
+import { lookupDomainMultiSignal } from "./domain-lookup.js";
 import { pushToSupabase, FundingWriteError } from "./supabase.js";
 import { pushToWebhook } from "./webhook.js";
 import { day0BlitzEnrich } from "./enrich-company.js";
 import { logger } from "@trigger.dev/sdk";
 
-import { htmlToText } from "./scrape.js";
+import { fetchUrl, htmlToText } from "./scrape.js";
 
 describe("extractDomainFromArticle", () => {
   it("ignores an absolute publisher link even when its path contains the company domain", () => {
@@ -66,7 +67,7 @@ vi.mock("@trigger.dev/sdk", () => ({ logger: { info: vi.fn(), warn: vi.fn() } })
 vi.mock("./serper.js", () => ({ runDiscovery: vi.fn() }));
 vi.mock("./scrape.js", async () => ({
   ...await vi.importActual<typeof import("./scrape.js")>("./scrape.js"),
-  fetchUrl: vi.fn(async (url: string) => `Funding news. Visit ${new URL(url).pathname.split("/").pop()}.com to learn more.`),
+  fetchUrl: vi.fn(),
 }));
 vi.mock("./openai.js", () => ({
   extractWithOpenAI: vi.fn(),
@@ -113,12 +114,13 @@ function config(overrides: Partial<PipelineConfig> = {}): PipelineConfig {
 
 beforeEach(() => {
   vi.clearAllMocks();
+  vi.mocked(fetchUrl).mockImplementation(async (url) => `Funding news. Visit ${new URL(url).pathname.split("/").pop()}.com to learn more.`);
   vi.mocked(pushToWebhook).mockImplementation(async (rows) => rows.length);
   vi.mocked(pushToSupabase).mockImplementation(async (rows) => rows.length);
   vi.stubEnv("CLAY_SERIES_A_WEBHOOK_URL", "https://clay.test/hook");
   vi.stubEnv("CLAY_SERIES_A_WEBHOOK_TOKEN", "test-token");
 });
-afterEach(() => { vi.useRealTimers(); vi.unstubAllEnvs(); });
+afterEach(() => { vi.useRealTimers(); vi.restoreAllMocks(); vi.unstubAllEnvs(); vi.unstubAllGlobals(); });
 
 describe("isStaleRound", () => {
   it("drops rounds dated more than 45 days before the run", () => {
@@ -147,6 +149,159 @@ describe("runFundingPipeline freshness gate", () => {
     vi.mocked(extractWithOpenAI).mockResolvedValue(extracted("Acme", null));
     const result = await runFundingPipeline(config());
     expect(result.companies.map((c) => [c.company_name, c.funding_date])).toEqual([["Acme", "2026-10-05"]]);
+  });
+});
+
+describe("runFundingPipeline enrichment deadline", () => {
+  it("stops stalled multi-source fetches at the enrichment deadline and preserves delivery reserve", async () => {
+    vi.useFakeTimers();
+    const start = Date.now();
+    const deadlineAt = start + 20 * 60_000;
+    const enrichUntil = deadlineAt - OUTPUT_RESERVE_MS;
+    const alpha = raw("Alpha");
+    const fallbacks = [1, 2].map((i) => ({ ...alpha, source_url: `${alpha.source_url}?fallback=${i}` }));
+    vi.mocked(runDiscovery).mockImplementationOnce(() => new Promise((resolve) => {
+      setTimeout(() => resolve([alpha, ...fallbacks, raw("Bravo")]), enrichUntil - start - 10_000);
+    }));
+    const scrape = await vi.importActual<typeof import("./scrape.js")>("./scrape.js");
+    vi.mocked(fetchUrl).mockImplementation(scrape.fetchUrl);
+    vi.stubEnv("SPIDER_API_KEY", "spider-test-key");
+    vi.spyOn(AbortSignal, "timeout").mockImplementation((ms) => {
+      const controller = new AbortController();
+      setTimeout(() => controller.abort(), ms);
+      return controller.signal;
+    });
+    const fetchMock = vi.fn<typeof fetch>(async (url, init) => {
+      if (String(url) === raw("Bravo").source_url) {
+        return new Response(`<main>${"Bravo funding news. Visit bravo.com to learn more. ".repeat(10)}</main>`, {
+          headers: { "Content-Type": "text/html" },
+        });
+      }
+      if (String(url) === alpha.source_url) {
+        return new Promise((resolve) => setTimeout(() => resolve(new Response("Not found", { status: 404 })), 2_000));
+      }
+      return new Promise((_resolve, reject) => {
+        init?.signal?.addEventListener("abort", () => reject(new DOMException("Aborted", "AbortError")), { once: true });
+      });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    vi.mocked(extractWithOpenAI).mockImplementation(async (_text, name) => extracted(name, RUN_DATE));
+    let finished = false;
+    const run = runFundingPipeline(config({ dryRun: false, deadlineAt })).then((result) => {
+      finished = true;
+      return result;
+    });
+
+    await vi.advanceTimersByTimeAsync(enrichUntil - start - 1);
+    expect(finished).toBe(false);
+    await vi.advanceTimersByTimeAsync(1);
+    expect(finished).toBe(true);
+    const result = await run;
+    expect(result.stats.durationMs).toBe(enrichUntil - start);
+    expect(deadlineAt - Date.now()).toBe(OUTPUT_RESERVE_MS);
+    expect(result.companies.map((company) => company.company_name)).toEqual(["Bravo"]);
+    expect(fetchMock.mock.calls.map(([url]) => url)).toEqual([alpha.source_url, raw("Bravo").source_url, fallbacks[0].source_url]);
+    expect(vi.mocked(fetchUrl).mock.calls.map(([url]) => url)).toEqual([alpha.source_url, raw("Bravo").source_url, fallbacks[0].source_url]);
+    expect(fetchMock.mock.calls[2][1]?.signal?.aborted).toBe(true);
+    expect(vi.mocked(fetchUrl).mock.calls.every(([, options]) => options?.deadlineAt === enrichUntil)).toBe(true);
+    expect(extractWithOpenAI).toHaveBeenCalledTimes(1);
+    expect(lookupDomainMultiSignal).not.toHaveBeenCalled();
+    expect(vi.mocked(pushToWebhook).mock.calls[0][0].map((company) => company.company_name)).toEqual(["Bravo"]);
+    expect(vi.mocked(pushToSupabase).mock.calls[0][0].map((company) => company.company_name)).toEqual(["Bravo"]);
+    expect(day0BlitzEnrich).toHaveBeenCalledTimes(1);
+  });
+
+  it.each(["extraction", "domain lookup", "semantic validation"])("bounds a stalled %s at the enrichment deadline", async (stage) => {
+    vi.useFakeTimers();
+    const start = Date.now();
+    const enrichUntil = start + 1_000;
+    vi.mocked(runDiscovery).mockResolvedValue([raw("Alpha")]);
+    vi.mocked(extractWithOpenAI).mockResolvedValue(extracted("Alpha", RUN_DATE));
+    let resolveOperation!: () => void;
+    if (stage === "extraction") {
+      vi.mocked(extractWithOpenAI).mockImplementationOnce(() => new Promise((resolve) => {
+        resolveOperation = () => resolve(extracted("Alpha", RUN_DATE));
+      }));
+    } else if (stage === "domain lookup") {
+      vi.mocked(fetchUrl).mockResolvedValueOnce("Funding news without a company website.");
+      vi.mocked(lookupDomainMultiSignal).mockImplementationOnce(() => new Promise((resolve) => {
+        resolveOperation = () => resolve({ domain: "alpha.com", source: "search_validated", confidence: "high", evidence: "Official site" });
+      }));
+    } else {
+      vi.mocked(validateDomainSemantic).mockImplementationOnce(() => new Promise((resolve) => {
+        resolveOperation = () => resolve({ status: "Correct", correctDomain: "alpha.com", correctCompanyName: "Alpha", reason: "Official site" });
+      }));
+    }
+    let finished = false;
+    const run = runFundingPipeline(config({ dryRun: false, deadlineAt: enrichUntil + OUTPUT_RESERVE_MS })).then((result) => {
+      finished = true;
+      return result;
+    });
+
+    await vi.advanceTimersByTimeAsync(999);
+    expect(finished).toBe(false);
+    await vi.advanceTimersByTimeAsync(1);
+    expect(finished).toBe(true);
+    const result = await run;
+    expect(result.companyCount).toBe(0);
+    expect(result.stats.durationMs).toBe(1_000);
+    expect(vi.mocked(extractWithOpenAI).mock.calls[0][4]).toBe(enrichUntil);
+    if (stage === "domain lookup") expect(vi.mocked(lookupDomainMultiSignal).mock.calls[0][3]).toBe(enrichUntil);
+    if (stage === "semantic validation") expect(vi.mocked(validateDomainSemantic).mock.calls[0][4]).toBe(enrichUntil);
+    resolveOperation();
+    await vi.advanceTimersByTimeAsync(0);
+    if (stage === "extraction") expect(lookupDomainMultiSignal).not.toHaveBeenCalled();
+    if (stage !== "semantic validation") expect(validateDomainSemantic).not.toHaveBeenCalled();
+    expect(pushToWebhook).not.toHaveBeenCalled();
+    expect(pushToSupabase).not.toHaveBeenCalled();
+  });
+
+  it("skips model and domain calls when an article finishes at the enrichment deadline", async () => {
+    vi.useFakeTimers();
+    const enrichUntil = Date.now() + 1_000;
+    vi.mocked(runDiscovery).mockResolvedValue([raw("Alpha")]);
+    vi.mocked(fetchUrl).mockImplementationOnce(async () => {
+      vi.setSystemTime(enrichUntil);
+      return "Alpha funding news. Visit alpha.com.";
+    });
+
+    const result = await runFundingPipeline(config({ deadlineAt: enrichUntil + OUTPUT_RESERVE_MS }));
+    expect(result.companyCount).toBe(0);
+    expect(extractWithOpenAI).not.toHaveBeenCalled();
+    expect(lookupDomainMultiSignal).not.toHaveBeenCalled();
+    expect(validateDomainSemantic).not.toHaveBeenCalled();
+  });
+
+  it.each(["extraction", "semantic validation"])("caps stalled %s HTTP calls to the remaining enrichment time", async (stage) => {
+    vi.useFakeTimers();
+    const start = Date.now();
+    const enrichUntil = start + 1_000;
+    vi.mocked(runDiscovery).mockResolvedValue([raw("Alpha")]);
+    const openai = await vi.importActual<typeof import("./openai.js")>("./openai.js");
+    if (stage === "extraction") vi.mocked(extractWithOpenAI).mockImplementationOnce(openai.extractWithOpenAI);
+    else {
+      vi.mocked(extractWithOpenAI).mockResolvedValue(extracted("Alpha", RUN_DATE));
+      vi.mocked(validateDomainSemantic).mockImplementationOnce(openai.validateDomainSemantic);
+    }
+    vi.stubEnv("OPENAI_API_KEY", "test-key");
+    const timeout = vi.spyOn(AbortSignal, "timeout").mockImplementation((ms) => {
+      const controller = new AbortController();
+      setTimeout(() => controller.abort(), ms);
+      return controller.signal;
+    });
+    const fetchMock = vi.fn<typeof fetch>((_url, init) => new Promise((_resolve, reject) => {
+      init?.signal?.addEventListener("abort", () => reject(new DOMException("Aborted", "AbortError")), { once: true });
+    }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    const run = runFundingPipeline(config({ deadlineAt: enrichUntil + OUTPUT_RESERVE_MS }));
+    await vi.advanceTimersByTimeAsync(1_000);
+    const result = await run;
+    expect(result.companyCount).toBe(0);
+    expect(result.stats.durationMs).toBe(1_000);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock.mock.calls[0][1]?.signal?.aborted).toBe(true);
+    expect(timeout.mock.calls.map(([ms]) => ms)).toEqual([1_000]);
   });
 });
 

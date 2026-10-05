@@ -40,7 +40,8 @@ export async function extractWithOpenAI(
   articleText: string,
   companyHint: string,
   amountHint: string,
-  config: RoundConfig
+  config: RoundConfig,
+  deadlineAt?: number
 ): Promise<ExtractedData | null> {
   const prompt = config.extractionPrompt
     .replace("{{companyHint}}", companyHint)
@@ -55,6 +56,7 @@ export async function extractWithOpenAI(
     userPrompt: prompt,
     maxTokens: 500,
     timeoutMs: 30_000,
+    deadlineAt,
   });
 
   return result?.data ?? null;
@@ -116,7 +118,8 @@ export async function validateDomainSemantic(
   sourceUrl: string,
   companyName: string,
   domain: string,
-  rawArticleText: string
+  rawArticleText: string,
+  deadlineAt?: number
 ): Promise<SemanticValidationResult> {
   const fallback: SemanticValidationResult = {
     correctCompanyName: companyName,
@@ -142,6 +145,7 @@ export async function validateDomainSemantic(
     userPrompt: userMsg,
     maxTokens: 200,
     timeoutMs: 25_000,
+    deadlineAt,
   });
 
   if (!result) return fallback;

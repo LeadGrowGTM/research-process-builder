@@ -123,10 +123,11 @@ interface FetchOptions {
   renderJs?: boolean;   // kept for call-site compat - ignored
   waitForSecs?: number; // kept for compat - ignored
   maxChars?: number; // cap on returned text
+  deadlineAt?: number;
   startAt?: ScrapeOptions["startAt"];
 }
 
 export async function fetchUrl(url: string, options?: FetchOptions): Promise<string | null> {
-  const result = await scrapePage(url, { maxChars: options?.maxChars ?? DEFAULT_MAX_CHARS, startAt: options?.startAt });
+  const result = await scrapePage(url, { maxChars: options?.maxChars ?? DEFAULT_MAX_CHARS, deadlineAt: options?.deadlineAt, startAt: options?.startAt });
   return result?.content ?? null;
 }

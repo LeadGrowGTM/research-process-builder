@@ -307,6 +307,24 @@ describe("scrapePage waterfall", () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
+  it("fetchUrl does not fetch after an expired deadline", async () => {
+    expect(await fetchUrl(URL, { ...OPTIONS, deadlineAt: Date.now() - 1 })).toBeNull();
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("fetchUrl forwards deadlineAt to cap the scrape ladder and stop expired steps", async () => {
+    let now = 1_000;
+    vi.spyOn(Date, "now").mockImplementation(() => now);
+    const timeout = vi.spyOn(AbortSignal, "timeout");
+    fetchMock.mockImplementation(async () => {
+      now += 100;
+      return fetchMock.mock.calls.length === 1 ? htmlResponse("<p>short</p>") : jsonResponse([{ content: "short", status: 200 }]);
+    });
+    expect(await fetchUrl(URL, { ...OPTIONS, deadlineAt: 1_250 })).toBeNull();
+    expect(fetchMock.mock.calls.map(([url]) => url)).toEqual([URL, SPIDER_URL, SPIDER_URL]);
+    expect(timeout.mock.calls.map(([ms]) => ms)).toEqual([250, 150, 50]);
+  });
+
   it("stops remaining steps when the deadline expires during smart", async () => {
     let now = 1_000;
     vi.spyOn(Date, "now").mockImplementation(() => now);
