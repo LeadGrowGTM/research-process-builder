@@ -194,30 +194,44 @@ describe("signal bank profile writes", () => {
 });
 
 describe("signal_companies existing-domain read", () => {
-  it("batches the in.() filter so a long domain list stays under the gateway URL limit", async () => {
+  // Short and long domains: 437 real ones broke the single-request read with a 502.
+  const domains = Array.from({ length: 300 }, (_, i) => i % 3 === 0 ? `a-very-long-company-name-for-testing-number-${i}.example.com` : `company-${i}.com`);
+
+  async function runWith(signalCompanies: (url: string) => Response) {
     vi.resetModules();
-    vi.stubEnv("SUPABASE_PROJECT_URL", "https://project.test");
+    vi.stubEnv("SUPABASE_PROJECT_URL", "https://database.leadgrow.ai");
     vi.stubEnv("SUPABASE_SERVICE_ROLE_KEY", "fixture-key");
     vi.stubEnv("OPENAI_API_KEY", "fixture-key");
     vi.stubEnv("FIRECRAWL_API_KEY", "fixture-key");
     const { signalBankDaily } = await import("./signal-bank-daily.js");
-    const domains = Array.from({ length: 250 }, (_, i) => `company-${i}.com`);
     const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
       if (init?.method === "PATCH" || init?.method === "POST") return new Response(null, { status: 204 });
       if (url.includes("funding_discoveries")) {
         return new Response(JSON.stringify(domains.map((d) => ({ company_name: d, company_domain: d, discovered_date: "2026-08-01" }))));
       }
-      // database.leadgrow.ai answers 502 once the URL passes ~3k characters.
-      if (url.includes("signal_companies")) return url.length > 3000 ? new Response("Bad gateway", { status: 502 }) : new Response("[]");
+      if (url.includes("signal_companies") && url.includes("domain=in.")) return signalCompanies(url);
       return new Response("[]");
     });
     vi.stubGlobal("fetch", fetchMock);
     const runTask = signalBankDaily as unknown as { run: (payload: { timestamp: Date }) => Promise<unknown> };
-    await expect(runTask.run({ timestamp: new Date("2026-10-05T00:00:00Z") })).resolves.toBeDefined();
-    const reads = fetchMock.mock.calls.map(([url]) => String(url)).filter((url) => url.includes("signal_companies") && url.includes("domain=in."));
-    expect(reads).toHaveLength(3);
-    const requested = reads.flatMap((url) => new URL(url).searchParams.get("domain")!.replace(/^in\.\(|\)$/g, "").split(","));
+    const reads = () => fetchMock.mock.calls.map(([url]) => String(url)).filter((url) => url.includes("signal_companies") && url.includes("domain=in."));
+    return { result: runTask.run({ timestamp: new Date("2026-10-05T00:00:00Z") }), reads };
+  }
+
+  it("splits the in.() filter so every request stays under the gateway URL limit and covers every domain", async () => {
+    // database.leadgrow.ai answers 502 once the URL passes ~3k characters.
+    const { result, reads } = await runWith((url) => url.length > 3000 ? new Response("Bad gateway", { status: 502 }) : new Response("[]"));
+    await expect(result).resolves.toBeDefined();
+    expect(reads().length).toBeGreaterThan(1);
+    for (const url of reads()) expect(url.length).toBeLessThan(2_500);
+    const requested = reads().flatMap((url) => new URL(url).searchParams.get("domain")!.replace(/^in\.\(|\)$/g, "").split(","));
     expect(requested.sort()).toEqual([...domains].sort());
+  });
+
+  it("fails the run when any batch fails instead of treating its domains as new", async () => {
+    let calls = 0;
+    const { result } = await runWith(() => (++calls === 2 ? new Response("Bad gateway", { status: 502 }) : new Response("[]")));
+    await expect(result).rejects.toThrow("signal_companies domain read failed");
   });
 });
 

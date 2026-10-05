@@ -148,6 +148,32 @@ async function sbGet(path: string, params: Record<string, string> = {}, schema: 
   return Array.isArray(data) ? data : null;
 }
 
+// The database.leadgrow.ai gateway answers 502 once a URL passes ~3k characters.
+const IN_FILTER_MAX_CHARS = 1_500;
+
+/** sbGet with a column=in.(values) filter, split so each encoded filter stays under IN_FILTER_MAX_CHARS. rowsPerValue sets each batch's limit. */
+async function sbGetIn(path: string, params: Record<string, string>, column: string, values: string[], rowsPerValue: number): Promise<unknown[] | null> {
+  const rows: unknown[] = [];
+  let batch: string[] = [];
+  let size = 0;
+  const flush = async (): Promise<boolean> => {
+    if (batch.length === 0) return true;
+    const result = await sbGet(path, { ...params, [column]: `in.(${batch.join(",")})`, limit: String(batch.length * rowsPerValue) });
+    batch = [];
+    size = 0;
+    if (result === null) return false;
+    rows.push(...result);
+    return true;
+  };
+  for (const value of values) {
+    const encoded = encodeURIComponent(value).length + 3; // plus the encoded comma
+    if (size + encoded > IN_FILTER_MAX_CHARS && !(await flush())) return null;
+    batch.push(value);
+    size += encoded;
+  }
+  return (await flush()) ? rows : null;
+}
+
 async function sbUpsert(table: string, row: Record<string, unknown>, schema: string = DEFAULT_SCHEMA): Promise<boolean> {
   const resp = await fetch(`${SUPABASE_URL}/rest/v1/${table}?on_conflict=domain`, {
     method: "POST",
@@ -373,15 +399,10 @@ export const signalBankDaily = schedules.task({
     const allFunding = allFundingResult as Array<Record<string, string>>;
 
     const fundingDomains = [...new Set(allFunding.map(row => row.company_domain).filter(domain => /^[a-z0-9.-]+\.[a-z]{2,}$/.test(domain ?? "")))];
-    // Batches of 100: the gateway answers 502 once the in.() URL passes ~3k characters (~250 domains).
-    const existingRows: unknown[] = [];
-    for (let start = 0; start < fundingDomains.length; start += 100) {
-      const batch = fundingDomains.slice(start, start + 100);
-      const rows = await sbGet("signal_companies", { select: "domain", domain: `in.(${batch.join(",")})`, limit: "100" });
-      if (rows === null) {
-        throw new Error("signal_companies domain read failed in leadgrow_knowledge schema");
-      }
-      existingRows.push(...rows);
+    // domain is unique in signal_companies (upserts use on_conflict=domain), so one row per value.
+    const existingRows = await sbGetIn("signal_companies", { select: "domain" }, "domain", fundingDomains, 1);
+    if (existingRows === null) {
+      throw new Error("signal_companies domain read failed in leadgrow_knowledge schema");
     }
     const existingDomains = new Set(
       (existingRows as Array<{ domain: string }>).map((row) => row.domain)
@@ -567,9 +588,8 @@ export const signalBankDaily = schedules.task({
         limit: "500",
       });
       const candidateDomains = (candidates ?? []) as Array<{ domain: string }>;
-      const contacts = candidateDomains.length === 0 ? [] : await sbGet("founder_contacts", {
-        select: "company_domain", company_domain: `in.(${candidateDomains.map(row => row.domain).join(",")})`, limit: "1500",
-      });
+      // A company can have several founder rows; 10 per domain leaves headroom over the old 3-per-domain limit.
+      const contacts = await sbGetIn("founder_contacts", { select: "company_domain" }, "company_domain", candidateDomains.map(row => row.domain), 10);
       if (candidates === null || contacts === null) throw new Error("Founder eligibility read failed");
       const completed = new Set((contacts as Array<{ company_domain: string }>).map(row => row.company_domain));
       const eligible = (candidates as Array<{ domain: string }>).filter(row => !completed.has(row.domain) && /^[a-z0-9.-]+\.[a-z]{2,}$/.test(row.domain)).slice(0, founderCap);
