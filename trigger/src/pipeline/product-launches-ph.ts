@@ -3,13 +3,13 @@ import type { ProductLaunch, ProductLaunchPipelineResult } from "./product-launc
 import { fetchUrl } from "./firecrawl.js";
 import { day0BlitzEnrich } from "./enrich-company.js";
 import { webSearch } from "./rapid-search.js";
+import { lunaJson } from "./luna.js";
 
 // ---------------------------------------------------------------------------
 // Env
 // ---------------------------------------------------------------------------
 
 const RAPID_API_KEY = process.env.RAPID_API_KEY ?? "";
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY ?? "";
 const SUPABASE_URL = (() => {
   const url = process.env.SUPABASE_PROJECT_URL ?? process.env.SUPABASE_URL ?? "";
   return url.startsWith("http") ? url : "";
@@ -47,7 +47,7 @@ interface ClassifiedProduct extends PhProduct {
 // Helpers
 // ---------------------------------------------------------------------------
 
-function buildPhUrl(dateStr: string): string {
+export function buildPhUrl(dateStr: string): string {
   const d = new Date(dateStr + "T12:00:00Z");
   const year = d.getUTCFullYear();
   const month = d.getUTCMonth() + 1;
@@ -63,15 +63,6 @@ function supabaseHeaders(prefer?: string): Record<string, string> {
   };
   if (prefer) h["Prefer"] = prefer;
   return h;
-}
-
-function parseJsonResponse(raw: string): unknown {
-  let text = raw.trim();
-  if (text.startsWith("```")) {
-    text = text.split("\n").slice(1).join("\n");
-    text = text.split("```")[0];
-  }
-  return JSON.parse(text.trim());
 }
 
 function domainToCompanyHint(makerWebsite: string | null): string | null {
@@ -97,166 +88,174 @@ function domainToCompanyHint(makerWebsite: string | null): string | null {
   }
 }
 
-async function openaiChat(messages: { role: "system" | "user"; content: string }[]): Promise<string> {
-  const resp = await fetch("https://api.openai.com/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${OPENAI_API_KEY}`,
-      "Content-Type": "application/json",
+/** Strict-schema Luna call. Throws on failure so the leaderboard retry loop and task retries still apply. */
+async function lunaObject<T>(
+  name: string,
+  schema: Record<string, unknown>,
+  system: string,
+  user: string,
+  maxTokens: number,
+  timeoutMs: number
+): Promise<T> {
+  const result = await lunaJson<T>({ name, schema, systemPrompt: system, userPrompt: user, maxTokens, timeoutMs });
+  if (!result) throw new Error(`Luna ${name} call failed`);
+  return result.data;
+}
+
+const nullable = (type: string) => ({ type: [type, "null"] });
+
+const EXTRACT_SCHEMA = {
+  type: "object",
+  additionalProperties: false,
+  required: ["products", "error"],
+  properties: {
+    products: {
+      type: "array",
+      items: {
+        type: "object",
+        additionalProperties: false,
+        required: ["rank", "product_name", "company_name", "tagline", "score", "ph_url", "categories", "maker_website"],
+        properties: {
+          rank: { type: "integer" },
+          product_name: { type: "string" },
+          company_name: nullable("string"),
+          tagline: nullable("string"),
+          score: { type: "integer" },
+          ph_url: { type: "string" },
+          categories: { type: "array", items: { type: "string" } },
+          maker_website: nullable("string"),
+        },
+      },
     },
-    body: JSON.stringify({
-      model: "gpt-4o-mini",
-      temperature: 0,
-      messages,
-    }),
-    signal: AbortSignal.timeout(60_000),
-  });
-  if (!resp.ok) {
-    throw new Error(`OpenAI ${resp.status}: ${await resp.text()}`);
-  }
-  const data = (await resp.json()) as { choices: { message: { content: string } }[] };
-  return data.choices[0]?.message?.content?.trim() ?? "";
+    error: nullable("string"),
+  },
+};
+
+const CLASSIFY_SCHEMA = {
+  type: "object",
+  additionalProperties: false,
+  required: ["classifications"],
+  properties: {
+    classifications: {
+      type: "array",
+      items: {
+        type: "object",
+        additionalProperties: false,
+        required: ["rank", "product_name", "company_name", "launch_type", "is_ai", "classification_reasoning"],
+        properties: {
+          rank: { type: "integer" },
+          product_name: { type: "string" },
+          company_name: { type: "string" },
+          launch_type: { type: "string", enum: ["new_product", "new_feature"] },
+          is_ai: { type: "boolean" },
+          classification_reasoning: { type: "string" },
+        },
+      },
+    },
+  },
+};
+
+/**
+ * The leaderboard markdown is mostly image links, which used to push everything past the 15k fetch cap
+ * (a day with 25 featured products lost the lower half). Drop them so the whole list fits and extraction is faster.
+ */
+export function cleanLeaderboard(markdown: string): string {
+  return markdown
+    .split("\n")
+    .filter((line) => !/^\s*!\[[^\]]*\]\([^)]*\)\s*$/.test(line) && !/^\s*$/.test(line))
+    .join("\n");
 }
 
 // ---------------------------------------------------------------------------
 // Stage 1: Fetch PH leaderboard
 // ---------------------------------------------------------------------------
 
-async function extractProductsFromContent(pageContent: string): Promise<{ products: PhProduct[]; error?: string }> {
-  const raw = await openaiChat([
-    {
-      role: "system",
-      content:
+export async function extractProductsFromContent(pageContent: string): Promise<{ products: PhProduct[]; error?: string }> {
+  const parsed = await lunaObject<{ products: (PhProduct & { company_name: string | null })[]; error: string | null }>("ph_leaderboard", EXTRACT_SCHEMA,
         "You are extracting structured product data from a Product Hunt leaderboard page. " +
         "Extract every ranked product. Return JSON only -- no commentary.",
-    },
-    {
-      role: "user",
-      content:
-        `Page content:\n${pageContent}\n\n` +
-        "Extract all ranked products. For each, return:\n" +
-        '{"rank": <int>, "product_name": "<the specific product or feature launched today>", ' +
-        '"company_name": "<the maker or organization behind it — same as product_name if unclear>", ' +
-        '"tagline": "<string>", "score": <int>, "ph_url": "<full PH URL>", ' +
-        '"categories": ["<cat>", ...], "maker_website": "<URL or null>"}\n\n' +
-        'Return as JSON: {"products": [...]}\n' +
-        'If the leaderboard has not posted yet, return {"products": [], "error": "leaderboard_not_posted"}.',
-    },
-  ]);
+    `Page content:
+${pageContent}
 
-  const parsed = parseJsonResponse(raw) as { products?: (PhProduct & { company_name?: string })[]; error?: string };
+` +
+        "Extract all ranked products. For each, return rank, product_name (the specific product or feature launched today), " +
+        "company_name (the maker or organization behind it, same as product_name if unclear), tagline, score, " +
+        "ph_url (the full PH URL), categories, and maker_website (URL or null). " +
+        'If the leaderboard has not posted yet, return no products and error "leaderboard_not_posted".',
+    16_000,
+    120_000
+  );
+
   const products = (parsed.products ?? []).map((p) => ({
     ...p,
     company_name: p.company_name ?? null,
     linkedin_url: null,
   }));
-  return { products, error: parsed.error };
+  return { products, error: parsed.error ?? undefined };
 }
 
-async function serperSupplementFetch(dateStr: string): Promise<PhProduct[]> {
-  if (!RAPID_API_KEY) return [];
+const LEADERBOARD_ATTEMPTS = 3;
 
-  const d = new Date(dateStr + "T12:00:00Z");
-  const month = d.toLocaleString("en-US", { month: "long", timeZone: "UTC" });
-  const day = d.getUTCDate();
-  const year = d.getUTCFullYear();
-  const query = `site:producthunt.com/posts "${month} ${day}, ${year}"`;
-
-  logger.info("Serper supplement: searching for PH posts", { query });
-
-  try {
-    const response = await webSearch(query, { limit: 30, after: dateStr, apiKey: RAPID_API_KEY });
-    if (!response) {
-      logger.warn("RapidAPI supplement failed");
-      return [];
-    }
-    const results = response.results.map(({ title, url, snippet }) => ({ title, link: url, snippet }));
-    logger.info("Serper supplement results", { count: results.length });
-
-    const products: PhProduct[] = [];
-    for (const r of results) {
-      const link = r.link ?? "";
-      if (!link.includes("producthunt.com/posts/")) continue;
-
-      const name = (r.title ?? "").replace(/ - Product Hunt$/, "").replace(/ \| Product Hunt$/, "").trim();
-      if (!name) continue;
-
-      products.push({
-        rank: 0,
-        product_name: name,
-        company_name: null,
-        tagline: r.snippet ?? null,
-        score: 0,
-        ph_url: link,
-        categories: [],
-        maker_website: null,
-        linkedin_url: null,
-      });
-    }
-
-    return products;
-  } catch (e) {
-    logger.warn("Serper supplement error", { error: e instanceof Error ? e.message : String(e) });
-    return [];
-  }
-}
-
-function mergeProducts(primary: PhProduct[], supplement: PhProduct[]): PhProduct[] {
-  const seen = new Set(primary.map((p) => p.product_name.toLowerCase()));
-  const seenUrls = new Set(primary.map((p) => p.ph_url));
-  let nextRank = Math.max(...primary.map((p) => p.rank), 0) + 1;
-
-  for (const s of supplement) {
-    if (seen.has(s.product_name.toLowerCase()) || seenUrls.has(s.ph_url)) continue;
-    seen.add(s.product_name.toLowerCase());
-    seenUrls.add(s.ph_url);
-    s.rank = nextRank++;
-    primary.push(s);
-  }
-
-  return primary;
-}
-
-async function stage1Fetch(dateStr: string): Promise<PhProduct[]> {
+/**
+ * Fetch and extract one day's leaderboard. A single transient fetch or extraction failure used to end the
+ * run with zero launches (~2s runtime), so retry with backoff before giving up.
+ */
+export async function fetchLeaderboard(dateStr: string): Promise<PhProduct[]> {
   const url = buildPhUrl(dateStr);
-  logger.info("Stage 1: fetching PH leaderboard via Spider (JS render)", { url });
-
-  const pageContent = await fetchUrl(url, { renderJs: true, waitForSecs: 3 });
-
-  let products: PhProduct[] = [];
-
-  if (pageContent) {
-    logger.info("Spider fetch succeeded", { chars: pageContent.length });
-    const extracted = await extractProductsFromContent(pageContent);
-
-    if (extracted.error === "leaderboard_not_posted") {
-      logger.warn("PH leaderboard not yet posted for this date", { dateStr });
-      return [];
+  for (let attempt = 1; attempt <= LEADERBOARD_ATTEMPTS; attempt++) {
+    try {
+      const pageContent = await fetchUrl(url, { renderJs: true, waitForSecs: 3, maxChars: 200_000 });
+      if (pageContent) {
+        const extracted = await extractProductsFromContent(cleanLeaderboard(pageContent).slice(0, 60_000));
+        logger.info("Leaderboard extraction", { dateStr, attempt, count: extracted.products.length, error: extracted.error });
+        if (extracted.products.length > 0) return extracted.products;
+      } else {
+        logger.warn("Leaderboard fetch failed", { dateStr, attempt });
+      }
+    } catch (e) {
+      logger.warn("Leaderboard attempt error", { dateStr, attempt, error: e instanceof Error ? e.message : String(e) });
     }
-    products = extracted.products;
-    logger.info("Spider extraction", { count: products.length });
-  } else {
-    logger.warn("Spider fetch failed — relying on Serper supplement only");
+    if (attempt < LEADERBOARD_ATTEMPTS) await new Promise((resolve) => setTimeout(resolve, 5_000 * attempt));
   }
+  return [];
+}
 
-  // Serper supplement: catch products Spider missed
-  const supplement = await serperSupplementFetch(dateStr);
-  if (supplement.length > 0) {
-    const before = products.length;
-    products = mergeProducts(products, supplement);
-    logger.info("Serper supplement merged", { added: products.length - before, total: products.length });
+/** Products whose ph_url is already in product_launches; the previous-day pass only needs the rest. */
+async function knownPhUrls(urls: string[]): Promise<Set<string>> {
+  if (!SUPABASE_URL || !SUPABASE_KEY || urls.length === 0) return new Set();
+  try {
+    const list = urls.map((u) => `"${u}"`).join(",");
+    const resp = await fetch(
+      `${SUPABASE_URL}/rest/v1/product_launches?select=source_url&source_url=in.(${encodeURIComponent(list)})`,
+      { headers: supabaseHeaders(), signal: AbortSignal.timeout(15_000) }
+    );
+    if (!resp.ok) return new Set();
+    return new Set(((await resp.json()) as { source_url: string }[]).map((r) => r.source_url));
+  } catch {
+    return new Set();
   }
+}
 
+async function stage1Fetch(dateStr: string, onlyNew: boolean): Promise<PhProduct[]> {
+  logger.info("Stage 1: fetching PH leaderboard", { url: buildPhUrl(dateStr), onlyNew });
+
+  const products = await fetchLeaderboard(dateStr);
   if (products.length === 0) {
-    logger.warn("No products from Spider + Serper", { dateStr });
+    logger.warn("No products from leaderboard", { dateStr });
     return [];
   }
 
-  // Kill list: skip score < 5 (only applies to Spider products with real scores)
+  // Kill list: skip score < 5
   const before = products.length;
-  const filtered = products.filter((p) => p.rank === 0 || (p.score ?? 0) >= 5);
+  let filtered = products.filter((p) => (p.score ?? 0) >= 5);
   if (filtered.length < before) {
     logger.info("Dropped low-score products", { dropped: before - filtered.length });
+  }
+
+  if (onlyNew) {
+    const known = await knownPhUrls(filtered.map((p) => p.ph_url));
+    filtered = filtered.filter((p) => !known.has(p.ph_url));
+    logger.info("Previous-day leaderboard: products not captured yesterday", { dateStr, new: filtered.length, known: known.size });
   }
 
   // Stage 1b: fetch individual product pages to extract maker_website
@@ -433,7 +432,7 @@ async function fetchLaunchCount(product: PhProduct): Promise<number | null> {
 async function stage2Classify(products: PhProduct[]): Promise<ClassifiedProduct[]> {
   if (products.length === 0) return [];
 
-  logger.info("Stage 2: classifying products via GPT-4o-mini batch", { count: products.length });
+  logger.info("Stage 2: classifying products via Luna batch", { count: products.length });
 
   const productLines = products.map((p) => {
     const cats = (p.categories ?? []).join(", ");
@@ -442,16 +441,9 @@ async function stage2Classify(products: PhProduct[]): Promise<ClassifiedProduct[
     return `rank=${p.rank} | product_name=${p.product_name} | company_name_hint=${p.company_name ?? "unknown"}${hintStr} | tagline=${p.tagline ?? ""} | categories=${cats}`;
   });
 
-  const raw = await openaiChat([
-    {
-      role: "system",
-      content:
+  const parsed = await lunaObject<{ classifications: { rank: number; product_name: string; company_name: string; launch_type: string; is_ai: boolean; classification_reasoning: string }[] }>("ph_classification", CLASSIFY_SCHEMA,
         "You classify Product Hunt launches. For each product, determine company_name, launch_type, and is_ai. " +
         "Return JSON only -- no commentary.",
-    },
-    {
-      role: "user",
-      content:
         `Products (from leaderboard):\n${productLines.join("\n")}\n\n` +
         "For each product, classify:\n" +
         "1. launch_type: 'new_product' if this appears to be a first-time PH launch based on product name/tagline/categories. " +
@@ -468,16 +460,11 @@ async function stage2Classify(products: PhProduct[]): Promise<ClassifiedProduct[
         "If domain_hint is provided and plausible, prefer it over raw product_name. " +
         'Examples: "Kilo Code v7 for VS Code" + domain_hint=Kilo Code → "Kilo Code"; ' +
         '"Shadow 2.0" + domain_hint=Shadow Labs → "Shadow Labs"; ' +
-        '"Lingo.dev v1" + no hint → "Lingo.dev"\n\n' +
-        'Return: {"classifications": [{"rank": <int>, "product_name": "<str>", "company_name": "<str>", ' +
-        '"launch_type": "new_product|new_feature", "is_ai": true|false, ' +
-        '"classification_reasoning": "<str>"}]}',
-    },
-  ]);
+        '"Lingo.dev v1" + no hint → "Lingo.dev"\n\n',
+    8_000,
+    90_000
+  );
 
-  const parsed = parseJsonResponse(raw) as {
-    classifications?: { rank: number; product_name: string; company_name?: string; launch_type: string; is_ai: boolean; classification_reasoning: string }[];
-  };
   const clsByRank = new Map((parsed.classifications ?? []).map((c) => [c.rank, c]));
 
   const classified: ClassifiedProduct[] = products.map((p) => {
@@ -492,7 +479,7 @@ async function stage2Classify(products: PhProduct[]): Promise<ClassifiedProduct[
     };
   });
 
-  logger.info("GPT classification done, fetching product page launch counts...");
+  logger.info("Luna classification done, fetching product page launch counts...");
 
   // Stage 2b: fetch launch counts with rate limiting (sequential, small delay)
   for (let i = 0; i < classified.length; i++) {
@@ -645,46 +632,42 @@ export async function runPhLaunchPipeline(options: {
     };
   }
 
-  // Stage 1: fetch leaderboard
-  const rawProducts = await stage1Fetch(dateStr);
+  // The 9 AM ET run sees the new PT day only ~6 hours in (17 products at most, 40% under the score floor),
+  // so the previous day's final leaderboard is where most launches are. Its products are dated by their own
+  // leaderboard day and skipped if yesterday's run already stored them.
+  const previousDate = new Date(`${dateStr}T12:00:00Z`);
+  previousDate.setUTCDate(previousDate.getUTCDate() - 1);
 
-  if (rawProducts.length === 0) {
-    logger.warn("No products from Stage 1 -- aborting pipeline", { dateStr });
-    return {
-      date: dateStr,
-      source: "product_hunt",
-      launchCount: 0,
-      stats: { rawResults: 0, afterClassify: 0, durationMs: Date.now() - start },
-    };
-  }
-
-  // Stage 2: classify
-  const classified = await stage2Classify(rawProducts);
-
-  // Stage 3: push to Supabase
-  const upserted = await stage3Push(classified, dateStr);
-
-  // Stage 4: company enrichment (Blitz day-0)
-  const enrichUpdated = await stage4Enrich(classified);
+  const today = await processLeaderboard(dateStr, false);
+  const previous = (Date.now() - start) < PREVIOUS_DAY_START_BUDGET_MS
+    ? await processLeaderboard(previousDate.toISOString().slice(0, 10), true)
+    : { raw: 0, classified: 0, upserted: 0, enriched: 0 };
 
   const durationMs = Date.now() - start;
-  logger.info("PH launch pipeline complete", {
-    dateStr,
-    rawProducts: rawProducts.length,
-    classified: classified.length,
-    upserted,
-    enrichUpdated,
-    durationMs,
-  });
+  logger.info("PH launch pipeline complete", { dateStr, today, previous, durationMs });
 
   return {
     date: dateStr,
     source: "product_hunt",
-    launchCount: upserted,
+    launchCount: today.upserted + previous.upserted,
     stats: {
-      rawResults: rawProducts.length,
-      afterClassify: classified.length,
+      rawResults: today.raw + previous.raw,
+      afterClassify: today.classified + previous.classified,
       durationMs,
     },
   };
+}
+
+// Task maxDuration is 600s; skip the previous-day pass if today's took too long to finish it safely.
+const PREVIOUS_DAY_START_BUDGET_MS = 240_000;
+
+async function processLeaderboard(dateStr: string, onlyNew: boolean) {
+  const rawProducts = await stage1Fetch(dateStr, onlyNew);
+  if (rawProducts.length === 0) {
+    return { raw: 0, classified: 0, upserted: 0, enriched: 0 };
+  }
+  const classified = await stage2Classify(rawProducts);
+  const upserted = await stage3Push(classified, dateStr);
+  const enriched = await stage4Enrich(classified);
+  return { raw: rawProducts.length, classified: classified.length, upserted, enriched };
 }
