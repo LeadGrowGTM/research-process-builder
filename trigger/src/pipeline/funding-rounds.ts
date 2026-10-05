@@ -177,12 +177,12 @@ function publishable(source: RoundSource | null | undefined): source is RoundSou
   return !!source && isPublicHttpsUrl(source.url);
 }
 
-/** The source to show for a round: a public non-raisingfi report, then a public secondary source, then any public source. */
+/** Public source for a round: a non-raisingfi report, else a non-raisingfi secondary. */
 export function displaySource(round: FundingRound, secondary?: RoundSource | null): RoundSource | null {
-  return round.sources.find((s) => publishable(s) && !isRaisingfiSource(s))
-    ?? (publishable(secondary) ? secondary : null)
-    ?? round.sources.find((s) => publishable(s))
-    ?? null;
+  const reported = round.sources.find((source) => publishable(source) && !isRaisingfiSource(source));
+  if (reported) return reported;
+  if (publishable(secondary) && !isRaisingfiSource(secondary)) return secondary;
+  return null;
 }
 
 /** Rounds whose only sources are raisingfi/X, so a secondary source is worth looking up. */

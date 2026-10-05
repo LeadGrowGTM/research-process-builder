@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { buildFundingFeedRows, canonicalFeedDocument, compactUsd, fundingClientFromEnv, fundingSignal, refreshFundingFeed, signalsVersion, writerClientFromEnv } from "./legion-funding-feed.js";
+import { buildFundingFeedRows, canonicalFeedDocument, compactUsd, companySignal, fundingClientFromEnv, fundingSignal, refreshFundingFeed, signalsVersion, writerClientFromEnv } from "./legion-funding-feed.js";
+import { buildRounds, type FundingReport } from "./pipeline/funding-rounds.js";
 
 const source = { url: "https://example.supabase.co", key: "test-key" };
 const config = {
@@ -167,6 +168,51 @@ describe("fundingSignal", () => {
   });
 });
 
+describe("companySignal sources", () => {
+  function fundingReport(overrides: Partial<FundingReport> = {}): FundingReport {
+    return {
+      company: "Acme", domain: "acme.com", logo: null, round: "Seed", amount: "$4M", amountUsd: 4_000_000,
+      investors: "Northstar", industry: "Fintech", description: "Builds payments", employees: 12, hq: "Austin", founded: 2020, founders: [],
+      date: "2026-01-10", source: "@raisingfi on X", sourceUrl: "https://x.com/raisingfi/status/1", ...overrides,
+    };
+  }
+
+  it("publishes no source when the only report is raisingfi and Brave found nothing", () => {
+    const [company] = buildRounds([fundingReport()]);
+    const signal = companySignal(company, new Map());
+    expect(signal).toMatchObject({ source: null, sourceUrl: "", headline: "Seed round of $4M", summary: "Builds payments", tags: ["Seed", "Fintech"] });
+    expect(signal.details).toEqual({ investors: "Northstar", employees: 12, founded: 2020 });
+    expect(JSON.stringify(signal)).not.toMatch(/raisingfi|x\.com|twitter\.com/i);
+  });
+
+  it("uses a non-X Brave secondary for the latest round and the same rule for earlier rounds", () => {
+    const [company] = buildRounds([
+      fundingReport({ date: "2026-01-10", round: "Seed", amount: "$4M", amountUsd: 4_000_000, sourceUrl: "https://x.com/raisingfi/status/1" }),
+      fundingReport({ date: "2026-05-01", round: "Series A", amount: "$12M", amountUsd: 12_000_000, sourceUrl: "https://twitter.com/raisingfi/status/2" }),
+      fundingReport({ date: "2026-05-02", round: "Series A", amount: "$12M", amountUsd: 12_000_000, source: "TechCrunch", sourceUrl: "https://techcrunch.com/acme-a" }),
+      fundingReport({ date: "2026-09-20", round: "Series B", amount: "$20M", amountUsd: 20_000_000, sourceUrl: "https://x.com/raisingfi/status/3" }),
+    ]);
+    const seedKey = company.earlier[1].key;
+    const shown = companySignal(company, new Map([
+      [company.latest.key, { name: "Axios", url: "https://www.axios.com/acme-b" }],
+      [seedKey, { name: "Reuters", url: "https://www.reuters.com/acme-seed" }],
+    ]));
+    expect(shown).toMatchObject({ source: "Axios", sourceUrl: "https://www.axios.com/acme-b" });
+    expect(shown.earlier[0]).toMatchObject({ round: "Series A", source: "TechCrunch", sourceUrl: "https://techcrunch.com/acme-a" });
+    expect(shown.earlier[1]).toMatchObject({ round: "Seed", source: "Reuters", sourceUrl: "https://www.reuters.com/acme-seed" });
+
+    const hidden = companySignal(company, new Map([
+      [company.latest.key, { name: "@raisingfi on X", url: "https://x.com/raisingfi/status/9" }],
+      [seedKey, { name: "Wire", url: "https://twitter.com/someone/status/4" }],
+    ]));
+    expect(hidden).toMatchObject({ source: null, sourceUrl: "" });
+    expect(hidden.earlier[0]).toMatchObject({ source: "TechCrunch", sourceUrl: "https://techcrunch.com/acme-a" });
+    expect(hidden.earlier[1]).toMatchObject({ source: null, sourceUrl: "" });
+    expect(JSON.stringify(shown)).not.toMatch(/raisingfi|x\.com|twitter\.com/i);
+    expect(JSON.stringify(hidden)).not.toMatch(/raisingfi|x\.com|twitter\.com/i);
+  });
+});
+
 describe("refreshFundingFeed", () => {
   it("retries missing optional funding columns with core projection", async () => {
     const fetchImpl = vi.fn(async (url: string, init?: RequestInit) => {
@@ -304,8 +350,9 @@ describe("refreshFundingFeed", () => {
     expect(patches[0].body).toMatchObject({ secondary_status: "found", secondary_source: { url: "https://www.axios.com/acme-series-a" } });
     expect(page1).toMatchObject({ count: 2, pages: 1, page: 1, types: { funding: 2 } });
     const [acme, beta] = page1!.signals;
-    expect(acme).toMatchObject({ company: "Acme", raisedAgain: true, sourceUrl: "https://www.axios.com/acme-series-a", metric: { value: "$20M" } });
-    expect(acme.earlier).toEqual([expect.objectContaining({ round: "Seed", value: "$4M", date: "2026-01-10", source: "TechCrunch" })]);
+    expect(acme).toMatchObject({ company: "Acme", raisedAgain: true, source: "axios.com", sourceUrl: "https://www.axios.com/acme-series-a", metric: { value: "$20M" } });
+    expect(acme.earlier).toEqual([expect.objectContaining({ round: "Seed", value: "$4M", date: "2026-01-10", source: "TechCrunch", sourceUrl: "https://techcrunch.com/acme-seed" })]);
+    expect(JSON.stringify(page1)).not.toMatch(/raisingfi|x\.com|twitter\.com/i);
     expect(beta).toMatchObject({ company: "Beta", raisedAgain: false, earlier: [] });
   });
 

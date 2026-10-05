@@ -93,15 +93,31 @@ describe("source choice", () => {
     expect(isRaisingfiSource({ name: "TechCrunch", url: "https://techcrunch.com/a" })).toBe(false);
   });
 
-  it("prefers another report, then a found secondary source, then raisingfi", () => {
+  it("prefers a non-X report, then a non-X secondary, and never raisingfi", () => {
     const [onlyRaisingfi] = buildRounds([report({})]);
     expect(needsSecondarySource(onlyRaisingfi.latest)).toBe(true);
-    expect(displaySource(onlyRaisingfi.latest)?.url).toBe("https://x.com/raisingfi/status/1");
-    expect(displaySource(onlyRaisingfi.latest, { name: "Axios", url: "https://www.axios.com/acme" })?.name).toBe("Axios");
+    expect(displaySource(onlyRaisingfi.latest)).toBeNull();
+    expect(displaySource(onlyRaisingfi.latest, { name: "Axios", url: "https://www.axios.com/acme" })).toEqual({ name: "Axios", url: "https://www.axios.com/acme" });
+    expect(displaySource(onlyRaisingfi.latest, { name: "Still X", url: "https://x.com/other/status/9" })).toBeNull();
+    expect(displaySource(onlyRaisingfi.latest, { name: "Wire", url: "https://twitter.com/someone/status/4" })).toBeNull();
+    expect(displaySource(onlyRaisingfi.latest, { name: "@raisingfi on X", url: "https://www.reuters.com/acme" })).toBeNull();
+    expect(displaySource(onlyRaisingfi.latest, { name: "Leak", url: "https://www.axios.com/acme?api_key=secret" })).toBeNull();
 
     const [withNews] = buildRounds([report({}), report({ date: "2026-03-02", source: "TechCrunch", sourceUrl: "https://techcrunch.com/acme" })]);
     expect(needsSecondarySource(withNews.latest)).toBe(false);
     expect(displaySource(withNews.latest, { name: "Axios", url: "https://www.axios.com/acme" })?.name).toBe("TechCrunch");
-    expect(displaySource(onlyRaisingfi.latest, { name: "Leak", url: "https://www.axios.com/acme?api_key=secret" })?.url).toBe("https://x.com/raisingfi/status/1");
+
+    const [again] = buildRounds([
+      report({ date: "2026-01-10", round: "Seed", amount: "$4M", amountUsd: 4_000_000, sourceUrl: "https://x.com/raisingfi/status/1" }),
+      report({ date: "2026-05-01", round: "Series A", amount: "$12M", amountUsd: 12_000_000, sourceUrl: "https://twitter.com/raisingfi/status/2" }),
+      report({ date: "2026-05-02", round: "Series A", amount: "$12M", amountUsd: 12_000_000, source: "TechCrunch", sourceUrl: "https://techcrunch.com/acme-a" }),
+      report({ date: "2026-09-20", round: "Series B", amount: "$20M", amountUsd: 20_000_000, sourceUrl: "https://x.com/raisingfi/status/3" }),
+    ]);
+    expect(displaySource(again.latest)).toBeNull();
+    expect(displaySource(again.latest, { name: "Axios", url: "https://www.axios.com/acme-b" })?.url).toBe("https://www.axios.com/acme-b");
+    expect(displaySource(again.earlier[0])?.url).toBe("https://techcrunch.com/acme-a");
+    expect(displaySource(again.earlier[1])).toBeNull();
+    expect(displaySource(again.earlier[1], { name: "Reuters", url: "https://www.reuters.com/acme-seed" })?.name).toBe("Reuters");
+    expect(displaySource(again.earlier[1], { name: "Still X", url: "https://x.com/someone/status/9" })).toBeNull();
   });
 });
