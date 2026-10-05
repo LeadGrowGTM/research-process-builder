@@ -35,7 +35,18 @@ describe("discovery production simulation", () => {
     const candidates = [candidate(), candidate("Oldco", "2025/01/01"), { ...candidate("Lowco"), confidence: "low" as const }];
     const rows = await Promise.all(candidates.map((c) => evaluateCandidate(c, SERIES_A_CONFIG)));
     expect(rows.map((r) => r.outcome)).toEqual([outcome, outcome, outcome]);
-    expect(simulateProduction(candidates, rows, "2026-10-05").map((r) => r.stage)).toEqual(["kept", "stale", "low_gate"]);
+    expect(simulateProduction(candidates, rows, "2026-10-05").map((r) => r.stage)).toEqual(["kept", "stale"]);
+  });
+
+  it("skips an early LOW candidate so the next valid candidate uses the enrichment slot", async () => {
+    vi.mocked(fetchUrl).mockResolvedValue(null);
+    const low = { ...candidate("Lowco"), confidence: "low" as const };
+    const valid = candidate("Validco");
+    const rows = await Promise.all([low, valid].map((c) => evaluateCandidate(c, SERIES_A_CONFIG)));
+
+    expect(simulateProduction([low, valid], rows, "2026-10-05", 1)).toEqual([
+      expect.objectContaining({ name: "Validco", stage: "kept", enrichmentOutcome: "fetch_failed" }),
+    ]);
   });
 
   it("retries alternate article sources and still rejects an explicit wrong-round sentinel", async () => {

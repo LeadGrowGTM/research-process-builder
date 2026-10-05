@@ -4,7 +4,7 @@
  * cached on disk so re-scoring a query set costs no requests.
  *
  *   lg run --env prod -- npx tsx trigger/scripts/discovery-eval.ts --round a [--days 1] [--pool]
- *     [--num 50] [--enrich 999] [--max-enrich 100] [--pre-drop-low] [--cache <dir>] [--out <file.json>]
+ *     [--num 50] [--enrich 999] [--max-enrich 100] [--cache <dir>] [--out <file.json>]
  *
  * Search and LLM keys come from gtm-orchestrator, Supabase from this project: run an outer
  * `lg run --env prod` in pipelines/gtm-orchestrator around an inner one in this repo.
@@ -136,9 +136,9 @@ export async function evaluateCandidate(c: Candidate, rc: RoundConfig): Promise<
     date: ex?.funding_date, url, candidateUrl: c.best_source_url, by };
 }
 
-export function simulateProduction(candidates: Candidate[], enriched: EvaluatedCandidate[], runDate: string, maxEnrich = DEFAULT_MAX_ENRICH, preDropLow = false) {
+export function simulateProduction(candidates: Candidate[], enriched: EvaluatedCandidate[], runDate: string, maxEnrich = DEFAULT_MAX_ENRICH) {
   const byKey = new Map(enriched.map((e) => [`${e.candidateUrl ?? e.url}|${e.name}`, e]));
-  const pool = preDropLow ? candidates.filter((c) => c.confidence !== "low") : candidates;
+  const pool = candidates.filter((c) => c.confidence !== "low");
   return pool.map((c, i) => {
     const e = byKey.get(`${c.best_source_url}|${c.company_name}`);
     let stage = i >= maxEnrich ? "cap" : c.confidence === "low" ? "low_gate" : e?.outcome ?? "not_enriched";
@@ -254,13 +254,12 @@ async function main(): Promise<void> {
     report.greedy = chosen;
 
     // What the scheduled task would ship from the configured queries: top maxEnrich fresh
-    // candidates by score, low-confidence dropped after enrichment, extraction rejects dropped,
+    // candidates by score, low-confidence dropped before enrichment, extraction rejects dropped,
     // then the production confidence and freshness gates. Semantic domain validation is not run,
     // so a candidate it would demote to LOW still counts as shipped here.
     const runDate = new Date().toISOString().slice(0, 10);
     const maxEnrich = Number(arg("max-enrich") ?? DEFAULT_MAX_ENRICH);
-    // --pre-drop-low models the pipeline skipping LOW candidates before the cap (current code).
-    const sim = simulateProduction(base.fresh, enriched, runDate, maxEnrich, process.argv.includes("--pre-drop-low"));
+    const sim = simulateProduction(base.fresh, enriched, runDate, maxEnrich);
     const count = (st: string) => sim.filter((x) => x.stage === st).length;
     const misses = sim.filter((x) => x.enrichmentOutcome === "fetch_failed" || x.enrichmentOutcome === "extract_failed").length;
     console.log(`production sim (configured, maxEnrich ${maxEnrich}): candidates ${base.s.candidates} known ${base.s.known} fresh ${base.fresh.length} cap ${count("cap")} low_gate ${count("low_gate")} not_this_round ${count("not_this_round")} stale ${count("stale")} fetch/extract_failed ${misses} shipped ${count("kept")} (distinct ${new Set(sim.filter((x) => x.stage === "kept").map((x) => x.key)).size}) genuine distinct ${new Set(sim.filter((x) => x.genuine).map((x) => x.key)).size}`);
