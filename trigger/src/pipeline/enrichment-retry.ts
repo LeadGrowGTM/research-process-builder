@@ -107,7 +107,7 @@ export async function runEnrichmentRetryPass(): Promise<{
     for (const row of rows) {
       // Free waterfall first (lg-free + Blitz) - day-0 may have missed on a
       // transient failure, or the company's LinkedIn page appeared since.
-      const free = await enrichDomainWaterfall(t.table, {
+      const { hit: free } = await enrichDomainWaterfall(t.table, {
         companyName: row.company_name,
         domain: row.domain,
         sourceUrl: row.source_url,

@@ -258,11 +258,10 @@ async function knownPhUrls(urls: string[], deadlineAt: number): Promise<Set<stri
   }
 }
 
-async function stage1Fetch(dateStr: string, onlyNew: boolean, deadlineAt: number, todayUrls: Set<string>): Promise<PhProduct[]> {
+async function stage1Fetch(dateStr: string, onlyNew: boolean, deadlineAt: number, persistedUrls: Set<string>): Promise<PhProduct[]> {
   logger.info("Stage 1: fetching PH leaderboard", { url: buildPhUrl(dateStr), onlyNew });
 
   const products = await fetchLeaderboard(dateStr, deadlineAt - persistenceReserveMs(0) - CLASSIFY_RESERVE_MS);
-  if (!onlyNew) for (const product of products) todayUrls.add(product.ph_url);
   if (products.length === 0) {
     logger.warn("No products from leaderboard", { dateStr });
     return [];
@@ -276,7 +275,7 @@ async function stage1Fetch(dateStr: string, onlyNew: boolean, deadlineAt: number
   }
 
   if (onlyNew) {
-    filtered = filtered.filter((p) => !todayUrls.has(p.ph_url));
+    filtered = filtered.filter((p) => !persistedUrls.has(p.ph_url));
     const known = await knownPhUrls(filtered.map((p) => p.ph_url), deadlineAt - persistenceReserveMs(filtered.length) - CLASSIFY_RESERVE_MS);
     if (known === null) throw new Error("Stored PH URL lookup failed; previous-day pass skipped");
     filtered = filtered.filter((p) => !known.has(p.ph_url));
@@ -570,7 +569,7 @@ function toSupabaseRow(product: ClassifiedProduct, dateStr: string): Record<stri
   };
 }
 
-async function stage3Push(products: ClassifiedProduct[], dateStr: string, deadlineAt: number): Promise<number> {
+async function stage3Push(products: ClassifiedProduct[], dateStr: string, deadlineAt: number, persistedUrls: Set<string>): Promise<number> {
   if (!SUPABASE_URL || !SUPABASE_KEY) {
     logger.warn("Supabase not configured -- skipping push");
     return 0;
@@ -601,6 +600,7 @@ async function stage3Push(products: ClassifiedProduct[], dateStr: string, deadli
       );
       if (resp.ok) {
         upserted += batch.length;
+        for (const row of batch) persistedUrls.add(row.source_url as string);
       } else {
         const errText = await resp.text().catch(() => "");
         logger.error("Supabase upsert failed", {
@@ -676,10 +676,10 @@ export async function runPhLaunchPipeline(options: {
   const previousDate = new Date(`${dateStr}T12:00:00Z`);
   previousDate.setUTCDate(previousDate.getUTCDate() - 1);
 
-  const todayUrls = new Set<string>();
-  const today = await processLeaderboard(dateStr, false, deadlineAt, todayUrls);
+  const persistedUrls = new Set<string>();
+  const today = await processLeaderboard(dateStr, false, deadlineAt, persistedUrls);
   const previous = hasTime(deadlineAt, PREVIOUS_DAY_MIN_REMAINING_MS)
-    ? await processLeaderboard(previousDate.toISOString().slice(0, 10), true, deadlineAt, todayUrls)
+    ? await processLeaderboard(previousDate.toISOString().slice(0, 10), true, deadlineAt, persistedUrls)
     : { raw: 0, classified: 0, upserted: 0, enriched: 0 };
 
   const durationMs = Date.now() - start;
@@ -700,18 +700,18 @@ export async function runPhLaunchPipeline(options: {
 // Task maxDuration is 600s; skip the previous-day pass if today's took too long to finish it safely.
 const PREVIOUS_DAY_MIN_REMAINING_MS = 300_000;
 
-async function processLeaderboard(dateStr: string, onlyNew: boolean, deadlineAt: number, todayUrls: Set<string>) {
+async function processLeaderboard(dateStr: string, onlyNew: boolean, deadlineAt: number, persistedUrls: Set<string>) {
   let raw = 0;
   let classified = 0;
   let upserted = 0;
   let enriched = 0;
   try {
-    const rawProducts = await stage1Fetch(dateStr, onlyNew, deadlineAt, todayUrls);
+    const rawProducts = await stage1Fetch(dateStr, onlyNew, deadlineAt, persistedUrls);
     raw = rawProducts.length;
     if (raw > 0) {
       const products = await stage2Classify(rawProducts, deadlineAt - persistenceReserveMs(raw));
       classified = products.length;
-      upserted = await stage3Push(products, dateStr, deadlineAt);
+      upserted = await stage3Push(products, dateStr, deadlineAt, persistedUrls);
       enriched = await stage4Enrich(products, deadlineAt);
     }
     logger.info("PH leaderboard day complete", { dateStr, status: "complete", raw, classified, upserted, enriched });

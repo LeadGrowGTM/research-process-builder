@@ -31,6 +31,7 @@ import { blitzConfigured, blitzEnrichDomain, blitzEnrichLinkedin } from "./blitz
 import type { BlitzCompany } from "./blitz.js";
 import {
   day0BlitzEnrich,
+  emptyFieldCoverage,
   enrichDomainWaterfall,
   fundingPatchFromBlitz,
   fundingPatchFromLg,
@@ -163,7 +164,8 @@ describe("firmographic waterfall", () => {
     });
     vi.mocked(blitzEnrichLinkedin).mockResolvedValue({ employees_on_linkedin: 9, name: "Acme" });
 
-    const hit = await enrichDomainWaterfall("funding_discoveries", target, "acme.com");
+    const { hit, attempted } = await enrichDomainWaterfall("funding_discoveries", target, "acme.com");
+    expect(attempted).toBe(true);
     expect(hit?.provider).toBe("lgenrich+blitz");
     expect(hit?.patch.employee_count).toBe(9);
     expect(hit?.present).toContain("headcount");
@@ -180,7 +182,7 @@ describe("firmographic waterfall", () => {
       firmographics: emptyFirm({ employee_count: 4, description: "Acme makes payment software." }),
     });
 
-    const hit = await enrichDomainWaterfall("funding_discoveries", target, "acme.com");
+    const { hit } = await enrichDomainWaterfall("funding_discoveries", target, "acme.com");
     expect(hit?.provider).toBe("lgenrich");
     expect(hit?.patch.employee_count).toBe(4);
     expect(blitzEnrichLinkedin).not.toHaveBeenCalled();
@@ -194,9 +196,9 @@ describe("firmographic waterfall", () => {
       firmographics: emptyFirm({ description: "unknown" }),
     });
 
-    const funding = await enrichDomainWaterfall("funding_discoveries", target, "acme.com");
+    const { hit: funding } = await enrichDomainWaterfall("funding_discoveries", target, "acme.com");
     expect(funding?.patch).toEqual({ linkedin_url: "https://www.linkedin.com/company/acme" });
-    expect(await enrichDomainWaterfall("product_launches", target, "acme.com")).toBeNull();
+    expect(await enrichDomainWaterfall("product_launches", target, "acme.com")).toEqual({ attempted: true, hit: null });
   });
 
   it("drops a person profile instead of storing it as the company", async () => {
@@ -207,7 +209,7 @@ describe("firmographic waterfall", () => {
       firmographics: emptyFirm({ description: "unknown" }),
     });
 
-    expect(await enrichDomainWaterfall("funding_discoveries", target, "acme.com")).toBeNull();
+    expect(await enrichDomainWaterfall("funding_discoveries", target, "acme.com")).toEqual({ attempted: true, hit: null });
     expect(blitzEnrichLinkedin).not.toHaveBeenCalled();
   });
 
@@ -218,12 +220,25 @@ describe("firmographic waterfall", () => {
       company: { name: "Other Labs", employees_on_linkedin: 12 },
     });
 
-    expect(await enrichDomainWaterfall("funding_discoveries", target, "acme.com")).toBeNull();
+    expect(await enrichDomainWaterfall("funding_discoveries", target, "acme.com")).toEqual({ attempted: true, hit: null });
     expect(patchRowBySourceUrl).not.toHaveBeenCalled();
   });
 });
 
 describe("day0 coverage", () => {
+  it("reports zero attempts and omissions when the remaining budget prevents every provider call", async () => {
+    vi.useFakeTimers();
+    vi.mocked(lgenrichConfigured).mockReturnValue(true);
+    vi.mocked(blitzConfigured).mockReturnValue(true);
+    const out = await day0BlitzEnrich("product_launches", [target], Date.now() + 104_999);
+    expect(out).toMatchObject({ attempted: 0, enriched: 0, providers: "available" });
+    expect(out.coverage).toEqual(emptyFieldCoverage());
+    expect(lgenrichDomain).not.toHaveBeenCalled();
+    expect(blitzEnrichDomain).not.toHaveBeenCalled();
+    expect(blitzEnrichLinkedin).not.toHaveBeenCalled();
+    expect(patchRowBySourceUrl).not.toHaveBeenCalled();
+  });
+
   it("does not start enrichment when the deadline cannot fit a provider and its patch", async () => {
     vi.useFakeTimers();
     vi.mocked(lgenrichConfigured).mockReturnValue(true);

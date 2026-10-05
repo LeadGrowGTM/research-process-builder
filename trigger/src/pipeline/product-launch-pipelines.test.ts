@@ -137,6 +137,71 @@ describe("runPhLaunchPipeline", () => {
     ]);
   });
 
+  it.each(["null", "throw"])("recovers an overlapping launch from the previous day when today's classification fails with %s", async (failure) => {
+    setupPh([product("Today")], [product("Today")]);
+    const normalLuna = mocks.lunaJson.getMockImplementation()!;
+    let classificationCalls = 0;
+    mocks.lunaJson.mockImplementation(async (options) => {
+      if (options.name === "ph_classification" && classificationCalls++ === 0) {
+        if (failure === "throw") throw new Error("Luna unavailable");
+        return null;
+      }
+      return normalLuna(options);
+    });
+    const { writes } = setupFetch();
+    const { runPhLaunchPipeline } = await import("./product-launches-ph.js");
+    const result = await finish(runPhLaunchPipeline({ date: DATE }));
+    expect(result.launchCount).toBe(1);
+    expect(classificationCalls).toBe(2);
+    expect(writes.flat().map((row) => [row.source_url, row.discovered_date])).toEqual([
+      [product("Today").ph_url, PREVIOUS_DATE],
+    ]);
+  });
+
+  it.each(["http", "transport"])("recovers an overlapping launch after a %s write batch failure and deduplicates the successful batch", async (failure) => {
+    setupPh([
+      product("Today"),
+      ...Array.from({ length: 49 }, (_, i) => product(`Other${i}`, i + 2)),
+      product("Persisted", 51),
+    ], [product("Today"), product("Persisted", 2)]);
+    const { writes, fetchMock } = setupFetch();
+    const normalFetch = fetchMock.getMockImplementation()!;
+    const batches: Array<Array<Record<string, unknown>>> = [];
+    fetchMock.mockImplementation(async (input, init) => {
+      if (init?.method === "POST") {
+        batches.push(JSON.parse(String(init.body)));
+        if (batches.length === 1) {
+          if (failure === "transport") throw new Error("write unavailable");
+          return json({}, 503);
+        }
+      }
+      return normalFetch(input, init);
+    });
+    const { runPhLaunchPipeline } = await import("./product-launches-ph.js");
+    const result = await finish(runPhLaunchPipeline({ date: DATE }));
+    expect(result.launchCount).toBe(2);
+    expect(batches.map((batch) => batch.length)).toEqual([50, 1, 1]);
+    expect(writes.flat().map((row) => [row.source_url, row.discovered_date])).toEqual([
+      [product("Persisted").ph_url, DATE], [product("Today").ph_url, PREVIOUS_DATE],
+    ]);
+    const classifications = mocks.lunaJson.mock.calls.filter(([opts]) => opts.name === "ph_classification");
+    expect(classifications).toHaveLength(2);
+    expect(classifications[1][0].userPrompt).toContain("product_name=Today");
+    expect(classifications[1][0].userPrompt).not.toContain("product_name=Persisted");
+  });
+
+  it("recovers an overlapping launch filtered by today's low score when the previous day meets the floor", async () => {
+    setupPh([{ ...product("Today"), score: 4 }], [product("Today")]);
+    const { writes } = setupFetch();
+    const { runPhLaunchPipeline } = await import("./product-launches-ph.js");
+    const result = await finish(runPhLaunchPipeline({ date: DATE }));
+    expect(result.launchCount).toBe(1);
+    expect(writes.flat()).toEqual([
+      expect.objectContaining({ source_url: product("Today").ph_url, discovered_date: PREVIOUS_DATE, score: 50 }),
+    ]);
+    expect(mocks.lunaJson.mock.calls.filter(([opts]) => opts.name === "ph_classification")).toHaveLength(1);
+  });
+
   it.each(["http", "transport", "invalid-json"])("skips the previous-day pass on a %s stored lookup failure", async (failure) => {
     setupPh();
     const { writes, fetchMock } = setupFetch();
