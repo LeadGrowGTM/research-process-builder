@@ -456,7 +456,9 @@ describe("runNewsLaunchPipeline", () => {
       return init?.method === "POST" && writes.length === 1 ? json({}, 503) : response;
     });
     const { runNewsLaunchPipeline } = await import("./product-launches-news.js");
-    await finish(runNewsLaunchPipeline({ date: DATE, skipSerper: true }));
+    const result = await finish(runNewsLaunchPipeline({ date: DATE, skipSerper: true }));
+    expect(result.launchCount).toBe(76);
+    expect(result.stats.afterClassify).toBe(126);
     expect(writes.map((rows) => rows.length)).toEqual([50, 50, 26]);
     expect(mocks.logger.info).toHaveBeenCalledWith("Stage 3: pushed 76 rows to product_launches");
   });

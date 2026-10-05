@@ -619,12 +619,12 @@ export async function runNewsLaunchPipeline(options: {
   logger.info(`Stage 3: pushed ${pushed} rows to ${TABLE}`);
 
   const durationMs = Date.now() - startMs;
-  logger.info("News launch pipeline complete", { launchCount: launches.length, pushed, durationMs });
+  logger.info("News launch pipeline complete", { launchCount: pushed, pushed, durationMs });
 
   return {
     date,
     source: "news",
-    launchCount: launches.length,
+    launchCount: pushed,
     stats: {
       rawResults: rawResults.length,
       afterClassify: launches.length,
