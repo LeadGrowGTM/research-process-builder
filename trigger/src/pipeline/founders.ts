@@ -71,10 +71,14 @@ export interface ProviderFetchResult {
   failure: ProviderFailure | null;
 }
 
-export async function fetchProvider(url: string, init?: RequestInit, budget?: CostRecorder): Promise<ProviderFetchResult> {
+export async function fetchProvider(url: string, init?: RequestInit, budget?: CostRecorder, beforeAttempt?: () => Promise<void>): Promise<ProviderFetchResult> {
   let transientRetried = false;
   for (let attempt = 0; attempt < 3; attempt++) {
     if (init?.signal?.aborted || (budget?.deadlineAt !== undefined && Date.now() >= budget.deadlineAt) || (budget?.remainingCalls !== undefined && budget.remainingCalls <= 0)) {
+      return { res: null, failure: "exhausted" };
+    }
+    await beforeAttempt?.();
+    if (init?.signal?.aborted || (budget?.deadlineAt !== undefined && Date.now() >= budget.deadlineAt)) {
       return { res: null, failure: "exhausted" };
     }
     if (budget?.allowCall && !budget.allowCall()) return { res: null, failure: "exhausted" };

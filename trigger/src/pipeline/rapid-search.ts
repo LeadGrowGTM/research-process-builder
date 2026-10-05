@@ -9,8 +9,7 @@ const GOOGLE_URL = "https://google-search74.p.rapidapi.com/";
 const GOOGLE_HOST = "google-search74.p.rapidapi.com";
 // Fallback: treg's Google SERP route, ~$0.0009 a call. Brave on RapidAPI was dropped: it answers 200 with an empty list.
 const TREG_URL = "https://treg.to/call/treg.google.serp.organic";
-// google-search74 allows 5 requests a second and the key is shared with Smart Enrich, so Google
-// calls from one process start at least GOOGLE_SPACING_MS apart.
+// In-process only: every HTTP attempt takes a slot; cross-repo coordination is out of scope.
 export const GOOGLE_SPACING_MS = 250;
 let googleQueue: Promise<void> = Promise.resolve();
 
@@ -48,12 +47,11 @@ export async function webSearch(query: string, options: WebSearchOptions): Promi
   const q = `${query}${after ? ` after:${after}` : ""}`;
   const googleParams = new URLSearchParams({ query: q, limit: String(limit), related_keywords: "false" });
   try {
-    await googleSlot();
     const { res } = await fetchProvider(`${GOOGLE_URL}?${googleParams}`, {
       method: "GET",
       headers: { "x-rapidapi-key": options.apiKey, "x-rapidapi-host": GOOGLE_HOST },
       signal: AbortSignal.timeout(15_000),
-    });
+    }, undefined, googleSlot);
     if (res?.ok) {
       const body = await res.json().catch(() => null) as { results?: unknown } | null;
       if (body && Array.isArray(body.results)) return { results: mapResults(body.results, "url", "description"), provider: "google" };

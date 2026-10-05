@@ -27,6 +27,41 @@ describe("webSearch", () => {
     await vi.runAllTimersAsync(); // drain the queue so later real-timer tests do not wait on a fake timer
   });
 
+  it.each([429, 503])("spaces every HTTP attempt when concurrent calls first return %i", async (status) => {
+    vi.useFakeTimers();
+    const timestamps: number[] = [];
+    const attempts = new Map<string, number>();
+    vi.stubGlobal("fetch", vi.fn(async (url: string | URL) => {
+      const query = new URL(String(url)).searchParams.get("query")!;
+      timestamps.push(Date.now());
+      const attempt = (attempts.get(query) ?? 0) + 1;
+      attempts.set(query, attempt);
+      return attempt === 1 ? json({}, status) : json({ results: [] });
+    }));
+    const calls = ["a", "b", "c", "d"].map((q) => webSearch(q, { limit: 5, apiKey: "key", fallback: false }));
+    await vi.runAllTimersAsync();
+    await Promise.all(calls);
+    expect(timestamps).toHaveLength(status === 503 ? 8 : 4);
+    for (let i = 1; i < timestamps.length; i++) expect(timestamps[i] - timestamps[i - 1]).toBeGreaterThanOrEqual(250);
+  });
+
+  it("releases the queue after rejected and aborted attempts", async () => {
+    vi.useFakeTimers();
+    const timestamps: number[] = [];
+    vi.stubGlobal("fetch", vi.fn(async (url: string | URL) => {
+      timestamps.push(Date.now());
+      if (new URL(String(url)).searchParams.get("query") === "bad") throw new DOMException("Aborted", "AbortError");
+      return json({ results: [] });
+    }));
+    const bad = webSearch("bad", { limit: 5, apiKey: "key", fallback: false });
+    const good = webSearch("good", { limit: 5, apiKey: "key", fallback: false });
+    await vi.runAllTimersAsync();
+    expect(await bad).toBeUndefined();
+    expect(await good).toEqual({ results: [], provider: "google" });
+    expect(timestamps).toHaveLength(3);
+    for (let i = 1; i < timestamps.length; i++) expect(timestamps[i] - timestamps[i - 1]).toBeGreaterThanOrEqual(250);
+  });
+
   it("returns Google results", async () => {
     vi.stubGlobal("fetch", vi.fn(async (_url: string | URL) => json({ results: [{ url: "https://a.test", title: "A", description: "desc" }] })));
     expect(await webSearch("hello", { limit: 5, apiKey: "key" })).toEqual({ results: [{ url: "https://a.test", title: "A", snippet: "desc" }], provider: "google" });

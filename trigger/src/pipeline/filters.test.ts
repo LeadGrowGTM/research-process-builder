@@ -17,12 +17,17 @@ describe("scoreAndFilter company names", () => {
     expect(nameOf("Exclusive: Danish legal research startup Pandektes raises €13.5M Series A")).toEqual(["Pandektes"]);
     expect(nameOf("Mumbai-based lending-tech startup Rezolv has raised $12.5 million in Series A")).toEqual(["Rezolv"]);
     expect(nameOf("Singapore fintech firm IPID raises $16M Series A")).toEqual(["IPID"]);
-    expect(nameOf("Chilean Legal AI Platform Magnar secures $8M in Series A funding")).toEqual(["Magnar"]);
+    expect(nameOf("chilean Legal AI Platform Magnar secures $8M in Series A funding")).toEqual(["Magnar"]);
+    expect(nameOf("AI security startup Foo raises $20M Series A")).toEqual(["Foo"]);
+    expect(nameOf("a Legal AI Platform Magnar secures $8M in Series A funding")).toEqual(["Magnar"]);
   });
 
   it("keeps names that contain a descriptor word", () => {
     expect(nameOf("The Company Store raises $20M Series A")).toEqual(["The Company Store"]);
     expect(nameOf("Open Platform Labs raises $15M Series A")).toEqual(["Open Platform Labs"]);
+    expect(nameOf("Open Data Platform Labs raises $20M Series A")).toEqual(["Open Data Platform Labs"]);
+    expect(nameOf("Startup Genome raises $20M Series A")).toEqual(["Startup Genome"]);
+    expect(nameOf("Chilean Legal AI Platform Magnar secures $8M in Series A funding")).toEqual(["Chilean Legal AI Platform Magnar"]);
   });
 });
 

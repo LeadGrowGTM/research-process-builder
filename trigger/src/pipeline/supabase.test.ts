@@ -72,4 +72,32 @@ describe("funding storage failures", () => {
     fetchMock.mockResolvedValueOnce(new Response("[]")).mockResolvedValueOnce(new Response("[]")).mockResolvedValueOnce(new Response("failed", { status: 500 }));
     await expect(pushToSupabase([record()], "2026-09-30", "funding_discoveries")).rejects.toThrow("funding write failed");
   });
+
+  it("preserves the confirmed count when a later funding write fails", async () => {
+    const { pushToSupabase } = await storage();
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response("[]"))
+      .mockResolvedValueOnce(new Response("", { status: 201 }))
+      .mockResolvedValueOnce(new Response("[]"))
+      .mockResolvedValueOnce(new Response("failed", { status: 500 }));
+    vi.stubGlobal("fetch", fetchMock);
+    const rows = [record({ company_domain: "not_enriched" }), record({ company_name: "Other", company_domain: "not_enriched", source_url: "https://news.test/other" })];
+    const onUpsert = vi.fn();
+    await expect(pushToSupabase(rows, "2026-09-30", "funding_discoveries", undefined, onUpsert)).rejects.toMatchObject({ upserted: 1 });
+    expect(onUpsert).toHaveBeenCalledExactlyOnceWith(1);
+  });
+
+  it("starts no funding write after its caller aborts during a read", async () => {
+    const { pushToSupabase } = await storage();
+    const controller = new AbortController();
+    const fetchMock = vi.fn(async (_url: string, init: RequestInit) => {
+      expect(init.signal?.aborted).toBe(false);
+      controller.abort();
+      return new Response("[]");
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    await expect(pushToSupabase([record({ company_domain: "not_enriched" })], "2026-09-30", "funding_discoveries", controller.signal)).rejects.toThrow("funding write failed");
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock.mock.calls[0][1].signal?.aborted).toBe(true);
+  });
 });

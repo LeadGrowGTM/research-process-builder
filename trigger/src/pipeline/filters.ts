@@ -88,7 +88,7 @@ function areFuzzyMatch(a: string, b: string): boolean {
 
 const RAISE_VERB = /^(?:has\s+)?(?:raises?|raised|secures?|secured|closes?|closed|lands?|landed|nabs?|bags?|gets?|receives?|completes?)\b/i;
 const PLACE_BASED_PREFIX = /^\S+-based\s+(?:\S+\s+){0,4}?(?:startup|start-up|firm|company|platform)\s+/i;
-const DESCRIPTOR_PREFIX = /^(?:\S+\s+){2,5}?(?:startup|start-up|firm|platform)\s+/i;
+const DESCRIPTOR_PREFIX = /^(?:\S+\s+){1,5}?(?:startup|start-up|firm|platform|company)\s+/i;
 
 /** True when text starts with a capitalized name of 1-4 words followed by a raise verb. */
 function startsWithNameThenRaise(text: string): boolean {
@@ -103,15 +103,20 @@ function startsWithNameThenRaise(text: string): boolean {
 /**
  * Removes editorial lead-ins so the title starts at the company name:
  * "Exclusive: ...", "Mumbai-based lending-tech startup Rezolv ...", and
- * "Singapore fintech firm IPID raises ...". A descriptor needs two words in front of it and a
- * raise verb after the name, so names like "The Company Store" or "Open Platform Labs" survive.
+ * "Singapore fintech firm IPID raises ...". Lowercase descriptors (after an optional place or
+ * acronym), or a lowercase lead-in, distinguish editorial prose from capitalized proper names.
  */
 export function stripEditorialPrefix(title: string): string {
   const t = title.replace(/^exclusive:\s*/i, "");
   const based = t.match(PLACE_BASED_PREFIX);
   if (based && /^[A-Z]/.test(t.slice(based[0].length))) return t.slice(based[0].length);
   const descriptor = t.match(DESCRIPTOR_PREFIX);
-  if (descriptor && startsWithNameThenRaise(t.slice(descriptor[0].length))) return t.slice(descriptor[0].length);
+  if (descriptor) {
+    const words = descriptor[0].trim().split(/\s+/);
+    const lowercaseRun = words.slice(1).every((word) => word === word.toLowerCase());
+    const lowercaseLead = /^[a-z]/.test(words[0]);
+    if ((lowercaseRun || lowercaseLead) && startsWithNameThenRaise(t.slice(descriptor[0].length))) return t.slice(descriptor[0].length);
+  }
   return t;
 }
 

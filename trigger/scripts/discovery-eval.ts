@@ -16,7 +16,8 @@
 import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 import { webSearch } from "../src/pipeline/rapid-search.js";
 import { normalizeCompanyName, scoreAndFilter } from "../src/pipeline/filters.js";
 import { getRecentCompanyNames } from "../src/pipeline/supabase.js";
@@ -113,6 +114,45 @@ async function pmap<T, R>(items: T[], n: number, fn: (t: T) => Promise<R>): Prom
 }
 
 type Summary = { requests: number; raw: number; uniqueUrls: number; candidates: number; known: number; fresh: number; freshNonLow: number; names: string[] };
+export type EvaluatedCandidate = { name: string; outcome: string; extractedName?: string; round?: string | null; amount?: string | null; date?: string | null; url: string; candidateUrl?: string; by: string[]; genuine?: boolean };
+
+// The daily tasks do not export their cap; all three currently use 100.
+export const DEFAULT_MAX_ENRICH = 100;
+
+export async function evaluateCandidate(c: Candidate, rc: RoundConfig): Promise<EvaluatedCandidate> {
+  const by = [...new Set(c.sources.map((s) => s.query_source))];
+  let url = c.best_source_url;
+  let text = url ? await fetchUrl(url) : null;
+  if (!text && url) {
+    for (const source of c.sources) {
+      if (source.url === url) continue;
+      text = await fetchUrl(source.url);
+      if (text) { url = source.url; break; }
+    }
+  }
+  const ex = text ? await extractWithOpenAI(text, c.company_name, c.amount ?? "", rc) : null;
+  const outcome = !text ? "fetch_failed" : !ex ? "extract_failed" : ex.company_name === rc.notRoundSentinel ? "not_this_round" : "kept";
+  return { name: c.company_name, outcome, extractedName: ex?.company_name, round: ex?.round_type, amount: ex?.amount_raised,
+    date: ex?.funding_date, url, candidateUrl: c.best_source_url, by };
+}
+
+export function simulateProduction(candidates: Candidate[], enriched: EvaluatedCandidate[], runDate: string, maxEnrich = DEFAULT_MAX_ENRICH, preDropLow = false) {
+  const byKey = new Map(enriched.map((e) => [`${e.candidateUrl ?? e.url}|${e.name}`, e]));
+  const pool = preDropLow ? candidates.filter((c) => c.confidence !== "low") : candidates;
+  return pool.map((c, i) => {
+    const e = byKey.get(`${c.best_source_url}|${c.company_name}`);
+    let stage = i >= maxEnrich ? "cap" : c.confidence === "low" ? "low_gate" : e?.outcome ?? "not_enriched";
+    // Production retains fetch/extract misses as fallback records; only the sentinel rejects.
+    if (stage === "fetch_failed" || stage === "extract_failed") stage = "kept";
+    if (stage === "kept" && e) {
+      const gated = applyOutputGates([{ confidence: c.confidence, funding_date: resolveFundingDate(e.date, e.url) }], runDate);
+      if (gated.stale.length) stage = "stale";
+      else if (gated.dropped.length) stage = "low_gate";
+    }
+    return { name: c.company_name, stage, enrichmentOutcome: e?.outcome, genuine: !!e?.genuine && stage === "kept",
+      key: normalizeCompanyName(e?.extractedName ?? c.company_name), reasons: c.confidenceReasons };
+  });
+}
 
 function summarize(rc: RoundConfig, fetched: Fetched[], ids: Set<string>, known: Set<string>): { s: Summary; fresh: Candidate[] } {
   const raw = fetched.filter((f) => ids.has(f.queryId)).flatMap((f) => f.results);
@@ -176,21 +216,13 @@ async function main(): Promise<void> {
 
   const enrichN = Number(arg("enrich") ?? "0");
   if (enrichN > 0) {
-    type Enriched = { name: string; outcome: string; extractedName?: string; round?: string | null; amount?: string | null; date?: string | null; url: string; by: string[]; genuine?: boolean };
     const seen = new Set<string>();
     const targets = [...union.fresh, ...base.fresh].filter((c) => c.confidence !== "low" && !seen.has(`${c.best_source_url}|${c.company_name}`) && !!seen.add(`${c.best_source_url}|${c.company_name}`)).slice(0, enrichN);
-    const enriched: Enriched[] = await pmap(targets, 5, async (c) => {
+    const enriched: EvaluatedCandidate[] = await pmap(targets, 5, async (c) => {
       const by = [...new Set(c.sources.map((s) => s.query_source))];
       const file = join(cacheDir, `enrich-${createHash("sha1").update(`${rc.roundType}|${c.best_source_url}|${c.company_name}`).digest("hex")}.json`);
       if (existsSync(file)) return { ...JSON.parse(readFileSync(file, "utf8")), by };
-      const text = await fetchUrl(c.best_source_url);
-      let row: Enriched;
-      if (!text) row = { name: c.company_name, outcome: "fetch_failed", url: c.best_source_url, by };
-      else {
-        const ex = await extractWithOpenAI(text, c.company_name, c.amount ?? "", rc);
-        const outcome = !ex ? "extract_failed" : ex.company_name === rc.notRoundSentinel ? "not_this_round" : "kept";
-        row = { name: c.company_name, outcome, extractedName: ex?.company_name, round: ex?.round_type, amount: ex?.amount_raised, date: ex?.funding_date, url: c.best_source_url, by };
-      }
+      const row = await evaluateCandidate(c, rc);
       writeFileSync(file, JSON.stringify(row));
       return row;
     });
@@ -226,22 +258,12 @@ async function main(): Promise<void> {
     // then the production confidence and freshness gates. Semantic domain validation is not run,
     // so a candidate it would demote to LOW still counts as shipped here.
     const runDate = new Date().toISOString().slice(0, 10);
-    const maxEnrich = Number(arg("max-enrich") ?? "20");
-    const byKey = new Map(enriched.map((e) => [`${e.url}|${e.name}`, e]));
+    const maxEnrich = Number(arg("max-enrich") ?? DEFAULT_MAX_ENRICH);
     // --pre-drop-low models the pipeline skipping LOW candidates before the cap (current code).
-    const pool = process.argv.includes("--pre-drop-low") ? base.fresh.filter((c) => c.confidence !== "low") : base.fresh;
-    const sim = pool.map((c, i) => {
-      const e = byKey.get(`${c.best_source_url}|${c.company_name}`);
-      let stage = i >= maxEnrich ? "cap" : c.confidence === "low" ? "low_gate" : e?.outcome ?? "not_enriched";
-      if (stage === "kept" && e) {
-        const gated = applyOutputGates([{ confidence: c.confidence, funding_date: resolveFundingDate(e.date, e.url) }], runDate);
-        if (gated.stale.length) stage = "stale";
-        else if (gated.dropped.length) stage = "low_gate";
-      }
-      return { name: c.company_name, stage, genuine: !!e?.genuine && stage === "kept", key: normalizeCompanyName(e?.extractedName ?? c.company_name), reasons: c.confidenceReasons };
-    });
+    const sim = simulateProduction(base.fresh, enriched, runDate, maxEnrich, process.argv.includes("--pre-drop-low"));
     const count = (st: string) => sim.filter((x) => x.stage === st).length;
-    console.log(`production sim (configured, maxEnrich ${maxEnrich}): candidates ${base.s.candidates} known ${base.s.known} fresh ${base.fresh.length} cap ${count("cap")} low_gate ${count("low_gate")} not_this_round ${count("not_this_round")} stale ${count("stale")} fetch/extract_failed ${count("fetch_failed") + count("extract_failed")} shipped ${count("kept")} (distinct ${new Set(sim.filter((x) => x.stage === "kept").map((x) => x.key)).size}) genuine distinct ${new Set(sim.filter((x) => x.genuine).map((x) => x.key)).size}`);
+    const misses = sim.filter((x) => x.enrichmentOutcome === "fetch_failed" || x.enrichmentOutcome === "extract_failed").length;
+    console.log(`production sim (configured, maxEnrich ${maxEnrich}): candidates ${base.s.candidates} known ${base.s.known} fresh ${base.fresh.length} cap ${count("cap")} low_gate ${count("low_gate")} not_this_round ${count("not_this_round")} stale ${count("stale")} fetch/extract_failed ${misses} shipped ${count("kept")} (distinct ${new Set(sim.filter((x) => x.stage === "kept").map((x) => x.key)).size}) genuine distinct ${new Set(sim.filter((x) => x.genuine).map((x) => x.key)).size}`);
     for (const x of sim) console.log(`    ${x.stage} ${x.genuine ? "Y" : "-"} ${x.name}${x.stage === "low_gate" ? ` (${x.reasons?.join("; ")})` : ""}`);
     report.sim = sim;
   }
@@ -250,7 +272,7 @@ async function main(): Promise<void> {
   if (out) writeFileSync(out, JSON.stringify(report, null, 2));
 }
 
-main().catch((error: unknown) => {
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) main().catch((error: unknown) => {
   console.error(error instanceof Error ? error.message : error);
   process.exitCode = 1;
 });

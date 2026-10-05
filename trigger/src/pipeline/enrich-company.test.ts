@@ -152,6 +152,21 @@ describe("funding firmographic patches", () => {
 });
 
 describe("firmographic waterfall", () => {
+  it("passes the delivery signal to providers and stops after cancellation", async () => {
+    const controller = new AbortController();
+    vi.mocked(lgenrichConfigured).mockReturnValue(true);
+    vi.mocked(blitzConfigured).mockReturnValue(true);
+    vi.mocked(lgenrichDomain).mockImplementationOnce(async () => {
+      controller.abort(new Error("delivery deadline"));
+      return null;
+    });
+    await expect(day0BlitzEnrich("funding_discoveries", [target, { ...target, companyName: "Other" }], 1, controller.signal)).rejects.toThrow("delivery deadline");
+    expect(lgenrichDomain).toHaveBeenCalledWith("acme.com", controller.signal);
+    expect(lgenrichDomain).toHaveBeenCalledTimes(1);
+    expect(blitzEnrichDomain).not.toHaveBeenCalled();
+    expect(patchRowBySourceUrl).not.toHaveBeenCalled();
+  });
+
   it("does not treat a sentinel description as a completed profile", async () => {
     vi.mocked(lgenrichConfigured).mockReturnValue(true);
     vi.mocked(lgenrichDomain).mockResolvedValue({
@@ -167,7 +182,7 @@ describe("firmographic waterfall", () => {
     expect(hit?.present).toContain("headcount");
     expect(hit?.omitted).toContain("products");
     expect(hit?.patch).not.toHaveProperty("products");
-    expect(blitzEnrichLinkedin).toHaveBeenCalledWith("https://linkedin.com/company/acme");
+    expect(blitzEnrichLinkedin).toHaveBeenCalledWith("https://linkedin.com/company/acme", undefined);
   });
 
   it("stops once lgenrich already returned usable firmographics", async () => {

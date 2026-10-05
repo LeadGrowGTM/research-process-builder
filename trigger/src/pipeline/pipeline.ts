@@ -11,7 +11,7 @@ import { runDiscovery } from "./serper.js";
 import { fetchUrl } from "./firecrawl.js";
 import { extractWithOpenAI, validateDomainSemantic } from "./openai.js";
 import { scoreAndFilter } from "./filters.js";
-import { isSupabaseConfigured, checkTable, pushToSupabase, getRecentCompanyNames } from "./supabase.js";
+import { isSupabaseConfigured, checkTable, pushToSupabase, getRecentCompanyNames, FundingWriteError } from "./supabase.js";
 import { pushToWebhook } from "./webhook.js";
 import { lookupDomainMultiSignal, isDomainBlocked, type ContextClues } from "./domain-lookup.js";
 import { normalizeAmount } from "./normalize-amount.js";
@@ -384,9 +384,9 @@ async function enrichCompanies(
 }
 
 /**
- * Deliver in chunks of OUTPUT_CHUNK, each chunk to Clay first and then Supabase, stopping between
- * chunks at the deadline. The next run's known-company dedup reads Supabase, so a round is only
- * marked known after Clay was sent it; undelivered rounds stay eligible for the next run.
+ * Deliver in chunks of OUTPUT_CHUNK, each chunk to Clay first and then Supabase, within the
+ * deadline. The next run's known-company dedup reads Supabase, so only Clay acknowledgments
+ * can be marked known; rejected rounds stay eligible for the next run.
  * Blitz day-0 enrichment runs last with the time left; misses go to enrichment-retry-weekly.
  */
 async function deliver(
@@ -396,39 +396,77 @@ async function deliver(
   deadlineAt: number
 ): Promise<void> {
   const rc = config.roundConfig;
-  const supabase = isSupabaseConfigured() && (await checkTable(rc.supabaseTable));
-  if (isSupabaseConfigured() && !supabase) logger.warn(`Supabase table ${rc.supabaseTable} not found`);
-
+  const controller = new AbortController();
+  let deadlineTimer: ReturnType<typeof setTimeout> | undefined;
+  const expired = new Promise<void>((resolve) => {
+    if (Number.isFinite(deadlineAt)) {
+      deadlineTimer = setTimeout(() => { controller.abort(); resolve(); }, Math.max(0, deadlineAt - Date.now()));
+    }
+  });
+  // Race as well as abort: a slow client must not hold the task past its deadline.
+  const bounded = async <T>(budgetMs: number, fallback: T, operation: (signal: AbortSignal) => Promise<T>): Promise<T> => {
+    if (deadlineAt - Date.now() < budgetMs || controller.signal.aborted) return fallback;
+    return Promise.race([operation(controller.signal).catch((error: unknown) => {
+      if (controller.signal.aborted) return fallback;
+      throw error;
+    }), expired.then(() => fallback)]);
+  };
   let sent = 0;
   let upserted = 0;
   let delivered = 0;
-  while (delivered < records.length && Date.now() < deadlineAt) {
-    const chunk = records.slice(delivered, delivered + OUTPUT_CHUNK);
-    const results = await Promise.all(chunk.map((r) => pushToWebhook([r], config.date, webhook.url, webhook.token)));
-    sent += results.reduce((a, b) => a + b, 0);
-    if (supabase) upserted += await pushToSupabase(chunk, config.date, rc.supabaseTable);
-    delivered += chunk.length;
-  }
-  logger.info(`Webhook: ${sent}/${delivered} sent; Supabase: ${upserted}/${delivered} upserted to ${rc.supabaseTable}`);
-  if (delivered < records.length) {
-    logger.warn(`Delivery deadline: ${records.length - delivered} rounds not delivered (not written, so not marked known)`, {
-      names: records.slice(delivered).map((r) => r.company_name),
-    });
-  }
-  if (!supabase) return;
+  const acknowledged: EnrichedRecord[] = [];
+  try {
+    const supabase = isSupabaseConfigured() && await bounded(10_000, false, (signal) => checkTable(rc.supabaseTable, signal));
+    if (isSupabaseConfigured() && !supabase) logger.warn(`Supabase table ${rc.supabaseTable} unavailable within delivery budget`);
 
-  // Day-0 company enrichment (Blitz, free) for delivered rows only.
-  const targets = records
-    .slice(0, delivered)
-    .filter((r) => r.company_domain)
-    .map((r) => ({ companyName: r.company_name, domain: r.company_domain, sourceUrl: r.source_url }));
-  let done = 0;
-  while (done < targets.length && Date.now() < deadlineAt) {
-    await day0BlitzEnrich("funding_discoveries", targets.slice(done, done + OUTPUT_CHUNK), OUTPUT_CHUNK);
-    done += OUTPUT_CHUNK;
-  }
-  if (done < targets.length) {
-    logger.warn(`Delivery deadline: Blitz skipped ${targets.length - done} rows (left for enrichment-retry-weekly)`);
+    while (delivered < records.length && deadlineAt - Date.now() >= 10_000 && !controller.signal.aborted) {
+      const chunk = records.slice(delivered, delivered + OUTPUT_CHUNK);
+      const results = await Promise.all(chunk.map((r) => bounded(10_000, 0,
+        (signal) => pushToWebhook([r], config.date, webhook.url, webhook.token, signal))));
+      const accepted = chunk.filter((_, i) => results[i] === 1);
+      const rejected = chunk.filter((_, i) => results[i] !== 1);
+      if (rejected.length) logger.warn("Clay rejected or timed out; rows not written", { names: rejected.map((r) => r.company_name) });
+      sent += accepted.length;
+      acknowledged.push(...accepted);
+      delivered += chunk.length;
+      if (supabase && accepted.length) {
+        let confirmed = 0;
+        try {
+          const count = await bounded(15_000, 0, (signal) => pushToSupabase(accepted, config.date, rc.supabaseTable, signal,
+            (count) => { confirmed = count; }));
+          upserted += Math.max(count, confirmed);
+        } catch (error) {
+          upserted += Math.max(confirmed, error instanceof FundingWriteError ? error.upserted : 0);
+          throw error;
+        }
+      }
+    }
+    if (delivered < records.length) {
+      logger.warn(`Delivery deadline: ${records.length - delivered} rounds not delivered (not written, so not marked known)`, {
+        names: records.slice(delivered).map((r) => r.company_name),
+      });
+    }
+    if (!supabase) return;
+
+    // Day-0 company enrichment (Blitz, free) for acknowledged rows only.
+    const targets = acknowledged.filter((r) => r.company_domain)
+      .map((r) => ({ companyName: r.company_name, domain: r.company_domain, sourceUrl: r.source_url }));
+    let done = 0;
+    while (done < targets.length && deadlineAt - Date.now() >= 30_000 && !controller.signal.aborted) {
+      const completed = await bounded(30_000, false, async (signal) => {
+        await day0BlitzEnrich("funding_discoveries", targets.slice(done, done + OUTPUT_CHUNK), OUTPUT_CHUNK, signal);
+        return true;
+      });
+      if (!completed) break;
+      done += OUTPUT_CHUNK;
+    }
+    if (done < targets.length) {
+      logger.warn(`Delivery deadline: Blitz skipped ${targets.length - done} rows (left for enrichment-retry-weekly)`);
+    }
+  } finally {
+    clearTimeout(deadlineTimer);
+    controller.abort();
+    logger.info(`Webhook: ${sent}/${delivered} sent; Supabase: ${upserted}/${sent} upserted to ${rc.supabaseTable} (confirmed counts)`);
   }
 }
 

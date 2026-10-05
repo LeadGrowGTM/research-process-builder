@@ -4,8 +4,12 @@ import { SERIES_A_CONFIG } from "./round-configs.js";
 import type { ExtractedData, PipelineConfig, RawResult } from "./types.js";
 import { runDiscovery } from "./serper.js";
 import { extractWithOpenAI } from "./openai.js";
-import { pushToSupabase } from "./supabase.js";
+import { pushToSupabase, FundingWriteError } from "./supabase.js";
 import { pushToWebhook } from "./webhook.js";
+import { day0BlitzEnrich } from "./enrich-company.js";
+import { logger } from "@trigger.dev/sdk";
+
+vi.mock("@trigger.dev/sdk", () => ({ logger: { info: vi.fn(), warn: vi.fn() } }));
 
 vi.mock("./serper.js", () => ({ runDiscovery: vi.fn() }));
 vi.mock("./firecrawl.js", () => ({ fetchUrl: vi.fn(async (url: string) => `Funding news. Visit ${new URL(url).pathname.split("/").pop()}.com to learn more.`) }));
@@ -17,7 +21,8 @@ vi.mock("./domain-lookup.js", () => ({
   lookupDomainMultiSignal: vi.fn(async () => ({ domain: "not_found", source: "not_found" })),
   isDomainBlocked: vi.fn(() => false),
 }));
-vi.mock("./supabase.js", () => ({
+vi.mock("./supabase.js", async () => ({
+  ...await vi.importActual<typeof import("./supabase.js")>("./supabase.js"),
   isSupabaseConfigured: vi.fn(() => true),
   checkTable: vi.fn(async () => true),
   pushToSupabase: vi.fn(async (rows: unknown[]) => rows.length),
@@ -51,7 +56,13 @@ function config(overrides: Partial<PipelineConfig> = {}): PipelineConfig {
   };
 }
 
-beforeEach(() => { vi.clearAllMocks(); });
+beforeEach(() => {
+  vi.clearAllMocks();
+  vi.mocked(pushToWebhook).mockImplementation(async (rows) => rows.length);
+  vi.mocked(pushToSupabase).mockImplementation(async (rows) => rows.length);
+  vi.stubEnv("CLAY_SERIES_A_WEBHOOK_URL", "https://clay.test/hook");
+  vi.stubEnv("CLAY_SERIES_A_WEBHOOK_TOKEN", "test-token");
+});
 afterEach(() => { vi.useRealTimers(); vi.unstubAllEnvs(); });
 
 describe("isStaleRound", () => {
@@ -85,6 +96,109 @@ describe("runFundingPipeline freshness gate", () => {
 });
 
 describe("runFundingPipeline delivery deadline", () => {
+  it("only writes Clay-acknowledged rows and reports partial Supabase counts", async () => {
+    vi.mocked(runDiscovery).mockResolvedValue(["Alpha", "Bravo", "Charlie"].map(raw));
+    vi.mocked(extractWithOpenAI).mockImplementation(async (_text, name) => extracted(name, RUN_DATE));
+    vi.mocked(pushToWebhook).mockImplementation(async (rows) => rows[0].company_name === "Bravo" ? 0 : 1);
+    vi.mocked(pushToSupabase).mockResolvedValueOnce(1);
+
+    await runFundingPipeline(config({ dryRun: false }));
+
+    expect(vi.mocked(pushToSupabase).mock.calls[0][0].map((r) => r.company_name)).toEqual(["Alpha", "Charlie"]);
+    expect(pushToSupabase).toHaveBeenCalledTimes(1);
+    expect(vi.mocked(pushToSupabase).mock.invocationCallOrder[0]).toBeGreaterThan(Math.max(...vi.mocked(pushToWebhook).mock.invocationCallOrder));
+    expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining("Clay rejected"), { names: ["Bravo"] });
+    expect(logger.info).toHaveBeenCalledWith(expect.stringContaining("Webhook: 2/3 sent; Supabase: 1/2 upserted"));
+    expect(vi.mocked(day0BlitzEnrich).mock.calls[0][1].map((t) => t.companyName)).toEqual(["Alpha", "Charlie"]);
+  });
+
+  it("returns by the deadline even when Supabase never resolves", async () => {
+    vi.useFakeTimers();
+    vi.mocked(runDiscovery).mockResolvedValue([raw("Alpha")]);
+    vi.mocked(extractWithOpenAI).mockResolvedValue(extracted("Alpha", RUN_DATE));
+    vi.mocked(pushToSupabase).mockImplementationOnce(() => new Promise(() => {}));
+    const deadlineAt = Date.now() + 6 * 60_000;
+    let finished = false;
+    const run = runFundingPipeline(config({ dryRun: false, deadlineAt })).then(() => { finished = true; });
+
+    await vi.advanceTimersByTimeAsync(0);
+    expect(pushToSupabase).toHaveBeenCalledTimes(1);
+    await vi.advanceTimersByTimeAsync(6 * 60_000);
+    expect(finished).toBe(true);
+    await run;
+    expect(day0BlitzEnrich).not.toHaveBeenCalled();
+    expect(vi.mocked(pushToSupabase).mock.calls[0][3]?.aborted).toBe(true);
+  });
+
+  it("logs confirmed partial writes when Supabase fails after its first row", async () => {
+    vi.mocked(runDiscovery).mockResolvedValue(["Alpha", "Bravo"].map(raw));
+    vi.mocked(extractWithOpenAI).mockImplementation(async (_text, name) => extracted(name, RUN_DATE));
+    vi.mocked(pushToSupabase).mockRejectedValueOnce(new FundingWriteError(1));
+    await expect(runFundingPipeline(config({ dryRun: false }))).rejects.toThrow("funding write failed");
+    expect(logger.info).toHaveBeenCalledWith(expect.stringContaining("Webhook: 2/2 sent; Supabase: 1/2 upserted"));
+  });
+
+  it("keeps confirmed partial Supabase counts when the deadline aborts the next row", async () => {
+    vi.useFakeTimers();
+    vi.mocked(runDiscovery).mockResolvedValue(["Alpha", "Bravo"].map(raw));
+    vi.mocked(extractWithOpenAI).mockImplementation(async (_text, name) => extracted(name, RUN_DATE));
+    vi.mocked(pushToSupabase).mockImplementationOnce(async (_rows, _date, _table, signal, onUpsert) => {
+      onUpsert?.(1);
+      return new Promise((_resolve, reject) => signal?.addEventListener("abort", () => reject(new FundingWriteError(1)), { once: true }));
+    });
+    const run = runFundingPipeline(config({ dryRun: false, deadlineAt: Date.now() + 6 * 60_000 }));
+    await vi.advanceTimersByTimeAsync(6 * 60_000);
+    await run;
+    expect(logger.info).toHaveBeenCalledWith(expect.stringContaining("Webhook: 2/2 sent; Supabase: 1/2 upserted"));
+    expect(day0BlitzEnrich).not.toHaveBeenCalled();
+  });
+
+  it("does not start Supabase or Blitz without their operation budgets", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    const start = Date.now();
+    vi.mocked(runDiscovery).mockResolvedValue([raw("Alpha")]);
+    vi.mocked(pushToWebhook).mockImplementationOnce(async () => { vi.setSystemTime(start + 51_000); return 1; });
+    await runFundingPipeline(config({ dryRun: false, skipEnrich: true, deadlineAt: start + 60_000 }));
+    expect(pushToSupabase).not.toHaveBeenCalled();
+    expect(day0BlitzEnrich).not.toHaveBeenCalled();
+  });
+
+  it("bounds a stalled table check and a stalled Clay send", async () => {
+    vi.useFakeTimers();
+    const { checkTable } = await import("./supabase.js");
+    vi.mocked(runDiscovery).mockResolvedValue([raw("Alpha")]);
+    vi.mocked(checkTable).mockImplementationOnce(() => new Promise(() => {}));
+    const deadlineAt = Date.now() + 60_000;
+    const checking = runFundingPipeline(config({ dryRun: false, skipEnrich: true, deadlineAt }));
+    await vi.advanceTimersByTimeAsync(60_000);
+    await checking;
+    expect(pushToWebhook).not.toHaveBeenCalled();
+
+    vi.mocked(pushToWebhook).mockImplementationOnce(() => new Promise(() => {}));
+    const sending = runFundingPipeline(config({ dryRun: false, skipEnrich: true, deadlineAt: Date.now() + 60_000 }));
+    await vi.advanceTimersByTimeAsync(60_000);
+    await sending;
+    expect(pushToSupabase).not.toHaveBeenCalled();
+  });
+
+  it("gives Blitz the shared deadline and returns when Blitz never resolves", async () => {
+    vi.useFakeTimers();
+    vi.mocked(runDiscovery).mockResolvedValue([raw("Alpha")]);
+    vi.mocked(extractWithOpenAI).mockResolvedValue(extracted("Alpha", RUN_DATE));
+    vi.mocked(day0BlitzEnrich).mockImplementationOnce(() => new Promise(() => {}));
+    const deadlineAt = Date.now() + 6 * 60_000;
+    let finished = false;
+    const run = runFundingPipeline(config({ dryRun: false, deadlineAt })).then(() => { finished = true; });
+    await vi.advanceTimersByTimeAsync(0);
+    expect(day0BlitzEnrich).toHaveBeenCalledTimes(1);
+    const signal = vi.mocked(day0BlitzEnrich).mock.calls[0][3];
+    expect(signal?.aborted).toBe(false);
+    await vi.advanceTimersByTimeAsync(6 * 60_000);
+    expect(finished).toBe(true);
+    expect(signal?.aborted).toBe(true);
+    await run;
+  });
+
   it("stops between chunks at the deadline and leaves the rest unwritten", async () => {
     const names = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot"];
     vi.mocked(runDiscovery).mockResolvedValue(names.map(raw));
