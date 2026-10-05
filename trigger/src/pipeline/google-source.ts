@@ -21,9 +21,9 @@ function siteQuery(domain: string): string | null {
   return `site:${root} (raises OR funding OR announces)`;
 }
 
-/** One Google search, no Brave fallback: an empty Brave page would read as a miss and mark the round checked. Undefined means Google failed (retry next run). */
+/** One search: Google, then treg if Google fails. Undefined means both failed (retry next run). An empty array is a miss. */
 async function googleResults(query: string, apiKey: string): Promise<MappedResult[] | undefined> {
-  const response = await webSearch(query, { limit: 10, apiKey, fallback: false });
+  const response = await webSearch(query, { limit: 10, apiKey });
   return response ? response.results.map((item) => ({ url: item.url, title: item.title, description: item.snippet })) : undefined;
 }
 

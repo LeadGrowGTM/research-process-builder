@@ -14,12 +14,23 @@ describe("webSearch", () => {
     expect(await webSearch("hello", { limit: 5, apiKey: "key" })).toEqual({ results: [{ url: "https://a.test", title: "A", snippet: "desc" }], provider: "google" });
   });
 
-  it("falls back to Brave on a primary 429", async () => {
-    const fetchMock = vi.fn(async (url: string | URL) => new URL(String(url)).hostname.startsWith("google-")
-      ? json({}, 429) : json({ results: [{ url: "https://b.test", title: "B", description: "fallback" }] }));
+  it("falls back to treg on a primary 429", async () => {
+    const fetchMock = vi.fn(async (url: string | URL, _init?: RequestInit) => new URL(String(url)).hostname.startsWith("google-")
+      ? json({}, 429) : json({ output: { results: [{ link: "https://b.test", title: "B", snippet: "fallback" }] } }));
     vi.stubGlobal("fetch", fetchMock);
-    expect((await webSearch("hello", { limit: 5, apiKey: "key" }))?.provider).toBe("brave");
-    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(await webSearch("hello", { limit: 5, apiKey: "key", tregToken: "treg" }))
+      .toEqual({ results: [{ url: "https://b.test", title: "B", snippet: "fallback" }], provider: "treg" });
+    const [url, init] = fetchMock.mock.calls[1];
+    expect(String(url)).toBe("https://treg.to/call/treg.google.serp.organic");
+    expect(JSON.parse(String(init?.body))).toEqual({ q: "hello", limit: 5 });
+  });
+
+  it("has no fallback without a treg token", async () => {
+    vi.stubEnv("TREG_TOKEN", "");
+    const fetchMock = vi.fn(async (_url: string | URL) => json({}, 503));
+    vi.stubGlobal("fetch", fetchMock);
+    expect(await webSearch("hello", { limit: 5, apiKey: "key" })).toBeUndefined();
+    expect(fetchMock.mock.calls.every(([url]) => new URL(String(url)).hostname.startsWith("google-"))).toBe(true);
   });
 
   it("does not fall back for a successful empty result list", async () => {
@@ -31,7 +42,7 @@ describe("webSearch", () => {
 
   it("returns undefined when both providers fail", async () => {
     vi.stubGlobal("fetch", vi.fn(async (_url: string | URL) => json({}, 503)));
-    expect(await webSearch("hello", { limit: 5, apiKey: "key" })).toBeUndefined();
+    expect(await webSearch("hello", { limit: 5, apiKey: "key", tregToken: "treg" })).toBeUndefined();
   });
 
   it("appends after to the query", async () => {
