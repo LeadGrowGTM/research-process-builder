@@ -18,6 +18,12 @@ function buildExtractionPrompt(roundLabel: string, sentinel: string): string {
 
 Return the requested structured fields. Use JSON null for any absent value. Never emit "not_stated" or an empty string.
 
+Decide first whether this page announces a ${roundLabel}:
+- It counts only when the page reports, as news, that a named company raised a ${roundLabel}. Extensions and lettered sub-rounds count (e.g. "${roundLabel} extension", "${roundLabel}-2").
+- A round mentioned only as background is NOT an announcement: company history ("following its ${roundLabel}", "previously raised"), a company or investor profile, a portfolio or track-record list, an investor presentation, a job posting, a directory, or a "top startups" style list. Set company_name to "${sentinel}".
+- These are not a ${roundLabel}: pre-${roundLabel}, any other round letter, seed, debt, convertible notes, SAFEs, grants, crowdfunding, fund closes, acquisitions, secondaries, and preferred stock sold by a public company.
+- The company hint may be a page title, a category, or a company that did not raise. On a news listing, roundup, or newsletter, if exactly one company is reported raising a ${roundLabel} as news, extract that company even if it is not the hint. If two or more different companies are reported raising a ${roundLabel}, set company_name to "${sentinel}".
+
 Rules:
 - company_name = the company that RAISED money (NOT the investor/VC)
 - company_domain = their official website domain (e.g. mosaic.pe, zenskar.com). Check the About section, learn-more links, contact email domains, and inline URLs. Do NOT return the PR wire domain. Return null if truly absent
@@ -27,7 +33,7 @@ Rules:
 - round_reasoning = why they raised / what funds are for, 1-2 sentences, or null if absent
 - industry = choose the closest allowed taxonomy value, or null if unclear
 - location = company HQ city and country, or null if absent
-- funding_date = date the funding was announced in YYYY-MM-DD format, or null if absent
+- funding_date = date the funding was announced in YYYY-MM-DD format. On a listing or roundup, use the date shown on that item, not the page date. On a single-story article, use the article's publication date if the round itself has no date. Null if no date applies
 - If this is NOT actually a ${roundLabel} funding announcement, set company_name to "${sentinel}"
 
 ---

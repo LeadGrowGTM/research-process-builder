@@ -45,7 +45,7 @@ export async function extractWithOpenAI(
   const prompt = config.extractionPrompt
     .replace("{{companyHint}}", companyHint)
     .replace("{{amountHint}}", amountHint)
-    .replace("{{articleText}}", articleText.slice(0, 8000));
+    .replace("{{articleText}}", articleText.slice(0, 20000));
 
   const result = await lunaJson<ExtractedData>({
     name: "funding_extraction",

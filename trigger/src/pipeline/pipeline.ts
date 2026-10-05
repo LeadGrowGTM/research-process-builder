@@ -272,11 +272,11 @@ async function enrichOneCompany(
   let sourceUrl = company.best_source_url;
 
   if (sourceUrl) {
-    articleText = await fetchUrl(sourceUrl);
+    articleText = await fetchUrl(sourceUrl, { maxChars: 20_000 });
     if (!articleText) {
       for (const src of company.sources) {
         if (src.url !== sourceUrl) {
-          articleText = await fetchUrl(src.url);
+          articleText = await fetchUrl(src.url, { maxChars: 20_000 });
           if (articleText) {
             sourceUrl = src.url;
             break;
