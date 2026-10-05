@@ -18,6 +18,13 @@ describe("extractDomainFromArticle", () => {
     expect(extractDomainFromArticle(`${article} Visit acme.com`, "Acme", sourceUrl)).toBe("acme.com");
   });
 
+  it.each(["/company/https://acme.com", "/company?website=https://acme.com"])("ignores absolute URLs embedded in relative destinations (%s)", (href) => {
+    const sourceUrl = "https://publisher.com/news/acme";
+    const article = `Profile (${href})`;
+    expect(extractDomainFromArticle(article, "Acme", sourceUrl)).toBeNull();
+    expect(extractDomainFromArticle(`${article} Website (https://acme.com/)`, "Acme", sourceUrl)).toBe("acme.com");
+  });
+
   it.each([
     ["publisher.com", "news.publisher.com"],
     ["news.publisher.com", "publisher.com"],

@@ -97,7 +97,8 @@ export function extractDomainFromArticle(articleText: string, companyName: strin
     candidates.set(domain, score);
   }
 
-  const domainText = articleText.replace(/\b[a-z][a-z0-9+.-]*:\/\/[^\s<>"')\]]+/gi, (rawUrl: string, offset: number) => {
+  // Parse whole destinations before looking for domains in the remaining prose.
+  const domainText = articleText.replace(/[^\s<>"'()[\]]*\/[^\s<>"')\]]*/g, (rawUrl: string, offset: number) => {
     try {
       const parsed = new URL(rawUrl);
       if (/^https?:$/.test(parsed.protocol)) {
@@ -108,7 +109,7 @@ export function extractDomainFromArticle(articleText: string, companyName: strin
       }
     } catch { /* ignore invalid URLs */ }
     return " ";
-  }).replace(/\S*\/\S*/g, " ");
+  });
 
   for (const pattern of patterns) {
     let match;

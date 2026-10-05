@@ -92,15 +92,18 @@ export async function scrapePage(url: string, options: ScrapeOptions = {}): Prom
           body: JSON.stringify({ url, return_format: "markdown", request: provider === "spider-chrome" ? "chrome" : "smart", filter_output_main_only: false }),
           signal,
         });
-        if (!resp.ok) return null;
+        // Authentication and credit failures apply to every Spider mode.
+        if ([401, 402, 403].includes(resp.status)) return null;
+        if (!resp.ok) continue;
         const data: unknown = await resp.json();
         const first = Array.isArray(data) ? data[0] : undefined;
-        if (!first || typeof first !== "object" || Array.isArray(first)) return null;
+        if (!first || typeof first !== "object" || Array.isArray(first)) continue;
         const page = first as Record<string, unknown>;
         const costs = page.costs && typeof page.costs === "object" ? page.costs as Record<string, unknown> : undefined;
         costUsd += pickNumber(costs?.total_cost) ?? 0;
         const status = pickNumber(page.status);
-        if (page.error || (status !== null && status >= 400)) return null;
+        if (status !== null && status >= 400 && status < 500 && ![401, 403, 407, 429].includes(status)) return null;
+        if (page.error || (status !== null && status >= 400)) continue;
         content = typeof page.content === "string" ? page.content : "";
       }
       content = content.trim();
@@ -108,7 +111,7 @@ export async function scrapePage(url: string, options: ScrapeOptions = {}): Prom
         return { content: content.slice(0, options.maxChars), provider, costUsd };
       }
     } catch {
-      if (provider !== "direct") return null;
+      continue;
     }
   }
   return null;
