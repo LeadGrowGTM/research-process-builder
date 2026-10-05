@@ -73,6 +73,20 @@ describe("pickSecondarySource", () => {
     ])?.url).toBe("https://rig.security/blog/seed");
   });
 
+  it("needs a generic company name in the headline, not as a plain word in the snippet", () => {
+    const foundational = { ...round, company: "Foundational", domain: "", round: "Pre-Seed", amount: "$10M", amountUsd: 10_000_000 };
+    const unrelated = {
+      url: "https://payloadspace.com/sophia-space-raises-10m",
+      title: "Sophia Space raises $10M to build orbital data center precursor",
+      description: "The pre-seed funding lays the foundational work for its first orbital compute node.",
+    };
+    expect(pickSecondarySource(foundational, [unrelated])).toBeNull();
+    expect(pickSecondarySource(foundational, [unrelated, {
+      url: "https://news.example.com/foundational-pre-seed",
+      title: "Foundational raises $10M pre-seed",
+    }])?.url).toBe("https://news.example.com/foundational-pre-seed");
+  });
+
   it("builds a quoted query with amount and round", () => {
     expect(secondaryQuery(round)).toBe('"Rig Security" raises $12 Million Seed funding');
   });

@@ -48,8 +48,9 @@ function textMentionsDomain(text: string, domain: string): boolean {
   return new RegExp(`(?:^|[^a-z0-9])${escaped}(?:[^a-z0-9]|$)`, "i").test(text);
 }
 
-function mentionsCompany(round: RoundIdentity, url: URL, text: string): boolean {
-  const normalized = normalizedText(text);
+/** The name must be in the headline: a generic name like "Foundational" also turns up as a plain word in snippets. */
+function mentionsCompany(round: RoundIdentity, url: URL, title: string, text: string): boolean {
+  const normalized = normalizedText(title);
   if (companyPhrases(round.company).some((phrase) => mentionsPhrase(normalized, phrase))) return true;
   return hostMatchesDomain(url.hostname, round.domain) || textMentionsDomain(text, round.domain);
 }
@@ -129,8 +130,9 @@ export function pickSecondarySource(round: RoundIdentity, results: BraveResult[]
       continue;
     }
     if (!isPublicHttpsUrl(url.href) || SKIP_HOST.test(url.hostname)) continue;
-    const text = `${result.title ?? ""} ${result.description ?? ""}`.replace(/<[^>]+>/g, " ");
-    if (!mentionsCompany(round, url, text) || !FUNDING_WORDS.test(text) || !confirmsRound(round, text)) continue;
+    const title = (result.title ?? "").replace(/<[^>]+>/g, " ");
+    const text = `${title} ${result.description ?? ""}`.replace(/<[^>]+>/g, " ");
+    if (!mentionsCompany(round, url, title, text) || !FUNDING_WORDS.test(text) || !confirmsRound(round, text)) continue;
     return { name: sourceNameForUrl(url.href) ?? url.hostname.replace(/^www\./, ""), url: url.href };
   }
   return null;

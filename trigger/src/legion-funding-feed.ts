@@ -3,6 +3,7 @@ import { decodeHtmlEntities, isPublicHttpsUrl, logoUrlForDomain, normalizeOption
 import { findCompanyPeople, type CompanyPeopleProfile, type PeopleWaterfallConfig } from "./pipeline/legion-people.js";
 import { buildRounds, companyKeyOf, displaySource, needsSecondarySource, type CompanyRounds, type FundingRound, type RoundSource } from "./pipeline/funding-rounds.js";
 import { findSecondarySource } from "./pipeline/brave-source.js";
+import { findGoogleSource } from "./pipeline/google-source.js";
 import { ADDITIONAL_SIGNAL_ORDER, ADDITIONAL_SIGNAL_SELECT, projectAdditionalSignals, type AdditionalFamilyCoverage } from "./pipeline/additional-signals.js";
 import { createHash } from "node:crypto";
 
@@ -13,6 +14,11 @@ const CHUNK_SIZE = 50;
 const ENRICH_PER_RUN = 150;
 // Brave lookups per run for rounds only raisingfi reported (~1,900 at launch). Override with LEGION_BRAVE_PER_RUN.
 const BRAVE_PER_RUN_DEFAULT = 60;
+// Google Search queries per run. A round may spend two. Override with LEGION_SEARCH_PER_RUN.
+const SEARCH_PER_RUN_DEFAULT = 60;
+/** Secondary search generation. Misses checked before SECONDARY_NONE_RECHECK_BEFORE are searched once more. */
+export const SEARCH_STRATEGY_VERSION = 2;
+export const SECONDARY_NONE_RECHECK_BEFORE = "2026-10-05T16:00:00Z";
 // Signals per KV page; the page loads page 1 and fetches more on "Show more".
 export const SIGNALS_PAGE_SIZE = 500;
 const PROFILE_SELECT = "domain,hq,employees,founders";
@@ -115,7 +121,7 @@ function roundValue(round: FundingRound): string {
 
 /**
  * One signal per company: its latest round, with company fields from its newest report and
- * every earlier round listed under it. `secondary` holds Brave-found sources by round key.
+ * every earlier round listed under it. `secondary` holds looked-up sources by round key.
  */
 export function companySignal(company: CompanyRounds, secondary: Map<string, RoundSource>): Signal {
   const { latest, earlier, profile } = company;
@@ -298,6 +304,7 @@ export type FundingFeedConfig = {
   legionKv?: { accountId: string; namespaceId: string; token: string };
   enrichment?: PeopleWaterfallConfig;
   brave?: { apiKey: string; perRun: number; usdPerQuery: number };
+  google?: { apiKey: string; perRun: number; usdPerQuery: number };
   fetchImpl?: FetchLike;
   now?: Date;
 };
@@ -771,7 +778,20 @@ async function publishSignals(config: FundingFeedConfig, signals: Signal[], upda
 
 // ── Rounds table (leadgrow_knowledge.legion_funding_rounds) ──
 
-type RoundCache = Map<string, { status: string | null; source: RoundSource | null }>;
+type RoundCacheEntry = { status: string | null; source: RoundSource | null; checkedAt: string | null };
+type RoundCache = Map<string, RoundCacheEntry>;
+
+const RECHECK_CUTOFF: Record<number, string> = { [SEARCH_STRATEGY_VERSION]: SECONDARY_NONE_RECHECK_BEFORE };
+
+/** Missing status is unchecked. A "none" from before the current strategy is unchecked once. "found" stays. */
+function secondaryUnchecked(entry: RoundCacheEntry | undefined): boolean {
+  if (!entry?.status) return true;
+  if (entry.status !== "none") return false;
+  const cutoff = Date.parse(RECHECK_CUTOFF[SEARCH_STRATEGY_VERSION] ?? "");
+  if (!Number.isFinite(cutoff)) return false;
+  const checked = Date.parse(entry.checkedAt ?? "");
+  return !Number.isFinite(checked) || checked < cutoff;
+}
 
 async function readRoundCache(config: FundingFeedConfig): Promise<RoundCache> {
   const fetchImpl = config.fetchImpl ?? fetch;
@@ -782,7 +802,7 @@ async function readRoundCache(config: FundingFeedConfig): Promise<RoundCache> {
     "legion_funding_rounds returned an invalid response",
     (offset) => fetchJson(
       fetchImpl,
-      `${root}/rest/v1/legion_funding_rounds?select=round_key,secondary_status,secondary_source&order=round_key&limit=${READ_PAGE}&offset=${offset}`,
+      `${root}/rest/v1/legion_funding_rounds?select=round_key,secondary_status,secondary_source,secondary_checked_at&order=round_key&limit=${READ_PAGE}&offset=${offset}`,
       readHeaders,
     ),
     (row) => {
@@ -798,6 +818,7 @@ async function readRoundCache(config: FundingFeedConfig): Promise<RoundCache> {
     cache.set(key, {
       status: typeof row.secondary_status === "string" ? row.secondary_status : null,
       source: row.secondary_source && typeof row.secondary_source === "object" ? row.secondary_source as RoundSource : null,
+      checkedAt: typeof row.secondary_checked_at === "string" ? row.secondary_checked_at : null,
     });
   }
   return cache;
@@ -830,26 +851,50 @@ async function pruneRounds(config: FundingFeedConfig, seenAt: string): Promise<v
   await roundsRequest(config, `legion_funding_rounds?seen_at=lt.${encodeURIComponent(seenAt)}`, { method: "DELETE" });
 }
 
-/** Brave lookups for raisingfi-only rounds not yet searched, newest first, capped per run. */
-async function findSecondarySources(config: FundingFeedConfig, companies: CompanyRounds[], cache: RoundCache, now: string): Promise<{ lookups: number; found: number; costUsd: number }> {
-  const brave = config.brave;
-  if (!brave?.apiKey || brave.perRun <= 0) return { lookups: 0, found: 0, costUsd: 0 };
-  const todo = companies.flatMap((c) => [c.latest, ...c.earlier]).filter((r) => needsSecondarySource(r) && !cache.get(r.key)?.status).slice(0, brave.perRun);
+type SecondarySearchStats = {
+  braveLookups: number;
+  braveFound: number;
+  searchLookups: number;
+  searchFound: number;
+  costUsd: number;
+};
+
+/** Google Search when configured, otherwise Brave. Budget counts queries. Newest raisingfi-only rounds first. */
+async function findSecondarySources(config: FundingFeedConfig, companies: CompanyRounds[], cache: RoundCache, now: string): Promise<SecondarySearchStats> {
+  const none: SecondarySearchStats = { braveLookups: 0, braveFound: 0, searchLookups: 0, searchFound: 0, costUsd: 0 };
+  const googleKey = config.google?.apiKey ?? "";
+  const braveKey = config.brave?.apiKey ?? "";
+  const mode = googleKey ? "google" : braveKey ? "brave" : null;
+  if (!mode) return none;
+  const provider = mode === "google" ? config.google! : config.brave!;
+  if (!(provider.perRun > 0)) return none;
+  const apiKey = mode === "google" ? googleKey : braveKey;
+  const todo = companies.flatMap((c) => [c.latest, ...c.earlier]).filter((r) => needsSecondarySource(r) && secondaryUnchecked(cache.get(r.key)));
   let found = 0;
   let lookups = 0;
   for (const round of todo) {
-    const source = await findSecondarySource(round, brave.apiKey);
-    lookups++;
+    if (lookups >= provider.perRun) break;
+    let source: RoundSource | null | undefined;
+    if (mode === "google") {
+      const result = await findGoogleSource(round, apiKey);
+      lookups += result.queries.length;
+      source = result.source;
+    } else {
+      source = await findSecondarySource(round, apiKey);
+      lookups += 1;
+    }
     // Provider failure (bad key, quota, outage): stop for this run, leave the round unchecked, retry next run.
     if (source === undefined) break;
     if (source) found++;
-    cache.set(round.key, { status: source ? "found" : "none", source });
+    cache.set(round.key, { status: source ? "found" : "none", source, checkedAt: now });
     await roundsRequest(config, `legion_funding_rounds?round_key=eq.${encodeURIComponent(round.key)}`, {
       method: "PATCH",
       body: JSON.stringify({ secondary_source: source, secondary_status: source ? "found" : "none", secondary_checked_at: now }),
     });
   }
-  return { lookups, found, costUsd: lookups * brave.usdPerQuery };
+  const costUsd = lookups * provider.usdPerQuery;
+  if (mode === "google") return { ...none, searchLookups: lookups, searchFound: found, costUsd };
+  return { ...none, braveLookups: lookups, braveFound: found, costUsd };
 }
 
 async function fetchProfiles(config: FundingFeedConfig, domains: string[]): Promise<CompanyProfile[]> {
@@ -960,6 +1005,8 @@ export type RefreshResult = {
   enriched: number;
   braveLookups: number;
   braveFound: number;
+  searchLookups: number;
+  searchFound: number;
   costUsd: number;
   coverage: FundingCoverage;
   families: FeedFamilies;
@@ -1060,7 +1107,7 @@ export async function refreshFundingFeed(config: FundingFeedConfig): Promise<Ref
     jobSignals: withDuplicates(projection.families.jobSignals, jobRead),
   };
   const rounds = await upsertRounds(config, grouped, updatedAt);
-  const brave = await findSecondarySources(config, grouped, cache, updatedAt);
+  const search = await findSecondarySources(config, grouped, cache, updatedAt);
   const secondary = new Map<string, RoundSource>();
   for (const [key, entry] of cache) if (entry.source?.url) secondary.set(key, entry.source);
   const fundingSignals = grouped.map((company) => companySignal(company, secondary));
@@ -1087,9 +1134,11 @@ export async function refreshFundingFeed(config: FundingFeedConfig): Promise<Ref
     pages: published.pages,
     pagesWritten: published.written,
     enriched: people.enriched,
-    braveLookups: brave.lookups,
-    braveFound: brave.found,
-    costUsd: people.costUsd + brave.costUsd,
+    braveLookups: search.braveLookups,
+    braveFound: search.braveFound,
+    searchLookups: search.searchLookups,
+    searchFound: search.searchFound,
+    costUsd: people.costUsd + search.costUsd,
     coverage,
     families: familiesBeforeWrite,
     signals,
@@ -1119,6 +1168,11 @@ function runtimeConfig(): FundingFeedConfig {
       apiKey: process.env.BRAVE_SEARCH_API_KEY ?? "",
       perRun: Number(process.env.LEGION_BRAVE_PER_RUN ?? BRAVE_PER_RUN_DEFAULT),
       usdPerQuery: Number(process.env.BRAVE_USD_PER_QUERY ?? 0) || 0,
+    },
+    google: {
+      apiKey: process.env.RAPID_API_KEY ?? "",
+      perRun: Number(process.env.LEGION_SEARCH_PER_RUN ?? SEARCH_PER_RUN_DEFAULT),
+      usdPerQuery: Number(process.env.RAPID_API_USD_PER_QUERY ?? 0) || 0,
     },
   };
 }

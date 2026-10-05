@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { buildFundingFeedRows, canonicalFeedDocument, compactUsd, companySignal, fundingClientFromEnv, fundingSignal, refreshFundingFeed, signalsVersion, writerClientFromEnv } from "./legion-funding-feed.js";
+import { buildFundingFeedRows, canonicalFeedDocument, compactUsd, companySignal, fundingClientFromEnv, fundingSignal, refreshFundingFeed, SEARCH_STRATEGY_VERSION, SECONDARY_NONE_RECHECK_BEFORE, signalsVersion, writerClientFromEnv } from "./legion-funding-feed.js";
 import { buildRounds, type FundingReport } from "./pipeline/funding-rounds.js";
 
 const source = { url: "https://example.supabase.co", key: "test-key" };
@@ -387,6 +387,52 @@ describe("refreshFundingFeed", () => {
     expect(acme.earlier).toEqual([expect.objectContaining({ round: "Seed", value: "$4M", date: "2026-01-10", source: "TechCrunch", sourceUrl: "https://techcrunch.com/acme-seed" })]);
     expect(JSON.stringify(page1)).not.toMatch(/raisingfi|x\.com|twitter\.com/i);
     expect(beta).toMatchObject({ company: "Beta", raisedAgain: false, earlier: [] });
+  });
+
+  it("re-checks a none row from before the strategy cutoff and leaves a later none row", async () => {
+    expect(SEARCH_STRATEGY_VERSION).toBe(2);
+    expect(SECONDARY_NONE_RECHECK_BEFORE).toBe("2026-10-05T16:00:00Z");
+    const patches: string[] = [];
+    const fetchImpl = vi.fn(async (url: string, init?: RequestInit) => {
+      if (url.includes("funding_discoveries")) return storedRows(url, [
+        { company_name: "Acme", company_domain: "acme.com", round_type: "Series A", amount_raised_usd: 20_000_000, discovered_date: "2026-09-20", source_url: "https://x.com/raisingfi/status/2", source_name: "@raisingfi on X" },
+        { company_name: "Beta", company_domain: "beta.io", round_type: "Seed", amount_raised_usd: 3_000_000, discovered_date: "2026-08-01", source_url: "https://x.com/raisingfi/status/3", source_name: "@raisingfi on X" },
+      ]);
+      if (url.includes("legion_funding_rounds") && (init?.method ?? "GET") === "GET") {
+        expect(url).toContain("secondary_checked_at");
+        return ranged([
+          { round_key: "acme.com|2026-09-20", secondary_status: "none", secondary_source: null, secondary_checked_at: "2026-10-05T15:59:59Z" },
+          { round_key: "beta.io|2026-08-01", secondary_status: "none", secondary_source: null, secondary_checked_at: SECONDARY_NONE_RECHECK_BEFORE },
+        ], 0, 2);
+      }
+      if (url.includes("legion_funding_rounds") && init?.method === "PATCH") {
+        patches.push(decodeURIComponent(url));
+        return reply([], 200);
+      }
+      if (url.includes(KV_CURRENT)) return init?.method === "PUT" ? reply({ success: true }) : reply({}, 404);
+      return fallback(url, init);
+    });
+    const search = vi.fn(async (url: string, init?: RequestInit) => {
+      const parsed = new URL(url);
+      expect(`${parsed.origin}${parsed.pathname}`).toBe("https://google-search74.p.rapidapi.com/");
+      expect(parsed.searchParams.get("limit")).toBe("10");
+      expect(init?.headers).toMatchObject({ "x-rapidapi-key": "rapid-key", "x-rapidapi-host": "google-search74.p.rapidapi.com" });
+      return reply({
+        results: [{ url: "https://www.axios.com/acme-series-a", title: "Acme raises $20M Series A", description: "Acme announced funding." }],
+      });
+    });
+    vi.stubGlobal("fetch", search);
+    const result = await refreshFundingFeed({
+      ...config,
+      fetchImpl,
+      brave: { apiKey: "brave", perRun: 10, usdPerQuery: 0.005 },
+      google: { apiKey: "rapid-key", perRun: 10, usdPerQuery: 0 },
+    });
+    vi.unstubAllGlobals();
+
+    expect(search).toHaveBeenCalledTimes(1);
+    expect(patches).toEqual([expect.stringContaining("round_key=eq.acme.com|2026-09-20")]);
+    expect(result).toMatchObject({ searchLookups: 1, searchFound: 1, braveLookups: 0, braveFound: 0, costUsd: 0 });
   });
 
   it("reports KV write failures", async () => {
