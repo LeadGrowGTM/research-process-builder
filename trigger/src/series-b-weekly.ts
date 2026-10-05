@@ -3,12 +3,16 @@ import { runFundingPipeline } from "./pipeline/pipeline.js";
 import { SERIES_B_CONFIG } from "./pipeline/round-configs.js";
 import { workflowGate } from "./modules/workflow-gate.js";
 
+const MAX_DURATION_S = 1200;
+
 export const seriesBWeekly = schedules.task({
   id: "series-b-weekly",
   cron: {
-    pattern: "0 8 * * 1",
+    pattern: "5 8 * * 1",
     timezone: "America/New_York",
   },
+  // Same budget as the daily task; the pipeline stops a minute early and keeps its delivery reserve.
+  maxDuration: MAX_DURATION_S,
   retry: {
     maxAttempts: 3,
     factor: 2,
@@ -40,6 +44,7 @@ export const seriesBWeekly = schedules.task({
       skipEnrich: false,
       maxEnrich: 20,
       dryRun: false,
+      deadlineAt: Date.now() + (MAX_DURATION_S - 60) * 1000,
     });
 
     return {

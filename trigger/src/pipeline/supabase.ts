@@ -1,5 +1,6 @@
 import type { EnrichedRecord } from "./types.js";
 import { normalizeCompanyName } from "./filters.js";
+import { requestSignal } from "./request-signal.js";
 import {
   logoUrlForDomain,
   normalizeIndustry,
@@ -35,12 +36,12 @@ export function isSupabaseConfigured(): boolean {
   return Boolean(SUPABASE_URL && SUPABASE_KEY);
 }
 
-export async function checkTable(tableName: string): Promise<boolean> {
+export async function checkTable(tableName: string, signal?: AbortSignal): Promise<boolean> {
   if (!SUPABASE_URL) return false;
   try {
     const resp = await fetch(
       `${SUPABASE_URL}/rest/v1/${tableName}?limit=1`,
-      { headers: headers(), signal: AbortSignal.timeout(10_000) }
+      { headers: headers(), signal: requestSignal(10_000, signal) }
     );
     return resp.status === 200;
   } catch {
@@ -147,7 +148,8 @@ async function isDomainSeenRecently(
   domain: string,
   roundType: string | null,
   tableName: string,
-  lookbackDays = 90
+  lookbackDays = 90,
+  signal?: AbortSignal
 ): Promise<boolean> {
   if (!domain || UNKNOWN_DOMAINS.has(domain)) return false;
   if (!SUPABASE_URL || !SUPABASE_KEY) return false;
@@ -159,7 +161,7 @@ async function isDomainSeenRecently(
   try {
     const resp = await fetch(
       `${SUPABASE_URL}/rest/v1/${tableName}?company_domain=eq.${encodeURIComponent(domain)}&discovered_date=gte.${sinceStr}&select=round_type,discovered_date&limit=10`,
-      { headers: headers(), signal: AbortSignal.timeout(10_000) }
+      { headers: headers(), signal: requestSignal(10_000, signal) }
     );
     if (!resp.ok) throw new Error(`Funding dedup read failed with HTTP ${resp.status}`);
     const rows: { round_type: string }[] = await resp.json();
@@ -180,10 +182,18 @@ async function isDomainSeenRecently(
   }
 }
 
+export class FundingWriteError extends Error {
+  constructor(public readonly upserted: number) {
+    super("Supabase funding write failed");
+  }
+}
+
 export async function pushToSupabase(
   enriched: EnrichedRecord[],
   dateStr: string,
-  tableName: string
+  tableName: string,
+  signal?: AbortSignal,
+  onUpsert?: (upserted: number) => void
 ): Promise<number> {
   if (!SUPABASE_URL || !SUPABASE_KEY) throw new Error("Supabase is not configured for funding writes");
 
@@ -202,7 +212,7 @@ export async function pushToSupabase(
   // Cross-run dedup: skip domains seen within 90 days (unless different round)
   const filteredRows: typeof rows = [];
   for (const row of rows) {
-    const seen = await isDomainSeenRecently(row.company_domain ?? "", row.round_type, tableName);
+    const seen = await isDomainSeenRecently(row.company_domain ?? "", row.round_type, tableName, 90, signal);
     if (seen) {
       console.log(`SKIP (seen <90d): ${row.company_name} (${row.company_domain})`);
     } else {
@@ -215,7 +225,7 @@ export async function pushToSupabase(
     try {
       const existing = await fetch(
         `${SUPABASE_URL}/rest/v1/${tableName}?source_url=eq.${encodeURIComponent(row.source_url)}&select=score,discovered_by_pipeline`,
-        { headers: headers(), signal: AbortSignal.timeout(10_000) }
+        { headers: headers(), signal: requestSignal(10_000, signal) }
       );
 
       if (!existing.ok) throw new Error(`Funding source read failed with HTTP ${existing.status}`);
@@ -234,11 +244,12 @@ export async function pushToSupabase(
                 method: "PATCH",
                 headers: headers(),
                 body: JSON.stringify({ discovered_by_pipeline: [...pipelines].join(",") }),
-                signal: AbortSignal.timeout(10_000),
+                signal: requestSignal(10_000, signal),
               }
             );
             if (!patched.ok) throw new Error(`Funding pipeline patch failed with HTTP ${patched.status}`);
             upserted++;
+            onUpsert?.(upserted);
             continue;
           }
           row.discovered_by_pipeline = [
@@ -255,16 +266,17 @@ export async function pushToSupabase(
           method: "POST",
           headers: headers("resolution=merge-duplicates"),
           body: JSON.stringify([row]),
-          signal: AbortSignal.timeout(15_000),
+          signal: requestSignal(15_000, signal),
         }
       );
       if (resp.ok) {
         upserted++;
+        onUpsert?.(upserted);
       } else {
         throw new Error(`Funding upsert failed with HTTP ${resp.status}`);
       }
     } catch {
-      throw new Error("Supabase funding write failed");
+      throw new FundingWriteError(upserted);
     }
   }
 
@@ -274,7 +286,8 @@ export async function pushToSupabase(
 export async function patchRowBySourceUrl(
   tableName: string,
   sourceUrl: string,
-  patch: Record<string, unknown>
+  patch: Record<string, unknown>,
+  signal?: AbortSignal
 ): Promise<boolean> {
   if (!SUPABASE_URL || !SUPABASE_KEY) return false;
   try {
@@ -284,7 +297,7 @@ export async function patchRowBySourceUrl(
         method: "PATCH",
         headers: headers(),
         body: JSON.stringify(patch),
-        signal: AbortSignal.timeout(15_000),
+        signal: requestSignal(15_000, signal),
       }
     );
     if (!resp.ok) {

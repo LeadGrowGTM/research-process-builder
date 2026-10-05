@@ -8,6 +8,10 @@ const CONFIGS: Record<string, RoundConfig> = {
   C: SERIES_C_CONFIG,
 };
 
+const MAX_DURATION_S = 1200;
+// The pipeline keeps a 5-minute delivery reserve, so a round needs at least this much left to do any work.
+const MIN_ROUND_S = 360;
+
 function summarize(companies: EnrichedRecord[]) {
   return companies.map((c) => ({
     company_name: c.company_name,
@@ -22,14 +26,21 @@ function summarize(companies: EnrichedRecord[]) {
 export const validateRound = task({
   id: "validate-round",
   retry: { maxAttempts: 1 },
+  maxDuration: MAX_DURATION_S,
   run: async (payload: { round?: "B" | "C"; tbs?: string; maxEnrich?: number }) => {
     const rounds = payload.round ? [payload.round] : (["B", "C"] as const);
     const today = new Date().toISOString().split("T")[0];
     const tbs = payload.tbs ?? "qdr:m";
     const maxEnrich = payload.maxEnrich ?? 25;
     const allResults: Record<string, unknown> = {};
+    const deadlineAt = Date.now() + (MAX_DURATION_S - 60) * 1000;
 
     for (const round of rounds) {
+      if (deadlineAt - Date.now() < MIN_ROUND_S * 1000) {
+        logger.warn(`Skipping Series ${round}: run budget exhausted`);
+        allResults[`series_${round}`] = { round, skipped: "budget" };
+        continue;
+      }
       const config = CONFIGS[round];
       logger.info(`Validation run: Series ${round}`, { tbs, maxEnrich });
 
@@ -41,6 +52,7 @@ export const validateRound = task({
         skipEnrich: false,
         maxEnrich,
         dryRun: true,
+        deadlineAt,
       });
 
       const summary = summarize(result.companies);

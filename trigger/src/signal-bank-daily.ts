@@ -5,7 +5,7 @@
  *
  * Steps:
  *   1. Find funding_discoveries not yet in signal_companies
- *   2. For no-industry rows: scrape homepage via Firecrawl
+ *   2. Scrape homepages via the shared page-scrape waterfall
  *   3. Luna classification (industry + ICP fit) -> write to signal_companies
  *   4. Luna description/products from the homepage scrape -> funding_discoveries
  *   5. For new strong/moderate rows: run prospect-identification -> write target_market
@@ -20,7 +20,7 @@
  * Env vars required:
  *   SUPABASE_PROJECT_URL, SUPABASE_KEY (or SUPABASE_ANON_KEY)
  *   OPENAI_API_KEY
- *   FIRECRAWL_API_KEY (optional, graceful fallback)
+ *   SPIDER_API_KEY (optional, direct fetch runs without keys)
  *   AI_ARK_API_KEY, QUICKENRICH_API_KEY, MILLION_VERIFIER_API_KEY,
  *   TRYKITT_API_KEY (optional, founder waterfall skips missing keys)
  */
@@ -28,6 +28,7 @@
 import { schedules, logger } from "@trigger.dev/sdk";
 import { workflowGate } from "./modules/workflow-gate.js";
 import { lunaJson } from "./pipeline/luna.js";
+import { scrapePage } from "./pipeline/scrape.js";
 import {
   INDUSTRIES,
   ICP_FITS,
@@ -56,7 +57,6 @@ const SUPABASE_KEY =
   process.env.SUPABASE_ANON_KEY ??
   "";
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY ?? "";
-const FIRECRAWL_API_KEY = process.env.FIRECRAWL_API_KEY ?? "";
 const DEFAULT_SCHEMA = "leadgrow_knowledge";
 // Fix-forward: only process rows discovered today or later (no backfill of 3.5-month stall)
 const FIX_FORWARD_SINCE = "2026-08-27";
@@ -141,11 +141,37 @@ async function sbGet(path: string, params: Record<string, string> = {}, schema: 
   const url = `${SUPABASE_URL}/rest/v1/${path}${qs ? "?" + qs : ""}`;
   const resp = await fetch(url, { headers: sbHeaders(false, schema), signal: AbortSignal.timeout(20_000) });
   if (!resp.ok) {
-    logger.warn(`sbGet failed: ${resp.status} on ${path}`, { schema });
+    logger.warn(`sbGet failed: ${resp.status} on ${path}`, { schema, body: (await resp.text().catch(() => "")).slice(0, 200) });
     return null;
   }
   const data = await resp.json();
   return Array.isArray(data) ? data : null;
+}
+
+// The database.leadgrow.ai gateway answers 502 once a URL passes ~3k characters.
+const IN_FILTER_MAX_CHARS = 1_500;
+
+/** sbGet with a column=in.(values) filter, split so each encoded filter stays under IN_FILTER_MAX_CHARS. rowsPerValue sets each batch's limit. */
+async function sbGetIn(path: string, params: Record<string, string>, column: string, values: string[], rowsPerValue: number): Promise<unknown[] | null> {
+  const rows: unknown[] = [];
+  let batch: string[] = [];
+  let size = 0;
+  const flush = async (): Promise<boolean> => {
+    if (batch.length === 0) return true;
+    const result = await sbGet(path, { ...params, [column]: `in.(${batch.join(",")})`, limit: String(batch.length * rowsPerValue) });
+    batch = [];
+    size = 0;
+    if (result === null) return false;
+    rows.push(...result);
+    return true;
+  };
+  for (const value of values) {
+    const encoded = encodeURIComponent(value).length + 3; // plus the encoded comma
+    if (size + encoded > IN_FILTER_MAX_CHARS && !(await flush())) return null;
+    batch.push(value);
+    size += encoded;
+  }
+  return (await flush()) ? rows : null;
 }
 
 async function sbUpsert(table: string, row: Record<string, unknown>, schema: string = DEFAULT_SCHEMA): Promise<boolean> {
@@ -161,24 +187,11 @@ async function sbUpsert(table: string, row: Record<string, unknown>, schema: str
   return resp.ok;
 }
 
-// ── Firecrawl scrape ──────────────────────────────────────────────────────────
+// ── Homepage scrape ──────────────────────────────────────────────────────────
 
 async function scrapeHomepage(domain: string, deadlineAt: number): Promise<string | null> {
-  if (!FIRECRAWL_API_KEY) return null;
-  try {
-    const resp = await fetch("https://api.firecrawl.dev/v1/scrape", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${FIRECRAWL_API_KEY}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ url: `https://${domain}`, formats: ["markdown"], onlyMainContent: true }),
-      signal: AbortSignal.timeout(Math.max(1, Math.min(25_000, deadlineAt - Date.now()))),
-    });
-    if (!resp.ok) return null;
-    const data = await resp.json() as { success: boolean; data?: { markdown?: string } };
-    const content = data.data?.markdown ?? "";
-    return content.length > 150 ? content.slice(0, 8_000) : null;
-  } catch {
-    return null;
-  }
+  const result = await scrapePage(`https://${domain}`, { maxChars: 8_000, deadlineAt });
+  return result?.content ?? null;
 }
 
 // ── Luna helpers ──────────────────────────────────────────────────────────────
@@ -373,9 +386,8 @@ export const signalBankDaily = schedules.task({
     const allFunding = allFundingResult as Array<Record<string, string>>;
 
     const fundingDomains = [...new Set(allFunding.map(row => row.company_domain).filter(domain => /^[a-z0-9.-]+\.[a-z]{2,}$/.test(domain ?? "")))];
-    const existingRows = fundingDomains.length === 0 ? [] : await sbGet("signal_companies", {
-      select: "domain", domain: `in.(${fundingDomains.join(",")})`, limit: "500",
-    });
+    // domain is unique in signal_companies (upserts use on_conflict=domain), so one row per value.
+    const existingRows = await sbGetIn("signal_companies", { select: "domain" }, "domain", fundingDomains, 1);
     if (existingRows === null) {
       throw new Error("signal_companies domain read failed in leadgrow_knowledge schema");
     }
@@ -424,13 +436,9 @@ export const signalBankDaily = schedules.task({
     for (const row of toProcess) {
       if (Date.now() >= deadlineAt) break;
       const domain = row.company_domain;
-      let homepageContent: string | null = null;
-
       // The same capped homepage fetch supplies classification evidence and the profile fields.
-      if (FIRECRAWL_API_KEY) {
-        homepageContent = await scrapeHomepage(domain, deadlineAt);
-        if (homepageContent) scraped++;
-      }
+      const homepageContent = await scrapeHomepage(domain, deadlineAt);
+      if (homepageContent) scraped++;
 
       const storedDescription = publicSentence(row.company_description, 280);
       const storedProducts = publicSentence(row.products);
@@ -563,9 +571,8 @@ export const signalBankDaily = schedules.task({
         limit: "500",
       });
       const candidateDomains = (candidates ?? []) as Array<{ domain: string }>;
-      const contacts = candidateDomains.length === 0 ? [] : await sbGet("founder_contacts", {
-        select: "company_domain", company_domain: `in.(${candidateDomains.map(row => row.domain).join(",")})`, limit: "1500",
-      });
+      // At most MAX_FOUNDERS_PER_COMPANY (2) rows per company; 3 covers rows written under the old cap of 3.
+      const contacts = await sbGetIn("founder_contacts", { select: "company_domain" }, "company_domain", candidateDomains.map(row => row.domain), 3);
       if (candidates === null || contacts === null) throw new Error("Founder eligibility read failed");
       const completed = new Set((contacts as Array<{ company_domain: string }>).map(row => row.company_domain));
       const eligible = (candidates as Array<{ domain: string }>).filter(row => !completed.has(row.domain) && /^[a-z0-9.-]+\.[a-z]{2,}$/.test(row.domain)).slice(0, founderCap);

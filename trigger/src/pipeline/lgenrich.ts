@@ -1,4 +1,5 @@
 import { logger } from "@trigger.dev/sdk";
+import { requestSignal } from "./request-signal.js";
 
 // lg-free-enrichments - internal Cloud Run service (free). Live homepage-scrape
 // → LinkedIn extract, so no index lag on brand-new companies.
@@ -42,14 +43,14 @@ export function lgHqString(f: LgFirmographics): string | null {
  * LinkedIn page links back to the domain) - only trust data when true.
  * Returns null on miss, untrusted resolution, or API failure.
  */
-export async function lgenrichDomain(domain: string): Promise<LgEnrichResult | null> {
+export async function lgenrichDomain(domain: string, signal?: AbortSignal): Promise<LgEnrichResult | null> {
   if (!LGENRICH_KEY) return null;
   try {
     const res = await fetch(`${LGENRICH_BASE}/enrich/linkedin`, {
       method: "POST",
       headers: { "x-api-key": LGENRICH_KEY, "content-type": "application/json" },
       body: JSON.stringify({ domain }),
-      signal: AbortSignal.timeout(90_000), // live scrape - can be slow
+      signal: requestSignal(90_000, signal), // live scrape - can be slow
     });
     if (!res.ok) {
       logger.warn(`lgenrich → HTTP ${res.status}`, { domain });

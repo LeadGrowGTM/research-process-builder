@@ -1,0 +1,379 @@
+﻿import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { fetchUrl, htmlToText, isUsableContent, looksBlocked, scrapePage } from "./scrape.js";
+
+const URL = "https://company.test/article";
+const SPIDER_URL = "https://api.spider.cloud/scrape";
+const UNBLOCKER_URL = "https://api.spider.cloud/unblocker";
+const CONTENT = "Acme builds payment software for retailers. ".repeat(12).trim();
+const OPTIONS = { maxChars: 300 };
+const words = (count: number) => Array.from({ length: count }, (_, i) => `word${i}`).join(" ");
+
+function htmlResponse(html: string) {
+  return new Response(html, { headers: { "Content-Type": "text/html; charset=utf-8" } });
+}
+
+function jsonResponse(data: unknown) {
+  return new Response(JSON.stringify(data), { headers: { "Content-Type": "application/json" } });
+}
+
+afterEach(() => { vi.restoreAllMocks(); vi.unstubAllEnvs(); vi.unstubAllGlobals(); });
+
+describe("htmlToText", () => {
+  it.each(["script", "style", "noscript", "svg", "template"])("drops %s blocks", (tag) => {
+    expect(htmlToText(`<title>Acme</title><${tag} class="junk"><p>Hidden junk</p></${tag}><main>Useful evidence</main>`)).toBe("Acme\nUseful evidence");
+  });
+
+  it.each(["nav", "header", "footer", "aside"])("keeps %s text as full page content", (tag) => {
+    expect(htmlToText(`<${tag}>Company links</${tag}><main>Useful evidence</main>`)).toBe("Company links\nUseful evidence");
+  });
+
+  it("keeps the title, separates blocks and collapses whitespace without breaking inline words", () => {
+    expect(htmlToText("<TITLE> Acme &amp; Co </TITLE><div><h1>Payments</h1><p>Build <strong>better</strong> tools.\t Today.</p><p>Pay<strong>ments</strong><br>For retailers.</p></div>"))
+      .toBe("Acme & Co\nPayments\nBuild better tools. Today.\nPayments\nFor retailers.");
+  });
+
+  it("decodes common and numeric entities after stripping tags", () => {
+    expect(htmlToText("<p>&amp; &lt;literal&gt; &quot;quote&quot; &#39; &apos; &nbsp; &#65; &#x42; &#X1F600;</p>"))
+      .toBe("& <literal> \"quote\" ' ' A B \u{1F600}");
+  });
+
+  it("leaves unknown and invalid entities intact and hides HTML comments", () => {
+    expect(htmlToText("<!-- junk <p>hidden</p> --><p>&unknown; &#x110000; &#xD800; &#0;</p>"))
+      .toBe("&unknown; &#x110000; &#xD800; &#0;");
+  });
+
+  it("retains link destinations used for Product Hunt and company domain extraction", () => {
+    expect(htmlToText('<p><a href="https://acme.com?ref=producthunt&amp;utm_source=ph"><strong>Website</strong></a> <a href=\'/posts/acme\'>Acme</a> <a href="javascript:void(0)">Menu</a></p>', "https://producthunt.com/news"))
+      .toBe("Website (https://acme.com/?ref=producthunt&utm_source=ph) Acme (https://producthunt.com/posts/acme) Menu");
+  });
+
+  it("resolves relative links and drops unsafe or unresolvable destinations", () => {
+    expect(htmlToText('<a href="/company/acme.com">Profile</a> <a href="../about">About</a> <a href="mailto:hi@acme.com">Email</a> <a href="#section">Section</a> <a href="https://[bad">Bad</a>', "https://publisher.com/news/story"))
+      .toBe("Profile (https://publisher.com/company/acme.com) About (https://publisher.com/about) Email Section Bad");
+    expect(htmlToText('<a href="/company/acme.com">Profile</a>')).toBe("Profile");
+  });
+
+  it("retains unquoted absolute hrefs", () => {
+    expect(htmlToText("<a href=https://acme.com>Website</a>")).toBe("Website (https://acme.com/)");
+  });
+
+  it.each(["&#47;company&#47;acme", "&#x2F;company&#x2F;acme"])("decodes encoded href separators before resolving (%s)", (href) => {
+    expect(htmlToText(`<a href="${href}">Profile</a>`, "https://publisher.com/news/story"))
+      .toBe("Profile (https://publisher.com/company/acme)");
+  });
+
+  it("decodes href query entities before URL encoding", () => {
+    expect(htmlToText('<a href="/company/acme?ref=&#47;news&amp;label=&quot;Acme&quot;">Profile</a>', "https://publisher.com/news/story"))
+      .toBe("Profile (https://publisher.com/company/acme?ref=/news&label=%22Acme%22)");
+  });
+
+  it("decodes an absolute href before parsing its hostname", () => {
+    expect(htmlToText('<a href="https:&#47;&#x2F;acme.com/about">Website</a>', "https://publisher.com/news/story"))
+      .toBe("Website (https://acme.com/about)");
+  });
+
+  it("filters encoded non-HTTP schemes and fragments after decoding", () => {
+    expect(htmlToText('<a href="javascript&#58;alert(1)">Menu</a> <a href="&#35;section">Section</a>', "https://publisher.com/story"))
+      .toBe("Menu Section");
+  });
+});
+
+describe("usable content", () => {
+  it.each([49, 50])("requires at least 50 whitespace-separated words (words: %s)", (count) => {
+    expect(isUsableContent(` \n${words(count).replace(/ /g, "\t\n")} \n`)).toBe(count === 50);
+  });
+
+  it("accepts a 1000-word page mentioning reCAPTCHA and Cloudflare", () => {
+    const text = `${words(995)} Protected by reCAPTCHA and Cloudflare`;
+    expect(looksBlocked(text)).toBe(false);
+    expect(isUsableContent(text)).toBe(true);
+  });
+
+  it("rejects a 40-word Just a moment page", () => {
+    expect(isUsableContent(`Just a moment ${words(37)}`)).toBe(false);
+  });
+
+  it.each(["Just a moment...", "ATTENTION REQUIRED", "Checking your browser", "Verify you are human", "Verify you are a human", "Are you a robot", "Press and hold", "Access denied", "Please enable JavaScript", "JavaScript is required", "Please\n enable cookies", "cf-browser-verification", "Protected by reCAPTCHA", "DataDome", "PerimeterX"])("rejects short bot walls containing %s even above 50 words", (wall) => {
+    expect(isUsableContent(`${wall} ${CONTENT}`)).toBe(false);
+  });
+
+  it.each([299, 300])("only treats matching text under 300 words as blocked (words: %s)", (count) => {
+    expect(isUsableContent(`Just a moment ${words(count - 3)}`)).toBe(count === 300);
+  });
+
+  it("accepts short legitimate content mentioning Cloudflare alone", () => {
+    expect(isUsableContent(`Cloudflare ${CONTENT}`)).toBe(true);
+  });
+});
+
+describe("scrapePage waterfall", () => {
+  const fetchMock = vi.fn<typeof fetch>();
+
+  beforeEach(() => {
+    fetchMock.mockReset();
+    vi.stubGlobal("fetch", fetchMock);
+    vi.stubEnv("SPIDER_API_KEY", "spider-test-key");
+  });
+
+  it("uses full direct text, drops scripts and makes no paid calls", async () => {
+    const timeout = vi.spyOn(AbortSignal, "timeout");
+    const text = `Navigation\n${CONTENT}\nCompany footer`;
+    fetchMock.mockResolvedValueOnce(htmlResponse(`<nav>Navigation</nav><script>${"junk".repeat(100)}</script><main>${CONTENT}</main><footer>Company footer</footer>`));
+    expect(await scrapePage(URL)).toEqual({ content: text, provider: "direct", costUsd: 0 });
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock).toHaveBeenCalledWith(URL, expect.objectContaining({
+      method: "GET", redirect: "follow", headers: { "User-Agent": expect.stringContaining("Chrome/"), Accept: "text/html" },
+    }));
+    expect(timeout).toHaveBeenCalledWith(10_000);
+  });
+
+  it.each([200, 204, undefined])("uses Spider smart for a blocked direct page with page status %s", async (status) => {
+    fetchMock.mockResolvedValueOnce(htmlResponse(`<title>Just a moment</title><p>${CONTENT}</p>`));
+    fetchMock.mockResolvedValueOnce(jsonResponse([{ content: CONTENT, status, costs: { total_cost: 0.001 } }]));
+    expect(await scrapePage(URL, OPTIONS)).toEqual({ content: CONTENT.slice(0, 300), provider: "spider-smart", costUsd: 0.001 });
+    expect(fetchMock.mock.calls.map(([url]) => url)).toEqual([URL, SPIDER_URL]);
+  });
+
+  it("runs direct -> smart -> chrome -> unblocker for thin or blocked pages and sums costs", async () => {
+    const timeout = vi.spyOn(AbortSignal, "timeout");
+    fetchMock.mockResolvedValueOnce(htmlResponse(`<p>${words(49)}</p>`));
+    fetchMock.mockResolvedValueOnce(jsonResponse([{ content: `Access denied ${CONTENT}`, status: 200, costs: { total_cost: 0.001 } }]));
+    fetchMock.mockResolvedValueOnce(jsonResponse([{ content: words(49), status: 200, costs: { total_cost: 0.002 } }]));
+    fetchMock.mockResolvedValueOnce(jsonResponse([{ content: CONTENT, status: 200, costs: { total_cost: 0.003 } }]));
+    const result = await scrapePage(URL, OPTIONS);
+    expect(result).toMatchObject({ content: CONTENT.slice(0, 300), provider: "spider-unblocker" });
+    expect(result?.costUsd).toBeCloseTo(0.006);
+    expect(fetchMock.mock.calls.map(([url]) => url)).toEqual([URL, SPIDER_URL, SPIDER_URL, UNBLOCKER_URL]);
+    for (const [index, request] of ["smart", "chrome", "smart"].entries()) {
+      const init = fetchMock.mock.calls[index + 1][1];
+      expect(init?.method).toBe("POST");
+      expect(init?.headers).toEqual({ Authorization: "Bearer spider-test-key", "Content-Type": "application/json" });
+      expect(JSON.parse(String(init?.body))).toEqual({ url: URL, return_format: "markdown", request, filter_output_main_only: false });
+    }
+    expect(timeout.mock.calls.map(([ms]) => ms)).toEqual([10_000, 45_000, 60_000, 60_000]);
+  });
+
+  it("returns chrome content and stops before unblocker when chrome succeeds", async () => {
+    fetchMock.mockResolvedValueOnce(htmlResponse("<div id='root'></div>"));
+    fetchMock.mockResolvedValueOnce(jsonResponse([{ content: "short", status: 200, costs: { total_cost: 0.001 } }]));
+    fetchMock.mockResolvedValueOnce(jsonResponse([{ content: CONTENT, status: 200, costs: { total_cost: 0.002 } }]));
+    expect(await scrapePage(URL)).toEqual({ content: CONTENT, provider: "spider-chrome", costUsd: 0.003 });
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+  });
+
+  const escalationCases = ["smart", "chrome"].flatMap((provider, index) =>
+    ["page 401", "page 403", "page 407", "page 429", "page 500", "page 503", "page 599", "HTTP 429", "HTTP 500", "timeout", "throws", "page error", "invalid JSON"].map(failure => ({ provider, step: index + 1, failure })));
+  it.each(escalationCases)("escalates Spider $provider after $failure", async ({ step, failure }) => {
+    fetchMock.mockResolvedValueOnce(htmlResponse("<p>short</p>"));
+    for (let i = 1; i < step; i++) fetchMock.mockResolvedValueOnce(jsonResponse([{ content: "short", status: 200 }]));
+    if (failure === "timeout") fetchMock.mockRejectedValueOnce(new DOMException("Timed out", "TimeoutError"));
+    else if (failure === "throws") fetchMock.mockRejectedValueOnce(new Error("Network failure"));
+    else if (failure.startsWith("HTTP ")) fetchMock.mockResolvedValueOnce(new Response("failed", { status: Number(failure.slice(5)) }));
+    else if (failure === "invalid JSON") fetchMock.mockResolvedValueOnce(new Response("invalid JSON"));
+    else fetchMock.mockResolvedValueOnce(jsonResponse([{ content: CONTENT, status: failure === "page error" ? 200 : Number(failure.slice(5)), error: failure === "page error" ? "failed" : undefined }]));
+    fetchMock.mockResolvedValueOnce(jsonResponse([{ content: CONTENT, status: 200 }]));
+    expect(await scrapePage(URL, OPTIONS)).toEqual({ content: CONTENT.slice(0, 300), provider: step === 1 ? "spider-chrome" : "spider-unblocker", costUsd: 0 });
+    expect(fetchMock.mock.calls.map(([url]) => url)).toEqual(step === 1 ? [URL, SPIDER_URL, SPIDER_URL] : [URL, SPIDER_URL, SPIDER_URL, UNBLOCKER_URL]);
+    expect(JSON.parse(String(fetchMock.mock.calls[step + 1][1]?.body)).request).toBe(step === 1 ? "chrome" : "smart");
+  });
+
+  const deadPageCases = ["smart", "chrome", "unblocker"].flatMap((provider, index) =>
+    [400, 402, 404, 405, 410, 422, 499].map(status => ({ provider, step: index + 1, status })));
+  it.each(deadPageCases)("stops Spider $provider on dead page HTTP $status", async ({ step, status }) => {
+    fetchMock.mockResolvedValueOnce(htmlResponse("<p>short</p>"));
+    for (let i = 1; i < step; i++) fetchMock.mockResolvedValueOnce(jsonResponse([{ content: "short", status: 200 }]));
+    fetchMock.mockResolvedValueOnce(jsonResponse([{ content: CONTENT, status }]));
+    fetchMock.mockResolvedValueOnce(jsonResponse([{ content: CONTENT, status: 200 }]));
+    expect(await scrapePage(URL, OPTIONS)).toBeNull();
+    expect(fetchMock).toHaveBeenCalledTimes(step + 1);
+  });
+
+  const apiRejectionCases = ["smart", "chrome", "unblocker"].flatMap((provider, index) =>
+    [401, 402, 403].map(status => ({ provider, step: index + 1, status })));
+  it.each(apiRejectionCases)("stops the ladder when the Spider API rejects $provider with HTTP $status", async ({ step, status }) => {
+    fetchMock.mockResolvedValueOnce(htmlResponse("<p>short</p>"));
+    for (let i = 1; i < step; i++) fetchMock.mockResolvedValueOnce(jsonResponse([{ content: "short", status: 200 }]));
+    fetchMock.mockResolvedValueOnce(new Response("rejected", { status }));
+    fetchMock.mockResolvedValueOnce(jsonResponse([{ content: CONTENT, status: 200 }]));
+    expect(await scrapePage(URL, OPTIONS)).toBeNull();
+    expect(fetchMock).toHaveBeenCalledTimes(step + 1);
+  });
+
+  it.each([null, [], [null], [42], { content: CONTENT }].map(data => ({ data })))("escalates a malformed Spider response $data", async ({ data }) => {
+    fetchMock.mockResolvedValueOnce(htmlResponse("<p>short</p>"));
+    fetchMock.mockResolvedValueOnce(jsonResponse(data));
+    fetchMock.mockResolvedValueOnce(jsonResponse([{ content: CONTENT, status: 200 }]));
+    expect(await scrapePage(URL)).toEqual({ content: CONTENT, provider: "spider-chrome", costUsd: 0 });
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+  });
+
+  it("sums Spider costs across page failures and successful escalation", async () => {
+    fetchMock.mockResolvedValueOnce(htmlResponse("<p>short</p>"));
+    fetchMock.mockResolvedValueOnce(jsonResponse([{ content: CONTENT, status: 403, costs: { total_cost: 0.001 } }]));
+    fetchMock.mockResolvedValueOnce(jsonResponse([{ content: CONTENT, status: 500, costs: { total_cost: 0.002 } }]));
+    fetchMock.mockResolvedValueOnce(jsonResponse([{ content: CONTENT, status: 200, costs: { total_cost: 0.003 } }]));
+    const result = await scrapePage(URL);
+    expect(result).toMatchObject({ content: CONTENT, provider: "spider-unblocker" });
+    expect(result?.costUsd).toBeCloseTo(0.006);
+    expect(fetchMock.mock.calls.map(([url]) => url)).toEqual([URL, SPIDER_URL, SPIDER_URL, UNBLOCKER_URL]);
+  });
+
+  it("returns null after all Spider steps throw", async () => {
+    fetchMock.mockResolvedValueOnce(htmlResponse("<p>short</p>"));
+    fetchMock.mockRejectedValue(new Error("Network failure"));
+    expect(await scrapePage(URL)).toBeNull();
+    expect(fetchMock.mock.calls.map(([url]) => url)).toEqual([URL, SPIDER_URL, SPIDER_URL, UNBLOCKER_URL]);
+  });
+
+  it.each([undefined, null, "bad", { total_cost: "0.001" }, { total_cost: null }])("defaults missing or invalid costs to zero (%j)", async (costs) => {
+    fetchMock.mockResolvedValueOnce(htmlResponse("<p>short</p>"));
+    fetchMock.mockResolvedValueOnce(jsonResponse([{ content: CONTENT, status: 200, costs }]));
+    expect(await scrapePage(URL)).toEqual({ content: CONTENT, provider: "spider-smart", costUsd: 0 });
+  });
+
+  it("returns null after all three Spider steps yield thin content", async () => {
+    fetchMock.mockResolvedValueOnce(htmlResponse("<p>short</p>"));
+    fetchMock.mockImplementation(async () => jsonResponse([{ content: "short", status: 200 }]));
+    expect(await scrapePage(URL)).toBeNull();
+    expect(fetchMock).toHaveBeenCalledTimes(4);
+  });
+
+  it.each(["application/json", "text/plain"])("escalates non-HTML direct %s responses", async (contentType) => {
+    fetchMock.mockResolvedValueOnce(new Response(CONTENT, { headers: { "Content-Type": contentType } }));
+    fetchMock.mockResolvedValueOnce(jsonResponse([{ content: CONTENT, status: 200 }]));
+    expect((await scrapePage(URL))?.provider).toBe("spider-smart");
+  });
+
+  it("escalates direct HTTP 403 even when the body contains usable text", async () => {
+    fetchMock.mockResolvedValueOnce(new Response(`<p>${CONTENT}</p>`, { status: 403, headers: { "Content-Type": "text/html" } }));
+    fetchMock.mockResolvedValueOnce(jsonResponse([{ content: CONTENT, status: 200 }]));
+    expect((await scrapePage(URL))?.provider).toBe("spider-smart");
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it.each([404, 410])("treats a direct HTTP %s as a dead page without paying Spider", async (status) => {
+    fetchMock.mockResolvedValueOnce(new Response("<p>Page not found</p>", { status, headers: { "Content-Type": "text/html" } }));
+    expect(await scrapePage(URL)).toBeNull();
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("starts at Spider chrome when startAt says so, through fetchUrl too", async () => {
+    fetchMock.mockImplementation(async () => jsonResponse([{ content: CONTENT, status: 200, costs: { total_cost: 0.005 } }]));
+    expect(await scrapePage(URL, { startAt: "spider-chrome" })).toEqual({ content: CONTENT, provider: "spider-chrome", costUsd: 0.005 });
+    expect(await fetchUrl(URL, { startAt: "spider-chrome" })).toBe(CONTENT);
+    expect(fetchMock.mock.calls.map(([url]) => url)).toEqual([SPIDER_URL, SPIDER_URL]);
+    expect(JSON.parse(String(fetchMock.mock.calls[0][1]?.body)).request).toBe("chrome");
+  });
+
+  it("falls back to direct for scrapePage and fetchUrl when Spider has no key", async () => {
+    vi.stubEnv("SPIDER_API_KEY", "");
+    fetchMock.mockImplementation(async () => htmlResponse(`<main>${CONTENT}</main>`));
+    expect(await scrapePage(URL, { startAt: "spider-chrome" })).toEqual({ content: CONTENT, provider: "direct", costUsd: 0 });
+    expect(await fetchUrl(URL, { startAt: "spider-chrome" })).toBe(CONTENT);
+    expect(fetchMock.mock.calls.map(([url]) => url)).toEqual([URL, URL]);
+  });
+
+  it("resolves direct page links against the fetched URL", async () => {
+    vi.stubEnv("SPIDER_API_KEY", "");
+    fetchMock.mockResolvedValueOnce(htmlResponse(`<main>${CONTENT} <a href="/company/acme.com">Profile</a> <a href=https://acme.com>Website</a></main>`));
+    expect((await scrapePage(URL))?.content).toContain("Profile (https://company.test/company/acme.com) Website (https://acme.com/)");
+  });
+
+  it("resolves direct page links against the final URL after a redirect", async () => {
+    const response = htmlResponse(`<main>${CONTENT} <a href="../company/acme">Profile</a></main>`);
+    Object.defineProperty(response, "url", { value: "https://publisher.com/news/2026/story" });
+    fetchMock.mockResolvedValueOnce(response);
+    expect(await scrapePage(URL)).toEqual({
+      content: `${CONTENT} Profile (https://publisher.com/news/company/acme)`, provider: "direct", costUsd: 0,
+    });
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("escalates a thrown direct request", async () => {
+    fetchMock.mockRejectedValueOnce(new Error("Direct timeout"));
+    fetchMock.mockResolvedValueOnce(jsonResponse([{ content: CONTENT, status: 200 }]));
+    expect((await scrapePage(URL))?.provider).toBe("spider-smart");
+  });
+
+  it.each([true, false])("uses direct only without a Spider key (usable: %s)", async (usable) => {
+    vi.stubEnv("SPIDER_API_KEY", "");
+    fetchMock.mockResolvedValueOnce(htmlResponse(`<p>${usable ? CONTENT : "Enable JavaScript"}</p>`));
+    expect(await scrapePage(URL, OPTIONS)).toEqual(usable ? { content: CONTENT.slice(0, 300), provider: "direct", costUsd: 0 } : null);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not fetch after an expired deadline", async () => {
+    expect(await scrapePage(URL, { ...OPTIONS, deadlineAt: Date.now() - 1 })).toBeNull();
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("fetchUrl does not fetch after an expired deadline", async () => {
+    expect(await fetchUrl(URL, { ...OPTIONS, deadlineAt: Date.now() - 1 })).toBeNull();
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("fetchUrl forwards deadlineAt to cap the scrape ladder and stop expired steps", async () => {
+    let now = 1_000;
+    vi.spyOn(Date, "now").mockImplementation(() => now);
+    const timeout = vi.spyOn(AbortSignal, "timeout");
+    fetchMock.mockImplementation(async () => {
+      now += 100;
+      return fetchMock.mock.calls.length === 1 ? htmlResponse("<p>short</p>") : jsonResponse([{ content: "short", status: 200 }]);
+    });
+    expect(await fetchUrl(URL, { ...OPTIONS, deadlineAt: 1_250 })).toBeNull();
+    expect(fetchMock.mock.calls.map(([url]) => url)).toEqual([URL, SPIDER_URL, SPIDER_URL]);
+    expect(timeout.mock.calls.map(([ms]) => ms)).toEqual([250, 150, 50]);
+  });
+
+  it("stops remaining steps when the deadline expires during smart", async () => {
+    let now = 1_000;
+    vi.spyOn(Date, "now").mockImplementation(() => now);
+    fetchMock.mockResolvedValueOnce(htmlResponse("<p>short</p>"));
+    fetchMock.mockImplementationOnce(async () => { now = 1_501; return jsonResponse([{ content: "short", status: 200 }]); });
+    expect(await scrapePage(URL, { ...OPTIONS, deadlineAt: 1_500 })).toBeNull();
+    expect(fetchMock.mock.calls.map(([url]) => url)).toEqual([URL, SPIDER_URL]);
+  });
+
+  it("caps every step timeout by the remaining deadline", async () => {
+    let now = 1_000;
+    vi.spyOn(Date, "now").mockImplementation(() => now);
+    const timeout = vi.spyOn(AbortSignal, "timeout");
+    fetchMock.mockImplementation(async () => {
+      now += 100;
+      if (fetchMock.mock.calls.length === 1) return htmlResponse("<p>short</p>");
+      return jsonResponse([{ content: fetchMock.mock.calls.length === 4 ? CONTENT : "short", status: 200 }]);
+    });
+    expect((await scrapePage(URL, { ...OPTIONS, deadlineAt: 1_500 }))?.provider).toBe("spider-unblocker");
+    expect(timeout.mock.calls.map(([ms]) => ms)).toEqual([500, 400, 300, 200]);
+  });
+
+  it("preserves the absolute deadline and costs across Spider failures", async () => {
+    let now = 1_000;
+    vi.spyOn(Date, "now").mockImplementation(() => now);
+    const timeout = vi.spyOn(AbortSignal, "timeout");
+    fetchMock.mockImplementation(async () => {
+      now += 100;
+      if (fetchMock.mock.calls.length === 1) return htmlResponse("<p>short</p>");
+      if (fetchMock.mock.calls.length === 2) throw new DOMException("Timed out", "TimeoutError");
+      return jsonResponse([{ content: CONTENT, status: fetchMock.mock.calls.length === 3 ? 403 : 200, costs: { total_cost: 0.002 } }]);
+    });
+    expect(await scrapePage(URL, { deadlineAt: 1_500 })).toEqual({ content: CONTENT, provider: "spider-unblocker", costUsd: 0.004 });
+    expect(fetchMock).toHaveBeenCalledTimes(4);
+    expect(timeout.mock.calls.map(([ms]) => ms)).toEqual([500, 400, 300, 200]);
+  });
+
+  it.each([49, 50])("fetchUrl uses the shared word minimum (words: %s)", async (count) => {
+    vi.stubEnv("SPIDER_API_KEY", "");
+    fetchMock.mockResolvedValueOnce(htmlResponse(`<p>${words(count)}</p>`));
+    expect(await fetchUrl(URL)).toBe(count === 50 ? words(50) : null);
+  });
+
+  it("keeps uncapped scrape content and fetchUrl's default and custom maxChars", async () => {
+    const text = words(3000);
+    fetchMock.mockImplementation(async () => htmlResponse(`<p>${text}</p>`));
+    expect(await scrapePage(URL)).toEqual({ content: text, provider: "direct", costUsd: 0 });
+    expect(await scrapePage(URL, { maxChars: 100 })).toEqual({ content: text.slice(0, 100), provider: "direct", costUsd: 0 });
+    expect(await fetchUrl(URL)).toBe(text.slice(0, 15_000));
+    expect(await fetchUrl(URL, { renderJs: true, waitForSecs: 3, maxChars: 30_000 })).toBe(text);
+  });
+});

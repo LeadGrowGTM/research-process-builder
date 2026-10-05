@@ -155,7 +155,7 @@ describe("founder discovery and persistence", () => {
     vi.unstubAllGlobals();
   });
 
-  it("keeps at most three founders and excludes candidates without LinkedIn", async () => {
+  it("keeps at most two founders and excludes candidates without LinkedIn", async () => {
     const content = [
       ["A", "One", "https://linkedin.com/in/a-one"],
       ["B", "Two", "https://linkedin.com/in/b-two"],
@@ -172,9 +172,9 @@ describe("founder discovery and persistence", () => {
     );
 
     const founders = await aiArkSearchPeople("acme.com", undefined, "ark");
-    expect(founders).toHaveLength(3);
+    expect(founders).toHaveLength(2);
     expect(founders.every((item) => item.linkedin_url)).toBe(true);
-    expect(founders.map((item) => item.first_name)).toEqual(["A", "B", "C"]);
+    expect(founders.map((item) => item.first_name)).toEqual(["A", "B"]);
   });
 
   it("targets the leadgrow_knowledge schema and surfaces failed upserts", async () => {

@@ -26,10 +26,10 @@ describe("parseQuickEnrichRows", () => {
     expect(JSON.stringify(out)).not.toMatch(/@acme\.com|6505550100/);
   });
 
-  it("treats N/A as missing and caps at three founders", () => {
+  it("treats N/A as missing and caps at two founders", () => {
     const rows = [1, 2, 3, 4].map((n) => qeRow(`F${n}`, "Founder", { city: "N/A" }));
     const out = parseQuickEnrichRows(rows);
-    expect(out.founders).toHaveLength(3);
+    expect(out.founders).toHaveLength(2);
     expect(out.hq).toBeNull();
   });
 });

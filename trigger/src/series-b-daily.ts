@@ -3,12 +3,16 @@ import { runFundingPipeline } from "./pipeline/pipeline.js";
 import { SERIES_B_CONFIG } from "./pipeline/round-configs.js";
 import { workflowGate } from "./modules/workflow-gate.js";
 
+const MAX_DURATION_S = 1200;
+
 export const seriesBDaily = schedules.task({
   id: "series-b-daily",
   cron: {
-    pattern: "0 7 * * *",
+    pattern: "5 7 * * *",
     timezone: "America/New_York",
   },
+  // 100 enrichments at 5 concurrent take about 6 minutes; the pipeline stops a minute early.
+  maxDuration: MAX_DURATION_S,
   retry: {
     maxAttempts: 3,
     factor: 2,
@@ -38,10 +42,11 @@ export const seriesBDaily = schedules.task({
       tbs: "qdr:d",
       date: scheduledDate,
       skipEnrich: false,
-      maxEnrich: 20,
+      maxEnrich: 100,
       dryRun: false,
       skipKnownCompanies: true,
       skipKnownDays: 7,
+      deadlineAt: Date.now() + (MAX_DURATION_S - 60) * 1000,
     });
 
     return {

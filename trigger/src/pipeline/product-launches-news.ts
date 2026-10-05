@@ -1,8 +1,11 @@
 import { logger } from "@trigger.dev/sdk";
 import { searchSerper } from "./serper.js";
+import { isLunaConfigured, lunaJson } from "./luna.js";
 import type { ProductLaunchRaw, ProductLaunchPipelineResult } from "./product-launch-types.js";
+import { hasTime, LAUNCH_RUN_BUDGET_MS, LAUNCH_WRITE_BATCH_SIZE, LAUNCH_WRITE_TIMEOUT_MS, persistenceReserveMs } from "./launch-budget.js";
 
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY ?? "";
+const SEARCH_BUDGET_MS = 31_000;
+
 const SUPABASE_URL = (() => {
   const url = process.env.SUPABASE_PROJECT_URL ?? process.env.SUPABASE_URL ?? "";
   return url.startsWith("http") ? url : "";
@@ -15,43 +18,45 @@ const SUPABASE_KEY =
 
 const FETCH_HEADERS = { "User-Agent": "Mozilla/5.0 (compatible; LeadGrow/1.0)" };
 const TABLE = "product_launches";
+const HN_MIN_POINTS = 3;
 
 // ---------------------------------------------------------------------------
 // Serper supplement queries (Stage 1B)
 // ---------------------------------------------------------------------------
 
-interface SerperQuery {
+export interface SerperQuery {
   id: string;
   desc: string;
   query: string;
   num: number;
 }
 
-const SERPER_QUERIES: SerperQuery[] = [
-  {
-    id: "q_tc",
-    desc: "TechCrunch launches",
-    query: 'site:techcrunch.com "launches" OR "announces" OR "introduces" OR "debuts"',
-    num: 20,
-  },
-  {
-    id: "q_vb",
-    desc: "VentureBeat launches",
-    query: "site:venturebeat.com launches OR announces product",
-    num: 15,
-  },
-  {
-    id: "q_verge",
-    desc: "The Verge launches",
-    query: 'site:theverge.com "launches" OR "announces" product',
-    num: 15,
-  },
-  {
-    id: "q_wire",
-    desc: "Press wire launches",
-    query: '"now available" OR "product launch" site:businesswire.com OR site:prnewswire.com',
-    num: 10,
-  },
+// Tech terms keep the wire queries on software launches; without them the wires return food, pharma, and hardware.
+const TECH = "(software OR platform OR AI OR SaaS OR API OR cloud OR cybersecurity)";
+const WIRES = ["businesswire.com", "prnewswire.com", "globenewswire.com"];
+const AGENT_TERMS = '(agentic OR "AI agents" OR MCP OR "open-source")';
+const LAUNCH_VERBS = "(launches OR unveils OR introduces)";
+
+function q(id: string, query: string, desc = id): SerperQuery {
+  return { id, desc, query, num: 30 };
+}
+
+// Measured 2026-10-05 with scripts/launches-eval.ts: all 17 shipped queries added launches no other query found.
+// Dropped as noise: generic "launches" queries (social posts, local news), betalist, the VentureBeat and Verge
+// site queries (0-1 results a day), and the TechCrunch site query (the TC date page already covers it).
+export const SERPER_QUERIES: SerperQuery[] = [
+  ...WIRES.map((w) => q(`w_${w.split(".")[0]}_launch`, `site:${w} ${LAUNCH_VERBS} ${TECH}`)),
+  ...WIRES.slice(0, 2).map((w) => q(`w_${w.split(".")[0]}_avail`, `site:${w} ("now available" OR "general availability" OR "announces availability") ${TECH}`)),
+  ...WIRES.slice(0, 2).map((w) => q(`w_${w.split(".")[0]}_agent`, `site:${w} ${AGENT_TERMS} (launches OR unveils OR announces)`)),
+  ...WIRES.slice(0, 2).map((w) => q(`w_${w.split(".")[0]}_debut`, `site:${w} (debuts OR "rolls out" OR releases OR "unveils new") ${TECH}`)),
+  q("w_prn_announces", `site:prnewswire.com "announces" ${TECH} (new OR launch OR launches)`),
+  q("w_other_launch", `(site:prweb.com OR site:einpresswire.com OR site:accessnewswire.com OR site:newswire.com) ${LAUNCH_VERBS} ${TECH}`),
+  q("n_siliconangle", "site:siliconangle.com launches OR unveils OR introduces OR debuts"),
+  q("n_helpnet", "site:helpnetsecurity.com launches OR unveils OR introduces"),
+  q("n_fintech", "site:fintechfutures.com OR site:pymnts.com OR site:finextra.com launches OR unveils OR introduces"),
+  q("n_martech", "site:martechseries.com launches OR unveils OR introduces"),
+  q("n_dev", "site:marktechpost.com OR site:infoworld.com OR site:computerworld.com launches OR unveils OR introduces"),
+  q("n_tech", "site:zdnet.com OR site:techradar.com OR site:engadget.com launches OR unveils OR introduces"),
 ];
 
 // ---------------------------------------------------------------------------
@@ -81,21 +86,6 @@ function parseTCArticles(html: string): Array<{ title: string; url: string }> {
   return results;
 }
 
-// HN titleline spans: <span class="titleline"><a href="URL">TITLE</a>
-function parseHNItems(html: string): Array<{ title: string; url: string }> {
-  const results: Array<{ title: string; url: string }> = [];
-  const titlelineRe = /<span[^>]+class="titleline"[^>]*>\s*<a[^>]+href="([^"]+)"[^>]*>([^<]+)<\/a>/gi;
-  let match: RegExpExecArray | null;
-  while ((match = titlelineRe.exec(html)) !== null) {
-    const url = match[1].trim();
-    const title = match[2].replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").trim();
-    if (url && title) {
-      results.push({ url, title });
-    }
-  }
-  return results;
-}
-
 function domainFromUrl(url: string): string {
   try {
     return new URL(url).hostname.replace(/^www\./, "");
@@ -108,7 +98,8 @@ function domainFromUrl(url: string): string {
 // Stage 1A: Direct source fetches
 // ---------------------------------------------------------------------------
 
-async function fetchTCDatePage(dateStr: string): Promise<ProductLaunchRaw[]> {
+async function fetchTCDatePage(dateStr: string, deadlineAt?: number): Promise<ProductLaunchRaw[]> {
+  if (!hasTime(deadlineAt, 20_000)) return [];
   const [year, month, day] = dateStr.split("-");
   const url = `https://techcrunch.com/${year}/${month}/${day}/`;
   try {
@@ -136,70 +127,55 @@ async function fetchTCDatePage(dateStr: string): Promise<ProductLaunchRaw[]> {
   }
 }
 
-async function fetchHNShowPage(): Promise<ProductLaunchRaw[]> {
-  const url = "https://news.ycombinator.com/show";
+interface AlgoliaHit {
+  objectID: string;
+  title?: string;
+  url?: string | null;
+  points?: number;
+}
+
+/**
+ * HN via the Algolia API. The hn.algolia.com JSON is stable; the news.ycombinator.com HTML answers
+ * 419 "Sorry." to cloud IPs, which is why the scraped Show HN and front pages produced nothing.
+ */
+export async function fetchHNAlgolia(tag: "show_hn" | "front_page", queryId: string, minPoints: number, windowHours: number, deadlineAt?: number): Promise<ProductLaunchRaw[]> {
+  if (!hasTime(deadlineAt, 20_000)) return [];
+  const since = Math.floor(Date.now() / 1000) - windowHours * 3600;
+  const url = `https://hn.algolia.com/api/v1/search_by_date?tags=${tag}&numericFilters=${encodeURIComponent(`created_at_i>${since},points>=${minPoints}`)}&hitsPerPage=100`;
   try {
-    const resp = await fetch(url, {
-      headers: FETCH_HEADERS,
-      signal: AbortSignal.timeout(20_000),
-    });
+    const resp = await fetch(url, { headers: FETCH_HEADERS, signal: AbortSignal.timeout(20_000) });
     if (!resp.ok) {
-      logger.warn(`HN Show: HTTP ${resp.status}`);
+      logger.warn(`HN ${queryId}: HTTP ${resp.status}`);
       return [];
     }
-    const html = await resp.text();
-    const items = parseHNItems(html);
-    logger.info(`HN Show: ${items.length} items`);
-    return items.map((it) => ({
-      title: it.title,
-      source_url: it.url,
-      source_domain: domainFromUrl(it.url) || "news.ycombinator.com",
-      snippet: "",
-      query_source: "hn_show",
-    }));
+    const { hits = [] } = (await resp.json()) as { hits?: AlgoliaHit[] };
+    logger.info(`HN ${queryId}: ${hits.length} items`);
+    return hits.filter((h) => h.title).map((h) => {
+      const link = h.url || `https://news.ycombinator.com/item?id=${h.objectID}`;
+      return {
+        title: h.title as string,
+        source_url: link,
+        source_domain: domainFromUrl(link) || "news.ycombinator.com",
+        snippet: "",
+        query_source: queryId,
+      };
+    });
   } catch (err) {
-    logger.warn(`HN Show: ${err instanceof Error ? err.message : String(err)}`);
+    logger.warn(`HN ${queryId}: ${err instanceof Error ? err.message : String(err)}`);
     return [];
   }
 }
 
-async function fetchHNFrontPage(dateStr: string): Promise<ProductLaunchRaw[]> {
-  const url = `https://news.ycombinator.com/front?day=${dateStr}`;
-  try {
-    const resp = await fetch(url, {
-      headers: FETCH_HEADERS,
-      signal: AbortSignal.timeout(20_000),
-    });
-    if (!resp.ok) {
-      logger.warn(`HN front ${dateStr}: HTTP ${resp.status}`);
-      return [];
-    }
-    const html = await resp.text();
-    const items = parseHNItems(html);
-    logger.info(`HN front ${dateStr}: ${items.length} items`);
-    return items.map((it) => ({
-      title: it.title,
-      source_url: it.url,
-      source_domain: domainFromUrl(it.url) || "news.ycombinator.com",
-      snippet: "",
-      query_source: `hn_front_${dateStr}`,
-    }));
-  } catch (err) {
-    logger.warn(`HN front ${dateStr}: ${err instanceof Error ? err.message : String(err)}`);
-    return [];
-  }
-}
-
-async function runDirectFetches(dateStr: string): Promise<ProductLaunchRaw[]> {
+export async function runDirectFetches(dateStr: string, deadlineAt?: number): Promise<ProductLaunchRaw[]> {
   const yesterday = new Date(dateStr);
   yesterday.setDate(yesterday.getDate() - 1);
   const yesterdayStr = yesterday.toISOString().split("T")[0];
 
   const [tc1, tc2, hnShow, hnFront] = await Promise.all([
-    fetchTCDatePage(dateStr),
-    fetchTCDatePage(yesterdayStr),
-    fetchHNShowPage(),
-    fetchHNFrontPage(dateStr),
+    fetchTCDatePage(dateStr, deadlineAt),
+    fetchTCDatePage(yesterdayStr, deadlineAt),
+    fetchHNAlgolia("show_hn", "hn_show", HN_MIN_POINTS, 36, deadlineAt),
+    fetchHNAlgolia("front_page", `hn_front_${dateStr}`, 0, 36, deadlineAt),
   ]);
 
   const all = [...tc1, ...tc2, ...hnShow, ...hnFront];
@@ -211,34 +187,40 @@ async function runDirectFetches(dateStr: string): Promise<ProductLaunchRaw[]> {
 // Stage 1B: Serper supplement
 // ---------------------------------------------------------------------------
 
-async function runSerperQueries(tbs: string): Promise<ProductLaunchRaw[]> {
-  const results = await Promise.allSettled(
-    SERPER_QUERIES.map(async (q) => {
-      const items = await searchSerper(q.query, q.num, tbs);
-      logger.info(`Serper [${q.id}] ${q.desc}: ${items.length} results`);
-      return items.map((item) => {
-        const url = (item as { link?: string; title?: string; snippet?: string }).link ?? "";
-        return {
-          title: (item as { title?: string }).title ?? "",
+export async function runSerperQueries(tbs: string, queries: SerperQuery[] = SERPER_QUERIES, deadlineAt?: number): Promise<ProductLaunchRaw[]> {
+  const all: ProductLaunchRaw[] = [];
+  // Sequential: a burst of ~20 parallel calls trips the RapidAPI per-second limit and spills to the paid fallback.
+  for (let index = 0; index < queries.length; index++) {
+    const query = queries[index];
+    const workDeadlineAt = deadlineAt === undefined ? undefined : deadlineAt - persistenceReserveMs(all.length);
+    if (!hasTime(workDeadlineAt, SEARCH_BUDGET_MS + (index > 0 ? 250 : 0))) {
+      logger.warn("News search deadline exhausted", { remaining: queries.length - index });
+      break;
+    }
+    if (index > 0) await new Promise((resolve) => setTimeout(resolve, 250));
+    try {
+      const items = await searchSerper(query.query, query.num, tbs);
+      logger.info(`Search [${query.id}] ${query.desc}: ${items.length} results`);
+      for (const item of items) {
+        const url = item.link ?? "";
+        all.push({
+          title: item.title ?? "",
           source_url: url,
           source_domain: domainFromUrl(url),
-          snippet: ((item as { snippet?: string }).snippet ?? "").slice(0, 300),
-          query_source: q.id,
-        } as ProductLaunchRaw;
-      });
-    })
-  );
-
-  const all: ProductLaunchRaw[] = [];
-  for (const r of results) {
-    if (r.status === "fulfilled") all.push(...r.value);
+          snippet: (item.snippet ?? "").slice(0, 300),
+          query_source: query.id,
+        });
+      }
+    } catch (err) {
+      logger.warn(`Search [${query.id}] failed: ${err instanceof Error ? err.message : String(err)}`);
+    }
   }
-  logger.info(`Stage 1B Serper: ${all.length} raw items`);
+  logger.info(`Stage 1B search: ${all.length} raw items`);
   return all;
 }
 
 // ---------------------------------------------------------------------------
-// Stage 2: Classify & filter via GPT-4o-mini
+// Stage 2: Classify & filter via Luna
 // ---------------------------------------------------------------------------
 
 const CLASSIFY_SYSTEM = "You classify news articles as product launches. Output strict JSON only.";
@@ -262,6 +244,12 @@ DISCARD (is_launch=false) if:
 - Listicle ("best AI tools 2026")
 - Court cases, lawsuits, regulatory actions
 - Earnings reports, stock news, market commentary
+- Consumer goods, food and beverage, toys, pharma, biotech, medical devices, physical hardware, restaurants, franchise opportunities, real estate, travel, local news, and anything aimed at consumers rather than businesses or developers. Keep only software, AI, data, developer, cybersecurity, fintech, and B2B service launches.
+- Government, police, municipal, school, or non-profit programs and initiatives
+- Social media posts, videos, community-forum posts, and pre-launch directory listings with no real company behind them
+- Press releases that are really a partnership, a webinar, an award, a customer win, or a "free trial" offer with no new product
+- Personal, hobby, or research projects (a GitHub repo or model checkpoint by an individual) with no company or commercial product behind them
+- Anything where you cannot name a specific company and a specific product or feature
 
 COMPANY NAME EXTRACTION RULES:
 - For "Show HN: ProductName" titles: the company name is the product name or the maker. NEVER return "Show HN" as company_name.
@@ -310,11 +298,17 @@ Items:
 
 const SKIP_URL_RE = /techcrunch\.com\/tag\/|techcrunch\.com\/author\/|techcrunch\.com\/category\/|\/page\/\d+/;
 
-interface RawItemWithIdx extends ProductLaunchRaw {
+/** Social, video, and community hosts: search surfaces them for generic launch queries, and none is a company's launch. */
+export const SOCIAL_DOMAIN_RE = /(^|\.)(facebook|instagram|youtube|linkedin|threads|tiktok|twitter|reddit|skool|pinterest)\.(com|net)$|(^|\.)x\.com$/;
+
+/** Classifier fallbacks for when it cannot name the company; these are not leads. */
+export const PLACEHOLDER_COMPANY_RE = /^(unknown|show hn|n\/a|none)?$/i;
+
+export interface RawItemWithIdx extends ProductLaunchRaw {
   idx: number;
 }
 
-interface ClassifiedLaunch extends RawItemWithIdx {
+export interface ClassifiedLaunch extends RawItemWithIdx {
   is_launch: true;
   launch_type: "new_product" | "new_feature";
   is_ai: boolean;
@@ -323,8 +317,50 @@ interface ClassifiedLaunch extends RawItemWithIdx {
   idx: number;
 }
 
-async function classifyBatch(items: RawItemWithIdx[]): Promise<ClassifiedLaunch[]> {
-  if (!OPENAI_API_KEY) {
+interface ClassifyBody {
+  results: Array<{
+    idx: number;
+    is_launch: boolean;
+    launch_type: "new_product" | "new_feature" | null;
+    is_ai: boolean | null;
+    company_name: string | null;
+    product_name: string | null;
+    reason: string | null;
+  }>;
+}
+
+const nullable = (type: string, extra: Record<string, unknown> = {}) => ({ type: [type, "null"], ...extra });
+
+const CLASSIFY_SCHEMA = {
+  type: "object",
+  additionalProperties: false,
+  required: ["results"],
+  properties: {
+    results: {
+      type: "array",
+      items: {
+        type: "object",
+        additionalProperties: false,
+        required: ["idx", "is_launch", "launch_type", "is_ai", "company_name", "product_name", "reason"],
+        properties: {
+          idx: { type: "integer" },
+          is_launch: { type: "boolean" },
+          launch_type: nullable("string", { enum: ["new_product", "new_feature", null] }),
+          is_ai: nullable("boolean"),
+          company_name: nullable("string"),
+          product_name: nullable("string"),
+          reason: nullable("string"),
+        },
+      },
+    },
+  },
+};
+
+/** Running Luna cost of classification in this process; the eval script reads it. */
+export const classifySpend = { usd: 0 };
+
+async function classifyBatch(items: RawItemWithIdx[], deadlineAt?: number): Promise<ClassifiedLaunch[]> {
+  if (!isLunaConfigured()) {
     logger.warn("OPENAI_API_KEY missing -- classify skipped");
     return [];
   }
@@ -333,6 +369,10 @@ async function classifyBatch(items: RawItemWithIdx[]): Promise<ClassifiedLaunch[
   const resultsMap = new Map<number, ClassifiedLaunch>();
 
   for (let start = 0; start < items.length; start += BATCH_SIZE) {
+    if (!hasTime(deadlineAt, 5_000)) {
+      logger.warn("News classification deadline exhausted", { remaining: items.length - start });
+      break;
+    }
     const batch = items.slice(start, start + BATCH_SIZE);
     const lines = batch.map((it, localI) => {
       const title = (it.title ?? "").replace(/\n/g, " ").trim();
@@ -345,46 +385,28 @@ async function classifyBatch(items: RawItemWithIdx[]): Promise<ClassifiedLaunch[
     const userMsg = CLASSIFY_USER_TEMPLATE.replace("{items}", lines.join("\n"));
 
     try {
-      const resp = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${OPENAI_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "gpt-4o-mini",
-          temperature: 0,
-          response_format: { type: "json_object" },
-          max_tokens: 3000,
-          messages: [
-            { role: "system", content: CLASSIFY_SYSTEM },
-            { role: "user", content: userMsg },
-          ],
-        }),
-        signal: AbortSignal.timeout(60_000),
+      const result = await lunaJson<ClassifyBody>({
+        name: "launch_classification",
+        schema: CLASSIFY_SCHEMA,
+        systemPrompt: CLASSIFY_SYSTEM,
+        userPrompt: userMsg,
+        maxTokens: 8000,
+        timeoutMs: 90_000,
+        deadlineAt,
       });
-
-      if (!resp.ok) {
-        logger.warn(`GPT classify batch failed: HTTP ${resp.status}`);
+      if (!result) {
+        logger.warn("Luna classify batch failed");
         continue;
       }
-
-      const data = (await resp.json()) as { choices: { message: { content: string } }[] };
-      const body = JSON.parse(data.choices[0]?.message?.content ?? "{}") as {
-        results?: Array<{
-          idx: number;
-          is_launch: boolean;
-          launch_type?: "new_product" | "new_feature";
-          is_ai?: boolean;
-          company_name?: string;
-          product_name?: string;
-        }>;
-      };
+      classifySpend.usd += result.costUsd;
+      const body = result.data;
 
       for (const r of body.results ?? []) {
         const localIdx = r.idx;
         if (!localIdx || localIdx < 1 || localIdx > batch.length) continue;
         if (!r.is_launch) continue;
+        const companyName = r.company_name?.trim();
+        if (!companyName || PLACEHOLDER_COMPANY_RE.test(companyName)) continue;
         const globalIdx = batch[localIdx - 1].idx;
         const raw = batch[localIdx - 1];
         resultsMap.set(globalIdx, {
@@ -392,13 +414,13 @@ async function classifyBatch(items: RawItemWithIdx[]): Promise<ClassifiedLaunch[
           is_launch: true,
           launch_type: r.launch_type ?? "new_product",
           is_ai: r.is_ai ?? false,
-          company_name: r.company_name ?? raw.source_domain,
-          product_name: r.product_name ?? raw.title.slice(0, 60),
+          company_name: companyName,
+          product_name: r.product_name?.trim() || raw.title.slice(0, 60),
           idx: globalIdx,
         });
       }
     } catch (err) {
-      logger.warn(`GPT classify batch error: ${err instanceof Error ? err.message : String(err)}`);
+      logger.warn(`Luna classify batch error: ${err instanceof Error ? err.message : String(err)}`);
     }
   }
 
@@ -442,7 +464,7 @@ function dedupLaunches(launches: ClassifiedLaunch[]): ClassifiedLaunch[] {
   return out;
 }
 
-async function runClassify(rawResults: ProductLaunchRaw[]): Promise<ClassifiedLaunch[]> {
+export async function runClassify(rawResults: ProductLaunchRaw[], deadlineAt?: number): Promise<ClassifiedLaunch[]> {
   // Dedup by URL and strip pagination/tag pages
   const seenUrls = new Set<string>();
   const filtered: RawItemWithIdx[] = [];
@@ -453,7 +475,7 @@ async function runClassify(rawResults: ProductLaunchRaw[]): Promise<ClassifiedLa
     const url = r.source_url ?? "";
     if (seenUrls.has(url)) continue;
     seenUrls.add(url);
-    if (url && SKIP_URL_RE.test(url)) {
+    if ((url && SKIP_URL_RE.test(url)) || SOCIAL_DOMAIN_RE.test(r.source_domain ?? "")) {
       skippedPages++;
       continue;
     }
@@ -462,10 +484,14 @@ async function runClassify(rawResults: ProductLaunchRaw[]): Promise<ClassifiedLa
 
   logger.info(`Stage 2 input: ${rawResults.length} raw -> ${filtered.length} after dedup+filter (${skippedPages} pagination skipped)`);
 
-  const launches = await classifyBatch(filtered);
-  logger.info(`GPT classified ${launches.length} launches from ${filtered.length} items`);
+  const workDeadlineAt = deadlineAt === undefined ? undefined : deadlineAt - persistenceReserveMs(filtered.length);
+  const launches = await classifyBatch(filtered, workDeadlineAt);
+  logger.info(`Luna classified ${launches.length} launches from ${filtered.length} items`);
 
-  const deduped = dedupLaunches(launches);
+  const named = launches.filter((l) => !PLACEHOLDER_COMPANY_RE.test(l.company_name.trim()));
+  if (named.length < launches.length) logger.info(`Dropped ${launches.length - named.length} launches with no identifiable company`);
+
+  const deduped = dedupLaunches(named);
   logger.info(`After company dedup: ${deduped.length} launches`);
 
   return deduped;
@@ -505,7 +531,7 @@ function toRow(launch: ClassifiedLaunch, dateStr: string): ProductLaunchRow {
   };
 }
 
-async function pushToSupabase(launches: ClassifiedLaunch[], dateStr: string): Promise<number> {
+async function pushToSupabase(launches: ClassifiedLaunch[], dateStr: string, deadlineAt: number): Promise<number> {
   if (!SUPABASE_URL || !SUPABASE_KEY) {
     logger.warn("Supabase not configured -- skipping push");
     return 0;
@@ -519,17 +545,21 @@ async function pushToSupabase(launches: ClassifiedLaunch[], dateStr: string): Pr
   };
 
   let upserted = 0;
-  for (const launch of launches) {
-    const row = toRow(launch, dateStr);
+  for (let start = 0; start < launches.length; start += LAUNCH_WRITE_BATCH_SIZE) {
+    if (!hasTime(deadlineAt, LAUNCH_WRITE_TIMEOUT_MS)) {
+      logger.warn("News persistence deadline exhausted", { remaining: launches.length - start });
+      break;
+    }
+    const rows = launches.slice(start, start + LAUNCH_WRITE_BATCH_SIZE).map((launch) => toRow(launch, dateStr));
     try {
       const resp = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE}?on_conflict=source_url`, {
         method: "POST",
         headers: h,
-        body: JSON.stringify([row]),
-        signal: AbortSignal.timeout(15_000),
+        body: JSON.stringify(rows),
+        signal: AbortSignal.timeout(LAUNCH_WRITE_TIMEOUT_MS),
       });
       if (resp.ok) {
-        upserted++;
+        upserted += rows.length;
       } else {
         const err = await resp.text().catch(() => "");
         logger.error(`Supabase upsert failed: ${resp.status} ${err.slice(0, 200)}`);
@@ -553,6 +583,7 @@ export async function runNewsLaunchPipeline(options: {
 }): Promise<ProductLaunchPipelineResult> {
   const { date, tbs = "qdr:d", skipSerper = false, dryRun = false } = options;
   const startMs = Date.now();
+  const deadlineAt = startMs + LAUNCH_RUN_BUDGET_MS;
 
   logger.info("News launch pipeline starting", { date, tbs, skipSerper, dryRun });
 
@@ -572,28 +603,28 @@ export async function runNewsLaunchPipeline(options: {
   }
 
   // Stage 1A: Direct fetches
-  const direct = await runDirectFetches(date);
+  const direct = await runDirectFetches(date, deadlineAt - persistenceReserveMs(0) - 30_000);
 
   // Stage 1B: Serper supplement
-  const serper = skipSerper ? [] : await runSerperQueries(tbs);
+  const serper = skipSerper ? [] : await runSerperQueries(tbs, SERPER_QUERIES, deadlineAt - 30_000 - persistenceReserveMs(direct.length));
 
   const rawResults = [...direct, ...serper];
   logger.info(`Stage 1 total: ${rawResults.length} raw items (${direct.length} direct + ${serper.length} Serper)`);
 
   // Stage 2: Classify
-  const launches = await runClassify(rawResults);
+  const launches = await runClassify(rawResults, deadlineAt);
 
   // Stage 3: Push to Supabase
-  const pushed = await pushToSupabase(launches, date);
+  const pushed = await pushToSupabase(launches, date, deadlineAt);
   logger.info(`Stage 3: pushed ${pushed} rows to ${TABLE}`);
 
   const durationMs = Date.now() - startMs;
-  logger.info("News launch pipeline complete", { launchCount: launches.length, pushed, durationMs });
+  logger.info("News launch pipeline complete", { launchCount: pushed, pushed, durationMs });
 
   return {
     date,
     source: "news",
-    launchCount: launches.length,
+    launchCount: pushed,
     stats: {
       rawResults: rawResults.length,
       afterClassify: launches.length,
