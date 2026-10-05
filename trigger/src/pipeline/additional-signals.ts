@@ -1,6 +1,6 @@
 import type { Signal } from "../legion-funding-feed.js";
 import { isDomainBlocked } from "./domain-lookup.js";
-import { isPublicHttpsUrl, logoUrlForDomain, normalizeOptionalInteger, normalizeOptionalText, sourceNameForUrl } from "./taxonomy.js";
+import { decodeHtmlEntities, isPublicHttpsUrl, logoUrlForDomain, normalizeOptionalInteger, normalizeOptionalText, sourceNameForUrl } from "./taxonomy.js";
 
 /**
  * Pure map from stored product, game, and game-job rows onto the shared Signal
@@ -45,8 +45,6 @@ export const ADDITIONAL_SIGNAL_ORDER = {
 
 const TYPE_ORDER: Record<string, number> = { "product-launch": 0, gaming: 1, hiring: 2 };
 
-const ENTITIES: Record<string, string> = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", "#39": "'", nbsp: " " };
-
 // Hosts that show up as a company website but are the source, a shortener, or a store page.
 const NON_COMPANY_HOSTS = new Set([
   "producthunt.com",
@@ -72,7 +70,7 @@ type Input = {
 };
 
 function decode(value: string): string {
-  return value.replace(/&(amp|lt|gt|quot|apos|#39|nbsp);/g, (_, name: string) => ENTITIES[name] ?? _);
+  return decodeHtmlEntities(value);
 }
 
 function publicText(value: unknown): string {

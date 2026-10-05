@@ -16,6 +16,22 @@ function map(input: {
 }
 
 describe("mapAdditionalSignals", () => {
+  it("decodes double-escaped industry text and numeric entities", () => {
+    const [launch] = map({
+      productLaunches: [{
+        company_name: "Acme",
+        company_domain: "acme.com",
+        source_url: "https://www.producthunt.com/posts/acme",
+        description: "Plain robotics text",
+        industry: "AI, Robotics &amp;amp; Automation",
+        categories: ["Tools &#39;n&#39; kits"],
+      }],
+    });
+    expect(launch.summary).toBe("Plain robotics text");
+    expect(launch.details.industry).toBe("AI, Robotics & Automation");
+    expect(launch.tags).toContain("Tools 'n' kits");
+  });
+
   it("maps stored product, game, and job fields onto the shared signal shape", () => {
     const [role, launch, announcement] = map({
       productLaunches: [{

@@ -1,5 +1,5 @@
 import { schedules, logger } from "@trigger.dev/sdk";
-import { isPublicHttpsUrl, logoUrlForDomain, normalizeOptionalText, normalizeRoundType, sourceNameForUrl } from "./pipeline/taxonomy.js";
+import { decodeHtmlEntities, isPublicHttpsUrl, logoUrlForDomain, normalizeOptionalText, normalizeRoundType, sourceNameForUrl } from "./pipeline/taxonomy.js";
 import { findCompanyPeople, type CompanyPeopleProfile, type PeopleWaterfallConfig } from "./pipeline/legion-people.js";
 import { buildRounds, companyKeyOf, displaySource, needsSecondarySource, type CompanyRounds, type FundingRound, type RoundSource } from "./pipeline/funding-rounds.js";
 import { findSecondarySource } from "./pipeline/brave-source.js";
@@ -139,11 +139,9 @@ export function companySignal(company: CompanyRounds, secondary: Map<string, Rou
   return signal;
 }
 
-const ENTITIES: Record<string, string> = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", "#39": "'", nbsp: " " };
-
-// Source text sometimes arrives HTML-escaped ("Software &amp; SaaS"); the page escapes on render.
+// Source text sometimes arrives HTML-escaped ("Software &amp; SaaS", or "&amp;amp;" twice). The page writes textContent, so publish the decoded characters.
 function text(value: unknown): string {
-  return (normalizeOptionalText(value) ?? "").replace(/&(amp|lt|gt|quot|apos|#39|nbsp);/g, (_, name: string) => ENTITIES[name]);
+  return decodeHtmlEntities(normalizeOptionalText(value) ?? "");
 }
 
 // Link shorteners and social hosts that ingestion sometimes stores as the company's domain.

@@ -141,6 +141,40 @@ describe("feed text cleanup", () => {
     expect(row).toMatchObject({ company: "Acme & Co", industry: "AI, Software & SaaS" });
   });
 
+  it("decodes double-escaped and numeric entities and leaves plain text", () => {
+    const [row] = buildFundingFeedRows(
+      [{
+        company_name: "O&#39;Brien Robotics",
+        company_domain: "obrien.com",
+        industry: "AI, Robotics &amp;amp; Automation",
+        company_description: "Plain robotics text",
+        location: "Austin",
+        lead_investors: "North &amp; Star",
+        amount_raised: "$4M",
+        round_type: "seed",
+        discovered_date: "2026-09-29",
+      }],
+      [],
+      [{ domain: "obrien.com", founders: [{ name: "Pat O&#39;Brien", title: "CEO &amp;amp; Founder", linkedin: "https://www.linkedin.com/in/pat" }] }],
+    );
+    expect(row).toMatchObject({
+      company: "O'Brien Robotics",
+      industry: "AI, Robotics & Automation",
+      description: "Plain robotics text",
+      hq: "Austin",
+      investors: "North & Star",
+    });
+    expect(row.founders[0]).toMatchObject({ name: "Pat O'Brien", title: "CEO & Founder" });
+    const signal = fundingSignal(row);
+    expect(signal.tags).toContain("AI, Robotics & Automation");
+    expect(signal.company).toBe("O'Brien Robotics");
+    expect(signal.summary).toBe("Plain robotics text");
+    expect(signal.location).toBe("Austin");
+    expect(signal.headline).toBe("Seed round of $4M");
+    expect(signal.people[0]).toMatchObject({ name: "Pat O'Brien", title: "CEO & Founder" });
+    expect(signal.details.investors).toBe("North & Star");
+  });
+
   it("drops link-shortener domains and their logos", () => {
     const [row] = buildFundingFeedRows([{ company_name: "Reflection AI", company_domain: "t.co", logo_url: "https://www.google.com/s2/favicons?domain=t.co&sz=128" }], [], []);
     expect(row).toMatchObject({ domain: "", logo: null });

@@ -79,6 +79,34 @@ export function normalizeOptionalText(raw: unknown): string | null {
   return t;
 }
 
+const NAMED_HTML_ENTITIES: Record<string, string> = {
+  amp: "&",
+  lt: "<",
+  gt: ">",
+  quot: "\"",
+  apos: "'",
+  nbsp: " ",
+};
+
+/** Named and numeric HTML entities, repeated so `&amp;amp;` becomes `&`. Publish-time only. */
+export function decodeHtmlEntities(value: string): string {
+  let current = value;
+  for (let pass = 0; pass < 8; pass += 1) {
+    const next = current.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (match, token: string) => {
+      if (token.startsWith("#")) {
+        const hex = token[1] === "x" || token[1] === "X";
+        const code = Number.parseInt(token.slice(hex ? 2 : 1), hex ? 16 : 10);
+        if (!Number.isInteger(code) || code < 0 || code > 0x10ffff || (code >= 0xd800 && code <= 0xdfff)) return match;
+        return String.fromCodePoint(code);
+      }
+      return NAMED_HTML_ENTITIES[token.toLowerCase()] ?? match;
+    });
+    if (next === current) return current;
+    current = next;
+  }
+  return current;
+}
+
 /** Provider integer fields must not send fractional or sentinel values to SQL. */
 export function normalizeOptionalInteger(raw: unknown): number | null {
   if (typeof raw !== "number" && typeof raw !== "string") return null;
