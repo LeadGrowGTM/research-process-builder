@@ -11,7 +11,7 @@ import { runDiscovery } from "./serper.js";
 import { fetchUrl } from "./scrape.js";
 import { extractWithOpenAI, validateDomainSemantic } from "./openai.js";
 import { scoreAndFilter } from "./filters.js";
-import { isSupabaseConfigured, checkTable, pushToSupabase, getRecentCompanyNames } from "./supabase.js";
+import { isSupabaseConfigured, checkTable, pushToSupabase, getRecentCompanyNames, FundingWriteError } from "./supabase.js";
 import { pushToWebhook } from "./webhook.js";
 import { lookupDomainMultiSignal, isDomainBlocked, type ContextClues } from "./domain-lookup.js";
 import { normalizeAmount } from "./normalize-amount.js";
@@ -55,6 +55,37 @@ export function extractDateFromUrl(url: string): string | null {
   const year = parseInt(y), month = parseInt(m), day = parseInt(d);
   if (year < 2020 || year > 2030 || month < 1 || month > 12 || day < 1 || day > 31) return null;
   return `${y}-${m}-${d}`;
+}
+
+/**
+ * The extracted round date wins over the article URL date: a fresh article can report an old
+ * round, and the freshness gate must see the round's date.
+ */
+export function resolveFundingDate(extractedDate: string | null | undefined, sourceUrl: string): string | null {
+  const valid = !!extractedDate && /^\d{4}-\d{2}-\d{2}$/.test(extractedDate) && !Number.isNaN(Date.parse(extractedDate));
+  return valid ? extractedDate : extractDateFromUrl(sourceUrl);
+}
+
+export const MAX_ROUND_AGE_DAYS = 45;
+
+/** Stage 4 gates: confidence (drop LOW), then freshness (drop dated rounds past MAX_ROUND_AGE_DAYS). */
+export function applyOutputGates<T extends Pick<EnrichedRecord, "confidence" | "funding_date">>(
+  records: T[],
+  runDate: string
+): { highMedium: T[]; dropped: T[]; stale: T[] } {
+  const confident = records.filter((r) => r.confidence !== "low");
+  return {
+    highMedium: confident.filter((r) => !isStaleRound(r.funding_date, runDate)),
+    dropped: records.filter((r) => r.confidence === "low"),
+    stale: confident.filter((r) => isStaleRound(r.funding_date, runDate)),
+  };
+}
+
+/** True when a dated round is more than maxAgeDays before the run date. Undated rounds pass. */
+export function isStaleRound(fundingDate: string | null | undefined, runDate: string, maxAgeDays = MAX_ROUND_AGE_DAYS): boolean {
+  if (!fundingDate || !/^\d{4}-\d{2}-\d{2}/.test(fundingDate)) return false;
+  const ageDays = (Date.parse(runDate) - Date.parse(fundingDate.slice(0, 10))) / 86_400_000;
+  return ageDays > maxAgeDays;
 }
 
 function sanitizeDomain(domain: string): string {
@@ -190,7 +221,7 @@ function buildEnrichedRecord(
     amount_raised: amountRaw,
     amount_raised_usd: norm?.value_usd ?? null,
     amount_raised_currency: norm?.currency ?? null,
-    funding_date: extractDateFromUrl(sourceUrl) ?? extracted?.funding_date ?? null,
+    funding_date: resolveFundingDate(extracted?.funding_date, sourceUrl),
     round_type: extracted?.round_type ?? company.round_type ?? roundLabel,
     source_url: sourceUrl,
     lead_investors: extracted?.lead_investors ?? null,
@@ -328,16 +359,27 @@ async function enrichOneCompany(
 
 const ENRICH_CONCURRENCY = 5;
 
+// Time kept back from the run deadline for Clay, Supabase and Blitz delivery.
+export const OUTPUT_RESERVE_MS = 5 * 60_000;
+const OUTPUT_CHUNK = 5;
+
 async function enrichCompanies(
   companies: Candidate[],
   maxEnrich: number,
   roundConfig: RoundConfig,
-  pipelineId: string
+  pipelineId: string,
+  enrichUntil: number
 ): Promise<EnrichedRecord[]> {
   const enriched: EnrichedRecord[] = [];
   const toProcess = companies.slice(0, maxEnrich);
 
   for (let batchStart = 0; batchStart < toProcess.length; batchStart += ENRICH_CONCURRENCY) {
+    if (Date.now() >= enrichUntil) {
+      logger.warn(`Enrichment deadline: skipped ${toProcess.length - batchStart} candidates (not written, so not marked known)`, {
+        names: toProcess.slice(batchStart).map((c) => c.company_name),
+      });
+      break;
+    }
     const batch = toProcess.slice(batchStart, batchStart + ENRICH_CONCURRENCY);
     logger.info(`Enriching batch ${Math.floor(batchStart / ENRICH_CONCURRENCY) + 1}: ${batch.map(c => c.company_name).join(", ")}`);
 
@@ -355,10 +397,98 @@ async function enrichCompanies(
   return enriched;
 }
 
+/**
+ * Deliver in chunks of OUTPUT_CHUNK, each chunk to Clay first and then Supabase, within the
+ * deadline. The next run's known-company dedup reads Supabase, so only Clay acknowledgments
+ * can be marked known; rejected rounds stay eligible for the next run.
+ * Blitz day-0 enrichment runs last with the time left; misses go to enrichment-retry-weekly.
+ */
+async function deliver(
+  records: EnrichedRecord[],
+  config: PipelineConfig,
+  webhook: { url: string; token: string },
+  deadlineAt: number
+): Promise<void> {
+  const rc = config.roundConfig;
+  const controller = new AbortController();
+  let deadlineTimer: ReturnType<typeof setTimeout> | undefined;
+  const expired = new Promise<void>((resolve) => {
+    if (Number.isFinite(deadlineAt)) {
+      deadlineTimer = setTimeout(() => { controller.abort(); resolve(); }, Math.max(0, deadlineAt - Date.now()));
+    }
+  });
+  // Race as well as abort: a slow client must not hold the task past its deadline.
+  const bounded = async <T>(budgetMs: number, fallback: T, operation: (signal: AbortSignal) => Promise<T>): Promise<T> => {
+    if (deadlineAt - Date.now() < budgetMs || controller.signal.aborted) return fallback;
+    return Promise.race([operation(controller.signal).catch((error: unknown) => {
+      if (controller.signal.aborted) return fallback;
+      throw error;
+    }), expired.then(() => fallback)]);
+  };
+  let sent = 0;
+  let upserted = 0;
+  let delivered = 0;
+  const acknowledged: EnrichedRecord[] = [];
+  try {
+    const supabase = isSupabaseConfigured() && await bounded(10_000, false, (signal) => checkTable(rc.supabaseTable, signal));
+    if (isSupabaseConfigured() && !supabase) logger.warn(`Supabase table ${rc.supabaseTable} unavailable within delivery budget`);
+
+    while (delivered < records.length && deadlineAt - Date.now() >= 10_000 && !controller.signal.aborted) {
+      const chunk = records.slice(delivered, delivered + OUTPUT_CHUNK);
+      const results = await Promise.all(chunk.map((r) => bounded(10_000, 0,
+        (signal) => pushToWebhook([r], config.date, webhook.url, webhook.token, signal))));
+      const accepted = chunk.filter((_, i) => results[i] === 1);
+      const rejected = chunk.filter((_, i) => results[i] !== 1);
+      if (rejected.length) logger.warn("Clay rejected or timed out; rows not written", { names: rejected.map((r) => r.company_name) });
+      sent += accepted.length;
+      acknowledged.push(...accepted);
+      delivered += chunk.length;
+      if (supabase && accepted.length) {
+        let confirmed = 0;
+        try {
+          const count = await bounded(15_000, 0, (signal) => pushToSupabase(accepted, config.date, rc.supabaseTable, signal,
+            (count) => { confirmed = count; }));
+          upserted += Math.max(count, confirmed);
+        } catch (error) {
+          upserted += Math.max(confirmed, error instanceof FundingWriteError ? error.upserted : 0);
+          throw error;
+        }
+      }
+    }
+    if (delivered < records.length) {
+      logger.warn(`Delivery deadline: ${records.length - delivered} rounds not delivered (not written, so not marked known)`, {
+        names: records.slice(delivered).map((r) => r.company_name),
+      });
+    }
+    if (!supabase) return;
+
+    // Day-0 company enrichment (Blitz, free) for acknowledged rows only.
+    const targets = acknowledged.filter((r) => r.company_domain)
+      .map((r) => ({ companyName: r.company_name, domain: r.company_domain, sourceUrl: r.source_url }));
+    let done = 0;
+    while (done < targets.length && deadlineAt - Date.now() >= 30_000 && !controller.signal.aborted) {
+      const completed = await bounded(30_000, false, async (signal) => {
+        await day0BlitzEnrich("funding_discoveries", targets.slice(done, done + OUTPUT_CHUNK), OUTPUT_CHUNK, signal);
+        return true;
+      });
+      if (!completed) break;
+      done += OUTPUT_CHUNK;
+    }
+    if (done < targets.length) {
+      logger.warn(`Delivery deadline: Blitz skipped ${targets.length - done} rows (left for enrichment-retry-weekly)`);
+    }
+  } finally {
+    clearTimeout(deadlineTimer);
+    controller.abort();
+    logger.info(`Webhook: ${sent}/${delivered} sent; Supabase: ${upserted}/${sent} upserted to ${rc.supabaseTable} (confirmed counts)`);
+  }
+}
+
 export async function runFundingPipeline(
   config: PipelineConfig
 ): Promise<PipelineResult> {
   const start = Date.now();
+  const deadlineAt = config.deadlineAt ?? Number.POSITIVE_INFINITY;
   const rc = config.roundConfig;
   // Fail closed before any work: a live run needs its Clay webhook credentials.
   const webhook = config.dryRun ? null : { url: rc.webhookUrl, token: rc.webhookAuthToken };
@@ -400,24 +530,38 @@ export async function runFundingPipeline(
     }
   }
 
+  // Enrichment can only lower confidence, so LOW candidates would fail the Stage 4 gate anyway.
+  // Drop them here so they do not use up the maxEnrich cap.
+  const lowBeforeEnrich = companiesForEnrich.filter((c) => c.confidence === "low");
+  if (lowBeforeEnrich.length > 0) {
+    logger.info(`Skipped ${lowBeforeEnrich.length} LOW candidates before enrichment`, {
+      names: lowBeforeEnrich.map((c) => c.company_name),
+    });
+    companiesForEnrich = companiesForEnrich.filter((c) => c.confidence !== "low");
+  }
+
   let enriched: EnrichedRecord[];
   if (config.skipEnrich) {
     logger.info("Stage 3: Skipped (skipEnrich)");
     enriched = companiesForEnrich.map((c) => buildSkipEnrichRecord(c, rc.roundLabel, config.pipelineId));
   } else {
     logger.info(`Stage 3: Enrich (max ${config.maxEnrich})`);
-    enriched = await enrichCompanies(companiesForEnrich, config.maxEnrich, rc, config.pipelineId);
+    enriched = await enrichCompanies(companiesForEnrich, config.maxEnrich, rc, config.pipelineId, deadlineAt - OUTPUT_RESERVE_MS);
     logger.info(`Stage 3 complete: ${enriched.length} enriched`);
   }
 
   logger.info("Stage 4: Output");
 
-  // Confidence gate - drop LOW, flag MEDIUM for review
-  const highMedium = enriched.filter((r) => r.confidence !== "low");
-  const dropped = enriched.filter((r) => r.confidence === "low");
+  // Confidence gate drops LOW; freshness gate drops old rounds that search date filters let through.
+  const { highMedium, dropped, stale } = applyOutputGates(enriched, config.date);
   if (dropped.length > 0) {
     logger.info(`Confidence gate: dropped ${dropped.length} LOW records`, {
       names: dropped.map((r) => r.company_name),
+    });
+  }
+  if (stale.length > 0) {
+    logger.info(`Freshness gate: dropped ${stale.length} rounds older than ${MAX_ROUND_AGE_DAYS} days`, {
+      names: stale.map((r) => `${r.company_name} (${r.funding_date})`),
     });
   }
   const mediumOnly = highMedium.filter((r) => r.confidence === "medium");
@@ -428,33 +572,7 @@ export async function runFundingPipeline(
   if (config.dryRun) {
     logger.info("Dry run - skipping Supabase and webhook output");
   } else {
-    if (isSupabaseConfigured()) {
-      const tableExists = await checkTable(rc.supabaseTable);
-      if (tableExists) {
-        const upserted = await pushToSupabase(highMedium, config.date, rc.supabaseTable);
-        logger.info(`Supabase: ${upserted}/${highMedium.length} upserted to ${rc.supabaseTable}`);
-
-        // Day-0 company enrichment (Blitz, free). Misses stay NULL for the
-        // delayed DiscoLike retry pass (enrichment-retry-weekly).
-        const targets = highMedium
-          .filter((r) => r.company_domain)
-          .map((r) => ({
-            companyName: r.company_name,
-            domain: r.company_domain,
-            sourceUrl: r.source_url,
-          }));
-        if (targets.length > 0) {
-          await day0BlitzEnrich("funding_discoveries", targets);
-        }
-      } else {
-        logger.warn(`Supabase table ${rc.supabaseTable} not found`);
-      }
-    }
-
-    const webhookSent = await pushToWebhook(highMedium, config.date, webhook!.url, webhook!.token);
-    if (webhookSent > 0) {
-      logger.info(`Webhook: ${webhookSent}/${highMedium.length} sent`);
-    }
+    await deliver(highMedium, config, webhook!, deadlineAt);
   }
 
   const durationMs = Date.now() - start;

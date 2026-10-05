@@ -218,7 +218,8 @@ export interface WaterfallHit {
 export async function enrichDomainWaterfall(
   table: "funding_discoveries" | "product_launches",
   t: Day0Target,
-  domain: string
+  domain: string,
+  signal?: AbortSignal
 ): Promise<WaterfallHit | null> {
   const isFunding = table === "funding_discoveries";
 
@@ -229,7 +230,8 @@ export async function enrichDomainWaterfall(
   };
 
   if (lgenrichConfigured()) {
-    const lg = await lgenrichDomain(domain);
+    const lg = await lgenrichDomain(domain, signal);
+    signal?.throwIfAborted();
     if (lg) {
       const linkedin = canonicalCompanyLinkedin(lg.linkedin_url);
       const f = lg.firmographics;
@@ -237,7 +239,7 @@ export async function enrichDomainWaterfall(
         return asHit(isFunding ? fundingPatchFromLg(lg.linkedin_url, f) : phPatchFromLg(lg.linkedin_url, f), "lgenrich");
       }
       // Trusted LinkedIn URL but no usable firmographics. Blitz may fill the profile.
-      const blitz = linkedin ? await blitzEnrichLinkedin(linkedin) : null;
+      const blitz = linkedin ? await blitzEnrichLinkedin(linkedin, signal) : null;
       if (blitz && linkedin) {
         const patch = isFunding ? fundingPatchFromBlitz(linkedin, blitz) : phPatchFromBlitz(linkedin, blitz);
         const hit = asHit(patch, "lgenrich+blitz");
@@ -250,7 +252,7 @@ export async function enrichDomainWaterfall(
   }
 
   if (!blitzConfigured()) return null;
-  const hit = await blitzEnrichDomain(domain, t.knownLinkedin);
+  const hit = await blitzEnrichDomain(domain, t.knownLinkedin, signal);
   if (!hit) return null;
   if (!nameMatches(t.companyName, hit.company.name)) {
     logger.warn("Blitz name mismatch - skipping", {
@@ -273,7 +275,9 @@ export async function enrichDomainWaterfall(
  */
 export async function day0BlitzEnrich(
   table: "funding_discoveries" | "product_launches",
-  targets: Day0Target[]
+  targets: Day0Target[],
+  concurrency = 1,
+  signal?: AbortSignal
 ): Promise<{ attempted: number; enriched: number; providers: "available" | "unavailable"; coverage: FieldCoverage }> {
   const coverage = emptyFieldCoverage();
   if (!lgenrichConfigured() && !blitzConfigured()) {
@@ -284,30 +288,36 @@ export async function day0BlitzEnrich(
   let attempted = 0;
   let enriched = 0;
 
-  for (const t of targets) {
+  const enrichOne = async (t: Day0Target) => {
+    signal?.throwIfAborted();
     const domain = normalizeDomain(t.domain);
     // "not_enriched" placeholder and other non-domains have no dot
-    if (!domain || !domain.includes(".") || isDomainBlocked(domain)) continue;
+    if (!domain || !domain.includes(".") || isDomainBlocked(domain)) return;
     attempted++;
     coverage.recordsAttempted++;
 
-    const hit = await enrichDomainWaterfall(table, t, domain);
+    const hit = await enrichDomainWaterfall(table, t, domain, signal);
+    signal?.throwIfAborted();
     const present = new Set(hit?.present ?? []);
     for (const field of PROFILE_FIELDS) {
       if (present.has(field)) coverage.present[field]++;
       else coverage.omitted[field]++;
     }
-    if (!hit) continue;
+    if (!hit) return;
 
     const ok = await patchRowBySourceUrl(table, t.sourceUrl, {
       ...hit.patch,
       enriched_by: hit.provider,
       enriched_at: new Date().toISOString(),
-    });
+    }, signal);
     if (ok) {
       enriched++;
       coverage.recordsWritten++;
     }
+  };
+
+  for (let i = 0; i < targets.length; i += concurrency) {
+    await Promise.all(targets.slice(i, i + concurrency).map(enrichOne));
   }
 
   logger.info(`Day-0 enrichment complete`, { table, attempted, enriched, coverage });
