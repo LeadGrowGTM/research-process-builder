@@ -290,20 +290,25 @@ async function enrichOneCompany(
   }
   if (Date.now() >= enrichUntil) return null;
 
-  let extracted = null;
-  if (articleText) {
-    extracted = await extractWithOpenAI(
-      articleText,
-      company.company_name,
-      company.amount ?? "",
-      roundConfig,
-      enrichUntil
-    );
-    if (Date.now() >= enrichUntil) return null;
-    if (extracted?.company_name === roundConfig.notRoundSentinel) {
-      logger.info(`Filtered post-extraction: ${company.company_name}`);
-      return null;
-    }
+  if (!articleText) {
+    logger.info(`Not shipped (no extraction): ${company.company_name} (no article text)`);
+    return null;
+  }
+  const extracted = await extractWithOpenAI(
+    articleText,
+    company.company_name,
+    company.amount ?? "",
+    roundConfig,
+    enrichUntil
+  );
+  if (Date.now() >= enrichUntil) return null;
+  if (!extracted?.company_name?.trim()) {
+    logger.info(`Not shipped (no extraction): ${company.company_name} (extraction failed)`);
+    return null;
+  }
+  if (extracted.company_name.trim() === roundConfig.notRoundSentinel) {
+    logger.info(`Filtered post-extraction: ${company.company_name}`);
+    return null;
   }
 
   let domain = "not_found";
