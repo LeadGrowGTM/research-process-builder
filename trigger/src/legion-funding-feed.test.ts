@@ -9,7 +9,6 @@ const config = {
   key: source.key,
   sources: {
     productLaunches: source,
-    gameSignals: source,
     jobSignals: source,
   },
   legionKv: { accountId: "acct", namespaceId: "ns", token: "cf-token" },
@@ -642,7 +641,6 @@ describe("signal page publication", () => {
     expect(result.families).toEqual({
       funding: { sourceRows: 501, duplicateRows: 0, excluded: 0, merged: 0, published: 501 },
       productLaunches: { sourceRows: 0, duplicateRows: 0, excluded: 0, merged: 0, published: 0 },
-      gameSignals: { sourceRows: 0, duplicateRows: 0, excluded: 0, merged: 0, published: 0 },
       jobSignals: { sourceRows: 0, duplicateRows: 0, excluded: 0, merged: 0, published: 0 },
     });
     const page1 = storedPage(bodies, 1);
@@ -856,31 +854,32 @@ describe("server page cap of 200 against a 1000-row request", () => {
       key: "funding-key",
       sources: {
         productLaunches: { url: "https://product.example", key: "product-key" },
-        gameSignals: { url: "https://game.example", key: "game-key" },
         jobSignals: { url: "https://jobs.example", key: "job-key" },
       },
       fetchImpl,
     });
     expect(offsets).toEqual([0, 200, 400, 600, 800, 1000, 1200]);
-    expect(hosts).toEqual({ funding: "funding.example", product: "product.example", game: "game.example", job: "jobs.example" });
-    expect(keys).toEqual({ funding: "funding-key", product: "product-key", game: "game-key", job: "job-key" });
+    expect(hosts).toEqual({ funding: "funding.example", product: "product.example", job: "jobs.example" });
+    expect(keys).toEqual({ funding: "funding-key", product: "product-key", job: "job-key" });
+    expect(hosts.game).toBeUndefined();
     expect(result.families).toEqual({
       funding: { sourceRows: 1201, duplicateRows: 0, excluded: 0, merged: 0, published: 1201 },
       productLaunches: { sourceRows: 1, duplicateRows: 0, excluded: 0, merged: 0, published: 1 },
-      gameSignals: { sourceRows: 1, duplicateRows: 0, excluded: 0, merged: 0, published: 1 },
       jobSignals: { sourceRows: 1, duplicateRows: 0, excluded: 0, merged: 0, published: 1 },
     });
     expect(result.coverage).toMatchObject({
       sourceRows: 1201, duplicateRows: 0, excludedNoCompany: 0, excludedUndated: 0,
-      mergedReports: 1201, distinctRounds: 1201, companySignals: 1201, publishedSignals: 1204,
+      mergedReports: 1201, distinctRounds: 1201, companySignals: 1201, publishedSignals: 1203,
     });
-    expect(result).toMatchObject({ count: 1204, pages: 3, pagesWritten: 3 });
+    expect(result).toMatchObject({ count: 1203, pages: 3, pagesWritten: 3 });
     expect(result.signals[0]).toMatchObject({ type: "product-launch", company: "Launch", date: "2026-09-02" });
     expect(result.signals.at(-1)).toMatchObject({ type: "hiring", company: "Zed", date: "2026-07-02" });
     const page1 = storedPage(bodies, 1);
-    expect(page1).toMatchObject({ count: 1204, pages: 3, page: 1, types: { funding: 1201, "product-launch": 1, gaming: 1, hiring: 1 }, version: result.version });
+    expect(page1).toMatchObject({ count: 1203, pages: 3, page: 1, types: { funding: 1201, "product-launch": 1, hiring: 1 }, version: result.version });
+    expect(page1.types).not.toHaveProperty("gaming");
+    expect(page1.signals.some((signal: { type: string }) => signal.type === "gaming")).toBe(false);
     expect(page1.signals).toHaveLength(500);
-    expect(storedPage(bodies, 3).signals).toHaveLength(204);
+    expect(storedPage(bodies, 3).signals).toHaveLength(203);
     expect(JSON.parse(bodies.get(CURRENT_KEY)!).version).toBe(result.version);
     expect(bodies.has("signals/meta.json")).toBe(false);
     expect(writesOf(fetchImpl).filter((item) => item !== "post")).toEqual([
@@ -1134,7 +1133,7 @@ describe("additional producer reads", () => {
     const result = await refreshFundingFeed({ ...config, fetchImpl });
     expect(offsets).toEqual([0, 2]);
     expect(result.families.productLaunches).toEqual({ sourceRows: 3, duplicateRows: 0, excluded: 0, merged: 0, published: 3 });
-    expect(result.families.gameSignals.published).toBe(0);
+    expect(result.families).not.toHaveProperty("gameSignals");
     expect(result.families.jobSignals.published).toBe(0);
     expect(result.coverage).toMatchObject({ companySignals: 1, publishedSignals: 4 });
     expect(result.count).toBe(4);
@@ -1191,7 +1190,7 @@ describe("additional producer reads", () => {
     expect(writesOf(fetchImpl)).toEqual([]);
   });
 
-  it("publishes two product launches from one company with game and hiring rows", async () => {
+  it("publishes product launches and hiring and drops game_signals rows", async () => {
     const fetchImpl = vi.fn(async (url: string, init?: RequestInit) => {
       const funding = fundingOnly(url);
       if (funding) return funding;
@@ -1224,15 +1223,15 @@ describe("additional producer reads", () => {
       return fallback(url, init);
     });
     const result = await refreshFundingFeed({ ...config, fetchImpl });
+    expect(fetchImpl.mock.calls.some(([url]) => String(url).includes("/rest/v1/game_signals?"))).toBe(false);
     expect(result.families.productLaunches).toEqual({ sourceRows: 2, duplicateRows: 0, excluded: 0, merged: 0, published: 2 });
-    expect(result.families.gameSignals).toEqual({ sourceRows: 1, duplicateRows: 0, excluded: 0, merged: 0, published: 1 });
+    expect(result.families).not.toHaveProperty("gameSignals");
     expect(result.families.jobSignals).toEqual({ sourceRows: 1, duplicateRows: 0, excluded: 0, merged: 0, published: 1 });
-    expect(result.coverage).toMatchObject({ companySignals: 1, publishedSignals: 5 });
+    expect(result.coverage).toMatchObject({ companySignals: 1, publishedSignals: 4 });
     expect(result.signals.map((signal) => [signal.type, signal.company, signal.date])).toEqual([
       ["funding", "Acme", "2026-09-20"],
       ["product-launch", "Acme", "2026-09-01"],
       ["product-launch", "Acme", "2026-08-15"],
-      ["gaming", "Pixel", "2026-07-01"],
       ["hiring", "Zed", "2026-06-01"],
     ]);
     expect(result.signals.find((signal) => signal.type === "hiring")?.tags).toContain("Gaming and animation");
@@ -1242,7 +1241,9 @@ describe("additional producer reads", () => {
       const key = decodeURIComponent(String(url).split("/values/")[1] ?? "");
       return key.endsWith("/p1.json") ? [[key, String((init as RequestInit).body)]] : [];
     })), 1);
-    expect(page1.types).toEqual({ funding: 1, "product-launch": 2, gaming: 1, hiring: 1 });
+    expect(page1.types).toEqual({ funding: 1, "product-launch": 2, hiring: 1 });
+    expect(page1.types).not.toHaveProperty("gaming");
+    expect(page1.signals.some((signal: { type: string }) => signal.type === "gaming")).toBe(false);
     expect(result.version).toBe(createHash("sha256").update(canonicalFeedDocument(result.signals)).digest("hex"));
     expect(page1.version).toBe(result.version);
   });

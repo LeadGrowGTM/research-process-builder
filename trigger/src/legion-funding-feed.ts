@@ -45,7 +45,7 @@ export type FundingFeedRow = {
 export type FundingFeed = { updatedAt: string; count: number; rows: FundingFeedRow[] };
 
 /**
- * One market signal. Funding, product-launch, gaming, and hiring fill the same fields.
+ * One market signal. Funding, product-launch, and hiring fill the same fields.
  * Type-specific extras go in `details`. Unknown fields stay absent.
  */
 export type Signal = {
@@ -274,8 +274,8 @@ export function fundingClientFromEnv(env: EnvSource): TableClient {
 }
 
 /**
- * Product, game, and job writers. The four files use this order, not the funding order.
- * product-launches-news.ts, product-launches-ph.ts, game-signals-pipeline.ts, jobs-pipeline.ts.
+ * Product and job writers. They use this order, not the funding order.
+ * product-launches-news.ts, product-launches-ph.ts, jobs-pipeline.ts.
  * URL: SUPABASE_PROJECT_URL, else SUPABASE_URL, and only when the value starts with http.
  * Key: SUPABASE_KEY, else SUPABASE_SERVICE_ROLE_KEY, else SUPABASE_ANON_KEY.
  */
@@ -293,7 +293,6 @@ export type FundingFeedConfig = {
   /** Writer clients. Each family is authenticated the way its writer is, not with the funding key. */
   sources: {
     productLaunches: TableClient;
-    gameSignals: TableClient;
     jobSignals: TableClient;
   };
   legionKv?: { accountId: string; namespaceId: string; token: string };
@@ -468,9 +467,9 @@ function jobIdentity(row: FundingDiscovery): string {
 
 /**
  * Required producer read. Select and order are the writer conflict key.
- * product_launches is unique on source_url. game_signals and game_job_signals have no
- * migration here; their writers conflict on source_url and job_id. A live column the
- * select does not name fails this read. There is no column fallback and no empty substitute.
+ * product_launches is unique on source_url. game_job_signals has no migration here;
+ * its writer conflicts on job_id. A live column the select does not name fails this
+ * read. There is no column fallback and no empty substitute.
  */
 async function fetchAdditionalFamily(
   config: FundingFeedConfig,
@@ -548,7 +547,7 @@ const FEED_SCHEMA = {
   earlier: ["headline", "value", "round", "date", "source", "sourceUrl"],
 } as const;
 
-const TYPE_RANK: Record<string, number> = { funding: 0, "product-launch": 1, gaming: 2, hiring: 3 };
+const TYPE_RANK: Record<string, number> = { funding: 0, "product-launch": 1, hiring: 2 };
 
 function kvUrl(config: FundingFeedConfig, key: string): string {
   const kv = config.legionKv;
@@ -931,7 +930,7 @@ export type FundingCoverage = {
   distinctRounds: number;
   /** One funding signal per company. */
   companySignals: number;
-  /** Signals placed in the snapshot, including product, gaming, and hiring. */
+  /** Signals placed in the snapshot, including product and hiring. */
   publishedSignals: number;
 };
 
@@ -947,7 +946,6 @@ export type FamilyCoverage = {
 export type FeedFamilies = {
   funding: FamilyCoverage;
   productLaunches: FamilyCoverage;
-  gameSignals: FamilyCoverage;
   jobSignals: FamilyCoverage;
 };
 
@@ -982,7 +980,7 @@ function withDuplicates(coverage: AdditionalFamilyCoverage, read: PageRead): Fam
   return { ...coverage, duplicateRows: read.duplicateRows };
 }
 
-/** Newest known date first. Equal dates keep funding, then product, gaming, and hiring, then company. */
+/** Newest known date first. Equal dates keep funding, then product, then hiring, then company. */
 function byNewestDate(a: Signal, b: Signal): number {
   if (a.date !== b.date) {
     if (!a.date) return 1;
@@ -1005,7 +1003,6 @@ function assertFamilyFeed(families: FeedFamilies, signals: Signal[]): void {
   const expected: Record<string, number> = {
     funding: families.funding.published,
     "product-launch": families.productLaunches.published,
-    gaming: families.gameSignals.published,
     hiring: families.jobSignals.published,
   };
   for (const [type, published] of Object.entries(expected)) {
@@ -1025,14 +1022,12 @@ export async function refreshFundingFeed(config: FundingFeedConfig): Promise<Ref
     throw new Error("Legion feed KV is not configured");
   }
   const productClient = configuredSource("product_launches", config.sources?.productLaunches);
-  const gameClient = configuredSource("game_signals", config.sources?.gameSignals);
   const jobClient = configuredSource("game_job_signals", config.sources?.jobSignals);
   const updatedAt = (config.now ?? new Date()).toISOString();
   const read = await fetchFunding(config);
   const funding = read.rows;
-  const [productRead, gameRead, jobRead] = await Promise.all([
+  const [productRead, jobRead] = await Promise.all([
     fetchAdditionalFamily(config, productClient, "product_launches", sourceUrlIdentity),
-    fetchAdditionalFamily(config, gameClient, "game_signals", sourceUrlIdentity),
     fetchAdditionalFamily(config, jobClient, "game_job_signals", jobIdentity),
   ]);
   const domains = domainsFrom(funding);
@@ -1055,14 +1050,13 @@ export async function refreshFundingFeed(config: FundingFeedConfig): Promise<Ref
   if (mergedReports !== dated.length) throw new Error("funding round merge dropped dated reports");
   const projection = projectAdditionalSignals({
     productLaunches: productRead.rows,
-    gameSignals: gameRead.rows,
+    gameSignals: [],
     jobSignals: jobRead.rows,
   });
   const fundingCoverage = fundingFamily(read, excludedNoCompany, excludedUndated, grouped.length);
   const familiesBeforeWrite: FeedFamilies = {
     funding: fundingCoverage,
     productLaunches: withDuplicates(projection.families.productLaunches, productRead),
-    gameSignals: withDuplicates(projection.families.gameSignals, gameRead),
     jobSignals: withDuplicates(projection.families.jobSignals, jobRead),
   };
   const rounds = await upsertRounds(config, grouped, updatedAt);
@@ -1109,7 +1103,6 @@ function runtimeConfig(): FundingFeedConfig {
     key: funding.key,
     sources: {
       productLaunches: writerClientFromEnv(process.env),
-      gameSignals: writerClientFromEnv(process.env),
       jobSignals: writerClientFromEnv(process.env),
     },
     legionKv: {
