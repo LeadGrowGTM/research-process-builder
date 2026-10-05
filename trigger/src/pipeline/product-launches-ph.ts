@@ -1,6 +1,6 @@
 import { logger } from "@trigger.dev/sdk";
 import type { ProductLaunch, ProductLaunchPipelineResult } from "./product-launch-types.js";
-import { fetchUrl } from "./firecrawl.js";
+import { fetchUrl } from "./scrape.js";
 import { day0BlitzEnrich } from "./enrich-company.js";
 import { webSearch } from "./rapid-search.js";
 
@@ -219,14 +219,14 @@ function mergeProducts(primary: PhProduct[], supplement: PhProduct[]): PhProduct
 
 async function stage1Fetch(dateStr: string): Promise<PhProduct[]> {
   const url = buildPhUrl(dateStr);
-  logger.info("Stage 1: fetching PH leaderboard via Spider (JS render)", { url });
+  logger.info("Stage 1: fetching PH leaderboard via page-scrape waterfall", { url });
 
-  const pageContent = await fetchUrl(url, { renderJs: true, waitForSecs: 3 });
+  const pageContent = await fetchUrl(url, { startAt: "spider-chrome" });
 
   let products: PhProduct[] = [];
 
   if (pageContent) {
-    logger.info("Spider fetch succeeded", { chars: pageContent.length });
+    logger.info("Leaderboard page fetch succeeded", { chars: pageContent.length });
     const extracted = await extractProductsFromContent(pageContent);
 
     if (extracted.error === "leaderboard_not_posted") {
@@ -234,9 +234,9 @@ async function stage1Fetch(dateStr: string): Promise<PhProduct[]> {
       return [];
     }
     products = extracted.products;
-    logger.info("Spider extraction", { count: products.length });
+    logger.info("Leaderboard page extraction", { count: products.length });
   } else {
-    logger.warn("Spider fetch failed — relying on Serper supplement only");
+    logger.warn("Leaderboard page fetch failed - relying on Serper supplement only");
   }
 
   // Serper supplement: catch products Spider missed
@@ -248,7 +248,7 @@ async function stage1Fetch(dateStr: string): Promise<PhProduct[]> {
   }
 
   if (products.length === 0) {
-    logger.warn("No products from Spider + Serper", { dateStr });
+    logger.warn("No products from leaderboard + Serper", { dateStr });
     return [];
   }
 

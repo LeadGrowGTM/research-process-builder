@@ -5,7 +5,7 @@
  *
  * Steps:
  *   1. Find funding_discoveries not yet in signal_companies
- *   2. For no-industry rows: scrape homepage via Firecrawl
+ *   2. Scrape homepages via the shared page-scrape waterfall
  *   3. Luna classification (industry + ICP fit) -> write to signal_companies
  *   4. Luna description/products from the homepage scrape -> funding_discoveries
  *   5. For new strong/moderate rows: run prospect-identification -> write target_market
@@ -20,7 +20,7 @@
  * Env vars required:
  *   SUPABASE_PROJECT_URL, SUPABASE_KEY (or SUPABASE_ANON_KEY)
  *   OPENAI_API_KEY
- *   FIRECRAWL_API_KEY (optional, graceful fallback)
+ *   SPIDER_API_KEY (optional, direct fetch runs without keys)
  *   AI_ARK_API_KEY, QUICKENRICH_API_KEY, MILLION_VERIFIER_API_KEY,
  *   TRYKITT_API_KEY (optional, founder waterfall skips missing keys)
  */
@@ -28,6 +28,7 @@
 import { schedules, logger } from "@trigger.dev/sdk";
 import { workflowGate } from "./modules/workflow-gate.js";
 import { lunaJson } from "./pipeline/luna.js";
+import { scrapePage } from "./pipeline/scrape.js";
 import {
   INDUSTRIES,
   ICP_FITS,
@@ -56,7 +57,6 @@ const SUPABASE_KEY =
   process.env.SUPABASE_ANON_KEY ??
   "";
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY ?? "";
-const FIRECRAWL_API_KEY = process.env.FIRECRAWL_API_KEY ?? "";
 const DEFAULT_SCHEMA = "leadgrow_knowledge";
 // Fix-forward: only process rows discovered today or later (no backfill of 3.5-month stall)
 const FIX_FORWARD_SINCE = "2026-08-27";
@@ -187,24 +187,11 @@ async function sbUpsert(table: string, row: Record<string, unknown>, schema: str
   return resp.ok;
 }
 
-// ── Firecrawl scrape ──────────────────────────────────────────────────────────
+// ── Homepage scrape ──────────────────────────────────────────────────────────
 
 async function scrapeHomepage(domain: string, deadlineAt: number): Promise<string | null> {
-  if (!FIRECRAWL_API_KEY) return null;
-  try {
-    const resp = await fetch("https://api.firecrawl.dev/v1/scrape", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${FIRECRAWL_API_KEY}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ url: `https://${domain}`, formats: ["markdown"], onlyMainContent: true }),
-      signal: AbortSignal.timeout(Math.max(1, Math.min(25_000, deadlineAt - Date.now()))),
-    });
-    if (!resp.ok) return null;
-    const data = await resp.json() as { success: boolean; data?: { markdown?: string } };
-    const content = data.data?.markdown ?? "";
-    return content.length > 150 ? content.slice(0, 8_000) : null;
-  } catch {
-    return null;
-  }
+  const result = await scrapePage(`https://${domain}`, { maxChars: 8_000, deadlineAt });
+  return result?.content ?? null;
 }
 
 // ── Luna helpers ──────────────────────────────────────────────────────────────
@@ -449,13 +436,9 @@ export const signalBankDaily = schedules.task({
     for (const row of toProcess) {
       if (Date.now() >= deadlineAt) break;
       const domain = row.company_domain;
-      let homepageContent: string | null = null;
-
       // The same capped homepage fetch supplies classification evidence and the profile fields.
-      if (FIRECRAWL_API_KEY) {
-        homepageContent = await scrapeHomepage(domain, deadlineAt);
-        if (homepageContent) scraped++;
-      }
+      const homepageContent = await scrapeHomepage(domain, deadlineAt);
+      if (homepageContent) scraped++;
 
       const storedDescription = publicSentence(row.company_description, 280);
       const storedProducts = publicSentence(row.products);

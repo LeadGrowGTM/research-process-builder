@@ -11,6 +11,7 @@ vi.mock("./modules/workflow-gate.js", () => ({ workflowGate: async () => ({ acti
 vi.mock("./pipeline/luna.js", () => ({ lunaJson: vi.fn() }));
 vi.mock("./pipeline/founders.js", () => ({ isFoundersConfigured: () => false, runFoundersForCompany: vi.fn(), logCostRecorder: () => ({ record: () => {} }), MAX_FOUNDER_PROVIDER_CALLS_PER_RUN: 500 }));
 
+beforeEach(() => { vi.stubEnv("SPIDER_API_KEY", ""); });
 afterEach(() => { vi.resetAllMocks(); vi.unstubAllEnvs(); vi.unstubAllGlobals(); });
 
 describe("buildIcpUserPrompt", () => {
@@ -78,7 +79,6 @@ describe("signal bank profile writes", () => {
     vi.stubEnv("SUPABASE_PROJECT_URL", "https://project.test");
     vi.stubEnv("SUPABASE_SERVICE_ROLE_KEY", "fixture-key");
     vi.stubEnv("OPENAI_API_KEY", "fixture-key");
-    vi.stubEnv("FIRECRAWL_API_KEY", "");
     const { signalBankDaily } = await import("./signal-bank-daily.js");
     const { lunaJson } = await import("./pipeline/luna.js");
     vi.mocked(lunaJson).mockImplementation(async (options) => ({ data: options.name === "company_profile" ? { company_description: null, products } : { industry: "Fintech", icp_fit: "strong", company_size: "SMB", reasoning: "B2B software", decision_makers: [], pain_points: [] }, usage: { inputTokens: 0, cachedInputTokens: 0, outputTokens: 0 }, serviceTier: "flex", costUsd: 0 }));
@@ -109,7 +109,7 @@ describe("signal bank profile writes", () => {
     vi.stubEnv("SUPABASE_PROJECT_URL", "https://project.test");
     vi.stubEnv("SUPABASE_SERVICE_ROLE_KEY", "fixture-key");
     vi.stubEnv("OPENAI_API_KEY", "fixture-key");
-    vi.stubEnv("FIRECRAWL_API_KEY", "fixture-key");
+    vi.stubEnv("SPIDER_API_KEY", "fixture-key");
     const { signalBankDaily } = await import("./signal-bank-daily.js");
     const { lunaJson } = await import("./pipeline/luna.js");
     vi.mocked(lunaJson).mockImplementation(async (options) => ({
@@ -121,8 +121,9 @@ describe("signal bank profile writes", () => {
       costUsd: 0,
     }));
     const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
-      if (url.includes("firecrawl")) {
-        return new Response(JSON.stringify({ success: true, data: { markdown: `${"Acme sells payment software to retailers. ".repeat(8)}` } }));
+      if (url === "https://acme.com") return new Response("<title>Just a moment</title>", { headers: { "Content-Type": "text/html" } });
+      if (url === "https://api.spider.cloud/scrape") {
+        return new Response(JSON.stringify([{ content: "Acme sells payment software to retailers. ".repeat(12), status: 200, costs: { total_cost: 0.001 } }]));
       }
       if (init?.method === "PATCH" || init?.method === "POST") return new Response(null, { status: 204 });
       if (url.includes("funding_discoveries")) {
@@ -140,6 +141,10 @@ describe("signal bank profile writes", () => {
     vi.stubGlobal("fetch", fetchMock);
     const runTask = signalBankDaily as unknown as { run: (payload: { timestamp: Date }) => Promise<{ profileCoverage: unknown }> };
     const summary = await runTask.run({ timestamp: new Date("2026-09-30T00:00:00Z") });
+    expect(fetchMock.mock.calls.map(([url]) => url).filter(url => url === "https://acme.com" || url.includes("spider.cloud")))
+      .toEqual(["https://acme.com", "https://api.spider.cloud/scrape"]);
+    const scrape = fetchMock.mock.calls.find(([url]) => url === "https://api.spider.cloud/scrape");
+    expect(JSON.parse(String(scrape?.[1]?.body))).toEqual({ url: "https://acme.com", return_format: "markdown", request: "smart", filter_output_main_only: false });
     const patches = fetchMock.mock.calls.filter(([, init]) => init?.method === "PATCH");
     expect(JSON.parse(String(patches[0][1]?.body))).toEqual({ company_description: "Acme builds payment software." });
     expect(summary.profileCoverage).toEqual({
@@ -158,7 +163,6 @@ describe("signal bank profile writes", () => {
     vi.stubEnv("SUPABASE_PROJECT_URL", "https://project.test");
     vi.stubEnv("SUPABASE_SERVICE_ROLE_KEY", "fixture-key");
     vi.stubEnv("OPENAI_API_KEY", "fixture-key");
-    vi.stubEnv("FIRECRAWL_API_KEY", "");
     const { signalBankDaily } = await import("./signal-bank-daily.js");
     const { lunaJson } = await import("./pipeline/luna.js");
     vi.mocked(lunaJson).mockImplementation(async (options) => {
@@ -202,7 +206,6 @@ describe("signal_companies existing-domain read", () => {
     vi.stubEnv("SUPABASE_PROJECT_URL", "https://database.leadgrow.ai");
     vi.stubEnv("SUPABASE_SERVICE_ROLE_KEY", "fixture-key");
     vi.stubEnv("OPENAI_API_KEY", "fixture-key");
-    vi.stubEnv("FIRECRAWL_API_KEY", "fixture-key");
     const { signalBankDaily } = await import("./signal-bank-daily.js");
     const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
       if (init?.method === "PATCH" || init?.method === "POST") return new Response(null, { status: 204 });

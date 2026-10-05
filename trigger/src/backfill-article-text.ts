@@ -1,5 +1,5 @@
 import { task, logger } from "@trigger.dev/sdk";
-import { fetchUrl } from "./pipeline/firecrawl.js";
+import { fetchUrl } from "./pipeline/scrape.js";
 
 const SUPABASE_URL = (() => {
   const url = process.env.SUPABASE_PROJECT_URL ?? process.env.SUPABASE_URL ?? "";

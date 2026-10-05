@@ -8,7 +8,7 @@ import type {
   RoundConfig,
 } from "./types.js";
 import { runDiscovery } from "./serper.js";
-import { fetchUrl } from "./firecrawl.js";
+import { fetchUrl } from "./scrape.js";
 import { extractWithOpenAI, validateDomainSemantic } from "./openai.js";
 import { scoreAndFilter } from "./filters.js";
 import { isSupabaseConfigured, checkTable, pushToSupabase, getRecentCompanyNames } from "./supabase.js";
