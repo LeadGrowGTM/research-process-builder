@@ -26,11 +26,13 @@ describe("round config Clay webhook credentials", () => {
       expect(config.webhookAuthToken).toBe(`token-${letter}`);
     });
 
-    it(`Series ${letter} fails closed with the variable name when unset or blank`, () => {
+    it(`Series ${letter} disables Clay when the URL is unset and requires a configured token`, () => {
       delete process.env[`CLAY_SERIES_${letter}_WEBHOOK_URL`];
       process.env[`CLAY_SERIES_${letter}_WEBHOOK_TOKEN`] = "   ";
-      expect(() => config.webhookUrl).toThrow(`CLAY_SERIES_${letter}_WEBHOOK_URL`);
+      expect(config.webhookUrl).toBe("");
       expect(() => config.webhookAuthToken).toThrow(`CLAY_SERIES_${letter}_WEBHOOK_TOKEN`);
+      process.env[`CLAY_SERIES_${letter}_WEBHOOK_URL`] = "   ";
+      expect(config.webhookUrl).toBe("");
     });
   }
 
