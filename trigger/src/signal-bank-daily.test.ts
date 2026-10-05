@@ -193,6 +193,34 @@ describe("signal bank profile writes", () => {
   });
 });
 
+describe("signal_companies existing-domain read", () => {
+  it("batches the in.() filter so a long domain list stays under the gateway URL limit", async () => {
+    vi.resetModules();
+    vi.stubEnv("SUPABASE_PROJECT_URL", "https://project.test");
+    vi.stubEnv("SUPABASE_SERVICE_ROLE_KEY", "fixture-key");
+    vi.stubEnv("OPENAI_API_KEY", "fixture-key");
+    vi.stubEnv("FIRECRAWL_API_KEY", "fixture-key");
+    const { signalBankDaily } = await import("./signal-bank-daily.js");
+    const domains = Array.from({ length: 250 }, (_, i) => `company-${i}.com`);
+    const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
+      if (init?.method === "PATCH" || init?.method === "POST") return new Response(null, { status: 204 });
+      if (url.includes("funding_discoveries")) {
+        return new Response(JSON.stringify(domains.map((d) => ({ company_name: d, company_domain: d, discovered_date: "2026-08-01" }))));
+      }
+      // database.leadgrow.ai answers 502 once the URL passes ~3k characters.
+      if (url.includes("signal_companies")) return url.length > 3000 ? new Response("Bad gateway", { status: 502 }) : new Response("[]");
+      return new Response("[]");
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const runTask = signalBankDaily as unknown as { run: (payload: { timestamp: Date }) => Promise<unknown> };
+    await expect(runTask.run({ timestamp: new Date("2026-10-05T00:00:00Z") })).resolves.toBeDefined();
+    const reads = fetchMock.mock.calls.map(([url]) => String(url)).filter((url) => url.includes("signal_companies") && url.includes("domain=in."));
+    expect(reads).toHaveLength(3);
+    const requested = reads.flatMap((url) => new URL(url).searchParams.get("domain")!.replace(/^in\.\(|\)$/g, "").split(","));
+    expect(requested.sort()).toEqual([...domains].sort());
+  });
+});
+
 describe("signal-bank-daily selection logic", () => {
   const mockRows = [
     {

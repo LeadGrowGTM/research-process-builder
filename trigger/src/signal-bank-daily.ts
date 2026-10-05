@@ -141,7 +141,7 @@ async function sbGet(path: string, params: Record<string, string> = {}, schema: 
   const url = `${SUPABASE_URL}/rest/v1/${path}${qs ? "?" + qs : ""}`;
   const resp = await fetch(url, { headers: sbHeaders(false, schema), signal: AbortSignal.timeout(20_000) });
   if (!resp.ok) {
-    logger.warn(`sbGet failed: ${resp.status} on ${path}`, { schema });
+    logger.warn(`sbGet failed: ${resp.status} on ${path}`, { schema, body: (await resp.text().catch(() => "")).slice(0, 200) });
     return null;
   }
   const data = await resp.json();
@@ -373,11 +373,15 @@ export const signalBankDaily = schedules.task({
     const allFunding = allFundingResult as Array<Record<string, string>>;
 
     const fundingDomains = [...new Set(allFunding.map(row => row.company_domain).filter(domain => /^[a-z0-9.-]+\.[a-z]{2,}$/.test(domain ?? "")))];
-    const existingRows = fundingDomains.length === 0 ? [] : await sbGet("signal_companies", {
-      select: "domain", domain: `in.(${fundingDomains.join(",")})`, limit: "500",
-    });
-    if (existingRows === null) {
-      throw new Error("signal_companies domain read failed in leadgrow_knowledge schema");
+    // Batches of 100: the gateway answers 502 once the in.() URL passes ~3k characters (~250 domains).
+    const existingRows: unknown[] = [];
+    for (let start = 0; start < fundingDomains.length; start += 100) {
+      const batch = fundingDomains.slice(start, start + 100);
+      const rows = await sbGet("signal_companies", { select: "domain", domain: `in.(${batch.join(",")})`, limit: "100" });
+      if (rows === null) {
+        throw new Error("signal_companies domain read failed in leadgrow_knowledge schema");
+      }
+      existingRows.push(...rows);
     }
     const existingDomains = new Set(
       (existingRows as Array<{ domain: string }>).map((row) => row.domain)
