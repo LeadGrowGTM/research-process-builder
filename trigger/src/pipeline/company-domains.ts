@@ -96,6 +96,7 @@ export async function fillCompanyDomains<T extends CompanyDomainRow>(rows: T[], 
         const result = await lookupDomainMultiSignal(row.company_name, clues, row.source_url, Math.min(budget.deadlineAt, Date.now() + 60_000));
         resolution.lookupDomain = result.domain || null;
         resolution.confidence = result.confidence;
+        logger.info(`Domain lookup ${row.company_name}: ${result.domain} (${result.confidence}) - ${(result.evidence ?? "").slice(0, 200)}`);
         if (Date.now() > budget.deadlineAt) resolution.rejectedReason = "deadline_exceeded";
         else {
           domain = companyDomain(result.domain);
