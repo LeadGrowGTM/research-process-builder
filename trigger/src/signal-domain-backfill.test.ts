@@ -52,7 +52,7 @@ describe("signal-domain-backfill", () => {
   });
 
   it.each([
-    ["Unclear", "high"], ["Wrong", "high"], ["Unclear", "medium"], ["Wrong", "medium"],
+    ["Wrong", "high"], ["Unclear", "medium"], ["Wrong", "medium"],
   ])("does not write a funding domain when semantic validation is %s for a %s lookup without a correction", async (status, confidence) => {
     mocks.lookup.mockResolvedValue(hit("acme.com", confidence));
     mocks.validate.mockResolvedValue({ status, correctDomain: "not_found" });
@@ -63,6 +63,26 @@ describe("signal-domain-backfill", () => {
     expect(result).toMatchObject({ resolved: 0, updated: 0 });
     expect(result.proposals[0].rejectedReason).toBe(status === "Wrong" ? "semantic_wrong" : "semantic_unclear");
     expect(writes).toEqual([]);
+  });
+
+  it("keeps a high funding lookup when semantic validation is Unclear, matching the daily path", async () => {
+    mocks.validate.mockResolvedValue({ status: "Unclear", correctDomain: "not_found" });
+    const { writes } = setupFetch([stored(1)]);
+    const { runSignalDomainBackfill } = await import("./signal-domain-backfill.js");
+    const result = await runSignalDomainBackfill({ table: "funding_discoveries", dryRun: false });
+    expect(result.proposals[0]).toMatchObject({ domain: "acme.com", confidence: "high", rejectedReason: null });
+    expect(writes).toHaveLength(1);
+  });
+
+  it.each([["Correct", "firecrawl.dev"], ["Unclear", null]])("uses a first-party funding source domain only when the article confirms it (%s)", async (status, domain) => {
+    mocks.validate.mockResolvedValue({ status, correctDomain: "not_found" });
+    const { writes } = setupFetch([{ ...stored(1, "Firecrawl"), source_url: "https://www.firecrawl.dev/blog/series-a" }, { ...stored(2, "Acme"), source_url: "https://news.firecrawl.dev/acme" }]);
+    const { runSignalDomainBackfill } = await import("./signal-domain-backfill.js");
+    const result = await runSignalDomainBackfill({ table: "funding_discoveries", dryRun: false });
+    expect(result.proposals[0]).toMatchObject({ domain, source: "url", lookupDomain: "firecrawl.dev", confidence: "medium" });
+    expect(result.proposals[1]).toMatchObject({ source: "search" });
+    expect(mocks.lookup).toHaveBeenCalledOnce();
+    expect(writes).toHaveLength(domain ? 2 : 1);
   });
 
   it.each(["high", "medium", "low"])("accepts only high funding lookups without article text (%s)", async (confidence) => {
@@ -122,7 +142,7 @@ describe("signal-domain-backfill", () => {
   });
 
   it.each([
-    ["Unclear", "high"], ["Wrong", "high"], ["error", "high"],
+    ["Wrong", "high"], ["error", "high"],
     ["Unclear", "medium"], ["Wrong", "medium"], ["error", "medium"],
   ])("revalidates a cached %s semantic rejection for a %s candidate with later article evidence", async (status, confidence) => {
     mocks.lookup.mockResolvedValue(hit("acme.com", confidence));
