@@ -1,5 +1,6 @@
 import type { Signal } from "../legion-funding-feed.js";
 import { isDomainBlocked } from "./domain-lookup.js";
+import { registrableDomain } from "./pipeline.js";
 import { decodeHtmlEntities, isPublicHttpsUrl, logoUrlForDomain, normalizeOptionalInteger, normalizeOptionalText, sourceNameForUrl } from "./taxonomy.js";
 
 /**
@@ -120,7 +121,8 @@ export function companyDomain(value: unknown): string {
   const host = hostname(value);
   if (!host || NON_COMPANY_HOSTS.has(host) || isDomainBlocked(host)) return "";
   if (!/^(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$/.test(host)) return "";
-  return host;
+  const domain = registrableDomain(host);
+  return NON_COMPANY_HOSTS.has(domain) || isDomainBlocked(domain) ? "" : domain;
 }
 
 /** Public https link, or empty. Credential checks use the raw URL. Contact stripping can turn userinfo into a different URL that still looks public. */

@@ -40,14 +40,104 @@ beforeEach(() => {
 afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); vi.unstubAllEnvs(); });
 
 describe("signal-domain-backfill", () => {
-  it.each(["Unclear", "Wrong"])("does not write a funding domain when semantic validation is %s without a correction", async (status) => {
+  it("accepts a medium funding lookup only after article semantic validation", async () => {
+    mocks.lookup.mockResolvedValue(hit("namespace.so", "medium"));
+    const { writes } = setupFetch([stored(1, "Namespace")]);
+    const { runSignalDomainBackfill } = await import("./signal-domain-backfill.js");
+    const result = await runSignalDomainBackfill({ table: "funding_discoveries", dryRun: false });
+    expect(mocks.validate).toHaveBeenCalledWith(stored(1).source_url, "Namespace", "namespace.so", stored(1).article_text, expect.any(Number));
+    expect(result).toMatchObject({ resolved: 1, updated: 1 });
+    expect(writes[0].patch.company_domain).toBe("namespace.so");
+    expect(result.proposals[0]).toMatchObject({ source: "search", lookupDomain: "namespace.so", confidence: "medium", rejectedReason: null });
+  });
+
+  it.each([
+    ["Unclear", "high"], ["Wrong", "high"], ["Unclear", "medium"], ["Wrong", "medium"],
+  ])("does not write a funding domain when semantic validation is %s for a %s lookup without a correction", async (status, confidence) => {
+    mocks.lookup.mockResolvedValue(hit("acme.com", confidence));
     mocks.validate.mockResolvedValue({ status, correctDomain: "not_found" });
     const { writes } = setupFetch([stored(1)]);
     const { runSignalDomainBackfill } = await import("./signal-domain-backfill.js");
     const result = await runSignalDomainBackfill({ table: "funding_discoveries", dryRun: false });
     expect(mocks.validate).toHaveBeenCalledWith(stored(1).source_url, "Acme", "acme.com", stored(1).article_text, expect.any(Number));
     expect(result).toMatchObject({ resolved: 0, updated: 0 });
+    expect(result.proposals[0].rejectedReason).toBe(status === "Wrong" ? "semantic_wrong" : "semantic_unclear");
     expect(writes).toEqual([]);
+  });
+
+  it.each(["high", "medium", "low"])("accepts only high funding lookups without article text (%s)", async (confidence) => {
+    mocks.lookup.mockResolvedValue(hit("firecrawl.dev", confidence));
+    const { writes } = setupFetch([{ ...stored(1, "Firecrawl"), article_text: null }]);
+    const { runSignalDomainBackfill } = await import("./signal-domain-backfill.js");
+    const result = await runSignalDomainBackfill({ table: "funding_discoveries", dryRun: false });
+    expect(result.resolved).toBe(confidence === "high" ? 1 : 0);
+    expect(writes).toHaveLength(confidence === "high" ? 1 : 0);
+    expect(mocks.validate).not.toHaveBeenCalled();
+    expect(result.proposals[0]).toMatchObject({ lookupDomain: "firecrawl.dev", confidence, rejectedReason: confidence === "high" ? null : confidence === "medium" ? "medium_requires_article_validation" : "confidence_not_high" });
+  });
+
+  it("rejects a low funding lookup even when article text is present", async () => {
+    mocks.lookup.mockResolvedValue(hit("wrong.test", "low"));
+    const { writes } = setupFetch([stored(1)]);
+    const { runSignalDomainBackfill } = await import("./signal-domain-backfill.js");
+    const result = await runSignalDomainBackfill({ table: "funding_discoveries", dryRun: false });
+    expect(result.proposals[0]).toMatchObject({ domain: null, confidence: "low", rejectedReason: "confidence_not_high" });
+    expect(mocks.validate).not.toHaveBeenCalled();
+    expect(writes).toEqual([]);
+  });
+
+  it("does not reuse a validated medium lookup when the next funding row has no article", async () => {
+    mocks.lookup.mockResolvedValue(hit("acme.com", "medium"));
+    const { writes } = setupFetch([stored(1), { ...stored(2), article_text: null }, stored(3)]);
+    const { runSignalDomainBackfill } = await import("./signal-domain-backfill.js");
+    const result = await runSignalDomainBackfill({ table: "funding_discoveries", dryRun: false });
+    expect(result).toMatchObject({ resolved: 2, updated: 2 });
+    expect(result.proposals[1]).toMatchObject({ domain: null, source: "cache", lookupDomain: "acme.com", confidence: "medium", rejectedReason: "medium_requires_article_validation" });
+    expect(result.proposals[2]).toMatchObject({ domain: "acme.com", source: "cache", confidence: "medium", rejectedReason: null });
+    expect(mocks.validate).toHaveBeenCalledTimes(2);
+    expect(mocks.lookup).toHaveBeenCalledOnce();
+    expect(writes).toHaveLength(2);
+  });
+
+  it("revalidates a cached medium candidate once a funding row has article text", async () => {
+    mocks.lookup.mockResolvedValue(hit("acme.com", "medium"));
+    const { writes } = setupFetch([{ ...stored(1), article_text: null }, stored(2)]);
+    const { runSignalDomainBackfill } = await import("./signal-domain-backfill.js");
+    const result = await runSignalDomainBackfill({ table: "funding_discoveries", dryRun: false });
+    expect(result).toMatchObject({ resolved: 1, updated: 1 });
+    expect(result.proposals[1]).toMatchObject({ domain: "acme.com", source: "cache", confidence: "medium", rejectedReason: null });
+    expect(mocks.validate).toHaveBeenCalledOnce();
+    expect(mocks.lookup).toHaveBeenCalledOnce();
+    expect(writes).toHaveLength(1);
+  });
+
+  it("logs a failed semantic validation and continues to later funding rows", async () => {
+    mocks.validate.mockRejectedValueOnce(new Error("validator unavailable"));
+    const { writes } = setupFetch([stored(1), stored(2, "Other")]);
+    const { runSignalDomainBackfill } = await import("./signal-domain-backfill.js");
+    const result = await runSignalDomainBackfill({ table: "funding_discoveries", dryRun: false });
+    expect(result).toMatchObject({ processed: 2, resolved: 1 });
+    expect(result.proposals[0]).toMatchObject({ domain: null, rejectedReason: "semantic_validation_failed" });
+    expect(writes).toHaveLength(1);
+  });
+
+  it.each([
+    ["Unclear", "high"], ["Wrong", "high"], ["error", "high"],
+    ["Unclear", "medium"], ["Wrong", "medium"], ["error", "medium"],
+  ])("revalidates a cached %s semantic rejection for a %s candidate with later article evidence", async (status, confidence) => {
+    mocks.lookup.mockResolvedValue(hit("acme.com", confidence));
+    if (status === "error") mocks.validate.mockRejectedValueOnce(new Error("validator unavailable"));
+    else mocks.validate.mockResolvedValueOnce({ status, correctDomain: "not_found" });
+    const betterArticle = "Acme funding article with clearer company details";
+    const { writes } = setupFetch([stored(1), { ...stored(2), article_text: null }, { ...stored(3), article_text: betterArticle }]);
+    const { runSignalDomainBackfill } = await import("./signal-domain-backfill.js");
+    const result = await runSignalDomainBackfill({ table: "funding_discoveries", dryRun: false });
+    expect(result.proposals.map((proposal) => proposal.domain)).toEqual([null, null, "acme.com"]);
+    expect(result.proposals[2]).toMatchObject({ source: "cache", confidence, rejectedReason: null });
+    expect(mocks.validate).toHaveBeenCalledTimes(2);
+    expect(mocks.validate).toHaveBeenLastCalledWith(stored(1).source_url, "Acme", "acme.com", betterArticle, expect.any(Number));
+    expect(mocks.lookup).toHaveBeenCalledOnce();
+    expect(writes).toHaveLength(1);
   });
 
   it("writes a semantic correction consistently to the funding domain, website and logo", async () => {
@@ -109,6 +199,57 @@ describe("signal-domain-backfill", () => {
     await runSignalDomainBackfill({ table: "product_launches", dryRun: false });
     expect(writes[0].patch).toEqual({ company_domain: "acme.com" });
     expect(mocks.scrape).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ["Crosswalk", "mcp.crosswalk.to", "crosswalk.to"],
+    ["Pilot5", "legal.pilot5.ai", "pilot5.ai"],
+    ["OpenAI", "ads.openai.com", "openai.com"],
+  ])("writes registrable launch domains for %s", async (name, host, domain) => {
+    const { writes } = setupFetch([{ ...stored(1, name), maker_website: `https://${host}` }]);
+    const { runSignalDomainBackfill } = await import("./signal-domain-backfill.js");
+    const result = await runSignalDomainBackfill({ table: "product_launches", dryRun: false });
+    expect(writes[0].patch).toEqual({ company_domain: domain });
+    expect(result.proposals[0]).toMatchObject({ domain, source: "stored", confidence: "high", rejectedReason: null });
+    expect(mocks.lookup).not.toHaveBeenCalled();
+  });
+
+  it("keeps product searches high-only even with article text", async () => {
+    mocks.lookup.mockResolvedValue(hit("ara.so", "medium"));
+    const { writes } = setupFetch([stored(1, "Reason")]);
+    const { runSignalDomainBackfill } = await import("./signal-domain-backfill.js");
+    const result = await runSignalDomainBackfill({ table: "product_launches", dryRun: false });
+    expect(result.proposals[0]).toMatchObject({ domain: null, source: "search", lookupDomain: "ara.so", confidence: "medium", rejectedReason: "confidence_not_high" });
+    expect(mocks.validate).not.toHaveBeenCalled();
+    expect(writes).toEqual([]);
+  });
+
+  it("skips junk names before scraping or lookup and logs one detailed proposal per row", async () => {
+    setupFetch(["Fundraising News", "Fundraising News", "Newsroom", "这家公司获得融资，计划拓展市场。", "This headline has seven separate company words"].map((name, i) => ({ ...stored(i + 1, name), article_text: null })));
+    const { runSignalDomainBackfill } = await import("./signal-domain-backfill.js");
+    const result = await runSignalDomainBackfill({ table: "funding_discoveries" });
+    expect(result).toMatchObject({ processed: 5, resolved: 0, remainingLookups: 20 });
+    expect(mocks.lookup).not.toHaveBeenCalled();
+    expect(mocks.scrape).not.toHaveBeenCalled();
+    expect(result.proposals.map((proposal) => proposal.rejectedReason)).toEqual(["non_company_name", "non_company_name", "non_company_name", "cjk_sentence_punctuation", "company_name_too_long"]);
+    const logs = mocks.logger.info.mock.calls.filter(([message]) => message === "Signal domain proposal");
+    expect(logs).toHaveLength(5);
+    result.proposals.forEach((proposal, i) => expect(logs[i][1]).toEqual({ table: "funding_discoveries", dryRun: true, ...proposal }));
+    expect(result.proposals.every((proposal) => proposal.source === "none" && proposal.lookupDomain === null && proposal.confidence === null)).toBe(true);
+  });
+
+  it("preserves candidate details on lookup failures, cached misses and deadline rejections", async () => {
+    const { writes } = setupFetch([stored(1), stored(2), stored(3, "Late")]);
+    mocks.lookup.mockRejectedValueOnce(new Error("provider unavailable"));
+    mocks.lookup.mockImplementationOnce(async () => { vi.advanceTimersByTime(540_000); return hit("late.test", "high"); });
+    const { runSignalDomainBackfill } = await import("./signal-domain-backfill.js");
+    const result = await runSignalDomainBackfill({ table: "product_launches", dryRun: false });
+    expect(result.proposals).toMatchObject([
+      { domain: null, source: "search", lookupDomain: null, confidence: null, rejectedReason: "lookup_failed" },
+      { domain: null, source: "cache", lookupDomain: null, confidence: null, rejectedReason: "lookup_failed" },
+      { domain: null, source: "search", lookupDomain: "late.test", confidence: "high", rejectedReason: "deadline_exceeded" },
+    ]);
+    expect(writes).toEqual([]);
   });
 
   it("uses the existing bounded scraper when stored Evidence is missing and caches repeated company lookups", async () => {

@@ -35,7 +35,7 @@ const SUSPECT_DOMAIN_PATTERNS = [
   /yoast|schema\.org|w3\.org/i,
 ];
 
-function registrableDomain(host: string): string {
+export function registrableDomain(host: string): string {
   const suffixLabels = /\.(?:ac|co|com|edu|gov|net|org)\.[a-z]{2}$/.test(host) ? 3 : 2;
   return host.split(".").slice(-suffixLabels).join(".");
 }
