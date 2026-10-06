@@ -228,7 +228,7 @@ const DOMAIN_RESOLVE_SCHEMA = {
   additionalProperties: false,
 };
 
-const DOMAIN_RESOLVE_SYSTEM = `You find the official website domain for a startup that recently raised funding. You have a web search tool.
+const DOMAIN_RESOLVE_SYSTEM = `You find the official website domain for a company mentioned in a funding, product launch, or hiring signal. You have a web search tool.
 
 SEARCH STRATEGY (in order):
 1. Primary: "{company_name}" {industry} website
@@ -237,7 +237,7 @@ SEARCH STRATEGY (in order):
 4. If common-word name (Keep, Clay, Era): search "{company_name}" {industry} startup funding - funding articles link to the actual company
 
 IMPORTANT:
-- These are STARTUPS that raised venture funding. Not large enterprises or legacy companies.
+- Match the company and context provided. It may be a startup or an established company.
 - The domain often does NOT match the company name. Examples: Keep -> trykeep.com, Gong -> gong.io, Plaid -> plaid.com. Don't assume {name}.com is correct - verify from search results.
 - Crunchbase snippets are your best friend for obscure startups. The snippet text often contains the domain directly.
 - Look at SERP snippet descriptions to verify the domain matches the RIGHT company in the RIGHT industry
@@ -250,8 +250,8 @@ IMPORTANT:
 RESPONSE FORMAT (when done searching):
 {"domain": "example.com", "confidence": "high|medium|low", "evidence": "brief reason"}`;
 
-async function executeSearchTool(query: string): Promise<string> {
-  const items = await searchSerper(query, 5, "");
+async function executeSearchTool(query: string, deadlineAt?: number): Promise<string> {
+  const items = await searchSerper(query, 5, "", deadlineAt);
   if (items.length === 0) return "No results found.";
 
   return items
@@ -330,9 +330,9 @@ export async function lookupDomainMultiSignal(
           }
           const allowed = tc.name === "web_search" && typeof query === "string" && query.trim() && searchCount < MAX_SEARCH_ROUNDS;
           let searchResult = "Search unavailable or search budget reached.";
-          if (allowed) {
+          if (allowed && (deadlineAt === undefined || Date.now() < deadlineAt)) {
             searchCount++;
-            searchResult = await executeSearchTool(query.slice(0, 500));
+            searchResult = await executeSearchTool(query.slice(0, 500), deadlineAt);
             if (searchResult !== "No results found.") hasSearchEvidence = true;
           }
           messages.push({

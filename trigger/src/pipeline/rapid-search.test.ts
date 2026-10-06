@@ -116,6 +116,30 @@ describe("webSearch", () => {
 });
 
 describe("searchSerper compatibility", () => {
+  it("does not start a primary or fallback search after the caller deadline", async () => {
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+    await expect(searchSerper("hello", 5, "", Date.now() - 1)).rejects.toThrow("searches failed");
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("forwards the deadline through the queued primary and paid fallback", async () => {
+    vi.resetModules();
+    const { searchSerper: boundedSearch } = await import("./serper.js");
+    vi.useFakeTimers();
+    vi.stubEnv("TREG_TOKEN", "test-token");
+    const deadlineAt = Date.now() + 100;
+    const fetchMock = vi.fn(async () => {
+      vi.advanceTimersByTime(101);
+      return json({}, 429);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const pending = boundedSearch("hello", 5, "", deadlineAt);
+    void pending.catch(() => {});
+    await vi.runAllTimersAsync();
+    await expect(pending).rejects.toThrow("searches failed");
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
   it("maps qdr freshness to an after date", async () => {
     vi.useFakeTimers();
     vi.setSystemTime(new Date("2026-10-05T12:00:00Z"));

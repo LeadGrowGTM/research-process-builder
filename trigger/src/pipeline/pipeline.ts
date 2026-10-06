@@ -315,7 +315,8 @@ async function enrichOneCompany(
   let domainSource = "not_found";
 
   if (articleText) {
-    const articleDomain = extractDomainFromArticle(articleText, company.company_name, sourceUrl);
+    const articleDomain = extractDomainFromArticle(articleText, extracted.company_name, sourceUrl)
+      || extractDomainFromArticle(articleText, company.company_name, sourceUrl);
     if (articleDomain) {
       domain = articleDomain;
       domainSource = "article_text_extract";
@@ -335,7 +336,7 @@ async function enrichOneCompany(
     if (Date.now() >= enrichUntil) return null;
     const result = await lookupDomainMultiSignal(company.company_name, clues, sourceUrl, enrichUntil);
     if (Date.now() >= enrichUntil) return null;
-    domain = result.domain;
+    domain = result.confidence === "low" ? "not_found" : result.domain;
     domainSource = result.source;
   }
 

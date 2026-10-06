@@ -137,6 +137,24 @@ describe("isStaleRound", () => {
 });
 
 describe("runFundingPipeline freshness gate", () => {
+  it("uses the canonical extracted company name for free article-link resolution", async () => {
+    vi.mocked(runDiscovery).mockResolvedValue([raw("Project Alpha")]);
+    vi.mocked(fetchUrl).mockResolvedValue("Funding announcement. Company site https://acme.dev/team");
+    vi.mocked(extractWithOpenAI).mockResolvedValue(extracted("Acme", RUN_DATE));
+    const result = await runFundingPipeline(config());
+    expect(result.companies[0].company_domain).toBe("acme.dev");
+    expect(lookupDomainMultiSignal).not.toHaveBeenCalled();
+  });
+
+  it("does not store low-confidence search domains on funding rows", async () => {
+    vi.mocked(runDiscovery).mockResolvedValue([raw("Alpha")]);
+    vi.mocked(fetchUrl).mockResolvedValue("A funding announcement without a website");
+    vi.mocked(extractWithOpenAI).mockResolvedValue(extracted("Alpha", RUN_DATE));
+    vi.mocked(lookupDomainMultiSignal).mockResolvedValueOnce({ domain: "wrong.test", confidence: "low", source: "search_validated", evidence: "Ambiguous company" });
+    const result = await runFundingPipeline(config());
+    expect(result.companies[0].company_domain).toBe("not_found");
+    expect(validateDomainSemantic).not.toHaveBeenCalled();
+  });
   it("drops an old round reported in a freshly dated article", async () => {
     vi.mocked(runDiscovery).mockResolvedValue([raw("Acme")]);
     vi.mocked(extractWithOpenAI).mockResolvedValue(extracted("Acme", "2015-12-10"));

@@ -11,9 +11,10 @@ interface SerperOrganic {
 export async function searchSerper(
   query: string,
   num: number,
-  tbs: string
+  tbs: string,
+  deadlineAt?: number
 ): Promise<SerperOrganic[]> {
-  const response = await webSearch(query, { limit: num, after: freshnessDate(tbs), apiKey: process.env.RAPID_API_KEY ?? "" });
+  const response = await webSearch(query, { limit: num, after: freshnessDate(tbs), apiKey: process.env.RAPID_API_KEY ?? "", deadlineAt });
   if (!response) throw new Error("RapidAPI Google and Brave searches failed");
   return response.results.map(({ url, title, snippet }) => ({ link: url, title, snippet }));
 }

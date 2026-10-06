@@ -6,6 +6,7 @@ const mocks = vi.hoisted(() => ({
   searchSerper: vi.fn(),
   webSearch: vi.fn(),
   day0BlitzEnrich: vi.fn(),
+  lookupDomain: vi.fn(),
   logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn() },
 }));
 
@@ -15,6 +16,10 @@ vi.mock("./luna.js", () => ({ lunaJson: mocks.lunaJson, isLunaConfigured: () => 
 vi.mock("./serper.js", () => ({ searchSerper: mocks.searchSerper }));
 vi.mock("./rapid-search.js", () => ({ webSearch: mocks.webSearch }));
 vi.mock("./enrich-company.js", () => ({ day0BlitzEnrich: mocks.day0BlitzEnrich }));
+vi.mock("./domain-lookup.js", async () => ({
+  ...await vi.importActual<typeof import("./domain-lookup.js")>("./domain-lookup.js"),
+  lookupDomainMultiSignal: mocks.lookupDomain,
+}));
 
 const DATE = "2026-10-05";
 const PREVIOUS_DATE = "2026-10-04";
@@ -117,6 +122,7 @@ beforeEach(() => {
   mocks.day0BlitzEnrich.mockResolvedValue({ enriched: 0 });
   mocks.searchSerper.mockResolvedValue([]);
   mocks.webSearch.mockResolvedValue(undefined);
+  mocks.lookupDomain.mockResolvedValue({ domain: "not_found", confidence: "low" });
 });
 
 afterEach(() => {
@@ -127,6 +133,17 @@ afterEach(() => {
 });
 
 describe("runPhLaunchPipeline", () => {
+  it("persists maker domains and resolves a missing website with the existing resolver", async () => {
+    setupPh([product("Today"), { ...product("Unknown", 2), maker_website: null }], []);
+    mocks.lookupDomain.mockResolvedValue({ domain: "official.test", confidence: "high" });
+    const { writes } = setupFetch();
+    const { runPhLaunchPipeline } = await import("./product-launches-ph.js");
+    await finish(runPhLaunchPipeline({ date: DATE }));
+    expect(writes.flat().map((row) => row.company_domain)).toEqual(["today.test", "official.test"]);
+    expect(mocks.lookupDomain).toHaveBeenCalledTimes(1);
+    expect(writes.flat()[1].maker_website).toBeNull();
+    expect(mocks.day0BlitzEnrich.mock.calls[0][1].map((target: { domain: string }) => target.domain)).toEqual(["https://today.test"]);
+  });
   it("deduplicates today's URLs across days even when the stored lookup has no rows", async () => {
     setupPh([product("Today")], [product("Today"), product("Previous", 2)]);
     const { writes } = setupFetch();
@@ -354,6 +371,27 @@ describe("runPhLaunchPipeline", () => {
 });
 
 describe("runNewsLaunchPipeline", () => {
+  it("resolves missing news domains and preserves existing values when the lookup is inconclusive", async () => {
+    classifyNews();
+    mocks.lookupDomain.mockResolvedValueOnce({ domain: "official.test", confidence: "high" }).mockResolvedValueOnce({ domain: "not_found", confidence: "low" });
+    const { writes, fetchMock } = setupFetch(2);
+    const normal = fetchMock.getMockImplementation()!;
+    fetchMock.mockImplementation(async (url, init) => {
+      const response = await normal(url, init);
+      if (String(url).includes("tags=show_hn")) {
+        return json({ hits: [0, 1].map((i) => ({ objectID: String(i), title: `Company${i} launches Product${i}`, url: `https://publisher.test/article${i}` })) });
+      }
+      return response;
+    });
+    const { runNewsLaunchPipeline } = await import("./product-launches-news.js");
+    await finish(runNewsLaunchPipeline({ date: DATE, skipSerper: true }));
+    expect(writes.flat()).toEqual([
+      expect.objectContaining({ company_name: "Company0", company_domain: "official.test" }),
+      expect.objectContaining({ company_name: "Company1" }),
+    ]);
+    expect(writes[1][0]).not.toHaveProperty("company_domain");
+    expect(mocks.lookupDomain).toHaveBeenCalledTimes(2);
+  });
   it("writes 126 kept launches in chunks of 50, 50 and 26", async () => {
     classifyNews();
     const { writes, fetchMock } = setupFetch(126);
@@ -364,7 +402,7 @@ describe("runNewsLaunchPipeline", () => {
     expect(writes.flat().every((row) => row.discovered_date === DATE)).toBe(true);
     // PostgREST rejects the whole batch (PGRST204) for a column product_launches does not have (migration 003).
     expect(Object.keys(writes.flat()[0]).sort()).toEqual([
-      "company_name", "description", "discovered_date", "is_ai", "launch_type",
+      "company_domain", "company_name", "description", "discovered_date", "is_ai", "launch_type",
       "pipeline_version", "product_name", "source", "source_url",
     ]);
     expect(fetchMock.mock.calls.filter(([, init]) => init?.method === "POST").map(([, init]) => init?.headers)).toEqual([
