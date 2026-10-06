@@ -4,10 +4,8 @@ import { workflowGate } from "./modules/workflow-gate.js";
 
 export const productLaunchesNewsDaily = schedules.task({
   id: "product-launches-news-daily",
-  cron: {
-    pattern: "0 10 * * *",
-    timezone: "America/New_York", // 10 AM ET, after PH task
-  },
+  // Schedule moved to go-to-market-trigger-jobs (Smart Enrich) on 2026-10-06.
+  // cron: { pattern: "0 10 * * *", timezone: "America/New_York", // 10 AM ET, after PH task },
   retry: {
     maxAttempts: 3,
     factor: 2,

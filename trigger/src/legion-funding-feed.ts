@@ -1163,7 +1163,8 @@ function runtimeConfig(): FundingFeedConfig {
 
 export const legionFundingFeed = schedules.task({
   id: "legion-funding-feed",
-  cron: { pattern: "*/30 * * * *", timezone: "America/New_York" },
+  // Schedule moved to go-to-market-trigger-jobs (Smart Enrich) on 2026-10-06.
+  // cron: { pattern: "*/30 * * * *", timezone: "America/New_York" },
   maxDuration: 900,
   run: async () => {
     const { signals: _signals, ...summary } = await refreshFundingFeed(runtimeConfig());

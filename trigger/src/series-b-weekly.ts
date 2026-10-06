@@ -7,10 +7,8 @@ const MAX_DURATION_S = 1200;
 
 export const seriesBWeekly = schedules.task({
   id: "series-b-weekly",
-  cron: {
-    pattern: "5 8 * * 1",
-    timezone: "America/New_York",
-  },
+  // Schedule moved to go-to-market-trigger-jobs (Smart Enrich) on 2026-10-06.
+  // cron: { pattern: "5 8 * * 1", timezone: "America/New_York", },
   // Same budget as the daily task; the pipeline stops a minute early and keeps its delivery reserve.
   maxDuration: MAX_DURATION_S,
   retry: {
