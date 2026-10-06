@@ -3,6 +3,7 @@ import { searchSerper } from "./serper.js";
 import { isLunaConfigured, lunaJson } from "./luna.js";
 import type { ProductLaunchRaw, ProductLaunchPipelineResult } from "./product-launch-types.js";
 import { hasTime, LAUNCH_RUN_BUDGET_MS, LAUNCH_WRITE_BATCH_SIZE, LAUNCH_WRITE_TIMEOUT_MS, persistenceReserveMs } from "./launch-budget.js";
+import { companyDomainBudget, fillCompanyDomains, launchDomainBatches, patchLaunchDomains, type CompanyDomainRow } from "./company-domains.js";
 
 const SEARCH_BUDGET_MS = 31_000;
 
@@ -541,29 +542,39 @@ async function pushToSupabase(launches: ClassifiedLaunch[], dateStr: string, dea
   };
 
   let upserted = 0;
+  const persistedRows: CompanyDomainRow[] = [];
+  const domainBudget = companyDomainBudget(deadlineAt - 2 * persistenceReserveMs(launches.length));
   for (let start = 0; start < launches.length; start += LAUNCH_WRITE_BATCH_SIZE) {
     if (!hasTime(deadlineAt, LAUNCH_WRITE_TIMEOUT_MS)) {
       logger.warn("News persistence deadline exhausted", { remaining: launches.length - start });
       break;
     }
-    const rows = launches.slice(start, start + LAUNCH_WRITE_BATCH_SIZE).map((launch) => toRow(launch, dateStr));
-    try {
-      const resp = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE}?on_conflict=source_url`, {
-        method: "POST",
-        headers: h,
-        body: JSON.stringify(rows),
-        signal: AbortSignal.timeout(LAUNCH_WRITE_TIMEOUT_MS),
-      });
-      if (resp.ok) {
-        upserted += rows.length;
-      } else {
-        const err = await resp.text().catch(() => "");
-        logger.error(`Supabase upsert failed: ${resp.status} ${err.slice(0, 200)}`);
+    const rows = await fillCompanyDomains(launches.slice(start, start + LAUNCH_WRITE_BATCH_SIZE).map((launch) => toRow(launch, dateStr)), domainBudget);
+    for (const batch of launchDomainBatches(rows)) {
+      if (!hasTime(deadlineAt, LAUNCH_WRITE_TIMEOUT_MS)) {
+        logger.warn("News domain batch persistence deadline exhausted", { remaining: batch.length });
+        break;
       }
-    } catch (err) {
-      logger.error(`Supabase upsert error: ${err instanceof Error ? err.message : String(err)}`);
+      try {
+        const resp = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE}?on_conflict=source_url`, {
+          method: "POST",
+          headers: h,
+          body: JSON.stringify(batch),
+          signal: AbortSignal.timeout(LAUNCH_WRITE_TIMEOUT_MS),
+        });
+        if (resp.ok) {
+          upserted += batch.length;
+          persistedRows.push(...rows);
+        } else {
+          const err = await resp.text().catch(() => "");
+          logger.error(`Supabase upsert failed: ${resp.status} ${err.slice(0, 200)}`);
+        }
+      } catch (err) {
+        logger.error(`Supabase upsert error: ${err instanceof Error ? err.message : String(err)}`);
+      }
     }
   }
+  await patchLaunchDomains(persistedRows, `${SUPABASE_URL}/rest/v1/${TABLE}`, h, deadlineAt);
   return upserted;
 }
 

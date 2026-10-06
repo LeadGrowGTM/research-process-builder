@@ -6,6 +6,7 @@ const mocks = vi.hoisted(() => ({
   searchSerper: vi.fn(),
   webSearch: vi.fn(),
   day0BlitzEnrich: vi.fn(),
+  lookupDomain: vi.fn(),
   logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn() },
 }));
 
@@ -15,6 +16,10 @@ vi.mock("./luna.js", () => ({ lunaJson: mocks.lunaJson, isLunaConfigured: () => 
 vi.mock("./serper.js", () => ({ searchSerper: mocks.searchSerper }));
 vi.mock("./rapid-search.js", () => ({ webSearch: mocks.webSearch }));
 vi.mock("./enrich-company.js", () => ({ day0BlitzEnrich: mocks.day0BlitzEnrich }));
+vi.mock("./domain-lookup.js", async () => ({
+  ...await vi.importActual<typeof import("./domain-lookup.js")>("./domain-lookup.js"),
+  lookupDomainMultiSignal: mocks.lookupDomain,
+}));
 
 const DATE = "2026-10-05";
 const PREVIOUS_DATE = "2026-10-04";
@@ -51,8 +56,13 @@ function setupPh(today = [product("Today")], previous = [product("Previous")]) {
 
 function setupFetch(hits: number = 0) {
   const writes: Array<Array<Record<string, unknown>>> = [];
+  const patches: Array<{ url: string; body: Record<string, unknown> }> = [];
   const fetchMock = vi.fn(async (input: string | URL | Request, init?: RequestInit) => {
     const url = String(input);
+    if (init?.method === "PATCH") {
+      patches.push({ url, body: JSON.parse(String(init.body)) });
+      return json([]);
+    }
     if (init?.method === "POST") {
       writes.push(JSON.parse(String(init.body)));
       return new Response(null, { status: 201 });
@@ -67,7 +77,7 @@ function setupFetch(hits: number = 0) {
     return new Response("", { status: 200 });
   });
   vi.stubGlobal("fetch", fetchMock);
-  return { writes, fetchMock };
+  return { writes, patches, fetchMock };
 }
 
 function classifyNews() {
@@ -117,6 +127,7 @@ beforeEach(() => {
   mocks.day0BlitzEnrich.mockResolvedValue({ enriched: 0 });
   mocks.searchSerper.mockResolvedValue([]);
   mocks.webSearch.mockResolvedValue(undefined);
+  mocks.lookupDomain.mockResolvedValue({ domain: "not_found", confidence: "low" });
 });
 
 afterEach(() => {
@@ -126,7 +137,136 @@ afterEach(() => {
   vi.useRealTimers();
 });
 
+describe.each(["ph", "news"])("%s launch domain preservation", (source) => {
+  it.each([null, "", "verified.test", "new"])("only fills a missing stored domain (%s)", async (storedDomain) => {
+    if (source === "ph") setupPh([{ ...product("Today"), maker_website: "https://replacement.test" }], []);
+    else classifyNews();
+    mocks.lookupDomain.mockResolvedValue({ domain: "replacement.test", confidence: "high" });
+    const { fetchMock, writes, patches } = setupFetch(1);
+    const sourceUrl = source === "ph" ? product("Today").ph_url : "https://company0.test/launch";
+    let stored: Record<string, unknown> | undefined = storedDomain === "new" ? undefined : { source_url: sourceUrl, company_domain: storedDomain };
+    const normalFetch = fetchMock.getMockImplementation()!;
+    fetchMock.mockImplementation(async (input, init) => {
+      if (init?.method === "POST") {
+        for (const row of JSON.parse(String(init.body))) stored = { ...stored, ...row };
+      }
+      if (init?.method === "PATCH") {
+        const query = new URL(String(input)).searchParams;
+        expect(query.get("source_url")).toBe(`eq.${sourceUrl}`);
+        expect(query.get("or")).toBe("(company_domain.is.null,company_domain.eq.)");
+        if (stored && (stored.company_domain == null || stored.company_domain === "")) Object.assign(stored, JSON.parse(String(init.body)));
+      }
+      return normalFetch(input, init);
+    });
+    if (source === "ph") {
+      const { runPhLaunchPipeline } = await import("./product-launches-ph.js");
+      await finish(runPhLaunchPipeline({ date: DATE }));
+    } else {
+      const { runNewsLaunchPipeline } = await import("./product-launches-news.js");
+      await finish(runNewsLaunchPipeline({ date: DATE, skipSerper: true }));
+    }
+    expect(writes.flat().every((row) => !Object.hasOwn(row, "company_domain"))).toBe(true);
+    expect(patches).toHaveLength(1);
+    expect(stored?.company_domain).toBe(storedDomain === "verified.test" ? "verified.test" : "replacement.test");
+  });
+
+  it("keeps a domain resolved concurrently between the upsert and repair", async () => {
+    if (source === "ph") setupPh([{ ...product("Today"), maker_website: "https://replacement.test" }], []);
+    else classifyNews();
+    mocks.lookupDomain.mockResolvedValue({ domain: "replacement.test", confidence: "high" });
+    const { fetchMock } = setupFetch(1);
+    const normalFetch = fetchMock.getMockImplementation()!;
+    let domain: unknown = null;
+    fetchMock.mockImplementation(async (input, init) => {
+      if (init?.method === "POST") domain = "concurrent.test";
+      if (init?.method === "PATCH") {
+        expect(new URL(String(input)).searchParams.get("or")).toBe("(company_domain.is.null,company_domain.eq.)");
+        if (domain == null || domain === "") domain = JSON.parse(String(init.body)).company_domain;
+      }
+      return normalFetch(input, init);
+    });
+    if (source === "ph") {
+      const { runPhLaunchPipeline } = await import("./product-launches-ph.js");
+      await finish(runPhLaunchPipeline({ date: DATE }));
+    } else {
+      const { runNewsLaunchPipeline } = await import("./product-launches-news.js");
+      await finish(runNewsLaunchPipeline({ date: DATE, skipSerper: true }));
+    }
+    expect(domain).toBe("concurrent.test");
+  });
+});
+
 describe("runPhLaunchPipeline", () => {
+  it("caps company searches at 90 seconds so enrichment and the previous day still run", async () => {
+    setupPh([product("Today"), ...Array.from({ length: 4 }, (_, i) => ({ ...product(`Unknown${i}`, i + 2), maker_website: null }))]);
+    const lookupTimes: number[] = [];
+    mocks.lookupDomain.mockImplementation(async (_name, _clues, _url, deadlineAt) => {
+      lookupTimes.push(Date.now());
+      vi.advanceTimersByTime(Math.min(60_000, deadlineAt - Date.now()));
+      return { domain: "not_found", confidence: "low" };
+    });
+    const { writes } = setupFetch();
+    const { runPhLaunchPipeline } = await import("./product-launches-ph.js");
+    await finish(runPhLaunchPipeline({ date: DATE }));
+    expect(mocks.lookupDomain.mock.calls.map((args) => args[3] - lookupTimes[0])).toEqual([60_000, 90_000]);
+    expect(mocks.day0BlitzEnrich).toHaveBeenCalledTimes(2);
+    expect(writes.flat().map((r) => r.discovered_date)).toContain(PREVIOUS_DATE);
+  });
+
+  it("keeps an empty classified company name instead of replacing it with the product name", async () => {
+    setupPh([{ ...product("Today"), company_name: "" }], []);
+    const { writes } = setupFetch();
+    const { runPhLaunchPipeline } = await import("./product-launches-ph.js");
+    await finish(runPhLaunchPipeline({ date: DATE }));
+    expect(writes.flat()[0].company_name).toBe("");
+  });
+
+  it("keeps the persistence reserve when it is earlier than the 90-second domain cap", async () => {
+    setupPh([product("Today"), { ...product("Unknown", 2), maker_website: null }], []);
+    const start = Date.now();
+    const normalLuna = mocks.lunaJson.getMockImplementation()!;
+    mocks.lunaJson.mockImplementation(async (options) => {
+      if (options.name === "ph_classification") vi.advanceTimersByTime(450_000);
+      return normalLuna(options);
+    });
+    mocks.lookupDomain.mockImplementation(async (_name, _clues, _url, deadlineAt) => {
+      vi.advanceTimersByTime(deadlineAt - Date.now());
+      return { domain: "official.test", confidence: "high" };
+    });
+    const { writes } = setupFetch();
+    const { runPhLaunchPipeline } = await import("./product-launches-ph.js");
+    const result = await finish(runPhLaunchPipeline({ date: DATE }));
+    expect(mocks.lookupDomain.mock.calls[0][3]).toBe(start + 500_000);
+    expect(result.launchCount).toBe(2);
+    expect(writes.flat()).toHaveLength(2);
+  });
+
+  it("bounds slow domain repairs so enrichment and the previous day still run", async () => {
+    setupPh([product("Today"), product("Other", 2)]);
+    const { fetchMock, writes, patches } = setupFetch();
+    const normalFetch = fetchMock.getMockImplementation()!;
+    fetchMock.mockImplementation(async (input, init) => {
+      if (init?.method === "PATCH") vi.advanceTimersByTime(15_000);
+      return normalFetch(input, init);
+    });
+    const { runPhLaunchPipeline } = await import("./product-launches-ph.js");
+    await finish(runPhLaunchPipeline({ date: DATE }));
+    expect(writes.flat()).toHaveLength(3);
+    expect(patches).toHaveLength(2);
+    expect(mocks.day0BlitzEnrich).toHaveBeenCalledTimes(2);
+  });
+  it("persists maker domains and resolves a missing website with the existing resolver", async () => {
+    setupPh([product("Today"), { ...product("Unknown", 2), maker_website: null }], []);
+    mocks.lookupDomain.mockResolvedValue({ domain: "official.test", confidence: "high" });
+    const { writes, patches } = setupFetch();
+    const { runPhLaunchPipeline } = await import("./product-launches-ph.js");
+    await finish(runPhLaunchPipeline({ date: DATE }));
+    expect(patches.map((patch) => patch.body.company_domain)).toEqual(["today.test", "official.test"]);
+    expect(writes.flat().every((row) => !Object.hasOwn(row, "company_domain"))).toBe(true);
+    expect(mocks.lookupDomain).toHaveBeenCalledTimes(1);
+    expect(writes.flat()[1].maker_website).toBeNull();
+    expect(mocks.day0BlitzEnrich.mock.calls[0][1].map((target: { domain: string }) => target.domain)).toEqual(["https://today.test"]);
+  });
   it("deduplicates today's URLs across days even when the stored lookup has no rows", async () => {
     setupPh([product("Today")], [product("Today"), product("Previous", 2)]);
     const { writes } = setupFetch();
@@ -354,6 +494,43 @@ describe("runPhLaunchPipeline", () => {
 });
 
 describe("runNewsLaunchPipeline", () => {
+  it("never stores a publisher lookalike from the launch source URL", async () => {
+    mocks.lunaJson.mockResolvedValue(lunaResult({ results: [{ idx: 1, is_launch: true, company_name: "Foo Labs", product_name: "Product", launch_type: "new_product", is_ai: false, reason: null }] }));
+    const { writes, patches, fetchMock } = setupFetch(1);
+    const normalFetch = fetchMock.getMockImplementation()!;
+    fetchMock.mockImplementation(async (input, init) => String(input).includes("tags=show_hn")
+      ? json({ hits: [{ objectID: "1", title: "Foo Labs launches Product", url: "https://foolabs-news.com/story" }] })
+      : normalFetch(input, init));
+    const { runNewsLaunchPipeline } = await import("./product-launches-news.js");
+    await finish(runNewsLaunchPipeline({ date: DATE, skipSerper: true }));
+    expect(writes.flat()[0].company_name).toBe("Foo Labs");
+    expect(writes.flat()[0]).not.toHaveProperty("company_domain");
+    expect(patches).toEqual([]);
+    expect(mocks.lookupDomain).toHaveBeenCalledTimes(1);
+  });
+
+  it("resolves missing news domains and preserves existing values when the lookup is inconclusive", async () => {
+    classifyNews();
+    mocks.lookupDomain.mockResolvedValueOnce({ domain: "official.test", confidence: "high" }).mockResolvedValueOnce({ domain: "not_found", confidence: "low" });
+    const { writes, patches, fetchMock } = setupFetch(2);
+    const normal = fetchMock.getMockImplementation()!;
+    fetchMock.mockImplementation(async (url, init) => {
+      const response = await normal(url, init);
+      if (String(url).includes("tags=show_hn")) {
+        return json({ hits: [0, 1].map((i) => ({ objectID: String(i), title: `Company${i} launches Product${i}`, url: `https://publisher.test/article${i}` })) });
+      }
+      return response;
+    });
+    const { runNewsLaunchPipeline } = await import("./product-launches-news.js");
+    await finish(runNewsLaunchPipeline({ date: DATE, skipSerper: true }));
+    expect(writes.flat()).toEqual([
+      expect.objectContaining({ company_name: "Company0" }),
+      expect.objectContaining({ company_name: "Company1" }),
+    ]);
+    expect(writes.flat().every((row) => !Object.hasOwn(row, "company_domain"))).toBe(true);
+    expect(patches.map((patch) => patch.body)).toEqual([{ company_domain: "official.test" }]);
+    expect(mocks.lookupDomain).toHaveBeenCalledTimes(2);
+  });
   it("writes 126 kept launches in chunks of 50, 50 and 26", async () => {
     classifyNews();
     const { writes, fetchMock } = setupFetch(126);

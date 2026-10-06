@@ -116,7 +116,7 @@ function hostname(value: unknown): string {
   }
 }
 
-function companyDomain(value: unknown): string {
+export function companyDomain(value: unknown): string {
   const host = hostname(value);
   if (!host || NON_COMPANY_HOSTS.has(host) || isDomainBlocked(host)) return "";
   if (!/^(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$/.test(host)) return "";

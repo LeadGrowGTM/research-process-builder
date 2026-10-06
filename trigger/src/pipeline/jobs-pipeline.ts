@@ -1,4 +1,6 @@
 import { logger } from "@trigger.dev/sdk";
+import { companyDomain } from "./additional-signals.js";
+import { companyDomainBudget, fillCompanyDomains } from "./company-domains.js";
 
 const SUPABASE_URL = (() => {
   const url = process.env.SUPABASE_PROJECT_URL ?? process.env.SUPABASE_URL ?? "";
@@ -100,16 +102,6 @@ interface RawJob {
   };
   tags: { name: string; slug: string }[];
   categories: { id: number; name: string; slug: string }[];
-}
-
-function extractDomain(website: string | null): string | null {
-  if (!website) return null;
-  try {
-    const url = new URL(website.startsWith("http") ? website : `https://${website}`);
-    return url.hostname.replace(/^www\./, "");
-  } catch {
-    return null;
-  }
 }
 
 function classifyJob(job: RawJob): { matched: boolean; keywords: string[]; strength: "high" | "medium" } {
@@ -225,6 +217,18 @@ async function pushToSupabase(signals: JobSignalRecord[]): Promise<number> {
   for (const row of signals) {
     const seen = await seenRecently(row.job_id);
     if (seen) {
+      if (row.company_domain) {
+        try {
+          const response = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE}?job_id=eq.${row.job_id}&or=(company_domain.is.null,company_domain.eq.,company_domain.in.(not_found,not_enriched,not_stated))`, {
+            method: "PATCH", headers: h,
+            body: JSON.stringify({ company_domain: row.company_domain }),
+            signal: AbortSignal.timeout(8_000),
+          });
+          if (!response.ok) logger.warn("Job domain repair failed", { jobId: row.job_id, status: response.status });
+        } catch (error) {
+          logger.warn("Job domain repair failed", { jobId: row.job_id, error: error instanceof Error ? error.message : String(error) });
+        }
+      }
       logger.info(`Dedup skip: job_id=${row.job_id} "${row.job_title}"`);
       continue;
     }
@@ -275,14 +279,14 @@ export async function runJobsPipeline(opts: { dryRun: boolean; date: string }): 
   logger.info(`Stage 1 complete: ${allJobs.length} total jobs`);
 
   // Stage 2: map all jobs — no filtering, Clay handles downstream
-  const signals: JobSignalRecord[] = allJobs.map((job) => {
+  let signals: JobSignalRecord[] = allJobs.map((job) => {
     const { keywords, strength } = classifyJob(job);
     return {
       job_id: job.id,
       job_title: job.title,
       company_name: job.company.title,
       company_website: job.company.website ?? null,
-      company_domain: extractDomain(job.company.website ?? null),
+      company_domain: companyDomain(job.company.website) || null,
       location_country: job.country ?? null,
       location_city: job.city ?? null,
       job_type: job.job_type ?? null,
@@ -295,6 +299,14 @@ export async function runJobsPipeline(opts: { dryRun: boolean; date: string }): 
       date_detected: opts.date,
     };
   });
+
+  const budget = companyDomainBudget(Math.min(start + 240_000, Date.now() + 90_000));
+  signals = (await fillCompanyDomains(signals.map((row, i) => ({
+    ...row, source_url: row.job_url,
+    company_identity: Number.isSafeInteger(allJobs[i].company.id) ? `80lv:${allJobs[i].company.id}` : undefined,
+    description: allJobs[i].description?.slice(0, 2_000), location: row.location_country,
+  })), budget, false))
+    .map(({ source_url: _sourceUrl, company_identity: _companyIdentity, description: _description, location: _location, ...row }) => row);
 
   const highSignal = signals.filter((s) => s.signal_strength === "high").length;
   logger.info(`Stage 2 complete: ${signals.length} total jobs (${highSignal} high-signal, ${signals.length - highSignal} other)`);
