@@ -2,6 +2,7 @@ import { logger } from "@trigger.dev/sdk";
 import { companyDomain } from "./additional-signals.js";
 import { lookupDomainMultiSignal, type ContextClues } from "./domain-lookup.js";
 import { extractDomainFromArticle } from "./pipeline.js";
+import { hasTime, LAUNCH_WRITE_TIMEOUT_MS } from "./launch-budget.js";
 
 export interface CompanyDomainRow {
   company_name: string;
@@ -32,16 +33,16 @@ export function companyDomainCacheKey(row: CompanyDomainRow): string {
 }
 
 /** Batch orchestration over the existing article and search resolvers. */
-export async function fillCompanyDomains<T extends CompanyDomainRow>(rows: T[], budget: CompanyDomainBudget): Promise<Array<T & { company_domain: string | null }>> {
+export async function fillCompanyDomains<T extends CompanyDomainRow>(rows: T[], budget: CompanyDomainBudget, useArticleEvidence = true): Promise<Array<T & { company_domain: string | null }>> {
   const filled: Array<T & { company_domain: string | null }> = [];
   for (const row of rows) {
     const name = row.company_name.trim();
     const key = companyDomainCacheKey(row);
     let domain = companyDomain(row.company_domain) || companyDomain(row.maker_website) || companyDomain(row.company_website);
-    if (!domain) {
+    if (!domain && useArticleEvidence) {
       const fromArticle = extractDomainFromArticle(row.article_text || row.description || "", row.company_name, row.source_url);
-      // A single first-party URL must match the company name to pass the existing extractor.
-      const fromUrl = fromArticle || extractDomainFromArticle(row.source_url, row.company_name, "");
+      // Keep the publisher check active when inspecting the source URL itself.
+      const fromUrl = fromArticle || extractDomainFromArticle(row.source_url, row.company_name, row.source_url);
       domain = companyDomain(fromUrl);
     }
     if (!domain && name && budget.cache.has(key)) domain = budget.cache.get(key) || "";
@@ -66,9 +67,27 @@ export async function fillCompanyDomains<T extends CompanyDomainRow>(rows: T[], 
   return filled;
 }
 
-/** PostgREST requires identical keys per batch. Omit unknown domains to preserve stored values on upsert. */
-export function launchDomainBatches<T extends CompanyDomainRow>(rows: T[]): Array<Array<Omit<T, "company_domain"> & { company_domain?: string }>> {
-  const resolved = rows.filter((row) => row.company_domain).map((row) => ({ ...row, company_domain: row.company_domain! }));
-  const missing = rows.filter((row) => !row.company_domain).map(({ company_domain: _domain, ...row }) => row);
-  return [resolved, missing].filter((batch) => batch.length > 0);
+/** Domains are filled by conditional PATCH after upsert, so reruns preserve stored values. */
+export function launchDomainBatches<T extends CompanyDomainRow>(rows: T[]): Array<Array<Omit<T, "company_domain">>> {
+  return rows.length ? [rows.map(({ company_domain: _domain, ...row }) => row)] : [];
+}
+
+export async function patchLaunchDomains(rows: CompanyDomainRow[], tableUrl: string, headers: Record<string, string>, deadlineAt: number): Promise<void> {
+  if (!hasTime(deadlineAt, LAUNCH_WRITE_TIMEOUT_MS)) return;
+  const repairDeadline = Math.min(deadlineAt, Date.now() + LAUNCH_WRITE_TIMEOUT_MS);
+  for (const row of rows) {
+    if (!row.company_domain) continue;
+    if (!hasTime(repairDeadline, 1)) break;
+    const query = new URLSearchParams({ source_url: `eq.${row.source_url}`, or: "(company_domain.is.null,company_domain.eq.)" });
+    try {
+      const response = await fetch(`${tableUrl}?${query}`, {
+        method: "PATCH", headers,
+        body: JSON.stringify({ company_domain: row.company_domain }),
+        signal: AbortSignal.timeout(Math.min(LAUNCH_WRITE_TIMEOUT_MS, repairDeadline - Date.now())),
+      });
+      if (!response.ok) logger.warn("Launch domain repair failed", { sourceUrl: row.source_url, status: response.status });
+    } catch (error) {
+      logger.warn("Launch domain repair failed", { sourceUrl: row.source_url, error: error instanceof Error ? error.message : String(error) });
+    }
+  }
 }

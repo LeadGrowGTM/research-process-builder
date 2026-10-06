@@ -18,6 +18,26 @@ beforeEach(() => {
 afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
 
 describe("fillCompanyDomains", () => {
+  it("rejects long-tail publishers and substring lookalikes before searching", async () => {
+    vi.mocked(lookupDomainMultiSignal).mockResolvedValue(hit("not_found", "low"));
+    const rows = await fillCompanyDomains([
+      { ...row("Foo Labs"), source_url: "https://foolabs-news.com/story" },
+      { ...row("Foo Labs"), article_text: "Website https://foolabs-news.com" },
+      { ...row("Foo Labs"), article_text: "Website https://foo.com" },
+      { ...row("Foo Labs"), article_text: "Website https://foolabs.example.com" },
+      { ...row("Foo Labs"), source_url: "https://foolabs.com/story" },
+    ].map((r, i) => ({ ...r, source_url: `${r.source_url}?row=${i}` })), companyDomainBudget(Date.now() + 120_000));
+    expect(rows.map((r) => r.company_domain)).toEqual([null, null, null, null, null]);
+    expect(lookupDomainMultiSignal).toHaveBeenCalledTimes(5);
+  });
+
+  it("matches the normalized registrable label on company subdomains and country-code suffixes", async () => {
+    const rows = await fillCompanyDomains([
+      { ...row("Foo Labs"), article_text: "Website https://app.foo-labs.co.uk/about" },
+    ], companyDomainBudget(Date.now() + 120_000));
+    expect(rows[0].company_domain).toBe("app.foo-labs.co.uk");
+    expect(lookupDomainMultiSignal).not.toHaveBeenCalled();
+  });
   it("keeps same-name launch companies on different sources separate when context is absent", async () => {
     vi.mocked(lookupDomainMultiSignal).mockResolvedValueOnce(hit("acme.one")).mockResolvedValueOnce(hit("acme.two"));
     const rows = await fillCompanyDomains([
@@ -37,13 +57,13 @@ describe("fillCompanyDomains", () => {
     expect(rows.map((r) => r.company_domain)).toEqual(["acme.health", "acme.build", "acme.health"]);
     expect(lookupDomainMultiSignal).toHaveBeenCalledTimes(2);
   });
-  it("uses existing domains, maker websites, article links and matching first-party URLs without API calls", async () => {
+  it("uses existing domains, maker websites, article links and known company websites without API calls", async () => {
     const budget = companyDomainBudget(Date.now() + 120_000);
     const rows = await fillCompanyDomains([
       { ...row(), company_domain: "https://www.acme.com/about" },
       { ...row("Maker"), maker_website: "https://maker.io" },
       { ...row("ArticleCo"), article_text: "Website (https://articleco.ai/)" },
-      { ...row("FirstParty"), source_url: "https://firstparty.dev/launch" },
+      { ...row("FirstParty"), company_website: "https://firstparty.dev/launch" },
     ], budget);
     expect(rows.map((r) => r.company_domain)).toEqual(["acme.com", "maker.io", "articleco.ai", "firstparty.dev"]);
     expect(lookupDomainMultiSignal).not.toHaveBeenCalled();
@@ -88,9 +108,9 @@ describe("fillCompanyDomains", () => {
 });
 
 describe("launchDomainBatches", () => {
-  it("keeps homogeneous PostgREST keys and omits unresolved domains to preserve previously stored domains", () => {
+  it("keeps homogeneous PostgREST keys and omits all domains to preserve previously stored domains", () => {
     const batches = launchDomainBatches([{ ...row(), company_domain: "acme.com" }, { ...row("Unknown"), company_domain: null }]);
-    expect(batches).toEqual([[{ ...row(), company_domain: "acme.com" }], [row("Unknown")]]);
-    expect(batches[1][0]).not.toHaveProperty("company_domain");
+    expect(batches).toEqual([[row(), row("Unknown")]]);
+    expect(batches[0].every((r) => !Object.hasOwn(r, "company_domain"))).toBe(true);
   });
 });

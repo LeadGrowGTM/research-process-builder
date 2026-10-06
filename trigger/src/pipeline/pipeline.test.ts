@@ -48,7 +48,7 @@ describe("extractDomainFromArticle", () => {
   });
 
   it("uses the complete hostname of an absolute company link", () => {
-    expect(extractDomainFromArticle("Website (https://acme.example.com/company/other.com)", "Acme", "https://publisher.com/story"))
+    expect(extractDomainFromArticle("Website (https://acme.example.com/company/other.com)", "Example", "https://publisher.com/story"))
       .toBe("acme.example.com");
   });
 

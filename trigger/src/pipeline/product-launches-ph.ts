@@ -5,7 +5,7 @@ import { day0BlitzEnrich } from "./enrich-company.js";
 import { webSearch } from "./rapid-search.js";
 import { lunaJson } from "./luna.js";
 import { hasTime, LAUNCH_RUN_BUDGET_MS, LAUNCH_WRITE_BATCH_SIZE, LAUNCH_WRITE_TIMEOUT_MS, persistenceReserveMs } from "./launch-budget.js";
-import { companyDomainBudget, fillCompanyDomains, launchDomainBatches, type CompanyDomainBudget } from "./company-domains.js";
+import { companyDomainBudget, fillCompanyDomains, launchDomainBatches, patchLaunchDomains, type CompanyDomainBudget } from "./company-domains.js";
 
 // fetchUrl has no deadline option: allow the full scrape ladder (10s + 45s + 60s + 60s).
 const PAGE_FETCH_BUDGET_MS = 175_000;
@@ -578,10 +578,11 @@ async function stage3Push(products: ClassifiedProduct[], dateStr: string, deadli
   if (products.length === 0) return 0;
 
   const TABLE = "product_launches";
-  const workBudget = { ...domainBudget, deadlineAt: Math.min(domainBudget.deadlineAt, deadlineAt - 2 * persistenceReserveMs(products.length)) };
-  const domains = await fillCompanyDomains(products.map((p) => ({ company_name: p.company_name || p.product_name, source_url: p.ph_url, maker_website: p.maker_website, description: p.tagline })), workBudget);
+  const workBudget = { ...domainBudget, deadlineAt: Math.min(domainBudget.deadlineAt, Date.now() + 90_000, deadlineAt - 2 * persistenceReserveMs(products.length)) };
+  const domains = await fillCompanyDomains(products.map((p) => ({ company_name: p.company_name ?? p.product_name, source_url: p.ph_url, maker_website: p.maker_website, description: p.tagline })), workBudget);
   domainBudget.remainingLookups = workBudget.remainingLookups;
-  const rows = products.map((p, i) => ({ ...toSupabaseRow(p, dateStr), company_name: p.company_name || p.product_name, source_url: p.ph_url, company_domain: domains[i].company_domain }));
+  const rows = products.map((p, i) => ({ ...toSupabaseRow(p, dateStr), company_name: p.company_name ?? p.product_name, source_url: p.ph_url, company_domain: domains[i].company_domain }));
+  const persistedRows: typeof rows = [];
 
   logger.info("Stage 3: pushing to Supabase", { table: TABLE, count: rows.length });
 
@@ -608,6 +609,7 @@ async function stage3Push(products: ClassifiedProduct[], dateStr: string, deadli
         );
         if (resp.ok) {
           upserted += batch.length;
+          persistedRows.push(...rows.slice(start, start + LAUNCH_WRITE_BATCH_SIZE));
           for (const row of batch) persistedUrls.add(row.source_url as string);
         } else {
           const errText = await resp.text().catch(() => "");
@@ -626,6 +628,7 @@ async function stage3Push(products: ClassifiedProduct[], dateStr: string, deadli
     }
   }
 
+  await patchLaunchDomains(persistedRows, `${SUPABASE_URL}/rest/v1/${TABLE}`, supabaseHeaders(), deadlineAt);
   logger.info("Stage 3 complete", { upserted });
   return upserted;
 }

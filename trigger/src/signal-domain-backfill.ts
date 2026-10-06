@@ -2,6 +2,7 @@ import { logger, task } from "@trigger.dev/sdk";
 import { companyDomain } from "./pipeline/additional-signals.js";
 import { companyDomainBudget, companyDomainCacheKey, fillCompanyDomains, type CompanyDomainRow } from "./pipeline/company-domains.js";
 import { fetchUrl } from "./pipeline/scrape.js";
+import { validateDomainSemantic } from "./pipeline/openai.js";
 import { isPublicHttpsUrl, logoUrlForDomain, normalizeOptionalText } from "./pipeline/taxonomy.js";
 
 export interface SignalDomainBackfillPayload {
@@ -72,16 +73,24 @@ export async function runSignalDomainBackfill(payload: SignalDomainBackfillPaylo
       } catch { /* Search can still resolve the company when the source is unavailable. */ }
     }
     const [filled] = await fillCompanyDomains([row], budget);
+    let domain = filled.company_domain;
+    if (payload.table === "funding_discoveries" && domain && row.article_text) {
+      if (Date.now() >= budget.deadlineAt) break;
+      const validation = await validateDomainSemantic(row.source_url, row.company_name, domain, row.article_text, budget.deadlineAt);
+      if (Date.now() >= budget.deadlineAt) break;
+      if (validation.status === "Wrong") domain = companyDomain(validation.correctDomain) || null;
+      else if (validation.status !== "Correct") domain = null;
+    }
     processed++;
-    proposals.push({ id: row.id, company: row.company_name, domain: filled.company_domain });
+    proposals.push({ id: row.id, company: row.company_name, domain });
     logger.info("Signal domain proposal", { table: payload.table, dryRun, ...proposals[proposals.length - 1] });
-    if (!filled.company_domain) continue;
+    if (!domain) continue;
     resolved++;
     if (dryRun || Date.now() + IO_TIMEOUT_MS > deadlineAt) continue;
-    const patch: Record<string, unknown> = { company_domain: filled.company_domain };
+    const patch: Record<string, unknown> = { company_domain: domain };
     if (payload.table === "funding_discoveries") {
-      if (!normalizeOptionalText(raw.website_url)) patch.website_url = `https://${filled.company_domain}`;
-      if (!normalizeOptionalText(raw.logo_url)) patch.logo_url = logoUrlForDomain(filled.company_domain);
+      if (!normalizeOptionalText(raw.website_url)) patch.website_url = `https://${domain}`;
+      if (!normalizeOptionalText(raw.logo_url)) patch.logo_url = logoUrlForDomain(domain);
     }
     try {
       const write = await fetch(`${root}/rest/v1/${payload.table}?id=eq.${row.id}&or=${MISSING_DOMAINS}`, {

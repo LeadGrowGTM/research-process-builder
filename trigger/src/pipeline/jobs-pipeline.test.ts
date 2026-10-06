@@ -38,6 +38,23 @@ beforeEach(() => {
 afterEach(() => { vi.unstubAllGlobals(); vi.unstubAllEnvs(); vi.useRealTimers(); });
 
 describe("jobs company domains", () => {
+  it.each(["unrealengine.com", "artstation.com", "jobs.lever.co"])("uses search rather than repeated job-description links to %s", async (domain) => {
+    const { writes } = setupFetch([{ ...job(1), description: `Animation tools at https://${domain} and https://${domain}` }]);
+    const { runJobsPipeline } = await import("./jobs-pipeline.js");
+    await runJobsPipeline({ date: DATE, dryRun: false });
+    expect((writes[0].body as Array<Record<string, unknown>>)[0].company_domain).toBe("acme.com");
+    expect(mocks.lookup).toHaveBeenCalledTimes(1);
+    expect(mocks.lookup.mock.calls[0][1].productOrService).toContain(domain);
+  });
+
+  it("leaves a tool-heavy job unresolved when search is inconclusive", async () => {
+    const { writes } = setupFetch([{ ...job(1), description: "Website https://acme.com and https://acme.com" }]);
+    mocks.lookup.mockResolvedValue({ domain: "wrong.test", confidence: "medium" });
+    const { runJobsPipeline } = await import("./jobs-pipeline.js");
+    await runJobsPipeline({ date: DATE, dryRun: false });
+    expect((writes[0].body as Array<Record<string, unknown>>)[0].company_domain).toBeNull();
+    expect(mocks.lookup).toHaveBeenCalledTimes(1);
+  });
   it("resolves each company once and stores the domain on every new hiring row", async () => {
     const { writes } = setupFetch();
     const { runJobsPipeline } = await import("./jobs-pipeline.js");

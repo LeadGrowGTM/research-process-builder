@@ -305,7 +305,7 @@ export async function runJobsPipeline(opts: { dryRun: boolean; date: string }): 
     ...row, source_url: row.job_url,
     company_identity: Number.isSafeInteger(allJobs[i].company.id) ? `80lv:${allJobs[i].company.id}` : undefined,
     description: allJobs[i].description?.slice(0, 2_000), location: row.location_country,
-  })), budget))
+  })), budget, false))
     .map(({ source_url: _sourceUrl, company_identity: _companyIdentity, description: _description, location: _location, ...row }) => row);
 
   const highSignal = signals.filter((s) => s.signal_strength === "high").length;

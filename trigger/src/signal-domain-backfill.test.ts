@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
-  lookup: vi.fn(), scrape: vi.fn(), logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn() },
+  lookup: vi.fn(), scrape: vi.fn(), validate: vi.fn(), logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn() },
 }));
 vi.mock("@trigger.dev/sdk", () => ({ logger: mocks.logger, task: (options: unknown) => options }));
 vi.mock("./pipeline/domain-lookup.js", async () => ({
@@ -9,6 +9,7 @@ vi.mock("./pipeline/domain-lookup.js", async () => ({
   lookupDomainMultiSignal: mocks.lookup,
 }));
 vi.mock("./pipeline/scrape.js", () => ({ fetchUrl: mocks.scrape }));
+vi.mock("./pipeline/openai.js", () => ({ validateDomainSemantic: mocks.validate }));
 
 const stored = (id: number, company_name = "Acme") => ({ id, company_name, company_domain: null, source_url: "https://publisher.test/story", article_text: "Funding article without a website" });
 const hit = (domain = "acme.com", confidence = "high") => ({ domain, confidence, source: "search_validated", evidence: "Official site" });
@@ -34,10 +35,36 @@ beforeEach(() => {
   vi.stubEnv("SUPABASE_SERVICE_ROLE_KEY", "test-key");
   mocks.lookup.mockResolvedValue(hit());
   mocks.scrape.mockResolvedValue(null);
+  mocks.validate.mockResolvedValue({ status: "Correct" });
 });
 afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); vi.unstubAllEnvs(); });
 
 describe("signal-domain-backfill", () => {
+  it.each(["Unclear", "Wrong"])("does not write a funding domain when semantic validation is %s without a correction", async (status) => {
+    mocks.validate.mockResolvedValue({ status, correctDomain: "not_found" });
+    const { writes } = setupFetch([stored(1)]);
+    const { runSignalDomainBackfill } = await import("./signal-domain-backfill.js");
+    const result = await runSignalDomainBackfill({ table: "funding_discoveries", dryRun: false });
+    expect(mocks.validate).toHaveBeenCalledWith(stored(1).source_url, "Acme", "acme.com", stored(1).article_text, expect.any(Number));
+    expect(result).toMatchObject({ resolved: 0, updated: 0 });
+    expect(writes).toEqual([]);
+  });
+
+  it("writes a semantic correction consistently to the funding domain, website and logo", async () => {
+    mocks.validate.mockResolvedValue({ status: "Wrong", correctDomain: "https://www.correct.test/about" });
+    const { writes } = setupFetch([stored(1)]);
+    const { runSignalDomainBackfill } = await import("./signal-domain-backfill.js");
+    await runSignalDomainBackfill({ table: "funding_discoveries", dryRun: false });
+    expect(writes[0].patch).toEqual({ company_domain: "correct.test", website_url: "https://correct.test", logo_url: "https://www.google.com/s2/favicons?domain=correct.test&sz=128" });
+  });
+
+  it("never writes a semantic result returned after the budget deadline", async () => {
+    mocks.validate.mockImplementation(async () => { vi.advanceTimersByTime(540_000); return { status: "Correct" }; });
+    const { writes } = setupFetch([stored(1)]);
+    const { runSignalDomainBackfill } = await import("./signal-domain-backfill.js");
+    await runSignalDomainBackfill({ table: "funding_discoveries", dryRun: false });
+    expect(writes).toEqual([]);
+  });
   it("preserves curated funding website and logo values", async () => {
     const { writes } = setupFetch([{ ...stored(1), website_url: "https://acme.com/about", logo_url: "https://images.test/acme.png" }]);
     const { runSignalDomainBackfill } = await import("./signal-domain-backfill.js");

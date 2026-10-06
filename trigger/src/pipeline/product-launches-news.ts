@@ -3,7 +3,7 @@ import { searchSerper } from "./serper.js";
 import { isLunaConfigured, lunaJson } from "./luna.js";
 import type { ProductLaunchRaw, ProductLaunchPipelineResult } from "./product-launch-types.js";
 import { hasTime, LAUNCH_RUN_BUDGET_MS, LAUNCH_WRITE_BATCH_SIZE, LAUNCH_WRITE_TIMEOUT_MS, persistenceReserveMs } from "./launch-budget.js";
-import { companyDomainBudget, fillCompanyDomains, launchDomainBatches } from "./company-domains.js";
+import { companyDomainBudget, fillCompanyDomains, launchDomainBatches, patchLaunchDomains, type CompanyDomainRow } from "./company-domains.js";
 
 const SEARCH_BUDGET_MS = 31_000;
 
@@ -542,6 +542,7 @@ async function pushToSupabase(launches: ClassifiedLaunch[], dateStr: string, dea
   };
 
   let upserted = 0;
+  const persistedRows: CompanyDomainRow[] = [];
   const domainBudget = companyDomainBudget(deadlineAt - 2 * persistenceReserveMs(launches.length));
   for (let start = 0; start < launches.length; start += LAUNCH_WRITE_BATCH_SIZE) {
     if (!hasTime(deadlineAt, LAUNCH_WRITE_TIMEOUT_MS)) {
@@ -563,6 +564,7 @@ async function pushToSupabase(launches: ClassifiedLaunch[], dateStr: string, dea
         });
         if (resp.ok) {
           upserted += batch.length;
+          persistedRows.push(...rows);
         } else {
           const err = await resp.text().catch(() => "");
           logger.error(`Supabase upsert failed: ${resp.status} ${err.slice(0, 200)}`);
@@ -572,6 +574,7 @@ async function pushToSupabase(launches: ClassifiedLaunch[], dateStr: string, dea
       }
     }
   }
+  await patchLaunchDomains(persistedRows, `${SUPABASE_URL}/rest/v1/${TABLE}`, h, deadlineAt);
   return upserted;
 }
 

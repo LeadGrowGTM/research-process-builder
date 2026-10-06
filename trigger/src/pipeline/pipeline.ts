@@ -35,14 +35,18 @@ const SUSPECT_DOMAIN_PATTERNS = [
   /yoast|schema\.org|w3\.org/i,
 ];
 
+function registrableDomain(host: string): string {
+  const suffixLabels = /\.(?:ac|co|com|edu|gov|net|org)\.[a-z]{2}$/.test(host) ? 3 : 2;
+  return host.split(".").slice(-suffixLabels).join(".");
+}
+
 function isExtractedDomainSuspect(domain: string, sourceUrl: string): boolean {
   if (SUSPECT_DOMAIN_PATTERNS.some(p => p.test(domain))) return true;
   if (isDomainBlocked(domain)) return true;
   try {
     const sourceHost = new URL(sourceUrl).hostname.replace(/\.$/, "");
     // Common country-code suffixes keep the publisher label (e.g. publisher.co.uk).
-    const suffixLabels = /\.(?:ac|co|com|edu|gov|net|org)\.[a-z]{2}$/.test(sourceHost) ? 3 : 2;
-    const sourceDomain = sourceHost.split(".").slice(-suffixLabels).join(".");
+    const sourceDomain = registrableDomain(sourceHost);
     if (domain === sourceDomain || domain.endsWith(`.${sourceDomain}`)) return true;
   } catch { /* ignore */ }
   return false;
@@ -115,17 +119,9 @@ export function extractDomainFromArticle(articleText: string, companyName: strin
     const domain = rawDomain.toLowerCase().replace(/^www\./, "").replace(/\.$/, "");
     if (isExtractedDomainSuspect(domain, sourceUrl) || domain.length < 4 || !domain.includes(".")) return;
 
-    const normDomain = domain.split(".")[0].replace(/[^a-z0-9]/g, "");
-    let score = candidates.get(domain) ?? 0;
-
-    for (const name of uniqueNames) {
-      if (normDomain.includes(name) || name.includes(normDomain)) {
-        score += 10;
-        break;
-      }
-    }
-    score += 1;
-    candidates.set(domain, score);
+    const normDomain = registrableDomain(domain).split(".")[0].replace(/[^a-z0-9]/g, "");
+    if (!uniqueNames.includes(normDomain)) return;
+    candidates.set(domain, (candidates.get(domain) ?? 0) + 11);
   }
 
   // Parse whole destinations before looking for domains in the remaining prose.
