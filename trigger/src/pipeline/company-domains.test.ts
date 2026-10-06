@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { companyDomainBudget, fillCompanyDomains, launchDomainBatches } from "./company-domains.js";
+import { companyDomainBudget, fillCompanyDomains, launchDomainBatches, type CompanyDomainResolution } from "./company-domains.js";
+import { logger } from "@trigger.dev/sdk";
 import { lookupDomainMultiSignal } from "./domain-lookup.js";
 
 vi.mock("@trigger.dev/sdk", () => ({ logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn() } }));
@@ -35,7 +36,7 @@ describe("fillCompanyDomains", () => {
     const rows = await fillCompanyDomains([
       { ...row("Foo Labs"), article_text: "Website https://app.foo-labs.co.uk/about" },
     ], companyDomainBudget(Date.now() + 120_000));
-    expect(rows[0].company_domain).toBe("app.foo-labs.co.uk");
+    expect(rows[0].company_domain).toBe("foo-labs.co.uk");
     expect(lookupDomainMultiSignal).not.toHaveBeenCalled();
   });
   it("keeps same-name launch companies on different sources separate when context is absent", async () => {
@@ -75,6 +76,58 @@ describe("fillCompanyDomains", () => {
     const rows = await fillCompanyDomains([row(), row(" ACME "), row("Ambiguous"), row("Blocked")], companyDomainBudget(Date.now() + 120_000));
     expect(rows.map((r) => r.company_domain)).toEqual(["acme.com", "acme.com", null, null]);
     expect(lookupDomainMultiSignal).toHaveBeenCalledTimes(3);
+  });
+
+  it("reports stored, article, search and cached candidates without adding database columns", async () => {
+    const resolutions: CompanyDomainResolution[] = [];
+    const rows = await fillCompanyDomains([
+      { ...row("Stored"), maker_website: "https://legal.pilot5.ai" },
+      { ...row("ArticleCo"), article_text: "Website https://app.articleco.ai" },
+      row(), row(),
+    ], companyDomainBudget(Date.now() + 120_000), true, { onResolution: (result) => resolutions.push(result) });
+    expect(resolutions).toEqual([
+      { source: "stored", lookupDomain: "pilot5.ai", confidence: "high", rejectedReason: null },
+      { source: "article", lookupDomain: "app.articleco.ai", confidence: "high", rejectedReason: null },
+      { source: "search", lookupDomain: "acme.com", confidence: "high", rejectedReason: null },
+      { source: "cache", lookupDomain: "acme.com", confidence: "high", rejectedReason: null },
+    ]);
+    expect(rows.every((r) => !Object.hasOwn(r, "resolution") && !Object.hasOwn(r, "rejectedReason"))).toBe(true);
+  });
+
+  it("reports rejected searches, cached misses, invalid domains and exhausted lookup budgets", async () => {
+    vi.mocked(lookupDomainMultiSignal).mockResolvedValueOnce(hit("ara.so", "medium")).mockResolvedValueOnce(hit("linkedin.com"));
+    const resolutions: CompanyDomainResolution[] = [];
+    const rows = await fillCompanyDomains([row("Reason"), row("Reason"), row("Blocked"), row("Other")], companyDomainBudget(Date.now() + 120_000, 2), true, { onResolution: (result) => resolutions.push(result) });
+    expect(rows.every((r) => r.company_domain === null)).toBe(true);
+    expect(resolutions).toEqual([
+      { source: "search", lookupDomain: "ara.so", confidence: "medium", rejectedReason: "confidence_not_high" },
+      { source: "cache", lookupDomain: "ara.so", confidence: "medium", rejectedReason: "confidence_not_high" },
+      { source: "search", lookupDomain: "linkedin.com", confidence: "high", rejectedReason: "no_usable_domain" },
+      { source: "none", lookupDomain: null, confidence: null, rejectedReason: "lookup_budget_exhausted" },
+    ]);
+  });
+
+  it.each([
+    ["Fundraising News", "non_company_name"],
+    [" FUNDRAISING   NEWS ", "non_company_name"],
+    ["Funding News", "non_company_name"],
+    ["Newsroom", "non_company_name"],
+    ["This headline has seven separate company words", "company_name_too_long"],
+    ["这家公司获得融资，计划拓展市场。", "cjk_sentence_punctuation"],
+    ["", "missing_company_name"],
+  ])("skips lookup for %s and logs why", async (name, rejectedReason) => {
+    const budget = companyDomainBudget(Date.now() + 120_000);
+    const rows = await fillCompanyDomains([row(name)], budget);
+    expect(rows[0].company_domain).toBeNull();
+    expect(lookupDomainMultiSignal).not.toHaveBeenCalled();
+    expect(budget.remainingLookups).toBe(20);
+    expect(logger.info).toHaveBeenCalledWith("Company domain lookup skipped", { company: name, source: "none", lookupDomain: null, confidence: null, rejectedReason });
+  });
+
+  it.each(["Fundraising Labs", "Newsroom AI", "One Two Three Four Five Six", "量子科技"])("keeps plausible company name %s eligible for lookup", async (name) => {
+    const rows = await fillCompanyDomains([row(name)], companyDomainBudget(Date.now() + 120_000));
+    expect(rows[0].company_domain).toBe("acme.com");
+    expect(lookupDomainMultiSignal).toHaveBeenCalledOnce();
   });
 
   it("bounds lookups, caches misses, passes context and never invents a fallback domain", async () => {

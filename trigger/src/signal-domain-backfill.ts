@@ -1,8 +1,7 @@
 import { logger, task } from "@trigger.dev/sdk";
 import { companyDomain } from "./pipeline/additional-signals.js";
-import { companyDomainBudget, companyDomainCacheKey, fillCompanyDomains, type CompanyDomainRow } from "./pipeline/company-domains.js";
+import { companyDomainBudget, companyDomainCacheKey, companyDomainNameRejection, fillCompanyDomains, type CompanyDomainResolution, type CompanyDomainRow } from "./pipeline/company-domains.js";
 import { fetchUrl } from "./pipeline/scrape.js";
-import { validateDomainSemantic } from "./pipeline/openai.js";
 import { isPublicHttpsUrl, logoUrlForDomain, normalizeOptionalText } from "./pipeline/taxonomy.js";
 
 export interface SignalDomainBackfillPayload {
@@ -49,14 +48,13 @@ export async function runSignalDomainBackfill(payload: SignalDomainBackfillPaylo
   let resolved = 0;
   let updated = 0;
   let failed = 0;
-  const proposals: Array<{ id: number; company: string; domain: string | null }> = [];
+  const proposals: Array<{ id: number; company: string; domain: string | null } & CompanyDomainResolution> = [];
   for (const raw of (rows as StoredRow[]).slice(0, limit)) {
     if (Date.now() + IO_TIMEOUT_MS + 5_000 > deadlineAt) break;
     if (!Number.isSafeInteger(raw?.id) || typeof raw.company_name !== "string" || typeof raw.source_url !== "string") {
       failed++;
       continue;
     }
-    if (companyDomain(raw.company_domain)) continue;
     let row: StoredRow = {
       ...raw,
       maker_website: normalizeOptionalText(raw.maker_website),
@@ -67,22 +65,19 @@ export async function runSignalDomainBackfill(payload: SignalDomainBackfillPaylo
       location: normalizeOptionalText(raw.location) || normalizeOptionalText(raw.company_location),
     };
     // Stored Evidence first. A bounded Spider scrape is only needed when there is no article text or known website.
-    if (!row.article_text && !companyDomain(row.maker_website) && !budget.cache.has(companyDomainCacheKey(row)) && isPublicHttpsUrl(row.source_url)) {
+    if (!companyDomainNameRejection(row.company_name) && !row.article_text && !companyDomain(row.company_domain) && !companyDomain(row.maker_website) && !companyDomain(row.company_website) && !budget.cache.has(companyDomainCacheKey(row)) && isPublicHttpsUrl(row.source_url)) {
       try {
         row = { ...row, article_text: await fetchUrl(row.source_url, { maxChars: 20_000, deadlineAt: Math.min(budget.deadlineAt, Date.now() + 30_000) }) };
       } catch { /* Search can still resolve the company when the source is unavailable. */ }
     }
-    const [filled] = await fillCompanyDomains([row], budget);
-    let domain = filled.company_domain;
-    if (payload.table === "funding_discoveries" && domain && row.article_text) {
-      if (Date.now() >= budget.deadlineAt) break;
-      const validation = await validateDomainSemantic(row.source_url, row.company_name, domain, row.article_text, budget.deadlineAt);
-      if (Date.now() >= budget.deadlineAt) break;
-      if (validation.status === "Wrong") domain = companyDomain(validation.correctDomain) || null;
-      else if (validation.status !== "Correct") domain = null;
-    }
+    let resolution: CompanyDomainResolution = { source: "none", lookupDomain: null, confidence: null, rejectedReason: null };
+    const [filled] = await fillCompanyDomains([row], budget, true, {
+      validateFunding: payload.table === "funding_discoveries",
+      onResolution: (result) => { resolution = result; },
+    });
+    const domain = filled.company_domain;
     processed++;
-    proposals.push({ id: row.id, company: row.company_name, domain });
+    proposals.push({ id: row.id, company: row.company_name, domain, ...resolution });
     logger.info("Signal domain proposal", { table: payload.table, dryRun, ...proposals[proposals.length - 1] });
     if (!domain) continue;
     resolved++;

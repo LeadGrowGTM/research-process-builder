@@ -2,6 +2,7 @@ import { logger } from "@trigger.dev/sdk";
 import { companyDomain } from "./additional-signals.js";
 import { lookupDomainMultiSignal, type ContextClues } from "./domain-lookup.js";
 import { extractDomainFromArticle } from "./pipeline.js";
+import { validateDomainSemantic } from "./openai.js";
 import { hasTime, LAUNCH_WRITE_TIMEOUT_MS } from "./launch-budget.js";
 
 export interface CompanyDomainRow {
@@ -20,7 +21,19 @@ export interface CompanyDomainRow {
 export interface CompanyDomainBudget {
   deadlineAt: number;
   remainingLookups: number;
-  cache: Map<string, string | null>;
+  cache: Map<string, { domain: string | null; resolution: CompanyDomainResolution }>;
+}
+
+export interface CompanyDomainResolution {
+  source: "stored" | "article" | "url" | "search" | "cache" | "none";
+  lookupDomain: string | null;
+  confidence: "high" | "medium" | "low" | null;
+  rejectedReason: string | null;
+}
+
+interface CompanyDomainOptions {
+  validateFunding?: boolean;
+  onResolution?: (resolution: CompanyDomainResolution) => void;
 }
 
 export function companyDomainBudget(deadlineAt: number, limit = 20): CompanyDomainBudget {
@@ -32,22 +45,48 @@ export function companyDomainCacheKey(row: CompanyDomainRow): string {
   return JSON.stringify([row.company_name, row.industry || "", row.location || "", row.company_identity || row.source_url].map((part) => part.trim().toLowerCase()));
 }
 
+const NON_COMPANY_NAMES = new Set(["fundraising news", "funding news", "newsroom"]);
+
+export function companyDomainNameRejection(name: string): string | null {
+  const normalized = name.trim().replace(/\s+/g, " ").toLowerCase();
+  if (!normalized) return "missing_company_name";
+  if (NON_COMPANY_NAMES.has(normalized)) return "non_company_name";
+  if (normalized.split(" ").length > 6) return "company_name_too_long";
+  if (/[。！？；，：]/.test(normalized)) return "cjk_sentence_punctuation";
+  return null;
+}
+
 /** Batch orchestration over the existing article and search resolvers. */
-export async function fillCompanyDomains<T extends CompanyDomainRow>(rows: T[], budget: CompanyDomainBudget, useArticleEvidence = true): Promise<Array<T & { company_domain: string | null }>> {
+export async function fillCompanyDomains<T extends CompanyDomainRow>(rows: T[], budget: CompanyDomainBudget, useArticleEvidence = true, options: CompanyDomainOptions = {}): Promise<Array<T & { company_domain: string | null }>> {
   const filled: Array<T & { company_domain: string | null }> = [];
   for (const row of rows) {
     const name = row.company_name.trim();
     const key = companyDomainCacheKey(row);
+    let resolution: CompanyDomainResolution = { source: "none", lookupDomain: null, confidence: null, rejectedReason: null };
     let domain = companyDomain(row.company_domain) || companyDomain(row.maker_website) || companyDomain(row.company_website);
+    if (domain) resolution = { ...resolution, source: "stored", lookupDomain: domain, confidence: "high" };
     if (!domain && useArticleEvidence) {
       const fromArticle = extractDomainFromArticle(row.article_text || row.description || "", row.company_name, row.source_url);
       // Keep the publisher check active when inspecting the source URL itself.
       const fromUrl = fromArticle || extractDomainFromArticle(row.source_url, row.company_name, row.source_url);
       domain = companyDomain(fromUrl);
+      if (domain) resolution = { ...resolution, source: fromArticle ? "article" : "url", lookupDomain: fromUrl, confidence: "high" };
     }
-    if (!domain && name && budget.cache.has(key)) domain = budget.cache.get(key) || "";
-    if (!domain && name && !budget.cache.has(key) && budget.remainingLookups > 0 && Date.now() + 5_000 <= budget.deadlineAt) {
+    const nameRejection = companyDomainNameRejection(name);
+    if (!domain && nameRejection) {
+      resolution.rejectedReason = nameRejection;
+      if (!options.onResolution) logger.info("Company domain lookup skipped", { company: row.company_name, ...resolution });
+    } else if (!domain && budget.cache.has(key)) {
+      const cached = budget.cache.get(key)!;
+      domain = cached.domain || "";
+      resolution = { ...cached.resolution, source: "cache" };
+      if (!domain && options.validateFunding && row.article_text && ["medium_requires_article_validation", "semantic_unclear", "semantic_wrong", "semantic_validation_failed"].includes(resolution.rejectedReason || "")) {
+        domain = companyDomain(resolution.lookupDomain);
+        resolution.rejectedReason = null;
+      }
+    } else if (!domain && budget.remainingLookups > 0 && Date.now() + 5_000 <= budget.deadlineAt) {
       budget.remainingLookups--;
+      resolution.source = "search";
       const clues: ContextClues = {
         industry: row.industry || undefined,
         location: row.location || undefined,
@@ -55,13 +94,50 @@ export async function fillCompanyDomains<T extends CompanyDomainRow>(rows: T[], 
       };
       try {
         const result = await lookupDomainMultiSignal(row.company_name, clues, row.source_url, Math.min(budget.deadlineAt, Date.now() + 60_000));
-        if (Date.now() <= budget.deadlineAt && result.confidence === "high") domain = companyDomain(result.domain);
+        resolution.lookupDomain = result.domain || null;
+        resolution.confidence = result.confidence;
+        if (Date.now() > budget.deadlineAt) resolution.rejectedReason = "deadline_exceeded";
+        else {
+          domain = companyDomain(result.domain);
+          if (!domain) resolution.rejectedReason = "no_usable_domain";
+        }
       } catch (error) {
+        resolution.rejectedReason = "lookup_failed";
         logger.warn("Company domain lookup failed", { company: row.company_name, error: error instanceof Error ? error.message : String(error) });
       }
-      budget.cache.set(key, domain || null);
+    } else if (!domain) {
+      resolution.rejectedReason = budget.remainingLookups <= 0 ? "lookup_budget_exhausted" : "deadline_exceeded";
     }
-    if (domain && name) budget.cache.set(key, domain);
+    if (domain && resolution.confidence !== "high" && !(options.validateFunding && row.article_text && resolution.confidence === "medium")) {
+      domain = "";
+      resolution.rejectedReason = options.validateFunding && resolution.confidence === "medium" ? "medium_requires_article_validation" : "confidence_not_high";
+    }
+    if (domain && options.validateFunding && row.article_text) {
+      try {
+        if (Date.now() >= budget.deadlineAt) {
+          domain = "";
+          resolution.rejectedReason = "deadline_exceeded";
+        } else {
+          const validation = await validateDomainSemantic(row.source_url, row.company_name, domain, row.article_text, budget.deadlineAt);
+          if (Date.now() >= budget.deadlineAt) {
+            domain = "";
+            resolution.rejectedReason = "deadline_exceeded";
+          } else if (validation.status === "Wrong") {
+            domain = companyDomain(validation.correctDomain);
+            if (!domain) resolution.rejectedReason = "semantic_wrong";
+          } else if (validation.status !== "Correct") {
+            domain = "";
+            resolution.rejectedReason = "semantic_unclear";
+          }
+        }
+      } catch (error) {
+        domain = "";
+        resolution.rejectedReason = "semantic_validation_failed";
+        logger.warn("Company domain validation failed", { company: row.company_name, error: error instanceof Error ? error.message : String(error) });
+      }
+    }
+    if (name && resolution.source !== "none") budget.cache.set(key, { domain: domain || null, resolution });
+    options.onResolution?.(resolution);
     filled.push({ ...row, company_domain: domain || null });
   }
   return filled;

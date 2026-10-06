@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { mapAdditionalSignals, projectAdditionalSignals } from "./additional-signals.js";
+import { companyDomain, mapAdditionalSignals, projectAdditionalSignals } from "./additional-signals.js";
 
 const KEYS = ["type", "company", "domain", "logo", "headline", "metric", "summary", "tags", "location", "people", "date", "source", "sourceUrl", "details", "raisedAgain", "earlier"];
 
@@ -14,6 +14,22 @@ function map(input: {
     jobSignals: input.jobSignals ?? [],
   });
 }
+
+describe("companyDomain", () => {
+  it.each([
+    ["mcp.crosswalk.to", "crosswalk.to"],
+    ["https://legal.pilot5.ai/terms", "pilot5.ai"],
+    ["https://ads.openai.com", "openai.com"],
+    ["https://www.app.foo-labs.co.uk/about", "foo-labs.co.uk"],
+    ["app.acme.com.au", "acme.com.au"],
+  ])("normalizes %s to registrable domain %s", (value, domain) => {
+    expect(companyDomain(value)).toBe(domain);
+  });
+
+  it.each(["https://links.producthunt.com", "https://news.techcrunch.com", "https://app.linkedin.com", "https://sub.t.co", "not_found", "https://127.0.0.1"])("rejects non-company host %s", (value) => {
+    expect(companyDomain(value)).toBe("");
+  });
+});
 
 describe("mapAdditionalSignals", () => {
   it("decodes double-escaped industry text and numeric entities", () => {
