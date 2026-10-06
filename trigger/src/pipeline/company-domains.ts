@@ -72,6 +72,14 @@ export async function fillCompanyDomains<T extends CompanyDomainRow>(rows: T[], 
       domain = companyDomain(fromUrl);
       if (domain) resolution = { ...resolution, source: fromArticle ? "article" : "url", lookupDomain: fromUrl, confidence: "high" };
     }
+    if (!domain && options.validateFunding && row.article_text) {
+      // A funding story on the company's own site (firecrawl.dev/blog/...) names its domain; the article must still confirm it.
+      const fromSource = companyDomain(row.source_url);
+      if (fromSource && fromSource.split(".")[0].replace(/[^a-z0-9]/g, "") === name.toLowerCase().replace(/[^a-z0-9]/g, "")) {
+        domain = fromSource;
+        resolution = { ...resolution, source: "url", lookupDomain: fromSource, confidence: "medium" };
+      }
+    }
     const nameRejection = companyDomainNameRejection(name);
     if (!domain && nameRejection) {
       resolution.rejectedReason = nameRejection;
@@ -126,7 +134,8 @@ export async function fillCompanyDomains<T extends CompanyDomainRow>(rows: T[], 
           } else if (validation.status === "Wrong") {
             domain = companyDomain(validation.correctDomain);
             if (!domain) resolution.rejectedReason = "semantic_wrong";
-          } else if (validation.status !== "Correct") {
+          } else if (validation.status !== "Correct" && resolution.confidence !== "high") {
+            // Matches the daily path: Unclear keeps a high-confidence domain and rejects anything weaker.
             domain = "";
             resolution.rejectedReason = "semantic_unclear";
           }
