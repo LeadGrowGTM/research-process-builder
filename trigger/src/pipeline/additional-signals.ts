@@ -121,6 +121,8 @@ export function companyDomain(value: unknown): string {
   const host = hostname(value);
   if (!host || NON_COMPANY_HOSTS.has(host) || isDomainBlocked(host)) return "";
   if (!/^(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$/.test(host)) return "";
+  // Private-network names from READMEs (ramen.local) are not public company sites.
+  if (/\.(?:local|localhost|internal|invalid|lan|home|corp)$/.test(host)) return "";
   const domain = registrableDomain(host);
   return NON_COMPANY_HOSTS.has(domain) || isDomainBlocked(domain) ? "" : domain;
 }

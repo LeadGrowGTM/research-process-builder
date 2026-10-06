@@ -26,7 +26,7 @@ describe("companyDomain", () => {
     expect(companyDomain(value)).toBe(domain);
   });
 
-  it.each(["https://links.producthunt.com", "https://news.techcrunch.com", "https://app.linkedin.com", "https://sub.t.co", "not_found", "https://127.0.0.1"])("rejects non-company host %s", (value) => {
+  it.each(["https://links.producthunt.com", "https://news.techcrunch.com", "https://app.linkedin.com", "https://sub.t.co", "not_found", "https://127.0.0.1", "ramen.local", "https://app.svc.internal/x"])("rejects non-company host %s", (value) => {
     expect(companyDomain(value)).toBe("");
   });
 });
