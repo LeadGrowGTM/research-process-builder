@@ -7,10 +7,8 @@ const MAX_DURATION_S = 1200;
 
 export const seriesADaily = schedules.task({
   id: "series-a-daily",
-  cron: {
-    pattern: "0 7 * * *",
-    timezone: "America/New_York",
-  },
+  // Schedule moved to go-to-market-trigger-jobs (Smart Enrich) on 2026-10-06.
+  // cron: { pattern: "0 7 * * *", timezone: "America/New_York", },
   // 100 enrichments at 5 concurrent take about 6 minutes; the pipeline stops a minute early.
   maxDuration: MAX_DURATION_S,
   retry: {

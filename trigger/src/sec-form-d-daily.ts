@@ -269,7 +269,8 @@ export async function runSecFormDDaily(options: SecFormDRunOptions = {}) {
 
 export const secFormDDaily = schedules.task({
   id: "sec-form-d-daily",
-  cron: { pattern: "0 8 * * *", timezone: "America/New_York" },
+  // Schedule moved to go-to-market-trigger-jobs (Smart Enrich) on 2026-10-06.
+  // cron: { pattern: "0 8 * * *", timezone: "America/New_York" },
   retry: { maxAttempts: 3, factor: 2, minTimeoutInMs: 10_000, maxTimeoutInMs: 120_000, randomize: true },
   run: async (payload) => {
     const gate = await workflowGate("leadgrow", "funding-sec-form-d");

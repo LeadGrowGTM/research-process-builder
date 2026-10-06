@@ -284,10 +284,8 @@ async function fetchTweets(userId: string, startTime: string): Promise<Tweet[]> 
 
 export const raisingfiIngest = schedules.task({
   id: "raisingfi-ingest",
-  cron: {
-    pattern: "30 7 * * *",
-    timezone: "America/New_York",
-  },
+  // Schedule moved to go-to-market-trigger-jobs (Smart Enrich) on 2026-10-06.
+  // cron: { pattern: "30 7 * * *", timezone: "America/New_York", },
   retry: {
     maxAttempts: 3,
     factor: 2,

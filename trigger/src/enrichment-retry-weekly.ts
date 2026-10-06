@@ -4,11 +4,8 @@ import { workflowGate } from "./modules/workflow-gate.js";
 
 export const enrichmentRetryWeekly = schedules.task({
   id: "enrichment-retry-weekly",
-  cron: {
-    // Sunday 6 AM ET — quiet slot, before the daily pipelines
-    pattern: "0 6 * * 0",
-    timezone: "America/New_York",
-  },
+  // Schedule moved to go-to-market-trigger-jobs (Smart Enrich) on 2026-10-06.
+  // cron: { // Sunday 6 AM ET — quiet slot, before the daily pipelines pattern: "0 6 * * 0", timezone: "America/New_York", },
   retry: {
     maxAttempts: 2,
     factor: 2,

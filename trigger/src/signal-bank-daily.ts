@@ -332,10 +332,8 @@ async function describeCompany(
 
 export const signalBankDaily = schedules.task({
   id: "signal-bank-daily",
-  cron: {
-    pattern: "0 7 * * *",
-    timezone: "America/New_York",
-  },
+  // Schedule moved to go-to-market-trigger-jobs (Smart Enrich) on 2026-10-06.
+  // cron: { pattern: "0 7 * * *", timezone: "America/New_York", },
   maxDuration: 600,
   retry: {
     maxAttempts: 2,

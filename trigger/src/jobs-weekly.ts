@@ -5,10 +5,8 @@ import { workflowGate } from "./modules/workflow-gate.js";
 export const jobsWeekly = schedules.task({
   id: "jobs-weekly",
   // Monday + Thursday 7am ET — job listings rotate frequently
-  cron: {
-    pattern: "0 7 * * 1,4",
-    timezone: "America/New_York",
-  },
+  // Schedule moved to go-to-market-trigger-jobs (Smart Enrich) on 2026-10-06.
+  // cron: { pattern: "0 7 * * 1,4", timezone: "America/New_York", },
   retry: {
     maxAttempts: 3,
     factor: 2,
