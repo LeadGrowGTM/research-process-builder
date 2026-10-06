@@ -196,7 +196,8 @@ export async function lunaChat(opts: LunaChatOptions): Promise<LunaChatResult | 
   if (!lunaApiKey()) return null;
   const base: Record<string, unknown> = {
     model: LUNA_MODEL,
-    reasoning_effort: "low",
+    // gpt-6-luna returns HTTP 400 for function tools with reasoning on chat completions.
+    reasoning_effort: opts.tools?.length ? "none" : "low",
     max_completion_tokens: opts.maxTokens ?? 300,
     messages: opts.messages,
     response_format: {

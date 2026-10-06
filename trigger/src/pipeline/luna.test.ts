@@ -176,6 +176,24 @@ describe("lunaChat", () => {
     expect(sent.parallel_tool_calls).toBe(false);
     expect(sent.max_completion_tokens).toBe(300);
     expect(sent.max_tokens).toBeUndefined();
+    // gpt-6-luna rejects function tools with reasoning on chat completions (HTTP 400).
+    expect(sent.reasoning_effort).toBe("none");
+  });
+
+  it("keeps low reasoning when no tools are sent", async () => {
+    const fetchMock = fetch as unknown as ReturnType<typeof vi.fn>;
+    fetchMock.mockResolvedValueOnce(
+      new Response(JSON.stringify(chatBody('{"domain":"acme.com"}')), { status: 200 })
+    );
+
+    await lunaChat({
+      name: "domain",
+      schema: { type: "object", properties: { domain: { type: "string" } } },
+      messages: [{ role: "user", content: "find acme" }],
+    });
+
+    const sent = JSON.parse(String(fetchMock.mock.calls[0][1].body));
+    expect(sent.reasoning_effort).toBe("low");
   });
 });
 
