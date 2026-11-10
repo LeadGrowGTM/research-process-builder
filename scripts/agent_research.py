@@ -33,7 +33,7 @@ GT_DIR = PROJECT_DIR / "ground-truth"
 OUTPUT_DIR = PROJECT_DIR / "output" / "agent-research"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-FC_BASE = "https://api.firecrawl.dev/v1"
+FC_BASE = "https://api.firecrawl.dev/v2"
 SERPER_URL = "https://google.serper.dev/search"
 OPENAI_URL = "https://api.openai.com/v1/chat/completions"
 
